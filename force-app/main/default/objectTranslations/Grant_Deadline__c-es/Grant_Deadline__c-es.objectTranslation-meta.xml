@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Grant Deadline Layout</layout>
+        <sections>
+            <label>Requisitos de producto de beca</label>
+            <section>Grant Deliverable Requirements</section>
+        </sections>
+        <sections>
+            <label>Vínculos personalizados</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Nombre de producto</nameFieldLabel>
+    <standardFields>
+        <name>Name</name>
+        <label>Nombre de producto</label>
+    </standardFields>
+    <gender>Feminine</gender>
+    <caseValues>
+        <plural>false</plural>
+        <value>Entrega</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Entregas</value>
+    </caseValues>
+</CustomObjectTranslation>

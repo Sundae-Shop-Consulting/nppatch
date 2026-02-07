@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label>BDE Entry FS</label>
+        <name>BDE_Entry_FS</name>
+    </fieldSets>
+    <fieldSets>
+        <label>BDE List FS</label>
+        <name>BDE_List_FS</name>
+    </fieldSets>
+    <fieldSets>
+        <label>Contact Merge Found FS</label>
+        <name>ContactMergeFoundFS</name>
+    </fieldSets>
+    <webLinks>
+        <name>Merge_Contacts</name>
+        <label>Merge Contacts</label>
+    </webLinks>
+    <webLinks>
+        <name>New_Gift</name>
+        <label>New Gift</label>
+    </webLinks>
+    <webLinks>
+        <name>Recalculate_Rollups</name>
+        <label>Recalculate Rollups</label>
+    </webLinks>
+    <layouts>
+        <layout>Contact Layout</layout>
+        <sections>
+            <label>Contact Details</label>
+            <section>Contact Details</section>
+        </sections>
+        <sections>
+            <label>Household Address</label>
+            <section>Household Address</section>
+        </sections>
+        <sections>
+            <label>Donation Information</label>
+            <section>Donation Information</section>
+        </sections>
+        <sections>
+            <label>Donation Totals</label>
+            <section>Donation Totals</section>
+        </sections>
+        <sections>
+            <label>Soft Credit Totals</label>
+            <section>Soft Credit Totals</section>
+        </sections>
+        <sections>
+            <label>Household Donation Info</label>
+            <section>Household Donation Info</section>
+        </sections>
+        <sections>
+            <label>Membership Information</label>
+            <section>Membership Information</section>
+        </sections>
+        <sections>
+            <label>Misc</label>
+            <section>Misc</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

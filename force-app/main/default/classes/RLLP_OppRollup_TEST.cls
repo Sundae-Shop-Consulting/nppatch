@@ -1,0 +1,1147 @@
+/*
+    Copyright (c) 2009, Salesforce.org
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of Salesforce.org nor the names of
+      its contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+    COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    POSSIBILITY OF SUCH DAMAGE.
+*/
+/**
+* @author Salesforce.org
+* @date 2011
+* @group Rollups
+* @group-content ../../ApexDocContent/Rollups.htm
+* @description Test class for Opportunity Rollup functionality
+*/
+@isTest
+public with sharing class RLLP_OppRollup_TEST {
+
+    /** @description Today's date. */
+    static Date datToday = System.Today();
+    /** @description The date of January 1st, last year. */
+    static Date dat1YearAgo = Date.newInstance( datToday.year()-1,1,1);
+    /** @description The date of January 1st, two years ago. */
+    static Date dat2YearAgo = Date.newInstance( datToday.year()-2,1,1);
+    /** @description The date of January 1st, four years ago */
+    static Date dat4YearAgo = Date.newInstance( datToday.year()-4,1,1);
+    /** @description Default gift record type for tests. */
+    static String giftRecordTypeIdForTests = UTIL_RecordTypes.getRecordTypeIdForGiftsTests(Opportunity.sObjectType);
+    /** @description Default membership record type for tests. */
+    static String membershipRecordTypeIdForTests = UTIL_RecordTypes.getRecordTypeIdForMembershipTests(Opportunity.sObjectType);
+    /** @description List of test contacts. */
+    static list<Contact> listConTest;
+    /** @description List of test opportunities. */
+    static list<Opportunity> listOppTest;
+
+    /*******************************************************************************************************
+    * @description Helper utility to create test contacts and test opportunities
+    * @param numContacts The number of test contacts to create.
+    * @param strProcessor The account processor type for this test.
+    * @return boolean Returns false if there is no a membership record type name for tests.
+    ********************************************************************************************************/
+    static boolean setupTestData(integer numContacts, string strProcessor) {
+
+        if (membershipRecordTypeIdForTests == null)
+            return false;
+
+        // reinitialize our lists
+        listConTest = new list<Contact>();
+        listOppTest = new list<Opportunity>();
+
+        Contacts_and_Orgs_Settings__c contactSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(new Contacts_and_Orgs_Settings__c (
+            Account_Processor__c = strProcessor,
+            Enable_Opportunity_Contact_Role_Trigger__c = true,
+            Opportunity_Contact_Role_Default_role__c = CAO_Constants.OCR_DONOR_ROLE
+        ));
+
+        Households_Settings__c householdSettingsForTests = UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new Households_Settings__c (
+                Household_Rules__c = HH_Households.ALL_PROCESSOR,
+                Always_Rollup_to_Primary_Contact__c = false,
+                Enable_Opp_Rollup_Triggers__c = false, // DJH: not needed since calling opp rollups directly.
+                Excluded_Account_Opp_Rectypes__c = null,
+                Excluded_Account_Opp_Types__c = null,
+                Excluded_Contact_Opp_Rectypes__c = null,
+                Excluded_Contact_Opp_Types__c = null,
+                Membership_Record_Types__c = membershipRecordTypeIdForTests
+            ));
+
+        // create & insert contact(s)
+        listConTest = UTIL_UnitTestData_TEST.CreateMultipleTestContacts (numContacts) ;
+        insert listConTest;
+
+        // create a new gift for this yr
+        Opportunity[] testGift1 = UTIL_UnitTestData_TEST.OppsForContactListByRecTypeId ( listConTest, null, UTIL_UnitTestData_TEST.getClosedWonStage(),
+            datToday, 100 , householdSettingsForTests.Membership_Record_Types__c,null);
+        listOppTest.addAll(testGift1);
+        //create a 2nd gift for last yr
+        Opportunity[] testGift2 = UTIL_UnitTestData_TEST.OppsForContactListByRecTypeId ( listConTest, null, UTIL_UnitTestData_TEST.getClosedWonStage(),
+            dat1YearAgo, 60, householdSettingsForTests.Membership_Record_Types__c,null);
+        listOppTest.addAll(testGift2);
+        insert listOppTest;
+
+        // now roll up manually
+        RLLP_OppRollup rg = new RLLP_OppRollup();
+        rg.rollupContacts(new map<id, Contact>(listConTest));
+
+        //now test that the contact has received the proper stats from the trigger
+        RLLP_OppRollup_UTIL oppRollupUtil = new RLLP_OppRollup_UTIL();
+        string strSoql = oppRollupUtil.buildContactQuery();
+        strSoql = strSoql.replace('select id,', 'select id, Firstname, LastName,');
+        listConTest = database.query(strSoql);
+
+        System.AssertEquals ( 160 , listConTest[0].TotalOppAmount__c );
+        System.AssertEquals ( 100 , listConTest[0].OppAmountThisYear__c );
+        System.AssertEquals ( 60 , listConTest[0].OppAmountLastYear__c );
+        System.AssertEquals ( 0 , listConTest[0].OppAmount2YearsAgo__c );
+        return true;
+    }
+
+    /*********************************************************************************************************
+    * @description Runs testGivingRollupProcessor test method for the One to One account processor.
+    */
+    static testMethod void testGivingRollupOne2One(){
+        //skip the test if Advancement is installed
+        if(ADV_PackageInfo_SVC.useAdv()) return;
+
+        testGivingRollupProcessor(CAO_Constants.ONE_TO_ONE_PROCESSOR);
+    }
+    /*********************************************************************************************************
+    * @description Runs testGivingRollupProcessor test method for the household account processor.
+    */
+    static testMethod void testGivingRollupHHAccount(){
+        //skip the test if Advancement is installed
+        if(ADV_PackageInfo_SVC.useAdv()) return;
+
+        testGivingRollupProcessor(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+    /*********************************************************************************************************
+    * @description Creates a contact, inserts an opportunity, and verifies rollup fields from opportunity
+    * trigger for a given account processor.
+    * @param strProcessor The account processor type.
+    */
+    static void testGivingRollupProcessor(string strProcessor){
+
+        Contacts_and_Orgs_Settings__c contactSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new Contacts_and_Orgs_Settings__c (
+            Account_Processor__c = strProcessor,
+            Enable_Opportunity_Contact_Role_Trigger__c = true,
+            Opportunity_Contact_Role_Default_role__c = CAO_Constants.OCR_DONOR_ROLE
+        ));
+
+        Households_Settings__c householdSettingsForTests = UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new Households_Settings__c (
+            Household_Rules__c = HH_Households.ALL_PROCESSOR,
+            Always_Rollup_to_Primary_Contact__c = false,
+            Enable_Opp_Rollup_Triggers__c = true,
+            Excluded_Account_Opp_Rectypes__c = null,
+            Excluded_Account_Opp_Types__c = null,
+            Excluded_Contact_Opp_Rectypes__c = null,
+            Excluded_Contact_Opp_Types__c = null,
+            Membership_Record_Types__c = null
+        ));
+
+        Date datClose = System.Today();
+
+        // create & insert contact(s)
+        Contact c = new Contact(
+            FirstName = CAO_Constants.CONTACT_FIRSTNAME_FOR_TESTS,
+            LastName = CAO_Constants.CONTACT_LASTNAME_FOR_TESTS,
+            Private__c=false,
+            WorkEmail__c = CAO_Constants.CONTACT_EMAIL_FOR_TESTS,
+            Preferred_Email__c = CAO_Constants.CONTACT_PREFERRED_EMAIL_FOR_TESTS,
+            WorkPhone__c = CAO_Constants.CONTACT_PHONE_FOR_TESTS,
+            PreferredPhone__c = CAO_Constants.CONTACT_PREFERRED_PHONE_FOR_TESTS
+        );
+        insert c;
+
+        Id rt_id = giftRecordTypeIdForTests;
+
+        //create new opp
+        Opportunity o = new Opportunity(
+                    Name = 'Test Opp 45',
+                    CloseDate = datClose,
+                    StageName = UTIL_UnitTestData_TEST.getClosedWonStage(),
+                    Contact_Id_for_Role__c = c.id,
+                    Amount = 100
+                    );
+
+        if (rt_id != null) {
+            o.put('RecordTypeId', rt_id);
+        }
+
+        //insert the opp(s)
+        Test.StartTest();
+        insert o;
+        Test.StopTest();
+
+        system.assertEquals('true', [select Is_Opp_from_Individual__c from Opportunity where id = :o.id].Is_Opp_from_Individual__c);
+        system.AssertEquals(1, [select count() from OpportunityContactRole where ContactId = :c.id and isPrimary = true]);
+        system.AssertEquals(1, [select count() from Account where One2OneContact__c = :c.id and SYSTEMIsIndividual__c = true]);
+
+        //now test that a contact has received the proper member stats from the trigger
+        Contact UpdatedCon = [SELECT id, OppAmountLastNDays__c, OppAmountThisYear__c, TotalMembershipOppAmount__c,
+                                    OppAmount2YearsAgo__c, OppAmountLastYear__c, household__c,
+                                    Best_Gift_Year__c, Best_Gift_Year_Total__c, Household__r.Best_Gift_Year__c, Household__r.Best_Gift_Year_Total__c,
+                                    household__r.TotalOppAmount__c, TotalOppAmount__c, LastCloseDate__c
+                                    FROM Contact WHERE Id = :c.id];
+
+        system.AssertEquals(100, UpdatedCon.TotalOppAmount__c);
+        system.AssertEquals(100, UpdatedCon.Household__r.TotalOppAmount__c);
+        system.AssertEquals(100, UpdatedCon.OppAmountThisYear__c);
+        system.AssertEquals(0, UpdatedCon.OppAmountLastYear__c);
+        system.AssertEquals(100, UpdatedCon.Best_Gift_Year_Total__c);
+        system.AssertEquals(string.valueof(datClose.year()), UpdatedCon.Best_Gift_Year__c);
+        system.AssertEquals(100, UpdatedCon.household__r.Best_Gift_Year_Total__c);
+        system.AssertEquals(string.valueof(datClose.year()), UpdatedCon.household__r.Best_Gift_Year__c);
+    }
+
+    /*********************************************************************************************************
+    * @description Runs testGivingRollupIndividualProcessor test method for the bucket account processor.
+    */
+    static testMethod void testGivingRollupIndividualBucket(){
+        //skip the test if Advancement is installed - Bucket Account not supported in ADV
+        if(ADV_PackageInfo_SVC.useAdv()) return;
+        testGivingRollupIndividualProcessor(CAO_Constants.BUCKET_PROCESSOR);
+    }
+    /*********************************************************************************************************
+    * @description Runs testGivingRollupIndividualProcessor test method for the household account processor.
+    */
+    static testMethod void testGivingRollupIndividualHHAccount(){
+        testGivingRollupIndividualProcessor(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+    /*********************************************************************************************************
+    * @description Creates a contact, inserts an opportunity, and verifies rollup fields from opportunity
+    * trigger for a given account processor, then runs rollups manually and verifies nothing has changed.
+    * @param strProcessor The account processor type.
+    */
+    static void testGivingRollupIndividualProcessor(string strProcessor) {
+
+            Contacts_and_Orgs_Settings__c contactSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(new Contacts_and_Orgs_Settings__c (
+                Account_Processor__c = strProcessor,
+                Enable_Opportunity_Contact_Role_Trigger__c = true,
+                Opportunity_Contact_Role_Default_role__c = CAO_Constants.OCR_DONOR_ROLE
+            ));
+
+            Households_Settings__c householdSettingsForTests = UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+                new Households_Settings__c (
+                    Household_Rules__c = HH_Households.ALL_PROCESSOR,
+                    Always_Rollup_to_Primary_Contact__c = false,
+                    Enable_Opp_Rollup_Triggers__c = true,
+                    Excluded_Account_Opp_Rectypes__c = null,
+                    Excluded_Account_Opp_Types__c = null,
+                    Excluded_Contact_Opp_Rectypes__c = null,
+                    Excluded_Contact_Opp_Types__c = null,
+                    Membership_Record_Types__c = null
+                ));
+
+            Date datClose = System.Today();
+
+            // create & insert contact(s)
+            Contact[] TestCons = new contact[]{ new contact(
+                FirstName= CAO_Constants.CONTACT_FIRSTNAME_FOR_TESTS,
+                LastName= CAO_Constants.CONTACT_LASTNAME_FOR_TESTS,
+                Private__c=false,
+                WorkEmail__c = CAO_Constants.CONTACT_EMAIL_FOR_TESTS,
+                Preferred_Email__c = CAO_Constants.CONTACT_PREFERRED_EMAIL_FOR_TESTS,
+                WorkPhone__c = CAO_Constants.CONTACT_PHONE_FOR_TESTS,
+                PreferredPhone__c = CAO_Constants.CONTACT_PREFERRED_PHONE_FOR_TESTS
+            ) };
+
+            //since we're running rollup code on a manually created contact, we have to manually set currency field in multicurrency
+            if (RLLP_OppRollup_UTIL.isMultiCurrency()) {
+                TestCons[0].put(RLLP_OppRollup_UTIL.mcFieldValues.get('Contact'), RLLP_OppRollup_UTIL.currCorporate);
+            }
+
+            insert TestCons;
+
+            // create new opps
+            Opportunity[] newOpps = UTIL_UnitTestData_TEST.OppsForContactListByRecTypeId ( TestCons, null, UTIL_UnitTestData_TEST.getClosedWonStage(), datClose, 100 , giftRecordTypeIdForTests ,null);
+
+            // insert the opp(s)
+            Test.StartTest();
+            insert newOpps;
+            Test.StopTest();
+
+            //now test that a contact has received the proper member stats from the trigger
+            id FirstConId = TestCons[0].id;
+            Contact UpdatedCon = [SELECT id, account.TotalOppAmount__c, OppAmountThisYear__c, OppAmountLastYear__c, household__c, household__r.TotalOppAmount__c, TotalOppAmount__c, household__r.MembershipEndDate__c, MembershipJoinDate__c FROM Contact WHERE Id = :FirstConId];
+
+            System.AssertEquals ( 100 , UpdatedCon.TotalOppAmount__c );
+            System.AssertEquals ( 100 , UpdatedCon.household__r.TotalOppAmount__c );
+            System.AssertEquals ( 100 , UpdatedCon.OppAmountThisYear__c);
+            System.AssertEquals ( 0 , UpdatedCon.OppAmountLastYear__c);
+
+            // now roll up manually
+            RLLP_OppRollup rg = new RLLP_OppRollup();
+            rg.rollupContacts(new map<id, Contact>(new list<Contact>{TestCons[0]}));
+
+            RLLP_OppRollup_UTIL oppRollupUtil = new RLLP_OppRollup_UTIL();
+            household__c[] hhs = Database.query(oppRollupUtil.buildHouseholdQuery() + ' where id =\''+UpdatedCon.household__r.id+'\' LIMIT 1');
+
+            rg = new RLLP_OppRollup();
+            rg.rollupHouseholds(new map<id, Household__c>(hhs));
+
+            //make sure the values are still right
+            UpdatedCon = [SELECT id, account.TotalOppAmount__c,
+                                OppAmountThisYear__c, OppAmountLastYear__c, household__c,
+                                household__r.TotalOppAmount__c, TotalOppAmount__c FROM Contact WHERE Id = :FirstConId];
+
+            System.AssertEquals (100 , UpdatedCon.TotalOppAmount__c);
+            System.AssertEquals (100 , UpdatedCon.household__r.TotalOppAmount__c);
+            System.AssertEquals (100 , UpdatedCon.OppAmountThisYear__c);
+            System.AssertEquals (0 , UpdatedCon.OppAmountLastYear__c);
+    }
+
+    /*********************************************************************************************************
+    * @description Runs testGivingRollupExcludedRTProcessor test method for the one to one account processor.
+    */
+    static testMethod void testGivingRollupExcludedRTOne2One(){
+        testGivingRollupExcludedRTProcessor(CAO_Constants.ONE_TO_ONE_PROCESSOR);
+    }
+    /*********************************************************************************************************
+    * @description Runs testGivingRollupExcludedRTProcessor test method for the household account processor.
+    */
+    static testMethod void testGivingRollupExcludedRTHHAccount(){
+        testGivingRollupExcludedRTProcessor(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+    /*********************************************************************************************************
+    * @description Creates a contact, inserts an opportunity with an excluded record type, and verifies rollup
+    * fields from opportunity trigger are blank, then runs rollups manually and verifies nothing has changed.
+    * @param strProcessor The account processor type.
+    */
+    static void testGivingRollupExcludedRTProcessor (string strProcessor) {
+
+        if(giftRecordTypeIdForTests != null){
+            Contacts_and_Orgs_Settings__c contactSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(new Contacts_and_Orgs_Settings__c (
+                Account_Processor__c = strProcessor,
+                Enable_Opportunity_Contact_Role_Trigger__c = true,
+                Opportunity_Contact_Role_Default_role__c = CAO_Constants.OCR_DONOR_ROLE
+            ));
+
+            Households_Settings__c householdSettingsForTests = UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+                new Households_Settings__c (
+                    Household_Rules__c = HH_Households.ALL_PROCESSOR,
+                    Always_Rollup_to_Primary_Contact__c = false,
+                    Enable_Opp_Rollup_Triggers__c = true,
+                    Excluded_Account_Opp_Rectypes__c = giftRecordTypeIdForTests,
+                    Excluded_Account_Opp_Types__c = null,
+                    Excluded_Contact_Opp_Rectypes__c = giftRecordTypeIdForTests,
+                    Excluded_Contact_Opp_Types__c = null,
+                    Membership_Record_Types__c = null
+                ));
+
+            Date datClose = System.Today();
+
+            // create & insert contact(s)
+            Contact[] TestCons = new contact[]{ new contact(
+                FirstName= CAO_Constants.CONTACT_FIRSTNAME_FOR_TESTS,
+                LastName= CAO_Constants.CONTACT_LASTNAME_FOR_TESTS,
+                Private__c=false,
+                WorkEmail__c = CAO_Constants.CONTACT_EMAIL_FOR_TESTS,
+                Preferred_Email__c = CAO_Constants.CONTACT_PREFERRED_EMAIL_FOR_TESTS,
+                WorkPhone__c = CAO_Constants.CONTACT_PHONE_FOR_TESTS,
+                PreferredPhone__c = CAO_Constants.CONTACT_PREFERRED_PHONE_FOR_TESTS
+            ) };
+
+            //since we're running rollup code on a manually created contact, we have to manually set currency field in multicurrency
+            if (RLLP_OppRollup_UTIL.isMultiCurrency()) {
+                TestCons[0].put(RLLP_OppRollup_UTIL.mcFieldValues.get('Contact'), RLLP_OppRollup_UTIL.currCorporate);
+            }
+
+            insert TestCons;
+
+            // create new opps
+            Opportunity[] newOpps = UTIL_UnitTestData_TEST.OppsForContactListByRecTypeId ( TestCons, null, UTIL_UnitTestData_TEST.getClosedWonStage(), datClose, 100 , giftRecordTypeIdForTests ,null);
+
+            // insert the opp(s)
+            Test.StartTest();
+            insert newOpps;
+            Test.StopTest();
+
+            RLLP_OppRollup_UTIL oppRollupUtil = new RLLP_OppRollup_UTIL();
+
+            //now test that a contact has received the proper member stats from the trigger
+            id FirstConId = TestCons[0].id;
+            Contact UpdatedCon = [SELECT id, Account.TotalOppAmount__c, OppAmountThisYear__c, OppAmountLastYear__c, Household__c, Household__r.TotalOppAmount__c, TotalOppAmount__c FROM Contact WHERE Id = :FirstConId];
+
+            System.AssertEquals ( 0 , UpdatedCon.TotalOppAmount__c );
+            System.AssertEquals ( 0 , UpdatedCon.household__r.TotalOppAmount__c );
+            System.AssertEquals ( 0 , UpdatedCon.OppAmountThisYear__c);
+
+            // now roll up manually
+            RLLP_OppRollup rg = new RLLP_OppRollup();
+            rg.rollupContacts(new map<id, Contact>(new list<Contact>{TestCons[0]}));
+
+            household__c[] hhs = Database.query(oppRollupUtil.buildHouseholdQuery() + ' where id =\''+UpdatedCon.household__r.id+'\' LIMIT 1');
+
+            rg = new RLLP_OppRollup();
+            rg.rollupHouseholds(new map<id, Household__c>(hhs));
+
+            //make sure the values are still right
+            UpdatedCon = [SELECT id, Account.TotalOppAmount__c, OppAmountThisYear__c, OppAmountLastYear__c, Household__c, Household__r.TotalOppAmount__c, TotalOppAmount__c FROM Contact WHERE Id = :FirstConId];
+
+            System.AssertEquals (0, UpdatedCon.TotalOppAmount__c );
+            System.AssertEquals (0, UpdatedCon.household__r.TotalOppAmount__c );
+            System.AssertEquals (0, UpdatedCon.OppAmountThisYear__c);
+            System.AssertEquals (0, UpdatedCon.OppAmountLastYear__c);
+        }
+    }
+
+    /*********************************************************************************************************
+    * @description Runs testGivingRollupAlwaysPrimaryProcessor test method for the one to one account processor.
+    */
+    static testMethod void testGivingRollupAlwaysPrimaryOne2One(){
+        testGivingRollupAlwaysPrimaryProcessor(CAO_Constants.ONE_TO_ONE_PROCESSOR);
+    }
+    /*********************************************************************************************************
+    * @description Runs testGivingRollupAlwaysPrimaryProcessor test method for the household account processor.
+    */
+    static testMethod void testGivingRollupAlwaysPrimaryHHAccount(){
+        testGivingRollupAlwaysPrimaryProcessor(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+    /*********************************************************************************************************
+    * @description Sets Always Rollup to Primary Contact setting, creates a contact, inserts an opportunity
+    * attributed to a organizatio account, and verifies rollups go to the primary contact instead of the account.
+    * @param strProcessor The account processor type.
+    */
+    static void testGivingRollupAlwaysPrimaryProcessor (string strProcessor) {
+
+            Contacts_and_Orgs_Settings__c contactSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(new Contacts_and_Orgs_Settings__c (
+                Account_Processor__c = strProcessor,
+                Enable_Opportunity_Contact_Role_Trigger__c = true,
+                Opportunity_Contact_Role_Default_role__c = CAO_Constants.OCR_DONOR_ROLE
+            ));
+
+            Households_Settings__c householdSettingsForTests = UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+                new Households_Settings__c (
+                    Household_Rules__c = HH_Households.ALL_PROCESSOR,
+                    Always_Rollup_to_Primary_Contact__c = true,
+                    Enable_Opp_Rollup_Triggers__c = true,
+                    Excluded_Account_Opp_Rectypes__c = null,
+                    Excluded_Account_Opp_Types__c = null,
+                    Excluded_Contact_Opp_Rectypes__c = null,
+                    Excluded_Contact_Opp_Types__c = null,
+                    Membership_Record_Types__c = null
+                ));
+
+            Date datClose = System.Today();
+            // create account
+            account testacct = new account(name='testacct');
+            insert testacct;
+            // create & insert contact(s)
+            Contact[] TestCons = new contact[]{ new contact(
+                FirstName= CAO_Constants.CONTACT_FIRSTNAME_FOR_TESTS,
+                LastName= CAO_Constants.CONTACT_LASTNAME_FOR_TESTS,
+                Private__c=false,
+                AccountId = testacct.id,
+                WorkEmail__c = CAO_Constants.CONTACT_EMAIL_FOR_TESTS,
+                Preferred_Email__c = CAO_Constants.CONTACT_PREFERRED_EMAIL_FOR_TESTS,
+                WorkPhone__c = CAO_Constants.CONTACT_PHONE_FOR_TESTS,
+                PreferredPhone__c = CAO_Constants.CONTACT_PREFERRED_PHONE_FOR_TESTS
+            ) };
+
+            //since we're running rollup code on a manually created contact, we have to manually set currency field in multicurrency
+            if (RLLP_OppRollup_UTIL.isMultiCurrency()) {
+                TestCons[0].put(RLLP_OppRollup_UTIL.mcFieldValues.get('Contact'), RLLP_OppRollup_UTIL.currCorporate);
+            }
+
+            insert TestCons;
+
+            // create new opps
+            Opportunity[] newOpps = UTIL_UnitTestData_TEST.OppsForContactListByRecTypeId ( TestCons, null, UTIL_UnitTestData_TEST.getClosedWonStage(), datClose, 100 , giftRecordTypeIdForTests ,null);
+
+            // insert the opp(s)
+            Test.StartTest();
+            insert newOpps;
+            Test.StopTest();
+
+            //now test that a contact has received the proper member stats from the trigger
+            id FirstConId = TestCons[0].id;
+            Contact UpdatedCon = [SELECT id, account.TotalOppAmount__c, OppAmountThisYear__c, OppAmountLastYear__c, household__c, household__r.TotalOppAmount__c, TotalOppAmount__c FROM Contact WHERE Id = :FirstConId];
+
+            System.AssertEquals ( 100 , UpdatedCon.TotalOppAmount__c );
+            System.AssertEquals ( 100 , UpdatedCon.household__r.TotalOppAmount__c );
+            System.AssertEquals ( 100 , UpdatedCon.OppAmountThisYear__c);
+            System.AssertEquals ( 0 , UpdatedCon.OppAmountLastYear__c);
+
+            // now roll up manually
+            RLLP_OppRollup rg = new RLLP_OppRollup();
+            rg.rollupContacts(new map<id, Contact>(new list<Contact>{TestCons[0]}));
+
+            RLLP_OppRollup_UTIL oppRollupUtil = new RLLP_OppRollup_UTIL();
+            household__c[] hhs = Database.query(oppRollupUtil.buildHouseholdQuery() + ' where id =\''+UpdatedCon.household__r.id+'\' LIMIT 1');
+
+            rg = new RLLP_OppRollup();
+            rg.rollupHouseholds(new map<id, Household__c>(hhs));
+
+            //make sure the values are still right
+            UpdatedCon = [SELECT id, account.TotalOppAmount__c, OppAmountThisYear__c, OppAmountLastYear__c, household__c, household__r.TotalOppAmount__c, TotalOppAmount__c FROM Contact WHERE Id = :FirstConId];
+
+            System.AssertEquals ( 100 , UpdatedCon.TotalOppAmount__c );
+            System.AssertEquals ( 100 , UpdatedCon.household__r.TotalOppAmount__c );
+            System.AssertEquals ( 100 , UpdatedCon.OppAmountThisYear__c);
+            System.AssertEquals ( 0 , UpdatedCon.OppAmountLastYear__c);
+
+    }
+
+    /*********************************************************************************************************
+    * @description
+    */
+    static testMethod void testMemberRollupOne2One(){
+        testMemberRollupProcessor(CAO_Constants.ONE_TO_ONE_PROCESSOR);
+    }
+    /*********************************************************************************************************
+    * @description
+    */
+    static testMethod void testMemberRollupHHAccount(){
+        testMemberRollupProcessor(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+    /*********************************************************************************************************
+    * @description
+    */
+    static void testMemberRollupProcessor (string strProcessor) {
+
+        if(membershipRecordTypeIdForTests != null){
+            Contacts_and_Orgs_Settings__c contactSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(new Contacts_and_Orgs_Settings__c (
+                Account_Processor__c = strProcessor,
+                Enable_Opportunity_Contact_Role_Trigger__c = true,
+                Opportunity_Contact_Role_Default_role__c = CAO_Constants.OCR_DONOR_ROLE
+            ));
+
+            Households_Settings__c householdSettingsForTests = UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+                new Households_Settings__c (
+                    Household_Rules__c = HH_Households.ALL_PROCESSOR,
+                    Always_Rollup_to_Primary_Contact__c = false,
+                    Enable_Opp_Rollup_Triggers__c = true,
+                    Excluded_Account_Opp_Rectypes__c = null,
+                    Excluded_Account_Opp_Types__c = null,
+                    Excluded_Contact_Opp_Rectypes__c = null,
+                    Excluded_Contact_Opp_Types__c = null,
+                    Membership_Record_Types__c = membershipRecordTypeIdForTests
+                ));
+
+            Date datClose = System.Today();
+
+            // create & insert contact(s)
+            Contact[] TestCons = new contact[]{ new contact(
+                FirstName= CAO_Constants.CONTACT_FIRSTNAME_FOR_TESTS,
+                LastName= CAO_Constants.CONTACT_LASTNAME_FOR_TESTS,
+                Private__c=false,
+                WorkEmail__c = CAO_Constants.CONTACT_EMAIL_FOR_TESTS,
+                Preferred_Email__c = CAO_Constants.CONTACT_PREFERRED_EMAIL_FOR_TESTS,
+                WorkPhone__c = CAO_Constants.CONTACT_PHONE_FOR_TESTS,
+                PreferredPhone__c = CAO_Constants.CONTACT_PREFERRED_PHONE_FOR_TESTS
+            ) };
+            insert TestCons;
+
+            // create new opps
+            Opportunity[] newOpps = UTIL_UnitTestData_TEST.OppsForContactListByRecTypeId (
+                TestCons,
+                null,
+                UTIL_UnitTestData_TEST.getClosedWonStage(),
+                datClose,
+                100,
+                householdSettingsForTests.Membership_Record_Types__c,
+                null
+            );
+
+            // insert the opp(s)
+            Test.StartTest();
+            newOpps[0].Membership_Origin__c = 'Renewal';
+            insert newOpps;
+            Test.StopTest();
+
+            //now test that a contact has received the proper member stats from the trigger
+            id FirstConId = TestCons[0].id;
+            Contact UpdatedCon = [SELECT id, TotalMembershipOppAmount__c,LastMembershipOrigin__c,
+                LastMembershipAmount__c, LastMembershipDate__c
+                from contact where id =: firstconid];
+            System.AssertEquals (100 , updatedcon.TotalMembershipOppAmount__c );
+            System.AssertEquals (100 , updatedcon.LastMembershipAmount__c );
+            System.AssertEquals ('Renewal' , updatedcon.LastMembershipOrigin__c );
+            System.AssertEquals (system.today() , updatedcon.LastMembershipDate__c );
+        }
+    }
+
+    /*********************************************************************************************************
+    * @description
+    */
+    static testMethod void testGivingRollupAcctOne2One(){
+        testGivingRollupAcct(CAO_Constants.ONE_TO_ONE_PROCESSOR);
+    }
+    /*********************************************************************************************************
+    * @description
+    */
+    static testMethod void testGivingRollupAcctHHAccount(){
+        testGivingRollupAcct(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+
+    /*********************************************************************************************************
+    * @description
+    */
+    static void testGivingRollupAcct (string strProcessor) {
+
+        Contacts_and_Orgs_Settings__c contactSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(new Contacts_and_Orgs_Settings__c (
+            Account_Processor__c = strProcessor,
+            Enable_Opportunity_Contact_Role_Trigger__c = true,
+            Opportunity_Contact_Role_Default_role__c = CAO_Constants.OCR_DONOR_ROLE
+        ));
+
+        Households_Settings__c householdSettingsForTests = UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new Households_Settings__c (
+                Household_Rules__c = HH_Households.ALL_PROCESSOR,
+                Always_Rollup_to_Primary_Contact__c = false,
+                Enable_Opp_Rollup_Triggers__c = true,
+                Excluded_Account_Opp_Rectypes__c = null,
+                Excluded_Account_Opp_Types__c = null,
+                Excluded_Contact_Opp_Rectypes__c = null,
+                Excluded_Contact_Opp_Types__c = null,
+                Membership_Record_Types__c = null
+            ));
+
+        Date datClose = System.Today();
+
+        // create account
+        account testacct = new account(name='testacct');
+        insert testacct;
+        opportunity newOpp =
+             new opportunity (
+                name = 'testopp',
+                accountid = testacct.id,
+                stagename=UTIL_UnitTestData_TEST.getClosedWonStage(),
+                closedate=datClose, amount=33333
+             );
+        if(RLLP_OppRollup_UTIL.areRecordTypesOnOpps()){
+            newOpp.put('RecordTypeId', giftRecordTypeIdForTests);
+        }
+        // insert the opp(s)
+        Test.StartTest();
+        insert newOpp;
+        Test.StopTest();
+
+        // test whether the trigger worked
+        RLLP_OppRollup_UTIL oppRollupUtil = new RLLP_OppRollup_UTIL();
+        Account updatedAcct = Database.query(oppRollupUtil.buildAccountQuery() + ' where id =\''+testacct.id+'\'');
+
+        System.AssertEquals ( 33333 , updatedAcct.TotalOppAmount__c );
+
+        // now roll up manually
+        RLLP_OppRollup rg = new RLLP_OppRollup();
+        rg.rollupAccounts(new map<id, Account>(new list<Account>{updatedAcct}));
+
+        testAcct = [select id, TotalOppAmount__c, LastMembershipOrigin__c from account where id =: testacct.id];
+        System.AssertEquals ( 33333 , testAcct.TotalOppAmount__c );
+
+        // validate that the Membership Origin on the Account is null
+        System.AssertEquals ( null , testAcct.LastMembershipOrigin__c );
+
+        // Requery the Account object object to pass to the rollup logic
+        updatedAcct = Database.query(oppRollupUtil.buildAccountQuery() + ' where id =\''+testacct.id+'\'');
+
+        // Force a manual rollups and validate that the object is NOT updated again
+        // by comparing the number of DML Statements before and after the rollup
+        Integer dmlCount = Limits.getDmlStatements();
+        rg = new RLLP_OppRollup();
+        rg.rollupAccounts(new map<id, Account>(new list<Account>{updatedAcct}));
+        System.assertEquals(dmlCount, Limits.getDmlStatements(),
+                'The rollup should not have made any record updates because nothing was changed');
+    }
+
+    static testMethod void testGivingRollupAcctMembershipOne2One(){
+        testGivingRollupAcctMembership(CAO_Constants.ONE_TO_ONE_PROCESSOR);
+    }
+    static testMethod void testGivingRollupAcctMembershipHHAccount(){
+        testGivingRollupAcctMembership(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+    static void testGivingRollupAcctMembership (string strProcessor) {
+
+        if(membershipRecordTypeIdForTests != null){
+            Contacts_and_Orgs_Settings__c contactSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(new Contacts_and_Orgs_Settings__c (
+                Account_Processor__c = strProcessor,
+                Enable_Opportunity_Contact_Role_Trigger__c = true,
+                Opportunity_Contact_Role_Default_role__c = CAO_Constants.OCR_DONOR_ROLE
+            ));
+
+            Households_Settings__c householdSettingsForTests = UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+                new Households_Settings__c (
+                    Household_Rules__c = HH_Households.ALL_PROCESSOR,
+                    Always_Rollup_to_Primary_Contact__c = false,
+                    Enable_Opp_Rollup_Triggers__c = true,
+                    Excluded_Account_Opp_Rectypes__c = null,
+                    Excluded_Account_Opp_Types__c = null,
+                    Excluded_Contact_Opp_Rectypes__c = null,
+                    Excluded_Contact_Opp_Types__c = null,
+                    Membership_Record_Types__c = membershipRecordTypeIdForTests
+                ));
+
+            Date datClose = System.Today();
+
+            // create account
+            account testacct = new account(name='testacct');
+            insert testacct;
+            opportunity newOpp =
+                 new opportunity (name = 'testopp', accountid = testacct.id,
+                                    member_level__c = 'Gold', membership_origin__c = 'New',
+                                    stagename=UTIL_UnitTestData_TEST.getClosedWonStage(), closedate=datClose, amount=33333);
+            newOpp.put('RecordTypeId', householdSettingsForTests.Membership_Record_Types__c);
+            // insert the opp(s)
+            Test.StartTest();
+            insert newOpp;
+
+            // test whether the trigger worked
+            RLLP_OppRollup_UTIL oppRollupUtil = new RLLP_OppRollup_UTIL();
+            Account updatedAcct = Database.query(oppRollupUtil.buildAccountQuery() + ' where id =\''+testacct.id+'\'');
+
+            System.AssertEquals ( 33333 , updatedAcct.TotalMembershipOppAmount__c );
+            System.AssertEquals ( system.today() , updatedAcct.LastMembershipDate__c );
+            System.AssertEquals ( 33333 , updatedAcct.LastMembershipAmount__c );
+            System.AssertEquals ( 'Gold' , updatedAcct.LastMembershipLevel__c );
+            System.AssertEquals ( 'New' , updatedAcct.LastMembershipOrigin__c );
+
+            // now roll up manually
+            RLLP_OppRollup rg = new RLLP_OppRollup();
+            rg.rollupAccounts(new map<id, Account>(new list<Account>{updatedAcct}));
+
+            // Verify that the membership amount was updated
+            testAcct = [select id, TotalMembershipOppAmount__c from account where id =: testacct.id];
+            System.AssertEquals ( 33333 , testAcct.TotalMembershipOppAmount__c );
+
+            // Reset these to null
+            newOpp.member_level__c = null;
+            newOpp.membership_origin__c = null;
+            update newOpp;
+
+            // validate that the Membership Origin on the Account is now null
+            testAcct = [select id, LastMembershipOrigin__c from account where id =: testacct.id];
+            System.AssertEquals ( null , testAcct.LastMembershipOrigin__c );
+
+            // Requery the Account object object to pass to the rollup logic
+            updatedAcct = Database.query(oppRollupUtil.buildAccountQuery() + ' where id =\''+testacct.id+'\'');
+
+            // Force a manual rollups and validate that the object is NOT updated again
+            // by comparing the number of DML Statements before and after the rollup
+            Integer dmlCount = Limits.getDmlStatements();
+            rg = new RLLP_OppRollup();
+            rg.rollupAccounts(new map<id, Account>(new list<Account>{updatedAcct}));
+            System.assertEquals(dmlCount, Limits.getDmlStatements(),
+                    'The rollup should not have made any record updates because nothing was changed');
+        }
+}
+
+    static testMethod void testGivingRollupBatchOne2One(){
+        testGivingRollupBatch(CAO_Constants.ONE_TO_ONE_PROCESSOR);
+    }
+    static testMethod void testGivingRollupBatchHHAccount(){
+        testGivingRollupBatch(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+    static void testGivingRollupBatch (string strProcessor) {
+
+            Contacts_and_Orgs_Settings__c contactSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(new Contacts_and_Orgs_Settings__c (
+                Account_Processor__c = strProcessor,
+                Enable_Opportunity_Contact_Role_Trigger__c = true,
+                Opportunity_Contact_Role_Default_role__c = CAO_Constants.OCR_DONOR_ROLE
+            ));
+
+            Households_Settings__c householdSettingsForTests = UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+                new Households_Settings__c (
+                    Household_Rules__c = HH_Households.ALL_PROCESSOR,
+                    Always_Rollup_to_Primary_Contact__c = false,
+                    Enable_Opp_Rollup_Triggers__c = true,
+                    Excluded_Account_Opp_Rectypes__c = null,
+                    Excluded_Account_Opp_Types__c = null,
+                    Excluded_Contact_Opp_Rectypes__c = null,
+                    Excluded_Contact_Opp_Types__c = null,
+                    Membership_Record_Types__c = null
+                ));
+
+            Date datClose = System.Today();
+
+            // create & insert contact(s)
+            Contact[] TestCons = UTIL_UnitTestData_TEST.CreateMultipleTestContacts ( 50 ) ;
+            insert TestCons;
+
+            // create new opps
+            Opportunity[] newOpps = UTIL_UnitTestData_TEST.OppsForContactListByRecTypeId ( TestCons, null, UTIL_UnitTestData_TEST.getClosedWonStage(), datClose, 1000 , giftRecordTypeIdForTests ,null);
+
+            account testacct = new account(name='testacct');
+            insert testacct;
+
+            // test the batch rollup method
+            Test.StartTest();
+            RLLP_OppRollup rg = new RLLP_OppRollup();
+            rg.rollupAll();
+            Test.StopTest();
+    }
+
+    static testMethod void OneContactMultipleOppsOne2One_1(){
+        OneContactMultipleOpps_1(CAO_Constants.ONE_TO_ONE_PROCESSOR);
+    }
+    static testMethod void OneContactMultipleOppsHHAccount_1(){
+        OneContactMultipleOpps_1(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+    public static void OneContactMultipleOpps_1(string strProcessor) {
+
+        integer numCon = 1;
+        if (!setupTestData(numCon, strProcessor))
+            return;
+
+        System.AssertEquals ( 160 , listConTest[0].TotalOppAmount__c );
+        System.AssertEquals ( 100 , listConTest[0].OppAmountThisYear__c );
+        System.AssertEquals ( 60 , listConTest[0].OppAmountLastYear__c );
+
+        // now chg the amts for both opps (cheapskate!)
+        listOppTest[0].Amount = 50;
+        listOppTest[numCon].Amount = 25;
+        update listOppTest;
+
+        // now roll up manually
+        RLLP_OppRollup rg = new RLLP_OppRollup();
+        rg.rollupContacts(new map<id, Contact>(listConTest));
+
+        ID ThisConId = listConTest[0].id;
+        Contact UpdatedCon = [SELECT Id, TotalOppAmount__c, OppAmountThisYear__c, OppAmountLastYear__c  FROM Contact WHERE Id = :ThisConId];
+        System.AssertEquals ( 75 , UpdatedCon.TotalOppAmount__c );
+        System.AssertEquals ( 50 , UpdatedCon.OppAmountThisYear__c );
+        System.AssertEquals ( 25 , UpdatedCon.OppAmountLastYear__c );
+    }
+
+    static testMethod void OneContactMultipleOppsOne2One_2(){
+        OneContactMultipleOpps_2(CAO_Constants.ONE_TO_ONE_PROCESSOR);
+    }
+    static testMethod void OneContactMultipleOppsHHAccount_2(){
+        OneContactMultipleOpps_2(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+    public static void OneContactMultipleOpps_2(string strProcessor) {
+
+        integer numCon = 1;
+        if (!setupTestData(numCon, strProcessor))
+            return;
+
+        System.AssertEquals ( 160 , listConTest[0].TotalOppAmount__c );
+        System.AssertEquals ( 100 , listConTest[0].OppAmountThisYear__c );
+        System.AssertEquals ( 60 , listConTest[0].OppAmountLastYear__c );
+
+        // now create a gift from 2 yrs ago
+        Opportunity[] testGift3 = UTIL_UnitTestData_TEST.OppsForContactListByRecTypeId ( listConTest, null, UTIL_UnitTestData_TEST.getClosedWonStage(), dat2YearAgo, 10 , giftRecordTypeIdForTests,null);
+        insert testGift3;
+
+        // now roll up manually
+        RLLP_OppRollup rg = new RLLP_OppRollup();
+        rg.rollupContacts(new map<id, Contact>(new list<Contact>{listConTest[0]}));
+
+        ID ThisConId = listConTest[0].id;
+        Contact UpdatedCon = [SELECT Id, TotalOppAmount__c, OppAmountThisYear__c, OppAmountLastYear__c, OppAmount2YearsAgo__c  FROM Contact WHERE Id = :ThisConId];
+
+        System.AssertEquals ( 170 , UpdatedCon.TotalOppAmount__c );
+        System.AssertEquals ( 100 , UpdatedCon.OppAmountThisYear__c );
+        System.AssertEquals ( 60 , UpdatedCon.OppAmountLastYear__c );
+        System.AssertEquals ( 10 , UpdatedCon.OppAmount2YearsAgo__c );
+    }
+
+    static testMethod void OneContactMultipleOppsOne2One_3(){
+        OneContactMultipleOpps_3(CAO_Constants.ONE_TO_ONE_PROCESSOR);
+    }
+    static testMethod void OneContactMultipleOppsHHAccount_3(){
+        OneContactMultipleOpps_3(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+    public static void OneContactMultipleOpps_3(string strProcessor) {
+
+        integer numCon = 1;
+        if (!setupTestData(numCon, strProcessor))
+            return;
+
+        System.AssertEquals ( 160 , listConTest[0].TotalOppAmount__c );
+        System.AssertEquals ( 100 , listConTest[0].OppAmountThisYear__c );
+        System.AssertEquals ( 60 , listConTest[0].OppAmountLastYear__c );
+
+        // add another from this year (to test adding)
+        Opportunity[] testGift4 = UTIL_UnitTestData_TEST.OppsForContactListByRecTypeId ( listConTest, null, UTIL_UnitTestData_TEST.getClosedWonStage(), datToday, 25 , giftRecordTypeIdForTests,null);
+        insert testGift4;
+        Opportunity[] testGift5 = UTIL_UnitTestData_TEST.OppsForContactListByRecTypeId ( listConTest, null, UTIL_UnitTestData_TEST.getClosedWonStage(), datToday, 25 , giftRecordTypeIdForTests,null);
+        insert testGift5;
+
+        // now roll up manually
+        RLLP_OppRollup rg = new RLLP_OppRollup();
+        rg.rollupContacts(new map<id, Contact>(new list<Contact>{listConTest[0]}));
+
+        ID ThisConId = listConTest[0].id;
+        Contact UpdatedCon = [SELECT Id, TotalOppAmount__c, OppAmountThisYear__c, OppAmountLastYear__c, OppAmount2YearsAgo__c  FROM Contact WHERE Id = :ThisConId];
+        System.AssertEquals ( 210 , UpdatedCon.TotalOppAmount__c );
+        System.AssertEquals ( 150 , UpdatedCon.OppAmountThisYear__c );
+        System.AssertEquals ( 60 , UpdatedCon.OppAmountLastYear__c );
+        System.AssertEquals ( 0 , UpdatedCon.OppAmount2YearsAgo__c );
+    }
+
+    static testMethod void OneContactMultipleOppsOne2One_4(){
+        OneContactMultipleOpps_4(CAO_Constants.ONE_TO_ONE_PROCESSOR);
+    }
+    static testMethod void OneContactMultipleOppsHHAccount_4(){
+        OneContactMultipleOpps_4(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+    public static void OneContactMultipleOpps_4(string strProcessor) {
+
+        integer numCon = 1;
+        if (!setupTestData(numCon, strProcessor))
+            return;
+
+        System.AssertEquals ( 160 , listConTest[0].TotalOppAmount__c );
+        System.AssertEquals ( 100 , listConTest[0].OppAmountThisYear__c );
+        System.AssertEquals ( 60 , listConTest[0].OppAmountLastYear__c );
+
+        // TBD add a gift from longer ago
+        Opportunity[] testGift5 = UTIL_UnitTestData_TEST.OppsForContactListByRecTypeId ( listConTest, null, UTIL_UnitTestData_TEST.getClosedWonStage(), dat4YearAgo, 200 , giftRecordTypeIdForTests,null);
+        insert testGift5;
+
+        // now roll up manually
+        RLLP_OppRollup rg = new RLLP_OppRollup();
+        rg.rollupContacts(new map<id, Contact>(new list<Contact>{listConTest[0]}));
+
+        // totals should not have changed, except lifetime & best yr
+        ID ThisConId = listConTest[0].id;
+        Contact UpdatedCon = [SELECT Id, TotalOppAmount__c, OppAmountThisYear__c, OppAmountLastYear__c, OppAmount2YearsAgo__c  FROM Contact WHERE Id = :ThisConId];
+
+        System.AssertEquals ( 360 , UpdatedCon.TotalOppAmount__c );
+        System.AssertEquals ( 100 , UpdatedCon.OppAmountThisYear__c );
+        System.AssertEquals ( 60 , UpdatedCon.OppAmountLastYear__c );
+        System.AssertEquals ( 0 , UpdatedCon.OppAmount2YearsAgo__c );
+    }
+
+    static testMethod void OneContactMultipleOppsOne2One_5(){
+        OneContactMultipleOpps_5(CAO_Constants.ONE_TO_ONE_PROCESSOR);
+    }
+    static testMethod void OneContactMultipleOppsHHAccount_5(){
+        OneContactMultipleOpps_5(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+    public static void OneContactMultipleOpps_5(string strProcessor) {
+
+        integer numCon = 1;
+        if (!setupTestData(numCon, strProcessor))
+            return;
+
+        System.AssertEquals ( 160 , listConTest[0].TotalOppAmount__c );
+        System.AssertEquals ( 100 , listConTest[0].OppAmountThisYear__c );
+        System.AssertEquals ( 60 , listConTest[0].OppAmountLastYear__c );
+
+        // TBD add non-won gift
+        Opportunity[] testGift6 = UTIL_UnitTestData_TEST.OppsForContactListByRecTypeId ( listConTest, null, UTIL_UnitTestData_TEST.getOpenStage(), dat4YearAgo, 35 , giftRecordTypeIdForTests,null);
+        insert testGift6;
+
+        // now roll up manually
+        RLLP_OppRollup rg = new RLLP_OppRollup();
+        rg.rollupContacts(new map<id, Contact>(new list<Contact>{listConTest[0]}));
+
+        // totals should not have changed at all
+        ID ThisConId = listConTest[0].id;
+        Contact UpdatedCon = [SELECT Id, TotalOppAmount__c, OppAmountThisYear__c, OppAmountLastYear__c, OppAmount2YearsAgo__c  FROM Contact WHERE Id = :ThisConId];
+        System.AssertEquals ( 160 , UpdatedCon.TotalOppAmount__c );
+        System.AssertEquals ( 100 , UpdatedCon.OppAmountThisYear__c );
+        System.AssertEquals ( 60 , UpdatedCon.OppAmountLastYear__c );
+        System.AssertEquals ( 0 , UpdatedCon.OppAmount2YearsAgo__c );
+    }
+
+    static testMethod void OneContactMultipleOppsOne2One_6(){
+        OneContactMultipleOpps_6(CAO_Constants.ONE_TO_ONE_PROCESSOR);
+    }
+    static testMethod void OneContactMultipleOppsHHAccount_6(){
+        OneContactMultipleOpps_6(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+    public static void OneContactMultipleOpps_6(string strProcessor) {
+
+        integer numCon = 1;
+        if (!setupTestData(numCon, strProcessor))
+            return;
+
+        System.AssertEquals ( 160 , listConTest[0].TotalOppAmount__c );
+        System.AssertEquals ( 100 , listConTest[0].OppAmountThisYear__c );
+        System.AssertEquals ( 60 , listConTest[0].OppAmountLastYear__c );
+
+        // now delete the 1st gift, totals should decrease
+        decimal dblAmt = listOppTest[0].Amount;
+        delete listOppTest[0];
+
+        // now roll up manually
+        RLLP_OppRollup rg = new RLLP_OppRollup();
+        rg.rollupContacts(new map<id, Contact>(new list<Contact>{listConTest[0]}));
+
+        ID ThisConId = listConTest[0].id;
+        Contact UpdatedCon = [SELECT Id, TotalOppAmount__c, OppAmountThisYear__c, OppAmountLastYear__c, OppAmount2YearsAgo__c  FROM Contact WHERE Id = :ThisConId];
+
+        System.AssertEquals ( 160-dblAmt , UpdatedCon.TotalOppAmount__c );
+        System.AssertEquals ( 100-dblAmt , UpdatedCon.OppAmountThisYear__c );
+        System.AssertEquals ( 60 , UpdatedCon.OppAmountLastYear__c );
+        System.AssertEquals ( 0 , UpdatedCon.OppAmount2YearsAgo__c );
+    }
+
+    static testMethod void OneContactOneInkindOne2One(){
+        OneContactOneInkind(CAO_Constants.ONE_TO_ONE_PROCESSOR);
+    }
+    static testMethod void OneContactOneInkindHHAccount(){
+        OneContactOneInkind(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+    static void OneContactOneInkind(string strProcessor) {
+
+            Contacts_and_Orgs_Settings__c contactSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(new Contacts_and_Orgs_Settings__c (
+                Account_Processor__c = strProcessor,
+                Enable_Opportunity_Contact_Role_Trigger__c = true,
+                Opportunity_Contact_Role_Default_role__c = CAO_Constants.OCR_DONOR_ROLE
+            ));
+
+            Households_Settings__c householdSettingsForTests = UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+                new Households_Settings__c (
+                    Household_Rules__c = HH_Households.ALL_PROCESSOR,
+                    Always_Rollup_to_Primary_Contact__c = false,
+                    Enable_Opp_Rollup_Triggers__c = true,
+                    Excluded_Account_Opp_Rectypes__c = null,
+                    Excluded_Account_Opp_Types__c = 'In Kind',
+                    Excluded_Contact_Opp_Rectypes__c = null,
+                    Excluded_Contact_Opp_Types__c = 'In Kind',
+                    Membership_Record_Types__c = null
+                ));
+
+            integer howMany = 1;
+
+            // create & insert contact(s)
+            Contact[] TestCons = UTIL_UnitTestData_TEST.CreateMultipleTestContacts ( howMany ) ;
+            insert TestCons;
+
+            // create a new gift for this yr
+            Opportunity[] testGift1 = UTIL_UnitTestData_TEST.OppsForContactListByRecTypeId ( TestCons, null, UTIL_UnitTestData_TEST.getClosedWonStage(), datToday, 100 , giftRecordTypeIdForTests,'In Kind');
+            Test.StartTest();
+            insert testGift1 ;
+            Test.StopTest();
+
+            id ThisConId = TestCons[0].id;
+            contact UpdatedCon = [SELECT Id,  TotalOppAmount__c, OppAmountThisYear__c, OppAmountLastYear__c, OppAmount2YearsAgo__c FROM Contact WHERE Id = :ThisConId];
+
+            System.Assert(!(UpdatedCon.TotalOppAmount__c>0));
+    }
+
+    static testMethod void testGivingRollupBulkOne2One(){
+        testGivingRollupBulk(CAO_Constants.ONE_TO_ONE_PROCESSOR);
+    }
+    static testMethod void testGivingRollupBulkHHAccount(){
+        testGivingRollupBulk(CAO_Constants.HH_ACCOUNT_PROCESSOR);
+    }
+    static void testGivingRollupBulk (string strProcessor) {
+
+            Contacts_and_Orgs_Settings__c contactSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(new Contacts_and_Orgs_Settings__c (
+                Account_Processor__c = strProcessor,
+                Enable_Opportunity_Contact_Role_Trigger__c = true,
+                Opportunity_Contact_Role_Default_role__c = CAO_Constants.OCR_DONOR_ROLE
+            ));
+
+            Households_Settings__c householdSettingsForTests = UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+                new Households_Settings__c (
+                    Household_Rules__c = HH_Households.ALL_PROCESSOR,
+                    Always_Rollup_to_Primary_Contact__c = false,
+                    Enable_Opp_Rollup_Triggers__c = true,
+                    Excluded_Account_Opp_Rectypes__c = null,
+                    Excluded_Account_Opp_Types__c = null,
+                    Excluded_Contact_Opp_Rectypes__c = null,
+                    Excluded_Contact_Opp_Types__c = null,
+                    Membership_Record_Types__c = null
+                ));
+
+            // for a single contact w/ no previous mbrships, add a new membership
+            // and test mbr stats are created
+            integer howMany = 50;
+            Date datClose = System.Today();
+
+            // create & insert contact(s)
+            Contact[] TestCons = UTIL_UnitTestData_TEST.CreateMultipleTestContacts ( howMany ) ;
+            insert TestCons;
+
+            // create new opps
+            Opportunity[] newOpps1 = UTIL_UnitTestData_TEST.OppsForContactListByRecTypeId ( TestCons, null, UTIL_UnitTestData_TEST.getClosedWonStage(), datClose, 100 , giftRecordTypeIdForTests,null);
+            Opportunity[] newOpps2 = UTIL_UnitTestData_TEST.OppsForContactListByRecTypeId ( TestCons, null, UTIL_UnitTestData_TEST.getClosedWonStage(), datClose.addYears(-1), 50 , giftRecordTypeIdForTests,null);
+
+            // insert the opp(s)
+            Test.StartTest();
+            insert newOpps1;
+
+            insert newOpps2;
+
+            Test.StopTest();
+
+            id FirstConId = TestCons[10].id;
+            Contact UpdatedCon = [SELECT Id,  TotalOppAmount__c, OppAmountThisYear__c, OppAmountLastYear__c, OppAmount2YearsAgo__c FROM Contact WHERE Id = :FirstConId];
+
+            System.AssertEquals ( 150 , UpdatedCon.TotalOppAmount__c );
+            System.AssertEquals ( 100 , UpdatedCon.OppAmountThisYear__c );
+            System.AssertEquals ( 50 , UpdatedCon.OppAmountLastYear__c );
+            System.AssertEquals ( 0 , UpdatedCon.OppAmount2YearsAgo__c );
+    }
+
+    /**
+     * @description - Verifies that customizable rollups are called when they are enabled.
+     */
+    @IsTest
+    private static void shouldCallCustomizableRollupsWhenEnabledAndAsync() {
+        Set<Id> contactIds = new Set<Id>(UTIL_UnitTestData_Test.mockIds(Contact.SObjectType, 2));
+        RLLP_OppRollup oppRollup = new RLLP_OppRollup();
+        oppRollup.isCustomizableRollupsEnabled = true;
+
+        oppRollup.rollupContacts(contactIds);
+        List<AsyncApexJob> asyncJobs = [SELECT Id FROM AsyncApexJob WHERE ApexClass.Name = 'CRLP_RollupQueueable' LIMIT 1];
+
+        System.assert(!asyncJobs.isEmpty(), 'Expected the customizable rollup job to be scheduled when enabled.');
+    }
+
+    /**
+     * @description - Verifies that customizable rollups are not called when they are not enabled.
+     */
+    @IsTest
+    private static void shouldNotCallCustomizableRollupsWhenDisabledAndAsync() {
+        Set<Id> contactIds = new Set<Id>(UTIL_UnitTestData_Test.mockIds(Contact.SObjectType, 2));
+        RLLP_OppRollup oppRollup = new RLLP_OppRollup();
+        oppRollup.isCustomizableRollupsEnabled = false;
+
+        oppRollup.rollupContacts(contactIds);
+        List<AsyncApexJob> asyncJobs = [SELECT Id FROM AsyncApexJob WHERE ApexClass.Name = 'CRLP_RollupQueueable' LIMIT 1];
+
+        System.assert(asyncJobs.isEmpty(), 'Did not expect the customizable rollup job to be scheduled when disabled.');
+    }
+
+    /**
+     * @description - Verifies that customizable rollups are called when they are enabled.
+     */
+    @IsTest
+    private static void shouldEnqueMultipleCustomizableRollupsForMultipleSObjects() {
+        Set<Id> contactIds = new Set<Id>(UTIL_UnitTestData_Test.mockIds(Contact.SObjectType, 2));
+        Set<Id> accountIds = new Set<Id>(UTIL_UnitTestData_Test.mockIds(Account.SObjectType, 2));
+
+        RLLP_OppRollup oppRollup = new RLLP_OppRollup();
+        oppRollup.isCustomizableRollupsEnabled = true;
+
+        Test.startTest();
+        oppRollup.rollupContacts(contactIds);
+        oppRollup.rollupAccounts(accountIds);
+        Test.stopTest();
+
+        List<AsyncApexJob> asyncJobs = [SELECT Id FROM AsyncApexJob WHERE ApexClass.Name = 'CRLP_RollupQueueable' LIMIT 2];
+
+        System.assertEquals(2, asyncJobs.size(), 'Expected two customizable rollups job to be scheduled.');
+    }
+}

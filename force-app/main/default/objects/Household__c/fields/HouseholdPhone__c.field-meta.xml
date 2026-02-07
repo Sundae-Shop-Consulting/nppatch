@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HouseholdPhone__c</fullName>
+    <description>Set by the original Contact which created this Household. Can be edited in Household, but does not update Contact.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Set by the original Contact which created this Household. Can be edited in Household, but does not update Contact.</inlineHelpText>
+    <label>Household Phone</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Phone</type>
+</CustomField>

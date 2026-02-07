@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Campaign_Types__c</fullName>
+    <description>List of eligible Campaign types for this Campaign Member auto-create. (Will be blank for Contact auto-create)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Eligible Campaign types for this Campaign Member auto-create. (Will be blank for Contact auto-create)</inlineHelpText>
+    <label>Campaign Types</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

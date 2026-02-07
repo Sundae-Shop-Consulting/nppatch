@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FirstCloseDate__c</fullName>
+    <description>Do not update, updated by automatic process.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The oldest Close Date of a won Opportunity with amount greater than zero related to this Contact by primary Opportunity Contact Role.</inlineHelpText>
+    <label>First Gift Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Date</type>
+</CustomField>

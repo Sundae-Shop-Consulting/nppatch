@@ -1,0 +1,735 @@
+/*
+    Copyright (c) 2019 Salesforce.org
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of Salesforce.org nor the names of
+      its contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+    COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    POSSIBILITY OF SUCH DAMAGE.
+*/
+/**
+* @author Salesforce.org
+* @date 2019
+* @group Recurring Donations
+* @description Recurring Donations Validation Service
+*
+*/
+public with sharing class RD2_ValidationService {
+
+    /***
+     * @description CurrencyIsoCode field name
+     */
+    private static final String CURRENCY_ISO_CODE_FIELD = UTIL_Currency.CURRENCY_ISO_CODE_FIELD;
+
+    /***
+    * @description Determines if multi-currency is enabled for the org
+    */
+    private Boolean isMultiCurrencyEnabled {
+        get {
+            if (isMultiCurrencyEnabled == null) {
+                isMultiCurrencyEnabled = UserInfo.isMultiCurrencyOrganization();
+            }
+            return isMultiCurrencyEnabled;
+        }
+        set;
+    }
+
+    /**
+    * @description New or updated Recurring Donation records
+    */
+    @TestVisible
+    private List<Recurring_Donation__c> rds = new List<Recurring_Donation__c>();
+
+    /**
+    * @description Old Recurring Donation records available in the update/delete dml operation.
+    * The list should have the same size and records the same index as the new/updated "rds" list.
+    */
+    private List<Recurring_Donation__c> oldRds = new List<Recurring_Donation__c>();
+
+    /**
+    * @description Accounts on provided Recurring Donations
+    */
+    private Map<Id, Account> accountById {
+        get {
+            if (accountById == null) {
+                accountById = getAccounts();
+            }
+            return accountById;
+        } set;
+    }
+
+    /**
+    * @description Contacts on provided Recurring Donations
+    */
+    private Map<Id, Contact> contactById {
+        get {
+            if (contactById == null) {
+                Set<Id> contactIds = UTIL_SObject.extractId(
+                    rds, Recurring_Donation__c.Contact__c
+                );
+
+                contactById = new Map<Id, Contact>([
+                    SELECT Name, AccountId
+                    FROM Contact
+                    WHERE Id IN :contactIds
+                ]);
+            }
+            return contactById;
+        }
+        set;
+    }
+
+    /***
+    * @descripton Recurring Donations that do not have any Closed Won/Lost Opportunity assigned.
+    * These records can have donor information modified
+    */
+    private Set<Id> noClosedOppRDIds {
+        get {
+            if (noClosedOppRDIds == null) {
+                noClosedOppRDIds = getNoClosedOppRDIds();
+            }
+            return noClosedOppRDIds;
+        }
+        set;
+    }
+
+    /***
+    * @descripton Recurring Donations to its most recent closed won opportunity's close date.
+    */
+    private Map<Id, Date> closeWonDateByRdId {
+        get {
+            if (closeWonDateByRdId == null) {
+                closeWonDateByRdId = getMostRecentCloseWonDateByRdId();
+            }
+            return closeWonDateByRdId;
+        }
+        set;
+    }
+
+    /***
+    * @descripton Elevate integration service
+    */
+    private RD2_ElevateIntegrationService elevateService {
+        get {
+            if (elevateService == null) {
+                elevateService = new RD2_ElevateIntegrationService();
+            }
+            return elevateService;
+        }
+        set;
+    }
+
+    /**
+     * @description Current date is the cut off date to determine all functionality related a Recurring Donation.
+     * Moreover, it is used to calculate the RD end date and can be a past date, today or a future date when testing.
+     * When executed from a scheduler or standard DML, the current date is always today.
+    */
+    private Date currentDate {
+        get {
+            if (currentDate == null) {
+                currentDate = RD2_ScheduleService.currentDate;
+            }
+            return currentDate;
+        } set;
+    }
+
+    /**
+    * @description Constructor for the RD2_ValidationService class
+    * @param rds New rds that will be validated
+    */
+    public RD2_ValidationService(List<Recurring_Donation__c> rds) {
+        this.rds = rds;
+    }
+
+    /**
+    * @description Constructor for the RD2_ValidationService class for Update context
+    * @param rds New rds that will be validated
+    * @param oldRds old rds which are available in the database, the size and Id should match rds
+    */
+    public RD2_ValidationService(List<Recurring_Donation__c> rds, List<Recurring_Donation__c> oldRds) {
+        this.rds = rds;
+        this.oldRds = oldRds;
+    }
+
+    /***
+    * @description Validates Recurring Donation records
+    * @return List<RD2_ValidationService.ErrorRecord>
+    */
+    public List<ErrorRecord> validate() {
+        List<ErrorRecord> errorRecords = new List<ErrorRecord>();
+        Boolean isNew = oldRds == null || oldRds.isEmpty();
+
+        for (Integer i = 0; i < rds.size(); i++) {
+            Recurring_Donation__c rd = rds[i];
+            Recurring_Donation__c oldRd = isNew ? null : oldRds[i];
+            RD2_RecurringDonation recurringDonation = new RD2_RecurringDonation(rd);
+            ErrorRecord errorCollection = new ErrorRecord(rd);
+
+            if (!recurringDonation.isClosed()) {
+                validateOpenRecurringDonation(recurringDonation, errorCollection);
+            }
+            validateRecurringDonation(recurringDonation, errorCollection);
+
+            if(isNew) {
+                validateDonor(rd, accountById.get(rd.Organization__c), errorCollection);
+            } else {
+                validateOnChange(recurringDonation, oldRd, errorCollection);
+            }
+
+            if (errorCollection.hasError()) {
+                errorRecords.add(errorCollection);
+            }
+        }
+
+        return errorRecords;
+    }
+
+    /**
+    * @description Series of validations for Open Recurring Donations
+    * @param recurringDonation The Recurring Donation to validate
+    * @param errorCollection Error wrapper which contains all error related to the RD
+    * @return void
+    */
+    private void validateOpenRecurringDonation(RD2_RecurringDonation recurringDonation, ErrorRecord errorCollection){
+        Recurring_Donation__c rd = recurringDonation.getSObject();
+        validateAmount(rd, errorCollection);
+        validateInstallmentPeriod(rd, errorCollection);
+        validateElevateInstallmentPeriod(recurringDonation, errorCollection);
+        validateDayOfMonth(rd, errorCollection);
+        validateFixedLength(recurringDonation, errorCollection);
+        validatePaymentMethod(recurringDonation, errorCollection);
+    }
+
+    /**
+    * @description Series of validations for all Recurring Donations
+    * @param recurringDonation The Recurring Donation to validate
+    * @param errorCollection Error wrapper which contains all error related to the RD
+    * @return void
+    */
+    private void validateRecurringDonation(RD2_RecurringDonation recurringDonation, ErrorRecord errorCollection) {
+        validateInstallmentFrequency(recurringDonation, errorCollection);
+        validateStatus(recurringDonation, errorCollection);
+        validateRD2MetadataDeployed(errorCollection);
+    }
+
+    /**
+    * @description Validates Recurring Donation on update DML
+    * @param recurringDonation The Recurring Donation to validate
+    * @param oldRd The previous version of the Recurring Donation
+    * @param errorCollection Error wrapper which contains all error related to the RD
+    * @return void
+    */
+    public void validateOnChange(RD2_RecurringDonation recurringDonation, Recurring_Donation__c oldRd, ErrorRecord errorCollection) {
+        Recurring_Donation__c rd = recurringDonation.getSObject();
+        if (elevateService.isElevateRecordReactivated(rd, oldRd)) {
+            errorCollection.addError(System.Label.RD2_ElevateRDClosedStatusCannotBeChanged);
+        }
+
+        if (!elevateService.hasUpdatePermissions(rd, oldRd)) {
+            errorCollection.addError(System.Label.RD2_ElevatePermissionRequired);
+        }
+
+        validateCurrencyChange(rd, oldRd, errorCollection);
+        validateRecurringDonationEndDate(recurringDonation, errorCollection);
+
+        validateElevateRDScheduleCannotBeInTheFuture(rd, oldRd, errorCollection);
+        validateElevateDayOfMonthChange(rd, oldRd, errorCollection);
+        validateElevateRDCampaignCannotUpdateToEmpty(rd, oldRd, errorCollection);
+        validateClosedElevateRecurringDonation(recurringDonation, oldRd, errorCollection);
+
+        Boolean shouldValidateDonor = validateDonorChange(rd, oldRd, errorCollection);
+        if (shouldValidateDonor) {
+            validateDonor(rd, accountById.get(rd.Organization__c), errorCollection);
+        }
+    }
+
+    private void validateClosedElevateRecurringDonation(RD2_RecurringDonation recurringDonation, Recurring_Donation__c oldRd, ErrorRecord errorCollection) {
+        if (recurringDonation.isClosed()
+            && recurringDonation.isElevateRecord()
+            && isElevateFieldChanged(recurringDonation.getSObject(), oldRd)) {
+                errorCollection.addError(System.Label.RD2_ElevateRDCannotChangeElevateFields);
+        }
+    }
+
+    private Boolean isElevateFieldChanged(Recurring_Donation__c rd, Recurring_Donation__c oldRd) {
+        return rd.Contact__c != oldRd.Contact__c
+        || rd.Organization__c != oldRd.Organization__c
+        || rd.PaymentMethod__c != oldRd.PaymentMethod__c
+        || rd.Recurring_Donation_Campaign__c != oldRd.Recurring_Donation_Campaign__c
+        || rd.Amount__c != oldRd.Amount__c
+        || rd.InstallmentFrequency__c != oldRd.InstallmentFrequency__c
+        || rd.Installment_Period__c != oldRd.Installment_Period__c
+        || rd.StartDate__c != oldRd.StartDate__c
+        || rd.Date_Established__c != oldRd.Date_Established__c
+        || rd.Day_of_Month__c != oldRd.Day_of_Month__c;
+    }
+
+    private void validatePaymentMethod(RD2_RecurringDonation recurringDonation, ErrorRecord errorCollection) {
+        if (!recurringDonation.hasValidRecurringDonationPaymentMethod()) {
+            errorCollection.addError(System.Label.RD2_ElevatePaymentMethodChangeError);
+        }
+    }
+
+    /**
+    * @description Validates if Enhanced Recurring Donation Paused Status is Active
+    * @return Boolean 
+    */
+    public static Boolean isStatusPausedActive() {
+        return UTIL_Describe.isValidPicklistOption(
+            'Recurring_Donation__c',
+            String.valueOf(Recurring_Donation__c.Status__c),
+            RD2_Constants.STATUS_PAUSED);
+    }
+    /***
+    * @description Validates Enhanced Recurring Donations metadata has been deployed
+    * @param rd The Recurring Donation to validate
+    * @param errorCollection Error wrapper which contains all error related to the RD
+    * @return void
+    */
+    private void validateRD2MetadataDeployed(ErrorRecord errorCollection) {
+        if (!RD2_EnablementService.isMetadataDeployed) {
+            errorCollection.addError(System.Label.RD2_EnablementIncomplete);
+        }
+    }
+
+    /**
+    * @description Validate Recurring Donation amount for Elevate and non-elevate Recurring Donation
+    * @param rd The Recurring Donation to validate
+    * @param errorCollection Error wrapper which contains all error related to the RD
+    */
+    private void validateAmount(Recurring_Donation__c rd, ErrorRecord errorCollection) {
+        if (RD2_ElevateIntegrationService.isIntegrationEnabled()
+            && String.isNotBlank(rd.CommitmentId__c)
+            && (rd.Amount__c == null || rd.Amount__c < 1)) {
+
+             errorCollection.addError(System.Label.RD2_ElevateRDAmountMustBeValid);
+
+        } else if (rd.Amount__c == null || rd.Amount__c == 0 || rd.Amount__c < 0) {
+            errorCollection.addError(System.Label.RD2_AmountMustBeValid);
+        }
+    }
+
+    /***
+    * @description Validate Installment Period is set correctly
+    * @param rd The Recurring Donation to validate
+    * @param errorCollection Error wrapper which contains all error related to the RD
+    */
+    private void validateInstallmentPeriod(Recurring_Donation__c rd, ErrorRecord errorCollection) {
+        if (!RD2_Constants.allInstallmentPeriods.contains(rd.Installment_Period__c)) {
+            errorCollection.addError(
+                String.format(
+                    System.Label.RD2_InstallmentPeriodMustBeValid,
+                    new String[]{ rd.Installment_Period__c })
+            );
+        }
+    }
+
+    private void validateElevateInstallmentPeriod(RD2_RecurringDonation recurringDonation, ErrorRecord errorCollection) {
+        if (RD2_ElevateIntegrationService.isIntegrationEnabled() && recurringDonation.isElevateRecord()) {
+            if (recurringDonation.isFirstAndFifteenthPeriod()) {
+                String errorMessage = String.format(
+                        System.Label.RD2_ElevateInstallmentPeriodMustBeValid,
+                        new String[]{ recurringDonation.getInstallmentPeriod() }
+                );
+                errorCollection.addError(errorMessage);
+            }
+        }
+    }
+
+    /***
+    * @description Validate Installment Frequency to be in the range
+    * @param recurringDonation The Recurring Donation to validate
+    * @param errorCollection Error wrapper which contains all error related to the RD
+    */
+    private void validateInstallmentFrequency(RD2_RecurringDonation recurringDonation, ErrorRecord errorCollection) {
+        if (!recurringDonation.isValidInstallmentFrequency()) {
+            errorCollection.addError(System.Label.RD2_InstallmentFrequencyMustBeValid);
+        }
+    }
+
+    /***
+    * @description Validates missing account or contact data on Recurring Donation
+    * @param rd The Recurring Donation to validate
+    * @param acct The associated account for the Recurring Donation
+    * @param errorCollection Error wrapper which contains all error related to the RD
+    * @return void
+    */
+    private void validateDonor(Recurring_Donation__c rd, Account acct, ErrorRecord errorCollection) {
+        //either Account or Contact must be specified
+        if (rd.Organization__c == null && rd.Contact__c == null) {
+            errorCollection.addError(System.Label.RD_DonorIsRequired);
+            return;
+        }
+
+        //no further check is required if the Contact is specified only or the Account is an Organization
+        if (acct == null || acct.SYSTEMIsIndividual__c != true) {
+            return;
+        }
+
+        if (rd.Contact__c == null) {
+            errorCollection.addError(System.Label.RD_ContactMustBelongToAccount);
+        } else if (!UTIL_SObject.extractIds(acct.Contacts).contains(rd.Contact__c)) {
+            errorCollection.addError(System.Label.RD_ContactMustBelongToAccount);
+        }
+    }
+
+    /**
+    * @description Validate when contact or account change is permitted on update of the Recurring Donation
+    * @param rd The Recurring Donation to validate
+    * @param oldRd The previous version of the Recurring Donation
+    * @param errorCollection Error wrapper which contains all error related to the RD
+    * @return Boolean True when the validation pass, otherwise, false
+    */
+    private Boolean validateDonorChange(Recurring_Donation__c rd, Recurring_Donation__c oldRd, ErrorRecord errorCollection) {
+        if (rd.Organization__c == oldRd.Organization__c
+            && rd.Contact__c == oldRd.Contact__c
+        ) {
+            return true;
+        }
+
+        if (noClosedOppRDIds.contains(rd.Id)
+            || isOrganizationChange(accountById.get(rd.Organization__c), accountById.get(oldRd.Organization__c))
+            || isAccountAutoPopulatedOnChange(rd, oldRd)
+        ) {
+            return true;
+        }
+
+        errorCollection.addError(System.Label.RD2_ContactChangeIsRestricted);
+        return false;
+    }
+
+    /**
+    * @description Validate the currency change on the Recurring Donation
+    * that is applicable when the multi-currency is enabled and
+    * the RD has at least one Closed Won/Lost Opportunity.
+    * @param rd The Recurring Donation to validate
+    * @param oldRd The previous version of the Recurring Donation
+    * @param errorCollection Error wrapper which contains all error related to the RD
+    * @return void
+    */
+    private void validateCurrencyChange(Recurring_Donation__c rd, Recurring_Donation__c oldRd, ErrorRecord errorCollection) {
+        if (!isMultiCurrencyEnabled) {
+            return;
+        }
+
+        //Prevent the RD update if the currency has changed and the record has a closed Opportunity
+        if ((String) rd.get(CURRENCY_ISO_CODE_FIELD) != (String) oldRd.get(CURRENCY_ISO_CODE_FIELD)
+            && !noClosedOppRDIds.contains(rd.Id)
+        ) {
+            errorCollection.addError(System.Label.RD2_CurrencyChangeIsRestrictedOnRD);
+        }
+    }
+
+    /**
+    * @description Validate the Elevate RD Effective date cannot be in the future during update
+    * @param rd The Recurring Donation to validate
+    * @param oldRd The previous version of the Recurring Donation
+    * @param errorCollection Error wrapper which contains all error related to the RD
+    * @return void
+    */
+    private void validateElevateRDScheduleCannotBeInTheFuture(Recurring_Donation__c rd, Recurring_Donation__c oldRd, ErrorRecord errorCollection) {
+        if (isElevateRDChange(rd, oldRd)
+            && (rd.StartDate__c > currentDate)) {
+                errorCollection.addError(System.Label.RD2_ElevateRDEffectiveDateMustBeValid);
+        }
+    }
+
+    /**
+    * @description Validate the Elevate RD with Campaign cannot update to null
+    * @param rd The Recurring Donation to validate
+    * @param oldRd The previous version of the Recurring Donation
+    * @param errorCollection Error wrapper which contains all error related to the RD
+    * @return void
+    */
+    private void validateElevateRDCampaignCannotUpdateToEmpty(Recurring_Donation__c rd, Recurring_Donation__c oldRd, ErrorRecord errorCollection) {
+        if (isElevateRDChange(rd, oldRd)
+            && String.isNotBlank(oldRd.Recurring_Donation_Campaign__c)
+            && String.isBlank(rd.Recurring_Donation_Campaign__c)) {
+                errorCollection.addError(System.Label.RD2_ElevateRDCampaignCannotUpdateToNull);
+        }
+    }
+
+    /**
+    * @description Validate the End Date on the Recurring Donation
+    * @param recurringDonation The Recurring Donation to validate
+    * @param errorCollection Error wrapper which contains all error related to the RD
+    * @return void
+    */
+    private void validateRecurringDonationEndDate(RD2_RecurringDonation recurringDonation, ErrorRecord errorCollection) {
+        Recurring_Donation__c rd = recurringDonation.getSObject();
+        if (rd.EndDate__c == null) {
+            return;
+        }
+
+        if (recurringDonation.isElevateRecord()
+            && recurringDonation.isClosed()
+            && rd.EndDate__c > currentDate
+        ) {
+            errorCollection.addError(System.Label.RD2_EndDateElevateCannotBeInFuture);
+        }
+
+        if (recurringDonation.isFixedLength()
+            && recurringDonation.isClosed()
+            && rd.EndDate__c > currentDate
+        ) {
+            errorCollection.addError(System.Label.RD2_EndDateMustBeValidForFixedLength); 
+        }
+
+        Date mostRecentCloseWonDate = closeWonDateByRdId.get(rd.Id);
+        if (mostRecentCloseWonDate == null) {
+            return;
+        }
+
+        if (rd.EndDate__c < mostRecentCloseWonDate) {
+            errorCollection.addError(System.Label.RD2_EndDateMustBeLaterThanCloseWonOpp);
+        }
+
+    }
+
+    /**
+    * @description Validates RD status is mapped to a valid state
+    * @param recurringDonation The Recurring Donation to validate
+    * @param errorCollection Error wrapper which contains all error related to the RD
+    * @return void
+    */
+    @TestVisible
+    private void validateStatus(RD2_RecurringDonation recurringDonation, ErrorRecord errorCollection) {
+        if (String.isBlank(recurringDonation.getState())) {
+            errorCollection.addError(
+                String.format(
+                    System.Label.RD2_StatusMustBeMapped + ' ' + System.Label.RD2_StatusMustBeMappedSolution,
+                    new String[]{recurringDonation.getSObject().Status__c})
+            );
+        }
+    }
+
+    /**
+    * @description Validates RD was already Elevate connected before this change
+    * @param rd The Recurring Donation to validate
+    * @param oldRd The previous version of the Recurring Donation
+    * @return Boolean
+    */
+    private Boolean isElevateRDChange(Recurring_Donation__c rd, Recurring_Donation__c oldRd) {
+        return RD2_ElevateIntegrationService.isIntegrationEnabled()
+            && String.isNotBlank(rd.CommitmentId__c)
+            && String.isNotBlank(oldRd.CommitmentId__c);
+    }
+
+    /***
+    * @description Return true when both new and old account on the RD are organization accounts.
+    * @param newAcct Account on the DML new RD
+    * @param oldAcct Acocunt on the DML old RD
+    * @return Boolean True when both new and old account are organization accounts
+    */
+    private Boolean isOrganizationChange(Account newAcct, Account oldAcct) {
+        return
+            newAcct != null
+            && oldAcct != null
+            && newAcct.SYSTEMIsIndividual__c == false
+            && oldAcct.SYSTEMIsIndividual__c == false;
+    }
+
+    /***
+    * @description Returns true when Account on RD is changed from null to the Contact's Account
+    * and the Contact on RD is not changed
+    * @param new Updated Recurring Donation record
+    * @param oldRd Recurring Donation record containing old values
+    * @return Boolean
+    */
+    private Boolean isAccountAutoPopulatedOnChange(Recurring_Donation__c rd, Recurring_Donation__c oldRd) {
+
+        if (rd.Contact__c == null //The Contact is not specified
+            || rd.Contact__c != oldRd.Contact__c //The Contact is changed on update
+            || oldRd.Organization__c != null //The Account existed previously
+        ) {
+            return false;
+        }
+
+        Contact rdContact = contactById.get(rd.Contact__c);
+
+        return rdContact != null
+            && rd.Organization__c == rdContact.AccountId;
+    }
+
+    /***
+    * @description Validates Day of Month on Recurring Donation
+    * @param rd The Recurring Donation to validate
+    * @param errorCollection Error wrapper which contains all error related to the RD
+    * @return void
+    */
+    private void validateDayOfMonth(Recurring_Donation__c rd, ErrorRecord errorCollection) {
+        if (rd.Installment_Period__c != RD2_Constants.INSTALLMENT_PERIOD_MONTHLY) {
+            return;
+        }
+
+        if (String.IsBlank(rd.Day_of_Month__c)) {
+            errorCollection.addError(System.Label.RD2_DayOfMonthIsRequiredForMonthlyInstallment);
+            return;
+        }
+
+        if (rd.Day_of_Month__c == RD2_Constants.DAY_OF_MONTH_LAST_DAY) {
+            return;
+        }
+
+        Integer dayOfMonth;
+        try {
+            dayOfMonth = Integer.valueOf(rd.Day_of_Month__c);
+        } catch (Exception e) {
+        }
+
+        Boolean isValid = dayOfMonth > 0 && dayOfMonth < 31;
+
+        if (!isValid) {
+            errorCollection.addError(
+                String.format(
+                    System.Label.RD2_DayOfMonthMustBeValid,
+                    new String[]{ rd.Day_of_Month__c })
+            );
+        }
+    }
+
+    /***
+    * @description Validates Day of Month Change on Recurring Donation
+    * @param rd The Recurring Donation to validate
+    * @param oldRd The previous version of the Recurring Donation
+    * @return void
+    */
+    private void validateElevateDayOfMonthChange(Recurring_Donation__c rd, Recurring_Donation__c oldRd, ErrorRecord errorCollection) {
+        if (isElevateRDChange(rd, oldRd)
+            && rd.Installment_Period__c == RD_Constants.INSTALLMENT_PERIOD_MONTHLY
+            && rd.Installment_Period__c == oldRd.Installment_Period__c
+            && rd.Day_of_Month__c != oldRd.Day_of_Month__c) {
+                errorCollection.addError(System.Label.RD2_ElevateRDDayOfMonthCannotChange);
+        }
+    }
+
+    /**
+     * @description Validate the NumberOfPlannedInstallments field value for Fixed Length and
+     * Open Recurring Donations
+     * @param recurringDonation The Recurring Donation to validate
+     * @param errorCollection Error wrapper which contains all error related to the RD
+     */
+    private void validateFixedLength(RD2_RecurringDonation recurringDonation, ErrorRecord errorCollection) {
+        Integer numberOfPlannedInstallments = recurringDonation.getPlannedInstallments();
+        Integer numberOfPaidInstallments = recurringDonation.getPaidInstallments();
+        if (recurringDonation.isOpenEnded()
+            && numberOfPlannedInstallments > 1
+        ) {
+            errorCollection.addError(System.Label.RD2_NumberInstallmentsNotAllowedWhenOpen);
+        }
+
+        if (recurringDonation.isElevateRecord() && recurringDonation.isFixedLength()) {
+            errorCollection.addError(System.Label.RD2_ElevateRDCannotBeFixedLength);
+        }
+
+        if (!recurringDonation.isFixedLength()) {
+            return;
+        }
+
+        if (numberOfPlannedInstallments == 0 || numberOfPlannedInstallments < 0) {
+            errorCollection.addError(System.Label.RD2_NumberInstallmentsRequiredWhenFixed);
+
+        } else if (numberOfPaidInstallments > 0
+            && numberOfPlannedInstallments < numberOfPaidInstallments
+        ) {
+            errorCollection.addError(System.Label.RD2_NumberInstallmentsCannotBeLessThanPaid);
+        }
+    }
+
+    /**
+    * @description Get account map on the RDs from both new and old recurring donation context
+    * @return Map<Id, Account>
+    */
+    private Map<Id, Account> getAccounts() {
+        Set<Id> accountIds = UTIL_SObject.extractId(rds, Recurring_Donation__c.Organization__c);
+        Set<Id> contactIds = UTIL_SObject.extractId(rds, Recurring_Donation__c.Contact__c);
+
+        accountIds.addAll(UTIL_SObject.extractId(oldRds, Recurring_Donation__c.Organization__c));
+        contactIds.addAll(UTIL_SObject.extractId(oldRds, Recurring_Donation__c.Contact__c));
+
+        accountIds.remove(null);
+        contactIds.remove(null);
+
+        return new Map<Id, Account>([
+            SELECT Id, SYSTEMIsIndividual__c,
+            (
+                SELECT Id
+                FROM Contacts
+                WHERE Id IN :contactIds
+            )
+            FROM Account
+            WHERE Id IN :accountIds
+        ]);
+    }
+
+    /***
+    * @description Get Recurring Donation Ids that do not have any Closed Won/Lost Opportunity
+    * @return Set<Id>
+    */
+    private Set<Id> getNoClosedOppRDIds() {
+        Set<Id> rdIds = new Set<Id>();
+
+        for (Recurring_Donation__c rd : [
+            SELECT (
+                SELECT Id
+                FROM Donations__r
+                WHERE IsClosed = true
+                LIMIT 1
+            )
+            FROM Recurring_Donation__c
+            WHERE Id IN : rds
+        ]) {
+            if (rd.Donations__r.isEmpty()) {
+                rdIds.add(rd.Id);
+            }
+        }
+
+        return rdIds;
+    }
+
+    /***
+    * @description Get each Recurring Donation's most recent Closed Won opp close date group by Id
+    * @return map<Id, Date>
+    */
+    private map<Id, Date> getMostRecentCloseWonDateByRdId() {
+        Map<Id, Date> closeWonDateByRdId = new Map<Id, Date>();
+        for (Recurring_Donation__c rd : [
+            SELECT (
+                SELECT CloseDate
+                FROM Donations__r
+                WHERE IsClosed = true
+                    AND IsWon = true
+                ORDER BY CloseDate DESC
+                LIMIT 1
+            )
+            FROM Recurring_Donation__c
+            WHERE Id IN : rds
+        ]) {
+            if (!rd.Donations__r.isEmpty()) {
+                closeWonDateByRdId.put(rd.Id, rd.Donations__r[0].CloseDate);
+            }
+        }
+
+        return closeWonDateByRdId;
+    }
+}

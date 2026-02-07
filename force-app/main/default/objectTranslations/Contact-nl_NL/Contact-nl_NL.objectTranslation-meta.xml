@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label>BDE-vermelding FS</label>
+        <name>BDE_Entry_FS</name>
+    </fieldSets>
+    <fieldSets>
+        <label>BDE-lijst FS</label>
+        <name>BDE_List_FS</name>
+    </fieldSets>
+    <fieldSets>
+        <label>Samenvoeging van contactpersonen gevonden FS</label>
+        <name>ContactMergeFoundFS</name>
+    </fieldSets>
+    <webLinks>
+        <name>Merge_Contacts</name>
+        <label>Contactpersonen Samenvoegen</label>
+    </webLinks>
+    <webLinks>
+        <name>New_Gift</name>
+        <label>Nieuwe gift</label>
+    </webLinks>
+    <webLinks>
+        <name>Recalculate_Rollups</name>
+        <label>Totaliseringen opnieuw berekenen</label>
+    </webLinks>
+    <layouts>
+        <layout>Contact Layout</layout>
+        <sections>
+            <label>Contactpersoondetails</label>
+            <section>Contact Details</section>
+        </sections>
+        <sections>
+            <label>Huishoudenadres</label>
+            <section>Household Address</section>
+        </sections>
+        <sections>
+            <label>Donatie-informatie</label>
+            <section>Donation Information</section>
+        </sections>
+        <sections>
+            <label>Donatietotalen</label>
+            <section>Donation Totals</section>
+        </sections>
+        <sections>
+            <label>Soft Credit-totalen</label>
+            <section>Soft Credit Totals</section>
+        </sections>
+        <sections>
+            <label>Donatie-informatie van Huishouden</label>
+            <section>Household Donation Info</section>
+        </sections>
+        <sections>
+            <label>Lidmaatschapsinformatie</label>
+            <section>Membership Information</section>
+        </sections>
+        <sections>
+            <label>Overige</label>
+            <section>Misc</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Async_Household_Naming__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This is a non-exposed setting to toggle household naming code to use an asynchronous version instead of the standard version.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This is a non-exposed setting to toggle household naming code to use an asynchronous version instead of the standard version.</inlineHelpText>
+    <label>Async Household Naming</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

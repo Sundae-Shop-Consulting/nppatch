@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OppAmountLastYearHH__c</fullName>
+    <description>Formula:  Total Gifts Last Year on related Household.</description>
+    <externalId>false</externalId>
+    <formula>IF(Organization_Type__c == 'Household Account',
+Account.OppAmountLastYear__c,
+Household__r.OppAmountLastYear__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Formula:  Total Gifts Last Year on related Household.</inlineHelpText>
+    <label>Total Household Gifts Last Year</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <type>Currency</type>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Household_Creation_Excluded_Recordtypes__c</fullName>
+    <description>Contact Record Types excluded from Household creation.  This setting is ignored if you are using the Household Account model.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Contact Record Types excluded from Household creation.  This setting is ignored if you are using the Household Account model.</inlineHelpText>
+    <label>Household Creation Excluded Record Types</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

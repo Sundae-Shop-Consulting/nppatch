@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Private__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Excludes this Contact from any Individual Account processing. If you leave the Account field blank, it will remain blank.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Excludes this Contact from any Individual Account processing. If you leave the Account field blank, it will remain blank.</inlineHelpText>
+    <label>Private</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title={title}>
+        <div class="resource-list slds-p-horizontal_small">
+            <template for:each={resources} for:item="resource" for:index="index">
+                <div class="resource-item" key={resource.id} >
+                    <div class="label">
+                        <span>{resource.label}</span>
+                    </div>
+                    <div class="link">
+                        <a href={resource.href} aria-label={resource.ariaLabel} target="_blank">{resource.linkLabel}</a>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

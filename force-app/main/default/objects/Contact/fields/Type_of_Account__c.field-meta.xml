@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type_of_Account__c</fullName>
+    <description>Formula: "Individual" or "Organization" depending on Account setting.</description>
+    <externalId>false</externalId>
+    <formula>IF(Account.SYSTEMIsIndividual__c,"Individual","Organization")</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Formula: "Individual" or "Organization" depending on Account setting.</inlineHelpText>
+    <label>Type of Account</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

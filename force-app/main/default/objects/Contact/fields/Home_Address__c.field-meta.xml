@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Home_Address__c</fullName>
+    <description>Formula: Uses primary address type field to determine Home Address from Mailing or Other address.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+  ISPICKVAL(Primary_Address_Type__c,"Home"),
+  IF(ISBLANK(MailingStreet), "", MailingStreet &amp; ", ") &amp;
+  IF(ISBLANK(MailingCity), "", MailingCity &amp; ", ")&amp;
+  IF(ISBLANK(MailingState), "", MailingState &amp; " ")&amp;
+  IF(ISBLANK(MailingPostalCode), "", MailingPostalCode) &amp;
+  IF(ISBLANK(MailingCountry), "", ", " &amp;MailingCountry)
+,
+IF(ISPICKVAL(Secondary_Address_Type__c,"Home"),
+  IF(ISBLANK(OtherStreet), "", OtherStreet &amp; ", ") &amp;
+  IF(ISBLANK(OtherCity), "", OtherCity &amp; ", ")&amp;
+  IF(ISBLANK(OtherState), "", OtherState &amp; " ")&amp;
+  IF(ISBLANK(OtherPostalCode), "", OtherPostalCode) &amp;
+  IF(ISBLANK(OtherCountry), "", ", " &amp; OtherCountry)
+  ,""
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Formula: Uses primary address type field to determine Home Address from Mailing or Other address.</inlineHelpText>
+    <label>Home Address</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

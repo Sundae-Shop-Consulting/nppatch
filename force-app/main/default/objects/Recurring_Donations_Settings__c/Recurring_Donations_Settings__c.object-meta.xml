@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Settings for the Recurring Donations Package</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Recurring Donations Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

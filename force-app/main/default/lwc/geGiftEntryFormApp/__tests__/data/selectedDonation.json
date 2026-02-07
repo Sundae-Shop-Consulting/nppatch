@@ -1,0 +1,45 @@
+{
+  "opportunity": {
+    "attributes": {
+      "type": "Opportunity",
+      "url": "/services/data/v52.0/sobjects/Opportunity/0065500000JUmM4AAL"
+    },
+    "fields": {
+      "Id": "0065500000JUmM4AAL",
+      "Name": "Open Opp",
+      "StageName": "Prospecting",
+      "CloseDate": "2021-08-18",
+      "IsClosed": false,
+      "Amount": 5,
+      "Number_of_Payments__c": 1,
+      "OppPayment__r": {
+        "totalSize": 1,
+        "done": true,
+        "records": [
+          {
+            "attributes": {
+              "type": "OppPayment__c",
+              "url": "/services/data/v52.0/sobjects/OppPayment__c/a015500000HDUenAAH"
+            },
+            "Opportunity__c": "0065500000JUmM4AAL",
+            "Id": "a015500000HDUenAAH",
+            "Name": "PMT-00000",
+            "Scheduled_Date__c": "2021-08-18",
+            "Payment_Amount__c": 5,
+            "Paid__c": false,
+            "Written_Off__c": false,
+            "Opportunity__r": {
+              "attributes": {
+                "type": "Opportunity",
+                "url": "/services/data/v52.0/sobjects/Opportunity/0065500000JUmM4AAL"
+              },
+              "Name": "Open Opp",
+              "Id": "0065500000JUmM4AAL"
+            }
+          }
+        ]
+      },
+      "applyPayment": true
+    }
+  }
+}

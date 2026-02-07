@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label>LevelEdit</label>
+        <name>LevelEdit</name>
+    </fieldSets>
+    <validationRules>
+        <errorMessage>La cible est un champ obligatoire du niveau. Veuillez indiquer l’objet cible pour ce niveau.</errorMessage>
+        <name>Target_Required</name>
+    </validationRules>
+    <layouts>
+        <layout>Level Layout</layout>
+        <sections>
+            <label>longue section de texte</label>
+            <section>long text section</section>
+        </sections>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Nom du niveau</nameFieldLabel>
+    <standardFields>
+        <name>Name</name>
+        <label>Nom du niveau</label>
+    </standardFields>
+    <gender>Masculine</gender>
+    <startsWith>Consonant</startsWith>
+    <caseValues>
+        <plural>false</plural>
+        <value>Niveau</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Niveaux</value>
+    </caseValues>
+</CustomObjectTranslation>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <webLinks>
+        <name>Manage_Soft_Credits</name>
+        <label>ソフトクレジットの管理</label>
+    </webLinks>
+    <layouts>
+        <layout>Partial Soft Credit Layout</layout>
+        <sections>
+            <label>カスタムリンク</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>部分的ソフトクレジット名</nameFieldLabel>
+    <standardFields>
+        <name>Name</name>
+        <label>部分的ソフトクレジット名</label>
+    </standardFields>
+    <caseValues>
+        <plural>false</plural>
+        <value>部分的ソフトクレジット</value>
+    </caseValues>
+</CustomObjectTranslation>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>General_Accounting_Unit__c</name>
+    <help>Der Verwendungszweck, dem diese Zuweisung zugeordnet ist. Für neue Zuweisungen sind nur Verwendungszwecke verfügbar, die als aktiv gekennzeichnet sind.</help>
+    <relationshipLabel>Zuweisungen Verwendungszweck</relationshipLabel>
+    <label>Verwendungszweck</label>
+</CustomFieldTranslation>

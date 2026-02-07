@@ -1,0 +1,30 @@
+{
+  "payment" : {
+    "objectApiName":"OppPayment__c",
+    "fields":{
+      "attributes":{
+        "type":"OppPayment__c",
+        "url":"/services/data/v54.0/sobjects/OppPayment__c/a011700000P9aoUAAR"
+      },
+      "Opportunity__c":"0061700000SmBcdAAF",
+      "Id":"a011700000P9aoUAAR",
+      "Name":"PMT-00002",
+      "Scheduled_Date__c":"2022-06-03",
+      "Payment_Amount__c":700,
+      "Paid__c":false,
+      "Written_Off__c":false,
+      "Opportunity__r":{
+        "attributes":{
+          "type":"Opportunity",
+          "url":"/services/data/v54.0/sobjects/Opportunity/0061700000SmBcdAAF"
+        },
+        "Name":"Daniels Donation",
+        "Primary_Contact__c":"0031700001M9iYjAAJ",
+        "Id":"0061700000SmBcdAAF"
+      }
+    },
+    "softCredits":[
+
+    ]
+  }
+}

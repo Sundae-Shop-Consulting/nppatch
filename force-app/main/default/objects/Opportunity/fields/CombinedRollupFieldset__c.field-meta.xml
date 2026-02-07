@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CombinedRollupFieldset__c</fullName>
+    <description>Hidden system field, do not add to layouts.</description>
+    <externalId>false</externalId>
+    <formula>TEXT(CloseDate) + ';|;'+ TEXT(Amount) + ';|;'+ TEXT(Member_Level__c) + ';|;'+ TEXT(Membership_Origin__c) + ';|;' +  Id</formula>
+    <inlineHelpText>Formula: Concatenated fields used during rollups to locate the most recent opportunity.</inlineHelpText>
+    <label>Combined Rollup Fieldset</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

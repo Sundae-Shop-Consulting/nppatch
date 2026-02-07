@@ -1,0 +1,37 @@
+img {
+    margin-bottom: 24px;
+    object-fit:fill;
+    margin-top: 0px;
+}
+
+.slds-button_outline-brand {
+    border-color: var(--slds-g-color-palette-violet-30, #7614A1);
+    color: var(--slds-g-color-palette-violet-30, #7614A1);
+}
+
+.slds-button_brand {
+    background-color: var(--slds-g-color-palette-violet-30, #7614A1);
+    border-color: var(--slds-g-color-palette-violet-30, #7614A1);
+}
+
+.container {
+    background-color:var(--slds-g-color-disabled-container-1, white);
+    box-shadow: var(--slds-g-sizing-border-1, 1px) none var(--slds-g-sizing-border-3, 3px) none var(--slds-g-color-palette-yellow-90, #b0adab7a);
+    border-radius: var(--slds-g-radius-border-2, 4px);
+    border: solid var(--slds-g-sizing-border-1, 1px) var(--slds-g-color-neutral-base-90, #DDDBDA);
+}
+
+.button-padding {
+    margin-left: 24px;
+    margin-right: 24px;
+    margin-bottom: 24px;
+    width: calc(100% - 48px);
+}
+
+.modal-text {
+    color: var(--slds-g-color-on-surface-2, #312D2B);
+}
+
+p {
+    color: var(--slds-g-color-neutral-base-15, #2B2826)
+}

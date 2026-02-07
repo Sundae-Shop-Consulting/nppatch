@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Formula_MailingAddress__c</fullName>
+    <description>Formula: Concatenation of other Mailing fields for this Household. Can be updated in Household Edit page but does not update Contact unless "Copy Household Address to Contacts" button is pushed.</description>
+    <externalId>false</externalId>
+    <formula>MailingStreet__c &amp; BR() &amp;
+MailingCity__c &amp; IF(LEN(MailingCity__c)  &gt; 0, ", ", "") &amp; MailingState__c &amp; "  " &amp;  MailingPostalCode__c
+&amp; if (LEN(MailingCountry__c)&gt;0,BR()&amp;MailingCountry__c,"")</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Formula: Concatenation of other Mailing fields for this Household. Can be updated in Household Edit page but does not update Contact unless "Copy Household Address to Contacts" button is pushed.</inlineHelpText>
+    <label>Mailing Address</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>NextDonationDateMatchRangeDays__c</name>
+    <help>Dagen voor/na een volgende donatiedatum dat NPSP geen nieuwe termijnopp. maakt,
+            als de volg. geopende sluitdatum v.e. opportunity is gewijzigd. Geldt alleen voor
+            terugk. donaties met maandelijkse of jaarlijkse termijnperiode.</help>
+    <label>Overeenkomstenbereik volg. donatiedatum</label>
+</CustomFieldTranslation>

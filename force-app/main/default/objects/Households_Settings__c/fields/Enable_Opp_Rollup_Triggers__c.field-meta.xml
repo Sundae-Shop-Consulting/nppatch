@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enable_Opp_Rollup_Triggers__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>DEPRECATED. Trigger behavior now controlled in the Trigger Configuration page of NPSP Settings.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>DEPRECATED. Trigger behavior now controlled in the Trigger Configuration page of NPSP Settings.</inlineHelpText>
+    <label>DEPRECATED-Enable Opp Rollup Triggers</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

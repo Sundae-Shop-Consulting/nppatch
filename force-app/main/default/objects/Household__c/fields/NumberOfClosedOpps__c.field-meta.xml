@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NumberOfClosedOpps__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>See Household Settings for excluded Record Types and FY/CY.  Do not update, updated by automatic process.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The total number of gifts related to this Household by Contact and primary Opportunity Contact Role.</inlineHelpText>
+    <label>Total Number of Gifts</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

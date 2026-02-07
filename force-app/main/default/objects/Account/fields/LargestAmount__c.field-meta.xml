@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LargestAmount__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>Do not manually update. Updated by automatic processes. See excluded Record Types in Household Settings.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The largest amount of a won Opportunity related to this Account.</inlineHelpText>
+    <label>Largest Gift</label>
+    <precision>16</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Currency</type>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_of_Payments__c</fullName>
+    <description>Calculated based on the Payment object.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Total number of payments for this Opportunity (Donation)</inlineHelpText>
+    <label>Number of Payments</label>
+    <summaryForeignKey>OppPayment__c.Opportunity__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Amount_Outstanding__c</fullName>
+    <description>Formula: The Amount of this Opportunity minus the Payment Writeoff Amount and Payment Amount Received.</description>
+    <externalId>false</externalId>
+    <formula>Amount - NULLVALUE(Payments_Made__c, 0) - NULLVALUE(Amount_Written_Off__c, 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Formula: The Amount of this Opportunity minus the Payment Writeoff Amount and Payment Amount Received.</inlineHelpText>
+    <label>Remaining Balance</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

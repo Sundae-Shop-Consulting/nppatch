@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Soft_Credit_Roles__c</fullName>
+    <description>Opportunity Contact Roles you want to include in Soft Credit rollups. Control or Command click to select multiple roles.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Opportunity Contact Roles you want to include in Soft Credit rollups. Control or Command click to select multiple roles.</inlineHelpText>
+    <label>Soft Credit Roles</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

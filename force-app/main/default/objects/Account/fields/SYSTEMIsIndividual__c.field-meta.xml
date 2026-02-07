@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SYSTEMIsIndividual__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Hidden system field: do not change.  Updated by automatic processes.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates whether or not this Account is special for Contacts (Household, One-to-One, Individual) vs a normal Account.</inlineHelpText>
+    <label>_SYSTEM: IsIndividual</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

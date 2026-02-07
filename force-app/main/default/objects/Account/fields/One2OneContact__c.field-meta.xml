@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>One2OneContact__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The primary contact for the Account, or the One2One contact for a One2One account.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The primary contact for the Account, or the One2One contact for a One2One account.</inlineHelpText>
+    <label>Primary Contact</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Account</relationshipLabel>
+    <relationshipName>Organizations</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Lookup</type>
+</CustomField>

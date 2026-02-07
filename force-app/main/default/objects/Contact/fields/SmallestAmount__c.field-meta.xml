@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SmallestAmount__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>See Household Settings for excluded Record Types.  Do not update, updated by automatic process.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The smallest amount of a won Opportunity related to this Contact by primary Opportunity Contact Role.</inlineHelpText>
+    <label>Smallest Gift</label>
+    <precision>16</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Currency</type>
+</CustomField>

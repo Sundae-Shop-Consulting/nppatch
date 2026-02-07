@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OppsClosedLastNDays__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>Do not manually update. Updated by automatic processes. See excluded Record Types and FY/CY in Household Settings.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The total amount of won Opportunities related to this Account, closed in the last number of days defined in Household Settings.</inlineHelpText>
+    <label>Number of Gifts Last N Days</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

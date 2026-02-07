@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Opp_From_Individual__c</fullName>
+    <description>Formula: Whether or not the related Account is defined as an individual (SYSTEMIsIndividual__c)</description>
+    <externalId>false</externalId>
+    <formula>IF( Account.SYSTEMIsIndividual__c, 'true', 'false' )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Formula: Whether or not the related Account is defined as an individual (SYSTEMIsIndividual__c)</inlineHelpText>
+    <label>Is Opp From Individual</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

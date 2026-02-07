@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Excluded_Contact_Opp_Rectypes__c</fullName>
+    <description>Opportunities with the selected record types won't be included in rollups to the Contact. Control or Command click to select more than one record type.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Opportunities with the selected record types won't be included in rollups to the Contact. Control or Command click to select more than one record type.</inlineHelpText>
+    <label>Opp RecTypes Excluded for Contact Rollup</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

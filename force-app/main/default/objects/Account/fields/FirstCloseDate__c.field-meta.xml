@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FirstCloseDate__c</fullName>
+    <description>Do not manually update. Updated by automatic processes. See excluded Record Types in Household Settings.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The earliest won Opportunity (by Close Date) with amount greater than zero related to this Account.</inlineHelpText>
+    <label>First Gift Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Date</type>
+</CustomField>

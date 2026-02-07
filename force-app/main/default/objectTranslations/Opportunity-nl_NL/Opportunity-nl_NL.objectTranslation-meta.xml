@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label>BDE-vermelding FS v2</label>
+        <name>BDE_Entry_FS_v2</name>
+    </fieldSets>
+    <fieldSets>
+        <label>Nieuwe BDE-lijst v2</label>
+        <name>BDE_List_FS_v2</name>
+    </fieldSets>
+    <webLinks>
+        <name>Email_Acknowledgment</name>
+        <label>Erkenning e-mailen</label>
+    </webLinks>
+    <webLinks>
+        <name>Email_Acknowledgments</name>
+        <label>Erkenningen e-mailen</label>
+    </webLinks>
+    <webLinks>
+        <name>Find_Matched_Gifts</name>
+        <label>Overeenkomende Giften zoeken</label>
+    </webLinks>
+    <webLinks>
+        <name>Manage_Soft_Credits</name>
+        <label>Soft Credits beheren</label>
+    </webLinks>
+    <webLinks>
+        <name>Refresh_Name</name>
+        <label>Naam opnieuw laden</label>
+    </webLinks>
+    <layouts>
+        <layout>Grant Layout</layout>
+        <sections>
+            <label>Donatie-informatie</label>
+            <section>Donation Information</section>
+        </sections>
+        <sections>
+            <label>Subsidie-informatie</label>
+            <section>Grant Information</section>
+        </sections>
+        <sections>
+            <label>Betalingsinformatie</label>
+            <section>Payment Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>In-Kind Gift Layout</layout>
+        <sections>
+            <label>Donatie-informatie</label>
+            <section>Donation Information</section>
+        </sections>
+        <sections>
+            <label>Informatie In Natura</label>
+            <section>In-Kind Information</section>
+        </sections>
+        <sections>
+            <label>Hommage-informatie</label>
+            <section>Tribute Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Donation Layout</layout>
+        <sections>
+            <label>Donatie-informatie</label>
+            <section>Donation Information</section>
+        </sections>
+        <sections>
+            <label>Betalingsinformatie</label>
+            <section>Payment Information</section>
+        </sections>
+        <sections>
+            <label>Overeenkomende Giftinformatie</label>
+            <section>Matching Gift Information</section>
+        </sections>
+        <sections>
+            <label>Hommage-informatie</label>
+            <section>Tribute Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Major Gift Layout</layout>
+        <sections>
+            <label>Donatie-informatie</label>
+            <section>Donation Information</section>
+        </sections>
+        <sections>
+            <label>Grote Giftinformatie</label>
+            <section>Major Gift Information</section>
+        </sections>
+        <sections>
+            <label>Betalingsinformatie</label>
+            <section>Payment Information</section>
+        </sections>
+        <sections>
+            <label>Overeenkomende Giftinformatie</label>
+            <section>Matching Gift Information</section>
+        </sections>
+        <sections>
+            <label>Hommage-informatie</label>
+            <section>Tribute Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Matching Gift Layout</layout>
+        <sections>
+            <label>Donatie-informatie</label>
+            <section>Donation Information</section>
+        </sections>
+        <sections>
+            <label>Betalingsinformatie</label>
+            <section>Payment Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Membership Layout</layout>
+        <sections>
+            <label>Velden</label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label>Lidinformatie</label>
+            <section>Member Information</section>
+        </sections>
+        <sections>
+            <label>Betalingsinformatie</label>
+            <section>Payment Information</section>
+        </sections>
+        <sections>
+            <label>Aangepaste Koppelingen</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Systeeminformatie</label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

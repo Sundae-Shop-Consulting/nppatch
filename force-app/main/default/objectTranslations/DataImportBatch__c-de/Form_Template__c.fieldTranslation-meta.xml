@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>Form_Template__c</name>
+    <help>Die Vorlage, die für den Spendeneintrag aus diesem Batch verwendet werden soll.</help>
+    <relationshipLabel>NPSP-Datenimportbatches</relationshipLabel>
+    <label>Formularvorlage</label>
+</CustomFieldTranslation>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LastCloseDate__c</fullName>
+    <description>System field: do not change. Updated by automatic processes. Do not edit.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The close date of the most recent won Opportunity related to this Contact by primary Opportunity Contact Role.</inlineHelpText>
+    <label>Last Gift Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Date</type>
+</CustomField>

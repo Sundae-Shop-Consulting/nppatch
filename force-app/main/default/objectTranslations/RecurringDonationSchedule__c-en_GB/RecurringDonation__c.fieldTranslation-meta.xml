@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>RecurringDonation__c</name>
+    <help>The Recurring Donation this schedule record is associated with.</help>
+    <relationshipLabel>Recurring Donation Schedules</relationshipLabel>
+    <label>Recurring Donation</label>
+</CustomFieldTranslation>

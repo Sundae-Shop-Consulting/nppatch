@@ -1,0 +1,224 @@
+<apex:page controller="GE_PaymentServices" showHeader="false" applyHtmlTag="true" applyBodyTag="false">
+
+    <head>
+        <apex:slds />
+    </head>
+
+    <article class='slds-scope'>
+        <form onsubmit="handleForm(event)">
+            <div id="payments"></div>
+        </form>
+    </article>
+
+    <script src="{!elevateSDKURL}"></script>
+    <script>
+        const sfdo = new sfdoPaymentsJsSdk();
+        const lightningOrigin = buildLightningOrigin();
+        const DEFAULT_NAME_ON_CARD = '[Not Provided]';
+        const postMessageType = 'post__npsp';
+        const CREDIT_CARD = 'Credit Card';
+        const ACH = 'ACH';
+        const styles = `
+            .logo {
+                left: 8px !important;
+            }
+            .fieldset.cc-number {
+                padding-left: 0;
+                padding-right: 1rem;
+            }
+            .fieldset.exp {
+                padding-left: 0;
+                padding-right: 1rem;
+            }
+            .fieldset.cvc {
+                padding: 0;
+            }
+            .fieldset.account-number {
+                padding-left: 0;
+                padding-right: 1rem;
+            }
+            .error-wrapper.fieldset.exp {
+                max-width: fit-content;
+            }
+            .error-wrapper.fieldset.cvc {
+                max-width: fit-content;
+            }
+            div[class^="ACHInput__TooltipContainer"] {
+                display: none !important;
+            }
+            button[class^="ACHInput__ButtonContainer"] {
+                display: none !important;
+            }
+        `;
+
+        /*******************************************************************************
+        * @description Method listens for messages from a credit card widget LWC
+        * Event.data contains at least an "action" and optionally a "nameOnCard" value.
+        */
+        window.onmessage = function (event) {
+            if (event && event.origin !== lightningOrigin) {
+                // Reject any messages from an unexpected origin
+                return;
+            }
+            if (event.data) {
+                handleMessage(event);
+            }
+        }
+
+        function handleMessage(event) {
+            const data = JSON.parse(event.data)
+            const action = data.action
+            switch (action) {
+                case 'mount':
+                    handleMounting(data.paymentMethod, data.gatewayId);
+                    break;
+
+                case 'setPaymentMethod':
+                    handleSetPaymentMethod(data.paymentMethod);
+                    break;
+
+                case 'createToken':
+                    handleTokenCreation(data.params);
+                    break;
+
+                case 'createAchToken':
+                    handleAchTokenCreation(data.params);
+                    break;
+            }
+        }
+
+        function handleMounting(paymentMethod, gatewayOverride) {
+            if (isValidPaymentMethod(paymentMethod)) {
+                const mountGateway = !!gatewayOverride ? gatewayOverride : '{!gatewayIds}';
+                const config = {
+                    id: 'payments',
+                    clientId: '{!clientId}',
+                    gatewayId: mountGateway,
+                    merchantId: '{!merchantIds}',
+                    designSystem: 'Lightning',
+                    paymentMethod: deriveElevatePaymentMethodFrom(paymentMethod),
+                    styles: styles
+                };
+
+                sfdo.mount(config)
+                    .then(() => {
+                        const successMessage = { type: postMessageType, success: true };
+                        sendPostMessage(successMessage);
+                    })
+                    .catch((err) => {
+                        const errorString = { type: postMessageType, ...err };
+                        sendPostMessage(errorString);
+                    });
+            }
+        }
+
+        function handleSetPaymentMethod(paymentMethod) {
+            if (isValidPaymentMethod(paymentMethod)) {
+                sfdo.setPaymentMethod(deriveElevatePaymentMethodFrom(paymentMethod))
+                    .then(() => {
+                        const successMessage = ({ type: postMessageType, success: true });
+                        sendPostMessage(successMessage);
+                    })
+                    .catch((err) => {
+                        const errorString = ({ type: postMessageType, ...err });
+                        sendPostMessage(errorString);
+                    });
+            }
+        }
+
+        /*******************************************************************************
+        * @description Creates a token and posts the response to a credit card widget LWC
+        */
+        function handleTokenCreation(params) {
+            const auth = {
+                jwt: '{!jwtForToken}',
+                userName: '{!$User.Username}'
+            };
+            const authConfig = {
+                auth: auth
+            };
+
+            const tokenConfig = {...authConfig, ...JSON.parse(params)}
+
+            sfdo.createToken(tokenConfig)
+                .then((resp) => {
+                    if (resp.token) {
+                        // Send token to lwc
+                        const successString = { type: postMessageType, token: resp.token };
+                        sendPostMessage(successString);
+
+                    } else if (resp.error) {
+                        // Response contains the error, send it to lwc
+                        sendPostMessage({ type: postMessageType, ...resp });
+                    }
+                })
+                .catch((err) => {
+                    // Send error to lwc
+                    const errorString =  {type: postMessageType, ...err };
+                    sendPostMessage(errorString);
+                });
+        }
+
+        function handleAchTokenCreation (params) {
+           const auth = {
+              jwt: '{!jwtForToken}',
+              userName: '{!$User.Username}'
+           };
+           const tokenConfig = {
+              auth: auth,
+              achCode: 'WEB',
+              currencyCode: 'USD',
+              ach: JSON.parse(params)
+           };
+
+           sfdo.createToken(tokenConfig)
+           .then((resp) => {
+              if (resp.token) {
+                 // Send token to lwc
+                 const successString = { type: postMessageType, token: resp.token };
+                 sendPostMessage(successString);
+
+              } else if (resp.error) {
+                 // Response contains the error, send it to lwc
+                 sendPostMessage(({ type: postMessageType, ...resp }));
+              }
+           })
+           .catch((err) => {
+              // Send error to lwc
+              const errorString = ({ type: postMessageType, ...err });
+              sendPostMessage(errorString);
+           });
+        }
+
+        /*******************************************************************************
+        * @description Posts messages to a credit card widget LWC
+        *
+        * @param {object} message: Object to pass to the LWC
+        */
+        function sendPostMessage(message) {
+            window.top.postMessage(message, lightningOrigin);
+        }
+
+        function deriveElevatePaymentMethodFrom(paymentMethodValue) {
+            return paymentMethodValue === ACH
+                ? sfdo.PaymentMethod.ACH
+                : sfdo.PaymentMethod.CREDIT_CARD;
+        }
+
+        function isValidPaymentMethod(paymentMethod) {
+            return paymentMethod === CREDIT_CARD || paymentMethod === ACH;
+        }
+
+        function buildLightningOrigin() {
+            return 'https://{!LightningURL}';
+        }
+
+        function setReadyToMount() {
+            const message = { isReadyToMount: true };
+            sendPostMessage(message);
+        }
+
+        window.onload = setReadyToMount();
+    </script>
+
+</apex:page>

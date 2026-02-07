@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>General_Accounting_Unit__c</name>
+    <help>La cuenta contable general a la que se atribuye esta asignación. Solo las cuentas contables generales activas están disponibles para nuevas asignaciones.</help>
+    <relationshipLabel>Asignaciones de CCG</relationshipLabel>
+    <label>Cuenta Contable General</label>
+</CustomFieldTranslation>

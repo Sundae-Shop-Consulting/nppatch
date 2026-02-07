@@ -1,0 +1,1155 @@
+/*
+    Copyright (c) 2014, Salesforce.org
+    All rights reserved.
+    
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+    
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of Salesforce.org nor the names of
+      its contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+ 
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS 
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
+    COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, 
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+    POSSIBILITY OF SUCH DAMAGE.
+*/
+/**
+* @author Salesforce.org
+* @date 2014
+* @group Payments
+* @description tests for the PaymentCreator class 
+*/
+@isTest
+private with sharing class PMT_PaymentCreator_TEST {
+
+    /*********************************************************************************************************
+    * @description
+    operation:
+        close an Opp as Lost that has a mixture of paid & unpaid payments, some written off 
+    verify:
+        opp is closed
+        paid payments are left alone
+        written off payments are left alone
+        unpaid (and not written off) are deleted
+    **********************************************************************************************************/            
+    static testMethod void CloseLostOppWithMixOfPayments() {
+        Contacts_And_Orgs_Settings__c PaymentsSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new Contacts_And_Orgs_Settings__c (Payments_Enabled__c= true));
+        
+        // create test data
+        Account acct = new Account (
+            Name='Test Account'
+        );
+        insert acct;
+        list<Opportunity> testOppList = new list<Opportunity>();
+        Opportunity opp1 = new Opportunity (
+            Name='Test Opp',
+            AccountId = acct.id,
+            Amount = 150,
+            CloseDate = date.today(), 
+            StageName = 'Closed Won'
+        );
+        testOppList.add(opp1);
+        Opportunity opp2 = new Opportunity (
+            Name='Test Opp_noAmount',
+            AccountId = acct.id,
+        //    Amount = 150, for this test case the amount should be NULL   BUG #1285
+            CloseDate = date.today(), 
+            StageName = 'Qualification'
+        );
+        testOppList.add(opp2);
+        insert(testOppList);
+        //at this moment no payments should have been created for opp2, cause amount is null BUG #1285
+        system.assertEquals(0, [select id,paid__c, payment_amount__c from OppPayment__c WHERE opportunity__c = :opp2.Id].size());
+        opp2.amount = 150;
+        update(opp2);
+        //at this moment payments should have been created for opp2, cause amount is changed to >0 BUG #1285
+        system.assertEquals(1, [select id,paid__c, payment_amount__c from OppPayment__c WHERE opportunity__c = :opp2.Id].size());
+
+        
+        OppPayment__c[] opmtUpdate = [select id,paid__c, payment_amount__c from OppPayment__c WHERE opportunity__c = :opp1.Id];
+        opmtUpdate[0].payment_amount__c = 50;
+        system.assertEquals(true, opmtUpdate[0].paid__c);
+        update opmtUpdate;
+        
+        OppPayment__c pmtUnpaid = new OppPayment__c(
+            Opportunity__c = opp1.id,
+            Payment_Amount__c = 50,
+            Paid__c = false,
+            Payment_Date__c = date.today()
+        );
+        insert pmtUnpaid;
+        OppPayment__c pmtWrittenOff = new OppPayment__c(
+            Opportunity__c = opp1.id,
+            Payment_Amount__c = 50,
+            Paid__c = false,
+            Written_Off__c = true,
+            Payment_Date__c = date.today()
+        );
+        insert pmtWrittenOff;
+        
+        Test.startTest();
+        opp1.StageName = UTIL_UnitTestData_TEST.getClosedLostStage();
+        update opp1;
+        Test.stopTest();
+        
+        // look for the data
+        //should be two, one paid, one written off for the balance 
+        OppPayment__c[] opmtAll = [select id, payment_method__c, payment_amount__c, paid__c, written_off__c from OppPayment__c WHERE opportunity__c = :opp1.Id];
+        system.assertEquals(3, opmtAll.size());
+                
+        OppPayment__c[] opmtPaid = [select id, payment_method__c, payment_amount__c, paid__c, written_off__c from OppPayment__c WHERE opportunity__c = :opp1.Id and paid__c = true and written_off__c = false];
+        system.assertEquals(1, opmtPaid.size());
+        system.assertEquals(50, opmtPaid[0].payment_amount__c);
+        
+        OppPayment__c[] opmtWrittenOff = [select id, payment_method__c, payment_amount__c, paid__c, written_off__c from OppPayment__c WHERE opportunity__c = :opp1.Id and paid__c = false and written_off__c = true order by payment_amount__c];
+        system.assertEquals(2, opmtWrittenOff.size());
+        system.assertEquals(50, opmtWrittenOff[0].payment_amount__c);       
+        system.assertEquals(50, opmtWrittenOff[1].payment_amount__c);       
+    }
+
+    /*********************************************************************************************************
+    * @description
+    operation:
+        close an Opp as Lost that has an existing payment and a null amount
+    verify:
+        payment is written off, no infinite recursion takes place
+    **********************************************************************************************************/            
+    static testMethod void nullAmount() {
+        Contacts_And_Orgs_Settings__c PaymentsSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new Contacts_And_Orgs_Settings__c (Payments_Enabled__c= true));
+        
+        // create test data
+        Account acct = new Account (
+            Name='Test Account'
+        );
+        insert acct;
+
+        Opportunity opp = new Opportunity (
+            Name='Test Opp',
+            AccountId = acct.id,
+            CloseDate = date.today(), 
+            Amount = 1,
+            StageName = UTIL_UnitTestData_TEST.getOpenStage()
+        );
+        insert opp;
+
+        list<OppPayment__c> opmtAll = [select id, payment_method__c, payment_amount__c, paid__c, written_off__c from OppPayment__c WHERE opportunity__c = :opp.Id];
+        system.assertEquals(1, opmtAll.size(), 'Payment should exist.');
+        system.assert(!opmtAll[0].written_off__c,'Payment should not be written off.');
+        
+
+        opp.Amount = null;
+        opp.StageName = UTIL_UnitTestData_TEST.getClosedLostStage();
+        update opp;
+
+        opmtAll = [select id, payment_method__c, payment_amount__c, paid__c, written_off__c from OppPayment__c WHERE opportunity__c = :opp.Id];
+        system.assertEquals(1, opmtAll.size(), 'Payment should exist.');
+        system.assert(opmtAll[0].written_off__c,'Payment should be written off.');
+
+    }
+
+    /*********************************************************************************************************
+    * @description
+    operation:
+        Update a list of Closed Won Opportunities Amount from null to a value.
+    verify:
+        A list of paid payments should be created. 
+        The Payment Date on the Payments records is equal to their related Opportunity Closed Date.
+    **********************************************************************************************************/            
+    static testMethod void testClosedWonOpportunity_UpdateAmountFromNullToValue() {
+        Integer testOpportunitiesCount = 200;
+
+        List<Opportunity> testOpportunities = new List<Opportunity>();
+        for (Integer i = 0; i < testOpportunitiesCount; i++) {
+            testOpportunities.add(new Opportunity(
+                Amount = null,
+                StageName = UTIL_UnitTestData_TEST.getClosedWonStage()
+            ));
+        }
+        Map<Id, Opportunity> createdTestOpportunities = createTestOpportunities(testOpportunities);
+
+        List<OppPayment__c> createdPayments = getCreatedPayments(createdTestOpportunities.keySet());
+        System.assertEquals(0, createdPayments.size());
+        
+        Test.startTest();
+        for (Opportunity testOpportunity :createdTestOpportunities.values()) {
+            testOpportunity.Amount = 10;
+        } 
+        update createdTestOpportunities.values();
+        Test.stopTest();
+
+        createdPayments = getCreatedPayments(createdTestOpportunities.keySet());
+        
+        System.assertEquals(testOpportunitiesCount, createdPayments.size(), testOpportunitiesCount + ' new payments should be created.');
+        for (OppPayment__c createdPayment : createdPayments) {
+            Opportunity paymentOpportunity = createdTestOpportunities.get(createdPayment.Opportunity__c);
+            System.assertNotEquals(null, paymentOpportunity);
+            System.assertEquals(paymentOpportunity.CloseDate, createdPayment.Payment_Date__c);
+            System.assertEquals(paymentOpportunity.Amount, createdPayment.Payment_Amount__c);
+            System.assertEquals(true, createdPayment.Paid__c);
+        }
+    }
+
+    /*********************************************************************************************************
+    * @description
+    operation:
+        Update a list of Closed Won Opportunities Amount from zero to a value.
+    verify:
+        A list of paid payments should be created. 
+        The Payment Date on the Payments records is equal to their related Opportunity Closed Date.
+    **********************************************************************************************************/            
+    static testMethod void testClosedWonOpportunity_UpdateAmountFromZeroToValue() {
+        Integer testOpportunitiesCount = 200;
+
+        List<Opportunity> testOpportunities = new List<Opportunity>();
+        for (Integer i = 0; i < testOpportunitiesCount; i++) {
+            testOpportunities.add(new Opportunity(
+                Amount = 0,
+                StageName = UTIL_UnitTestData_TEST.getClosedWonStage()
+            ));
+        }
+        Map<Id, Opportunity> createdTestOpportunities = createTestOpportunities(testOpportunities);
+
+        List<OppPayment__c> createdPayments = getCreatedPayments(createdTestOpportunities.keySet());
+        System.assertEquals(0, createdPayments.size());
+        
+        Test.startTest();
+        for (Opportunity testOpportunity :createdTestOpportunities.values()) {
+            testOpportunity.Amount = 10;
+        } 
+        update createdTestOpportunities.values();
+        Test.stopTest();
+
+        createdPayments = getCreatedPayments(createdTestOpportunities.keySet());
+        
+        System.assertEquals(testOpportunitiesCount, createdPayments.size(), testOpportunitiesCount + ' new payments should be created.');
+        for (OppPayment__c createdPayment : createdPayments) {
+            Opportunity paymentOpportunity = createdTestOpportunities.get(createdPayment.Opportunity__c);
+            System.assertNotEquals(null, paymentOpportunity);
+            System.assertEquals(paymentOpportunity.CloseDate, createdPayment.Payment_Date__c);
+            System.assertEquals(paymentOpportunity.Amount, createdPayment.Payment_Amount__c);
+            System.assertEquals(true, createdPayment.Paid__c);
+        }
+    }
+
+    /*********************************************************************************************************
+    * @description
+    operation:
+        Update a list of Open Opportunities Amount from null to a value.
+    verify:
+        A list of unpaid payments should be created. 
+        The Scheduled Date on the Payments records is equal to their related Opportunity Closed Date.
+    **********************************************************************************************************/
+    static testMethod void testOpenOpportunity_UpdateAmountFromNullToValue() {
+        Integer testOpportunitiesCount = 200;
+
+        List<Opportunity> testOpportunities = new List<Opportunity>();
+        for (Integer i = 0; i < testOpportunitiesCount; i++) {
+            testOpportunities.add(new Opportunity(
+                Amount = null,
+                StageName = UTIL_UnitTestData_TEST.getOpenStage()
+            ));
+        }
+        Map<Id, Opportunity> createdTestOpportunities = createTestOpportunities(testOpportunities);
+
+        List<OppPayment__c> createdPayments = getCreatedPayments(createdTestOpportunities.keySet());
+        System.assertEquals(0, createdPayments.size());
+        
+        Test.startTest();
+        for (Opportunity testOpportunity :createdTestOpportunities.values()) {
+            testOpportunity.Amount = 10;
+        } 
+        update createdTestOpportunities.values();
+        Test.stopTest();
+
+        createdPayments = getCreatedPayments(createdTestOpportunities.keySet());
+        
+        System.assertEquals(testOpportunitiesCount, createdPayments.size(), testOpportunitiesCount + ' new payments should be created.');
+        for (OppPayment__c createdPayment : createdPayments) {
+            Opportunity paymentOpportunity = createdTestOpportunities.get(createdPayment.Opportunity__c);
+            System.assertNotEquals(null, paymentOpportunity);
+            System.assertEquals(paymentOpportunity.CloseDate, createdPayment.Scheduled_Date__c);
+            System.assertEquals(paymentOpportunity.Amount, createdPayment.Payment_Amount__c);
+            System.assertEquals(false, createdPayment.Paid__c);
+        } 
+    }
+
+    /*********************************************************************************************************
+    * @description
+    operation:
+        Update a list of Open Opportunities Amount from zero to a value.
+    verify:
+        A list of unpaid payments should be created. 
+        The Scheduled Date on the Payments records is equal to their related Opportunity Closed Date.
+    **********************************************************************************************************/
+    static testMethod void testOpenOpportunity_UpdateAmountFromZeroToValue() {
+        Integer testOpportunitiesCount = 200;
+
+        List<Opportunity> testOpportunities = new List<Opportunity>();
+        for (Integer i = 0; i < testOpportunitiesCount; i++) {
+            testOpportunities.add(new Opportunity(
+                Amount = 0,
+                StageName = UTIL_UnitTestData_TEST.getOpenStage()
+            ));
+        }
+        Map<Id, Opportunity> createdTestOpportunities = createTestOpportunities(testOpportunities);
+
+        List<OppPayment__c> createdPayments = getCreatedPayments(createdTestOpportunities.keySet());
+        System.assertEquals(0, createdPayments.size());
+        
+        Test.startTest();
+        for (Opportunity testOpportunity :createdTestOpportunities.values()) {
+            testOpportunity.Amount = 10;
+        } 
+        update createdTestOpportunities.values();
+        Test.stopTest();
+
+        createdPayments = getCreatedPayments(createdTestOpportunities.keySet());
+        
+        System.assertEquals(testOpportunitiesCount, createdPayments.size(), testOpportunitiesCount + ' new payments should be created.');
+        for (OppPayment__c createdPayment : createdPayments) {
+            Opportunity paymentOpportunity = createdTestOpportunities.get(createdPayment.Opportunity__c);
+            System.assertNotEquals(null, paymentOpportunity);
+            System.assertEquals(paymentOpportunity.CloseDate, createdPayment.Scheduled_Date__c);
+            System.assertEquals(paymentOpportunity.Amount, createdPayment.Payment_Amount__c);
+            System.assertEquals(false, createdPayment.Paid__c);
+        } 
+    }
+
+    /*********************************************************************************************************
+    * @description
+    operation:
+        Update a list of Closed Lost Opportunities Amount from null to a value
+    verify:
+        No payment should be created because the Opportunities are Closed Lost.
+    **********************************************************************************************************/
+    static testMethod void testClosedLostOpportunity_UpdateAmountFromNullToValue() {
+        List<Opportunity> testOpportunities = new List<Opportunity>();
+        for (Integer i = 0; i < 200; i++) {
+            testOpportunities.add(new Opportunity(
+                Amount = null,
+                StageName = UTIL_UnitTestData_TEST.getClosedLostStage()
+            ));
+        }
+        Map<Id, Opportunity> createdTestOpportunities = createTestOpportunities(testOpportunities);
+
+        List<OppPayment__c> createdPayments = getCreatedPayments(createdTestOpportunities.keySet());
+        System.assertEquals(0, createdPayments.size());
+        
+        Test.startTest();
+        for (Opportunity testOpportunity :createdTestOpportunities.values()) {
+            testOpportunity.Amount = 10;
+        } 
+        update createdTestOpportunities.values();
+        Test.stopTest();
+
+        createdPayments = getCreatedPayments(createdTestOpportunities.keySet());
+        System.assertEquals(0, createdPayments.size(), 'No payment should be created because the opportunity is Closed Lost');
+    }
+
+    /*********************************************************************************************************
+    * @description
+    operation:
+        Update a list of Closed Lost Opportunities Amount from zero to a value
+    verify:
+        No payment should be created because the Opportunities are Closed Lost.
+    **********************************************************************************************************/
+    static testMethod void testClosedLostOpportunity_UpdateAmountFromZeroToValue() {
+        List<Opportunity> testOpportunities = new List<Opportunity>();
+        for (Integer i = 0; i < 200; i++) {
+            testOpportunities.add(new Opportunity(
+                Amount = 0,
+                StageName = UTIL_UnitTestData_TEST.getClosedLostStage()
+            ));
+        }
+        Map<Id, Opportunity> createdTestOpportunities = createTestOpportunities(testOpportunities);
+
+        List<OppPayment__c> createdPayments = getCreatedPayments(createdTestOpportunities.keySet());
+        System.assertEquals(0, createdPayments.size());
+        
+        Test.startTest();
+        for (Opportunity testOpportunity :createdTestOpportunities.values()) {
+            testOpportunity.Amount = 10;
+        } 
+        update createdTestOpportunities.values();
+        Test.stopTest();
+
+        createdPayments = getCreatedPayments(createdTestOpportunities.keySet());
+        System.assertEquals(0, createdPayments.size(), 'No payment should be created because the opportunity is Closed Lost');
+    }
+
+    /*********************************************************************************************************
+    * @description Creates Test Opportunities
+    * @param testOpportunities The test Opportunities with initial value (Amount and Stage)
+    * @return Map<Id, Opportunity> The test Opportunities created.
+    */
+    private static Map<Id, Opportunity> createTestOpportunities(List<Opportunity> testOpportunities) {
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new Contacts_And_Orgs_Settings__c (Payments_Enabled__c= true)
+        );
+        
+        Account testAccount = new Account(
+            Name = 'Test_Account'
+        );
+        insert testAccount;
+
+        for (Opportunity testOpportunity : testOpportunities) {
+            testOpportunity.Name = 'TestOpportunity';
+            testOpportunity.AccountId = testAccount.Id;
+            testOpportunity.CloseDate = Date.today();
+        }
+        insert testOpportunities;
+
+        return new Map<Id, Opportunity>(testOpportunities);
+    }
+
+    /*********************************************************************************************************
+    * @description Gets the list of created Payments.
+    * @param testOpportunitiesIds The Ids of test Opportunities.
+    * @return List<OppPayment__c> The list of Payments created.
+    */
+    private static List<OppPayment__c> getCreatedPayments(Set<Id> testOpportunitiesId) {
+        return [
+            SELECT Id, Paid__c, Payment_Date__c, Scheduled_Date__c, 
+                Payment_Amount__c, Opportunity__c
+            FROM OppPayment__c 
+            WHERE Opportunity__c = :testOpportunitiesId
+        ];
+    }
+
+    /*********************************************************************************************************
+    * @description
+    operation:
+        create an Opp whose Type value is NOT excluded in settings from creating payments
+    verify:
+        no payment created
+    **********************************************************************************************************/            
+    static testMethod void createOppWithTypeNotExcluded() {
+        Contacts_And_Orgs_Settings__c PaymentsSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new Contacts_And_Orgs_Settings__c (Payments_Enabled__c= true, Opp_Types_Excluded_for_Payments__c='NO-PAYMENT'));
+        
+        // create test data
+        Account acct = new Account (
+            Name='Test Account'
+        );
+        insert acct;
+
+        Opportunity opp = new Opportunity (
+            Name='Test Opp',
+            AccountId = acct.id,
+            CloseDate = date.today(), 
+            Amount = 1,
+            StageName = UTIL_UnitTestData_TEST.getOpenStage(),
+            Type = 'YES-PAYMENT'
+        );
+        Test.startTest();
+        insert opp;
+        Test.stopTest();
+
+        list<OppPayment__c> opmtAll = [select id, payment_method__c, payment_amount__c, paid__c, written_off__c from OppPayment__c WHERE opportunity__c = :opp.Id];
+        system.assertEquals(1, opmtAll.size());
+    }
+
+    /*********************************************************************************************************
+    * @description
+    operation:
+        create an Opp whose Type value is excluded in settings from creating payments
+    verify:
+        no payment created
+    **********************************************************************************************************/            
+    static testMethod void createOppWithTypeExcluded() {
+        Contacts_And_Orgs_Settings__c PaymentsSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new Contacts_And_Orgs_Settings__c (Payments_Enabled__c= true, Opp_Types_Excluded_for_Payments__c='NO-PAYMENT'));
+        
+        // create test data
+        Account acct = new Account (
+            Name='Test Account'
+        );
+        insert acct;
+
+        Opportunity opp = new Opportunity (
+            Name='Test Opp',
+            AccountId = acct.id,
+            CloseDate = date.today(), 
+            Amount = 1,
+            StageName = UTIL_UnitTestData_TEST.getOpenStage(),
+            Type = 'NO-PAYMENT'
+        );
+        Test.startTest();
+        insert opp;
+        Test.stopTest();
+
+        list<OppPayment__c> opmtAll = [select id, payment_method__c, payment_amount__c, paid__c, written_off__c from OppPayment__c WHERE opportunity__c = :opp.Id];
+        system.assertEquals(0, opmtAll.size());
+    }
+
+    /*********************************************************************************************************
+    * @description
+    operation:
+        create an Opp whose RecordType is excluded in settings from creating payments
+    verify:
+        no payment created
+    **********************************************************************************************************/            
+    static testMethod void createOppWithRecordTypeExcluded() {
+        // see if this org has any record types we can use!
+        Id rtIdGift = UTIL_RecordTypes.getRecordTypeIdForGiftsTests(Opportunity.sObjectType);
+
+        Contacts_And_Orgs_Settings__c PaymentsSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new Contacts_And_Orgs_Settings__c(
+                Payments_Enabled__c = true,
+                Opp_RecTypes_Excluded_for_Payments__c = rtIdGift
+            )
+        );
+
+        // create test data
+        Account acct = new Account (
+            Name='Test Account'
+        );
+        insert acct;
+
+        Opportunity opp = new Opportunity (
+            Name='Test Opp',
+            AccountId = acct.id,
+            CloseDate = date.today(), 
+            Amount = 1,
+            StageName = UTIL_UnitTestData_TEST.getOpenStage()
+        );
+
+        if (rtIdGift != null) {
+            opp.RecordTypeId = rtIdGift;
+        }
+
+        Test.startTest();
+        insert opp;
+        Test.stopTest();
+
+        list<OppPayment__c> opmtAll = [select id, payment_method__c, payment_amount__c, paid__c, written_off__c from OppPayment__c WHERE opportunity__c = :opp.Id];
+        if (rtIdGift != null)
+            system.assertEquals(0, opmtAll.size());
+        else
+            system.assertEquals(1, opmtAll.size());
+    }
+    
+    private static testMethod void testOpportunityWillAutoClosefterAllPaymentsReceived() {
+        String closedWonStage = UTIL_UnitTestData_TEST.getClosedWonStage();
+        String openStage = UTIL_UnitTestData_TEST.getOpenStage();
+
+        if (String.isEmpty(closedWonStage) || String.isEmpty(openStage)) {
+            System.debug(
+                System.LoggingLevel.ERROR,
+                'Organization settings do not contain the necessary opportunity stages to run this test. Not running test.'
+            );
+            return;
+        }
+
+        UTIL_CustomSettingsFacade.getContactsSettings().Payments_Auto_Close_Stage_Name__c = closedWonStage;
+
+        OpportunityHelper oh = new OpportunityHelper(openStage);
+        oh.refresh();
+
+        List<OppPayment__c> payments = oh.getPayments();
+
+        System.assertEquals(1, payments.size());
+        System.assertEquals(oh.opp.Amount, payments.get(0).Payment_Amount__c);
+        System.assertEquals(openStage, oh.opp.StageName);
+
+        payments.get(0).Paid__c = true;
+
+        Test.startTest();
+
+        update payments;
+
+        Test.stopTest();
+
+        oh.refresh();
+
+        System.assertEquals(oh.opp.Amount, oh.getTotalPaymentsMade());
+        System.assertEquals(closedWonStage, oh.opp.StageName);
+    }
+
+    private static testMethod void testOpportunityWillAutoCloseIfAmountUpdatedToMatchPayments() {
+        String closedWonStage = UTIL_UnitTestData_TEST.getClosedWonStage();
+        String openStage = UTIL_UnitTestData_TEST.getOpenStage();
+
+        if (String.isEmpty(closedWonStage) || String.isEmpty(openStage)) {
+            System.debug(
+                System.LoggingLevel.ERROR,
+                'Organization settings do not contain the necessary opportunity stages to run this test. Not running test.'
+            );
+            return;
+        }
+
+        UTIL_CustomSettingsFacade.getContactsSettings().Payments_Auto_Close_Stage_Name__c = closedWonStage;
+
+        OpportunityHelper oh = new OpportunityHelper(openStage);
+        oh.refresh();
+
+        oh.deletePayments();
+        oh.setPayments(new List<OppPayment__c>{
+            new OppPayment__c(
+                Paid__c = true,
+                Payment_Amount__c = 250
+            ),
+            new OppPayment__c(
+                Paid__c = false,
+                Payment_Amount__c = 250
+            )
+        });
+        oh.refresh();
+
+        System.assertEquals(500, oh.opp.Amount);
+        System.assertEquals(250, oh.getTotalPaymentsMade());
+        System.assertEquals(openStage, oh.opp.StageName);
+
+        Test.startTest();
+
+        oh.opp.Amount = 250;
+        update oh.opp;
+
+        Test.stopTest();
+
+        oh.refresh();
+
+        System.assertEquals(250, oh.opp.Amount);
+        System.assertEquals(oh.opp.Amount, oh.getTotalPaymentsMade());
+        System.assertEquals(closedWonStage, oh.opp.StageName);
+    }
+
+    private static testMethod void testOpportunityWillNotAutoCloseIfNotAllPaymentsReceived() {
+        String closedWonStage = UTIL_UnitTestData_TEST.getClosedWonStage();
+        String openStage = UTIL_UnitTestData_TEST.getOpenStage();
+
+        if (String.isEmpty(closedWonStage) || String.isEmpty(openStage)) {
+            System.debug(
+                System.LoggingLevel.ERROR,
+                'Organization settings do not contain the necessary opportunity stages to run this test. Not running test.'
+            );
+            return;
+        }
+
+        UTIL_CustomSettingsFacade.getContactsSettings().Payments_Auto_Close_Stage_Name__c = closedWonStage;
+
+        OpportunityHelper oh = new OpportunityHelper(openStage);
+        oh.refresh();
+
+        oh.deletePayments();
+        oh.setPayments(new List<OppPayment__c>{
+            new OppPayment__c(
+                Paid__c = false,
+                Payment_Amount__c = 250
+            ),
+            new OppPayment__c(
+                Paid__c = false,
+                Payment_Amount__c = 250
+            )
+        });
+        oh.refresh();
+
+        System.assertEquals(500, oh.opp.Amount);
+        System.assertEquals(0, oh.getTotalPaymentsMade());
+        System.assertEquals(openStage, oh.opp.StageName);
+
+        Test.startTest();
+
+        oh.getPayments().get(0).Paid__c = true;
+        update oh.getPayments();
+
+        Test.stopTest();
+
+        oh.refresh();
+
+        System.assertEquals(500, oh.opp.Amount);
+        System.assertEquals(250, oh.getTotalPaymentsMade());
+        System.assertEquals(openStage, oh.opp.StageName);
+    }
+
+    private static testMethod void testOpportunityWillNotAutoCloseIfNoStageNameSet() {
+        String openStage = UTIL_UnitTestData_TEST.getOpenStage();
+
+        if (String.isEmpty(openStage)) {
+            System.debug(
+                System.LoggingLevel.ERROR,
+                'Organization settings do not contain the necessary opportunity stages to run this test. Not running test.'
+            );
+            return;
+        }
+
+        UTIL_CustomSettingsFacade.getContactsSettings().Payments_Auto_Close_Stage_Name__c = '';
+
+        OpportunityHelper oh = new OpportunityHelper(openStage);
+        oh.refresh();
+
+        List<OppPayment__c> payments = oh.getPayments();
+
+        System.assertEquals(1, payments.size());
+        System.assertEquals(oh.opp.Amount, payments.get(0).Payment_Amount__c);
+        System.assertEquals(openStage, oh.opp.StageName);
+
+        payments.get(0).Paid__c = true;
+
+        Test.startTest();
+
+        update payments;
+
+        Test.stopTest();
+
+        oh.refresh();
+
+        System.assertEquals(oh.opp.Amount, oh.getTotalPaymentsMade());
+        System.assertEquals(openStage, oh.opp.StageName);
+    }
+
+    private static testMethod void testOpportunityWillNotAutoCloseIfAlreadyClosed() {
+        String closedWonStage = UTIL_UnitTestData_TEST.getClosedWonStage();
+        String openStage = UTIL_UnitTestData_TEST.getOpenStage();
+        String closedLostStage = UTIL_UnitTestData_TEST.getClosedLostStage();
+
+        if (String.isEmpty(closedWonStage) || String.isEmpty(openStage) || String.isEmpty(closedLostStage)) {
+            System.debug(
+                System.LoggingLevel.ERROR,
+                'Organization settings do not contain the necessary opportunity stages to run this test. Not running test.'
+            );
+            return;
+        }
+
+        UTIL_CustomSettingsFacade.getContactsSettings().Payments_Auto_Close_Stage_Name__c = closedWonStage;
+
+        OpportunityHelper oh = new OpportunityHelper(openStage);
+        oh.refresh();
+
+        oh.deletePayments();
+        oh.setPayments(new List<OppPayment__c>{
+            new OppPayment__c(
+                Paid__c = true,
+                Payment_Amount__c = 250
+            ),
+            new OppPayment__c(
+                Paid__c = false,
+                Payment_Amount__c = 250
+            )
+        });
+        oh.refresh();
+
+        System.assertEquals(500, oh.opp.Amount);
+        System.assertEquals(250, oh.getTotalPaymentsMade());
+        System.assertEquals(openStage, oh.opp.StageName);
+
+        Test.startTest();
+
+        oh.opp.Amount = 250;
+        oh.opp.StageName = closedLostStage;
+        update oh.opp;
+
+        Test.stopTest();
+
+        oh.refresh();
+
+        System.assertEquals(250, oh.opp.Amount);
+        System.assertEquals(oh.opp.Amount, oh.getTotalPaymentsMade());
+        System.assertEquals(closedLostStage, oh.opp.StageName);
+    }
+
+    private static testMethod void testOpportunityWillNotAutoCloseIfAllPaymentsWrittenOff() {
+        String closedWonStage = UTIL_UnitTestData_TEST.getClosedWonStage();
+        String openStage = UTIL_UnitTestData_TEST.getOpenStage();
+
+        if (String.isEmpty(closedWonStage) || String.isEmpty(openStage)) {
+            System.debug(
+                System.LoggingLevel.ERROR,
+                'Organization settings do not contain the necessary opportunity stages to run this test. Not running test.'
+            );
+            return;
+        }
+
+        UTIL_CustomSettingsFacade.getContactsSettings().Payments_Auto_Close_Stage_Name__c = closedWonStage;
+
+        OpportunityHelper oh = new OpportunityHelper(openStage);
+        oh.refresh();
+
+        List<OppPayment__c> payments = oh.getPayments();
+
+        System.assertEquals(1, payments.size());
+        System.assertEquals(oh.opp.Amount, payments.get(0).Payment_Amount__c);
+        System.assertEquals(0, oh.getTotalPaymentsMade());
+        System.assertEquals(openStage, oh.opp.StageName);
+
+        payments.get(0).Written_Off__c = true;
+
+        Test.startTest();
+
+        update payments;
+
+        Test.stopTest();
+
+        oh.refresh();
+
+        System.assertEquals(0, oh.getTotalPaymentsMade());
+        System.assertEquals(openStage, oh.opp.StageName);
+    }
+
+    private static testMethod void testOpportunityWillNotAutoCloseClosesIfAmountSetToZero() {
+        String closedWonStage = UTIL_UnitTestData_TEST.getClosedWonStage();
+        String openStage = UTIL_UnitTestData_TEST.getOpenStage();
+
+        if (String.isEmpty(closedWonStage) || String.isEmpty(openStage)) {
+            System.debug(
+                System.LoggingLevel.ERROR,
+                'Organization settings do not contain the necessary opportunity stages to run this test. Not running test.'
+            );
+            return;
+        }
+
+        UTIL_CustomSettingsFacade.getContactsSettings().Payments_Auto_Close_Stage_Name__c = closedWonStage;
+
+        OpportunityHelper oh = new OpportunityHelper(openStage);
+        oh.refresh();
+
+        oh.deletePayments();
+        oh.refresh();
+
+        System.assertEquals(0, oh.getPayments().size());
+        System.assertEquals(openStage, oh.opp.StageName);
+
+        Test.startTest();
+
+        oh.opp.Amount = 0;
+        update oh.opp;
+
+        Test.stopTest();
+
+        oh.refresh();
+
+        System.assertEquals(0, oh.opp.Amount);
+        System.assertEquals(oh.opp.Amount, oh.getTotalPaymentsMade());
+        System.assertEquals(openStage, oh.opp.StageName);
+    }
+
+    class OpportunityHelper {
+        public Opportunity opp;
+        public OpportunityHelper(String initialStageName) {
+            opp = new Opportunity(
+                Name = 'Test Opportunity',
+                Amount = 500,
+                CloseDate = Date.today(),
+                StageName = initialStageName
+            );
+            insert opp;
+        }
+        public void refresh() {
+            opp = [
+                SELECT
+                    Name,
+                    Amount,
+                    StageName,
+                    IsClosed,
+                    IsWon,
+                    Number_Of_Payments__c,
+                    Amount_Outstanding__c,
+                    Payments_Made__c,
+                    (
+                        SELECT
+                            Paid__c,
+                            Payment_Amount__c,
+                            Written_Off__c
+                        FROM OppPayment__r
+                    )
+                FROM Opportunity
+                WHERE Id = :this.opp.Id
+            ];
+        }
+        public List<OppPayment__c> getPayments() {
+            return opp.OppPayment__r;
+        }
+        public Decimal getTotalPaymentsMade() {
+            return PMT_PaymentCreator.getPaymentsMade(this.opp);
+        }
+        public Decimal getAmountOutstanding() {
+            return PMT_PaymentCreator.getAmountOutstanding(this.opp);
+        }
+        public void deletePayments() {
+            delete getPayments();
+        }
+        public void setPayments(List<OppPayment__c> payments) {
+            for (OppPayment__c payment : payments) {
+                payment.Opportunity__c = opp.Id;
+            }
+            upsert payments;
+        }
+    }
+    /*********************************************************************************************************
+    * @description
+    operation:
+        Create a number of opportunities without payment records, run batch payment creation process.
+    verify:
+        Excluded opps don't get payments.
+        Included opps payments are created correctly.
+    **********************************************************************************************************/            
+    static testMethod void testBatchPaymentCreation() {
+        Contacts_And_Orgs_Settings__c consSettings = new Contacts_And_Orgs_Settings__c (
+            Payments_Enabled__c= true, 
+            Opp_Types_Excluded_for_Payments__c='NO-PAYMENT'
+        );
+        
+        Id rtIdGift = null;
+        
+        //only attempt a recordtype exclusion if we have a record type that isn't default
+        for (string recTypeName : new list<string>{UTIL_RecordTypes.getrecordTypeNameForGiftsTests(Opportunity.sObjectType),UTIL_RecordTypes.getrecordTypeNameForMembershipTests(Opportunity.sObjectType)}) {
+            if (!string.isBlank(recTypeName) && 
+                UTIL_RecordTypes.isRecordTypeActive(Opportunity.sObjectType, recTypeName) && 
+                !UTIL_RecordTypes.isRecordTypeDefault(Opportunity.sObjectType, recTypeName)) {
+
+                rtIdGift = UTIL_RecordTypes.GetRecordTypeId(Opportunity.sObjectType, recTypeName);
+                consSettings.Opp_RecTypes_Excluded_for_Payments__c=rtIdGift;
+            }
+        }
+        
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(consSettings);
+
+        //create a Payment Field Mapping
+        Payment_Field_Mapping_Settings__c pfmNew = new Payment_Field_Mapping_Settings__c(
+            Opportunity_Field__c = 'Name',
+            Payment_Field__c = 'Custom_Payment_Field__c',
+            Name = 'test field mapping'
+        );
+        insert pfmNew;
+        
+        //create test data
+        Account acct = new Account (
+            Name='Test Account'
+        );
+        insert acct;
+
+        list<Opportunity> testOppList = new list<Opportunity>();
+        testOppList.add(new Opportunity (
+            Name='Paid Payment',
+            AccountId = acct.id,
+            Amount = 8,
+            CloseDate = date.today(), 
+            StageName = UTIL_UnitTestData_TEST.getClosedWonStage()
+        ));
+        testOppList.add(new Opportunity (
+            Name='Unpaid Payment',
+            AccountId = acct.id,
+            Amount = 36,
+            CloseDate = date.today(), 
+            StageName = UTIL_UnitTestData_TEST.getOpenStage()
+        ));
+        testOppList.add(new Opportunity (
+            Name='No payment: Closed Lost',
+            AccountId = acct.id,
+            Amount = 36,
+            CloseDate = date.today(), 
+            StageName = UTIL_UnitTestData_TEST.getClosedLostStage()
+        ));
+        testOppList.add(new Opportunity (
+            Name='No payment: Zero amount',
+            AccountId = acct.id,
+            Amount = 0,
+            CloseDate = date.today(), 
+            StageName = UTIL_UnitTestData_TEST.getClosedWonStage()
+        ));
+        testOppList.add(new Opportunity (
+            Name='No payment: Excluded type',
+            AccountId = acct.id,
+            Amount = 1,
+            CloseDate = date.today(), 
+            Type = 'NO-PAYMENT',
+            StageName = UTIL_UnitTestData_TEST.getClosedWonStage()
+        ));
+        testOppList.add(new Opportunity (
+            Name='No payment: Do_Not_Automatically_Create_Payment__c',
+            AccountId = acct.id,
+            Amount = 2,
+            CloseDate = date.today(), 
+            Do_Not_Automatically_Create_Payment__c = true,
+            StageName = UTIL_UnitTestData_TEST.getClosedWonStage()
+        ));
+        Opportunity opp = new Opportunity (
+            Name='No pmt:rectype',
+            AccountId = acct.id,
+            Amount = 3,
+            CloseDate = date.today(), 
+            StageName = UTIL_UnitTestData_TEST.getClosedWonStage()
+        );
+        if (rtIdGift != null)
+            opp.RecordtypeId = rtIdGift;
+        testOppList.add(opp);
+
+        //disable TDTM so payments aren't created
+        TDTM_TriggerHandler.disableTDTM = true;
+        insert(testOppList);
+        TDTM_TriggerHandler.disableTDTM = false;
+
+        list<OppPayment__c> queryPmt = [select id,paid__c, payment_amount__c from OppPayment__c WHERE opportunity__c IN :testOppList];
+        system.assertEquals(0, queryPmt.size(), 'No payments should be created as triggers are disabled.');
+
+        test.startTest();
+        id batchProcessId = database.executeBatch(new PMT_PaymentCreator_BATCH(), 200);
+        test.stopTest();
+
+        queryPmt = [select id, paid__c, payment_amount__c, Custom_Payment_Field__c from OppPayment__c WHERE opportunity__c IN :testOppList ORDER BY opportunity__c];
+
+        if (rtIdGift != null) {
+            system.assertEquals(2, queryPmt.size(), 'Two payments should be created by the batch process.');
+        } else {
+            system.assertEquals(3, queryPmt.size(), 'Three payments should be created by the batch process if opp record type is not available for filtering.');
+        }
+
+        system.assertEquals(true, queryPmt[0].Paid__c, 'Payment for closed/won opportunity should be marked paid.');
+        system.assertEquals('Paid Payment', queryPmt[0].Custom_Payment_Field__c, 'Custom field mapping should be copied over.');
+        system.assertEquals(false, queryPmt[1].Paid__c, 'Payment for open opportunity should not be marked paid.');
+        system.assertEquals('Unpaid Payment', queryPmt[1].Custom_Payment_Field__c, 'Custom field mapping should be copied over.');
+    }
+
+    /*********************************************************************************************************
+    * @description
+        operation:
+            Create an Opportunity with stage name Prospecting and an amount of 100 CAD
+            update the corresponding payment so it is Paid and have a date.
+        verify:
+            Opportunity stage changes from 'Prospecting' to 'Closed/Won'
+    **********************************************************************************************************/
+    @isTest
+    static void testOpportunityAutoClosingWithMulticurrency() {
+
+        // Test is only relevant for multi-currency organizations.  If not, skip it
+        if (!UTIL_Currency.getInstance().isMultiCurrencyOrganization()) {
+            return;
+        }
+
+        // we have to use a real currency even though we're mocking the conversion rate because
+        // CurrencyIsoCode picklist values are restricted - you can't set an invalid code on an opp
+        UTIL_CurrencyCache.CurrencyData mockCurrency = UTIL_UnitTestData_TEST.nonDefaultCurrencyType;
+
+        if (mockCurrency == null) {
+            return;
+        }
+
+        // set default rate for the currency we're using to a rate we know will cause rounding errors
+        mockCurrency.defaultRate = 1.290000;
+
+        UTIL_CurrencyCache.cachedMapOfRatesByCurrencyCode.put(mockCurrency.IsoCode, mockCurrency);
+
+        String closedWonStage = UTIL_UnitTestData_TEST.getClosedWonStage();
+        String openStage = UTIL_UnitTestData_TEST.getOpenStage();
+
+        UTIL_CustomSettingsFacade.getContactsSettings().Payments_Auto_Close_Stage_Name__c = closedWonStage;
+
+        //create test data
+        Account acct = new Account (
+            Name='Test Account'
+        );
+        insert acct;
+
+        // I have an opportunity for 100 in a stage of Prospecting.
+        Opportunity opp = new Opportunity (
+            Name='Non US Currency',
+            AccountId = acct.Id,
+            Amount = 100.00,
+            CloseDate = Date.today(),
+            StageName = openStage
+        );
+
+        opp.put('CurrencyIsoCode', mockCurrency.IsoCode);
+        insert opp;
+
+        OppPayment__c payment = Database.query(
+            'SELECT Id, CurrencyIsoCode, Paid__c, Payment_Amount__c, Payment_Date__c ' +
+            'FROM OppPayment__c ' +
+            'WHERE opportunity__c = \'' + opp.Id + '\'' +
+            'LIMIT 1'
+        );
+        payment.Paid__c = true;
+        payment.Payment_Date__c = Date.today();
+
+        update payment;
+
+        opp = [
+            SELECT StageName
+            FROM Opportunity
+            WHERE Id = :opp.Id
+            LIMIT 1
+        ];
+
+        System.assertEquals(closedWonStage,opp.StageName);
+    }
+
+    /*********************************************************************************************************
+    * @description
+        operation:
+            Create an Opportunity in an org where multicurrency is NOT enabled
+            with stage name Prospecting and an amount of 100 CAD
+            update the corresponding payment so it is Paid and have a date.
+        verify:
+            Opportunity stage changes from 'Prospecting' to 'Closed/Won'
+    **********************************************************************************************************/
+    @isTest
+    static void testOpportunityAutoClosingWithoutMulticurrency() {
+
+        if (UTIL_Currency.getInstance().isMultiCurrencyOrganization()) {
+            return;
+        }
+
+        UTIL_Currency_TEST.UtilCurrencyMock mock = new UTIL_Currency_TEST.UtilCurrencyMock();
+        mock.isMultiCurrencyOrganizationReturn = false;
+        UTIL_Currency.instance = mock;
+
+        String closedWonStage = UTIL_UnitTestData_TEST.getClosedWonStage();
+        String openStage = UTIL_UnitTestData_TEST.getOpenStage();
+
+        UTIL_CustomSettingsFacade.getContactsSettings().Payments_Auto_Close_Stage_Name__c = closedWonStage;
+
+        //create test data
+        Account acct = new Account (
+            Name='Test Account'
+        );
+        insert acct;
+
+        // I have an opportunity for 100 in a stage of Prospecting.
+        Opportunity opp = new Opportunity (
+            Name='Non US Currency',
+            AccountId = acct.Id,
+            Amount = 100.00,
+            CloseDate = Date.today(),
+            StageName = openStage
+        );
+
+        insert opp;
+
+        OppPayment__c payment = [SELECT Id,
+                                               Paid__c,
+                                               Payment_Amount__c,
+                                               Payment_Date__c
+                                        FROM OppPayment__c
+                                        WHERE opportunity__c = :opp.Id
+                                        LIMIT 1];
+
+        payment.paid__c = true;
+        payment.Payment_Date__c = Date.today();
+
+        update payment;
+
+        String insertedOpportunityStageName = [SELECT StageName
+                                                FROM Opportunity
+                                                WHERE Id = : opp.Id
+                                                LIMIT 1].StageName;
+
+        System.assertEquals(closedWonStage,insertedOpportunityStageName);
+    }
+
+}

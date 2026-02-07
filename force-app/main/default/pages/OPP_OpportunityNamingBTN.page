@@ -1,0 +1,15 @@
+<apex:page standardController="Opportunity" extensions="OPP_OpportunityNamingBTN_CTRL" action="{!buttonClick}"
+    standardStylesheets="false" >
+
+    <apex:slds />
+
+    <apex:form >
+        <c:UTIL_PageHeader headerLabel="{!$ObjectType.Opportunity.Label}"
+                           header="{!Opportunity.Name}"
+                           icon="opportunity" iconCategory="standard"
+                           showSaveBtn="false"
+                           cancelAction="{!cancel}" cancelImmediate="true" />
+        <c:UTIL_PageMessages />
+        <c:UTIL_NavigateBack recordId="{!Opportunity.Id}" redirect="{!redirect}"/>
+    </apex:form>
+</apex:page>

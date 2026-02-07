@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MembershipEndDate__c</fullName>
+    <description>Do not manually update. Updated by automatic processes. See Record Types in Household Settings.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Membership end date from most recent (by Close Date) won Membership Opportunity (by Record Type) related to this Account.</inlineHelpText>
+    <label>Membership End Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Date</type>
+</CustomField>

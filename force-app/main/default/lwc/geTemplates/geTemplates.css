@@ -1,0 +1,4 @@
+.slds-card_extension {
+    background: var(--slds-g-color-disabled-container-1, #fff);
+    background-clip: padding-box;
+}

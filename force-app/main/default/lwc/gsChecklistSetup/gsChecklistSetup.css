@@ -1,0 +1,4 @@
+.slds-card__header-title {
+    color: var(--slds-g-color-neutral-base-15, #2B2826);
+    font-weight: bold;
+}

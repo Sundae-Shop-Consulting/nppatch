@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Soft_Credit_Total__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Total amount in soft credits for this Contact's lifetime. Defined in the Household Settings tab.</inlineHelpText>
+    <label>Soft Credit Total</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Currency</type>
+</CustomField>

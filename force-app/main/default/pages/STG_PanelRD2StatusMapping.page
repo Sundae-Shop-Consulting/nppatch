@@ -1,0 +1,46 @@
+<apex:page controller="RD2_StatusMappingSettings_CTRL" id="RD2_StatusMapping" standardStylesheets="false">
+
+    <apex:slds/>
+    <apex:includeLightning/>
+
+    <style>
+        /* Remove box shadow when user clicks on the datatable cell in both view and edit modes */	
+        th.slds-has-focus {	
+            box-shadow: none !important;	
+        }	
+        td.slds-has-focus {	
+            box-shadow: none !important;	
+        }
+    </style>
+
+    <apex:outputPanel rendered="{!NOT(isRunningUserIsAdmin)}">
+        <c:InsufficientPermissions />
+    </apex:outputPanel>
+
+    <apex:outputPanel styleClass="slds-scope" rendered="{!isRunningUserIsAdmin}">
+        <div class="slds-m-around_large">
+            <c:STG_PageHeader sectionLabel="{!$Label.stgNavRecurringDonations}" pageLabel="{!$Label.stgNavRD2StatusMapping}" />
+        </div>
+
+        <div id="statusMappingDiv">
+        </div>
+    </apex:outputPanel>
+
+    <script>
+        if ({!isRunningUserIsAdmin}) {
+            var namespace = '{!namespace}';
+            if (!namespace || namespace === '') {
+                namespace = 'c';
+            }
+
+            $Lightning.use(namespace + ":RD2_EnablementApp", function () {
+                $Lightning.createComponent(
+                    namespace + ':rd2StatusMappingSettings',
+                    {},
+                    "statusMappingDiv",
+                    function () { }
+                );
+            });
+        }
+    </script>
+</apex:page>

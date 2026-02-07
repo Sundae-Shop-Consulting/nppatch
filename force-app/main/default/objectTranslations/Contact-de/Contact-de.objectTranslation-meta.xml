@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label>BDE-Eintrags-FS</label>
+        <name>BDE_Entry_FS</name>
+    </fieldSets>
+    <fieldSets>
+        <label>BDE-Listen-FS</label>
+        <name>BDE_List_FS</name>
+    </fieldSets>
+    <fieldSets>
+        <label>Kontaktzusammenführung gefunden-FS</label>
+        <name>ContactMergeFoundFS</name>
+    </fieldSets>
+    <webLinks>
+        <name>Merge_Contacts</name>
+        <label>Kontakte zusammenführen</label>
+    </webLinks>
+    <webLinks>
+        <name>New_Gift</name>
+        <label>Neue Spende</label>
+    </webLinks>
+    <webLinks>
+        <name>Recalculate_Rollups</name>
+        <label>Rollups neu berechnen</label>
+    </webLinks>
+    <layouts>
+        <layout>Contact Layout</layout>
+        <sections>
+            <label>Kontaktdetails</label>
+            <section>Contact Details</section>
+        </sections>
+        <sections>
+            <label>Adresse des Haushalts</label>
+            <section>Household Address</section>
+        </sections>
+        <sections>
+            <label>Spendeninformationen</label>
+            <section>Donation Information</section>
+        </sections>
+        <sections>
+            <label>Spendenbeträge gesamt</label>
+            <section>Donation Totals</section>
+        </sections>
+        <sections>
+            <label>Soft Credit gesamt</label>
+            <section>Soft Credit Totals</section>
+        </sections>
+        <sections>
+            <label>Informationen zur Spende des Haushalts</label>
+            <section>Household Donation Info</section>
+        </sections>
+        <sections>
+            <label>Mitgliedschaftsinformationen</label>
+            <section>Membership Information</section>
+        </sections>
+        <sections>
+            <label>Sonstiges</label>
+            <section>Misc</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

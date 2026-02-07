@@ -1,0 +1,11 @@
+.slds-card_extension-widget {
+    background-color: var(--slds-g-color-surface-3, #ECEBEA);
+}
+
+.vertical-align-center {
+    margin: auto 0;
+}
+
+.input-padding {
+    padding: 0 4px 4px 4px;
+}

@@ -1,0 +1,14 @@
+.THIS .uiButton--default {
+    text-shadow: none;
+    box-shadow: none;
+}
+
+.THIS .uiButton--default .label {
+    color: inherit;
+}
+
+.THIS .required {
+    padding-left: 2px;
+    color: var(--slds-g-color-error-base-50, red);
+    font-weight: bold;
+}

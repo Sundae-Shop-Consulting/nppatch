@@ -1,0 +1,1 @@
+<apex:page standardController="Account" action="{! urlFor('/apex/%%%NAMESPACE%%%ACCT_ViewOverride?id=' + account.Id) }" />

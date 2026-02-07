@@ -1,0 +1,11 @@
+.bolder {
+    font-weight: bolder;
+}
+
+.lifetime .bolder .SMALL {
+    border-bottom: var(--slds-g-radius-border-3, 8px);
+}
+
+.bold-title{
+    font-weight: bold;
+}

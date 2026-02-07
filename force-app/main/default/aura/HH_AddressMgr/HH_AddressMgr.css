@@ -1,0 +1,10 @@
+.THIS li.selected {
+    background-color: var(--slds-s-table-row-color-background-selected, token(colorBackgroundRowSelected));
+}
+
+.THIS .slds-modal__container {
+    width: 35%;
+    min-width: 270px;
+    max-width: 400px;
+}
+ 

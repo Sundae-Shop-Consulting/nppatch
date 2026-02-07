@@ -1,0 +1,13 @@
+.THIS .pageSection {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+.THIS .disabledEdit {
+    pointer-events: none;
+    color: var(--slds-g-color-on-surface-1, #706e6b);
+    cursor: default;
+}
+.THIS .activeIcon svg {
+    fill: var(--slds-g-color-accent-2, #006dcc);
+}

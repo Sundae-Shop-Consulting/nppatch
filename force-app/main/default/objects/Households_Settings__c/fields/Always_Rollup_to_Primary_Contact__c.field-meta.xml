@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Always_Rollup_to_Primary_Contact__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>When selected, Salesforce will ALWAYS roll up donor data to the Opportunity's Primary Contact, and corresponding Household Account or record, even if the Opportunity is not from an individual. If left unselected, only the organization will receive credit.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>When selected, Salesforce will ALWAYS roll up donor data to the Opportunity's Primary Contact, and corresponding Household Account or record, even if the Opportunity is not from an individual. If left unselected, only the organization will receive credit.</inlineHelpText>
+    <label>Always Rollup to Primary Contact Role</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

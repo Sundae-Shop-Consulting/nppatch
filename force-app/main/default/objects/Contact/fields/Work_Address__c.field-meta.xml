@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Work_Address__c</fullName>
+    <description>Formula: If the Primary Address Type is Work, the Mailing Address.  If the Secondary Address Type is Work, the Other Address.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+  ISPICKVAL(Primary_Address_Type__c,"Work"),
+  IF(ISBLANK(MailingStreet), "", MailingStreet &amp; ", ") &amp;
+  IF(ISBLANK(MailingCity), "", MailingCity &amp; ", ")&amp;
+  IF(ISBLANK(MailingState), "", MailingState &amp; " ")&amp;
+  IF(ISBLANK(MailingPostalCode), "", MailingPostalCode) &amp;
+  IF(ISBLANK(MailingCountry), "", ", " &amp;MailingCountry)
+,
+IF(ISPICKVAL(Secondary_Address_Type__c,"Work"),
+  IF(ISBLANK(OtherStreet), "", OtherStreet &amp; ", ") &amp;
+  IF(ISBLANK(OtherCity), "", OtherCity &amp; ", ")&amp;
+  IF(ISBLANK(OtherState), "", OtherState &amp; " ")&amp;
+  IF(ISBLANK(OtherPostalCode), "", OtherPostalCode) &amp;
+  IF(ISBLANK(OtherCountry), "", ", " &amp; OtherCountry)
+  ,""
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Formula: If the Primary Address Type is Work, the Mailing Address.  If the Secondary Address Type is Work, the Other Address.</inlineHelpText>
+    <label>Work Address</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

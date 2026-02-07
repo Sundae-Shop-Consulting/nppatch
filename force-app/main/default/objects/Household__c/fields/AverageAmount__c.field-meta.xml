@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AverageAmount__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>Do not update, updated by automatic process.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Average amount of won Opportunities related to this Household by a related Contact with primary Opportunity Contact Role.</inlineHelpText>
+    <label>Average Gift</label>
+    <precision>16</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

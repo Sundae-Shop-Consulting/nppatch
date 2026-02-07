@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label>Entrée BDE FS</label>
+        <name>BDE_Entry_FS</name>
+    </fieldSets>
+    <fieldSets>
+        <label>Liste BDE FS</label>
+        <name>BDE_List_FS</name>
+    </fieldSets>
+    <fieldSets>
+        <label>Fusion de contact trouvée FS</label>
+        <name>ContactMergeFoundFS</name>
+    </fieldSets>
+    <webLinks>
+        <name>Merge_Contacts</name>
+        <label>Fusionner des contacts</label>
+    </webLinks>
+    <webLinks>
+        <name>New_Gift</name>
+        <label>Nouveau don</label>
+    </webLinks>
+    <webLinks>
+        <name>Recalculate_Rollups</name>
+        <label>Recalculer des cumuls</label>
+    </webLinks>
+    <layouts>
+        <layout>Contact Layout</layout>
+        <sections>
+            <label>Détails du contact</label>
+            <section>Contact Details</section>
+        </sections>
+        <sections>
+            <label>Adresse du foyer</label>
+            <section>Household Address</section>
+        </sections>
+        <sections>
+            <label>Informations sur les dons</label>
+            <section>Donation Information</section>
+        </sections>
+        <sections>
+            <label>Totaux des dons</label>
+            <section>Donation Totals</section>
+        </sections>
+        <sections>
+            <label>Totaux des crédits indirects</label>
+            <section>Soft Credit Totals</section>
+        </sections>
+        <sections>
+            <label>Informations sur les dons de foyers</label>
+            <section>Household Donation Info</section>
+        </sections>
+        <sections>
+            <label>Informations sur l’adhésion</label>
+            <section>Membership Information</section>
+        </sections>
+        <sections>
+            <label>Divers</label>
+            <section>Misc</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

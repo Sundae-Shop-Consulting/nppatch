@@ -1,0 +1,158 @@
+<aura:component >
+    <!-- public attributes -->
+    <!-- note we kept our addresses typed as Object, to avoid namespace prefixing issues when we used Address__c -->
+    <aura:attribute name="listAddr" type="Object[]" access="public"/>
+    <aura:attribute name="addrDefault" type="Object" access="public" />
+    <aura:attribute name="addressUndeliverableLabel" type="String" access="public" />
+
+    <!-- private attributes -->
+    <aura:attribute name="addrNew" type="Object" access="private"/>
+    <aura:attribute name="showChangeAddressPopup" type="Boolean" access="private" />
+    <aura:attribute name="iAddrSelected" type="Integer" default="0" access="private" />
+    <aura:attribute name="isExistingAddrSectionOpen" type="Boolean" default="true" access="private" />
+    
+    <!-- events we handle -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.listAddr}" action="{!c.onChangeListAddr}" />
+
+    <!-- events we fire -->
+    <aura:registerEvent name="AddressChangedEvent" type="c:HH_AddressChangedEvent"/>
+    
+    <!-- markup follows... -->
+    <div class="slds-grid slds-p-around_x-small">
+        <div class="slds-card slds-p-around_none">
+            <div class="slds-card__body slds-m-around_x-small slds-p-vertical_none" >
+                <!-- address -->
+                <div class="slds-text-body_small" >
+                    <lightning:formattedText value="{!v.addrDefault.MailingStreet__c +
+                        (v.addrDefault.MailingStreet2__c != null ? '\n' + v.addrDefault.MailingStreet2__c : '')}" /><br/>
+                    <lightning:formattedText value="{!v.addrDefault.MailingCity__c +
+                        (v.addrDefault.MailingState__c != null ? ', ' : '') +
+                        v.addrDefault.MailingState__c + ' ' + v.addrDefault.MailingPostalCode__c + ' '}" /><br/>
+                    <lightning:formattedText value="{!v.addrDefault.MailingCountry__c}" />
+
+                    <aura:if isTrue="{!v.addrDefault.Undeliverable__c}">
+                        <lightning:input type="checkbox"
+                                         label="{!v.addressUndeliverableLabel}"
+                                         checked="{!v.addrDefault.Undeliverable__c}"
+                                         disabled="true" />
+                    </aura:if>
+                </div>
+            </div> 
+            <div class="slds-card__footer">
+                <div class="slds-grid slds-grid_align-center">
+                    <span onkeydown="{!c.openChangeAddress}">
+                    <lightning:button aura:id="btnChangeAddress"
+                                      label="{!$Label.npo02.ChangeAddress}"
+                                      onclick="{!c.openChangeAddress}" />
+                    </span>
+                </div>
+            </div>
+        </div> <!-- slds-card -->
+    </div>    
+    
+    <!-- CHANGE ADDRESS POPUP -->
+    <aura:if isTrue="{!v.showChangeAddressPopup}">
+        <div id="changeAddressPopup" class="slds-modal slds-fade-in-open" aria-hidden="false"
+             role="dialog" aria-labelledby="searchPopupLabel">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <div onclick="{!c.cancelChangeAddress}" tabindex="0"
+                         onkeydown="{!c.cancelChangeAddress}" id="closeButton">
+                        <lightning:icon iconName="utility:close"
+                                        class="slds-modal__close"
+                                        variant="bare-inverse"
+                                        alternativeText="{!$Label.c.bdiBtnClose}"
+                                        tabindex="0"/>
+                    </div>
+                    <h2 id="searchPopupLabel" class="slds-text-heading_medium" tabindex="-1">
+                        {!$Label.npo02.ChangeAddress}
+                    </h2>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning:accordion aura:id="address_accordion" allowMultipleSectionsOpen="false"
+                                         activeSectionName="existing-address-section">
+                        <lightning:accordionSection name="existing-address-section"
+                                                    label="{!$Label.npo02.SelectExistingAddress}">
+                            <ul class="slds-list_vertical slds-has-dividers_around-space slds-has-list-interactions">
+                                <aura:iteration items="{!v.listAddr}" var="addr" indexVar="iAddr" >
+                                    <li class="{!iAddr == v.iAddrSelected ? 'slds-item selected' : 'slds-item' }"
+                                        data-iAddr="{!iAddr}"
+                                        onclick="{!c.onPressAddrTile}"
+                                        onkeyup="{!c.onPressAddrTile}"
+                                        tabindex="0"
+                                        role="checkbox"
+                                        aria-checked="{!iAddr == v.iAddrSelected ? 'true' : 'false'}">
+                                        <div class="slds-tile slds-tile_board">
+                                            <div class="slds-tile__detail" >
+                                                <!-- address -->
+                                                <div class="slds-text-body_small" id="existingAdd">
+                                                    <lightning:formattedText value="{!addr.MailingStreet__c +
+                                                        (addr.MailingStreet2__c != null ? '\n' +
+                                                        addr.MailingStreet2__c : '')}" /><br/>
+                                                    <lightning:formattedText value="{!addr.MailingCity__c +
+                                                        (addr.MailingState__c != null ? ', ' : '') +
+                                                         addr.MailingState__c + ' ' +
+                                                         addr.MailingPostalCode__c + ' '}" /><br/>
+                                                    <lightning:formattedText value="{!addr.MailingCountry__c}" />
+                                                    <aura:if isTrue="{!addr.Undeliverable__c}">
+                                                        <lightning:input disabled="true" type="checkbox"
+                                                                         label="{!v.addressUndeliverableLabel}"
+                                                                         checked="{!addr.Undeliverable__c}" />
+                                                    </aura:if>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </aura:iteration>
+                            </ul>
+                        </lightning:accordionSection>
+                        <lightning:accordionSection name="new-address-section"
+                                                    label="{!$Label.npo02.EnterNewAddress}">
+                            <div class="slds-form_stacked" aura:id="accordionSection">
+                                <div class="slds-form-element">
+                                    <lightning:textarea value="{!v.addrNew.MailingStreet__c}" aura:id="txtStreet"
+                                                        label="{!$Label.c.lblStreet}" />
+                                </div>
+                                <div class="slds-form-element">
+                                    <lightning:input value="{!v.addrNew.MailingCity__c}" aura:id="txtCity"
+                                                     label="{!$Label.c.lblCity}" />
+                                </div>
+                                <div class="slds-form-element">
+                                    <lightning:input value="{!v.addrNew.MailingState__c}" aura:id="txtState"
+                                                     label="{!$Label.c.lblState}" />
+                                </div>
+                                <div class="slds-form-element">
+                                    <lightning:input value="{!v.addrNew.MailingPostalCode__c}" aura:id="txtZip"
+                                                     label="{!$Label.c.lblPostalCode}" />
+                                </div>
+                                <div class="slds-form-element">
+                                    <lightning:input value="{!v.addrNew.MailingCountry__c}" aura:id="txtCountry"
+                                                     label="{!$Label.c.lblCountry}" />
+                                </div>
+                            </div>
+                        </lightning:accordionSection>
+                    </lightning:accordion>
+                </div> <!-- /slds-modal__content -->
+                <div class="slds-modal__footer">
+                    <div class="slds-x-small-buttons_horizontal">
+                        <lightning:button class="slds-button slds-button_neutral" 
+                                   aura:id="btnCancelChangeAddress"
+                                   title="{!$Label.c.stgBtnCancel}"
+                                   label="{!$Label.c.stgBtnCancel}"
+                                   onclick="{!c.cancelChangeAddress}" />
+                        <span onkeydown="{!c.saveChangeAddress}">  
+                        <lightning:button class="slds-button slds-button_brand slds-m-left_small"
+                                   aura:id="btnSaveChangeAddress"
+                                   title="{!$Label.npo02.SetAddress}"
+                                   label="{!$Label.npo02.SetAddress}"
+                                   onclick="{!c.saveChangeAddress}" />
+                        </span>
+                        <span id="modalEndFocus" tabindex="0"></span>
+                    </div>
+                </div>
+            </div> <!-- /slds-modal__container -->
+        </div> <!-- /slds-modal -->
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

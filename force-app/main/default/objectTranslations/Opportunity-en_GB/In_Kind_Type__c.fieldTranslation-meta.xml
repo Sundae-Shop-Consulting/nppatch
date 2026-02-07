@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>In_Kind_Type__c</name>
+    <help>The type of In-Kind Gift, for example, Goods or Services.</help>
+    <label>In-Kind Type</label>
+    <picklistValues>
+        <masterLabel>Goods</masterLabel>
+        <translation>Goods</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Services</masterLabel>
+        <translation>Services</translation>
+    </picklistValues>
+</CustomFieldTranslation>

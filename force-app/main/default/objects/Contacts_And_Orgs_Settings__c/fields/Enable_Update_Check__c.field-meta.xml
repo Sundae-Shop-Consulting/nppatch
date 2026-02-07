@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enable_Update_Check__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>DEPRECATED. New versions will be automatically installed.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>DEPRECATED. New versions will be automatically installed.</inlineHelpText>
+    <label>DEPRECATED-Enable Update Check</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

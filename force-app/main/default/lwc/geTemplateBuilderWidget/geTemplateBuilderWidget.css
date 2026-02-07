@@ -1,0 +1,8 @@
+.widget-label {
+    color: var(--slds-g-color-info-1, #3E3E3C);
+    font-weight: bold;
+}
+
+.widget-text {
+    color: var(--slds-g-color-info-1, #3E3E3C);
+}

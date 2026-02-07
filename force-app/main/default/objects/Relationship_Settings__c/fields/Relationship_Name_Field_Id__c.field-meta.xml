@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Relationship_Name_Field_Id__c</fullName>
+    <description>The ID of the Name field that is dynamically generated in this org, can be found via source view when creating a new Relationship or in the URL when using the &apos;New Relationships&apos; button.  Populating this value will allow the field to pre-populate when creating new Relationships from the Relationship Viewer</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Populating this value will allow the field to pre-populate when creating new Relationships from the Relationship Viewer (see description for more information)</inlineHelpText>
+    <label>Relationship Name Field Id</label>
+    <length>25</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>Campaign__c</name>
+    <help>Die Kampagne, mit der die wiederkehrende Spende bei der Erstellung des Zeitplan-Datensatzes verknüpft wurde.</help>
+    <relationshipLabel>Zeitpläne für wiederkehrende Spenden</relationshipLabel>
+    <label>Verknüpfte Kampagne</label>
+</CustomFieldTranslation>

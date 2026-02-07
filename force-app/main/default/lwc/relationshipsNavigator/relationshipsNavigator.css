@@ -1,0 +1,11 @@
+:host {
+    background: var(--slds-g-color-surface-container-2, #F3F3F3);
+    margin-block-end: 12px;
+    margin-inline-start: 12px;
+    margin-inline-end: 12px;
+    font-weight: bold;
+}
+
+.relation-card {
+    display: block;
+}

@@ -1,0 +1,59 @@
+<aura:component >
+    <!-- public attributes -->
+    <aura:attribute name="hhId" type="String" access="public" />
+    <aura:attribute name="namespacePrefix" type="String" access="public" />
+    <aura:attribute name="listCon" type="Object[]" access="public" />
+    <aura:attribute name="isListVisible" default="false" type="Boolean" access="public"/>    
+
+    <!-- methods -->
+    <aura:method name="clearList" action="{!c.clearList}" access="public" />
+
+    <!-- events we fire -->
+    <aura:registerEvent name="ContactNewEvent" type="c:HH_ContactNewEvent" />
+    <aura:handler name="reachFooter" event="c:HH_ReachFooter" action="{!c.handleReachFooter}" />
+    <aura:registerEvent name="keypressEvent" type="c:HH_KeypressEvent"/>
+    <!-- markup follows... -->
+
+    <c:autocomplete aura:id="autocomplete"
+                    isListVisible="{!v.isListVisible}"
+                    label="{!$Label.c.lblFindOrAddContact}"
+                    placeholder=""
+                    searchContext="{!$Label.c.lblFindInContacts}">
+
+        <aura:set attribute="itemTemplate">
+            <c:HH_AutoCompleteOption value="{!item.value}"/>
+        </aura:set>
+
+        <aura:set attribute="dataProvider">
+            <c:HH_AutoCompleteDataProvider listCon="{!v.listCon}" />
+        </aura:set>
+
+        <aura:set attribute="listFooter">
+            <li id="newContact" class="slds-listbox__item" tabindex="0" onclick="{!c.handleNewContact}" onkeydown="{!c.handleKeyPress}" role="listitem"  data-qa-locator="newContact">
+                <span role="option">
+                    <div class="slds-media slds-tile slds-hint-parent slds-listbox__option slds-listbox__option_entity">
+                        <div class="slds-media__figure slds-listbox__option-icon">
+                            <lightning:icon iconName="utility:add"
+                                class="slds-media__figure slds-listbox__option-icon slds-icon_container" size="small"/>
+                        </div>
+                        <div class="slds-media__body">
+                            <div class="slds-text-body_small slds-listbox__option-text slds-listbox__option-text_entity">
+                                <ui:outputText value="{!$Label.npo02.NewContact}" />
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </li>
+        </aura:set>
+        
+        <aura:set attribute="loadingIndicator">
+            <div class="slds-spinner_container">
+                <div class="slds-spinner_brand slds-spinner slds-spinner_small" aria-hidden="false" role="alert">
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </aura:set>
+
+    </c:autocomplete>
+</aura:component>

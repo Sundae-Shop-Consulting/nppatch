@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>RecurringType__c</name>
+    <help>Wählen Sie für eine fortlaufende wiederkehrende Spende "Offen" aus. Wählen Sie für eine wiederkehrende Spende mit einer bestimmten Anzahl Raten "Festgelegt" aus. Bei "Festgelegt" müssen Sie außerdem das Feld "Anzahl der geplanten Raten" ausfüllen.</help>
+    <label>Wiederholungstyp</label>
+    <picklistValues>
+        <masterLabel>Open</masterLabel>
+        <translation>Offen</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fixed</masterLabel>
+        <translation>Festgelegt</translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Organization_Donation</fullName>
+    <availability>online</availability>
+    <description>Replaces the standard New Donation button on the Donations related list on the Organization Page Layout if you have Donation Record Types.</description>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>New Account Donation</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>/setup/ui/recordtypeselect.jsp?
+ent=Opportunity&amp;
+retURL=%2F{!Account.Id}&amp;
+save_new_url=%2F006%2Fe%3Flookupcmpgn%3D1%26retURL%3D%252F{!Account.Id}%26accid%3D{!Account.Id}&amp;
+opp3={!Account.Name}-%20Donation%20{!Today}</url>
+</WebLink>

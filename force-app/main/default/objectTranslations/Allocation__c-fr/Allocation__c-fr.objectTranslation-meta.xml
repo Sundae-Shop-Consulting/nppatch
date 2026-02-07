@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label>Gérer les affectations - Champs supplémentaires</label>
+        <name>ManageAllocationsAdditionalFields</name>
+    </fieldSets>
+    <webLinks>
+        <name>Manage_Allocations</name>
+        <label>Gérer des affectations</label>
+    </webLinks>
+    <layouts>
+        <layout>Allocation Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Nom des Affectations UCG</nameFieldLabel>
+    <standardFields>
+        <name>Name</name>
+        <label>Nom des Affectations UCG</label>
+    </standardFields>
+    <gender>Feminine</gender>
+    <startsWith>Vowel</startsWith>
+    <caseValues>
+        <plural>false</plural>
+        <value>Affectation UCG</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Affectations UCG</value>
+    </caseValues>
+</CustomObjectTranslation>

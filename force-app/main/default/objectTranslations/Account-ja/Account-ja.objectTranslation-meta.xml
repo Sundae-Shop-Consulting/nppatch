@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label>BDE エントリ FS</label>
+        <name>BDE_Entry_FS</name>
+    </fieldSets>
+    <fieldSets>
+        <label>BDE リスト FS</label>
+        <name>BDE_List_FS</name>
+    </fieldSets>
+    <fieldSets>
+        <label>世帯カスタムを管理</label>
+        <name>Manage_Household_Custom</name>
+    </fieldSets>
+    <webLinks>
+        <name>Manage_Household</name>
+        <label>世帯の管理</label>
+    </webLinks>
+    <webLinks>
+        <name>New_Gift</name>
+        <label>新規支援</label>
+    </webLinks>
+    <webLinks>
+        <name>Recalculate_Rollups</name>
+        <label>積み上げ集計の再計算</label>
+    </webLinks>
+    <layouts>
+        <layout>Organization Layout</layout>
+        <sections>
+            <label>項目</label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label>住所</label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label>説明</label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label>支援情報</label>
+            <section>Donation Information</section>
+        </sections>
+        <sections>
+            <label>支援総額</label>
+            <section>Donation Totals</section>
+        </sections>
+        <sections>
+            <label>会員情報</label>
+            <section>Membership Information</section>
+        </sections>
+        <sections>
+            <label>助成金提供情報</label>
+            <section>Grantmaking Information</section>
+        </sections>
+        <sections>
+            <label>マッチング支援情報</label>
+            <section>Matching Gift Information</section>
+        </sections>
+        <sections>
+            <label>マッチング支援 コメント</label>
+            <section>Matching Gift Comments</section>
+        </sections>
+        <sections>
+            <label>カスタムリンク</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Household Layout</layout>
+        <sections>
+            <label>項目</label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label>住所</label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label>説明</label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label>支援情報</label>
+            <section>Donation Information</section>
+        </sections>
+        <sections>
+            <label>支援総額</label>
+            <section>Donation Totals</section>
+        </sections>
+        <sections>
+            <label>会員情報</label>
+            <section>Membership Information</section>
+        </sections>
+        <sections>
+            <label>カスタムリンク</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

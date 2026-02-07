@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OppsClosed2YearsAgo__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>See Household Settings for excluded Record Types and FY/CY. Do not update, updated by automatic process.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The total number of won Opportunities with amount greater than zero related to this Contact by primary Opportunity Contact Role, closed two years ago.</inlineHelpText>
+    <label>Number of Gifts Two Years Ago</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

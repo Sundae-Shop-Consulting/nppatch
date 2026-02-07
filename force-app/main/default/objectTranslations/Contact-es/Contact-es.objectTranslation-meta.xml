@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label>FS de entrada BDE</label>
+        <name>BDE_Entry_FS</name>
+    </fieldSets>
+    <fieldSets>
+        <label>FS de lista BDE</label>
+        <name>BDE_List_FS</name>
+    </fieldSets>
+    <fieldSets>
+        <label>Combinar contacto encontró FS</label>
+        <name>ContactMergeFoundFS</name>
+    </fieldSets>
+    <webLinks>
+        <name>Merge_Contacts</name>
+        <label>Combinar contactos</label>
+    </webLinks>
+    <webLinks>
+        <name>New_Gift</name>
+        <label>Nuevo regalo</label>
+    </webLinks>
+    <webLinks>
+        <name>Recalculate_Rollups</name>
+        <label>Volver a calcular totales</label>
+    </webLinks>
+    <layouts>
+        <layout>Contact Layout</layout>
+        <sections>
+            <label>Detalle del contacto</label>
+            <section>Contact Details</section>
+        </sections>
+        <sections>
+            <label>Dirección de hogar</label>
+            <section>Household Address</section>
+        </sections>
+        <sections>
+            <label>Información de la donación</label>
+            <section>Donation Information</section>
+        </sections>
+        <sections>
+            <label>Totales de donaciones</label>
+            <section>Donation Totals</section>
+        </sections>
+        <sections>
+            <label>Totales de créditos blandos</label>
+            <section>Soft Credit Totals</section>
+        </sections>
+        <sections>
+            <label>Información de donaciones de hogar</label>
+            <section>Household Donation Info</section>
+        </sections>
+        <sections>
+            <label>Información de afiliaciones</label>
+            <section>Membership Information</section>
+        </sections>
+        <sections>
+            <label>Miscelánea</label>
+            <section>Misc</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

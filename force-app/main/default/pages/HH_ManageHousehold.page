@@ -1,0 +1,6 @@
+<apex:page standardController="Household__c" extensions="HH_ManageHH_CTRL" title="{!$Label.managehousehold}" 
+    standardStylesheets="true" showHeader="true" docType="html-5.0" action="{!handleNewHousehold}"  >
+        
+	<apex:include pageName="HH_ManageHH"/>
+        
+</apex:page>
