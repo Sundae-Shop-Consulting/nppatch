@@ -159,12 +159,7 @@ global without sharing class STG_InstallScript implements InstallHandler {
     * @return void
     */
     global void runNewOrgScript() {
-        //Get the mapping from old settings to the new TDTM default setup
-        Map<String, String> npspToCumulusMap = TDTM_DefaultConfig.getNpspToCumulusMap();
-        //Read existing NPSP trigger configuration and turn off NPSP flags (so no work needs to be done next time)
-        Map<String, Boolean> existingTriggerConfig = getExistingNpspTriggerConfig(npspToCumulusMap);
-        //Setup the new configuration
-        setupTdtmConfig(npspToCumulusMap, existingTriggerConfig);
+        insertTdtmDefaults(null);
     }
 
     /*******************************************************************************************************
@@ -185,86 +180,6 @@ global without sharing class STG_InstallScript implements InstallHandler {
             hs.Household_Mailing_List_ID__c = r.Id;
             update hs;
         }
-    }
-
-    /*******************************************************************************************************
-     * @description Called only during a new install of v3 by runNewOrgScript() to configure the default NPSP TDTM
-     * Trigger Configuration. This could involve removing legacy TDTM entries as well.
-     * @param npspToCumulusMap
-     * @return
-     */
-    private Map<String, Boolean> getExistingNpspTriggerConfig(Map<String, String> npspToCumulusMap) {
-
-        Map<String, Boolean> npspExistingSettings = new Map<String, Boolean>();
-
-        Contacts_And_Orgs_Settings__c npe01Settings = UTIL_CustomSettingsFacade.getOrgContactsSettings();
-        Households_Settings__c npo02Settings = UTIL_CustomSettingsFacade.getOrgHouseholdsSettings();
-        Recurring_Donations_Settings__c npe03Settings = UTIL_CustomSettingsFacade.getOrgRecurringDonationsSettings();
-        Relationship_Settings__c npe04Settings = UTIL_CustomSettingsFacade.getOrgRelationshipSettings();
-        Affiliations_Settings__c npe05Settings = UTIL_CustomSettingsFacade.getOrgAffiliationsSettings();
-        UTIL_CustomSettingsFacade.getOrgHouseholdNamingSettings();
-        UTIL_CustomSettingsFacade.getOrgErrorSettings();
-        UTIL_CustomSettingsFacade.getOrgAddressVerificationSettings();
-        UTIL_CustomSettingsFacade.getOrgBDESettings();
-        UTIL_CustomSettingsFacade.getOrgAllocationsSettings();
-        UTIL_CustomSettingsFacade.getOrgDataImportSettings();
-        UTIL_CustomSettingsFacade.getOrgGiftEntrySettings();
-
-        UTIL_Debug.debug('****NPSP-to-Cumulus Map: ' + JSON.serializePretty(npspToCumulusMap));
-
-        for(String setting : npspToCumulusMap.keySet()) {
-            if(setting.startsWith('npe01')) {
-                if(npe01Settings != null && npe01Settings.get(setting) != null) {
-                    //Storing the old setting as key and new setting as value
-                    npspExistingSettings.put(setting, (Boolean)npe01Settings.get(setting));
-                    if(npe01Settings.get(setting) == true)
-                        npe01Settings.put(setting, false); //Deactivating flag
-                    continue;
-                }
-            } else if(setting.startsWith('npo02')) {
-                if(npo02Settings != null && npo02Settings.get(setting) != null) {
-                    npspExistingSettings.put(setting, (Boolean)npo02Settings.get(setting));
-                    if(npo02Settings.get(setting) == true)
-                        npo02Settings.put(setting, false); //Deactivating flag
-                    continue;
-                }
-            } else if(setting.startsWith('npe03')) {
-                if(npe03Settings != null && npe03Settings.get(setting) != null) {
-                    npspExistingSettings.put(setting, (Boolean)npe03Settings.get(setting));
-                    if(npe03Settings.get(setting) == true)
-                        npe03Settings.put(setting, false); //Deactivating flag
-                    continue;
-                }
-            } else if(setting.startsWith('npe4')) {
-                if(npe04Settings != null && npe04Settings.get(setting) != null) {
-                    npspExistingSettings.put(setting, (Boolean)npe04Settings.get(setting));
-                    if(npe04Settings.get(setting) == true)
-                        npe04Settings.put(setting, false); //Deactivating flag
-                    continue;
-                }
-            }
-        }
-
-        //Deactivate NPSP flags - getInstance returns an empty object if the custom setting has no records
-        List<SObject> npspCustomSettings = new List<SObject>();
-        if(npe01Settings != null) npspCustomSettings.add(npe01Settings);
-        if(npo02Settings != null) npspCustomSettings.add(npo02Settings);
-        if(npe03Settings != null) npspCustomSettings.add(npe03Settings);
-        if(npe04Settings != null) npspCustomSettings.add(npe04Settings);
-        if(npspCustomSettings.size() > 0) {
-            UTIL_Debug.debug('****Deactivating pre-cumulus flags');
-            if(!Test.isRunningTest())
-                update npspCustomSettings;
-        }
-
-        return npspExistingSettings;
-    }
-
-    private void setupTdtmConfig(Map<String, String> npspToCumulusMap, Map<String, Boolean> existingTriggerConfig) {
-        //First we insert all TDTM records as active
-        insertTdtmDefaults(null);
-        //Now we can deactive only those that were flagged as inactive in NPSP
-        deactivateMatchingTdtm(npspToCumulusMap, existingTriggerConfig);
     }
 
     /*******************************************************************************************************
@@ -315,24 +230,6 @@ global without sharing class STG_InstallScript implements InstallHandler {
         if(handlersToInsert.size() > 0) insert handlersToInsert;
         if(handlersToUpdate.size() > 0) update handlersToUpdate;
         if(handlersToDelete.size() > 0) delete handlersToDelete;
-    }
-
-    private static void deactivateMatchingTdtm(Map<String, String> npspToCumulusMap, Map<String, Boolean> existingTriggerConfig) {
-        List<String> handlerSettingsToUpdate = new List<String>();
-
-        for(String flag : existingTriggerConfig.keySet()) {
-            Boolean active = existingTriggerConfig.get(flag);
-            String mapsTo = npspToCumulusMap.get(flag);
-            if(active)
-               handlerSettingsToUpdate.add(mapsTo);
-        }
-
-        List<Trigger_Handler__c> handlersToUpdate = [select Active__c, Class__c from Trigger_Handler__c where Class__c
-                                                     IN :handlerSettingsToUpdate];
-        for(Trigger_Handler__c handler : handlersToUpdate) {
-            handler.Active__c = false;
-        }
-        if(handlersToUpdate.size() > 0) update handlersToUpdate;
     }
 
     /*******************************************************************************************************
