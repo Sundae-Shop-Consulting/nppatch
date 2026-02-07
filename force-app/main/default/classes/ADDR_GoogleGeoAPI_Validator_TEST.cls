@@ -42,11 +42,8 @@ private class ADDR_GoogleGeoAPI_Validator_TEST {
 
         // create the basic api settings
         Addr_Verification_Settings__c settings = UTIL_CustomSettingsFacade.getAddressVerificationSettings();
-        settings.Using_SmartyStreets__c = false;
-        settings.Auth_ID__c = 'hey';
         settings.Auth_Token__c = 'there';
         settings.Address_Verification_Endpoint__c = 'maps.googleapis.com/maps/api/geocode/json?';
-        settings.Zipcode_Verification_Endpoint__c = 'maps.googleapis.com/maps/api/geocode/json?';
         settings.Class__c = 'ADDR_GoogleGeoAPI_Validator';
         settings.Enable_Automatic_Verification__c = true;
         settings.Reject_Ambiguous_Addresses__c = true;

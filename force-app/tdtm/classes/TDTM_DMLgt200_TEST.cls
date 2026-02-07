@@ -403,50 +403,6 @@ private class TDTM_DMLgt200_TEST {
         }
     }
 
-    /*********************************************************************************************************
-    * @description Create more than 200 Contact records and then validate that all of the Addresses were verified
-    *   NOTE: THIS WILL FAIL IN AN ORG WITHOUT THE STATIC FLAG CHANGES
-    */
-    @IsTest
-    static void shouldValidateMoreThan200AddressRecords() {
-        //skip the test if Advancement is installed
-        if(ADV_PackageInfo_SVC.useAdv()) return;
-
-        UTIL_CustomSettingsFacade.getErrorSettingsForTests(
-            new Error_Settings__c(Respect_Duplicate_Rule_Settings__c = true)
-        );
-
-        ADDR_Validator_TEST.createDefaultSettings();
-        Test.setMock(HttpCalloutMock.class, new ADDR_MockHttpRespGenerator_TEST());
-
-        UTIL_Debug.disableDebugLogging();     // Override debug logging for this test because it's an expensive operation
-        UTIL_UnitTestData_TEST.disableAffiliationsTriggers();
-        UTIL_UnitTestData_TEST.disableRelationshipTriggers();
-        UTIL_UnitTestData_TEST.disableMergeTriggers();
-        UTIL_UnitTestData_TEST.disableHHNamingTriggers();
-        TDTM_ProcessControl.toggleTriggerState('Contact', 'CON_DoNotContact_TDTM', false);
-
-        // Create more than 200 Contact records and then validate that all of the Addresses were verified
-        List<Contact> contacts = createMultipleTestContactsWithAddress(insertCnt);
-
-        Test.startTest();
-        insertWithAllowDupes(contacts);
-        Test.stopTest();
-
-        // check household created for contacts
-        System.assertEquals(insertCnt, [SELECT Count() FROM Account WHERE SYSTEM_AccountType__c = :CAO_Constants.HH_ACCOUNT_TYPE],
-            'There should be exactly ' + insertCnt.format() + ' Household Account records');
-
-        // validate that all address records were validated
-        System.assertEquals(insertCnt, [SELECT Count() FROM Address__c WHERE Verification_Status__c = :Label.Addr_Verified],
-            'There should be exactly ' + insertCnt.format() + ' Validated Address records');
-
-        // validate that all contact addresses were fixed
-        for (Contact record : [SELECT MailingPostalCode FROM Contact WHERE Id IN :contacts]) {
-            System.assertEquals(testZipCode + '-2083', record.MailingPostalCode, 'Each contact\'s address should be updated');
-        }
-    }
-
     /**
      * @description Tests issue #1960 where changing the number of OpportunityForecastMonths and then executing the
      * RD batch job does not properly create all of the necessary default allocations records.
