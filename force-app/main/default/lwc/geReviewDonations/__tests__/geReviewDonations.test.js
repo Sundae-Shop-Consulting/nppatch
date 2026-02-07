@@ -37,7 +37,7 @@ const DUMMY_SELECTED_DONATION = {
     Id: 'DUMMY_ID',
     Name: 'DUMMY SELECTED DONATION NAME',
     attributes: {
-        type: 'npe01__OppPayment__c'
+        type: 'OppPayment__c'
     }
 };
 

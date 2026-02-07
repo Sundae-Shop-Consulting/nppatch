@@ -18,11 +18,11 @@ import retrieveTableView from "@salesforce/apex/RD2_ETableController.retrieveTab
 import TIME_ZONE from '@salesforce/i18n/timeZone';
 import CURRENCY from '@salesforce/i18n/currency';
 
-import RECURRING_DONATION from "@salesforce/schema/npe03__Recurring_Donation__c";
-import FIELD_COMMITMENT_ID from "@salesforce/schema/npe03__Recurring_Donation__c.CommitmentId__c";
-import FIELD_PAYMENT_METHOD from "@salesforce/schema/npe03__Recurring_Donation__c.PaymentMethod__c";
-import FIELD_DAY_OF_MONTH from "@salesforce/schema/npe03__Recurring_Donation__c.Day_of_Month__c";
-import FIELD_INSTALLMENTS from "@salesforce/schema/npe03__Recurring_Donation__c.npe03__Installments__c";
+import RECURRING_DONATION from "@salesforce/schema/Recurring_Donation__c";
+import FIELD_COMMITMENT_ID from "@salesforce/schema/Recurring_Donation__c.CommitmentId__c";
+import FIELD_PAYMENT_METHOD from "@salesforce/schema/Recurring_Donation__c.PaymentMethod__c";
+import FIELD_DAY_OF_MONTH from "@salesforce/schema/Recurring_Donation__c.Day_of_Month__c";
+import FIELD_INSTALLMENTS from "@salesforce/schema/Recurring_Donation__c.Installments__c";
 
 import { getObjectInfo } from "lightning/uiObjectInfoApi";
 import FORM_FACTOR from "@salesforce/client/formFactor";
@@ -269,7 +269,7 @@ export default class RecurringDonationTable extends LightningElement {
         });
 
         this.isElevateDonation = this.currentRecord.recurringDonation[FIELD_COMMITMENT_ID.fieldApiName] ? true : false;
-        this.isInitiallyMonthlyDonation = this.currentRecord.recurringDonation.npe03__Installment_Period__c === MONTHLY;
+        this.isInitiallyMonthlyDonation = this.currentRecord.recurringDonation.Installment_Period__c === MONTHLY;
 
         switch (action) {
             case "updatePaymentMethod":
@@ -323,7 +323,7 @@ export default class RecurringDonationTable extends LightningElement {
                         
                         return action;
                     });
-                    el.recurringDonation.npe03__Next_Payment_Date__c = new Date(el.recurringDonation.npe03__Next_Payment_Date__c).toLocaleDateString(undefined, { timeZone: this.timeZone });
+                    el.recurringDonation.Next_Payment_Date__c = new Date(el.recurringDonation.Next_Payment_Date__c).toLocaleDateString(undefined, { timeZone: this.timeZone });
                     let lastModifiedDate = new Date(el.recurringDonation.LastModifiedDate).toLocaleDateString(undefined, { timeZone: this.timeZone });
                     return { actions, ...el, nexDonationFormatFirstElement, nexDonationFormatSecondElement, lastModifiedDate };
                 });

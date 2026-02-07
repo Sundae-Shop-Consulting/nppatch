@@ -5,13 +5,13 @@ import { handleError } from 'c/utilTemplateBuilder';
 import { deepClone } from 'c/utilCommon';
 import geLabelService from 'c/geLabelService';
 
-import PAYMENT_OBJECT from '@salesforce/schema/npe01__OppPayment__c';
-import PAYMENT_AMOUNT_FIELD from '@salesforce/schema/npe01__OppPayment__c.npe01__Payment_Amount__c';
-import PAYMENT_SCHEDULED_DATE_FIELD from '@salesforce/schema/npe01__OppPayment__c.npe01__Scheduled_Date__c';
-import PAYMENT_PAID_FIELD from '@salesforce/schema/npe01__OppPayment__c.npe01__Paid__c';
-import PAYMENT_NAME_FIELD from '@salesforce/schema/npe01__OppPayment__c.Name';
+import PAYMENT_OBJECT from '@salesforce/schema/OppPayment__c';
+import PAYMENT_AMOUNT_FIELD from '@salesforce/schema/OppPayment__c.Payment_Amount__c';
+import PAYMENT_SCHEDULED_DATE_FIELD from '@salesforce/schema/OppPayment__c.Scheduled_Date__c';
+import PAYMENT_PAID_FIELD from '@salesforce/schema/OppPayment__c.Paid__c';
+import PAYMENT_NAME_FIELD from '@salesforce/schema/OppPayment__c.Name';
 import ELEVATE_PAYMENT_STATUS_FIELD
-    from '@salesforce/schema/npe01__OppPayment__c.Elevate_Payment_API_Status__c';
+    from '@salesforce/schema/OppPayment__c.Elevate_Payment_API_Status__c';
 
 const FIELDS = [
     PAYMENT_AMOUNT_FIELD,

@@ -5,9 +5,9 @@ import commonUnknownError from '@salesforce/label/c.commonUnknownError';
 import donationHistoryLabelLifetime from '@salesforce/label/c.donationHistoryLabelLifetime';
 import donationHistoryLabelThisYear from '@salesforce/label/c.donationHistoryLabelThisYear';
 import donationHistoryLabelPreviousYear from '@salesforce/label/c.donationHistoryLabelPreviousYear';
-import TOTAL_AMOUNT from '@salesforce/schema/Contact.npo02__TotalOppAmount__c';
-import AMOUNT_CURRENT_YEAR from '@salesforce/schema/Contact.npo02__OppAmountThisYear__c';
-import AMOUNT_LAST_YEAR from '@salesforce/schema/Contact.npo02__OppAmountLastYear__c';
+import TOTAL_AMOUNT from '@salesforce/schema/Contact.TotalOppAmount__c';
+import AMOUNT_CURRENT_YEAR from '@salesforce/schema/Contact.OppAmountThisYear__c';
+import AMOUNT_LAST_YEAR from '@salesforce/schema/Contact.OppAmountLastYear__c';
 import FORM_FACTOR from '@salesforce/client/formFactor';
 
 const FormFactorType = Object.freeze({

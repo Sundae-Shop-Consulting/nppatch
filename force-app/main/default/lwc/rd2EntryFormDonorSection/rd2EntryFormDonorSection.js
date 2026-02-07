@@ -2,13 +2,13 @@ import { LightningElement, api, track, wire } from "lwc";
 import { getObjectInfo } from "lightning/uiObjectInfoApi";
 import { ACCOUNT_DONOR_TYPE, CONTACT_DONOR_TYPE } from "c/rd2Service";
 
-import RECURRING_DONATION_OBJECT from "@salesforce/schema/npe03__Recurring_Donation__c";
+import RECURRING_DONATION_OBJECT from "@salesforce/schema/Recurring_Donation__c";
 import ACCOUNT_OBJECT from "@salesforce/schema/Account";
 import CONTACT_OBJECT from "@salesforce/schema/Contact";
 
-import FIELD_DATE_ESTABLISHED from "@salesforce/schema/npe03__Recurring_Donation__c.npe03__Date_Established__c";
-import FIELD_ACCOUNT from "@salesforce/schema/npe03__Recurring_Donation__c.npe03__Organization__c";
-import FIELD_CONTACT from "@salesforce/schema/npe03__Recurring_Donation__c.npe03__Contact__c";
+import FIELD_DATE_ESTABLISHED from "@salesforce/schema/Recurring_Donation__c.Date_Established__c";
+import FIELD_ACCOUNT from "@salesforce/schema/Recurring_Donation__c.Organization__c";
+import FIELD_CONTACT from "@salesforce/schema/Recurring_Donation__c.Contact__c";
 
 import donorTypeLabel from "@salesforce/label/c.RD2_EntryFormDonorTypeLabel";
 import donorTypeHelpText from "@salesforce/label/c.RD2_EntryFormDonorTypeHelpText";

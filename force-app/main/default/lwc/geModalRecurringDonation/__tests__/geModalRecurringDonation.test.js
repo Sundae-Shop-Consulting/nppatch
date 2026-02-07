@@ -65,7 +65,7 @@ describe('c-ge-modal-recurring-donation', () => {
             modalElement.schedule = {
                 RecurringType__c: 'Open',
                 StartDate__c: '2020-01-01',
-                npe03__Installment_Period__c: 'Monthly',
+                Installment_Period__c: 'Monthly',
             }
             await flushPromises();
 

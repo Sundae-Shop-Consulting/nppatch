@@ -4,7 +4,7 @@ import { Rd2Service } from "c/rd2Service";
 import { getObjectInfo } from "lightning/uiObjectInfoApi";
 
 import getInitialView from "@salesforce/apex/RD2_EntryFormController.getInitialView";
-import RECURRING_DONATION_OBJECT from "@salesforce/schema/npe03__Recurring_Donation__c";
+import RECURRING_DONATION_OBJECT from "@salesforce/schema/Recurring_Donation__c";
 import { SET_DONOR_TYPE } from "../../rd2Service/actions";
 
 

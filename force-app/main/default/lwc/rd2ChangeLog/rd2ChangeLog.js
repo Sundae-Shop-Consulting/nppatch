@@ -99,7 +99,7 @@ export default class Rd2ChangeLog extends NavigationMixin(LightningElement) {
             type: 'standard__recordRelationshipPage',
             attributes: {
                 recordId: this.recordId,
-                objectApiName: 'npe03__Recurring_Donation__c',
+                objectApiName: 'Recurring_Donation__c',
                 relationshipApiName,
                 actionName: 'view'
             }

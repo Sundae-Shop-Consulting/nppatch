@@ -15,7 +15,7 @@ import checkForElevateCustomer from '@salesforce/apex/GE_GiftEntryController.isE
 
 import DATA_IMPORT_BATCH_OBJECT from '@salesforce/schema/DataImportBatch__c';
 import BATCH_TABLE_COLUMNS_FIELD from '@salesforce/schema/DataImportBatch__c.Batch_Table_Columns__c';
-import PAYMENT_OPPORTUNITY_ID from '@salesforce/schema/npe01__OppPayment__c.npe01__Opportunity__c';
+import PAYMENT_OPPORTUNITY_ID from '@salesforce/schema/OppPayment__c.Opportunity__c';
 
 import bgeGridGiftDeleted from '@salesforce/label/c.bgeGridGiftDeleted';
 import commonPaymentServices from '@salesforce/label/c.commonPaymentServices';

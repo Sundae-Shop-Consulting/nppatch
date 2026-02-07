@@ -7510,28 +7510,16 @@
         <name>Nonprofit_Edition_Reports</name>
     </customPageWebLinks>
     <customTabs>
-        <label><!-- Affiliations Settings --></label>
-        <name>Affiliations_Settings</name>
-    </customTabs>
-    <customTabs>
-        <label>הזנת נתונים באצווה</label>
-        <name>Batch_Data_Entry</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Batch Gift Entry --></label>
-        <name>Batch_Gift_Entry</name>
-    </customTabs>
-    <customTabs>
-        <label>מיזוג אנשי קשר</label>
-        <name>Contact_Merge</name>
-    </customTabs>
-    <customTabs>
         <label><!-- Contacts Settings --></label>
         <name>Contacts_Settings</name>
     </customTabs>
     <customTabs>
         <label><!-- Gift Entry --></label>
         <name>GE_Gift_Entry</name>
+    </customTabs>
+    <customTabs>
+        <label>מיזוג אנשי קשר</label>
+        <name>Contact_Merge</name>
     </customTabs>
     <customTabs>
         <label><!-- Get Started with NPSP - Admin --></label>

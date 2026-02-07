@@ -12,13 +12,13 @@ import periodPluralWeeks from "@salesforce/label/c.RD2_EntryFormPeriodPluralWeek
 import periodPluralYears from "@salesforce/label/c.RD2_EntryFormPeriodPluralYearly";
 import fieldLabelEvery from "@salesforce/label/c.RD2_EntryFormScheduleEveryLabel";
 
-import RECURRING_DONATION_OBJECT from "@salesforce/schema/npe03__Recurring_Donation__c";
-import FIELD_RECURRING_TYPE from "@salesforce/schema/npe03__Recurring_Donation__c.RecurringType__c";
-import FIELD_PLANNED_INSTALLMENTS from "@salesforce/schema/npe03__Recurring_Donation__c.npe03__Installments__c";
-import FIELD_INSTALLMENT_PERIOD from "@salesforce/schema/npe03__Recurring_Donation__c.npe03__Installment_Period__c";
-import FIELD_INSTALLMENT_FREQUENCY from "@salesforce/schema/npe03__Recurring_Donation__c.InstallmentFrequency__c";
-import FIELD_DAY_OF_MONTH from "@salesforce/schema/npe03__Recurring_Donation__c.Day_of_Month__c";
-import FIELD_START_DATE from "@salesforce/schema/npe03__Recurring_Donation__c.StartDate__c";
+import RECURRING_DONATION_OBJECT from "@salesforce/schema/Recurring_Donation__c";
+import FIELD_RECURRING_TYPE from "@salesforce/schema/Recurring_Donation__c.RecurringType__c";
+import FIELD_PLANNED_INSTALLMENTS from "@salesforce/schema/Recurring_Donation__c.Installments__c";
+import FIELD_INSTALLMENT_PERIOD from "@salesforce/schema/Recurring_Donation__c.Installment_Period__c";
+import FIELD_INSTALLMENT_FREQUENCY from "@salesforce/schema/Recurring_Donation__c.InstallmentFrequency__c";
+import FIELD_DAY_OF_MONTH from "@salesforce/schema/Recurring_Donation__c.Day_of_Month__c";
+import FIELD_START_DATE from "@salesforce/schema/Recurring_Donation__c.StartDate__c";
 
 // Constants from RD2_Constants class
 const LAST_DAY_OF_MONTH = "Last_Day";

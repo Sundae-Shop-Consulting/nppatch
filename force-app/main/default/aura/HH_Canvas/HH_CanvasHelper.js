@@ -28,7 +28,7 @@
                 for (var i = 0; i < this.children.length; i++) {
                     var icon = this.children[i].getAttribute("data-icontact");
                     listConNew.push(listCon[icon]);
-                    listCon[icon].npo02__Household_Naming_Order__c = i;
+                    listCon[icon].Household_Naming_Order__c = i;
                 }
                 component.set('v.listCon', listConNew);
 

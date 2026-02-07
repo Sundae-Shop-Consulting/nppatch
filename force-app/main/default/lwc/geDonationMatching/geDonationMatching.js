@@ -4,7 +4,7 @@ import { fireEvent } from 'c/pubsubNoPageRef';
 import geLabelService from 'c/geLabelService';
 
 import OPPORTUNITY_OBJECT from '@salesforce/schema/Opportunity';
-import PAYMENT_OBJECT from '@salesforce/schema/npe01__OppPayment__c';
+import PAYMENT_OBJECT from '@salesforce/schema/OppPayment__c';
 
 export default class geDonationMatching extends LightningElement {
 

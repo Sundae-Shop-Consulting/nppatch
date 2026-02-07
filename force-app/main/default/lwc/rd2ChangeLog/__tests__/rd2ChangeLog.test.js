@@ -44,7 +44,7 @@ describe('c-rd2-change-entry-item', () => {
 
         expect(pageReference.type).toBe('standard__recordRelationshipPage');
         expect(pageReference.attributes.recordId).toBe(component.recordId);
-        expect(pageReference.attributes.objectApiName).toBe('npe03__Recurring_Donation__c');
+        expect(pageReference.attributes.objectApiName).toBe('Recurring_Donation__c');
         expect(pageReference.attributes.relationshipApiName).toBe('RDChangeLog__r');
         expect(pageReference.attributes.actionName).toBe('view');
     });

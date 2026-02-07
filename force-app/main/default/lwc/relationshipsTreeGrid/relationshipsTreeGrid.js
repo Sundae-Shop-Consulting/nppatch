@@ -3,8 +3,8 @@ import getInitialView from "@salesforce/apex/RelationshipsTreeGridController.get
 import getRelationships from "@salesforce/apex/RelationshipsTreeGridController.getRelationships";
 import { NavigationMixin } from "lightning/navigation";
 import { encodeDefaultFieldValues } from "lightning/pageReferenceUtils";
-import RELATIONSHIP_CONTACT from "@salesforce/schema/npe4__Relationship__c.npe4__Contact__c";
-import RELATIONSHIP_OBJECT from "@salesforce/schema/npe4__Relationship__c";
+import RELATIONSHIP_CONTACT from "@salesforce/schema/Relationship__c.Contact__c";
+import RELATIONSHIP_OBJECT from "@salesforce/schema/Relationship__c";
 
 import REL_View_Contact_Record from "@salesforce/label/c.REL_View_Contact_Record";
 import REL_Create_New_Relationship from "@salesforce/label/c.REL_Create_New_Relationship";
@@ -235,7 +235,7 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
         });
 
         if (this.isLightningOut) {
-            window.open("/lightning/o/npe4__Relationship__c/new?defaultFieldValues=" + defaultFieldValues);
+            window.open("/lightning/o/Relationship__c/new?defaultFieldValues=" + defaultFieldValues);
         } else {
             const navigateArgs = {
                 type: "standard__objectPage",

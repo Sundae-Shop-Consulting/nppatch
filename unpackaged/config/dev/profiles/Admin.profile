@@ -127,15 +127,15 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>npe01__OppPayment__c</tab>
+        <tab>OppPayment__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>npe4__Relationship__c</tab>
+        <tab>Relationship__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>npe5__Affiliation__c</tab>
+        <tab>Affiliation__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>

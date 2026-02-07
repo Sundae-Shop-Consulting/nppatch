@@ -1,10 +1,10 @@
 import { createElement } from 'lwc';
 import GeRecurringGiftInfo from 'c/geRecurringGiftInfo';
 
-import RECURRING_TYPE from '@salesforce/schema/npe03__Recurring_Donation__c.RecurringType__c';
-import INSTALLMENT_PERIOD from '@salesforce/schema/npe03__Recurring_Donation__c.npe03__Installment_Period__c';
-import EFFECTIVE_DATE from '@salesforce/schema/npe03__Recurring_Donation__c.StartDate__c';
-import INSTALLMENTS from '@salesforce/schema/npe03__Recurring_Donation__c.npe03__Installments__c';
+import RECURRING_TYPE from '@salesforce/schema/Recurring_Donation__c.RecurringType__c';
+import INSTALLMENT_PERIOD from '@salesforce/schema/Recurring_Donation__c.Installment_Period__c';
+import EFFECTIVE_DATE from '@salesforce/schema/Recurring_Donation__c.StartDate__c';
+import INSTALLMENTS from '@salesforce/schema/Recurring_Donation__c.Installments__c';
 import DONATION_AMOUNT from '@salesforce/schema/DataImport__c.Donation_Amount__c';
 import DONATION_DATE from '@salesforce/schema/DataImport__c.Donation_Date__c';
 

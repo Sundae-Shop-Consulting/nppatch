@@ -15,7 +15,7 @@ import getGiftBatchView from '@salesforce/apex/GE_GiftEntryController.getGiftBat
 import isElevateCustomer from '@salesforce/apex/GE_GiftEntryController.isElevateCustomer';
 import processGiftsFor from '@salesforce/apex/GE_GiftEntryController.processGiftsFor';
 import isGiftBatchAccessible from '@salesforce/apex/GE_GiftEntryController.isGiftBatchAccessible';
-import OPP_PAYMENT_OBJECT from '@salesforce/schema/npe01__OppPayment__c';
+import OPP_PAYMENT_OBJECT from '@salesforce/schema/OppPayment__c';
 import { getRecord } from 'lightning/uiRecordApi';
 import { getObjectInfo, getPicklistValues } from 'lightning/uiObjectInfoApi';
 import { mockCheckInputValidity, mockCheckInputValidityImpl } from 'lightning/input';

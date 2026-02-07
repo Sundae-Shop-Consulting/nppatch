@@ -1,7 +1,7 @@
 import { getObjectInfo, getPicklistValues } from "lightning/uiObjectInfoApi";
-import FIELD_INSTALLMENT_PERIOD from "@salesforce/schema/npe03__Recurring_Donation__c.npe03__Installment_Period__c";
-import FIELD_DAY_OF_MONTH from "@salesforce/schema/npe03__Recurring_Donation__c.Day_of_Month__c";
-import RECURRING_DONATION_OBJECT from "@salesforce/schema/npe03__Recurring_Donation__c";
+import FIELD_INSTALLMENT_PERIOD from "@salesforce/schema/Recurring_Donation__c.Installment_Period__c";
+import FIELD_DAY_OF_MONTH from "@salesforce/schema/Recurring_Donation__c.Day_of_Month__c";
+import RECURRING_DONATION_OBJECT from "@salesforce/schema/Recurring_Donation__c";
 import ACCOUNT_OBJECT from "@salesforce/schema/Account";
 import CONTACT_OBJECT from "@salesforce/schema/Contact";
 

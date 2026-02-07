@@ -6,7 +6,7 @@ import { registerListener, unregisterListener } from 'c/pubsubNoPageRef';
 import geLabelService from 'c/geLabelService';
 import getOpenDonationsView from '@salesforce/apex/GE_GiftEntryController.getOpenDonationsView';
 import OPPORTUNITY from '@salesforce/schema/Opportunity';
-import PAYMENT from '@salesforce/schema/npe01__OppPayment__c';
+import PAYMENT from '@salesforce/schema/OppPayment__c';
 import { isEmptyObject } from 'c/utilCommon';
 
 export default class geReviewDonations extends NavigationMixin(LightningElement) {

@@ -392,7 +392,7 @@
         if (rollupTypeObject === labels.objectPayment) {
             cmp.set("v.activeRollup.dateObjectLabel", labels.labelPayment);
             cmp.set("v.activeRollup.dateObject", labels.objectPayment);
-            dateFieldName = labels.objectPayment + ' npe01__Payment_Date__c';
+            dateFieldName = labels.objectPayment + ' Payment_Date__c';
         } else {
             cmp.set("v.activeRollup.dateObjectLabel", labels.labelOpportunity);
             cmp.set("v.activeRollup.dateObject", labels.objectOpportunity);
@@ -991,7 +991,7 @@
         var amountFields = cmp.get("v.amountFields");
 
         if (amountObjectName === labels.objectPayment) {
-            amountFieldName = labels.objectPayment + ' npe01__Payment_Amount__c';
+            amountFieldName = labels.objectPayment + ' Payment_Amount__c';
             cmp.set("v.activeRollup.detailObject", labels.objectPayment);
         } else if (amountObjectName === labels.objectAllocation) {
             amountFieldName = labels.objectAllocation + ' ' + labels.namespacePrefix + 'Amount__c';

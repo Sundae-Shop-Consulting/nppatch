@@ -55,14 +55,14 @@ tasks:
             path: unpackaged/config/core_instrumentation_mock_classes
 
 flows:
-    dev_org:
-        steps:
-            1:
-                task: deploy_core_mock_classes
-            2:
-                flow: deploy_unmanaged
-            3:
-                flow: config_dev
+    # dev_org:
+    #     steps:
+    #         1:
+    #             task: deploy_core_mock_classes
+    #         2:
+    #             flow: deploy_unmanaged
+    #         3:
+    #             flow: config_dev
 
     config_dev:
         steps:

@@ -50,7 +50,7 @@ import GIFT_ENTRY_FEATURE_GATE_INFO from '@salesforce/schema/Gift_Entry_Settings
 // Import schema for default form field element objects
 import DATA_IMPORT_INFO from '@salesforce/schema/DataImport__c';
 import OPPORTUNITY_INFO from '@salesforce/schema/Opportunity';
-import PAYMENT_INFO from '@salesforce/schema/npe01__OppPayment__c';
+import PAYMENT_INFO from '@salesforce/schema/OppPayment__c';
 
 // Import schema info for default form field elements
 import DONATION_AMOUNT_INFO from '@salesforce/schema/DataImport__c.Donation_Amount__c';

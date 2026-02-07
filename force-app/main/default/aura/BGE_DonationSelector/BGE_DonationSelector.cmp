@@ -114,19 +114,19 @@
                             <lightning:formattedText value="{!v.labels.opportunityName + ': '}"/>
                         </lightning:layoutItem>
                         <lightning:layoutItem size="8" smallDeviceSize="6">
-                            <lightning:formattedText value="{!payment.npe01__Opportunity__r.Name}"/>
+                            <lightning:formattedText value="{!payment.Opportunity__r.Name}"/>
                         </lightning:layoutItem>
                         <lightning:layoutItem size="4" smallDeviceSize="6">
                             <lightning:formattedText value="{!v.labels.paymentAmount + ': '}"/>
                         </lightning:layoutItem>
                         <lightning:layoutItem size="8" smallDeviceSize="6">
-                            <ui:outputCurrency value="{!payment.npe01__Payment_Amount__c}"/>
+                            <ui:outputCurrency value="{!payment.Payment_Amount__c}"/>
                         </lightning:layoutItem>
                         <lightning:layoutItem size="4" smallDeviceSize="6">
                             <lightning:formattedText value="{!v.labels.paymentScheduledDate + ': '}"/>
                         </lightning:layoutItem>
                         <lightning:layoutItem size="8" smallDeviceSize="6">
-                            <lightning:formattedText value="{!payment.npe01__Scheduled_Date__c}"/>
+                            <lightning:formattedText value="{!payment.Scheduled_Date__c}"/>
                         </lightning:layoutItem>
                     </lightning:layout>
                     <!--END CARD BODY-->

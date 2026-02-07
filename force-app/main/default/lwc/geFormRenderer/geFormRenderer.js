@@ -118,8 +118,8 @@ import DATA_IMPORT_DONATION_DATE from '@salesforce/schema/DataImport__c.Donation
 import DATA_IMPORT_DONATION_RECORD_TYPE_NAME
     from '@salesforce/schema/DataImport__c.Donation_Record_Type_Name__c';
 import OPP_PAYMENT_AMOUNT
-    from '@salesforce/schema/npe01__OppPayment__c.npe01__Payment_Amount__c';
-import SCHEDULED_DATE from '@salesforce/schema/npe01__OppPayment__c.npe01__Scheduled_Date__c';
+    from '@salesforce/schema/OppPayment__c.Payment_Amount__c';
+import SCHEDULED_DATE from '@salesforce/schema/OppPayment__c.Scheduled_Date__c';
 import {
     DISABLE_TOKENIZE_WIDGET_EVENT_NAME,
     LABEL_NEW_LINE,
@@ -141,12 +141,12 @@ import ACCOUNT_OBJECT from '@salesforce/schema/Account';
 import ACCOUNT_NAME_FIELD from '@salesforce/schema/Account.Name';
 import CONTACT_OBJECT from '@salesforce/schema/Contact';
 import CONTACT_NAME_FIELD from '@salesforce/schema/Contact.Name';
-import OPP_PAYMENT_OBJECT from '@salesforce/schema/npe01__OppPayment__c';
+import OPP_PAYMENT_OBJECT from '@salesforce/schema/OppPayment__c';
 import OPPORTUNITY_OBJECT from '@salesforce/schema/Opportunity';
 import PARENT_OPPORTUNITY_FIELD
-    from '@salesforce/schema/npe01__OppPayment__c.npe01__Opportunity__c';
+    from '@salesforce/schema/OppPayment__c.Opportunity__c';
 import ELEVATE_PAYMENT_STATUS_FIELD
-    from '@salesforce/schema/npe01__OppPayment__c.Elevate_Payment_API_Status__c';
+    from '@salesforce/schema/OppPayment__c.Elevate_Payment_API_Status__c';
 import DATA_IMPORT_OBJECT from '@salesforce/schema/DataImport__c';
 import DATA_IMPORT_ACCOUNT1_NAME
     from '@salesforce/schema/DataImport__c.Account1_Name__c';

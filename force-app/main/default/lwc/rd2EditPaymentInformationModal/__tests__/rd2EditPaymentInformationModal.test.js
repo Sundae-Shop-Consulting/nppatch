@@ -66,7 +66,7 @@ describe("c-rd2-edit-payment-information-modal", () => {
             const widget = getElevateWidget(component);
             assertElevateCreditCardWidget(component);
 
-            const expectedDate = new Date(recurringDonation.fields.npe03__Next_Payment_Date__c.value);
+            const expectedDate = new Date(recurringDonation.fields.Next_Payment_Date__c.value);
             const utcDate = new Date(
                 expectedDate.getUTCFullYear(),
                 expectedDate.getUTCMonth(),
@@ -308,8 +308,8 @@ describe("c-rd2-edit-payment-information-modal", () => {
                     Id: "a0900000008MR9bQAG",
                     InstallmentFrequency__c: 1,
                     PaymentMethod__c: "ACH",
-                    npe03__Contact__c: "003S000001WqpKSIAZ",
-                    npe03__Organization__c: "001S000001NAsRFIA1",
+                    Contact__c: "003S000001WqpKSIAZ",
+                    Organization__c: "001S000001NAsRFIA1",
                 },
             };
 
@@ -321,8 +321,8 @@ describe("c-rd2-edit-payment-information-modal", () => {
                 CommitmentId__c: "11a1c101-bcde-001-111f-g1dh00i0jk111",
                 InstallmentFrequency__c: 1,
                 PaymentMethod__c: "ACH",
-                npe03__Contact__c: "003S000001WqpKSIAZ",
-                npe03__Organization__c: "001S000001NAsRFIA1",
+                Contact__c: "003S000001WqpKSIAZ",
+                Organization__c: "001S000001NAsRFIA1",
             });
             expect(updateRecord).toHaveBeenCalledTimes(1);
             expect(updateRecord).toHaveBeenCalledWith(UPDATE_RECORD_ARGS);
@@ -362,8 +362,8 @@ describe("c-rd2-edit-payment-information-modal", () => {
                     Id: "a09S000000HNWL3IAP",
                     InstallmentFrequency__c: 1,
                     PaymentMethod__c: "Credit Card",
-                    npe03__Contact__c: "003S000001WqpKSIAZ",
-                    npe03__Organization__c: "001S000001NAsRFIA1",
+                    Contact__c: "003S000001WqpKSIAZ",
+                    Organization__c: "001S000001NAsRFIA1",
                 },
             };
             expect(updateRecord).toHaveBeenCalledTimes(1);

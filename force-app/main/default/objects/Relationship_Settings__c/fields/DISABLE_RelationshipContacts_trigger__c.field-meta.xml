@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DISABLE_RelationshipContacts_trigger__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>DEPRECATED. Legacy trigger disable field from migration.</description>
+    <externalId>false</externalId>
+    <label>DEP-RelationshipContacts</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

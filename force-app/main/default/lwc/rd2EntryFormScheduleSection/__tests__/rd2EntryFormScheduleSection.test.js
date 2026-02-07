@@ -5,9 +5,9 @@ import getInitialView from "@salesforce/apex/RD2_EntryFormController.getInitialV
 import { getObjectInfo, getPicklistValues } from "lightning/uiObjectInfoApi";
 import { mockReset } from "lightning/inputField";
 
-import FIELD_DAY_OF_MONTH from "@salesforce/schema/npe03__Recurring_Donation__c.Day_of_Month__c";
-import FIELD_INSTALLMENT_PERIOD from "@salesforce/schema/npe03__Recurring_Donation__c.npe03__Installment_Period__c";
-import RECURRING_DONATION_OBJECT from "@salesforce/schema/npe03__Recurring_Donation__c";
+import FIELD_DAY_OF_MONTH from "@salesforce/schema/Recurring_Donation__c.Day_of_Month__c";
+import FIELD_INSTALLMENT_PERIOD from "@salesforce/schema/Recurring_Donation__c.Installment_Period__c";
+import RECURRING_DONATION_OBJECT from "@salesforce/schema/Recurring_Donation__c";
 import { SET_RECURRING_TYPE } from "../../rd2Service/actions";
 
 const mockDayOfMonthPicklistValues = require("./data/wiredDayOfMonthPicklistValues.json");
@@ -90,7 +90,7 @@ describe("c-rd2-entry-form-schedule-section", () => {
             expect(values).toMatchObject({
                 RecurringType__c: "Open",
                 StartDate__c: TEST_DATE,
-                npe03__Installment_Period__c: "Monthly",
+                Installment_Period__c: "Monthly",
             });
         });
 
@@ -208,7 +208,7 @@ describe("c-rd2-entry-form-schedule-section", () => {
                 InstallmentFrequency__c: 2,
                 RecurringType__c: "Open",
                 StartDate__c: TEST_DATE,
-                npe03__Installment_Period__c: "Weekly",
+                Installment_Period__c: "Weekly",
             });
         });
     });

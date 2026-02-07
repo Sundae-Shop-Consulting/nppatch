@@ -311,7 +311,7 @@ public without sharing class HouseholdNamingService {
         return [
                 SELECT Id, Name, SYSTEM_CUSTOM_NAMING__c, Formal_Greeting__c,
                         Informal_Greeting__c, Number_of_Household_Members__c
-                FROM Npo02__Household__c
+                FROM Household__c
                 WHERE Id IN :hhids
         ];
     }

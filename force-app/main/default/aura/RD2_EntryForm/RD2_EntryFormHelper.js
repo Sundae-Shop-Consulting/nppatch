@@ -45,7 +45,7 @@
         } else {
             navEvt = $A.get("e.force:navigateToObjectHome");
             navEvt.setParams({
-                "scope": "npe03__Recurring_Donation__c"
+                "scope": "Recurring_Donation__c"
             });
         }
 

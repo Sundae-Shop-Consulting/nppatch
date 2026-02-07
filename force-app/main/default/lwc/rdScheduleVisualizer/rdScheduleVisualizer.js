@@ -4,12 +4,12 @@ import lblLoading from '@salesforce/label/c.labelMessageLoading'
 import { LightningElement, api, wire, track } from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi';
 
-import FIELD_RD_AMOUNT from '@salesforce/schema/npe03__Recurring_Donation__c.npe03__Amount__c';
-import FIELD_RD_PERIOD from '@salesforce/schema/npe03__Recurring_Donation__c.npe03__Installment_Period__c';
-import FIELD_RD_FREQUENCY from '@salesforce/schema/npe03__Recurring_Donation__c.InstallmentFrequency__c';
-import FIELD_RD_DAYOFMONTH from '@salesforce/schema/npe03__Recurring_Donation__c.Day_of_Month__c';
-import FIELD_RD_STARTDATE from '@salesforce/schema/npe03__Recurring_Donation__c.StartDate__c';
-import FIELD_RD_PAYMENT_METHOD from '@salesforce/schema/npe03__Recurring_Donation__c.PaymentMethod__c';
+import FIELD_RD_AMOUNT from '@salesforce/schema/Recurring_Donation__c.Amount__c';
+import FIELD_RD_PERIOD from '@salesforce/schema/Recurring_Donation__c.Installment_Period__c';
+import FIELD_RD_FREQUENCY from '@salesforce/schema/Recurring_Donation__c.InstallmentFrequency__c';
+import FIELD_RD_DAYOFMONTH from '@salesforce/schema/Recurring_Donation__c.Day_of_Month__c';
+import FIELD_RD_STARTDATE from '@salesforce/schema/Recurring_Donation__c.StartDate__c';
+import FIELD_RD_PAYMENT_METHOD from '@salesforce/schema/Recurring_Donation__c.PaymentMethod__c';
 
 import getInstallments from '@salesforce/apex/RD2_VisualizeScheduleController.getInstallments';
 

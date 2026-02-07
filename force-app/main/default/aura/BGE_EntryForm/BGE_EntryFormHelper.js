@@ -78,7 +78,7 @@
                 // Update Payment
                 rowFields[labels.paymentImportedLookupField] = selectedDonation.Id;
                 rowFields[labels.paymentImportedStatusField] = userSelectedMatch;
-                rowFields[labels.opportunityImportedLookupField] = selectedDonation.npe01__Opportunity__c;
+                rowFields[labels.opportunityImportedLookupField] = selectedDonation.Opportunity__c;
                 rowFields[labels.opportunityImportedStatusField] = userSelectedMatch;
             }
         } else if (selectedDonation === '') {

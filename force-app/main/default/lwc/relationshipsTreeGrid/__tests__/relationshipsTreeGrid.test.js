@@ -197,7 +197,7 @@ describe("c-relationships-tree-grid", () => {
                 pageReference: {
                     attributes: {
                         actionName: "new",
-                        objectApiName: "npe4__Relationship__c",
+                        objectApiName: "Relationship__c",
                     },
                     state: {
                         defaultFieldValues: undefined,
@@ -242,7 +242,7 @@ describe("c-relationships-tree-grid", () => {
 
             // encodeDefaultFieldValues is not implemented in JEST, so we cannot test params
             expect(mockWindowOpen).toHaveBeenCalledWith(
-                expect.stringContaining("/lightning/o/npe4__Relationship__c/new?defaultFieldValues=")
+                expect.stringContaining("/lightning/o/Relationship__c/new?defaultFieldValues=")
             );
         });
     });

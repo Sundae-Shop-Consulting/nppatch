@@ -388,7 +388,7 @@ const arraysMatch = (arr1, arr2) => {
 
 /*******************************************************************************
 * @description Methods converts dot-notation strings provided by importing
-* relationships like 'npe01__OppPayment__r.Name' from the schema into references.
+* relationships like 'OppPayment__r.Name' from the schema into references.
 *
 * @param {object} obj: Object to pull a value from
 * @param {string} dotNotationString: A string of references

@@ -24,7 +24,7 @@
                 this.componentSetObjFix(component, "v.hh", hh);
 
                 // set our auto-naming checkbox states
-                var strExclusions = hh.npo02__SYSTEM_CUSTOM_NAMING__c;
+                var strExclusions = hh.SYSTEM_CUSTOM_NAMING__c;
                 component.set('v.isAutoName', !strExclusions || !strExclusions.includes('Name'));
                 component.set('v.isAutoFormalGreeting', !strExclusions || !strExclusions.includes('Formal_Greeting__c'));
                 component.set('v.isAutoInformalGreeting', !strExclusions || !strExclusions.includes('Informal_Greeting__c'));
@@ -78,7 +78,7 @@
         // query for Household Delete permissions for merge usage
         let strSObject = 'Account';
         if (component.get('v.hhTypePrefix') !== '001') {
-            strSObject = 'npo02__Household__c';
+            strSObject = 'Household__c';
         }
         let action = component.get("c.isDeletable");
         action.setParams({
@@ -315,7 +315,7 @@
             strExclusions += 'Formal_Greeting__c;';
         if (!component.get('v.isAutoInformalGreeting'))
             strExclusions += 'Informal_Greeting__c;';
-        hh.npo02__SYSTEM_CUSTOM_NAMING__c = strExclusions;
+        hh.SYSTEM_CUSTOM_NAMING__c = strExclusions;
     },
 
     /*******************************************************************************************************
@@ -365,7 +365,7 @@
             if (hhTypePrefix === '001') {
                 con.AccountId = null;
             } else {
-                con.npo02__Household__c = null;
+                con.Household__c = null;
             }
             con.HHId__c = null;
             
@@ -444,13 +444,13 @@
             hh.BillingCountry = addr.MailingCountry__c;
             hh.Undeliverable_Address__c = addr.Undeliverable__c === undefined ? false : addr.Undeliverable__c;
         } else {
-            hh.npo02__MailingStreet__c = addr.MailingStreet__c;
+            hh.MailingStreet__c = addr.MailingStreet__c;
             if (addr.MailingStreet2__c)
-                hh.npo02__MailingStreet__c += ',' + addr.MailingStreet2__c;
-            hh.npo02__MailingCity__c = addr.MailingCity__c;
-            hh.npo02__MailingState__c = addr.MailingState__c;
-            hh.npo02__MailingPostalCode__c = addr.MailingPostalCode__c;
-            hh.npo02__MailingCountry__c = addr.MailingCountry__c;
+                hh.MailingStreet__c += ',' + addr.MailingStreet2__c;
+            hh.MailingCity__c = addr.MailingCity__c;
+            hh.MailingState__c = addr.MailingState__c;
+            hh.MailingPostalCode__c = addr.MailingPostalCode__c;
+            hh.MailingCountry__c = addr.MailingCountry__c;
         }
         this.componentSetObjFix(component, 'v.hh', hh);
 
@@ -565,7 +565,7 @@
         if (hhTypePrefix === '001')
             con.AccountId = hhId;
         else
-            con.npo02__Household__c = hhId;
+            con.Household__c = hhId;
         con.HHId__c = hhId;
         // tag each new contact with a timestamp, so we can identify it if we need to Remove it.
         con.dtNewContact = Date.now();
@@ -581,14 +581,14 @@
 
         // perform field validation, which we don't get for free
         if (!conNew.LastName) {
-            this.displayUIMessage(component, $A.get("$Label.npo02.ContactLastNameRqd"), "divUIMessageNewContactPopup");
+            this.displayUIMessage(component, $A.get("$Label.c.ContactLastNameRqd"), "divUIMessageNewContactPopup");
             return;
         }
 
         var addrDefault = component.find('addrMgr').get('v.addrDefault');
         if (addrDefault)
             this.copyAddressToContact(addrDefault, conNew);
-        conNew.npo02__Household_Naming_Order__c = listCon.length;
+        conNew.Household_Naming_Order__c = listCon.length;
         listCon.push(conNew);
         this.componentSetObjFix(component, 'v.listCon', listCon);
         this.initNewContact(component);
@@ -623,8 +623,8 @@
         if (hhId && String(hhId).substr(0, 3) === '001') {
             var acc = conAdd.Account;
             cMembers = acc.Number_of_Household_Members__c;
-        } else if (conAdd.npo02__Household__c) {
-            cMembers = conAdd.npo02__Household__r.Number_of_Household_Members__c;
+        } else if (conAdd.Household__c) {
+            cMembers = conAdd.Household__r.Number_of_Household_Members__c;
         }
         var hhMerge = {
             'Id': hhId
@@ -670,9 +670,9 @@
         if (hhTypePrefix === '001')
             conAdd.AccountId = hhId;
         else
-            conAdd.npo02__Household__c = hhId;
+            conAdd.Household__c = hhId;
         // put them at the end of our naming list
-        conAdd.npo02__Household_Naming_Order__c = listCon.length;
+        conAdd.Household_Naming_Order__c = listCon.length;
         listCon.push(conAdd);
         this.componentSetObjFix(component, 'v.listCon', listCon);
 
@@ -745,9 +745,9 @@
                     if (hhTypePrefix === '001')
                         listConMerge[i].AccountId = hhId;
                     else
-                        listConMerge[i].npo02__Household__c = hhId;
+                        listConMerge[i].Household__c = hhId;
                     // put them at the end of our naming list
-                    listConMerge[i].npo02__Household_Naming_Order__c = i + cExisting;
+                    listConMerge[i].Household_Naming_Order__c = i + cExisting;
                     listCon.push(listConMerge[i]);
                 }
                 this.componentSetObjFix(component, 'v.listCon', listCon);

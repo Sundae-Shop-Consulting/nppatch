@@ -15,19 +15,19 @@ import { HTTP_CODES } from "c/geConstants";
 import { getObjectInfo } from "lightning/uiObjectInfoApi";
 import { getRecord, getFieldValue, getRecordNotifyChange } from "lightning/uiRecordApi";
 
-import RECURRING_DONATION_OBJECT from "@salesforce/schema/npe03__Recurring_Donation__c";
+import RECURRING_DONATION_OBJECT from "@salesforce/schema/Recurring_Donation__c";
 
-import FIELD_NAME from "@salesforce/schema/npe03__Recurring_Donation__c.Name";
-import FIELD_CAMPAIGN from "@salesforce/schema/npe03__Recurring_Donation__c.npe03__Recurring_Donation_Campaign__c";
-import FIELD_AMOUNT from "@salesforce/schema/npe03__Recurring_Donation__c.npe03__Amount__c";
-import FIELD_PAYMENT_METHOD from "@salesforce/schema/npe03__Recurring_Donation__c.PaymentMethod__c";
-import FIELD_STATUS from "@salesforce/schema/npe03__Recurring_Donation__c.Status__c";
-import FIELD_STATUS_REASON from "@salesforce/schema/npe03__Recurring_Donation__c.ClosedReason__c";
-import FIELD_ACH_LAST4 from "@salesforce/schema/npe03__Recurring_Donation__c.ACH_Last_4__c";
-import FIELD_CARD_LAST4 from "@salesforce/schema/npe03__Recurring_Donation__c.CardLast4__c";
-import FIELD_INSTALLMENT_FREQUENCY from "@salesforce/schema/npe03__Recurring_Donation__c.InstallmentFrequency__c";
-import FIELD_INSTALLMENT_PERIOD from "@salesforce/schema/npe03__Recurring_Donation__c.npe03__Installment_Period__c";
-import FIELD_CHANGE_TYPE from "@salesforce/schema/npe03__Recurring_Donation__c.ChangeType__c";
+import FIELD_NAME from "@salesforce/schema/Recurring_Donation__c.Name";
+import FIELD_CAMPAIGN from "@salesforce/schema/Recurring_Donation__c.Recurring_Donation_Campaign__c";
+import FIELD_AMOUNT from "@salesforce/schema/Recurring_Donation__c.Amount__c";
+import FIELD_PAYMENT_METHOD from "@salesforce/schema/Recurring_Donation__c.PaymentMethod__c";
+import FIELD_STATUS from "@salesforce/schema/Recurring_Donation__c.Status__c";
+import FIELD_STATUS_REASON from "@salesforce/schema/Recurring_Donation__c.ClosedReason__c";
+import FIELD_ACH_LAST4 from "@salesforce/schema/Recurring_Donation__c.ACH_Last_4__c";
+import FIELD_CARD_LAST4 from "@salesforce/schema/Recurring_Donation__c.CardLast4__c";
+import FIELD_INSTALLMENT_FREQUENCY from "@salesforce/schema/Recurring_Donation__c.InstallmentFrequency__c";
+import FIELD_INSTALLMENT_PERIOD from "@salesforce/schema/Recurring_Donation__c.Installment_Period__c";
+import FIELD_CHANGE_TYPE from "@salesforce/schema/Recurring_Donation__c.ChangeType__c";
 
 import currencyFieldLabel from "@salesforce/label/c.lblCurrency";
 import cancelButtonLabel from "@salesforce/label/c.stgBtnCancel";
@@ -69,7 +69,7 @@ import MAILING_COUNTRY_FIELD from "@salesforce/schema/Contact.MailingCountry";
 import CONTACT_FIRST_NAME from "@salesforce/schema/Contact.FirstName";
 import CONTACT_LAST_NAME from "@salesforce/schema/Contact.LastName";
 import ACCOUNT_NAME from "@salesforce/schema/Account.Name";
-import ACCOUNT_PRIMARY_CONTACT_LAST_NAME from "@salesforce/schema/Account.npe01__One2OneContact__r.LastName";
+import ACCOUNT_PRIMARY_CONTACT_LAST_NAME from "@salesforce/schema/Account.One2OneContact__r.LastName";
 
 /***
  * @description Event name fired when the Elevate credit card widget

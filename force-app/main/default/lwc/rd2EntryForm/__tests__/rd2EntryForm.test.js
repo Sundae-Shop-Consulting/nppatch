@@ -355,11 +355,11 @@ describe("c-rd2-entry-form", () => {
                 RecurringType__c: "Open",
                 Day_of_Month__c: "6",
                 StartDate__c: "2021-02-03",
-                npe03__Installment_Period__c: "Monthly",
-                npe03__Contact__c: "001fakeContactId",
-                npe03__Date_Established__c: "2021-02-03",
+                Installment_Period__c: "Monthly",
+                Contact__c: "001fakeContactId",
+                Date_Established__c: "2021-02-03",
                 PaymentMethod__c: "ACH",
-                npe03__Amount__c: 1,
+                Amount__c: 1,
                 InstallmentFrequency__c: 1,
             };
             validateCommitmentMessage(EXPECTED_RECORD);
@@ -438,11 +438,11 @@ describe("c-rd2-entry-form", () => {
                 RecurringType__c: "Open",
                 Day_of_Month__c: "6",
                 StartDate__c: "2021-02-03",
-                npe03__Installment_Period__c: "Monthly",
-                npe03__Organization__c: "001fakeAccountId",
-                npe03__Date_Established__c: "2021-02-03",
+                Installment_Period__c: "Monthly",
+                Organization__c: "001fakeAccountId",
+                Date_Established__c: "2021-02-03",
                 PaymentMethod__c: "ACH",
-                npe03__Amount__c: 1,
+                Amount__c: 1,
                 InstallmentFrequency__c: 1,
             };
             validateCommitmentMessage(EXPECTED_RECORD);
@@ -665,15 +665,15 @@ describe("c-rd2-entry-form", () => {
                 RecurringType__c: "Open",
                 Day_of_Month__c: "6",
                 StartDate__c: "2021-02-03",
-                npe03__Installment_Period__c: "Monthly",
-                npe03__Contact__c: "001fakeContactId",
-                npe03__Date_Established__c: "2021-02-03",
+                Installment_Period__c: "Monthly",
+                Contact__c: "001fakeContactId",
+                Date_Established__c: "2021-02-03",
                 PaymentMethod__c: "ACH",
                 Status__c: "Active",
-                npe03__Amount__c: 0.5,
+                Amount__c: 0.5,
                 Id: "a0963000008oxZnAAI",
                 InstallmentFrequency__c: 1,
-                npe03__Installments__c: null,
+                Installments__c: null,
             };
 
             validateCommitmentMessage(EXPECTED_RECORD);
@@ -994,7 +994,7 @@ describe("c-rd2-entry-form", () => {
             const fields = {
                 ...rd2WithoutCommitmentCard.fields,
                 RecurringType__c: { value: "Fixed" },
-                npe03__Installments__c: { value: 12 },
+                Installments__c: { value: 12 },
             };
 
             getRecord.emit({ ...rd2WithoutCommitmentCard, fields }, (config) => {

@@ -43,7 +43,7 @@
                 <div class="slds-grid slds-grid_align-center">
                     <span onkeydown="{!c.openChangeAddress}">
                     <lightning:button aura:id="btnChangeAddress"
-                                      label="{!$Label.npo02.ChangeAddress}"
+                                      label="{!$Label.c.ChangeAddress}"
                                       onclick="{!c.openChangeAddress}" />
                     </span>
                 </div>
@@ -66,14 +66,14 @@
                                         tabindex="0"/>
                     </div>
                     <h2 id="searchPopupLabel" class="slds-text-heading_medium" tabindex="-1">
-                        {!$Label.npo02.ChangeAddress}
+                        {!$Label.c.ChangeAddress}
                     </h2>
                 </div>
                 <div class="slds-modal__content slds-p-around_medium">
                     <lightning:accordion aura:id="address_accordion" allowMultipleSectionsOpen="false"
                                          activeSectionName="existing-address-section">
                         <lightning:accordionSection name="existing-address-section"
-                                                    label="{!$Label.npo02.SelectExistingAddress}">
+                                                    label="{!$Label.c.SelectExistingAddress}">
                             <ul class="slds-list_vertical slds-has-dividers_around-space slds-has-list-interactions">
                                 <aura:iteration items="{!v.listAddr}" var="addr" indexVar="iAddr" >
                                     <li class="{!iAddr == v.iAddrSelected ? 'slds-item selected' : 'slds-item' }"
@@ -108,7 +108,7 @@
                             </ul>
                         </lightning:accordionSection>
                         <lightning:accordionSection name="new-address-section"
-                                                    label="{!$Label.npo02.EnterNewAddress}">
+                                                    label="{!$Label.c.EnterNewAddress}">
                             <div class="slds-form_stacked" aura:id="accordionSection">
                                 <div class="slds-form-element">
                                     <lightning:textarea value="{!v.addrNew.MailingStreet__c}" aura:id="txtStreet"
@@ -144,8 +144,8 @@
                         <span onkeydown="{!c.saveChangeAddress}">  
                         <lightning:button class="slds-button slds-button_brand slds-m-left_small"
                                    aura:id="btnSaveChangeAddress"
-                                   title="{!$Label.npo02.SetAddress}"
-                                   label="{!$Label.npo02.SetAddress}"
+                                   title="{!$Label.c.SetAddress}"
+                                   label="{!$Label.c.SetAddress}"
                                    onclick="{!c.saveChangeAddress}" />
                         </span>
                         <span id="modalEndFocus" tabindex="0"></span>

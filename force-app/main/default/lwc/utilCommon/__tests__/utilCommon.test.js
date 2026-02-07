@@ -44,17 +44,17 @@ describe("utilCommon", () => {
                 errors: [
                     {
                         message: "Amount must be greater than 1",
-                        fields: ["npe03__Amount__c"],
+                        fields: ["Amount__c"],
                     },
                     {
                         message: "Recurring period must not be 1st and 15th",
-                        fields: ["npe03__Installment_Period__c"],
+                        fields: ["Installment_Period__c"],
                     },
                 ],
             };
             const errorInfo = constructErrorMessage(saveResult);
             expect(errorInfo).toMatchObject({
-                detail: "npe03__Amount__c - Amount must be greater than 1, npe03__Installment_Period__c - Recurring period must not be 1st and 15th",
+                detail: "Amount__c - Amount must be greater than 1, Installment_Period__c - Recurring period must not be 1st and 15th",
                 header: commonUnknownError,
             });
         });

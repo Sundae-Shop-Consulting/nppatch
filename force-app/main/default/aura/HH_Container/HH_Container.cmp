@@ -68,7 +68,7 @@
                                 <lightning:icon iconName="standard:household" class="slds-icon_medium"/>
                             </div>
                             <div class="slds-media__body">
-                                <h1 class="slds-text-heading_medium">{!$Label.npo02.ManageHousehold}</h1>
+                                <h1 class="slds-text-heading_medium">{!$Label.c.ManageHousehold}</h1>
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                 <!-- the Contact Cards & Canvas section -->
                 <div class="slds-p-bottom_small">
                     <div class="slds-grid">
-                        <div class="slds-col slds-text-heading_label slds-p-around_x-small">{!$Label.npo02.HouseholdMembers}</div>
+                        <div class="slds-col slds-text-heading_label slds-p-around_x-small">{!$Label.c.HouseholdMembers}</div>
                         <div class="slds-col slds-p-around_x-small">
                             <!-- the autocomplete component for finding and adding contacts -->
                             <c:HH_AutoComplete aura:id="HHAutoComplete" hhId="{!v.hhId}"
@@ -118,12 +118,12 @@
 
                 <!-- the Address section -->
                 <div class="slds-p-bottom_large">
-                    <div class="slds-text-heading_label slds-p-around_x-small">{!$Label.npo02.HouseholdAddress}</div>
+                    <div class="slds-text-heading_label slds-p-around_x-small">{!$Label.c.HouseholdAddress}</div>
                     <c:HH_AddressMgr listAddr="{!v.listAddr}" aura:id="addrMgr" addressUndeliverableLabel="{!v.fieldLabels.Undeliverable__c}"/>
                 </div>
 
                 <!-- the section for our 3 special naming & greeting fields -->
-                <div class="slds-text-heading_label slds-p-around_x-small">{!$Label.npo02.HouseholdDetails}</div>
+                <div class="slds-text-heading_label slds-p-around_x-small">{!$Label.c.HouseholdDetails}</div>
                 <div class="slds-grid slds-grid_align-spread slds-m-around_medium">
                     <div class="slds-form_stacked" style="width:80%" >
                         <lightning:input value="{!v.hh.Name}" aura:id="txtHHName" required="true"
@@ -131,28 +131,28 @@
                         <div class="slds-form-element slds-m-bottom_medium">
                             <div class="slds-form-element__control">
                                 <lightning:input type="checkbox" aura:id="cbxAutoHHName" class="slds-checkbox"
-                                                 label="{!$Label.npo02.AutoName}" onchange="{!c.onCheck}"
+                                                 label="{!$Label.c.AutoName}" onchange="{!c.onCheck}"
                                                  checked="{!v.isAutoName}"/>
                             </div>
                         </div>
-                        <lightning:input value="{!v.hh.npo02__Formal_Greeting__c}" aura:id="txtFormalGreeting"
+                        <lightning:input value="{!v.hh.Formal_Greeting__c}" aura:id="txtFormalGreeting"
                                          label="{!$Label.c.lblFormalGreeting}"
                                          onchange="{!c.onTextChange}" />
                         <div class="slds-form-element slds-m-bottom_medium">
                             <div class="slds-form-element__control">
-                                    <lightning:input label="{!$Label.npo02.AutoFormalGreeting}" type="checkbox"
+                                    <lightning:input label="{!$Label.c.AutoFormalGreeting}" type="checkbox"
                                                      aura:id="cbxAutoFormalGreeting"
                                                      class="slds-checkbox"
                                                      onchange="{!c.onCheck}" checked="{!v.isAutoFormalGreeting}"/>
                             </div>
                         </div>
-                        <lightning:input value="{!v.hh.npo02__Informal_Greeting__c}" aura:id="txtInformalGreeting"
+                        <lightning:input value="{!v.hh.Informal_Greeting__c}" aura:id="txtInformalGreeting"
                                          label="{!$Label.c.lblInformalGreeting}" onchange="{!c.onTextChange}" />
                         <div class="slds-form-element">
                             <div class="slds-form-element__control">
                                 <lightning:input type="checkbox" aura:id="cbxAutoInformalGreeting"
                                                  onchange="{!c.onCheck}" checked="{!v.isAutoInformalGreeting}"
-                                                 label="{!$Label.npo02.AutoInformalGreeting}"/>
+                                                 label="{!$Label.c.AutoInformalGreeting}"/>
                             </div>
                         </div>
                     </div>
@@ -231,7 +231,7 @@
                         <div class="slds-modal__header">
                             <lightning:buttonIcon iconName="utility:close" class="slds-modal__close" variant="bare-inverse"
                                 size="large" onclick="{!c.cancelNewContact}" alternativeText="{!$Label.c.bdiBtnClose}" />
-                            <h2 id="searchPopupLabel" class="slds-text-heading_medium">{!$Label.npo02.NewContact}</h2>
+                            <h2 id="searchPopupLabel" class="slds-text-heading_medium">{!$Label.c.NewContact}</h2>
                         </div>
 
                         <div class="slds-modal__content slds-p-around_medium">
@@ -262,7 +262,7 @@
                                                   label="{!$Label.c.stgBtnCancel}"
                                                   onclick="{!c.cancelNewContact}" />
                                 <lightning:button aura:id="btnNew"
-                                                  label="{!$Label.npo02.NewContact}"
+                                                  label="{!$Label.c.NewContact}"
                                                   onclick="{!c.doNewContact}" />
                             </div>
                         </div>

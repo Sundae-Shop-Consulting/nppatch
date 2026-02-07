@@ -3,7 +3,7 @@ import LOCALE from '@salesforce/i18n/locale';
 import { showToast, constructErrorMessage, isNull } from 'c/utilCommon';
 import { getRecord } from 'lightning/uiRecordApi';
 
-import NAME_FIELD from '@salesforce/schema/npe03__Recurring_Donation__c.Name';
+import NAME_FIELD from '@salesforce/schema/Recurring_Donation__c.Name';
 
 import header from '@salesforce/label/c.RD2_PauseHeader';
 import description from '@salesforce/label/c.RD2_PauseDescription';

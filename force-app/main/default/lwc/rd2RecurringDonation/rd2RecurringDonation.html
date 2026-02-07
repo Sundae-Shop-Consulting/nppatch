@@ -125,7 +125,7 @@
                 <tbody>
                     <template for:each={data} for:item="item">
                         <tr key={item.recurringDonation.Id} aria-selected="false" class="slds-hint-parent" scope="row">
-                            <td key={item.recurringDonation.npe03__Amount__c} class={tdClassesNotHidden} data-label={labels.commonAmount} tabindex="-1" aria-label={item.recurringDonation.npe03__Amount__c} role="gridcell">
+                            <td key={item.recurringDonation.Amount__c} class={tdClassesNotHidden} data-label={labels.commonAmount} tabindex="-1" aria-label={item.recurringDonation.Amount__c} role="gridcell">
                                 <div class={rowClasses} title={labels.commonAmount}>
                                     {item.recurringDonation.Amt}
                                 </div>
@@ -143,13 +143,13 @@
                                     {item.status}</div>
                             </td>
     
-                            <td key={item.recurringDonation.npe03__Date_Established__c} data-id={item.recurringDonation.Id} class={tdClasses} data-label={labels.RD_firstDonation} tabindex="-1" aria-label={item.recurringDonation.npe03__Date_Established__c} role="gridcell">
+                            <td key={item.recurringDonation.Date_Established__c} data-id={item.recurringDonation.Id} class={tdClasses} data-label={labels.RD_firstDonation} tabindex="-1" aria-label={item.recurringDonation.Date_Established__c} role="gridcell">
                                 <div class={rowClasses} title={labels.RD_firstDonation}>
                                     <lightning-formatted-date-time 
                                     year="numeric"
                                     month="numeric"
                                     day="numeric"
-                                    value={item.recurringDonation.npe03__Date_Established__c}
+                                    value={item.recurringDonation.Date_Established__c}
                                     time-zone="UTC">
                                     </lightning-formatted-date-time>
                                 </div>
@@ -165,13 +165,13 @@
                                     </lightning-formatted-date-time>
                                 </div>
                             </td>
-                            <td key={item.mostRecentDonation} data-id={item.recurringDonation.Id} class={tdClasses} data-label={labels.RD_mostRecentDonation} tabindex="-1" aria-label={item.recurringDonation.npe03__Last_Payment_Date__c} role="gridcell">
+                            <td key={item.mostRecentDonation} data-id={item.recurringDonation.Id} class={tdClasses} data-label={labels.RD_mostRecentDonation} tabindex="-1" aria-label={item.recurringDonation.Last_Payment_Date__c} role="gridcell">
                                 <div class={rowClasses} title={labels.RD_mostRecentDonation}>
                                     <lightning-formatted-date-time 
                                     year="numeric"
                                     month="numeric"
                                     day="numeric"
-                                    value={item.recurringDonation.npe03__Last_Payment_Date__c}
+                                    value={item.recurringDonation.Last_Payment_Date__c}
                                     time-zone="UTC">
                                     </lightning-formatted-date-time>
                                 </div>

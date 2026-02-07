@@ -13,12 +13,12 @@
                         <p class="slds-tile__title slds-truncate">{!v.value.Name}</p>
                         <lightning:buttonIcon iconName="utility:new" variant="bare" tabindex="-1"
                             class="slds-shrink-none" size="large"
-                            alternativeText="{!$Label.npo02.Add + ' ' + v.value.Name}" ariaLabel="{!$Label.npo02.Add + ' ' + v.value.Name}" />
+                            alternativeText="{!$Label.c.Add + ' ' + v.value.Name}" ariaLabel="{!$Label.c.Add + ' ' + v.value.Name}" />
                     </div>
                     <div class="slds-tile__detail slds-text-body_small slds-listbox__option-text slds-listbox__option-text_entity">
                         <ul>
-                            <aura:if isTrue="{!v.value.npo02__Household__r.Name != null}" >
-                                <li>{!v.value.npo02__Household__r.Name}</li>
+                            <aura:if isTrue="{!v.value.Household__r.Name != null}" >
+                                <li>{!v.value.Household__r.Name}</li>
                                 <aura:set attribute="else">                            
                                     <li>{!v.value.Account.Name}</li>
                                 </aura:set>

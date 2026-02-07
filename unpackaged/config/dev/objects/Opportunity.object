@@ -71,7 +71,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npe01__Member_Level__c</picklist>
+            <picklist>Member_Level__c</picklist>
             <values>
                 <fullName>Bronze</fullName>
                 <default>false</default>
@@ -86,7 +86,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npe01__Membership_Origin__c</picklist>
+            <picklist>Membership_Origin__c</picklist>
             <values>
                 <fullName>New</fullName>
                 <default>false</default>
@@ -101,7 +101,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npo02__systemHouseholdContactRoleProcessor__c</picklist>
+            <picklist>systemHouseholdContactRoleProcessor__c</picklist>
             <values>
                 <fullName>All Opportunities</fullName>
                 <default>true</default>
@@ -183,7 +183,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npe01__Member_Level__c</picklist>
+            <picklist>Member_Level__c</picklist>
             <values>
                 <fullName>Bronze</fullName>
                 <default>false</default>
@@ -198,7 +198,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npe01__Membership_Origin__c</picklist>
+            <picklist>Membership_Origin__c</picklist>
             <values>
                 <fullName>New</fullName>
                 <default>false</default>
@@ -213,7 +213,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npo02__systemHouseholdContactRoleProcessor__c</picklist>
+            <picklist>systemHouseholdContactRoleProcessor__c</picklist>
             <values>
                 <fullName>All Opportunities</fullName>
                 <default>true</default>
@@ -295,7 +295,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npe01__Member_Level__c</picklist>
+            <picklist>Member_Level__c</picklist>
             <values>
                 <fullName>Bronze</fullName>
                 <default>false</default>
@@ -310,7 +310,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npe01__Membership_Origin__c</picklist>
+            <picklist>Membership_Origin__c</picklist>
             <values>
                 <fullName>New</fullName>
                 <default>false</default>
@@ -325,7 +325,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npo02__systemHouseholdContactRoleProcessor__c</picklist>
+            <picklist>systemHouseholdContactRoleProcessor__c</picklist>
             <values>
                 <fullName>All Opportunities</fullName>
                 <default>true</default>
@@ -407,7 +407,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npe01__Member_Level__c</picklist>
+            <picklist>Member_Level__c</picklist>
             <values>
                 <fullName>Bronze</fullName>
                 <default>false</default>
@@ -422,7 +422,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npe01__Membership_Origin__c</picklist>
+            <picklist>Membership_Origin__c</picklist>
             <values>
                 <fullName>New</fullName>
                 <default>false</default>
@@ -437,7 +437,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npo02__systemHouseholdContactRoleProcessor__c</picklist>
+            <picklist>systemHouseholdContactRoleProcessor__c</picklist>
             <values>
                 <fullName>All Opportunities</fullName>
                 <default>true</default>
@@ -519,7 +519,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npe01__Member_Level__c</picklist>
+            <picklist>Member_Level__c</picklist>
             <values>
                 <fullName>Bronze</fullName>
                 <default>false</default>
@@ -534,7 +534,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npe01__Membership_Origin__c</picklist>
+            <picklist>Membership_Origin__c</picklist>
             <values>
                 <fullName>New</fullName>
                 <default>false</default>
@@ -549,7 +549,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npo02__systemHouseholdContactRoleProcessor__c</picklist>
+            <picklist>systemHouseholdContactRoleProcessor__c</picklist>
             <values>
                 <fullName>All Opportunities</fullName>
                 <default>true</default>
@@ -631,7 +631,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npe01__Member_Level__c</picklist>
+            <picklist>Member_Level__c</picklist>
             <values>
                 <fullName>Bronze</fullName>
                 <default>false</default>
@@ -646,7 +646,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npe01__Membership_Origin__c</picklist>
+            <picklist>Membership_Origin__c</picklist>
             <values>
                 <fullName>New</fullName>
                 <default>false</default>
@@ -661,7 +661,7 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>npo02__systemHouseholdContactRoleProcessor__c</picklist>
+            <picklist>systemHouseholdContactRoleProcessor__c</picklist>
             <values>
                 <fullName>All Opportunities</fullName>
                 <default>true</default>

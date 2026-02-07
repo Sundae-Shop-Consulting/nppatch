@@ -3,27 +3,27 @@
     <compactLayouts>
         <fullName>NPSP_Household_Account</fullName>
         <fields>Name</fields>
-        <fields>npo02__TotalOppAmount__c</fields>
+        <fields>TotalOppAmount__c</fields>
         <fields>%%%NAMESPACE%%%Number_of_Household_Members__c</fields>
         <label>NPSP Household Account</label>
     </compactLayouts>
     <compactLayouts>
         <fullName>NPSP_Organization_Account</fullName>
         <fields>Name</fields>
-        <fields>npo02__NumberOfClosedOpps__c</fields>
-        <fields>npo02__TotalOppAmount__c</fields>
+        <fields>NumberOfClosedOpps__c</fields>
+        <fields>TotalOppAmount__c</fields>
         <fields>Website</fields>
         <label>NPSP Organization Account</label>
     </compactLayouts>
     <listViews>
         <fullName>Household_Accounts</fullName>
         <columns>ACCOUNT.NAME</columns>
-        <columns>npo02__Formal_Greeting__c</columns>
-        <columns>npo02__Informal_Greeting__c</columns>
-        <columns>npo02__TotalOppAmount__c</columns>
-        <columns>npo02__AverageAmount__c</columns>
-        <columns>npo02__Best_Gift_Year__c</columns>
-        <columns>npo02__HouseholdPhone__c</columns>
+        <columns>Formal_Greeting__c</columns>
+        <columns>Informal_Greeting__c</columns>
+        <columns>TotalOppAmount__c</columns>
+        <columns>AverageAmount__c</columns>
+        <columns>Best_Gift_Year__c</columns>
+        <columns>HouseholdPhone__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>ACCOUNT.RECORDTYPE</field>
