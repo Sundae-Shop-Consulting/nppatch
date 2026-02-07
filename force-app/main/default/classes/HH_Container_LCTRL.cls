@@ -429,14 +429,6 @@ public with sharing class HH_Container_LCTRL {
             TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.flag.HH, false);
         }
 
-        if (listInsert.size() > 0) {
-            SfdoInstrumentationService.getInstance().log(
-                SfdoInstrumentationEnum.Feature.ManageHousehold, 
-                    SfdoInstrumentationEnum.Component.Page, 
-                    SfdoInstrumentationEnum.Action.HouseholdMemberAdded, 
-                    new Map<String, String>{ 'SourceClass' => 'HH_Container_LCTRL' },
-                    listInsert.size());
-        }
     }
 
     /*******************************************************************************************************
@@ -511,13 +503,6 @@ public with sharing class HH_Container_LCTRL {
         } catch (Exception ex) {
             throw new AuraHandledException(ex.getMessage());
         }
-
-        SfdoInstrumentationService.getInstance().log(
-            SfdoInstrumentationEnum.Feature.ManageHousehold, 
-            SfdoInstrumentationEnum.Component.Page, 
-            SfdoInstrumentationEnum.Action.HouseholdMerged, 
-            new Map<String, String>{ 'SourceClass' => 'HH_Container_LCTRL' },
-            listHHMerge.size());
     }
 
     /*******************************************************************************************************
@@ -566,21 +551,6 @@ public with sharing class HH_Container_LCTRL {
             throw new AuraHandledException(e.getMessage());
         }
 
-        try {
-            if (UTIL_Describe.isObjectIdThisType(hh.Id, 'Account')) {
-                if (originalHouseholdCustomNameSetting != (string) hh.get('SYSTEM_CUSTOM_NAMING__c')) {
-                    SfdoInstrumentationService.getInstance().log(
-                        SfdoInstrumentationEnum.Feature.ManageHousehold, 
-                        SfdoInstrumentationEnum.Component.Page, 
-                        SfdoInstrumentationEnum.Action.HouseholdNamingSettingsUpdated,
-                        new Map<String, String>{ 'SourceClass' => 'HH_Container_LCTRL' },
-                        1);
-                    originalHouseholdCustomNameSetting = (String) hh.get('SYSTEM_CUSTOM_NAMING__c');
-                }
-            }
-        } catch (Exception e) {
-            // ignore errors for instrumentation
-        }
     }
 
     private static Boolean canReadAddress() {

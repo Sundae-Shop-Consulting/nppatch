@@ -145,15 +145,6 @@ public class RD2_RecurringDonations_TDTM extends TDTM_Runnable {
 
         updateSustainerForDeleteAndUndelete(rds, oldRds, triggerAction);
 
-        if (triggerAction == TDTM_Runnable.Action.AfterInsert) {
-            SfdoInstrumentationService.getInstance().log(
-                SfdoInstrumentationEnum.Feature.EnhancedRecurringDonations,
-                SfdoInstrumentationEnum.Component.TriggerAction,
-                SfdoInstrumentationEnum.Action.Create,
-                new Map<String, String>{ 'SourceClass' => 'RD2_RecurringDonations_TDTM' },
-                rds.size());
-        }
-
         TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.flag.RD, false);
         return dmlActions;
     }

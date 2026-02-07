@@ -117,15 +117,6 @@ public class RD_RecurringDonations_TDTM extends TDTM_Runnable {
             }
         }
 
-        if (triggerAction == TDTM_Runnable.Action.AfterInsert) {
-            SfdoInstrumentationService.getInstance().log(
-                SfdoInstrumentationEnum.Feature.LegacyRecurringDonations,
-                SfdoInstrumentationEnum.Component.TriggerAction,
-                SfdoInstrumentationEnum.Action.Create,
-                new Map<String, String>{ 'SourceClass' => 'RD_RecurringDonations_TDTM' },
-                newlist.size());
-        }
-
         TDTM_TriggerHandler.processDML(dmlWrapper);
         dmlWrapper = null;
         if (triggerAction != TDTM_Runnable.Action.BeforeInsert && triggerAction != TDTM_Runnable.Action.BeforeUpdate) {

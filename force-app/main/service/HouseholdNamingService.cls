@@ -163,12 +163,6 @@ public without sharing class HouseholdNamingService {
             if (numInformalGreetingsSet > 0) {
                 context.put('Informal Greetings Updated', numInformalGreetingsSet);
             }
-            SfdoInstrumentationService.getInstance().log(
-                SfdoInstrumentationEnum.Feature.HouseholdNaming, 
-                SfdoInstrumentationEnum.Component.TriggerAction, 
-                SfdoInstrumentationEnum.Action.HouseholdNamesUpdated, 
-                context,
-                householdsOrAccounts.size());
             numHouseholdNamesSet = 0;
             numFormalGreetingsSet = 0;
             numInformalGreetingsSet = 0;

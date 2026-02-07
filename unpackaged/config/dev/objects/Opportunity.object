@@ -100,17 +100,6 @@
                 <default>false</default>
             </values>
         </picklistValues>
-        <picklistValues>
-            <picklist>systemHouseholdContactRoleProcessor__c</picklist>
-            <values>
-                <fullName>All Opportunities</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>No Opportunities</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>Grant</fullName>
@@ -209,17 +198,6 @@
             </values>
             <values>
                 <fullName>Renewal</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>systemHouseholdContactRoleProcessor__c</picklist>
-            <values>
-                <fullName>All Opportunities</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>No Opportunities</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -324,17 +302,6 @@
                 <default>false</default>
             </values>
         </picklistValues>
-        <picklistValues>
-            <picklist>systemHouseholdContactRoleProcessor__c</picklist>
-            <values>
-                <fullName>All Opportunities</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>No Opportunities</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>MajorGift</fullName>
@@ -433,17 +400,6 @@
             </values>
             <values>
                 <fullName>Renewal</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>systemHouseholdContactRoleProcessor__c</picklist>
-            <values>
-                <fullName>All Opportunities</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>No Opportunities</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -548,17 +504,6 @@
                 <default>false</default>
             </values>
         </picklistValues>
-        <picklistValues>
-            <picklist>systemHouseholdContactRoleProcessor__c</picklist>
-            <values>
-                <fullName>All Opportunities</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>No Opportunities</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>Membership</fullName>
@@ -657,17 +602,6 @@
             </values>
             <values>
                 <fullName>Renewal</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>systemHouseholdContactRoleProcessor__c</picklist>
-            <values>
-                <fullName>All Opportunities</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>No Opportunities</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

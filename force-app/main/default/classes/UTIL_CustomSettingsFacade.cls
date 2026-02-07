@@ -565,34 +565,8 @@ public without sharing class UTIL_CustomSettingsFacade {
     }
 
     private static void configHouseholdSettings(Households_Settings__c hs) {
-        String oldProcessor = '';
-        //modified to check again the Id instead of the object
-        //get the model they used to be in
-        Schema.DescribeFieldResult F = Schema.SObjectType.Contact.fields.SystemHouseholdProcessor__c;
-        List<Schema.PicklistEntry> P = F.getPicklistValues();
-
-        for(Schema.PicklistEntry pe : P){
-            if (pe.isDefaultValue()){
-                if (pe.getValue() == HH_Households.ALL_PROCESSOR){
-                    oldProcessor = HH_Households.ALL_PROCESSOR;
-                } else if (pe.getValue() == HH_Households.ALL_INDIVIDUALS_PROCESSOR){
-                    oldProcessor = HH_Households.ALL_INDIVIDUALS_PROCESSOR;
-                } else if (pe.getValue() == HH_Households.NO_HOUSEHOLDS_PROCESSOR){
-                    oldProcessor = HH_Households.NO_HOUSEHOLDS_PROCESSOR;
-                }
-                break;
-            }
-        }
-        //set them up with their old setting in the new settings object
-        if (oldProcessor == HH_Households.ALL_PROCESSOR){
-            hs.Household_Rules__c = HH_Households.ALL_PROCESSOR;
-        } else if (oldProcessor == HH_Households.ALL_INDIVIDUALS_PROCESSOR){
-            hs.Household_Rules__c = HH_Households.ALL_INDIVIDUALS_PROCESSOR;
-        } else if (oldProcessor == HH_Households.NO_HOUSEHOLDS_PROCESSOR){
-            hs.Household_Rules__c = HH_Households.NO_HOUSEHOLDS_PROCESSOR;
-        } else {
-            hs.Household_Rules__c = HH_Households.NO_HOUSEHOLDS_PROCESSOR;
-        }
+        // Default to no automatic household creation
+        hs.Household_Rules__c = HH_Households.NO_HOUSEHOLDS_PROCESSOR;
 
         hs.Household_Member_Contact_Role__c = CAO_Constants.HH_MEMBER_CONTACT_ROLE;
         hs.Always_Rollup_to_Primary_Contact__c = false;

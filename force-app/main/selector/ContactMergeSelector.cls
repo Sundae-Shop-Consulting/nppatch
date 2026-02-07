@@ -102,14 +102,6 @@ public with sharing class ContactMergeSelector {
                 .withWhere(whereString)
                 .build();
         List<SObject> results = Database.query(queryString);
-
-        SfdoInstrumentationService.getInstance().log(
-            SfdoInstrumentationEnum.Feature.ContactMerge, 
-            SfdoInstrumentationEnum.Component.Page, 
-            SfdoInstrumentationEnum.Action.DuplicateRecordSetResultCount, 
-            new Map<String, String>{ 'SourceClass' => 'ContactMergeSelector' },
-            results.size());
-
         return results;
     }
 

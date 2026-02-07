@@ -398,15 +398,9 @@ private class HH_Container_TEST {
         Contact[] hhContactsToRemove = new Contact[0];
         Account[] accountsToMerge = new Account[] { accounts[1], accounts[2] };
 
-        SfdoInstrumentationService.instance = null;
-
         Test.startTest();
         accounts[0].SYSTEM_CUSTOM_NAMING__c = 'Formal_Greeting__c';
         HH_Container_LCTRL.saveHouseholdPage(accounts[0], hhContacts, hhContactsToRemove, accountsToMerge);
-
-        System.assertNotEquals(null, SfdoInstrumentationService.instance, 'The Instrumentation Service Instance should have been instantiated');
-        System.assertEquals(SfdoInstrumentationEnum.Action.HouseholdNamingSettingsUpdated.name(), SfdoInstrumentationService.lastCallData?.lastActionName, 
-            'The Last Call Data should have been set');
 
         Test.stopTest();
 

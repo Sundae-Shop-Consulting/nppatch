@@ -517,10 +517,6 @@ private class RD2_ApiService_Extended_TEST {
     private static Map<Id, List<Schedule>> retrieveSchedulesUsingApi(Set<Id> rdIds) {
         RD2_ScheduleService.currentDate = CURRENT_DATE;
 
-        SfdoInstrumentationService.instance = null;
-        System.assertEquals(null, SfdoInstrumentationService.instance, 
-            'The Instrumentation Service Instance should not have been instantiated');
-
         Callable_API callable = new Callable_API();
 
         String response = (String) callable.call(API_QUERY_SCHEDULES,
@@ -541,10 +537,6 @@ private class RD2_ApiService_Extended_TEST {
      */
     private static Map<Id, List<Installment>> queryInstallments(Date startDate, Date endDate, Id rdId) {
         RD2_ScheduleService.currentDate = CURRENT_DATE;
-
-        SfdoInstrumentationService.instance = null;
-        System.assertEquals(null, SfdoInstrumentationService.instance, 
-            'The Instrumentation Service Instance should not have been instantiated');
 
         Callable_API callable = new Callable_API();
 

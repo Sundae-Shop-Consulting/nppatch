@@ -47,18 +47,10 @@ tasks:
             path: scripts/configure_default_settings.cls
             apex: initializeDefaultSettings();
 
-    deploy_core_mock_classes:
-        description: Deploy mock SfdoLogUtils class for unmanaged deployments
-        class_path: cumulusci.tasks.salesforce.Deploy
-        group: Salesforce Metadata
-        options:
-            path: unpackaged/config/core_instrumentation_mock_classes
-
 flows:
     # dev_org:
     #     steps:
     #         1:
-    #             task: deploy_core_mock_classes
     #         2:
     #             flow: deploy_unmanaged
     #         3:
