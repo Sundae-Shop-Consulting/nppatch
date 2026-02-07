@@ -156,14 +156,6 @@ public class HouseholdNamingService_TEST {
         system.assertEquals('LastName0 ' +  system.Label.DefaultHouseholdName, con.household__r.Name);
         system.assertEquals('FirstName0',con.household__r.Informal_Greeting__c);
         system.assert(con.household__r.Formal_greeting__c.endsWith('FirstName0 LastName0'));
-
-        System.assertEquals(SfdoInstrumentationEnum.Feature.HouseholdNaming.name(), SfdoInstrumentationService.lastCallData.lastFeatureName);
-        System.assertEquals(SfdoInstrumentationEnum.Component.TriggerAction.name(), SfdoInstrumentationService.lastCallData.lastComponentName);
-        System.assertEquals(SfdoInstrumentationEnum.Action.HouseholdNamesUpdated.name(), SfdoInstrumentationService.lastCallData.lastActionName);
-        System.assertEquals('HouseholdNamingService', SfdoInstrumentationService.lastCallData.lastContext.get('SourceClass'));
-        System.assertEquals(20, (Integer)SfdoInstrumentationService.lastCallData.lastContext.get('Informal Greetings Updated'));
-        System.assertEquals(20, (Integer)SfdoInstrumentationService.lastCallData.lastContext.get('Formal Greetings Updated'));
-        System.assertEquals(20, SfdoInstrumentationService.lastCallData.lastValue);
     }
 
     /*********************************************************************************************************
@@ -926,22 +918,16 @@ public class HouseholdNamingService_TEST {
         // Verify the custom name was set
         household = [SELECT Id, Name, SYSTEM_CUSTOM_NAMING__c FROM Account WHERE Id = :household.Id];
         System.assertEquals(customName, household.Name, 'Custom name should be preserved');
-        System.assertEquals('Name', household.SYSTEM_CUSTOM_NAMING__c, 
+        System.assertEquals('Name', household.SYSTEM_CUSTOM_NAMING__c,
                      'SYSTEM_CUSTOM_NAMING should indicate name is user-controlled: ' + household.SYSTEM_CUSTOM_NAMING__c);
-        
-        SfdoInstrumentationService.instance = null; // reset the instance
 
         // Now simulate subsequent updates that should NOT revert the name
-        household.Phone = '555-5678';  
+        household.Phone = '555-5678';
         update household;
 
-        System.assertEquals(null, SfdoInstrumentationService.instance, 'The Instrumentation Service instance should be null');
-        
         household.Website = 'www.test.com';
         update household;
 
-        System.assertEquals(null, SfdoInstrumentationService.instance, 'The Instrumentation Service instance should be null');
-        
         Test.stopTest();
         
         // Verify the custom name persisted through the updates
@@ -994,15 +980,11 @@ public class HouseholdNamingService_TEST {
         con.LastName = 'Smith';
         update con;
 
-        SfdoInstrumentationService.instance = null; // reset the instance
-        
         // Trigger household naming service explicitly to simulate what would happen in real scenarios
         HouseholdNamingService service = new HouseholdNamingService();
         service.updateHouseholdNameAndMemberCount(new List<Id>{ household.Id });
-        
+
         Test.stopTest();
-        
-        System.assertEquals(null, SfdoInstrumentationService.instance, 'The Instrumentation Service instance should be null');
 
         // Verify the household name DID NOT change despite the contact name change
         household = [SELECT Id, Name, SYSTEM_CUSTOM_NAMING__c FROM Account WHERE Id = :household.Id];

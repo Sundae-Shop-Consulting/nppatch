@@ -893,8 +893,6 @@ public with sharing class CON_ContactMerge_CTRL {
     */
     private Boolean isNPSPHiddenField(String strField) {
         List<String> listStrField = new List<String>{
-            'SystemAccountProcessor__c',
-            'SystemHouseholdProcessor__c',
             'SystemIsIndividual__c',
             'Current_Address__c'
         };
