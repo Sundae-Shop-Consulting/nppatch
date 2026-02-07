@@ -283,20 +283,6 @@ public without sharing class RD2_OpportunityEvaluation_BATCH
         RD2_Settings.getInstance()
             .saveLatestBatchResults(context.getJobId(), recordsProcessed, recordsFailed);
 
-        if (recordsCreated > 0 || recordsFailed > 0 || recordsProcessed > 0) {
-            SfdoInstrumentationService.getInstance().log(
-                SfdoInstrumentationEnum.Feature.EnhancedRecurringDonations,
-                SfdoInstrumentationEnum.Component.Batch,
-                SfdoInstrumentationEnum.Action.ProcessedCount,
-                new Map<String, Object>{ 
-                    'RD Records Processed' => recordsProcessed, 
-                    'RD Records Failed' => recordsFailed, 
-                    'Opportunity Records Created ' => recordsCreated,
-                    'SourceClass' => 'RD2_OpportunityEvaluation_BATCH'
-                },
-                recordsCreated
-            );
-        }
     }
 
     /**

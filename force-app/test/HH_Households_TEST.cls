@@ -731,8 +731,7 @@ public with sharing class HH_Households_TEST {
                 MailingCity = city,
                 MailingState = state,
                 MailingPostalCode = zip,
-                MailingCountry = country,
-                SystemHouseholdProcessor__c = 'All New or Edited Contacts'
+                MailingCountry = country
             );
             cons.add(con);
         }

@@ -100,7 +100,6 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
         AccountAdapter.enableHouseholdDeceasedUpdate(true);
 
         Contacts contacts = new Contacts(newSObjects);
-        contacts.resetDeprecatedFields();
         contacts.resetSustainerFields();
 
         if (CAO_Constants.isHHAccountModel()) {
@@ -240,7 +239,6 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
      * @description In the before update trigger context, ensure accounts are created for the contacts that need them.
      */
     private void handleContactsBeforeUpdate(Contacts contacts) {
-        contacts.resetDeprecatedFields();
         contacts.keepPrivateContactsPrivate();
         householdServiceInstance.createOneToOneAndHouseholdAccountsFor(
                 contactsWithoutAccounts(contacts));
@@ -593,13 +591,6 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
             Address__c contactAddress = contactAddressesToInsertByContact.get(contact);
             contact.Current_Address__c = contactAddress.Id;
         }
-
-        SfdoInstrumentationService.getInstance().log(
-            SfdoInstrumentationEnum.Feature.Addresses, 
-            SfdoInstrumentationEnum.Component.TriggerAction, 
-            SfdoInstrumentationEnum.Action.Dml_Insert,
-            new Map<String, String>{ 'SourceClass' => 'ContactAdapter' },
-            contactAddressesToInsertByContact.size());
     }
 
     private void updateContactAddressFromExistingAddress(Contact contact, Address__c existingAddressFromContact) {

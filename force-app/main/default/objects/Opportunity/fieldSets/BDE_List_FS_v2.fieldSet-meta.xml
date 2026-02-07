@@ -366,11 +366,6 @@
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </availableFields>
-    <availableFields>
-        <field>systemHouseholdContactRoleProcessor__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </availableFields>
     <description>Batch Data Entry</description>
     <displayedFields>
         <field>AccountId</field>

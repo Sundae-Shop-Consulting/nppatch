@@ -157,13 +157,6 @@ public inherited sharing class Contacts extends fflib_SObjects2 {
         return new List<Id>(uniqueAccountsToHandle);
     }
 
-    public void resetDeprecatedFields() {
-        for (Contact contactRecord : (List<Contact>) getRecords()) {
-            // always clear this deprecated field to avoid confusing users.
-            contactRecord.SystemAccountProcessor__c = null;
-        }
-    }
-
     public void resetSustainerFields() {
         for (Contact contactRecord : (List<Contact>) getRecords()) {
             contactRecord.Sustainer__c = oldVersionOf(contactRecord)?.Sustainer__c;

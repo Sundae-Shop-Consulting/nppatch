@@ -414,12 +414,6 @@ public inherited sharing class HouseholdService {
             if (numInformalGreetingsSet > 0) {
                 context.put('Informal Greetings Updated', numInformalGreetingsSet);
             }
-            SfdoInstrumentationService.getInstance().log(
-                SfdoInstrumentationEnum.Feature.HouseholdNaming, 
-                SfdoInstrumentationEnum.Component.TriggerAction, 
-                SfdoInstrumentationEnum.Action.HouseholdNamesUpdated, 
-                context,
-                accountsToInsert.size());
             numHouseholdNamesSet = 0;
             numFormalGreetingsSet = 0;
             numInformalGreetingsSet = 0;

@@ -6966,7 +6966,7 @@
     </customLabels>
     <customLabels>
         <name>stgHelpAccountModel</name>
-        <label>取引先モデルの設定。「世帯取引先」、「1 対 1」、「取引先責任者」のいずれかを指定します。カスタム項目 Contact.SystemAccountProcessor__c の代わりに使用されます。「世帯取引先」が推奨モデルです。</label>
+        <label>取引先モデルの設定。「世帯取引先」、「1 対 1」、「取引先責任者」のいずれかを指定します。「世帯取引先」が推奨モデルです。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAdvancedMapping1</name>

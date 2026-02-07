@@ -356,19 +356,11 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
         List<Opportunity> opps = oppGateway.getRecords(rd);
         System.assertEquals(1, opps.size(), 'An Opp should exist: ' + opps);
 
-        SfdoInstrumentationService.instance = null; // Reset the instance to null before starting the batch
-        System.assertEquals(null, SfdoInstrumentationService.instance, 'The Instrumentation Service Instance should not have been instantiated');
-
-        // In a unit test context, the Batch instance isn't retaining the recordsCreated/recordsFailed counts
-        // The best we can do is to check the instrumentation service instance exists
-        // and rely on the other check that an Opp was created.
         RD2_OpportunityEvaluation_BATCH oppBatch = new RD2_OpportunityEvaluation_BATCH(today);
         runBatch(oppBatch);
 
         Map<Id, Opportunity> oppById = new Map<Id, Opportunity>(oppGateway.getRecords(rd));
         System.assertEquals(2, oppById.size(), 'New Opp should be created: ' + oppById.values());
-
-        System.assertNotEquals(null, SfdoInstrumentationService.instance, 'The Instrumentation Service Instance should have been instantiated');
 
         System.assertEquals(prevCloseDate, oppById.remove(opps[0].Id).CloseDate,
             'Close Date should be unchanged for the existing Opp');
@@ -1385,9 +1377,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
     private static RD2_OpportunityEvaluation_BATCH executeAndFinishBatch(Id rdId, Date today) {
         UTIL_BatchJobService_TEST.MockBatchableContext batchContext = new UTIL_BatchJobService_TEST.MockBatchableContext();
         RD2_OpportunityEvaluation_BATCH batch = new RD2_OpportunityEvaluation_BATCH(today);
-
-        SfdoInstrumentationService.instance = null; // Reset the instance to null before starting the batch
-        System.assertEquals(null, SfdoInstrumentationService.instance, 'The Instrumentation Service Instance should not have been instantiated');
 
         batch.execute(batchContext, rdGateway.getRecords(new Set<Id>{ rdId }));
         batch.finish(batchContext);
