@@ -126,7 +126,6 @@ private with sharing class UTIL_Namespace_TEST {
         str = Label.statusCompleted;
         str = Label.Address_StateCountry_Invalid_Error;
         str = Label.Addr_Verify_Google_Help;
-        str = Label.SmartyStreets_Help_Text;
         str = Label.stgHelpCiceroAddrVerification;
         str = Label.stgHelpRDDisableScheduling;
         str = Label.stgHelpRDFieldMapOppField;

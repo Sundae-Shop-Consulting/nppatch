@@ -47,7 +47,6 @@ public with sharing class STG_PanelADDRVerification_CTRL extends STG_Panel {
         void encodeToken(Addr_Verification_Settings__c settings);
     }
 
-    private static final String SMARTY_STREETS_VALIDATOR_CLASS = UTIL_Namespace.removeClassNamespace(ADDR_SmartyStreets_Validator.class.getName());
 
     /*******************************************************************************************************
     * @description The panel ID.
@@ -116,7 +115,7 @@ public with sharing class STG_PanelADDRVerification_CTRL extends STG_Panel {
     */
     public String batchVerifyMessage { get; set; }
 
-    String[] validatorExclussions = new String[]{'ADDR_IValidator', 'ADDR_SmartyStreets_Gateway', 'ADDR_Validator', 'ADDR_Validator_REST'};
+    String[] validatorExclussions = new String[]{'ADDR_IValidator', 'ADDR_Validator', 'ADDR_Validator_REST'};
     
     /*******************************************************************************************************
     * @description The help text for the settings.
@@ -301,22 +300,8 @@ public with sharing class STG_PanelADDRVerification_CTRL extends STG_Panel {
                         
             addrVerifier.encodeToken(addrVerifSettings);
                         
-            Boolean isInvalid = false;
             apiSettingsErrorMessage = '';
-            if (addrVerifSettings.Class__c == SMARTY_STREETS_VALIDATOR_CLASS && String.isBlank(addrVerifSettings.Auth_ID__c)) {
-                apiSettingsErrorMessage = System.Label.Addr_Id_Error;
-                apiSettingsSaveMessage = null;
-                isInvalid = true;
-            }
-            
-            if (addrVerifSettings.Class__c == SMARTY_STREETS_VALIDATOR_CLASS && String.isBlank(addrVerifSettings.Auth_Token__c)) {
-                String validationMessage = System.Label.Addr_Token_Error;
-                apiSettingsErrorMessage = apiSettingsErrorMessage == null ? validationMessage : apiSettingsErrorMessage + validationMessage; 
-                apiSettingsSaveMessage = null;
-                isInvalid = true;
-            }
-            
-            if (!isInvalid) {
+            {
                 if (!String.isBlank(addrVerifSettings.Class__c)) {
                     ADDR_IValidator validator = (ADDR_IValidator)Type.forName(addrVerifSettings.Class__c).newInstance();
                     addrVerifSettings.Address_Verification_Endpoint__c = validator.getDefaultURL();
@@ -377,30 +362,8 @@ public with sharing class STG_PanelADDRVerification_CTRL extends STG_Panel {
     * @return void
     */    
     public void verifyAddressVerificationService(STG_PanelHealthCheck_CTRL ctrl) {
-        Addr_Verification_Settings__c avs = UTIL_CustomSettingsFacade.getAddressVerificationSettings();
-
-        if (avs.Class__c != SMARTY_STREETS_VALIDATOR_CLASS) {
-            return;
-        }
-
-        String settingsName = Schema.SObjectType.Addr_Verification_Settings__c.getLabel(); 
-        String zipCode = '98005';
-        String result = addrVerifier.verifyService(avs, zipCode);
-        String status = result.contains('is valid') ? STG_PanelHealthCheck_CTRL.statusSuccess : STG_PanelHealthCheck_CTRL.statusError;
-
-        String solution;
-        if (status == STG_PanelHealthCheck_CTRL.statusSuccess) {
-            solution = result;
-            result = null;
-
-        } else if (result != System.Label.stgAddrPermissionDenied) {
-            solution = String.format(
-                System.Label.healthSolutionEditSetting, 
-                new String[]{ settingsName, System.Label.stgNavHouseholds, System.Label.stgNavAddressVerification }
-            );
-        }
-
-        ctrl.createDR(settingsName, status, result, solution);
+        // Health check for address verification service is not currently supported
+        return;
     }
     
 
@@ -455,42 +418,8 @@ public with sharing class STG_PanelADDRVerification_CTRL extends STG_Panel {
         * @return String Result of the address verification
         */   
         public String verifyService(Addr_Verification_Settings__c settings, String zipCode) {
-            if (!hasAccess()) {
-                return System.Label.stgAddrPermissionDenied;
-            }
-
-            Addr_Verification_Settings__c avs = UTIL_CustomSettingsFacade.getAddressVerificationSettings();
-            if (settings.Class__c != SMARTY_STREETS_VALIDATOR_CLASS) {
-                return null;
-            }
-
-            String result;
-            try {
-                encodeToken(settings);
-
-                ADDR_SmartyStreets_Gateway gateway = new ADDR_SmartyStreets_Gateway(settings);
-                gateway.verifyZip(zipCode);
-                result = System.Label.Addr_Valid_Key_Pair; //no exception thrown when deserializing it
-
-            } catch (Exception e) {
-                if (!(avs.Class__c == SMARTY_STREETS_VALIDATOR_CLASS) || 
-                    String.isBlank(settings.Auth_ID__c) ||
-                    String.isBlank(settings.Auth_Token__c)
-                ) {
-                    result = System.Label.Addr_Verify_Settings;
-
-                } else if (e.getMessage().startsWith('no protocol')) {
-                    result = System.Label.Addr_Verify_Endpoint;
-
-                } else if (e.getMessage().startsWith('Unauthorized endpoint')) {
-                    result = System.Label.Addr_Unauthorized_Endpoint;
-
-                } else {
-                    result = e.getMessage();
-                }
-            }
-
-            return result;
+            // Service verification is not currently supported
+            return null;
         }
 
         /*******************************************************************************************************
@@ -517,14 +446,7 @@ public with sharing class STG_PanelADDRVerification_CTRL extends STG_Panel {
         * @return void
         */
         public void encodeToken(Addr_Verification_Settings__c settings) {
-            final Integer smartyStreetsUnencodedTokenLen = 88;
-
-            if (settings.Class__c == SMARTY_STREETS_VALIDATOR_CLASS && 
-                String.isNotBlank(settings.Auth_Token__c) && 
-                settings.Auth_Token__c.length() == smartyStreetsUnencodedTokenLen
-            ) {
-                settings.Auth_Token__c = EncodingUtil.urlEncode(settings.Auth_Token__c, 'UTF-8');
-            }
+            // Token encoding is not currently required
         }
 
     }

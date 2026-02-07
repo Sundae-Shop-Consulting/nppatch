@@ -79,9 +79,6 @@ public inherited sharing class ADDR_Validator_UTIL {
     /*******************************************************************************************************
     * @description Determines if an address is US-based.
     *
-    * Also called from ADDR_SmartyStreets_Validator. Since it's an auxiliary method we could move it to a separate
-    * class, but we'll keep it here for now because it's the only auxiliary one we have for address validation.
-    *
     * @param addr The address to inspect.
     * @return Boolean True if the address is US-based. False otherwise.
     */
