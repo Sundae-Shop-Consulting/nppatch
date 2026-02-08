@@ -1,8 +1,8 @@
 minimum_cumulusci_version: '4.6.0'
 project:
-    name: carpathia
+    name: Hearthwork
     package:
-        name: carpathia
+        name: Hearthwork
         namespace: carpa
         api_version: '63.0'
     git:
@@ -12,14 +12,14 @@ project:
 tasks:
     robot:
         options:
-            suites: robot/carpathia/tests
+            suites: robot/hearthwork/tests
             options:
-                outputdir: robot/carpathia/results
+                outputdir: robot/hearthwork/results
 
     robot_testdoc:
         options:
-            path: robot/carpathia/tests
-            output: robot/carpathia/doc/carpathia_tests.html
+            path: robot/hearthwork/tests
+            output: robot/hearthwork/doc/carpathia_tests.html
 
     run_tests:
         options:
