@@ -1,1 +1,15 @@
-{"packageDirectories": [{"path": "force-app", "default": true}], "namespace": "carpa", "sourceApiVersion": "63.0"}
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true,
+      "package": "Hearthwork",
+      "versionName": "ver 1.0",
+      "versionNumber": "1.0.0.NEXT"
+    }
+  ],
+  "namespace": "carpa",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "63.0",
+  "packageAliases": {}
+}
