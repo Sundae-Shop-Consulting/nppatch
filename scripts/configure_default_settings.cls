@@ -171,12 +171,10 @@ private void setRecurringDonationSettings() {
     if (settings.Id == null) {
         // These are copied from UTIL_CustomSettingsFacade.configRecurringDonationSettings();
         settings.%%%NAMESPACE%%%Add_Campaign_to_All_Opportunites__c = true;
-        settings.%%%NAMESPACE%%%Enable_Update_Check__c = true;
         settings.%%%NAMESPACE%%%Maximum_Donations__c = 50;
         settings.%%%NAMESPACE%%%Recurring_Donation_Batch_Size__c = 50;
         settings.%%%NAMESPACE%%%DataMigrationBatchSize__c = 25;
         settings.%%%NAMESPACE%%%Opportunity_Forecast_Months__c = 12;
-        settings.%%%NAMESPACE%%%Update_Check_Interval__c = 90;
         settings.%%%NAMESPACE%%%Open_Opportunity_Behavior__c = 'Mark_Opportunities_Closed_Lost';
         settings.%%%NAMESPACE%%%InstallmentOppAutoCreateOption__c = 'Always_Create_Next_Installment';
         settings.%%%NAMESPACE%%%InstallmentOppFirstCreateMode__c = 'Synchronous';

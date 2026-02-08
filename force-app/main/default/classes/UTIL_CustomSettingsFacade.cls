@@ -601,12 +601,10 @@ public without sharing class UTIL_CustomSettingsFacade {
         if (settings.Open_Opportunity_Behavior__c == null) {
 
             settings.Add_Campaign_to_All_Opportunites__c = true;
-            settings.Enable_Update_Check__c = true;
             settings.Maximum_Donations__c = 50;
             settings.Recurring_Donation_Batch_Size__c = 50;
             settings.DataMigrationBatchSize__c = 25;
             settings.Opportunity_Forecast_Months__c = 12;
-            settings.Update_Check_Interval__c = 90;
             settings.Open_Opportunity_Behavior__c = RD_RecurringDonations.RecurringDonationCloseOptions.Mark_Opportunities_Closed_Lost.name();
             settings.InstallmentOppAutoCreateOption__c = RD2_Constants.InstallmentCreateOptions.Always_Create_Next_Installment.name();
             settings.InstallmentOppFirstCreateMode__c = RD2_Constants.FirstInstallmentOppCreateOptions.Synchronous.name();
