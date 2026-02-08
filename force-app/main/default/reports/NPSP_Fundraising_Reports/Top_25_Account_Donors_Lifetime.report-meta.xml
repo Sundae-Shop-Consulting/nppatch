@@ -11,22 +11,22 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.TotalOppAmount__c</field>
+        <field>Account.%%%NAMESPACE%%%TotalOppAmount__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.OppAmountThisYear__c</field>
+        <field>Account.%%%NAMESPACE%%%OppAmountThisYear__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.OppAmountLastYear__c</field>
+        <field>Account.%%%NAMESPACE%%%OppAmountLastYear__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.LastOppAmount__c</field>
+        <field>Account.%%%NAMESPACE%%%LastOppAmount__c</field>
     </columns>
     <columns>
-        <field>Account.LastCloseDate__c</field>
+        <field>Account.%%%NAMESPACE%%%LastCloseDate__c</field>
     </columns>
     <description>List of 25 top Account donors, based on Total Gifts.</description>
     <format>Tabular</format>
@@ -39,7 +39,7 @@
     <rowLimit>25</rowLimit>
     <scope>organization</scope>
     <showDetails>true</showDetails>
-    <sortColumn>Account.TotalOppAmount__c</sortColumn>
+    <sortColumn>Account.%%%NAMESPACE%%%TotalOppAmount__c</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>

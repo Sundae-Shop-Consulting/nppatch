@@ -11,7 +11,7 @@
         <chartType>LineCumulative</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>Contact.MembershipJoinDate__c</groupingColumn>
+        <groupingColumn>Contact.%%%NAMESPACE%%%MembershipJoinDate__c</groupingColumn>
         <location>CHART_TOP</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -34,31 +34,31 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>Contact.NumberOfMembershipOpps__c</field>
+        <field>Contact.%%%NAMESPACE%%%NumberOfMembershipOpps__c</field>
     </columns>
     <columns>
-        <field>Contact.MembershipEndDate__c</field>
+        <field>Contact.%%%NAMESPACE%%%MembershipEndDate__c</field>
     </columns>
     <columns>
-        <field>Contact.LastMembershipLevel__c</field>
+        <field>Contact.%%%NAMESPACE%%%LastMembershipLevel__c</field>
     </columns>
     <columns>
-        <field>Contact.LastMembershipDate__c</field>
+        <field>Contact.%%%NAMESPACE%%%LastMembershipDate__c</field>
     </columns>
     <columns>
-        <field>Contact.LastMembershipOrigin__c</field>
+        <field>Contact.%%%NAMESPACE%%%LastMembershipOrigin__c</field>
     </columns>
     <columns>
-        <field>Contact.LastMembershipAmount__c</field>
+        <field>Contact.%%%NAMESPACE%%%LastMembershipAmount__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Contact.TotalMembershipOppAmount__c</field>
+        <field>Contact.%%%NAMESPACE%%%TotalMembershipOppAmount__c</field>
     </columns>
     <description>New memberships over the lifetime of your org, grouped by Membership Join Date</description>
     <filter>
         <criteriaItems>
-            <column>Contact.MembershipJoinDate__c</column>
+            <column>Contact.%%%NAMESPACE%%%MembershipJoinDate__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
             <value></value>
@@ -67,7 +67,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Month</dateGranularity>
-        <field>Contact.MembershipJoinDate__c</field>
+        <field>Contact.%%%NAMESPACE%%%MembershipJoinDate__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Memberships Over Time</name>

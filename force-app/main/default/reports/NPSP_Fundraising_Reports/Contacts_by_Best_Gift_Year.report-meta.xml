@@ -11,7 +11,7 @@
         <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>Contact.Best_Gift_Year__c</groupingColumn>
+        <groupingColumn>Contact.%%%NAMESPACE%%%Best_Gift_Year__c</groupingColumn>
         <location>CHART_TOP</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -35,11 +35,11 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Contact.Best_Gift_Year_Total__c</field>
+        <field>Contact.%%%NAMESPACE%%%Best_Gift_Year_Total__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Contact.TotalOppAmount__c</field>
+        <field>Contact.%%%NAMESPACE%%%TotalOppAmount__c</field>
     </columns>
     <columns>
         <field>ADDRESS2_CITY</field>
@@ -56,7 +56,7 @@
     <description>All Contacts grouped by their highest giving year</description>
     <filter>
         <criteriaItems>
-            <column>Contact.TotalOppAmount__c</column>
+            <column>Contact.%%%NAMESPACE%%%TotalOppAmount__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>0</value>
@@ -66,7 +66,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Contact.Best_Gift_Year__c</field>
+        <field>Contact.%%%NAMESPACE%%%Best_Gift_Year__c</field>
         <sortOrder>Desc</sortOrder>
     </groupingsDown>
     <name>Contacts by Best Gift Year</name>
@@ -77,7 +77,7 @@
     <reportType>ContactList</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
-    <sortColumn>Contact.Best_Gift_Year_Total__c</sortColumn>
+    <sortColumn>Contact.%%%NAMESPACE%%%Best_Gift_Year_Total__c</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>

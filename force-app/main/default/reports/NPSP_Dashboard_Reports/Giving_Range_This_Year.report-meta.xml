@@ -5,7 +5,7 @@
         <developerName>BucketField_33954624</developerName>
         <masterLabel>Total Gift This Year Range</masterLabel>
         <nullTreatment>z</nullTreatment>
-        <sourceColumnName>Account.OppAmountThisYear__c</sourceColumnName>
+        <sourceColumnName>Account.%%%NAMESPACE%%%OppAmountThisYear__c</sourceColumnName>
         <useOther>false</useOther>
         <values>
             <sourceValues>
@@ -42,14 +42,14 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.OppAmountThisYear__c</field>
+        <field>Account.%%%NAMESPACE%%%OppAmountThisYear__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.TotalOppAmount__c</field>
+        <field>Account.%%%NAMESPACE%%%TotalOppAmount__c</field>
     </columns>
     <columns>
-        <field>Account.LastCloseDate__c</field>
+        <field>Account.%%%NAMESPACE%%%LastCloseDate__c</field>
     </columns>
     <columns>
         <field>RECORDTYPE</field>
@@ -63,7 +63,7 @@
     <description>Dashboard Report - Do Not Edit</description>
     <filter>
         <criteriaItems>
-            <column>Account.OppAmountThisYear__c</column>
+            <column>Account.%%%NAMESPACE%%%OppAmountThisYear__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>0</value>

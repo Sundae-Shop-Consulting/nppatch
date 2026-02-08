@@ -3,7 +3,7 @@
     <fullName>CombinedRollupFieldset__c</fullName>
     <description>Hidden system field, do not add to layouts.</description>
     <externalId>false</externalId>
-    <formula>TEXT(CloseDate) + ';|;'+ TEXT(Amount) + ';|;'+ TEXT(Member_Level__c) + ';|;'+ TEXT(Membership_Origin__c) + ';|;' +  Id</formula>
+    <formula>TEXT(CloseDate) + ';|;'+ TEXT(Amount) + ';|;'+ TEXT(%%%NAMESPACE%%%Member_Level__c) + ';|;'+ TEXT(%%%NAMESPACE%%%Membership_Origin__c) + ';|;' +  Id</formula>
     <inlineHelpText>Formula: Concatenated fields used during rollups to locate the most recent opportunity.</inlineHelpText>
     <label>Combined Rollup Fieldset</label>
     <required>false</required>

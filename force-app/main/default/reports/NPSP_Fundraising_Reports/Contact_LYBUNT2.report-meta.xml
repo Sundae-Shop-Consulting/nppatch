@@ -12,15 +12,15 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <aggregateTypes>Average</aggregateTypes>
-        <field>Contact.OppAmountLastYear__c</field>
+        <field>Contact.%%%NAMESPACE%%%OppAmountLastYear__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <aggregateTypes>Average</aggregateTypes>
-        <field>Contact.TotalOppAmount__c</field>
+        <field>Contact.%%%NAMESPACE%%%TotalOppAmount__c</field>
     </columns>
     <columns>
-        <field>Contact.AverageAmount__c</field>
+        <field>Contact.%%%NAMESPACE%%%AverageAmount__c</field>
     </columns>
     <columns>
         <field>ADDRESS2_CITY</field>
@@ -37,13 +37,13 @@
     <description>Contacts who donated last year, but unfortunately not this year (LYBUNT)</description>
     <filter>
         <criteriaItems>
-            <column>Contact.OppAmountLastYear__c</column>
+            <column>Contact.%%%NAMESPACE%%%OppAmountLastYear__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Contact.OppAmountThisYear__c</column>
+            <column>Contact.%%%NAMESPACE%%%OppAmountThisYear__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>0</value>

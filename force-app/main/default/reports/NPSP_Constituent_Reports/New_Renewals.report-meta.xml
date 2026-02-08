@@ -10,40 +10,40 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>Contact.NumberOfMembershipOpps__c</field>
+        <field>Contact.%%%NAMESPACE%%%NumberOfMembershipOpps__c</field>
     </columns>
     <columns>
-        <field>Contact.MembershipJoinDate__c</field>
+        <field>Contact.%%%NAMESPACE%%%MembershipJoinDate__c</field>
     </columns>
     <columns>
-        <field>Contact.MembershipEndDate__c</field>
+        <field>Contact.%%%NAMESPACE%%%MembershipEndDate__c</field>
     </columns>
     <columns>
-        <field>Contact.LastMembershipLevel__c</field>
+        <field>Contact.%%%NAMESPACE%%%LastMembershipLevel__c</field>
     </columns>
     <columns>
-        <field>Contact.LastMembershipDate__c</field>
+        <field>Contact.%%%NAMESPACE%%%LastMembershipDate__c</field>
     </columns>
     <columns>
-        <field>Contact.LastMembershipOrigin__c</field>
+        <field>Contact.%%%NAMESPACE%%%LastMembershipOrigin__c</field>
     </columns>
     <columns>
-        <field>Contact.LastMembershipAmount__c</field>
+        <field>Contact.%%%NAMESPACE%%%LastMembershipAmount__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Contact.TotalMembershipOppAmount__c</field>
+        <field>Contact.%%%NAMESPACE%%%TotalMembershipOppAmount__c</field>
     </columns>
     <description>Members who have renewed in the last 60 days</description>
     <filter>
         <criteriaItems>
-            <column>Contact.LastMembershipDate__c</column>
+            <column>Contact.%%%NAMESPACE%%%LastMembershipDate__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>LAST_N_DAYS:60</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.NumberOfMembershipOpps__c</column>
+            <column>Account.%%%NAMESPACE%%%NumberOfMembershipOpps__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>1</value>

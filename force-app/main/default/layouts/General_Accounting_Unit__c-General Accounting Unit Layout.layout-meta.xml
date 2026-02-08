@@ -145,7 +145,7 @@
         <fields>Opportunity__c</fields>
         <fields>Percent__c</fields>
         <fields>Amount__c</fields>
-        <relatedList>Allocation__c.General_Accounting_Unit__c</relatedList>
+        <relatedList>%%%NAMESPACE%%%Allocation__c.%%%NAMESPACE%%%General_Accounting_Unit__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>

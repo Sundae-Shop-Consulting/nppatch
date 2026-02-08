@@ -14,60 +14,60 @@
         <aggregateTypes>Average</aggregateTypes>
         <aggregateTypes>Maximum</aggregateTypes>
         <aggregateTypes>Minimum</aggregateTypes>
-        <field>Contact.TotalOppAmount__c</field>
+        <field>Contact.%%%NAMESPACE%%%TotalOppAmount__c</field>
     </columns>
     <columns>
         <aggregateTypes>Average</aggregateTypes>
         <aggregateTypes>Maximum</aggregateTypes>
         <aggregateTypes>Minimum</aggregateTypes>
-        <field>Contact.AverageAmount__c</field>
+        <field>Contact.%%%NAMESPACE%%%AverageAmount__c</field>
     </columns>
     <columns>
-        <field>Contact.Best_Gift_Year__c</field>
+        <field>Contact.%%%NAMESPACE%%%Best_Gift_Year__c</field>
     </columns>
     <columns>
-        <field>Contact.LastCloseDate__c</field>
+        <field>Contact.%%%NAMESPACE%%%LastCloseDate__c</field>
     </columns>
     <columns>
-        <field>Contact.FirstCloseDate__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Average</aggregateTypes>
-        <aggregateTypes>Maximum</aggregateTypes>
-        <aggregateTypes>Minimum</aggregateTypes>
-        <field>Contact.LargestAmount__c</field>
+        <field>Contact.%%%NAMESPACE%%%FirstCloseDate__c</field>
     </columns>
     <columns>
         <aggregateTypes>Average</aggregateTypes>
         <aggregateTypes>Maximum</aggregateTypes>
         <aggregateTypes>Minimum</aggregateTypes>
-        <field>Contact.SmallestAmount__c</field>
+        <field>Contact.%%%NAMESPACE%%%LargestAmount__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <aggregateTypes>Maximum</aggregateTypes>
+        <aggregateTypes>Minimum</aggregateTypes>
+        <field>Contact.%%%NAMESPACE%%%SmallestAmount__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <aggregateTypes>Average</aggregateTypes>
         <aggregateTypes>Maximum</aggregateTypes>
         <aggregateTypes>Minimum</aggregateTypes>
-        <field>Contact.OppAmountThisYear__c</field>
+        <field>Contact.%%%NAMESPACE%%%OppAmountThisYear__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <aggregateTypes>Average</aggregateTypes>
         <aggregateTypes>Maximum</aggregateTypes>
         <aggregateTypes>Minimum</aggregateTypes>
-        <field>Contact.OppAmountLastYear__c</field>
+        <field>Contact.%%%NAMESPACE%%%OppAmountLastYear__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <aggregateTypes>Average</aggregateTypes>
         <aggregateTypes>Maximum</aggregateTypes>
         <aggregateTypes>Minimum</aggregateTypes>
-        <field>Contact.NumberOfClosedOpps__c</field>
+        <field>Contact.%%%NAMESPACE%%%NumberOfClosedOpps__c</field>
     </columns>
     <description>Provides summary calculations for Total Gifts, Best Gift Year, Largest Gifts, and more</description>
     <filter>
         <criteriaItems>
-            <column>Contact.TotalOppAmount__c</column>
+            <column>Contact.%%%NAMESPACE%%%TotalOppAmount__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>0</value>

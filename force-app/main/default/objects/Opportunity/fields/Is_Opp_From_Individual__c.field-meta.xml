@@ -3,7 +3,7 @@
     <fullName>Is_Opp_From_Individual__c</fullName>
     <description>Formula: Whether or not the related Account is defined as an individual (SYSTEMIsIndividual__c)</description>
     <externalId>false</externalId>
-    <formula>IF( Account.SYSTEMIsIndividual__c, 'true', 'false' )</formula>
+    <formula>IF( Account.%%%NAMESPACE%%%SYSTEMIsIndividual__c, 'true', 'false' )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <inlineHelpText>Formula: Whether or not the related Account is defined as an individual (SYSTEMIsIndividual__c)</inlineHelpText>
     <label>Is Opp From Individual</label>

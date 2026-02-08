@@ -191,7 +191,7 @@
         <fields>General_Accounting_Unit__c</fields>
         <fields>Amount__c</fields>
         <fields>Percent__c</fields>
-        <relatedList>Allocation__c.Campaign__c</relatedList>
+        <relatedList>%%%NAMESPACE%%%Allocation__c.%%%NAMESPACE%%%Campaign__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>

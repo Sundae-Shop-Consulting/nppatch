@@ -34,10 +34,10 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Amount_Outstanding__c</field>
+        <field>Opportunity.%%%NAMESPACE%%%Amount_Outstanding__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Number_of_Payments__c</field>
+        <field>Opportunity.%%%NAMESPACE%%%Number_of_Payments__c</field>
     </columns>
     <columns>
         <field>Opportunity.%%%NAMESPACE%%%Is_Grant_Renewal__c</field>

@@ -4,12 +4,12 @@
     <description>The installment name for inclusion in Opportunity naming. Shows the installment number in parentheses for open ended Recurring Donations, or the installment number out of the total for Recurring Donations with a set number of installments.</description>
     <externalId>false</externalId>
     <formula>IF(
-ISBLANK(Recurring_Donation__c),
+ISBLANK(%%%NAMESPACE%%%Recurring_Donation__c),
 &apos;&apos;,
   IF(
     OR(ISPICKVAL(Recurring_Donation__r.Open_Ended_Status__c, &apos;Open&apos;),ISPICKVAL(Recurring_Donation__r.Open_Ended_Status__c, &apos;Closed&apos;),ISBLANK(Recurring_Donation__r.Installments__c)),
-    &apos;(&apos;&amp;TEXT(Recurring_Donation_Installment_Number__c)&amp;&apos;)&apos;,
-    &apos;(&apos;&amp;TEXT(Recurring_Donation_Installment_Number__c)&amp;&apos; &apos;&amp;$Label.oppInstallmentsOf&amp;&apos; &apos;&amp;TEXT(Recurring_Donation__r.Installments__c)&amp;&apos;)&apos;
+    &apos;(&apos;&amp;TEXT(%%%NAMESPACE%%%Recurring_Donation_Installment_Number__c)&amp;&apos;)&apos;,
+    &apos;(&apos;&amp;TEXT(%%%NAMESPACE%%%Recurring_Donation_Installment_Number__c)&amp;&apos; &apos;&amp;$Label.oppInstallmentsOf&amp;&apos; &apos;&amp;TEXT(Recurring_Donation__r.Installments__c)&amp;&apos;)&apos;
   )
 )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>

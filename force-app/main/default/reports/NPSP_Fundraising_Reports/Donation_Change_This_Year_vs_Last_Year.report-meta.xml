@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <aggregates>
-        <calculatedFormula>IF(Account.OppAmountLastYear__c:SUM=0, 1,(Account.OppAmountThisYear__c:SUM - Account.OppAmountLastYear__c:SUM) / Account.OppAmountLastYear__c:SUM)</calculatedFormula>
+        <calculatedFormula>IF(Account.%%%NAMESPACE%%%OppAmountLastYear__c:SUM=0, 1,(Account.%%%NAMESPACE%%%OppAmountThisYear__c:SUM - Account.%%%NAMESPACE%%%OppAmountLastYear__c:SUM) / Account.%%%NAMESPACE%%%OppAmountLastYear__c:SUM)</calculatedFormula>
         <datatype>percent</datatype>
         <developerName>FORMULA1</developerName>
         <isActive>true</isActive>
@@ -26,23 +26,23 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.OppAmountThisYear__c</field>
+        <field>Account.%%%NAMESPACE%%%OppAmountThisYear__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.OppAmountLastYear__c</field>
+        <field>Account.%%%NAMESPACE%%%OppAmountLastYear__c</field>
     </columns>
     <description>Provides donation percentage change calculation between this year and the previous year, grouped by Account.</description>
     <filter>
         <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
-            <column>Account.OppAmountLastYear__c</column>
+            <column>Account.%%%NAMESPACE%%%OppAmountLastYear__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.OppAmountThisYear__c</column>
+            <column>Account.%%%NAMESPACE%%%OppAmountThisYear__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>0</value>

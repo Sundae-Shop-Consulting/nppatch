@@ -19,7 +19,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Primary_Contact__c</field>
+                <field>%%%NAMESPACE%%%Primary_Contact__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -57,11 +57,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Acknowledgment_Status__c</field>
+                <field>%%%NAMESPACE%%%Acknowledgment_Status__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Acknowledgment_Date__c</field>
+                <field>%%%NAMESPACE%%%Acknowledgment_Date__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -74,37 +74,37 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Requested_Amount__c</field>
+                <field>%%%NAMESPACE%%%Requested_Amount__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Qualified_Date__c</field>
+                <field>%%%NAMESPACE%%%Qualified_Date__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Ask_Date__c</field>
+                <field>%%%NAMESPACE%%%Ask_Date__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Gift_Strategy__c</field>
+                <field>%%%NAMESPACE%%%Gift_Strategy__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Previous_Grant_Opportunity__c</field>
+                <field>%%%NAMESPACE%%%Previous_Grant_Opportunity__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Grant_Program_Area_s__c</field>
+                <field>%%%NAMESPACE%%%Grant_Program_Area_s__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Next_Grant_Deadline_Due_Date__c</field>
+                <field>%%%NAMESPACE%%%Next_Grant_Deadline_Due_Date__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Closed_Lost_Reason__c</field>
+                <field>%%%NAMESPACE%%%Closed_Lost_Reason__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -117,25 +117,25 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Number_of_Payments__c</field>
+                <field>%%%NAMESPACE%%%Number_of_Payments__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Amount_Outstanding__c</field>
+                <field>%%%NAMESPACE%%%Amount_Outstanding__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Payments_Made__c</field>
+                <field>%%%NAMESPACE%%%Payments_Made__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Amount_Written_Off__c</field>
+                <field>%%%NAMESPACE%%%Amount_Written_Off__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Do_Not_Automatically_Create_Payment__c</field>
+                <field>%%%NAMESPACE%%%Do_Not_Automatically_Create_Payment__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -148,21 +148,21 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Matching_Gift_Employer__c</field>
+                <field>%%%NAMESPACE%%%Matching_Gift_Employer__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Matching_Gift_Account__c</field>
+                <field>%%%NAMESPACE%%%Matching_Gift_Account__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Matching_Gift_Status__c</field>
+                <field>%%%NAMESPACE%%%Matching_Gift_Status__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Matching_Gift__c</field>
+                <field>%%%NAMESPACE%%%Matching_Gift__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -175,37 +175,37 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Tribute_Type__c</field>
+                <field>%%%NAMESPACE%%%Tribute_Type__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Honoree_Contact__c</field>
+                <field>%%%NAMESPACE%%%Honoree_Contact__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Honoree_Name__c</field>
+                <field>%%%NAMESPACE%%%Honoree_Name__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Notification_Message__c</field>
+                <field>%%%NAMESPACE%%%Notification_Message__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Notification_Preference__c</field>
+                <field>%%%NAMESPACE%%%Notification_Preference__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Notification_Recipient_Contact__c</field>
+                <field>%%%NAMESPACE%%%Notification_Recipient_Contact__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Notification_Recipient_Name__c</field>
+                <field>%%%NAMESPACE%%%Notification_Recipient_Name__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Notification_Recipient_Information__c</field>
+                <field>%%%NAMESPACE%%%Notification_Recipient_Information__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -311,7 +311,7 @@
         <fields>Account.ACC_NAME</fields>
         <fields>Role_Name__c</fields>
         <fields>Amount__c</fields>
-        <relatedList>Partial_Soft_Credit__c.Opportunity__c</relatedList>
+        <relatedList>%%%NAMESPACE%%%Partial_Soft_Credit__c.%%%NAMESPACE%%%Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
         <customButtons>Schedule_Payments</customButtons>
@@ -322,7 +322,7 @@
         <fields>Payment_Method__c</fields>
         <fields>Paid__c</fields>
         <fields>Written_Off__c</fields>
-        <relatedList>OppPayment__c.Opportunity__c</relatedList>
+        <relatedList>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -330,7 +330,7 @@
         <fields>Grant_Deadline_Due_Date__c</fields>
         <fields>Grant_Deliverable_Close_Date__c</fields>
         <fields>Grant_Deliverable_Requirements__c</fields>
-        <relatedList>Grant_Deadline__c.Opportunity__c</relatedList>
+        <relatedList>%%%NAMESPACE%%%Grant_Deadline__c.%%%NAMESPACE%%%Opportunity__c</relatedList>
         <sortField>Grant_Deadline_Due_Date__c</sortField>
         <sortOrder>Asc</sortOrder>
     </relatedLists>
@@ -339,7 +339,7 @@
         <fields>ACCOUNT.NAME</fields>
         <fields>OPPORTUNITY.CLOSE_DATE</fields>
         <fields>OPPORTUNITY.AMOUNT</fields>
-        <relatedList>Opportunity.Previous_Grant_Opportunity__c</relatedList>
+        <relatedList>Opportunity.%%%NAMESPACE%%%Previous_Grant_Opportunity__c</relatedList>
         <sortField>OPPORTUNITY.CLOSE_DATE</sortField>
         <sortOrder>Desc</sortOrder>
     </relatedLists>
@@ -350,7 +350,7 @@
         <fields>General_Accounting_Unit__c</fields>
         <fields>Amount__c</fields>
         <fields>Percent__c</fields>
-        <relatedList>Allocation__c.Opportunity__c</relatedList>
+        <relatedList>%%%NAMESPACE%%%Allocation__c.%%%NAMESPACE%%%Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>

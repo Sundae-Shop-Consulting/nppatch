@@ -3,7 +3,7 @@
     <fullName>HHId__c</fullName>
     <description>Holds the Id of the Household record (either Household Account, or Household object) this Contact is currently associated with (read only).</description>
     <externalId>false</externalId>
-    <formula>if(Account.SYSTEM_AccountType__c==&apos;Household Account&apos;,CASESAFEID(AccountId),CASESAFEID(Household__c))</formula>
+    <formula>if(Account.%%%NAMESPACE%%%SYSTEM_AccountType__c==&apos;Household Account&apos;,CASESAFEID(AccountId),CASESAFEID(%%%NAMESPACE%%%Household__c))</formula>
     <inlineHelpText>Holds the Id of the Household record (either Household Account, or Household object) this Contact is currently associated with (read only).</inlineHelpText>
     <label>HHId</label>
     <required>false</required>

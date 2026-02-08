@@ -3,7 +3,7 @@
     <fullName>Membership_Span__c</fullName>
     <description>The number of years that a member of this Household has had a Membership (read only).</description>
     <externalId>false</externalId>
-    <formula>year(MembershipEndDate__c ) - year(MembershipJoinDate__c)</formula>
+    <formula>year(%%%NAMESPACE%%%MembershipEndDate__c ) - year(%%%NAMESPACE%%%MembershipJoinDate__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <inlineHelpText>The number of years that a member of this Household has had a Membership (read only).</inlineHelpText>
     <label>Membership Span</label>
