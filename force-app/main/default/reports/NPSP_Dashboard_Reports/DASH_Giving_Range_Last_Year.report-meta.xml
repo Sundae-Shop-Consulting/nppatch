@@ -5,7 +5,7 @@
         <developerName>BucketField_33954624</developerName>
         <masterLabel>Total Gift Last Year Range</masterLabel>
         <nullTreatment>z</nullTreatment>
-        <sourceColumnName>Account.OppAmountLastYear__c</sourceColumnName>
+        <sourceColumnName>Account.%%%NAMESPACE%%%OppAmountLastYear__c</sourceColumnName>
         <useOther>false</useOther>
         <values>
             <sourceValues>
@@ -42,18 +42,18 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.OppAmountLastYear__c</field>
+        <field>Account.%%%NAMESPACE%%%OppAmountLastYear__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.OppAmountThisYear__c</field>
+        <field>Account.%%%NAMESPACE%%%OppAmountThisYear__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.TotalOppAmount__c</field>
+        <field>Account.%%%NAMESPACE%%%TotalOppAmount__c</field>
     </columns>
     <columns>
-        <field>Account.LastCloseDate__c</field>
+        <field>Account.%%%NAMESPACE%%%LastCloseDate__c</field>
     </columns>
     <columns>
         <field>RECORDTYPE</field>
@@ -67,7 +67,7 @@
     <description>Dashboard Report - Do Not Edit</description>
     <filter>
         <criteriaItems>
-            <column>Account.OppAmountLastYear__c</column>
+            <column>Account.%%%NAMESPACE%%%OppAmountLastYear__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>0</value>

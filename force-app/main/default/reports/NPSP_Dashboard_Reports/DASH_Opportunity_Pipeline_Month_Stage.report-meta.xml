@@ -45,7 +45,7 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Amount_Outstanding__c</field>
+        <field>Opportunity.%%%NAMESPACE%%%Amount_Outstanding__c</field>
     </columns>
     <description>Dashboard Report - Do Not Edit</description>
     <filter>

@@ -14,33 +14,33 @@
         <aggregateTypes>Average</aggregateTypes>
         <aggregateTypes>Maximum</aggregateTypes>
         <aggregateTypes>Minimum</aggregateTypes>
-        <field>Contact.Soft_Credit_Total__c</field>
+        <field>Contact.%%%NAMESPACE%%%Soft_Credit_Total__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <aggregateTypes>Average</aggregateTypes>
         <aggregateTypes>Maximum</aggregateTypes>
         <aggregateTypes>Minimum</aggregateTypes>
-        <field>Contact.Soft_Credit_This_Year__c</field>
+        <field>Contact.%%%NAMESPACE%%%Soft_Credit_This_Year__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <aggregateTypes>Average</aggregateTypes>
         <aggregateTypes>Maximum</aggregateTypes>
         <aggregateTypes>Minimum</aggregateTypes>
-        <field>Contact.Soft_Credit_Last_Year__c</field>
+        <field>Contact.%%%NAMESPACE%%%Soft_Credit_Last_Year__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <aggregateTypes>Average</aggregateTypes>
         <aggregateTypes>Maximum</aggregateTypes>
         <aggregateTypes>Minimum</aggregateTypes>
-        <field>Contact.Soft_Credit_Two_Years_Ago__c</field>
+        <field>Contact.%%%NAMESPACE%%%Soft_Credit_Two_Years_Ago__c</field>
     </columns>
     <description>Provides summary calculations for Soft Credit Totals, Soft Credit This Year, Soft Credit Last Year, and Two Years Ago.</description>
     <filter>
         <criteriaItems>
-            <column>Contact.Soft_Credit_Total__c</column>
+            <column>Contact.%%%NAMESPACE%%%Soft_Credit_Total__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>0</value>

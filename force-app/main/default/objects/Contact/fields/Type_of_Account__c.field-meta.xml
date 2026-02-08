@@ -3,7 +3,7 @@
     <fullName>Type_of_Account__c</fullName>
     <description>Formula: "Individual" or "Organization" depending on Account setting.</description>
     <externalId>false</externalId>
-    <formula>IF(Account.SYSTEMIsIndividual__c,"Individual","Organization")</formula>
+    <formula>IF(Account.%%%NAMESPACE%%%SYSTEMIsIndividual__c,"Individual","Organization")</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <inlineHelpText>Formula: "Individual" or "Organization" depending on Account setting.</inlineHelpText>
     <label>Type of Account</label>

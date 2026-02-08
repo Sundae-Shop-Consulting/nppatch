@@ -28,13 +28,13 @@
         <field>ADDRESS2_COUNTRY</field>
     </columns>
     <columns>
-        <field>Contact.Formula_HouseholdMailingAddress__c</field>
+        <field>Contact.%%%NAMESPACE%%%Formula_HouseholdMailingAddress__c</field>
     </columns>
     <columns>
-        <field>Account.Formal_Greeting__c</field>
+        <field>Account.%%%NAMESPACE%%%Formal_Greeting__c</field>
     </columns>
     <columns>
-        <field>Account.Informal_Greeting__c</field>
+        <field>Account.%%%NAMESPACE%%%Informal_Greeting__c</field>
     </columns>
     <description>Lists addresses for a mailing campaign, avoiding household duplicates.
 Runs from a custom button on the Campaign record. Supports both the Classic and Lightning User Interface.</description>

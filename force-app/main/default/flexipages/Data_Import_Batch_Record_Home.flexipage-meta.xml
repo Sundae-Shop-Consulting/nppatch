@@ -25,7 +25,7 @@
                 <identifier>force_detailPanel</identifier>
                 <visibilityRule>
                     <criteria>
-                        <leftValue>{!Record.GiftBatch__c}</leftValue>
+                        <leftValue>{!Record.%%%NAMESPACE%%%GiftBatch__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>false</rightValue>
                     </criteria>
@@ -98,7 +98,7 @@
                 <identifier>force_highlightsPanel</identifier>
                 <visibilityRule>
                     <criteria>
-                        <leftValue>{!Record.GiftBatch__c}</leftValue>
+                        <leftValue>{!Record.%%%NAMESPACE%%%GiftBatch__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>false</rightValue>
                     </criteria>
@@ -115,7 +115,7 @@
                 <identifier>flexipage_tabset</identifier>
                 <visibilityRule>
                     <criteria>
-                        <leftValue>{!Record.GiftBatch__c}</leftValue>
+                        <leftValue>{!Record.%%%NAMESPACE%%%GiftBatch__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>false</rightValue>
                     </criteria>
@@ -128,7 +128,7 @@
                 <identifier>GE_GiftEntryForm</identifier>
                 <visibilityRule>
                     <criteria>
-                        <leftValue>{!Record.GiftBatch__c}</leftValue>
+                        <leftValue>{!Record.%%%NAMESPACE%%%GiftBatch__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>true</rightValue>
                     </criteria>

@@ -3,7 +3,7 @@
     <fullName>Formula_HouseholdMailingAddress__c</fullName>
     <description>Formula: Clone of the Household Mailing address (also a Formula)</description>
     <externalId>false</externalId>
-    <formula>IF(Organization_Type__c == 'Household Account',
+    <formula>IF(%%%NAMESPACE%%%Organization_Type__c == 'Household Account',
 
 Account.BillingStreet &amp; BR() &amp;
 Account.BillingCity &amp; IF(ISBLANK(Account.BillingCity), "", ", ") &amp; Account.BillingState &amp; " " &amp; Account.BillingPostalCode

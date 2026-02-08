@@ -7,7 +7,7 @@
         <chartSummaries>
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>Opportunity.Amount_Outstanding__c</column>
+            <column>Opportunity.%%%NAMESPACE%%%Amount_Outstanding__c</column>
         </chartSummaries>
         <chartType>Funnel</chartType>
         <enableHoverLabels>true</enableHoverLabels>
@@ -41,7 +41,7 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Amount_Outstanding__c</field>
+        <field>Opportunity.%%%NAMESPACE%%%Amount_Outstanding__c</field>
     </columns>
     <description>Comprehensive list of Opportunities, grouped by Account Record Type, Opportunity Record Type, and Stage.</description>
     <filter>

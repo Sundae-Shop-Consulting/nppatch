@@ -18,7 +18,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Primary_Contact__c</field>
+                <field>%%%NAMESPACE%%%Primary_Contact__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -52,7 +52,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Recurring_Donation__c</field>
+                <field>%%%NAMESPACE%%%Recurring_Donation__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -64,15 +64,15 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Batch__c</field>
+                <field>%%%NAMESPACE%%%Batch__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Acknowledgment_Status__c</field>
+                <field>%%%NAMESPACE%%%Acknowledgment_Status__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Acknowledgment_Date__c</field>
+                <field>%%%NAMESPACE%%%Acknowledgment_Date__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -85,21 +85,21 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Membership_Start_Date__c</field>
+                <field>%%%NAMESPACE%%%Membership_Start_Date__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Membership_End_Date__c</field>
+                <field>%%%NAMESPACE%%%Membership_End_Date__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Member_Level__c</field>
+                <field>%%%NAMESPACE%%%Member_Level__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Membership_Origin__c</field>
+                <field>%%%NAMESPACE%%%Membership_Origin__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -112,25 +112,25 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Number_of_Payments__c</field>
+                <field>%%%NAMESPACE%%%Number_of_Payments__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Amount_Outstanding__c</field>
+                <field>%%%NAMESPACE%%%Amount_Outstanding__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Payments_Made__c</field>
+                <field>%%%NAMESPACE%%%Payments_Made__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Amount_Written_Off__c</field>
+                <field>%%%NAMESPACE%%%Amount_Written_Off__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Do_Not_Automatically_Create_Payment__c</field>
+                <field>%%%NAMESPACE%%%Do_Not_Automatically_Create_Payment__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -219,7 +219,7 @@
         <fields>Account.ACC_NAME</fields>
         <fields>Role_Name__c</fields>
         <fields>Amount__c</fields>
-        <relatedList>Partial_Soft_Credit__c.Opportunity__c</relatedList>
+        <relatedList>%%%NAMESPACE%%%Partial_Soft_Credit__c.%%%NAMESPACE%%%Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -228,7 +228,7 @@
         <fields>Payment_Method__c</fields>
         <fields>Paid__c</fields>
         <fields>Written_Off__c</fields>
-        <relatedList>OppPayment__c.Opportunity__c</relatedList>
+        <relatedList>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
         <customButtons>Manage_Allocations</customButtons>
@@ -237,7 +237,7 @@
         <fields>General_Accounting_Unit__c</fields>
         <fields>Amount__c</fields>
         <fields>Percent__c</fields>
-        <relatedList>Allocation__c.Opportunity__c</relatedList>
+        <relatedList>%%%NAMESPACE%%%Allocation__c.%%%NAMESPACE%%%Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
