@@ -63,7 +63,6 @@ public inherited sharing class CRLP_EnablementService {
             if (rescheduleBatchJobs) {
                 UTIL_MasterSchedulableHelper.setScheduledJobs();
             }
-            UTIL_OrgTelemetry_SVC.asyncProcessNpspSettingsTelemetry();
             return null;
         }
 
@@ -106,9 +105,6 @@ public inherited sharing class CRLP_EnablementService {
         Database.upsert(crlpSettings);
 
         UTIL_MasterSchedulableHelper.setScheduledJobs();
-        UTIL_OrgTelemetry_SVC.asyncProcessNpspSettingsTelemetry();
-
-        return;
     }
 
     /**

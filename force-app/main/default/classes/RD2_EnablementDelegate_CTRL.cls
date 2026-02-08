@@ -271,7 +271,6 @@ public with sharing class RD2_EnablementDelegate_CTRL extends STG_Panel {
 
     /***
     * @description Enables enhanced Recurring Donations feature.
-    * Processes the NPSP Settings telemetry type asynchronously.
     * Reschedules scheduled jobs if they should be rescheduled.
     * @param shouldRescheduleJobs Indicates if scheduled jobs should be rescheduled
     * @return void
@@ -281,7 +280,6 @@ public with sharing class RD2_EnablementDelegate_CTRL extends STG_Panel {
 
         if (!Test.isRunningTest()) {
             upsert STG_Panel.stgService.stgRD;
-            UTIL_OrgTelemetry_SVC.asyncProcessNpspSettingsTelemetry();
         }
 
         if (shouldRescheduleJobs) {
@@ -325,10 +323,6 @@ public with sharing class RD2_EnablementDelegate_CTRL extends STG_Panel {
         saveEnablementState(state);
 
         System.enqueueJob(new EnablementQueueable(QueueableMode.DisableRollup));
-
-        if (!Test.isRunningTest()) {
-            UTIL_OrgTelemetry_SVC.asyncProcessNpspSettingsTelemetry();
-        }
     }
 
     /***
@@ -345,10 +339,6 @@ public with sharing class RD2_EnablementDelegate_CTRL extends STG_Panel {
         state.isMetaConfirmed = true;
 
         saveEnablementState(state);
-
-        if (!Test.isRunningTest()) {
-            UTIL_OrgTelemetry_SVC.asyncProcessNpspSettingsTelemetry();
-        }
     }
 
     /***

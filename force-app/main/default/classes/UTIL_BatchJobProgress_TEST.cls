@@ -42,20 +42,11 @@ private with sharing class UTIL_BatchJobProgress_TEST {
     */
     @isTest
     private static void shouldLoadBatchJob() {
-        UTIL_OrgTelemetry_SObject_BATCH telemetryBatch = new UTIL_OrgTelemetry_SObject_BATCH(
-            UTIL_OrgTelemetry_SObject_BATCH.TelemetryBatchJobMode.RECURRING_DONATIONS
-        );
-
-        telemetryBatch.featureManager = (UTIL_FeatureManagement) Test.createStub(
-            UTIL_FeatureManagement.class,
-            new UTIL_FeatureManagement_TEST.Mock()
-        );
-
         Test.startTest();
-        Database.executeBatch(telemetryBatch);
+        Database.executeBatch(new RD_InstallScript_BATCH());
         Test.stopTest();
 
-        UTIL_BatchJobService.BatchJob batchJob = getBatchJob('UTIL_OrgTelemetry_SObject_BATCH');
+        UTIL_BatchJobService.BatchJob batchJob = getBatchJob('RD_InstallScript_BATCH');
         System.assertNotEquals(null, batchJob, 'Batch Job should be returned');
     }
 
