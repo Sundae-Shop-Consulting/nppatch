@@ -3,7 +3,7 @@
     <fullName>Primary_Contact__c</fullName>
     <description>Indicates if this Contact is designated as the Primary Contact on their Account (read only).</description>
     <externalId>false</externalId>
-    <formula>Account.One2OneContact__c = Id</formula>
+    <formula>Account.One2%%%NAMESPACE%%%OneContact__c = Id</formula>
     <inlineHelpText>Indicates if this Contact is designated as the Primary Contact on their Account (read only).</inlineHelpText>
     <label>Primary Contact</label>
     <type>Checkbox</type>

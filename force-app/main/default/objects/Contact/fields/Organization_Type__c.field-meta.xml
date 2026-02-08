@@ -3,7 +3,7 @@
     <fullName>Organization_Type__c</fullName>
     <description>Formula: In order of preference, the SYSTEM_AccountType field, the Account Type field, and "Organization".</description>
     <externalId>false</externalId>
-    <formula>NULLVALUE(IF( Account.SYSTEM_AccountType__c=="", TEXT(Account.Type),Account.SYSTEM_AccountType__c),"Organization" )</formula>
+    <formula>NULLVALUE(IF( Account.%%%NAMESPACE%%%SYSTEM_AccountType__c=="", TEXT(Account.Type),Account.%%%NAMESPACE%%%SYSTEM_AccountType__c),"Organization" )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <inlineHelpText>Formula: In order of preference, the SYSTEM_AccountType field, the Account Type field, and "Organization".</inlineHelpText>
     <label>Organization Type</label>

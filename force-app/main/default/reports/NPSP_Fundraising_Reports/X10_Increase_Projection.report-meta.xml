@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <aggregates>
-        <calculatedFormula>Account.OppAmountLastYear__c:SUM * 1.1</calculatedFormula>
+        <calculatedFormula>Account.%%%NAMESPACE%%%OppAmountLastYear__c:SUM * 1.1</calculatedFormula>
         <datatype>currency</datatype>
         <description>10 percent increase over the previous year giving</description>
         <developerName>FORMULA2</developerName>
@@ -11,7 +11,7 @@
         <scale>2</scale>
     </aggregates>
     <aggregates>
-        <calculatedFormula>Account.LastOppAmount__c:SUM * 1.1</calculatedFormula>
+        <calculatedFormula>Account.%%%NAMESPACE%%%LastOppAmount__c:SUM * 1.1</calculatedFormula>
         <datatype>currency</datatype>
         <developerName>FORMULA3</developerName>
         <isActive>true</isActive>
@@ -21,27 +21,27 @@
     </aggregates>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.OppAmountThisYear__c</field>
+        <field>Account.%%%NAMESPACE%%%OppAmountThisYear__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.OppAmountLastYear__c</field>
+        <field>Account.%%%NAMESPACE%%%OppAmountLastYear__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.LastOppAmount__c</field>
+        <field>Account.%%%NAMESPACE%%%LastOppAmount__c</field>
     </columns>
     <description>Provides 10% increase projection figures over Last Gift and Last Year Total Gifts</description>
     <filter>
         <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
-            <column>Account.OppAmountLastYear__c</column>
+            <column>Account.%%%NAMESPACE%%%OppAmountLastYear__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.OppAmountThisYear__c</column>
+            <column>Account.%%%NAMESPACE%%%OppAmountThisYear__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>0</value>

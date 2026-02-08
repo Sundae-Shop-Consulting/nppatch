@@ -8,13 +8,13 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.TotalOppAmount__c</field>
+        <field>Account.%%%NAMESPACE%%%TotalOppAmount__c</field>
     </columns>
     <columns>
-        <field>Account.AverageAmount__c</field>
+        <field>Account.%%%NAMESPACE%%%AverageAmount__c</field>
     </columns>
     <columns>
-        <field>Account.OppAmountLastYear__c</field>
+        <field>Account.%%%NAMESPACE%%%OppAmountLastYear__c</field>
     </columns>
     <columns>
         <field>ADDRESS1_CITY</field>
@@ -26,24 +26,24 @@
         <field>PHONE1</field>
     </columns>
     <columns>
-        <field>Account.HouseholdPhone__c</field>
+        <field>Account.%%%NAMESPACE%%%HouseholdPhone__c</field>
     </columns>
     <description>Dashboard Report - Do Not Edit</description>
     <filter>
         <criteriaItems>
-            <column>Account.TotalOppAmount__c</column>
+            <column>Account.%%%NAMESPACE%%%TotalOppAmount__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.OppAmountThisYear__c</column>
+            <column>Account.%%%NAMESPACE%%%OppAmountThisYear__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.SYSTEM_AccountType__c</column>
+            <column>Account.%%%NAMESPACE%%%SYSTEM_AccountType__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>Household Account</value>

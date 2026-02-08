@@ -11,12 +11,12 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.SYSTEMIsIndividual__c</field>
+        <field>Account.%%%NAMESPACE%%%SYSTEMIsIndividual__c</field>
     </columns>
     <description>Lists Contacts grouped by their system Account Type.  Details are hidden to avoid data limits.  Check the group you want to see details on and click the Drill Down button.</description>
     <filter>
         <criteriaItems>
-            <column>Account.SYSTEM_AccountType__c</column>
+            <column>Account.%%%NAMESPACE%%%SYSTEM_AccountType__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
             <value/>
@@ -27,8 +27,8 @@
     <groupingsDown>
         <aggregateType>Sum</aggregateType>
         <dateGranularity>Day</dateGranularity>
-        <field>Account.SYSTEM_AccountType__c</field>
-        <sortByName>Account.SYSTEMIsIndividual__c</sortByName>
+        <field>Account.%%%NAMESPACE%%%SYSTEM_AccountType__c</field>
+        <sortByName>Account.%%%NAMESPACE%%%SYSTEMIsIndividual__c</sortByName>
         <sortOrder>Asc</sortOrder>
         <sortType>Aggregate</sortType>
     </groupingsDown>

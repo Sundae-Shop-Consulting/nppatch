@@ -58,11 +58,11 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Payments_Made__c</field>
+        <field>Opportunity.%%%NAMESPACE%%%Payments_Made__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Amount_Outstanding__c</field>
+        <field>Opportunity.%%%NAMESPACE%%%Amount_Outstanding__c</field>
     </columns>
     <columns>
         <field>CLOSE_DATE</field>

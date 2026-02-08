@@ -28,7 +28,7 @@
     <description>All Closed/Won Opportunities grouped by giving Household Account</description>
     <filter>
         <criteriaItems>
-            <column>Account.SYSTEM_AccountType__c</column>
+            <column>Account.%%%NAMESPACE%%%SYSTEM_AccountType__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
             <value></value>

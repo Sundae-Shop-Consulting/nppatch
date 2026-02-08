@@ -4,13 +4,13 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>Account.SYSTEM_AccountType__c</field>
+        <field>Account.%%%NAMESPACE%%%SYSTEM_AccountType__c</field>
     </columns>
     <columns>
         <field>TYPE</field>
     </columns>
     <columns>
-        <field>Account.Number_of_Household_Members__c</field>
+        <field>Account.%%%NAMESPACE%%%Number_of_Household_Members__c</field>
     </columns>
     <columns>
         <field>ADDRESS1_STREET</field>
@@ -33,13 +33,13 @@
     <description>Household Accounts with no members</description>
     <filter>
         <criteriaItems>
-            <column>Account.SYSTEM_AccountType__c</column>
+            <column>Account.%%%NAMESPACE%%%SYSTEM_AccountType__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>Household Account</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.Number_of_Household_Members__c</column>
+            <column>Account.%%%NAMESPACE%%%Number_of_Household_Members__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>0</value>

@@ -86,7 +86,7 @@
         <fields>Send_Email__c</fields>
         <fields>Priority__c</fields>
         <fields>Type__c</fields>
-        <relatedList>Engagement_Plan_Task__c.Engagement_Plan_Template__c</relatedList>
+        <relatedList>%%%NAMESPACE%%%Engagement_Plan_Task__c.%%%NAMESPACE%%%Engagement_Plan_Template__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>Opportunity__c</fields>
@@ -97,7 +97,7 @@
         <fields>Account__c</fields>
         <fields>CREATED_DATE</fields>
         <fields>CREATEDBY_USER</fields>
-        <relatedList>Engagement_Plan__c.Engagement_Plan_Template__c</relatedList>
+        <relatedList>%%%NAMESPACE%%%Engagement_Plan__c.%%%NAMESPACE%%%Engagement_Plan_Template__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>

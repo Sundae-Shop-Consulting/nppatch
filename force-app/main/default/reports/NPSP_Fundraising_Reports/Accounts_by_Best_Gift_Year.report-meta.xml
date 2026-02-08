@@ -11,7 +11,7 @@
         <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>Account.Best_Gift_Year__c</groupingColumn>
+        <groupingColumn>Account.%%%NAMESPACE%%%Best_Gift_Year__c</groupingColumn>
         <location>CHART_TOP</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -35,11 +35,11 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Best_Gift_Year_Total__c</field>
+        <field>Account.%%%NAMESPACE%%%Best_Gift_Year_Total__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.TotalOppAmount__c</field>
+        <field>Account.%%%NAMESPACE%%%TotalOppAmount__c</field>
     </columns>
     <columns>
         <field>ADDRESS1_CITY</field>
@@ -50,7 +50,7 @@
     <description>All Accounts grouped by their highest giving year</description>
     <filter>
         <criteriaItems>
-            <column>Account.TotalOppAmount__c</column>
+            <column>Account.%%%NAMESPACE%%%TotalOppAmount__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>0</value>
@@ -60,7 +60,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Account.Best_Gift_Year__c</field>
+        <field>Account.%%%NAMESPACE%%%Best_Gift_Year__c</field>
         <sortOrder>Desc</sortOrder>
     </groupingsDown>
     <name>Accounts by Best Gift Year</name>
@@ -71,7 +71,7 @@
     <reportType>AccountList</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
-    <sortColumn>Account.Best_Gift_Year_Total__c</sortColumn>
+    <sortColumn>Account.%%%NAMESPACE%%%Best_Gift_Year_Total__c</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>

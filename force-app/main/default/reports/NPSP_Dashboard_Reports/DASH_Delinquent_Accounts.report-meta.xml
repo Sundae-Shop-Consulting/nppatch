@@ -32,7 +32,7 @@
         <field>OppPayment__c.Payment_Method__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Payments_Made__c</field>
+        <field>Opportunity.%%%NAMESPACE%%%Payments_Made__c</field>
     </columns>
     <columns>
         <field>CUST_CREATED_DATE</field>

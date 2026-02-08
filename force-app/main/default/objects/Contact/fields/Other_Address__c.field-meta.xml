@@ -4,14 +4,14 @@
     <description>Formula: If the Primary Address Type is Other, the Mailing Address.  If the Secondary Address Type is Other, the Other Address.</description>
     <externalId>false</externalId>
     <formula>IF(
-  ISPICKVAL(Primary_Address_Type__c,"Other"),
+  ISPICKVAL(%%%NAMESPACE%%%Primary_Address_Type__c,"Other"),
   IF(ISBLANK(MailingStreet), "", MailingStreet &amp; ", ") &amp;
   IF(ISBLANK(MailingCity), "", MailingCity &amp; ", ")&amp;
   IF(ISBLANK(MailingState), "", MailingState &amp; " ")&amp;
   IF(ISBLANK(MailingPostalCode), "", MailingPostalCode) &amp;
   IF(ISBLANK(MailingCountry), "", ", " &amp;MailingCountry)
 ,
-IF(ISPICKVAL(Secondary_Address_Type__c,"Other"),
+IF(ISPICKVAL(%%%NAMESPACE%%%Secondary_Address_Type__c,"Other"),
   IF(ISBLANK(OtherStreet), "", OtherStreet &amp; ", ") &amp;
   IF(ISBLANK(OtherCity), "", OtherCity &amp; ", ")&amp;
   IF(ISBLANK(OtherState), "", OtherState &amp; " ")&amp;
