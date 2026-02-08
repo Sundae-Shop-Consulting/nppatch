@@ -24,7 +24,7 @@
     <description>Lists Accounts grouped by their system Account Type.  Details are hidden to avoid data limits.  Check the group you want to see details on and click the Drill Down button.</description>
     <filter>
         <criteriaItems>
-            <column>Account.SYSTEM_AccountType__c</column>
+            <column>Account.%%%NAMESPACE%%%SYSTEM_AccountType__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
             <value/>
@@ -34,7 +34,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Account.SYSTEM_AccountType__c</field>
+        <field>Account.%%%NAMESPACE%%%SYSTEM_AccountType__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Individual Accounts by Account Type</name>

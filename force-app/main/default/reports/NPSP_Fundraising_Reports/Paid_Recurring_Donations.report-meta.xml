@@ -62,7 +62,7 @@
         <name>co</name>
         <value>1</value>
     </params>
-    <reportType>Opportunity@Opportunity.Recurring_Donation__c</reportType>
+    <reportType>Opportunity@Opportunity.%%%NAMESPACE%%%Recurring_Donation__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <timeFrameFilter>

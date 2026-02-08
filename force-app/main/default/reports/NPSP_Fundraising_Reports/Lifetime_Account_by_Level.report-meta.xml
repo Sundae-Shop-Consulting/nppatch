@@ -8,18 +8,18 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.TotalOppAmount__c</field>
+        <field>Account.%%%NAMESPACE%%%TotalOppAmount__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.OppAmountThisYear__c</field>
+        <field>Account.%%%NAMESPACE%%%OppAmountThisYear__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.OppAmountLastYear__c</field>
+        <field>Account.%%%NAMESPACE%%%OppAmountLastYear__c</field>
     </columns>
     <columns>
-        <field>Account.LastCloseDate__c</field>
+        <field>Account.%%%NAMESPACE%%%LastCloseDate__c</field>
     </columns>
     <columns>
         <field>ADDRESS1_CITY</field>
@@ -30,7 +30,7 @@
     <description>Provides a breakdown of Total Gifts for all Accounts, grouped by Level.</description>
     <filter>
         <criteriaItems>
-            <column>Account.TotalOppAmount__c</column>
+            <column>Account.%%%NAMESPACE%%%TotalOppAmount__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>0</value>
@@ -40,7 +40,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Account.Level__c</field>
+        <field>Account.%%%NAMESPACE%%%Level__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Lifetime Account by Level</name>

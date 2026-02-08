@@ -3,8 +3,8 @@
     <fullName>LastCloseDateHH__c</fullName>
     <description>Formula: Last Close Date field of the related Household.</description>
     <externalId>false</externalId>
-    <formula>IF(Organization_Type__c == 'Household Account',
-Account.LastCloseDate__c,
+    <formula>IF(%%%NAMESPACE%%%Organization_Type__c == 'Household Account',
+Account.%%%NAMESPACE%%%LastCloseDate__c,
 Household__r.LastCloseDate__c)</formula>
     <label>Last Household Gift Date</label>
     <required>false</required>

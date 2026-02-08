@@ -177,7 +177,7 @@
         <fields>Contact1_Lastname__c</fields>
         <fields>Account1_Name__c</fields>
         <fields>LAST_UPDATE</fields>
-        <relatedList>DataImport__c.NPSP_Data_Import_Batch__c</relatedList>
+        <relatedList>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%NPSP_Data_Import_Batch__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

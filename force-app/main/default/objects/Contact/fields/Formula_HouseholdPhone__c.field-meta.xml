@@ -3,8 +3,8 @@
     <fullName>Formula_HouseholdPhone__c</fullName>
     <description>Formula: Simple formula of Household Phone field.</description>
     <externalId>false</externalId>
-    <formula>IF(Organization_Type__c == 'Household Account',
-Account.HouseholdPhone__c,
+    <formula>IF(%%%NAMESPACE%%%Organization_Type__c == 'Household Account',
+Account.%%%NAMESPACE%%%HouseholdPhone__c,
 Household__r.HouseholdPhone__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <inlineHelpText>Formula: Simple formula of Household Phone field.</inlineHelpText>

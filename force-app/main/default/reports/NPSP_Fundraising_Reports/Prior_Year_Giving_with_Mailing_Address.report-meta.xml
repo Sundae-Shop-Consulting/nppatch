@@ -7,10 +7,10 @@
         <field>RECORDTYPE</field>
     </columns>
     <columns>
-        <field>Account.Formal_Greeting__c</field>
+        <field>Account.%%%NAMESPACE%%%Formal_Greeting__c</field>
     </columns>
     <columns>
-        <field>Account.Informal_Greeting__c</field>
+        <field>Account.%%%NAMESPACE%%%Informal_Greeting__c</field>
     </columns>
     <columns>
         <field>ADDRESS1_STREET</field>
@@ -25,12 +25,12 @@
         <field>ADDRESS1_ZIP</field>
     </columns>
     <columns>
-        <field>Account.OppAmountLastYear__c</field>
+        <field>Account.%%%NAMESPACE%%%OppAmountLastYear__c</field>
     </columns>
     <description>List of Total Gift amounts with Household address information</description>
     <filter>
         <criteriaItems>
-            <column>Account.OppAmountLastYear__c</column>
+            <column>Account.%%%NAMESPACE%%%OppAmountLastYear__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>greaterThan</operator>
             <value>0</value>

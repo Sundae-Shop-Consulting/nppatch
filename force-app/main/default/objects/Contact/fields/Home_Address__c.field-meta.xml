@@ -4,14 +4,14 @@
     <description>Formula: Uses primary address type field to determine Home Address from Mailing or Other address.</description>
     <externalId>false</externalId>
     <formula>IF(
-  ISPICKVAL(Primary_Address_Type__c,"Home"),
+  ISPICKVAL(%%%NAMESPACE%%%Primary_Address_Type__c,"Home"),
   IF(ISBLANK(MailingStreet), "", MailingStreet &amp; ", ") &amp;
   IF(ISBLANK(MailingCity), "", MailingCity &amp; ", ")&amp;
   IF(ISBLANK(MailingState), "", MailingState &amp; " ")&amp;
   IF(ISBLANK(MailingPostalCode), "", MailingPostalCode) &amp;
   IF(ISBLANK(MailingCountry), "", ", " &amp;MailingCountry)
 ,
-IF(ISPICKVAL(Secondary_Address_Type__c,"Home"),
+IF(ISPICKVAL(%%%NAMESPACE%%%Secondary_Address_Type__c,"Home"),
   IF(ISBLANK(OtherStreet), "", OtherStreet &amp; ", ") &amp;
   IF(ISBLANK(OtherCity), "", OtherCity &amp; ", ")&amp;
   IF(ISBLANK(OtherState), "", OtherState &amp; " ")&amp;
