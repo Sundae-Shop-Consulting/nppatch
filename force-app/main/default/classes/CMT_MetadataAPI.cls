@@ -215,10 +215,6 @@ public class CMT_MetadataAPI {
             }
 
             if (isSuccess) {
-                if (!Test.isRunningTest()) {
-                    UTIL_OrgTelemetry_SVC.asyncProcessCMTChange(buildChangedMetadata(result));
-                }
-
                 if (callbackHandler != null) {
                     callbackHandler.performSuccessHandler(callbackParams, JSON.serializePretty(statusMap).left(255));
                 }
@@ -227,30 +223,6 @@ public class CMT_MetadataAPI {
                     callbackHandler.performErrorHandler(callbackParams, JSON.serializePretty(statusMap).left(255));
                 }
             }
-        }
-
-        /**
-         * @description This method iterates through the successful deployments and grabs the
-         * object name. It will then pass into the UTIL_OrgTelemetry_SVC class to determine
-         * whether or not to run the telemetry code.
-         * @param result - Deployment Result
-         * @return Set<String>
-         */
-        private Set<String> buildChangedMetadata(Metadata.DeployResult result) {
-            Set<String> metadataObjectTypeSet = new Set<String>();
-
-            for (Integer i = 0; i < result.details.componentSuccesses.size(); i++) {
-
-                // Metadata full name for a custom metadata is in this format:
-                // metadataObject.recordName
-                // Example:
-                // Opportunity_Stage_To_State_Mapping__mdt.FINALIZED
-                String metadataFullName = result.details.componentSuccesses[i].fullName.toLowerCase();
-
-                metadataObjectTypeSet.add(metadataFullName);
-            }
-
-            return metadataObjectTypeSet;
         }
     }
 }

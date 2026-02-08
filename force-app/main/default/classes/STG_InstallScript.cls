@@ -40,7 +40,7 @@ global without sharing class STG_InstallScript implements InstallHandler {
         POPULATE_RD_INSTALLMENT_NUMBER, RUN_NEW_ORG_SCRIPT,
         INSERT_TDTM_DEFAULTS, ABORT_OLD_SCHEDULED_JOBS,
         CLEANUP_RECORD_TYPE_SETTINGS, UPDATE_CAMPAIGN_LIST_REPORT,
-        UPDATE_ORG_TELEMETRY, CREATE_DEFAULT_SETTINGS_FOR_UPGRADE,
+        CREATE_DEFAULT_SETTINGS_FOR_UPGRADE,
         CREATE_DEFAULT_SETTINGS_FOR_NEW_INSTALL,
         CREATE_OPP_STAGE_TO_STATE_RECORDS,
         CREATE_MIGRATED_CUSTOM_FIELD_MAPPINGS
@@ -85,9 +85,6 @@ global without sharing class STG_InstallScript implements InstallHandler {
             // Insert/Update the TDTM defaults as needed
             executeAction(InstallAction.INSERT_TDTM_DEFAULTS, logger);
 
-            // Submit generic org telemetry data back to the LMO using FeatureManagement
-            executeAction(InstallAction.UPDATE_ORG_TELEMETRY, logger);
-
             // Check for advanced mapping setting then create migrated custom field mappings as needed
             executeAction(InstallAction.CREATE_MIGRATED_CUSTOM_FIELD_MAPPINGS, logger);
 
@@ -130,9 +127,6 @@ global without sharing class STG_InstallScript implements InstallHandler {
 
             } else if (action == InstallAction.UPDATE_CAMPAIGN_LIST_REPORT) {
                 updateCampaignListReport();
-
-            } else if (action == InstallAction.UPDATE_ORG_TELEMETRY && !Test.isRunningTest()) {
-                UTIL_OrgTelemetry_SVC.dispatchTelemetryBatchJob();
 
             } else if (action == InstallAction.CREATE_DEFAULT_SETTINGS_FOR_UPGRADE) {
                 populateNamespacePrefix();

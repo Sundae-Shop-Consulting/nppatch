@@ -47,12 +47,12 @@ public with sharing class UTIL_FeatureManagement_TEST {
         UTIL_FeatureManagement featureMgt = new UTIL_FeatureManagement();
 
         featureMgt.setPackageBooleanValue(
-            UTIL_OrgTelemetry_SVC.TelemetryParameterName.IsEnabled_HouseholdAcctModel.name(),
+            'IsEnabled_HouseholdAcctModel',
             false
         );
 
         System.assertEquals(false, featureMgt.checkPackageBooleanValue(
-            UTIL_OrgTelemetry_SVC.TelemetryParameterName.IsEnabled_HouseholdAcctModel.name())
+            'IsEnabled_HouseholdAcctModel')
         );
     }
 
@@ -64,12 +64,12 @@ public with sharing class UTIL_FeatureManagement_TEST {
         UTIL_FeatureManagement featureMgt = new UTIL_FeatureManagement();
 
         featureMgt.setPackageIntegerValue(
-            UTIL_OrgTelemetry_SVC.TelemetryParameterName.Data_CountRdOppsAll.name(),
+            'Data_CountRdOppsAll',
             1
         );
 
         System.assertEquals(1, featureMgt.checkPackageIntegerValue(
-            UTIL_OrgTelemetry_SVC.TelemetryParameterName.Data_CountRdOppsAll.name())
+            'Data_CountRdOppsAll')
         );
     }
 
@@ -80,12 +80,12 @@ public with sharing class UTIL_FeatureManagement_TEST {
     private static void shouldCallCheckPackageBooleanValue() {
         UTIL_FeatureManagement featureMgt = new UTIL_FeatureManagement();
 
-        featureMgt.setPackageBooleanValue( UTIL_OrgTelemetry_SVC.TelemetryParameterName.IsEnabled_AddressVerification.name(),
+        featureMgt.setPackageBooleanValue('IsEnabled_AddressVerification',
             true
         );
 
         System.assertEquals(true,
-            new UTIL_FeatureEnablement().isEnabled(UTIL_OrgTelemetry_SVC.TelemetryParameterName.IsEnabled_AddressVerification.name()));
+            new UTIL_FeatureEnablement().isEnabled('IsEnabled_AddressVerification'));
     }
 
     @isTest
