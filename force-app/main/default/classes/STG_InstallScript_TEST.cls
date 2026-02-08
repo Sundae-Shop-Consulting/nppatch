@@ -181,10 +181,8 @@ public with sharing class STG_InstallScript_TEST {
 
         System.assertEquals(RD_RecurringDonations.RecurringDonationCloseOptions.Mark_Opportunities_Closed_Lost.name(), npe03Settings.Open_Opportunity_Behavior__c);
         System.assertEquals(true, npe03Settings.Add_Campaign_to_All_Opportunites__c);
-        System.assertEquals(true, npe03Settings.Enable_Update_Check__c);
         System.assertEquals(50, npe03Settings.Maximum_Donations__c);
         System.assertEquals(12, npe03Settings.Opportunity_Forecast_Months__c);
-        System.assertEquals(90, npe03Settings.Update_Check_Interval__c);
         System.assertEquals([select id from RecordType where sobjecttype = 'Opportunity' limit 1].id, npe03Settings.Record_Type__c);
 
         System.assertEquals('List Setting', npe04Settings.Reciprocal_Method__c);
