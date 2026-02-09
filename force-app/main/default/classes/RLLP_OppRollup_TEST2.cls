@@ -340,9 +340,9 @@ public with sharing class RLLP_OppRollup_TEST2 {
         testURFS.add(testUserRollup2);
 
         User_Rollup_Field_Settings__c testUserRollup3 = new User_Rollup_Field_Settings__c();
-        testUserRollup3.Target_Field__c = 'LastCloseDate__c';
+        testUserRollup3.Target_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastCloseDate__c');
         testUserRollup3.Source_Field__c = 'CloseDate';
-        testUserRollup3.Object_Name__c = 'Household__c';
+        testUserRollup3.Object_Name__c = UTIL_Namespace.StrTokenNSPrefix('Household__c');
         testUserRollup3.Field_Action__c = 'MAX';
         testUserRollup3.Name = 'TestRollup3';
         testURFS.add(testUserRollup3);
@@ -942,9 +942,9 @@ public with sharing class RLLP_OppRollup_TEST2 {
         list<User_Rollup_Field_Settings__c> testURFS = new list<User_Rollup_Field_Settings__c>();
 
         User_Rollup_Field_Settings__c testUserRollup1 = new User_Rollup_Field_Settings__c();
-        testUserRollup1.Target_Field__c = 'Household_ID__c';
+        testUserRollup1.Target_Field__c = UTIL_Namespace.StrTokenNSPrefix('Household_ID__c');
         testUserRollup1.Source_Field__c = 'TotalOpportunityQuantity';
-        testUserRollup1.Object_Name__c = 'Household__c';
+        testUserRollup1.Object_Name__c = UTIL_Namespace.StrTokenNSPrefix('Household__c');
         testUserRollup1.Field_Action__c = 'MAX';
         testUserRollup1.Name = 'TestRollup8675309';
         testURFS.add(TestUserRollup1);

@@ -99,7 +99,7 @@ private with sharing class STG_PanelHealthCheck_TEST {
         Level__c lvl1 = new Level__c(
             Name = 'new',
             Target__c = 'Contact',
-            Source_Field__c = 'OppsClosedThisYear__c', 
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('OppsClosedThisYear__c'), 
             Level_Field__c = 'Does_not_exist__c', 
             Previous_Level_Field__c = null, 
             Active__c = true, 

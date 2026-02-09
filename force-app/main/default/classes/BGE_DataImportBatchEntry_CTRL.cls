@@ -210,7 +210,7 @@ public with sharing class BGE_DataImportBatchEntry_CTRL {
         if (token == Account.SObjectType) {
             relationshipField = 'AccountId';
         } else if (token == Contact.SObjectType) {
-            relationshipField = 'Primary_Contact__c';
+            relationshipField = UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c');
         } else {
             throw new AuraHandledException('SObjectType ' + token + ' is not supported.');
         }
@@ -221,14 +221,14 @@ public with sharing class BGE_DataImportBatchEntry_CTRL {
                 'Amount, ' +
                     '(SELECT Id, ' +
                     'Name, ' +
-                    'Scheduled_Date__c, ' +
-                    'Opportunity__r.Name, ' +
-                    'Opportunity__c, ' +
-                    'Payment_Amount__c,' +
-                    'Paid__c, ' +
-                    'Written_Off__c ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c') + ', ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.Name, ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ', ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ',' +
+                    UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' ' +
                     'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
-                    'WHERE Written_Off__c = false) ' +
+                    'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false) ' +
                 'FROM Opportunity ' +
                 'WHERE ' + relationshipField + ' = :donorId ' +
                 'AND IsClosed = false ' +

@@ -97,21 +97,21 @@ private class DonationSelector_TEST {
             'CloseDate, ' +
             'IsClosed, ' +
             'Amount, ' +
-            'Number_of_Payments__c, ' +
+            UTIL_Namespace.StrTokenNSPrefix('Number_of_Payments__c') + ', ' +
                 '(SELECT Id, ' +
                     'Name, ' +
-                    'Scheduled_Date__c, ' +
-                    'Opportunity__r.Name, ' +
-                    'Opportunity__r.Primary_Contact__c, ' +
-                    'Opportunity__c, ' +
-                    'Payment_Amount__c, ' +
-                    'Payment_Date__c, ' +
-                    'Paid__c, ' +
-                    'Written_Off__c, ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c') + ', ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.Name, ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.' + UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c') + ', ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ', ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c') + ', ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ', ' +
                     String.valueOf(OppPayment__c.Elevate_Payment_API_Status__c) + ' ' +
                 'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
-                'WHERE Written_Off__c = false ' +
-                'AND Paid__c = false), ' +
+                'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false ' +
+                'AND ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ' = false), ' +
                 '(SELECT Id, ' +
                     'Role, ' +
                     'ContactId ' +

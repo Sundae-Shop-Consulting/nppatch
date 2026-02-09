@@ -36,9 +36,9 @@
 */
 public without sharing class OPP_OpportunityContactRoles_TDTM extends TDTM_Runnable {
 
-    private static final String FIELD_NAME_PRIMARY_CONTACT = 'Primary_Contact__c';
-    private static final String FIELD_NAME_HONOREE_CONTACT = 'Honoree_Contact__c';
-    private static final String FIELD_NAME_NOTIFICATION_RECIPIENT_CONTACT = 'Notification_Recipient_Contact__c';
+    private static final String FIELD_NAME_PRIMARY_CONTACT = UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c');
+    private static final String FIELD_NAME_HONOREE_CONTACT = UTIL_Namespace.StrTokenNSPrefix('Honoree_Contact__c');
+    private static final String FIELD_NAME_NOTIFICATION_RECIPIENT_CONTACT = UTIL_Namespace.StrTokenNSPrefix('Notification_Recipient_Contact__c');
 
 
     /** @description DmlWrapper holds dml transactions for processing classes. */

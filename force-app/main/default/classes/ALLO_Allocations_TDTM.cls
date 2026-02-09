@@ -1269,9 +1269,9 @@ public class ALLO_Allocations_TDTM extends TDTM_Runnable {
         String pmtReviewQuery = 'SELECT     Id, ' +
                                 ' (SELECT Id FROM ' + UTIL_Namespace.StrTokenNSPrefix('Allocations__r') + ') ' +
                                 'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' ' +
-                                'WHERE Paid__c <> true AND ' +
-                                '      Written_Off__c <> true AND ' +
-                                '      Opportunity__c in :updatedRecurringDonationOppIds';
+                                'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ' <> true AND ' +
+                                '      ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' <> true AND ' +
+                                '      ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' in :updatedRecurringDonationOppIds';
 
         List<SObject> pmtsRequiringAllocationReview = Database.query(pmtReviewQuery);
 

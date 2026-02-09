@@ -1652,7 +1652,7 @@ private with sharing class ALLO_Allocations_TEST {
     * @return List<Allocation__c> A list of all Allocations
     **********************************************************************************************************/
     private static List<Allocation__c> getAllocationsOrderByAmount() {
-        return Database.query(getAllocationsQuery().build() + ' ORDER BY Amount__c');
+        return Database.query(getAllocationsQuery().build() + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Amount__c'));
     }
 
     /*********************************************************************************************************
@@ -1660,7 +1660,7 @@ private with sharing class ALLO_Allocations_TEST {
     * @return List<Allocation__c> A list of all Allocations
     **********************************************************************************************************/
     private static List<Allocation__c> getAllocationsOrderByPercent() {
-        return Database.query(getAllocationsQuery().build() + ' ORDER BY Percent__c');
+        return Database.query(getAllocationsQuery().build() + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Percent__c'));
     }
 
     /*********************************************************************************************************
@@ -1669,7 +1669,7 @@ private with sharing class ALLO_Allocations_TEST {
     * @return List<Allocation__c> A list of Allocations assigned to the Opportunity
     **********************************************************************************************************/
     private static List<Allocation__c> getAllocationsOrderByAmount(Id oppId) {
-        return Database.query(getAllocationsQuery(oppId).build() + ' ORDER BY Amount__c');
+        return Database.query(getAllocationsQuery(oppId).build() + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Amount__c'));
     }
 
     /*********************************************************************************************************
@@ -1678,7 +1678,7 @@ private with sharing class ALLO_Allocations_TEST {
     * @return List<Allocation__c> A list of Allocations assigned to the Opportunity
     **********************************************************************************************************/
     private static List<Allocation__c> getAllocationsOrderByPercent(Id oppId) {
-        return Database.query(getAllocationsQuery(oppId).build() + ' ORDER BY Percent__c');
+        return Database.query(getAllocationsQuery(oppId).build() + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Percent__c'));
     }
 
     /*********************************************************************************************************
@@ -1688,7 +1688,7 @@ private with sharing class ALLO_Allocations_TEST {
     * @return List<Allocation__c> A list of Allocations assigned to the Opportunity
     **********************************************************************************************************/
     private static List<Allocation__c> getAllocationsOrderByPercent(Id paymentId, Id gauId) {
-        return Database.query(getAllocationsQuery(paymentId, gauId).build() + ' ORDER BY Percent__c');
+        return Database.query(getAllocationsQuery(paymentId, gauId).build() + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Percent__c'));
     }
 
     /*********************************************************************************************************

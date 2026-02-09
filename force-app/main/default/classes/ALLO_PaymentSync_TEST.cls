@@ -1072,7 +1072,7 @@ private with sharing  class ALLO_PaymentSync_TEST {
     * @return List<Allocation__c> A list of all Allocations
     **********************************************************************************************************/
     private static List<Allocation__c> getAllocationsOrderByAmount() {
-        return Database.query(getAllocationsQuery().build() + ' ORDER BY Opportunity__c NULLS LAST, Amount__c, General_Accounting_Unit__c');
+        return Database.query(getAllocationsQuery().build() + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' NULLS LAST, ' + UTIL_Namespace.StrTokenNSPrefix('Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('General_Accounting_Unit__c'));
     }
 
     /*********************************************************************************************************
