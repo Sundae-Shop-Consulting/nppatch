@@ -614,7 +614,7 @@ private class PMT_PaymentWizard_TEST {
         // create our Payment Field Mapping
         Payment_Field_Mapping_Settings__c pfmNew = new Payment_Field_Mapping_Settings__c();
         pfmNew.Opportunity_Field__c = 'Name';
-        pfmNew.Payment_Field__c = 'Custom_Payment_Field__c';
+        pfmNew.Payment_Field__c = UTIL_Namespace.StrTokenNSPrefix('Custom_Payment_Field__c');
         pfmNew.Name = 'test field mapping';
         insert pfmNew;
 

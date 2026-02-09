@@ -932,12 +932,16 @@ public with sharing class BDI_Donations_TEST3 {
             StageName=UTIL_unitTestData_TEST.getOpenStage()));
         listOpp.add(new Opportunity(name='Opp1', Primary_Contact__c=con.Id, Amount=100, CloseDate=System.Today().addDays(-1), 
             StageName=UTIL_unitTestData_TEST.getOpenStage()));
-        listOpp.add(new Opportunity(name='Opp2', Primary_Contact__c=con.Id, Amount=200, CloseDate=System.Today(), 
+        listOpp.add(new Opportunity(name='Opp2', Primary_Contact__c=con.Id, Amount=200, CloseDate=System.Today(),
             StageName=UTIL_unitTestData_TEST.getOpenStage(), Type='MyUniqueID'));
-        listOpp.add(new Opportunity(name='Opp3', Primary_Contact__c=con.Id, Amount=200, CloseDate=System.Today(), 
-            StageName=UTIL_unitTestData_TEST.getOpenStage(), 
-            RecordTypeId=UTIL_RecordTypes.getRecordTypeIdForMembershipTests(Opportunity.sObjectType)));
-        listOpp.add(new Opportunity(name='Opp4', Primary_Contact__c=con.Id, Amount=300, CloseDate=System.Today(), 
+        Opportunity opp3 = new Opportunity(name='Opp3', Primary_Contact__c=con.Id, Amount=200, CloseDate=System.Today(),
+            StageName=UTIL_unitTestData_TEST.getOpenStage());
+        Id membershipRTId = UTIL_RecordTypes.getRecordTypeIdForMembershipTests(Opportunity.sObjectType);
+        if (membershipRTId != null) {
+            opp3.RecordTypeId = membershipRTId;
+        }
+        listOpp.add(opp3);
+        listOpp.add(new Opportunity(name='Opp4', Primary_Contact__c=con.Id, Amount=300, CloseDate=System.Today(),
             StageName=UTIL_unitTestData_TEST.getOpenStage()));
         listOpp.add(new Opportunity(name='Opp5', Primary_Contact__c=con.Id, Amount=500, CloseDate=System.Today(), 
             StageName=UTIL_unitTestData_TEST.getOpenStage(), Do_Not_Automatically_Create_Payment__c=true));

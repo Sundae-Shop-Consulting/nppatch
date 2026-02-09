@@ -923,7 +923,7 @@ private with sharing class PMT_PaymentCreator_TEST {
         //create a Payment Field Mapping
         Payment_Field_Mapping_Settings__c pfmNew = new Payment_Field_Mapping_Settings__c(
             Opportunity_Field__c = 'Name',
-            Payment_Field__c = 'Custom_Payment_Field__c',
+            Payment_Field__c = UTIL_Namespace.StrTokenNSPrefix('Custom_Payment_Field__c'),
             Name = 'test field mapping'
         );
         insert pfmNew;

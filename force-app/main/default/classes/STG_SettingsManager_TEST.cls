@@ -610,7 +610,7 @@ private with sharing class STG_SettingsManager_TEST {
         system.assertEquals(true, panel.isEditMode);
         panel.pfmNew.Opportunity_Field__c = 'Amount';
         system.assertEquals(null, panel.onSelectSourceField());
-        panel.pfmNew.Payment_Field__c = 'Payment_Amount__c';
+        panel.pfmNew.Payment_Field__c = UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c');
         system.assertEquals(true, panel.isPfmNewValid);
         system.assertEquals(null, panel.savePfm());
         system.assertEquals(false, panel.isEditMode);

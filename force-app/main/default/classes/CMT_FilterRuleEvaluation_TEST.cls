@@ -146,9 +146,12 @@ private class CMT_FilterRuleEvaluation_TEST {
                 CloseDate = closeDate,
                 StageName = UTIL_UnitTestData_TEST.getClosedWonStage(),
                 Primary_Contact__c = con.Id,
-                RecordTypeId = UTIL_RecordTypes.getRecordTypeIdForGiftsTests(Opportunity.sObjectType),
                 NextStep = 'Test Next Step'
         );
+        Id giftsRTId = UTIL_RecordTypes.getRecordTypeIdForGiftsTests(Opportunity.sObjectType);
+        if (giftsRTId != null) {
+            opp.RecordTypeId = giftsRTId;
+        }
         insert opp;
         System.AssertEquals(1, [SELECT Count() FROM OpportunityContactRole]);
 
