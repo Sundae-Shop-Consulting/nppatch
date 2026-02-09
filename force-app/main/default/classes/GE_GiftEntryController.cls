@@ -554,7 +554,7 @@ public with sharing class GE_GiftEntryController {
                     'Paid__c, ' +
                     'Written_Off__c, ' +
                     'Elevate_Payment_API_Status__c ' +
-                    'FROM OppPayment__r ' +
+                    'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
                     'WHERE Written_Off__c = false ' +
                     'AND Paid__c = false)' +
                     'FROM Opportunity ' +

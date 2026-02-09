@@ -355,7 +355,7 @@ private with sharing class ADDR_CopyAddrHHObjBTN_TEST {
     * @param recordId - the record Id to pass to the controller
     */
     private static void createCopyAddressBtnCtrl(Id recordId) {
-        Test.setCurrentPageReference(new PageReference('Page.ADDR_CopyAddrHHObjBTN'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('ADDR_CopyAddrHHObjBTN')));
         System.currentPageReference().getParameters().put('id', recordId);
         copyAddressCtrl = new ADDR_CopyAddrHHObjBTN_CTRL();
         copyAddressCtrl.perms = (UTIL_Permissions) Test.createStub(UTIL_Permissions.class, mockPerms);

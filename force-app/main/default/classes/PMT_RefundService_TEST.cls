@@ -202,7 +202,7 @@ public with sharing class PMT_RefundService_TEST {
 
         insert allocations;
 
-        String soql = 'SELECT Paid__c, CurrencyIsoCode, Payment_Amount__c, Opportunity__c FROM oppPayment__c LIMIT 1';
+        String soql = 'SELECT ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', CurrencyIsoCode, ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('oppPayment__c') + ' LIMIT 1';
         oppPayment__c originalPayment = database.query(soql);
 
         originalPayment.Paid__c = true;
@@ -218,7 +218,7 @@ public with sharing class PMT_RefundService_TEST {
         insert refund;
         Test.stopTest();
 
-        soql = 'SELECT Paid__c, CurrencyIsoCode, Payment_Amount__c, DebitType__c, OriginalPayment__c FROM oppPayment__c WHERE Id = \'' + refund.Id + '\' LIMIT 1';
+        soql = 'SELECT ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', CurrencyIsoCode, ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('DebitType__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('OriginalPayment__c') + ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('oppPayment__c') + ' WHERE Id = \'' + refund.Id + '\' LIMIT 1';
         oppPayment__c refundRecord = database.query(soql);
 
         soql = 'SELECT Amount, CurrencyIsoCode FROM Opportunity LIMIT 1';

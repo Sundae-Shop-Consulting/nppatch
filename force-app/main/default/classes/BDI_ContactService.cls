@@ -1019,8 +1019,8 @@ public with sharing class BDI_ContactService {
         }
 
         // for c2's that we know their household, we want to add a "looser" key to match by as well.
-        if (strCx == 'Contact2' && di.HouseholdAccountImported__c != null && di.get('Contact2_Firstname__c') != null) {
-            listDiKey.add(String.valueOf(di.get('Contact2_Firstname__c')).toLowerCase() + '|' + di.HouseholdAccountImported__c);
+        if (strCx == 'Contact2' && di.HouseholdAccountImported__c != null && di.get(UTIL_Namespace.StrTokenNSPrefix('Contact2_Firstname__c')) != null) {
+            listDiKey.add(String.valueOf(di.get(UTIL_Namespace.StrTokenNSPrefix('Contact2_Firstname__c'))).toLowerCase() + '|' + di.HouseholdAccountImported__c);
         }
         pl.stop();
         return listDiKey;

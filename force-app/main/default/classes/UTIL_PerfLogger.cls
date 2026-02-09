@@ -175,10 +175,10 @@ public virtual with sharing class UTIL_PerfLogger {
         */
         public void initPerfLog(String component, String label, String logType, Integer countRecords) {
             if (plSObject != null) {
-                plSObject.put('Component__c', component);
-                plSObject.put('label__c', label);
-                plSObject.put('Log_Type__c', logType);
-                plSObject.put('Number_of_Records__c', countRecords);
+                plSObject.put(UTIL_Namespace.StrTokenNSPrefix('Component__c'), component);
+                plSObject.put(UTIL_Namespace.StrTokenNSPrefix('label__c'), label);
+                plSObject.put(UTIL_Namespace.StrTokenNSPrefix('Log_Type__c'), logType);
+                plSObject.put(UTIL_Namespace.StrTokenNSPrefix('Number_of_Records__c'), countRecords);
             }
         }
 
@@ -218,9 +218,9 @@ public virtual with sharing class UTIL_PerfLogger {
                 stop();
             }
             if (plSObject != null) {
-                plSObject.put('Duration__c', (Double)duration);
-                plSObject.put('Number_of_Calls__c', countCalls);
-                plSObject.put('Parent_Duration__c', (Double)durationParent);
+                plSObject.put(UTIL_Namespace.StrTokenNSPrefix('Duration__c'), (Double)duration);
+                plSObject.put(UTIL_Namespace.StrTokenNSPrefix('Number_of_Calls__c'), countCalls);
+                plSObject.put(UTIL_Namespace.StrTokenNSPrefix('Parent_Duration__c'), (Double)durationParent);
             }
             return plSObject;
         }

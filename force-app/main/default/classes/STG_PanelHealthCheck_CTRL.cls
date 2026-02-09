@@ -803,9 +803,9 @@ public without sharing class STG_PanelHealthCheck_CTRL extends STG_Panel {
         try {
             Set<String> setOppTypeNoPayment = PMT_PaymentCreator.setOppTypeNoPayment;
             Set<Id> setOppRecordTypeIdNoPayment = PMT_PaymentCreator.setOppRecordTypeIdNoPayment;
-            String soql = 'SELECT count() FROM Opportunity WHERE Number_of_Payments__c = 0 AND Amount > 0 ' +
+            String soql = 'SELECT count() FROM Opportunity WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Number_of_Payments__c') + ' = 0 AND Amount > 0 ' +
                 ' AND (isWon = true OR isClosed = false) ' +
-                ' AND Do_Not_Automatically_Create_Payment__c = false ' +
+                ' AND ' + UTIL_Namespace.StrTokenNSPrefix('Do_Not_Automatically_Create_Payment__c') + ' = false ' +
                 ' AND  Type NOT IN :setOppTypeNoPayment ';
 
             SObjectField oppRecordTypeId = Schema.sObjectType.Opportunity.fields.getMap().get('RecordTypeId');

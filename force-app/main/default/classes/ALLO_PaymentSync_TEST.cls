@@ -1083,14 +1083,14 @@ private with sharing  class ALLO_PaymentSync_TEST {
         return new UTIL_Query()
             .withSelectFields(new String[]{
                 'Name',
-                'Opportunity__c',
-                'Payment__c',
-                'General_Accounting_Unit__c',
-                'General_Accounting_Unit__r.Name',
-                'Amount__c',
-                'Percent__c'
+                UTIL_Namespace.StrTokenNSPrefix('Opportunity__c'),
+                UTIL_Namespace.StrTokenNSPrefix('Payment__c'),
+                UTIL_Namespace.StrTokenNSPrefix('General_Accounting_Unit__c'),
+                UTIL_Namespace.StrTokenNSPrefix('General_Accounting_Unit__r') + '.Name',
+                UTIL_Namespace.StrTokenNSPrefix('Amount__c'),
+                UTIL_Namespace.StrTokenNSPrefix('Percent__c')
             })
-            .withFrom('Allocation__c');
+            .withFrom(UTIL_Namespace.StrTokenNSPrefix('Allocation__c'));
     }
 
 }

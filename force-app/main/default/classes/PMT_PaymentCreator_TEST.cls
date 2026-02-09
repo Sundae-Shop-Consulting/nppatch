@@ -1069,9 +1069,9 @@ private with sharing class PMT_PaymentCreator_TEST {
         insert opp;
 
         OppPayment__c payment = Database.query(
-            'SELECT Id, CurrencyIsoCode, Paid__c, Payment_Amount__c, Payment_Date__c ' +
-            'FROM OppPayment__c ' +
-            'WHERE opportunity__c = \'' + opp.Id + '\'' +
+            'SELECT Id, CurrencyIsoCode, ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c') + ' ' +
+            'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' ' +
+            'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('opportunity__c') + ' = \'' + opp.Id + '\'' +
             'LIMIT 1'
         );
         payment.Paid__c = true;

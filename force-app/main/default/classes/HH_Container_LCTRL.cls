@@ -111,7 +111,7 @@ public with sharing class HH_Container_LCTRL {
                 .withWhere('Id = :householdId');
             SObject hh = Database.query(query.build());
             if (isHousehold) {
-                originalHouseholdCustomNameSetting = (String) hh.get('SYSTEM_CUSTOM_NAMING__c');
+                originalHouseholdCustomNameSetting = (String) hh.get(UTIL_Namespace.StrTokenNSPrefix('SYSTEM_CUSTOM_NAMING__c'));
             }
             return hh;
 
@@ -233,11 +233,11 @@ public with sharing class HH_Container_LCTRL {
         // since we want to support both HH Accounts and Objects, but we expect customers might
         // only grant permissions on the model they are currently using, but we may have data in both models.
         // the find autocomplete lookup also uses this code, so it needs to see both types of households.
-        selectFields.add('Household__c'); 
-        selectFields.add('Account.Number_of_Household_Members__c');
-        selectFields.add('Household__r.Number_of_Household_Members__c');
+        selectFields.add(UTIL_Namespace.StrTokenNSPrefix('Household__c'));
+        selectFields.add('Account.' + UTIL_Namespace.StrTokenNSPrefix('Number_of_Household_Members__c'));
+        selectFields.add(UTIL_Namespace.StrTokenNSPrefix('Household__r') + '.' + UTIL_Namespace.StrTokenNSPrefix('Number_of_Household_Members__c'));
         selectFields.add('Account.Name');
-        selectFields.add('Household__r.Name');
+        selectFields.add(UTIL_Namespace.StrTokenNSPrefix('Household__r') + '.Name');
 
         return new UTIL_Query()
             .withSelectFields(selectFields)
@@ -697,11 +697,11 @@ public with sharing class HH_Container_LCTRL {
                 address.Undeliverable__c = (Boolean)household.get(undeliverableAddressField);
             }
         } else {
-            address.MailingStreet__c = (String)household.get('MailingStreet__c');
-            address.MailingCity__c = (String)household.get('MailingCity__c');
-            address.MailingState__c = (String)household.get('MailingState__c');
-            address.MailingPostalCode__c = (String)household.get('MailingPostalCode__c');
-            address.MailingCountry__c = (String)household.get('MailingCountry__c');
+            address.MailingStreet__c = (String)household.get(UTIL_Namespace.StrTokenNSPrefix('MailingStreet__c'));
+            address.MailingCity__c = (String)household.get(UTIL_Namespace.StrTokenNSPrefix('MailingCity__c'));
+            address.MailingState__c = (String)household.get(UTIL_Namespace.StrTokenNSPrefix('MailingState__c'));
+            address.MailingPostalCode__c = (String)household.get(UTIL_Namespace.StrTokenNSPrefix('MailingPostalCode__c'));
+            address.MailingCountry__c = (String)household.get(UTIL_Namespace.StrTokenNSPrefix('MailingCountry__c'));
         }
         return address;
     }
@@ -789,18 +789,19 @@ public with sharing class HH_Container_LCTRL {
                 String strComma = '';
                 
                 for (String strF : setFields) {
+                    String nsField = UTIL_Namespace.StrTokenNSPrefix(strF);
                     // check field level security
-                    DescribeFieldResult dfr = UTIL_Describe.getFieldDescribe(addressObject, UTIL_Namespace.StrTokenNSPrefix(strF));
+                    DescribeFieldResult dfr = UTIL_Describe.getFieldDescribe(addressObject, nsField);
                     if (dfr == null || !dfr.isAccessible()) {
                         throw (new permsException(String.format(Label.flsError, new string[]{
-                                'Address__c' + '.' + strF
+                                UTIL_Namespace.StrTokenNSPrefix('Address__c') + '.' + nsField
                         })));
                     }
-                    
-                    strSoql += strComma + strF;
+
+                    strSoql += strComma + nsField;
                     strComma = ',';
                 }
-                strSoql += ' from Address__c where Household_Account__c = :householdId';
+                strSoql += ' from ' + UTIL_Namespace.StrTokenNSPrefix('Address__c') + ' where ' + UTIL_Namespace.StrTokenNSPrefix('Household_Account__c') + ' = :householdId';
                 List<Address__c> listAddrHH = Database.query(strSoql);
                 for (Address__c addrT : listAddrHH) {
                     // init other values we don't want to query for that the key might use.

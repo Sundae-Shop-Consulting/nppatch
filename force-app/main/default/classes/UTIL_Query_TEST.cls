@@ -44,10 +44,11 @@ private class UTIL_Query_TEST {
     **********************************************************************************************************/
     @IsTest
     private static void shouldNotContainDuplicateSelectFields() {
+        String hhField = UTIL_Namespace.StrTokenNSPrefix('Household__r') + '.' + UTIL_Namespace.StrTokenNSPrefix('Number_of_HOUSEHOLD_Members__c');
         String[] selectFields = new String[]{
             'Id', 'accountId', 'ACCOUNTid',
-            'Household__r.Number_of_HOUSEHOLD_Members__c',
-            'Household__r.NUMBER_of_Household_MEMBERS__C',
+            hhField,
+            hhField.toUpperCase(),
             'firstname', 'FirstName', 'FIRSTNAME', 'FIRSTname'
         };
 
@@ -56,7 +57,7 @@ private class UTIL_Query_TEST {
             .withFrom('Contact')
             .build();
 
-        String expectedSoql = 'SELECT Id, accountId, Household__r.Number_of_HOUSEHOLD_Members__c, firstname FROM Contact';
+        String expectedSoql = 'SELECT Id, accountId, ' + hhField + ', firstname FROM Contact';
 
         System.assertEquals(expectedSoql, soql, 'SOQL should exclude duplicate field names');
     }

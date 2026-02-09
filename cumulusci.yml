@@ -64,3 +64,8 @@ flows:
                 task: deploy_dev_config
             5:
                 task: default_settings
+
+orgs:
+    scratch:
+        build:
+            config_file: orgs/build.json

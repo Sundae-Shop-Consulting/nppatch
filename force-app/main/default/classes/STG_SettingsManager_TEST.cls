@@ -1620,7 +1620,7 @@ private with sharing class STG_SettingsManager_TEST {
     */
     @isTest
     private static void TEST_userRollupSettings() {
-        Test.setCurrentPageReference(new PageReference('Page.STG_SettingsManager'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('STG_SettingsManager')));
 
         //pass the controller into the extension
         STG_PanelUserRollup_CTRL controller = new STG_PanelUserRollup_CTRL();

@@ -696,7 +696,7 @@ public inherited sharing class RD2_OpportunityEvaluationService {
             AND IsWon = true
             GROUP BY Recurring_Donation__c
         ]) {
-            paidInstallmentsByRDId.put((Id) result.get('Recurring_Donation__c'), (Integer) result.get('paidInstallments'));
+            paidInstallmentsByRDId.put((Id) result.get(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c')), (Integer) result.get('paidInstallments'));
         }
 
         return paidInstallmentsByRDId;

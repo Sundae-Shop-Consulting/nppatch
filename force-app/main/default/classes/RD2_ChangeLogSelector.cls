@@ -69,9 +69,9 @@ public with sharing class RD2_ChangeLogSelector {
                 .withSelectFields(fields)
                 .withMultiCurrencyField()
                 .withFrom(RecurringDonationChangeLog__c.SObjectType)
-                .withWhere('RecurringDonation__c = :recurringDonationId')
+                .withWhere(UTIL_Namespace.StrTokenNSPrefix('RecurringDonation__c') + ' = :recurringDonationId')
                 .withLimit(this.recordLimit)
-                .withOrderBy('EffectiveDate__c DESC, CreatedDate DESC');
+                .withOrderBy(UTIL_Namespace.StrTokenNSPrefix('EffectiveDate__c') + ' DESC, CreatedDate DESC');
 
         if(changeTypesFilter != null) {
             query.withWhere(getChangeTypeWhereClause());

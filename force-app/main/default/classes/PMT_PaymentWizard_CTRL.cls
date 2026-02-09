@@ -340,8 +340,8 @@ public with sharing class PMT_PaymentWizard_CTRL {
     */
     private String buildOpportunityQuery() {
         // requery the Opportunity for all fields that we need.
-        String query = 'SELECT name, amount, stagename, payments_made__c, ' +
-            'amount_outstanding__c, description, closedate, Number_of_Payments__c, isClosed, isWon';
+        String query = 'SELECT name, amount, stagename, ' + UTIL_Namespace.StrTokenNSPrefix('payments_made__c') + ', ' +
+            UTIL_Namespace.StrTokenNSPrefix('amount_outstanding__c') + ', description, closedate, ' + UTIL_Namespace.StrTokenNSPrefix('Number_of_Payments__c') + ', isClosed, isWon';
 
         // add any opportunity fields from payment field mappings
         for (String s : PMT_PaymentCreator.paymentMappings.keyset()) {
@@ -351,8 +351,8 @@ public with sharing class PMT_PaymentWizard_CTRL {
                 query += ', ' + pfms.Opportunity_Field__c;
             }
         }
-        query += ', (SELECT Id, Payment_Amount__c, ' +
-            'Written_Off__c, Paid__c FROM OppPayment__r)';
+        query += ', (SELECT Id, ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' +
+            UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ')';
 
         //if currencyiso field exists add it to query for use later
         if (Schema.sObjectType.Opportunity.fields.getMap().get('CurrencyIsoCode') != null) {

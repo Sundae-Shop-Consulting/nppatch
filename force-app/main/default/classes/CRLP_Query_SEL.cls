@@ -401,7 +401,7 @@ public inherited sharing class CRLP_Query_SEL {
             Partial_Soft_Credit__c.SObjectType => UTIL_Namespace.StrTokenNSPrefix('Partial_Soft_Credits__r'),
             Allocation__c.SObjectType => UTIL_Namespace.StrTokenNSPrefix('Allocations__r'),
             OpportunityContactRole.SObjectType => 'OpportunityContactRoles',
-            OppPayment__c.SObjectType => 'OppPayment__r'
+            OppPayment__c.SObjectType => UTIL_Namespace.StrTokenNSPrefix('OppPayment__r')
         };
     }
 }

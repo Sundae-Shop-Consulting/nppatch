@@ -372,7 +372,7 @@ public with sharing class STG_PanelADDRVerification_CTRL extends STG_Panel {
     * @return PageReference The page to redirect to. None, in this case.  
     */
     public PageReference batchVerify() {
-        String classToRunName = String.valueOf(addrVerifSettings.get('Class__c'));
+        String classToRunName = String.valueOf(addrVerifSettings.get(UTIL_Namespace.StrTokenNSPrefix('Class__c')));
 
         if (!String.isBlank(classToRunName)) {
             Type classType = Type.forName(classToRunName);

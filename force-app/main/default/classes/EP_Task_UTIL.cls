@@ -156,13 +156,13 @@ public class EP_Task_UTIL {
 
         Map<String,String> taskEPTaskFieldMap = new Map<String,String>();
         //Task field name -> Engagement_Plan_Task__c field name
-        taskEPTaskFieldMap.put('Engagement_Plan_Task__c', 'Id');
+        taskEPTaskFieldMap.put(UTIL_Namespace.StrTokenNSPrefix('Engagement_Plan_Task__c'), 'Id');
         taskEPTaskFieldMap.put('Subject', 'Name');
-        taskEPTaskFieldMap.put('Priority', 'Priority__c');
-        taskEPTaskFieldMap.put('OwnerId', 'Assigned_To__c');
-        taskEPTaskFieldMap.put('Description', 'Comments__c');
-        taskEPTaskFieldMap.put('Type', 'Type__c');
-        taskEPTaskFieldMap.put('Status', 'Status__c');
+        taskEPTaskFieldMap.put('Priority', UTIL_Namespace.StrTokenNSPrefix('Priority__c'));
+        taskEPTaskFieldMap.put('OwnerId', UTIL_Namespace.StrTokenNSPrefix('Assigned_To__c'));
+        taskEPTaskFieldMap.put('Description', UTIL_Namespace.StrTokenNSPrefix('Comments__c'));
+        taskEPTaskFieldMap.put('Type', UTIL_Namespace.StrTokenNSPrefix('Type__c'));
+        taskEPTaskFieldMap.put('Status', UTIL_Namespace.StrTokenNSPrefix('Status__c'));
 
         //copy fields
         Task taskResult = new Task();

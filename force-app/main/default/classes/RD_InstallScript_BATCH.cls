@@ -35,7 +35,7 @@
 */
 public without sharing class RD_InstallScript_BATCH implements Database.Batchable<sObject> {
     
-    String query = 'SELECT Id FROM Recurring_Donation__c';
+    String query = 'SELECT Id FROM ' + UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c');
     
     public RD_InstallScript_BATCH() {}
     

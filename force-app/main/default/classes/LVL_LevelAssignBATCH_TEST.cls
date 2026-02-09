@@ -226,7 +226,7 @@ private class LVL_LevelAssignBATCH_TEST {
         // create test Contacts
         createTestContacts('testContactLevels');
 
-        String query = 'SELECT Id, Name, TotalOppAmount__c, LastMembershipLevel__c, LastMembershipOrigin__c, CreatedDate, LastModifiedDate FROM Contact';
+        String query = 'SELECT Id, Name, ' + UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c') + ', CreatedDate, LastModifiedDate FROM Contact';
         LVL_LevelAssign_BATCH batch = new LVL_LevelAssign_BATCH(query, 'Contact');
 
         Test.startTest();
@@ -258,7 +258,7 @@ private class LVL_LevelAssignBATCH_TEST {
         lvlTin.Minimum_Amount__c = 10; // Contact 0 will no longer meet this criteria
         update lvlTin;
 
-        string query = 'SELECT Id, Name, TotalOppAmount__c, LastMembershipLevel__c, LastMembershipOrigin__c, CreatedDate, LastModifiedDate FROM Contact';
+        string query = 'SELECT Id, Name, ' + UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c') + ', CreatedDate, LastModifiedDate FROM Contact';
         LVL_LevelAssign_BATCH batch = new LVL_LevelAssign_BATCH(query, 'Contact');
 
         Test.startTest();
@@ -305,8 +305,8 @@ private class LVL_LevelAssignBATCH_TEST {
     * @description verify contact levels correctly set
     */
     private static void verifyContactLevels() {
-        String query = 'SELECT Id, Name, TotalOppAmount__c, LastMembershipLevel__c, LastMembershipOrigin__c, CreatedDate, LastModifiedDate FROM Contact';
-        contacts = Database.query(query + ' ORDER BY TotalOppAmount__c');
+        String query = 'SELECT Id, Name, ' + UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c') + ', CreatedDate, LastModifiedDate FROM Contact';
+        contacts = Database.query(query + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'));
         System.assertEquals(lvlTin.Id, contacts[0].LastMembershipLevel__c);
         System.assertEquals(null, contacts[0].LastMembershipOrigin__c);
 
@@ -354,8 +354,8 @@ private class LVL_LevelAssignBATCH_TEST {
         // create test Accounts
         createTestAccounts('testAccountLevels');
 
-        String query = 'SELECT Id, Name, TotalOppAmount__c, LastMembershipLevel__c, ' +
-            'LastMembershipOrigin__c, CreatedDate, LastModifiedDate FROM Account where SYSTEMIsIndividual__c = false ';
+        String query = 'SELECT Id, Name, ' + UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c') + ', ' +
+            UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c') + ', CreatedDate, LastModifiedDate FROM Account where ' + UTIL_Namespace.StrTokenNSPrefix('SYSTEMIsIndividual__c') + ' = false ';
         LVL_LevelAssign_BATCH batch = new LVL_LevelAssign_BATCH(query, 'Account');
 
         Test.startTest();
@@ -368,7 +368,7 @@ private class LVL_LevelAssignBATCH_TEST {
         System.assertEquals(null, levelSettings.LastJobStartTimeContact__c,
             'The LastJobStartTimeContact__c should not be populated');
 
-        accounts = Database.query(query + ' ORDER BY TotalOppAmount__c');
+        accounts = Database.query(query + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'));
         System.assertEquals(null, accounts[0].LastMembershipLevel__c);
         System.assertEquals(null, accounts[0].LastMembershipOrigin__c);
 
@@ -1016,7 +1016,7 @@ private class LVL_LevelAssignBATCH_TEST {
     * @return void
     **********************************************************************************************************/
     private static void executeLevelAssignBatchForContact() {
-        String soql = 'SELECT Id, Name, TotalOppAmount__c, LastMembershipLevel__c, LastMembershipOrigin__c, CreatedDate, LastModifiedDate FROM Contact';
+        String soql = 'SELECT Id, Name, ' + UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c') + ', CreatedDate, LastModifiedDate FROM Contact';
 
         executeLevelAssignBatch(soql, 'Contact');
     }

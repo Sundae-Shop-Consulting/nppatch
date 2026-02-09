@@ -467,22 +467,22 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
         setOppFields.add('AccountId');
         setOppFields.add(UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c'));
         setOppFields.add('CloseDate');
-        setOppFields.add('Number_of_Payments__c');
-        setOppFields.add('Account.SYSTEMIsIndividual__c');
+        setOppFields.add(UTIL_Namespace.StrTokenNSPrefix('Number_of_Payments__c'));
+        setOppFields.add('Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEMIsIndividual__c'));
 
         // need to include any Opp fields we may update, so we can compare against them
         setOppFields.addAll(mapDIFieldToOppField.values());
-        
+
         // the set of Payment fields for our soql
         Set<String> setPmtFields = new Set<String>();
         setPmtFields.add('Id');
         setPmtFields.add('Name');
-        setPmtFields.add('Paid__c');
-        setPmtFields.add('Opportunity__c');
-        setPmtFields.add('Payment_Amount__c');
-        setPmtFields.add('Payment_Date__c');
-        setPmtFields.add('Scheduled_Date__c');
-        setPmtFields.add('Written_Off__c');
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Paid__c'));
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c'));
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c'));
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c'));
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c'));
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Written_Off__c'));
 
         // need to include any Pmt fields we may update, so we can compare against them
         setPmtFields.addAll(mapDIFieldToPmtField.values());
@@ -516,7 +516,7 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
 
         // add Payment subquery
         strSoql += ', (SELECT ' + String.join(new List<String>(setPmtFields), ',');
-        strSoql += ' FROM OppPayment__r ' +
+        strSoql += ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
             'WHERE Paid__c = false ' +
             'AND Written_Off__c = false)';
 

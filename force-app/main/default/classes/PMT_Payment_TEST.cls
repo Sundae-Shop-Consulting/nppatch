@@ -636,11 +636,11 @@ private class PMT_Payment_TEST {
      */
     private static OppPayment__c getPaymentRecordByPaymentId(Id paymentId) {
 
-        String soql = 'SELECT Id, Payment_Amount__c, Paid__c, Written_Off__c, Payment_Date__c, Scheduled_Date__c ';
+        String soql = 'SELECT Id, ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c') + ' ';
         if (UserInfo.isMultiCurrencyOrganization()) {
             soql += ', CurrencyIsoCode ';
         }
-        soql += ' FROM OppPayment__c WHERE Id = \'' + paymentId + '\' LIMIT 1';
+        soql += ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' WHERE Id = \'' + paymentId + '\' LIMIT 1';
         return (OppPayment__c)Database.query(soql);
     }
 
@@ -927,11 +927,11 @@ private class PMT_Payment_TEST {
      */
     private static OppPayment__c getPaymentRecord(Id oppId) {
 
-        String soql = 'SELECT Id, Payment_Amount__c ';
+        String soql = 'SELECT Id, ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ' ';
         if (UserInfo.isMultiCurrencyOrganization()) {
             soql += ', CurrencyIsoCode ';
         }
-        soql += ' FROM OppPayment__c WHERE Opportunity__c = \'' + oppId + '\' LIMIT 1';
+        soql += ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' = \'' + oppId + '\' LIMIT 1';
         return (OppPayment__c)Database.query(soql);
     }
 }

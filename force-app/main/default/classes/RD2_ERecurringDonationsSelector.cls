@@ -58,35 +58,37 @@ public inherited sharing class RD2_ERecurringDonationsSelector {
         Id currentContactId = this.currentContactId;
         List<Recurring_Donation__c> recurringDonations = new List<Recurring_Donation__c>();
         if(currentContactId != NULL) {
-            String queryString = 'SELECT Amount__c, FORMAT(Amount__c) Amt, '
-                                + 'Installment_Period__c, '
-                                + 'InstallmentFrequency__c, '
-                                + 'Day_of_Month__c, '
-                                + 'Status__c, '
-                                + 'CommitmentId__c, '
-                                + 'PaymentMethod__c, '
-                                + 'CardLast4__c, '
-                                + 'CardExpirationYear__c, '
-                                + 'CardExpirationMonth__c, '
-                                + 'ACH_Last_4__c, '
-                                + 'Last_Payment_Date__c, '
-                                + 'Installments__c, '
-                                + 'RecurringType__c, '
-                                + 'Date_Established__c, '
-                                + 'Next_Payment_Date__c, '
-                                + 'Total_Paid_Installments__c, '
+            String ns = UTIL_Namespace.getNamespace();
+            String nsPrefix = String.isBlank(ns) ? '' : ns + '__';
+            String queryString = 'SELECT ' + nsPrefix + 'Amount__c, FORMAT(' + nsPrefix + 'Amount__c) Amt, '
+                                + nsPrefix + 'Installment_Period__c, '
+                                + nsPrefix + 'InstallmentFrequency__c, '
+                                + nsPrefix + 'Day_of_Month__c, '
+                                + nsPrefix + 'Status__c, '
+                                + nsPrefix + 'CommitmentId__c, '
+                                + nsPrefix + 'PaymentMethod__c, '
+                                + nsPrefix + 'CardLast4__c, '
+                                + nsPrefix + 'CardExpirationYear__c, '
+                                + nsPrefix + 'CardExpirationMonth__c, '
+                                + nsPrefix + 'ACH_Last_4__c, '
+                                + nsPrefix + 'Last_Payment_Date__c, '
+                                + nsPrefix + 'Installments__c, '
+                                + nsPrefix + 'RecurringType__c, '
+                                + nsPrefix + 'Date_Established__c, '
+                                + nsPrefix + 'Next_Payment_Date__c, '
+                                + nsPrefix + 'Total_Paid_Installments__c, '
                                 + 'Lastmodifieddate '
-                                + 'FROM Recurring_Donation__c '
-                                + 'WHERE Contact__c = \'' + currentContactId + '\' ';
+                                + 'FROM ' + nsPrefix + 'Recurring_Donation__c '
+                                + 'WHERE ' + nsPrefix + 'Contact__c = \'' + currentContactId + '\' ';
 
             if(elevateFilter == ELEVATE_RD) {
-                queryString += 'AND CommitmentId__c != NULL ';
+                queryString += 'AND ' + nsPrefix + 'CommitmentId__c != NULL ';
             } else if (elevateFilter == NONELEVATE_RD) {
-                queryString += 'AND CommitmentId__c = NULL ';
+                queryString += 'AND ' + nsPrefix + 'CommitmentId__c = NULL ';
             }
 
             queryString += 'WITH SECURITY_ENFORCED ';
-            queryString += 'ORDER BY Next_Payment_Date__c DESC NULLS LAST';
+            queryString += 'ORDER BY ' + nsPrefix + 'Next_Payment_Date__c DESC NULLS LAST';
 
             recurringDonations = Database.query(queryString);
         }

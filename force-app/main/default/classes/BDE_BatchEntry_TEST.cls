@@ -42,7 +42,7 @@ private class BDE_BatchEntry_TEST {
     */
     static testMethod void testBatchDataEntryController() {
 
-        Test.setCurrentPageReference(new PageReference('Page.BDE_BatchEntry'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('BDE_BatchEntry')));
         system.currentPageReference().getParameters().put('obj', 'Opportunity');
         BDE_BatchEntry_CTRL ctrl = new BDE_BatchEntry_CTRL(new ApexPages.standardController(new Batch__c() ));
 

@@ -237,7 +237,7 @@ private class CON_ContactMerge_TEST2 {
         System.assertNotEquals(null, hh1Id);
         System.assertNotEquals(null, hh2Id);
 
-        Test.setCurrentPageReference(new PageReference('Page.CON_ContactMerge'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('CON_ContactMerge')));
 
         CON_ContactMerge_CTRL controller = new CON_ContactMerge_CTRL(new ApexPages.Standardsetcontroller(new list<Contact>()));
         controller.showContactSearchPage();
@@ -284,7 +284,7 @@ private class CON_ContactMerge_TEST2 {
         Contact con2 = UTIL_UnitTestData_TEST.getContact();
         insert new Contact[]{con, con2};
                 
-        Test.setCurrentPageReference(new PageReference('Page.CON_ContactMerge'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('CON_ContactMerge')));
         
         //create standard set controller with 2 records
         ApexPages.Standardsetcontroller ssc =new ApexPages.Standardsetcontroller(new list<Contact>{con,con2});
@@ -885,7 +885,7 @@ private class CON_ContactMerge_TEST2 {
 
     /*** Helper methods ***/
     private static CON_ContactMerge_CTRL getController() {
-        Test.setCurrentPageReference(new PageReference('Page.CON_ContactMerge'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('CON_ContactMerge')));
         CON_ContactMerge_CTRL controller = new CON_ContactMerge_CTRL(new ApexPages.StandardSetController(new List<Contact>()));
         return controller;
     }
@@ -1023,7 +1023,7 @@ private class CON_ContactMerge_TEST2 {
         **
         **/
     private static CON_ContactMerge_CTRL setupPageController(List<Contact> contactsToMerge, String searchText) {
-        Test.setCurrentPageReference(new PageReference('Page.CON_ContactMerge'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('CON_ContactMerge')));
 
         CON_ContactMerge_CTRL controller = new CON_ContactMerge_CTRL(new ApexPages.Standardsetcontroller(new list<Contact>()));
         controller.showContactSearchPage();

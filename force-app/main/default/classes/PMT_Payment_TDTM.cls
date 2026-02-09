@@ -162,13 +162,13 @@ public class PMT_Payment_TDTM extends TDTM_Runnable {
 
         // Get a list of the Payment records by Opportunity and update the CurrencyIsoCode value
         String soql =
-            'SELECT Id, CurrencyIsoCode, Payment_Amount__c, Opportunity__r.CurrencyIsoCode ' +
-            'FROM OppPayment__c ' +
-            'WHERE Opportunity__c IN :oppIds ' +
-            'ORDER BY Opportunity__c';
+            'SELECT Id, CurrencyIsoCode, ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.CurrencyIsoCode ' +
+            'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' ' +
+            'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' IN :oppIds ' +
+            'ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c');
 
         for (OppPayment__c pmt : database.query(soql)) {
-            Opportunity opp = (Opportunity)pmt.getSObject('Opportunity__r');
+            Opportunity opp = (Opportunity)pmt.getSObject(UTIL_Namespace.StrTokenNSPrefix('Opportunity__r'));
 
             if (dmlWrapperSObjectById.containsKey(pmt.Id)) {
                 SObject existingPayment = dmlWrapperSObjectById.get(pmt.Id);

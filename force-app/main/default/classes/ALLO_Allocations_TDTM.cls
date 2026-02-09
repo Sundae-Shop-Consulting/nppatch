@@ -256,7 +256,7 @@ public class ALLO_Allocations_TDTM extends TDTM_Runnable {
 
             //UPDATE case: if the payment amount changed, add to the list for processing
             if (triggerAction == TDTM_Runnable.Action.AfterUpdate) {
-                Decimal oldAmount = (Decimal) oldlist[i].get('Payment_Amount__c');
+                Decimal oldAmount = (Decimal) oldlist[i].get(UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c'));
                 Decimal newAmount = pmt.Payment_Amount__c;
 
                 if ((oldAmount == null) && (newAmount != null)) { // Need to redo the Allocations for this payment as if it were a new payment
@@ -466,20 +466,20 @@ public class ALLO_Allocations_TDTM extends TDTM_Runnable {
         }
 
         if (!setRecDonId.isEmpty() || !setOppIds.isEmpty()) {
-            String oppQuery = 'SELECT Id, Amount, Recurring_Donation__c, CampaignId';
+            String oppQuery = 'SELECT Id, Amount, ' + UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c') + ', CampaignId';
             if (UserInfo.isMultiCurrencyOrganization()) {
                 oppQuery += ', CurrencyIsoCode';
             }
-            oppQuery+=' FROM Opportunity WHERE (Opportunity.isClosed = FALSE AND Recurring_Donation__c IN :setRecDonId) OR Id IN :setOppIds';
+            oppQuery+=' FROM Opportunity WHERE (Opportunity.isClosed = FALSE AND ' + UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c') + ' IN :setRecDonId) OR Id IN :setOppIds';
             listOpps = database.query(oppQuery);
         }
 
         if (!setPmtIds.isEmpty()) {
-            String pmtQuery = 'SELECT Id, Payment_Amount__c, Paid__c, Written_Off__c, Opportunity__c';
+            String pmtQuery = 'SELECT Id, ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c');
             if (UserInfo.isMultiCurrencyOrganization()) {
                 pmtQuery += ', CurrencyIsoCode';
             }
-            pmtQuery+=' FROM OppPayment__c WHERE Id IN :setPmtIds';
+            pmtQuery+=' FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' WHERE Id IN :setPmtIds';
             listPmts = database.query(pmtQuery);
         }
 
@@ -602,10 +602,10 @@ public class ALLO_Allocations_TDTM extends TDTM_Runnable {
         for (SObject sObj : listSObjs) {
             Boolean isPaymentRecord = sObj instanceof OppPayment__c;
 
-            if (isPaymentRecord && mapWrapper.containsKey((Id)sObj.get('Opportunity__c'))) {
+            if (isPaymentRecord && mapWrapper.containsKey((Id)sObj.get(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c')))) {
                 copyRecurringDonationCampaignAndPaymentAllocations(sObj);
 
-            } else if (!isPaymentRecord && sObj.get('Recurring_Donation__c') != null && mapWrapper.containsKey((Id)sObj.get('Recurring_Donation__c'))) {
+            } else if (!isPaymentRecord && sObj.get(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c')) != null && mapWrapper.containsKey((Id)sObj.get(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c')))) {
                 copyRecurringDonationCampaignAndPaymentAllocations(sObj);
 
             } else if (!isPaymentRecord && sObj.get('CampaignId') != null && mapWrapper.containsKey((Id)sObj.get('CampaignId'))) {
@@ -630,13 +630,13 @@ public class ALLO_Allocations_TDTM extends TDTM_Runnable {
 
         //get wrapper for parent Payment.
         if (sObj instanceof OppPayment__c) {
-            wrap = mapWrapper.get((Id)sObj.get('Opportunity__c'));
+            wrap = mapWrapper.get((Id)sObj.get(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c')));
             isPaymentAllocation = true;
         }
 
         //get wrapper for parent object, preferring recurring donation over campaign allocations if they exist
-        else if (sObj.get('Recurring_Donation__c') != null && mapWrapper.containsKey((Id)sObj.get('Recurring_Donation__c'))) {
-            wrap = mapWrapper.get((Id) sObj.get('Recurring_Donation__c'));
+        else if (sObj.get(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c')) != null && mapWrapper.containsKey((Id)sObj.get(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c')))) {
+            wrap = mapWrapper.get((Id) sObj.get(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c')));
         }
 
         else {
@@ -659,7 +659,7 @@ public class ALLO_Allocations_TDTM extends TDTM_Runnable {
             }
         }
 
-        Decimal amount = (Decimal)(sObj instanceof Opportunity ? sObj.get('Amount') : sObj.get('Payment_Amount__c'));
+        Decimal amount = (Decimal)(sObj instanceof Opportunity ? sObj.get('Amount') : sObj.get(UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c')));
         Decimal remainder = amount;
 
         //reparent the cloned allocation to the opportunity
@@ -1115,22 +1115,22 @@ public class ALLO_Allocations_TDTM extends TDTM_Runnable {
         for (SObject parent : parentList) {
             if (parent instanceof Opportunity && parent.get('CampaignId') != null)
                 setParentId.add((Id)parent.get('CampaignId'));
-            if (parent instanceof Opportunity && parent.get('Recurring_Donation__c') != null)
-                setParentId.add((Id)parent.get('Recurring_Donation__c'));
-            if (parent instanceof OppPayment__c && parent.get('Opportunity__c') != null)
-                setParentId.add((Id)parent.get('Opportunity__c'));
+            if (parent instanceof Opportunity && parent.get(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c')) != null)
+                setParentId.add((Id)parent.get(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c')));
+            if (parent instanceof OppPayment__c && parent.get(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c')) != null)
+                setParentId.add((Id)parent.get(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c')));
             setParentId.add(parent.id);
         }
 
-        String alloQueryString = 'SELECT Id, Payment__c, Payment__r.Payment_Amount__c, Payment__r.Paid__c, ' +
-        'Payment__r.Written_Off__c, Opportunity__c, Opportunity__r.Amount, Campaign__c, Recurring_Donation__c, ' +
-            'Amount__c, Percent__c, General_Accounting_Unit__c, General_Accounting_Unit__r.Active__c';
+        String alloQueryString = 'SELECT Id, ' + UTIL_Namespace.StrTokenNSPrefix('Payment__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Payment__r') + '.' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Payment__r') + '.' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', ' +
+        UTIL_Namespace.StrTokenNSPrefix('Payment__r') + '.' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ', Opportunity__r.Amount, ' + UTIL_Namespace.StrTokenNSPrefix('Campaign__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c') + ', ' +
+            UTIL_Namespace.StrTokenNSPrefix('Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Percent__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('General_Accounting_Unit__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('General_Accounting_Unit__r') + '.' + UTIL_Namespace.StrTokenNSPrefix('Active__c');
 
         //query for multicurrency string if multicurrency org
         if (UserInfo.isMultiCurrencyOrganization()) {
             alloQueryString += ', CurrencyIsoCode';
         }
-        alloQueryString += ' FROM Allocation__c WHERE (Payment__c IN :setParentId OR Opportunity__c IN :setParentId OR Campaign__c IN :setParentId OR Recurring_Donation__c IN :setParentId)';
+        alloQueryString += ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('Allocation__c') + ' WHERE (' + UTIL_Namespace.StrTokenNSPrefix('Payment__c') + ' IN :setParentId OR ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' IN :setParentId OR ' + UTIL_Namespace.StrTokenNSPrefix('Campaign__c') + ' IN :setParentId OR ' + UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c') + ' IN :setParentId)';
         //alloQueryString += ' AND General_Accounting_Unit__r.Active__c = TRUE';
 
         for (Allocation__c allo : database.query(alloQueryString)) {
@@ -1228,7 +1228,7 @@ public class ALLO_Allocations_TDTM extends TDTM_Runnable {
 
         if (parentSObj instanceof OppPayment__c) {
             defaultAllo.Payment__c = parentSObj.Id;
-            defaultAllo.Amount__c = (Decimal)parentSObj.get('Payment_Amount__c');
+            defaultAllo.Amount__c = (Decimal)parentSObj.get(UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c'));
         }
 
         if (parentSObj instanceof Opportunity) {
@@ -1267,8 +1267,8 @@ public class ALLO_Allocations_TDTM extends TDTM_Runnable {
         // Payment with Payment Allocations Query for Scheduled Payments related to Opportunities
         // whose Allocations were recreated because the Recurring Donations Allocations changed
         String pmtReviewQuery = 'SELECT     Id, ' +
-                                ' (SELECT Id FROM Allocations__r) ' +
-                                'FROM OppPayment__c ' +
+                                ' (SELECT Id FROM ' + UTIL_Namespace.StrTokenNSPrefix('Allocations__r') + ') ' +
+                                'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' ' +
                                 'WHERE Paid__c <> true AND ' +
                                 '      Written_Off__c <> true AND ' +
                                 '      Opportunity__c in :updatedRecurringDonationOppIds';

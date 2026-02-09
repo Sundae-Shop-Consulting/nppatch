@@ -939,36 +939,36 @@ public without sharing class RLLP_OppRollup {
             }
 
             if (fy == thisYear){
-                obj.put('OppAmountThisYear__c', amt);
-                obj.put('OppsClosedThisYear__c', cnt);
+                obj.put(UTIL_Namespace.StrTokenNSPrefix('OppAmountThisYear__c'), amt);
+                obj.put(UTIL_Namespace.StrTokenNSPrefix('OppsClosedThisYear__c'), cnt);
             }
             else if (fy == (thisYear - 1)){
-                obj.put('OppAmountLastYear__c', amt);
-                obj.put('OppsClosedLastYear__c', cnt);
+                obj.put(UTIL_Namespace.StrTokenNSPrefix('OppAmountLastYear__c'), amt);
+                obj.put(UTIL_Namespace.StrTokenNSPrefix('OppsClosedLastYear__c'), cnt);
             }
             else if (fy == (thisYear - 2) ){
-                obj.put('OppAmount2YearsAgo__c', amt);
-                obj.put('OppsClosed2YearsAgo__c', cnt);
+                obj.put(UTIL_Namespace.StrTokenNSPrefix('OppAmount2YearsAgo__c'), amt);
+                obj.put(UTIL_Namespace.StrTokenNSPrefix('OppsClosed2YearsAgo__c'), cnt);
             }
         } else {
             // fill in summary totals
-            obj.put('TotalOppAmount__c', amt);
-            obj.put('NumberOfClosedOpps__c', cnt);
-            obj.put('LastOppAmount__c', lastAmt);
-            obj.put('FirstCloseDate__c', aggrResultObj.get('FirstCloseDate')); //date
-            obj.put('LastCloseDate__c', aggrResultObj.get('LastCloseDate')); //date
+            obj.put(UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'), amt);
+            obj.put(UTIL_Namespace.StrTokenNSPrefix('NumberOfClosedOpps__c'), cnt);
+            obj.put(UTIL_Namespace.StrTokenNSPrefix('LastOppAmount__c'), lastAmt);
+            obj.put(UTIL_Namespace.StrTokenNSPrefix('FirstCloseDate__c'), aggrResultObj.get('FirstCloseDate')); //date
+            obj.put(UTIL_Namespace.StrTokenNSPrefix('LastCloseDate__c'), aggrResultObj.get('LastCloseDate')); //date
 
             // calculate amounts into correct currency if needed
             if(RLLP_OppRollup_UTIL.isMultiCurrency()){
                 String toCurrCode = (string)obj.get('CurrencyIsoCode');
-                obj.put('AverageAmount__c', UTIL_CurrencyConversion.convertFromCorporateUsingStandardRates(toCurrCode,(decimal)aggrResultObj.get('AverageAmount')));
-                obj.put('SmallestAmount__c', UTIL_CurrencyConversion.convertFromCorporateUsingStandardRates(toCurrCode,(decimal)aggrResultObj.get('SmallestAmount')));
-                obj.put('LargestAmount__c', UTIL_CurrencyConversion.convertFromCorporateUsingStandardRates(toCurrCode,(decimal)aggrResultObj.get('LargestAmount')));
+                obj.put(UTIL_Namespace.StrTokenNSPrefix('AverageAmount__c'), UTIL_CurrencyConversion.convertFromCorporateUsingStandardRates(toCurrCode,(decimal)aggrResultObj.get('AverageAmount')));
+                obj.put(UTIL_Namespace.StrTokenNSPrefix('SmallestAmount__c'), UTIL_CurrencyConversion.convertFromCorporateUsingStandardRates(toCurrCode,(decimal)aggrResultObj.get('SmallestAmount')));
+                obj.put(UTIL_Namespace.StrTokenNSPrefix('LargestAmount__c'), UTIL_CurrencyConversion.convertFromCorporateUsingStandardRates(toCurrCode,(decimal)aggrResultObj.get('LargestAmount')));
             }
             else{
-               obj.put('AverageAmount__c', (decimal)(aggrResultObj.get('AverageAmount')));
-               obj.put('SmallestAmount__c', (decimal)(aggrResultObj.get('SmallestAmount')));
-               obj.put('LargestAmount__c', (decimal)(aggrResultObj.get('LargestAmount')));
+               obj.put(UTIL_Namespace.StrTokenNSPrefix('AverageAmount__c'), (decimal)(aggrResultObj.get('AverageAmount')));
+               obj.put(UTIL_Namespace.StrTokenNSPrefix('SmallestAmount__c'), (decimal)(aggrResultObj.get('SmallestAmount')));
+               obj.put(UTIL_Namespace.StrTokenNSPrefix('LargestAmount__c'), (decimal)(aggrResultObj.get('LargestAmount')));
             }
         }
 
@@ -1014,8 +1014,8 @@ public without sharing class RLLP_OppRollup {
             amt = UTIL_CurrencyConversion.convertFromCorporateUsingStandardRates((string)obj.get('CurrencyIsoCode'),amt);
         }
 
-        obj.put('OppAmountLastNDays__c', amt);
-        obj.put('OppsClosedLastNDays__c', cnt);
+        obj.put(UTIL_Namespace.StrTokenNSPrefix('OppAmountLastNDays__c'), amt);
+        obj.put(UTIL_Namespace.StrTokenNSPrefix('OppsClosedLastNDays__c'), cnt);
     }
 
     /*******************************************************************************************************
@@ -1046,15 +1046,15 @@ public without sharing class RLLP_OppRollup {
         }
 
         // fill in summary totals
-        obj.put('TotalMembershipOppAmount__c', amt);
-        obj.put('NumberOfMembershipOpps__c', cnt);
-        obj.put('LastMembershipDate__c', (date)(r.get('LastCloseDate')));
-        obj.put('LastMembershipAmount__c', lastAmt);
-        obj.put('MembershipJoinDate__c', (date)(r.get('FirstStartDate')));
-        obj.put('MembershipEndDate__c', (date)(r.get('LastEndDate')));
+        obj.put(UTIL_Namespace.StrTokenNSPrefix('TotalMembershipOppAmount__c'), amt);
+        obj.put(UTIL_Namespace.StrTokenNSPrefix('NumberOfMembershipOpps__c'), cnt);
+        obj.put(UTIL_Namespace.StrTokenNSPrefix('LastMembershipDate__c'), (date)(r.get('LastCloseDate')));
+        obj.put(UTIL_Namespace.StrTokenNSPrefix('LastMembershipAmount__c'), lastAmt);
+        obj.put(UTIL_Namespace.StrTokenNSPrefix('MembershipJoinDate__c'), (date)(r.get('FirstStartDate')));
+        obj.put(UTIL_Namespace.StrTokenNSPrefix('MembershipEndDate__c'), (date)(r.get('LastEndDate')));
         // Force an empty string ("") to null to ensure the comparison to the db field matches.
-        obj.put('LastMembershipLevel__c', (String.isEmpty(lastMemberLevel) ? null : lastMemberLevel));
-        obj.put('LastMembershipOrigin__c', (String.isEmpty(lastMemberOrigin) ? null : lastMemberOrigin));
+        obj.put(UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'), (String.isEmpty(lastMemberLevel) ? null : lastMemberLevel));
+        obj.put(UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'), (String.isEmpty(lastMemberOrigin) ? null : lastMemberOrigin));
     }
 
     /*******************************************************************************************************

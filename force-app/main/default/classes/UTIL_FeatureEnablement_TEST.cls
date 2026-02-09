@@ -31,29 +31,13 @@
 * @author Salesforce.org
 * @date 2019
 * @group Utilities
-* @group-content
-* @description Test for UTIL_FeatureManagement class. Mainly for code coverage since you can't assert on
-* System.FeatureManagement method execution
-*
+* @description Test for UTIL_FeatureEnablement class
 */
 @isTest
 public class UTIL_FeatureEnablement_TEST {
 
     /**
-     * @description Validates that the FeatureEnablement.FeatureManagement class can be mocked to
-     * force the isPilotEnabled() static method to return true
-     */
-    @isTest
-    private static void shouldReturnTrueWhenPilotIsEnabled() {
-        setPilotEnabledParameter(true);
-
-        System.assertEquals(true, UTIL_FeatureEnablement.isPilotEnabled());
-    }
-
-    /**
-     * @description Validates that the isPilotEnabled() method can be forced
-     * to return True by using the OverrideFeature_PilotEnabled__c field on the Package_Settings
-     * object.
+     * @description Validates that isPilotEnabled returns true when override is set in scratch org
      */
     @isTest
     private static void shouldReturnTrueWhenPilotIsEnabledWithOverride() {
@@ -67,51 +51,15 @@ public class UTIL_FeatureEnablement_TEST {
 
         System.assertEquals(true,
             UTIL_FeatureEnablement.isPilotEnabled(),
-            'The Pilot should be enabled if this test is running in a scratch org');
+            'The Pilot should be enabled if this test is running in a scratch org with override');
     }
 
     /**
-     * @description Validates that the isPilotEnabled() method can be forced
-     * to return True by using the OverrideFeature_PilotEnabled__c field on the Package_Settings
-     * object.
-     */
-    @isTest
-    private static void shouldReturnFalseWhenPilotIsEnabledWithOverride() {
-        if (!UTIL_Namespace.isScratchOrg()) {
-            return;
-        }
-
-        System.assertEquals(false,
-            UTIL_FeatureEnablement.isPilotEnabled(),
-            'The Pilot should be disabled if this test is running in a scratch org');
-    }
-
-    /**
-     * @description Validates that the default for the isPilotEnabled() static method is false
+     * @description Validates that isPilotEnabled returns false when no override is set
      */
     @isTest
     private static void shouldReturnFalseWhenPilotNotEnabled() {
-        System.assertEquals(false, UTIL_FeatureEnablement.isPilotEnabled());
-    }
-
-
-    // Helpers
-    ///////////////////
-
-    /***
-    * @description Stubs PilotEnabled feature parameter enablement
-    * @param isEnabled Indicates if the PilotEnabled should be enabled using a Mock feature management
-    * @return none
-    */
-    public static void setPilotEnabledParameter(Boolean isEnabled) {
-        UTIL_FeatureEnablement featureEnablement = UTIL_FeatureEnablement.getInstance();
-
-        featureEnablement.featureManagement = (UTIL_FeatureManagement) Test.createStub(
-            UTIL_FeatureManagement.class, new UTIL_FeatureManagement_TEST.Mock()
-        );
-
-        featureEnablement.featureManagement.setPackageBooleanValue(
-            UTIL_FeatureEnablement.FeatureName.PilotEnabled.name(), isEnabled
-        );
+        System.assertEquals(false, UTIL_FeatureEnablement.isPilotEnabled(),
+            'The Pilot should be disabled by default');
     }
 }

@@ -219,7 +219,7 @@ public class TEST_SObjectGateway {
             String soql = new UTIL_Query()
                 .withFrom(Opportunity.SObjectType)
                 .withSelectFields(fields)
-                .withWhere('Recurring_Donation__c IN :rds')
+                .withWhere(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c') + ' IN :rds')
                 .build();
 
             return (List<Opportunity>) Database.query(soql);
@@ -243,7 +243,7 @@ public class TEST_SObjectGateway {
             String soql = new UTIL_Query()
                 .withFrom(Opportunity.SObjectType)
                 .withSelectFields(fields)
-                .withWhere('Recurring_Donation__c IN :rds')
+                .withWhere(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c') + ' IN :rds')
                 .withOrderBy('CloseDate ASC')
                 .build();
 
@@ -283,10 +283,6 @@ public class TEST_SObjectGateway {
     public class PaymentGateway {
         private Set<String> fields = new Set<String>{
             'Name',
-            'Payment_Method__c',
-            'Payment_Amount__c',
-            'Opportunity__c',
-            'Opportunity__r.Amount',
             String.valueOf(OppPayment__c.OriginalPayment__c),
             String.valueOf(OppPayment__c.DebitType__c)
         };
@@ -295,6 +291,10 @@ public class TEST_SObjectGateway {
         * @description Constructor adding the CurrencyIsoCode into the output fields set
         */
         public PaymentGateway() {
+            fields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Method__c'));
+            fields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c'));
+            fields.add(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c'));
+            fields.add(UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.Amount');
             if (UserInfo.isMultiCurrencyOrganization()) {
                 fields.add(UTIL_Currency.CURRENCY_ISO_CODE_FIELD);
             }
@@ -318,7 +318,7 @@ public class TEST_SObjectGateway {
             String soql = new UTIL_Query()
                 .withFrom(OppPayment__c.SObjectType)
                 .withSelectFields(fields)
-                .withWhere('Opportunity__c IN :opps')
+                .withWhere(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' IN :opps')
                 .build();
 
             return (List<OppPayment__c>) Database.query(soql);
@@ -382,7 +382,7 @@ public class TEST_SObjectGateway {
         * @return Integer
         */
         public Integer getErrorCount() {
-            return Database.countQuery('SELECT Count() FROM Error__c');
+            return Database.countQuery('SELECT Count() FROM ' + UTIL_Namespace.StrTokenNSPrefix('Error__c'));
         }
     }
 

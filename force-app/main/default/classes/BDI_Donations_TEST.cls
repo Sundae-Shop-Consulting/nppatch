@@ -1011,10 +1011,10 @@ public with sharing class BDI_Donations_TEST {
 
         List<OppPayment__c> resultPayments =
             Database.query(
-              'SELECT Id, CurrencyIsoCode, Check_Reference_Number__c, ' +
-                  'Paid__c, Payment_Amount__c, Payment_Method__c ' +
-              'FROM OppPayment__c ' +
-              'ORDER BY Opportunity__r.Id'
+              'SELECT Id, CurrencyIsoCode, ' + UTIL_Namespace.StrTokenNSPrefix('Check_Reference_Number__c') + ', ' +
+                  UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Method__c') + ' ' +
+              'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' ' +
+              'ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.Id'
             );
 
         System.assertEquals(1, resultPayments.size());
@@ -1116,10 +1116,10 @@ public with sharing class BDI_Donations_TEST {
 
         List<OppPayment__c> resultPayments =
             Database.query(
-                'SELECT Id, CurrencyIsoCode, Check_Reference_Number__c, ' +
-                    'Payment_Amount__c, Payment_Method__c ' +
-                    'FROM OppPayment__c ' +
-                    'ORDER BY Opportunity__r.Id'
+                'SELECT Id, CurrencyIsoCode, ' + UTIL_Namespace.StrTokenNSPrefix('Check_Reference_Number__c') + ', ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Method__c') + ' ' +
+                    'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' ' +
+                    'ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.Id'
             );
         System.assertEquals(2, resultPayments.size());
 
@@ -1682,7 +1682,7 @@ public with sharing class BDI_Donations_TEST {
         System.assertEquals(testCurrencyCode, (String)opps[0].get('CurrencyIsoCode'));
 
         List<OppPayment__c> payments = Database.query(
-            'SELECT Id, CurrencyIsoCode FROM OppPayment__c'
+            'SELECT Id, CurrencyIsoCode FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c')
         );
         System.assertEquals(1, payments.size());
         System.assertEquals(testCurrencyCode, (String)payments[0].get('CurrencyIsoCode'));

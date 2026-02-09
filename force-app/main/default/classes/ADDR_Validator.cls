@@ -107,7 +107,7 @@ public with sharing class ADDR_Validator {
             .withWhere('Id IN :recordIds');
 
         if (!attemptAlreadyVerifiedRecords) {
-            queryBuilder.withWhere('Verified__c = false');
+            queryBuilder.withWhere(UTIL_Namespace.StrTokenNSPrefix('Verified__c') + ' = false');
         }
 
         String soql = queryBuilder.build();
@@ -131,7 +131,7 @@ public with sharing class ADDR_Validator {
             return;
         }
 
-        String classToRunName = String.valueOf(settings.get('Class__c'));
+        String classToRunName = String.valueOf(settings.get(UTIL_Namespace.StrTokenNSPrefix('Class__c')));
         if (classToRunName == null) {
             return;
         }

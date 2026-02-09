@@ -113,7 +113,7 @@ public inherited sharing class ALLO_AllocationsUtil {
                 return (Id) sObj.Id;
             }
             if (sObj instanceOf OppPayment__c) {
-                return (Id) sObj.get('Opportunity__c');
+                return (Id) sObj.get(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c'));
             }
         }
 
@@ -131,7 +131,7 @@ public inherited sharing class ALLO_AllocationsUtil {
                 return (Decimal) sObj.get('Amount');
             }
             if (sObj instanceOf OppPayment__c) {
-                return (Decimal) sObj.get('Payment_Amount__c');
+                return (Decimal) sObj.get(UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c'));
             }
         }
 

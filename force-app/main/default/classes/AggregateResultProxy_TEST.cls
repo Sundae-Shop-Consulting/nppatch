@@ -62,12 +62,12 @@ private with sharing class AggregateResultProxy_TEST {
         for (AggregateResultProxy resultProxy : queryResultProxies) {
             Map<String, Object> valueByAlias = resultProxy.getValuesByAlias();
 
-            if (valueByAlias.get('Status__c') == 'Imported') {
+            if (valueByAlias.get(UTIL_Namespace.StrTokenNSPrefix('Status__c')) == 'Imported') {
                 System.assertEquals(3, valueByAlias.get('recordCount'),
                     'Expect 3 in aggregate result alias `recordCount` for Data Import records with Imported status');
             }
 
-            if (valueByAlias.get('Status__c') == 'Failed') {
+            if (valueByAlias.get(UTIL_Namespace.StrTokenNSPrefix('Status__c')) == 'Failed') {
                 System.assertEquals(5, valueByAlias.get('recordCount'),
                     'Expect 3 in aggregate result alias `recordCount` for Data Import records with Failed status');
             }
@@ -78,8 +78,8 @@ private with sharing class AggregateResultProxy_TEST {
     private static void shouldReturnExplicitlyExpectedValuesFromGivenAlias() {
         AggregateResultProxy resultProxy = new AggregateResultProxy()
             .withAliasAndValue('recordCount', 25)
-            .withAliasAndValue('Payment_Status__c', 'DECLINED');
-        System.assertEquals('DECLINED', resultProxy.getValuesByAlias().get('Payment_Status__c'));
+            .withAliasAndValue(UTIL_Namespace.StrTokenNSPrefix('Payment_Status__c'), 'DECLINED');
+        System.assertEquals('DECLINED', resultProxy.getValuesByAlias().get(UTIL_Namespace.StrTokenNSPrefix('Payment_Status__c')));
         System.assertEquals(25, resultProxy.getValuesByAlias().get('recordCount'));
     }
 

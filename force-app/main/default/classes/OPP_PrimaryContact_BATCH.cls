@@ -42,10 +42,10 @@ public class OPP_PrimaryContact_BATCH implements Database.Batchable<sObject> {
     * for primary OCRs except those with DisableContactRoleAutomation checked.
     */
     public OPP_PrimaryContact_BATCH() {
-        query = 'SELECT OpportunityId, Opportunity.Primary_Contact__c, ContactId '
+        query = 'SELECT OpportunityId, Opportunity.' + UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c') + ', ContactId '
         + ' FROM OpportunityContactRole '
         + ' WHERE IsPrimary = true '
-        + ' AND Opportunity.DisableContactRoleAutomation__c = false '
+        + ' AND Opportunity.' + UTIL_Namespace.StrTokenNSPrefix('DisableContactRoleAutomation__c') + ' = false '
         + ' ORDER BY OpportunityId, LastModifiedDate DESC';
     }
     

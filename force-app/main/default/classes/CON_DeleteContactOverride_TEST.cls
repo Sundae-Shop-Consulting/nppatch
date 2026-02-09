@@ -685,7 +685,7 @@ private class CON_DeleteContactOverride_TEST {
                 '"LastName": "' + 'Contact' + '", ' +
                 '"AccountId": "' + this.accountId + '", ' +
                 '"Account": {"Name": "' + ACCOUNT_NAME + '", ' +
-                '"SYSTEMIsIndividual__c": true}' +
+                '"' + UTIL_Namespace.StrTokenNSPrefix('SYSTEMIsIndividual__c') + '": true}' +
                 '}', Contact.class);
             return contactDetails;
         }

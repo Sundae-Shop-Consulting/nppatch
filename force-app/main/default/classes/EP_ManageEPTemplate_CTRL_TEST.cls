@@ -212,7 +212,7 @@ private with sharing class EP_ManageEPTemplate_CTRL_TEST {
         System.assertEquals(3, ctrl.mapTaskWrappers.size(), 'Dependent task should be deleted');
 
         // Cause an error on update
-        ctrl.mapTaskWrappers.get('1').detail.put('Assigned_To__c', UTIL_UnitTestData_TEST.MOCK_ACCOUNT_ID);
+        ctrl.mapTaskWrappers.get('1').detail.put(UTIL_Namespace.StrTokenNSPrefix('Assigned_To__c'), UTIL_UnitTestData_TEST.MOCK_ACCOUNT_ID);
 
         Test.startTest();
         PageReference retPage = ctrl.saveClose();

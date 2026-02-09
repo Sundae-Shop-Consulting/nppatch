@@ -973,18 +973,19 @@ public with sharing class CRLP_RollupUI_SVC {
         Map<String,Set<String>> bannedFieldsByObject = new Map<String,Set<String>>();
 
         // BAN ALL NPSP FIELDS ON RD EXCEPT THE FOUR CORE ROLLUP FIELDS
-        bannedFieldsByObject.put('Recurring_Donation__c',new Set<String>{'Amount__c'
-                ,'Recurring_Donation_Campaign__c'
-                ,'Contact__c'
-                ,'Date_Established__c'
-                ,'Donor_Name__c'
-                ,'Installment_Amount__c'
-                ,'Installment_Period__c'
-                ,'Installments__c'
-                ,'Open_Ended_Status__c'
-                ,'Organization__c'
-                ,'Schedule_Type__c'
-                ,'Total__c'
+        bannedFieldsByObject.put(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c'),new Set<String>{
+                UTIL_Namespace.StrAllNSPrefix('Amount__c')
+                ,UTIL_Namespace.StrAllNSPrefix('Recurring_Donation_Campaign__c')
+                ,UTIL_Namespace.StrAllNSPrefix('Contact__c')
+                ,UTIL_Namespace.StrAllNSPrefix('Date_Established__c')
+                ,UTIL_Namespace.StrAllNSPrefix('Donor_Name__c')
+                ,UTIL_Namespace.StrAllNSPrefix('Installment_Amount__c')
+                ,UTIL_Namespace.StrAllNSPrefix('Installment_Period__c')
+                ,UTIL_Namespace.StrAllNSPrefix('Installments__c')
+                ,UTIL_Namespace.StrAllNSPrefix('Open_Ended_Status__c')
+                ,UTIL_Namespace.StrAllNSPrefix('Organization__c')
+                ,UTIL_Namespace.StrAllNSPrefix('Schedule_Type__c')
+                ,UTIL_Namespace.StrAllNSPrefix('Total__c')
                 ,UTIL_Namespace.StrAllNSPrefix('Always_Use_Last_Day_Of_Month__c')});
 
         // add more objects here as needed with their banned fields

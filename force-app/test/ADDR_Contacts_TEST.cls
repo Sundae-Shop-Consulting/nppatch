@@ -539,7 +539,7 @@ public with sharing class ADDR_Contacts_TEST {
         insert testContact;
         Test.stopTest();
 
-        String contactSOQL = 'SELECT Id, AccountId, Current_Address__c, ' 
+        String contactSOQL = 'SELECT Id, AccountId, ' + UTIL_Namespace.StrTokenNSPrefix('Current_Address__c') + ', '
                         + 'MailingStreet, MailingCity, MailingState, MailingPostalCode, MailingCountry, '
                         + 'OtherStreet, OtherCity, OtherState, OtherCountry';
         if (isStateCountryEnabled) {
@@ -642,7 +642,7 @@ public with sharing class ADDR_Contacts_TEST {
         insert testContact;
         Test.stopTest();
 
-        String contactSOQL = 'SELECT Id, AccountId, Current_Address__c, ' 
+        String contactSOQL = 'SELECT Id, AccountId, ' + UTIL_Namespace.StrTokenNSPrefix('Current_Address__c') + ', '
                         + 'MailingStreet, MailingCity, MailingState, MailingPostalCode, MailingCountry';
         if (isStateCountryEnabled) {
             contactSOQL += ', MailingStateCode, MailingCountryCode';

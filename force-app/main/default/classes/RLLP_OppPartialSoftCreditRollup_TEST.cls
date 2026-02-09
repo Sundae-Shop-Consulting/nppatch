@@ -374,9 +374,9 @@ private class RLLP_OppPartialSoftCreditRollup_TEST {
         insert listPSC;
 
         //verify currency iso code was correctly transfered to PSCs
-        list<Partial_Soft_Credit__c> queryPSC = database.query('SELECT Id, CurrencyIsoCode, Opportunity__r.CurrencyIsoCode FROM Partial_Soft_Credit__c WHERE Id IN: listPSC');
+        list<Partial_Soft_Credit__c> queryPSC = database.query('SELECT Id, CurrencyIsoCode, ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.CurrencyIsoCode FROM ' + UTIL_Namespace.StrTokenNSPrefix('Partial_Soft_Credit__c') + ' WHERE Id IN: listPSC');
         for (Partial_Soft_Credit__c psc : queryPSC)
-            system.assertEquals(psc.get('CurrencyIsoCode'), psc.getSObject('Opportunity__r').get('CurrencyIsoCode'), 'Currency ISO codes should match the opportunity iso code.');
+            system.assertEquals(psc.get('CurrencyIsoCode'), psc.getSObject(UTIL_Namespace.StrTokenNSPrefix('Opportunity__r')).get('CurrencyIsoCode'), 'Currency ISO codes should match the opportunity iso code.');
 
         RLLP_OppRollup rllp = new RLLP_OppRollup();
         RLLP_OppRollup_UTIL util = new RLLP_OppRollup_UTIL();        
@@ -407,7 +407,7 @@ private class RLLP_OppPartialSoftCreditRollup_TEST {
         update listOpp[0];
 
         id oppid = listOpp[0].id;
-        queryPSC = database.query('SELECT Id, CurrencyIsoCode FROM Partial_Soft_Credit__c WHERE Opportunity__c = :oppid');
+        queryPSC = database.query('SELECT Id, CurrencyIsoCode FROM ' + UTIL_Namespace.StrTokenNSPrefix('Partial_Soft_Credit__c') + ' WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' = :oppid');
         system.assertEquals(nonDefaultCurrencyType.get('IsoCode'), queryPSC[0].get('CurrencyIsoCode'), 'Currency ISO code should match the opportunity iso code.');
 
         //try to change PSC currency after resetting flag, verify that the operation is blocked

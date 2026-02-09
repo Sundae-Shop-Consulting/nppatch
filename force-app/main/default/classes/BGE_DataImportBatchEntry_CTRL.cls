@@ -227,7 +227,7 @@ public with sharing class BGE_DataImportBatchEntry_CTRL {
                     'Payment_Amount__c,' +
                     'Paid__c, ' +
                     'Written_Off__c ' +
-                    'FROM OppPayment__r ' +
+                    'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
                     'WHERE Written_Off__c = false) ' +
                 'FROM Opportunity ' +
                 'WHERE ' + relationshipField + ' = :donorId ' +

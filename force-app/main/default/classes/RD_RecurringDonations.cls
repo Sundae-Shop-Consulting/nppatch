@@ -364,7 +364,7 @@ public class RD_RecurringDonations {
         Recurring_Donations_Settings__c rds = UTIL_CustomSettingsFacade.getRecurringDonationsSettings();
 
         //grab the contact id for role to take advantage of NPSP C&O if it exists
-        SObjectField contactIdForRole = Schema.sObjectType.Opportunity.fields.getMap().get('Contact_Id_for_Role__c');
+        SObjectField contactIdForRole = Schema.sObjectType.Opportunity.fields.getMap().get(UTIL_Namespace.StrTokenNSPrefix('Contact_Id_for_Role__c'));
         Set<Id> updateRecurringDonationSet = new Set<Id>();
 
         //Create a list of ContactIds used in these RecurringDonations
@@ -434,7 +434,7 @@ public class RD_RecurringDonations {
                         opp.AccountId = c.AccountId;
 
                         if (contactIdForRole != null) {
-                            opp.put('Contact_Id_For_Role__c', (String)c.id);
+                            opp.put(UTIL_Namespace.StrTokenNSPrefix('Contact_Id_For_Role__c'), (String)c.id);
                         }
                     }
 
@@ -535,7 +535,7 @@ public class RD_RecurringDonations {
                             o.AccountId = c.AccountId;
 
                             if (contactIdForRole != null) {
-                                o.put('Contact_Id_For_Role__c', (String)c.id);
+                                o.put(UTIL_Namespace.StrTokenNSPrefix('Contact_Id_For_Role__c'), (String)c.id);
                             }
                         }
 
@@ -955,7 +955,7 @@ public class RD_RecurringDonations {
         Integer forecast_months = (Integer)rds.Opportunity_Forecast_Months__c;
 
         //grab the contact id for role to take advantage of NPSP C&O if it exists
-        SObjectField contactIdForRole = Schema.sObjectType.Opportunity.fields.getMap().get('Contact_Id_for_Role__c');
+        SObjectField contactIdForRole = Schema.sObjectType.Opportunity.fields.getMap().get(UTIL_Namespace.StrTokenNSPrefix('Contact_Id_for_Role__c'));
 
         // Add Open-Ended Recurring Donation Ids to set so we can use this in selective filter later.
         Set<Id> openRDSet = new Set<Id>();
@@ -1030,7 +1030,7 @@ public class RD_RecurringDonations {
                             o.AccountId = c.AccountId;
 
                             if (contactIdForRole != null) {
-                                o.put('Contact_Id_For_Role__c', (String)c.id);
+                                o.put(UTIL_Namespace.StrTokenNSPrefix('Contact_Id_For_Role__c'), (String)c.id);
                             }
                         }
 

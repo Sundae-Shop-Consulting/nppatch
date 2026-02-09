@@ -98,7 +98,7 @@ public with sharing class MTCH_FindGifts_CTRL {
     */
     private void init() {
         Id oppId = opp.Id;
-        String oppQuery = 'SELECT Id, Name, AccountId, Account.Name, Amount, StageName, Account.Matching_Gift_Percent__c';
+        String oppQuery = 'SELECT Id, Name, AccountId, Account.Name, Amount, StageName, Account.' + UTIL_Namespace.StrTokenNSPrefix('Matching_Gift_Percent__c');
 
         if (UserInfo.isMultiCurrencyOrganization()) {
             oppQuery += ', CurrencyIsoCode';

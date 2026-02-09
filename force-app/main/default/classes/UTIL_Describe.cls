@@ -116,9 +116,18 @@ public class UTIL_Describe {
         }
 
         // get the object description
-        if (gd.containsKey(objectName)) {
+        String lookupName = objectName;
+        if (!gd.containsKey(objectName)) {
+            // Try with namespace prefix if not found
+            String namespacedName = UTIL_Namespace.StrTokenNSPrefix(objectName);
+            if (gd.containsKey(namespacedName)) {
+                lookupName = namespacedName;
+            }
+        }
+
+        if (gd.containsKey(lookupName)) {
             if (!objectDescribes.containsKey(objectName)) {
-                Schema.DescribeSObjectResult objDescribe = gd.get(objectName).getDescribe();
+                Schema.DescribeSObjectResult objDescribe = gd.get(lookupName).getDescribe();
                 objectDescribes.put(objectName, objDescribe);
                 objectDescribesByType.put(objDescribe.getSObjectType(), objDescribe);
             }
@@ -140,8 +149,17 @@ public class UTIL_Describe {
             fieldDescribes.put(objectName, new Map<String, Schema.DescribeFieldResult>());
         }
         if (!fieldDescribes.get(objectName).containsKey(fieldName)) {
-            if (fieldTokens.get(objectName).containsKey(fieldName)) {
-                Schema.DescribeFieldResult dfr = fieldTokens.get(objectName).get(fieldName).getDescribe();
+            // Try with namespace prefix if not found
+            String lookupFieldName = fieldName;
+            if (!fieldTokens.get(objectName).containsKey(fieldName)) {
+                String namespacedFieldName = UTIL_Namespace.StrTokenNSPrefix(fieldName);
+                if (fieldTokens.get(objectName).containsKey(namespacedFieldName)) {
+                    lookupFieldName = namespacedFieldName;
+                }
+            }
+
+            if (fieldTokens.get(objectName).containsKey(lookupFieldName)) {
+                Schema.DescribeFieldResult dfr = fieldTokens.get(objectName).get(lookupFieldName).getDescribe();
                 fieldDescribes.get(objectName).put(fieldName, dfr);
             } else {
                 throw new SchemaDescribeException('Invalid field name \'' + fieldName + '\'');

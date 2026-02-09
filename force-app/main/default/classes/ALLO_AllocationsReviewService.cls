@@ -140,7 +140,7 @@ public inherited sharing class ALLO_AllocationsReviewService {
         if (sObj instanceOf Opportunity) {
             amount = (Decimal) sObj.get('Amount');
         } else if (sObj instanceOf OppPayment__c) {
-            amount = (Decimal) sObj.get('Payment_Amount__c');
+            amount = (Decimal) sObj.get(UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c'));
         } else { // invalid object passed to method
             return false;
         }

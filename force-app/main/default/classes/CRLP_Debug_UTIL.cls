@@ -56,7 +56,7 @@ public class CRLP_Debug_UTIL {
             if (debuggingLevel == null) {
                 Customizable_Rollup_Settings__c crlpSettings = UTIL_CustomSettingsFacade.getCustomizableRollupSettings();
                 try {
-                    debuggingLevel = ((Double) crlpSettings.get('Debug_Level__c')).intValue();
+                    debuggingLevel = ((Double) crlpSettings.get(UTIL_Namespace.StrTokenNSPrefix('Debug_Level__c'))).intValue();
                 } catch (Exception ex) {
                     debuggingLevel = 0;
                 }

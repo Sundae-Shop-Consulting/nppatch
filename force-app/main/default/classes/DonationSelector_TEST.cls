@@ -109,7 +109,7 @@ private class DonationSelector_TEST {
                     'Paid__c, ' +
                     'Written_Off__c, ' +
                     String.valueOf(OppPayment__c.Elevate_Payment_API_Status__c) + ' ' +
-                'FROM OppPayment__r ' +
+                'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
                 'WHERE Written_Off__c = false ' +
                 'AND Paid__c = false), ' +
                 '(SELECT Id, ' +

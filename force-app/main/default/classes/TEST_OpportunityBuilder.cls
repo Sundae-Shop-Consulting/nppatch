@@ -119,7 +119,7 @@ public without sharing class TEST_OpportunityBuilder {
     * @return TEST_OpportunityBuilder Builder instance
     */
     public TEST_OpportunityBuilder withContact(Contact con) {
-        valuesByFieldName.put('Primary_Contact__c', con.Id);
+        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c'), con.Id);
         return withContact(con.Id);
     }
 
@@ -129,7 +129,7 @@ public without sharing class TEST_OpportunityBuilder {
     * @return TEST_OpportunityBuilder Builder instance
     */
     public TEST_OpportunityBuilder withContact(Id contactId) {
-        valuesByFieldName.put('Primary_Contact__c', contactId);
+        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c'), contactId);
         return this;
     }
 
@@ -209,7 +209,7 @@ public without sharing class TEST_OpportunityBuilder {
     * @return TEST_OpportunityBuilder Builder instance
     */
     public TEST_OpportunityBuilder withRecurringDonation(Id rdId) {
-        valuesByFieldName.put('Recurring_Donation__c', rdId);
+        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c'), rdId);
         return this;
     }
 
@@ -219,7 +219,7 @@ public without sharing class TEST_OpportunityBuilder {
     * @return TEST_OpportunityBuilder Builder instance
     */
     public TEST_OpportunityBuilder withInstallmentNumber(Integer installmentNumber) {
-        valuesByFieldName.put('Recurring_Donation_Installment_Number__c', installmentNumber);
+        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation_Installment_Number__c'), installmentNumber);
         return this;
     }
 
@@ -238,7 +238,7 @@ public without sharing class TEST_OpportunityBuilder {
     * @return TEST_OpportunityBuilder Builder instance
     */
     public TEST_OpportunityBuilder withCommitmentId(String commitmentId) {
-        valuesByFieldName.put('CommitmentId__c', commitmentId);
+        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('CommitmentId__c'), commitmentId);
         return this;
     }
 
