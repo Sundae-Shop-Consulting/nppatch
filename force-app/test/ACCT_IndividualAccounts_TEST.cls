@@ -1459,7 +1459,7 @@ private class ACCT_IndividualAccounts_TEST {
         );
         String soql = new ContactSelector().buildContactSoql(null);
 
-        System.assert(soql.contains('WorkEmail__c'));// the only field added from Household Naming fields
+        System.assert(soql.contains(UTIL_Namespace.StrTokenNSPrefix('WorkEmail__c')));// the only field added from Household Naming fields
 
         Contact[] contacts = new Contact[]{
             new Contact(LastName = 'testSoql1'),

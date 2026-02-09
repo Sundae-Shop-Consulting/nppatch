@@ -40,7 +40,8 @@ private class BDI_AdditionalObjectService_TEST {
 
     @testSetup
     static void setupTestData() {
-
+        // Assign admin permission set to ensure CRUD/FLS access
+        UTIL_TestPermissions.assignAdminPermissionSet();
 
         General_Accounting_Unit__c gau1 = new General_Accounting_Unit__c(Name = 'TestGroupA GAU 1',
                                                                         Active__c = true);

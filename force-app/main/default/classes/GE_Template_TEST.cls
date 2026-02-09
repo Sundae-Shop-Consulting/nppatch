@@ -36,10 +36,17 @@
 */
 @isTest
 public with sharing class GE_Template_TEST {
+
+    @TestSetup
+    static void setupTestData() {
+        // Assign admin permission set to ensure CRUD/FLS access
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*******************************************************************************************************
      * @description Confirm that a default template is able to be deserialized to the
      * current GE_Template.Layout structure.
-     * This is the best we can do since there will not be a migrated field set available for testing.  
+     * This is the best we can do since there will not be a migrated field set available for testing.
      */
     @isTest
     private static void testDeserializeBaseJSONToCurrentFORMLayout() {

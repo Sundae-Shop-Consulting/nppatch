@@ -36,6 +36,12 @@
 @isTest
 public with sharing class UTIL_IntegrationGateway_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        // Assign admin permission set to ensure CRUD/FLS access
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /**
      * @description Confirms handleBeforeDelete tries to call integration callable api if installed
      * and passes correct parameters to it

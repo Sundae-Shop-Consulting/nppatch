@@ -38,6 +38,12 @@
 @isTest(IsParallel=true)
 private class BGE_DataImportBatchEntry_CTRL_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        // Assign admin permission set to ensure CRUD/FLS access
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description Sets up a new NPSP_Data_Import_Batch__c Record
     * @return Id of the new NPSP_Data_Import_Batch__c

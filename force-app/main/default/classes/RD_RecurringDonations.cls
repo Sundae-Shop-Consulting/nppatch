@@ -306,12 +306,26 @@ public class RD_RecurringDonations {
     public static String strQueryRDNoWhere() {
 
         // these must be lowercase so set.contains() will work
-        Set<String> existingFields = new Set<String>{  'open_ended_status__c', 'next_payment_date__c', 'name', 'Paid_Amount__c',
-                'organization__c', 'contact__c', 'installment_amount__c',
-                'installments__c', 'amount__c', 'total__c', 'installment_period__c',
-                'date_established__c', 'donor_name__c', 'schedule_type__c',
-                'recurring_donation_campaign__c', 'total_paid_installments__c', 'ownerid',
-                'always_use_last_day_of_month__c', 'Day_of_Month__c'};
+        // Custom fields need namespace prefix for 2GP compatibility
+        Set<String> existingFields = new Set<String>{
+                'name', 'ownerid',
+                UTIL_Namespace.StrTokenNSPrefix('Open_Ended_Status__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Next_Payment_Date__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Paid_Amount__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Organization__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Contact__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Installment_Amount__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Installments__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Amount__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Total__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Installment_Period__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Date_Established__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Donor_Name__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Schedule_Type__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation_Campaign__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Total_Paid_Installments__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Always_Use_Last_Day_of_Month__c').toLowerCase(),
+                UTIL_Namespace.StrTokenNSPrefix('Day_of_Month__c').toLowerCase()};
 
         String queryRCD = 'select id';
         for (String s : existingFields) {

@@ -43,6 +43,9 @@ private with sharing class ERR_Log_TEST {
     */
     @TestSetup
     private static void setUp() {
+        // Assign admin permission set to ensure CRUD/FLS access
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         Contact contact = UTIL_UnitTestData_TEST.getContact();
         insert contact;
     }

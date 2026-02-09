@@ -529,9 +529,16 @@ public class HouseholdNamingService_TEST {
 
         String soql = contactSelector.getQueryForContactNamingFields();
 
+        // Standard fields don't need namespace, custom fields do
         for (String fieldName : new String[] {
-            'Id', 'HHId__c', 'Naming_Exclusions__c', // mandatory fields
-            'LastName', 'FirstName', 'Salutation', 'WorkEmail__c' //HH Naming fields
+            'Id', 'LastName', 'FirstName', 'Salutation' // standard fields
+        }) {
+            System.assert(soql.contains(fieldName), fieldName + ' should be in the SOQL: ' + soql);
+        }
+        for (String fieldName : new String[] {
+            UTIL_Namespace.StrTokenNSPrefix('HHId__c'),
+            UTIL_Namespace.StrTokenNSPrefix('Naming_Exclusions__c'), // mandatory custom fields
+            UTIL_Namespace.StrTokenNSPrefix('WorkEmail__c') // HH Naming field
         }) {
             System.assert(soql.contains(fieldName), fieldName + ' should be in the SOQL: ' + soql);
         }
@@ -566,17 +573,25 @@ public class HouseholdNamingService_TEST {
 
         String soql = contactSelector.getQueryForContactNamingFields();
 
+        // Standard fields don't need namespace, custom fields do
+        for (String fieldName : new String[] {'Id'}) {
+            System.assert(soql.contains(fieldName), fieldName + ' should be in the SOQL: ' + soql);
+        }
         for (String fieldName : new String[] {
-            'Id', 'HHId__c', 'Naming_Exclusions__c' // mandatory fields
+            UTIL_Namespace.StrTokenNSPrefix('HHId__c'),
+            UTIL_Namespace.StrTokenNSPrefix('Naming_Exclusions__c') // mandatory custom fields
         }) {
             System.assert(soql.contains(fieldName), fieldName + ' should be in the SOQL: ' + soql);
         }
 
+        // These fields should NOT be in SOQL when automatic HH naming is off
         for (String fieldName : new String[] {
-            'LastName', 'FirstName', 'Salutation', 'WorkEmail__c' //HH Naming fields
+            'LastName', 'FirstName', 'Salutation' // standard fields
         }) {
             System.assert(!soql.contains(fieldName), fieldName + ' should not be in the SOQL: ' + soql);
         }
+        System.assert(!soql.contains(UTIL_Namespace.StrTokenNSPrefix('WorkEmail__c')),
+            'WorkEmail__c should not be in the SOQL: ' + soql);
 
         //verify the soql is valid and will not raise exceptions
         System.assert(!soql.contains('}'), 'SOQL should be correct: ' + soql);

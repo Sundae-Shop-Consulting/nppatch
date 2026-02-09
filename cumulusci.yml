@@ -48,16 +48,17 @@ tasks:
             apex: initializeDefaultSettings();
 
 flows:
-    # dev_org:
-    #     steps:
-    #         1:
-    #         2:
-    #             flow: deploy_unmanaged
-    #         3:
-    #             flow: config_dev
+    dev_org:
+        steps:
+            # 90:
+            #     flow: deploy_unmanaged
+            90:
+                flow: config_dev
 
     config_dev:
         steps:
+            2:
+                task: update_admin_profile
             3:
                 task: deploy_dev_config_delete
             4:

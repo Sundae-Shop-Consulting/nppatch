@@ -30,6 +30,12 @@
 @IsTest
 private class RelationshipsTreeGrid_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        // Assign admin permission set to ensure CRUD/FLS access
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     @IsTest
     static void whenNoRelationsFoundReturnsEmptyList() {
         Id fakeContactId = UTIL_UnitTestData_TEST.mockId(Contact.SObjectType);

@@ -96,7 +96,16 @@ public with sharing class HH_NameSpec implements HH_INaming {
         setStrField.addAll(ns.setStrFieldsInNameSpec());
         ns = new NameSpec(hns, 'Informal_Greeting_Format__c');
         setStrField.addAll(ns.setStrFieldsInNameSpec());
-        return setStrField;
+        // Add namespace prefix to custom fields for 2GP compatibility
+        set<string> namespacedFields = new set<string>();
+        for (String fieldName : setStrField) {
+            if (fieldName.endsWithIgnoreCase('__c')) {
+                namespacedFields.add(UTIL_Namespace.StrTokenNSPrefix(fieldName));
+            } else {
+                namespacedFields.add(fieldName);
+            }
+        }
+        return namespacedFields;
     }
 
     /*******************************************************************************************************
@@ -338,6 +347,10 @@ public with sharing class HH_NameSpec implements HH_INaming {
 
             //remove the field name itself to only include parent object references
             string fieldName = splitField[splitField.size()-1].trim();
+            // Add namespace prefix for custom fields in 2GP context
+            if (fieldName.endsWithIgnoreCase('__c')) {
+                fieldName = UTIL_Namespace.StrTokenNSPrefix(fieldName);
+            }
             splitField.remove(splitField.size()-1);
 
             //use the correct sObject

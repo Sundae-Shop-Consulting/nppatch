@@ -473,19 +473,22 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
         // need to include any Opp fields we may update, so we can compare against them
         setOppFields.addAll(mapDIFieldToOppField.values());
 
-        // the set of Payment fields for our soql
+        // the set of Payment fields for our soql (use lowercase to deduplicate)
         Set<String> setPmtFields = new Set<String>();
-        setPmtFields.add('Id');
-        setPmtFields.add('Name');
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Paid__c'));
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c'));
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c'));
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c'));
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c'));
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Written_Off__c'));
+        setPmtFields.add('id');
+        setPmtFields.add('name');
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Paid__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Written_Off__c').toLowerCase());
 
         // need to include any Pmt fields we may update, so we can compare against them
-        setPmtFields.addAll(mapDIFieldToPmtField.values());
+        // Lowercase to deduplicate with fields added above
+        for (String pmtField : mapDIFieldToPmtField.values()) {
+            setPmtFields.add(pmtField.toLowerCase());
+        }
 
         // now query for all Open Opportunities from these Contacts or Accounts
         String strSoql = buildMatchQuery(setOppFields, setPmtFields, setOppId, setAccId, setConId);

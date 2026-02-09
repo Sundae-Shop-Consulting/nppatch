@@ -56,6 +56,9 @@ private with sharing class RD2_EntryFormController_TEST {
     */
     @TestSetup
     private static void setUp() {
+        // Assign admin permission set to ensure CRUD/FLS access
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact c = UTIL_UnitTestData_TEST.getContact();
