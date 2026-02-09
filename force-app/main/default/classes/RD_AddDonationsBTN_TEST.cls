@@ -40,6 +40,12 @@ private with sharing class RD_AddDonationsBTN_TEST {
 
     private static final TEST_SObjectGateway.OpportunityGateway oppGateway = new TEST_SObjectGateway.OpportunityGateway();
 
+    @TestSetup
+    static void setupTestData() {
+        // Assign admin permission set to ensure CRUD/FLS access
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /***
     * @description Verifies Opportunities are recreated when the button is clicked on
     */

@@ -42,6 +42,12 @@ private class HH_Container_TEST {
     private static Contact conA;
     private static Contact conO;
 
+    @TestSetup
+    static void setupTestData() {
+        // Assign admin permission set to ensure CRUD/FLS access
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description initializes test data of a Household Account and a Household Object
     */

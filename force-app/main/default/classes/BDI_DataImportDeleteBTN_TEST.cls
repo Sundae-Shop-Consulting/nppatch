@@ -41,9 +41,15 @@ class BDI_DataImportDeleteBTN_TEST {
     /** @description Error message returned when user does not have Delete permission on the SObject */
     static String INSUFFICIENT_ACCESS_ERROR_MSG = 'INSUFFICIENT_ACCESS_OR_READONLY';
 
+    @TestSetup
+    static void setupTestData() {
+        // Assign admin permission set to ensure CRUD/FLS access
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /** @description Static method executed before each test method is run */
     static {
-        Test.setCurrentPage(Page.BDI_DataImportDeleteBTN); 
+        Test.setCurrentPage(Page.BDI_DataImportDeleteBTN);
     }
     
     /**

@@ -166,7 +166,7 @@ public inherited sharing class AllocationParent {
 
     private Map<SObjectType, List<String>> selectFieldsBySObjectType = new Map<SObjectType, List<String>> {
         Opportunity.SObjectType => new List<String>{'Amount'},
-        OppPayment__c.SObjectType => new List<String>{'Payment_Amount__c'}
+        OppPayment__c.SObjectType => new List<String>{UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c')}
     };
 
     private Map<SObjectType, String> allocationLookupApiNameBySObjectType = new Map<SObjectType, String> {

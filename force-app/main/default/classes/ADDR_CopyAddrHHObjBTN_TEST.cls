@@ -45,6 +45,9 @@ private with sharing class ADDR_CopyAddrHHObjBTN_TEST {
     */
     @TestSetup
     private static void createRecordData() {
+        // Assign admin permission set to ensure CRUD/FLS access
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         UTIL_CustomSettingsFacade.getContactsSettingsForTests(
             new Contacts_and_Orgs_Settings__c(Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR)
         );
