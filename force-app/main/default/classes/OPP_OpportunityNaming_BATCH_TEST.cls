@@ -39,6 +39,8 @@ private with sharing class OPP_OpportunityNaming_BATCH_TEST {
 
     @TestSetup
     static void setup() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         List<Opportunity> testOpps = createOpportunities(NUM_OPPS);
         createOpportunityNamingSetting();
     }

@@ -59,6 +59,8 @@ private class RD2_OpportunityEvaluationService_TEST {
     */
     @TestSetup
     private static void setUp() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         insert UTIL_UnitTestData_TEST.getContact();
     }
 

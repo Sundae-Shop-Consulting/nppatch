@@ -52,7 +52,9 @@ private class RD2_ApiService_TEST {
     * @description Creates data required for unit tests
     */
     @TestSetup
-    private static void setUp() {        
+    private static void setUp() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         RD2_ScheduleService.currentDate = CURRENT_DATE;
 
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();

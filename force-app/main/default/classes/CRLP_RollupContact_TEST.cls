@@ -46,6 +46,8 @@ public class CRLP_RollupContact_TEST {
      */
     @TestSetup
     private static void setupBaseTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         Contact c1 = UTIL_UnitTestData_TEST.getContact();
         Contact c2 = UTIL_UnitTestData_TEST.getContact();
         insert new List<Contact>{c1, c2};

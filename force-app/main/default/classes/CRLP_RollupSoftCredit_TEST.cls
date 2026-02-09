@@ -46,6 +46,8 @@ public class CRLP_RollupSoftCredit_TEST {
      */
     @TestSetup
     private static void setupBaseTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         Account orgAcct1 = new Account(Name = 'CRLP-ORG-TEST', SYSTEMIsIndividual__c = false);
         Account orgAcct2 = new Account(Name = 'CRLP-ORG-TEST', SYSTEMIsIndividual__c = false);
         insert new List<Account> { orgAcct1, orgAcct2 };

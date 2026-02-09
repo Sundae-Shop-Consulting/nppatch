@@ -52,6 +52,8 @@ public with sharing class RD2_PauseForm_TEST {
     */
     @TestSetup
     private static void setUp() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         RD2_ScheduleService.currentDate = START_DATE;
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 

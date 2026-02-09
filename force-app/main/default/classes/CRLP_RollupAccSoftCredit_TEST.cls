@@ -46,6 +46,8 @@ private class CRLP_RollupAccSoftCredit_TEST {
      */
     @TestSetup
     private static void setupBaseTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         Contact c = UTIL_UnitTestData_TEST.getContact();
         insert c;
         List<Account> accts = new List<Account>{

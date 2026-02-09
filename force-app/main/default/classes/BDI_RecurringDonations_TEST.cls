@@ -4,6 +4,7 @@ private class BDI_RecurringDonations_TEST {
 
     @TestSetup
     static void setupTestData(){
+        UTIL_TestPermissions.assignAdminPermissionSet();
 
         General_Accounting_Unit__c gau1 = new General_Accounting_Unit__c(Name = 'TestGAU1',
                 Active__c = true);

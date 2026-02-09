@@ -38,6 +38,8 @@
 public class CON_ContactMerge_TEST {
     @TestSetup
     private static void createTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         createGenericTestContacts(3);
         createUniqueContact();
         createOneToOneAccountAndContacts(2);

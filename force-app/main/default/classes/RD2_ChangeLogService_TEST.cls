@@ -53,6 +53,8 @@ public with sharing class RD2_ChangeLogService_TEST {
 
     @TestSetup
     private static void setUp() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         insert UTIL_UnitTestData_TEST.getContact();
     }
 

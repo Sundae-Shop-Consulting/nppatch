@@ -37,6 +37,8 @@ private class GiftBatchService_TEST {
 
     @TestSetup
     static void testSetup() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         DataImportBatch__c dataImportBatch = UTIL_UnitTestData_TEST.createGiftBatches(10,2,1)[0];
         Form_Template__c defaultTemplate = new Form_Template__c( Format_Version__c = '1.0' );
 

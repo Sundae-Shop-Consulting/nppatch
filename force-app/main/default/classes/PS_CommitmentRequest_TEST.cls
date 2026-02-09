@@ -55,6 +55,8 @@ private with sharing class PS_CommitmentRequest_TEST {
     */
     @TestSetup
     private static void setUp() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         RD2_ScheduleService.currentDate = CURRENT_DATE;
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 

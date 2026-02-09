@@ -127,9 +127,13 @@ public class EP_Task_UTIL {
 
         String templateQuery = 'SELECT ';
         templateQuery += String.join(new List<String>(templateFields), ', ');
-        templateQuery += ', (SELECT Id, Name, Engagement_Plan_Template__c, Assigned_To__c, Comments__c, Days_After__c, Type__c, ';
-        templateQuery += 'Parent_Task__c, Priority__c, Reminder__c, Reminder_Time__c, Send_Email__c, Status__c ';
-        templateQuery += 'FROM Engagement_Plan_Tasks__r) ';
+        templateQuery += ', (SELECT Id, Name, ' + UTIL_Namespace.StrTokenNSPrefix('Engagement_Plan_Template__c') + ', ';
+        templateQuery += UTIL_Namespace.StrTokenNSPrefix('Assigned_To__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Comments__c') + ', ';
+        templateQuery += UTIL_Namespace.StrTokenNSPrefix('Days_After__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Type__c') + ', ';
+        templateQuery += UTIL_Namespace.StrTokenNSPrefix('Parent_Task__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Priority__c') + ', ';
+        templateQuery += UTIL_Namespace.StrTokenNSPrefix('Reminder__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Reminder_Time__c') + ', ';
+        templateQuery += UTIL_Namespace.StrTokenNSPrefix('Send_Email__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Status__c') + ' ';
+        templateQuery += 'FROM ' + UTIL_Namespace.StrTokenNSPrefix('Engagement_Plan_Tasks__r') + ') ';
         templateQuery += 'FROM Engagement_Plan_Template__c WHERE Id IN :templateIds';
 
         //query for templates and their child tasks

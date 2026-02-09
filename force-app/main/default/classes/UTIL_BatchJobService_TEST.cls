@@ -44,6 +44,8 @@ public with sharing class UTIL_BatchJobService_TEST {
     */
     @TestSetup
     private static void setUp() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         insert UTIL_UnitTestData_TEST.getContact();
     }
 

@@ -54,6 +54,8 @@ private class RD2_DataMigration_TEST {
     */
     @TestSetup
     private static void setUp() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         insert UTIL_UnitTestData_TEST.getContact();
     }
 

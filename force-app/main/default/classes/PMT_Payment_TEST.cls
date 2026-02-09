@@ -39,6 +39,8 @@ private class PMT_Payment_TEST {
 
     @TestSetup
     static void createTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         UTIL_CustomSettingsFacade.getContactsSettingsForTests(new Contacts_And_Orgs_Settings__c (Payments_Enabled__c= true));
         Account acc = new Account(Name = 'foo');
         insert acc;

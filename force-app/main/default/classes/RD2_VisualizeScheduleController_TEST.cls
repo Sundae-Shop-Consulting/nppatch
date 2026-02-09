@@ -88,6 +88,8 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
     */
     @TestSetup
     private static void setUp() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 

@@ -43,6 +43,8 @@ private class HH_CampaignDedupeBTN_TEST {
      */
     @TestSetup
     private static void testDataSetup() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         Campaign camp = new Campaign (
             Name = 'MyCampaign',
             Status = 'Planned',
