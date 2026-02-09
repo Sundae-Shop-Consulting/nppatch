@@ -1371,7 +1371,7 @@ private with sharing class STG_SettingsManager_TEST {
         system.assertEquals(null, panel.createCustomFieldMapping());
         system.assertEquals(true, panel.isEditMode);
         panel.fmNew.Opportunity_Field__c = 'Amount';
-        panel.fmNew.Recurring_Donation_Field__c = 'Amount__c';
+        panel.fmNew.Recurring_Donation_Field__c = UTIL_Namespace.StrTokenNSPrefix('Amount__c');
         system.assertEquals(null, panel.createCustomFieldMapping());
         system.assertEquals(false, panel.isEditMode);
         system.assertNotEquals(null, panel.listRDCustomFieldMapping);
@@ -1704,9 +1704,9 @@ private with sharing class STG_SettingsManager_TEST {
         //exercise household code
         User_Rollup_Field_Settings__c HHurfs = new User_Rollup_Field_Settings__c(
         Name = 'Household Test Rollup',
-        Target_Field__c = 'lastoppamount__c',
+        Target_Field__c = UTIL_Namespace.StrTokenNSPrefix('lastoppamount__c'),
         Source_Field__c = 'Amount',
-        Object_Name__c = 'Household__c',
+        Object_Name__c = UTIL_Namespace.StrTokenNSPrefix('Household__c'),
         Field_Action__c = 'MAX'
         );
         insert HHurfs;
@@ -2293,9 +2293,9 @@ private with sharing class STG_SettingsManager_TEST {
      private static User_Rollup_Field_Settings__c setUpUserRollupFieldSettings() {
         User_Rollup_Field_Settings__c settings = new User_Rollup_Field_Settings__c(
             Name = 'Household Test Rollup',
-            Target_Field__c = 'lastoppamount__c',
+            Target_Field__c = UTIL_Namespace.StrTokenNSPrefix('lastoppamount__c'),
             Source_Field__c = 'Amount',
-            Object_Name__c = 'Household__c',
+            Object_Name__c = UTIL_Namespace.StrTokenNSPrefix('Household__c'),
             Field_Action__c = 'MAX'
         );
         insert settings;

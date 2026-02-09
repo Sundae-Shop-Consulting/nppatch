@@ -520,8 +520,8 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
         // add Payment subquery
         strSoql += ', (SELECT ' + String.join(new List<String>(setPmtFields), ',');
         strSoql += ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
-            'WHERE Paid__c = false ' +
-            'AND Written_Off__c = false)';
+            'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ' = false ' +
+            'AND ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false)';
 
         strSoql += ' FROM Opportunity';
         strSoql += ' WHERE IsClosed = false AND (';

@@ -41,21 +41,21 @@ public inherited sharing class DonationHistorySelector {
             'SELECT Id, '+
                     'Name, '+
                     'CloseDate,' +
-                    + this.getOppAmountFieldForQuery() + 
-                    ', Primary_Contact__r.Email, '+
-                    'Primary_Contact__r.Name, ' +
-                    '( SELECT Payment_Method__c, ' +
-                        'Paid__c ' +
-                        'FROM OppPayment__r ' +
+                    + this.getOppAmountFieldForQuery() +
+                    ', ' + UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__r') + '.Email, '+
+                    UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__r') + '.Name, ' +
+                    '( SELECT ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Method__c') + ', ' +
+                        UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ' ' +
+                        'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
                         'ORDER BY CreatedDate ' +
                     ') ' +
             'FROM Opportunity ' +
             'WHERE IsWon = true ' +
-            'AND Primary_Contact__r.Id =:contactId ' +
+            'AND ' + UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__r') + '.Id =:contactId ' +
             'WITH SECURITY_ENFORCED ' +
             'ORDER BY CloseDate ' +
             'DESC LIMIT 50 ' +
-            'OFFSET :offset' 
+            'OFFSET :offset'
         );
     }
 
@@ -71,22 +71,22 @@ public inherited sharing class DonationHistorySelector {
                     'Name,' +
                     'CloseDate, '+
                     + this.getOppAmountFieldForQuery() +
-                    ', Primary_Contact__r.Email, '+
-                    'Primary_Contact__r.Name, ' +
+                    ', ' + UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__r') + '.Email, '+
+                    UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__r') + '.Name, ' +
                     '( '+
-                    '    SELECT Payment_Method__c, '+
-                    '        Paid__c '+
-                    '    FROM OppPayment__r '+
+                    '    SELECT ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Method__c') + ', '+
+                    '        ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ' '+
+                    '    FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' '+
                     '    ORDER BY CreatedDate '+
                     ') '+
             'FROM Opportunity '+
             'WHERE IsWon = true '+
-            '    AND Primary_Contact__r.Id =:contactId '+
+            '    AND ' + UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__r') + '.Id =:contactId '+
             '    AND Calendar_Year(CloseDate) = :year '+
             'WITH SECURITY_ENFORCED '+
             'ORDER BY Opportunity.CloseDate '+
             'DESC LIMIT 50 '+
-            'OFFSET :offset' 
+            'OFFSET :offset'
         );
     }
 

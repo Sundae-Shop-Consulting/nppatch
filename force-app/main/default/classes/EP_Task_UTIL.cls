@@ -134,7 +134,7 @@ public class EP_Task_UTIL {
         templateQuery += UTIL_Namespace.StrTokenNSPrefix('Reminder__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Reminder_Time__c') + ', ';
         templateQuery += UTIL_Namespace.StrTokenNSPrefix('Send_Email__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Status__c') + ' ';
         templateQuery += 'FROM ' + UTIL_Namespace.StrTokenNSPrefix('Engagement_Plan_Tasks__r') + ') ';
-        templateQuery += 'FROM Engagement_Plan_Template__c WHERE Id IN :templateIds';
+        templateQuery += 'FROM ' + UTIL_Namespace.StrTokenNSPrefix('Engagement_Plan_Template__c') + ' WHERE Id IN :templateIds';
 
         //query for templates and their child tasks
         templateMap = new Map<Id, Engagement_Plan_Template__c>((List<Engagement_Plan_Template__c>)Database.query(templateQuery));

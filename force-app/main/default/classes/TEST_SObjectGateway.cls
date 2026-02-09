@@ -183,12 +183,12 @@ public class TEST_SObjectGateway {
             'StageName',
             'IsClosed',
             'IsWon',
-            'Closed_Lost_Reason__c',
-            'Recurring_Donation__c',
-            'Recurring_Donation_Installment_Number__c',
-            'Contact_Id_for_Role__c',
-            'Primary_Contact__c',
-            'CommitmentId__c'
+            UTIL_Namespace.StrTokenNSPrefix('Closed_Lost_Reason__c'),
+            UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c'),
+            UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation_Installment_Number__c'),
+            UTIL_Namespace.StrTokenNSPrefix('Contact_Id_for_Role__c'),
+            UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c'),
+            UTIL_Namespace.StrTokenNSPrefix('CommitmentId__c')
         };
 
 
