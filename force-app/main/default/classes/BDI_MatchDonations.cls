@@ -70,8 +70,8 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
                     BDI_DataImportService.listStrDataImportFields);
                 // special case Donation fields we defaultly map to Opp fields, but we will use with Payments too!
                 // note that these two work for matching rules.  
-                mapDIFieldToPmtField.put(UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c').toLowercase(), 'Payment_Amount__c');
-                mapDIFieldToPmtField.put(UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c').toLowercase(), 'Scheduled_Date__c');
+                mapDIFieldToPmtField.put(UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c').toLowercase(), UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c'));
+                mapDIFieldToPmtField.put(UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c').toLowercase(), UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c'));
             }
             return mapDIFieldToPmtField;
         }

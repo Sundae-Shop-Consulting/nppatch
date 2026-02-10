@@ -36,6 +36,12 @@
 */
 @isTest
 private class BDI_MappingServiceAdvanced_TEST {
+
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*******************************************************************************************************
     * @description Tests that the BDI_MappingServiceAdvanced class can be instantiated correctly 
     *  based on the custom setting value and that it will return a string map for a core object 

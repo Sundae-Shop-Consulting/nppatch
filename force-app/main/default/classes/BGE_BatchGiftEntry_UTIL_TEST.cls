@@ -38,6 +38,11 @@
 @isTest
 private with sharing class BGE_BatchGiftEntry_UTIL_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description Tests truncateList()
     */

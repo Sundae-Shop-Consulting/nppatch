@@ -38,6 +38,11 @@
 @isTest
 public with sharing class BDI_BatchOverride_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description returns a new initialized DataImportBatch object
     * @returns DataImportBatch__c

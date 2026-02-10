@@ -38,6 +38,10 @@
 @isTest
 public with sharing class BDI_PostProcess_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
 
     /*********************************************************************************************************
     * @description operation

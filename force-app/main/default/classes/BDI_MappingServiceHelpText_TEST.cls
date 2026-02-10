@@ -41,6 +41,11 @@ private class BDI_MappingServiceHelpText_TEST {
         UTIL_CustomSettingsFacade.enableHelpTextMapping();
     }
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     @IsTest
     static void givenDonationRecordTypeHasNoMappingThenFieldShouldGetDefaultMapping() {
         UTIL_Describe.setInstance(getUtilDescribeStub(

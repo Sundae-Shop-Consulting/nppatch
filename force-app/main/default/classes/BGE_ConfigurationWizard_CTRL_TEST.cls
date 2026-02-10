@@ -38,6 +38,11 @@
 @isTest(IsParallel=true)
 private class BGE_ConfigurationWizard_CTRL_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description Tests sets up a new Batch Record
     */

@@ -37,6 +37,11 @@
 @isTest
 public with sharing class BDI_PerfLogger_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     private static final Id TEST_BATCHID = 'a0o4A000008aNOB';
 
     /*******************************************************************************************************

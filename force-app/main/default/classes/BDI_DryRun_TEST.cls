@@ -38,6 +38,11 @@
 @isTest
 public with sharing class BDI_DryRun_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description operation:
     *    process new contacts through Dry Run mode

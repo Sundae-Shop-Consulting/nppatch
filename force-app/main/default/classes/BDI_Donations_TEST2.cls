@@ -36,6 +36,12 @@
 
 @isTest
 public with sharing class BDI_Donations_TEST2 {
+
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     @isTest
     private static void shouldCreateAndUpdateACHPaymentsForElevateDI () {
         Data_Import_Settings__c dis = UTIL_CustomSettingsFacade.getDataImportSettings();

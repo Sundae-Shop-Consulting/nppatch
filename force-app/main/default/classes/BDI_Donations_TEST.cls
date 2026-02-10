@@ -38,6 +38,11 @@
 @isTest
 public with sharing class BDI_Donations_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description holds test Contacts for BDI donations tests
     */

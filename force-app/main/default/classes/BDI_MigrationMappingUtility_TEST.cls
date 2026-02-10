@@ -38,6 +38,11 @@
 @IsTest
 private class BDI_MigrationMappingUtility_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*******************************************************************************************************
     * @description Test that the migration utility will only create and enqueue usable help text mappings
     */

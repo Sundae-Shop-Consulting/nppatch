@@ -38,6 +38,11 @@
 @isTest
 private with sharing class BDI_SettingsUI_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description operation: 
     *    ensure methods of controller are tested 

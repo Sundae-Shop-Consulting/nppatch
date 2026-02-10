@@ -37,6 +37,12 @@
 
 @isTest
 public with sharing class BDI_DataImport_TEST {
+
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*******************************************************************************************************
     * @description creates a new di record for tests
     * @param firstname the firstname to specify for Contact1

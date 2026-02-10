@@ -38,6 +38,11 @@
 @isTest
 private with sharing class BDI_DataImport_TEST2 {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description operation:
     *    import matching contacts within multiple di records in the same batch, using different email fields

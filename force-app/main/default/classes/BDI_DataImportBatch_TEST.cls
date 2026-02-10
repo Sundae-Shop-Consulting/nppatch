@@ -38,6 +38,11 @@
 @isTest
 public with sharing class BDI_DataImportBatch_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description operation
     *     schedule a run with one batch to import
