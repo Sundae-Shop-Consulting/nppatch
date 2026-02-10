@@ -36,8 +36,12 @@
 */
 @isTest
 private with sharing class BDI_DataImportService_TEST {
-    
-    
+
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*******************************************************************************************************************
     * @description Verifies UniqueID handling.
     * The method returns expected results for various types of fields.

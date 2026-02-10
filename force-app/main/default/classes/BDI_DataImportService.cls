@@ -710,18 +710,20 @@ global with sharing class BDI_DataImportService {
 
             // update all the di's with errors with the error state.
             // those di's without specific errors will get the exception's error
-            List<DataImport__c> dataImportErrors = new List<DataImport__c>();
-            for (DataImport__c dataImport : listDI) {
-                dataImportErrors.add(new DataImport__c(
-                    Id = dataImport.Id,
-                    Status__c = statusDIFailed(),
-                    FailureInformation__c = dataImport.Status__c == statusDIFailed() ?
-                        dataImport.FailureInformation__c : e.getMessage(),
-                    ApexJobId__c = apexJobId
-                ));
-            }
+            if (listDI != null) {
+                List<DataImport__c> dataImportErrors = new List<DataImport__c>();
+                for (DataImport__c dataImport : listDI) {
+                    dataImportErrors.add(new DataImport__c(
+                        Id = dataImport.Id,
+                        Status__c = statusDIFailed(),
+                        FailureInformation__c = dataImport.Status__c == statusDIFailed() ?
+                            dataImport.FailureInformation__c : e.getMessage(),
+                        ApexJobId__c = apexJobId
+                    ));
+                }
 
-            UTIL_DMLService.updateRecords(dataImportErrors);
+                UTIL_DMLService.updateRecords(dataImportErrors);
+            }
 
             // unfortunately, we can't let the system think the batch failed, or
             // then it would rollback our setting of failure state in the DI records.

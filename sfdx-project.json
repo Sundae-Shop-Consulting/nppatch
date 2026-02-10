@@ -5,7 +5,10 @@
       "default": true,
       "package": "Hearthwork",
       "versionName": "ver 1.0",
-      "versionNumber": "1.0.0.NEXT"
+      "versionNumber": "1.0.0.NEXT",
+      "unpackagedMetadata": {
+        "path": "unpackaged/config/all_record_types"
+      }
     }
   ],
   "namespace": "carpa",

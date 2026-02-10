@@ -38,6 +38,11 @@
 @IsTest
 private class BDI_MigrationMappingHelper_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*******************************************************************************************************
     * @description Developer name of the default field mapping set (Data_Import_Field_Mapping_Set__mdt)
     */

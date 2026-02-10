@@ -30,6 +30,11 @@
 @IsTest
 public class BDI_BatchNumberSettingsController_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     static SObjectType sObjType = DataImportBatch__c.SObjectType;
     static SObjectField autoNumberField = DataImportBatch__c.Batch_Number__c;
 

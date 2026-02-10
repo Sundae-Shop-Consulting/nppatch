@@ -38,6 +38,11 @@
 @isTest
 public with sharing class BDI_Donations_TEST3 {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description operation: 
     *    import donations using different matching rules: Amount, Date.  avoid same amount, different day.

@@ -1037,7 +1037,7 @@ public without sharing class BDI_MigrationMappingUtility {
             'Household' => 'Account',
             'Opportunity' => 'Opportunity',
             'Donation' => 'Opportunity',
-            'Payment' => 'OppPayment__c'
+            'Payment' => UTIL_Namespace.StrTokenNSPrefix('OppPayment__c')
         };
     }
 
