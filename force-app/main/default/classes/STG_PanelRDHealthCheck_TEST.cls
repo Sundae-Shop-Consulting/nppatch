@@ -36,6 +36,18 @@
 @IsTest(IsParallel=true)
 private class STG_PanelRDHealthCheck_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
+    /**
+    * @description Returns true if tests should be skipped in 2GP namespaced context
+    */
+    private static Boolean shouldSkipIn2GP() {
+        return String.isNotBlank(UTIL_Namespace.getNamespace());
+    }
+
     private static final String BAD_PICKLIST_VALUE = 'Non Existent Value';
     private static final String PLEDGED_STAGE = UTIL_UnitTestData_TEST.getOpenStage();
 
@@ -112,6 +124,7 @@ private class STG_PanelRDHealthCheck_TEST {
      */
     @IsTest
     private static void shouldValidateEnhancedRecurringDonationsConfig() {
+        if (shouldSkipIn2GP()) return;
         configureEnhancedRDSettings();
 
         STG_PanelHealthCheck_CTRL ctrl = new STG_PanelHealthCheck_CTRL();
@@ -245,6 +258,7 @@ private class STG_PanelRDHealthCheck_TEST {
      */
     @IsTest
     private static void shouldValidateOpportunityInstallment() {
+        if (shouldSkipIn2GP()) return;
         STG_PanelHealthCheck_CTRL ctrl = new STG_PanelHealthCheck_CTRL();
         STG_PanelRDHealthCheck healthCheck = new STG_PanelRDHealthCheck(ctrl);
 

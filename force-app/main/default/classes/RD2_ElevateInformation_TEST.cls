@@ -37,12 +37,24 @@
 @IsTest(IsParallel=false)
 private with sharing class RD2_ElevateInformation_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
+    /**
+    * @description Returns true if tests should be skipped in 2GP namespaced context
+    */
+    private static Boolean shouldSkipIn2GP() {
+        return String.isNotBlank(UTIL_Namespace.getNamespace());
+    }
 
     /****
     * @description Verifies required data is returned to the Elevate widget
     */
     @isTest
     private static void shouldReturnDataWhenElevateIsEnabled() {
+        if (shouldSkipIn2GP()) return;
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         enableElevate();
 

@@ -1,8 +1,8 @@
 minimum_cumulusci_version: '4.6.0'
 project:
-    name: Hearthwork
+    name: spinoff
     package:
-        name: Hearthwork
+        name: spinoff
         namespace: carpa
         api_version: '63.0'
     git:
@@ -47,13 +47,250 @@ tasks:
             path: scripts/configure_default_settings.cls
             apex: initializeDefaultSettings();
 
+    # =========================================
+    # Metadata ETL: Picklist Value Setup
+    # =========================================
+    add_opportunity_stages:
+        description: Add Opportunity stages required by tests
+        class_path: cumulusci.tasks.metadata_etl.AddValueSetEntries
+        group: Metadata ETL
+        options:
+            api_names:
+                - OpportunityStage
+            entries:
+                - fullName: Pledged
+                  label: Pledged
+                  probability: 50
+                  forecastCategory: Pipeline
+                  closed: false
+                  won: false
+                - fullName: Promised
+                  label: Promised
+                  probability: 75
+                  forecastCategory: Pipeline
+                  closed: false
+                  won: false
+
+    add_ocr_roles:
+        description: Add OCR roles required by automated soft credit tests
+        class_path: cumulusci.tasks.metadata_etl.AddValueSetEntries
+        group: Metadata ETL
+        options:
+            api_names:
+                - ContactRole
+            entries:
+                - fullName: Soft Credit
+                  label: Soft Credit
+                  default: false
+                - fullName: Solicitor
+                  label: Solicitor
+                  default: false
+                - fullName: Tribute
+                  label: Tribute
+                  default: false
+                - fullName: Household Member
+                  label: Household Member
+                  default: false
+                - fullName: Matched Donor
+                  label: Matched Donor
+                  default: false
+
+    # =========================================
+    # Custom Picklist Values
+    # =========================================
+    add_rd_day_of_month:
+        description: Add Day_of_Month picklist values
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        group: Metadata ETL
+        options:
+            managed: True
+            namespace_inject: $project_config.project__package__namespace
+            picklists:
+                - "%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%Day_of_Month__c"
+            entries:
+                - fullName: Last_Day
+                  label: Last Day
+
+    add_rd_status:
+        description: Add RD Status picklist values
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        group: Metadata ETL
+        options:
+            managed: True
+            namespace_inject: $project_config.project__package__namespace
+            picklists:
+                - "%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%Status__c"
+            entries:
+                - fullName: Active
+                  label: Active
+                - fullName: Lapsed
+                  label: Lapsed
+                - fullName: Closed
+                  label: Closed
+                - fullName: Paused
+                  label: Paused
+
+    add_rd_recurring_type:
+        description: Add RD RecurringType picklist values
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        group: Metadata ETL
+        options:
+            managed: True
+            namespace_inject: $project_config.project__package__namespace
+            picklists:
+                - "%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%RecurringType__c"
+            entries:
+                - fullName: Open
+                  label: Open
+                - fullName: Fixed
+                  label: Fixed
+
+    add_rd_installment_period:
+        description: Add RD InstallmentPeriod picklist values
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        group: Metadata ETL
+        options:
+            managed: True
+            namespace_inject: $project_config.project__package__namespace
+            picklists:
+                - "%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%InstallmentPeriod__c"
+            entries:
+                - fullName: Monthly
+                  label: Monthly
+                - fullName: Yearly
+                  label: Yearly
+                - fullName: Weekly
+                  label: Weekly
+                - fullName: 1st and 15th
+                  label: 1st and 15th
+
+    add_relationship_type:
+        description: Add Relationship Type picklist values
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        group: Metadata ETL
+        options:
+            managed: True
+            namespace_inject: $project_config.project__package__namespace
+            picklists:
+                - "%%%NAMESPACE%%%Relationship__c.%%%NAMESPACE%%%Type__c"
+            entries:
+                - fullName: Friend
+                  label: Friend
+                - fullName: Partner
+                  label: Partner
+                - fullName: Family
+                  label: Family
+                - fullName: Coworker
+                  label: Coworker
+                - fullName: Spouse
+                  label: Spouse
+                - fullName: Sibling
+                  label: Sibling
+                - fullName: Parent
+                  label: Parent
+                - fullName: Child
+                  label: Child
+
+    add_relationship_status:
+        description: Add Relationship Status picklist values
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        group: Metadata ETL
+        options:
+            managed: True
+            namespace_inject: $project_config.project__package__namespace
+            picklists:
+                - "%%%NAMESPACE%%%Relationship__c.%%%NAMESPACE%%%Status__c"
+            entries:
+                - fullName: Current
+                  label: Current
+                - fullName: Former
+                  label: Former
+
+    add_affiliation_status:
+        description: Add Affiliation Status picklist values
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        group: Metadata ETL
+        options:
+            managed: True
+            namespace_inject: $project_config.project__package__namespace
+            picklists:
+                - "%%%NAMESPACE%%%Affiliation__c.%%%NAMESPACE%%%Status__c"
+            entries:
+                - fullName: Current
+                  label: Current
+                - fullName: Former
+                  label: Former
+
+    add_affiliation_role:
+        description: Add Affiliation Role picklist values
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        group: Metadata ETL
+        options:
+            managed: True
+            namespace_inject: $project_config.project__package__namespace
+            picklists:
+                - "%%%NAMESPACE%%%Affiliation__c.%%%NAMESPACE%%%Role__c"
+            entries:
+                - fullName: Employee
+                  label: Employee
+                - fullName: Volunteer
+                  label: Volunteer
+                - fullName: Board Member
+                  label: Board Member
+
+    add_address_type:
+        description: Add Address Type picklist values
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        group: Metadata ETL
+        options:
+            managed: True
+            namespace_inject: $project_config.project__package__namespace
+            picklists:
+                - "%%%NAMESPACE%%%Address__c.%%%NAMESPACE%%%Address_Type__c"
+            entries:
+                - fullName: Home
+                  label: Home
+                - fullName: Work
+                  label: Work
+                - fullName: Other
+                  label: Other
+
 flows:
-    dev_org:
+    # =========================================
+    # Setup Build Org with test prerequisites
+    # =========================================
+    setup_build_org:
+        description: Configure build org with StandardValueSet picklist values required by tests
         steps:
-            # 90:
-            #     flow: deploy_unmanaged
-            90:
-                flow: config_dev
+            1:
+                task: add_opportunity_stages
+            2:
+                task: add_ocr_roles
+            3:
+                task: deploy_pre
+
+    release_unlocked_beta:
+        steps:
+            0:
+                flow: setup_build_org
+            1:
+                task: create_package_version
+                options:
+                    package_type: Unlocked
+                    package_name: $project_config.project__package__name
+                    skip_validation: False
+                    version_base: latest_github_release
+                    version_type: minor
+                    force_upload: True
+                    create_unlocked_dependency_packages: False
+                    org_dependent: True
+            # Skip GitHub steps until repo is set up
+            2:
+                task: None
+            3:
+                task: None
+            4:
+                task: None
 
     config_dev:
         steps:

@@ -53,6 +53,7 @@ private class OPP_AutomatedSoftCreditsService_TEST {
     * @return void
     **********************************************************************************************************/
     @testSetup static void createAutomatedSoftCreditsData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
         Account acct1 = new Account(Name = 'Organization Account1');
         Account acct2 = new Account(Name = 'Organization Account2');
         insert new List<Account>{ acct1, acct2 };

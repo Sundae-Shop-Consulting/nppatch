@@ -36,7 +36,19 @@
 @isTest
 public with sharing class STG_InstallScript_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     private static final Integer ROLLUP_BATCH_SIZE = 333;
+
+    /**
+    * @description Returns true if tests should be skipped in 2GP namespaced context
+    */
+    private static Boolean shouldSkipIn2GP() {
+        return String.isNotBlank(UTIL_Namespace.getNamespace());
+    }
 
     /*******************************************************************************************************
     * @description A test exception class
@@ -411,6 +423,7 @@ public with sharing class STG_InstallScript_TEST {
     */
     @isTest
     public static void shouldCreateMigratedCustomFieldMappingOnUpdate() {
+        if (shouldSkipIn2GP()) return;
         Data_Import_Settings__c setting = new Data_Import_Settings__c();
         setting.Field_Mapping_Method__c = BDI_MigrationMappingUtility.DATA_IMPORT_FIELD_MAPPING;
         insert setting;

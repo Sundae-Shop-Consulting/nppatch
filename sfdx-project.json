@@ -3,16 +3,20 @@
     {
       "path": "force-app",
       "default": true,
-      "package": "Hearthwork",
+      "package": "spinoff",
       "versionName": "ver 1.0",
       "versionNumber": "1.0.0.NEXT",
       "unpackagedMetadata": {
         "path": "unpackaged/config/all_record_types"
+      },
+      "apexTestAccess": {
+        "permissionSets": ["Hearthwork_Admin"]
       }
     }
   ],
   "namespace": "carpa",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "63.0",
-  "packageAliases": {}
+  "packageAliases": {
+  }
 }

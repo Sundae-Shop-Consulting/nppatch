@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HH_Account</fullName>
+    <active>true</active>
+    <description>An Account representing a Household containing one or more individuals</description>
+    <label>Household Account</label>
+</RecordType>

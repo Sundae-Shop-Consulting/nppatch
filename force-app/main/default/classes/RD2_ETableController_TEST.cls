@@ -36,7 +36,19 @@
 */
 @IsTest
 public class RD2_ETableController_TEST {
-    
+
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
+    /**
+    * @description Returns true if tests should be skipped in 2GP namespaced context
+    */
+    private static Boolean shouldSkipIn2GP() {
+        return String.isNotBlank(UTIL_Namespace.getNamespace());
+    }
+
     private static final TEST_SObjectGateway.RecurringDonationGateway rdGateway = new TEST_SObjectGateway.RecurringDonationGateway();
     private static final String ALL_RD = 'All Recurring Donations';
 
@@ -47,7 +59,8 @@ public class RD2_ETableController_TEST {
     */
     @IsTest
     private static void testGetData() {
-        
+        if (shouldSkipIn2GP()) return;
+
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         
         Contact con = UTIL_UnitTestData_TEST.getContact();

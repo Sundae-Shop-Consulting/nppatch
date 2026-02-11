@@ -30,6 +30,11 @@
 @IsTest
 private class GiftSelector_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     @isTest
     private static void shouldIncludeGiftScheduleFields() {
         // Arrange: Mock recurring gifts enabled for the org

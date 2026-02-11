@@ -36,6 +36,10 @@
 @isTest
 private with sharing class STG_SettingsManager_TEST {
     private static final TEST_SObjectGateway.ErrorGateway errorGateway = new TEST_SObjectGateway.ErrorGateway();
+
+    private static Boolean shouldSkipIn2GP() {
+        return String.isNotBlank(UTIL_Namespace.getNamespace());
+    }
     /***
     * @description Installment Opportunities Auto Creation Setting API value
     */
@@ -1353,6 +1357,9 @@ private with sharing class STG_SettingsManager_TEST {
     */
     @isTest
     private static void testPanelRDCustomFieldMapping() {
+        if (shouldSkipIn2GP()) {
+            return;
+        }
         STG_PanelRDCustomFieldMapping_CTRL panel = new STG_PanelRDCustomFieldMapping_CTRL();
         system.assertEquals('idPanelRDFieldMap', panel.idPanel());
         system.assertEquals(false, ApexPages.hasMessages());

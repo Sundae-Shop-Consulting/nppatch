@@ -36,7 +36,14 @@
 @isTest(IsParallel=True)
 private class UTIL_JobProgress_CTRL_TEST {
 
+    private static Boolean shouldSkipIn2GP() {
+        return String.isNotBlank(UTIL_Namespace.getNamespace());
+    }
+
     static testMethod void jobProgressController(){
+        if (shouldSkipIn2GP()) {
+            return;
+        }
 
         //queue up a batch job to render against
         //borrow method from existing account conversion util

@@ -36,11 +36,16 @@
 
 @isTest
 private with sharing class LVL_LevelEdit_TEST {
-    
+
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*******************************************************************************************************
     * @description create a new level from the page
     * verify Level created
-    */ 
+    */
     static testmethod void testNewLevel() {
         Test.setCurrentPage(Page.LVL_LevelEdit);
         ApexPages.StandardController stdCtrl = new ApexPages.StandardController(new Level__c());

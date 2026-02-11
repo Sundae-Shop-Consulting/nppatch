@@ -37,6 +37,11 @@
 @isTest
 private class CON_ContactMerge_TEST2 {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     @isTest
     static void merge3OneToOneOne2One(){
         //skip the test if Advancement is installed

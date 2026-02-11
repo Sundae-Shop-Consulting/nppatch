@@ -36,6 +36,12 @@
 */
 @isTest
 private class CON_DeleteContactOverride_TEST {
+
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /** @description Contact home page. */
     private static final String CONTACT_HOME = '/003/o';
     /** @description LEx navigation value to go back. */

@@ -36,6 +36,11 @@
 @isTest(IsParallel=true)
 private class CMT_FilterRuleEvaluation_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     private static Id filterGroupId1, filterGroupId2, filterGroupId3, filterGroupId4, filterGroupId5, filterGroupId6, filterGroupId7;
     private static Date closeDate = Date.Today().toStartOfMonth().addDays(1);
 

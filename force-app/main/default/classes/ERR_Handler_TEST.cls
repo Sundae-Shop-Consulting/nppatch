@@ -35,6 +35,12 @@
 */
 @isTest
 private class ERR_Handler_TEST {
+
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     private static final TEST_SObjectGateway.ErrorGateway errorGateway = new TEST_SObjectGateway.ErrorGateway();
     private static final String ERROR_CONTEXT = ERR_Handler_API.Context.STTG.name();
 

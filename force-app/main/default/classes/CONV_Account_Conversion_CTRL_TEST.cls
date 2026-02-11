@@ -38,6 +38,11 @@
 @isTest
 private with sharing class CONV_Account_Conversion_CTRL_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /***
     * @description Envokes a successful run of the controller
     */

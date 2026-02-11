@@ -167,6 +167,11 @@
                 <default>false</default>
                 <label>31</label>
             </value>
+            <value>
+                <fullName>Last_Day</fullName>
+                <default>false</default>
+                <label>Last Day</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

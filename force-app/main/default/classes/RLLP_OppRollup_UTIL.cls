@@ -728,8 +728,9 @@ public without sharing class RLLP_OppRollup_UTIL {
             HouseholdRollupQuery += 'AVG(Opportunity.Amount) AverageAmount, MIN(Opportunity.Amount) SmallestAmount, ';
             HouseholdRollupQuery += 'MAX(Opportunity.Amount) LargestAmount, MIN(Opportunity.CloseDate) FirstCloseDate, '; 
             HouseholdRollupQuery += 'MAX(Opportunity.CloseDate) LastCloseDate, COUNT_DISTINCT(Opportunity.Id) NumberOfClosedOpps, ';
-            if (objectRollupFieldMap.containsKey('Household__c'))
-                HouseholdRollupQuery += objectRollupFieldMap.get('Household__c');         
+            String householdObjectName = Household__c.getSObjectType().getDescribe().getName();
+            if (objectRollupFieldMap.containsKey(householdObjectName))
+                HouseholdRollupQuery += objectRollupFieldMap.get(householdObjectName);         
             HouseholdRollupQuery += 'MAX(' + 'Opportunity.' + UTIL_Namespace.StrTokenNSPrefix('CombinedRollupFieldset__c') + ') RollupFieldset ';
             HouseholdRollupQuery += 'FROM OpportunityContactRole ';
             HouseholdRollupQuery += 'WHERE isPrimary=true AND Opportunity.isWon=true '; 
