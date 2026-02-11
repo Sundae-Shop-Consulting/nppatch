@@ -122,7 +122,7 @@ public with sharing class USER_UserService_TEST {
 
 
     /**
-    * @description Tests setting the NPSP Settings Error Notification Recipients to 'All Sys Admins'.
+    * @description Tests setting the NPPatch Settings Error Notification Recipients to 'All Sys Admins'.
     * @return void
     */
     @isTest

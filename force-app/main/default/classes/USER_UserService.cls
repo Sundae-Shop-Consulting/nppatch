@@ -134,7 +134,7 @@ public with sharing class USER_UserService {
 
 
     /*********************************************************************************************************
-    * @description Sets the NPSP Settings Error Notification Recipients to 'All Sys Admins' for Inactive
+    * @description Sets the NPPatch Settings Error Notification Recipients to 'All Sys Admins' for Inactive
     *              System Administrator.
     * @param sysAdminUserIds The User Ids of the deactivated System Administrators.
     * @return void

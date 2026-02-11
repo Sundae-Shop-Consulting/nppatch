@@ -795,7 +795,7 @@ public inherited sharing class CRLP_DefaultConfigBuilder_SVC {
         for (String summaryObjectField : CRLP_DefaultConfigBuilder.rollupDetailsBySummaryField.keySet()) {
 
             // When RD2 is enabled, this rollup has been disabled. If the Admin were to reset all CRLP's
-            // via NPSP settings, this method would incorrectly reactivate that rollup by default.
+            // via NPPatch Settings, this method would incorrectly reactivate that rollup by default.
             if (RD2_EnablementService.getInstance().isRecurringDonations2Enabled() &&
                         summaryObjectField == 'Recurring_Donation__c.Next_Payment_Date__c') {
                 continue;

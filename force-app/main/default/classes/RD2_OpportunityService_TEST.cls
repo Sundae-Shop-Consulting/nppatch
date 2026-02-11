@@ -163,7 +163,7 @@ private with sharing class RD2_OpportunityService_TEST {
 
     /***
      * @description Verifies an Opportunity name has the specialized format when
-     * Opportunity naming is not configured in NPSP Settings
+     * Opportunity naming is not configured in NPPatch Settings
      */
     @isTest
     private static void shouldCreateOppWithSpecialFormatWhenNoOppNamingSpecified() {
@@ -203,7 +203,7 @@ private with sharing class RD2_OpportunityService_TEST {
     }
 
     /***
-     * @description Verifies an Opportunity name is set as configured in NPSP Settings Opportunity naming
+     * @description Verifies an Opportunity name is set as configured in NPPatch Settings Opportunity naming
      */
     @isTest
     private static void shouldCreateOppNameWithOppNamingSpecifiedInSettings() {
@@ -232,7 +232,7 @@ private with sharing class RD2_OpportunityService_TEST {
     }
 
     /***
-     * @description Verifies an Opportunity name is updated as configured in NPSP Settings Opportunity naming
+     * @description Verifies an Opportunity name is updated as configured in NPPatch Settings Opportunity naming
      */
     @isTest
     private static void shouldUpdateOppNameWithOppNamingSpecifiedInSettings() {

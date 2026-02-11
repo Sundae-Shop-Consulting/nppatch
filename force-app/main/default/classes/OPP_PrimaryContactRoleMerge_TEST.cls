@@ -43,7 +43,7 @@ private class OPP_PrimaryContactRoleMerge_TEST {
 
     /*********************************************************************************************************
     * @description Given a Non Organizational Opportunity with duplicate primary OCRs, AND all the primary OCRs 
-    * Role != NPSP Settings Role when the batch runs, then an error log is created, with a link to the Opportunity.
+    * Role != NPPatch Settings Role when the batch runs, then an error log is created, with a link to the Opportunity.
     */
     @isTest 
     private static void test_NonOrganizational_LogErrorIf_NoPrimaryOCRsWithRoleDefinedInNPSPSettings() {
@@ -56,7 +56,7 @@ private class OPP_PrimaryContactRoleMerge_TEST {
 
     /*********************************************************************************************************
     * @description Given an Organizational Opportunity with duplicate primary OCRs, AND all the primary OCRs 
-    * Role != NPSP Settings Role when the batch runs, then an error log is created, with a link to the Opportunity.
+    * Role != NPPatch Settings Role when the batch runs, then an error log is created, with a link to the Opportunity.
     */
     @isTest 
     private static void test_Organization_LogErrorIf_NoPrimaryOCRsWithRoleDefinedInNPSPSettings() {
@@ -69,9 +69,9 @@ private class OPP_PrimaryContactRoleMerge_TEST {
 
     /*********************************************************************************************************
     * @description Given a Non Organizational Opportunity with duplicate primary OCRs, and the primary OCRs 
-    * have Role equals to (NPSP Settings Role, blank, NOT “NPSP Settings Role”) when the Batch runs, then 
-    * the primary OCRs with blank role AND role not defined in NPSP Settings should be deleted. The Opportunity 
-    * should have only 1 primary OCR with role equals to the NPSP Settings Role.
+    * have Role equals to (NPPatch Settings Role, blank, NOT “NPPatch Settings Role”) when the Batch runs, then 
+    * the primary OCRs with blank role AND role not defined in NPPatch Settings should be deleted. The Opportunity 
+    * should have only 1 primary OCR with role equals to the NPPatch Settings Role.
     */
     @isTest 
     private static void test_NonOrganizational_DeleteBlankAndNonNPSPRole() {
@@ -84,9 +84,9 @@ private class OPP_PrimaryContactRoleMerge_TEST {
 
     /*********************************************************************************************************
     * @description Given a Non Organizational Opportunity with duplicate primary OCRs, and the primary OCRs 
-    * have Role equals to (NPSP Settings Role, blank, NOT “NPSP Settings Role”) when the Batch runs, then 
-    * the primary OCRs with blank role AND role not defined in NPSP Settings should be deleted. The Opportunity 
-    * should have only 1 primary OCR with role equals to the NPSP Settings Role.
+    * have Role equals to (NPPatch Settings Role, blank, NOT “NPPatch Settings Role”) when the Batch runs, then 
+    * the primary OCRs with blank role AND role not defined in NPPatch Settings should be deleted. The Opportunity 
+    * should have only 1 primary OCR with role equals to the NPPatch Settings Role.
     */
     @isTest 
     private static void test_Organizational_DeleteBlankAndNonNPSPRole() {
