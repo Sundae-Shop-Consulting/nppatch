@@ -10,7 +10,7 @@
         "path": "unpackaged/config/all_record_types"
       },
       "apexTestAccess": {
-        "permissionSets": ["nppatch_Admin"]
+        "permissionSets": ["NPPatch_Admin"]
       }
     }
   ],

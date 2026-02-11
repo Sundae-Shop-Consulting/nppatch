@@ -10,7 +10,7 @@ from pathlib import Path
 
 FORCE_APP = Path("/Users/laurameerkatz/Projects/nppatch/force-app")
 OBJECTS_DIR = FORCE_APP / "main/default/objects"
-OUTPUT_FILE = FORCE_APP / "main/default/permissionsets/nppatch_Admin.permissionset-meta.xml"
+OUTPUT_FILE = FORCE_APP / "main/default/permissionsets/NPPatch_Admin.permissionset-meta.xml"
 
 # Custom settings don't need object permissions (they're accessed via Apex)
 CUSTOM_SETTINGS = {

@@ -87,14 +87,14 @@ Installation typically takes 5-15 minutes depending on the org's complexity. You
 
 ### Step 3: Assign Permissions
 
-After installation, assign the **nppatch_Admin** permission set to users who need full access to NPPatch objects and fields.
+After installation, assign the **NPPatch_Admin** permission set to users who need full access to NPPatch objects and fields.
 
 1. Navigate to **Setup > Permission Sets**
-2. Find **nppatch_Admin**
+2. Find **NPPatch_Admin**
 3. Click **Manage Assignments**
 4. Add the appropriate users
 
-The nppatch_Admin permission set grants read/write access to all NPPatch custom objects and fields. You may want to create additional permission sets with more limited access for non-admin users.
+The NPPatch_Admin permission set grants read/write access to all NPPatch custom objects and fields. You may want to create additional permission sets with more limited access for non-admin users.
 
 ### Step 4: Deploy Post-Install Metadata
 
@@ -152,7 +152,7 @@ After installation completes:
 
 **Installation fails with dependency errors.** The most common cause is missing record types. Confirm that the Account record types (`HH_Account`, `Organization`) and the Opportunity record type (`NPPatch_Default`) exist in the org before installing — see [Pre-Install Setup](#pre-install-setup-required-record-types) above. Also confirm that no conflicting packages are installed and that the org meets the edition and API version requirements.
 
-**Objects or fields are missing after installation.** Check that the nppatch_Admin permission set is assigned. Fields may be present but not visible without the appropriate permissions.
+**Objects or fields are missing after installation.** Check that the NPPatch_Admin permission set is assigned. Fields may be present but not visible without the appropriate permissions.
 
 **Automation isn't firing.** NPPatch's trigger handlers are controlled by the TDTM framework and configured via Trigger_Handler__c records. Navigate to the Trigger Handler tab or query Trigger_Handler__c records to verify the handlers are active. See [Trigger Framework](../architecture/trigger-framework.md) for details.
 

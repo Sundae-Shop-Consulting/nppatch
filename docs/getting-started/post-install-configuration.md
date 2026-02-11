@@ -110,9 +110,9 @@ See [Trigger Framework](../architecture/trigger-framework.md) for a complete ref
 
 ## Permission Setup
 
-### The nppatch_Admin Permission Set
+### The NPPatch_Admin Permission Set
 
-The package includes a pre-built permission set (`nppatch_Admin`) that grants full access to all NPPatch custom objects and fields. This permission set:
+The package includes a pre-built permission set (`NPPatch_Admin`) that grants full access to all NPPatch custom objects and fields. This permission set:
 
 - Grants CRUD access to all NPPatch custom objects
 - Grants read/write access to all custom fields (formula fields are read-only)
@@ -133,7 +133,7 @@ For non-admin users, you'll likely want to create more restrictive permission se
 1. **Review Account Model settings** — confirm the household or one-to-one model matches your organization's needs
 2. **Enable Customizable Rollups** — unless you have a specific reason to use legacy rollups
 3. **Review Recurring Donation settings** — adjust max donations and close behavior
-4. **Assign the nppatch_Admin permission set** to your admin users
+4. **Assign the NPPatch_Admin permission set** to your admin users
 5. **Create a test Contact** — verify that household creation, naming, and basic automation are working
 6. **Create a test Opportunity** — verify that payments are created and rollups calculate correctly
 7. **Review Trigger Handlers** — ensure all expected automation is active

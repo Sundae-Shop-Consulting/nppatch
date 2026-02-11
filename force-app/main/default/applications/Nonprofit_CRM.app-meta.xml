@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <defaultLandingTab>NPPatch_Resources</defaultLandingTab>
-    <description>The NPPatch application</description>
+    <description>Community-Driven Nonprofit Management</description>
     <label>NPPatch</label>
     <tabs>standard-Account</tabs>
     <tabs>standard-Contact</tabs>
