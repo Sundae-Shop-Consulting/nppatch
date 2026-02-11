@@ -7,7 +7,7 @@
 
 
 /**
- * @description Constants copied from NPSP classes - CAO_Constants, HH_Household, RD2_Constants, UTIL_CustomSettingsFacade
+ * @description Constants copied from NPPatch classes - CAO_Constants, HH_Household, RD2_Constants, UTIL_CustomSettingsFacade
  */
 public static final String HH_ACCOUNT_PROCESSOR = 'Household Account';
 public static final String HH_ACCOUNT_RT_DEVELOPER_NAME = 'HH_Account';
@@ -231,7 +231,7 @@ private static String getClosedWonStage() {
 private static String getOppRecordType(String rtDevName) {
     Recordtypeinfo oppRt = Schema.SObjectType.Opportunity.getRecordTypeInfosByDeveloperName().get(rtDevName);
     if (oppRt == null) {
-        oppRt = Schema.SObjectType.Opportunity.getRecordTypeInfosByDeveloperName().get('NPSP_Default');
+        oppRt = Schema.SObjectType.Opportunity.getRecordTypeInfosByDeveloperName().get('NPPatch_Default');
     }
     return oppRt.getRecordTypeId();
 }

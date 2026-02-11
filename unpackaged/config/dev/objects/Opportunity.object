@@ -3,7 +3,7 @@
     <recordTypes>
         <fullName>Donation</fullName>
         <active>true</active>
-        <businessProcess>NPSP_Default</businessProcess>
+        <businessProcess>NPPatch_Default</businessProcess>
         <label>Donation</label>
         <picklistValues>
             <picklist>ForecastCategoryName</picklist>
@@ -104,7 +104,7 @@
     <recordTypes>
         <fullName>Grant</fullName>
         <active>true</active>
-        <businessProcess>NPSP_Default</businessProcess>
+        <businessProcess>NPPatch_Default</businessProcess>
         <label>Grant</label>
         <picklistValues>
             <picklist>ForecastCategoryName</picklist>
@@ -205,7 +205,7 @@
     <recordTypes>
         <fullName>InKindGift</fullName>
         <active>true</active>
-        <businessProcess>NPSP_Default</businessProcess>
+        <businessProcess>NPPatch_Default</businessProcess>
         <label>In-Kind Gift</label>
         <picklistValues>
             <picklist>ForecastCategoryName</picklist>
@@ -306,7 +306,7 @@
     <recordTypes>
         <fullName>MajorGift</fullName>
         <active>true</active>
-        <businessProcess>NPSP_Default</businessProcess>
+        <businessProcess>NPPatch_Default</businessProcess>
         <label>Major Gift</label>
         <picklistValues>
             <picklist>ForecastCategoryName</picklist>
@@ -407,7 +407,7 @@
     <recordTypes>
         <fullName>MatchingGift</fullName>
         <active>true</active>
-        <businessProcess>NPSP_Default</businessProcess>
+        <businessProcess>NPPatch_Default</businessProcess>
         <label>Matching Gift</label>
         <picklistValues>
             <picklist>ForecastCategoryName</picklist>
@@ -508,7 +508,7 @@
     <recordTypes>
         <fullName>Membership</fullName>
         <active>true</active>
-        <businessProcess>NPSP_Default</businessProcess>
+        <businessProcess>NPPatch_Default</businessProcess>
         <label>Membership</label>
         <picklistValues>
             <picklist>ForecastCategoryName</picklist>
@@ -607,7 +607,7 @@
         </picklistValues>
     </recordTypes>
     <businessProcesses>
-        <fullName>NPSP_Default</fullName>
+        <fullName>NPPatch_Default</fullName>
         <isActive>true</isActive>
         <values>
             <fullName>Closed Lost</fullName>
