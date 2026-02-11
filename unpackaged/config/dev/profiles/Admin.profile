@@ -17,11 +17,11 @@
         <recordType>Account.Organization</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Campaign-NPSP Campaign Layout</layout>
+        <layout>Campaign-NPPatch Campaign Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Opportunity-Donation Layout</layout>
-        <recordType>Opportunity.NPSP_Default</recordType>
+        <recordType>Opportunity.NPPatch_Default</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Opportunity-Donation Layout</layout>
@@ -79,7 +79,7 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Opportunity.NPSP_Default</recordType>
+        <recordType>Opportunity.NPPatch_Default</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
