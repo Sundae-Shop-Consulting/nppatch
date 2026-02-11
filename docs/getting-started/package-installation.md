@@ -18,7 +18,7 @@ Before installing nppatch, confirm the following:
 
 ### Step 1: Get the Install Link
 
-Package install links are published on the [nppatch releases page](https://github.com/SundaeShopConsulting/nppatchthia/releases). Each release includes:
+Package install links are published on the [nppatch releases page](https://github.com/Sundae-Shop-Consulting/nppatch/releases). Each release includes:
 
 - A production/developer install link
 - A sandbox install link

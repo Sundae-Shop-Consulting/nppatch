@@ -1,8 +1,8 @@
 site_name: nppatch Documentation
 site_description: Documentation for the nppatch open-source nonprofit Salesforce package
 site_url: https://nppatch.readthedocs.io/
-repo_url: https://github.com/SundaeShopConsulting/carpathia
-repo_name: SundaeShopConsulting/carpathia
+repo_url: https://github.com/Sundae-Shop-Consulting/nppatch
+repo_name: Sundae-Shop-Consulting/nppatch
 
 theme:
   name: material

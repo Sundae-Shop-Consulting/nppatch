@@ -55,8 +55,8 @@ This opens a browser window for OAuth authentication. Log in with your Dev Hub a
 Clone the nppatch repository:
 
 ```bash
-git clone https://github.com/SundaeShopConsulting/carpathia.git
-cd carpathia
+git clone https://github.com/Sundae-Shop-Consulting/nppatch.git
+cd nppatch
 ```
 
 ## Creating a Development Org
@@ -113,7 +113,7 @@ cci flow run dev_org --org my_org
 Understanding the repository layout helps when navigating and contributing to the codebase.
 
 ```
-carpathia/
+nppatch/
 ├── force-app/                  # All Salesforce metadata
 │   ├── main/                   # Primary package source
 │   │   ├── default/            # Standard metadata directory

@@ -4,7 +4,7 @@
 
 set -e
 
-FORCE_APP="/Users/laurameerkatz/Projects/carpathia/force-app/main/default"
+FORCE_APP="/Users/laurameerkatz/Projects/nppatch/force-app/main/default"
 
 echo "=== Adding namespace tokens to metadata ==="
 
@@ -121,7 +121,7 @@ import os
 import re
 import glob
 
-force_app = "/Users/laurameerkatz/Projects/carpathia/force-app/main/default"
+force_app = "/Users/laurameerkatz/Projects/nppatch/force-app/main/default"
 
 for obj in ["Account", "Contact", "Opportunity", "Campaign"]:
     pattern = f"{force_app}/objects/{obj}/fields/*.field-meta.xml"

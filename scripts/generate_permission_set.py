@@ -8,7 +8,7 @@ import os
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-FORCE_APP = Path("/Users/laurameerkatz/Projects/carpathia/force-app")
+FORCE_APP = Path("/Users/laurameerkatz/Projects/nppatch/force-app")
 OBJECTS_DIR = FORCE_APP / "main/default/objects"
 OUTPUT_FILE = FORCE_APP / "main/default/permissionsets/nppatch_Admin.permissionset-meta.xml"
 
