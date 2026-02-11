@@ -846,7 +846,7 @@ private class REL_Relationships_TEST {
         Test.stopTest();
 
         System.assertNotEquals(null, namespace);
-        // In 2GP context, namespace could be the package namespace (e.g., 'carpa')
+        // In 2GP context, namespace could be the package namespace (e.g., 'nppatch')
         String currentNamespace = UTIL_Namespace.getNamespace();
         Boolean isExpectedNamespace = namespace == UTIL_Namespace.HARDCODED_NPSP_NAMESPACE
             || namespace == 'c'

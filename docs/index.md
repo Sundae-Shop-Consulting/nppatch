@@ -52,7 +52,7 @@ nppatch includes the full NPSP feature set, consolidated from the original five 
 | Detail | Value |
 |--------|-------|
 | Package Type | Namespaced Unlocked 2GP |
-| Namespace | `carpa` |
+| Namespace | `nppatch` |
 | Salesforce API Version | 63.0 |
 | Build Tool | CumulusCI 4.6+ |
 | Architecture | Apex Enterprise Patterns (fflib) with TDTM trigger framework |

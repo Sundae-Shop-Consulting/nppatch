@@ -54,8 +54,8 @@ Unlike managed packages, you can add custom fields to any nppatch object:
 
 ```
 force-app/main/default/objects/Account/fields/
-├── carpa__Custom_Nonprofit_ID__c.field-meta.xml      ✓ New field - your org only
-├── carpa__Program_Area__c.field-meta.xml              ✓ New field - your org only
+├── nppatch__Custom_Nonprofit_ID__c.field-meta.xml      ✓ New field - your org only
+├── nppatch__Program_Area__c.field-meta.xml              ✓ New field - your org only
 └── (package objects)                                  ✓ Can also extend
 ```
 
@@ -291,14 +291,14 @@ Sandbox Testing Checklist:
 When you upgrade nppatch:
 
 1. **Salesforce validates the package** against your org's configuration
-2. **Namespace metadata is updated** - all `carpa__` prefixed items are replaced with new versions
+2. **Namespace metadata is updated** - all `nppatch__` prefixed items are replaced with new versions
 3. **Your customizations are preserved** if they're in separate locations (unpackaged directory, separate package)
 4. **Your direct modifications to package code are overwritten** with the new version's code
 
 ### Package Components
 
 ```
-nppatch Package Contents (namespace: carpa__):
+nppatch Package Contents (namespace: nppatch__):
 ├── Apex Classes         (100+)
 ├── Apex Triggers        (20+)
 ├── Custom Objects       (15+)

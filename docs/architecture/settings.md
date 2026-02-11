@@ -285,7 +285,7 @@ Additional fields for RD2 status automation:
 
 **Matching Rule Format:**
 - Semicolon-separated field names
-- Can include namespace prefix: `carpa__Donation_Amount__c`
+- Can include namespace prefix: `nppatch__Donation_Amount__c`
 
 ## Customizable Rollup Settings
 

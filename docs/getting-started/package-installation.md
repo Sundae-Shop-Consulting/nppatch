@@ -18,7 +18,7 @@ Before installing nppatch, confirm the following:
 
 ### Step 1: Get the Install Link
 
-Package install links are published on the [nppatch releases page](https://github.com/SundaeShopConsulting/carpathia/releases). Each release includes:
+Package install links are published on the [nppatch releases page](https://github.com/SundaeShopConsulting/nppatchthia/releases). Each release includes:
 
 - A production/developer install link
 - A sandbox install link
@@ -59,7 +59,7 @@ After installation, nppatch initializes default settings automatically. However,
 
 If the target org already has the Salesforce-distributed NPSP managed package installed, be aware of the following:
 
-**Different namespaces.** nppatch uses the `carpa` namespace while NPSP uses `npsp`. Both packages can technically coexist in the same org, but this is not a recommended configuration. You would end up with two parallel sets of custom objects, fields, and automation that could conflict.
+**Different namespaces.** nppatch uses the `nppatch` namespace while NPSP uses `npsp`. Both packages can technically coexist in the same org, but this is not a recommended configuration. You would end up with two parallel sets of custom objects, fields, and automation that could conflict.
 
 **Not a direct upgrade.** Installing nppatch does not upgrade or replace the existing NPSP installation. They are separate packages with separate namespaces.
 
@@ -67,7 +67,7 @@ If the target org already has the Salesforce-distributed NPSP managed package in
 
 1. Install nppatch in a **sandbox** copy of the production org
 2. Evaluate whether it meets the organization's needs
-3. If proceeding, plan a data migration from `npsp__` objects and fields to `carpa__` equivalents
+3. If proceeding, plan a data migration from `npsp__` objects and fields to `nppatch__` equivalents
 4. Uninstall the original NPSP packages only after the migration is complete and validated
 
 !!! warning "Data Migration Required"
@@ -79,7 +79,7 @@ After installation completes:
 
 1. **Check installed packages.** Navigate to **Setup > Installed Packages** and confirm nppatch appears with the expected version number.
 
-2. **Check custom objects.** Navigate to **Setup > Object Manager** and verify that nppatch custom objects are present (they'll be prefixed with `carpa__`), including: Recurring_Donation__c, Address__c, Allocation__c, General_Accounting_Unit__c, Relationship__c, and others.
+2. **Check custom objects.** Navigate to **Setup > Object Manager** and verify that nppatch custom objects are present (they'll be prefixed with `nppatch__`), including: Recurring_Donation__c, Address__c, Allocation__c, General_Accounting_Unit__c, Relationship__c, and others.
 
 3. **Check NPSP Settings.** Navigate to the **NPSP Settings** tab (if installed as a tab) or search for "NPSP Settings" in the App Launcher. The settings page should load and display the current configuration.
 

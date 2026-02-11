@@ -14,7 +14,7 @@
       }
     }
   ],
-  "namespace": "carpa",
+  "namespace": "nppatch",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "63.0",
   "packageAliases": {

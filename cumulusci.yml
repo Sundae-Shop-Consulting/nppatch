@@ -3,7 +3,7 @@ project:
     name: nppatch
     package:
         name: nppatch
-        namespace: carpa
+        namespace: nppatch
         api_version: '63.0'
     git:
         default_branch: 'main'
