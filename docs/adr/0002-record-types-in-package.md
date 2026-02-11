@@ -1,0 +1,60 @@
+# ADR-0002: Include Record Types in Package
+
+**Status:** Accepted
+**Date:** 2026-02-10
+
+## Context
+
+NPSP's 1GP packages included record types in `unpackaged/pre/` directories, meaning they were deployed to the packaging org but not actually included in the distributed package. Subscribers would get these through the trial/dev org configuration or need to create them manually.
+
+For 2GP unlocked packages, record types on standard objects (Account, Opportunity) CAN be included in the package. The question was whether to:
+
+1. Continue the 1GP pattern (not package them)
+2. Include them in the 2GP package
+3. Create them via post-install script
+
+Several tests expected specific record types to exist (HH_Account, Donation, Grant, etc.) and were failing due to missing record types.
+
+## Decision
+
+Include record types in the 2GP package source:
+
+**Account Record Types:**
+- HH_Account (Household Account)
+- Organization
+
+**Opportunity Record Types:**
+- Donation
+- Grant
+- InKindGift
+- MajorGift
+- MatchingGift
+- Membership
+
+Each record type includes associated business process (using standard stages per ADR-0001) and picklist value mappings.
+
+## Consequences
+
+### Positive
+- Tests pass without requiring manual org setup
+- Subscribers get working record types out of the box
+- Consistent experience across installations
+- Package is more self-contained
+
+### Negative
+- Subscribers who don't want these record types have extra metadata
+- Must maintain record type definitions in source control
+
+### Unlocked Package Flexibility
+Because this is an **unlocked** package (not managed), subscribers CAN:
+- Delete record types they don't need
+- Modify record type configurations
+- Add their own record types
+
+This flexibility mitigates concerns about forcing unwanted record types on subscribers.
+
+## Files Added
+- `force-app/main/default/objects/Account/recordTypes/HH_Account.recordType-meta.xml`
+- `force-app/main/default/objects/Account/recordTypes/Organization.recordType-meta.xml`
+- `force-app/main/default/objects/Opportunity/recordTypes/*.recordType-meta.xml` (6 files)
+- `force-app/main/default/objects/Opportunity/businessProcesses/*.businessProcess-meta.xml` (4 files)

@@ -33,15 +33,15 @@
 * @group Utilities
 * @description Utility class for assigning permission sets in tests.
 * In 2GP packages, the admin profile doesn't automatically have FLS access to package fields.
-* Tests that use WITH SECURITY_ENFORCED queries need to assign the Hearthwork_Admin permission set.
+* Tests that use WITH SECURITY_ENFORCED queries need to assign the nppatch_Admin permission set.
 */
 @IsTest
 public class UTIL_TestPermissions {
 
-    private static final String ADMIN_PERMISSION_SET = 'Hearthwork_Admin';
+    private static final String ADMIN_PERMISSION_SET = 'nppatch_Admin';
 
     /**
-    * @description Assigns the Hearthwork_Admin permission set to the current user.
+    * @description Assigns the nppatch_Admin permission set to the current user.
     * Call this in @TestSetup or at the beginning of test methods that need FLS access.
     */
     public static void assignAdminPermissionSet() {
@@ -86,17 +86,17 @@ public class UTIL_TestPermissions {
     }
 
     /**
-    * @description Creates a test user with the Hearthwork_Admin permission set assigned.
+    * @description Creates a test user with the nppatch_Admin permission set assigned.
     * Use with System.runAs() to execute code that requires FLS access.
     * @return User A test user with admin permissions
     */
     public static User createUserWithAdminPermissions() {
         Profile p = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1];
 
-        String uniqueUserName = 'testuser' + DateTime.now().getTime() + '@hearthwork.test';
+        String uniqueUserName = 'testuser' + DateTime.now().getTime() + '@nppatch.test';
         User u = new User(
             Alias = 'tuser',
-            Email = 'testuser@hearthwork.test',
+            Email = 'testuser@nppatch.test',
             EmailEncodingKey = 'UTF-8',
             LastName = 'Test',
             LanguageLocaleKey = 'en_US',

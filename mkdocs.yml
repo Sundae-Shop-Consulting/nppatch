@@ -1,0 +1,65 @@
+site_name: nppatch Documentation
+site_description: Documentation for the nppatch open-source nonprofit Salesforce package
+site_url: https://nppatch.readthedocs.io/
+repo_url: https://github.com/SundaeShopConsulting/carpathia
+repo_name: SundaeShopConsulting/carpathia
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: deep orange
+      accent: orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep orange
+      accent: orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
+  - attr_list
+  - md_in_html
+
+nav:
+  - Home: index.md
+  - About: about.md
+  - Getting Started:
+    - Overview: getting-started/overview.md
+    - Package Installation: getting-started/package-installation.md
+    - Source Deployment: getting-started/source-deployment.md
+    - Post-Install Configuration: getting-started/post-install-configuration.md
+  - Architecture:
+    - Technical Overview: architecture/overview.md
+    - Data Model: architecture/data-model.md
+    - Trigger Framework (TDTM): architecture/trigger-framework.md
+    - Settings Reference: architecture/settings.md
+  - Features:
+    - Household Management: features/household-management.md
+    - Recurring Donations: features/recurring-donations.md
+    - Gift Entry & Data Import: features/gift-entry.md
+    - Customizable Rollups: features/customizable-rollups.md
+    - Allocations: features/allocations.md
+    - Relationships: features/relationships.md
+    - Engagement Plans: features/engagement-plans.md
+    - Payments: features/payments.md
+  - Customization:
+    - Working with an Unlocked Package: customization/unlocked-package-guide.md
+    - Extending nppatch: customization/extending.md

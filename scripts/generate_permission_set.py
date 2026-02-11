@@ -10,7 +10,7 @@ from pathlib import Path
 
 FORCE_APP = Path("/Users/laurameerkatz/Projects/carpathia/force-app")
 OBJECTS_DIR = FORCE_APP / "main/default/objects"
-OUTPUT_FILE = FORCE_APP / "main/default/permissionsets/Hearthwork_Admin.permissionset-meta.xml"
+OUTPUT_FILE = FORCE_APP / "main/default/permissionsets/nppatch_Admin.permissionset-meta.xml"
 
 # Custom settings don't need object permissions (they're accessed via Apex)
 CUSTOM_SETTINGS = {
@@ -136,9 +136,9 @@ def generate_permission_set():
     root = ET.Element("PermissionSet", xmlns=ns)
 
     # Basic info
-    ET.SubElement(root, "description").text = "Full access to all Hearthwork package objects and fields. Required for admin users and package tests."
+    ET.SubElement(root, "description").text = "Full access to all nppatch package objects and fields. Required for admin users and package tests."
     ET.SubElement(root, "hasActivationRequired").text = "false"
-    ET.SubElement(root, "label").text = "Hearthwork Admin"
+    ET.SubElement(root, "label").text = "nppatch Admin"
     ET.SubElement(root, "license").text = "Salesforce"
 
     all_objects = get_all_objects()

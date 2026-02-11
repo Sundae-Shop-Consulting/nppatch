@@ -1,8 +1,8 @@
 minimum_cumulusci_version: '4.6.0'
 project:
-    name: spinoff
+    name: nppatch
     package:
-        name: spinoff
+        name: nppatch
         namespace: carpa
         api_version: '63.0'
     git:
@@ -12,14 +12,14 @@ project:
 tasks:
     robot:
         options:
-            suites: robot/hearthwork/tests
+            suites: robot/nppatch/tests
             options:
-                outputdir: robot/hearthwork/results
+                outputdir: robot/nppatch/results
 
     robot_testdoc:
         options:
-            path: robot/hearthwork/tests
-            output: robot/hearthwork/doc/carpathia_tests.html
+            path: robot/nppatch/tests
+            output: robot/nppatch/doc/nppatch_tests.html
 
     run_tests:
         options:

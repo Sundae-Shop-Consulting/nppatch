@@ -1,0 +1,59 @@
+# ADR-0001: Use Standard Stages for Business Processes
+
+**Status:** Accepted
+**Date:** 2026-02-10
+
+## Context
+
+NPSP's 1GP packages used custom Opportunity stages like "Pledged", "Posted", and "Awarded" in their business processes for record types like Donation, Grant, and Major Gift. These custom stages were added to the packaging org and deployed as part of the package.
+
+In 2GP packaging, StandardValueSets (like OpportunityStage) are **destructive** - they completely overwrite the subscriber's existing values rather than merging additively. This means:
+
+1. If we package custom stages, subscribers would lose their existing custom stages
+2. Subscribers who already have nonprofit-specific stages would have them overwritten
+3. There's no way to add stages without this destructive behavior in 2GP
+
+## Decision
+
+Use only standard Salesforce stages in packaged business processes:
+- Prospecting
+- Qualification
+- Proposal/Price Quote
+- Negotiation/Review
+- Closed Won
+- Closed Lost
+
+Do NOT package the StandardValueSet for OpportunityStage.
+
+## Consequences
+
+### Positive
+- Subscribers retain their existing custom stages
+- Package installs cleanly without overwriting subscriber configuration
+- Works in any Salesforce org regardless of existing stage customization
+
+### Negative
+- Out-of-box experience doesn't include nonprofit-specific stages like "Pledged"
+- Subscribers must manually add custom stages if desired
+- Default stage for RD installments (from custom label) references "Pledged" which may not exist
+
+### Mitigations
+- Document recommended nonprofit stages for subscribers to add
+- Consider post-install script to add stages (future enhancement)
+- Tests configure valid stages explicitly rather than relying on defaults
+
+## Additional StandardValueSet Constraints
+
+### Opportunity Type Picklist
+The same constraint applies to the Opportunity `Type` field. NPSP used custom values like:
+- "Existing Funding"
+- "New Funding"
+
+These cannot be packaged without overwriting subscriber values. **Resolution:** Removed Type picklist mappings from all record types.
+
+### Business Process Naming
+Business process names with spaces (e.g., "In-Kind Gift", "Major Gift") caused packaging issues. **Resolution:** Renamed to use camelCase without spaces (InKindGift, MajorGift).
+
+## Related Issues
+- GitHub Issue: Post-install script to add nonprofit stages (TODO)
+- GitHub Issue: Document recommended stage configuration (TODO)

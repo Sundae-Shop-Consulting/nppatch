@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Full access to all Hearthwork package objects and fields. Required for admin users and package tests.</description>
+    <description>Full access to all nppatch package objects and fields. Required for admin users and package tests.</description>
     <hasActivationRequired>false</hasActivationRequired>
-    <label>Hearthwork Admin</label>
+    <label>nppatch Admin</label>
     <license>Salesforce</license>
     <fieldPermissions>
         <editable>true</editable>
