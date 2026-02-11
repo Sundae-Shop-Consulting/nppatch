@@ -1,0 +1,37 @@
+nppatch
+Copyright (c) 2024-2026 Sundae Shop Consulting
+
+This project is a derivative work based on the Nonprofit Success Pack (NPSP),
+originally developed by Salesforce.org and its community contributors. The
+original NPSP source code was released under the BSD 3-Clause License.
+
+Original Project: Nonprofit Success Pack (NPSP)
+Copyright (c) 2013-2022 Salesforce.org
+Repository: https://github.com/SalesforceFoundation/NPSP
+License: BSD 3-Clause
+
+nppatch consolidates the five original NPSP packages into a single repository
+and distributes them as a second-generation unlocked package under the nppatch
+namespace. The original copyright notices and license headers in the source
+files have been retained.
+
+================================================================================
+
+Third-Party Components
+================================================================================
+
+This project includes the following third-party components:
+
+Arbor.js (v0.92)
+  Copyright (c) Samizdat Drafting Co.
+  Physics code derived from springy.js, Copyright (c) 2010 Dennis Hotson
+  License: MIT
+  Location: force-app/main/default/staticresources/CumulusStaticResources/arbor-v0.92/
+
+Bootstrap Icons
+  License: Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported
+  Location: force-app/main/default/staticresources/CumulusStaticResources/Bootstrap/icons/
+
+Bootstrap Fonts
+  License: Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported
+  Location: force-app/main/default/staticresources/CumulusStaticResources/Bootstrap/fonts/
