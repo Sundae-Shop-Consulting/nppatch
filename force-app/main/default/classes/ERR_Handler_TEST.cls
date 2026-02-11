@@ -275,7 +275,7 @@ private class ERR_Handler_TEST {
 
     /**
      * @description Verifies error notification processing.
-     * The error message is not displayed on the NPSP Settings page
+     * The error message is not displayed on the NPPatch Settings page
      */
     @IsTest
     private static void shouldCreateErrorBySendErrorNotification() {
@@ -295,7 +295,7 @@ private class ERR_Handler_TEST {
 
     /**
      * @description Verifies error notification processing.
-     * The error message is not displayed on the NPSP Settings page
+     * The error message is not displayed on the NPPatch Settings page
      */
     @IsTest
     private static void shouldProcessErrorOnlyButNotDisplayItOnPage() {
@@ -320,7 +320,7 @@ private class ERR_Handler_TEST {
 
     /**
      * @description Verifies error notification processing.
-     * The error message is not displayed on the NPSP Settings page
+     * The error message is not displayed on the NPPatch Settings page
      */
     @IsTest
     private static void shouldProcessErrorResultButNotDisplayItOnPage() {
@@ -346,7 +346,7 @@ private class ERR_Handler_TEST {
 
     /**
      * @description Verifies error notification processing.
-     * The error message is displayed on the NPSP Settings page
+     * The error message is displayed on the NPPatch Settings page
      */
     @IsTest
     private static void shouldProcessErrorAndDisplayItOnPage() {

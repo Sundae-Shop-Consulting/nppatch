@@ -30,7 +30,7 @@
 /**
 * @author Salesforce.org
 * @date 2020
-* @group NPSP Settings
+* @group NPPatch Settings
 * @description Unit tests to cover methods in STG_PanelRelReciprocal_CTRL.
 */
 @isTest

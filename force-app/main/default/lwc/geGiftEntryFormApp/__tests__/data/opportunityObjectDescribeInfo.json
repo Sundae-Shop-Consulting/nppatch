@@ -479,7 +479,7 @@
       "filteredLookupInfo": null,
       "highScaleNumber": false,
       "htmlFormatted": false,
-      "inlineHelpText": "The batch that created this Opportunity. This field is automatically populated based on your Batch Number Settings in NPSP Settings.",
+      "inlineHelpText": "The batch that created this Opportunity. This field is automatically populated based on your Batch Number Settings in NPPatch Settings.",
       "label": "Batch Number",
       "length": 30,
       "nameField": false,

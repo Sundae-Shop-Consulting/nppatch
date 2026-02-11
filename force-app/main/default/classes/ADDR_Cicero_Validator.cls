@@ -37,7 +37,7 @@
 public with sharing class ADDR_Cicero_Validator implements ADDR_IValidator {
 
     /*******************************************************************************************************
-    * @description holds the Cicero authorization token from NPSP Settings
+    * @description holds the Cicero authorization token from NPPatch Settings
     */
     private String strAuthToken;
 
@@ -47,7 +47,7 @@ public with sharing class ADDR_Cicero_Validator implements ADDR_IValidator {
     private String strEndPoint;
 
     /*******************************************************************************************************
-    * @description holds the timeout value from NPSP Settings
+    * @description holds the timeout value from NPPatch Settings
     */
     private Double dblTimeout;
 

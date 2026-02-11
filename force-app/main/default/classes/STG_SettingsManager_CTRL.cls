@@ -54,7 +54,7 @@ public with sharing class STG_SettingsManager_CTRL extends STG_Panel {
     public static String idPanelCurrent { get; set; }
 
     /*******************************************************************************************************
-    * @description This string sets an error message during NPSP Settings load.
+    * @description This string sets an error message during NPPatch Settings load.
     */
     public String errorMsg { get; set; }
 
@@ -112,7 +112,7 @@ public with sharing class STG_SettingsManager_CTRL extends STG_Panel {
     }
 
     /*******************************************************************************************************
-    * @description Custom exception used when logging validation exceptions during NPSP Settings load.
+    * @description Custom exception used when logging validation exceptions during NPPatch Settings load.
     */
     private class HealthCheckException extends Exception {}
 

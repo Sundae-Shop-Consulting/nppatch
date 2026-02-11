@@ -148,8 +148,8 @@ global without sharing class STG_InstallScript implements InstallHandler {
     }
 
     /*******************************************************************************************************
-    * @description Sets up TDTM in new orgs. Also called by the NPSP Settings page on page load (i.e., this method
-    * runs every single time the NPSP Settings page is loaded).
+    * @description Sets up TDTM in new orgs. Also called by the NPPatch Settings page on page load (i.e., this method
+    * runs every single time the NPPatch Settings page is loaded).
     * @return void
     */
     global void runNewOrgScript() {

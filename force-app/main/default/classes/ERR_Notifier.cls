@@ -53,7 +53,7 @@ public class ERR_Notifier {
         } set;
     }
 
-    /** @description Global error notification settings used in NPSP Settings and here */
+    /** @description Global error notification settings used in NPPatch Settings and here */
     public static final String ERROR_NOTIFICATION_USER_PREFIX = USER_UserService.OBJECT_ID_PREFIX_USER;
     public static final String ERROR_NOTIFICATION_CHATTER_PREFIX {
         get {

@@ -697,7 +697,7 @@ private with sharing class ALLO_Allocations_TEST {
     /*********************************************************************************************************
     @description
         Test Allocation on an Opportunity has the same GAU as the linked Campaign Allocation when
-        NPSP Settings Default Allocations are enabled.
+        NPPatch Settings Default Allocations are enabled.
     verify:
         - The Campaign Allocation Amount covers Opportunity Amount
         (the Campaign Allocation Amount must be <= Opportunity Amount)

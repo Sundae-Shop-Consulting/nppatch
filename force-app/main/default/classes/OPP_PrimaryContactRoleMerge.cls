@@ -88,9 +88,9 @@ public with sharing class OPP_PrimaryContactRoleMerge {
     }
 
     /*******************************************************************************************************
-    * @description Gets the NPSP Settings Role based on the Account type.
+    * @description Gets the NPPatch Settings Role based on the Account type.
     * @param Account. The Opportunity Account.
-    * @return String. The NPSP Settings Role based on the Account Type.
+    * @return String. The NPPatch Settings Role based on the Account Type.
     ********************************************************************************************************/
     private String getSettingsRole(Account inputAccount) {
         return inputAccount.SYSTEMIsIndividual__c ? 

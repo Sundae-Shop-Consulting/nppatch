@@ -629,7 +629,7 @@ public with sharing class PSC_ManageSoftCredits_TEST {
     }
 
     /*******************************************************************************************************
-    * @description test handling of no Soft Credit Roles in NPSP Settings
+    * @description test handling of no Soft Credit Roles in NPPatch Settings
     * verify errors detected and reported
     */
     static testmethod void testNoSoftCreditRoles() {
