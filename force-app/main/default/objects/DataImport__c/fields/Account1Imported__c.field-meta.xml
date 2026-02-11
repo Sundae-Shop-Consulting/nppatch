@@ -5,7 +5,7 @@
     <externalId>false</externalId>
     <label>Account1 Imported</label>
     <referenceTo>Account</referenceTo>
-    <relationshipLabel>NPSP Data Imports (Account1 Imported)</relationshipLabel>
+    <relationshipLabel>NPPatch Data Imports (Account1 Imported)</relationshipLabel>
     <relationshipName>Data_Imports</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>

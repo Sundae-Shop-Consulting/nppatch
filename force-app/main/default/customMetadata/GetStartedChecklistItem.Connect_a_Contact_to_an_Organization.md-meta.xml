@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>GS_Checklist_Section__c</field>
-        <value xsi:type="xsd:string">CreateConstituentRecords_NPSP</value>
+        <value xsi:type="xsd:string">CreateConstituentRecords_NPPatch</value>
     </values>
     <values>
         <field>Has_Link__c</field>

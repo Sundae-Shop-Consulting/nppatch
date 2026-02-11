@@ -51,7 +51,7 @@ public with sharing class BDI_DataImportAPI_TEST {
             Contact1_Firstname__c = firstname,
             Contact1_Lastname__c = lastname,
             Contact1_Personal_Email__c = firstname + '@' + lastname + '.com',
-            NPSP_Data_Import_Batch__c = batchId
+            NPPatch_Data_Import_Batch__c = batchId
         );
     }
 
@@ -70,7 +70,7 @@ public with sharing class BDI_DataImportAPI_TEST {
             Donation_Name__c = donationName,
             Donation_Stage__c = stage,
             Donation_Date__c = Date.today(),
-            NPSP_Data_Import_Batch__c = batchId
+            NPPatch_Data_Import_Batch__c = batchId
         );
         return dataImport;
     }

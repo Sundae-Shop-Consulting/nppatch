@@ -218,7 +218,7 @@ public with sharing class GiftBatchService {
             List<DataImport__c> gifts = [
                 SELECT Id
                 FROM DataImport__c
-                WHERE NPSP_Data_Import_Batch__c =: dataImportBatchId
+                WHERE NPPatch_Data_Import_Batch__c =: dataImportBatchId
                 AND Recurring_Donation_Recurring_Type__c != null
                 LIMIT 1
             ];

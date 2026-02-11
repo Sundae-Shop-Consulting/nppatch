@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Soft_Credit_Last_N_Days__c</fullName>
     <defaultValue>0</defaultValue>
-    <description>The total amount of soft credit attributed to this Contact in the last N days. The value of N is set in NPSP Settings | Donations | Donor Statistics.</description>
+    <description>The total amount of soft credit attributed to this Contact in the last N days. The value of N is set in NPPatch Settings | Donations | Donor Statistics.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The total amount of soft credit attributed to this Contact in the last N days. The value of N is set in NPSP Settings | Donations | Donor Statistics.</inlineHelpText>
+    <inlineHelpText>The total amount of soft credit attributed to this Contact in the last N days. The value of N is set in NPPatch Settings | Donations | Donor Statistics.</inlineHelpText>
     <label>Soft Credit Last N Days</label>
     <precision>16</precision>
     <required>false</required>

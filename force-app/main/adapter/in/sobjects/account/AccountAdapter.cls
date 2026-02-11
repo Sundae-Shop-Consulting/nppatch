@@ -185,13 +185,13 @@ public inherited sharing class AccountAdapter extends fflib_SObjects2 {
         Map<Id, Account> accountsById = getAccountsById(accounts);
 
         for (Address__c newAddress : accounts.allAddresses()) {
-            NPSP_Address npspNewAddress = new NPSP_Address(newAddress);
+            NPPatch_Address npspNewAddress = new NPPatch_Address(newAddress);
             Address__c existingAddress = existingAddressesByAddress.get(newAddress);
-            NPSP_Address npspExistingAddress = new NPSP_Address(existingAddress);
+            NPPatch_Address npspExistingAddress = new NPPatch_Address(existingAddress);
             Boolean isAddressUpdated = false;
 
             if (existingAddress != null) {
-                NPSP_HouseholdAccount npspExistingAddressHousehold = new NPSP_HouseholdAccount(
+                NPPatch_HouseholdAccount npspExistingAddressHousehold = new NPPatch_HouseholdAccount(
                         accountsById.get(npspExistingAddress.householdId()),
                         accounts.oldMap.get(npspExistingAddress.householdId())
                 );
@@ -213,7 +213,7 @@ public inherited sharing class AccountAdapter extends fflib_SObjects2 {
                     dmlWrapper.objectsToUpdate.add(existingAddress);
                 }
             } else {
-                NPSP_HouseholdAccount npspHouseholdAccount = new NPSP_HouseholdAccount(
+                NPPatch_HouseholdAccount npspHouseholdAccount = new NPPatch_HouseholdAccount(
                         accountsById.get(npspNewAddress.householdId()),
                         accounts.oldMap.get(npspNewAddress.householdId())
                 );
@@ -256,7 +256,7 @@ public inherited sharing class AccountAdapter extends fflib_SObjects2 {
         for (Integer i = 0; i < getRecords().size(); i++) {
             Account account = (Account) getRecords()[i];
             Account oldAccount = (oldMap.values() != null ? (Account) oldMap.values()[i] : null);
-            NPSP_HouseholdAccount npspHousehold = new NPSP_HouseholdAccount(account, oldAccount);
+            NPPatch_HouseholdAccount npspHousehold = new NPPatch_HouseholdAccount(account, oldAccount);
 
             if (npspHousehold.isBillingAddressChanged() || npspHousehold.isUndeliverableStatusChanged()) {
                 accountsWithAddressChanges.add(account);
@@ -337,8 +337,8 @@ public inherited sharing class AccountAdapter extends fflib_SObjects2 {
     public List<Address__c> allAddresses() {
         List<Address__c> accountAddresses = new List<Address__c>();
         for (Account account : (List<Account>)getRecords()) {
-            NPSP_HouseholdAccount npspHouseholdAccount = new NPSP_HouseholdAccount(account);
-            NPSP_Address npspAddress = new NPSP_Address(npspHouseholdAccount);
+            NPPatch_HouseholdAccount npspHouseholdAccount = new NPPatch_HouseholdAccount(account);
+            NPPatch_Address npspAddress = new NPPatch_Address(npspHouseholdAccount);
 
             accountAddresses.add(npspAddress.getRecord());
         }

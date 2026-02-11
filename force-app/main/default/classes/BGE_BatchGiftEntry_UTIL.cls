@@ -225,7 +225,7 @@ public with sharing class BGE_BatchGiftEntry_UTIL {
             'DonationImported__c',
             'DonationImportStatus__c',
             'FailureInformation__c',
-            'NPSP_Data_Import_Batch__c',
+            'NPPatch_Data_Import_Batch__c',
             'PaymentImported__c',
             'PaymentImportStatus__c',
             'Payment_Status__c',
@@ -252,7 +252,7 @@ public with sharing class BGE_BatchGiftEntry_UTIL {
 
      /*******************************************************************************************************
     * @description parses Active_Fields__c for the list of user-defined fields included in the batch config
-    * @param batchId: ID of the NPSP_Data_Import_Batch__c
+    * @param batchId: ID of the NPPatch_Data_Import_Batch__c
     * @return list of field api names
     */
     public static List<String> getActiveFieldNamesFromBatch(Id batchId) {
@@ -437,7 +437,7 @@ public with sharing class BGE_BatchGiftEntry_UTIL {
 
         // Lookup from Data Import row to Data Import Batch is also required
         fieldsToCheck.add(UTIL_Describe.getFieldDescribe(UTIL_Namespace.StrTokenNSPrefix('DataImport__c'), 
-            UTIL_Namespace.StrTokenNSPrefix('NPSP_Data_Import_Batch__c')));
+            UTIL_Namespace.StrTokenNSPrefix('NPPatch_Data_Import_Batch__c')));
 
         checkFieldPermissions(fieldsToCheck);
     }

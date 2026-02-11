@@ -2,6 +2,6 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <customSettingsType>Hierarchy</customSettingsType>
     <enableFeeds>false</enableFeeds>
-    <label>NPSP Package Settings</label>
+    <label>NPPatch Package Settings</label>
     <visibility>Protected</visibility>
 </CustomObject>

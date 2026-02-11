@@ -58,11 +58,11 @@ public with sharing class HH_Households_TEST {
         Test.stopTest();
 
         //Then
-        NPSP_Contact npspContactHavingAnAddress = new NPSP_Contact(contactHavingAnAddress);
+        NPPatch_Contact npspContactHavingAnAddress = new NPPatch_Contact(contactHavingAnAddress);
         Contact[] createdContacts = getCreatedContacts(contactHavingAnAddress);
         Id firstHouseholdId = createdContacts[0].Household__c;
-        NPSP_Household firstNpspHousehold =
-                new NPSP_Household(createdContacts[0].Household__r);
+        NPPatch_Household firstNpspHousehold =
+                new NPPatch_Household(createdContacts[0].Household__r);
 
         System.assert(firstNpspHousehold.mailingAddress()
                 .isEqualToIncludingAddressType(npspContactHavingAnAddress.mailingAddress(), false),
@@ -82,8 +82,8 @@ public with sharing class HH_Households_TEST {
 
         //Then
         createdContacts = getCreatedContacts(contactHavingAnAddress);
-        NPSP_Household secondNpspHousehold =
-                new NPSP_Household(createdContacts[0].Household__r);
+        NPPatch_Household secondNpspHousehold =
+                new NPPatch_Household(createdContacts[0].Household__r);
 
         System.assertNotEquals(firstHouseholdId,createdContacts[0].Household__c,
                 'The Contact should no longer be in the first Household.');
@@ -326,9 +326,9 @@ public with sharing class HH_Households_TEST {
 
         //Then
         Contact[] createdContacts = getCreatedContacts(con);
-        NPSP_Contact firstNpspContact = new NPSP_Contact(con);
+        NPPatch_Contact firstNpspContact = new NPPatch_Contact(con);
         Id firstHouseholdId = createdContacts[0].household__c;
-        NPSP_Household firstNpspHousehold = new NPSP_Household(createdContacts[0]
+        NPPatch_Household firstNpspHousehold = new NPPatch_Household(createdContacts[0]
                 .Household__r);
 
         //Assert that the Contact's Household's Address is same as what was on Contact
@@ -346,11 +346,11 @@ public with sharing class HH_Households_TEST {
 
         //Then
         createdContacts = getCreatedContacts(con);
-        NPSP_Contact createdNpspContact = new NPSP_Contact(con);
+        NPPatch_Contact createdNpspContact = new NPPatch_Contact(con);
 
         //Assert Contact no longer belongs to the first Household
         system.assertNotEquals(firstHouseholdId, createdNpspContact.householdId());
-        NPSP_Household secondNpspHousehold = new NPSP_Household(createdContacts[0]
+        NPPatch_Household secondNpspHousehold = new NPPatch_Household(createdContacts[0]
                 .Household__r);
 
         //Assert Contact (has a new Household?) with same initial Address from Contact

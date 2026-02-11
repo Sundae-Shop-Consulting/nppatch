@@ -166,7 +166,7 @@ global without sharing class STG_InstallScript implements InstallHandler {
         Households_Settings__c hs = UTIL_CustomSettingsFacade.getHouseholdsSettings();
         Report r;
         try{
-            r = [SELECT Id FROM Report WHERE DeveloperName = 'NPSP_Campaign_Household_Mailing_List_V2'];
+            r = [SELECT Id FROM Report WHERE DeveloperName = 'NPPatch_Campaign_Household_Mailing_List_V2'];
         } catch(QueryException e) {
             // Ignore this error
         }
@@ -467,7 +467,7 @@ global without sharing class STG_InstallScript implements InstallHandler {
                 mail.setUseSignature(false);
                 mail.setReplyTo(ERR_Notifier.EMAIL_REPLY_TO);
                 mail.setSenderDisplayName(ERR_Notifier.EMAIL_SENDER_NAME);
-                mail.setSubject('NPSP Install Errors');
+                mail.setSubject('NPPatch Install Errors');
 
                 mail.setPlainTextBody(buildEmailBody());
 

@@ -13,7 +13,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>NPSP_Data_Import_Batch__c</field>
+                <field>NPPatch_Data_Import_Batch__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>

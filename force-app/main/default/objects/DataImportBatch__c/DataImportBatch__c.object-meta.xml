@@ -61,13 +61,13 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <label>NPSP Data Import Batch</label>
+    <label>NPPatch Data Import Batch</label>
     <nameField>
         <label>Batch Name</label>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
-    <pluralLabel>NPSP Data Import Batches</pluralLabel>
+    <pluralLabel>NPPatch Data Import Batches</pluralLabel>
     <searchLayouts>
         <lookupDialogsAdditionalFields>Batch_Description__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>UPDATEDBY_USER</lookupDialogsAdditionalFields>

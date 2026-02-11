@@ -243,7 +243,7 @@
                 </apex:pageBlockButtons>
                 <apex:pageBlockSection title="Record Information" id="recInfo" columns="2" >
                     <apex:pageblocksectionitem rendered="{!currentItem.renderNPSPContact}">
-                        <apex:outputLabel value="NPSP Contact" style="line-height:25px;" />
+                        <apex:outputLabel value="NPPatch Contact" style="line-height:25px;" />
                         <apex:outputPanel layout="block" styleclass="sticky" >
                             <apex:inputField id="npspcontactid" value="{!currentItem.npspocr.ContactID}" required="false" styleClass="sticky-npspcontactid"/> <!-- onblur="storeLookupValue('{!field.fieldname}');" /> -->
                             <input type="checkbox" id="sticky-npspcontactid" class="defaultCheckbox" style="display:none;" />

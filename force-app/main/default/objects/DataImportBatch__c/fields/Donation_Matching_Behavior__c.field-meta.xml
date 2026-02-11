@@ -4,7 +4,7 @@
     <defaultValue>&quot;Do Not Match&quot;</defaultValue>
     <description>Defines how the Data Importer should handle matching Donations. You must choose a value.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Defines how NPSP should handle matching Donations.</inlineHelpText>
+    <inlineHelpText>Defines how NPPatch should handle matching Donations.</inlineHelpText>
     <label>Donation Matching Behavior</label>
     <required>true</required>
     <trackHistory>false</trackHistory>

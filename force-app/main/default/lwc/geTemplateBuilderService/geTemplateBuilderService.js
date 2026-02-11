@@ -63,7 +63,7 @@ class GeTemplateBuilderService {
     }
 
     /*******************************************************************************
-    * @description Method will strip off the NPSP prefix of a field or object
+    * @description Method will strip off the NPPatch prefix of a field or object
     * name and replace it with the passed in namespace if appropriate.
     *
     * @return {string} newName: String aligned with the passed in namespace

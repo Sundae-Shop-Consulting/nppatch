@@ -296,7 +296,7 @@ public with sharing class CONV_Account_Conversion_CTRL {
 
         //check the running user's profile access to the account rec type to be used for HH accounts
         if (!Schema.Sobjecttype.Account.getRecordTypeInfosById().get(UTIL_CustomSettingsFacade.getContactsSettings().HH_Account_RecordTypeID__c).isAvailable()){
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'The currently selected Household Account recordtype is not accessible to your current profile.  You will need to modify your profile to include this record type prior to running the conversion process. The conversion process will not be available until the record type is made available to your profile, or a different record type is set in the NPSP Settings tab.'));
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'The currently selected Household Account recordtype is not accessible to your current profile.  You will need to modify your profile to include this record type prior to running the conversion process. The conversion process will not be available until the record type is made available to your profile, or a different record type is set in the NPPatch Settings tab.'));
             runCheckErrorState = true;
         }
     }

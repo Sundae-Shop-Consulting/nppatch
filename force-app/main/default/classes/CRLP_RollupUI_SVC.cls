@@ -670,7 +670,7 @@ public with sharing class CRLP_RollupUI_SVC {
                 'picklistLabelLastYear' => Label.stgLabelYearPicklistLastYear,
                 'picklistLabelThisYear' => Label.stgLabelYearPicklistThisYear,
                 'pleaseWait' => Label.CRLP_PleaseWait,
-                'returnNPSP' => String.format(Label.CRLP_Return, new List<String>{Label.lblNPSPSettings}),
+                'returnNPSP' => String.format(Label.CRLP_Return, new List<String>{Label.lblNPPatchSettings}),
                 'returnFilterGroup' => String.format(Label.CRLP_Return, new List<String>{Schema.SObjectType.Filter_Group__mdt.getLabel()}),
                 'rollupLabel' => Schema.SObjectType.Rollup__mdt.getLabel(),
                 'rollupLabelPlural' => Schema.SObjectType.Rollup__mdt.getLabelPlural(),

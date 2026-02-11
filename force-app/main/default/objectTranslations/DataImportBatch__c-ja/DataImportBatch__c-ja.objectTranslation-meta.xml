@@ -9,7 +9,7 @@
         <label>バッチを処理</label>
     </webLinks>
     <layouts>
-        <layout>NPSP Data Import Batch Layout</layout>
+        <layout>NPPatch Data Import Batch Layout</layout>
         <sections>
             <label>取引先責任者 &amp; 取引先マッチング</label>
             <section>Contact &amp; Account Matching</section>

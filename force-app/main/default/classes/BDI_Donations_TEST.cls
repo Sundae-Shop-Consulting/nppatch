@@ -85,7 +85,7 @@ public with sharing class BDI_Donations_TEST {
         insert batch;
 
         DataImport__c dataImport = BDI_DataImport_TEST.newDI('John','Doe', 200);
-        dataImport.NPSP_Data_Import_Batch__c = batch[0].Id;
+        dataImport.NPPatch_Data_Import_Batch__c = batch[0].Id;
         insert dataImport;
 
         BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
@@ -93,7 +93,7 @@ public with sharing class BDI_Donations_TEST {
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
 
         Test.startTest();
-            DataImport__c insertedDataImport = [SELECT NPSP_Data_Import_Batch__r.Batch_Number__c
+            DataImport__c insertedDataImport = [SELECT NPPatch_Data_Import_Batch__r.Batch_Number__c
                                                 FROM DataImport__c
                                                 LIMIT 1];
             Boolean shouldSetBatchNumber = donationImportHandler.shouldSetDonationBatchNumber(opp, insertedDataImport);
@@ -121,7 +121,7 @@ public with sharing class BDI_Donations_TEST {
         insert batch;
 
         DataImport__c dataImport = BDI_DataImport_TEST.newDI('John','Doe', 200);
-        dataImport.NPSP_Data_Import_Batch__c = batch[0].Id;
+        dataImport.NPPatch_Data_Import_Batch__c = batch[0].Id;
         insert dataImport;
 
         BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
@@ -129,7 +129,7 @@ public with sharing class BDI_Donations_TEST {
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
 
         Test.startTest();
-        DataImport__c insertedDataImport = [SELECT NPSP_Data_Import_Batch__r.Batch_Number__c
+        DataImport__c insertedDataImport = [SELECT NPPatch_Data_Import_Batch__r.Batch_Number__c
                                             FROM DataImport__c
                                             LIMIT 1];
         Boolean shouldSetBatchNumber = donationImportHandler.shouldSetDonationBatchNumber(opp, insertedDataImport);
@@ -163,7 +163,7 @@ public with sharing class BDI_Donations_TEST {
         insert batch;
 
         DataImport__c dataImport = BDI_DataImport_TEST.newDI('John','Doe', 200);
-        dataImport.NPSP_Data_Import_Batch__c = batch[0].Id;
+        dataImport.NPPatch_Data_Import_Batch__c = batch[0].Id;
         insert dataImport;
 
         BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
@@ -171,7 +171,7 @@ public with sharing class BDI_Donations_TEST {
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
 
         Test.startTest();
-        DataImport__c insertedDataImport = [SELECT NPSP_Data_Import_Batch__r.Batch_Number__c
+        DataImport__c insertedDataImport = [SELECT NPPatch_Data_Import_Batch__r.Batch_Number__c
                                             FROM DataImport__c
                                             LIMIT 1];
         Boolean shouldSetBatchNumber = donationImportHandler.shouldSetDonationBatchNumber(payment, insertedDataImport);
@@ -205,7 +205,7 @@ public with sharing class BDI_Donations_TEST {
         insert batch;
 
         DataImport__c dataImport = BDI_DataImport_TEST.newDI('John','Doe', 200);
-        dataImport.NPSP_Data_Import_Batch__c = batch[0].Id;
+        dataImport.NPPatch_Data_Import_Batch__c = batch[0].Id;
         insert dataImport;
 
         BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
@@ -213,7 +213,7 @@ public with sharing class BDI_Donations_TEST {
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
 
         Test.startTest();
-            DataImport__c insertedDataImport = [SELECT NPSP_Data_Import_Batch__r.Batch_Number__c
+            DataImport__c insertedDataImport = [SELECT NPPatch_Data_Import_Batch__r.Batch_Number__c
                                                 FROM DataImport__c
                                                 LIMIT 1];
             Boolean shouldSetBatchNumber = donationImportHandler.shouldSetDonationBatchNumber(payment, insertedDataImport);
@@ -246,7 +246,7 @@ public with sharing class BDI_Donations_TEST {
         insert batch;
 
         DataImport__c dataImport = BDI_DataImport_TEST.newDI('John','Doe', 200);
-        dataImport.NPSP_Data_Import_Batch__c = batch[0].Id;
+        dataImport.NPPatch_Data_Import_Batch__c = batch[0].Id;
         insert dataImport;
 
         BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
@@ -254,7 +254,7 @@ public with sharing class BDI_Donations_TEST {
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
 
         Test.startTest();
-            DataImport__c insertedDataImport = [SELECT NPSP_Data_Import_Batch__r.Batch_Number__c
+            DataImport__c insertedDataImport = [SELECT NPPatch_Data_Import_Batch__r.Batch_Number__c
                                                 FROM DataImport__c
                                                 LIMIT 1];
         Boolean shouldSetBatchNumber = donationImportHandler.shouldSetDonationBatchNumber(payment, insertedDataImport);
@@ -612,7 +612,7 @@ public with sharing class BDI_Donations_TEST {
         dataImports[0].PaymentImportStatus__c = System.Label.bdiMatchedByUser;
         dataImports[0].Payment_Check_Reference_Number__c = 'abc';
         dataImports[0].Payment_Method__c = 'Check';
-        dataImports[0].NPSP_Data_Import_Batch__c = batch.Id;
+        dataImports[0].NPPatch_Data_Import_Batch__c = batch.Id;
 
         // BGE interface, user selects an unpaid payment
         dataImports.add(new DataImport__c(Contact1_Firstname__c=listConT[1].Firstname, Contact1_Lastname__c=listConT[1].Lastname,
@@ -625,7 +625,7 @@ public with sharing class BDI_Donations_TEST {
         dataImports[1].PaymentImportStatus__c = System.Label.bdiMatchedByUser;
         dataImports[1].Payment_Check_Reference_Number__c = '1234';
         dataImports[1].Payment_Method__c = 'Visa';
-        dataImports[1].NPSP_Data_Import_Batch__c = batch.Id;
+        dataImports[1].NPPatch_Data_Import_Batch__c = batch.Id;
 
         // BGE interface, user selects to Update an open Opportunity with no Payments and updates Amount
         dataImports.add(new DataImport__c(Contact1_Firstname__c=listConT[1].Firstname, Contact1_Lastname__c=listConT[1].Lastname,
@@ -636,7 +636,7 @@ public with sharing class BDI_Donations_TEST {
         dataImports[2].DonationImportStatus__c = System.Label.bdiMatchedByUser;
         dataImports[2].Payment_Check_Reference_Number__c = '1234';
         dataImports[2].Payment_Method__c = 'Visa';
-        dataImports[2].NPSP_Data_Import_Batch__c = batch.Id;
+        dataImports[2].NPPatch_Data_Import_Batch__c = batch.Id;
 
         insert dataImports;
 
@@ -802,7 +802,7 @@ public with sharing class BDI_Donations_TEST {
         dataImports[0].DonationImportStatus__c = System.Label.bdiMatchedApplyNewPayment;
         dataImports[0].Payment_Check_Reference_Number__c = newPaymentReference;
         dataImports[0].Payment_Method__c = newPaymentMethod;
-        dataImports[0].NPSP_Data_Import_Batch__c = batch.Id;
+        dataImports[0].NPPatch_Data_Import_Batch__c = batch.Id;
 
         // BGE interface, user selects an unpaid payment to pay off
         dataImports.add(new DataImport__c(Contact1_Firstname__c=listConT[1].Firstname, Contact1_Lastname__c=listConT[1].Lastname,
@@ -816,7 +816,7 @@ public with sharing class BDI_Donations_TEST {
         dataImports[1].PaymentImportStatus__c = System.Label.bdiMatchedByUser;
         dataImports[1].Payment_Check_Reference_Number__c = updatedPaymentReference;
         dataImports[1].Payment_Method__c = updatedPaymentMethod;
-        dataImports[1].NPSP_Data_Import_Batch__c = batch.Id;
+        dataImports[1].NPPatch_Data_Import_Batch__c = batch.Id;
 
         insert dataImports;
 
@@ -1312,7 +1312,7 @@ public with sharing class BDI_Donations_TEST {
                 DonationImportStatus__c = Label.bdiMatchedByUserNewOpp,
                 Payment_Check_Reference_Number__c = 'abc',
                 Payment_Method__c = 'Check',
-                NPSP_Data_Import_Batch__c = batch.Id
+                NPPatch_Data_Import_Batch__c = batch.Id
         ));
 
         // BGE interface, user elects to make a new opp
@@ -1324,7 +1324,7 @@ public with sharing class BDI_Donations_TEST {
                 DonationImportStatus__c = Label.bdiMatchedByUserNewOpp,
                 Payment_Check_Reference_Number__c = '1234',
                 Payment_Method__c = 'Visa',
-                NPSP_Data_Import_Batch__c = batch.Id
+                NPPatch_Data_Import_Batch__c = batch.Id
         ));
 
         insert dataImports;

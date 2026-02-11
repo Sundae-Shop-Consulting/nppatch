@@ -3,6 +3,6 @@
     <apiVersion>53.0</apiVersion>
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
-    <description>redirects to the NPSP&apos;s LD_LeadConvertOverride page</description>
+    <description>redirects to the NPPatch&apos;s LD_LeadConvertOverride page</description>
     <label>leadConvertOverride</label>
 </ApexPage>

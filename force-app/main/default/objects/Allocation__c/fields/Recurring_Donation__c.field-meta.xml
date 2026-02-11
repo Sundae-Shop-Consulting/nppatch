@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Recurring_Donation__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>The Recurring Donation this Allocation is attributed to. NPSP automatically allocates all new Opportunities associated with the Recurring Donation in the same way.</description>
+    <description>The Recurring Donation this Allocation is attributed to. NPPatch automatically allocates all new Opportunities associated with the Recurring Donation in the same way.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Recurring Donation this Allocation is attributed to. NPSP automatically allocates all new Opportunities associated with the Recurring Donation in the same way.</inlineHelpText>
+    <inlineHelpText>The Recurring Donation this Allocation is attributed to. NPPatch automatically allocates all new Opportunities associated with the Recurring Donation in the same way.</inlineHelpText>
     <label>Recurring Donation</label>
     <referenceTo>Recurring_Donation__c</referenceTo>
     <relationshipLabel>GAU Allocations</relationshipLabel>

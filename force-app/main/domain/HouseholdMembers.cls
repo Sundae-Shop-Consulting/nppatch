@@ -121,7 +121,7 @@ public inherited sharing class HouseholdMembers implements IHouseholdMembers {
 
         for (Contact contact : records) {
             listCon.add(contact);
-            NPSP_Address npspAddressFromContact = new NPSP_Address(contact);
+            NPPatch_Address npspAddressFromContact = new NPPatch_Address(contact);
             addressesByContact.put(contact, npspAddressFromContact.getRecord());
         }
 
@@ -134,9 +134,9 @@ public inherited sharing class HouseholdMembers implements IHouseholdMembers {
         List<Address__c> addressesToInsert = new List<Address__c>();
 
         for (Contact contact : listCon) {
-            NPSP_Address npspAddress = new NPSP_Address(addressesByContact.get(contact));
-            NPSP_Address npspMatchingAddress = new NPSP_Address(addressMatchesByAddress.get(npspAddress.getRecord()));
-            NPSP_Contact npspContact = new NPSP_Contact(contact, oldVersionOf(contact));
+            NPPatch_Address npspAddress = new NPPatch_Address(addressesByContact.get(contact));
+            NPPatch_Address npspMatchingAddress = new NPPatch_Address(addressMatchesByAddress.get(npspAddress.getRecord()));
+            NPPatch_Contact npspContact = new NPPatch_Contact(contact, oldVersionOf(contact));
             Boolean addressUpdated = false;
 
             // if found a match
@@ -188,7 +188,7 @@ public inherited sharing class HouseholdMembers implements IHouseholdMembers {
                address.Seasonal_End_Day__c != null && address.Seasonal_End_Month__c != null;
     }
 
-    private Boolean shouldUpdateAddressUndeliverableStatusFromContact(NPSP_Contact npspContact) {
+    private Boolean shouldUpdateAddressUndeliverableStatusFromContact(NPPatch_Contact npspContact) {
         return npspContact.isUndeliverableStatusChanged();
     }
 
@@ -205,8 +205,8 @@ public inherited sharing class HouseholdMembers implements IHouseholdMembers {
         );
 
         for (Contact contact : contactsWithAddressOverrides) {
-            NPSP_Contact npspContact = new NPSP_Contact(contact);
-            NPSP_Address npspAddress = new NPSP_Address(addressesById.get(npspContact.currentAddress()));
+            NPPatch_Contact npspContact = new NPPatch_Contact(contact);
+            NPPatch_Address npspAddress = new NPPatch_Address(addressesById.get(npspContact.currentAddress()));
 
             npspContact.mailingAddress(npspAddress);
             npspContact.setUndeliverableMailingAddress(npspAddress.isUndeliverable());
@@ -235,8 +235,8 @@ public inherited sharing class HouseholdMembers implements IHouseholdMembers {
                     address = householdInfo.defaultAddress;
                 }
                 if (address != null) {
-                    NPSP_Address npspAddress = new NPSP_Address(address);
-                    NPSP_Contact npspContact = new NPSP_Contact(contact);
+                    NPPatch_Address npspAddress = new NPPatch_Address(address);
+                    NPPatch_Contact npspContact = new NPPatch_Contact(contact);
                     npspContact.setCurrentAddress(npspAddress);
                     npspContact.setUndeliverableMailingAddress(npspAddress.isUndeliverable());
                 }

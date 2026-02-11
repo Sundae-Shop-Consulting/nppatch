@@ -38,7 +38,7 @@ The Address__c object provides sophisticated address handling across household m
 
 ### Address Resolution
 
-The system deduplicates and consolidates addresses through the `NPSP_Address` utility, which normalizes addresses for comparison. Key fields tracked:
+The system deduplicates and consolidates addresses through the `NPPatch_Address` utility, which normalizes addresses for comparison. Key fields tracked:
 
 - Street (including street2 fields for multi-line addresses)
 - City, State, Postal Code, Country

@@ -306,7 +306,7 @@
     </customLabels>
     <customLabels>
         <name>CONV_All_Triggers_Disabled</name>
-        <label>Desativa todos os acionadores do NPSP. NOTA: a ferramenta não desabilita os acionadores personalizados. Você deve desativar manualmente os acionadores personalizados antes de prosseguir.</label>
+        <label>Desativa todos os acionadores do NPPatch. NOTA: a ferramenta não desabilita os acionadores personalizados. Você deve desativar manualmente os acionadores personalizados antes de prosseguir.</label>
     </customLabels>
     <customLabels>
         <name>CONV_All_Users_Logged_Out</name>
@@ -369,8 +369,8 @@
         <label>Cria uma Conta de família para cada registro do objeto Família.</label>
     </customLabels>
     <customLabels>
-        <name>CONV_Non_NPSP_Apps</name>
-        <label>Desabilitei ou desinstalei temporariamente todos os aplicativos não NPSP.</label>
+        <name>CONV_Non_NPPatch_Apps</name>
+        <label>Desabilitei ou desinstalei temporariamente todos os aplicativos não NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>CONV_Old_Household_Objects</name>
@@ -430,7 +430,7 @@
     </customLabels>
     <customLabels>
         <name>CONV_Triggers_Reenabled</name>
-        <label>Reativa todos os acionadores de NPSP. NOTA: você precisará reativar manualmente todos os acionadores personalizados que você tenha desabilitado para a conversão. Além disso, o utilitário reativa &lt;b&gt;todos&lt;/b&gt; os acionadores de NPSP, ou seja, se você desativou seletivamente algum deles com antecedência, precisará desativá-los manualmente novamente.</label>
+        <label>Reativa todos os acionadores de NPPatch. NOTA: você precisará reativar manualmente todos os acionadores personalizados que você tenha desabilitado para a conversão. Além disso, o utilitário reativa &lt;b&gt;todos&lt;/b&gt; os acionadores de NPPatch, ou seja, se você desativou seletivamente algum deles com antecedência, precisará desativá-los manualmente novamente.</label>
     </customLabels>
     <customLabels>
         <name>CONV_Warning</name>
@@ -618,7 +618,7 @@
     </customLabels>
     <customLabels>
         <name>CRLP_DisabledMessage</name>
-        <label>Você não tem Totalizações personalizáveis ativadas. Retorne às Configurações do NPSP para obter informações sobre como ativá-las.</label>
+        <label>Você não tem Totalizações personalizáveis ativadas. Retorne às Configurações do NPPatch para obter informações sobre como ativá-las.</label>
     </customLabels>
     <customLabels>
         <name>CRLP_DuplicateTargetField</name>
@@ -654,7 +654,7 @@
     </customLabels>
     <customLabels>
         <name>CRLP_ResetRollupsWarning</name>
-        <label>Tem certeza de que deseja redefinir Totalizações personalizáveis? Isso excluirá novas Totalizações personalizáveis, Regras de filtro e Grupos de filtros que você criou e redefinirá todas as totalizações do NPSP para seu comportamento padrão.</label>
+        <label>Tem certeza de que deseja redefinir Totalizações personalizáveis? Isso excluirá novas Totalizações personalizáveis, Regras de filtro e Grupos de filtros que você criou e redefinirá todas as totalizações do NPPatch para seu comportamento padrão.</label>
     </customLabels>
     <customLabels>
         <name>CRLP_Return</name>
@@ -766,7 +766,7 @@
     </customLabels>
     <customLabels>
         <name>ErrorEmailMessage</name>
-        <label>O Salesforce encontrou estes erros do NPSP. Se você não sabe como resolver os erros, poste uma mensagem no grupo Pacote de sucesso para organizações sem fins lucrativos: https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHitSAE</label>
+        <label>O Salesforce encontrou estes erros do NPPatch. Se você não sabe como resolver os erros, poste uma mensagem no grupo NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>FieldSetRelatedFieldError</name>
@@ -846,11 +846,11 @@
     </customLabels>
     <customLabels>
         <name>RD2_DataMigrationInvalidCloseAction</name>
-        <label>Em Configurações do NPSP | Doações recorrentes, selecione um valor que não seja &quot;No_Action&quot; para Comportamento de oportunidade aberta no fechamento de uma DR. Após a conclusão da migração de dados, você poderá alterar a configuração para o valor anterior.</label>
+        <label>Em Configurações do NPPatch | Doações recorrentes, selecione um valor que não seja &quot;No_Action&quot; para Comportamento de oportunidade aberta no fechamento de uma DR. Após a conclusão da migração de dados, você poderá alterar a configuração para o valor anterior.</label>
     </customLabels>
     <customLabels>
         <name>RD2_DataMigrationInvalidInstallmentPeriod</name>
-        <label>O período de parcelamento da Doação recorrente &quot;{0}&quot; não pode ser convertido no formato de Doações recorrentes aprimoradas. Verifique se o Período de parcelamento está definido nas Configurações do NPSP -&gt; Doações recorrentes -&gt; Períodos de parcelamento personalizado de doações recorrentes.</label>
+        <label>O período de parcelamento da Doação recorrente &quot;{0}&quot; não pode ser convertido no formato de Doações recorrentes aprimoradas. Verifique se o Período de parcelamento está definido nas Configurações do NPPatch -&gt; Doações recorrentes -&gt; Períodos de parcelamento personalizado de doações recorrentes.</label>
     </customLabels>
     <customLabels>
         <name>RD2_DataMigrationInvalidOpenEndedStatus</name>
@@ -994,7 +994,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementDisabledMessage</name>
-        <label>(1) Se você ainda não estiver usando o Lightning Experience, clique em Mudar para o Lightning Experience na parte superior da tela.&lt;br/&gt;(2) Habilite as Totalizações personalizáveis acessando Configurações do NPSP | Doações | Totalizações personalizáveis.&lt;br/&gt;&lt;br/&gt;Retorne aqui para a página Fazer upgrade para Doações recorrentes aprimoradas.</label>
+        <label>(1) Se você ainda não estiver usando o Lightning Experience, clique em Mudar para o Lightning Experience na parte superior da tela.&lt;br/&gt;(2) Habilite as Totalizações personalizáveis acessando Configurações do NPPatch | Doações | Totalizações personalizáveis.&lt;br/&gt;&lt;br/&gt;Retorne aqui para a página Fazer upgrade para Doações recorrentes aprimoradas.</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementDryRunBatchTitle</name>
@@ -1034,7 +1034,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementDryRunIntro</name>
-        <label>O NPSP simula a migração de seus dados existentes para o modelo de Doações recorrentes aprimoradas e identifica erros. Em caso de erros, vá para Configurações do NPSP | Ferramentas do sistema | Log de erros. Depois de corrigir os erros, retorne aqui e valide a migração novamente. Quando a validação for concluída sem erros, você poderá prosseguir para a próxima etapa.&lt;br/&gt;&lt;br/&gt;O processo de validação pode levar algum tempo para ser concluído. Você pode sair desta página e retornar mais tarde para verificar o progresso.</label>
+        <label>O NPPatch simula a migração de seus dados existentes para o modelo de Doações recorrentes aprimoradas e identifica erros. Em caso de erros, vá para Configurações do NPPatch | Ferramentas do sistema | Log de erros. Depois de corrigir os erros, retorne aqui e valide a migração novamente. Quando a validação for concluída sem erros, você poderá prosseguir para a próxima etapa.&lt;br/&gt;&lt;br/&gt;O processo de validação pode levar algum tempo para ser concluído. Você pode sair desta página e retornar mais tarde para verificar o progresso.</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementEnableConfirm</name>
@@ -1058,16 +1058,16 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementEnableWarning</name>
-        <label>&lt;b&gt;AVISO: o NPSP não fornece uma maneira de reverter para Doações recorrentes herdadas.&lt;/b&gt;</label>
+        <label>&lt;b&gt;AVISO: o NPPatch não fornece uma maneira de reverter para Doações recorrentes herdadas.&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementIncomplete</name>
-        <label>Não é possível criar ou atualizar Doações recorrentes porque você não terminou de habilitar as Doações recorrentes aprimoradas. Vá para Configurações do NPSP | Doações recorrentes | Fazer upgrade para Doações recorrentes aprimoradas e complete todas as etapas de ativação.</label>
+        <label>Não é possível criar ou atualizar Doações recorrentes porque você não terminou de habilitar as Doações recorrentes aprimoradas. Vá para Configurações do NPPatch | Doações recorrentes | Fazer upgrade para Doações recorrentes aprimoradas e complete todas as etapas de ativação.</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementIntro</name>
-        <label>Olá! Doações recorrentes aprimoradas é nosso recurso de Doações recorrentes repensado e melhorado para o NPSP (Pacote de sucesso para organizações sem fins lucrativos). Agradecemos bastante aos membros da nossa comunidade que deram seu feedback e ajudaram a tornar possíveis as Doações recorrentes aprimoradas.
-        &lt;br/&gt;&lt;br/&gt;Como já existe um recurso de Doações recorrentes no NPSP, você precisará executar várias tarefas de upgrade e mover seus dados existentes para o modelo de Doações recorrentes aprimoradas. Nós indicamos as tarefas necessárias abaixo.</label>
+        <label>Olá! Doações recorrentes aprimoradas é nosso recurso de Doações recorrentes repensado e melhorado para o NPPatch (Pacote de sucesso para organizações sem fins lucrativos). Agradecemos bastante aos membros da nossa comunidade que deram seu feedback e ajudaram a tornar possíveis as Doações recorrentes aprimoradas.
+        &lt;br/&gt;&lt;br/&gt;Como já existe um recurso de Doações recorrentes no NPPatch, você precisará executar várias tarefas de upgrade e mover seus dados existentes para o modelo de Doações recorrentes aprimoradas. Nós indicamos as tarefas necessárias abaixo.</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementMetaDeployConfirm</name>
@@ -1107,7 +1107,7 @@
         &lt;br/&gt;Antes de sua organização começar a usar Doações recorrentes aprimoradas:&lt;br/&gt;
         &lt;ul&gt;&lt;li&gt;Ative os fluxos de trabalho, os processos, as regras de validação e os acionadores que você desativou antes do upgrade.&lt;/li&gt;
         &lt;li&gt;Atribua o layout da página Doações recorrentes aprimoradas a todos os perfis de usuários e remova o antigo layout da página Doações recorrentes.&lt;/li&gt;
-        &lt;li&gt;Atribua a página de registro do Lightning Doação recorrente do NPSP como padrão da organização.&lt;/li&gt;
+        &lt;li&gt;Atribua a página de registro do Lightning Doação recorrente do NPPatch como padrão da organização.&lt;/li&gt;
         &lt;li&gt;Atribua a classe do Apex RD2_VisualizeScheduleController a seus perfis personalizados.&lt;/li&gt;
         &lt;li&gt;Ajuste a segurança de nível de campo para os campos Doações recorrentes conforme a necessidade para seus perfis e conjuntos de permissões.&lt;/li&gt;
         &lt;li&gt;Ajuste os relatórios de Doações recorrentes para funcionar com Doações recorrentes aprimoradas.&lt;/li&gt;
@@ -1115,7 +1115,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementMigrationErrorMessage</name>
-        <label>Sua execução de migração tem erros; eles precisarão ser corrigidos para concluir uma migração bem-sucedida. Veja os erros em Configurações do NPSP &gt; Ferramentas do sistema &gt; Logs de erros.</label>
+        <label>Sua execução de migração tem erros; eles precisarão ser corrigidos para concluir uma migração bem-sucedida. Veja os erros em Configurações do NPPatch &gt; Ferramentas do sistema &gt; Logs de erros.</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementMigrationIntro</name>
@@ -1255,7 +1255,7 @@
         <name>RD2_EntryFormSaveCommitmentFailedMessage</name>
         <label>Um pagamento recorrente foi criado no Elevate. ID de recorrência do Elevate: {0}.
         
-        No entanto, uma Doação recorrente correspondente não foi criada no NPSP devido ao seguinte erro:
+        No entanto, uma Doação recorrente correspondente não foi criada no NPPatch devido ao seguinte erro:
         ● {1}
         
         Você pode manter este formulário aberto, corrigir o erro e salvar a Doação recorrente novamente. Como alternativa, cancele e entre em contato com o administrador do sistema para obter assistência.</label>
@@ -1366,7 +1366,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_PageNotAvailableMessage</name>
-        <label>Esta página não está disponível em Doações recorrentes aprimoradas. Atualize seu navegador e retorne às configurações do NPSP.</label>
+        <label>Esta página não está disponível em Doações recorrentes aprimoradas. Atualize seu navegador e retorne às configurações do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>RD2_PauseCannotExistOnScheduleChange</name>
@@ -1430,7 +1430,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_PauseStatusMustExist</name>
-        <label>O NPSP não pode atualizar o Motivo do status e o Status em Doações recorrentes pausadas. Você precisa adicionar o valor de lista de opções &apos;Pausado&apos; ao campo Status.</label>
+        <label>O NPPatch não pode atualizar o Motivo do status e o Status em Doações recorrentes pausadas. Você precisa adicionar o valor de lista de opções &apos;Pausado&apos; ao campo Status.</label>
     </customLabels>
     <customLabels>
         <name>RD2_PaymentInformation</name>
@@ -1486,7 +1486,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationClosedDefinition</name>
-        <label>Após o número especificado de dias, o NPSP atualiza o Status de doação recorrente para o Valor de status Fechado se as doações não forem recebidas como esperado. O valor precisa ser maior do que o número de dias em Vencido. O NPSP não cria parcelamento de oportunidades para Doações recorrentes fechadas.</label>
+        <label>Após o número especificado de dias, o NPPatch atualiza o Status de doação recorrente para o Valor de status Fechado se as doações não forem recebidas como esperado. O valor precisa ser maior do que o número de dias em Vencido. O NPPatch não cria parcelamento de oportunidades para Doações recorrentes fechadas.</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationDaysForClosed</name>
@@ -1526,7 +1526,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationLapsedDefinition</name>
-        <label>Após o número especificado de dias, o NPSP atualiza o Status de doação recorrente para o Valor de status Vencido se as doações não forem recebidas como esperado. O NPSP continua a criar as oportunidades de parcelamento para doações recorrentes Vencidas conforme definido pelo agendamento.</label>
+        <label>Após o número especificado de dias, o NPPatch atualiza o Status de doação recorrente para o Valor de status Vencido se as doações não forem recebidas como esperado. O NPPatch continua a criar as oportunidades de parcelamento para doações recorrentes Vencidas conforme definido pelo agendamento.</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationSetClosedStatus</name>
@@ -1546,17 +1546,17 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusMappingDefinitions</name>
-        <label>&lt;b&gt;Definições de estado&lt;/b&gt;&lt;br/&gt;&lt;ul&gt;&lt;li&gt;Ativo: o doador está doando ativamente. O NPSP cria oportunidades de parcelamento definidas pelo agendamento da Doação recorrente.&lt;/li&gt;
-&lt;li&gt;Vencido: as doações não estão sendo recebidas como esperado, mas o NPSP ainda cria oportunidades de parcelamento definidas pelo agendamento da Doação recorrente.&lt;/li&gt;
-&lt;li&gt;Fechado: o doador parou de fazer doações para esta Doação recorrente. O NPSP não cria novas oportunidades de parcelamento.&lt;/li&gt;&lt;/ul&gt;</label>
+        <label>&lt;b&gt;Definições de estado&lt;/b&gt;&lt;br/&gt;&lt;ul&gt;&lt;li&gt;Ativo: o doador está doando ativamente. O NPPatch cria oportunidades de parcelamento definidas pelo agendamento da Doação recorrente.&lt;/li&gt;
+&lt;li&gt;Vencido: as doações não estão sendo recebidas como esperado, mas o NPPatch ainda cria oportunidades de parcelamento definidas pelo agendamento da Doação recorrente.&lt;/li&gt;
+&lt;li&gt;Fechado: o doador parou de fazer doações para esta Doação recorrente. O NPPatch não cria novas oportunidades de parcelamento.&lt;/li&gt;&lt;/ul&gt;</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusMappingDeploymentAlreadyInProgress</name>
-        <label>Não é possível salvar um mapeamento enquanto o NPSP está processando outro mapeamento de status para estado.</label>
+        <label>Não é possível salvar um mapeamento enquanto o NPPatch está processando outro mapeamento de status para estado.</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusMappingIntro</name>
-        <label>Quando você cria valores de lista de opções personalizados para Status de doação recorrente, precisa mapeá-los para um Estado a fim de que o NPSP saiba como processar registros com esses valores de Status personalizados.
+        <label>Quando você cria valores de lista de opções personalizados para Status de doação recorrente, precisa mapeá-los para um Estado a fim de que o NPPatch saiba como processar registros com esses valores de Status personalizados.
         &lt;br/&gt;&lt;br/&gt;Se você não criou nenhum valor de lista de opções personalizado para Status de doação recorrente, não haverá nada que deva ser mapeado.</label>
     </customLabels>
     <customLabels>
@@ -1577,7 +1577,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusMustBeMappedSolution</name>
-        <label>Acesse Configurações do NPSP | Doações recorrentes | Mapeamentos de Status para Estado ou entre em contato com o administrador para obter ajuda.</label>
+        <label>Acesse Configurações do NPPatch | Doações recorrentes | Mapeamentos de Status para Estado ou entre em contato com o administrador para obter ajuda.</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusMustBeActiveOrPause</name>
@@ -1721,7 +1721,7 @@
     </customLabels>
     <customLabels>
         <name>RD_RefreshOppsContinueMessage</name>
-        <label>Este processo atualiza todas as oportunidades de parcelamento futuras para corresponder aos dados atuais desta Doação recorrente. Para algumas parcelas, o NPSP pode excluir e recriar novas parcelas.
+        <label>Este processo atualiza todas as oportunidades de parcelamento futuras para corresponder aos dados atuais desta Doação recorrente. Para algumas parcelas, o NPPatch pode excluir e recriar novas parcelas.
 &lt;br/&gt;&lt;br/&gt;Clique em Continuar para iniciar o processo ou Cancelar para retornar à página da Doação recorrente.</label>
     </customLabels>
     <customLabels>
@@ -1786,7 +1786,7 @@
     </customLabels>
     <customLabels>
         <name>RP_ProductNameLabel</name>
-        <label>Pacote de sucesso para organizações sem fins lucrativos (NPSP)</label>
+        <label>Pacote de sucesso para organizações sem fins lucrativos (NPPatch)</label>
     </customLabels>
     <customLabels>
         <name>RP_ReleaseGitHub</name>
@@ -1810,11 +1810,11 @@
     </customLabels>
     <customLabels>
         <name>RP_Title</name>
-        <label>Bem-vindo ao Salesforce e ao Pacote de sucesso para organizações sem fins lucrativos (NPSP)!</label>
+        <label>Bem-vindo ao Salesforce e ao Pacote de sucesso para organizações sem fins lucrativos (NPPatch)!</label>
     </customLabels>
     <customLabels>
         <name>RP_TrailheadLinkLabel</name>
-        <label>Trailmix Introdução ao Salesforce e ao NPSP</label>
+        <label>Trailmix Introdução ao Salesforce e ao NPPatch</label>
     </customLabels>
     <customLabels>
         <name>RP_TrailheadParagraph</name>
@@ -1826,7 +1826,7 @@
     </customLabels>
     <customLabels>
         <name>RP_USParagraph</name>
-        <label>Obtenha ajuda de nossa comunidade ativa de usuários do NPSP ou entre em contato com a Salesforce.org.</label>
+        <label>Obtenha ajuda de nossa comunidade ativa de usuários do NPPatch ou entre em contato com a Salesforce.org.</label>
     </customLabels>
     <customLabels>
         <name>RP_UsHubLinkLabel</name>
@@ -1842,7 +1842,7 @@
     </customLabels>
     <customLabels>
         <name>RP_WebinarLinkLabel</name>
-        <label>Documentação sobre o produto NPSP</label>
+        <label>Documentação sobre o produto NPPatch</label>
     </customLabels>
     <customLabels>
         <name>RP_YoutubeChannel</name>
@@ -1894,7 +1894,7 @@
     </customLabels>
     <customLabels>
         <name>addrCiceroMissingAPIKey</name>
-        <label>Você precisa especificar a chave da API do Cicero no campo Token de autenticação de Verificação de endereço. Faça login no Salesforce e acesse Pessoas | Endereços na página Configurações do NPSP.</label>
+        <label>Você precisa especificar a chave da API do Cicero no campo Token de autenticação de Verificação de endereço. Faça login no Salesforce e acesse Pessoas | Endereços na página Configurações do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>addrCopyConAddBtnConfirm</name>
@@ -1914,7 +1914,7 @@
     </customLabels>
     <customLabels>
         <name>addrHHAccountOnly</name>
-        <label>Para usar Endereços com contas que não são Família, você precisará selecionar Endereços de conta organizacional ativados em Configurações do NPSP | Pessoas | Endereços.</label>
+        <label>Para usar Endereços com contas que não são Família, você precisará selecionar Endereços de conta organizacional ativados em Configurações do NPPatch | Pessoas | Endereços.</label>
     </customLabels>
     <customLabels>
         <name>addrHHAddressAlwaysDefault</name>
@@ -1984,7 +1984,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>alloDefaultNotPercent</name>
-        <label>A Unidade contábil geral definida como padrão nas Configurações do NPSP só pode ter alocações baseadas em valor, não porcentagem.</label>
+        <label>A Unidade contábil geral definida como padrão nas Configurações do NPPatch só pode ter alocações baseadas em valor, não porcentagem.</label>
     </customLabels>
     <customLabels>
         <name>alloDeleteRow</name>
@@ -2016,7 +2016,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>alloModifyCurrency</name>
-        <label>Não é possível modificar as Moedas de alocação diretamente. o NPSP atualiza Moedas de alocação quando você atualiza a moeda pai da Oportunidade, Campanha ou Doação recorrente.</label>
+        <label>Não é possível modificar as Moedas de alocação diretamente. o NPPatch atualiza Moedas de alocação quando você atualiza a moeda pai da Oportunidade, Campanha ou Doação recorrente.</label>
     </customLabels>
     <customLabels>
         <name>alloNegativeAmount</name>
@@ -2104,11 +2104,11 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdeRetirementBlockerMessage</name>
-        <label>A partir de 1º de outubro de 2020, a Entrada de dados em lote não é mais suportada. A maioria dos recursos foi substituída por recursos mais novos no NPSP. Se você tiver algum lote em andamento, ainda poderá acessar esses registros, mas não poderá processá-los usando a Entrada de dados em lote. Entre em contato com o suporte se precisar acessar lotes em andamento. &lt;br/&gt; Talvez seja melhor explorar a Entrada de doações como uma alternativa à Entrada de dados em lote.</label>
+        <label>A partir de 1º de outubro de 2020, a Entrada de dados em lote não é mais suportada. A maioria dos recursos foi substituída por recursos mais novos no NPPatch. Se você tiver algum lote em andamento, ainda poderá acessar esses registros, mas não poderá processá-los usando a Entrada de dados em lote. Entre em contato com o suporte se precisar acessar lotes em andamento. &lt;br/&gt; Talvez seja melhor explorar a Entrada de doações como uma alternativa à Entrada de dados em lote.</label>
     </customLabels>
     <customLabels>
         <name>bdeRetirementWarningBody</name>
-        <label>Em 1º de outubro de 2020, a Entrada de dados em lote será aposentada e não funcionará mais no NPSP. Se você tiver algum lote em andamento no momento, ainda poderá acessar esses registros, mas não poderá processá-los usando a Entrada de dados em lote. Para garantir uma transição suave, ative e use a Entrada de doações antes de 1º de outubro.</label>
+        <label>Em 1º de outubro de 2020, a Entrada de dados em lote será aposentada e não funcionará mais no NPPatch. Se você tiver algum lote em andamento no momento, ainda poderá acessar esses registros, mas não poderá processá-los usando a Entrada de dados em lote. Para garantir uma transição suave, ative e use a Entrada de doações antes de 1º de outubro.</label>
     </customLabels>
     <customLabels>
         <name>bdeRetirementWarningHeader</name>
@@ -2124,7 +2124,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiAccountCustomIdError</name>
-        <label>O campo de configuração ID exclusivo personalizado da conta {0} precisa ter campos correspondentes no objeto Importar dados do NPSP cujos nomes de API sejam {1} e {2}.</label>
+        <label>O campo de configuração ID exclusivo personalizado da conta {0} precisa ter campos correspondentes no objeto Importar dados do NPPatch cujos nomes de API sejam {1} e {2}.</label>
     </customLabels>
     <customLabels>
         <name>bdiAdditionalObjChildNotUpdated</name>
@@ -2184,7 +2184,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiContactCustomIdError</name>
-        <label>O campo de configuração ID exclusivo personalizado do contato {0} precisa ter campos correspondentes no objeto Importar dados do NPSP cujos nomes de API sejam {1} e {2}.</label>
+        <label>O campo de configuração ID exclusivo personalizado do contato {0} precisa ter campos correspondentes no objeto Importar dados do NPPatch cujos nomes de API sejam {1} e {2}.</label>
     </customLabels>
     <customLabels>
         <name>bdiContactMatchDupeMgmt</name>
@@ -2224,7 +2224,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiDataImporterDescription</name>
-        <label>O Importador de dados do NPSP ajuda você a importar facilmente seus dados para o Pacote de sucesso para organizações sem fins lucrativos.</label>
+        <label>O Importador de dados do NPPatch ajuda você a importar facilmente seus dados para o Pacote de sucesso para organizações sem fins lucrativos.</label>
     </customLabels>
     <customLabels>
         <name>bdiDataImporterInfoLine1</name>
@@ -2236,7 +2236,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiDataImporterInfoLine2b</name>
-        <label>Para evitar atingir os limites de serviço, o Importador de dados do NPSP não verifica endereços pelo serviço de verificação que você pode ter especificado nas Configurações do NPSP.</label>
+        <label>Para evitar atingir os limites de serviço, o Importador de dados do NPPatch não verifica endereços pelo serviço de verificação que você pode ter especificado nas Configurações do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>bdiDataImporterInfoLine3</name>
@@ -2256,7 +2256,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiDataImporterTitle</name>
-        <label>Importação de dados do NPSP</label>
+        <label>Importação de dados do NPPatch</label>
     </customLabels>
     <customLabels>
         <name>bdiDeploymentInProgress</name>
@@ -2300,7 +2300,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiDryRunTitle</name>
-        <label>Importador de dados do NPSP - Teste simulado</label>
+        <label>Importador de dados do NPPatch - Teste simulado</label>
     </customLabels>
     <customLabels>
         <name>bdiDupeMgmtMatchImportStatus</name>
@@ -2328,23 +2328,23 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationMultiMatch</name>
-        <label>As informações de Doação tiveram correspondência com várias Oportunidades, de modo que o Importador de dados do NPSP não as importou. O campo Possíveis correspondências de doação contém os IDs Salesforce das Oportunidades correspondidas.</label>
+        <label>As informações de Doação tiveram correspondência com várias Oportunidades, de modo que o Importador de dados do NPPatch não as importou. O campo Possíveis correspondências de doação contém os IDs Salesforce das Oportunidades correspondidas.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationNoMatch</name>
-        <label>O Importador de dados do NPSP não encontrou Doações correspondentes.</label>
+        <label>O Importador de dados do NPPatch não encontrou Doações correspondentes.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationRequireNoMatch</name>
-        <label>As informações de Doação tiveram correspondência com uma ou mais Oportunidades, mas a configuração não exigia correspondência, de modo que o Importador de dados do NPSP não as importou. O campo Possíveis correspondências de doação contém os IDs Salesforce das Oportunidades correspondidas.</label>
+        <label>As informações de Doação tiveram correspondência com uma ou mais Oportunidades, mas a configuração não exigia correspondência, de modo que o Importador de dados do NPPatch não as importou. O campo Possíveis correspondências de doação contém os IDs Salesforce das Oportunidades correspondidas.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorExistingDonationAllocations</name>
-        <label>As Alocações de GAU fornecidas conflitam com as Alocações existentes no registro Oportunidade da doação. Remova as Alocações do registro Oportunidade ou do registro Importar dados do NPSP e reprocesse com o Importador de Dados do NPSP.</label>
+        <label>As Alocações de GAU fornecidas conflitam com as Alocações existentes no registro Oportunidade da doação. Remova as Alocações do registro Oportunidade ou do registro Importar dados do NPPatch e reprocesse com o Importador de Dados do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorExistingPaymentAllocations</name>
-        <label>As Alocações de GAU fornecidas conflitam com as Alocações existentes no registro Pagamento da doação. Remova as Alocações do registro Pagamento ou do registro Importar dados do NPSP e reprocesse com o Importador de Dados do NPSP.</label>
+        <label>As Alocações de GAU fornecidas conflitam com as Alocações existentes no registro Pagamento da doação. Remova as Alocações do registro Pagamento ou do registro Importar dados do NPPatch e reprocesse com o Importador de Dados do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorGAUAllocationOver100</name>
@@ -2360,7 +2360,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiErrorInvalidIMatchDonations</name>
-        <label>O Importador de dados do NPSP não encontrou a classe do Apex {0} ou esta classe não suporta a interface {1}.</label>
+        <label>O Importador de dados do NPPatch não encontrou a classe do Apex {0} ou esta classe não suporta a interface {1}.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorInvalidLastname</name>
@@ -2384,7 +2384,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiErrorPaymentMultiMatch</name>
-        <label>As informações de Doação tiveram correspondência com vários Pagamentos, de modo que o Importador de dados do NPSP não as importou. O campo Possíveis correspondências de pagamento contém os IDs Salesforce dos Pagamentos correspondidos.</label>
+        <label>As informações de Doação tiveram correspondência com vários Pagamentos, de modo que o Importador de dados do NPPatch não as importou. O campo Possíveis correspondências de pagamento contém os IDs Salesforce dos Pagamentos correspondidos.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUIBackToMapGroup</name>
@@ -2400,13 +2400,13 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiFMUIDescription1</name>
-        <label>Conecte o campo criado no objeto Importar dados do NPSP ao campo em seu objeto de destino na
+        <label>Conecte o campo criado no objeto Importar dados do NPPatch ao campo em seu objeto de destino na
             grade abaixo. Você pode encontrar campos por Rótulo de campo ou Nome da API de campo.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUIDescription2</name>
-        <label>Os campos no objeto Importar dados do NPSP devem mapear para tipos de campo compatíveis em seu objeto de destino.
-            Quando você seleciona um campo Importar dados do NPSP, apenas os campos de destino compatíveis ficam disponíveis.</label>
+        <label>Os campos no objeto Importar dados do NPPatch devem mapear para tipos de campo compatíveis em seu objeto de destino.
+            Quando você seleciona um campo Importar dados do NPPatch, apenas os campos de destino compatíveis ficam disponíveis.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUIFieldAPIName</name>
@@ -2418,15 +2418,15 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiFMUISourceFieldLabelHelp</name>
-        <label>O campo Importar dados do NPSP que você deseja mapear. Pesquise por Rótulo de campo ou Nome da API. Se você não conseguir encontrar o campo, confirme que criou o campo no objeto Importar dados do NPSP.</label>
+        <label>O campo Importar dados do NPPatch que você deseja mapear. Pesquise por Rótulo de campo ou Nome da API. Se você não conseguir encontrar o campo, confirme que criou o campo no objeto Importar dados do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUISourceFieldDataTypeHelp</name>
-        <label>O tipo de dados do campo escolhido no objeto Importar dados do NPSP.</label>
+        <label>O tipo de dados do campo escolhido no objeto Importar dados do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUITargetFieldLabelHelp</name>
-        <label>O campo de destino que deseja conectar ao campo Importar dados do NPSP. Pesquise por Rótulo de campo ou Nome da API. Isso é filtrado para mostrar apenas campos em seu objeto de destino compatíveis com o campo escolhido no objeto Importar dados do NPSP.</label>
+        <label>O campo de destino que deseja conectar ao campo Importar dados do NPPatch. Pesquise por Rótulo de campo ou Nome da API. Isso é filtrado para mostrar apenas campos em seu objeto de destino compatíveis com o campo escolhido no objeto Importar dados do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUITargetFieldDataTypeHelp</name>
@@ -2454,7 +2454,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiFMUISearchSourceInputLabel</name>
-        <label>Pesquise o campo do objeto Importar dados do NPSP por rótulo ou nome da API.</label>
+        <label>Pesquise o campo do objeto Importar dados do NPPatch por rótulo ou nome da API.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUISearchTargetInputLabel</name>
@@ -2462,7 +2462,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiFMUISourceObject</name>
-        <label>Fonte (Objeto Importar dados do NPSP)</label>
+        <label>Fonte (Objeto Importar dados do NPPatch)</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUISuccessful</name>
@@ -2498,7 +2498,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiHouseholdModelRequired</name>
-        <label>O Importador de Dados do NPSP só funciona com o modelo de Conta de família.</label>
+        <label>O Importador de Dados do NPPatch só funciona com o modelo de Conta de família.</label>
     </customLabels>
     <customLabels>
         <name>bdiIgnored</name>
@@ -2510,7 +2510,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiInvalidBatchId</name>
-        <label>O ID de lote de Importar dados do NPSP {0} é inválido.</label>
+        <label>O ID de lote de Importar dados do NPPatch {0} é inválido.</label>
     </customLabels>
     <customLabels>
         <name>bdiInvalidDonationMatchingBehavior</name>
@@ -2524,7 +2524,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
         <name>bdiMassDeleteWarning</name>
         <label>Você está prestes a excluir {0} registro(s).
         &lt;br/&gt;
-        &lt;br/&gt;&lt;b&gt;IMPORTANTE:&lt;/b&gt; se você criar doações em sua organização usando o recurso Entrada de doações em lote, não recomendamos usar o botão Excluir em massa. Consulte a documentação do NPSP para obter instruções sobre a exclusão de registros usando o Data Loader.</label>
+        &lt;br/&gt;&lt;b&gt;IMPORTANTE:&lt;/b&gt; se você criar doações em sua organização usando o recurso Entrada de doações em lote, não recomendamos usar o botão Excluir em massa. Consulte a documentação do NPPatch para obter instruções sobre a exclusão de registros usando o Data Loader.</label>
     </customLabels>
     <customLabels>
         <name>bdiMatched</name>
@@ -2632,7 +2632,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiOMUIPageDescriptionPt2</name>
-        <label>Os Grupos de objetos são coleções de mapeamentos de campo que dizem à ferramenta Importar dados do NPSP quais tipos de registros (por exemplo, Contatos, Oportunidades, Pagamentos, etc.) criar ou atualizar. O NPSP pode vincular registros relacionados em uma mesma linha de sua importação entre si porque os mapeamentos de campos são empacotados nos Grupos de objetos desta forma.</label>
+        <label>Os Grupos de objetos são coleções de mapeamentos de campo que dizem à ferramenta Importar dados do NPPatch quais tipos de registros (por exemplo, Contatos, Oportunidades, Pagamentos, etc.) criar ou atualizar. O NPPatch pode vincular registros relacionados em uma mesma linha de sua importação entre si porque os mapeamentos de campos são empacotados nos Grupos de objetos desta forma.</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIPageDescriptionPt3</name>
@@ -2677,11 +2677,11 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiOMUIErrorNoUnmappedFieldsPt1</name>
-        <label>Erro: não há campos não mapeados no objeto Importar dados do NPSP a serem usados para</label>
+        <label>Erro: não há campos não mapeados no objeto Importar dados do NPPatch a serem usados para</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIErrorNoUnmappedFieldsPt2</name>
-        <label>. Crie campos no objeto Importar dados do NPSP, se necessário.</label>
+        <label>. Crie campos no objeto Importar dados do NPPatch, se necessário.</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIFieldMappingProblemHeader</name>
@@ -2693,7 +2693,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiOMUIFieldMappingProblemMessagePart2</name>
-        <label>Verifique se os campos Importar dados do NPSP e de destino ainda existem e edite ou exclua o Mapeamento de campo.</label>
+        <label>Verifique se os campos Importar dados do NPPatch e de destino ainda existem e edite ou exclua o Mapeamento de campo.</label>
     </customLabels>
     <customLabels>
         <name>bdiPositiveNumber</name>
@@ -2717,7 +2717,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bdiSelectCantProcessBatchDIRecords</name>
-        <label>Você selecionou registros vinculados a um Lote de importação de dados do NPSP. Para importar registros associados a um Lote de importação de dados do NPSP, abra o lote e clique em Processar lote.</label>
+        <label>Você selecionou registros vinculados a um Lote de importação de dados do NPPatch. Para importar registros associados a um Lote de importação de dados do NPPatch, abra o lote e clique em Processar lote.</label>
     </customLabels>
     <customLabels>
         <name>bdiSelectCantProcessImportedRecords</name>
@@ -2789,15 +2789,15 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationDateRangeHelp</name>
-        <label>Digite o n.º de dias a contar da Data de doação a serem levados em conta na procura de uma Oport. ou um Pagamento corresp.. O NPSP escolherá a Oport. ou o Pagamento corresp. cuja data se enquadre no número de dias e esteja mais próxima da Data de doação.</label>
+        <label>Digite o n.º de dias a contar da Data de doação a serem levados em conta na procura de uma Oport. ou um Pagamento corresp.. O NPPatch escolherá a Oport. ou o Pagamento corresp. cuja data se enquadre no número de dias e esteja mais próxima da Data de doação.</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationMatchingBehaviorHelp</name>
-        <label>Define como o NPSP deve lidar com Doações correspondentes.</label>
+        <label>Define como o NPPatch deve lidar com Doações correspondentes.</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationMatchingClassHelp</name>
-        <label>O nome do desenvolvedor de uma classe do Apex que implementa a interface BDI_IMatching para Doações. Deixe em branco para que o NPSP faça a correspondência.</label>
+        <label>O nome do desenvolvedor de uma classe do Apex que implementa a interface BDI_IMatching para Doações. Deixe em branco para que o NPPatch faça a correspondência.</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationMatchingRuleHelp</name>
@@ -2821,7 +2821,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bgeBatchPostProcessClassHelp</name>
-        <label>O nome do desenvolvedor de uma classe do Apex que implementa a interface BDI_IPostProcess para registros em lote do NPSP.</label>
+        <label>O nome do desenvolvedor de uma classe do Apex que implementa a interface BDI_IPostProcess para registros em lote do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchProcessUsingScheduledJobHelp</name>
@@ -2829,7 +2829,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bgeBatchRunOpportunityRollupsWhileProcessingHelp</name>
-        <label>Quando marcado, o NPSP calcula as totalizações dos doadores quando as doações são processadas. Se não for marcado, as totalizações de doadores serão calculadas durante o trabalho agendado noturno padrão. Observe que a marcação desta caixa de seleção pode retardar o processamento do lote.</label>
+        <label>Quando marcado, o NPPatch calcula as totalizações dos doadores quando as doações são processadas. Se não for marcado, as totalizações de doadores serão calculadas durante o trabalho agendado noturno padrão. Observe que a marcação desta caixa de seleção pode retardar o processamento do lote.</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchOverview</name>
@@ -3013,7 +3013,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bgeRetirementWarningBody</name>
-        <label>Em 13 de julho de 2021, a Entrada de doações em lote será aposentada e não funcionará mais no NPSP. Se você tiver algum lote em andamento no momento, ainda poderá acessar esses registros, mas não poderá processá-los usando a Entrada de doações em lote. Para garantir uma transição suave, ative e use a Entrada de doações mais recente antes de 13 de julho.</label>
+        <label>Em 13 de julho de 2021, a Entrada de doações em lote será aposentada e não funcionará mais no NPPatch. Se você tiver algum lote em andamento no momento, ainda poderá acessar esses registros, mas não poderá processá-los usando a Entrada de doações em lote. Para garantir uma transição suave, ative e use a Entrada de doações mais recente antes de 13 de julho.</label>
     </customLabels>
     <customLabels>
         <name>bgeRetirementWarningHeader</name>
@@ -3044,11 +3044,11 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>bgeUnmappedFieldsNoticeMessageAdvancedMapping</name>
-        <label>Os seguintes campos estão incluídos neste Lote, mas seus Mapeamentos de campo foram excluídos: {0}. Para corrigir isso, acesse o Mapeamento avançado em Configurações do NPSP e mapeie os campos novamente.</label>
+        <label>Os seguintes campos estão incluídos neste Lote, mas seus Mapeamentos de campo foram excluídos: {0}. Para corrigir isso, acesse o Mapeamento avançado em Configurações do NPPatch e mapeie os campos novamente.</label>
     </customLabels>
     <customLabels>
         <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>Os seguintes campos estão incluídos neste Lote, mas seus Mapeamentos de campo foram excluídos: {0}. Para corrigir isso, acesse o objeto Importar dados do NPSP em Configurações do NPSP e mapeie os campos novamente usando o Texto de ajuda.</label>
+        <label>Os seguintes campos estão incluídos neste Lote, mas seus Mapeamentos de campo foram excluídos: {0}. Para corrigir isso, acesse o objeto Importar dados do NPPatch em Configurações do NPPatch e mapeie os campos novamente usando o Texto de ajuda.</label>
     </customLabels>
     <customLabels>
         <name>bgeWizardShowAdvancedOptions</name>
@@ -3158,7 +3158,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>batchNumberSettingsDescription</name>
-        <label>Os números de lote são identificadores exclusivos usados na Entrada de doações e no Importador de dados do NPSP. O valor autonumerado aparece nos campos Número de lote em Oportunidades e Pagamentos.</label>
+        <label>Os números de lote são identificadores exclusivos usados na Entrada de doações e no Importador de dados do NPPatch. O valor autonumerado aparece nos campos Número de lote em Oportunidades e Pagamentos.</label>
     </customLabels>
     <customLabels>
         <name>batchNumberSettingsHeader</name>
@@ -3190,19 +3190,19 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>gePaymentProcessedWarning</name>
-        <label>{0} processou com sucesso o pagamento. A alteração de doador, data, valor ou método de pagamento resultará em registros inconsistentes para a mesma transação em {0} e no NPSP.</label>
+        <label>{0} processou com sucesso o pagamento. A alteração de doador, data, valor ou método de pagamento resultará em registros inconsistentes para a mesma transação em {0} e no NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAdvancedMapping3</name>
-        <label>Encontre a documentação completa da configuração do Mapeamento Avançado &lt;a href=&quot;https://powerofus.force.com/NPSP_Advanced_Mapping&quot; target=&quot;_blank&quot;&gt;aqui&lt;/a&gt;.</label>
+        <label>Encontre a documentação completa da configuração do Mapeamento Avançado aqui.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
-        <label>Você pode encontrar a documentação completa de Totalizações personalizáveis &lt;a href=&quot;https://powerofus.force.com/NPSP_Customizable_Rollups_Overview&quot; target=&quot;_blank&quot;&gt;aqui&lt;/a&gt;.</label>
+        <label>Você pode encontrar a documentação completa de Totalizações personalizáveis aqui.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpHHObjectOverview</name>
-        <label>Para saber mais sobre o modelo recomendado Conta de família, consulte a &lt;a href=&quot;https://powerofus.force.com/NPSP_Account_Model&quot; target=&quot;_blank&quot;&gt;Documentação do NPSP&lt;/a&gt;.</label>
+        <label>Para saber mais sobre o modelo recomendado Conta de família, consulte a Documentação do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>commonAssistiveError</name>
@@ -3582,7 +3582,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>conMergeSeeDupConText</name>
-        <label>Veja todos os Contatos duplicados encontrados usando regras de correspondência. &lt;a href=&quot;https://help.salesforce.com/s/articleView?id=sfdo.NPSP_Merge_Contacts.htm&amp;type=5&quot; target=&quot;_blank&quot;&gt;&lt;b&gt; Quero saber mais &lt;/b&gt;&lt;/a&gt;</label>
+        <label>Veja todos os Contatos duplicados encontrados usando regras de correspondência. </label>
     </customLabels>
     <customLabels>
         <name>conMergeSeeDupConDRS</name>
@@ -3590,11 +3590,11 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>elevateAdNotificationFor234Body</name>
-        <label>Com o Elevate conectado ao NPSP, as doações de seus formulários online fluem automaticamente para o NPSP. O Elevate também processa pagamentos e atualiza registros de doadores no NPSP.</label>
+        <label>Com o Elevate conectado ao NPPatch, as doações de seus formulários online fluem automaticamente para o NPPatch. O Elevate também processa pagamentos e atualiza registros de doadores no NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>elevateAdNotificationFor234Title</name>
-        <label>Agilizar o processamento de doações com o Salesforce.org Elevate e o NPSP</label>
+        <label>Agilizar o processamento de doações com o Salesforce.org Elevate e o NPPatch</label>
     </customLabels>
     <customLabels>
         <name>engagementPlanCantEdit</name>
@@ -3816,7 +3816,7 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     </customLabels>
     <customLabels>
         <name>geBodyBatchHeaderLeftCol</name>
-        <label>Escolha campos a serem incluídos no cabeçalho de lote. Marque a caixa de seleção para adicionar um campo e desmarque para remover o campo do formulário. Se você quiser campos personalizados adicionais disponíveis para o Cabeçalho de lote, adicione-os ao objeto Importar dados do NPSP em lote.</label>
+        <label>Escolha campos a serem incluídos no cabeçalho de lote. Marque a caixa de seleção para adicionar um campo e desmarque para remover o campo do formulário. Se você quiser campos personalizados adicionais disponíveis para o Cabeçalho de lote, adicione-os ao objeto Importar dados do NPPatch em lote.</label>
     </customLabels>
     <customLabels>
         <name>geBodyBatchHeaderRightCol</name>
@@ -3853,11 +3853,11 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
         &lt;/br&gt;
         &lt;ol&gt;
             &lt;li&gt; Crie o campo no objeto de destino. &lt;/li&gt;
-            &lt;li&gt; Crie o campo no objeto Importar dados do NPSP. &lt;/li&gt;
-            &lt;li&gt; Se isso faz parte de um novo Grupo de objetos, crie campos adicionais para um novo Grupo de objetos e crie o novo Grupo de objetos nas Configurações do NPSP. &lt;/li&gt;
-            &lt;li&gt; Adicione o Mapeamento de campo nas Configurações do NPSP para conectar o campo Importar dados do NPSP ao campo de destino. &lt;/li&gt;
+            &lt;li&gt; Crie o campo no objeto Importar dados do NPPatch. &lt;/li&gt;
+            &lt;li&gt; Se isso faz parte de um novo Grupo de objetos, crie campos adicionais para um novo Grupo de objetos e crie o novo Grupo de objetos nas Configurações do NPPatch. &lt;/li&gt;
+            &lt;li&gt; Adicione o Mapeamento de campo nas Configurações do NPPatch para conectar o campo Importar dados do NPPatch ao campo de destino. &lt;/li&gt;
         &lt;/ol&gt;
-        Consulte a documentação do NPSP sobre Mapeamento avançado para obter mais detalhes.</label>
+        Consulte a documentação do NPPatch sobre Mapeamento avançado para obter mais detalhes.</label>
     </customLabels>
     <customLabels>
         <name>geBodyFormFieldsModalDeleteSection</name>
@@ -4033,15 +4033,15 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>geErrorCardChargedBDIFailed</name>
-        <label>O Elevate processou com sucesso o pagamento, mas o NPSP não criou o registro da transação no Salesforce. Corrija os erros e reenvie o formulário para criar o registro do Salesforce.</label>
+        <label>O Elevate processou com sucesso o pagamento, mas o NPPatch não criou o registro da transação no Salesforce. Corrija os erros e reenvie o formulário para criar o registro do Salesforce.</label>
     </customLabels>
     <customLabels>
         <name>geElevateDeleteErrorLog</name>
-        <label>Doação excluída de {0}, mas a Entrada de doações não pode excluir a doação. Remova o registro Importar dados do NPSP da doação com o ID: {1} do lote com o ID {2} em Lotes de importação de dados do NPSP.</label>
+        <label>Doação excluída de {0}, mas a Entrada de doações não pode excluir a doação. Remova o registro Importar dados do NPPatch da doação com o ID: {1} do lote com o ID {2} em Lotes de importação de dados do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>geElevateUpdateErrorLog</name>
-        <label>Doação atualizada em {0}, mas a Entrada de doações não pode atualizar a doação. Atualize o registro Importar dados do NPSP da doação com o ID: {1} do lote com o ID {2} em Lotes de importação de dados do NPSP.</label>
+        <label>Doação atualizada em {0}, mas a Entrada de doações não pode atualizar a doação. Atualize o registro Importar dados do NPPatch da doação com o ID: {1} do lote com o ID {2} em Lotes de importação de dados do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>geErrorElevateDelete</name>
@@ -4100,16 +4100,16 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
         <label>LISTA DE VERIFICAÇÃO DA CONFIGURAÇÃO DO ADMINISTRADOR</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistExploreNPSPDesc</name>
+        <name>gsChecklistExploreNPPatchDesc</name>
         <label>Familiarize-se com os principais conceitos e recursos.</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistExploreNPSPTitle</name>
-        <label>Explorar o Pacote de sucesso para organizações sem fins lucrativos (NPSP)</label>
+        <name>gsChecklistExploreNPPatchTitle</name>
+        <label>Explorar o Pacote de sucesso para organizações sem fins lucrativos (NPPatch)</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemAddUserDesc</name>
-        <label>Dê aos usuários acesso ao NPSP e gerencie permissões para sua organização a fim de garantir que as pessoas certas tenham acesso ao que precisam para manter tudo funcionando sem problemas.</label>
+        <label>Dê aos usuários acesso ao NPPatch e gerencie permissões para sua organização a fim de garantir que as pessoas certas tenham acesso ao que precisam para manter tudo funcionando sem problemas.</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemAddUserLinkLabel</name>
@@ -4133,7 +4133,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>gsChecklistItemCreateDonationDesc</name>
-        <label>Acompanhe doações, bolsas ou outro tipo de receita para que você possa identificar padrões de doação e entender o que incentiva as doações dos membros. Comece aprendendo a inserir doações no NPSP.</label>
+        <label>Acompanhe doações, bolsas ou outro tipo de receita para que você possa identificar padrões de doação e entender o que incentiva as doações dos membros. Comece aprendendo a inserir doações no NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemCreateDonationLinkLabel</name>
@@ -4181,7 +4181,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>gsChecklistItemGoFurtherLinkLabel</name>
-        <label>Saiba mais sobre o NPSP no Trailhead</label>
+        <label>Saiba mais sobre o NPPatch no Trailhead</label>
     </customLabels>
     <customLabels>
         <name>donationHistoryFilterSelectAYear</name>
@@ -4193,7 +4193,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>gsChecklistItemImportDataDesc</name>
-        <label>Use o Importador de dados do NPSP para colocar seus registros no Salesforce.</label>
+        <label>Use o Importador de dados do NPPatch para colocar seus registros no Salesforce.</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemImportDataPriBtnLabel</name>
@@ -4228,48 +4228,48 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
         <label>Gerenciar alterações na sua organização</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudDesc</name>
-        <label>Esta breve visão geral destina-se mostrar resumidamente o que é possível fazer com o NPSP, mas você pode mergulhar mais fundo e descobrir os muitos outros recursos disponíveis para sua organização.</label>
+        <name>gsChecklistItemNPPatchCloudDesc</name>
+        <label>Esta breve visão geral destina-se mostrar resumidamente o que é possível fazer com o NPPatch, mas você pode mergulhar mais fundo e descobrir os muitos outros recursos disponíveis para sua organização.</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudPriBtnLabel</name>
+        <name>gsChecklistItemNPPatchCloudPriBtnLabel</name>
         <label>Ver recursos</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudLinkLabel</name>
-        <label>Saiba mais sobre os recursos do NPSP no Trailhead</label>
+        <name>gsChecklistItemNPPatchCloudLinkLabel</name>
+        <label>Saiba mais sobre os recursos do NPPatch no Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudTitle</name>
+        <name>gsChecklistItemNPPatchCloudTitle</name>
         <label>Conheça outros recursos de nuvem para organizações sem fins lucrativos</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPGuideDesc</name>
+        <name>gsChecklistItemNPPatchGuideDesc</name>
         <label>Aproveite para planejar cuidadosamente sua implementação e garantir que sua organização do Salesforce atenderá às necessidades de sua organização sem fins lucrativos.</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPGuidePriBtnLabel</name>
+        <name>gsChecklistItemNPPatchGuidePriBtnLabel</name>
         <label>Baixar PDF</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPGuideTitle</name>
-        <label>Guia de planejamento do NPSP</label>
+        <name>gsChecklistItemNPPatchGuideTitle</name>
+        <label>Guia de planejamento do NPPatch</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsDesc</name>
-        <label>Navegue até a página Configurações do NPSP e faça uma revisão completa para confirmar se as configurações estão corretas para sua organização e estão funcionando da maneira esperada.</label>
+        <name>gsChecklistItemNPPatchSettingsDesc</name>
+        <label>Navegue até a página Configurações do NPPatch e faça uma revisão completa para confirmar se as configurações estão corretas para sua organização e estão funcionando da maneira esperada.</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsPriBtnLabel</name>
-        <label>Configurações do NPSP</label>
+        <name>gsChecklistItemNPPatchSettingsPriBtnLabel</name>
+        <label>Configurações do NPPatch</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsLinkLabel</name>
-        <label>Saiba mais sobre as Configurações do NPSP no Guia de planejamento</label>
+        <name>gsChecklistItemNPPatchSettingsLinkLabel</name>
+        <label>Saiba mais sobre as Configurações do NPPatch no Guia de planejamento</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsTitle</name>
-        <label>Ajustar as configurações do NPSP</label>
+        <name>gsChecklistItemNPPatchSettingsTitle</name>
+        <label>Ajustar as configurações do NPPatch</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemPageLayoutsDesc</name>
@@ -4284,19 +4284,19 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
         <label>Personalizar layouts de página</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPDesc</name>
+        <name>gsChecklistItemPrepareNPPatchDesc</name>
         <label>Estabeleça metas específicas e aprenda as melhores práticas para implementar o Nonprofit Cloud.</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPPriBtnLabel</name>
+        <name>gsChecklistItemPrepareNPPatchPriBtnLabel</name>
         <label>Estipular metas</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPLinkLabel</name>
-        <label>Saiba mais sobre o Sucesso do NPSP no Trailhead</label>
+        <name>gsChecklistItemPrepareNPPatchLinkLabel</name>
+        <label>Saiba mais sobre o Sucesso do NPPatch no Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPTitle</name>
+        <name>gsChecklistItemPrepareNPPatchTitle</name>
         <label>Preparar-se para o sucesso com o Nonprofit Cloud</label>
     </customLabels>
     <customLabels>
@@ -4321,7 +4321,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>gsChecklistItemRunningReportsLinkLabel</name>
-        <label>Saiba como personalizar relatórios e painéis do NPSP no Trailhead</label>
+        <label>Saiba como personalizar relatórios e painéis do NPPatch no Trailhead</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemRunningReportsTitle</name>
@@ -4389,7 +4389,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactOrganizationDesc</name>
-        <label>As Afiliações no NPSP permitem capturar conexões importantes entre seus membros e organizações relacionadas, como trabalho, escola ou negócios. Conecte um Contato a uma Organização usando Afiliações de organização.</label>
+        <label>As Afiliações no NPPatch permitem capturar conexões importantes entre seus membros e organizações relacionadas, como trabalho, escola ou negócios. Conecte um Contato a uma Organização usando Afiliações de organização.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactOrganizationLink</name>
@@ -4405,7 +4405,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactsRelationshipsDesc</name>
-        <label>Os relacionamentos no NPSP permitem capturar conexões importantes entre seus membros. Conecte contatos usando a lista relacionada Relacionamentos nos registros de contato.</label>
+        <label>Os relacionamentos no NPPatch permitem capturar conexões importantes entre seus membros. Conecte contatos usando a lista relacionada Relacionamentos nos registros de contato.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactsRelationshipsLink</name>
@@ -4421,7 +4421,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemCreateContactAndAccountDesc</name>
-        <label>As pessoas são o recurso mais importante de uma organização sem fins lucrativos e, por isso, entender como usamos o objeto Contato para rastreá-las no NPSP é fundamental. O objeto Contato armazena dados de membros, como nome, endereço e empregador.</label>
+        <label>As pessoas são o recurso mais importante de uma organização sem fins lucrativos e, por isso, entender como usamos o objeto Contato para rastreá-las no NPPatch é fundamental. O objeto Contato armazena dados de membros, como nome, endereço e empregador.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemCreateContactAndAccountLink</name>
@@ -4444,15 +4444,15 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
         <label>O Nonprofit Cloud inclui aplicativos, ferramentas, recursos, serviços e tecnologias projetadas para atender às necessidades exclusivas de organizações sem fins lucrativos.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemWhatIsNPSPDesc</name>
-        <label>A base do Nonprofit Cloud é o aplicativo NPSP (Nonprofit Success Pack, Pacote de sucesso para organizações sem fins lucrativos). O NPSP ajuda você a gerenciar seus membros e esforços de angariação de fundos. Se alguém diz que está usando a &quot;versão de organização sem fins lucrativos&quot; do Salesforce, geralmente está falando do NPSP.</label>
+        <name>gseuChecklistItemWhatIsNPPatchDesc</name>
+        <label>A base do Nonprofit Cloud é o aplicativo NPPatch (NPPatch, Pacote de sucesso para organizações sem fins lucrativos). O NPPatch ajuda você a gerenciar seus membros e esforços de angariação de fundos. Se alguém diz que está usando a &quot;versão de organização sem fins lucrativos&quot; do Salesforce, geralmente está falando do NPPatch.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemWhatIsNPSPLink</name>
+        <name>gseuChecklistItemWhatIsNPPatchLink</name>
         <label>Saiba mais sobre o Pacote de sucesso para organizações sem fins lucrativos no Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemWhatIsNPSPTitle</name>
+        <name>gseuChecklistItemWhatIsNPPatchTitle</name>
         <label>O que é o Pacote de sucesso para organizações sem fins lucrativos?</label>
     </customLabels>
     <customLabels>
@@ -4472,11 +4472,11 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
         <label>Integrar seus usuários</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistWelcomeNPSPDesc</name>
-        <label>Use esses recursos essenciais para começar na sua jornada do NPSP.</label>
+        <name>gseuChecklistWelcomeNPPatchDesc</name>
+        <label>Use esses recursos essenciais para começar na sua jornada do NPPatch.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistWelcomeNPSPTitle</name>
+        <name>gseuChecklistWelcomeNPPatchTitle</name>
         <label>Bem-vindo ao Pacote de sucesso para organizações sem fins lucrativos e ao Nonprofit Cloud</label>
     </customLabels>
     <customLabels>
@@ -4497,7 +4497,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>gseuChecklistWorkRecordsDesc</name>
-        <label>Depois de colocar dados de membros e doações no NPSP, você precisará poder encontrar e interagir facilmente com os registros em que está trabalhando.</label>
+        <label>Depois de colocar dados de membros e doações no NPPatch, você precisará poder encontrar e interagir facilmente com os registros em que está trabalhando.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistWorkRecordsTitle</name>
@@ -4505,7 +4505,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemGlobalSearchDesc</name>
-        <label>Quando você está apenas começando no NPSP, encontrar registros pode ser complicado. Use a pesquisa global para pesquisar em toda a sua organização do Salesforce e encontrar o que você precisa rapidamente.</label>
+        <label>Quando você está apenas começando no NPPatch, encontrar registros pode ser complicado. Use a pesquisa global para pesquisar em toda a sua organização do Salesforce e encontrar o que você precisa rapidamente.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemGlobalSearchLinkLabel</name>
@@ -4552,24 +4552,24 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
         <label>Trabalhar com vários registros usando exibições de listas</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportDesc</name>
-        <label>O NPSP inclui 87 dos relatórios de membros e de angariação de recursos mais usados. Use esses relatórios já prontos ou personalize-os.</label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportDesc</name>
+        <label>O NPPatch inclui 87 dos relatórios de membros e de angariação de recursos mais usados. Use esses relatórios já prontos ou personalize-os.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportLinkLabel</name>
-        <label>Saiba mais sobre os relatórios do NPSP no Trailhead</label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportLinkLabel</name>
+        <label>Saiba mais sobre os relatórios do NPPatch no Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportPriBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</name>
         <label>Executar relatórios</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportSecBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</name>
         <label>Workbook de relatórios</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportTitle</name>
-        <label>Executar um relatório do NPSP pré-criado</label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportTitle</name>
+        <label>Executar um relatório do NPPatch pré-criado</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemStandardReportTypeDesc</name>
@@ -4589,7 +4589,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemViewDashboardDesc</name>
-        <label>Os painéis extraem dados de um ou mais relatórios e os exibem lado a lado na mesma janela. O NPSP inclui três painéis que você pode usar prontos ou personalizar.</label>
+        <label>Os painéis extraem dados de um ou mais relatórios e os exibem lado a lado na mesma janela. O NPPatch inclui três painéis que você pode usar prontos ou personalizar.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemViewDashboardLinkLabel</name>
@@ -4605,7 +4605,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>gseuChecklistYourDataDesc</name>
-        <label>Os relatórios e painéis ajudam a organizar seus dados para que você possa contar a história do impacto da sua organização. O NPSP inclui relatórios prontos para usar, mas você pode criar o seu próprio.</label>
+        <label>Os relatórios e painéis ajudam a organizar seus dados para que você possa contar a história do impacto da sua organização. O NPPatch inclui relatórios prontos para usar, mas você pode criar o seu próprio.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistYourDataTitle</name>
@@ -4693,11 +4693,11 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>gseuChecklistTrackDonationDesc</name>
-        <label>No NPSP, você rastreia doações, bolsas, promessas e outros tipos de receita usando o objeto Oportunidade. Você pode criar doações de um indivíduo ou de uma organização, como uma fundação, empresa ou entidade governamental.</label>
+        <label>No NPPatch, você rastreia doações, bolsas, promessas e outros tipos de receita usando o objeto Oportunidade. Você pode criar doações de um indivíduo ou de uma organização, como uma fundação, empresa ou entidade governamental.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistTrackDonationTitle</name>
-        <label>Acompanhar doações e outros tipos de renda com o NPSP</label>
+        <label>Acompanhar doações e outros tipos de renda com o NPPatch</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemExtraTwoMinutesVideo</name>
@@ -4773,7 +4773,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
-        <label>Este recurso requer Mapeamento avançado e Entrada de doações. Ative-os em Configurações do NPSP.</label>
+        <label>Este recurso requer Mapeamento avançado e Entrada de doações. Ative-os em Configurações do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>geServiceLevelErrorAdvancedMapping</name>
@@ -4789,11 +4789,11 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelFieldPermission2</name>
-        <label>Alternativamente, saia deste formulário sem salvar e verifique suas permissões tanto no objeto de destino quanto no objeto Importar dados do NPSP.</label>
+        <label>Alternativamente, saia deste formulário sem salvar e verifique suas permissões tanto no objeto de destino quanto no objeto Importar dados do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelMissingRequiredFields</name>
-        <label>Você precisa incluir todos os campos necessários em seu modelo. Revise os campos de origem (objeto Importar dados do NPSP) dos seguintes campos:</label>
+        <label>Você precisa incluir todos os campos necessários em seu modelo. Revise os campos de origem (objeto Importar dados do NPPatch) dos seguintes campos:</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelMissingRequiredGroupFields</name>
@@ -4953,7 +4953,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>geHelpTextAddressMapping</name>
-        <label>O registro Endereço que está associado à Conta de família do Contact1. A automação do NPSP também pode preencher esse endereço na família do Contact1 e de todos os contatos dentro da mesma família. Se você está usando o objeto Endereço EDA, deve criar um novo Grupo de objetos para o objeto e usar seus campos em seu modelo.</label>
+        <label>O registro Endereço que está associado à Conta de família do Contact1. A automação do NPPatch também pode preencher esse endereço na família do Contact1 e de todos os contatos dentro da mesma família. Se você está usando o objeto Endereço EDA, deve criar um novo Grupo de objetos para o objeto e usar seus campos em seu modelo.</label>
     </customLabels>
     <customLabels>
         <name>geHelpTextAllocation1Mapping</name>
@@ -5300,7 +5300,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthDetailsAccountDefaultRTIssue</name>
-        <label>O tipo de registro Modelo de conta, {0} (definido em Configurações do NPSP), está atualmente definido como o tipo de registro de Conta padrão do seu Perfil.</label>
+        <label>O tipo de registro Modelo de conta, {0} (definido em Configurações do NPPatch), está atualmente definido como o tipo de registro de Conta padrão do seu Perfil.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsAccountModel</name>
@@ -5348,7 +5348,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthDetailsHHAccountModel</name>
-        <label>Ao usar o Modelo de conta de família, você precisa definir Regras de objeto doméstico para &quot;Sem contatos&quot;. Você pode definir o campo Regras de objetos de família na página Configurações do NPSP em Pessoas | Famílias.</label>
+        <label>Ao usar o Modelo de conta de família, você precisa definir Regras de objeto doméstico para &quot;Sem contatos&quot;. Você pode definir o campo Regras de objetos de família na página Configurações do NPPatch em Pessoas | Famílias.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsHHActNoContacts</name>
@@ -5384,7 +5384,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthDetailsInvalidFiscalYears</name>
-        <label>Sua organização está usando Anos fiscais personalizados. O NPSP não suporta totalizações de ano fiscal com Anos fiscais personalizados.</label>
+        <label>Sua organização está usando Anos fiscais personalizados. O NPPatch não suporta totalizações de ano fiscal com Anos fiscais personalizados.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsInvalidLevelField</name>
@@ -5436,7 +5436,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthDetailsMailingListReportMissing</name>
-        <label>O Relatório da lista de correspondência para famílias da campanha do NPSP está ausente. Este relatório é executado quando você clica no botão Lista de correspondência para famílias em um registro de campanha.</label>
+        <label>O Relatório da lista de correspondência para famílias da campanha do NPPatch está ausente. Este relatório é executado quando você clica no botão Lista de correspondência para famílias em um registro de campanha.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsMissingOppPayments</name>
@@ -5448,7 +5448,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthDetailsNothingScheduled</name>
-        <label>Os trabalhos padrão do NPSP não estão agendados. Os trabalhos agendados atualizam campos de resumo nos registros todas as noites.</label>
+        <label>Os trabalhos padrão do NPPatch não estão agendados. Os trabalhos agendados atualizam campos de resumo nos registros todas as noites.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsOCR</name>
@@ -5464,11 +5464,11 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthDetailsOCRSettingsResolution</name>
-        <label>Na guia Configurações do NPSP, clique em Doações | Funções de contato e edite os valores das configurações acima.</label>
+        <label>Na guia Configurações do NPPatch, clique em Doações | Funções de contato e edite os valores das configurações acima.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsOCRSettingsValid</name>
-        <label>As configurações de Funções de contato de oportunidade do NPSP são válidas.</label>
+        <label>As configurações de Funções de contato de oportunidade do NPPatch são válidas.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsPaymentMappingBadDataTypes</name>
@@ -5496,15 +5496,15 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthDetailsTriggerHandlerDuplicate</name>
-        <label>O Health Check encontrou mais de um Manipulador de acionador {0} no objeto {1} com os mesmos valores de campo. Os manipuladores de acionador duplicados afetarão o comportamento do NPSP.</label>
+        <label>O Health Check encontrou mais de um Manipulador de acionador {0} no objeto {1} com os mesmos valores de campo. Os manipuladores de acionador duplicados afetarão o comportamento do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsTriggerHandlerMismatch</name>
-        <label>O Manipulador de acionador {0} no objeto {1} não corresponde à configuração do NPSP padrão.</label>
+        <label>O Manipulador de acionador {0} no objeto {1} não corresponde à configuração do NPPatch padrão.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsTriggerHandlerMissing</name>
-        <label>O Manipulador de acionador {0} no objeto {1} está ausente e afetará o comportamento do NPSP.</label>
+        <label>O Manipulador de acionador {0} no objeto {1} está ausente e afetará o comportamento do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsUDFBadDatatypes</name>
@@ -5552,7 +5552,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthLabelDisableRecordBatchDescription</name>
-        <label>Se selecionado, o Health Check verifica apenas problemas nas configurações do NPSP. Selecione esta opção se sua organização tiver um grande volume de registros e o Health Check estiver tendo problemas para concluir.</label>
+        <label>Se selecionado, o Health Check verifica apenas problemas nas configurações do NPPatch. Selecione esta opção se sua organização tiver um grande volume de registros e o Health Check estiver tendo problemas para concluir.</label>
     </customLabels>
     <customLabels>
         <name>healthLabelErrorRecipientValid</name>
@@ -5580,7 +5580,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthLabelIntro</name>
-        <label>O Health Check verifica se todas as configurações do NPSP são válidas e procura problemas nos dados de registro. Após a conclusão, você pode visualizar os resultados abaixo, incluindo informações detalhadas de eventuais falhas.</label>
+        <label>O Health Check verifica se todas as configurações do NPPatch são válidas e procura problemas nos dados de registro. Após a conclusão, você pode visualizar os resultados abaixo, incluindo informações detalhadas de eventuais falhas.</label>
     </customLabels>
     <customLabels>
         <name>healthLabelLastRun</name>
@@ -5628,11 +5628,11 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthLabelScheduler</name>
-        <label>Agendador padrão do NPSP</label>
+        <label>Agendador padrão do NPPatch</label>
     </customLabels>
     <customLabels>
         <name>healthLabelSchedulerValid</name>
-        <label>Os Trabalhos recorrentes do NPSP estão agendados.</label>
+        <label>Os Trabalhos recorrentes do NPPatch estão agendados.</label>
     </customLabels>
     <customLabels>
         <name>healthLabelShowPassedTests</name>
@@ -5648,7 +5648,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthLabelTriggerHandlersValid</name>
-        <label>Os acionadores são configurados como acionadores padrão do NPSP.</label>
+        <label>Os acionadores são configurados como acionadores padrão do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>healthLabelUDFValid</name>
@@ -5672,7 +5672,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthPaymentAutoCloseStageMustBeActiveClosedWonOrBlank</name>
-        <label>Selecione uma fase ativa Fechada/Ganha na fase da Oportunidade para quando ela estiver totalmente paga. Você também pode deixar o valor em branco, o que impedirá o NPSP de atualizar automaticamente a fase da Oportunidade quando todos os Pagamentos forem recebidos.</label>
+        <label>Selecione uma fase ativa Fechada/Ganha na fase da Oportunidade para quando ela estiver totalmente paga. Você também pode deixar o valor em branco, o que impedirá o NPPatch de atualizar automaticamente a fase da Oportunidade quando todos os Pagamentos forem recebidos.</label>
     </customLabels>
     <customLabels>
         <name>healthPaymentAutoCloseStageValid</name>
@@ -5692,7 +5692,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthSolutionAccountModel</name>
-        <label>Todas as suas Contas devem usar o mesmo Modelo de conta. Visualize todas as suas Contas e seus tipos executando o relatório &lt;b&gt;Contas individuais por tipo de conta&lt;/b&gt; na pasta de relatórios NPSP Health Check.</label>
+        <label>Todas as suas Contas devem usar o mesmo Modelo de conta. Visualize todas as suas Contas e seus tipos executando o relatório &lt;b&gt;Contas individuais por tipo de conta&lt;/b&gt; na pasta de relatórios NPPatch Health Check.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAccountRTIssue</name>
@@ -5700,43 +5700,43 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelFieldsMissing</name>
-        <label>Clique em {0} | {1} na guia Configurações do NPSP e exclua o registro Criação automática de relacionamentos inválido.</label>
+        <label>Clique em {0} | {1} na guia Configurações do NPPatch e exclua o registro Criação automática de relacionamentos inválido.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelInvalidCMField</name>
-        <label>Clique em {0} | {1} na guia Configurações do NPSP e exclua o registro Criação automática de relacionamentos que faz referência a esse campo.</label>
+        <label>Clique em {0} | {1} na guia Configurações do NPPatch e exclua o registro Criação automática de relacionamentos que faz referência a esse campo.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelInvalidContactField</name>
-        <label>Clique em {0} | {1} na guia Configurações do NPSP e exclua o registro Criação automática de relacionamentos que faz referência a esse campo.</label>
+        <label>Clique em {0} | {1} na guia Configurações do NPPatch e exclua o registro Criação automática de relacionamentos que faz referência a esse campo.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelInvalidLookupField</name>
-        <label>Clique em {0} | {1} na guia Configurações do NPSP e exclua o registro Criação automática de relacionamentos que faz referência a esse campo.</label>
+        <label>Clique em {0} | {1} na guia Configurações do NPPatch e exclua o registro Criação automática de relacionamentos que faz referência a esse campo.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionBadRDField</name>
-        <label>Na guia Configurações do NPSP, clique em {0} | {1} e exclua o registro Mapeamento de campo de doação recorrente que faz referência a esse campo.</label>
+        <label>Na guia Configurações do NPPatch, clique em {0} | {1} e exclua o registro Mapeamento de campo de doação recorrente que faz referência a esse campo.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionContactData</name>
-        <label>Veja esses Contatos executando o relatório &lt;b&gt;Contatos sem Contas&lt;/b&gt; na pasta de relatórios NPSP Health Check.</label>
+        <label>Veja esses Contatos executando o relatório &lt;b&gt;Contatos sem Contas&lt;/b&gt; na pasta de relatórios NPPatch Health Check.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionEditSetting</name>
-        <label>Na guia Configurações do NPSP, clique em {1} | {2} e edite a configuração {0}.</label>
+        <label>Na guia Configurações do NPPatch, clique em {1} | {2} e edite a configuração {0}.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionHHAccNoContacts</name>
-        <label>Considere excluir esses registros de Conta de família não utilizados para economizar espaço. Veja esses registros de Conta de família executando o relatório &lt;b&gt;Contas de família vazias&lt;/b&gt; na pasta de relatórios do NPSP Health Check.</label>
+        <label>Considere excluir esses registros de Conta de família não utilizados para economizar espaço. Veja esses registros de Conta de família executando o relatório &lt;b&gt;Contas de família vazias&lt;/b&gt; na pasta de relatórios do NPPatch Health Check.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionHHObjNoContacts</name>
-        <label>Considere excluir esses objetos de família não utilizados para economizar espaço. Se você tiver concluído uma conversão para o modelo Conta de família e não precisar mais dos dados nos registros de objetos de família, eles poderão ser excluídos. Visualize esses objetos de família executando o relatório &lt;b&gt;Objetos de família vazios&lt;/b&gt; na pasta de relatórios do NPSP Health Check.</label>
+        <label>Considere excluir esses objetos de família não utilizados para economizar espaço. Se você tiver concluído uma conversão para o modelo Conta de família e não precisar mais dos dados nos registros de objetos de família, eles poderão ser excluídos. Visualize esses objetos de família executando o relatório &lt;b&gt;Objetos de família vazios&lt;/b&gt; na pasta de relatórios do NPPatch Health Check.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidFiscalYears</name>
-        <label>Como o Salesforce não é compatível com a desativação dos Anos fiscais personalizados, as Totalizações do NPSP usarão o Ano civil como padrão.</label>
+        <label>Como o Salesforce não é compatível com a desativação dos Anos fiscais personalizados, as Totalizações do NPPatch usarão o Ano civil como padrão.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidLevelField</name>
@@ -5744,7 +5744,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidOppField</name>
-        <label>Na guia Configurações do NPSP, clique em {0} | {1} e exclua o registro Mapeamento de pagamentos que faz referência a esse campo.</label>
+        <label>Na guia Configurações do NPPatch, clique em {0} | {1} e exclua o registro Mapeamento de pagamentos que faz referência a esse campo.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidOppStage</name>
@@ -5752,7 +5752,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidPaymentField</name>
-        <label>Na guia Configurações do NPSP, clique em {0} | {1} e exclua o registro Mapeamento de pagamentos que faz referência a esse campo.</label>
+        <label>Na guia Configurações do NPPatch, clique em {0} | {1} e exclua o registro Mapeamento de pagamentos que faz referência a esse campo.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidRDCustomPeriod</name>
@@ -5760,7 +5760,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidRDCustomPeriodPicklist</name>
-        <label>Na guia Configurações do NPSP, clique em {0} | {1} e adicione o Período de parcelamento personalizado de doação recorrente que falta ou exclua o valor da lista de opções do campo Período de parcelamento.</label>
+        <label>Na guia Configurações do NPPatch, clique em {0} | {1} e adicione o Período de parcelamento personalizado de doação recorrente que falta ou exclua o valor da lista de opções do campo Período de parcelamento.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidScheduledJob</name>
@@ -5768,15 +5768,15 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidUDFObjectField</name>
-        <label>Na guia Configurações do NPSP, clique em {0} | {1} e exclua o registro Totalização de usuários que faz referência a esse campo.</label>
+        <label>Na guia Configurações do NPPatch, clique em {0} | {1} e exclua o registro Totalização de usuários que faz referência a esse campo.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionMailingListReportMissing</name>
-        <label>Crie um relatório Campanhas com contatos e adicione um filtro a Status do membro não contém &quot;Duplicar&quot;. Em seguida, especifique este relatório na guia {0} | {1} em Configurações do NPSP.</label>
+        <label>Crie um relatório Campanhas com contatos e adicione um filtro a Status do membro não contém &quot;Duplicar&quot;. Em seguida, especifique este relatório na guia {0} | {1} em Configurações do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionMissingOppPayments</name>
-        <label>Veja essas Oportunidades executando o relatório &lt;b&gt;Oportunidades sem pagamentos&lt;/b&gt; na pasta de relatórios do NPSP Health Check. Observe que você deve adicionar critérios de filtro ao relatório para excluir tipos de Oportunidade e tipos de Registro de oportunidade excluídos nas Configurações de pagamentos do NPSP. Você pode criar os registros de Pagamento ausentes usando o botão Criar pagamentos em falta nas Configurações do NPSP | Processos de dados em massa | Criar pagamentos em falta.</label>
+        <label>Veja essas Oportunidades executando o relatório &lt;b&gt;Oportunidades sem pagamentos&lt;/b&gt; na pasta de relatórios do NPPatch Health Check. Observe que você deve adicionar critérios de filtro ao relatório para excluir tipos de Oportunidade e tipos de Registro de oportunidade excluídos nas Configurações de pagamentos do NPPatch. Você pode criar os registros de Pagamento ausentes usando o botão Criar pagamentos em falta nas Configurações do NPPatch | Processos de dados em massa | Criar pagamentos em falta.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionMissingPicklistValue</name>
@@ -5784,11 +5784,11 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthSolutionNothingScheduled</name>
-        <label>Para reagendar os trabalhos do NPSP padrão, acesse Configurações do NPSP | Processos de dados em massa | Agendador de processos. Clique em Editar. Deixe a opção Não ativar trabalho de agendamento automático do NPSP Padrão desmarcada. Clique em Salvar.</label>
+        <label>Para reagendar os trabalhos do NPPatch padrão, acesse Configurações do NPPatch | Processos de dados em massa | Agendador de processos. Clique em Editar. Deixe a opção Não ativar trabalho de agendamento automático do NPPatch Padrão desmarcada. Clique em Salvar.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionOCRDupPrimary</name>
-        <label>Se você tiver mais de uma Função de contato de oportunidade marcada como Primária, isso pode fazer com que o NPSP calcule incorretamente as Totalizações de oportunidade, por exemplo, Total de doações. Para ver quais oportunidades têm mais de uma Função de contato de oportunidade marcada como Primária, execute o relatório &lt;b&gt;Oportunidades com funções de contato primárias&lt;/b&gt; na pasta de relatório do NPSP Health Check.</label>
+        <label>Se você tiver mais de uma Função de contato de oportunidade marcada como Primária, isso pode fazer com que o NPPatch calcule incorretamente as Totalizações de oportunidade, por exemplo, Total de doações. Para ver quais oportunidades têm mais de uma Função de contato de oportunidade marcada como Primária, execute o relatório &lt;b&gt;Oportunidades com funções de contato primárias&lt;/b&gt; na pasta de relatório do NPPatch Health Check.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionOCRException</name>
@@ -5796,19 +5796,19 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthSolutionPaymentMappingBadDataTypes</name>
-        <label>Na guia Configurações do NPSP, clique em {0} | {1} e exclua o registro Mapeamento de pagamentos que faz referência a esses campos.</label>
+        <label>Na guia Configurações do NPPatch, clique em {0} | {1} e exclua o registro Mapeamento de pagamentos que faz referência a esses campos.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionRDBadOppField</name>
-        <label>Na guia Configurações do NPSP, clique em {0} | {1} e exclua o registro Mapeamento de campo de doação recorrente que faz referência a esse campo.</label>
+        <label>Na guia Configurações do NPPatch, clique em {0} | {1} e exclua o registro Mapeamento de campo de doação recorrente que faz referência a esse campo.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionRDFieldsBadDatatypes</name>
-        <label>Na guia Configurações do NPSP, clique em {0} | {1} e exclua o registro Mapeamento de campo de doação recorrente que faz referência a esses campos.</label>
+        <label>Na guia Configurações do NPPatch, clique em {0} | {1} e exclua o registro Mapeamento de campo de doação recorrente que faz referência a esses campos.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionRelReciprocalInvalid</name>
-        <label>Na guia Configurações do NPSP, clique em {0} | {1} e exclua o registro Relacionamento recíproco. Em seguida, crie outro com as informações necessárias.</label>
+        <label>Na guia Configurações do NPPatch, clique em {0} | {1} e exclua o registro Relacionamento recíproco. Em seguida, crie outro com as informações necessárias.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionSaveOppsFailed</name>
@@ -5816,11 +5816,11 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthSolutionScheduleJobs</name>
-        <label>Todas as classes programadas do NPSP devem ter registros em Schedulable__c para que esses recursos funcionem corretamente.</label>
+        <label>Todas as classes programadas do NPPatch devem ter registros em Schedulable__c para que esses recursos funcionem corretamente.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionTriggerHandlerMismatch</name>
-        <label>As alterações nos acionadores podem afetar as funcionalidades principais do NPSP de maneiras inesperadas e devem ser completamente testadas antes da implantação na produção. Se essas alterações não forem intencionais, você deve redefinir seus manipuladores de acionador para corresponder à configuração do NPSP padrão.</label>
+        <label>As alterações nos acionadores podem afetar as funcionalidades principais do NPPatch de maneiras inesperadas e devem ser completamente testadas antes da implantação na produção. Se essas alterações não forem intencionais, você deve redefinir seus manipuladores de acionador para corresponder à configuração do NPPatch padrão.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionUnsupportedPicklistValue</name>
@@ -5828,11 +5828,11 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>healthSolutionUDFBadDatatypes</name>
-        <label>Na guia Configurações do NPSP, clique em {0} | {1} e exclua o registro Totalização de usuários que faz referência a esses dois campos.</label>
+        <label>Na guia Configurações do NPPatch, clique em {0} | {1} e exclua o registro Totalização de usuários que faz referência a esses dois campos.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionUDFOppField</name>
-        <label>Na guia Configurações do NPSP, clique em {0} | {1} e exclua o registro Totalização de usuários que faz referência a esse campo.</label>
+        <label>Na guia Configurações do NPPatch, clique em {0} | {1} e exclua o registro Totalização de usuários que faz referência a esse campo.</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupLabelReturnToCmp</name>
@@ -5840,7 +5840,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeBatchMessage</name>
-        <label>Devido ao grande número de Membros da campanha nesta Campanha, o NPSP está usando um processo de lote para identificar Membros da família, o que pode levar vários minutos para ser concluído. Quando estiver pronto, você poderá visualizar o relatório Lista de correspondência de família clicando no link Relatório de lista de correspondência de família.</label>
+        <label>Devido ao grande número de Membros da campanha nesta Campanha, o NPPatch está usando um processo de lote para identificar Membros da família, o que pode levar vários minutos para ser concluído. Quando estiver pronto, você poderá visualizar o relatório Lista de correspondência de família clicando no link Relatório de lista de correspondência de família.</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeBatchProgressTitle</name>
@@ -5852,7 +5852,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeNoReport</name>
-        <label>Não foi possível encontrar o relatório. Crie um relatório e salve-o com o nome de relatório exclusivo &apos;NPSP_Campaign_Household_Mailing_List_V2&apos;. Use o tipo de relatório Campanhas com contatos e adicione filtros para CampaignId é igual a em branco e Status do membro não contém &apos;Duplicado&apos;.</label>
+        <label>Não foi possível encontrar o relatório. Crie um relatório e salve-o com o nome de relatório exclusivo &apos;NPPatch_Campaign_Household_Mailing_List_V2&apos;. Use o tipo de relatório Campanhas com contatos e adicione filtros para CampaignId é igual a em branco e Status do membro não contém &apos;Duplicado&apos;.</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeStatus</name>
@@ -5991,8 +5991,8 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
         <label>Mesclar famílias</label>
     </customLabels>
     <customLabels>
-        <name>lblNPSPSettings</name>
-        <label>Configurações do NPSP</label>
+        <name>lblNPPatchSettings</name>
+        <label>Configurações do NPPatch</label>
     </customLabels>
     <customLabels>
         <name>lblNoHHMergePermissions</name>
@@ -6112,7 +6112,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>leadConvertRecordTypeWarning</name>
-        <label>O Tipo de registro de conta padrão para o seu Perfil é o mesmo Tipo de registro definido como o Modelo de conta em Configurações do NPSP, o que pode causar vários problemas de dados. Recomendamos alterar o padrão do Tipo de registro da conta para um valor diferente em todos os perfis.</label>
+        <label>O Tipo de registro de conta padrão para o seu Perfil é o mesmo Tipo de registro definido como o Modelo de conta em Configurações do NPPatch, o que pode causar vários problemas de dados. Recomendamos alterar o padrão do Tipo de registro da conta para um valor diferente em todos os perfis.</label>
     </customLabels>
     <customLabels>
         <name>leadConvertSectionTitle</name>
@@ -6232,7 +6232,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>pmtModifyCurrency</name>
-        <label>Não é possível modificar as moedas de pagamento diretamente. Atualize a moeda da Oportunidade pai e o NPSP atualizará automaticamente a moeda de todos os registros de Pagamento relacionados.</label>
+        <label>Não é possível modificar as moedas de pagamento diretamente. Atualize a moeda da Oportunidade pai e o NPPatch atualizará automaticamente a moeda de todos os registros de Pagamento relacionados.</label>
     </customLabels>
     <customLabels>
         <name>pmtNoRefundPermissionMessage</name>
@@ -6400,11 +6400,11 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>pmtWizardPaymentsDisabled</name>
-        <label>Você não tem Pagamentos do NPSP ativados. Para usar o Assistente de agendamento de pagamentos, ative Pagamentos na página Configurações do NPSP em Doações | Pagamentos.</label>
+        <label>Você não tem Pagamentos do NPPatch ativados. Para usar o Assistente de agendamento de pagamentos, ative Pagamentos na página Configurações do NPPatch em Doações | Pagamentos.</label>
     </customLabels>
     <customLabels>
         <name>pmtWizardPaymentsDisabledTitle</name>
-        <label>Pagamentos do NPSP não ativados</label>
+        <label>Pagamentos do NPPatch não ativados</label>
     </customLabels>
     <customLabels>
         <name>pmtWizardPaymentsNoAccessMessage</name>
@@ -6484,7 +6484,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>psGatewaySelectionLabel</name>
-        <label>O NPSP usa o gateway adicionado mais recentemente ao Elevate, a menos que você o substitua. Para definir um gateway de pagamento padrão do Elevate, selecione-o aqui.</label>
+        <label>O NPPatch usa o gateway adicionado mais recentemente ao Elevate, a menos que você o substitua. Para definir um gateway de pagamento padrão do Elevate, selecione-o aqui.</label>
     </customLabels>
     <customLabels>
         <name>psGatewaysNotFound</name>
@@ -6544,7 +6544,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>psGatewayIDHelp</name>
-        <label>O NPSP usa o gateway adicionado mais recentemente ao Elevate, a menos que você o substitua. Para alterar o gateway usado pelo NPSP, clique em Editar, insira o ID do gateway e salve seu trabalho. Encontre o ID do gateway no Console do administrador do Elevate | Gerenciamento de gateway.</label>
+        <label>O NPPatch usa o gateway adicionado mais recentemente ao Elevate, a menos que você o substitua. Para alterar o gateway usado pelo NPPatch, clique em Editar, insira o ID do gateway e salve seu trabalho. Encontre o ID do gateway no Console do administrador do Elevate | Gerenciamento de gateway.</label>
     </customLabels>
     <customLabels>
         <name>psShowPaymentMethods</name>
@@ -6584,7 +6584,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>pscManageSoftCreditsCantChangeCurrency</name>
-        <label>Não é possível modificar as moedas de crédito indireto diretamente. Atualize a moeda da Oportunidade pai e o NPSP atualizará automaticamente a moeda de todos os registros de crédito indireto relacionados.</label>
+        <label>Não é possível modificar as moedas de crédito indireto diretamente. Atualize a moeda da Oportunidade pai e o NPPatch atualizará automaticamente a moeda de todos os registros de crédito indireto relacionados.</label>
     </customLabels>
     <customLabels>
         <name>pscManageSoftCreditsPermissionDenied</name>
@@ -6600,7 +6600,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>pscManageSoftCreditsNoRoles</name>
-        <label>Você não tem Funções especificadas como Funções de crédito indireto. Em Configurações do NPSP, em Doações | Funções de contato, selecione pelo menos uma função na configuração de Funções de crédito indireto.</label>
+        <label>Você não tem Funções especificadas como Funções de crédito indireto. Em Configurações do NPPatch, em Doações | Funções de contato, selecione pelo menos uma função na configuração de Funções de crédito indireto.</label>
     </customLabels>
     <customLabels>
         <name>pscManageSoftCreditsOppAmount</name>
@@ -6656,7 +6656,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>sendAcknowledgmentFailureReasons</name>
-        <label>O NPSP não enviou confirmações para os registros a seguir. As confirmações podem falhar quando não há uma regra de fluxo de trabalho (Status de reconhecimento IGUAL A &apos;Enviar reconhecimento&apos;) ativa para enviar a confirmação ou quando os registros não atendem a critérios adicionais para acionar a regra do fluxo de trabalho. Por exemplo, se o Contato primário não estiver definido ou se o campo de email do Contato primário estiver vazio ou for inválido.</label>
+        <label>O NPPatch não enviou confirmações para os registros a seguir. As confirmações podem falhar quando não há uma regra de fluxo de trabalho (Status de reconhecimento IGUAL A &apos;Enviar reconhecimento&apos;) ativa para enviar a confirmação ou quando os registros não atendem a critérios adicionais para acionar a regra do fluxo de trabalho. Por exemplo, se o Contato primário não estiver definido ou se o campo de email do Contato primário estiver vazio ou for inválido.</label>
     </customLabels>
     <customLabels>
         <name>sendAcknowledgmentFireStatus</name>
@@ -6668,7 +6668,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>sendAcknowledgmentNumberNoEmail</name>
-        <label>O NPSP não enviou {0} confirmação(ões).</label>
+        <label>O NPPatch não enviou {0} confirmação(ões).</label>
     </customLabels>
     <customLabels>
         <name>sendAcknowledgmentNumberSent</name>
@@ -6712,7 +6712,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>stgAddrGeneralSettingsIntro</name>
-        <label>O Gerenciamento de contas de família e de organização permite adicionar vários endereços a uma conta, especificar endereços padrão e especificar endereços sazonais. O gerenciamento de endereços só está disponível no NPSP3 e versões posteriores com o modelo Conta de família.</label>
+        <label>O Gerenciamento de contas de família e de organização permite adicionar vários endereços a uma conta, especificar endereços padrão e especificar endereços sazonais. O gerenciamento de endereços só está disponível no NPPatch3 e versões posteriores com o modelo Conta de família.</label>
     </customLabels>
     <customLabels>
         <name>stgAddrMustChooseClass</name>
@@ -6870,7 +6870,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
             ● Uso de filtros para excluir facilmente certos registros ou dados&lt;br/&gt;
             ● Totalização de dados anteriores a dois anos&lt;br/&gt;
             &lt;br/&gt;
-            Acesse Configurações do NPSP | Doações | Totalizações personalizáveis para ativar Totalizações personalizáveis e começar a usá-las!</label>
+            Acesse Configurações do NPPatch | Doações | Totalizações personalizáveis para ativar Totalizações personalizáveis e começar a usá-las!</label>
     </customLabels>
     <customLabels>
         <name>stgCRLPInfoOnUDRHeading</name>
@@ -6930,16 +6930,16 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>stgDontAutoScheduleHelpText</name>
-        <label>O NPSP tem uma série de Trabalhos agendados que calculam totalizações, atualizam Doações recorrentes e Endereços sazonais e tratam erros.
+        <label>O NPPatch tem uma série de Trabalhos agendados que calculam totalizações, atualizam Doações recorrentes e Endereços sazonais e tratam erros.
 &lt;br/&gt;
 &lt;br/&gt;
-Quando a opção Não agendar automaticamente trabalhos do NPSP padrão não está selecionada, sempre que você carrega a página Configurações do NPSP, o NPSP verifica se todos os trabalhos do NPSP padrão foram agendados. Se não estiverem agendados, o NPSP os reagendará. O NPSP reagendará apenas os trabalhos de NPSP ausentes; ele não substituirá trabalhos que foram atualizados.
+Quando a opção Não agendar automaticamente trabalhos do NPPatch padrão não está selecionada, sempre que você carrega a página Configurações do NPPatch, o NPPatch verifica se todos os trabalhos do NPPatch padrão foram agendados. Se não estiverem agendados, o NPPatch os reagendará. O NPPatch reagendará apenas os trabalhos de NPPatch ausentes; ele não substituirá trabalhos que foram atualizados.
 &lt;br/&gt;
 &lt;br/&gt;
 Para visualizar esses trabalhos, procure Trabalhos agendados na Configuração do Salesforce.
 &lt;br/&gt;
 &lt;br/&gt;
-A escolha de Não agendar automaticamente trabalhos do NPSP padrão diz ao NPSP para não verificar ou reagendar os trabalhos padrão.</label>
+A escolha de Não agendar automaticamente trabalhos do NPPatch padrão diz ao NPPatch para não verificar ou reagendar os trabalhos padrão.</label>
     </customLabels>
     <customLabels>
         <name>stgEditPermissionError</name>
@@ -6947,7 +6947,7 @@ A escolha de Não agendar automaticamente trabalhos do NPSP padrão diz ao NPSP 
     </customLabels>
     <customLabels>
         <name>stgErrorINaming</name>
-        <label>A classe do Apex selecionada no campo Implementar classe não implementa a interface HH_INaming. Selecione uma classe do Apex diferente ou use a classe NPSP padrão HH_NameSpec.</label>
+        <label>A classe do Apex selecionada no campo Implementar classe não implementa a interface HH_INaming. Selecione uma classe do Apex diferente ou use a classe NPPatch padrão HH_NameSpec.</label>
     </customLabels>
     <customLabels>
         <name>stgErrorInvalidClass</name>
@@ -6959,11 +6959,11 @@ A escolha de Não agendar automaticamente trabalhos do NPSP padrão diz ao NPSP 
     </customLabels>
     <customLabels>
         <name>stgErrorMissingDefaultGauRecordWithPmtAllocEnabled</name>
-        <label>A Unidade contábil geral padrão anteriormente configurada não existe mais e foi removida. Você precisa reabilitar as Alocações padrão e selecionar uma Unidade contábil geral padrão para usar as alocações de pagamento. Abra a página Alocações de GAU nas Configurações do NPSP para atualizar as Configurações de alocação padrão.</label>
+        <label>A Unidade contábil geral padrão anteriormente configurada não existe mais e foi removida. Você precisa reabilitar as Alocações padrão e selecionar uma Unidade contábil geral padrão para usar as alocações de pagamento. Abra a página Alocações de GAU nas Configurações do NPPatch para atualizar as Configurações de alocação padrão.</label>
     </customLabels>
     <customLabels>
         <name>stgErrorMissingDefaultGauRecord</name>
-        <label>A Unidade contábil geral padrão anteriormente configurada não existe mais e foi removida. Para reabilitar as Alocações padrão, abra a página Alocações de GAU nas Configurações do NPSP.</label>
+        <label>A Unidade contábil geral padrão anteriormente configurada não existe mais e foi removida. Para reabilitar as Alocações padrão, abra a página Alocações de GAU nas Configurações do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>stgHHDataRefreshTitle</name>
@@ -6998,7 +6998,7 @@ A escolha de Não agendar automaticamente trabalhos do NPSP padrão diz ao NPSP 
     </customLabels>
     <customLabels>
         <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>Campo Importar dados do NPSP</label>
+        <label>Campo Importar dados do NPPatch</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAdvancedMappingTableHeader2</name>
@@ -7048,7 +7048,7 @@ Quando você ativa as Alocações de pagamento, as totalizações existentes per
     </customLabels>
     <customLabels>
         <name>stgHelpBDEOppNaming</name>
-        <label>Quando selecionado, o NPSP usa a convenção de nomenclatura padrão para Oportunidades inseridas em lote, independentemente do valor inserido no campo Nome na tela de entrada em lote. NOTA: esta configuração não terá efeito se os nomes de oportunidade personalizados estiverem configurados.</label>
+        <label>Quando selecionado, o NPPatch usa a convenção de nomenclatura padrão para Oportunidades inseridas em lote, independentemente do valor inserido no campo Nome na tela de entrada em lote. NOTA: esta configuração não terá efeito se os nomes de oportunidade personalizados estiverem configurados.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpBatchAlloRollup</name>
@@ -7134,21 +7134,21 @@ Quando o processo estiver 100% concluído, você poderá sair ou atualizar esta 
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable2</name>
-        <label>Quando você habilitar as Totalizações personalizáveis pela primeira vez, converteremos automaticamente suas totalizações existentes e as 87 totalizações do NPSP prontas para usar em Totalizações personalizáveis.
+        <label>Quando você habilitar as Totalizações personalizáveis pela primeira vez, converteremos automaticamente suas totalizações existentes e as 87 totalizações do NPPatch prontas para usar em Totalizações personalizáveis.
             &lt;br/&gt;&lt;br/&gt;
             Você pode desativar e reverter para totalizações herdadas, mas as novas totalizações ou alterações de totalização/filtro feitas nas Totalizações Personalizáveis não serão aplicadas às configurações da totalização herdada.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable3</name>
-        <label>Remove novas totalizações, grupos de filtro e regras de filtro que você criou ao usar as Totalizações personalizáveis e redefine todas as totalizações herdadas do NPSP com seu comportamento padrão.</label>
+        <label>Remove novas totalizações, grupos de filtro e regras de filtro que você criou ao usar as Totalizações personalizáveis e redefine todas as totalizações herdadas do NPPatch com seu comportamento padrão.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpDefaultAllocationsEnabled</name>
-        <label>Quando selecionado, o NPSP cria automaticamente registros de Alocação de GAU alocados na Unidade contábil geral especificada no campo Unidade contábil geral abaixo. Esse recurso permite melhores relatórios sobre a Unidade contábil geral padrão, mas usa mais armazenamento de dados.</label>
+        <label>Quando selecionado, o NPPatch cria automaticamente registros de Alocação de GAU alocados na Unidade contábil geral especificada no campo Unidade contábil geral abaixo. Esse recurso permite melhores relatórios sobre a Unidade contábil geral padrão, mas usa mais armazenamento de dados.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpDefaultGAU</name>
-        <label>Quando a opção Alocações padrão ativas é selecionada, o NPSP cria uma Alocação de GAU para todas as novas oportunidades não excluídas nas Configurações de totalização de alocações de GAU e as atribui a esta Unidade contábil geral. NOTA: isso não inclui oportunidades não alocadas existentes. Você pode alocá-las à Unidade contábil geral padrão nas Configurações do NPSP, em Processos de dados em massa | Criar alocações padrão em lote.</label>
+        <label>Quando a opção Alocações padrão ativas é selecionada, o NPPatch cria uma Alocação de GAU para todas as novas oportunidades não excluídas nas Configurações de totalização de alocações de GAU e as atribui a esta Unidade contábil geral. NOTA: isso não inclui oportunidades não alocadas existentes. Você pode alocá-las à Unidade contábil geral padrão nas Configurações do NPPatch, em Processos de dados em massa | Criar alocações padrão em lote.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpDisableHHAccountAddr</name>
@@ -7170,7 +7170,7 @@ Quando o processo estiver 100% concluído, você poderá sair ou atualizar esta 
     </customLabels>
     <customLabels>
         <name>stgHelpErrorNotifyOn</name>
-        <label>Quando selecionado, o NPSP exibirá notificações para certos tipos de erros.</label>
+        <label>Quando selecionado, o NPPatch exibirá notificações para certos tipos de erros.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpErrorNotifyTo</name>
@@ -7202,7 +7202,7 @@ Quando o processo estiver 100% concluído, você poderá sair ou atualizar esta 
     </customLabels>
     <customLabels>
         <name>stgHelpHHMailingListReport</name>
-        <label>O Relatório da lista de correspondência de família desduplica uma campanha que contém vários contatos da mesma família a fim de evitar o envio de vários emails iguais para o mesmo endereço. O NPSP inclui um relatório que você pode selecionar chamado &quot;Lista de correspondência para famílias da campanha do NPSP V2&quot;. Se esse relatório tiver sido renomeado ou excluído, selecione um relatório que utilize o tipo de relatório Campanhas com contatos, com filtros de Status de membro não contém &quot;Duplicado” e ID da campanha = em branco.</label>
+        <label>O Relatório da lista de correspondência de família desduplica uma campanha que contém vários contatos da mesma família a fim de evitar o envio de vários emails iguais para o mesmo endereço. O NPPatch inclui um relatório que você pode selecionar chamado &quot;Lista de correspondência para famílias da campanha do NPPatch V2&quot;. Se esse relatório tiver sido renomeado ou excluído, selecione um relatório que utilize o tipo de relatório Campanhas com contatos, com filtros de Status de membro não contém &quot;Duplicado” e ID da campanha = em branco.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpHHNameFormat</name>
@@ -7214,7 +7214,7 @@ Quando o processo estiver 100% concluído, você poderá sair ou atualizar esta 
     </customLabels>
     <customLabels>
         <name>stgHelpHHOCROn</name>
-        <label>Quando selecionado, o NPSP cria automaticamente Funções de contato em doações individuais para membros da família do Contato primário da oportunidade.</label>
+        <label>Quando selecionado, o NPPatch cria automaticamente Funções de contato em doações individuais para membros da família do Contato primário da oportunidade.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpHHRules</name>
@@ -7222,7 +7222,7 @@ Quando o processo estiver 100% concluído, você poderá sair ou atualizar esta 
     </customLabels>
     <customLabels>
         <name>stgHelpHealthCheck</name>
-        <label>Use o &lt;a href=&quot;#&quot; onclick=&quot;ShowPanel(&apos;idPanelHealthCheck&apos;);return false;&quot;&gt;Health Check&lt;/a&gt; para verificar sua configuração do NPSP!</label>
+        <label>Use o &lt;a href=&quot;#&quot; onclick=&quot;ShowPanel(&apos;idPanelHealthCheck&apos;);return false;&quot;&gt;Health Check&lt;/a&gt; para verificar sua configuração do NPPatch!</label>
     </customLabels>
     <customLabels>
         <name>stgHelpIGFormat</name>
@@ -7260,11 +7260,11 @@ Quando o processo estiver 100% concluído, você poderá sair ou atualizar esta 
         <label>O Tipo de registro usado na criação de Oportunidades que rastreiam Doações de membros. Recomendamos o uso de Associação. As oportunidades com esse tipo de registro totalizam separadamente de outros tipos de registro de oportunidade.</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpNPSPDoc</name>
-        <label>Documentação do NPSP</label>
+        <name>stgHelpNPPatchDoc</name>
+        <label>Documentação do NPPatch</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpNPSPSettings</name>
+        <name>stgHelpNPPatchSettings</name>
         <label>Configure o Pacote de sucesso para organizações sem fins lucrativos para atender às necessidades da sua organização. Você também pode monitorar a saúde da sua organização do Salesforce ou executar processos em lote para atualizar dados.</label>
     </customLabels>
     <customLabels>
@@ -7277,7 +7277,7 @@ Quando o processo estiver 100% concluído, você poderá sair ou atualizar esta 
     </customLabels>
     <customLabels>
         <name>stgHelpNewRDFieldMap</name>
-        <label>Selecione o campo Doação recorrente que você deseja mapear e o campo Oportunidade para onde mapeá-lo. O NPSP copiará o valor do campo de doação recorrente que você selecionar para o campo de oportunidade selecionado em todas as oportunidades filho da Doação recorrente.
+        <label>Selecione o campo Doação recorrente que você deseja mapear e o campo Oportunidade para onde mapeá-lo. O NPPatch copiará o valor do campo de doação recorrente que você selecionar para o campo de oportunidade selecionado em todas as oportunidades filho da Doação recorrente.
 IMPORTANTE: ambos os campos precisam ter o mesmo tipo de dados.</label>
     </customLabels>
     <customLabels>
@@ -7290,7 +7290,7 @@ IMPORTANTE: ambos os campos precisam ter o mesmo tipo de dados.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpOCR</name>
-        <label>Créditos indiretos, Papéis de contato e Doações correspondentes se relacionam entre si de maneiras importantes. Se você não está familiarizado com esses conceitos e como eles interagem, deve ler a &lt;a href=&quot;https://help.salesforce.com/s/articleView?id=sfdo.NPSP_Automated_Soft_Credits.htm&amp;type=5&quot; target=&quot;_blank&quot;&gt;Documentação do NPSP&lt;/a&gt; antes de fazer ajustes nessas configurações.</label>
+        <label>Créditos indiretos, Papéis de contato e Doações correspondentes se relacionam entre si de maneiras importantes. Se você não está familiarizado com esses conceitos e como eles interagem, deve ler a Documentação do NPPatch antes de fazer ajustes nessas configurações.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpOCRDefaultRole</name>
@@ -7306,7 +7306,7 @@ IMPORTANTE: ambos os campos precisam ter o mesmo tipo de dados.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpOneToOneRTID</name>
-        <label>O Tipo de registro da conta que você deseja usar para novas contas se selecionou o modelo de Conta um para um acima. O NPSP não vem com um tipo de registro padrão para Contas um para um, ou seja, crie uma (por exemplo, “Individual”) antes de selecionar esse modelo. Se você selecionar --Nenhum--, o Salesforce usará o Tipo de registro de conta padrão do usuário que está criando o Contato (e a Conta um para um associada).</label>
+        <label>O Tipo de registro da conta que você deseja usar para novas contas se selecionou o modelo de Conta um para um acima. O NPPatch não vem com um tipo de registro padrão para Contas um para um, ou seja, crie uma (por exemplo, “Individual”) antes de selecionar esse modelo. Se você selecionar --Nenhum--, o Salesforce usará o Tipo de registro de conta padrão do usuário que está criando o Contato (e a Conta um para um associada).</label>
     </customLabels>
     <customLabels>
         <name>stgHelpOppNamingAttribution</name>
@@ -7362,7 +7362,7 @@ IMPORTANTE: ambos os campos precisam ter o mesmo tipo de dados.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpPowerOfUsHub</name>
-        <label>Tem dúvidas? Experimente o grupo &lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHitSAE&quot; target=&quot;_blank&quot;&gt;Pacote de sucesso para organizações sem fins lucrativos&lt;/a&gt; para perguntas sobre o NPSP e o grupo &lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHiLSAU?tab=discussion&quot; target=&quot;_blank&quot;&gt;Administradores do sistema&lt;/a&gt; para perguntas sobre administração e configuração do Salesforce.&lt;br/&gt;&lt;br/&gt;Acompanhe as últimas notas de versão do NPSP no grupo &lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHOXSA2?tab=discussion&amp;sort=LAST_MODIFIED_DATE_DESC.htm&quot; target=&quot;_blank&quot;&gt;Anúncios de versão do NPSP&lt;/a&gt;.</label>
+        <label>Tem dúvidas? Experimente o grupo NPPatch para perguntas sobre o NPPatch e o grupo Administradores do sistema para perguntas sobre administração e configuração do Salesforce.&lt;br/&gt;&lt;br/&gt;Acompanhe as últimas notas de versão do NPPatch no grupo NPPatch Release Announcements.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpPrimaryContactBatch</name>
@@ -7400,7 +7400,7 @@ Quando o processo estiver 100% concluído, você poderá sair ou atualizar esta 
     </customLabels>
     <customLabels>
         <name>stgHelpRDAddCampaign</name>
-        <label>Quando selecionado, o NPSP copia a Campanha especificada na Doação recorrente para suas Oportunidades de parcelamento.</label>
+        <label>Quando selecionado, o NPPatch copia a Campanha especificada na Doação recorrente para suas Oportunidades de parcelamento.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRDBatch</name>
@@ -7446,11 +7446,11 @@ Esse processo pode levar algum tempo, mas você pode fechar esta página porque 
     </customLabels>
     <customLabels>
         <name>stgHelpRDOpenOppBehavior</name>
-        <label>Diz ao NPSP o que fazer com as Oportunidades ainda abertas quando o status de uma Doação recorrente por tempo indeterminado é marcado como Fechada.</label>
+        <label>Diz ao NPPatch o que fazer com as Oportunidades ainda abertas quando o status de uma Doação recorrente por tempo indeterminado é marcado como Fechada.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRDOppForecastMonths</name>
-        <label>Número de meses de Oportunidades abertas que o NPSP mantém em Doações recorrentes por tempo indeterminado. O NPSP faz com que sempre existam Oportunidades de muitos meses, criando o número adequado de novas Oportunidades todos os meses.</label>
+        <label>Número de meses de Oportunidades abertas que o NPPatch mantém em Doações recorrentes por tempo indeterminado. O NPPatch faz com que sempre existam Oportunidades de muitos meses, criando o número adequado de novas Oportunidades todos os meses.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRDOppRT</name>
@@ -7458,7 +7458,7 @@ Esse processo pode levar algum tempo, mas você pode fechar esta página porque 
     </customLabels>
     <customLabels>
         <name>stgHelpRDInstallmentCreateOptionMessage</name>
-        <label>Especifica quando o NPSP criará Oportunidades de parcelamento para Doações recorrentes. O padrão é Sempre criar próxima parcela.</label>
+        <label>Especifica quando o NPPatch criará Oportunidades de parcelamento para Doações recorrentes. O padrão é Sempre criar próxima parcela.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRDPeriodFrequency</name>
@@ -7478,11 +7478,11 @@ Esse processo pode levar algum tempo, mas você pode fechar esta página porque 
     </customLabels>
     <customLabels>
         <name>stgHelpRecDon</name>
-        <label>Essa configuração permite criar Períodos de parcelamento personalizados para Doações recorrentes diferentes dos Períodos de parcelamento padrão (mensal, trimestral, anual e assim por diante) que vêm com o NPSP.</label>
+        <label>Essa configuração permite criar Períodos de parcelamento personalizados para Doações recorrentes diferentes dos Períodos de parcelamento padrão (mensal, trimestral, anual e assim por diante) que vêm com o NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRelAutoCreatedDup</name>
-        <label>O NPSP desduplica Relacionamentos criados automaticamente. Selecione esta opção se você quiser desativar a desduplicação automática e permitir que várias relações do mesmo tipo existam entre dois Contatos.</label>
+        <label>O NPPatch desduplica Relacionamentos criados automaticamente. Selecione esta opção se você quiser desativar a desduplicação automática e permitir que várias relações do mesmo tipo existam entre dois Contatos.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRelFieldSyncToggle</name>
@@ -7579,7 +7579,7 @@ Para verificar as configurações existentes, acesse Regras de duplicação em C
     </customLabels>
     <customLabels>
         <name>stgHelpStoreErrorsOn</name>
-        <label>Quando selecionado, o NPSP armazenará erros. Você pode visualizar erros armazenados em Ferramentas do sistema | Log de erros na página Configurações do NPSP.</label>
+        <label>Quando selecionado, o NPPatch armazenará erros. Você pode visualizar erros armazenados em Ferramentas do sistema | Log de erros na página Configurações do NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpTDTM</name>
@@ -7647,9 +7647,9 @@ Para verificar as configurações existentes, acesse Regras de duplicação em C
     </customLabels>
     <customLabels>
         <name>stgInstallScriptError</name>
-        <label>Sua instalação foi bem-sucedida, mas detectamos um pequeno problema. Para corrigir o problema, basta carregar a página Configurações do NPSP no Salesforce.
+        <label>Sua instalação foi bem-sucedida, mas detectamos um pequeno problema. Para corrigir o problema, basta carregar a página Configurações do NPPatch no Salesforce.
 
-Nota: a guia Configurações do NPSP está visível no aplicativo Pacote de sucesso para organizações sem fins lucrativos. Se você não vir a guia, selecione Pacote de sucesso para organizações sem fins lucrativos no menu do aplicativo no canto superior direito.</label>
+Nota: a guia Configurações do NPPatch está visível no aplicativo Pacote de sucesso para organizações sem fins lucrativos. Se você não vir a guia, selecione Pacote de sucesso para organizações sem fins lucrativos no menu do aplicativo no canto superior direito.</label>
     </customLabels>
     <customLabels>
         <name>stgLabelActionColumn</name>
@@ -8008,20 +8008,20 @@ Nota: a guia Configurações do NPSP está visível no aplicativo Pacote de suce
         <label>Nenhum(a) {0} encontrado(a).</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPGuideImportData</name>
-        <label>Guia NPSP para importar dados</label>
+        <name>stgNPPatchGuideImportData</name>
+        <label>Guia NPPatch para importar dados</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPSettings</name>
+        <name>stgNPPatchSettings</name>
         <label>Configurações do aplicativo Pacote de sucesso para organizações sem fins lucrativos</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPSettingsTitle</name>
+        <name>stgNPPatchSettingsTitle</name>
         <label>Configurações do Pacote de sucesso para organizações sem fins lucrativos</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPWorkbook</name>
-        <label>Trilha Angariação de fundos do NPSP</label>
+        <name>stgNPPatchWorkbook</name>
+        <label>Trilha Angariação de fundos do NPPatch</label>
     </customLabels>
     <customLabels>
         <name>stgNavAccountModel</name>
@@ -8189,7 +8189,7 @@ Nota: a guia Configurações do NPSP está visível no aplicativo Pacote de suce
     </customLabels>
     <customLabels>
         <name>stgRDNamingDescription</name>
-        <label>Quando você cria uma Doação recorrente, o NPSP preenche automaticamente o Nome usando o formato de nome especificado. Escolha Desativar nomenclatura automática para desativar esse recurso.</label>
+        <label>Quando você cria uma Doação recorrente, o NPPatch preenche automaticamente o Nome usando o formato de nome especificado. Escolha Desativar nomenclatura automática para desativar esse recurso.</label>
     </customLabels>
     <customLabels>
         <name>stgRDNamingDisable</name>
@@ -8289,7 +8289,7 @@ Nota: a guia Configurações do NPSP está visível no aplicativo Pacote de suce
     </customLabels>
     <customLabels>
         <name>gsResourcesVideographyLabel</name>
-        <label>Canal de videografia do NPSP</label>
+        <label>Canal de videografia do NPPatch</label>
     </customLabels>
     <customLabels>
         <name>gsResourcesVideographyLinkLabel</name>
@@ -8297,7 +8297,7 @@ Nota: a guia Configurações do NPSP está visível no aplicativo Pacote de suce
     </customLabels>
     <customLabels>
         <name>gsVideoHeaderTitle</name>
-        <label>Introdução ao NPSP</label>
+        <label>Introdução ao NPPatch</label>
     </customLabels>
     <customLabels>
         <name>gseuPageTitle</name>
@@ -8312,12 +8312,12 @@ Nota: a guia Configurações do NPSP está visível no aplicativo Pacote de suce
         <label>Trailblazer Community</label>
     </customLabels>
     <customLabels>
-        <name>gseuResourcesItemAboutNPSPLabel</name>
-        <label>Saber mais sobre o NPSP</label>
+        <name>gseuResourcesItemAboutNPPatchLabel</name>
+        <label>Saber mais sobre o NPPatch</label>
     </customLabels>
     <customLabels>
-        <name>gseuResourcesItemAboutNPSPLinkLabel</name>
-        <label>Documentação do NPSP</label>
+        <name>gseuResourcesItemAboutNPPatchLinkLabel</name>
+        <label>Documentação do NPPatch</label>
     </customLabels>
     <customLabels>
         <name>gseuResourcesItemWatchVideosLabel</name>
@@ -8325,7 +8325,7 @@ Nota: a guia Configurações do NPSP está visível no aplicativo Pacote de suce
     </customLabels>
     <customLabels>
         <name>gseuResourcesItemWatchVideosLinkLabel</name>
-        <label>Canal de videografia do NPSP</label>
+        <label>Canal de videografia do NPPatch</label>
     </customLabels>
     <customLabels>
         <name>gseuResourcesItemWebinarsLabel</name>
@@ -8401,19 +8401,19 @@ Nota: a guia Configurações do NPSP está visível no aplicativo Pacote de suce
     </customTabs>
     <customTabs>
         <name>GetStarted</name>
-        <label>Introdução ao NPSP - Administrador</label>
+        <label>Introdução ao NPPatch - Administrador</label>
     </customTabs>
     <customTabs>
         <name>GetStartedEndUser</name>
-        <label>Introdução ao NPSP</label>
+        <label>Introdução ao NPPatch</label>
     </customTabs>
     <customTabs>
-        <name>NPSP_Resources</name>
+        <name>NPPatch_Resources</name>
         <label>Conceitos básicos</label>
     </customTabs>
     <customTabs>
-        <name>NPSP_Settings</name>
-        <label>Configurações do NPSP</label>
+        <name>NPPatch_Settings</name>
+        <label>Configurações do NPPatch</label>
     </customTabs>
     <customApplications>
         <name>Nonprofit_CRM</name>

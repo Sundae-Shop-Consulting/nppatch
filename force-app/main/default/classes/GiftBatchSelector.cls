@@ -68,13 +68,13 @@ public inherited sharing class GiftBatchSelector {
         for (AggregateResult result : [SELECT COUNT(Id)recordCount,
                                             Status__c,
                                             Payment_Status__c,
-                                            NPSP_Data_Import_Batch__c
+                                            NPPatch_Data_Import_Batch__c
                                         FROM DataImport__c
-                                        WHERE NPSP_Data_Import_Batch__c IN :ids
+                                        WHERE NPPatch_Data_Import_Batch__c IN :ids
                                         GROUP BY
                                             Status__c,
                                             Payment_Status__c,                                            
-                                            NPSP_Data_Import_Batch__c]) {
+                                            NPPatch_Data_Import_Batch__c]) {
             results.add(new AggregateResultProxy().withAggregateResult(result));
         }
         return results;
@@ -85,13 +85,13 @@ public inherited sharing class GiftBatchSelector {
         for (AggregateResult result : [SELECT COUNT(Id)recordCount,
                                             Status__c,
                                             Payment_Status__c,
-                                            NPSP_Data_Import_Batch__c
+                                            NPPatch_Data_Import_Batch__c
                                         FROM DataImport__c
-                                        WHERE NPSP_Data_Import_Batch__c = :giftBatchId.value()
+                                        WHERE NPPatch_Data_Import_Batch__c = :giftBatchId.value()
                                         GROUP BY
                                             Status__c,
                                             Payment_Status__c,
-                                            NPSP_Data_Import_Batch__c]) {
+                                            NPPatch_Data_Import_Batch__c]) {
             results.add(new AggregateResultProxy().withAggregateResult(result));
         }
         return results;
@@ -101,7 +101,7 @@ public inherited sharing class GiftBatchSelector {
         List<AggregateResultProxy> results = new List<AggregateResultProxy>();
         for (AggregateResult result : [SELECT SUM(Donation_Amount__c)totalAmount
                                         FROM DataImport__c
-                                        WHERE NPSP_Data_Import_Batch__c = :giftBatchId.value()]) {
+                                        WHERE NPPatch_Data_Import_Batch__c = :giftBatchId.value()]) {
             results.add(new AggregateResultProxy().withAggregateResult(result));
         }
         return results;

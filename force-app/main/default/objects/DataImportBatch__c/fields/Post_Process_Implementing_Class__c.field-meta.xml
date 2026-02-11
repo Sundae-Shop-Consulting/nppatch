@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Post_Process_Implementing_Class__c</fullName>
-    <description>The developer name of an Apex class that implements the BDI_IPostProcess interface for NPSP Data Import records.</description>
+    <description>The developer name of an Apex class that implements the BDI_IPostProcess interface for NPPatch Data Import records.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The developer name of an Apex class that implements the BDI_IPostProcess interface for NPSP batch records.</inlineHelpText>
+    <inlineHelpText>The developer name of an Apex class that implements the BDI_IPostProcess interface for NPPatch batch records.</inlineHelpText>
     <label>Post Process Implementing Class</label>
     <length>255</length>
     <required>false</required>

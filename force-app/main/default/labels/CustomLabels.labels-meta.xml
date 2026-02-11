@@ -591,7 +591,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>All Triggers disabled</shortDescription>
-        <value>Disables all NPSP triggers. NOTE: The tool does not disable your custom triggers. You should manually disable any custom triggers before proceeding.</value>
+        <value>Disables all NPPatch triggers. NOTE: The tool does not disable your custom triggers. You should manually disable any custom triggers before proceeding.</value>
     </labels>
     <labels>
         <fullName>CONV_All_Users_Logged_Out</fullName>
@@ -699,11 +699,11 @@
         <value>Creates a new Household Account for each Household object record.</value>
     </labels>
     <labels>
-        <fullName>CONV_Non_NPSP_Apps</fullName>
+        <fullName>CONV_Non_NPPatch_Apps</fullName>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>Non-NPSP Apps</shortDescription>
-        <value>I have disabled or temporarily uninstalled all non-NPSP apps.</value>
+        <shortDescription>Non-NPPatch Apps</shortDescription>
+        <value>I have disabled or temporarily uninstalled all non-NPPatch apps.</value>
     </labels>
     <labels>
         <fullName>CONV_Old_Household_Objects</fullName>
@@ -808,7 +808,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Triggers ReEnabled</shortDescription>
-        <value>Re-enables all NPSP triggers. NOTE: You&apos;ll need to manually re-enable any custom triggers you disabled for the conversion. Also, the utility re-enables &lt;b&gt;all&lt;/b&gt; NPSP triggers, so if you selectively disabled any of them beforehand, you&apos;ll need to manually disable them again.</value>
+        <value>Re-enables all NPPatch triggers. NOTE: You&apos;ll need to manually re-enable any custom triggers you disabled for the conversion. Also, the utility re-enables &lt;b&gt;all&lt;/b&gt; NPPatch triggers, so if you selectively disabled any of them beforehand, you&apos;ll need to manually disable them again.</value>
     </labels>
     <labels>
         <fullName>CONV_Warning</fullName>
@@ -1183,7 +1183,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Message for CRLP Disabled Toast</shortDescription>
-        <value>You don&apos;t have Customizable Rollups enabled. Return to NPSP Settings for information on how to enable these.</value>
+        <value>You don&apos;t have Customizable Rollups enabled. Return to NPPatch Settings for information on how to enable these.</value>
     </labels>
     <labels>
         <fullName>CRLP_DuplicateTargetField</fullName>
@@ -1256,7 +1256,7 @@
         <protected>true</protected>
         <shortDescription>Warning before complete reset of Customizable Rollups</shortDescription>
         <value>
-            Are you sure you want to reset Customizable Rollups? This will delete any new Customizable Rollups, Filter Rules, and Filter Groups you created, as well as reset all NPSP rollups to their default behavior.
+            Are you sure you want to reset Customizable Rollups? This will delete any new Customizable Rollups, Filter Rules, and Filter Groups you created, as well as reset all NPPatch rollups to their default behavior.
         </value>
     </labels>
     <labels>
@@ -1479,7 +1479,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>ErrorEmailMessage</shortDescription>
-        <value>Salesforce encountered these NPSP errors. If you&apos;re unsure how to resolve the errors, post a message in the Nonprofit Success Pack group: https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHitSAE</value>
+        <value>Salesforce encountered these NPPatch errors. If you&apos;re unsure how to resolve the errors, post a message in the NPPatch group.</value>
     </labels>
     <labels>
         <fullName>FieldSetRelatedFieldError</fullName>
@@ -1639,7 +1639,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Open Opportunities cannot be migrated due to No_Action configuration</shortDescription>
-        <value>In NPSP Settings | Recurring Donations, select any value other than &quot;No_Action&quot; for Open Opportunity Behavior on RD Close. After data migration is complete, you may change the setting back to the previous value.</value>
+        <value>In NPPatch Settings | Recurring Donations, select any value other than &quot;No_Action&quot; for Open Opportunity Behavior on RD Close. After data migration is complete, you may change the setting back to the previous value.</value>
     </labels>
     <labels>
         <fullName>RD2_DataMigrationInvalidInstallmentPeriod</fullName>
@@ -1647,7 +1647,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Installment Period cannot be converted to enhanced Recurring Donation format</shortDescription>
-        <value>Recurring Donation Installment Period &quot;{0}&quot; cannot be converted to the Enhanced Recurring Donations format. Make sure the Installment Period is defined in NPSP Settings -&gt; Recurring Donations -&gt; Recurring Donation Custom Installment Periods.</value>
+        <value>Recurring Donation Installment Period &quot;{0}&quot; cannot be converted to the Enhanced Recurring Donations format. Make sure the Installment Period is defined in NPPatch Settings -&gt; Recurring Donations -&gt; Recurring Donation Custom Installment Periods.</value>
     </labels>
     <labels>
         <fullName>RD2_DataMigrationInvalidOpenEndedStatus</fullName>
@@ -1935,7 +1935,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Enablement page message displayed due to missing prerequisites</shortDescription>
-        <value>(1) If you&apos;re not already using Lightning Experience, click Switch to Lightning Experience at the top of your screen.&lt;br/&gt;(2) Enable Customizable Rollups by going to NPSP Settings | Donations | Customizable Rollups.&lt;br/&gt;&lt;br/&gt;Return here to the Upgrade to Enhanced Recurring Donations page.</value>
+        <value>(1) If you&apos;re not already using Lightning Experience, click Switch to Lightning Experience at the top of your screen.&lt;br/&gt;(2) Enable Customizable Rollups by going to NPPatch Settings | Donations | Customizable Rollups.&lt;br/&gt;&lt;br/&gt;Return here to the Upgrade to Enhanced Recurring Donations page.</value>
     </labels>
     <labels>
         <fullName>RD2_EnablementDryRunBatchTitle</fullName>
@@ -2015,7 +2015,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Validation section introduction and guidelines</shortDescription>
-        <value>NPSP simulates migrating your existing data to the Enhanced Recurring Donations model and identifies errors. If there are errors, go to NPSP Settings | System Tools | Error Log. After you fix the errors, return here and validate the migration again. Once the validation completes without errors, you can proceed to the next step.&lt;br/&gt;&lt;br/&gt;The validation process may take some time to complete. You can leave this page and return later to check the progress.</value>
+        <value>NPPatch simulates migrating your existing data to the Enhanced Recurring Donations model and identifies errors. If there are errors, go to NPPatch Settings | System Tools | Error Log. After you fix the errors, return here and validate the migration again. Once the validation completes without errors, you can proceed to the next step.&lt;br/&gt;&lt;br/&gt;The validation process may take some time to complete. You can leave this page and return later to check the progress.</value>
     </labels>
     <labels>
         <fullName>RD2_EnablementEnableConfirm</fullName>
@@ -2063,7 +2063,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Enablement section warning</shortDescription>
-        <value>&lt;b&gt;WARNING: NPSP doesn&apos;t provide a way to revert back to legacy Recurring Donations.&lt;/b&gt;</value>
+        <value>&lt;b&gt;WARNING: NPPatch doesn&apos;t provide a way to revert back to legacy Recurring Donations.&lt;/b&gt;</value>
     </labels>
     <labels>
         <fullName>RD2_EnablementIncomplete</fullName>
@@ -2071,7 +2071,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Enhanced Recurring Donations enablement incomplete</shortDescription>
-        <value>You cannot create or update Recurring Donations because you haven&apos;t finished enabling Enhanced Recurring Donations. Go to NPSP Settings | Recurring Donations | Upgrade to Enhanced Recurring Donations and complete all enablement steps.</value>
+        <value>You cannot create or update Recurring Donations because you haven&apos;t finished enabling Enhanced Recurring Donations. Go to NPPatch Settings | Recurring Donations | Upgrade to Enhanced Recurring Donations and complete all enablement steps.</value>
     </labels>
     <labels>
         <fullName>RD2_EnablementIntro</fullName>
@@ -2079,8 +2079,8 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Enablement page introduction and guidelines</shortDescription>
-        <value>Greetings! Enhanced Recurring Donations is our redesigned and improved Recurring Donations feature for the Nonprofit Success Pack (NPSP). A big thanks to our community members who offered their feedback and helped make Enhanced Recurring Donations possible.
-            &lt;br/&gt;&lt;br/&gt;Since there&apos;s already a Recurring Donations feature in NPSP, you&apos;ll need to perform several upgrade tasks and move your existing data to the Enhanced Recurring Donations model. We&apos;ve outlined the required tasks for you below.</value>
+        <value>Greetings! Enhanced Recurring Donations is our redesigned and improved Recurring Donations feature for the NPPatch (NPPatch). A big thanks to our community members who offered their feedback and helped make Enhanced Recurring Donations possible.
+            &lt;br/&gt;&lt;br/&gt;Since there&apos;s already a Recurring Donations feature in NPPatch, you&apos;ll need to perform several upgrade tasks and move your existing data to the Enhanced Recurring Donations model. We&apos;ve outlined the required tasks for you below.</value>
     </labels>
     <labels>
         <fullName>RD2_EnablementMetaDeployConfirm</fullName>
@@ -2156,7 +2156,7 @@
         &lt;p&gt;Before your organization starts using Enhanced Recurring Donations:&lt;/p&gt;
         &lt;ul&gt;&lt;li&gt;Turn on workflows, processes, validation rules, and triggers that you disabled prior to upgrade.&lt;/li&gt;
         &lt;li&gt;Assign the Enhanced Recurring Donations page layout to all user profiles and remove the old Recurring Donations page layout.&lt;/li&gt;
-        &lt;li&gt;Assign the NPSP Recurring Donation Lightning record page as the Org Default.&lt;/li&gt;
+        &lt;li&gt;Assign the NPPatch Recurring Donation Lightning record page as the Org Default.&lt;/li&gt;
         &lt;li&gt;Assign the RD2_VisualizeScheduleController Apex class to your custom profiles.&lt;/li&gt;
         &lt;li&gt;Adjust field-level security for Recurring Donations fields as necessary for your profiles and permission sets.&lt;/li&gt;
         &lt;li&gt;Adjust Recurring Donations reports to work with Enhanced Recurring Donations.&lt;/li&gt;
@@ -2168,7 +2168,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Message displayed on a migration error</shortDescription>
-        <value>Your migration run has errors, these will need to be fixed to complete a successful Migration. See the errors by going to NPSP Settings &gt; System Tools &gt; Error Logs.</value>
+        <value>Your migration run has errors, these will need to be fixed to complete a successful Migration. See the errors by going to NPPatch Settings &gt; System Tools &gt; Error Logs.</value>
     </labels>
     <labels>
         <fullName>RD2_EnablementMigrationIntro</fullName>
@@ -2444,7 +2444,7 @@
         <shortDescription>Message displayed as prefix to errors returned from Elevate API</shortDescription>
         <value>A recurring payment has been created in Elevate. Elevate Recurring Id: {0}.
         
-        However, a matching Recurring Donation wasn&apos;t created in NPSP due to the following error:
+        However, a matching Recurring Donation wasn&apos;t created in NPPatch due to the following error:
         ● {1}
         
         You can keep this form open, fix the error, and save the Recurring Donation again. Alternatively, cancel and contact your System Administrator for help.</value>
@@ -2663,7 +2663,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Message displayed indicating data is not available when enhanced RDs are enabled</shortDescription>
-        <value>This page is not available in Enhanced Recurring Donations. Refresh your browser and return to NPSP Settings.</value>
+        <value>This page is not available in Enhanced Recurring Donations. Refresh your browser and return to NPPatch Settings.</value>
     </labels>
     <labels>
         <fullName>RD2_PauseCannotExistOnScheduleChange</fullName>
@@ -2791,7 +2791,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Error when Recurring Donation Status picklist value Paused does not exist</shortDescription>
-        <value>NPSP is unable to update Status and Status Reason on Paused Recurring Donations. You must add the picklist value &apos;Paused&apos; to the Status field.</value>
+        <value>NPPatch is unable to update Status and Status Reason on Paused Recurring Donations. You must add the picklist value &apos;Paused&apos; to the Status field.</value>
     </labels>
     <labels>
         <fullName>RD2_PaymentInformation</fullName>
@@ -2903,7 +2903,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Status Automation Closed definition</shortDescription>
-        <value>After the specified number of days, NPSP updates the Recurring Donation Status to the Closed Status Value if donations aren&apos;t being received as expected. This value must be higher than the Number of Days for Lapsed. NPSP does not create installment Opportunities for Closed Recurring Donations.</value>
+        <value>After the specified number of days, NPPatch updates the Recurring Donation Status to the Closed Status Value if donations aren&apos;t being received as expected. This value must be higher than the Number of Days for Lapsed. NPPatch does not create installment Opportunities for Closed Recurring Donations.</value>
     </labels>
     <labels>
         <fullName>RD2_StatusAutomationDaysForClosed</fullName>
@@ -2983,7 +2983,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Status Automation Lapsed definition</shortDescription>
-        <value>After the specified number of days, NPSP updates the Recurring Donation Status to the Lapsed Status Value if donations aren&apos;t being received as expected. NPSP continues to create installment Opportunities for Lapsed Recurring Donations as defined by the schedule.</value>
+        <value>After the specified number of days, NPPatch updates the Recurring Donation Status to the Lapsed Status Value if donations aren&apos;t being received as expected. NPPatch continues to create installment Opportunities for Lapsed Recurring Donations as defined by the schedule.</value>
     </labels>
     <labels>
         <fullName>RD2_StatusAutomationSetClosedStatus</fullName>
@@ -3023,9 +3023,9 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Status to state mapping definitions</shortDescription>
-        <value>&lt;b&gt;State Definitions&lt;/b&gt;&lt;br/&gt;&lt;ul&gt;&lt;li&gt;Active: The donor is actively donating. NPSP creates installment Opportunities as defined by the Recurring Donation schedule.&lt;/li&gt;
-&lt;li&gt;Lapsed: Donations aren&apos;t being received as expected, but NPSP still creates installment Opportunities as defined by the Recurring Donation schedule.&lt;/li&gt;
-&lt;li&gt;Closed: The donor has stopped making donations for this Recurring Donation. NPSP doesn&apos;t create any new installment Opportunities.&lt;/li&gt;&lt;/ul&gt;</value>
+        <value>&lt;b&gt;State Definitions&lt;/b&gt;&lt;br/&gt;&lt;ul&gt;&lt;li&gt;Active: The donor is actively donating. NPPatch creates installment Opportunities as defined by the Recurring Donation schedule.&lt;/li&gt;
+&lt;li&gt;Lapsed: Donations aren&apos;t being received as expected, but NPPatch still creates installment Opportunities as defined by the Recurring Donation schedule.&lt;/li&gt;
+&lt;li&gt;Closed: The donor has stopped making donations for this Recurring Donation. NPPatch doesn&apos;t create any new installment Opportunities.&lt;/li&gt;&lt;/ul&gt;</value>
     </labels>
     <labels>
         <fullName>RD2_StatusMappingDeploymentAlreadyInProgress</fullName>
@@ -3033,7 +3033,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Message displayed when save action cannot start due to another deployment</shortDescription>
-        <value>You can&apos;t save a mapping while NPSP is processing another Status to State mapping.</value>
+        <value>You can&apos;t save a mapping while NPPatch is processing another Status to State mapping.</value>
     </labels>
     <labels>
         <fullName>RD2_StatusMappingIntro</fullName>
@@ -3041,7 +3041,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Status to state mapping page introduction and guidelines</shortDescription>
-        <value>When you create custom picklist values for Recurring Donation Status, you must map them to a State so that NPSP knows how to process records with those custom Status values.
+        <value>When you create custom picklist values for Recurring Donation Status, you must map them to a State so that NPPatch knows how to process records with those custom Status values.
         &lt;br/&gt;&lt;br/&gt;If you haven&apos;t created any custom picklist values for Recurring Donation Status, there&apos;s nothing you need to map.</value>
     </labels>
     <labels>
@@ -3082,7 +3082,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Validation and health check solution when status is not mapped to a state.</shortDescription>
-        <value>Go to NPSP Settings | Recurring Donations | Status to State Mappings, or contact your administrator for help.</value>
+        <value>Go to NPPatch Settings | Recurring Donations | Status to State Mappings, or contact your administrator for help.</value>
     </labels>
     <labels>
         <fullName>RD2_StatusMustBeActiveOrPause</fullName>
@@ -3370,7 +3370,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Confirmation message displayed to user before the process runs</shortDescription>
-        <value>This process updates all future installment Opportunities to match the current data for this Recurring Donation. For some installments, NPSP may delete and recreate new installments.
+        <value>This process updates all future installment Opportunities to match the current data for this Recurring Donation. For some installments, NPPatch may delete and recreate new installments.
 &lt;br/&gt;&lt;br/&gt;Click Continue to start the process or Cancel to return to the Recurring Donation page.</value>
     </labels>
     <labels>
@@ -3491,7 +3491,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Resources Page - Product Name</shortDescription>
-        <value>Nonprofit Success Pack (NPSP)</value>
+        <value>NPPatch (NPPatch)</value>
     </labels>
     <labels>
         <fullName>RP_ReleaseGitHub</fullName>
@@ -3529,28 +3529,28 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Resources Page - SubTitle</shortDescription>
-        <value>You now have access to ALL the powerful features of Salesforce Enterprise Edition PLUS the ability to better manage donors with the Nonprofit Success Pack application. Now let&apos;s get started.</value>
+        <value>You now have access to ALL the powerful features of Salesforce Enterprise Edition PLUS the ability to better manage donors with the NPPatch application. Now let&apos;s get started.</value>
     </labels>
     <labels>
         <fullName>RP_Title</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Resources Page - Title</shortDescription>
-        <value>Welcome to Salesforce and the Nonprofit Success Pack (NPSP)!</value>
+        <value>Welcome to Salesforce and the NPPatch (NPPatch)!</value>
     </labels>
     <labels>
         <fullName>RP_TrailheadLinkLabel</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Resources Page - Trailhead Link</shortDescription>
-        <value>Getting Started with Salesforce and NPSP Trailmix</value>
+        <value>Getting Started with Salesforce and NPPatch Trailmix</value>
     </labels>
     <labels>
         <fullName>RP_TrailheadParagraph</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Resources Page - Trailhead Paragraph</shortDescription>
-        <value>Get started with the Nonprofit Success Pack by learning the basics of Salesforce and donor and volunteer management.</value>
+        <value>Get started with the NPPatch by learning the basics of Salesforce and donor and volunteer management.</value>
     </labels>
     <labels>
         <fullName>RP_TrailheadSubtitle</fullName>
@@ -3564,7 +3564,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Resources Page - Trailblazer Paragraph</shortDescription>
-        <value>Get help from our active community of fellow NPSP users, or reach out to Salesforce.org.</value>
+        <value>Get help from our active community of fellow NPPatch users, or reach out to Salesforce.org.</value>
     </labels>
     <labels>
         <fullName>RP_UsHubLinkLabel</fullName>
@@ -3584,7 +3584,7 @@
         <fullName>RP_Videos</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Nonprofit Success Pack (NPSP) Resources Page - Youtube Videos</shortDescription>
+        <shortDescription>NPPatch (NPPatch) Resources Page - Youtube Videos</shortDescription>
         <value>How-To videos</value>
     </labels>
     <labels>
@@ -3592,7 +3592,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Resources Page - Webinar Link</shortDescription>
-        <value>NPSP Product Documentation</value>
+        <value>NPPatch Product Documentation</value>
     </labels>
     <labels>
         <fullName>RP_YoutubeChannel</fullName>
@@ -3691,7 +3691,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>addrCiceroMissingAPIKey</shortDescription>
-        <value>You must specify the Cicero API Key in the Auth Token field for Address Verification. Log into Salesforce and go to People | Addresses on the NPSP Settings page.</value>
+        <value>You must specify the Cicero API Key in the Auth Token field for Address Verification. Log into Salesforce and go to People | Addresses on the NPPatch Settings page.</value>
     </labels>
     <labels>
         <fullName>addrCopyConAddBtnConfirm</fullName>
@@ -3731,7 +3731,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>addrHHAccountOnly</shortDescription>
-        <value>To use Addresses with non-Household Accounts, you must select Organizational Account Addresses Enabled in NPSP Settings | People | Addresses.</value>
+        <value>To use Addresses with non-Household Accounts, you must select Organizational Account Addresses Enabled in NPPatch Settings | People | Addresses.</value>
     </labels>
     <labels>
         <fullName>addrHHAddressAlwaysDefault</fullName>
@@ -3865,7 +3865,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>alloDefaultNotPercent</shortDescription>
-        <value>The General Accounting Unit set as default in NPSP Settings can only have amount-based, not percentage-based Allocations.</value>
+        <value>The General Accounting Unit set as default in NPPatch Settings can only have amount-based, not percentage-based Allocations.</value>
     </labels>
     <labels>
         <fullName>alloDeleteRow</fullName>
@@ -3929,7 +3929,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>alloModifyCurrency</shortDescription>
-        <value>You can&apos;t modify Allocation currencies directly. NPSP updates Allocation currencies when you update the currency of the parent Opportunity, Campaign, or Recurring Donation.</value>
+        <value>You can&apos;t modify Allocation currencies directly. NPPatch updates Allocation currencies when you update the currency of the parent Opportunity, Campaign, or Recurring Donation.</value>
     </labels>
     <labels>
         <fullName>alloNegativeAmount</fullName>
@@ -4105,7 +4105,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Explanation of Batch Data Entry not being supported &amp; recommendations</shortDescription>
-        <value>As of October 1, 2020, Batch Data Entry is no longer supported. Most capabilities have been replaced with newer features in NPSP. If you have any in-progress batches, you can still access those records, but you can&apos;t process them using Batch Data Entry. Contact support if you need to access in-progress batches. &lt;br/&gt; You may want to explore Gift Entry as an alternative to Batch Data Entry.</value>
+        <value>As of October 1, 2020, Batch Data Entry is no longer supported. Most capabilities have been replaced with newer features in NPPatch. If you have any in-progress batches, you can still access those records, but you can&apos;t process them using Batch Data Entry. Contact support if you need to access in-progress batches. &lt;br/&gt; You may want to explore Gift Entry as an alternative to Batch Data Entry.</value>
     </labels>
     <labels>
         <fullName>bdeRetirementWarningBody</fullName>
@@ -4113,7 +4113,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Explanation of Batch Data Entry retirement &amp; recommendations</shortDescription>
-        <value>On October 1, 2020, Batch Data Entry will be retired and will no longer work in NPSP. If you have any in-progress batches at that time, you can still access those records, but you can&apos;t process them using Batch Data Entry. To ensure a smooth transition, enable and use Gift Entry in advance of October 1st.</value>
+        <value>On October 1, 2020, Batch Data Entry will be retired and will no longer work in NPPatch. If you have any in-progress batches at that time, you can still access those records, but you can&apos;t process them using Batch Data Entry. To ensure a smooth transition, enable and use Gift Entry in advance of October 1st.</value>
     </labels>
     <labels>
         <fullName>bdeRetirementWarningHeader</fullName>
@@ -4145,7 +4145,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>bdiAccountCustomIdError</shortDescription>
-        <value>The Account Custom Unique ID setting field {0} must have matching fields in the NPSP Data Import object whose API Names are {1} and {2}.</value>
+        <value>The Account Custom Unique ID setting field {0} must have matching fields in the NPPatch Data Import object whose API Names are {1} and {2}.</value>
     </labels>
     <labels>
         <fullName>bdiAdditionalObjChildNotUpdated</fullName>
@@ -4264,7 +4264,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>bdiContactCustomIdError</shortDescription>
-        <value>The Contact Custom Unique ID setting field {0} must have matching fields in the NPSP Data Import object whose API Names are {1} and {2}.</value>
+        <value>The Contact Custom Unique ID setting field {0} must have matching fields in the NPPatch Data Import object whose API Names are {1} and {2}.</value>
     </labels>
     <labels>
         <fullName>bdiContactMatchDupeMgmt</fullName>
@@ -4344,7 +4344,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>bdiDataImporterDescription</shortDescription>
-        <value>The NPSP Data Importer helps you easily import your data into the Nonprofit Success Pack.</value>
+        <value>The NPPatch Data Importer helps you easily import your data into the NPPatch.</value>
     </labels>
     <labels>
         <fullName>bdiDataImporterInfoLine1</fullName>
@@ -4368,7 +4368,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>bdiDataImporterInfoLine2b</shortDescription>
-        <value>In order to avoid reaching service limits, the NPSP Data Importer does not verify addresses through the verification service you may have specified in NPSP Settings.</value>
+        <value>In order to avoid reaching service limits, the NPPatch Data Importer does not verify addresses through the verification service you may have specified in NPPatch Settings.</value>
     </labels>
     <labels>
         <fullName>bdiDataImporterInfoLine3</fullName>
@@ -4408,7 +4408,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>bdiDataImporterTitle</shortDescription>
-        <value>NPSP Data Import</value>
+        <value>NPPatch Data Import</value>
     </labels>
     <labels>
         <fullName>bdiDeploymentInProgress</fullName>
@@ -4496,7 +4496,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>title on the progress indicator during dry run mode</shortDescription>
-        <value>NPSP Data Importer - Dry Run</value>
+        <value>NPPatch Data Importer - Dry Run</value>
     </labels>
     <labels>
         <fullName>bdiDupeMgmtMatchImportStatus</fullName>
@@ -4552,7 +4552,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>error message if the donation matched multiple opps</shortDescription>
-        <value>The Donation information matched against multiple Opportunities, so the NPSP Data Importer did not import it. The Donation Possible Matches field contains the Salesforce Ids of the matched Opportunities.</value>
+        <value>The Donation information matched against multiple Opportunities, so the NPPatch Data Importer did not import it. The Donation Possible Matches field contains the Salesforce Ids of the matched Opportunities.</value>
     </labels>
     <labels>
         <fullName>bdiErrorDonationNoMatch</fullName>
@@ -4560,7 +4560,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>error when no matching donation found, and a match is required</shortDescription>
-        <value>The NPSP Data Importer found no matching Donations.</value>
+        <value>The NPPatch Data Importer found no matching Donations.</value>
     </labels>
     <labels>
         <fullName>bdiErrorDonationRequireNoMatch</fullName>
@@ -4568,7 +4568,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>error message if the donation matched opp(s), but behavior required no match</shortDescription>
-        <value>The Donation information matched against one or more Opportunities, but the setting required no matches, so the NPSP Data Importer did not import it. The Donation Possible Matches field contains the Salesforce Ids of the matched Opportunities.</value>
+        <value>The Donation information matched against one or more Opportunities, but the setting required no matches, so the NPPatch Data Importer did not import it. The Donation Possible Matches field contains the Salesforce Ids of the matched Opportunities.</value>
     </labels>
     <labels>
         <fullName>bdiErrorExistingDonationAllocations</fullName>
@@ -4576,7 +4576,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>bdiErrorExistingDonationAllocations</shortDescription>
-        <value>The provided GAU Allocations conflict with existing Allocations on the donation Opportunity record. Remove the Allocations from the Opportunity record, or from the NPSP Data Import record, then re-process with NPSP Data Importer.</value>
+        <value>The provided GAU Allocations conflict with existing Allocations on the donation Opportunity record. Remove the Allocations from the Opportunity record, or from the NPPatch Data Import record, then re-process with NPPatch Data Importer.</value>
     </labels>
     <labels>
         <fullName>bdiErrorExistingPaymentAllocations</fullName>
@@ -4584,7 +4584,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>bdiErrorExistingPaymentAllocations</shortDescription>
-        <value>The provided GAU Allocations conflict with existing Allocations on the donation Payment record. Remove the Allocations from the Payment record, or from the NPSP Data Import record, then re-process with NPSP Data Importer.</value>
+        <value>The provided GAU Allocations conflict with existing Allocations on the donation Payment record. Remove the Allocations from the Payment record, or from the NPPatch Data Import record, then re-process with NPPatch Data Importer.</value>
     </labels>
     <labels>
         <fullName>bdiErrorGAUAllocationOver100</fullName>
@@ -4616,7 +4616,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>error thrown if specified class doesn&apos;t support the given BDI interface</shortDescription>
-        <value>Either the NPSP Data Importer could not find the Apex classs {0}, or this class does not support the {1} interface.</value>
+        <value>Either the NPPatch Data Importer could not find the Apex classs {0}, or this class does not support the {1} interface.</value>
     </labels>
     <labels>
         <fullName>bdiErrorInvalidLastname</fullName>
@@ -4636,7 +4636,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
     </labels>
     <labels>
         <fullName>bdiErrorNonHHAccountContact</fullName>
-        <categories>NPSP Data Importer</categories>
+        <categories>NPPatch Data Importer</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>bdiErrorNonHHAccountContact</shortDescription>
@@ -4644,7 +4644,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
     </labels>
     <labels>
         <fullName>bdiErrorNonHHAccountContactWithAdv</fullName>
-        <categories>NPSP Data Importer</categories>
+        <categories>NPPatch Data Importer</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>bdiErrorNonHHAccountContactWithAdv</shortDescription>
@@ -4652,7 +4652,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
     </labels>
     <labels>
         <fullName>bdiErrorOneToOneMultiContact</fullName>
-        <categories>NPSP Data Importer</categories>
+        <categories>NPPatch Data Importer</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>bdiErrorOneToOneMultiContact</shortDescription>
@@ -4664,7 +4664,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>error message if the donation matched multiple pmts</shortDescription>
-        <value>The Donation information matched against multiple Payments, so the NPSP Data Importer did not import it. The Payment Possible Matches field contains the Salesforce Ids of the matched Payments.</value>
+        <value>The Donation information matched against multiple Payments, so the NPPatch Data Importer did not import it. The Payment Possible Matches field contains the Salesforce Ids of the matched Payments.</value>
     </labels>
     <labels>
         <fullName>bdiFMUIBackToMapGroup</fullName>
@@ -4697,7 +4697,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <protected>true</protected>
         <shortDescription>bdiFMUIDescription1</shortDescription>
         <value>
-            Connect the field you created on the NPSP Data Import object to the field on your target object in
+            Connect the field you created on the NPPatch Data Import object to the field on your target object in
             the grid below. You can find fields by Field Label or the Field API Name.
         </value>
     </labels>
@@ -4708,8 +4708,8 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <protected>true</protected>
         <shortDescription>bdiFMUIDescription2</shortDescription>
         <value>
-            Fields on the NPSP Data Import object must map to compatible field types on your target object.
-            When you select an NPSP Data Import field, only the compatible target fields will be available.
+            Fields on the NPPatch Data Import object must map to compatible field types on your target object.
+            When you select an NPPatch Data Import field, only the compatible target fields will be available.
         </value>
     </labels>
     <labels>
@@ -4734,7 +4734,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>bdiFMUISourceFieldLabelHelp</shortDescription>
-        <value>The NPSP Data Import field you want to map. Search by either Field Label or API Name. If you can’t find the field, confirm you created the field on the NPSP Data Import object.</value>
+        <value>The NPPatch Data Import field you want to map. Search by either Field Label or API Name. If you can’t find the field, confirm you created the field on the NPPatch Data Import object.</value>
     </labels>
     <labels>
         <fullName>bdiFMUISourceFieldDataTypeHelp</fullName>
@@ -4742,7 +4742,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>bdiFMUISourceFieldDataTypeHelp</shortDescription>
-        <value>The data type of the field you chose on the NPSP Data Import object.</value>
+        <value>The data type of the field you chose on the NPPatch Data Import object.</value>
     </labels>
     <labels>
         <fullName>bdiFMUITargetFieldLabelHelp</fullName>
@@ -4750,7 +4750,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>bdiFMUITargetFieldLabelHelp</shortDescription>
-        <value>The target field you want to connect to the NPSP Data Import field. Search by either Field Label or API Name. This is filtered to show only fields on your target object that are compatible with the field you chose on the NPSP Data Import object.</value>
+        <value>The target field you want to connect to the NPPatch Data Import field. Search by either Field Label or API Name. This is filtered to show only fields on your target object that are compatible with the field you chose on the NPPatch Data Import object.</value>
     </labels>
     <labels>
         <fullName>bdiFMUITargetFieldDataTypeHelp</fullName>
@@ -4806,7 +4806,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>bdiFMUISearchSourceInputLabel</shortDescription>
-        <value>Search for the NPSP Data Import object&apos;s field by label or API name.</value>
+        <value>Search for the NPPatch Data Import object&apos;s field by label or API name.</value>
     </labels>
     <labels>
         <fullName>bdiFMUISearchTargetInputLabel</fullName>
@@ -4822,7 +4822,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>bdiFMUISourceObject</shortDescription>
-        <value>Source (NPSP Data Import Object)</value>
+        <value>Source (NPPatch Data Import Object)</value>
     </labels>
     <labels>
         <fullName>bdiFMUISuccessful</fullName>
@@ -4890,11 +4890,11 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
     </labels>
     <labels>
         <fullName>bdiHouseholdModelRequired</fullName>
-        <categories>NPSP Data Importer</categories>
+        <categories>NPPatch Data Importer</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>bdiHouseholdModelRequired</shortDescription>
-        <value>The NPSP Data Importer only works with the Household Account model.</value>
+        <value>The NPPatch Data Importer only works with the Household Account model.</value>
     </labels>
     <labels>
         <fullName>bdiIgnored</fullName>
@@ -4918,7 +4918,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>error when the importData() API is given a invalid Batch ID.</shortDescription>
-        <value>The NPSP Data Import Batch Id {0} is invalid.</value>
+        <value>The NPPatch Data Import Batch Id {0} is invalid.</value>
     </labels>
     <labels>
         <fullName>bdiInvalidDonationMatchingBehavior</fullName>
@@ -4944,7 +4944,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <shortDescription>Warning for Mass Delete Buttons</shortDescription>
         <value>You are about to delete {0} record(s).
         &lt;br/&gt;
-        &lt;br/&gt;&lt;b&gt;IMPORTANT:&lt;/b&gt; If you create gifts in your org using the Batch Gift Entry feature, we don&apos;&apos;t recommend using the Mass Delete button. Please see the NPSP documentation for instructions on deleting records using the data loader.</value>
+        &lt;br/&gt;&lt;b&gt;IMPORTANT:&lt;/b&gt; If you create gifts in your org using the Batch Gift Entry feature, we don&apos;&apos;t recommend using the Mass Delete button. Please see the NPPatch documentation for instructions on deleting records using the data loader.</value>
     </labels>
     <labels>
         <fullName>bdiMatched</fullName>
@@ -5160,7 +5160,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Object groups description part 2</shortDescription>
-        <value>Object Groups are collections of field mappings that tell the NPSP Data Import tool what types of records (e.g. Contacts, Opportunities, Payments, etc.) to create or update. NPSP is able to link related records within a single row of your import to one another because fields mappings are bundled in Object Groups in this way.</value>
+        <value>Object Groups are collections of field mappings that tell the NPPatch Data Import tool what types of records (e.g. Contacts, Opportunities, Payments, etc.) to create or update. NPPatch is able to link related records within a single row of your import to one another because fields mappings are bundled in Object Groups in this way.</value>
     </labels>
     <labels>
         <fullName>bdiOMUIPageDescriptionPt3</fullName>
@@ -5245,7 +5245,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>First part of error displayed when there are no unmapped fields.</shortDescription>
-        <value>Error: There are no unmapped fields on the NPSP Data Import object to use for the </value>
+        <value>Error: There are no unmapped fields on the NPPatch Data Import object to use for the </value>
     </labels>
     <labels>
         <fullName>bdiOMUIErrorNoUnmappedFieldsPt2</fullName>
@@ -5253,7 +5253,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Second part of error displayed when there are no unmapped fields.</shortDescription>
-        <value>. Create new fields on the NPSP Data Import object if needed.</value>
+        <value>. Create new fields on the NPPatch Data Import object if needed.</value>
     </labels>
     <labels>
         <fullName>bdiOMUIFieldMappingProblemHeader</fullName>
@@ -5277,7 +5277,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Warning body, second part, about Field Mapping issues</shortDescription>
-        <value>Make sure the NPSP Data Import and target fields still exist and edit or delete the Field Mapping.</value>
+        <value>Make sure the NPPatch Data Import and target fields still exist and edit or delete the Field Mapping.</value>
     </labels>
     <labels>
         <fullName>bdiPositiveNumber</fullName>
@@ -5325,7 +5325,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>bdiSelectCantProcessBatchDIRecords</shortDescription>
-        <value>You selected records linked to an NPSP Data Import Batch. To import records associated with an NPSP Data Import Batch, open the batch and click Process Batch.</value>
+        <value>You selected records linked to an NPPatch Data Import Batch. To import records associated with an NPPatch Data Import Batch, open the batch and click Process Batch.</value>
     </labels>
     <labels>
         <fullName>bdiSelectCantProcessImportedRecords</fullName>
@@ -5463,21 +5463,21 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Used as field help text since help text is not upgradeable.</shortDescription>
-        <value>Enter the number of days from the Donation Date to consider when looking for a matching Opportunity or Payment. NPSP will choose the matching Opp or Payment whose date falls within the number of days AND is closest to the Donation Date.</value>
+        <value>Enter the number of days from the Donation Date to consider when looking for a matching Opportunity or Payment. NPPatch will choose the matching Opp or Payment whose date falls within the number of days AND is closest to the Donation Date.</value>
     </labels>
     <labels>
         <fullName>bgeBatchDonationMatchingBehaviorHelp</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Used as field help text since help text is not upgradeable.</shortDescription>
-        <value>Defines how NPSP should handle matching Donations.</value>
+        <value>Defines how NPPatch should handle matching Donations.</value>
     </labels>
     <labels>
         <fullName>bgeBatchDonationMatchingClassHelp</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Used as field help text since help text is not upgradeable.</shortDescription>
-        <value>The developer name of an Apex class that implements the BDI_IMatching interface for Donations. Leave blank to let NPSP handle matching.</value>
+        <value>The developer name of an Apex class that implements the BDI_IMatching interface for Donations. Leave blank to let NPPatch handle matching.</value>
     </labels>
     <labels>
         <fullName>bgeBatchDonationMatchingRuleHelp</fullName>
@@ -5519,7 +5519,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Used as field help text since help text is not upgradeable.</shortDescription>
-        <value>The developer name of an Apex class that implements the BDI_IPostProcess interface for NPSP batch records.
+        <value>The developer name of an Apex class that implements the BDI_IPostProcess interface for NPPatch batch records.
         </value>
     </labels>
     <labels>
@@ -5534,7 +5534,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Used as field help text since help text is not upgradeable.</shortDescription>
-        <value>When checked, NPSP calculates donor rollups when donations are processed. If unchecked, donor rollups are calculated during the default nightly Scheduled Job. Note that selecting this checkbox may slow down processing of this batch.</value>
+        <value>When checked, NPPatch calculates donor rollups when donations are processed. If unchecked, donor rollups are calculated during the default nightly Scheduled Job. Note that selecting this checkbox may slow down processing of this batch.</value>
     </labels>
     <labels>
         <fullName>bgeBatchOverview</fullName>
@@ -5857,7 +5857,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Explanation of Batch Gift Entry retirement &amp; recommendations</shortDescription>
-        <value>On July 13, 2021, legacy Batch Gift Entry will be retired and will no longer work in NPSP. If you have any in-progress batches at that time, you can still access those records, but you can&apos;t process them using Batch Gift Entry. To ensure a smooth transition, enable and use the newer Gift Entry in advance of July 13th.</value>
+        <value>On July 13, 2021, legacy Batch Gift Entry will be retired and will no longer work in NPPatch. If you have any in-progress batches at that time, you can still access those records, but you can&apos;t process them using Batch Gift Entry. To ensure a smooth transition, enable and use the newer Gift Entry in advance of July 13th.</value>
     </labels>
     <labels>
         <fullName>bgeRetirementWarningHeader</fullName>
@@ -5914,14 +5914,14 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Message for Batch Gift Entry unmapped fields when Advanced Mapping enabled.</shortDescription>
-        <value>The following fields are included in this Batch, but their Field Mappings were deleted: {0}. To fix this, go to Advanced Mapping in NPSP Settings and map the fields again.</value>
+        <value>The following fields are included in this Batch, but their Field Mappings were deleted: {0}. To fix this, go to Advanced Mapping in NPPatch Settings and map the fields again.</value>
     </labels>
     <labels>
         <fullName>bgeUnmappedFieldsNoticeMessageHelpTextMapping</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Message for Batch Gift Entry unmapped fields when Advanced Mapping disabled.</shortDescription>
-        <value>The following fields are included in this Batch, but their Field Mappings were deleted: {0}. To fix this, go to the NPSP Data Import object and map the fields again using Help Text.</value>
+        <value>The following fields are included in this Batch, but their Field Mappings were deleted: {0}. To fix this, go to the NPPatch Data Import object and map the fields again using Help Text.</value>
     </labels>
     <labels>
         <fullName>bgeWizardShowAdvancedOptions</fullName>
@@ -6121,14 +6121,14 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Description of the batch number settings</shortDescription>
-        <value>Batch numbers are unique identifiers used in Gift Entry and NPSP Data Importer. The auto-numbered value appears in the Batch Number fields on Opportunities and Payments.</value>
+        <value>Batch numbers are unique identifiers used in Gift Entry and NPPatch Data Importer. The auto-numbered value appears in the Batch Number fields on Opportunities and Payments.</value>
     </labels>
     <labels>
         <fullName>batchNumberSettingsHeader</fullName>
         <categories>Batch Number Settings</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Header for batch number settings in NPSP Settings</shortDescription>
+        <shortDescription>Header for batch number settings in NPPatch Settings</shortDescription>
         <value>Batch Number Settings</value>
     </labels>
     <labels>
@@ -6185,7 +6185,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Warning about editing fields when transaction already processed</shortDescription>
-        <value>{0} successfully processed the payment. Changing the donor, date, amount, or payment method will result in inconsistent records for the same transaction in {0} and NPSP.</value>
+        <value>{0} successfully processed the payment. Changing the donor, date, amount, or payment method will result in inconsistent records for the same transaction in {0} and NPPatch.</value>
     </labels>
     <labels>
         <fullName>stgHelpAdvancedMapping3</fullName>
@@ -6193,7 +6193,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpAdvancedMapping3</shortDescription>
-        <value>Find complete Advanced Mapping setup documentation &lt;a href=&quot;https://powerofus.force.com/NPSP_Advanced_Mapping&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.</value>
+        <value>Find complete Advanced Mapping setup documentation .</value>
     </labels>
     <labels>
         <fullName>stgHelpCustomizableRollupsEnable1</fullName>
@@ -6202,7 +6202,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <protected>true</protected>
         <shortDescription>stgHelpCustomizableRollupsEnable1</shortDescription>
         <value>
-            You can find complete Customizable Rollups documentation &lt;a href=&quot;https://powerofus.force.com/NPSP_Customizable_Rollups_Overview&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.
+            You can find complete Customizable Rollups documentation .
         </value>
     </labels>
     <labels>
@@ -6211,7 +6211,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpHHObjectOverview</shortDescription>
-        <value>To learn more about the recommended Household Account model, see the &lt;a href=&quot;https://powerofus.force.com/NPSP_Account_Model&quot; target=&quot;_blank&quot;&gt;NPSP Documentation&lt;/a&gt;.</value>
+        <value>To learn more about the recommended Household Account model, see the NPPatch Documentation.</value>
     </labels>
     <labels>
         <fullName>commonAssistiveError</fullName>
@@ -6770,7 +6770,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <categories>Data Import, Contacts</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Used when NPSP hits an error trying to create an account for a contact</shortDescription>
+        <shortDescription>Used when NPPatch hits an error trying to create an account for a contact</shortDescription>
         <value>Failed to create Account for Contact {0} {1}. {2}</value>
     </labels>
     <labels>
@@ -6971,7 +6971,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Text to be display before the &quot;See Duplicate Contact&quot; button</shortDescription>
-        <value>See all duplicate Contacts found using matching rules. &lt;a href=&quot;https://help.salesforce.com/s/articleView?id=sfdo.NPSP_Merge_Contacts.htm&amp;type=5&quot; target=&quot;_blank&quot;&gt;&lt;b&gt; Tell Me More &lt;/b&gt;&lt;/a&gt;</value>
+        <value>See all duplicate Contacts found using matching rules. </value>
     </labels>
     <labels>
         <fullName>conMergeSeeDupConDRS</fullName>
@@ -6986,14 +6986,14 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Elevate Advert Notification Body</shortDescription>
-        <value>With Elevate connected to NPSP, donations from your online forms automatically flow into NPSP. Elevate also processes payments and updates donor records in NPSP.</value>
+        <value>With Elevate connected to NPPatch, donations from your online forms automatically flow into NPPatch. Elevate also processes payments and updates donor records in NPPatch.</value>
     </labels>
     <labels>
         <fullName>elevateAdNotificationFor234Title</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Elevate Advert Notification Title</shortDescription>
-        <value>Streamline donation processing with Salesforce.org Elevate and NPSP</value>
+        <value>Streamline donation processing with Salesforce.org Elevate and NPPatch</value>
     </labels>
     <labels>
         <fullName>engagementPlanCantEdit</fullName>
@@ -7440,7 +7440,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Text block about adding or removing fields in the batch header</shortDescription>
-        <value>Choose fields to include in your Batch Header. Select the checkbox to add a field and deselect to remove the field from the form. If you&apos;d like additional custom fields available for the Batch Header, add them in the NPSP Data Import Batch object.</value>
+        <value>Choose fields to include in your Batch Header. Select the checkbox to add a field and deselect to remove the field from the form. If you&apos;d like additional custom fields available for the Batch Header, add them in the NPPatch Data Import Batch object.</value>
     </labels>
     <labels>
         <fullName>geBodyBatchHeaderRightCol</fullName>
@@ -7510,11 +7510,11 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         &lt;/br&gt;
         &lt;ol&gt;
             &lt;li&gt; Create the field on the target object. &lt;/li&gt;
-            &lt;li&gt; Create the field on the NPSP Data Import object. &lt;/li&gt;
-            &lt;li&gt; If this is part of a new Object Group, create additional fields for a new Object group and create the new Object Group in NPSP Settings. &lt;/li&gt;
-            &lt;li&gt; Add Field Mapping in NPSP Settings to connect the NPSP Data Import field to the target field. &lt;/li&gt;
+            &lt;li&gt; Create the field on the NPPatch Data Import object. &lt;/li&gt;
+            &lt;li&gt; If this is part of a new Object Group, create additional fields for a new Object group and create the new Object Group in NPPatch Settings. &lt;/li&gt;
+            &lt;li&gt; Add Field Mapping in NPPatch Settings to connect the NPPatch Data Import field to the target field. &lt;/li&gt;
         &lt;/ol&gt;
-        See NPSP documentation about Advanced Mapping for additional details.
+        See NPPatch documentation about Advanced Mapping for additional details.
         </value>
     </labels>
     <labels>
@@ -7538,7 +7538,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <categories>Gift Entry</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Information about enabling Gift Entry in NPSP Settings</shortDescription>
+        <shortDescription>Information about enabling Gift Entry in NPPatch Settings</shortDescription>
         <value>Before you enable Gift Entry, you must enable Advanced Mapping.
 &lt;br/&gt;&lt;br/&gt;
 Use Gift Entry templates to enter single gifts or batches of gifts. All gifts entered through the older Batch Gift Entry tool are not displayed in Gift Entry and vice versa.
@@ -7863,7 +7863,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Failure msg when transaction is processed but record isn&apos;t created in Salesforce</shortDescription>
-        <value>Elevate successfully processed the payment, but NPSP didn&apos;t create the record for the transaction in Salesforce. Please correct the errors and resubmit the form to create the Salesforce record.</value>
+        <value>Elevate successfully processed the payment, but NPPatch didn&apos;t create the record for the transaction in Salesforce. Please correct the errors and resubmit the form to create the Salesforce record.</value>
     </labels>
     <labels>
         <fullName>geElevateDeleteErrorLog</fullName>
@@ -7871,7 +7871,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Error log entry for gift removed from Elevate by not removed from Gift Entry.</shortDescription>
-        <value>Gift deleted from {0}, but Gift Entry cannot delete the gift. Remove the gift&apos;s NPSP Data Import record with ID: {1} from the batch with ID {2} in NPSP Data Import Batches.</value>
+        <value>Gift deleted from {0}, but Gift Entry cannot delete the gift. Remove the gift&apos;s NPPatch Data Import record with ID: {1} from the batch with ID {2} in NPPatch Data Import Batches.</value>
     </labels>
     <labels>
         <fullName>geElevateUpdateErrorLog</fullName>
@@ -7879,7 +7879,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Error log entry for gift updated in Elevate by not updated in Gift Entry.</shortDescription>
-        <value>Gift updated in {0}, but Gift Entry cannot update the gift. Update the gift&apos;s NPSP Data Import record with ID: {1} from the batch with ID {2} in NPSP Data Import Batches.</value>
+        <value>Gift updated in {0}, but Gift Entry cannot update the gift. Update the gift&apos;s NPPatch Data Import record with ID: {1} from the batch with ID {2} in NPPatch Data Import Batches.</value>
     </labels>
     <labels>
         <fullName>geErrorElevateDelete</fullName>
@@ -7994,7 +7994,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <value>ADMIN SETUP CHECKLIST</value>
     </labels>
     <labels>
-        <fullName>gsChecklistExploreNPSPDesc</fullName>
+        <fullName>gsChecklistExploreNPPatchDesc</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
@@ -8002,12 +8002,12 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <value>Get comfortable with key concepts and features.</value>
     </labels>
     <labels>
-        <fullName>gsChecklistExploreNPSPTitle</fullName>
+        <fullName>gsChecklistExploreNPPatchTitle</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Title of checklist Explore Nonprofit in Get Started</shortDescription>
-        <value>Explore the Nonprofit Success Pack (NPSP)</value>
+        <value>Explore the NPPatch (NPPatch)</value>
     </labels>
     <labels>
         <fullName>gsChecklistItemAddUserDesc</fullName>
@@ -8015,7 +8015,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Description of checklist item Add User in Get Started</shortDescription>
-        <value>Give users access to NPSP and manage permissions for your org to ensure the right people have access to just what they need to keep things running smoothly.</value>
+        <value>Give users access to NPPatch and manage permissions for your org to ensure the right people have access to just what they need to keep things running smoothly.</value>
     </labels>
     <labels>
         <fullName>gsChecklistItemAddUserLinkLabel</fullName>
@@ -8063,7 +8063,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Description of checklist item Create Donation in Get Started</shortDescription>
-        <value>Keep track of donations, grants, or any other type of revenue so you can identify giving patterns and understand what drives giving at the constituent level. Start by learning how to enter donations into NPSP.</value>
+        <value>Keep track of donations, grants, or any other type of revenue so you can identify giving patterns and understand what drives giving at the constituent level. Start by learning how to enter donations into NPPatch.</value>
     </labels>
     <labels>
         <fullName>gsChecklistItemCreateDonationLinkLabel</fullName>
@@ -8159,7 +8159,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Link label of checklist item Go Further in Get Started</shortDescription>
-        <value>Discover more about NPSP in Trailhead</value>
+        <value>Discover more about NPPatch in Trailhead</value>
     </labels>
     <labels>
         <fullName>donationHistoryFilterSelectAYear</fullName>
@@ -8183,7 +8183,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Description of checklist item Import Data in Get Started</shortDescription>
-        <value>Use the NPSP Data Importer to get your records into Salesforce.</value>
+        <value>Use the NPPatch Data Importer to get your records into Salesforce.</value>
     </labels>
     <labels>
         <fullName>gsChecklistItemImportDataPriBtnLabel</fullName>
@@ -8250,92 +8250,92 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <value>Manage Changes to Your Org</value>
     </labels>
     <labels>
-        <fullName>gsChecklistItemNPSPCloudDesc</fullName>
+        <fullName>gsChecklistItemNPPatchCloudDesc</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Description of checklist item NPSP Cloud in Get Started</shortDescription>
-        <value>This brief overview is meant to dip your toes into what&apos;s possible with NPSP, but you can dive deeper and discover the many other features available to your organization.</value>
+        <shortDescription>Description of checklist item NPPatch Cloud in Get Started</shortDescription>
+        <value>This brief overview is meant to dip your toes into what&apos;s possible with NPPatch, but you can dive deeper and discover the many other features available to your organization.</value>
     </labels>
     <labels>
-        <fullName>gsChecklistItemNPSPCloudPriBtnLabel</fullName>
+        <fullName>gsChecklistItemNPPatchCloudPriBtnLabel</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Button label of checklist item NPSP Cloud in Get Started</shortDescription>
+        <shortDescription>Button label of checklist item NPPatch Cloud in Get Started</shortDescription>
         <value>See Features</value>
     </labels>
     <labels>
-        <fullName>gsChecklistItemNPSPCloudLinkLabel</fullName>
+        <fullName>gsChecklistItemNPPatchCloudLinkLabel</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Link label of checklist item NPSP Cloud in Get Started</shortDescription>
-        <value>Learn more about NPSP Features in Trailhead</value>
+        <shortDescription>Link label of checklist item NPPatch Cloud in Get Started</shortDescription>
+        <value>Learn more about NPPatch Features in Trailhead</value>
     </labels>
     <labels>
-        <fullName>gsChecklistItemNPSPCloudTitle</fullName>
+        <fullName>gsChecklistItemNPPatchCloudTitle</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Title of checklist item NPSP Cloud in Get Started</shortDescription>
+        <shortDescription>Title of checklist item NPPatch Cloud in Get Started</shortDescription>
         <value>Learn about Other Nonprofit Cloud Features</value>
     </labels>
     <labels>
-        <fullName>gsChecklistItemNPSPGuideDesc</fullName>
+        <fullName>gsChecklistItemNPPatchGuideDesc</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Description of checklist item NPSP Guide in Get Started</shortDescription>
+        <shortDescription>Description of checklist item NPPatch Guide in Get Started</shortDescription>
         <value>Take the time to carefully plan your implementation and ensure your Salesforce org meets the needs of your nonprofit.</value>
     </labels>
     <labels>
-        <fullName>gsChecklistItemNPSPGuidePriBtnLabel</fullName>
+        <fullName>gsChecklistItemNPPatchGuidePriBtnLabel</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Button label of checklist item NPSP Guide in Get Started</shortDescription>
+        <shortDescription>Button label of checklist item NPPatch Guide in Get Started</shortDescription>
         <value>Download PDF</value>
     </labels>
     <labels>
-        <fullName>gsChecklistItemNPSPGuideTitle</fullName>
+        <fullName>gsChecklistItemNPPatchGuideTitle</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Title of checklist item NPSP Guide in Get Started</shortDescription>
-        <value>NPSP Planning Guide</value>
+        <shortDescription>Title of checklist item NPPatch Guide in Get Started</shortDescription>
+        <value>NPPatch Planning Guide</value>
     </labels>
     <labels>
-        <fullName>gsChecklistItemNPSPSettingsDesc</fullName>
+        <fullName>gsChecklistItemNPPatchSettingsDesc</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Description of checklist item NPSP Settings in Get Started</shortDescription>
-        <value>Navigate to the NPSP Settings page and do a thorough review to confirm the settings are correct for your organization and are functioning the way you expect them to.</value>
+        <shortDescription>Description of checklist item NPPatch Settings in Get Started</shortDescription>
+        <value>Navigate to the NPPatch Settings page and do a thorough review to confirm the settings are correct for your organization and are functioning the way you expect them to.</value>
     </labels>
     <labels>
-        <fullName>gsChecklistItemNPSPSettingsPriBtnLabel</fullName>
+        <fullName>gsChecklistItemNPPatchSettingsPriBtnLabel</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Button label of checklist item NPSP Settings in Get Started</shortDescription>
-        <value>NPSP Settings</value>
+        <shortDescription>Button label of checklist item NPPatch Settings in Get Started</shortDescription>
+        <value>NPPatch Settings</value>
     </labels>
     <labels>
-        <fullName>gsChecklistItemNPSPSettingsLinkLabel</fullName>
+        <fullName>gsChecklistItemNPPatchSettingsLinkLabel</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Link label of checklist item NPSP Settings in Get Started</shortDescription>
-        <value>Learn more about NPSP Settings in the Planning Guide</value>
+        <shortDescription>Link label of checklist item NPPatch Settings in Get Started</shortDescription>
+        <value>Learn more about NPPatch Settings in the Planning Guide</value>
     </labels>
     <labels>
-        <fullName>gsChecklistItemNPSPSettingsTitle</fullName>
+        <fullName>gsChecklistItemNPPatchSettingsTitle</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Title of checklist item NPSP Settings in Get Started</shortDescription>
-        <value>Adjust NPSP Settings</value>
+        <shortDescription>Title of checklist item NPPatch Settings in Get Started</shortDescription>
+        <value>Adjust NPPatch Settings</value>
     </labels>
     <labels>
         <fullName>gsChecklistItemPageLayoutsDesc</fullName>
@@ -8362,35 +8362,35 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <value>Customize Page Layouts</value>
     </labels>
     <labels>
-        <fullName>gsChecklistItemPrepareNPSPDesc</fullName>
+        <fullName>gsChecklistItemPrepareNPPatchDesc</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Description of checklist item Prepare NPSP in Get Started</shortDescription>
+        <shortDescription>Description of checklist item Prepare NPPatch in Get Started</shortDescription>
         <value>Set specific goals and learn best practices for implementing Nonprofit Cloud.</value>
     </labels>
     <labels>
-        <fullName>gsChecklistItemPrepareNPSPPriBtnLabel</fullName>
+        <fullName>gsChecklistItemPrepareNPPatchPriBtnLabel</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Button label of checklist item Prepare NPSP in Get Started</shortDescription>
+        <shortDescription>Button label of checklist item Prepare NPPatch in Get Started</shortDescription>
         <value>Set Goals</value>
     </labels>
     <labels>
-        <fullName>gsChecklistItemPrepareNPSPLinkLabel</fullName>
+        <fullName>gsChecklistItemPrepareNPPatchLinkLabel</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Link label of checklist item Prepare NPSP in Get Started</shortDescription>
-        <value>Learn more about NPSP Success in Trailhead</value>
+        <shortDescription>Link label of checklist item Prepare NPPatch in Get Started</shortDescription>
+        <value>Learn more about NPPatch Success in Trailhead</value>
     </labels>
     <labels>
-        <fullName>gsChecklistItemPrepareNPSPTitle</fullName>
+        <fullName>gsChecklistItemPrepareNPPatchTitle</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Title of checklist item Prepare NPSP in Get Started</shortDescription>
+        <shortDescription>Title of checklist item Prepare NPPatch in Get Started</shortDescription>
         <value>Prepare for Success with Nonprofit Cloud</value>
     </labels>
     <labels>
@@ -8439,7 +8439,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Link label of checklist item Running Reports in Get Started</shortDescription>
-        <value>Learn how to customize NPSP Reports &amp; Dashboards in Trailhead</value>
+        <value>Learn how to customize NPPatch Reports &amp; Dashboards in Trailhead</value>
     </labels>
     <labels>
         <fullName>gsChecklistItemRunningReportsTitle</fullName>
@@ -8552,7 +8552,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Description for Create Constituent Records section in Get Started</shortDescription>
-        <value>People are the heart of any nonprofit. Explore Nonprofit Success Pack features to learn how to manage your constituents and their household, personal, and professional connections.</value>
+        <value>People are the heart of any nonprofit. Explore NPPatch features to learn how to manage your constituents and their household, personal, and professional connections.</value>
     </labels>
     <labels>
         <fullName>gseuChecklistCreateConstituentRecordsTitle</fullName>
@@ -8576,7 +8576,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Description for Connect Contact to Organization checklist item in Get Started</shortDescription>
-        <value>Affiliations in NPSP let you capture important connections between your constituents and related organizations such as work, school, or business. Connect a Contact to an Organization using Organization Affiliations.</value>
+        <value>Affiliations in NPPatch let you capture important connections between your constituents and related organizations such as work, school, or business. Connect a Contact to an Organization using Organization Affiliations.</value>
     </labels>
     <labels>
         <fullName>gseuChecklistItemConnectContactOrganizationLink</fullName>
@@ -8608,7 +8608,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Description for Connect Two Contacts with Relationships checklist item</shortDescription>
-        <value>Relationships in NPSP let you capture important connections between your constituents. Connect Contacts using the Relationships related list on the Contact records.</value>
+        <value>Relationships in NPPatch let you capture important connections between your constituents. Connect Contacts using the Relationships related list on the Contact records.</value>
     </labels>
     <labels>
         <fullName>gseuChecklistItemConnectContactsRelationshipsLink</fullName>
@@ -8640,7 +8640,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Description for Contacts and Account checklist item in Get Started</shortDescription>
-        <value>People are the most important resource for a nonprofit, so understanding how we use the Contact object to track them in NPSP is key. The Contact object stores constituent data such as name, address, and employer.</value>
+        <value>People are the most important resource for a nonprofit, so understanding how we use the Contact object to track them in NPPatch is key. The Contact object stores constituent data such as name, address, and employer.</value>
     </labels>
     <labels>
         <fullName>gseuChecklistItemCreateContactAndAccountLink</fullName>
@@ -8683,28 +8683,28 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <value>Nonprofit Cloud includes apps, tools, features, services, and technology designed to meet the unique needs of nonprofits.</value>
     </labels>
     <labels>
-        <fullName>gseuChecklistItemWhatIsNPSPDesc</fullName>
+        <fullName>gseuChecklistItemWhatIsNPPatchDesc</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Description for What is NPSP checklist item in Welcome section</shortDescription>
-        <value>The foundation of Nonprofit Cloud is the Nonprofit Success Pack (NPSP) app. NPSP helps you manage your constituents and fundraising efforts. If someone says they&apos;re using the &quot;nonprofit version&quot; of Salesforce, they&apos;re usually talking about NPSP.</value>
+        <shortDescription>Description for What is NPPatch checklist item in Welcome section</shortDescription>
+        <value>The foundation of Nonprofit Cloud is the NPPatch (NPPatch) app. NPPatch helps you manage your constituents and fundraising efforts. If someone says they&apos;re using the &quot;nonprofit version&quot; of Salesforce, they&apos;re usually talking about NPPatch.</value>
     </labels>
     <labels>
-        <fullName>gseuChecklistItemWhatIsNPSPLink</fullName>
+        <fullName>gseuChecklistItemWhatIsNPPatchLink</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Link text for What is NPSP checklist item in Welcome section</shortDescription>
-        <value>Learn more about Nonprofit Success Pack in Trailhead</value>
+        <shortDescription>Link text for What is NPPatch checklist item in Welcome section</shortDescription>
+        <value>Learn more about NPPatch in Trailhead</value>
     </labels>
     <labels>
-        <fullName>gseuChecklistItemWhatIsNPSPTitle</fullName>
+        <fullName>gseuChecklistItemWhatIsNPPatchTitle</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Title for What is NPSP checklist item in Welcome section</shortDescription>
-        <value>What is Nonprofit Success Pack?</value>
+        <shortDescription>Title for What is NPPatch checklist item in Welcome section</shortDescription>
+        <value>What is NPPatch?</value>
     </labels>
     <labels>
         <fullName>gsChecklistMakeItYourDesc</fullName>
@@ -8739,20 +8739,20 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <value>Onboard Your Users</value>
     </labels>
     <labels>
-        <fullName>gseuChecklistWelcomeNPSPDesc</fullName>
+        <fullName>gseuChecklistWelcomeNPPatchDesc</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Description of Welcome to Nonprofit checklist section in Get Started</shortDescription>
-        <value>Use these essential resources to help you get started with your NPSP journey.</value>
+        <value>Use these essential resources to help you get started with your NPPatch journey.</value>
     </labels>
     <labels>
-        <fullName>gseuChecklistWelcomeNPSPTitle</fullName>
+        <fullName>gseuChecklistWelcomeNPPatchTitle</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Title of Welcome to Nonprofit checklist section in Get Started</shortDescription>
-        <value>Welcome to Nonprofit Success Pack and Nonprofit Cloud</value>
+        <value>Welcome to NPPatch and Nonprofit Cloud</value>
     </labels>
     <labels>
         <fullName>gsChecklistItemFundraisingProcessDesc</fullName>
@@ -8792,7 +8792,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Description of Work with Records checklist in Get Started for End Users</shortDescription>
-        <value>After you get your constituent and donation data into NPSP, you need to be able to easily find and interact with the records you&apos;re working on.</value>
+        <value>After you get your constituent and donation data into NPPatch, you need to be able to easily find and interact with the records you&apos;re working on.</value>
     </labels>
     <labels>
         <fullName>gseuChecklistWorkRecordsTitle</fullName>
@@ -8808,7 +8808,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Description of Global Search checklist item in Get Started for End Users</shortDescription>
-        <value>When you&apos;re just getting started with NPSP, finding records can be tricky. Use global search to search across your entire Salesforce org and find what you need fast.</value>
+        <value>When you&apos;re just getting started with NPPatch, finding records can be tricky. Use global search to search across your entire Salesforce org and find what you need fast.</value>
     </labels>
     <labels>
         <fullName>gseuChecklistItemGlobalSearchLinkLabel</fullName>
@@ -8899,44 +8899,44 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <value>Work with Multiple Records Using List Views</value>
     </labels>
     <labels>
-        <fullName>gseuChecklistItemPrebuiltNPSPReportDesc</fullName>
+        <fullName>gseuChecklistItemPrebuiltNPPatchReportDesc</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Description of Prebuilt NPSP Report checklist item in Get Started for End Users</shortDescription>
-        <value>NPSP includes 87 of the most commonly-used constituent and fundraising reports. Use these reports as is, or customize them.</value>
+        <shortDescription>Description of Prebuilt NPPatch Report checklist item in Get Started for End Users</shortDescription>
+        <value>NPPatch includes 87 of the most commonly-used constituent and fundraising reports. Use these reports as is, or customize them.</value>
     </labels>
     <labels>
-        <fullName>gseuChecklistItemPrebuiltNPSPReportLinkLabel</fullName>
+        <fullName>gseuChecklistItemPrebuiltNPPatchReportLinkLabel</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Link label of Prebuilt NPSP Report checklist item in Get Started for End Users</shortDescription>
-        <value>Learn more about NPSP Reports in Trailhead</value>
+        <shortDescription>Link label of Prebuilt NPPatch Report checklist item in Get Started for End Users</shortDescription>
+        <value>Learn more about NPPatch Reports in Trailhead</value>
     </labels>
     <labels>
-        <fullName>gseuChecklistItemPrebuiltNPSPReportPriBtnLabel</fullName>
+        <fullName>gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Button label of Prebuilt NPSP Report checklist item in Get Started for End Users</shortDescription>
+        <shortDescription>Button label of Prebuilt NPPatch Report checklist item in Get Started for End Users</shortDescription>
         <value>Run Reports</value>
     </labels>
     <labels>
-        <fullName>gseuChecklistItemPrebuiltNPSPReportSecBtnLabel</fullName>
+        <fullName>gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Button label of Prebuilt NPSP Report checklist item in Get Started for End Users</shortDescription>
+        <shortDescription>Button label of Prebuilt NPPatch Report checklist item in Get Started for End Users</shortDescription>
         <value>Reports Workbook</value>
     </labels>
     <labels>
-        <fullName>gseuChecklistItemPrebuiltNPSPReportTitle</fullName>
+        <fullName>gseuChecklistItemPrebuiltNPPatchReportTitle</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Title of Prebuilt NPSP Report checklist item in Get Started for End Users</shortDescription>
-        <value>Run a Prebuilt NPSP Report</value>
+        <shortDescription>Title of Prebuilt NPPatch Report checklist item in Get Started for End Users</shortDescription>
+        <value>Run a Prebuilt NPPatch Report</value>
     </labels>
     <labels>
         <fullName>gseuChecklistItemStandardReportTypeDesc</fullName>
@@ -8976,7 +8976,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Description of View Dashboard checklist item in Get Started for End Users</shortDescription>
-        <value>Dashboards pull data from one or more reports and display it side by side in the same window. NPSP includes three dashboards that you can use as is or customize.</value>
+        <value>Dashboards pull data from one or more reports and display it side by side in the same window. NPPatch includes three dashboards that you can use as is or customize.</value>
     </labels>
     <labels>
         <fullName>gseuChecklistItemViewDashboardLinkLabel</fullName>
@@ -9008,7 +9008,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Description of Understand Your Data checklist item in Get Started for End Users</shortDescription>
-        <value>Reports and Dashboards help organize your data so that you can tell the story of your organization&apos;s impact. NPSP includes out-of-the-box reports, or you can create your own.</value>
+        <value>Reports and Dashboards help organize your data so that you can tell the story of your organization&apos;s impact. NPPatch includes out-of-the-box reports, or you can create your own.</value>
     </labels>
     <labels>
         <fullName>gseuChecklistYourDataTitle</fullName>
@@ -9184,7 +9184,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Description of Track Donation checklist in Get Started for End Users</shortDescription>
-        <value>In NPSP, you track donations, grants, pledges, and other types of revenue using the Opportunity object. You can create donations from an individual or from an organization such as a foundation, business, or government entity.</value>
+        <value>In NPPatch, you track donations, grants, pledges, and other types of revenue using the Opportunity object. You can create donations from an individual or from an organization such as a foundation, business, or government entity.</value>
     </labels>
     <labels>
         <fullName>gseuChecklistTrackDonationTitle</fullName>
@@ -9192,7 +9192,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Title of Track Donation checklist in Get Started for End Users</shortDescription>
-        <value>Track Donations and Other Income Types with NPSP</value>
+        <value>Track Donations and Other Income Types with NPPatch</value>
     </labels>
     <labels>
         <fullName>gseuChecklistItemExtraTwoMinutesVideo</fullName>
@@ -9344,7 +9344,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Page-level error message body when Advanced Mapping and Gift Entry are off</shortDescription>
-        <value>This feature requires both Advanced Mapping and Gift Entry. Please enable them in NPSP Settings.</value>
+        <value>This feature requires both Advanced Mapping and Gift Entry. Please enable them in NPPatch Settings.</value>
     </labels>
     <labels>
         <fullName>geServiceLevelErrorAdvancedMapping</fullName>
@@ -9376,7 +9376,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Page-level error for insufficient field access about exiting without saving</shortDescription>
-        <value>Alternatively, exit this form without saving and check your permissions on both the target object and on the NPSP Data Import object.</value>
+        <value>Alternatively, exit this form without saving and check your permissions on both the target object and on the NPPatch Data Import object.</value>
     </labels>
     <labels>
         <fullName>geErrorPageLevelMissingRequiredFields</fullName>
@@ -9384,7 +9384,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Page-level error message for required field missing on template</shortDescription>
-        <!-- Label should be followed by a list of fields e.g. %%%NAMESPACE%%%Amount__c, %%%NAMESPACE%%%Description__c --><value>You must include all required fields in your template. Review the source fields (NPSP Data Import object) for the following fields:</value>
+        <!-- Label should be followed by a list of fields e.g. %%%NAMESPACE%%%Amount__c, %%%NAMESPACE%%%Description__c --><value>You must include all required fields in your template. Review the source fields (NPPatch Data Import object) for the following fields:</value>
     </labels>
     <labels>
         <fullName>geErrorPageLevelMissingRequiredGroupFields</fullName>
@@ -9407,7 +9407,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <categories>Gift Entry</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Field-level error message for required field missing on NPSP Data Import object</shortDescription>
+        <shortDescription>Field-level error message for required field missing on NPPatch Data Import object</shortDescription>
         <value>Required field</value>
     </labels>
     <labels>
@@ -9704,7 +9704,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Help text for Address Object Group</shortDescription>
-        <value>The Address record that&apos;s associated with Contact1&apos;s Household Account. NPSP automation may also populate this address to Contact1&apos;s household and all contacts within the same household. If you&apos;re using the EDA Address object, you should create a new Object Group for the object and use its fields on your template.</value>
+        <value>The Address record that&apos;s associated with Contact1&apos;s Household Account. NPPatch automation may also populate this address to Contact1&apos;s household and all contacts within the same household. If you&apos;re using the EDA Address object, you should create a new Object Group for the object and use its fields on your template.</value>
     </labels>
     <labels>
         <fullName>geHelpTextAllocation1Mapping</fullName>
@@ -9890,7 +9890,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <categories>Gift Entry</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>NPSP Data Import Failure Information for when Elevate not connected</shortDescription>
+        <shortDescription>NPPatch Data Import Failure Information for when Elevate not connected</shortDescription>
         <value>Donation not created because {0} is disconnected and can't charge payment.</value>
     </labels>
     <labels>
@@ -10390,7 +10390,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>healthDetailsAccountDefaultRTIssue</shortDescription>
-        <value>The Account Model record type, {0} (set in NPSP Settings) is currently set as your Profile&apos;s default Account record type.</value>
+        <value>The Account Model record type, {0} (set in NPPatch Settings) is currently set as your Profile&apos;s default Account record type.</value>
     </labels>
     <labels>
         <fullName>healthDetailsAccountModel</fullName>
@@ -10485,7 +10485,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthDetailsHHAccountModel</shortDescription>
-        <value>When using the Household Account Model, you must set Household Object Rules to &quot;No Contacts&quot;. You can set the Household Object Rules field on the NPSP Settings Page under People | Households.</value>
+        <value>When using the Household Account Model, you must set Household Object Rules to &quot;No Contacts&quot;. You can set the Household Object Rules field on the NPPatch Settings Page under People | Households.</value>
     </labels>
     <labels>
         <fullName>healthDetailsHHActNoContacts</fullName>
@@ -10557,7 +10557,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthDetailsInvalidFiscalYears</shortDescription>
-        <value>Your organization is using Custom Fiscal Years. NPSP does not support Fiscal Year Rollups with Custom Fiscal Years.</value>
+        <value>Your organization is using Custom Fiscal Years. NPPatch does not support Fiscal Year Rollups with Custom Fiscal Years.</value>
     </labels>
     <labels>
         <fullName>healthDetailsInvalidLevelField</fullName>
@@ -10661,7 +10661,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthDetailsMailingListReportMissing</shortDescription>
-        <value>The NPSP Campaign Household Mailing List Report is missing. This report is run when you click the Household Mailing List button from a Campaign record.</value>
+        <value>The NPPatch Campaign Household Mailing List Report is missing. This report is run when you click the Household Mailing List button from a Campaign record.</value>
     </labels>
     <labels>
         <fullName>healthDetailsMissingOppPayments</fullName>
@@ -10685,7 +10685,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthDetailsNothingScheduled</shortDescription>
-        <value>The NPSP default jobs are not scheduled. Scheduled jobs update summary fields on records every night.</value>
+        <value>The NPPatch default jobs are not scheduled. Scheduled jobs update summary fields on records every night.</value>
     </labels>
     <labels>
         <fullName>healthDetailsOCR</fullName>
@@ -10717,7 +10717,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>healthDetailsOCRSettingsResolution</shortDescription>
-        <value>On the NPSP Settings tab, click Donations | Contact Roles, and edit the values of the above settings.</value>
+        <value>On the NPPatch Settings tab, click Donations | Contact Roles, and edit the values of the above settings.</value>
     </labels>
     <labels>
         <fullName>healthDetailsOCRSettingsValid</fullName>
@@ -10725,7 +10725,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>healthDetailsOCRSettingsValid</shortDescription>
-        <value>NPSP Opportunity Contact Roles settings are valid.</value>
+        <value>NPPatch Opportunity Contact Roles settings are valid.</value>
     </labels>
     <labels>
         <fullName>healthDetailsPaymentMappingBadDataTypes</fullName>
@@ -10781,7 +10781,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthDetailsTriggerHandlerDuplicate</shortDescription>
-        <value>Health Check found more than one Trigger Handler {0} on object {1} with the same field values. Duplicate Trigger Handlers will affect NPSP behavior.</value>
+        <value>Health Check found more than one Trigger Handler {0} on object {1} with the same field values. Duplicate Trigger Handlers will affect NPPatch behavior.</value>
     </labels>
     <labels>
         <fullName>healthDetailsTriggerHandlerMismatch</fullName>
@@ -10789,7 +10789,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthDetailsTriggerHandlerMismatch</shortDescription>
-        <value>Trigger Handler {0} on object {1} does not match the default NPSP configuration.</value>
+        <value>Trigger Handler {0} on object {1} does not match the default NPPatch configuration.</value>
     </labels>
     <labels>
         <fullName>healthDetailsTriggerHandlerMissing</fullName>
@@ -10797,7 +10797,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthDetailsTriggerHandlerMissing</shortDescription>
-        <value>Trigger Handler {0} on object {1} is missing and will affect NPSP behavior.</value>
+        <value>Trigger Handler {0} on object {1} is missing and will affect NPPatch behavior.</value>
     </labels>
     <labels>
         <fullName>healthDetailsUDFBadDatatypes</fullName>
@@ -10893,7 +10893,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Description for Disable Health Check Record Batch Setting</shortDescription>
-        <value>If selected, Health Check only checks your NPSP configuration settings for problems. Select this option if your organization has a large volume of records and Health Check is having problems completing.</value>
+        <value>If selected, Health Check only checks your NPPatch configuration settings for problems. Select this option if your organization has a large volume of records and Health Check is having problems completing.</value>
     </labels>
     <labels>
         <fullName>healthLabelErrorRecipientValid</fullName>
@@ -10949,7 +10949,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthLabelIntro</shortDescription>
-        <value>Health Check verifies that all of your NPSP Settings are valid and looks for problems in your record data. When complete, you can view the results below, including detailed information for any failures.</value>
+        <value>Health Check verifies that all of your NPPatch Settings are valid and looks for problems in your record data. When complete, you can view the results below, including detailed information for any failures.</value>
     </labels>
     <labels>
         <fullName>healthLabelLastRun</fullName>
@@ -11045,7 +11045,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthLabelScheduler</shortDescription>
-        <value>NPSP Default Scheduler</value>
+        <value>NPPatch Default Scheduler</value>
     </labels>
     <labels>
         <fullName>healthLabelSchedulerValid</fullName>
@@ -11053,7 +11053,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthLabelSchedulerValid</shortDescription>
-        <value>NPSP Recurring Jobs are scheduled.</value>
+        <value>NPPatch Recurring Jobs are scheduled.</value>
     </labels>
     <labels>
         <fullName>healthLabelShowPassedTests</fullName>
@@ -11085,7 +11085,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthLabelTriggerHandlersValid</shortDescription>
-        <value>Triggers are configured for NPSP default triggers.</value>
+        <value>Triggers are configured for NPPatch default triggers.</value>
     </labels>
     <labels>
         <fullName>healthLabelUDFValid</fullName>
@@ -11133,7 +11133,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>healthPaymentAutoCloseStageMustBeActiveClosedWonOrBlank</shortDescription>
-        <value>Select an active Closed/Won stage in the Opportunity Stage for When Fully Paid setting. You can also leave the value blank, which prevents NPSP from automatically updating the Opportunity stage when all Payments are received.</value>
+        <value>Select an active Closed/Won stage in the Opportunity Stage for When Fully Paid setting. You can also leave the value blank, which prevents NPPatch from automatically updating the Opportunity stage when all Payments are received.</value>
     </labels>
     <labels>
         <fullName>healthPaymentAutoCloseStageValid</fullName>
@@ -11173,7 +11173,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionAccountModel</shortDescription>
-        <value>All of your Accounts should use the same Account Model. View all of your Accounts and their types by running the &lt;b&gt;Individual Accounts by Account Type&lt;/b&gt; report in the NPSP Health Check reports folder.</value>
+        <value>All of your Accounts should use the same Account Model. View all of your Accounts and their types by running the &lt;b&gt;Individual Accounts by Account Type&lt;/b&gt; report in the NPPatch Health Check reports folder.</value>
     </labels>
     <labels>
         <fullName>healthSolutionAccountRTIssue</fullName>
@@ -11189,7 +11189,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionAutoRelFieldsMissing</shortDescription>
-        <value>Click {0} | {1} on the NPSP Settings tab, and delete the invalid Relationships Autocreation record.</value>
+        <value>Click {0} | {1} on the NPPatch Settings tab, and delete the invalid Relationships Autocreation record.</value>
     </labels>
     <labels>
         <fullName>healthSolutionAutoRelInvalidCMField</fullName>
@@ -11197,14 +11197,14 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionAutoRelInvalidCMField</shortDescription>
-        <value>Click {0} | {1} on the NPSP Settings tab and delete the Relationships Autocreation record that references this field.</value>
+        <value>Click {0} | {1} on the NPPatch Settings tab and delete the Relationships Autocreation record that references this field.</value>
     </labels>
     <labels>
         <fullName>healthSolutionAutoRelInvalidContactField</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionAutoRelInvalidContactField</shortDescription>
-        <value>Click {0} | {1} on the NPSP Settings tab and delete the Relationships Autocreation record that references this field.</value>
+        <value>Click {0} | {1} on the NPPatch Settings tab and delete the Relationships Autocreation record that references this field.</value>
     </labels>
     <labels>
         <fullName>healthSolutionAutoRelInvalidLookupField</fullName>
@@ -11212,7 +11212,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionAutoRelInvalidLookupField</shortDescription>
-        <value>Click {0} | {1} on the NPSP Settings tab and delete the Relationships Autocreation record that references this field.</value>
+        <value>Click {0} | {1} on the NPPatch Settings tab and delete the Relationships Autocreation record that references this field.</value>
     </labels>
     <labels>
         <fullName>healthSolutionBadRDField</fullName>
@@ -11220,7 +11220,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionBadRDField</shortDescription>
-        <value>On the NPSP Settings tab, click {0} | {1}, and delete the Recurring Donation Field Mapping record that references this field.</value>
+        <value>On the NPPatch Settings tab, click {0} | {1}, and delete the Recurring Donation Field Mapping record that references this field.</value>
     </labels>
     <labels>
         <fullName>healthSolutionContactData</fullName>
@@ -11228,7 +11228,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionContactData</shortDescription>
-        <value>View these Contacts by running the &lt;b&gt;Contacts without Accounts&lt;/b&gt; report in the NPSP Health Check reports folder.</value>
+        <value>View these Contacts by running the &lt;b&gt;Contacts without Accounts&lt;/b&gt; report in the NPPatch Health Check reports folder.</value>
     </labels>
     <labels>
         <fullName>healthSolutionEditSetting</fullName>
@@ -11236,7 +11236,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionEditSetting</shortDescription>
-        <value>On the NPSP Settings tab, click {1} | {2}, and edit the {0} setting.</value>
+        <value>On the NPPatch Settings tab, click {1} | {2}, and edit the {0} setting.</value>
     </labels>
     <labels>
         <fullName>healthSolutionHHAccNoContacts</fullName>
@@ -11244,7 +11244,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionHHAccNoContacts</shortDescription>
-        <value>Consider deleting these unused Household Account records to save space. View these Household Account records by running the &lt;b&gt;Empty Household Accounts&lt;/b&gt; report in the NPSP Health Check reports folder.</value>
+        <value>Consider deleting these unused Household Account records to save space. View these Household Account records by running the &lt;b&gt;Empty Household Accounts&lt;/b&gt; report in the NPPatch Health Check reports folder.</value>
     </labels>
     <labels>
         <fullName>healthSolutionHHObjNoContacts</fullName>
@@ -11252,7 +11252,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionHHObjNoContacts</shortDescription>
-        <value>Consider deleting these unused Household objects to save space. If you have completed a conversion to the Household Account model and no longer need the data on the Household object records they can be deleted.  View these Household objects by running the &lt;b&gt;Empty Household Objects&lt;/b&gt; report in the NPSP Health Check reports folder.</value>
+        <value>Consider deleting these unused Household objects to save space. If you have completed a conversion to the Household Account model and no longer need the data on the Household object records they can be deleted.  View these Household objects by running the &lt;b&gt;Empty Household Objects&lt;/b&gt; report in the NPPatch Health Check reports folder.</value>
     </labels>
     <labels>
         <fullName>healthSolutionInvalidFiscalYears</fullName>
@@ -11260,7 +11260,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionInvalidFiscalYears</shortDescription>
-        <value>Since Salesforce does not support turning off Custom Fiscal Years, NPSP Rollups will default to Calendar Year.</value>
+        <value>Since Salesforce does not support turning off Custom Fiscal Years, NPPatch Rollups will default to Calendar Year.</value>
     </labels>
     <labels>
         <fullName>healthSolutionInvalidLevelField</fullName>
@@ -11276,7 +11276,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionInvalidOppField</shortDescription>
-        <value>On the NPSP Settings tab, click {0} | {1}, and delete the Payment Mapping record that references this field.</value>
+        <value>On the NPPatch Settings tab, click {0} | {1}, and delete the Payment Mapping record that references this field.</value>
     </labels>
     <labels>
         <fullName>healthSolutionInvalidOppStage</fullName>
@@ -11292,7 +11292,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionInvalidPaymentField</shortDescription>
-        <value>On the NPSP Settings tab click {0} | {1}, and delete the Payment Mapping record that references this field.</value>
+        <value>On the NPPatch Settings tab click {0} | {1}, and delete the Payment Mapping record that references this field.</value>
     </labels>
     <labels>
         <fullName>healthSolutionInvalidRDCustomPeriod</fullName>
@@ -11308,7 +11308,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>healthSolutionInvalidRDCustomPeriodPicklist</shortDescription>
-        <value>On the NPSP Settings tab, click {0} | {1}, and add the missing Recurring Donation Custom Installment Period, or delete the picklist value from the Installment Period field.</value>
+        <value>On the NPPatch Settings tab, click {0} | {1}, and add the missing Recurring Donation Custom Installment Period, or delete the picklist value from the Installment Period field.</value>
     </labels>
     <labels>
         <fullName>healthSolutionInvalidScheduledJob</fullName>
@@ -11324,7 +11324,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionInvalidUDFObjectField</shortDescription>
-        <value>On the NPSP Settings tab, click {0} | {1} and delete the User Rollup record that references this field.</value>
+        <value>On the NPPatch Settings tab, click {0} | {1} and delete the User Rollup record that references this field.</value>
     </labels>
     <labels>
         <fullName>healthSolutionMailingListReportMissing</fullName>
@@ -11332,7 +11332,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionMailingListReportMissing</shortDescription>
-        <value>Create a Campaigns with Contacts report, and add a filter for Member Status does not contain &quot;Duplicate&quot;. Then specify this report on the {0} | {1} tab in NPSP Settings.</value>
+        <value>Create a Campaigns with Contacts report, and add a filter for Member Status does not contain &quot;Duplicate&quot;. Then specify this report on the {0} | {1} tab in NPPatch Settings.</value>
     </labels>
     <labels>
         <fullName>healthSolutionMissingOppPayments</fullName>
@@ -11340,7 +11340,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionMissingOppPayments</shortDescription>
-        <value>View these Opportunities by running the &lt;b&gt;Opportunities without Payments&lt;/b&gt; report in the NPSP Health Check reports folder. Note that you should add filter criteria on the report to exclude any Opportunity types and Opportunity record types you&apos;ve excluded in NPSP Payments Settings. You can create the missing Payment records using the Create Missing Payments button on NPSP Settings | Bulk Data Processes | Create Missing Payments.</value>
+        <value>View these Opportunities by running the &lt;b&gt;Opportunities without Payments&lt;/b&gt; report in the NPPatch Health Check reports folder. Note that you should add filter criteria on the report to exclude any Opportunity types and Opportunity record types you&apos;ve excluded in NPPatch Payments Settings. You can create the missing Payment records using the Create Missing Payments button on NPPatch Settings | Bulk Data Processes | Create Missing Payments.</value>
     </labels>
     <labels>
         <fullName>healthSolutionMissingPicklistValue</fullName>
@@ -11356,7 +11356,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionNothingScheduled</shortDescription>
-        <value>To reschedule the default NPSP jobs, go to NPSP Settings | Bulk Data Processes | Process Scheduler. Click Edit. Make sure Don&apos;t Enable Auto Schedule Default NPSP Job is not selected. Click Save.</value>
+        <value>To reschedule the default NPPatch jobs, go to NPPatch Settings | Bulk Data Processes | Process Scheduler. Click Edit. Make sure Don&apos;t Enable Auto Schedule Default NPPatch Job is not selected. Click Save.</value>
     </labels>
     <labels>
         <fullName>healthSolutionOCRDupPrimary</fullName>
@@ -11364,7 +11364,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionOCRDupPrimary</shortDescription>
-        <value>If you have more than one Opportunity Contact Role marked Primary, it can cause NPSP to incorrectly calculate Opportunity Rollups, such as Total Gifts. To see which Opportunities have more than one Opportunity Contact Role marked Primary, run the &lt;b&gt;Opportunities with Primary Contact Roles&lt;/b&gt; report in the NPSP Health Checks report folder.</value>
+        <value>If you have more than one Opportunity Contact Role marked Primary, it can cause NPPatch to incorrectly calculate Opportunity Rollups, such as Total Gifts. To see which Opportunities have more than one Opportunity Contact Role marked Primary, run the &lt;b&gt;Opportunities with Primary Contact Roles&lt;/b&gt; report in the NPPatch Health Checks report folder.</value>
     </labels>
     <labels>
         <fullName>healthSolutionOCRException</fullName>
@@ -11379,7 +11379,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionPaymentMappingBadDataTypes</shortDescription>
-        <value>On the NPSP Settings tab, click {0} | {1}, and delete the Payment Mapping record that references these fields.</value>
+        <value>On the NPPatch Settings tab, click {0} | {1}, and delete the Payment Mapping record that references these fields.</value>
     </labels>
     <labels>
         <fullName>healthSolutionRDBadOppField</fullName>
@@ -11387,7 +11387,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionRDBadOppField</shortDescription>
-        <value>On the NPSP Settings tab, click {0} | {1}, and  delete the Recurring Donation Field Mapping record that references this field.</value>
+        <value>On the NPPatch Settings tab, click {0} | {1}, and  delete the Recurring Donation Field Mapping record that references this field.</value>
     </labels>
     <labels>
         <fullName>healthSolutionRDFieldsBadDatatypes</fullName>
@@ -11395,7 +11395,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionRDFieldsBadDatatypes</shortDescription>
-        <value>On the NPSP Settings tab, click {0} | {1}, and delete the Recurring Donation Field Mapping record that references these fields.</value>
+        <value>On the NPPatch Settings tab, click {0} | {1}, and delete the Recurring Donation Field Mapping record that references these fields.</value>
     </labels>
     <labels>
         <fullName>healthSolutionRelReciprocalInvalid</fullName>
@@ -11403,7 +11403,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionRelReciprocalInvalid</shortDescription>
-        <value>On the NPSP Settings tab, click {0} | {1}, and delete the Reciprocal Relationship record. Then create a new one with the required information.</value>
+        <value>On the NPPatch Settings tab, click {0} | {1}, and delete the Reciprocal Relationship record. Then create a new one with the required information.</value>
     </labels>
     <labels>
         <fullName>healthSolutionSaveOppsFailed</fullName>
@@ -11419,7 +11419,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionScheduleJobs</shortDescription>
-        <value>All NPSP scheduled classes should have records in Schedulable__c in order for these features to work correctly.</value>
+        <value>All NPPatch scheduled classes should have records in Schedulable__c in order for these features to work correctly.</value>
     </labels>
     <labels>
         <fullName>healthSolutionTriggerHandlerMismatch</fullName>
@@ -11427,7 +11427,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionTriggerHandlerMismatch</shortDescription>
-        <value>Changes to triggers can affect core NPSP functionality in unexpected ways, and should be thoroughly tested before deployment to production. If these changes were unintentional, you should reset your Trigger Handlers to match the default NPSP configuration.</value>
+        <value>Changes to triggers can affect core NPPatch functionality in unexpected ways, and should be thoroughly tested before deployment to production. If these changes were unintentional, you should reset your Trigger Handlers to match the default NPPatch configuration.</value>
     </labels>
     <labels>
         <fullName>healthSolutionUnsupportedPicklistValue</fullName>
@@ -11443,7 +11443,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionUDFBadDatatypes</shortDescription>
-        <value>On the NPSP Settings tab, click {0} | {1}, and delete the User Rollup record that references these two fields.</value>
+        <value>On the NPPatch Settings tab, click {0} | {1}, and delete the User Rollup record that references these two fields.</value>
     </labels>
     <labels>
         <fullName>healthSolutionUDFOppField</fullName>
@@ -11451,7 +11451,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>healthSolutionUDFOppField</shortDescription>
-        <value>On the NPSP Settings tab, click {0} | {1}, and delete the User Rollup record that references this field.</value>
+        <value>On the NPPatch Settings tab, click {0} | {1}, and delete the User Rollup record that references this field.</value>
     </labels>
     <labels>
         <fullName>hhCmpDedupLabelReturnToCmp</fullName>
@@ -11467,7 +11467,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>hhCmpDedupeBatchMessage</shortDescription>
-        <value>Due to the large number of Campaign Members on this Campaign, NPSP is using a batch process to identify Household Members, which may take several minutes to complete. When it&apos;s done, you can view the Household Mailing report by clicking on the Household Mailing Report link.</value>
+        <value>Due to the large number of Campaign Members on this Campaign, NPPatch is using a batch process to identify Household Members, which may take several minutes to complete. When it&apos;s done, you can view the Household Mailing report by clicking on the Household Mailing Report link.</value>
     </labels>
     <labels>
         <fullName>hhCmpDedupeBatchProgressTitle</fullName>
@@ -11491,7 +11491,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>hhCmpDedupeNoReport</shortDescription>
-        <value>Could not find the report. Create a report and save it with the Report Unique Name of &apos;NPSP_Campaign_Household_Mailing_List_V2&apos;. Use the Campaigns with Contacts report type and add filters for CampaignId equals blank and Member Status does not contain &apos;Duplicate&apos;.</value>
+        <value>Could not find the report. Create a report and save it with the Report Unique Name of &apos;NPPatch_Campaign_Household_Mailing_List_V2&apos;. Use the Campaigns with Contacts report type and add filters for CampaignId equals blank and Member Status does not contain &apos;Duplicate&apos;.</value>
     </labels>
     <labels>
         <fullName>hhCmpDedupeStatus</fullName>
@@ -11763,12 +11763,12 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <value>Merge Households</value>
     </labels>
     <labels>
-        <fullName>lblNPSPSettings</fullName>
+        <fullName>lblNPPatchSettings</fullName>
         <categories>Payment Wizard</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>lblNPSPSettings</shortDescription>
-        <value>NPSP Settings</value>
+        <shortDescription>lblNPPatchSettings</shortDescription>
+        <value>NPPatch Settings</value>
     </labels>
     <labels>
         <fullName>lblNoHHMergePermissions</fullName>
@@ -12008,7 +12008,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>leadConvertRecordTypeWarning</shortDescription>
-        <value>The default Account Record Type for your Profile is the same Record Type set as the Account Model in NPSP Settings, which could cause various data issues. We recommend changing the Account Record Type default to a different value for all profile(s).</value>
+        <value>The default Account Record Type for your Profile is the same Record Type set as the Account Model in NPPatch Settings, which could cause various data issues. We recommend changing the Account Record Type default to a different value for all profile(s).</value>
     </labels>
     <labels>
         <fullName>leadConvertSectionTitle</fullName>
@@ -12248,7 +12248,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>pmtModifyCurrency</shortDescription>
-        <value>You can&apos;t modify Payment currencies directly. Update the parent Opportunity&apos;s currency, and NPSP will automatically update the currency of all related Payment records.</value>
+        <value>You can&apos;t modify Payment currencies directly. Update the parent Opportunity&apos;s currency, and NPPatch will automatically update the currency of all related Payment records.</value>
     </labels>
     <labels>
         <fullName>pmtNoRefundPermissionMessage</fullName>
@@ -12584,7 +12584,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>pmtWizardPaymentsDisabled</shortDescription>
-        <value>You do not have NPSP Payments Enabled. To use the Payment Scheduling Wizard, please enable Payments on the NPSP Settings page under Donations | Payments.</value>
+        <value>You do not have NPPatch Payments Enabled. To use the Payment Scheduling Wizard, please enable Payments on the NPPatch Settings page under Donations | Payments.</value>
     </labels>
     <labels>
         <fullName>pmtWizardPaymentsDisabledTitle</fullName>
@@ -12592,7 +12592,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>pmtWizardPaymentsDisabledTitle</shortDescription>
-        <value>NPSP Payments Not Enabled</value>
+        <value>NPPatch Payments Not Enabled</value>
     </labels>
     <labels>
         <fullName>pmtWizardPaymentsNoAccessMessage</fullName>
@@ -12752,7 +12752,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Label for Gateway selection in settings.</shortDescription>
-        <value>NPSP uses the gateway that was added to Elevate most recently unless you override it. To set a default Elevate payment gateway, select it here.</value>
+        <value>NPPatch uses the gateway that was added to Elevate most recently unless you override it. To set a default Elevate payment gateway, select it here.</value>
     </labels>
     <labels>
         <fullName>psGatewaysNotFound</fullName>
@@ -12872,7 +12872,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Label for Gateway ID Help Message.</shortDescription>
-        <value>NPSP uses the gateway that was added to Elevate most recently unless you override it. To change the gateway NPSP usess, click Edit, enter the gateway ID, and save your work. Find the gateway ID in the Elevate Admin Console | Gateway Management.</value>
+        <value>NPPatch uses the gateway that was added to Elevate most recently unless you override it. To change the gateway NPPatch usess, click Edit, enter the gateway ID, and save your work. Find the gateway ID in the Elevate Admin Console | Gateway Management.</value>
     </labels>
     <labels>
         <fullName>psShowPaymentMethods</fullName>
@@ -12952,7 +12952,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>pscManageSoftCreditsCantChangeCurrency</shortDescription>
-        <value>You can&apos;t modify soft credit currencies directly. Update the parent Opportunity&apos;s currency, and NPSP will automatically update the currency of all related soft credits.</value>
+        <value>You can&apos;t modify soft credit currencies directly. Update the parent Opportunity&apos;s currency, and NPPatch will automatically update the currency of all related soft credits.</value>
     </labels>
     <labels>
         <fullName>pscManageSoftCreditsPermissionDenied</fullName>
@@ -12984,7 +12984,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>pscManageSoftCreditsNoRoles</shortDescription>
-        <value>You have no Roles specified as Soft Credit Roles. In NPSP Settings under Donations | Contact Roles, select at least one Role in the Soft Credit Roles setting.</value>
+        <value>You have no Roles specified as Soft Credit Roles. In NPPatch Settings under Donations | Contact Roles, select at least one Role in the Soft Credit Roles setting.</value>
     </labels>
     <labels>
         <fullName>pscManageSoftCreditsOppAmount</fullName>
@@ -13096,7 +13096,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>sendAcknowledgmentFailureReasons</shortDescription>
-        <value>NPSP did not send acknowledgements for the following records. Acknowledgements can fail if there is no workflow rule (Acknowledgement Status EQUALS &apos;Send Acknowledgement&apos;) activated to send the acknowledgement, or if the records did not meet additional criteria to trigger the workflow rule. For example, if Primary Contact is not set, or if the Primary Contact&apos;s email field is empty or invalid.</value>
+        <value>NPPatch did not send acknowledgements for the following records. Acknowledgements can fail if there is no workflow rule (Acknowledgement Status EQUALS &apos;Send Acknowledgement&apos;) activated to send the acknowledgement, or if the records did not meet additional criteria to trigger the workflow rule. For example, if Primary Contact is not set, or if the Primary Contact&apos;s email field is empty or invalid.</value>
     </labels>
     <labels>
         <fullName>sendAcknowledgmentFireStatus</fullName>
@@ -13120,7 +13120,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>sendAcknowledgmentNumberNoEmail</shortDescription>
-        <value>NPSP failed to send {0} acknowledgement(s).</value>
+        <value>NPPatch failed to send {0} acknowledgement(s).</value>
     </labels>
     <labels>
         <fullName>sendAcknowledgmentNumberSent</fullName>
@@ -13208,7 +13208,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgAddrGeneralSettingsIntro</shortDescription>
-        <value>Household and Organization Account Management lets you add multiple Addresses to an Account, specify default Addresses, and specify seasonal Addresses. Address Management is only available in NPSP3 and later with the Household Account model.</value>
+        <value>Household and Organization Account Management lets you add multiple Addresses to an Account, specify default Addresses, and specify seasonal Addresses. Address Management is only available in NPPatch3 and later with the Household Account model.</value>
     </labels>
     <labels>
         <fullName>stgAddrMustChooseClass</fullName>
@@ -13517,7 +13517,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
             ● Use filters to easily exclude certain records or data&lt;br/&gt;
             ● Roll up data for more than 2 years back&lt;br/&gt;
             &lt;br/&gt;
-            Go to NPSP Settings | Donations | Customizable Rollups to enable Customizable Rollups and get started using them!
+            Go to NPPatch Settings | Donations | Customizable Rollups to enable Customizable Rollups and get started using them!
         </value>
     </labels>
     <labels>
@@ -13638,16 +13638,16 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgDontAutoScheduleHelpText</shortDescription>
-        <value>NPSP has a number of Scheduled Jobs that calculate rollups, update Recurring Donations and Seasonal Addresses, and perform error handling.
+        <value>NPPatch has a number of Scheduled Jobs that calculate rollups, update Recurring Donations and Seasonal Addresses, and perform error handling.
 &lt;br/&gt;
 &lt;br/&gt;
-When Don&apos;t Auto Schedule Default NPSP Jobs is not selected, whenever you load the NPSP Settings page, NPSP checks that all the default NPSP Jobs are scheduled. If they&apos;re not scheduled, NPSP reschedules them. NPSP will reschedule only missing NPSP Jobs; it will not overwrite Jobs that have been updated.
+When Don&apos;t Auto Schedule Default NPPatch Jobs is not selected, whenever you load the NPPatch Settings page, NPPatch checks that all the default NPPatch Jobs are scheduled. If they&apos;re not scheduled, NPPatch reschedules them. NPPatch will reschedule only missing NPPatch Jobs; it will not overwrite Jobs that have been updated.
 &lt;br/&gt;
 &lt;br/&gt;
 To view these Jobs, search for Scheduled Jobs in Salesforce Setup.
 &lt;br/&gt;
 &lt;br/&gt;
-Selecting Don&apos;t Auto Schedule Default NPSP Jobs tells NPSP not to check for or reschedule the default Jobs.</value>
+Selecting Don&apos;t Auto Schedule Default NPPatch Jobs tells NPPatch not to check for or reschedule the default Jobs.</value>
     </labels>
     <labels>
         <fullName>stgEditPermissionError</fullName>
@@ -13663,7 +13663,7 @@ Selecting Don&apos;t Auto Schedule Default NPSP Jobs tells NPSP not to check for
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgErrorINaming</shortDescription>
-        <value>The Apex class you selected in the Implementing Class field does not implement the HH_INaming interface. Select a different Apex class, or use the default NPSP class HH_NameSpec.</value>
+        <value>The Apex class you selected in the Implementing Class field does not implement the HH_INaming interface. Select a different Apex class, or use the default NPPatch class HH_NameSpec.</value>
     </labels>
     <labels>
         <fullName>stgErrorInvalidClass</fullName>
@@ -13687,7 +13687,7 @@ Selecting Don&apos;t Auto Schedule Default NPSP Jobs tells NPSP not to check for
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>stgErrorMissingDefaultGauRecordWithPmtAllocEnabled</shortDescription>
-        <value>The previously configured Default General Accounting Unit no longer exists and has been removed. You must re-enable Default Allocations and select a Default General Accounting Unit in order to use payment allocations. Open the GAU Allocations page in NPSP Settings to update the Default Allocation Settings.</value>
+        <value>The previously configured Default General Accounting Unit no longer exists and has been removed. You must re-enable Default Allocations and select a Default General Accounting Unit in order to use payment allocations. Open the GAU Allocations page in NPPatch Settings to update the Default Allocation Settings.</value>
     </labels>
     <labels>
         <fullName>stgErrorMissingDefaultGauRecord</fullName>
@@ -13695,7 +13695,7 @@ Selecting Don&apos;t Auto Schedule Default NPSP Jobs tells NPSP not to check for
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>stgErrorMissingDefaultGauRecord</shortDescription>
-        <value>The previously configured Default General Accounting Unit no longer exists and has been removed. To re-enable Default Allocations, open the GAU Allocations page in NPSP Settings.</value>
+        <value>The previously configured Default General Accounting Unit no longer exists and has been removed. To re-enable Default Allocations, open the GAU Allocations page in NPPatch Settings.</value>
     </labels>
     <labels>
         <fullName>stgHHDataRefreshTitle</fullName>
@@ -13719,7 +13719,7 @@ Selecting Don&apos;t Auto Schedule Default NPSP Jobs tells NPSP not to check for
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpAccountModel</shortDescription>
-        <value>The Account model used by the Nonprofit Success Pack. This option controls what happens when you create a Contact with a blank Account field value. WARNING: You should not use the Account Model record type you select as the default Account record type for any Profile. Doing so can cause various data issues.</value>
+        <value>The Account model used by the NPPatch. This option controls what happens when you create a Contact with a blank Account field value. WARNING: You should not use the Account Model record type you select as the default Account record type for any Profile. Doing so can cause various data issues.</value>
     </labels>
     <labels>
         <fullName>stgHelpAdvancedMapping1</fullName>
@@ -13764,7 +13764,7 @@ Selecting Don&apos;t Auto Schedule Default NPSP Jobs tells NPSP not to check for
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpAdvancedMappingTableHeader1</shortDescription>
-        <value>NPSP Data Import Field</value>
+        <value>NPPatch Data Import Field</value>
     </labels>
     <labels>
         <fullName>stgHelpAdvancedMappingTableHeader2</fullName>
@@ -13780,7 +13780,7 @@ Selecting Don&apos;t Auto Schedule Default NPSP Jobs tells NPSP not to check for
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpAlloFiscalYearRollups</shortDescription>
-        <value>When selected, this option enables fiscal year settings, rather than calendar year settings, for Allocation rollup totals. To set Fiscal Year information, go to Setup and search for Fiscal Year. NOTE: Nonprofit Success Pack does not support custom fiscal year settings.</value>
+        <value>When selected, this option enables fiscal year settings, rather than calendar year settings, for Allocation rollup totals. To set Fiscal Year information, go to Setup and search for Fiscal Year. NOTE: NPPatch does not support custom fiscal year settings.</value>
     </labels>
     <labels>
         <fullName>stgHelpAlloNDayValue</fullName>
@@ -13858,7 +13858,7 @@ When you enable Payment Allocations, existing rollups remain the same. We do not
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpBDEOppNaming</shortDescription>
-        <value>When selected, NPSP uses the default naming convention for batch-entered Opportunities, regardless of the value you enter in the Name field of the batch entry screen. NOTE: This setting has no effect if custom Opportunity Names are configured.</value>
+        <value>When selected, NPPatch uses the default naming convention for batch-entered Opportunities, regardless of the value you enter in the Name field of the batch entry screen. NOTE: This setting has no effect if custom Opportunity Names are configured.</value>
     </labels>
     <labels>
         <fullName>stgHelpBatchAlloRollup</fullName>
@@ -13957,7 +13957,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpCreateMissingPayments</shortDescription>
-        <value>&lt;b&gt;WARNING:&lt;/b&gt; Clicking this button will activate batch Payment creation. NPSP will create a Payment for each Opportunity without Payments that:
+        <value>&lt;b&gt;WARNING:&lt;/b&gt; Clicking this button will activate batch Payment creation. NPPatch will create a Payment for each Opportunity without Payments that:
 &lt;br/&gt;
 &lt;br/&gt;
 ● has an amount greater than zero&lt;br/&gt;
@@ -13985,7 +13985,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
         <protected>true</protected>
         <shortDescription>stgHelpCustomizableRollupsEnable2</shortDescription>
         <value>
-            When you enable Customizable Rollups for the first time, we will automatically convert your existing rollups and the 87 out-of-box NPSP rollups into Customizable Rollups.
+            When you enable Customizable Rollups for the first time, we will automatically convert your existing rollups and the 87 out-of-box NPPatch rollups into Customizable Rollups.
             &lt;br/&gt;&lt;br/&gt;
             You can disable and go back to legacy rollups, but any new rollups or rollup/filter changes made in Customizable Rollups won&apos;t be applied to your legacy rollup settings.
         </value>
@@ -13997,7 +13997,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
         <protected>true</protected>
         <shortDescription>stgHelpCustomizableRollupsEnable</shortDescription>
         <value>
-            Removes any new rollups, filter groups, and filter rules you created while using Customizable Rollups AND resets all NPSP legacy rollups back to their default behavior.
+            Removes any new rollups, filter groups, and filter rules you created while using Customizable Rollups AND resets all NPPatch legacy rollups back to their default behavior.
         </value>
     </labels>
     <labels>
@@ -14006,7 +14006,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpDefaultAllocationsEnabled</shortDescription>
-        <value>When selected, NPSP automatically creates GAU Allocation records allocated to the General Accounting Unit specified in the Default General Accounting Unit field below. This feature enables better reporting on the Default General Accounting Unit, but uses more data storage.</value>
+        <value>When selected, NPPatch automatically creates GAU Allocation records allocated to the General Accounting Unit specified in the Default General Accounting Unit field below. This feature enables better reporting on the Default General Accounting Unit, but uses more data storage.</value>
     </labels>
     <labels>
         <fullName>stgHelpDefaultGAU</fullName>
@@ -14014,7 +14014,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpDefaultGAU</shortDescription>
-        <value>When Default Allocations Enabled is selected, NPSP creates a GAU Allocation for all new Opportunities not excluded in GAU Allocations Rollup Settings, and assigns them to this General Accounting Unit. NOTE: This doesn&apos;t include existing unallocated Opportunities. You can allocate them to the default General Accounting Unit in NPSP Settings under Bulk Data Processes | Batch Create Default Allocations.</value>
+        <value>When Default Allocations Enabled is selected, NPPatch creates a GAU Allocation for all new Opportunities not excluded in GAU Allocations Rollup Settings, and assigns them to this General Accounting Unit. NOTE: This doesn&apos;t include existing unallocated Opportunities. You can allocate them to the default General Accounting Unit in NPPatch Settings under Bulk Data Processes | Batch Create Default Allocations.</value>
     </labels>
     <labels>
         <fullName>stgHelpDisableHHAccountAddr</fullName>
@@ -14056,7 +14056,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpErrorNotifyOn</shortDescription>
-        <value>When selected, NPSP will display notifications for certain types of errors.</value>
+        <value>When selected, NPPatch will display notifications for certain types of errors.</value>
     </labels>
     <labels>
         <fullName>stgHelpErrorNotifyTo</fullName>
@@ -14068,7 +14068,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
     </labels>
     <labels>
         <fullName>stgHelpExampleHHNames</fullName>
-        <categories>NPSP Settings</categories>
+        <categories>NPPatch Settings</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>displayed in the Example household names box</shortDescription>
@@ -14088,7 +14088,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpFiscalYearRollups</shortDescription>
-        <value>When checked, this option enables fiscal year settings, rather than calendar year settings, for Opportunity rollup totals. To set fiscal year information, go to Setup | Company Profile | Fiscal Year. NOTE: The Nonprofit Success Pack does not support custom fiscal year settings.</value>
+        <value>When checked, this option enables fiscal year settings, rather than calendar year settings, for Opportunity rollup totals. To set fiscal year information, go to Setup | Company Profile | Fiscal Year. NOTE: The NPPatch does not support custom fiscal year settings.</value>
     </labels>
     <labels>
         <fullName>stgHelpHHAccountRTID</fullName>
@@ -14120,7 +14120,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpHHMailingListReport</shortDescription>
-        <value>The Household Mailing List Report deduplicates a Campaign that contains multiple Contacts from the same household in order to help prevent sending multiples of the same mailing to the same address. NPSP includes a report you can select called &quot;NPSP Campaign Household Mailing List V2&quot;. If that report has been renamed or deleted, select a report that uses the Campaigns with Contacts report type, with filters for Member Status does not contain &quot;Duplicate&quot;, and Campaign Id = blank.</value>
+        <value>The Household Mailing List Report deduplicates a Campaign that contains multiple Contacts from the same household in order to help prevent sending multiples of the same mailing to the same address. NPPatch includes a report you can select called &quot;NPPatch Campaign Household Mailing List V2&quot;. If that report has been renamed or deleted, select a report that uses the Campaigns with Contacts report type, with filters for Member Status does not contain &quot;Duplicate&quot;, and Campaign Id = blank.</value>
     </labels>
     <labels>
         <fullName>stgHelpHHNameFormat</fullName>
@@ -14144,7 +14144,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpHHOCROn</shortDescription>
-        <value>When selected, NPSP automatically creates Contact Roles on Individual gifts for Household members of the Opportunity&apos;s Primary Contact.</value>
+        <value>When selected, NPPatch automatically creates Contact Roles on Individual gifts for Household members of the Opportunity&apos;s Primary Contact.</value>
     </labels>
     <labels>
         <fullName>stgHelpHHRules</fullName>
@@ -14160,7 +14160,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpHealthCheck</shortDescription>
-        <value>Use &lt;a href=&quot;#&quot; onclick=&quot;ShowPanel(&apos;idPanelHealthCheck&apos;);return false;&quot;&gt;Health Check&lt;/a&gt; to verify your NPSP configuration!</value>
+        <value>Use &lt;a href=&quot;#&quot; onclick=&quot;ShowPanel(&apos;idPanelHealthCheck&apos;);return false;&quot;&gt;Health Check&lt;/a&gt; to verify your NPPatch configuration!</value>
     </labels>
     <labels>
         <fullName>stgHelpIGFormat</fullName>
@@ -14188,7 +14188,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
     </labels>
     <labels>
         <fullName>stgHelpLvlAssignBatch</fullName>
-        <categories>NPSP Settings</categories>
+        <categories>NPPatch Settings</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>help text displayed on the Level Assignment Batch page</shortDescription>
@@ -14230,20 +14230,20 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
         <value>The Record Type used when creating Opportunities that track Membership Donations. We recommend using Membership. Opportunities with this record type roll up separately from other Opportunity Record Types.</value>
     </labels>
     <labels>
-        <fullName>stgHelpNPSPDoc</fullName>
+        <fullName>stgHelpNPPatchDoc</fullName>
         <categories>Settings</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>stgHelpNPSPDoc</shortDescription>
-        <value>NPSP Documentation</value>
+        <shortDescription>stgHelpNPPatchDoc</shortDescription>
+        <value>NPPatch Documentation</value>
     </labels>
     <labels>
-        <fullName>stgHelpNPSPSettings</fullName>
+        <fullName>stgHelpNPPatchSettings</fullName>
         <categories>Settings</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>stgHelpNPSPSettings</shortDescription>
-        <value>Configure the Nonprofit Success Pack to meet your organization&apos;s needs. You can also monitor the health of your Salesforce organization, or run batch processes to update data.</value>
+        <shortDescription>stgHelpNPPatchSettings</shortDescription>
+        <value>Configure the NPPatch to meet your organization&apos;s needs. You can also monitor the health of your Salesforce organization, or run batch processes to update data.</value>
     </labels>
     <labels>
         <fullName>stgHelpNameConnector</fullName>
@@ -14267,7 +14267,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpNewRDFieldMap</shortDescription>
-        <value>Select the Recurring Donation field you want to map, and the Opportunity field you want to map it to. NPSP will copy the value of the Recurring Donation field you select to your selected Opportunity field on all child Opportunities for the Recurring Donation.
+        <value>Select the Recurring Donation field you want to map, and the Opportunity field you want to map it to. NPPatch will copy the value of the Recurring Donation field you select to your selected Opportunity field on all child Opportunities for the Recurring Donation.
 IMPORTANT: Both of these fields must have the same data type.</value>
     </labels>
     <labels>
@@ -14292,7 +14292,7 @@ IMPORTANT: Both of these fields must have the same data type.</value>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpOCR</shortDescription>
-        <value>Soft Credits, Contact Roles, and Matching Gifts relate to each other in important ways. If you&apos;re not familiar with these concepts and how they interact, you should read through the &lt;a href=&quot;https://help.salesforce.com/s/articleView?id=sfdo.NPSP_Automated_Soft_Credits.htm&amp;type=5&quot; target=&quot;_blank&quot;&gt;NPSP Documentation&lt;/a&gt; before making any adjustments to these settings.</value>
+        <value>Soft Credits, Contact Roles, and Matching Gifts relate to each other in important ways. If you&apos;re not familiar with these concepts and how they interact, you should read through the NPPatch Documentation before making any adjustments to these settings.</value>
     </labels>
     <labels>
         <fullName>stgHelpOCRDefaultRole</fullName>
@@ -14324,7 +14324,7 @@ IMPORTANT: Both of these fields must have the same data type.</value>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpOneToOneRTID</shortDescription>
-        <value>The Account record type you want to use for new Accounts if you&apos;ve selected the One-to-One Account model above. NPSP does not come with a default record type for One-to-One Accounts, so you should create one (such as &quot;Individual&quot;) before selecting this model. If you select --None--, then Salesforce will use the default Account record type for the user who&apos;s creating the new Contact (and associated One-to-One Account).</value>
+        <value>The Account record type you want to use for new Accounts if you&apos;ve selected the One-to-One Account model above. NPPatch does not come with a default record type for One-to-One Accounts, so you should create one (such as &quot;Individual&quot;) before selecting this model. If you select --None--, then Salesforce will use the default Account record type for the user who&apos;s creating the new Contact (and associated One-to-One Account).</value>
     </labels>
     <labels>
         <fullName>stgHelpOppNamingAttribution</fullName>
@@ -14436,7 +14436,7 @@ IMPORTANT: Both of these fields must have the same data type.</value>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpPowerOfUsHub</shortDescription>
-        <value>Got questions? Try the &lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHitSAE&quot; target=&quot;_blank&quot;&gt;Nonprofit Success Pack&lt;/a&gt; group for questions about NPSP and the &lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHiLSAU?tab=discussion&quot; target=&quot;_blank&quot;&gt;System Administrators&lt;/a&gt; group for questions about Salesforce administration and configuration.&lt;br/&gt;&lt;br/&gt;Keep up with the latest NPSP release notes in the &lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHOXSA2?tab=discussion&amp;sort=LAST_MODIFIED_DATE_DESC.htm&quot; target=&quot;_blank&quot;&gt;NPSP Release Announcements&lt;/a&gt; group.</value>
+        <value>Got questions? Try the NPPatch group for questions about NPPatch and the System Administrators group for questions about Salesforce administration and configuration.&lt;br/&gt;&lt;br/&gt;Keep up with the latest NPPatch release notes in the NPPatch Release Announcements group.</value>
     </labels>
     <labels>
         <fullName>stgHelpPrimaryContactBatch</fullName>
@@ -14459,7 +14459,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
     </labels>
     <labels>
         <fullName>stgHelpPrimaryContactRoleMergeBatch</fullName>
-        <categories>NPSP Settings</categories>
+        <categories>NPPatch Settings</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Content of the &quot;Bulk Data Processes - Remove Duplicate Primary OCRs&quot; page</shortDescription>
@@ -14478,7 +14478,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
     </labels>
     <labels>
         <fullName>stgHelpDeceasedBatch</fullName>
-        <categories>NPSP Settings</categories>
+        <categories>NPPatch Settings</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Content of the &quot;Recalculate Deceased Household Accounts&quot; page</shortDescription>
@@ -14490,7 +14490,7 @@ Once the process is 100% complete, you can safely leave or refresh this page.</v
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpRDAddCampaign</shortDescription>
-        <value>When selected, NPSP copies the Campaign you specified on the Recurring Donation to its installment Opportunities.</value>
+        <value>When selected, NPPatch copies the Campaign you specified on the Recurring Donation to its installment Opportunities.</value>
     </labels>
     <labels>
         <fullName>stgHelpRDBatch</fullName>
@@ -14576,7 +14576,7 @@ This process may take some time, but you can close this page and the process wil
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpRDOpenOppBehavior</shortDescription>
-        <value>Tells NPSP what to do with any remaining open Opportunities when you mark the status of an Open-Ended Recurring Donation as Closed.</value>
+        <value>Tells NPPatch what to do with any remaining open Opportunities when you mark the status of an Open-Ended Recurring Donation as Closed.</value>
     </labels>
     <labels>
         <fullName>stgHelpRDOppForecastMonths</fullName>
@@ -14584,7 +14584,7 @@ This process may take some time, but you can close this page and the process wil
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpRDOppForecastMonths</shortDescription>
-        <value>Number of months&apos; worth of open Opportunities that NPSP maintains on Open-Ended Recurring Donations. NPSP makes sure there are always this many months&apos; worth of Opportunities by creating the appropriate number of new Opportunities every month.</value>
+        <value>Number of months&apos; worth of open Opportunities that NPPatch maintains on Open-Ended Recurring Donations. NPPatch makes sure there are always this many months&apos; worth of Opportunities by creating the appropriate number of new Opportunities every month.</value>
     </labels>
     <labels>
         <fullName>stgHelpRDOppRT</fullName>
@@ -14600,7 +14600,7 @@ This process may take some time, but you can close this page and the process wil
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Help Text for Recurring Donation Setting Installment Opportunity Auto-Creation</shortDescription>
-        <value>Specifies when NPSP will create installment Opportunities for Recurring Donations. The default is Always Create Next Installment.</value>
+        <value>Specifies when NPPatch will create installment Opportunities for Recurring Donations. The default is Always Create Next Installment.</value>
     </labels>
     <labels>
         <fullName>stgHelpRDPeriodFrequency</fullName>
@@ -14640,7 +14640,7 @@ This process may take some time, but you can close this page and the process wil
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpRecDon</shortDescription>
-        <value>This setting lets you create Custom Installment Periods for Recurring Donations, different from the default Installment Periods (monthly, quarterly, yearly, and so on) that come with NPSP.</value>
+        <value>This setting lets you create Custom Installment Periods for Recurring Donations, different from the default Installment Periods (monthly, quarterly, yearly, and so on) that come with NPPatch.</value>
     </labels>
     <labels>
         <fullName>stgHelpRelAutoCreatedDup</fullName>
@@ -14648,7 +14648,7 @@ This process may take some time, but you can close this page and the process wil
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpRelAutoCreatedDup</shortDescription>
-        <value>NPSP deduplicates auto-created Relationships. Select this option if you want to disable automatic deduplication, and allow multiple Relationships of the same Type to exist between two Contacts.</value>
+        <value>NPPatch deduplicates auto-created Relationships. Select this option if you want to disable automatic deduplication, and allow multiple Relationships of the same Type to exist between two Contacts.</value>
     </labels>
     <labels>
         <fullName>stgHelpRelFieldSyncToggle</fullName>
@@ -14821,7 +14821,7 @@ To check your existing settings, go to Duplicate Rules under Setup. For any rule
     </labels>
     <labels>
         <fullName>stgHelpSimpleAddrChangeIsUpdate</fullName>
-        <categories>NPSP Settings</categories>
+        <categories>NPPatch Settings</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpSimpleAddrChangeIsUpdate</shortDescription>
@@ -14841,7 +14841,7 @@ To check your existing settings, go to Duplicate Rules under Setup. For any rule
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpStoreErrorsOn</shortDescription>
-        <value>When selected, NPSP will store errors. You can view stored errors in System Tools | Error Log on the NPSP Settings page.</value>
+        <value>When selected, NPPatch will store errors. You can view stored errors in System Tools | Error Log on the NPPatch Settings page.</value>
     </labels>
     <labels>
         <fullName>stgHelpTDTM</fullName>
@@ -14905,7 +14905,7 @@ To check your existing settings, go to Duplicate Rules under Setup. For any rule
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>stgHelpTriggerHandlers</shortDescription>
-        <value>These triggers control core functionality in the Nonprofit Success Pack, so please exercise extreme caution when creating or modifying them.</value>
+        <value>These triggers control core functionality in the NPPatch, so please exercise extreme caution when creating or modifying them.</value>
     </labels>
     <labels>
         <fullName>stgHelpTriggerHandlersAsync</fullName>
@@ -14976,9 +14976,9 @@ To check your existing settings, go to Duplicate Rules under Setup. For any rule
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>stgInstallScriptError</shortDescription>
-        <value>Your installation was successful, but we detected a slight problem. To fix the problem, simply load the NPSP Settings page in Salesforce.
+        <value>Your installation was successful, but we detected a slight problem. To fix the problem, simply load the NPPatch Settings page in Salesforce.
 
-Note: The NPSP Settings tab is visible in the Nonprofit Success Pack application. If you don&apos;t see the tab, select Nonprofit Success Pack from the app menu in the upper-right corner.</value>
+Note: The NPPatch Settings tab is visible in the NPPatch application. If you don&apos;t see the tab, select NPPatch from the app menu in the upper-right corner.</value>
     </labels>
     <labels>
         <fullName>stgLabelActionColumn</fullName>
@@ -15254,10 +15254,10 @@ Note: The NPSP Settings tab is visible in the Nonprofit Success Pack application
     </labels>
     <labels>
         <fullName>stgLabelLvlAssignBatchTitle</fullName>
-        <categories>NPSP Settings</categories>
+        <categories>NPPatch Settings</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>menu title for the Level Assignment Batch in NPSP Settings</shortDescription>
+        <shortDescription>menu title for the Level Assignment Batch in NPPatch Settings</shortDescription>
         <value>Level Assignment Batch</value>
     </labels>
     <labels>
@@ -15486,15 +15486,15 @@ Note: The NPSP Settings tab is visible in the Nonprofit Success Pack application
     </labels>
     <labels>
         <fullName>stgLabelPrimaryContactRoleMergeBatch</fullName>
-        <categories>NPSP Settings</categories>
+        <categories>NPPatch Settings</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Menu title for the Duplicate Primary OCRs in NPSP Settings</shortDescription>
+        <shortDescription>Menu title for the Duplicate Primary OCRs in NPPatch Settings</shortDescription>
         <value>Remove Duplicate Primary OCRs</value>
     </labels>
     <labels>
         <fullName>stgLabelDeceasedBatch</fullName>
-        <categories>NPSP Settings</categories>
+        <categories>NPPatch Settings</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Menu title for the Batch job to recalculate All Members Deceased</shortDescription>
@@ -15693,36 +15693,36 @@ Note: The NPSP Settings tab is visible in the Nonprofit Success Pack application
         <value>No {0} found.</value>
     </labels>
     <labels>
-        <fullName>stgNPSPGuideImportData</fullName>
+        <fullName>stgNPPatchGuideImportData</fullName>
         <categories>Settings</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>stgNPSPGuideImportData</shortDescription>
-        <value>NPSP Guide to Importing Data</value>
+        <shortDescription>stgNPPatchGuideImportData</shortDescription>
+        <value>NPPatch Guide to Importing Data</value>
     </labels>
     <labels>
-        <fullName>stgNPSPSettings</fullName>
+        <fullName>stgNPPatchSettings</fullName>
         <categories>Settings</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>stgNPSPSettings</shortDescription>
-        <value>Nonprofit Success Pack Application Settings</value>
+        <shortDescription>stgNPPatchSettings</shortDescription>
+        <value>NPPatch Application Settings</value>
     </labels>
     <labels>
-        <fullName>stgNPSPSettingsTitle</fullName>
+        <fullName>stgNPPatchSettingsTitle</fullName>
         <categories>Settings</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>stgNPSPSettingsTitle</shortDescription>
-        <value>Nonprofit Success Pack Settings</value>
+        <shortDescription>stgNPPatchSettingsTitle</shortDescription>
+        <value>NPPatch Settings</value>
     </labels>
     <labels>
-        <fullName>stgNPSPWorkbook</fullName>
+        <fullName>stgNPPatchWorkbook</fullName>
         <categories>Settings</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>stgNPSPWorkbook</shortDescription>
-        <value>NPSP Fundraising Trail</value>
+        <shortDescription>stgNPPatchWorkbook</shortDescription>
+        <value>NPPatch Fundraising Trail</value>
     </labels>
     <labels>
         <fullName>stgNavAccountModel</fullName>
@@ -16058,7 +16058,7 @@ Note: The NPSP Settings tab is visible in the Nonprofit Success Pack application
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Recurring Donation Auto Naming Description</shortDescription>
-        <value>When you create a Recurring Donation, NPSP automatically populates the Name using the specified name format. Choose Disable Automatic Naming to turn this feature off.</value>
+        <value>When you create a Recurring Donation, NPPatch automatically populates the Name using the specified name format. Choose Disable Automatic Naming to turn this feature off.</value>
     </labels>
     <labels>
         <fullName>stgRDNamingDisable</fullName>
@@ -16258,7 +16258,7 @@ Note: The NPSP Settings tab is visible in the Nonprofit Success Pack application
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Resource Videography label in Get Started Resources section</shortDescription>
-        <value>NPSP Videography Channel</value>
+        <value>NPPatch Videography Channel</value>
     </labels>
     <labels>
         <fullName>gsResourcesVideographyLinkLabel</fullName>
@@ -16274,7 +16274,7 @@ Note: The NPSP Settings tab is visible in the Nonprofit Success Pack application
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Video header title in Get Started</shortDescription>
-        <value>Get Started on NPSP</value>
+        <value>Get Started on NPPatch</value>
     </labels>
     <labels>
         <fullName>gseuPageTitle</fullName>
@@ -16301,20 +16301,20 @@ Note: The NPSP Settings tab is visible in the Nonprofit Success Pack application
         <value>Trailblazer Community</value>
     </labels>
     <labels>
-        <fullName>gseuResourcesItemAboutNPSPLabel</fullName>
+        <fullName>gseuResourcesItemAboutNPPatchLabel</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>About NPSP label in Get Started Resources section for End Users</shortDescription>
-        <value>Learn More About NPSP</value>
+        <shortDescription>About NPPatch label in Get Started Resources section for End Users</shortDescription>
+        <value>Learn More About NPPatch</value>
     </labels>
     <labels>
-        <fullName>gseuResourcesItemAboutNPSPLinkLabel</fullName>
+        <fullName>gseuResourcesItemAboutNPPatchLinkLabel</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>About NPSP link label in Get Started Resources section for End Users</shortDescription>
-        <value>NPSP Documentation</value>
+        <shortDescription>About NPPatch link label in Get Started Resources section for End Users</shortDescription>
+        <value>NPPatch Documentation</value>
     </labels>
     <labels>
         <fullName>gseuResourcesItemWatchVideosLabel</fullName>
@@ -16330,7 +16330,7 @@ Note: The NPSP Settings tab is visible in the Nonprofit Success Pack application
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Watch Videos link label in Get Started Resources section for End Users</shortDescription>
-        <value>NPSP Videography Channel</value>
+        <value>NPPatch Videography Channel</value>
     </labels>
     <labels>
         <fullName>gseuResourcesItemWebinarsLabel</fullName>
@@ -16548,9 +16548,9 @@ Note: The NPSP Settings tab is visible in the Nonprofit Success Pack application
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Contacts Settings Account Model Help Text</shortDescription>
-        <value>The Nonprofit Success Pack supports three different Account models: the Household Account model, the One-to-One Account model, and the Individual (or "Bucket") Account model.
+        <value>The NPPatch supports three different Account models: the Household Account model, the One-to-One Account model, and the Individual (or "Bucket") Account model.
 &lt;br/&gt;&lt;br&gt;
-For those using NPSP3 and later, the Household Account model is recommended.</value>
+For those using NPPatch3 and later, the Household Account model is recommended.</value>
     </labels>
     <labels>
         <fullName>Contacts_Settings_Contact_Roles_Help_Text</fullName>
@@ -16948,9 +16948,9 @@ For those using NPSP3 and later, the Household Account model is recommended.</va
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>UDRDescription</shortDescription>
-        <value>These settings let you create and manage user defined rollups from an Opportunity (Donation) to a Contact, Account, or Household.  After you create a User Defined Rollup, you may want to use Rollup Donations Batch in NPSP Settings | Bulk Data Processes to recalculate all rollups in your instance and ensure that your new rollup field is correctly populated.
+        <value>These settings let you create and manage user defined rollups from an Opportunity (Donation) to a Contact, Account, or Household.  After you create a User Defined Rollup, you may want to use Rollup Donations Batch in NPPatch Settings | Bulk Data Processes to recalculate all rollups in your instance and ensure that your new rollup field is correctly populated.
 
-WARNING: Keep in mind that rollups change how your Nonprofit Success Pack behaves. Improperly configured settings may cause your rollups to fail. Please test your user defined rollups thoroughly before deploying to production.</value>
+WARNING: Keep in mind that rollups change how your NPPatch behaves. Improperly configured settings may cause your rollups to fail. Please test your user defined rollups thoroughly before deploying to production.</value>
     </labels>
 
     <labels>
@@ -17025,7 +17025,7 @@ There are more than 100 custom fields defined on the Contact or Campaign Member 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>RelationshipsLookupDescription</shortDescription>
-        <value>The NPSP uses the settings in this list to determine reciprocal relationships.</value>
+        <value>The NPPatch uses the settings in this list to determine reciprocal relationships.</value>
     </labels>
     <labels>
         <fullName>RelationshipsSettingsDescription</fullName>
@@ -17033,7 +17033,7 @@ There are more than 100 custom fields defined on the Contact or Campaign Member 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>RelationshipsSettingsDescription</shortDescription>
-        <value>These settings control how Relationships behave in the Nonprofit Success Pack.</value>
+        <value>These settings control how Relationships behave in the NPPatch.</value>
     </labels>
 
     <labels>
@@ -17128,7 +17128,7 @@ There are more than 100 custom fields defined on the Contact or Campaign Member 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>RecurringDonationErrorEmailBody</shortDescription>
-        <value>Errors were encountered when trying to insert new Opportunities for your open-ended Recurring Donations. This can adversely affect your forecasting and functionality of your Salesforce.com instance. Addressing these errors as soon as possible can prevent bad data from entering your system.  The Recurring Donation and associated Opportunity insert error are listed below, and can be found in the NPSP Settings tab under System, Error Log.</value>
+        <value>Errors were encountered when trying to insert new Opportunities for your open-ended Recurring Donations. This can adversely affect your forecasting and functionality of your Salesforce.com instance. Addressing these errors as soon as possible can prevent bad data from entering your system.  The Recurring Donation and associated Opportunity insert error are listed below, and can be found in the NPPatch Settings tab under System, Error Log.</value>
     </labels>
     <labels>
         <fullName>RecurringDonationInstallmentPeriod1stand15th</fullName>
@@ -17232,7 +17232,7 @@ There are more than 100 custom fields defined on the Contact or Campaign Member 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>RecurringDonationSettingsDescription</shortDescription>
-        <value>These settings control how Recurring Donations behave in the Nonprofit Success Pack.</value>
+        <value>These settings control how Recurring Donations behave in the NPPatch.</value>
     </labels>
     <labels>
         <fullName>RecurringDonationStageName</fullName>

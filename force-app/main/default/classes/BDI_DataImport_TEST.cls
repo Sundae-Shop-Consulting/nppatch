@@ -127,11 +127,11 @@ public with sharing class BDI_DataImport_TEST {
         DataImportBatch__c bdi = BDI_DataImportAPI_TEST.newBatch('testBatch', true);
 
         DataImport__c di1 = newDi('fname1', 'lname1');
-        di1.NPSP_Data_Import_Batch__c = bdi.Id;
+        di1.NPPatch_Data_Import_Batch__c = bdi.Id;
         DataImport__c di2 = newDi('fname2', 'lname2');
-        di2.NPSP_Data_Import_Batch__c = bdi.Id;
+        di2.NPPatch_Data_Import_Batch__c = bdi.Id;
         DataImport__c di3 = newDi('fname3', 'lname3');
-        di3.NPSP_Data_Import_Batch__c = bdi.Id;
+        di3.NPPatch_Data_Import_Batch__c = bdi.Id;
         List<DataImport__c> dis = new List<DataImport__c> {di1, di2, di3};
         insert dis;
 
@@ -167,11 +167,11 @@ public with sharing class BDI_DataImport_TEST {
         DataImportBatch__c bdi = BDI_DataImportAPI_TEST.newBatch('testBatch', true);
 
         DataImport__c di1 = newDi('fname1', 'lname1');
-        di1.NPSP_Data_Import_Batch__c = bdi.Id;
+        di1.NPPatch_Data_Import_Batch__c = bdi.Id;
         DataImport__c di2 = newDi('fname2', 'lname2');
-        di2.NPSP_Data_Import_Batch__c = bdi.Id;
+        di2.NPPatch_Data_Import_Batch__c = bdi.Id;
         DataImport__c di3 = newDi('fname3', 'lname3');
-        di3.NPSP_Data_Import_Batch__c = bdi.Id;
+        di3.NPPatch_Data_Import_Batch__c = bdi.Id;
         List<DataImport__c> dis = new List<DataImport__c> {di1, di2, di3};
         insert dis;
 
@@ -199,11 +199,11 @@ public with sharing class BDI_DataImport_TEST {
         DataImportBatch__c bdi = BDI_DataImportAPI_TEST.newBatch('testBatch', true);
 
         DataImport__c di1 = newDi('fname1', 'lname1');
-        di1.NPSP_Data_Import_Batch__c = bdi.Id;
+        di1.NPPatch_Data_Import_Batch__c = bdi.Id;
         DataImport__c di2 = newDi('fname2', 'lname2');
-        di2.NPSP_Data_Import_Batch__c = bdi.id;
+        di2.NPPatch_Data_Import_Batch__c = bdi.id;
         DataImport__c di3 = newDi('fname3', 'lname3');
-        di3.NPSP_Data_Import_Batch__c = bdi.Id;
+        di3.NPPatch_Data_Import_Batch__c = bdi.Id;
         List<DataImport__c> dis = new List<DataImport__c> {di1, di2, di3};
         insert dis;
 

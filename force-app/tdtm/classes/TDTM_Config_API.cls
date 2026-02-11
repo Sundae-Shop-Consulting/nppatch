@@ -95,7 +95,7 @@ global class TDTM_Config_API {
     /**
      * @description Method to disable all NPSP roll-up triggers for the current code execution context.
      */
-    @InvocableMethod(Label='Disable NPSP Rollup Triggers')
+    @InvocableMethod(Label='Disable NPPatch Rollup Triggers')
     global static void disableAllRollupTriggers() {
         TDTM_ProcessControl.toggleTriggerState('Opportunity', 'RLLP_OppRollup_TDTM', false);
         TDTM_ProcessControl.toggleTriggerState('Opportunity', 'CRLP_Rollup_TDTM', false);

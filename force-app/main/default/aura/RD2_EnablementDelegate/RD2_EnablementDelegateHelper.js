@@ -92,7 +92,7 @@
             this.refreshEnable(component);
             this.refreshMetaDeploy(component);
 
-            // notify NPSP Settings page about enhanced Recurring Donation enablement
+            // notify NPPatch Settings page about enhanced Recurring Donation enablement
             var event = $A.get("e.c:RD2_EnhancementEnabledEvent");
             event.fire();
         });
@@ -116,7 +116,7 @@
                 component.set('v.metaDeployURL', metaDeployURL);
 
             } else if (state === "ERROR") {
-                component.set('v.metaDeployURL', 'https://install.salesforce.org/products/npsp/enhanced-recurring-donations');
+                component.set('v.metaDeployURL', '');
             }
         });
 

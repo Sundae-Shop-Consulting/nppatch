@@ -45,15 +45,15 @@ public with sharing class ADDR_Contacts_TEST {
 
         List<Account> testAccountWithBillingAddress = createTestAccountsWithBillingAddress(1);
 
-        NPSP_Contact npspContact = new NPSP_Contact(UTIL_UnitTestData_TEST.getContact());
+        NPPatch_Contact npspContact = new NPPatch_Contact(UTIL_UnitTestData_TEST.getContact());
         npspContact.getRecord().AccountId = testAccountWithBillingAddress[0].Id;
         insert npspContact.getRecord();
 
         Test.startTest();
             Contact contactToUpdate = [SELECT Current_Address__c FROM Contact WHERE Id = :npspContact.getRecord().Id];
-            NPSP_Contact npspContactToUpdate = new NPSP_Contact(contactToUpdate);
+            NPPatch_Contact npspContactToUpdate = new NPPatch_Contact(contactToUpdate);
             npspContactToUpdate.setCurrentAddress(
-                    new NPSP_Address(buildAddresses(1, true)[0]));
+                    new NPPatch_Address(buildAddresses(1, true)[0]));
 
             update npspContactToUpdate.getRecord();
         Test.stopTest();
@@ -79,7 +79,7 @@ public with sharing class ADDR_Contacts_TEST {
 
         List<Account> testAccountWithBillingAddress = createTestAccountsWithBillingAddress(1);
 
-        NPSP_Contact npspContact = new NPSP_Contact(UTIL_UnitTestData_TEST.getContact());
+        NPPatch_Contact npspContact = new NPPatch_Contact(UTIL_UnitTestData_TEST.getContact());
         npspContact.getRecord().AccountId = testAccountWithBillingAddress[0].Id;
         npspContact.getRecord().is_Address_Override__c = true;
         npspContact.setUndeliverableMailingAddress(true);
@@ -89,9 +89,9 @@ public with sharing class ADDR_Contacts_TEST {
             // Fetch the contact and simulate an address update
             Contact contactToUpdate = [SELECT Current_Address__c FROM Contact WHERE Id = :npspContact.getRecord().Id];
             // Simulate updating the contact's address with the new undeliverable address
-            NPSP_Contact npspContactToUpdate = new NPSP_Contact(contactToUpdate);
+            NPPatch_Contact npspContactToUpdate = new NPPatch_Contact(contactToUpdate);
             npspContactToUpdate.setCurrentAddress(
-                    new NPSP_Address(buildAddresses(1, false)[0]));
+                    new NPPatch_Address(buildAddresses(1, false)[0]));
 
             update npspContactToUpdate.getRecord();
         Test.stopTest();
@@ -124,16 +124,16 @@ public with sharing class ADDR_Contacts_TEST {
 
         List<Address__c> testAddresses = buildAddresses(2, false);
 
-        NPSP_Address npspAddress = new NPSP_Address(testAddresses[1]);
+        NPPatch_Address npspAddress = new NPPatch_Address(testAddresses[1]);
         npspAddress.setUndeliverable(true);
         npspAddress.getRecord().Household_Account__c = testAccounts[0].Id;
         insert npspAddress.getRecord();
 
         Contact testContact = UTIL_UnitTestData_TEST.getContact();
-        NPSP_Contact npspTestContact = new NPSP_Contact(testContact);
+        NPPatch_Contact npspTestContact = new NPPatch_Contact(testContact);
         npspTestContact.getRecord().AccountId = testAccounts[0].Id;
         npspTestContact.setCurrentAddress(
-                new NPSP_Address(testAddresses[0]));
+                new NPPatch_Address(testAddresses[0]));
         insert npspTestContact.getRecord();
 
         Test.startTest();
@@ -188,8 +188,8 @@ public with sharing class ADDR_Contacts_TEST {
             Contact contactToUpdate = [SELECT MailingStreet, Current_Address__c
                                    FROM Contact
                                    WHERE Id = :testContact.Id];
-            NPSP_Contact npspContact = new NPSP_Contact(contactToUpdate);
-            npspContact.setCurrentAddress(new NPSP_Address(undeliverableAddresses[0]));
+            NPPatch_Contact npspContact = new NPPatch_Contact(contactToUpdate);
+            npspContact.setCurrentAddress(new NPPatch_Address(undeliverableAddresses[0]));
 
             update npspContact.getRecord();
         Test.stopTest();

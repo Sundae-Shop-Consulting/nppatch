@@ -201,7 +201,7 @@ public with sharing class ADDR_GoogleGeoAPI_Validator implements ADDR_IValidator
 
             if (settings == null || settings.Auth_Token__c == null || endPoint == null) {
                 address.Verified__c = false;
-                address.API_Response__c = 'MISSING AUTHID OR ENDPOINT.  Please see the Address Verification menu in the NPSP Settings tab for more information';
+                address.API_Response__c = 'MISSING AUTHID OR ENDPOINT.  Please see the Address Verification menu in the NPPatch Settings tab for more information';
                 return this;
             }
 

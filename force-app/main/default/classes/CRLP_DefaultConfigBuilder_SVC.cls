@@ -135,7 +135,7 @@ public inherited sharing class CRLP_DefaultConfigBuilder_SVC {
         CRLP_RollupCMT.FilterGroup groupClosedWonDonationsHC = new CRLP_RollupCMT.FilterGroup(acctOpp +': Won (HC)' + (acctRTExclusionsExist ? ' Excl RecTypes' : ''));
         groupClosedWonDonationsHC.recordName = CRLP_DefaultConfigBuilder.FilterGroup_Opps_Accounts_HC;
         groupClosedWonDonationsHC.description = 'Won Opportunities for '+ (CRLP_DefaultConfigBuilder.isDifferentContactFilterGroupNeeded ? 'Account ' : '')+ 'Hard Credit Rollups.' +
-                (acctRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPSP Rollup Settings.' : '');
+                (acctRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPPatch Rollup Settings.' : '');
         groupClosedWonDonationsHC.isDeleted = false;
 
         CRLP_RollupCMT.FilterRule ruleCloseWonStageHC = new CRLP_RollupCMT.FilterRule(groupClosedWonDonationsHC.recordName, acctOpp +': Won Only (HC)');
@@ -187,7 +187,7 @@ public inherited sharing class CRLP_DefaultConfigBuilder_SVC {
             groupClosedWonDonationsContactsHC = new CRLP_RollupCMT.FilterGroup(contOpp +': Won (HC)' + (conRTExclusionsExist ? ' Excl RecTypes' : ''));
             groupClosedWonDonationsContactsHC.recordName = CRLP_DefaultConfigBuilder.FilterGroup_Opps_Contacts_HC;
             groupClosedWonDonationsContactsHC.description = 'Won Opportunities for Contact Hard Credit Rollups.' +
-                    (conRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPSP Rollup Settings.' : '');
+                    (conRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPPatch Rollup Settings.' : '');
             groupClosedWonDonationsContactsHC.isDeleted = false;
 
             CRLP_RollupCMT.FilterRule ruleCloseWonStage1HC = new CRLP_RollupCMT.FilterRule(groupClosedWonDonationsContactsHC.recordName, contOpp +': Won Only (HC)');
@@ -239,7 +239,7 @@ public inherited sharing class CRLP_DefaultConfigBuilder_SVC {
         CRLP_RollupCMT.FilterGroup groupClosedWonDonationsSC = new CRLP_RollupCMT.FilterGroup(acctOpp +': Won (SC)' + (acctRTExclusionsExist ? ' Excl RecTypes' : ''));
         groupClosedWonDonationsSC.recordName = CRLP_DefaultConfigBuilder.FilterGroup_Opps_Accounts_SC;
         groupClosedWonDonationsSC.description = 'Won Opportunities for '+ (CRLP_DefaultConfigBuilder.isDifferentContactFilterGroupNeeded ? 'Account ' : '')+ 'Soft Credit Rollups.' +
-                (acctRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPSP Rollup Settings.' : '');
+                (acctRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPPatch Rollup Settings.' : '');
         groupClosedWonDonationsSC.isDeleted = false;
 
         CRLP_RollupCMT.FilterRule ruleCloseWonStageSC = new CRLP_RollupCMT.FilterRule(groupClosedWonDonationsSC.recordName, acctOpp +': Won Only (SC)');
@@ -302,7 +302,7 @@ public inherited sharing class CRLP_DefaultConfigBuilder_SVC {
             groupClosedWonDonationsContactsSC = new CRLP_RollupCMT.FilterGroup(contOpp +': Won (SC)' + (conRTExclusionsExist ? ' Excl RecTypes' : ''));
             groupClosedWonDonationsContactsSC.recordName = CRLP_DefaultConfigBuilder.FilterGroup_Opps_Contacts_SC;
             groupClosedWonDonationsContactsSC.description = 'Won Opportunities for Contact Soft Credit Rollups.' +
-                    (conRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPSP Rollup Settings.' : '');
+                    (conRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPPatch Rollup Settings.' : '');
             groupClosedWonDonationsContactsSC.isDeleted = false;
 
             CRLP_RollupCMT.FilterRule ruleCloseWonStageConSC = new CRLP_RollupCMT.FilterRule(groupClosedWonDonationsContactsSC.recordName, contOpp +': Won Only (SC)');
@@ -365,7 +365,7 @@ public inherited sharing class CRLP_DefaultConfigBuilder_SVC {
         CRLP_RollupCMT.FilterGroup groupMemberships;
 
         groupMemberships = new CRLP_RollupCMT.FilterGroup('Memberships: Won');
-        groupMemberships.description = 'Won Membership Opportunities used for all Membership Rollups. Record Types as defined in legacy NPSP Membership Settings.';
+        groupMemberships.description = 'Won Membership Opportunities used for all Membership Rollups. Record Types as defined in legacy NPPatch Membership Settings.';
         groupMemberships.recordName = CRLP_DefaultConfigBuilder.FilterGroup_Membership;
         groupMemberships.isDeleted = false;
 
@@ -405,7 +405,7 @@ public inherited sharing class CRLP_DefaultConfigBuilder_SVC {
         Boolean alloRTExclusionsExist = !String.isEmpty(alloRTExclusionsDeveloperNames);
 
         CRLP_RollupCMT.FilterGroup groupAllocations = new CRLP_RollupCMT.FilterGroup('Allocations: Won' + (alloRTExclusionsExist ? ' excluding Rec Types' : ''));
-        groupAllocations.description = 'Closed/Won Opportunities used for GAU Allocation to General Accounting Unit rollups.' + (alloRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPSP Rollup Settings.' : '');
+        groupAllocations.description = 'Closed/Won Opportunities used for GAU Allocation to General Accounting Unit rollups.' + (alloRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPPatch Rollup Settings.' : '');
         groupAllocations.recordName = CRLP_DefaultConfigBuilder.FilterGroup_Allocations;
         groupAllocations.isDeleted = false;
 
@@ -480,7 +480,7 @@ public inherited sharing class CRLP_DefaultConfigBuilder_SVC {
         CRLP_RollupCMT.FilterGroup groupPaymentsPaid = new CRLP_RollupCMT.FilterGroup(acctPmt + ': Paid' + ( acctRTExclusionsExist ? ' Excl Rec Types' : ''));
         groupPaymentsPaid.recordName = CRLP_DefaultConfigBuilder.FilterGroup_PaymentsPaid;
         groupPaymentsPaid.description = 'All paid Payments.'+
-                (acctRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPSP Rollup Settings.' : '');
+                (acctRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPPatch Rollup Settings.' : '');
         groupPaymentsPaid.isDeleted = false;
 
         CRLP_RollupCMT.FilterRule rulePaid = new CRLP_RollupCMT.FilterRule(groupPaymentsPaid.recordName, acctPmt + ': Paid Only');
@@ -523,7 +523,7 @@ public inherited sharing class CRLP_DefaultConfigBuilder_SVC {
             groupPaymentsPaidContacts = new CRLP_RollupCMT.FilterGroup(contPmt + ': Paid' + ( conRTExclusionsExist ? ' Excl Rec Types' : ''));
             groupPaymentsPaidContacts.recordName = CRLP_DefaultConfigBuilder.FilterGroup_PaymentsPaid_Contacts;
             groupPaymentsPaidContacts.description = 'All paid Payments.'+
-                    (conRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPSP Rollup Settings.' : '');
+                    (conRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPPatch Rollup Settings.' : '');
             groupPaymentsPaidContacts.isDeleted = false;
 
             CRLP_RollupCMT.FilterRule rulePaidCon = new CRLP_RollupCMT.FilterRule(groupPaymentsPaidContacts.recordName, contPmt + ': Paid Only');
@@ -607,7 +607,7 @@ public inherited sharing class CRLP_DefaultConfigBuilder_SVC {
             groupPaymentsWrittenOffContacts = new CRLP_RollupCMT.FilterGroup(contPmt + ': WrittenOff' + ( conRTExclusionsExist ? ' Excl Rec Types' : ''));
             groupPaymentsWrittenOffContacts.recordName = CRLP_DefaultConfigBuilder.FilterGroup_PaymentsWrittenOff_Contacts;
             groupPaymentsWrittenOffContacts.description = 'All written off Payments.'+
-                    (conRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPSP Rollup Settings.' : '');
+                    (conRTExclusionsExist ? ' Excludes Record Types as defined in legacy NPPatch Rollup Settings.' : '');
             groupPaymentsWrittenOffContacts.isDeleted = false;
 
             CRLP_RollupCMT.FilterRule ruleWrittenOffCon = new CRLP_RollupCMT.FilterRule(groupPaymentsWrittenOffContacts.recordName, contPmt + ': Written Off Only');

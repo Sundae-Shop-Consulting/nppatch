@@ -603,7 +603,7 @@ public class UTIL_UnitTestData_TEST {
 
         for (Integer i = 0; i < numberOfRecords; i++) {
             DataImport__c dataImport = BDI_DataImport_TEST.newDI('John'+i,'Doe'+i, 200);
-            dataImport.NPSP_Data_Import_Batch__c = batch.Id;
+            dataImport.NPPatch_Data_Import_Batch__c = batch.Id;
             dataImports.add(dataImport);
         }
 

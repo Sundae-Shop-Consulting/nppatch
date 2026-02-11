@@ -119,11 +119,11 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>NPSP_Resources</tab>
+        <tab>NPPatch_Resources</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>NPSP_Settings</tab>
+        <tab>NPPatch_Settings</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>

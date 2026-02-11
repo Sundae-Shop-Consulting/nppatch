@@ -73,7 +73,7 @@ public class ERR_Notifier {
     /** @description Global email constants used for all outbound (system) emails */
     public static final String EMAIL_SYSTEM_ERRORS_TO = 'errors@salesforce.org';
     public static final String EMAIL_REPLY_TO = 'donotreply@salesforce.org';
-    public static final String EMAIL_SENDER_NAME = 'Nonprofit Success Pack';
+    public static final String EMAIL_SENDER_NAME = 'NPPatch';
 
     /** @description the subject for errors sent out of this service only */
     private static final String EMAIL_SUBJECT = 'Salesforce Error';

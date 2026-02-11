@@ -160,7 +160,7 @@ private class BDI_ProcessSelectedDIs_TEST {
 
         DataImport__c[] testDIs = diGenerator(2);
         // Set one to be part of a batch to test error
-        testDIs[0].NPSP_Data_Import_Batch__c = diBatch.Id;
+        testDIs[0].NPPatch_Data_Import_Batch__c = diBatch.Id;
 
         insert testDIs;
 

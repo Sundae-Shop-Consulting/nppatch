@@ -3,7 +3,7 @@
     <fullName>Opp_RecTypes_Excluded_for_Payments__c</fullName>
     <description>Salesforce won&apos;t automatically create Payments for the selected Opportunity record types. Control or Command click to select more than one record type.</description>
     <externalId>false</externalId>
-    <inlineHelpText>NPSP automatically creates Payment records for Opportunities of all record types. Select any record types here that you don&apos;t want Payment records automatically created for. Control or Command click to select more than one record type.</inlineHelpText>
+    <inlineHelpText>NPPatch automatically creates Payment records for Opportunities of all record types. Select any record types here that you don&apos;t want Payment records automatically created for. Control or Command click to select more than one record type.</inlineHelpText>
     <label>Excluded Opp Record Types</label>
     <length>255</length>
     <required>false</required>

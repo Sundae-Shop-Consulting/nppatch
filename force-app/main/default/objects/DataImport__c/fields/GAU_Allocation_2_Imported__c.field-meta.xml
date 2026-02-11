@@ -7,7 +7,7 @@
     <inlineHelpText>A lookup to the first GAU Allocation if it was successfully created.</inlineHelpText>
     <label>GAU Allocation 2: Imported</label>
     <referenceTo>Allocation__c</referenceTo>
-    <relationshipLabel>NPSP Data Imports (GAU 2)</relationshipLabel>
+    <relationshipLabel>NPPatch Data Imports (GAU 2)</relationshipLabel>
     <relationshipName>NPSP_Data_Imports_GAU2</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>

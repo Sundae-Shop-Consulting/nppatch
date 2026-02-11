@@ -80,8 +80,8 @@ public class BDI_DataImportBatchStatus_TDTM extends TDTM_Runnable {
         Set<Id> batchIdSet = new Set<Id>();
 
         for (DataImport__c di : diList) {
-            if (di.NPSP_Data_Import_Batch__c != null) {
-                batchIdSet.add(di.NPSP_Data_Import_Batch__c);
+            if (di.NPPatch_Data_Import_Batch__c != null) {
+                batchIdSet.add(di.NPPatch_Data_Import_Batch__c);
             }
         }
 
@@ -95,7 +95,7 @@ public class BDI_DataImportBatchStatus_TDTM extends TDTM_Runnable {
         for (DataImport__c diOld : diOldList) {
             DataImport__c diNew = diNewMap.get(diOld.Id);
             if (needsStatusUpdate(diOld, diNew)) {
-                batchIdSet.add(diNew.NPSP_Data_Import_Batch__c);
+                batchIdSet.add(diNew.NPPatch_Data_Import_Batch__c);
             }
         }
 
@@ -103,17 +103,17 @@ public class BDI_DataImportBatchStatus_TDTM extends TDTM_Runnable {
     }
 
     private Boolean needsStatusUpdate(DataImport__c diOld, DataImport__c diNew) {
-        if (diOld.NPSP_Data_Import_Batch__c != diNew.NPSP_Data_Import_Batch__c) {
+        if (diOld.NPPatch_Data_Import_Batch__c != diNew.NPPatch_Data_Import_Batch__c) {
             // di records changed parents
-            if (diOld.NPSP_Data_Import_Batch__c != null) {
+            if (diOld.NPPatch_Data_Import_Batch__c != null) {
                 return true;
             }
-            if (diNew.NPSP_Data_Import_Batch__c != null) {
+            if (diNew.NPPatch_Data_Import_Batch__c != null) {
                 return true;
             }
         } else if (diOld.Status__c != diNew.Status__c) {
             // status was changed; same parent
-            if (diNew.NPSP_Data_Import_Batch__c != null) {
+            if (diNew.NPPatch_Data_Import_Batch__c != null) {
                 return true;
             }
         }
@@ -149,7 +149,7 @@ public class BDI_DataImportBatchStatus_TDTM extends TDTM_Runnable {
         return [
                 SELECT Id, (
                         SELECT Id, Status__c
-                        FROM NPSP_Data_Imports__r
+                        FROM NPPatch_Data_Imports__r
                         WHERE Status__c = :BDI_DataImport_API.bdiFailed
                         LIMIT 1
                 )
@@ -163,7 +163,7 @@ public class BDI_DataImportBatchStatus_TDTM extends TDTM_Runnable {
                 SELECT
                         Id, (
                         SELECT Id, Status__c
-                        FROM NPSP_Data_Imports__r
+                        FROM NPPatch_Data_Imports__r
                         WHERE Status__c = :BDI_DataImport_API.bdiDryRunValidated
                         OR Status__c = :BDI_DataImport_API.bdiDryRunError
                         OR Status__c = NULL
@@ -178,7 +178,7 @@ public class BDI_DataImportBatchStatus_TDTM extends TDTM_Runnable {
         return [
                 SELECT Id, (
                         SELECT Id, Status__c
-                        FROM NPSP_Data_Imports__r
+                        FROM NPPatch_Data_Imports__r
                         WHERE Status__c = :BDI_DataImport_API.bdiImported
                         LIMIT 1
                 )
@@ -240,11 +240,11 @@ public class BDI_DataImportBatchStatus_TDTM extends TDTM_Runnable {
         Boolean hasFailedRow = false;
 
         /**
-         * @param batch A data import batch with a single row sub-query on the NPSP_Data_Imports__r relationship
+         * @param batch A data import batch with a single row sub-query on the NPPatch_Data_Imports__r relationship
          */
         void readQueryResult(DataImportBatch__c batch) {
-            if (batch.NPSP_Data_Imports__r != null) {
-                for (DataImport__c dataImport : batch.NPSP_Data_Imports__r) {
+            if (batch.NPPatch_Data_Imports__r != null) {
+                for (DataImport__c dataImport : batch.NPPatch_Data_Imports__r) {
                     readRowStatus(dataImport);
                 }
             }

@@ -5,7 +5,7 @@
     <externalId>false</externalId>
     <label>Payment Imported</label>
     <referenceTo>OppPayment__c</referenceTo>
-    <relationshipLabel>NPSP Data Imports</relationshipLabel>
+    <relationshipLabel>NPPatch Data Imports</relationshipLabel>
     <relationshipName>NPSP_Data_Imports</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>

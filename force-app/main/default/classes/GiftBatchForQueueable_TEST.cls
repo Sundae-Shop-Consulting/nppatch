@@ -449,7 +449,7 @@ private class GiftBatchForQueueable_TEST {
                 Donation_Amount__c = 33.33,
                 Donation_Date__c = Date.today(),
                 Status__c = status,
-                NPSP_Data_Import_Batch__c = giftBatchId
+                NPPatch_Data_Import_Batch__c = giftBatchId
             ));
         }
         return gifts;

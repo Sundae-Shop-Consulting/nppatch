@@ -32,7 +32,7 @@
   @date 2019
   @group BGE
   @group-content ../../ApexDocContent/BatchDataImport.htm
-  @description Component used to view, edit, and delete DataImport__c records on the related NPSP_Data_Import_Batch__c record home.
+  @description Component used to view, edit, and delete DataImport__c records on the related NPPatch_Data_Import_Batch__c record home.
 -->
 
 <aura:component implements="force:hasSObjectName,force:hasRecordId,flexipage:availableForAllPageTypes"

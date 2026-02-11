@@ -93,7 +93,7 @@ export default class bdiObjectMappingModal extends LightningElement {
                     '%%%NAMESPACE%%%Donation_Possible_Matches__c',
                     '%%%NAMESPACE%%%FailureInformation__c',
                     '%%%NAMESPACE%%%ImportedDate__c',
-                    '%%%NAMESPACE%%%NPSP_Data_Import_Batch__c',
+                    '%%%NAMESPACE%%%NPPatch_Data_Import_Batch__c',
                     '%%%NAMESPACE%%%Payment_Possible_Matches__c',
                     '%%%NAMESPACE%%%Status__c'];
 

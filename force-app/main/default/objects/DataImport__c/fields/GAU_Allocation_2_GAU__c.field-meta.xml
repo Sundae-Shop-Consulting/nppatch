@@ -7,7 +7,7 @@
     <inlineHelpText>The salesforce id of the GAU to be used for the second GAU allocation.</inlineHelpText>
     <label>GAU Allocation 2: GAU</label>
     <referenceTo>General_Accounting_Unit__c</referenceTo>
-    <relationshipLabel>NPSP Data Imports (GAU 2)</relationshipLabel>
+    <relationshipLabel>NPPatch Data Imports (GAU 2)</relationshipLabel>
     <relationshipName>NPSP_Data_Imports_GAU2</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>

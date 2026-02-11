@@ -45,6 +45,6 @@ public with sharing class RP_Constants {
 
     // Configuration for the Getting Started page links
     public static final String RP_CUSTOMER_JOURNEY_LINK = 'http://www.salesforce.org/events/';
-    public static final String RP_TRAILHEAD_LINK = 'https://trailhead.salesforce.com/en/content/learn/modules/nonprofit-cloud-basics';
-    public static final String RP_US_LINK = 'https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHitSAE';
+    public static final String RP_TRAILHEAD_LINK = '';
+    public static final String RP_US_LINK = '';
 }

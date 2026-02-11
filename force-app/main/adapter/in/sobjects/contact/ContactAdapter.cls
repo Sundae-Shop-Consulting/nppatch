@@ -149,7 +149,7 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
 
     /**
      * @description ADDR_Contact_TDTM was refactored and its logic was moved down into this
-     * class and supporting entity classes like NPSP_Contact and NPSP_Address.  However, there
+     * class and supporting entity classes like NPPatch_Contact and NPPatch_Address.  However, there
      * is already a Trigger Handler (HH_Households_TDTM) running in the
      * before update context for Contacts, and that handler calls the onBeforeUpdate method.
      * Secondary Trigger Handlers running in
@@ -285,7 +285,7 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
         return accountsById;
     }
 
-    private Account accountFor(NPSP_Contact npspContact) {
+    private Account accountFor(NPPatch_Contact npspContact) {
         return accountsByIds().get(npspContact.accountId());
     }
 
@@ -296,10 +296,10 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
         return a.SYSTEM_AccountType__c == CAO_Constants.HH_ACCOUNT_TYPE;
     }
 
-    private List<NPSP_Contact> npspContactsInHouseholdAccounts() {
-        List<NPSP_Contact> contactsInHouseholdAccounts = new List<NPSP_Contact>();
+    private List<NPPatch_Contact> npspContactsInHouseholdAccounts() {
+        List<NPPatch_Contact> contactsInHouseholdAccounts = new List<NPPatch_Contact>();
         for (SObject so : getRecords()) {
-            NPSP_Contact npspContact = new NPSP_Contact((Contact) so, oldVersionOf(
+            NPPatch_Contact npspContact = new NPPatch_Contact((Contact) so, oldVersionOf(
                     (Contact) so));
             if (isAnAccountOfTypeHousehold(accountFor(npspContact))) {
                 contactsInHouseholdAccounts.add(npspContact);
@@ -308,14 +308,14 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
         return contactsInHouseholdAccounts;
     }
 
-    private Boolean isEligibleForRefresh(NPSP_Contact npspContact) {
+    private Boolean isEligibleForRefresh(NPPatch_Contact npspContact) {
         return !npspContact.hasAddressOverride() && !npspContact.isAddressChanged();
     }
 
     private Map<Id, Boolean> getIsOverrideByAddressIdFromAddressOverrideChanges() {
         Map<Id, Boolean> isOverrideByAddressId = new Map<Id, Boolean>();
         // we only support address management with HH Accounts being used
-        for (NPSP_Contact npspContact : npspContactsInHouseholdAccounts()) {
+        for (NPPatch_Contact npspContact : npspContactsInHouseholdAccounts()) {
 
             // new highest priority! if Account changes...
             if (!npspContact.accountChanged()) {
@@ -336,7 +336,7 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
     private List<Contact> consHavingAddressOverridesRemoved() {
         List<Contact> addressRefreshQueue = new List<Contact>();
         // we only support address management with HH Accounts being used
-        for (NPSP_Contact npspContact : npspContactsInHouseholdAccounts()) {
+        for (NPPatch_Contact npspContact : npspContactsInHouseholdAccounts()) {
 
             // new highest priority! if Account changes...
             if (!npspContact.accountChanged()) {
@@ -356,7 +356,7 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
     private List<Contact> consWhoseAddressChanged() {
         List<Contact> useCurrentAddressQueue = new List<Contact>();
         // we only support address management with HH Accounts being used
-        for (NPSP_Contact npspContact : npspContactsInHouseholdAccounts()) {
+        for (NPPatch_Contact npspContact : npspContactsInHouseholdAccounts()) {
 
             // new highest priority! if Account changes...
             if (!npspContact.accountChanged()) {
@@ -372,7 +372,7 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
     private Map<Id, Boolean> getIsOverrideByAddressId() {
         Map<Id, Boolean> isOverrideByAddressId = new Map<Id, Boolean>();
         // we only support address management with HH Accounts being used
-        for (NPSP_Contact npspContact : npspContactsInHouseholdAccounts()) {
+        for (NPPatch_Contact npspContact : npspContactsInHouseholdAccounts()) {
 
             // new highest priority! if Account changes...
             if (!npspContact.accountChanged()) {
@@ -389,7 +389,7 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
     private List<Contact> consWhoseAccountChangedAndDontHaveAddressOverrides() {
         List<Contact> addressRefreshQueue = new List<Contact>();
         // we only support address management with HH Accounts being used
-        for (NPSP_Contact npspContact : npspContactsInHouseholdAccounts()) {
+        for (NPPatch_Contact npspContact : npspContactsInHouseholdAccounts()) {
 
             // new highest priority! if Account changes...
             if (npspContact.accountChanged()) {
@@ -419,11 +419,11 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
         return new Contacts(consInHouseholds);
     }
 
-    private Boolean shouldUseAccountAddress(NPSP_Contact npspContact) {
+    private Boolean shouldUseAccountAddress(NPPatch_Contact npspContact) {
         return npspContact.isAddressEmpty() && accountHasAddresses(npspContact.getRecord());
     }
 
-    private Boolean hasCurrentAddress(NPSP_Contact npspContact) {
+    private Boolean hasCurrentAddress(NPPatch_Contact npspContact) {
         return npspContact.currentAddress() != null;
     }
 
@@ -433,7 +433,7 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
 
     private Contacts contactsNeedingHouseholdAddressApplied() {
         List<Contact> addressRefreshQueue = new List<Contact>();
-        for (NPSP_Contact npspContact : npspContactsInHouseholdAccounts()) {
+        for (NPPatch_Contact npspContact : npspContactsInHouseholdAccounts()) {
             if (shouldUseAccountAddress(npspContact)) {
                 // if the contact has no address specified and the household has a default address, pick up the hh default.
                 addressRefreshQueue.add(npspContact.getRecord());
@@ -444,7 +444,7 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
 
     private Map<Id, Boolean> getIsOverrideByAddressIdBeforeInsert() {
         Map<Id, Boolean> isOverrideByAddressId = new Map<Id, Boolean>();
-        for (NPSP_Contact npspContact : npspContactsInHouseholdAccounts()) {
+        for (NPPatch_Contact npspContact : npspContactsInHouseholdAccounts()) {
             if (hasCurrentAddress(npspContact) && npspContact.hasAddressOverride()) {
                 // track which address's need their dates updated
                 isOverrideByAddressId.put(npspContact.currentAddress(), true);
@@ -455,7 +455,7 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
 
     private List<Contact> consThatHaveARelatedAddress() {
         List<Contact> useCurrentAddressQueue = new List<Contact>();
-        for (NPSP_Contact npspContact : npspContactsInHouseholdAccounts()) {
+        for (NPPatch_Contact npspContact : npspContactsInHouseholdAccounts()) {
             if (hasCurrentAddress(npspContact)) {
                 // remember which contacts will need their address set
                 useCurrentAddressQueue.add(npspContact.getRecord());
@@ -479,7 +479,7 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
         for (Integer i = 0; i < getRecords().size(); i++) {
             Contact newRecord = (Contact) getRecords()[i];
 
-            if (new NPSP_Contact(newRecord, oldVersionOf(newRecord)).isAddressChanged()) {
+            if (new NPPatch_Contact(newRecord, oldVersionOf(newRecord)).isAddressChanged()) {
                 UTIL_Address.normalizeLineBreak(newRecord);
             }
         }
@@ -494,7 +494,7 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
 
     /**
      * @description ADDR_Contact_TDTM was refactored and its logic was moved down into this
-     * class and supporting entity classes like NPSP_Contact and NPSP_Address.  However, there
+     * class and supporting entity classes like NPPatch_Contact and NPPatch_Address.  However, there
      * is already a Trigger Handler (HH_Households_TDTM) running in the
      * before insert context for Contacts, and that handler calls the onBeforeInsert method.
      * Secondary Trigger Handlers running in
@@ -561,8 +561,8 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
 
         for (Contact con : listCon) {
             Address__c currentAddressRecord = currentAddressRecordsById.get(con.Current_Address__c);
-            NPSP_Address currentAddressAsNpspAddress = new NPSP_Address(currentAddressRecord);
-            NPSP_Contact npspContact = new NPSP_Contact(con);
+            NPPatch_Address currentAddressAsNpspAddress = new NPPatch_Address(currentAddressRecord);
+            NPPatch_Contact npspContact = new NPPatch_Contact(con);
             ContactAddress contactAddress = new ContactAddress(con);
             if (contactAddress.hasAddress() // Shoutout: K. Bromer
                     && npspContact.mailingAddressIsDifferentFrom(currentAddressAsNpspAddress)) {
@@ -614,7 +614,7 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
     private Map<Contact, Address__c> getContactAddressesByContact(List<Contact> contacts) {
         Map<Contact, Address__c> addressesByContact = new Map<Contact, Address__c>();
         for (Contact contact : contacts) {
-            NPSP_Address npspAddressFromContact = new NPSP_Address(contact);
+            NPPatch_Address npspAddressFromContact = new NPPatch_Address(contact);
             addressesByContact.put(contact, npspAddressFromContact.getRecord());
         }
         return addressesByContact;
@@ -813,7 +813,7 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
     private Set<Contact> getConsWithAddressChanges() {
         Set<Contact> consWithAddressChanges = new Set<Contact>();
         // we only support address management with HH Accounts being used
-        for (NPSP_Contact npspContact : npspContactsInAccounts()) {
+        for (NPPatch_Contact npspContact : npspContactsInAccounts()) {
 
             Account a = accountsByIds().get(npspContact.accountId());
             if (a.SYSTEM_AccountType__c != CAO_Constants.HH_ACCOUNT_TYPE) {
@@ -848,7 +848,7 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
 
     private Set<Contact> getAddressCreationQueueInAfterContext() {
         Set<Contact> addressCreationQueue = new Set<Contact>();
-        for (NPSP_Contact npspContact : npspContactsInAccounts()) {
+        for (NPPatch_Contact npspContact : npspContactsInAccounts()) {
 
             if (npspContact.householdAndAccountDiffer()) {
                 continue;
@@ -866,7 +866,7 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
 
     private Set<Contact> getConsMovingToANewHousehold() {
         Set<Contact> consMovingToANewHousehold = new Set<Contact>();
-        for (NPSP_Contact npspContact : npspContactsInAccounts()) {
+        for (NPPatch_Contact npspContact : npspContactsInAccounts()) {
 
             Account a = accountsByIds().get(npspContact.accountId());
             if (a.SYSTEM_AccountType__c != CAO_Constants.HH_ACCOUNT_TYPE) {
@@ -889,12 +889,12 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
         return consMovingToANewHousehold;
     }
 
-    private List<NPSP_Contact> npspContactsInAccounts;
-    public List<NPSP_Contact> npspContactsInAccounts() {
+    private List<NPPatch_Contact> npspContactsInAccounts;
+    public List<NPPatch_Contact> npspContactsInAccounts() {
         if (npspContactsInAccounts == null) {
-            npspContactsInAccounts = new List<NPSP_Contact>();
+            npspContactsInAccounts = new List<NPPatch_Contact>();
             for (Contact con : (List<Contact>) getRecords()) {
-                NPSP_Contact npspContact = new NPSP_Contact(con, oldVersionOf(con));
+                NPPatch_Contact npspContact = new NPPatch_Contact(con, oldVersionOf(con));
                 if (!npspContact.hasAccount()) {
                     continue;
                 }

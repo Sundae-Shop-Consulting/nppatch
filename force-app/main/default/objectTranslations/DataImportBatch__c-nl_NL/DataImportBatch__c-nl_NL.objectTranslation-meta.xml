@@ -9,7 +9,7 @@
         <label>Batch verwerken</label>
     </webLinks>
     <layouts>
-        <layout>NPSP Data Import Batch Layout</layout>
+        <layout>NPPatch Data Import Batch Layout</layout>
         <sections>
             <label>Overeenkomst Contactpersoon en Account</label>
             <section>Contact &amp; Account Matching</section>

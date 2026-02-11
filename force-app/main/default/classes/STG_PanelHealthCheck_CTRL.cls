@@ -518,7 +518,7 @@ public without sharing class STG_PanelHealthCheck_CTRL extends STG_Panel {
                 return;
             }
         } else {
-            List<Report> listRpt = [SELECT Id FROM Report WHERE DeveloperName = 'NPSP_Campaign_Household_Mailing_List'];
+            List<Report> listRpt = [SELECT Id FROM Report WHERE DeveloperName = 'NPPatch_Campaign_Household_Mailing_List'];
             if (listRpt.size() == 0) {
                 createDR(strField, statusError, Label.healthDetailsMailingListReportMissing,
                    String.format(Label.healthSolutionMailingListReportMissing, new String[]{Label.stgNavPeople, Label.stgNavHouseholds}));

@@ -5,7 +5,7 @@
     fireContactChangedEvent : function(component, event) {
 
         // note that the contact's Naming Exclusions field is
-        // updated by NPSP triggers based off the checkbox fields.
+        // updated by NPPatch triggers based off the checkbox fields.
         // so there is no reason to do it in the ui.
 
         // now notify other components the change occurred

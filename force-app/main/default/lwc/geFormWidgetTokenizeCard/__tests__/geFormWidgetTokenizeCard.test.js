@@ -18,7 +18,7 @@ const DISABLED_MESSAGE = 'c.geBodyPaymentNotProcessingTransaction';
 const EXTENDED_DISABLED_MESSAGE = 'c.geBodyPaymentNotProcessingTransaction c.psSelectValidPaymentMethod';
 const BDI_FAILURE_DISABLED_MESSAGE = 'c.geErrorCardChargedBDIFailed';
 const PAYMENT_METHOD_FIELD = 'Payment_Method__c';
-const DATA_IMPORT_PARENT_BATCH_LOOKUP = 'NPSP_Data_Import_Batch__c';
+const DATA_IMPORT_PARENT_BATCH_LOOKUP = 'NPPatch_Data_Import_Batch__c';
 const DATA_IMPORT_PAYMENT_STATUS = 'Payment_Status__c';
 
 import RD2_ElevateRDCannotBeFixedLength from '@salesforce/label/c.RD2_ElevateRDCannotBeFixedLength';
@@ -51,7 +51,7 @@ describe('c-ge-form-widget-tokenize-card', () => {
         element.widgetDataFromState = {
             'Payment_Method__c': 'Credit Card',
             'Recurring_Donation_Recurring_Type__c': 'Fixed',
-            'NPSP_Data_Import_Batch__c': 'DUMMY_BATCH_ID'
+            'NPPatch_Data_Import_Batch__c': 'DUMMY_BATCH_ID'
         };
         document.body.appendChild(element);
 
@@ -69,7 +69,7 @@ describe('c-ge-form-widget-tokenize-card', () => {
         element.widgetDataFromState = {
             'Payment_Method__c': 'Credit Card',
             'Recurring_Donation_Recurring_Type__c': 'Fixed',
-            'NPSP_Data_Import_Batch__c': 'DUMMY_BATCH_ID'
+            'NPPatch_Data_Import_Batch__c': 'DUMMY_BATCH_ID'
         };
         document.body.appendChild(element);
         await flushPromises();
@@ -83,7 +83,7 @@ describe('c-ge-form-widget-tokenize-card', () => {
         element.widgetDataFromState = {
             'Payment_Method__c': 'Credit Card',
             'Recurring_Donation_Recurring_Type__c': 'Open',
-            'NPSP_Data_Import_Batch__c': 'DUMMY_BATCH_ID'
+            'NPPatch_Data_Import_Batch__c': 'DUMMY_BATCH_ID'
         };
         await flushPromises();
 
@@ -99,7 +99,7 @@ describe('c-ge-form-widget-tokenize-card', () => {
         element.widgetDataFromState = {
             'Payment_Method__c': 'Credit Card',
             'Recurring_Donation_Recurring_Type__c': 'Open',
-            'NPSP_Data_Import_Batch__c': 'DUMMY_BATCH_ID',
+            'NPPatch_Data_Import_Batch__c': 'DUMMY_BATCH_ID',
             'Id': 'DUMMY_RECORD_ID'
         };
         document.body.appendChild(element);
@@ -134,7 +134,7 @@ describe('c-ge-form-widget-tokenize-card', () => {
         element.widgetDataFromState = {
             'Payment_Method__c': 'Credit Card',
             'Recurring_Donation_Recurring_Type__c': 'Fixed',
-            'NPSP_Data_Import_Batch__c': 'DUMMY_BATCH_ID',
+            'NPPatch_Data_Import_Batch__c': 'DUMMY_BATCH_ID',
             'Id': 'DUMMY_RECORD_ID'
         };
         await flushPromises();

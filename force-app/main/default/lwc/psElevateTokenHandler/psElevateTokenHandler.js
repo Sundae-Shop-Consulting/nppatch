@@ -79,7 +79,7 @@ class psElevateTokenHandler {
     }
 
     /***
-     * @description Returns the NPSP namespace (if any)
+     * @description Returns the NPPatch namespace (if any)
      */
     get currentNamespace() {
         return getNamespace(PAYMENT_AUTHORIZATION_TOKEN_FIELD.fieldApiName);

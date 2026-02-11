@@ -268,14 +268,14 @@ public with sharing class ADDR_Addresses_TEST2 {
         a2.Seasonal_Start_Day__c = '1';
         a2.Seasonal_End_Month__c = '6';
         a2.Seasonal_End_Day__c = '28';
-        System.assertEquals(false, new NPSP_Address(a1).overlapsWith(new NPSP_Address(a2)));
-        System.assertEquals(false, new NPSP_Address(a2).overlapsWith(new NPSP_Address(a1)));
+        System.assertEquals(false, new NPPatch_Address(a1).overlapsWith(new NPPatch_Address(a2)));
+        System.assertEquals(false, new NPPatch_Address(a2).overlapsWith(new NPPatch_Address(a1)));
         
         // test both increasing ranges, with overlap
         a2.Seasonal_Start_Month__c = '2';
         a2.Seasonal_End_Month__c = '6';
-        System.assertEquals(true, new NPSP_Address(a1).overlapsWith(new NPSP_Address(a2)));
-        System.assertEquals(true, new NPSP_Address(a2).overlapsWith(new NPSP_Address(a1)));
+        System.assertEquals(true, new NPPatch_Address(a1).overlapsWith(new NPPatch_Address(a2)));
+        System.assertEquals(true, new NPPatch_Address(a2).overlapsWith(new NPPatch_Address(a1)));
         
         // test one increasing range, one decreasing range, no overlap
         a1.Seasonal_Start_Month__c = '3';
@@ -286,16 +286,16 @@ public with sharing class ADDR_Addresses_TEST2 {
         a2.Seasonal_Start_Day__c = '1';
         a2.Seasonal_End_Month__c = '2';
         a2.Seasonal_End_Day__c = '28';
-        System.assertEquals(false, new NPSP_Address(a1).overlapsWith(new NPSP_Address(a2)));
-        System.assertEquals(false, new NPSP_Address(a2).overlapsWith(new NPSP_Address(a1)));
+        System.assertEquals(false, new NPPatch_Address(a1).overlapsWith(new NPPatch_Address(a2)));
+        System.assertEquals(false, new NPPatch_Address(a2).overlapsWith(new NPPatch_Address(a1)));
 
         // test one increasing range, one decreasing range, with overlap
         a2.Seasonal_Start_Month__c = '11';
         a2.Seasonal_Start_Day__c = '1';
         a2.Seasonal_End_Month__c = '4';
         a2.Seasonal_End_Day__c = '28';
-        System.assertEquals(true, new NPSP_Address(a1).overlapsWith(new NPSP_Address(a2)));
-        System.assertEquals(true, new NPSP_Address(a2).overlapsWith(new NPSP_Address(a1)));
+        System.assertEquals(true, new NPPatch_Address(a1).overlapsWith(new NPPatch_Address(a2)));
+        System.assertEquals(true, new NPPatch_Address(a2).overlapsWith(new NPPatch_Address(a1)));
 
         // test both decreasing ranges, always overlap
         a1.Seasonal_Start_Month__c = '9';
@@ -306,8 +306,8 @@ public with sharing class ADDR_Addresses_TEST2 {
         a2.Seasonal_Start_Day__c = '1';
         a2.Seasonal_End_Month__c = '3';
         a2.Seasonal_End_Day__c = '28';
-        System.assertEquals(true, new NPSP_Address(a1).overlapsWith(new NPSP_Address(a2)));
-        System.assertEquals(true, new NPSP_Address(a2).overlapsWith(new NPSP_Address(a1)));
+        System.assertEquals(true, new NPPatch_Address(a1).overlapsWith(new NPPatch_Address(a2)));
+        System.assertEquals(true, new NPPatch_Address(a2).overlapsWith(new NPPatch_Address(a1)));
         
         // test both increasing ranges in the same month, no overlap
         a1.Seasonal_Start_Month__c = '2';
@@ -318,8 +318,8 @@ public with sharing class ADDR_Addresses_TEST2 {
         a2.Seasonal_Start_Day__c = '11';
         a2.Seasonal_End_Month__c = '2';
         a2.Seasonal_End_Day__c = '28';
-        System.assertEquals(false, new NPSP_Address(a1).overlapsWith(new NPSP_Address(a2)));
-        System.assertEquals(false, new NPSP_Address(a2).overlapsWith(new NPSP_Address(a1)));
+        System.assertEquals(false, new NPPatch_Address(a1).overlapsWith(new NPPatch_Address(a2)));
+        System.assertEquals(false, new NPPatch_Address(a2).overlapsWith(new NPPatch_Address(a1)));
 
         // test both increasing ranges in the same month, with overlap
         a1.Seasonal_Start_Month__c = '2';
@@ -330,8 +330,8 @@ public with sharing class ADDR_Addresses_TEST2 {
         a2.Seasonal_Start_Day__c = '10';
         a2.Seasonal_End_Month__c = '2';
         a2.Seasonal_End_Day__c = '28';
-        System.assertEquals(true, new NPSP_Address(a1).overlapsWith(new NPSP_Address(a2)));
-        System.assertEquals(true, new NPSP_Address(a2).overlapsWith(new NPSP_Address(a1)));
+        System.assertEquals(true, new NPPatch_Address(a1).overlapsWith(new NPPatch_Address(a2)));
+        System.assertEquals(true, new NPPatch_Address(a2).overlapsWith(new NPPatch_Address(a1)));
 
         // test one increasing range, one decreasing range in the same month, no overlap
         a1.Seasonal_Start_Month__c = '2';
@@ -342,8 +342,8 @@ public with sharing class ADDR_Addresses_TEST2 {
         a2.Seasonal_Start_Day__c = '11';
         a2.Seasonal_End_Month__c = '1';
         a2.Seasonal_End_Day__c = '28';
-        System.assertEquals(false, new NPSP_Address(a1).overlapsWith(new NPSP_Address(a2)));
-        System.assertEquals(false, new NPSP_Address(a2).overlapsWith(new NPSP_Address(a1)));
+        System.assertEquals(false, new NPPatch_Address(a1).overlapsWith(new NPPatch_Address(a2)));
+        System.assertEquals(false, new NPPatch_Address(a2).overlapsWith(new NPPatch_Address(a1)));
 
         // test one increasing range, one decreasing range in the same month, with overlap
         a1.Seasonal_Start_Month__c = '2';
@@ -354,8 +354,8 @@ public with sharing class ADDR_Addresses_TEST2 {
         a2.Seasonal_Start_Day__c = '11';
         a2.Seasonal_End_Month__c = '2';
         a2.Seasonal_End_Day__c = '1';
-        System.assertEquals(true, new NPSP_Address(a1).overlapsWith(new NPSP_Address(a2)));
-        System.assertEquals(true, new NPSP_Address(a2).overlapsWith(new NPSP_Address(a1)));
+        System.assertEquals(true, new NPPatch_Address(a1).overlapsWith(new NPPatch_Address(a2)));
+        System.assertEquals(true, new NPPatch_Address(a2).overlapsWith(new NPPatch_Address(a1)));
     }
 
     /*********************************************************************************************************

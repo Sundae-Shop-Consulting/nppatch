@@ -3,7 +3,7 @@
     <apiVersion>59.0</apiVersion>
     <description>Warns of potential duplicates as a result of Contact creation or edit.</description>
     <isExposed>true</isExposed>
-    <masterLabel>NPSP Potential Duplicates</masterLabel>
+    <masterLabel>NPPatch Potential Duplicates</masterLabel>
     <targets>
         <target>lightning__RecordPage</target>
     </targets>

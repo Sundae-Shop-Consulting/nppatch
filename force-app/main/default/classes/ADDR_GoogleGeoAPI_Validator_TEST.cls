@@ -284,7 +284,7 @@ private class ADDR_GoogleGeoAPI_Validator_TEST {
         Test.StopTest();
 
         System.assertEquals(1, returnedAddress.size());
-        System.assertEquals('MISSING AUTHID OR ENDPOINT.  Please see the Address Verification menu in the NPSP Settings tab for more information', returnedAddress[0].API_Response__c);
+        System.assertEquals('MISSING AUTHID OR ENDPOINT.  Please see the Address Verification menu in the NPPatch Settings tab for more information', returnedAddress[0].API_Response__c);
     }
 
     @IsTest

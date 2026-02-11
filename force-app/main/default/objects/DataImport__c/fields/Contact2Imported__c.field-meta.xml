@@ -5,7 +5,7 @@
     <externalId>false</externalId>
     <label>Contact2 Imported</label>
     <referenceTo>Contact</referenceTo>
-    <relationshipLabel>NPSP Data Imports (Contact2 Imported)</relationshipLabel>
+    <relationshipLabel>NPPatch Data Imports (Contact2 Imported)</relationshipLabel>
     <relationshipName>Data_Imports1</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>

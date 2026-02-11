@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
     <customApplications>
-        <label><!-- Nonprofit Success Pack --></label>
+        <label><!-- NPPatch --></label>
         <name>Nonprofit_CRM</name>
     </customApplications>
     <customLabels>
@@ -350,7 +350,7 @@
         <name>CONV_All_Required_Removed</name>
     </customLabels>
     <customLabels>
-        <label>כל הגורמים המפעילים של NPSP מושבתים (כלי השירות אינו משבית את הגורמים המפעילים המותאמים אישית שלך. ליתר ביטחון, עליך להשבית גם אותם)</label>
+        <label>כל הגורמים המפעילים של NPPatch מושבתים (כלי השירות אינו משבית את הגורמים המפעילים המותאמים אישית שלך. ליתר ביטחון, עליך להשבית גם אותם)</label>
         <name>CONV_All_Triggers_Disabled</name>
     </customLabels>
     <customLabels>
@@ -414,8 +414,8 @@
         <name>CONV_New_Households_Created</name>
     </customLabels>
     <customLabels>
-        <label>כל היישומים שאינם של NPSP הוסרו או הושבתו באופן זמני.</label>
-        <name>CONV_Non_NPSP_Apps</name>
+        <label>כל היישומים שאינם של NPPatch הוסרו או הושבתו באופן זמני.</label>
+        <name>CONV_Non_NPPatch_Apps</name>
     </customLabels>
     <customLabels>
         <label>אובייקטים קודמים של משקי בית נשארו במקומם, ויש למחוק אותם באופן ידני לאחר בדיקת התוצאות של תהליך ההמרה.</label>
@@ -474,7 +474,7 @@
         <name>CONV_Tested_in_Sandbox</name>
     </customLabels>
     <customLabels>
-        <label>כל הגורמים המפעילים של NPSP מופעלים מחדש (תצטרך להפעיל מחדש באופן ידני כל גורם מפעיל מותאם אישית שהשבתת לצורך ההמרה. בנוסף, כלי השירות מפעיל מחדש את &lt;b&gt;כל&lt;/b&gt; הגורמים המפעילים של NPSP, כך שאם השבתת חלק מהם באופן סלקטיבי לפני כן, תצטרך גם להשבית אותם באופן ידני שוב)</label>
+        <label>כל הגורמים המפעילים של NPPatch מופעלים מחדש (תצטרך להפעיל מחדש באופן ידני כל גורם מפעיל מותאם אישית שהשבתת לצורך ההמרה. בנוסף, כלי השירות מפעיל מחדש את &lt;b&gt;כל&lt;/b&gt; הגורמים המפעילים של NPPatch, כך שאם השבתת חלק מהם באופן סלקטיבי לפני כן, תצטרך גם להשבית אותם באופן ידני שוב)</label>
         <name>CONV_Triggers_Reenabled</name>
     </customLabels>
     <customLabels>
@@ -762,10 +762,10 @@
         <name>ERR_RecordLogTitle</name>
     </customLabels>
     <customLabels>
-        <label>מערכת Salesforce דיווחה על השגיאות הבאות בזמן ש-NPSP ניסתה לבצע את משימות האצווה שלה, או כאשר לא הייתה לה אפשרות להציג הודעות שגיאה למשתמש באופן ישיר. סביר להניח ש-NPSP ניסתה לעדכן שדות סיכום בחשבונות ואנשי קשר, אך לא הייתה לה אפשרות לשמור רשומות מסוימות. כשל זה עשוי להיגרם עקב גורמים שונים שאינם קשורים ל-NPSP, כגון קוד או כללי התאמה מותאמים אישית.
+        <label>מערכת Salesforce דיווחה על השגיאות הבאות בזמן ש-NPPatch ניסתה לבצע את משימות האצווה שלה, או כאשר לא הייתה לה אפשרות להציג הודעות שגיאה למשתמש באופן ישיר. סביר להניח ש-NPPatch ניסתה לעדכן שדות סיכום בחשבונות ואנשי קשר, אך לא הייתה לה אפשרות לשמור רשומות מסוימות. כשל זה עשוי להיגרם עקב גורמים שונים שאינם קשורים ל-NPPatch, כגון קוד או כללי התאמה מותאמים אישית.
 
 
-אם אינך בטוח כיצד לפתור שגיאות אלה, פרסם הודעה בקבוצה של &apos;ערכת ההצלחה למלכ&quot;רים&apos; (NPSP) ב-Power of Us Hub‏: https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHitSAE</label>
+אם אינך בטוח כיצד לפתור שגיאות אלה, פרסם הודעה בקבוצה של &apos;ערכת ההצלחה למלכ&quot;רים&apos; (NPPatch).</label>
         <name>ErrorEmailMessage</name>
     </customLabels>
     <customLabels>
@@ -1549,7 +1549,7 @@
         <name>RP_UsSubtitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- Nonprofit Success Pack (NPSP) Resources Page - Youtube Videos --></label>
+        <label><!-- NPPatch Resources Page - Youtube Videos --></label>
         <name>RP_Videos</name>
     </customLabels>
     <customLabels>
@@ -1851,7 +1851,7 @@
         <name>batchNumberSettingsError</name>
     </customLabels>
     <customLabels>
-        <label><!-- Header for batch number settings in NPSP Settings --></label>
+        <label><!-- Header for batch number settings in NPPatch Settings --></label>
         <name>batchNumberSettingsHeader</name>
     </customLabels>
     <customLabels>
@@ -1879,7 +1879,7 @@
         <name>bdeRetirementWarningHeader</name>
     </customLabels>
     <customLabels>
-        <label>לשדה ההגדרה {0} של המזהה הייחודי והמותאם אישית של החשבון חייבים להיות שדות תואמים באובייקט של ייבוא נתוני NPSP ששמות ה-API שלו הם {1} ו-{2}.</label>
+        <label>לשדה ההגדרה {0} של המזהה הייחודי והמותאם אישית של החשבון חייבים להיות שדות תואמים באובייקט של ייבוא נתוני NPPatch ששמות ה-API שלו הם {1} ו-{2}.</label>
         <name>bdiAccountCustomIdError</name>
     </customLabels>
     <customLabels>
@@ -1939,7 +1939,7 @@
         <name>bdiCompleteWithErrors</name>
     </customLabels>
     <customLabels>
-        <label>לשדה ההגדרה {0} של המזהה הייחודי והמותאם אישית של איש הקשר חייבים להיות שדות תואמים באובייקט של ייבוא נתוני NPSP ששמות ה-API שלו הם {1} ו-{2}.</label>
+        <label>לשדה ההגדרה {0} של המזהה הייחודי והמותאם אישית של איש הקשר חייבים להיות שדות תואמים באובייקט של ייבוא נתוני NPPatch ששמות ה-API שלו הם {1} ו-{2}.</label>
         <name>bdiContactCustomIdError</name>
     </customLabels>
     <customLabels>
@@ -1975,7 +1975,7 @@
         <name>bdiDataImporterConfigTitle</name>
     </customLabels>
     <customLabels>
-        <label>כלי יבוא הנתונים של &apos;ערכת ההצלחה למלכ&quot;רים&apos; (NPSP) מסייע לך לייבא את נתוניך בקלות אל NPSP</label>
+        <label>כלי יבוא הנתונים של &apos;ערכת ההצלחה למלכ&quot;רים&apos; (NPPatch) מסייע לך לייבא את נתוניך בקלות אל NPPatch</label>
         <name>bdiDataImporterDescription</name>
     </customLabels>
     <customLabels>
@@ -1987,7 +1987,7 @@
         <name>bdiDataImporterInfoLine2</name>
     </customLabels>
     <customLabels>
-        <label>כדי להימנע מחריגה ממגבלות השירות, כלי יבוא הנתונים של NPSP אינו מאמת כתובות באמצעות שירות האימות שייתכן שציינת בהגדרות NPSP.</label>
+        <label>כדי להימנע מחריגה ממגבלות השירות, כלי יבוא הנתונים של NPPatch אינו מאמת כתובות באמצעות שירות האימות שייתכן שציינת בהגדרות NPPatch.</label>
         <name>bdiDataImporterInfoLine2b</name>
     </customLabels>
     <customLabels>
@@ -2007,7 +2007,7 @@
         <name>bdiDataImporterNumToProcess</name>
     </customLabels>
     <customLabels>
-        <label>יבוא נתוני NPSP</label>
+        <label>יבוא נתוני NPPatch</label>
         <name>bdiDataImporterTitle</name>
     </customLabels>
     <customLabels>
@@ -2243,7 +2243,7 @@
         <name>bdiFieldMappings</name>
     </customLabels>
     <customLabels>
-        <label>כלי יבוא נתוני NPSP פועל רק עם מודל חשבון משק הבית.</label>
+        <label>כלי יבוא נתוני NPPatch פועל רק עם מודל חשבון משק הבית.</label>
         <name>bdiHouseholdModelRequired</name>
     </customLabels>
     <customLabels>
@@ -3379,7 +3379,7 @@
         <name>geBodyFormFieldsRightCol</name>
     </customLabels>
     <customLabels>
-        <label><!-- Information about enabling Gift Entry in NPSP Settings --></label>
+        <label><!-- Information about enabling Gift Entry in NPPatch Settings --></label>
         <name>geBodyGiftEntryHelp</name>
     </customLabels>
     <customLabels>
@@ -3627,7 +3627,7 @@
         <name>geErrorRequestTimedout</name>
     </customLabels>
     <customLabels>
-        <label><!-- Field-level error message for required field missing on NPSP Data Import object --></label>
+        <label><!-- Field-level error message for required field missing on NPPatch Data Import object --></label>
         <name>geErrorRequiredField</name>
     </customLabels>
     <customLabels>
@@ -4048,11 +4048,11 @@
     </customLabels>
     <customLabels>
         <label><!-- Description of checklist Explore Nonprofit in Get Started --></label>
-        <name>gsChecklistExploreNPSPDesc</name>
+        <name>gsChecklistExploreNPPatchDesc</name>
     </customLabels>
     <customLabels>
         <label><!-- Title of checklist Explore Nonprofit in Get Started --></label>
-        <name>gsChecklistExploreNPSPTitle</name>
+        <name>gsChecklistExploreNPPatchTitle</name>
     </customLabels>
     <customLabels>
         <label><!-- Description of checklist item Add User in Get Started --></label>
@@ -4187,48 +4187,48 @@
         <name>gsChecklistItemManageChangeTitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- Description of checklist item NPSP Cloud in Get Started --></label>
-        <name>gsChecklistItemNPSPCloudDesc</name>
+        <label><!-- Description of checklist item NPPatch Cloud in Get Started --></label>
+        <name>gsChecklistItemNPPatchCloudDesc</name>
     </customLabels>
     <customLabels>
-        <label><!-- Link label of checklist item NPSP Cloud in Get Started --></label>
-        <name>gsChecklistItemNPSPCloudLinkLabel</name>
+        <label><!-- Link label of checklist item NPPatch Cloud in Get Started --></label>
+        <name>gsChecklistItemNPPatchCloudLinkLabel</name>
     </customLabels>
     <customLabels>
-        <label><!-- Button label of checklist item NPSP Cloud in Get Started --></label>
-        <name>gsChecklistItemNPSPCloudPriBtnLabel</name>
+        <label><!-- Button label of checklist item NPPatch Cloud in Get Started --></label>
+        <name>gsChecklistItemNPPatchCloudPriBtnLabel</name>
     </customLabels>
     <customLabels>
-        <label><!-- Title of checklist item NPSP Cloud in Get Started --></label>
-        <name>gsChecklistItemNPSPCloudTitle</name>
+        <label><!-- Title of checklist item NPPatch Cloud in Get Started --></label>
+        <name>gsChecklistItemNPPatchCloudTitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- Description of checklist item NPSP Guide in Get Started --></label>
-        <name>gsChecklistItemNPSPGuideDesc</name>
+        <label><!-- Description of checklist item NPPatch Guide in Get Started --></label>
+        <name>gsChecklistItemNPPatchGuideDesc</name>
     </customLabels>
     <customLabels>
-        <label><!-- Button label of checklist item NPSP Guide in Get Started --></label>
-        <name>gsChecklistItemNPSPGuidePriBtnLabel</name>
+        <label><!-- Button label of checklist item NPPatch Guide in Get Started --></label>
+        <name>gsChecklistItemNPPatchGuidePriBtnLabel</name>
     </customLabels>
     <customLabels>
-        <label><!-- Title of checklist item NPSP Guide in Get Started --></label>
-        <name>gsChecklistItemNPSPGuideTitle</name>
+        <label><!-- Title of checklist item NPPatch Guide in Get Started --></label>
+        <name>gsChecklistItemNPPatchGuideTitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- Description of checklist item NPSP Settings in Get Started --></label>
-        <name>gsChecklistItemNPSPSettingsDesc</name>
+        <label><!-- Description of checklist item NPPatch Settings in Get Started --></label>
+        <name>gsChecklistItemNPPatchSettingsDesc</name>
     </customLabels>
     <customLabels>
-        <label><!-- Link label of checklist item NPSP Settings in Get Started --></label>
-        <name>gsChecklistItemNPSPSettingsLinkLabel</name>
+        <label><!-- Link label of checklist item NPPatch Settings in Get Started --></label>
+        <name>gsChecklistItemNPPatchSettingsLinkLabel</name>
     </customLabels>
     <customLabels>
-        <label><!-- Button label of checklist item NPSP Settings in Get Started --></label>
-        <name>gsChecklistItemNPSPSettingsPriBtnLabel</name>
+        <label><!-- Button label of checklist item NPPatch Settings in Get Started --></label>
+        <name>gsChecklistItemNPPatchSettingsPriBtnLabel</name>
     </customLabels>
     <customLabels>
-        <label><!-- Title of checklist item NPSP Settings in Get Started --></label>
-        <name>gsChecklistItemNPSPSettingsTitle</name>
+        <label><!-- Title of checklist item NPPatch Settings in Get Started --></label>
+        <name>gsChecklistItemNPPatchSettingsTitle</name>
     </customLabels>
     <customLabels>
         <label><!-- Description of checklist item Page Layouts in Get Started --></label>
@@ -4243,20 +4243,20 @@
         <name>gsChecklistItemPageLayoutsTitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- Description of checklist item Prepare NPSP in Get Started --></label>
-        <name>gsChecklistItemPrepareNPSPDesc</name>
+        <label><!-- Description of checklist item Prepare NPPatch in Get Started --></label>
+        <name>gsChecklistItemPrepareNPPatchDesc</name>
     </customLabels>
     <customLabels>
-        <label><!-- Link label of checklist item Prepare NPSP in Get Started --></label>
-        <name>gsChecklistItemPrepareNPSPLinkLabel</name>
+        <label><!-- Link label of checklist item Prepare NPPatch in Get Started --></label>
+        <name>gsChecklistItemPrepareNPPatchLinkLabel</name>
     </customLabels>
     <customLabels>
-        <label><!-- Button label of checklist item Prepare NPSP in Get Started --></label>
-        <name>gsChecklistItemPrepareNPSPPriBtnLabel</name>
+        <label><!-- Button label of checklist item Prepare NPPatch in Get Started --></label>
+        <name>gsChecklistItemPrepareNPPatchPriBtnLabel</name>
     </customLabels>
     <customLabels>
-        <label><!-- Title of checklist item Prepare NPSP in Get Started --></label>
-        <name>gsChecklistItemPrepareNPSPTitle</name>
+        <label><!-- Title of checklist item Prepare NPPatch in Get Started --></label>
+        <name>gsChecklistItemPrepareNPPatchTitle</name>
     </customLabels>
     <customLabels>
         <label><!-- Description of checklist item Review Company in Get Started --></label>
@@ -4591,24 +4591,24 @@
         <name>gseuChecklistItemGlobalSearchTitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- Description of Prebuilt NPSP Report checklist item in Get Started for End Users --></label>
-        <name>gseuChecklistItemPrebuiltNPSPReportDesc</name>
+        <label><!-- Description of Prebuilt NPPatch Report checklist item in Get Started for End Users --></label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportDesc</name>
     </customLabels>
     <customLabels>
-        <label><!-- Link label of Prebuilt NPSP Report checklist item in Get Started for End Users --></label>
-        <name>gseuChecklistItemPrebuiltNPSPReportLinkLabel</name>
+        <label><!-- Link label of Prebuilt NPPatch Report checklist item in Get Started for End Users --></label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportLinkLabel</name>
     </customLabels>
     <customLabels>
-        <label><!-- Button label of Prebuilt NPSP Report checklist item in Get Started for End Users --></label>
-        <name>gseuChecklistItemPrebuiltNPSPReportPriBtnLabel</name>
+        <label><!-- Button label of Prebuilt NPPatch Report checklist item in Get Started for End Users --></label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</name>
     </customLabels>
     <customLabels>
-        <label><!-- Button label of Prebuilt NPSP Report checklist item in Get Started for End Users --></label>
-        <name>gseuChecklistItemPrebuiltNPSPReportSecBtnLabel</name>
+        <label><!-- Button label of Prebuilt NPPatch Report checklist item in Get Started for End Users --></label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</name>
     </customLabels>
     <customLabels>
-        <label><!-- Title of Prebuilt NPSP Report checklist item in Get Started for End Users --></label>
-        <name>gseuChecklistItemPrebuiltNPSPReportTitle</name>
+        <label><!-- Title of Prebuilt NPPatch Report checklist item in Get Started for End Users --></label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportTitle</name>
     </customLabels>
     <customLabels>
         <label><!-- Description of Standard Report Type checklist item in Get Started for End Users --></label>
@@ -4687,16 +4687,16 @@
         <name>gseuChecklistItemWhatIsNPCloudTitleDesc</name>
     </customLabels>
     <customLabels>
-        <label><!-- Description for What is NPSP checklist item in Welcome section --></label>
-        <name>gseuChecklistItemWhatIsNPSPDesc</name>
+        <label><!-- Description for What is NPPatch checklist item in Welcome section --></label>
+        <name>gseuChecklistItemWhatIsNPPatchDesc</name>
     </customLabels>
     <customLabels>
-        <label><!-- Link text for What is NPSP checklist item in Welcome section --></label>
-        <name>gseuChecklistItemWhatIsNPSPLink</name>
+        <label><!-- Link text for What is NPPatch checklist item in Welcome section --></label>
+        <name>gseuChecklistItemWhatIsNPPatchLink</name>
     </customLabels>
     <customLabels>
-        <label><!-- Title for What is NPSP checklist item in Welcome section --></label>
-        <name>gseuChecklistItemWhatIsNPSPTitle</name>
+        <label><!-- Title for What is NPPatch checklist item in Welcome section --></label>
+        <name>gseuChecklistItemWhatIsNPPatchTitle</name>
     </customLabels>
     <customLabels>
         <label><!-- Description of Multiple Records checklist item in Get Started for End Users --></label>
@@ -4724,11 +4724,11 @@
     </customLabels>
     <customLabels>
         <label><!-- Description of Welcome to Nonprofit checklist section in Get Started --></label>
-        <name>gseuChecklistWelcomeNPSPDesc</name>
+        <name>gseuChecklistWelcomeNPPatchDesc</name>
     </customLabels>
     <customLabels>
         <label><!-- Title of Welcome to Nonprofit checklist section in Get Started --></label>
-        <name>gseuChecklistWelcomeNPSPTitle</name>
+        <name>gseuChecklistWelcomeNPPatchTitle</name>
     </customLabels>
     <customLabels>
         <label><!-- Description of Work with Records checklist in Get Started for End Users --></label>
@@ -4755,12 +4755,12 @@
         <name>gseuPageTitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- About NPSP label in Get Started Resources section for End Users --></label>
-        <name>gseuResourcesItemAboutNPSPLabel</name>
+        <label><!-- About NPPatch label in Get Started Resources section for End Users --></label>
+        <name>gseuResourcesItemAboutNPPatchLabel</name>
     </customLabels>
     <customLabels>
-        <label><!-- About NPSP link label in Get Started Resources section for End Users --></label>
-        <name>gseuResourcesItemAboutNPSPLinkLabel</name>
+        <label><!-- About NPPatch link label in Get Started Resources section for End Users --></label>
+        <name>gseuResourcesItemAboutNPPatchLinkLabel</name>
     </customLabels>
     <customLabels>
         <label><!-- Community Group label in Get Started Resources section for End Users --></label>
@@ -4947,7 +4947,7 @@
         <name>healthDetailsInvalidScheduledJob</name>
     </customLabels>
     <customLabels>
-        <label>בדוח NPSP_Campaign_Household_Mailing_List חסר הפריט המשמש עבור לחצן רשימת הדיוור של משק הבית.</label>
+        <label>בדוח NPPatch_Campaign_Household_Mailing_List חסר הפריט המשמש עבור לחצן רשימת הדיוור של משק הבית.</label>
         <name>healthDetailsMailingListReportMissing</name>
     </customLabels>
     <customLabels>
@@ -4959,7 +4959,7 @@
         <name>healthDetailsMissingRequiredPicklistValue</name>
     </customLabels>
     <customLabels>
-        <label>מחלקות ברירת המחדל המתוזמנות של NPSP אינן מתוזמנות.</label>
+        <label>מחלקות ברירת המחדל המתוזמנות של NPPatch אינן מתוזמנות.</label>
         <name>healthDetailsNothingScheduled</name>
     </customLabels>
     <customLabels>
@@ -4975,11 +4975,11 @@
         <name>healthDetailsOCRDupPrimaryValid</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;תרומות | תפקידי איש קשר&apos; וערוך את ערכי ההגדרות לעיל.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;תרומות | תפקידי איש קשר&apos; וערוך את ערכי ההגדרות לעיל.</label>
         <name>healthDetailsOCRSettingsResolution</name>
     </customLabels>
     <customLabels>
-        <label>ההגדרות של תפקידי איש הקשר בהזדמנות ב-NPSP הנן חוקיות.</label>
+        <label>ההגדרות של תפקידי איש הקשר בהזדמנות ב-NPPatch הנן חוקיות.</label>
         <name>healthDetailsOCRSettingsValid</name>
     </customLabels>
     <customLabels>
@@ -5007,15 +5007,15 @@
         <name>healthDetailsScheduleJobs</name>
     </customLabels>
     <customLabels>
-        <label>המטפל במפעיל {0} באובייקט {1} עם אותם שדות מטפל חוזר מספר פעמים וישפיע על התנהגות NPSP.</label>
+        <label>המטפל במפעיל {0} באובייקט {1} עם אותם שדות מטפל חוזר מספר פעמים וישפיע על התנהגות NPPatch.</label>
         <name>healthDetailsTriggerHandlerDuplicate</name>
     </customLabels>
     <customLabels>
-        <label>המטפל במפעיל {0} באובייקט {1} אינו תואם לתצורת ברירת המחדל של NPSP.</label>
+        <label>המטפל במפעיל {0} באובייקט {1} אינו תואם לתצורת ברירת המחדל של NPPatch.</label>
         <name>healthDetailsTriggerHandlerMismatch</name>
     </customLabels>
     <customLabels>
-        <label>המטפל במפעיל {0} באובייקט {1} חסר והדבר ישפיע על התנהגות NPSP.</label>
+        <label>המטפל במפעיל {0} באובייקט {1} חסר והדבר ישפיע על התנהגות NPPatch.</label>
         <name>healthDetailsTriggerHandlerMissing</name>
     </customLabels>
     <customLabels>
@@ -5091,7 +5091,7 @@
         <name>healthLabelHHObjData</name>
     </customLabels>
     <customLabels>
-        <label>בדיקת התקינות מאמתת כי כל הגדרות NPSP שלך תקינות ובודקת אם קיימות בעיות בנתוני החשבונות שלך. בסיום הבדיקה, תוכל לעיין בתוצאות, כולל מידע מפורט על כל כשל שהתגלה.</label>
+        <label>בדיקת התקינות מאמתת כי כל הגדרות NPPatch שלך תקינות ובודקת אם קיימות בעיות בנתוני החשבונות שלך. בסיום הבדיקה, תוכל לעיין בתוצאות, כולל מידע מפורט על כל כשל שהתגלה.</label>
         <name>healthLabelIntro</name>
     </customLabels>
     <customLabels>
@@ -5139,11 +5139,11 @@
         <name>healthLabelRelReciprocalValid</name>
     </customLabels>
     <customLabels>
-        <label>מתזמן ברירת מחדל של NPSP</label>
+        <label>מתזמן ברירת מחדל של NPPatch</label>
         <name>healthLabelScheduler</name>
     </customLabels>
     <customLabels>
-        <label>המשימות החוזרות של NPSP מתוזמנות.</label>
+        <label>המשימות החוזרות של NPPatch מתוזמנות.</label>
         <name>healthLabelSchedulerValid</name>
     </customLabels>
     <customLabels>
@@ -5159,7 +5159,7 @@
         <name>healthLabelTriggerHandlerCheck</name>
     </customLabels>
     <customLabels>
-        <label>הגורמים המפעילים מוגדרים עבור גורמים מפעילים המהווים ברירת מחדל של NPSP.</label>
+        <label>הגורמים המפעילים מוגדרים עבור גורמים מפעילים המהווים ברירת מחדל של NPPatch.</label>
         <name>healthLabelTriggerHandlersValid</name>
     </customLabels>
     <customLabels>
@@ -5203,7 +5203,7 @@
         <name>healthSolutionAccountDefaultRTIssue</name>
     </customLabels>
     <customLabels>
-        <label>כל החשבונות שלך צריכים להשתמש באותו מודל חשבון. כדי להציג את כל החשבונות שלך וסוגיהם, הפעל את הדוח &lt;b&gt;חשבונות אישיים לפי סוג חשבון&lt;/b&gt; בתיקיית דוחות בדיקת התקינות של NPSP.</label>
+        <label>כל החשבונות שלך צריכים להשתמש באותו מודל חשבון. כדי להציג את כל החשבונות שלך וסוגיהם, הפעל את הדוח &lt;b&gt;חשבונות אישיים לפי סוג חשבון&lt;/b&gt; בתיקיית דוחות בדיקת התקינות של NPPatch.</label>
         <name>healthSolutionAccountModel</name>
     </customLabels>
     <customLabels>
@@ -5211,43 +5211,43 @@
         <name>healthSolutionAccountRTIssue</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{0} | {1}&apos; ומחק את הרשומה הבלתי חוקית של יצירת קשרים אוטומטית.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{0} | {1}&apos; ומחק את הרשומה הבלתי חוקית של יצירת קשרים אוטומטית.</label>
         <name>healthSolutionAutoRelFieldsMissing</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{0} | {1}&apos; והוסף את שדה CampaignMember החסר, או מחק את הרשומה הבלתי חוקית של יצירת קשרים אוטומטית.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{0} | {1}&apos; והוסף את שדה CampaignMember החסר, או מחק את הרשומה הבלתי חוקית של יצירת קשרים אוטומטית.</label>
         <name>healthSolutionAutoRelInvalidCMField</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{0} | {1}&apos; והוסף את שדה איש הקשר החסר, או מחק את הרשומה הבלתי חוקית של יצירת קשרים אוטומטית.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{0} | {1}&apos; והוסף את שדה איש הקשר החסר, או מחק את הרשומה הבלתי חוקית של יצירת קשרים אוטומטית.</label>
         <name>healthSolutionAutoRelInvalidContactField</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{0} | {1}&apos; ומחק את הרשומה הבלתי חוקית של יצירת קשר אוטומטית.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{0} | {1}&apos; ומחק את הרשומה הבלתי חוקית של יצירת קשר אוטומטית.</label>
         <name>healthSolutionAutoRelInvalidLookupField</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{0} | {1}&apos; והוסף את שדה התרומה החוזרת החסר, או מחק את רשומת המיפוי של שדות תרומה חוזרת.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{0} | {1}&apos; והוסף את שדה התרומה החוזרת החסר, או מחק את רשומת המיפוי של שדות תרומה חוזרת.</label>
         <name>healthSolutionBadRDField</name>
     </customLabels>
     <customLabels>
-        <label>כדי להציג אנשי קשר אלה, הפעל את הדוח &lt;b&gt;אנשי קשר ללא חשבונות&lt;/b&gt; בתיקיית דוחות בדיקת התקינות של NPSP.</label>
+        <label>כדי להציג אנשי קשר אלה, הפעל את הדוח &lt;b&gt;אנשי קשר ללא חשבונות&lt;/b&gt; בתיקיית דוחות בדיקת התקינות של NPPatch.</label>
         <name>healthSolutionContactData</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{1} | {2}&apos; וערוך את ההגדרה של {0}.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{1} | {2}&apos; וערוך את ההגדרה של {0}.</label>
         <name>healthSolutionEditSetting</name>
     </customLabels>
     <customLabels>
-        <label>שקול למחוק חשבונות משק בית אלה שאינם בשימוש כדי לחסוך מקום. כדי להציג חשבונות משק בית אלה, הפעל את הדוח &lt;b&gt;חשבונות משק בית ריקים&lt;/b&gt; בתיקיית דוחות בדיקת התקינות של NPSP</label>
+        <label>שקול למחוק חשבונות משק בית אלה שאינם בשימוש כדי לחסוך מקום. כדי להציג חשבונות משק בית אלה, הפעל את הדוח &lt;b&gt;חשבונות משק בית ריקים&lt;/b&gt; בתיקיית דוחות בדיקת התקינות של NPPatch</label>
         <name>healthSolutionHHAccNoContacts</name>
     </customLabels>
     <customLabels>
-        <label>שקול למחוק אובייקטי משק בית אלה שאינם בשימוש כדי לחסוך מקום. אם השלמת המרה למודל חשבון משק הבית ואינך זקוק עוד לנתונים של רשומות אובייקט משק הבית, ניתן למחוק אותם.  כדי להציג אובייקטי משק בית אלה, הפעל את הדוח &lt;b&gt;אובייקטי משק בית ריקים&lt;/b&gt; בתיקיית דוחות בדיקת התקינות של NPSP.</label>
+        <label>שקול למחוק אובייקטי משק בית אלה שאינם בשימוש כדי לחסוך מקום. אם השלמת המרה למודל חשבון משק הבית ואינך זקוק עוד לנתונים של רשומות אובייקט משק הבית, ניתן למחוק אותם.  כדי להציג אובייקטי משק בית אלה, הפעל את הדוח &lt;b&gt;אובייקטי משק בית ריקים&lt;/b&gt; בתיקיית דוחות בדיקת התקינות של NPPatch.</label>
         <name>healthSolutionHHObjNoContacts</name>
     </customLabels>
     <customLabels>
-        <label>משום ש-Salesforce אינה תומכת בכיבוי של שנות כספים מותאמות אישית, סיכומי NPSP יעברו כברירת מחדל לשנה קלנדרית.</label>
+        <label>משום ש-Salesforce אינה תומכת בכיבוי של שנות כספים מותאמות אישית, סיכומי NPPatch יעברו כברירת מחדל לשנה קלנדרית.</label>
         <name>healthSolutionInvalidFiscalYears</name>
     </customLabels>
     <customLabels>
@@ -5255,7 +5255,7 @@
         <name>healthSolutionInvalidLevelField</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{0} | {1}&apos; והוסף את שדה ההזדמנות החסר, או מחק את רשומת מיפוי התשלום.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{0} | {1}&apos; והוסף את שדה ההזדמנות החסר, או מחק את רשומת מיפוי התשלום.</label>
         <name>healthSolutionInvalidOppField</name>
     </customLabels>
     <customLabels>
@@ -5263,7 +5263,7 @@
         <name>healthSolutionInvalidOppStage</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{0} | {1}&apos; והוסף את שדה התשלום החסר, או מחק את רשומת מיפוי התשלום.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{0} | {1}&apos; והוסף את שדה התשלום החסר, או מחק את רשומת מיפוי התשלום.</label>
         <name>healthSolutionInvalidPaymentField</name>
     </customLabels>
     <customLabels>
@@ -5271,7 +5271,7 @@
         <name>healthSolutionInvalidRDCustomPeriod</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{0} | {1}&apos; והוסף את הערך החסר של תקופת התשלומים המותאמת אישית של התרומה החוזרת, או מחק את ערך רשימת הבחירה משדה תקופת התשלומים.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{0} | {1}&apos; והוסף את הערך החסר של תקופת התשלומים המותאמת אישית של התרומה החוזרת, או מחק את ערך רשימת הבחירה משדה תקופת התשלומים.</label>
         <name>healthSolutionInvalidRDCustomPeriodPicklist</name>
     </customLabels>
     <customLabels>
@@ -5279,15 +5279,15 @@
         <name>healthSolutionInvalidScheduledJob</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{0} | {1}&apos; והוסף את השדה החסר, או מחק את רשומת סיכום המשתמשים.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{0} | {1}&apos; והוסף את השדה החסר, או מחק את רשומת סיכום המשתמשים.</label>
         <name>healthSolutionInvalidUDFObjectField</name>
     </customLabels>
     <customLabels>
-        <label>צור דוח המבוסס על מבצעים עם אנשי קשר, שבהם מצב החבר אינו מכיל את הערך &apos;כפול&apos;.  לאחר מכן, ציין דוח זה בכרטיסייה &apos;{0} &gt; {1}&apos; בהגדרות של NPSP.</label>
+        <label>צור דוח המבוסס על מבצעים עם אנשי קשר, שבהם מצב החבר אינו מכיל את הערך &apos;כפול&apos;.  לאחר מכן, ציין דוח זה בכרטיסייה &apos;{0} &gt; {1}&apos; בהגדרות של NPPatch.</label>
         <name>healthSolutionMailingListReportMissing</name>
     </customLabels>
     <customLabels>
-        <label>כדי להציג הזדמנויות אלה, הפעל את הדוח &lt;b&gt;הזדמנויות ללא חשבונות&lt;/b&gt; בתיקיית דוחות בדיקת התקינות של NPSP.  שים לב שעליך להוסיף לדוח קריטריוני סינון עבור כל הסוגים ו-RecTypes של הזדמנויות שמנעת את הכללתם בהגדרות התשלומים ב-NPSP. תוכל ליצור אותם באמצעות הלחצן &apos;צור תשלומים חסרים&apos; ב&apos;הגדרות NPSP &gt; תרומות &gt; תשלומים&apos;.</label>
+        <label>כדי להציג הזדמנויות אלה, הפעל את הדוח &lt;b&gt;הזדמנויות ללא חשבונות&lt;/b&gt; בתיקיית דוחות בדיקת התקינות של NPPatch.  שים לב שעליך להוסיף לדוח קריטריוני סינון עבור כל הסוגים ו-RecTypes של הזדמנויות שמנעת את הכללתם בהגדרות התשלומים ב-NPPatch. תוכל ליצור אותם באמצעות הלחצן &apos;צור תשלומים חסרים&apos; ב&apos;הגדרות NPPatch &gt; תרומות &gt; תשלומים&apos;.</label>
         <name>healthSolutionMissingOppPayments</name>
     </customLabels>
     <customLabels>
@@ -5295,11 +5295,11 @@
         <name>healthSolutionMissingPicklistValue</name>
     </customLabels>
     <customLabels>
-        <label>עליך לתזמן את ההפעלה של מחלקות ברירת המחדל המתוזמנות של NPSP.</label>
+        <label>עליך לתזמן את ההפעלה של מחלקות ברירת המחדל המתוזמנות של NPPatch.</label>
         <name>healthSolutionNothingScheduled</name>
     </customLabels>
     <customLabels>
-        <label>סימון שדות OpportunityContactRoles מרובים כ&apos;ראשי&apos; עלול לגרום לסיכומי הזדמנות, כגון &apos;סה&quot;כ תרומות&apos;, להחזיר תוצאות חישוב שגויות.  כדי להציג הזדמנויות אלה, הפעל את הדוח &lt;b&gt;הזדמנויות עם תפקידי איש קשר ראשי&lt;/b&gt; בתיקיית דוחות בדיקת התקינות של NPSP, ועיין ברשומות עם שניים או יותר תפקידי איש קשר ראשי.</label>
+        <label>סימון שדות OpportunityContactRoles מרובים כ&apos;ראשי&apos; עלול לגרום לסיכומי הזדמנות, כגון &apos;סה&quot;כ תרומות&apos;, להחזיר תוצאות חישוב שגויות.  כדי להציג הזדמנויות אלה, הפעל את הדוח &lt;b&gt;הזדמנויות עם תפקידי איש קשר ראשי&lt;/b&gt; בתיקיית דוחות בדיקת התקינות של NPPatch, ועיין ברשומות עם שניים או יותר תפקידי איש קשר ראשי.</label>
         <name>healthSolutionOCRDupPrimary</name>
     </customLabels>
     <customLabels>
@@ -5307,19 +5307,19 @@
         <name>healthSolutionOCRException</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{0} | {1}&apos; ומחק את רשומת מיפוי התשלום.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{0} | {1}&apos; ומחק את רשומת מיפוי התשלום.</label>
         <name>healthSolutionPaymentMappingBadDataTypes</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{0} | {1}&apos; והוסף את שדה ההזדמנות החסר, או מחק את רשומת המיפוי של שדות תרומה חוזרת.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{0} | {1}&apos; והוסף את שדה ההזדמנות החסר, או מחק את רשומת המיפוי של שדות תרומה חוזרת.</label>
         <name>healthSolutionRDBadOppField</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{0} | {1}&apos; ומחק את רשומת המיפוי של שדות תרומה חוזרת.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{0} | {1}&apos; ומחק את רשומת המיפוי של שדות תרומה חוזרת.</label>
         <name>healthSolutionRDFieldsBadDatatypes</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{0} | {1}&apos;, מחק את רשומת הקשר ההדדי וצור רשומה חדשה עם המידע הנדרש.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{0} | {1}&apos;, מחק את רשומת הקשר ההדדי וצור רשומה חדשה עם המידע הנדרש.</label>
         <name>healthSolutionRelReciprocalInvalid</name>
     </customLabels>
     <customLabels>
@@ -5327,19 +5327,19 @@
         <name>healthSolutionSaveOppsFailed</name>
     </customLabels>
     <customLabels>
-        <label>כדי שתכונות אלה יפעלו כראוי, לכל מחלקות ברירת המחדל המתוזמנות של NPSP צריכות להיות רשומות ב-Schedulable__c.</label>
+        <label>כדי שתכונות אלה יפעלו כראוי, לכל מחלקות ברירת המחדל המתוזמנות של NPPatch צריכות להיות רשומות ב-Schedulable__c.</label>
         <name>healthSolutionScheduleJobs</name>
     </customLabels>
     <customLabels>
-        <label>אם המטפלים במפעילים אינם תואמים לתצורת ברירת המחדל של NPSP, ייתכן שהתפקוד של NPSP יהיה מוגבל או ישתנה.  את השינויים צריך לבצע אדם המתמצא בתחום של מטפלים במפעילים ב-NPSP, היודע כיצד השינויים שלהם ישפיעו על התנהגות המערכת.</label>
+        <label>אם המטפלים במפעילים אינם תואמים לתצורת ברירת המחדל של NPPatch, ייתכן שהתפקוד של NPPatch יהיה מוגבל או ישתנה.  את השינויים צריך לבצע אדם המתמצא בתחום של מטפלים במפעילים ב-NPPatch, היודע כיצד השינויים שלהם ישפיעו על התנהגות המערכת.</label>
         <name>healthSolutionTriggerHandlerMismatch</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{0} | {1}&apos; ומחק את רשומת סיכום המשתמשים.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{0} | {1}&apos; ומחק את רשומת סיכום המשתמשים.</label>
         <name>healthSolutionUDFBadDatatypes</name>
     </customLabels>
     <customLabels>
-        <label>בכרטיסיית ההגדרות של NPSP, לחץ על &apos;{0} | {1}&apos; והוסף את שדה ההזדמנות החסר, או מחק את רשומת סיכום המשתמשים.</label>
+        <label>בכרטיסיית ההגדרות של NPPatch, לחץ על &apos;{0} | {1}&apos; והוסף את שדה ההזדמנות החסר, או מחק את רשומת סיכום המשתמשים.</label>
         <name>healthSolutionUDFOppField</name>
     </customLabels>
     <customLabels>
@@ -5363,7 +5363,7 @@
         <name>hhCmpDedupeLabelOpenReport</name>
     </customLabels>
     <customLabels>
-        <label>לא ניתן למצוא את הדוח. צור דוח עם השם הייחודי &apos;NPSP_Campaign_Household_Mailing_List&apos;. הערה: סוג הרשומה צריך להיות &apos;מבצעים עם אנשי קשר&apos;. המסנן של מצב החבר אינו מכיל את הערך &apos;כפול&apos;.</label>
+        <label>לא ניתן למצוא את הדוח. צור דוח עם השם הייחודי &apos;NPPatch_Campaign_Household_Mailing_List&apos;. הערה: סוג הרשומה צריך להיות &apos;מבצעים עם אנשי קשר&apos;. המסנן של מצב החבר אינו מכיל את הערך &apos;כפול&apos;.</label>
         <name>hhCmpDedupeNoReport</name>
     </customLabels>
     <customLabels>
@@ -5499,8 +5499,8 @@
         <name>lblMergeHHTitle</name>
     </customLabels>
     <customLabels>
-        <label>הגדרות NPSP</label>
-        <name>lblNPSPSettings</name>
+        <label>הגדרות NPPatch</label>
+        <name>lblNPPatchSettings</name>
     </customLabels>
     <customLabels>
         <label>דרושות הרשאות עדכון מחיקה במשקי בית (חשבונות) כדי להוסיף איש קשר קיים למשק הבית.</label>
@@ -5811,11 +5811,11 @@
         <name>pmtWizardPaymentNumber</name>
     </customLabels>
     <customLabels>
-        <label>לא הפעלת תשלומים ב-NPSP. כדי להשתמש באשף תזמון התשלומים, הפעל תשלומים בדף ההגדרות של NPSP.</label>
+        <label>לא הפעלת תשלומים ב-NPPatch. כדי להשתמש באשף תזמון התשלומים, הפעל תשלומים בדף ההגדרות של NPPatch.</label>
         <name>pmtWizardPaymentsDisabled</name>
     </customLabels>
     <customLabels>
-        <label>תשלומי NPSP לא מופעלים</label>
+        <label>תשלומי NPPatch לא מופעלים</label>
         <name>pmtWizardPaymentsDisabledTitle</name>
     </customLabels>
     <customLabels>
@@ -5931,7 +5931,7 @@
         <name>pscManageSoftCreditsInvalidContact</name>
     </customLabels>
     <customLabels>
-        <label>לא ציינת תפקידים בתור תפקידי קרדיט.   ב&apos;הגדרות NPSP&apos;, &apos;תרומות&apos;, תפקידי איש קשר&apos;, עליך להוסיף את התפקידים המתאימים להגדרה &apos;תפקידי קרדיט&apos;.</label>
+        <label>לא ציינת תפקידים בתור תפקידי קרדיט.   ב&apos;הגדרות NPPatch&apos;, &apos;תרומות&apos;, תפקידי איש קשר&apos;, עליך להוסיף את התפקידים המתאימים להגדרה &apos;תפקידי קרדיט&apos;.</label>
         <name>pscManageSoftCreditsNoRoles</name>
     </customLabels>
     <customLabels>
@@ -6047,7 +6047,7 @@
         <name>stgAdd</name>
     </customLabels>
     <customLabels>
-        <label>ניהול חשבונות משק בית וארגון מאפשר לך להוסיף כתובות מרובות לחשבון, לציין כתובות ברירת מחדל ולציין כתובות עונתיות. ניהול הכתובות זמין ב-NPSP3 ואילך עם מודל חשבון משק הבית.</label>
+        <label>ניהול חשבונות משק בית וארגון מאפשר לך להוסיף כתובות מרובות לחשבון, לציין כתובות ברירת מחדל ולציין כתובות עונתיות. ניהול הכתובות זמין ב-NPPatch3 ואילך עם מודל חשבון משק הבית.</label>
         <name>stgAddrGeneralSettingsIntro</name>
     </customLabels>
     <customLabels>
@@ -6255,13 +6255,13 @@
         <name>stgDocumentation</name>
     </customLabels>
     <customLabels>
-        <label>כאשר אפשרות זו מסומנת, NPSP לא תתזמן משימות ברירת מחדל חוזרות באופן אוטומטי. 
+        <label>כאשר אפשרות זו מסומנת, NPPatch לא תתזמן משימות ברירת מחדל חוזרות באופן אוטומטי. 
 &lt;br/&gt; 
 &lt;br/&gt; 
 משימות חוזרות אלה מחשבות סיכומים, מעדכנות תרומות חוזרות וכתובות עונתיות, ומטפלות בשגיאות. 
 &lt;br/&gt; 
 &lt;br/&gt; 
-כשאפשרות זו לא מסומנת, בכל פעם שתבקר בדף ההגדרות של NPSP, מערכת NPSP תוודא שמשימות ברירת המחדל החוזרות מתוזמנות. התזמון מחדש תקף רק לגבי משימות חסרות, לא משימות שעודכנו. 
+כשאפשרות זו לא מסומנת, בכל פעם שתבקר בדף ההגדרות של NPPatch, מערכת NPPatch תוודא שמשימות ברירת המחדל החוזרות מתוזמנות. התזמון מחדש תקף רק לגבי משימות חסרות, לא משימות שעודכנו. 
 &lt;br/&gt; 
 &lt;br/&gt; 
 כדי להציג משימות אלה, חפש את  המשימות המתוזמנות בהגדרות של Salesforce.</label>
@@ -6458,7 +6458,7 @@
         <name>stgHelpDefaultAllocationsEnabled</name>
     </customLabels>
     <customLabels>
-        <label>כאשר הקצאות ברירת מחדל מופעלות, Salesforce יוצרת הקצאת GAU עבור כל ההזדמנויות ומקצה אותן ליחידה חשבונאית כללית זו. הערה: לא כולל הזדמנויות קיימות שלא הוקצו. תוכל להקצות אותן ליחידה החשבונאית הכללית המהווה ברירת מחדל בהגדרות NPSP תחת &apos;תהליכי אצוות נתונים | צור הקצאות ברירת מחדל באצווה&apos;.</label>
+        <label>כאשר הקצאות ברירת מחדל מופעלות, Salesforce יוצרת הקצאת GAU עבור כל ההזדמנויות ומקצה אותן ליחידה חשבונאית כללית זו. הערה: לא כולל הזדמנויות קיימות שלא הוקצו. תוכל להקצות אותן ליחידה החשבונאית הכללית המהווה ברירת מחדל בהגדרות NPPatch תחת &apos;תהליכי אצוות נתונים | צור הקצאות ברירת מחדל באצווה&apos;.</label>
         <name>stgHelpDefaultGAU</name>
     </customLabels>
     <customLabels>
@@ -6506,7 +6506,7 @@
         <name>stgHelpHHExcludedRT</name>
     </customLabels>
     <customLabels>
-        <label>כדי למנוע שליחת פריטי דואר כפולים לאותה כתובת, דוח רשימת הדיוור של משק הבית מסיר פריטים כפולים במבצע המכיל אנשי קשר מרובים מאותו משק בית. NPSP כוללת דוח הניתן לבחירה בשם &apos;רשימת דיוור של משק בית למבצע ב-NPSP&apos; אם השם של דוח זה השתנה או שהוא נמחק, בחר דוח מסוג &apos;מבצעים עם אנשי קשר&apos;, עם מסנן עבור: מצב החבר אינו מכיל את הערך &apos;כפול&apos;.</label>
+        <label>כדי למנוע שליחת פריטי דואר כפולים לאותה כתובת, דוח רשימת הדיוור של משק הבית מסיר פריטים כפולים במבצע המכיל אנשי קשר מרובים מאותו משק בית. NPPatch כוללת דוח הניתן לבחירה בשם &apos;רשימת דיוור של משק בית למבצע ב-NPPatch&apos; אם השם של דוח זה השתנה או שהוא נמחק, בחר דוח מסוג &apos;מבצעים עם אנשי קשר&apos;, עם מסנן עבור: מצב החבר אינו מכיל את הערך &apos;כפול&apos;.</label>
         <name>stgHelpHHMailingListReport</name>
     </customLabels>
     <customLabels>
@@ -6526,7 +6526,7 @@
         <name>stgHelpHHRules</name>
     </customLabels>
     <customLabels>
-        <label>השתמש &lt;a href=&quot;#&quot; onclick=&quot;ShowPanel(&apos;idPanelHealthCheck&apos;);return false;&quot;&gt;בבדיקת התקינות&lt;/a&gt; כדי לאמת את תצורת NPSP שלך!</label>
+        <label>השתמש &lt;a href=&quot;#&quot; onclick=&quot;ShowPanel(&apos;idPanelHealthCheck&apos;);return false;&quot;&gt;בבדיקת התקינות&lt;/a&gt; כדי לאמת את תצורת NPPatch שלך!</label>
         <name>stgHelpHealthCheck</name>
     </customLabels>
     <customLabels>
@@ -6565,12 +6565,12 @@
         <name>stgHelpMembershipRT</name>
     </customLabels>
     <customLabels>
-        <label>מסמכי התיעוד של NPSP</label>
-        <name>stgHelpNPSPDoc</name>
+        <label>מסמכי התיעוד של NPPatch</label>
+        <name>stgHelpNPPatchDoc</name>
     </customLabels>
     <customLabels>
         <label>מגדירים את &apos;ערכת ההצלחה למלכ&quot;רים&apos; לעמידה בצורכי הארגון שלך. תוכל גם לנטר את התקינות של ארגון Salesforce שלך, או להפעיל תהליכי אצווה לעדכון נתונים.</label>
-        <name>stgHelpNPSPSettings</name>
+        <name>stgHelpNPPatchSettings</name>
     </customLabels>
     <customLabels>
         <label>מציין את השם או התו (כגון &amp;) המשמש את Salesforce לחיבור זוגות בשם.</label>
@@ -6595,7 +6595,7 @@
         <name>stgHelpNoUDR</name>
     </customLabels>
     <customLabels>
-        <label>קרדיטים, תפקידי איש קשר ותרומות שוות קשורים אלה לאלה בדרכים חשובות. אם אינך מכיר את המושגים הללו ואת האופן שבו הם משפיעים זה על זה, עיין &lt;a href=&quot;https://help.salesforce.com/s/articleView?id=sfdo.NPSP_Automated_Soft_Credits.htm&amp;type=5&quot; target=&quot;_blank&quot;&gt;במסמכי התיעוד של NPSP‏&lt;/a&gt; לפני שתבצע שינויים בהגדרות אלה.</label>
+        <label>קרדיטים, תפקידי איש קשר ותרומות שוות קשורים אלה לאלה בדרכים חשובות. אם אינך מכיר את המושגים הללו ואת האופן שבו הם משפיעים זה על זה, עיין במסמכי התיעוד של NPPatch לפני שתבצע שינויים בהגדרות אלה.</label>
         <name>stgHelpOCR</name>
     </customLabels>
     <customLabels>
@@ -6607,7 +6607,7 @@
         <name>stgHelpOCRRoleForHH</name>
     </customLabels>
     <customLabels>
-        <label>סוג רשומת החשבון שבו תרצה להשתמש עבור חשבונות חדשים, אם בחרת את מודל חשבון &apos;אחד לאחד&apos; לעיל. NPSP אינה מגיעה עם סוג ברירת מחדל של רשומה עבור חשבונות &apos;אחד לאחד&apos;, לכן עליך ליצור סוג רשומה (כגון &apos;אישי&apos;) לפני שתבחר במודל זה. אם תבחר באפשרות --ללא--, מערכת Salesforce תשתמש בסוג ברירת המחדל של רשומת החשבון עבור המשתמש שיוצר את איש הקשר החדש (ואת חשבון &apos;אחד לאחד&apos; המשויך).</label>
+        <label>סוג רשומת החשבון שבו תרצה להשתמש עבור חשבונות חדשים, אם בחרת את מודל חשבון &apos;אחד לאחד&apos; לעיל. NPPatch אינה מגיעה עם סוג ברירת מחדל של רשומה עבור חשבונות &apos;אחד לאחד&apos;, לכן עליך ליצור סוג רשומה (כגון &apos;אישי&apos;) לפני שתבחר במודל זה. אם תבחר באפשרות --ללא--, מערכת Salesforce תשתמש בסוג ברירת המחדל של רשומת החשבון עבור המשתמש שיוצר את איש הקשר החדש (ואת חשבון &apos;אחד לאחד&apos; המשויך).</label>
         <name>stgHelpOneToOneRTID</name>
     </customLabels>
     <customLabels>
@@ -6663,7 +6663,7 @@
         <name>stgHelpPaymentsEnabled</name>
     </customLabels>
     <customLabels>
-        <label>שאלות? ל-HUb יש תשובות! נסה את הקבוצה של &lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHitSAE&quot; target=&quot;_blank&quot;&gt;ערכת ההצלחה למלכ&quot;רים&lt;/a&gt; לתשובות בנושא NPSP ואת קבוצת &lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHiLSAU?tab=discussion&amp;sort=LAST_MODIFIED_DATE_DESC&quot; target=&quot;_blank&quot;&gt;מנהלי המערכת&lt;/a&gt; לתשובות בנושא ניהול והגדרת התצורה של Salesforce‏.&lt;br/&gt;&lt;br/&gt;הישאר מעודכן בהערות המוצר החדשות ביותר של NPSP בקבוצת &lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHOXSA2?tab=discussion&amp;sort=LAST_MODIFIED_DATE_DESC&quot; target=&quot;_blank&quot;&gt;הודעות המוצר של NPSP‏&lt;/a&gt;.</label>
+        <label>שאלות? ל-HUb יש תשובות! נסה את קבוצת NPPatch לתשובות בנושא NPPatch ואת קבוצת מנהלי המערכת לתשובות בנושא ניהול והגדרת התצורה של Salesforce‏.&lt;br/&gt;&lt;br/&gt;הישאר מעודכן בהערות המוצר החדשות ביותר של NPPatch בקבוצת NPPatch Release Announcements.</label>
         <name>stgHelpPowerOfUsHub</name>
     </customLabels>
     <customLabels>
@@ -6764,11 +6764,11 @@
         <name>stgHelpRDSuccesses</name>
     </customLabels>
     <customLabels>
-        <label>הגדרה זו מאפשרת לך ליצור תקופות תשלומים מותאמות אישית עבור תרומות חוזרות, השונות מתקופות התשלומים המהוות ברירת מחדל (חודשית, רבעונית, שנתית וכן הלאה) הנכללות ב-NPSP.</label>
+        <label>הגדרה זו מאפשרת לך ליצור תקופות תשלומים מותאמות אישית עבור תרומות חוזרות, השונות מתקופות התשלומים המהוות ברירת מחדל (חודשית, רבעונית, שנתית וכן הלאה) הנכללות ב-NPPatch.</label>
         <name>stgHelpRecDon</name>
     </customLabels>
     <customLabels>
-        <label>NPSP מסירה אוטומטית פריטים כפולים בקשרים הנוצרים באופן אוטומטי. בחר אפשרות זו אם ברצונך להשבית הסרה אוטומטית של פריטים כפולים, ולאפשר לקשרים מרובים מאותו סוג להתקיים בין שני אנשי קשר.</label>
+        <label>NPPatch מסירה אוטומטית פריטים כפולים בקשרים הנוצרים באופן אוטומטי. בחר אפשרות זו אם ברצונך להשבית הסרה אוטומטית של פריטים כפולים, ולאפשר לקשרים מרובים מאותו סוג להתקיים בין שני אנשי קשר.</label>
         <name>stgHelpRelAutoCreatedDup</name>
     </customLabels>
     <customLabels>
@@ -6920,9 +6920,9 @@
         <name>stgHelpUseDatedConvRates</name>
     </customLabels>
     <customLabels>
-        <label>ההתקנה שלך בוצעה בהצלחה, אך זיהינו בעיה קלה. כדי לתקן את הבעיה,, טען את דף ההגדרות של NPSP ב-Salesforce‏.
+        <label>ההתקנה שלך בוצעה בהצלחה, אך זיהינו בעיה קלה. כדי לתקן את הבעיה,, טען את דף ההגדרות של NPPatch ב-Salesforce‏.
 
-הערה: כרטיסיית ההגדרות של NPSP גלויה ביישום &apos;ערכת ההצלחה למלכ&quot;רים&apos;. אם אינך רואה את הכרטיסייה, בחר את &apos;ערכת ההצלחה למלכ&quot;רים&apos; מתפריט היישומים בפינה הימנית העליונה.</label>
+הערה: כרטיסיית ההגדרות של NPPatch גלויה ביישום &apos;ערכת ההצלחה למלכ&quot;רים&apos;. אם אינך רואה את הכרטיסייה, בחר את &apos;ערכת ההצלחה למלכ&quot;רים&apos; מתפריט היישומים בפינה הימנית העליונה.</label>
         <name>stgInstallScriptError</name>
     </customLabels>
     <customLabels>
@@ -7190,7 +7190,7 @@
         <name>stgLabelPaymentSettings</name>
     </customLabels>
     <customLabels>
-        <label><!-- Menu title for the Duplicate Primary OCRs in NPSP Settings --></label>
+        <label><!-- Menu title for the Duplicate Primary OCRs in NPPatch Settings --></label>
         <name>stgLabelPrimaryContactRoleMergeBatch</name>
     </customLabels>
     <customLabels>
@@ -7286,20 +7286,20 @@
         <name>stgLinkDelete</name>
     </customLabels>
     <customLabels>
-        <label>מדריך NPSP לייבוא נתונים</label>
-        <name>stgNPSPGuideImportData</name>
+        <label>מדריך NPPatch לייבוא נתונים</label>
+        <name>stgNPPatchGuideImportData</name>
     </customLabels>
     <customLabels>
         <label>הגדרות יישום &apos;ערכת ההצלחה למלכ&quot;רים&apos;</label>
-        <name>stgNPSPSettings</name>
+        <name>stgNPPatchSettings</name>
     </customLabels>
     <customLabels>
         <label>הגדרות &apos;ערכת ההצלחה למלכ&quot;רים&apos;</label>
-        <name>stgNPSPSettingsTitle</name>
+        <name>stgNPPatchSettingsTitle</name>
     </customLabels>
     <customLabels>
-        <label>מסלול גיוס התרומות של NPSP</label>
-        <name>stgNPSPWorkbook</name>
+        <label>מסלול גיוס התרומות של NPPatch</label>
+        <name>stgNPPatchWorkbook</name>
     </customLabels>
     <customLabels>
         <label>מודל חשבון</label>
@@ -7522,11 +7522,11 @@
         <name>Contact_Merge</name>
     </customTabs>
     <customTabs>
-        <label><!-- Get Started with NPSP - Admin --></label>
+        <label><!-- Get Started with NPPatch - Admin --></label>
         <name>GetStarted</name>
     </customTabs>
     <customTabs>
-        <label><!-- Get Started with NPSP --></label>
+        <label><!-- Get Started with NPPatch --></label>
         <name>GetStartedEndUser</name>
     </customTabs>
     <customTabs>
@@ -7535,11 +7535,11 @@
     </customTabs>
     <customTabs>
         <label>תחילת העבודה</label>
-        <name>NPSP_Resources</name>
+        <name>NPPatch_Resources</name>
     </customTabs>
     <customTabs>
-        <label>הגדרות NPSP</label>
-        <name>NPSP_Settings</name>
+        <label>הגדרות NPPatch</label>
+        <name>NPPatch_Settings</name>
     </customTabs>
     <customTabs>
         <label><!-- Opportunity Rollups --></label>

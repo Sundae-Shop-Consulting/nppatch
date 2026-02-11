@@ -223,12 +223,12 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
         return contactsByHouseholdAccountId;
     }
 
-    private static NPSP_Address getAddressToSyncToAccountsAndContacts(Id accountId,
+    private static NPPatch_Address getAddressToSyncToAccountsAndContacts(Id accountId,
             Map<Id, HouseholdInfo> householdInfoByAccountId) {
 
         HouseholdInfo householdInfo = householdInfoByAccountId.get(accountId);
 
-        return new NPSP_Address(householdInfo.seasonalAddress != null ?
+        return new NPPatch_Address(householdInfo.seasonalAddress != null ?
                householdInfo.seasonalAddress : householdInfo.defaultAddress);
     }
 
@@ -244,10 +244,10 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
 
         for (Id accountId : accountsById.keySet()) {
 
-            NPSP_Address addressToSyncToAccountsAndContacts = getAddressToSyncToAccountsAndContacts(accountId,
+            NPPatch_Address addressToSyncToAccountsAndContacts = getAddressToSyncToAccountsAndContacts(accountId,
                 householdInfoByAccountId);
 
-            NPSP_HouseholdAccount npspHouseholdAccount = new NPSP_HouseholdAccount(accountsById.get(accountId));
+            NPPatch_HouseholdAccount npspHouseholdAccount = new NPPatch_HouseholdAccount(accountsById.get(accountId));
             updateAccountAddress(npspHouseholdAccount, addressToSyncToAccountsAndContacts, accountsToUpdate);
             clearAccountAddressDefaults(allAddressesByAccountId,
                 accountId, householdInfoByAccountId, addressesToUpdate);
@@ -260,8 +260,8 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
         return new AddressAndRelationshipsToUpdate(accountsToUpdate, addressesToUpdate, contactsToUpdate);
     }
 
-    private static void updateAccountAddress(NPSP_HouseholdAccount npspHouseholdAccount,
-            NPSP_Address addressToSyncToAccountsAndContacts, List<Account> accountsToUpdate) {
+    private static void updateAccountAddress(NPPatch_HouseholdAccount npspHouseholdAccount,
+            NPPatch_Address addressToSyncToAccountsAndContacts, List<Account> accountsToUpdate) {
 
         Boolean accountUpdated = false;
 
@@ -283,12 +283,12 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
     }
 
     private static void updateAddressForHouseholdContacts(Map<Id, List<Contact>> contactsByHouseholdAccountId,
-            Id accountId, NPSP_HouseholdAccount npspHouseholdAccount,
-            NPSP_Address addressToSyncToAccountsAndContacts, List<Contact> contactsToUpdate) {
+            Id accountId, NPPatch_HouseholdAccount npspHouseholdAccount,
+            NPPatch_Address addressToSyncToAccountsAndContacts, List<Contact> contactsToUpdate) {
 
         if (accountHasContacts(contactsByHouseholdAccountId, accountId)) {
             for (Contact contact : contactsByHouseholdAccountId.get(accountId)) {
-                NPSP_Contact npspContact = new NPSP_Contact(contact);
+                NPPatch_Contact npspContact = new NPPatch_Contact(contact);
 
                 Boolean shouldUpdateContact= false;
                 // detect that the contact's current address was deleted.
@@ -332,7 +332,7 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
         if (accountHasAddresses(allAddressesByAccountId, accountId)) {
             for (Address__c address : allAddressesByAccountId.get(accountId)) {
                 HouseholdInfo householdInfo = householdInfoByAccountId.get(accountId);
-                NPSP_Address npspAddress = new NPSP_Address(address);
+                NPPatch_Address npspAddress = new NPPatch_Address(address);
                 if (npspAddress.getRecord().Id == householdInfo.defaultAddress.Id) {
                     continue;
                 }
@@ -351,14 +351,14 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
                allAddressesByAccountId.get(accountId) != null;
     }
 
-    private static Boolean shouldUpdateBillingAddressUndeliverableStatus(NPSP_HouseholdAccount npspHouseholdAccount,
-            NPSP_Address addressToSyncToAccountsAndContacts) {
+    private static Boolean shouldUpdateBillingAddressUndeliverableStatus(NPPatch_HouseholdAccount npspHouseholdAccount,
+            NPPatch_Address addressToSyncToAccountsAndContacts) {
         return npspHouseholdAccount.undeliverableAddressStatus() !=
                 addressToSyncToAccountsAndContacts.isUndeliverable();
     }
 
-    private static Boolean shouldUpdateBillingAddress(NPSP_HouseholdAccount npspHouseholdAccount,
-            NPSP_Address addressToSyncToAccountsAndContacts) {
+    private static Boolean shouldUpdateBillingAddress(NPPatch_HouseholdAccount npspHouseholdAccount,
+            NPPatch_Address addressToSyncToAccountsAndContacts) {
         return npspHouseholdAccount.billingAddressIsDifferentFrom(addressToSyncToAccountsAndContacts);
     }
 
@@ -407,7 +407,7 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
             Id accountId, HouseholdInfo householdInfo, Map<Id, List<Address__c>> allAddressesByAccountId) {
         Address__c accountAddress = defaultSeasonalAddressesByAccountId.get(accountId);
         if (accountAddress != null) {
-            NPSP_Address accountNpspAddress = new NPSP_Address(accountAddress);
+            NPPatch_Address accountNpspAddress = new NPPatch_Address(accountAddress);
             if (accountNpspAddress.isDefault()) {
                 householdInfo.defaultAddress = accountNpspAddress.getRecord();
             }
@@ -416,7 +416,7 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
         // go through the hh addresses storing the default and any seasonal
         if (allAddressesByAccountId.get(accountId) != null) {
             for (Address__c address : allAddressesByAccountId.get(accountId)) {
-                NPSP_Address npspAddress = new NPSP_Address(address);
+                NPPatch_Address npspAddress = new NPPatch_Address(address);
 
                 if (householdInfo.defaultAddress == null && address.Default_Address__c) {
                     householdInfo.defaultAddress = address;
@@ -517,7 +517,7 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
     public void verifyAddrSeasonalNoOverlap() {
 
         // first get just the seasonal addresses
-        List<NPSP_Address> seasonalAddresses = seasonalAddresses();
+        List<NPPatch_Address> seasonalAddresses = seasonalAddresses();
 
         addErrorsToPartialSeasonalAddresses();
 
@@ -535,14 +535,14 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
 
     private void addErrorsToPartialSeasonalAddresses() {
         for (Address__c addr : (List<Address__c>) getRecords()) {
-            NPSP_Address npspAddress = new NPSP_Address(addr);
+            NPPatch_Address npspAddress = new NPPatch_Address(addr);
             npspAddress.checkForPartialSeasonalErrors();
         }
     }
 
-    private void checkForOverlaps(List<NPSP_Address> seasonalAddresses) {
-        for (NPSP_Address addr : seasonalAddresses) {
-            for (NPSP_Address addr2 : seasonalAddresses) {
+    private void checkForOverlaps(List<NPPatch_Address> seasonalAddresses) {
+        for (NPPatch_Address addr : seasonalAddresses) {
+            for (NPPatch_Address addr2 : seasonalAddresses) {
                 if (addr.getRecord() == addr2.getRecord()) {
                     continue;
                 }
@@ -556,21 +556,21 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
         }
     }
 
-    private void checkForOverlapsAgainstHouseholdAddresses(List<NPSP_Address> seasonalAddresses) {
+    private void checkForOverlapsAgainstHouseholdAddresses(List<NPPatch_Address> seasonalAddresses) {
         List<Id> listAccId = new List<Id>();
-        for (NPSP_Address addr : seasonalAddresses) {
+        for (NPPatch_Address addr : seasonalAddresses) {
             listAccId.add(addr.householdId());
         }
         Map<Id, List<Address__c>> mapAccIdListAddrHH = Addresses.getAllAddressesByAccountId
                 (listAccId);
 
-        for (NPSP_Address addr : seasonalAddresses) {
+        for (NPPatch_Address addr : seasonalAddresses) {
             List<Address__c> existingHouseholdAddresses = mapAccIdListAddrHH.get(addr.householdId());
             if (existingHouseholdAddresses == null || existingHouseholdAddresses.isEmpty()) {
                 continue;
             }
             for (Address__c addr2 : existingHouseholdAddresses) {
-                NPSP_Address npspAddress2 = new NPSP_Address(addr2);
+                NPPatch_Address npspAddress2 = new NPPatch_Address(addr2);
                 if (addr.getRecord().Id == addr2.Id) {
                     continue;
                 }
@@ -582,10 +582,10 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
         }
     }
 
-    private List<NPSP_Address> seasonalAddresses() {
-        List<NPSP_Address> listAddrS = new List<NPSP_Address>();
+    private List<NPPatch_Address> seasonalAddresses() {
+        List<NPPatch_Address> listAddrS = new List<NPPatch_Address>();
         for (Address__c addr : (List<Address__c>) getRecords()) {
-            NPSP_Address npspAddress = new NPSP_Address(addr);
+            NPPatch_Address npspAddress = new NPPatch_Address(addr);
             if (npspAddress.isSeasonal()) {
                 listAddrS.add(npspAddress);
             }
@@ -597,7 +597,7 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
         Map<Id, Address__c> addressesByAccountId = new Map<Id, Address__c>();
 
         for (Address__c address : (List<Address__c>) getRecords()) {
-            NPSP_Address npspAddress = new NPSP_Address(address, oldVersionOf(address));
+            NPPatch_Address npspAddress = new NPPatch_Address(address, oldVersionOf(address));
 
             if (npspAddress.shouldSyncAddressToHouseholdAccountAndContacts()) {
                 addressesByAccountId.put(householdAccountIdFor(address), address);
@@ -609,7 +609,7 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
     public Map<Id, Address__c> addressChangesToSyncToContactOverrides() {
         Map<Id, Address__c> addressesById = new Map<Id, Address__c>();
         for (Address__c address : (List<Address__c>) getRecords()) {
-            NPSP_Address npspAddress = new NPSP_Address(address, oldVersionOf(address));
+            NPPatch_Address npspAddress = new NPPatch_Address(address, oldVersionOf(address));
 
             if (npspAddress.shouldSyncAddressChangesToContactOverrides()) {
                 addressesById.put(npspAddress.getId(), npspAddress.getRecord());
@@ -661,13 +661,13 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
 
         // now compare our Addresses to the existing Addresses
         for (Address__c addr : listAddr) {
-            NPSP_Address npspAddress = new NPSP_Address(addr);
+            NPPatch_Address npspAddress = new NPPatch_Address(addr);
             List<Address__c> listAddrHH = mapAccIdListAddrHH.get(addr.Household_Account__c);
             Boolean hasMatch = false;
             if (listAddrHH != null) {
                 Address__c addrMatch = null;
                 for (Address__c addrHH : listAddrHH) {
-                    NPSP_Address npspAddressHH = new NPSP_Address(addrHH);
+                    NPPatch_Address npspAddressHH = new NPPatch_Address(addrHH);
                     // only include address type in the test if the new one isn't empty.
                     if (isMatch(npspAddress, npspAddressHH)) {
                         // found exact match, record it and bail out
@@ -693,7 +693,7 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
         return mapAddrDupAddr;
     }
 
-    private static Boolean isMatch(NPSP_Address npspAddress, NPSP_Address npspAddressHH) {
+    private static Boolean isMatch(NPPatch_Address npspAddress, NPPatch_Address npspAddressHH) {
         return npspAddress.isEqualToIncludingAddressType(npspAddressHH, false);
     }
 
@@ -733,7 +733,7 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
                     }
 
                     // create our map of Address Keys to a list of one or more Addresses
-                    NPSP_Address npspAddr = new NPSP_Address(addr);
+                    NPPatch_Address npspAddr = new NPPatch_Address(addr);
                     String addrKey = npspAddr.getAddrKey();
                     List<Address__c> listAddr = mapAddrKeyToAddresses.get(addrKey);
                     if (listAddr == null) {
@@ -806,8 +806,8 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
                     addr = hhinfo.defaultAddress;
                 }
                 if (addr != null) {
-                    NPSP_Address npspAddr = new NPSP_Address(addr);
-                    NPSP_Address npspAddressCurrent = new NPSP_Address(new Address__c());
+                    NPPatch_Address npspAddr = new NPPatch_Address(addr);
+                    NPPatch_Address npspAddressCurrent = new NPPatch_Address(new Address__c());
                     npspAddressCurrent.copyFromSObject(acc, 'Billing', null);
                     // now see if the address has changed, and if not, we don't need to process it anymore
                     if (npspAddr.isEqualToIncludingAddressType(npspAddressCurrent, false)) {
@@ -915,7 +915,7 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
     private void updateLatestDatesForDefaultChanges() {
         for (Address__c address :
                 (List<Address__c>) addressesWithDefaultChanges().getRecords()) {
-            NPSP_Address npspAddress = new NPSP_Address(address);
+            NPPatch_Address npspAddress = new NPPatch_Address(address);
 
             if (npspAddress.isDefault()) {
                 resetLatestStartDateFor(address);
@@ -929,7 +929,7 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
     private Addresses addressesWithDefaultChanges() {
         List<Address__c> addressesWithDefaultChanges = new List<Address__c>();
         for (Address__c address : (List<Address__c>) getRecords()) {
-            NPSP_Address npspAddress = new NPSP_Address(address, oldVersionOf(address));
+            NPPatch_Address npspAddress = new NPPatch_Address(address, oldVersionOf(address));
 
             if (npspAddress.hasDefaultChanged()) {
                 addressesWithDefaultChanges.add(address);
