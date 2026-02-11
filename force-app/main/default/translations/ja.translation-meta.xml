@@ -4543,23 +4543,23 @@
         <label>リストビューで複数のレコードを処理</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportDesc</name>
+        <name>gseuChecklistItemPrebuiltNPPReportDesc</name>
         <label>NPPatch には、最もよく使用する 87 件の賛助者と活動資金集めのレポートが用意されており、そのまま使用するか、またはカスタマイズして使用できます。</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportLinkLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportLinkLabel</name>
         <label>Trailhead で NPPatch のレポートについて学習する</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportPriBtnLabel</name>
         <label>レポートを実行</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportSecBtnLabel</name>
         <label>レポートワークブック</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportTitle</name>
+        <name>gseuChecklistItemPrebuiltNPPReportTitle</name>
         <label>事前作成済み NPPatch レポートを実行</label>
     </customLabels>
     <customLabels>

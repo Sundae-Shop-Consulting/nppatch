@@ -4552,23 +4552,23 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
         <label>Arbeiten mit mehreren Datensätzen mithilfe von Listenansichten</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportDesc</name>
+        <name>gseuChecklistItemPrebuiltNPPReportDesc</name>
         <label>NPPatch enthält 87 der gängigsten Berichte zu Auftraggebern und Spendenaktionen. Verwenden Sie diese Berichte wie sie sind, oder passen Sie sie an.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportLinkLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportLinkLabel</name>
         <label>Erfahren Sie mehr über NPPatch-Berichte in Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportPriBtnLabel</name>
         <label>Ausführen von Berichten</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportSecBtnLabel</name>
         <label>Arbeitsmappe &quot;Berichte&quot;</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportTitle</name>
+        <name>gseuChecklistItemPrebuiltNPPReportTitle</name>
         <label>Ausführen eines vorkonfigurierten NPPatch-Berichts</label>
     </customLabels>
     <customLabels>

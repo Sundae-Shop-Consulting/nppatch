@@ -4552,23 +4552,23 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <label>Work with Multiple Records Using List Views</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportDesc</name>
+        <name>gseuChecklistItemPrebuiltNPPReportDesc</name>
         <label>NPPatch includes 87 of the most commonly-used constituent and fundraising reports. Use these reports as is, or customise them.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportLinkLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportLinkLabel</name>
         <label>Learn more about NPPatch Reports in Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportPriBtnLabel</name>
         <label>Run Reports</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportSecBtnLabel</name>
         <label>Reports Workbook</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportTitle</name>
+        <name>gseuChecklistItemPrebuiltNPPReportTitle</name>
         <label>Run a Prebuilt NPPatch Report</label>
     </customLabels>
     <customLabels>
@@ -5852,7 +5852,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeNoReport</name>
-        <label>Could not find the report. Create a report and save it with the Report Unique Name of &apos;NPPatch_Campaign_Household_Mailing_List_V2&apos;. Use the Campaigns with Contacts report type and add filters for CampaignId equals blank and Member Status does not contain &apos;Duplicate&apos;.</label>
+        <label>Could not find the report. Create a report and save it with the Report Unique Name of &apos;NPP_Campaign_HH_Mailing_List_V2&apos;. Use the Campaigns with Contacts report type and add filters for CampaignId equals blank and Member Status does not contain &apos;Duplicate&apos;.</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeStatus</name>

@@ -4,7 +4,7 @@
     <protected>true</protected>
     <values>
         <field>Description_Label__c</field>
-        <value xsi:type="xsd:string">gseuChecklistItemPrebuiltNPPatchReportDesc</value>
+        <value xsi:type="xsd:string">gseuChecklistItemPrebuiltNPPReportDesc</value>
     </values>
     <values>
         <field>Extra_Info_Label__c</field>
@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>Link_Label__c</field>
-        <value xsi:type="xsd:string">gseuChecklistItemPrebuiltNPPatchReportLinkLabel</value>
+        <value xsi:type="xsd:string">gseuChecklistItemPrebuiltNPPReportLinkLabel</value>
     </values>
     <values>
         <field>Link_URL__c</field>
@@ -36,7 +36,7 @@
     </values>
     <values>
         <field>Primary_Button_Label__c</field>
-        <value xsi:type="xsd:string">gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</value>
+        <value xsi:type="xsd:string">gseuChecklistItemPrebuiltNPPReportPriBtnLabel</value>
     </values>
     <values>
         <field>Primary_Button_Type__c</field>
@@ -48,7 +48,7 @@
     </values>
     <values>
         <field>Secondary_Button_Label__c</field>
-        <value xsi:type="xsd:string">gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</value>
+        <value xsi:type="xsd:string">gseuChecklistItemPrebuiltNPPReportSecBtnLabel</value>
     </values>
     <values>
         <field>Secondary_Button_Type__c</field>
@@ -60,6 +60,6 @@
     </values>
     <values>
         <field>Title_Label__c</field>
-        <value xsi:type="xsd:string">gseuChecklistItemPrebuiltNPPatchReportTitle</value>
+        <value xsi:type="xsd:string">gseuChecklistItemPrebuiltNPPReportTitle</value>
     </values>
 </CustomMetadata>

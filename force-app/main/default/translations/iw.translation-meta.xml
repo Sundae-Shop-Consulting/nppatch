@@ -4592,23 +4592,23 @@
     </customLabels>
     <customLabels>
         <label><!-- Description of Prebuilt NPPatch Report checklist item in Get Started for End Users --></label>
-        <name>gseuChecklistItemPrebuiltNPPatchReportDesc</name>
+        <name>gseuChecklistItemPrebuiltNPPReportDesc</name>
     </customLabels>
     <customLabels>
         <label><!-- Link label of Prebuilt NPPatch Report checklist item in Get Started for End Users --></label>
-        <name>gseuChecklistItemPrebuiltNPPatchReportLinkLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportLinkLabel</name>
     </customLabels>
     <customLabels>
         <label><!-- Button label of Prebuilt NPPatch Report checklist item in Get Started for End Users --></label>
-        <name>gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportPriBtnLabel</name>
     </customLabels>
     <customLabels>
         <label><!-- Button label of Prebuilt NPPatch Report checklist item in Get Started for End Users --></label>
-        <name>gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportSecBtnLabel</name>
     </customLabels>
     <customLabels>
         <label><!-- Title of Prebuilt NPPatch Report checklist item in Get Started for End Users --></label>
-        <name>gseuChecklistItemPrebuiltNPPatchReportTitle</name>
+        <name>gseuChecklistItemPrebuiltNPPReportTitle</name>
     </customLabels>
     <customLabels>
         <label><!-- Description of Standard Report Type checklist item in Get Started for End Users --></label>

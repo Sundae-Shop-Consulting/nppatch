@@ -74,11 +74,11 @@ import gsChecklistMakeItYourDesc from '@salesforce/label/c.gsChecklistMakeItYour
 import gsChecklistMakeItYourTitle from '@salesforce/label/c.gsChecklistMakeItYourTitle';
 import gsChecklistOnboardUsersTitle from '@salesforce/label/c.gsChecklistOnboardUsersTitle';
 import gsChecklistOnboardUsersDesc from '@salesforce/label/c.gsChecklistOnboardUsersDesc';
-import gseuChecklistItemPrebuiltNPPatchReportDesc from '@salesforce/label/c.gseuChecklistItemPrebuiltNPPatchReportDesc';
-import gseuChecklistItemPrebuiltNPPatchReportLinkLabel from '@salesforce/label/c.gseuChecklistItemPrebuiltNPPatchReportLinkLabel';
-import gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel from '@salesforce/label/c.gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel';
-import gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel from '@salesforce/label/c.gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel';
-import gseuChecklistItemPrebuiltNPPatchReportTitle from '@salesforce/label/c.gseuChecklistItemPrebuiltNPPatchReportTitle';
+import gseuChecklistItemPrebuiltNPPReportDesc from '@salesforce/label/c.gseuChecklistItemPrebuiltNPPReportDesc';
+import gseuChecklistItemPrebuiltNPPReportLinkLabel from '@salesforce/label/c.gseuChecklistItemPrebuiltNPPReportLinkLabel';
+import gseuChecklistItemPrebuiltNPPReportPriBtnLabel from '@salesforce/label/c.gseuChecklistItemPrebuiltNPPReportPriBtnLabel';
+import gseuChecklistItemPrebuiltNPPReportSecBtnLabel from '@salesforce/label/c.gseuChecklistItemPrebuiltNPPReportSecBtnLabel';
+import gseuChecklistItemPrebuiltNPPReportTitle from '@salesforce/label/c.gseuChecklistItemPrebuiltNPPReportTitle';
 import gseuChecklistItemStandardReportTypeDesc from '@salesforce/label/c.gseuChecklistItemStandardReportTypeDesc';
 import gseuChecklistItemStandardReportTypeLinkLabel from '@salesforce/label/c.gseuChecklistItemStandardReportTypeLinkLabel';
 import gseuChecklistItemStandardReportTypePriBtnLabel from '@salesforce/label/c.gseuChecklistItemStandardReportTypePriBtnLabel';
@@ -234,11 +234,11 @@ const labelMap = {
     gsChecklistMakeItYourTitle,
     gsChecklistOnboardUsersTitle,
     gsChecklistOnboardUsersDesc,
-    gseuChecklistItemPrebuiltNPPatchReportDesc,
-    gseuChecklistItemPrebuiltNPPatchReportLinkLabel,
-    gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel,
-    gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel,
-    gseuChecklistItemPrebuiltNPPatchReportTitle,
+    gseuChecklistItemPrebuiltNPPReportDesc,
+    gseuChecklistItemPrebuiltNPPReportLinkLabel,
+    gseuChecklistItemPrebuiltNPPReportPriBtnLabel,
+    gseuChecklistItemPrebuiltNPPReportSecBtnLabel,
+    gseuChecklistItemPrebuiltNPPReportTitle,
     gseuChecklistItemStandardReportTypeDesc,
     gseuChecklistItemStandardReportTypeLinkLabel,
     gseuChecklistItemStandardReportTypePriBtnLabel,

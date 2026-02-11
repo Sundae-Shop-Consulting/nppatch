@@ -4145,7 +4145,7 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>bdiAccountCustomIdError</shortDescription>
-        <value>The Account Custom Unique ID setting field {0} must have matching fields in the NPPatch Data Import object whose API Names are {1} and {2}.</value>
+        <value>The Account Custom Unique ID setting field {0} must have matching fields in the NPP Data Import object whose API Names are {1} and {2}.</value>
     </labels>
     <labels>
         <fullName>bdiAdditionalObjChildNotUpdated</fullName>
@@ -8899,43 +8899,43 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <value>Work with Multiple Records Using List Views</value>
     </labels>
     <labels>
-        <fullName>gseuChecklistItemPrebuiltNPPatchReportDesc</fullName>
+        <fullName>gseuChecklistItemPrebuiltNPPReportDesc</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Description of Prebuilt NPPatch Report checklist item in Get Started for End Users</shortDescription>
+        <shortDescription>Description of Prebuilt NPP Report checklist item in Get Started for End Users</shortDescription>
         <value>NPPatch includes 87 of the most commonly-used constituent and fundraising reports. Use these reports as is, or customize them.</value>
     </labels>
     <labels>
-        <fullName>gseuChecklistItemPrebuiltNPPatchReportLinkLabel</fullName>
+        <fullName>gseuChecklistItemPrebuiltNPPReportLinkLabel</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Link label of Prebuilt NPPatch Report checklist item in Get Started for End Users</shortDescription>
+        <shortDescription>Link label of Prebuilt NPP Report checklist item in Get Started for End Users</shortDescription>
         <value>Learn more about NPPatch Reports in Trailhead</value>
     </labels>
     <labels>
-        <fullName>gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</fullName>
+        <fullName>gseuChecklistItemPrebuiltNPPReportPriBtnLabel</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Button label of Prebuilt NPPatch Report checklist item in Get Started for End Users</shortDescription>
+        <shortDescription>Button label of Prebuilt NPP Report checklist item in Get Started for End Users</shortDescription>
         <value>Run Reports</value>
     </labels>
     <labels>
-        <fullName>gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</fullName>
+        <fullName>gseuChecklistItemPrebuiltNPPReportSecBtnLabel</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Button label of Prebuilt NPPatch Report checklist item in Get Started for End Users</shortDescription>
+        <shortDescription>Button label of Prebuilt NPP Report checklist item in Get Started for End Users</shortDescription>
         <value>Reports Workbook</value>
     </labels>
     <labels>
-        <fullName>gseuChecklistItemPrebuiltNPPatchReportTitle</fullName>
+        <fullName>gseuChecklistItemPrebuiltNPPReportTitle</fullName>
         <categories>Get Started Page</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Title of Prebuilt NPPatch Report checklist item in Get Started for End Users</shortDescription>
+        <shortDescription>Title of Prebuilt NPP Report checklist item in Get Started for End Users</shortDescription>
         <value>Run a Prebuilt NPPatch Report</value>
     </labels>
     <labels>
@@ -9407,7 +9407,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <categories>Gift Entry</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Field-level error message for required field missing on NPPatch Data Import object</shortDescription>
+        <shortDescription>Field-level error message for required field missing on NPP Data Import object</shortDescription>
         <value>Required field</value>
     </labels>
     <labels>
@@ -11491,7 +11491,7 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>hhCmpDedupeNoReport</shortDescription>
-        <value>Could not find the report. Create a report and save it with the Report Unique Name of &apos;NPPatch_Campaign_Household_Mailing_List_V2&apos;. Use the Campaigns with Contacts report type and add filters for CampaignId equals blank and Member Status does not contain &apos;Duplicate&apos;.</value>
+        <value>Could not find the report. Create a report and save it with the Report Unique Name of &apos;NPP_Campaign_HH_Mailing_List_V2&apos;. Use the Campaigns with Contacts report type and add filters for CampaignId equals blank and Member Status does not contain &apos;Duplicate&apos;.</value>
     </labels>
     <labels>
         <fullName>hhCmpDedupeStatus</fullName>

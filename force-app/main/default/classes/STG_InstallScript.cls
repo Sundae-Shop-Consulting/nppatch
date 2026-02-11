@@ -166,7 +166,7 @@ global without sharing class STG_InstallScript implements InstallHandler {
         Households_Settings__c hs = UTIL_CustomSettingsFacade.getHouseholdsSettings();
         Report r;
         try{
-            r = [SELECT Id FROM Report WHERE DeveloperName = 'NPPatch_Campaign_Household_Mailing_List_V2'];
+            r = [SELECT Id FROM Report WHERE DeveloperName = 'NPP_Campaign_HH_Mailing_List_V2'];
         } catch(QueryException e) {
             // Ignore this error
         }

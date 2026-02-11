@@ -4552,23 +4552,23 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
         <label>Trabalhar com vários registros usando exibições de listas</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportDesc</name>
+        <name>gseuChecklistItemPrebuiltNPPReportDesc</name>
         <label>O NPPatch inclui 87 dos relatórios de membros e de angariação de recursos mais usados. Use esses relatórios já prontos ou personalize-os.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportLinkLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportLinkLabel</name>
         <label>Saiba mais sobre os relatórios do NPPatch no Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportPriBtnLabel</name>
         <label>Executar relatórios</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportSecBtnLabel</name>
         <label>Workbook de relatórios</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportTitle</name>
+        <name>gseuChecklistItemPrebuiltNPPReportTitle</name>
         <label>Executar um relatório do NPPatch pré-criado</label>
     </customLabels>
     <customLabels>
@@ -5852,7 +5852,7 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeNoReport</name>
-        <label>Não foi possível encontrar o relatório. Crie um relatório e salve-o com o nome de relatório exclusivo &apos;NPPatch_Campaign_Household_Mailing_List_V2&apos;. Use o tipo de relatório Campanhas com contatos e adicione filtros para CampaignId é igual a em branco e Status do membro não contém &apos;Duplicado&apos;.</label>
+        <label>Não foi possível encontrar o relatório. Crie um relatório e salve-o com o nome de relatório exclusivo &apos;NPP_Campaign_HH_Mailing_List_V2&apos;. Use o tipo de relatório Campanhas com contatos e adicione filtros para CampaignId é igual a em branco e Status do membro não contém &apos;Duplicado&apos;.</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeStatus</name>

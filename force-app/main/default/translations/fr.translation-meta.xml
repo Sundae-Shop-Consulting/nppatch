@@ -4553,23 +4553,23 @@ Si vous préférez, vous pouvez désactiver la Saisie de dons et utiliser à la 
         <label>Exploitation de plusieurs enregistrements à l’aide des vues de liste</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportDesc</name>
+        <name>gseuChecklistItemPrebuiltNPPReportDesc</name>
         <label>NPPatch comprend 87 des rapports sur les membres et les collectes de fonds les plus couramment utilisés. Utilisez ces rapports tels quels ou personnalisez-les.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportLinkLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportLinkLabel</name>
         <label>Consultez Trailhead pour en savoir plus sur les rapports NPPatch</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportPriBtnLabel</name>
         <label>Exécution de rapports</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportSecBtnLabel</name>
         <label>Classeur de rapports</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportTitle</name>
+        <name>gseuChecklistItemPrebuiltNPPReportTitle</name>
         <label>Exécution d’un rapport NPPatch prédéfini</label>
     </customLabels>
     <customLabels>
@@ -5853,7 +5853,7 @@ Si vous préférez, vous pouvez désactiver la Saisie de dons et utiliser à la 
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeNoReport</name>
-        <label>Le rapport est introuvable. Créez un rapport avec le nom unique de rapport « NPPatch_Campaign_Household_Mailing_List_V2 ». REMARQUE : Le type de rapport doit être campagne avec contacts. Ajoutez des filtres pour que l’ID de campagne soit vide et que le statut de membre ne contient pas de doublon.</label>
+        <label>Le rapport est introuvable. Créez un rapport avec le nom unique de rapport « NPP_Campaign_HH_Mailing_List_V2 ». REMARQUE : Le type de rapport doit être campagne avec contacts. Ajoutez des filtres pour que l’ID de campagne soit vide et que le statut de membre ne contient pas de doublon.</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeStatus</name>

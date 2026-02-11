@@ -4551,23 +4551,23 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
         <label>Werken met meerdere records met gebruik van lijstweergaven</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportDesc</name>
+        <name>gseuChecklistItemPrebuiltNPPReportDesc</name>
         <label>NPPatch bevat 87 van de meest gebruikte volmachtgever- en fondsenwervingsrapporten. Gebruik deze rapporten zoals ze zijn of pas ze aan.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportLinkLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportLinkLabel</name>
         <label>Meer informatie over NPPatch-rapporten in Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportPriBtnLabel</name>
         <label>Rapporten uitvoeren</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportSecBtnLabel</name>
         <label>Rapporten-workbook</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportTitle</name>
+        <name>gseuChecklistItemPrebuiltNPPReportTitle</name>
         <label>Een vooraf gebouwd NPPatch-rapport uitvoeren</label>
     </customLabels>
     <customLabels>
@@ -5851,7 +5851,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeNoReport</name>
-        <label>Kan rapport niet vinden. Maak een rapport en sla het op met de Unieke Naam Rapport &apos;NPPatch_Campaign_Household_Mailing_List_V2&apos;. Gebruik het rapporttype Campagnes met Contactpersonen en voeg filters toe voor CampaignId is gelijk aan blanco en Lidstatus bevat niet &apos;Duplicaat&apos;.</label>
+        <label>Kan rapport niet vinden. Maak een rapport en sla het op met de Unieke Naam Rapport &apos;NPP_Campaign_HH_Mailing_List_V2&apos;. Gebruik het rapporttype Campagnes met Contactpersonen en voeg filters toe voor CampaignId is gelijk aan blanco en Lidstatus bevat niet &apos;Duplicaat&apos;.</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeStatus</name>

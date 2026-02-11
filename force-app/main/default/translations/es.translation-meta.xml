@@ -4546,23 +4546,23 @@ Si lo prefiere, puede desactivar Entrada de regalos y utilizar la herramienta En
         <label>Trabajar con registros múltiples empleando vistas de lista</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportDesc</name>
+        <name>gseuChecklistItemPrebuiltNPPReportDesc</name>
         <label>NPPatch incluye 87 de los informes de integrantes y obtención de fondos más utilizados. Utilice estos informes tal cual o personalícelos.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportLinkLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportLinkLabel</name>
         <label>Más detalles sobre los informes de NPPatch en Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportPriBtnLabel</name>
         <label>Ejecutar informes</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPReportSecBtnLabel</name>
         <label>Libro de trabajo de informes</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPPatchReportTitle</name>
+        <name>gseuChecklistItemPrebuiltNPPReportTitle</name>
         <label>Ejecutar un informe de NPPatch preconstruido</label>
     </customLabels>
     <customLabels>
@@ -5846,7 +5846,7 @@ Si lo prefiere, puede desactivar Entrada de regalos y utilizar la herramienta En
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeNoReport</name>
-        <label>No puede encontrar el informe. Cree un informe con el Nombre exclusivo del informe: &apos;NPPatch_Campaign_Household_Mailing_List_V2&apos;. NOTA: El tipo de informe debe ser Campañas con Contactos. Filtrar por Estado de miembro no contiene &quot;Duplicado&quot;.</label>
+        <label>No puede encontrar el informe. Cree un informe con el Nombre exclusivo del informe: &apos;NPP_Campaign_HH_Mailing_List_V2&apos;. NOTA: El tipo de informe debe ser Campañas con Contactos. Filtrar por Estado de miembro no contiene &quot;Duplicado&quot;.</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeStatus</name>
