@@ -12,6 +12,53 @@ Before installing NPPatch, confirm the following:
 
 **Existing NPSP Status.** If the target org already has the Salesforce-managed NPSP installed, read the [namespace implications](#installing-alongside-existing-npsp) section below before proceeding.
 
+## Pre-Install Setup: Required Record Types
+
+NPPatch depends on specific Account and Opportunity record types that must exist in the org **before** the package is installed. Without these, installation will fail.
+
+### Account Record Types
+
+Create two record types on the **Account** object:
+
+| Record Type API Name | Label | Description |
+|----------------------|-------|-------------|
+| `HH_Account` | Household Account | An Account representing a Household containing one or more individuals |
+| `Organization` | Organization | An Account representing an organization |
+
+To create these manually:
+
+1. Navigate to **Setup > Object Manager > Account > Record Types**
+2. Click **New**
+3. Create each record type using the API names and labels above
+4. Assign them to the appropriate page layouts and profiles
+
+### Opportunity Record Type and Business Process
+
+Create one business process and one record type on the **Opportunity** object:
+
+**Business Process:**
+
+1. Navigate to **Setup > Object Manager > Opportunity > Business Processes**
+2. Click **New**
+3. Name it `NPPatch_Default`
+4. Include the standard Opportunity stages (Prospecting, Qualification, Needs Analysis, Value Proposition, Id. Decision Makers, Perception Analysis, Proposal/Price Quote, Negotiation/Review, Closed Won, Closed Lost)
+
+**Record Type:**
+
+1. Navigate to **Setup > Object Manager > Opportunity > Record Types**
+2. Click **New**
+3. Set the API name to `NPPatch_Default` and the label to `NPPatch Default`
+4. Associate it with the **NPPatch_Default** business process created above
+5. Assign to the appropriate profiles
+
+!!! tip "Deploy from Source Instead"
+    If you're comfortable with the Salesforce CLI or CumulusCI, you can deploy these record types from the repository instead of creating them manually. Clone the repo and deploy the `unpackaged/pre/` directory:
+
+    ```
+    sf project deploy start -d unpackaged/pre/account_record_types -o <your-org-alias>
+    sf project deploy start -d unpackaged/pre/opportunity_record_types -o <your-org-alias>
+    ```
+
 ## Installation Steps
 
 ### Step 1: Get the Install Link
@@ -49,7 +96,25 @@ After installation, assign the **nppatch_Admin** permission set to users who nee
 
 The nppatch_Admin permission set grants read/write access to all NPPatch custom objects and fields. You may want to create additional permission sets with more limited access for non-admin users.
 
-### Step 4: Configure Settings
+### Step 4: Deploy Post-Install Metadata
+
+The package itself does not include certain org-level customizations (compact layouts, global quick actions, list views) because they live outside the package namespace. These are provided in the repository's `unpackaged/post/` directory and should be deployed after the package is installed.
+
+This metadata includes:
+
+- **Account compact layouts** for Household and Organization record types
+- **Global quick actions** for creating new Household Accounts and Organizations
+- **Household Accounts list view** on the Account object
+
+To deploy using the Salesforce CLI:
+
+```
+sf project deploy start -d unpackaged/post/first -o <your-org-alias>
+```
+
+If you don't have access to the CLI, these customizations can be created manually in Setup — they improve the user experience but the package will function without them.
+
+### Step 5: Configure Settings
 
 After installation, NPPatch initializes default settings automatically. However, several settings should be reviewed and adjusted for your organization's needs. See the [Post-Install Configuration](post-install-configuration.md) guide for details.
 
@@ -85,7 +150,7 @@ After installation completes:
 
 ## Troubleshooting
 
-**Installation fails with dependency errors.** NPPatch is self-contained and should not have external package dependencies. If you encounter dependency errors, confirm that no conflicting packages are installed and that the org meets the edition and API version requirements.
+**Installation fails with dependency errors.** The most common cause is missing record types. Confirm that the Account record types (`HH_Account`, `Organization`) and the Opportunity record type (`NPPatch_Default`) exist in the org before installing — see [Pre-Install Setup](#pre-install-setup-required-record-types) above. Also confirm that no conflicting packages are installed and that the org meets the edition and API version requirements.
 
 **Objects or fields are missing after installation.** Check that the nppatch_Admin permission set is assigned. Fields may be present but not visible without the appropriate permissions.
 
