@@ -289,13 +289,6 @@ flows:
                     force_upload: True
                     create_unlocked_dependency_packages: False
                     org_dependent: True
-            # Skip GitHub steps until repo is set up
-            2:
-                task: None
-            3:
-                task: None
-            4:
-                task: None
             5:
                 task: log_package_install_info
                 options:
