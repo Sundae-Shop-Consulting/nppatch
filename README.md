@@ -50,7 +50,7 @@ For guidance on when NPPatch makes sense and what to consider, start with the [G
 
 ## Documentation
 
-Full documentation is available in the [`docs/`](docs/) directory.
+Full documentation is available at [`nppatch.readthedocs.io`](https://nppatch.readthedocs.io/en/latest/).
 
 ## Development
 
