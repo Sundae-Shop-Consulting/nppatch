@@ -260,6 +260,13 @@ tasks:
                 - fullName: Other
                   label: Other
 
+    reorder_app_menu:
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        group: "NPPatch Config"
+        options:
+            path: scripts/ReorderAppMenu.cls
+            apex: setPPatchAppToFirst();
+
 flows:
     # =========================================
     # Setup Build Org with test prerequisites

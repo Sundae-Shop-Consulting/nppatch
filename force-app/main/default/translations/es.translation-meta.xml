@@ -8406,7 +8406,7 @@ Nota: La ficha Configuración de NPPatch es visible en la aplicación NPPatch. S
         <label>Configuración de NPPatch</label>
     </customTabs>
     <customApplications>
-        <name>Nonprofit_CRM</name>
+        <name>NPPatch_Lightning</name>
         <label>NPPatch</label>
     </customApplications>
     <quickActions>

@@ -8406,7 +8406,7 @@
         <label>NPPatch 設定</label>
     </customTabs>
     <customApplications>
-        <name>Nonprofit_CRM</name>
+        <name>NPPatch_Lightning</name>
         <label>NPPatch</label>
     </customApplications>
     <quickActions>
