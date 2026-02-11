@@ -2,7 +2,7 @@
 
 ## Overview
 
-nppatch uses **21 hierarchy custom settings** for configuration. Hierarchy custom settings allow both organization-level defaults and user-level overrides, balancing global consistency with individual flexibility.
+NPPatch uses **21 hierarchy custom settings** for configuration. Hierarchy custom settings allow both organization-level defaults and user-level overrides, balancing global consistency with individual flexibility.
 
 ## Settings Access
 

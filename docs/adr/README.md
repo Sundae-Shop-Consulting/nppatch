@@ -1,6 +1,6 @@
 # Architecture Decision Records
 
-This directory contains Architecture Decision Records (ADRs) for the nppatch package (nppatch namespace) - the 2GP consolidation of NPSP component packages.
+This directory contains Architecture Decision Records (ADRs) for the NPPatch package (nppatch namespace) - the 2GP consolidation of NPSP component packages.
 
 ## Index
 

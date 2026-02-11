@@ -1,10 +1,10 @@
 # Post-Install Configuration
 
-After installing nppatch, the package initializes a set of default settings automatically. This page describes what those defaults are and which settings you should review and adjust for your organization.
+After installing NPPatch, the package initializes a set of default settings automatically. This page describes what those defaults are and which settings you should review and adjust for your organization.
 
-## How Settings Work in nppatch
+## How Settings Work in NPPatch
 
-nppatch uses Salesforce hierarchy custom settings to store its configuration. These settings can be configured at the org level (applied to everyone), at the profile level (applied to users with a specific profile), or at the individual user level.
+NPPatch uses Salesforce hierarchy custom settings to store its configuration. These settings can be configured at the org level (applied to everyone), at the profile level (applied to users with a specific profile), or at the individual user level.
 
 The primary interface for managing these settings is the **NPSP Settings** page, accessible from the App Launcher or the NPSP Settings tab.
 
@@ -12,13 +12,13 @@ Under the hood, settings are managed through a centralized facade (`UTIL_CustomS
 
 ## Settings Initialized at Install
 
-The following settings are created with default values when nppatch is installed. Each section describes the default and when you might want to change it.
+The following settings are created with default values when NPPatch is installed. Each section describes the default and when you might want to change it.
 
 ### Account Model
 
 **Default:** Household Account model enabled.
 
-nppatch supports two account models for managing individual constituents:
+NPPatch supports two account models for managing individual constituents:
 
 - **Household Account Model** — each household gets a shared Account record; individual Contacts are associated with their household. This is the standard NPSP configuration and the default.
 - **One-to-One Account Model** — each Contact gets their own individual Account record. This is an older model that some organizations still use.
@@ -30,7 +30,7 @@ nppatch supports two account models for managing individual constituents:
 
 **Default:** Automatic household naming enabled.
 
-When enabled, nppatch automatically generates names for Household Account records based on the Contacts in the household. The naming format can be customized through the Household Naming Settings, which control the formal greeting, informal greeting, and household name format.
+When enabled, NPPatch automatically generates names for Household Account records based on the Contacts in the household. The naming format can be customized through the Household Naming Settings, which control the formal greeting, informal greeting, and household name format.
 
 ### Contacts & Organizations
 
@@ -68,7 +68,7 @@ To enable allocations:
 
 **Default:** Customizable Rollups **disabled**.
 
-Customizable Rollups (CRLP) replace the legacy rollup mechanism with a more flexible, metadata-driven approach. When disabled, nppatch falls back to the legacy trigger-based rollups.
+Customizable Rollups (CRLP) replace the legacy rollup mechanism with a more flexible, metadata-driven approach. When disabled, NPPatch falls back to the legacy trigger-based rollups.
 
 Most organizations should enable Customizable Rollups for better performance and flexibility:
 
@@ -97,7 +97,7 @@ Relationship settings control the automatic creation and reciprocal tracking of 
 
 ## Trigger Handler Configuration
 
-nppatch uses the TDTM (Table-Driven Trigger Management) framework to manage all trigger-based automation. The default configuration includes 40+ trigger handlers covering all standard nppatch functionality.
+NPPatch uses the TDTM (Table-Driven Trigger Management) framework to manage all trigger-based automation. The default configuration includes 40+ trigger handlers covering all standard NPPatch functionality.
 
 You can view and manage trigger handlers through:
 
@@ -112,13 +112,13 @@ See [Trigger Framework](../architecture/trigger-framework.md) for a complete ref
 
 ### The nppatch_Admin Permission Set
 
-The package includes a pre-built permission set (`nppatch_Admin`) that grants full access to all nppatch custom objects and fields. This permission set:
+The package includes a pre-built permission set (`nppatch_Admin`) that grants full access to all NPPatch custom objects and fields. This permission set:
 
-- Grants CRUD access to all nppatch custom objects
+- Grants CRUD access to all NPPatch custom objects
 - Grants read/write access to all custom fields (formula fields are read-only)
-- Grants appropriate access to standard objects used by nppatch (Account, Contact, Opportunity, Campaign, Lead, Case, Task)
+- Grants appropriate access to standard objects used by NPPatch (Account, Contact, Opportunity, Campaign, Lead, Case, Task)
 
-Assign this to admin users and any users who need full access to nppatch data.
+Assign this to admin users and any users who need full access to NPPatch data.
 
 ### Creating Additional Permission Sets
 
@@ -126,7 +126,7 @@ For non-admin users, you'll likely want to create more restrictive permission se
 
 - **Fundraiser**: Read/write on Opportunities, Payments, Recurring Donations; read on Accounts and Contacts
 - **Data Entry**: Read/write on DataImport__c and DataImportBatch__c for batch gift entry; read on other objects
-- **Read-Only**: Read access to all nppatch objects for reporting users
+- **Read-Only**: Read access to all NPPatch objects for reporting users
 
 ## Recommended First Steps After Installation
 

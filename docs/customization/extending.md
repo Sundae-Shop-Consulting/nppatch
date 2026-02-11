@@ -1,6 +1,6 @@
-# Extending nppatch
+# Extending NPPatch
 
-nppatch's extensibility is built on industry-standard patterns that encourage adding functionality without modifying package code. This guide covers the approved patterns for extending the platform.
+NPPatch's extensibility is built on industry-standard patterns that encourage adding functionality without modifying package code. This guide covers the approved patterns for extending the platform.
 
 ## The Extension Principle
 
@@ -391,7 +391,7 @@ public class CUSTOM_ConfigManager {
 
 ## Pattern 5: Creating Custom LWC Components
 
-nppatch includes many LWC components that interact with the data model. You can create custom components:
+NPPatch includes many LWC components that interact with the data model. You can create custom components:
 
 ### Create Component Files
 
@@ -485,9 +485,9 @@ Add your custom component to:
 - Lightning App Builder
 - Custom Visualforce pages that embed LWC
 
-## Pattern 6: Adding Custom Fields to nppatch Objects
+## Pattern 6: Adding Custom Fields to NPPatch Objects
 
-Since nppatch is an unlocked package, you can add custom fields directly:
+Since NPPatch is an unlocked package, you can add custom fields directly:
 
 ### Create Custom Field Metadata
 
@@ -540,7 +540,7 @@ sfdx force:source:deploy -m CustomField:Account.Program_Area__c --targetusername
 
 ## Pattern 7: Extending fflib Application Layer
 
-nppatch uses the Apex Enterprise Patterns (fflib) framework. You can extend it with custom services and selectors:
+NPPatch uses the Apex Enterprise Patterns (fflib) framework. You can extend it with custom services and selectors:
 
 ### Create Custom Service
 
@@ -620,9 +620,9 @@ nppatch-customizations/
 
 ### Benefits
 
-- Custom code is isolated from nppatch upgrades
+- Custom code is isolated from NPPatch upgrades
 - Can be versioned independently
-- Can be installed alongside nppatch in multiple orgs
+- Can be installed alongside NPPatch in multiple orgs
 - Cleaner separation of concerns
 - Easier to share and maintain
 

@@ -1,6 +1,6 @@
 # Household Management
 
-Household Management in nppatch provides automated organization and administration of contact groupings, enabling nonprofits to consolidate individual family members or organizational members into a single household unit with shared addresses and contact information.
+Household Management in NPPatch provides automated organization and administration of contact groupings, enabling nonprofits to consolidate individual family members or organizational members into a single household unit with shared addresses and contact information.
 
 ## Overview
 

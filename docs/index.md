@@ -1,14 +1,14 @@
-# nppatch
+# NPPatch
 
 **A community-owned, open-source Salesforce package for nonprofit organizations — built on the Nonprofit Success Pack (NPSP) codebase.**
 
-## What Is nppatch?
+## What Is NPPatch?
 
-nppatch is a Salesforce second-generation package (2GP) that consolidates the open-source Nonprofit Success Pack into a single, namespaced, unlocked package that the nonprofit community can install, extend, and maintain independently.
+NPPatch is a Salesforce second-generation package (2GP) that consolidates the open-source Nonprofit Success Pack into a single, namespaced, unlocked package that the nonprofit community can install, extend, and maintain independently.
 
 The original NPSP has been the backbone of Salesforce-based nonprofit operations for over a decade, powering donor management, recurring giving, household tracking, and more for thousands of organizations. But NPSP was always distributed as Salesforce-controlled managed packages, meaning the community could use the code but never truly own the distribution or innovate on it independently.
 
-nppatch changes that. By repackaging the open-source NPSP code as an unlocked 2GP, nppatch gives organizations the ability to install, upgrade, and — if they choose — modify the package to meet their specific needs.
+NPPatch changes that. By repackaging the open-source NPSP code as an unlocked 2GP, NPPatch gives organizations the ability to install, upgrade, and — if they choose — modify the package to meet their specific needs.
 
 ## Why Does This Exist?
 
@@ -16,15 +16,15 @@ Salesforce has announced end of innovation for NPSP. There will be no further fe
 
 This has left many organizations — particularly smaller nonprofits and the consultants who serve them — in a difficult position. Some are moving to Nonprofit Cloud not because they believe it's the best fit, but because they feel it's their only option.
 
-**nppatch exists to make sure that isn't true.**
+**NPPatch exists to make sure that isn't true.**
 
 This project is not anti-Nonprofit Cloud. There's genuinely exciting work going into that platform. The goal is simply to ensure that organizations can make an informed choice based on the facts: what each product does, what it costs to implement and maintain, what support looks like, and what the long-term trajectory is.
 
-For many smaller organizations with existing NPSP implementations, continuing on a community-maintained version of the platform they already know may be the right answer. nppatch makes that possible.
+For many smaller organizations with existing NPSP implementations, continuing on a community-maintained version of the platform they already know may be the right answer. NPPatch makes that possible.
 
 ## Who Is This For?
 
-nppatch is designed for three audiences:
+NPPatch is designed for three audiences:
 
 **Nonprofit organizations** currently running NPSP who want to continue using their existing platform with a path to community-driven updates and bug fixes, without migrating to Nonprofit Cloud.
 
@@ -34,7 +34,7 @@ nppatch is designed for three audiences:
 
 ## What's In the Package?
 
-nppatch includes the full NPSP feature set, consolidated from the original five managed packages into a single codebase:
+NPPatch includes the full NPSP feature set, consolidated from the original five managed packages into a single codebase:
 
 - **Household and Organization Account Management** — automatic household creation, account naming, address management
 - **Recurring Donations** — enhanced recurring donation support with schedule management, change tracking, and forecasting
@@ -64,7 +64,7 @@ nppatch includes the full NPSP feature set, consolidated from the original five 
 
 ## Getting Started
 
-If you're a consultant evaluating nppatch for a client, start with the [Getting Started Overview](getting-started/overview.md) for guidance on when nppatch makes sense and what to consider.
+If you're a consultant evaluating NPPatch for a client, start with the [Getting Started Overview](getting-started/overview.md) for guidance on when NPPatch makes sense and what to consider.
 
 For installation, you have two paths:
 
@@ -75,7 +75,7 @@ After installation, see [Post-Install Configuration](getting-started/post-instal
 
 ## Open-Source Lineage
 
-nppatch is built on the open-source code from the Salesforce.org Nonprofit Success Pack repositories. The original NPSP code was released under open-source licensing, and nppatch follows those same license terms.
+NPPatch is built on the open-source code from the Salesforce.org Nonprofit Success Pack repositories. The original NPSP code was released under open-source licensing, and NPPatch follows those same license terms.
 
 The five original NPSP packages — TDTM (trigger framework), Contacts & Organizations, Households, Recurring Donations, and the main Nonprofit Success Pack — have been consolidated into a single repository and single package. The code, objects, and automation are functionally equivalent; what's changed is the packaging and distribution model.
 

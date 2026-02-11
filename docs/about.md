@@ -1,8 +1,8 @@
-# About nppatch
+# About NPPatch
 
 ## What's in a name?
 
-If you've spent time in Seattle, you might know what a P-Patch is. If you've spent time in the Salesforce nonprofit ecosystem, you almost certainly know what NPSP is. nppatch lives at the intersection of both — and the name is no accident.
+If you've spent time in Seattle, you might know what a P-Patch is. If you've spent time in the Salesforce nonprofit ecosystem, you almost certainly know what NPSP is. NPPatch lives at the intersection of both — and the name is no accident.
 
 ### The P-Patch story
 
@@ -28,17 +28,17 @@ NPSP was always described as open source, and in an important sense it was: the 
 
 When Salesforce announced the end of active innovation on NPSP in favor of Nonprofit Cloud, that tension came to a head. Thousands of organizations — many of them small nonprofits with limited budgets — were left weighing their options. Some moved to Nonprofit Cloud. But others felt pushed toward a product they weren't sure was right for them, not because they thought it was better, but because they thought it was their only path forward.
 
-### Why nppatch exists
+### Why NPPatch exists
 
-nppatch exists because we don't think it should be the only path forward.
+NPPatch exists because we don't think it should be the only path forward.
 
-We've taken the open-source NPSP codebase — all five original packages — and consolidated it into a single repository. We're distributing it as a second-generation, namespaced, unlocked package. That distinction matters: it means organizations can install nppatch and modify the code in their own environments if they need to. It means the community can continue to fix bugs, build features, and ship updates on its own terms. The namespace preserves a clean upgrade path so that improvements can flow to everyone who wants them, while the unlocked model ensures that no single entity holds the keys to what organizations can do with their own systems.
+We've taken the open-source NPSP codebase — all five original packages — and consolidated it into a single repository. We're distributing it as a second-generation, namespaced, unlocked package. That distinction matters: it means organizations can install NPPatch and modify the code in their own environments if they need to. It means the community can continue to fix bugs, build features, and ship updates on its own terms. The namespace preserves a clean upgrade path so that improvements can flow to everyone who wants them, while the unlocked model ensures that no single entity holds the keys to what organizations can do with their own systems.
 
 This isn't a fork born out of frustration with Salesforce. We're genuinely excited about much of what's being built in Nonprofit Cloud. But we believe every organization should choose its path based on what actually fits — what the product does, what it costs to implement and maintain, and what kind of support exists around it. Not based on the fear that the alternative is disappearing.
 
 ### Communal growth
 
-The name nppatch carries all of these threads:
+The name NPPatch carries all of these threads:
 
 **np** is for nonprofit — the mission at the center of everything.
 
@@ -46,8 +46,8 @@ The name nppatch carries all of these threads:
 
 **patch** is also a word that means something specific in software — a fix, an improvement, a way of keeping something running and making it better over time. That's exactly what this project does for the NPSP codebase.
 
-And if you put **nppatch** next to **npsp**, the family resemblance is right there. This isn't a replacement that pretends the original never existed. It's a continuation, carried forward by the community that always made it what it was.
+And if you put **NPPatch** next to **npsp**, the family resemblance is right there. This isn't a replacement that pretends the original never existed. It's a continuation, carried forward by the community that always made it what it was.
 
 The Picardo family didn't plan to start a citywide movement when they said yes to a neighbor's request in 1970. The early NPSP contributors didn't know they were building something that would serve tens of thousands of organizations when they gathered for those first Developer Sprints. Both things grew because people kept showing up, kept tending the ground, and kept sharing what they grew.
 
-That's what we're inviting you to do with nppatch. Bring your plot. Grow something. Share what works. The garden is open.
+That's what we're inviting you to do with NPPatch. Bring your plot. Grow something. Share what works. The garden is open.
