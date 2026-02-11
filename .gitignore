@@ -8,7 +8,7 @@
 __pycache__
 
 # Robot Framework results
-robot/carpathia/results/
+robot/nppatch/results/
 
 # Salesforce cache
 .sf/

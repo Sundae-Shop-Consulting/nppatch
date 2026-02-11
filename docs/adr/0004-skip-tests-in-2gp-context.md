@@ -7,7 +7,7 @@
 
 When running tests during 2GP package version creation, the execution context differs significantly from 1GP and unmanaged deployments:
 
-1. **Namespace is applied**: All custom objects, fields, and classes have the `carpa__` namespace prefix
+1. **Namespace is applied**: All custom objects, fields, and classes have the `nppatch__` namespace prefix
 2. **FLS enforcement differs**: Field-Level Security checks behave differently in namespaced context
 3. **TDTM triggers may not fire**: Trigger Dispatch Table Management (TDTM) handlers configured via Custom Metadata don't always execute as expected
 4. **Permission sets behave differently**: Even with admin permission sets assigned, some FLS checks fail

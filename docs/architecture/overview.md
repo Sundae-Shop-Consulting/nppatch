@@ -364,7 +364,7 @@ nppatch is deployed as a managed package with:
 ### Namespace Isolation
 
 When installed as a managed package:
-- Prefix namespace references: `carpa__CustomField__c`
+- Prefix namespace references: `nppatch__CustomField__c`
 - Utility functions handle namespace transparency: `UTIL_Namespace.StrTokenNSPrefix()`
 - Tests run in both managed and unmanaged contexts
 

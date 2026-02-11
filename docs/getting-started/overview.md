@@ -34,10 +34,10 @@ The nppatch codebase is the open-source NPSP code, consolidated from five reposi
 
 ### The Namespace Is Different
 
-nppatch uses the `carpa` namespace rather than `npsp`. This means that custom fields, objects, and Apex classes will be prefixed with `carpa__` rather than `npsp__`. For existing NPSP orgs, this is significant — it means nppatch is not a drop-in replacement that can simply upgrade over an existing NPSP managed package installation. A migration path would need to account for the namespace difference.
+nppatch uses the `nppatch` namespace rather than `npsp`. This means that custom fields, objects, and Apex classes will be prefixed with `nppatch__` rather than `npsp__`. For existing NPSP orgs, this is significant — it means nppatch is not a drop-in replacement that can simply upgrade over an existing NPSP managed package installation. A migration path would need to account for the namespace difference.
 
 !!! warning "Namespace Implications"
-    Because nppatch uses a different namespace (`carpa`) than the original NPSP (`npsp`), migrating an existing NPSP org to nppatch requires data migration and reconfiguration — not a simple package swap. This is a critical consideration when advising clients.
+    Because nppatch uses a different namespace (`nppatch`) than the original NPSP (`npsp`), migrating an existing NPSP org to nppatch requires data migration and reconfiguration — not a simple package swap. This is a critical consideration when advising clients.
 
 ### It's an Unlocked Package
 
@@ -74,7 +74,7 @@ When evaluating nppatch for a client, consider:
 4. **Technical capacity**: Does the client (or their consultant) have the technical skills to manage an unlocked package, apply upgrades, and troubleshoot issues?
 5. **Budget**: What are the comparative costs of Nonprofit Cloud licensing and implementation vs. nppatch (which has no license cost but requires community or consultant support)?
 6. **Timeline**: If the client needs new capabilities now, which platform delivers them sooner?
-7. **Migration complexity**: If migrating from NPSP, what's the effort involved in moving to the `carpa` namespace vs. moving to Nonprofit Cloud's data model?
+7. **Migration complexity**: If migrating from NPSP, what's the effort involved in moving to the `nppatch` namespace vs. moving to Nonprofit Cloud's data model?
 
 ## Next Steps
 
