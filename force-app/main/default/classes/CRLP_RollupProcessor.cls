@@ -573,8 +573,8 @@ public inherited sharing class CRLP_RollupProcessor {
     private Boolean isRollupFieldAtThreshold(SObject summaryObject) {
         Integer maxRelatedOppsForNonLDVMode = CRLP_Rollup_SVC.getMaxRelatedOppsForNonSkewMode();
 
-        if ((Decimal) summaryObject.get('NumberOfClosedOpps__c') >= maxRelatedOppsForNonLDVMode ||
-            (Decimal) summaryObject.get('NumberOfMembershipOpps__c') >= maxRelatedOppsForNonLDVMode) {
+        if ((Decimal) summaryObject.get(UTIL_Namespace.StrTokenNSPrefix('NumberOfClosedOpps__c')) >= maxRelatedOppsForNonLDVMode ||
+            (Decimal) summaryObject.get(UTIL_Namespace.StrTokenNSPrefix('NumberOfMembershipOpps__c')) >= maxRelatedOppsForNonLDVMode) {
             return true;
 
         } else if (this.summaryObjectType == Contact.SObjectType &&

@@ -36,6 +36,11 @@
 @isTest
 private class ACCT_CascadeDeleteLookups_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description Tests cascade delete: deletes accounts, which deletes recurring donations allocations
     * and relationships.

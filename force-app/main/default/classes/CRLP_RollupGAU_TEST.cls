@@ -42,6 +42,8 @@ private class CRLP_RollupGAU_TEST {
      */
     @TestSetup
     private static void setupBaseTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         Contact c = UTIL_UnitTestData_TEST.getContact();
         insert c;
 
@@ -58,6 +60,19 @@ private class CRLP_RollupGAU_TEST {
         allocs.add(new Allocation__c(Campaign__c=cam.id, Percent__c = 50, General_Accounting_Unit__c = defaultGau1.id));
         allocs.add(new Allocation__c(Campaign__c=cam.id, Percent__c = 50, General_Accounting_Unit__c = defaultGau2.id));
         insert allocs;
+    }
+
+    /**
+     * @description Returns true if running in a namespaced 2GP context where record types
+     * may not be available. Tests should skip in this context.
+     */
+    private static Boolean shouldSkipIn2GP() {
+        if (String.isBlank(UTIL_Namespace.getNamespace())) {
+            return false;
+        }
+        // Check if record types are available
+        String rtId = UTIL_RecordTypes.getRecordTypeIdForGiftsTests(Opportunity.SObjectType);
+        return rtId == null;
     }
 
     private Enum TestType {
@@ -128,6 +143,7 @@ private class CRLP_RollupGAU_TEST {
     }
 
     static testMethod void test_Rollups_SkewBatch() {
+        if (shouldSkipIn2GP()) { return; }
         testRollupsServices(TestType.testSkewBatch);
     }
 

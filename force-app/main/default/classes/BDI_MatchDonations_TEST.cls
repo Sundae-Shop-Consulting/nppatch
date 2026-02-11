@@ -36,6 +36,11 @@
 @IsTest
 private class BDI_MatchDonations_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
    @IsTest
    static void shouldPopulateDonationMatchingContactQueryIds() {
       BDI_MatchDonations.perfLog = new BDI_PerfLogger.PerfLog();

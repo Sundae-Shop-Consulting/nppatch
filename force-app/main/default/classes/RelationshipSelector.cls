@@ -45,8 +45,8 @@ public with sharing class RelationshipSelector {
                         'RelatedContact__r.Title'
                 })
                 .withFrom(Relationship__c.SObjectType)
-                .withWhere('Contact__c = :contactId')
-                .withOrderBy(Contact.Name, 'RelatedContact__r.Name')
+                .withWhere(UTIL_Namespace.StrTokenNSPrefix('Contact__c') + ' = :contactId')
+                .withOrderBy(Contact.Name, UTIL_Namespace.StrTokenNSPrefix('RelatedContact__r') + '.Name')
                 .withSecurityEnforced();
         return Database.query(query.build());
     }

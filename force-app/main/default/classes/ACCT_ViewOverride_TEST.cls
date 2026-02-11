@@ -38,12 +38,14 @@ private class ACCT_ViewOverride_TEST {
 
     /*******************************************************************************************************
     * @description Invoke the Account View Override Controller on an Account
-    */ 
+    */
     public static testMethod void accountViewOverride() {
-        
+        // Assign admin permission set to ensure FLS access for WITH SECURITY_ENFORCED queries
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         UTIL_CustomSettingsFacade.getContactsSettingsForTests(new Contacts_and_Orgs_Settings__c (Account_Processor__c = CAO_Constants.ONE_TO_ONE_PROCESSOR));
         
-        Test.setCurrentPageReference(new PageReference('Page.ACCT_ViewOverride'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('ACCT_ViewOverride')));
         
         String newContactMailingStreet = '123 Elm St';
         Contact con = new Contact(
@@ -74,10 +76,12 @@ private class ACCT_ViewOverride_TEST {
     
     /*******************************************************************************************************
     * @description Invoke the Account View Override Controller without specifying an Account
-    */ 
+    */
     public static testMethod void noAccount() {
-        
-        Test.setCurrentPageReference(new PageReference('Page.ACCT_ViewOverride'));
+        // Assign admin permission set to ensure FLS access for WITH SECURITY_ENFORCED queries
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('ACCT_ViewOverride')));
         
         Account newAccount = new Account();
         

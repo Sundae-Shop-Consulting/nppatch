@@ -36,8 +36,6 @@
 public with sharing class GS_NonprofitTrialOrgService {
 
     private static final String STATIC_RESOURCE_NAME = 'GettingStartedTestingConfigurationJSON';
-    private static final String APPLICATION_DATE = 'P10_Application_Date';
-    private static final Date DEFAULT_NON_APPLICATED_DATE = Date.newInstance(1970,01,01);
 
     /**
      * @description Property for asking if the returned values has to be overriden for testing
@@ -97,22 +95,15 @@ public with sharing class GS_NonprofitTrialOrgService {
 
     /**
      * @description Retrieves the application date.
-     * On prod this is populated using the FeatureParameter "P10_Application_Date"
-     * For QA purpose this values can be overriden if this is running on a Scratch org and there is a value in the Static Resource GettingStartedTestingConfigurationJSON
-     * @return   return Application date gotten of the P10_Application_Date FeatureParameter OR the testing configuration object.
+     * For QA purpose this value can be overridden via the Static Resource GettingStartedTestingConfigurationJSON
+     * FeatureParameters removed for 2GP compatibility - returns null unless overridden.
+     * @return Application date from testing configuration, or null
      */
     public static Date getApplicationDate() {
-        
-        if (UTIL_Namespace.isScratchOrg() && testingConfiguration != null) { 
+        if (UTIL_Namespace.isScratchOrg() && testingConfiguration != null) {
             return testingConfiguration.applicationDate;
         }
-
-        try {
-            Date featureParameterDate = new UTIL_FeatureManagement().checkPackageDateValue(APPLICATION_DATE);
-            return featureParameterDate == null || DEFAULT_NON_APPLICATED_DATE == featureParameterDate ? null : featureParameterDate;
-        } catch (System.NoDataFoundException ex) {
-            return null;
-        }
+        return null;
     }
 
     /**

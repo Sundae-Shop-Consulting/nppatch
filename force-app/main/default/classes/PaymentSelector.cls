@@ -91,7 +91,7 @@ public with sharing class PaymentSelector {
     
         String refundSubquery = new UTIL_Query()
             .withSelectFields(refundFields)
-            .withFrom('Refunds__r')
+            .withFrom(UTIL_Namespace.StrTokenNSPrefix('Refunds__r'))
             .build();
 
         return '(' + refundSubquery + ')';

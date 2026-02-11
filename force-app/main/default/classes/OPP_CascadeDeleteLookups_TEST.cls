@@ -36,8 +36,13 @@
 @isTest
 private class OPP_CascadeDeleteLookups_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
-    * @description Deletes the Opportunities which deletes the related Allocations. 
+    * @description Deletes the Opportunities which deletes the related Allocations.
     * Then undeletes the Opportunities, which undeletes the Allocations.
     * Verifies results: All the Allocations should be deleted after the Opportunities are deleted.
     * Then the Allocations will be undeleted after the Opportunities are undeleted.

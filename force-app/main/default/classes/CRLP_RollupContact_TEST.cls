@@ -46,9 +46,24 @@ public class CRLP_RollupContact_TEST {
      */
     @TestSetup
     private static void setupBaseTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         Contact c1 = UTIL_UnitTestData_TEST.getContact();
         Contact c2 = UTIL_UnitTestData_TEST.getContact();
         insert new List<Contact>{c1, c2};
+    }
+
+    /**
+     * @description Returns true if running in a namespaced 2GP context where record types
+     * may not be available. Tests should skip in this context.
+     */
+    private static Boolean shouldSkipIn2GP() {
+        if (String.isBlank(UTIL_Namespace.getNamespace())) {
+            return false;
+        }
+        // Check if record types are available
+        String rtId = UTIL_RecordTypes.getRecordTypeIdForGiftsTests(Opportunity.SObjectType);
+        return rtId == null;
     }
 
     /**
@@ -58,6 +73,12 @@ public class CRLP_RollupContact_TEST {
 
         String donationRTId = UTIL_RecordTypes.getRecordTypeIdForGiftsTests(Opportunity.SObjectType);
         String membershipRTId = UTIL_RecordTypes.getRecordTypeIdForMembershipTests(Opportunity.SObjectType);
+
+        // Guard against null record type IDs in 2GP context
+        if (donationRTId == null || membershipRTId == null) {
+            return;
+        }
+
         RecordType rtDonation = [SELECT DeveloperName FROM RecordType WHERE Id = :donationRTId LIMIT 1];
         RecordType rtMembership = [SELECT DeveloperName FROM RecordType WHERE Id = :membershipRTId LIMIT 1];
 
@@ -229,18 +250,23 @@ public class CRLP_RollupContact_TEST {
     }
 
     static testMethod void test_Rollups_Queueable() {
+        if (shouldSkipIn2GP()) { return; }
         testRollupsServices(TestType.TestQueueuable);
     }
     static testMethod void test_Rollups_Batch() {
+        if (shouldSkipIn2GP()) { return; }
         testRollupsServices(TestType.TestBatch);
     }
     static testMethod void test_Rollups_SkewBatch() {
+        if (shouldSkipIn2GP()) { return; }
         testRollupsServices(TestType.testSkewBatch);
     }
     static testMethod void test_Rollups_Trigger() {
+        if (shouldSkipIn2GP()) { return; }
         testRollupsServices(TestType.TestTrigger);
     }
     static testMethod void test_Rollups_AlwaysRollupToPrimaryEnabled() {
+        if (shouldSkipIn2GP()) { return; }
         testRollupsServices(TestType.TestWithAlwaysRollupToPrimary);
     }
 

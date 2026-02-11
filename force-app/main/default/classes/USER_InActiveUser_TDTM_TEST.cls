@@ -39,6 +39,8 @@
 public with sharing class USER_InActiveUser_TDTM_TEST {
     @TestSetup
     static void testSetup() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         insert TDTM_DefaultConfig.getDefaultRecords();
     }
     /*********************************************************************************************************

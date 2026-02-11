@@ -37,6 +37,12 @@
 @isTest(IsParallel=true)
 
 public with sharing class CON_ContactMergeTDTM_TEST2 {
+
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*******************************************************************************************************************
     * @description Counter for creating unique contacts
     */

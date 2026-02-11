@@ -121,15 +121,15 @@ public with sharing class UTIL_PerfLogger_TEST {
         perfLogger.stop();
         perfLogger.save();
         if (pl1.getPerfLogSObject() != null) {
-            List<SOBject> logs = database.query('SELECT Id, Component__c, Label__c, Duration__c, Parent_Duration__c, Number_of_Calls__c ' +
-                'FROM PerfLog__c ORDER BY Label__c');
+            List<SOBject> logs = database.query('SELECT Id, ' + UTIL_Namespace.StrTokenNSPrefix('Component__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Label__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Duration__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Parent_Duration__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Number_of_Calls__c') + ' ' +
+                'FROM ' + UTIL_Namespace.StrTokenNSPrefix('PerfLog__c') + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Label__c'));
             system.assertEquals(2, logs.size());
-            system.assertEquals('testLabel1', logs[0].get('Label__c'));
-            system.assertEquals('testLabel2', logs[1].get('Label__c'));
-            system.assertEquals(pl1.duration, logs[0].get('Duration__c'));
-            system.assertEquals(pl2.duration, logs[1].get('Duration__c'));
-            system.assertEquals(1, logs[1].get('Number_of_Calls__c'));
-            system.assert(double.valueOf(logs[0].get('Parent_Duration__c')) >= double.valueOf(pl1.duration));
+            system.assertEquals('testLabel1', logs[0].get(UTIL_Namespace.StrTokenNSPrefix('Label__c')));
+            system.assertEquals('testLabel2', logs[1].get(UTIL_Namespace.StrTokenNSPrefix('Label__c')));
+            system.assertEquals(pl1.duration, logs[0].get(UTIL_Namespace.StrTokenNSPrefix('Duration__c')));
+            system.assertEquals(pl2.duration, logs[1].get(UTIL_Namespace.StrTokenNSPrefix('Duration__c')));
+            system.assertEquals(1, logs[1].get(UTIL_Namespace.StrTokenNSPrefix('Number_of_Calls__c')));
+            system.assert(double.valueOf(logs[0].get(UTIL_Namespace.StrTokenNSPrefix('Parent_Duration__c'))) >= double.valueOf(pl1.duration));
         }
     }
 }

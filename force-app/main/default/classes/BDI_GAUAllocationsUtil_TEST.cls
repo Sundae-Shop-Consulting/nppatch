@@ -39,6 +39,8 @@ public with sharing class BDI_GAUAllocationsUtil_TEST {
 
     @TestSetup
     static void createTestData(){
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         General_Accounting_Unit__c gau1 = new General_Accounting_Unit__c(Name = 'TestGAU1',
         Active__c = true);
 

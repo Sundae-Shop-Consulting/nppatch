@@ -36,6 +36,11 @@
 @isTest
 private class BDI_ProcessSelectedDIs_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description Tests that DataImport Ids are passed in the URL to the BDI_DataImport page
     **********************************************************************************************************/

@@ -115,7 +115,7 @@ private class GiftBatch_TEST {
 
     @isTest
     static void shouldReturnExpectedGiftBatchRecordProperties() {
-        String dummyDataImportBatchJSON = '{"attributes":{"type":"DataImportBatch__c"},"LastModifiedDate":"2021-10-04T17:54:26.000Z"}';
+        String dummyDataImportBatchJSON = '{"attributes":{"type":"' + UTIL_Namespace.StrTokenNSPrefix('DataImportBatch__c') + '"},"LastModifiedDate":"2021-10-04T17:54:26.000Z"}';
         DataImportBatch__c dummyDataImportBatch = (DataImportBatch__c) JSON.deserialize(dummyDataImportBatchJSON, DataImportBatch__c.class);
         dummyDataImportBatch.Name = 'DUMMY_GIFT_BATCH_NAME';
         dummyDataImportBatch.RequireTotalMatch__c = false;

@@ -45,7 +45,7 @@ private class LD_LeadConvertOverride_TEST {
         testLead.Status = 'Closed - Converted';
         insert testLead;
 
-        Test.setCurrentPageReference(new PageReference('Page.LD_LeadConvertOverride'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('LD_LeadConvertOverride')));
         System.currentPageReference().getParameters().put('id', testLead.Id);
 
         LD_LeadConvertOverride_CTRL controller = new LD_LeadConvertOverride_CTRL(new ApexPages.StandardController
@@ -130,7 +130,7 @@ private class LD_LeadConvertOverride_TEST {
             new Contacts_and_Orgs_Settings__c (Account_Processor__c = strProcessor));
         CAO_Constants.setIndividualAccountForTests(CAO_Constants.INDIVIDUAL_ACCOUNT_NAME_FOR_TESTS);
 
-        Test.setCurrentPageReference(new PageReference('Page.LD_LeadConvertOverride'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('LD_LeadConvertOverride')));
         string companyName = SPECIAL_ACCOUNT_NAME;
         String leadFirstName = 'Leady';
         String leadLastName = 'lead for tests_987';
@@ -214,7 +214,7 @@ private class LD_LeadConvertOverride_TEST {
             new Contacts_and_Orgs_Settings__c (Account_Processor__c = strProcessor));
         CAO_Constants.setIndividualAccountForTests(CAO_Constants.INDIVIDUAL_ACCOUNT_NAME_FOR_TESTS);
 
-        Test.setCurrentPageReference(new PageReference('Page.LD_LeadConvertOverride'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('LD_LeadConvertOverride')));
 
         // create a contact to merge into
         contact c = new contact(
@@ -293,7 +293,7 @@ private class LD_LeadConvertOverride_TEST {
             new Contacts_and_Orgs_Settings__c (Account_Processor__c = strProcessor));
         CAO_Constants.setIndividualAccountForTests(CAO_Constants.INDIVIDUAL_ACCOUNT_NAME_FOR_TESTS);
 
-        Test.setCurrentPageReference(new PageReference('Page.LD_LeadConvertOverride'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('LD_LeadConvertOverride')));
 
         string companyName = 'Junky company for tests';
         Lead l = new Lead();
@@ -364,7 +364,7 @@ private class LD_LeadConvertOverride_TEST {
             new Contacts_and_Orgs_Settings__c (Account_Processor__c = strProcessor));
         CAO_Constants.setIndividualAccountForTests(CAO_Constants.INDIVIDUAL_ACCOUNT_NAME_FOR_TESTS);
 
-        Test.setCurrentPageReference(new PageReference('Page.LD_LeadConvertOverride'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('LD_LeadConvertOverride')));
 
         string companyName = 'Junky company for tests';
         //create a real company account
@@ -442,7 +442,7 @@ private class LD_LeadConvertOverride_TEST {
             new Contacts_and_Orgs_Settings__c (Account_Processor__c = strProcessor));
         CAO_Constants.setIndividualAccountForTests(CAO_Constants.INDIVIDUAL_ACCOUNT_NAME_FOR_TESTS);
 
-        Test.setCurrentPageReference(new PageReference('Page.LD_LeadConvertOverride'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('LD_LeadConvertOverride')));
 
         string companyName = 'Junky company for tests';
         //create a real company account
@@ -520,7 +520,7 @@ private class LD_LeadConvertOverride_TEST {
         Households_Settings__c householdSettingsForTests = UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
             new Households_Settings__c (Household_Rules__c = HH_Households.ALL_INDIVIDUALS_PROCESSOR));
 
-        Test.setCurrentPageReference(new PageReference('Page.LD_LeadConvertOverride'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('LD_LeadConvertOverride')));
 
         string companyName = SPECIAL_ACCOUNT_NAME;
         Lead l = new Lead();
@@ -682,7 +682,7 @@ private class LD_LeadConvertOverride_TEST {
         Contacts_and_Orgs_Settings__c contactSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(
             new Contacts_and_Orgs_Settings__c (Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
 
-        Test.setCurrentPageReference(new PageReference('Page.LD_LeadConvertOverride'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('LD_LeadConvertOverride')));
         string companyName = SPECIAL_ACCOUNT_NAME;
         String leadFirstName = 'Leady';
         String leadLastName = 'lead for tests_987';
@@ -778,7 +778,7 @@ private class LD_LeadConvertOverride_TEST {
             new Contacts_and_Orgs_Settings__c (Account_Processor__c = strProcessor));
         CAO_Constants.setIndividualAccountForTests(CAO_Constants.INDIVIDUAL_ACCOUNT_NAME_FOR_TESTS);
 
-        Test.setCurrentPageReference(new PageReference('Page.LD_LeadConvertOverride'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('LD_LeadConvertOverride')));
         string companyName = SPECIAL_ACCOUNT_NAME;
         String leadFirstName = 'Leady';
         String leadLastName = 'lead for tests_987';
@@ -887,7 +887,7 @@ private class LD_LeadConvertOverride_TEST {
         con = getContacts()[0];
         system.assertNotEquals(null, con.AccountId);
 
-        Test.setCurrentPageReference(new PageReference('Page.LD_LeadConvertOverride'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('LD_LeadConvertOverride')));
         string companyName = SPECIAL_ACCOUNT_NAME;
         String leadFirstName = 'Testy';
         String leadLastName = 'Testy';
@@ -989,7 +989,7 @@ private class LD_LeadConvertOverride_TEST {
             new Contacts_and_Orgs_Settings__c (Account_Processor__c = strProcessor));
         CAO_Constants.setIndividualAccountForTests(CAO_Constants.INDIVIDUAL_ACCOUNT_NAME_FOR_TESTS);
 
-        Test.setCurrentPageReference(new PageReference('Page.LD_LeadConvertOverride'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('LD_LeadConvertOverride')));
         string companyName = 'Super Co';
         String leadFirstName = 'Leady';
         String leadLastName = 'lead for tests_987';
@@ -1072,7 +1072,7 @@ private class LD_LeadConvertOverride_TEST {
         l.CompanyCountry__c = 'United States';
         insert l;
 
-        Test.setCurrentPageReference(new PageReference('Page.LD_LeadConvertOverride'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('LD_LeadConvertOverride')));
         system.currentPageReference().getParameters().put('id', l.id);
 
         ApexPages.StandardController sc = new ApexPages.standardController(l);

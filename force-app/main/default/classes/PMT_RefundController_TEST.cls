@@ -35,6 +35,12 @@
 */
 @IsTest
 public with sharing class PMT_RefundController_TEST {
+
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     @IsTest
     private static void userWithNoPermissionShouldNotBeAbleToPerformAnyRefundAction() {
         User readOnlyUser = UTIL_UnitTestData_TEST.createUser(UTIL_UnitTestData_TEST.PROFILE_READONLY_USER);

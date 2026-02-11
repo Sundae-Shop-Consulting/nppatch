@@ -1209,10 +1209,10 @@ public without sharing class RD2_ScheduleService {
             String soql = new UTIL_Query()
                 .withSelectFields(new ScheduleQueryHandler().getFields())
                 .withFrom(RecurringDonationSchedule__c.SObjectType)
-                .withWhere('RecurringDonation__c = :rdId')
-                .withWhere('IsPause__c = true')
-                .withWhere('EndDate__c >= :currentDate')
-                .withOrderBy('StartDate__c')
+                .withWhere(UTIL_Namespace.StrTokenNSPrefix('RecurringDonation__c') + ' = :rdId')
+                .withWhere(UTIL_Namespace.StrTokenNSPrefix('IsPause__c') + ' = true')
+                .withWhere(UTIL_Namespace.StrTokenNSPrefix('EndDate__c') + ' >= :currentDate')
+                .withOrderBy(UTIL_Namespace.StrTokenNSPrefix('StartDate__c'))
                 .build();
 
             for (RecurringDonationSchedule__c schedule : Database.query(soql)) {
@@ -1258,9 +1258,9 @@ public without sharing class RD2_ScheduleService {
             return new UTIL_Query()
                 .withSelectFields(getFields())
                 .withFrom(RecurringDonationSchedule__c.SObjectType)
-                .withWhere('RecurringDonation__c IN :rds')
-                .withWhere('(EndDate__c = null OR EndDate__c >= :currentDate)')
-                .withOrderBy('StartDate__c')
+                .withWhere(UTIL_Namespace.StrTokenNSPrefix('RecurringDonation__c') + ' IN :rds')
+                .withWhere('(' + UTIL_Namespace.StrTokenNSPrefix('EndDate__c') + ' = null OR ' + UTIL_Namespace.StrTokenNSPrefix('EndDate__c') + ' >= :currentDate)')
+                .withOrderBy(UTIL_Namespace.StrTokenNSPrefix('StartDate__c'))
                 .build();
         }
 

@@ -70,8 +70,8 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
                     BDI_DataImportService.listStrDataImportFields);
                 // special case Donation fields we defaultly map to Opp fields, but we will use with Payments too!
                 // note that these two work for matching rules.  
-                mapDIFieldToPmtField.put(UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c').toLowercase(), 'Payment_Amount__c');
-                mapDIFieldToPmtField.put(UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c').toLowercase(), 'Scheduled_Date__c');
+                mapDIFieldToPmtField.put(UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c').toLowercase(), UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c'));
+                mapDIFieldToPmtField.put(UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c').toLowercase(), UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c'));
             }
             return mapDIFieldToPmtField;
         }
@@ -467,25 +467,28 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
         setOppFields.add('AccountId');
         setOppFields.add(UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c'));
         setOppFields.add('CloseDate');
-        setOppFields.add('Number_of_Payments__c');
-        setOppFields.add('Account.SYSTEMIsIndividual__c');
+        setOppFields.add(UTIL_Namespace.StrTokenNSPrefix('Number_of_Payments__c'));
+        setOppFields.add('Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEMIsIndividual__c'));
 
         // need to include any Opp fields we may update, so we can compare against them
         setOppFields.addAll(mapDIFieldToOppField.values());
-        
-        // the set of Payment fields for our soql
+
+        // the set of Payment fields for our soql (use lowercase to deduplicate)
         Set<String> setPmtFields = new Set<String>();
-        setPmtFields.add('Id');
-        setPmtFields.add('Name');
-        setPmtFields.add('Paid__c');
-        setPmtFields.add('Opportunity__c');
-        setPmtFields.add('Payment_Amount__c');
-        setPmtFields.add('Payment_Date__c');
-        setPmtFields.add('Scheduled_Date__c');
-        setPmtFields.add('Written_Off__c');
+        setPmtFields.add('id');
+        setPmtFields.add('name');
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Paid__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Written_Off__c').toLowerCase());
 
         // need to include any Pmt fields we may update, so we can compare against them
-        setPmtFields.addAll(mapDIFieldToPmtField.values());
+        // Lowercase to deduplicate with fields added above
+        for (String pmtField : mapDIFieldToPmtField.values()) {
+            setPmtFields.add(pmtField.toLowerCase());
+        }
 
         // now query for all Open Opportunities from these Contacts or Accounts
         String strSoql = buildMatchQuery(setOppFields, setPmtFields, setOppId, setAccId, setConId);
@@ -516,9 +519,9 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
 
         // add Payment subquery
         strSoql += ', (SELECT ' + String.join(new List<String>(setPmtFields), ',');
-        strSoql += ' FROM OppPayment__r ' +
-            'WHERE Paid__c = false ' +
-            'AND Written_Off__c = false)';
+        strSoql += ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
+            'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ' = false ' +
+            'AND ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false)';
 
         strSoql += ' FROM Opportunity';
         strSoql += ' WHERE IsClosed = false AND (';

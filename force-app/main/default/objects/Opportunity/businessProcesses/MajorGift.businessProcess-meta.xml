@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MajorGift</fullName>
+    <isActive>true</isActive>
+    <values>
+        <fullName>Prospecting</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Qualification</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Needs Analysis</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Proposal/Price Quote</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Negotiation/Review</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed Won</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed Lost</fullName>
+        <default>false</default>
+    </values>
+</BusinessProcess>

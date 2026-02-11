@@ -108,13 +108,13 @@ public class ALLO_Multicurrency_TEST {
         Allocation__c amountAllo = new Allocation__c(Campaign__c=cam.id, Amount__c = 5, General_Accounting_Unit__c = campaigngau.id);
         insert amountAllo;
 
-        list<sObject> queryAllo = database.query('SELECT Id, CurrencyIsoCode FROM Allocation__c');
+        list<sObject> queryAllo = database.query('SELECT Id, CurrencyIsoCode FROM ' + UTIL_Namespace.StrTokenNSPrefix('Allocation__c'));
         system.assertEquals(usersDefaultCurrency, queryAllo[0].get('CurrencyIsoCode'), 'Allocation should have the default currency type.');
 
         cam.put('CurrencyIsoCode',nonDefaultCurrencyType.get('IsoCode'));
         update cam;
 
-        queryAllo = database.query('SELECT Id, CurrencyIsoCode FROM Allocation__c');
+        queryAllo = database.query('SELECT Id, CurrencyIsoCode FROM ' + UTIL_Namespace.StrTokenNSPrefix('Allocation__c'));
         system.assertEquals(nonDefaultCurrencyType.get('IsoCode'), queryAllo[0].get('CurrencyIsoCode'), 'Allocation should have an updated non-default currency type.');
 
         Opportunity opp = new Opportunity(Name='success', Amount = 10, AccountID=acc.id, CampaignId=cam.id, CloseDate=system.today(), StageName=UTIL_UnitTestData_TEST.getClosedWonStage());
@@ -122,10 +122,10 @@ public class ALLO_Multicurrency_TEST {
 
         decimal convertedAmount = UTIL_CurrencyConversion.convertAmountUsingStandardRates((string)nonDefaultCurrencyType.get('IsoCode'), (string)defaultCurrencyType.get('IsoCode'), 5);
 
-        queryAllo = database.query('SELECT Id, Amount__c, CurrencyIsoCode FROM Allocation__c WHERE Opportunity__c != null');
+        queryAllo = database.query('SELECT Id, ' + UTIL_Namespace.StrTokenNSPrefix('Amount__c') + ', CurrencyIsoCode FROM ' + UTIL_Namespace.StrTokenNSPrefix('Allocation__c') + ' WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' != null');
         system.assertEquals(1,queryAllo.size(), 'Opportunity allocation should be automatically created from the Campaign allocation.');
         system.assertEquals(usersDefaultCurrency, queryAllo[0].get('CurrencyIsoCode'), 'Opportunity Allocation should have the default currency type.');
-        system.assertEquals(convertedAmount, queryAllo[0].get('Amount__c'), 'Opportunity\'s automatically created allocation\'s amount should have be converted to the default currency type.');
+        system.assertEquals(convertedAmount, queryAllo[0].get(UTIL_Namespace.StrTokenNSPrefix('Amount__c')), 'Opportunity\'s automatically created allocation\'s amount should have be converted to the default currency type.');
 
 
         //update the currency manually, an exception should be thrown.
@@ -182,7 +182,7 @@ public class ALLO_Multicurrency_TEST {
         String oppId = oppList[0].Id;
 
         //  where opportunity__c = :oppList[0].Id and CurrencyIsoCode != :usersDefaultCurrency
-        List<Allocation__c> queryAllo = Database.query('SELECT Id, Amount__c, CurrencyIsoCode FROM Allocation__c WHERE Opportunity__c = \'' + oppId + '\'');
+        List<Allocation__c> queryAllo = Database.query('SELECT Id, ' + UTIL_Namespace.StrTokenNSPrefix('Amount__c') + ', CurrencyIsoCode FROM ' + UTIL_Namespace.StrTokenNSPrefix('Allocation__c') + ' WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' = \'' + oppId + '\'');
         System.assertEquals(nonDefaultCurrencyType.get('IsoCode'), oppList[0].get('CurrencyIsoCode'), 'Opportunity should have a non-default currency type.');
         System.assertEquals(nonDefaultCurrencyType.get('IsoCode'), queryAllo[0].get('CurrencyIsoCode'), 'Allocation should have a non-default currency type.');
         System.assertEquals(oppList[0].Amount, queryAllo[0].Amount__c, 'Opportunity and Allocation amounts should be equal for 100% allocation with the same non-default currency type.');
@@ -224,7 +224,7 @@ public class ALLO_Multicurrency_TEST {
 
         id alloid = alloForInsert[1].id;
 
-        list<Allocation__c> alloQuery = database.query('SELECT Id, Amount__c, CurrencyIsoCode FROM Allocation__c WHERE Id = :alloid');
+        list<Allocation__c> alloQuery = database.query('SELECT Id, ' + UTIL_Namespace.StrTokenNSPrefix('Amount__c') + ', CurrencyIsoCode FROM ' + UTIL_Namespace.StrTokenNSPrefix('Allocation__c') + ' WHERE Id = :alloid');
         system.assertEquals(nonDefaultCurrencyType.get('IsoCode'),alloQuery[0].get('CurrencyIsoCode'),'Allocation should inherit the parent Opportunity currency code.');
 
         PageReference pageRef = Page.ALLO_RollupBTN;
@@ -290,7 +290,7 @@ public class ALLO_Multicurrency_TEST {
         Test.stopTest();
 
         id oppId = opp.id;
-        list<Allocation__c> alloQuery = database.query('SELECT Id, Amount__c, CurrencyIsoCode FROM Allocation__c WHERE Opportunity__c = :oppid');
+        list<Allocation__c> alloQuery = database.query('SELECT Id, ' + UTIL_Namespace.StrTokenNSPrefix('Amount__c') + ', CurrencyIsoCode FROM ' + UTIL_Namespace.StrTokenNSPrefix('Allocation__c') + ' WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' = :oppid');
         system.assertEquals(1,alloQuery.size(), 'A default allocation should be created.');
         system.assertEquals(nonDefaultCurrencyType.get('IsoCode'),alloQuery[0].get('CurrencyIsoCode'),'Allocation should inherit the parent Opportunity currency code.');
         

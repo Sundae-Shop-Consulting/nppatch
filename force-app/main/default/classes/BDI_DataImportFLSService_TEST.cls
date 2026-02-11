@@ -37,6 +37,11 @@
 @IsTest
 private class BDI_DataImportFLSService_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     @IsTest
     static void givenRecordHasLookupFieldPopulatedInMemoryThenAssertFieldValidated() {
         Account testAcct = new Account(Name = 'testAcct');

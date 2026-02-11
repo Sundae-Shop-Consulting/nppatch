@@ -36,6 +36,11 @@
 @isTest
 private class RD_CascadeDeleteLookups_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description Deletes recurring donation, which deletes opportunities and allocations. Verifies results.
     * Then undeletes recurring donation, which undeletes opportunities and allocation. Verifies results.

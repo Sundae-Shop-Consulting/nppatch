@@ -34,6 +34,12 @@
 */
 @isTest
 public class ERR_AsyncErrors_TEST {
+
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     @isTest
     private static void testQueryForErrorsInLastDayIfNotPreviouslyRun() {
         /*

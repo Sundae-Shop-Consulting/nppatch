@@ -36,6 +36,12 @@
 
 @isTest
 public with sharing class BDI_Donations_TEST2 {
+
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     @isTest
     private static void shouldCreateAndUpdateACHPaymentsForElevateDI () {
         Data_Import_Settings__c dis = UTIL_CustomSettingsFacade.getDataImportSettings();
@@ -48,7 +54,7 @@ public with sharing class BDI_Donations_TEST2 {
         Payment_Field_Mapping_Settings__c testPFMS =
                 new Payment_Field_Mapping_Settings__c(Name = 'TestPFMSasdf',
                                                         Opportunity_Field__c = 'Name',
-                                                        Payment_Field__c = 'Check_Reference_Number__c');
+                                                        Payment_Field__c = UTIL_Namespace.StrTokenNSPrefix('Check_Reference_Number__c'));
         PMT_PaymentCreator.paymentMappings.put(testPFMS.Name, testPFMS);
 
         String CLOSED_LOST_STAGE = 'Closed Lost';

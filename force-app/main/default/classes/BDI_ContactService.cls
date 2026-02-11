@@ -647,10 +647,16 @@ public with sharing class BDI_ContactService {
     */
     private String getSoqlSelectForContact() {
         Set<String> setContactFields = new Set<String> {
-            'Id', 'Firstname', 'Lastname', 'AccountId', 'Account.SYSTEM_AccountType__c',
+            'Id', 'Firstname', 'Lastname', 'AccountId',
+            'Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEM_AccountType__c'),
             UTIL_Namespace.StrTokenNSPrefix('Primary_Affiliation__c'),
-            'Email', 'AlternateEmail__c', 'HomeEmail__c', 'WorkEmail__c',
-            'Phone', 'HomePhone', 'MobilePhone', 'OtherPhone', 'Formula_HouseholdPhone__c', 'WorkPhone__c' };
+            'Email',
+            UTIL_Namespace.StrTokenNSPrefix('AlternateEmail__c'),
+            UTIL_Namespace.StrTokenNSPrefix('HomeEmail__c'),
+            UTIL_Namespace.StrTokenNSPrefix('WorkEmail__c'),
+            'Phone', 'HomePhone', 'MobilePhone', 'OtherPhone',
+            UTIL_Namespace.StrTokenNSPrefix('Formula_HouseholdPhone__c'),
+            UTIL_Namespace.StrTokenNSPrefix('WorkPhone__c') };
 
         setContactFields.addAll(mapDIFieldToC1Field.values());
         setContactFields.addAll(mapDIFieldToC2Field.values());
@@ -1019,8 +1025,8 @@ public with sharing class BDI_ContactService {
         }
 
         // for c2's that we know their household, we want to add a "looser" key to match by as well.
-        if (strCx == 'Contact2' && di.HouseholdAccountImported__c != null && di.get('Contact2_Firstname__c') != null) {
-            listDiKey.add(String.valueOf(di.get('Contact2_Firstname__c')).toLowerCase() + '|' + di.HouseholdAccountImported__c);
+        if (strCx == 'Contact2' && di.HouseholdAccountImported__c != null && di.get(UTIL_Namespace.StrTokenNSPrefix('Contact2_Firstname__c')) != null) {
+            listDiKey.add(String.valueOf(di.get(UTIL_Namespace.StrTokenNSPrefix('Contact2_Firstname__c'))).toLowerCase() + '|' + di.HouseholdAccountImported__c);
         }
         pl.stop();
         return listDiKey;

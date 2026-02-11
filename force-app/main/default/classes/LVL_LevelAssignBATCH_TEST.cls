@@ -55,9 +55,9 @@ private class LVL_LevelAssignBATCH_TEST {
         lvlTin = new Level__c(
             Name = 'Tin',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = null,
             Maximum_Amount__c = 100);
@@ -65,9 +65,9 @@ private class LVL_LevelAssignBATCH_TEST {
         lvlBronze = new Level__c(
             Name = 'Bronze',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 100,
             Maximum_Amount__c = 1000);
@@ -75,9 +75,9 @@ private class LVL_LevelAssignBATCH_TEST {
         lvlSilver = new Level__c(
             Name = 'Silver',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 1000,
             Maximum_Amount__c = 5000);
@@ -85,9 +85,9 @@ private class LVL_LevelAssignBATCH_TEST {
         lvlGold = new Level__c(
             Name = 'Gold',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 5000,
             Maximum_Amount__c = 90000); // consciously left 10k break for other tests to use.
@@ -95,9 +95,9 @@ private class LVL_LevelAssignBATCH_TEST {
         lvlPlatinum = new Level__c(
             Name = 'Platinum',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 100000,
             Maximum_Amount__c = null);
@@ -105,9 +105,9 @@ private class LVL_LevelAssignBATCH_TEST {
         lvlAcctZinc = new Level__c(
             Name = 'Zinc',
             Target__c = 'Account',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 100,
             Maximum_Amount__c = 200);
@@ -226,7 +226,7 @@ private class LVL_LevelAssignBATCH_TEST {
         // create test Contacts
         createTestContacts('testContactLevels');
 
-        String query = 'SELECT Id, Name, TotalOppAmount__c, LastMembershipLevel__c, LastMembershipOrigin__c, CreatedDate, LastModifiedDate FROM Contact';
+        String query = 'SELECT Id, Name, ' + UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c') + ', CreatedDate, LastModifiedDate FROM Contact';
         LVL_LevelAssign_BATCH batch = new LVL_LevelAssign_BATCH(query, 'Contact');
 
         Test.startTest();
@@ -258,7 +258,7 @@ private class LVL_LevelAssignBATCH_TEST {
         lvlTin.Minimum_Amount__c = 10; // Contact 0 will no longer meet this criteria
         update lvlTin;
 
-        string query = 'SELECT Id, Name, TotalOppAmount__c, LastMembershipLevel__c, LastMembershipOrigin__c, CreatedDate, LastModifiedDate FROM Contact';
+        string query = 'SELECT Id, Name, ' + UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c') + ', CreatedDate, LastModifiedDate FROM Contact';
         LVL_LevelAssign_BATCH batch = new LVL_LevelAssign_BATCH(query, 'Contact');
 
         Test.startTest();
@@ -305,8 +305,8 @@ private class LVL_LevelAssignBATCH_TEST {
     * @description verify contact levels correctly set
     */
     private static void verifyContactLevels() {
-        String query = 'SELECT Id, Name, TotalOppAmount__c, LastMembershipLevel__c, LastMembershipOrigin__c, CreatedDate, LastModifiedDate FROM Contact';
-        contacts = Database.query(query + ' ORDER BY TotalOppAmount__c');
+        String query = 'SELECT Id, Name, ' + UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c') + ', CreatedDate, LastModifiedDate FROM Contact';
+        contacts = Database.query(query + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'));
         System.assertEquals(lvlTin.Id, contacts[0].LastMembershipLevel__c);
         System.assertEquals(null, contacts[0].LastMembershipOrigin__c);
 
@@ -354,8 +354,8 @@ private class LVL_LevelAssignBATCH_TEST {
         // create test Accounts
         createTestAccounts('testAccountLevels');
 
-        String query = 'SELECT Id, Name, TotalOppAmount__c, LastMembershipLevel__c, ' +
-            'LastMembershipOrigin__c, CreatedDate, LastModifiedDate FROM Account where SYSTEMIsIndividual__c = false ';
+        String query = 'SELECT Id, Name, ' + UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c') + ', ' +
+            UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c') + ', CreatedDate, LastModifiedDate FROM Account where ' + UTIL_Namespace.StrTokenNSPrefix('SYSTEMIsIndividual__c') + ' = false ';
         LVL_LevelAssign_BATCH batch = new LVL_LevelAssign_BATCH(query, 'Account');
 
         Test.startTest();
@@ -368,7 +368,7 @@ private class LVL_LevelAssignBATCH_TEST {
         System.assertEquals(null, levelSettings.LastJobStartTimeContact__c,
             'The LastJobStartTimeContact__c should not be populated');
 
-        accounts = Database.query(query + ' ORDER BY TotalOppAmount__c');
+        accounts = Database.query(query + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'));
         System.assertEquals(null, accounts[0].LastMembershipLevel__c);
         System.assertEquals(null, accounts[0].LastMembershipOrigin__c);
 
@@ -394,9 +394,9 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c lvl = new Level__c(
             Name = 'Silver Overlap',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 1000,
             Maximum_Amount__c = 4999);
@@ -432,9 +432,9 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c lvl = new Level__c(
             Name = 'Bronze Overlap',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 10,
             Maximum_Amount__c = 100);
@@ -468,9 +468,9 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c lvl1 = new Level__c(
             Name = 'new',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 10,
             Maximum_Amount__c = 100);
@@ -478,9 +478,9 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c lvl2 = new Level__c(
             Name = 'new2',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 101,
             Maximum_Amount__c = 200);
@@ -488,9 +488,9 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c lvl3 = new Level__c(
             Name = 'new3',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 50,
             Maximum_Amount__c = 75);
@@ -514,9 +514,9 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c lvl1 = new Level__c(
             Name = 'new',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 10,
             Maximum_Amount__c = 100);
@@ -524,9 +524,9 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c lvl2 = new Level__c(
             Name = 'new2',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 101,
             Maximum_Amount__c = 200);
@@ -534,9 +534,9 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c lvl3 = new Level__c(
             Name = 'new3',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 5,
             Maximum_Amount__c = 75);
@@ -562,9 +562,9 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c lvl = new Level__c(
             Name = 'Gold',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 90000,
             Maximum_Amount__c = 90001);
@@ -597,9 +597,9 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c lvl1 = new Level__c(
             Name = 'new',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 10,
             Maximum_Amount__c = 100);
@@ -607,9 +607,9 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c lvl2 = new Level__c(
             Name = 'new',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 101,
             Maximum_Amount__c = 200);
@@ -633,9 +633,9 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c lvl1 = new Level__c(
             Name = 'new',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true,
             Minimum_Amount__c = 101,
             Maximum_Amount__c = 100);
@@ -659,9 +659,9 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c lvl1 = new Level__c(
             Name = 'new',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Active__c = true);
 
         try {
@@ -687,9 +687,9 @@ private class LVL_LevelAssignBATCH_TEST {
             new Level__c(
                 Name = 'Tin',
                 Target__c = 'Contact',
-                Source_Field__c = 'TotalOppAmount__c',
-                Level_Field__c = 'LastMembershipLevel__c',
-                Previous_Level_Field__c = 'LastMembershipOrigin__c',
+                Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+                Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+                Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
                 Active__c = true,
                 Minimum_Amount__c = 20,
                 Maximum_Amount__c = 100
@@ -697,9 +697,9 @@ private class LVL_LevelAssignBATCH_TEST {
             new Level__c(
                 Name = 'Bronze',
                 Target__c = 'Contact',
-                Source_Field__c = 'TotalOppAmount__c',
-                Level_Field__c = 'LastMembershipLevel__c',
-                Previous_Level_Field__c = 'LastMembershipOrigin__c',
+                Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+                Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+                Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
                 Active__c = true,
                 Minimum_Amount__c = 100,
                 Maximum_Amount__c = 1000
@@ -752,9 +752,9 @@ private class LVL_LevelAssignBATCH_TEST {
             new Level__c(
                 Name = 'Tin',
                 Target__c = 'Contact',
-                Source_Field__c = 'TotalOppAmount__c',
-                Level_Field__c = 'LastMembershipLevel__c',
-                Previous_Level_Field__c = 'LastMembershipOrigin__c',
+                Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+                Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+                Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
                 Active__c = true,
                 Minimum_Amount__c = 20,
                 Maximum_Amount__c = 100
@@ -762,9 +762,9 @@ private class LVL_LevelAssignBATCH_TEST {
             new Level__c(
                 Name = 'Bronze',
                 Target__c = 'Contact',
-                Source_Field__c = 'TotalOppAmount__c',
-                Level_Field__c = 'LastMembershipLevel__c',
-                Previous_Level_Field__c = 'LastMembershipOrigin__c',
+                Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+                Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+                Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
                 Active__c = true,
                 Minimum_Amount__c = 100,
                 Maximum_Amount__c = 1000
@@ -827,17 +827,17 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c paperLevel = new Level__c(
             Name = 'Paper',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c'
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c')
         );
 
         Level__c rockLevel = new Level__c(
             Name = 'Rock',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c'
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c')
         );
 
         LVL_LevelAssign_BATCH.Ladder ladder = new LVL_LevelAssign_BATCH.Ladder('Contact');
@@ -884,16 +884,16 @@ private class LVL_LevelAssignBATCH_TEST {
 
         Level__c contactLevel = new Level__c(
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c'
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c')
         );
 
         Level__c accountLevel = new Level__c(
             Target__c = 'Account',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c'
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c')
         );
 
         LVL_LevelAssign_BATCH.Ladder contactLadder = new LVL_LevelAssign_BATCH.Ladder('Contact')
@@ -933,16 +933,16 @@ private class LVL_LevelAssignBATCH_TEST {
     private static void shouldExcludeFilterWhenSourceIsFormula() {
         Level__c formulaLevel = new Level__c(
             Target__c = 'Contact',
-            Source_Field__c = 'LastCloseDateHH__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c'
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastCloseDateHH__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c')
         );
 
         Level__c nonFormulaLevel = new Level__c(
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c'
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c')
         );
 
         LVL_LevelAssign_BATCH.Ladder ladder = new LVL_LevelAssign_BATCH.Ladder('Contact')
@@ -969,9 +969,9 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c oldLevel = new Level__c(
             Name = 'Paper',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Minimum_Amount__c = null,
             Maximum_Amount__c = 1000
         );
@@ -979,9 +979,9 @@ private class LVL_LevelAssignBATCH_TEST {
         Level__c updatedLevel = new Level__c(
             Name = 'Rock',
             Target__c = 'Contact',
-            Source_Field__c = 'TotalOppAmount__c',
-            Level_Field__c = 'LastMembershipLevel__c',
-            Previous_Level_Field__c = 'LastMembershipOrigin__c',
+            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Previous_Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c'),
             Minimum_Amount__c = 1000,
             Maximum_Amount__c = 5000
         );
@@ -1016,7 +1016,7 @@ private class LVL_LevelAssignBATCH_TEST {
     * @return void
     **********************************************************************************************************/
     private static void executeLevelAssignBatchForContact() {
-        String soql = 'SELECT Id, Name, TotalOppAmount__c, LastMembershipLevel__c, LastMembershipOrigin__c, CreatedDate, LastModifiedDate FROM Contact';
+        String soql = 'SELECT Id, Name, ' + UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('LastMembershipOrigin__c') + ', CreatedDate, LastModifiedDate FROM Contact';
 
         executeLevelAssignBatch(soql, 'Contact');
     }

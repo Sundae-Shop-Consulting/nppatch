@@ -203,7 +203,7 @@ public inherited sharing class RD2_QueryService {
     public String getScheduleSubQuery() {
         Set<String> fields = new RD2_ScheduleService.ScheduleQueryHandler().getFields();
 
-        return '(SELECT ' + String.join(new List<String>(fields), ', ') + ' FROM RecurringDonationSchedules__r)';
+        return '(SELECT ' + String.join(new List<String>(fields), ', ') + ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('RecurringDonationSchedules__r') + ')';
     }
 
     /**
@@ -216,11 +216,11 @@ public inherited sharing class RD2_QueryService {
         //and Opps with Close Date >= current date regardless if closed or open
         //and all Opps with Close Date in this current year
         Set<String> oppSubqueryFields = new Set<String>{
-            'Id', 'Name', 'AccountId', 'Primary_Contact__c',
-            'Recurring_Donation__c',
+            'Id', 'Name', 'AccountId', UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c'),
+            UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c'),
             'Amount', 'CloseDate',
             'StageName', 'IsClosed', 'IsWon',
-            'CampaignId', 'Recurring_Donation_Installment_Number__c'
+            'CampaignId', UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation_Installment_Number__c')
         };
 
         if (isMultiCurrencyEnabled) {
@@ -231,12 +231,12 @@ public inherited sharing class RD2_QueryService {
 
         String oppSubquery = new UTIL_Query()
             .withSelectFields(oppSubqueryFields)
-            .withFrom('Donations__r')
+            .withFrom(UTIL_Namespace.StrTokenNSPrefix('Donations__r'))
             .withWhere(
                 'IsClosed = false ' +
                     'OR CloseDate >= :startDate '
             )
-            .withOrderBy('Recurring_Donation__c, CloseDate ASC')
+            .withOrderBy(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c') + ', CloseDate ASC')
             .build();
 
         return '(' + oppSubquery + ')';
@@ -286,10 +286,7 @@ public inherited sharing class RD2_QueryService {
     }
 
     private String getRecurringDonationSubQuery(String sObjectType) {
-        String lookupReference = sObjectType == 'Account'
-            ? 'RecurringDonations__r'
-            : 'R00N80000002bOmREAU__r';
-
-        return '(SELECT Id FROM ' + lookupReference +' WHERE Status__c IN: statusValues LIMIT 1)';
+        String lookupReference = UTIL_Namespace.StrTokenNSPrefix('RecurringDonations__r');
+        return '(SELECT Id FROM ' + lookupReference + ' WHERE Status__c IN: statusValues LIMIT 1)';
     }
 }

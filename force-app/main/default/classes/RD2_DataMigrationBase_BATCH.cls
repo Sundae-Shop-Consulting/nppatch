@@ -393,7 +393,7 @@ public abstract class RD2_DataMigrationBase_BATCH implements Database.Batchable<
         return new UTIL_Query()
             .withFrom(Recurring_Donation__c.SObjectType)
             .withSelectFields(rdFields)
-            .withOrderBy('Last_Payment_Date__c')
+            .withOrderBy(UTIL_Namespace.StrTokenNSPrefix('Last_Payment_Date__c'))
             .build();
     }
 

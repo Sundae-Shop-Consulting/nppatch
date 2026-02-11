@@ -37,6 +37,11 @@
 @isTest
 public with sharing class MTCH_FindGifts_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     private static final String RECEIVED_STATUS = 'Received';
 
     /*******************************************************************************************************

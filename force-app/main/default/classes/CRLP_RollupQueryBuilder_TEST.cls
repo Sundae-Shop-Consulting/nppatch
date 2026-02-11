@@ -136,7 +136,7 @@ private class CRLP_RollupQueryBuilder_TEST {
         System.assert(detailsQuery.containsIgnoreCase(' ORDER BY ' + orderBy),
                 'The query should include the specified Order By: ' + detailsQuery);
         if (includePayments) {
-            System.assert(detailsQuery.containsIgnoreCase(' FROM OppPayment__r)'),
+            System.assert(detailsQuery.containsIgnoreCase(' FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ')'),
                     'The query should include a child query on Payments: ' + detailsQuery);
         }
 

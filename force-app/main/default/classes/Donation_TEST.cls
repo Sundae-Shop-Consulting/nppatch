@@ -34,6 +34,12 @@
 */
 @isTest
 private class Donation_TEST {
+
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     @isTest
     static void shouldHaveOpportunityWith3UnpaidPayments() {
         Opportunity parentOpportunity = buildDummyOpportunity();

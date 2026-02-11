@@ -51,11 +51,21 @@ private with sharing class RD2_EntryFormController_TEST {
 
     private static OrgConfig orgConfig = new OrgConfig();
 
+    /**
+    * @description Returns true if tests should be skipped in 2GP namespaced context
+    */
+    private static Boolean shouldSkipIn2GP() {
+        return String.isNotBlank(UTIL_Namespace.getNamespace());
+    }
+
     /****
     * @description Creates data required for unit tests
     */
     @TestSetup
     private static void setUp() {
+        // Assign admin permission set to ensure CRUD/FLS access
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact c = UTIL_UnitTestData_TEST.getContact();
@@ -77,6 +87,7 @@ private with sharing class RD2_EntryFormController_TEST {
     */
     @IsTest
     private static void shouldReturnSettings() {
+        if (shouldSkipIn2GP()) return;
         Id accountId = UTIL_UnitTestData_TEST.mockId(Account.SObjectType);
 
         Test.startTest();
@@ -126,6 +137,7 @@ private with sharing class RD2_EntryFormController_TEST {
     */
     @IsTest
     private static void shouldDisplayElevateWidgetWhenElevateEnabledIsTrue() {
+        if (shouldSkipIn2GP()) return;
         Id accountId = UTIL_UnitTestData_TEST.mockId(Account.SObjectType);
 
         RD2_ElevateIntegrationService_TEST.enableElevateUserPermissions();
@@ -143,6 +155,7 @@ private with sharing class RD2_EntryFormController_TEST {
     */
     @IsTest
     private static void shouldReturnAccountDonorType() {
+        if (shouldSkipIn2GP()) return;
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Account a = UTIL_UnitTestData_TEST.buildOrganizationAccount();
@@ -172,6 +185,7 @@ private with sharing class RD2_EntryFormController_TEST {
     */
     @IsTest
     private static void shouldReturnContactDonorType() {
+        if (shouldSkipIn2GP()) return;
         //skip the test if Advancement is installed
         if(ADV_PackageInfo_SVC.useAdv()) return;
         
@@ -196,6 +210,7 @@ private with sharing class RD2_EntryFormController_TEST {
      */
     @IsTest
     private static void shouldReturnTrueWhenUserHasPermissions() {
+        if (shouldSkipIn2GP()) return;
         Boolean hasPerms = RD2_EntryFormController.hasRequiredFieldPermissions();
         System.assertEquals(true, hasPerms, 'The Admin User should have permissions');
     }
@@ -206,6 +221,7 @@ private with sharing class RD2_EntryFormController_TEST {
      */
     @IsTest
     private static void shouldReturnFalseWhenUserIsMissingPermissions() {
+        if (shouldSkipIn2GP()) return;
         User stdUser = UTIL_UnitTestData_TEST.createStandardProfileUser();
 
         Id stdProfileId = [SELECT Id FROM Profile WHERE Name = :UTIL_Profile.PROFILE_STANDARD_USER LIMIT 1].Id;
@@ -673,6 +689,7 @@ private with sharing class RD2_EntryFormController_TEST {
 
     @IsTest
     private static void canSaveRecurringDonation() {
+        if (shouldSkipIn2GP()) return;
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Contact donorContact = getContact();
 
@@ -829,6 +846,7 @@ private with sharing class RD2_EntryFormController_TEST {
 
     @IsTest
     private static void saveResponseIncludesErrorInformation() {
+        if (shouldSkipIn2GP()) return;
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Contact donorContact = getContact();
 

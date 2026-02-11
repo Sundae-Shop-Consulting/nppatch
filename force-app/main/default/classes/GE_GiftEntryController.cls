@@ -518,15 +518,15 @@ public with sharing class GE_GiftEntryController {
         // Could eventually be used to display unpaid payments on the donation matching modal
         String paymentSOQL = 'SELECT Id, ' +
                 'Name, ' +
-                'Scheduled_Date__c, ' +
-                'Opportunity__r.Name, ' +
-                'Opportunity__c, ' +
-                'Payment_Amount__c, ' +
-                'Elevate_Payment_API_Status__c ' +
-                'FROM OppPayment__c ' +
-                'WHERE Opportunity__r.' + relationshipField + ' = :donorId ' +
-                'AND Written_Off__c = false ' +
-                'AND Paid__c = false ' +
+                UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c') + ', ' +
+                UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.Name, ' +
+                UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ', ' +
+                UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' +
+                UTIL_Namespace.StrTokenNSPrefix('Elevate_Payment_API_Status__c') + ' ' +
+                'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' ' +
+                'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.' + relationshipField + ' = :donorId ' +
+                'AND ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false ' +
+                'AND ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ' = false ' +
                 'WITH SECURITY_ENFORCED';
 
         try {
@@ -543,20 +543,20 @@ public with sharing class GE_GiftEntryController {
                     'CloseDate, ' +
                     'IsClosed, ' +
                     'Amount, ' +
-                    'Number_of_Payments__c, ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Number_of_Payments__c') + ', ' +
                     '(SELECT Id, ' +
                     'Name, ' +
-                    'Scheduled_Date__c, ' +
-                    'Opportunity__r.Name, ' +
-                    'Opportunity__c, ' +
-                    'Payment_Amount__c,' +
-                    'Payment_Date__c,' +
-                    'Paid__c, ' +
-                    'Written_Off__c, ' +
-                    'Elevate_Payment_API_Status__c ' +
-                    'FROM OppPayment__r ' +
-                    'WHERE Written_Off__c = false ' +
-                    'AND Paid__c = false)' +
+                    UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c') + ', ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.Name, ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ', ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ',' +
+                    UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c') + ',' +
+                    UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ', ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Elevate_Payment_API_Status__c') + ' ' +
+                    'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
+                    'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false ' +
+                    'AND ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ' = false)' +
                     'FROM Opportunity ' +
                     'WHERE ' + relationshipField + ' = :donorId ' +
                     'AND IsClosed = false ' +

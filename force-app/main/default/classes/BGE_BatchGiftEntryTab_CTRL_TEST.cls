@@ -44,6 +44,8 @@ private class BGE_BatchGiftEntryTab_CTRL_TEST {
     */
     @testSetup
     private static void createDataImportBatches() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         List<DataImportBatch__c> batches = new List<DataImportBatch__c>();
         for (Integer i=0; i<75; i++){
             DataImportBatch__c dataImportBatch = new DataImportBatch__c();

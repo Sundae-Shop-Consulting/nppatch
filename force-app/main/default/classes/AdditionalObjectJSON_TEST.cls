@@ -206,16 +206,16 @@ private class AdditionalObjectJSON_TEST {
 
         for (String objMappingDevName : testDSG.dynamicSourceByObjMappingDevName.keySet()) {
             BDI_DynamicSource tempDS = testDSG.dynamicSourceByObjMappingDevName.get(objMappingDevName);
-            if (tempDS.sourceObj.get('GAU_Allocation_1_GAU__c') == gau1.Id) {
+            if (tempDS.sourceObj.get(UTIL_Namespace.StrTokenNSPrefix('GAU_Allocation_1_GAU__c')) == gau1.Id) {
                 dynSource1 = tempDS;
-            } else if (tempDS.sourceObj.get('GAU_Allocation_1_GAU__c')  == gau2.Id) {
+            } else if (tempDS.sourceObj.get(UTIL_Namespace.StrTokenNSPrefix('GAU_Allocation_1_GAU__c'))  == gau2.Id) {
                 dynSource2 = tempDS;
             }
         }
 
         System.assertNotEquals(null, dynSource1);
         System.assertNotEquals(null, dynSource2);
-        System.assertEquals(75,dynSource1.sourceObj.get('GAU_Allocation_1_Percent__c'));
-        System.assertEquals(25,dynSource2.sourceObj.get('GAU_Allocation_1_Percent__c'));
+        System.assertEquals(75,dynSource1.sourceObj.get(UTIL_Namespace.StrTokenNSPrefix('GAU_Allocation_1_Percent__c')));
+        System.assertEquals(25,dynSource2.sourceObj.get(UTIL_Namespace.StrTokenNSPrefix('GAU_Allocation_1_Percent__c')));
     }
 }

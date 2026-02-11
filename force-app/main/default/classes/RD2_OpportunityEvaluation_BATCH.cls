@@ -265,7 +265,7 @@ public without sharing class RD2_OpportunityEvaluation_BATCH
             );
 
         if (closedFilterEnabled) {
-            query.withWhere('Status__c NOT IN :closedStatusValues');
+            query.withWhere(UTIL_Namespace.StrTokenNSPrefix('Status__c') + ' NOT IN :closedStatusValues');
         }
 
         if (isConcurrentBatch) {

@@ -36,6 +36,11 @@
 @isTest
 private class CON_CascadeDeleteLookups_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description Deletes contact and verifies it does not cascade delete the Relationships
     * Verifies results.

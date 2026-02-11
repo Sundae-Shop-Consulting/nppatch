@@ -38,6 +38,11 @@
 @IsTest
 private class BDI_MigrationMappingUtility_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*******************************************************************************************************
     * @description Test that the migration utility will only create and enqueue usable help text mappings
     */
@@ -564,12 +569,12 @@ private class BDI_MigrationMappingUtility_TEST {
                         '"MasterLabel":"Account 1 Name",' +
                         '"Label":"Account 1 Name",' +
                         '"DeveloperName":"%%%NAMESPACE%%%Account1_Name",' +
-                        '"Source_Field_API_Name__c":"%%%NAMESPACE%%%Account1_Name__c",' +
-                        '"Target_Field_API_Name__c":"Name",' +
-                        '"Required__c":"No",' +
-                        '"Data_Import_Field_Mapping_Set__c":"' + fieldMappingSet.Id + '",' +
-                        '"Target_Object_Mapping__c":"' + account1ObjectMapping.Id +
-                            '","Target_Object_Mapping__r":{"Id":"' + account1ObjectMapping.Id +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Source_Field_API_Name__c') + '":"%%%NAMESPACE%%%Account1_Name__c",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Field_API_Name__c') + '":"Name",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Required__c') + '":"No",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Data_Import_Field_Mapping_Set__c') + '":"' + fieldMappingSet.Id + '",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__c') + '":"' + account1ObjectMapping.Id +
+                            '","' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__r') + '":{"Id":"' + account1ObjectMapping.Id +
                             '","DeveloperName":"Account1","MasterLabel":"Account1"}}',
                         Data_Import_Field_Mapping__mdt.class);
 
@@ -579,12 +584,12 @@ private class BDI_MigrationMappingUtility_TEST {
                         '"MasterLabel":"Account 1 City",' +
                         '"Label":"Account 1 City",' +
                         '"DeveloperName":"%%%NAMESPACE%%%Account1_City",' +
-                        '"Source_Field_API_Name__c":"%%%NAMESPACE%%%Account1_City__c",' +
-                        '"Target_Field_API_Name__c":"BillingCity",' +
-                        '"Required__c":"No",' +
-                        '"Data_Import_Field_Mapping_Set__c":"' + fieldMappingSet.Id + '",' +
-                        '"Target_Object_Mapping__c":"' + account1ObjectMapping.Id +
-                            '","Target_Object_Mapping__r":{"Id":"' + account1ObjectMapping.Id +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Source_Field_API_Name__c') + '":"%%%NAMESPACE%%%Account1_City__c",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Field_API_Name__c') + '":"BillingCity",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Required__c') + '":"No",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Data_Import_Field_Mapping_Set__c') + '":"' + fieldMappingSet.Id + '",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__c') + '":"' + account1ObjectMapping.Id +
+                            '","' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__r') + '":{"Id":"' + account1ObjectMapping.Id +
                             '","DeveloperName":"Account1","MasterLabel":"Account1"}}',
                         Data_Import_Field_Mapping__mdt.class);
 
@@ -594,12 +599,12 @@ private class BDI_MigrationMappingUtility_TEST {
                         '"MasterLabel":"Account 2 City",' +
                         '"Label":"Account 2 City",' +
                         '"DeveloperName":"%%%NAMESPACE%%%Account2_City",' +
-                        '"Source_Field_API_Name__c":"%%%NAMESPACE%%%Account2_City__c",' +
-                        '"Target_Field_API_Name__c":"BillingCity",' +
-                        '"Required__c":"No",' +
-                        '"Data_Import_Field_Mapping_Set__c":"' + fieldMappingSet.Id + '",' +
-                        '"Target_Object_Mapping__c":"' + account2ObjectMapping.Id +
-                            '","Target_Object_Mapping__r":{"Id":"' + account2ObjectMapping.Id +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Source_Field_API_Name__c') + '":"%%%NAMESPACE%%%Account2_City__c",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Field_API_Name__c') + '":"BillingCity",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Required__c') + '":"No",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Data_Import_Field_Mapping_Set__c') + '":"' + fieldMappingSet.Id + '",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__c') + '":"' + account2ObjectMapping.Id +
+                            '","' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__r') + '":{"Id":"' + account2ObjectMapping.Id +
                             '","DeveloperName":"Account2","MasterLabel":"Account2"}}',
                         Data_Import_Field_Mapping__mdt.class);
 
@@ -609,12 +614,12 @@ private class BDI_MigrationMappingUtility_TEST {
                         '"MasterLabel":"GAU Allocation 1: Amount",' +
                         '"Label":"GAU Allocation 1: Amount",' +
                         '"DeveloperName":"GAU_Allocation_1_Amount",' +
-                        '"Source_Field_API_Name__c":"%%%NAMESPACE%%%GAU_Allocation_1_Amount__c",' +
-                        '"Target_Field_API_Name__c":"%%%NAMESPACE%%%Amount__c",' +
-                        '"Required__c":"No",' +
-                        '"Data_Import_Field_Mapping_Set__c":"' + fieldMappingSet.Id + '",' +
-                        '"Target_Object_Mapping__c":"' + gauObjectMapping.Id +
-                            '","Target_Object_Mapping__r":{"Id":"' + gauObjectMapping.Id +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Source_Field_API_Name__c') + '":"%%%NAMESPACE%%%GAU_Allocation_1_Amount__c",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Field_API_Name__c') + '":"%%%NAMESPACE%%%Amount__c",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Required__c') + '":"No",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Data_Import_Field_Mapping_Set__c') + '":"' + fieldMappingSet.Id + '",' +
+                        '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__c') + '":"' + gauObjectMapping.Id +
+                            '","' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__r') + '":{"Id":"' + gauObjectMapping.Id +
                             '","DeveloperName":"GAU_Allocation_1","MasterLabel":"GAU Allocation 1"}}',
                         Data_Import_Field_Mapping__mdt.class);
 
@@ -761,14 +766,14 @@ private class BDI_MigrationMappingUtility_TEST {
                                         '"MasterLabel":"Account 1 Name",' +
                                         '"Label":"Account 1 Name",' +
                                         '"DeveloperName":"%%%NAMESPACE%%%Account1_Name",' +
-                                        '"Source_Field_API_Name__c":"%%%NAMESPACE%%%Account1_Name__c",' +
-                                        '"Target_Field_API_Name__c":"Name",' +
-                                        '"Required__c":"No",' +
-                                        '"Data_Import_Field_Mapping_Set__c":"' + fieldMappingSet.Id + '",' +
-                                        '"Target_Object_Mapping__c":"' + account1ObjectMapping.Id +
-                                        '","Target_Object_Mapping__r":{"Id":"' + account1ObjectMapping.Id +
+                                        '"' + UTIL_Namespace.StrTokenNSPrefix('Source_Field_API_Name__c') + '":"%%%NAMESPACE%%%Account1_Name__c",' +
+                                        '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Field_API_Name__c') + '":"Name",' +
+                                        '"' + UTIL_Namespace.StrTokenNSPrefix('Required__c') + '":"No",' +
+                                        '"' + UTIL_Namespace.StrTokenNSPrefix('Data_Import_Field_Mapping_Set__c') + '":"' + fieldMappingSet.Id + '",' +
+                                        '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__c') + '":"' + account1ObjectMapping.Id +
+                                        '","' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__r') + '":{"Id":"' + account1ObjectMapping.Id +
                                         '","DeveloperName":"Account1","MasterLabel":"Account1",' +
-                                        '"Legacy_Data_Import_Object_Name__c":"Account1","Object_API_Name__c":"Account"}}',
+                                        '"' + UTIL_Namespace.StrTokenNSPrefix('Legacy_Data_Import_Object_Name__c') + '":"Account1","' + UTIL_Namespace.StrTokenNSPrefix('Object_API_Name__c') + '":"Account"}}',
                                 Data_Import_Field_Mapping__mdt.class);
 
                 if (listOfArgs.contains('Migrated_Custom_Field_Mapping_Set')) {
@@ -784,14 +789,14 @@ private class BDI_MigrationMappingUtility_TEST {
                                             '"MasterLabel":"Account 1 City",' +
                                             '"Label":"Account 1 City",' +
                                             '"DeveloperName":"%%%NAMESPACE%%%Account1_City",' +
-                                            '"Source_Field_API_Name__c":"%%%NAMESPACE%%%Account1_City__c",' +
-                                            '"Target_Field_API_Name__c":"BillingCity",' +
-                                            '"Required__c":"No",' +
-                                            '"Data_Import_Field_Mapping_Set__c":"' + fieldMappingSet.Id + '",' +
-                                            '"Target_Object_Mapping__c":"' + account1ObjectMapping.Id +
-                                            '","Target_Object_Mapping__r":{"Id":"' + account1ObjectMapping.Id +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Source_Field_API_Name__c') + '":"%%%NAMESPACE%%%Account1_City__c",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Field_API_Name__c') + '":"BillingCity",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Required__c') + '":"No",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Data_Import_Field_Mapping_Set__c') + '":"' + fieldMappingSet.Id + '",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__c') + '":"' + account1ObjectMapping.Id +
+                                            '","' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__r') + '":{"Id":"' + account1ObjectMapping.Id +
                                             '","DeveloperName":"Account1","MasterLabel":"Account1",' +
-                                            '"Legacy_Data_Import_Object_Name__c":"Account1","Object_API_Name__c":"Account"}}',
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Legacy_Data_Import_Object_Name__c') + '":"Account1","' + UTIL_Namespace.StrTokenNSPrefix('Object_API_Name__c') + '":"Account"}}',
                                     Data_Import_Field_Mapping__mdt.class);
                     Data_Import_Field_Mapping__mdt fieldMapping2 =
                             (Data_Import_Field_Mapping__mdt)JSON.deserialize(
@@ -799,14 +804,14 @@ private class BDI_MigrationMappingUtility_TEST {
                                             '"MasterLabel":"Account 1 Country",' +
                                             '"Label":"Account 1 Country",' +
                                             '"DeveloperName":"%%%NAMESPACE%%%Account1_Country",' +
-                                            '"Source_Field_API_Name__c":"%%%NAMESPACE%%%Account1_Country__c",' +
-                                            '"Target_Field_API_Name__c":"BillingCountry",' +
-                                            '"Required__c":"No",' +
-                                            '"Data_Import_Field_Mapping_Set__c":"' + fieldMappingSet.Id + '",' +
-                                            '"Target_Object_Mapping__c":"' + account1ObjectMapping.Id +
-                                            '","Target_Object_Mapping__r":{"Id":"' + account1ObjectMapping.Id +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Source_Field_API_Name__c') + '":"%%%NAMESPACE%%%Account1_Country__c",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Field_API_Name__c') + '":"BillingCountry",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Required__c') + '":"No",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Data_Import_Field_Mapping_Set__c') + '":"' + fieldMappingSet.Id + '",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__c') + '":"' + account1ObjectMapping.Id +
+                                            '","' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__r') + '":{"Id":"' + account1ObjectMapping.Id +
                                             '","DeveloperName":"Account1","MasterLabel":"Account1",' +
-                                            '"Legacy_Data_Import_Object_Name__c":"Account1","Object_API_Name__c":"Account"}}',
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Legacy_Data_Import_Object_Name__c') + '":"Account1","' + UTIL_Namespace.StrTokenNSPrefix('Object_API_Name__c') + '":"Account"}}',
                                     Data_Import_Field_Mapping__mdt.class);
 
                     return new Map<String, Data_Import_Field_Mapping__mdt>{

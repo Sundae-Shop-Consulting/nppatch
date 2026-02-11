@@ -49,6 +49,8 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @TestSetup
     private static void setUp() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         Account acc = new Account(Name = 'RD2 Trigger Handler Account');
         insert acc;
 

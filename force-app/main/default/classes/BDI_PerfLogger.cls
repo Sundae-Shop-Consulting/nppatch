@@ -77,7 +77,7 @@ public with sharing class BDI_PerfLogger extends UTIL_PerfLogger {
         Perflog pl = (PerfLog)super.newPerfLog('BDI', label, logType);
         SObject sobj = pl.getPerfLogSObject();
         if (sobj != null) {
-            sobj.put('BDI_Batch__c', batchId);
+            sobj.put(UTIL_Namespace.StrTokenNSPrefix('BDI_Batch__c'), batchId);
         }
         return pl;
     }

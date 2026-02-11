@@ -38,7 +38,7 @@ public with sharing class AllocationSelector {
         String soql = new UTIL_Query()
             .withFrom(Allocation__c.SObjectType)
             .withSelectFields(getStandardAllocationFields())
-            .withWhere('Opportunity__c IN: oppIds')
+            .withWhere(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' IN: oppIds')
             .build();
 
         return Database.query(soql);

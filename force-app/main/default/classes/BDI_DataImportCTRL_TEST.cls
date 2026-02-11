@@ -38,6 +38,11 @@
 @isTest
 private with sharing class BDI_DataImportCTRL_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description operation:
     *    run data import through the visualforce page

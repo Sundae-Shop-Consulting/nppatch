@@ -36,6 +36,11 @@
 @isTest(IsParallel=true)
 private class CMT_FilterRuleEvaluation_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     private static Id filterGroupId1, filterGroupId2, filterGroupId3, filterGroupId4, filterGroupId5, filterGroupId6, filterGroupId7;
     private static Date closeDate = Date.Today().toStartOfMonth().addDays(1);
 
@@ -146,9 +151,12 @@ private class CMT_FilterRuleEvaluation_TEST {
                 CloseDate = closeDate,
                 StageName = UTIL_UnitTestData_TEST.getClosedWonStage(),
                 Primary_Contact__c = con.Id,
-                RecordTypeId = UTIL_RecordTypes.getRecordTypeIdForGiftsTests(Opportunity.sObjectType),
                 NextStep = 'Test Next Step'
         );
+        Id giftsRTId = UTIL_RecordTypes.getRecordTypeIdForGiftsTests(Opportunity.sObjectType);
+        if (giftsRTId != null) {
+            opp.RecordTypeId = giftsRTId;
+        }
         insert opp;
         System.AssertEquals(1, [SELECT Count() FROM OpportunityContactRole]);
 

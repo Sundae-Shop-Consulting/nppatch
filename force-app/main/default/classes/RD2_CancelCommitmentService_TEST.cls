@@ -44,6 +44,8 @@ public with sharing class RD2_CancelCommitmentService_TEST {
     */
     @TestSetup
     private static void setUp() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         Contact contact = UTIL_UnitTestData_TEST.getContact();
         insert contact;
     }

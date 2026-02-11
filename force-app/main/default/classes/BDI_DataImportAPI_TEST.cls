@@ -38,6 +38,11 @@
 @isTest
 public with sharing class BDI_DataImportAPI_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description utility to create a new DI record for the specified batch
     */

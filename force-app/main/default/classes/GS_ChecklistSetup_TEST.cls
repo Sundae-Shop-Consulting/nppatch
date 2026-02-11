@@ -36,6 +36,11 @@
 @isTest
 private with sharing class GS_ChecklistSetup_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /**
     *  @description This test data if wraped in GS_ChecklistSetup.getChecklist are the same in the metadata
     */

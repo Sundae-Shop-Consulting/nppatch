@@ -43,6 +43,7 @@ private class CRLP_RecalculateBTN_TEST {
      */
     @TestSetup
     private static void setupBaseTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
 
         Contact c = UTIL_UnitTestData_TEST.getContact();
         insert c;

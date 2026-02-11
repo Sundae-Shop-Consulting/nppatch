@@ -390,13 +390,13 @@ public with sharing class BDI_DataImport_CTRL {
     public integer crecToProcess {
         get {
             String bdiImported = BDI_DataImport_API.bdiImported;
-            String countQuery = 'SELECT count() FROM DataImport__c WHERE Status__c <> :bdiImported';
+            String countQuery = 'SELECT count() FROM ' + UTIL_Namespace.StrTokenNSPrefix('DataImport__c') + ' WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Status__c') + ' <> :bdiImported';
 
             if (disPopulated()) {
                 countQuery += ' AND Id IN: dataImportIds';
             } else if (diBatch != null) {
                 Id batchId = diBatch.Id;
-                countQuery += ' AND NPSP_Data_Import_Batch__c =: batchId';
+                countQuery += ' AND ' + UTIL_Namespace.StrTokenNSPrefix('NPSP_Data_Import_Batch__c') + ' =: batchId';
             }
 
             countQuery += ' WITH SECURITY_ENFORCED';

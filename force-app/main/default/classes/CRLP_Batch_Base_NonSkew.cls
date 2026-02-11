@@ -76,8 +76,8 @@ public abstract class CRLP_Batch_Base_NonSkew extends CRLP_Batch_Base {
                 List<String> fieldsToCheck = new List<String>();
                 switch on (jobType) {
                     when AccountHardCredit, ContactHardCredit {
-                        fieldsToCheck.add('NumberOfClosedOpps__c');
-                        fieldsToCheck.add('NumberOfMembershipOpps__c');
+                        fieldsToCheck.add(UTIL_Namespace.StrTokenNSPrefix('NumberOfClosedOpps__c'));
+                        fieldsToCheck.add(UTIL_Namespace.StrTokenNSPrefix('NumberOfMembershipOpps__c'));
                     }
                     when ContactSoftCredit {
                         fieldsToCheck.add(
@@ -376,7 +376,7 @@ public abstract class CRLP_Batch_Base_NonSkew extends CRLP_Batch_Base {
                 && this.detailObjectType != Account_Soft_Credit__c.SObjectType
                 && (this.summaryObjectType == Account.SObjectType || this.summaryObjectType == Contact.SObjectType)
         ) {
-            paymentsByOpp = CRLP_RollupProcessor_SVC.splitChildRecordsInMapByParentId(detailRecords, 'OppPayment__r');
+            paymentsByOpp = CRLP_RollupProcessor_SVC.splitChildRecordsInMapByParentId(detailRecords, UTIL_Namespace.StrTokenNSPrefix('OppPayment__r'));
         }
         return paymentsByOpp;
     }

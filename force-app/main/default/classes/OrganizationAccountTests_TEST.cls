@@ -35,6 +35,11 @@
 @IsTest
 private class OrganizationAccountTests_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     private static Id organizationRecordTypeId =
             Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName()
                     .get('Organization')

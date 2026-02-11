@@ -747,19 +747,19 @@ public class BDI_Donations {
         // the set of Payment fields for our soql
         Set<String> setPmtFields = new Set<String>();
         setPmtFields.add('Id');
-        setPmtFields.add('Opportunity__c');
-        setPmtFields.add('Payment_Amount__c');
-        setPmtFields.add('Payment_Date__c');
-        setPmtFields.add('Scheduled_Date__c');
-        setPmtFields.add('Paid__c');
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c'));
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c'));
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c'));
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c'));
+        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Paid__c'));
 
         // need to include any Pmt fields we may update, so we can compare against them
         setPmtFields.addAll(dataImportFieldToPaymentField.values());
 
         String soql = 'SELECT ' + String.join(new List<String>(setPmtFields), ',');
-        soql += ' FROM OppPayment__c WHERE ' +
-                'Written_Off__c = false ' +
-                'AND Opportunity__c in :' + eligibleOpportunitiesVariableName;
+        soql += ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' WHERE ' +
+                UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false ' +
+                'AND ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' in :' + eligibleOpportunitiesVariableName;
 
         return soql;
     }

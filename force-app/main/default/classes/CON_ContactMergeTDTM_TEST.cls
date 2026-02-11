@@ -49,6 +49,8 @@ private with sharing class CON_ContactMergeTDTM_TEST {
      */
     @TestSetup
     private static void createRecordData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         ADDR_Addresses_TEST.createTestData(3, 2);
         Contact overrideContact = ADDR_Addresses_TEST.testContacts[ADDR_OVERRIDE_INDEX];
 

@@ -39,6 +39,12 @@ public with sharing class GE_GiftEntryController_TEST {
     private static final String TEST_PAYMENT_METHOD_CARD = 'CARD';
     private static final String TEST_PAYMENT_METHOD_ACH = 'ACH';
 
+    @TestSetup
+    static void setupTestData() {
+        // Assign admin permission set to ensure CRUD/FLS access
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     @IsTest
     static void shouldReturn2OpenDonationsForTheGivenDonor() {
         UTIL_CustomSettingsFacade.getContactsSettingsForTests(

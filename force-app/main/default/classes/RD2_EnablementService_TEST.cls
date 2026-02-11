@@ -45,6 +45,8 @@ public with sharing class RD2_EnablementService_TEST {
     */
     @TestSetup
     private static void setUp() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         insert UTIL_UnitTestData_TEST.getContact();
     }
 
@@ -248,7 +250,7 @@ public with sharing class RD2_EnablementService_TEST {
 
         setCustomizableRollups(true);
         RD2_EnablementService.isUserRunningLightning = true;
-        UTIL_FeatureEnablement_TEST.setPilotEnabledParameter(false);
+        // isPilotEnabled() now always returns false by default (FeatureParameters removed for 2GP)
 
         System.assertEquals(true, service.isRecurringDonations2Ready(),
             'Enhancement should be ready for enablement regardless of the PilotEnabled value');
@@ -260,7 +262,7 @@ public with sharing class RD2_EnablementService_TEST {
     */
     @isTest
     private static void shouldEnableEnhancementWhenPilotEnabledIsFalse() {
-        UTIL_FeatureEnablement_TEST.setPilotEnabledParameter(false);
+        // isPilotEnabled() now always returns false by default (FeatureParameters removed for 2GP)
         configureRecurringDonations2Enabled();
 
         System.assertEquals(true, RD2_EnablementService.isRecurringDonations2Enabled, 'Enhancement should be enabled');

@@ -86,8 +86,8 @@ private class OPP_CurrencySync_TEST {
                     insert accSC;
 
                     // Currency should be inherited from Opportunity
-                    String pscCurrencyQuery = 'SELECT Id, CurrencyIsoCode FROM Partial_Soft_Credit__c LIMIT 1';
-                    String accSCCurrencyQuery = 'SELECT Id, CurrencyIsoCode FROM Account_Soft_Credit__c LIMIT 1';
+                    String pscCurrencyQuery = 'SELECT Id, CurrencyIsoCode FROM ' + UTIL_Namespace.StrTokenNSPrefix('Partial_Soft_Credit__c') + ' LIMIT 1';
+                    String accSCCurrencyQuery = 'SELECT Id, CurrencyIsoCode FROM ' + UTIL_Namespace.StrTokenNSPrefix('Account_Soft_Credit__c') + ' LIMIT 1';
                     psc = Database.query(pscCurrencyQuery);
                     accSC = Database.query(accSCCurrencyQuery);
                     System.assertEquals(curr1, psc.get('CurrencyIsoCode'), 'PSC Currency Code should be ' + curr1 + ', inherited from its Opportunity.');

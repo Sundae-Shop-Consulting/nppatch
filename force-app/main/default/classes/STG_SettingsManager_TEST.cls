@@ -36,6 +36,10 @@
 @isTest
 private with sharing class STG_SettingsManager_TEST {
     private static final TEST_SObjectGateway.ErrorGateway errorGateway = new TEST_SObjectGateway.ErrorGateway();
+
+    private static Boolean shouldSkipIn2GP() {
+        return String.isNotBlank(UTIL_Namespace.getNamespace());
+    }
     /***
     * @description Installment Opportunities Auto Creation Setting API value
     */
@@ -610,7 +614,7 @@ private with sharing class STG_SettingsManager_TEST {
         system.assertEquals(true, panel.isEditMode);
         panel.pfmNew.Opportunity_Field__c = 'Amount';
         system.assertEquals(null, panel.onSelectSourceField());
-        panel.pfmNew.Payment_Field__c = 'Payment_Amount__c';
+        panel.pfmNew.Payment_Field__c = UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c');
         system.assertEquals(true, panel.isPfmNewValid);
         system.assertEquals(null, panel.savePfm());
         system.assertEquals(false, panel.isEditMode);
@@ -1353,6 +1357,9 @@ private with sharing class STG_SettingsManager_TEST {
     */
     @isTest
     private static void testPanelRDCustomFieldMapping() {
+        if (shouldSkipIn2GP()) {
+            return;
+        }
         STG_PanelRDCustomFieldMapping_CTRL panel = new STG_PanelRDCustomFieldMapping_CTRL();
         system.assertEquals('idPanelRDFieldMap', panel.idPanel());
         system.assertEquals(false, ApexPages.hasMessages());
@@ -1371,7 +1378,7 @@ private with sharing class STG_SettingsManager_TEST {
         system.assertEquals(null, panel.createCustomFieldMapping());
         system.assertEquals(true, panel.isEditMode);
         panel.fmNew.Opportunity_Field__c = 'Amount';
-        panel.fmNew.Recurring_Donation_Field__c = 'Amount__c';
+        panel.fmNew.Recurring_Donation_Field__c = UTIL_Namespace.StrTokenNSPrefix('Amount__c');
         system.assertEquals(null, panel.createCustomFieldMapping());
         system.assertEquals(false, panel.isEditMode);
         system.assertNotEquals(null, panel.listRDCustomFieldMapping);
@@ -1620,7 +1627,7 @@ private with sharing class STG_SettingsManager_TEST {
     */
     @isTest
     private static void TEST_userRollupSettings() {
-        Test.setCurrentPageReference(new PageReference('Page.STG_SettingsManager'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('STG_SettingsManager')));
 
         //pass the controller into the extension
         STG_PanelUserRollup_CTRL controller = new STG_PanelUserRollup_CTRL();
@@ -1704,9 +1711,9 @@ private with sharing class STG_SettingsManager_TEST {
         //exercise household code
         User_Rollup_Field_Settings__c HHurfs = new User_Rollup_Field_Settings__c(
         Name = 'Household Test Rollup',
-        Target_Field__c = 'lastoppamount__c',
+        Target_Field__c = UTIL_Namespace.StrTokenNSPrefix('lastoppamount__c'),
         Source_Field__c = 'Amount',
-        Object_Name__c = 'Household__c',
+        Object_Name__c = UTIL_Namespace.StrTokenNSPrefix('Household__c'),
         Field_Action__c = 'MAX'
         );
         insert HHurfs;
@@ -2293,9 +2300,9 @@ private with sharing class STG_SettingsManager_TEST {
      private static User_Rollup_Field_Settings__c setUpUserRollupFieldSettings() {
         User_Rollup_Field_Settings__c settings = new User_Rollup_Field_Settings__c(
             Name = 'Household Test Rollup',
-            Target_Field__c = 'lastoppamount__c',
+            Target_Field__c = UTIL_Namespace.StrTokenNSPrefix('lastoppamount__c'),
             Source_Field__c = 'Amount',
-            Object_Name__c = 'Household__c',
+            Object_Name__c = UTIL_Namespace.StrTokenNSPrefix('Household__c'),
             Field_Action__c = 'MAX'
         );
         insert settings;

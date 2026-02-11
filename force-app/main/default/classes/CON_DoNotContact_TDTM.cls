@@ -70,9 +70,9 @@ public class CON_DoNotContact_TDTM extends TDTM_Runnable {
         }
 
         if (!setAccountIds.isEmpty()) {
-            string queryAccountsContacts = 'SELECT Id, One2OneContact__c, ';
-            queryAccountsContacts += '(SELECT Id FROM Contacts WHERE Deceased__c=false AND Id NOT IN :newlist ORDER BY TotalOppAmount__c DESC, CreatedDate ASC)';
-            queryAccountsContacts += 'FROM Account WHERE Id IN :setAccountIds AND SYSTEM_AccountType__c = :HH_ACCOUNT_TYPE';
+            string queryAccountsContacts = 'SELECT Id, ' + UTIL_Namespace.StrTokenNSPrefix('One2OneContact__c') + ', ';
+            queryAccountsContacts += '(SELECT Id FROM Contacts WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Deceased__c') + '=false AND Id NOT IN :newlist ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c') + ' DESC, CreatedDate ASC)';
+            queryAccountsContacts += 'FROM Account WHERE Id IN :setAccountIds AND ' + UTIL_Namespace.StrTokenNSPrefix('SYSTEM_AccountType__c') + ' = :HH_ACCOUNT_TYPE';
             mapAccountIdAccounts = new map<id,Account>((list<Account>)database.query(queryAccountsContacts));
         }
 

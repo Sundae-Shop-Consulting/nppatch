@@ -38,6 +38,11 @@
 @IsTest
 private class BDI_ManageAdvancedMappingCtrl_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*******************************************************************************************************
     * @description Initialize test custom settings record
     */

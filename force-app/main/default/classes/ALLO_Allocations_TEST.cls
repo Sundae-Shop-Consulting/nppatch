@@ -1652,7 +1652,7 @@ private with sharing class ALLO_Allocations_TEST {
     * @return List<Allocation__c> A list of all Allocations
     **********************************************************************************************************/
     private static List<Allocation__c> getAllocationsOrderByAmount() {
-        return Database.query(getAllocationsQuery().build() + ' ORDER BY Amount__c');
+        return Database.query(getAllocationsQuery().build() + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Amount__c'));
     }
 
     /*********************************************************************************************************
@@ -1660,7 +1660,7 @@ private with sharing class ALLO_Allocations_TEST {
     * @return List<Allocation__c> A list of all Allocations
     **********************************************************************************************************/
     private static List<Allocation__c> getAllocationsOrderByPercent() {
-        return Database.query(getAllocationsQuery().build() + ' ORDER BY Percent__c');
+        return Database.query(getAllocationsQuery().build() + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Percent__c'));
     }
 
     /*********************************************************************************************************
@@ -1669,7 +1669,7 @@ private with sharing class ALLO_Allocations_TEST {
     * @return List<Allocation__c> A list of Allocations assigned to the Opportunity
     **********************************************************************************************************/
     private static List<Allocation__c> getAllocationsOrderByAmount(Id oppId) {
-        return Database.query(getAllocationsQuery(oppId).build() + ' ORDER BY Amount__c');
+        return Database.query(getAllocationsQuery(oppId).build() + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Amount__c'));
     }
 
     /*********************************************************************************************************
@@ -1678,7 +1678,7 @@ private with sharing class ALLO_Allocations_TEST {
     * @return List<Allocation__c> A list of Allocations assigned to the Opportunity
     **********************************************************************************************************/
     private static List<Allocation__c> getAllocationsOrderByPercent(Id oppId) {
-        return Database.query(getAllocationsQuery(oppId).build() + ' ORDER BY Percent__c');
+        return Database.query(getAllocationsQuery(oppId).build() + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Percent__c'));
     }
 
     /*********************************************************************************************************
@@ -1688,7 +1688,7 @@ private with sharing class ALLO_Allocations_TEST {
     * @return List<Allocation__c> A list of Allocations assigned to the Opportunity
     **********************************************************************************************************/
     private static List<Allocation__c> getAllocationsOrderByPercent(Id paymentId, Id gauId) {
-        return Database.query(getAllocationsQuery(paymentId, gauId).build() + ' ORDER BY Percent__c');
+        return Database.query(getAllocationsQuery(paymentId, gauId).build() + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Percent__c'));
     }
 
     /*********************************************************************************************************
@@ -1698,7 +1698,7 @@ private with sharing class ALLO_Allocations_TEST {
     **********************************************************************************************************/
     private static UTIL_Query getAllocationsQuery(Id oppId) {
         return getAllocationsQuery()
-            .withWhere(String.format('Opportunity__c = \'\'{0}\'\'', new String[] { oppId }));
+            .withWhere(String.format(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' = \'\'{0}\'\'', new String[] { oppId }));
     }
 
     /**
@@ -1708,7 +1708,7 @@ private with sharing class ALLO_Allocations_TEST {
      */
     private static UTIL_Query getPaymentAllocationsQuery(Id paymentId) {
         return getAllocationsQuery()
-            .withWhere(String.format('Payment__c = \'\'{0}\'\'', new String[] { paymentId }));
+            .withWhere(String.format(UTIL_Namespace.StrTokenNSPrefix('Payment__c') + ' = \'\'{0}\'\'', new String[] { paymentId }));
     }
 
     /*********************************************************************************************************
@@ -1719,8 +1719,8 @@ private with sharing class ALLO_Allocations_TEST {
     **********************************************************************************************************/
     private static UTIL_Query getAllocationsQuery(Id paymentId, Id gauId) {
         return getAllocationsQuery()
-            .withWhere(String.format('Payment__c = \'\'{0}\'\'', new String[] { paymentId }))
-            .withWhere(String.format('General_Accounting_Unit__c = \'\'{0}\'\'', new String[] { gauId }));
+            .withWhere(String.format(UTIL_Namespace.StrTokenNSPrefix('Payment__c') + ' = \'\'{0}\'\'', new String[] { paymentId }))
+            .withWhere(String.format(UTIL_Namespace.StrTokenNSPrefix('General_Accounting_Unit__c') + ' = \'\'{0}\'\'', new String[] { gauId }));
     }
 
 
@@ -1732,16 +1732,16 @@ private with sharing class ALLO_Allocations_TEST {
     private static UTIL_Query getAllocationsQuery() {
         return new UTIL_Query()
             .withSelectFields(new String[]{
-                'Opportunity__c',
-                'Payment__c',
-                'General_Accounting_Unit__c',
-                'General_Accounting_Unit__r.Name',
-                'Amount__c',
-                'Percent__c',
+                UTIL_Namespace.StrTokenNSPrefix('Opportunity__c'),
+                UTIL_Namespace.StrTokenNSPrefix('Payment__c'),
+                UTIL_Namespace.StrTokenNSPrefix('General_Accounting_Unit__c'),
+                UTIL_Namespace.StrTokenNSPrefix('General_Accounting_Unit__r') + '.Name',
+                UTIL_Namespace.StrTokenNSPrefix('Amount__c'),
+                UTIL_Namespace.StrTokenNSPrefix('Percent__c'),
                 'CreatedDate',
                 'LastModifiedDate'
             })
-            .withFrom('Allocation__c');
+            .withFrom(UTIL_Namespace.StrTokenNSPrefix('Allocation__c'));
     }
 
 

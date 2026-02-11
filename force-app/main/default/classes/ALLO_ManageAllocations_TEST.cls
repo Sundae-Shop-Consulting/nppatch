@@ -37,6 +37,12 @@
 @isTest
 private class ALLO_ManageAllocations_TEST {
 
+    @TestSetup
+    static void setupTestData() {
+        // Assign admin permission set to ensure CRUD/FLS access for allocation operations
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*******************************************************************************************************
     * @description Setup of allocations settings.
     * @param alloset An instance of Allocations_Settings__c custom setting. Calling this method with a null

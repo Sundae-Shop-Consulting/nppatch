@@ -132,7 +132,7 @@ public with sharing class PSC_ManageSoftCredits_CTRL {
             return;
         }
 
-        String oppQuery = 'SELECT Id, Name, Amount, AccountId, Account.Name, Is_Opp_From_Individual__c, Primary_Contact__c, Primary_Contact__r.Name';
+        String oppQuery = 'SELECT Id, Name, Amount, AccountId, Account.Name, ' + UTIL_Namespace.StrTokenNSPrefix('Is_Opp_From_Individual__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__r') + '.Name';
 
         if (userInfo.isMultiCurrencyOrganization()) {
             oppQuery += ', CurrencyIsoCode';

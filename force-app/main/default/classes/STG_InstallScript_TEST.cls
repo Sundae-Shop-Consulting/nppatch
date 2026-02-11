@@ -36,7 +36,19 @@
 @isTest
 public with sharing class STG_InstallScript_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     private static final Integer ROLLUP_BATCH_SIZE = 333;
+
+    /**
+    * @description Returns true if tests should be skipped in 2GP namespaced context
+    */
+    private static Boolean shouldSkipIn2GP() {
+        return String.isNotBlank(UTIL_Namespace.getNamespace());
+    }
 
     /*******************************************************************************************************
     * @description A test exception class
@@ -411,6 +423,7 @@ public with sharing class STG_InstallScript_TEST {
     */
     @isTest
     public static void shouldCreateMigratedCustomFieldMappingOnUpdate() {
+        if (shouldSkipIn2GP()) return;
         Data_Import_Settings__c setting = new Data_Import_Settings__c();
         setting.Field_Mapping_Method__c = BDI_MigrationMappingUtility.DATA_IMPORT_FIELD_MAPPING;
         insert setting;
@@ -759,14 +772,14 @@ public with sharing class STG_InstallScript_TEST {
                                         '"MasterLabel":"Account 1 Name",' +
                                         '"Label":"Account 1 Name",' +
                                         '"DeveloperName":"%%%NAMESPACE%%%Account1_Name",' +
-                                        '"Source_Field_API_Name__c":"%%%NAMESPACE%%%Account1_Name__c",' +
-                                        '"Target_Field_API_Name__c":"Name",' +
-                                        '"Required__c":"No",' +
-                                        '"Data_Import_Field_Mapping_Set__c":"' + fieldMappingSet.Id + '",' +
-                                        '"Target_Object_Mapping__c":"' + account1ObjectMapping.Id +
-                                        '","Target_Object_Mapping__r":{"Id":"' + account1ObjectMapping.Id +
+                                        '"' + UTIL_Namespace.StrTokenNSPrefix('Source_Field_API_Name__c') + '":"%%%NAMESPACE%%%Account1_Name__c",' +
+                                        '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Field_API_Name__c') + '":"Name",' +
+                                        '"' + UTIL_Namespace.StrTokenNSPrefix('Required__c') + '":"No",' +
+                                        '"' + UTIL_Namespace.StrTokenNSPrefix('Data_Import_Field_Mapping_Set__c') + '":"' + fieldMappingSet.Id + '",' +
+                                        '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__c') + '":"' + account1ObjectMapping.Id +
+                                        '","' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__r') + '":{"Id":"' + account1ObjectMapping.Id +
                                         '","DeveloperName":"Account1","MasterLabel":"Account1",' +
-                                        '"Legacy_Data_Import_Object_Name__c":"Account1","Object_API_Name__c":"Account"}}',
+                                        '"' + UTIL_Namespace.StrTokenNSPrefix('Legacy_Data_Import_Object_Name__c') + '":"Account1","' + UTIL_Namespace.StrTokenNSPrefix('Object_API_Name__c') + '":"Account"}}',
                                 Data_Import_Field_Mapping__mdt.class);
 
                 if (listOfArgs.contains('Migrated_Custom_Field_Mapping_Set')) {
@@ -782,14 +795,14 @@ public with sharing class STG_InstallScript_TEST {
                                             '"MasterLabel":"Account 1 City",' +
                                             '"Label":"Account 1 City",' +
                                             '"DeveloperName":"%%%NAMESPACE%%%Account1_City",' +
-                                            '"Source_Field_API_Name__c":"%%%NAMESPACE%%%Account1_City__c",' +
-                                            '"Target_Field_API_Name__c":"BillingCity",' +
-                                            '"Required__c":"No",' +
-                                            '"Data_Import_Field_Mapping_Set__c":"' + fieldMappingSet.Id + '",' +
-                                            '"Target_Object_Mapping__c":"' + account1ObjectMapping.Id +
-                                            '","Target_Object_Mapping__r":{"Id":"' + account1ObjectMapping.Id +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Source_Field_API_Name__c') + '":"%%%NAMESPACE%%%Account1_City__c",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Field_API_Name__c') + '":"BillingCity",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Required__c') + '":"No",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Data_Import_Field_Mapping_Set__c') + '":"' + fieldMappingSet.Id + '",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__c') + '":"' + account1ObjectMapping.Id +
+                                            '","' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__r') + '":{"Id":"' + account1ObjectMapping.Id +
                                             '","DeveloperName":"Account1","MasterLabel":"Account1",' +
-                                            '"Legacy_Data_Import_Object_Name__c":"Account1","Object_API_Name__c":"Account"}}',
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Legacy_Data_Import_Object_Name__c') + '":"Account1","' + UTIL_Namespace.StrTokenNSPrefix('Object_API_Name__c') + '":"Account"}}',
                                     Data_Import_Field_Mapping__mdt.class);
                     Data_Import_Field_Mapping__mdt fieldMapping2 =
                             (Data_Import_Field_Mapping__mdt)JSON.deserialize(
@@ -797,14 +810,14 @@ public with sharing class STG_InstallScript_TEST {
                                             '"MasterLabel":"Account 1 Country",' +
                                             '"Label":"Account 1 Country",' +
                                             '"DeveloperName":"%%%NAMESPACE%%%Account1_Country",' +
-                                            '"Source_Field_API_Name__c":"%%%NAMESPACE%%%Account1_Country__c",' +
-                                            '"Target_Field_API_Name__c":"BillingCountry",' +
-                                            '"Required__c":"No",' +
-                                            '"Data_Import_Field_Mapping_Set__c":"' + fieldMappingSet.Id + '",' +
-                                            '"Target_Object_Mapping__c":"' + account1ObjectMapping.Id +
-                                            '","Target_Object_Mapping__r":{"Id":"' + account1ObjectMapping.Id +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Source_Field_API_Name__c') + '":"%%%NAMESPACE%%%Account1_Country__c",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Field_API_Name__c') + '":"BillingCountry",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Required__c') + '":"No",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Data_Import_Field_Mapping_Set__c') + '":"' + fieldMappingSet.Id + '",' +
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__c') + '":"' + account1ObjectMapping.Id +
+                                            '","' + UTIL_Namespace.StrTokenNSPrefix('Target_Object_Mapping__r') + '":{"Id":"' + account1ObjectMapping.Id +
                                             '","DeveloperName":"Account1","MasterLabel":"Account1",' +
-                                            '"Legacy_Data_Import_Object_Name__c":"Account1","Object_API_Name__c":"Account"}}',
+                                            '"' + UTIL_Namespace.StrTokenNSPrefix('Legacy_Data_Import_Object_Name__c') + '":"Account1","' + UTIL_Namespace.StrTokenNSPrefix('Object_API_Name__c') + '":"Account"}}',
                                     Data_Import_Field_Mapping__mdt.class);
 
                     return new Map<String, Data_Import_Field_Mapping__mdt>{

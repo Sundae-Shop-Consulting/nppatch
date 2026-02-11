@@ -2626,9 +2626,12 @@ public with sharing class ADDR_Addresses_TEST {
     */
     private static String buildContactSoql() {
         List<String> selectFields = new List<String>{
-            'Id', 'AccountId', 'is_Address_Override__c', 'Current_Address__c',
+            'Id', 'AccountId',
+            UTIL_Namespace.StrTokenNSPrefix('is_Address_Override__c'),
+            UTIL_Namespace.StrTokenNSPrefix('Current_Address__c'),
             'MailingStreet', 'MailingCity', 'MailingState', 'MailingCountry', 'MailingPostalCode',
-            'MailingLatitude', 'MailingLongitude', 'Primary_Address_Type__c'};
+            'MailingLatitude', 'MailingLongitude',
+            UTIL_Namespace.StrTokenNSPrefix('Primary_Address_Type__c')};
 
         if (orgConfig.isStateCountryPicklistsEnabled()) {
 

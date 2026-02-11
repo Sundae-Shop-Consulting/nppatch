@@ -123,21 +123,21 @@ public class HH_HouseholdNaming_BATCH implements Database.Batchable<SObject> {
             list<SObject> updatelist = new list<SObject>();
         
             for (SObject h : listHH) {
-                boolean needsupdate = false;                
-                string strSystemCustomNaming = string.valueOf(h.get('SYSTEM_CUSTOM_NAMING__c'));
-                
+                boolean needsupdate = false;
+                string strSystemCustomNaming = string.valueOf(h.get(UTIL_Namespace.StrTokenNSPrefix('SYSTEM_CUSTOM_NAMING__c')));
+
                 if (strSystemCustomNaming != null)
-                    strSystemCustomNaming += ';';                                         
+                    strSystemCustomNaming += ';';
                 else
-                    strSystemCustomNaming = '';                                      
-                
-                if (h.get('Formal_Greeting__c') != null && !strSystemCustomNaming.contains('Formal_Greeting__c')) {
+                    strSystemCustomNaming = '';
+
+                if (h.get(UTIL_Namespace.StrTokenNSPrefix('Formal_Greeting__c')) != null && !strSystemCustomNaming.contains('Formal_Greeting__c')) {
                     strSystemCustomNaming += 'Formal_Greeting__c' + ';';
-                    needsupdate = true;                     
+                    needsupdate = true;
                 }
-                if (h.get('Informal_Greeting__c') != null && !strSystemCustomNaming.contains('Informal_Greeting__c')) {
+                if (h.get(UTIL_Namespace.StrTokenNSPrefix('Informal_Greeting__c')) != null && !strSystemCustomNaming.contains('Informal_Greeting__c')) {
                     strSystemCustomNaming += 'Informal_Greeting__c' + ';';
-                    needsupdate = true;                 
+                    needsupdate = true;
                 }    
 
                 //pile up a list of all the lastnames in the household
@@ -160,7 +160,7 @@ public class HH_HouseholdNaming_BATCH implements Database.Batchable<SObject> {
                 }
                 
                 if (needsupdate) {
-                    h.put('SYSTEM_CUSTOM_NAMING__c', strSystemCustomNaming);
+                    h.put(UTIL_Namespace.StrTokenNSPrefix('SYSTEM_CUSTOM_NAMING__c'), strSystemCustomNaming);
                     updatelist.add(h);
                 }                
             }

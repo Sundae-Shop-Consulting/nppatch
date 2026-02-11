@@ -82,7 +82,7 @@ public class HH_OppContactRoles_TDTM extends TDTM_Runnable {
 
         	Boolean isOpenOnly = (strRefreshSetting == 'Open Opportunities');
 
-            String strSoql = 'SELECT Id, AccountId, Primary_Contact__c FROM Opportunity WHERE Account.SYSTEM_AccountType__c = \'' +
+            String strSoql = 'SELECT Id, AccountId, ' + UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c') + ' FROM Opportunity WHERE Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEM_AccountType__c') + ' = \'' +
         	   CAO_Constants.HH_ACCOUNT_TYPE + '\' and ';
         	if (isOpenOnly) {
         	   strSoql += ' IsClosed = false and ';

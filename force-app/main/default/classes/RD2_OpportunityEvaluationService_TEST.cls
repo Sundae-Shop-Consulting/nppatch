@@ -59,6 +59,8 @@ private class RD2_OpportunityEvaluationService_TEST {
     */
     @TestSetup
     private static void setUp() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         insert UTIL_UnitTestData_TEST.getContact();
     }
 
@@ -2126,7 +2128,7 @@ private class RD2_OpportunityEvaluationService_TEST {
     }
 
     /**
-    * @description Verifies that only 1 new Pledged should be created when RD and Opp are updated together
+    * @description Verifies that only 1 new open Opp should be created when RD and Opp are updated together
     */
     @isTest
     private static void shouldOnlyCreateOneNewPledgeOpportunityWhenInstallmentAndRDUpdateInOneTransaction() {
@@ -2135,6 +2137,10 @@ private class RD2_OpportunityEvaluationService_TEST {
         Date pauseEndDate = Date.newInstance(2020, 3, 1);
         RD2_ScheduleService.currentDate = today;
 
+        String openStage = UTIL_UnitTestData_TEST.getOpenStage();
+        RD2_Settings_TEST.setUpConfiguration(new Map<String, Object>{
+            'InstallmentOppStageName__c' => openStage
+        });
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder(getContact().Id)
@@ -2161,8 +2167,8 @@ private class RD2_OpportunityEvaluationService_TEST {
 
         for (Opportunity opp : installments) {
             if (opp.Id != installment.Id) {
-                System.assertEquals('Pledged', opp.StageName,
-                    'The newly created Opportunity should be in Pledged status');
+                System.assertEquals(openStage, opp.StageName,
+                    'The newly created Opportunity should be in the configured RD stage');
             }
         }
     }

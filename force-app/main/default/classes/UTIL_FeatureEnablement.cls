@@ -31,19 +31,9 @@
 * @author Salesforce.org
 * @date 2019
 * @group Utilities
-* @description Services ready to feature enablement within NPSP via LmoToSubscriber Feature Parameters
+* @description Services for feature enablement. FeatureParameters removed for 2GP compatibility.
 */
 public without sharing class UTIL_FeatureEnablement {
-
-    /**
-     * @description Define the specific FeatureParameter ApiNames that are supported in FeatureEnablement
-     */
-    public enum FeatureName {
-        PilotEnabled
-    }
-
-    @TestVisible
-    private UTIL_FeatureManagement featureManagement = new UTIL_FeatureManagement();
 
     private static UTIL_FeatureEnablement featureEnablement;
 
@@ -55,34 +45,18 @@ public without sharing class UTIL_FeatureEnablement {
     }
 
     /**
-     * @description public implementation to determine if the PilotEnabled has been enabled 
-     * in the License Management Org (Wilma) for the current org (by OrgId)
-     * @return Boolean The PilotEnabled FeatureParameter value or its override on the scratch org (if any)
+     * @description Check if PilotEnabled feature is active.
+     * In scratch orgs, can be overridden via OverrideFeature_PilotEnabled__c setting.
+     * @return Boolean Always false unless overridden in scratch org
      */
     public static Boolean isPilotEnabled() {
-        Boolean isPilotEnabled = UTIL_FeatureEnablement.getInstance().isEnabled(FeatureName.PilotEnabled.name());
-
-        if (!isPilotEnabled && UTIL_FeatureEnablement.getInstance().isOverridePilotEnabled()) {
-            isPilotEnabled = true;
-        }
-
-        return isPilotEnabled;
-    }
-
-    /**
-     * @description Retrieve a boolean as "IsEnabled" for the specified Feature Parameter api name
-     * @param apiName
-     * @return Boolean
-     */
-    @TestVisible
-    private Boolean isEnabled(String apiName) {
-        return featureManagement.checkPackageBooleanValue(apiName);
+        return UTIL_FeatureEnablement.getInstance().isOverridePilotEnabled();
     }
 
     /**
      * @description If the code is currently executing in a Scratch Org, it's possible to override
-     * the PilotEnabled feature parameter using the Package_Settings protected custom settings object.
-     * @return True if the PilotEnabled feature parameter is overridden
+     * the PilotEnabled feature using the Error_Settings__c custom settings object.
+     * @return True if the PilotEnabled feature is overridden in a scratch org
      */
     private Boolean isOverridePilotEnabled() {
         Boolean isPilotOverride = false;

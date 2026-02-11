@@ -39,6 +39,8 @@ private with sharing class BDI_ContactService_TEST {
 
     @TestSetup
     static void createContactsForMatch(){
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         Contact cont1 = new Contact(FirstName = 'match1', LastName = 'match1');
         Contact cont2 = new Contact(FirstName = 'match2', LastName = 'match2');
 

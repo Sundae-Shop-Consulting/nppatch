@@ -139,7 +139,7 @@ public without sharing class RD2_DatabaseService {
                     : ((Database.DeleteResult)dmlResults[i]).isSuccess();
 
                 if (!isSuccess) {
-                    failedRDIds.add((Id) records[i].get('Recurring_Donation__c'));
+                    failedRDIds.add((Id) records[i].get(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c')));
                 }
             }
 

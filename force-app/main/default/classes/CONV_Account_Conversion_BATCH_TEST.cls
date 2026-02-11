@@ -36,6 +36,11 @@
 @isTest
 public with sharing class CONV_Account_Conversion_BATCH_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*******************************************************************************************************
     * @description Tests the conversion process for 1to1 Contacts & Households to Household Contacts and Household Accounts
     */

@@ -311,8 +311,8 @@ public class ALLO_PaymentSync_SVC {
                                                     'Opportunity__c, ' +
                                                     'Payment__c, ' +
                                                     'General_Accounting_Unit__c ' +
-                                        ' FROM Allocations__r) ' +
-                                'FROM OppPayment__c ' +
+                                        ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('Allocations__r') + ') ' +
+                                'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' ' +
                                 'WHERE  Id IN :paymentIds OR ' +
                                         'Opportunity__c IN : opportunityIds';
 
@@ -345,7 +345,7 @@ public class ALLO_PaymentSync_SVC {
                                                     'Opportunity__c, ' +
                                                     'Payment__c, ' +
                                                     'General_Accounting_Unit__c ' +
-                                        ' FROM Allocations__r) ' +
+                                        ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('Allocations__r') + ') ' +
                              'FROM Opportunity ' +
                              'WHERE     Id IN :opportunityIds';
 

@@ -127,10 +127,14 @@ public class EP_Task_UTIL {
 
         String templateQuery = 'SELECT ';
         templateQuery += String.join(new List<String>(templateFields), ', ');
-        templateQuery += ', (SELECT Id, Name, Engagement_Plan_Template__c, Assigned_To__c, Comments__c, Days_After__c, Type__c, ';
-        templateQuery += 'Parent_Task__c, Priority__c, Reminder__c, Reminder_Time__c, Send_Email__c, Status__c ';
-        templateQuery += 'FROM Engagement_Plan_Tasks__r) ';
-        templateQuery += 'FROM Engagement_Plan_Template__c WHERE Id IN :templateIds';
+        templateQuery += ', (SELECT Id, Name, ' + UTIL_Namespace.StrTokenNSPrefix('Engagement_Plan_Template__c') + ', ';
+        templateQuery += UTIL_Namespace.StrTokenNSPrefix('Assigned_To__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Comments__c') + ', ';
+        templateQuery += UTIL_Namespace.StrTokenNSPrefix('Days_After__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Type__c') + ', ';
+        templateQuery += UTIL_Namespace.StrTokenNSPrefix('Parent_Task__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Priority__c') + ', ';
+        templateQuery += UTIL_Namespace.StrTokenNSPrefix('Reminder__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Reminder_Time__c') + ', ';
+        templateQuery += UTIL_Namespace.StrTokenNSPrefix('Send_Email__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Status__c') + ' ';
+        templateQuery += 'FROM ' + UTIL_Namespace.StrTokenNSPrefix('Engagement_Plan_Tasks__r') + ') ';
+        templateQuery += 'FROM ' + UTIL_Namespace.StrTokenNSPrefix('Engagement_Plan_Template__c') + ' WHERE Id IN :templateIds';
 
         //query for templates and their child tasks
         templateMap = new Map<Id, Engagement_Plan_Template__c>((List<Engagement_Plan_Template__c>)Database.query(templateQuery));
@@ -156,13 +160,13 @@ public class EP_Task_UTIL {
 
         Map<String,String> taskEPTaskFieldMap = new Map<String,String>();
         //Task field name -> Engagement_Plan_Task__c field name
-        taskEPTaskFieldMap.put('Engagement_Plan_Task__c', 'Id');
+        taskEPTaskFieldMap.put(UTIL_Namespace.StrTokenNSPrefix('Engagement_Plan_Task__c'), 'Id');
         taskEPTaskFieldMap.put('Subject', 'Name');
-        taskEPTaskFieldMap.put('Priority', 'Priority__c');
-        taskEPTaskFieldMap.put('OwnerId', 'Assigned_To__c');
-        taskEPTaskFieldMap.put('Description', 'Comments__c');
-        taskEPTaskFieldMap.put('Type', 'Type__c');
-        taskEPTaskFieldMap.put('Status', 'Status__c');
+        taskEPTaskFieldMap.put('Priority', UTIL_Namespace.StrTokenNSPrefix('Priority__c'));
+        taskEPTaskFieldMap.put('OwnerId', UTIL_Namespace.StrTokenNSPrefix('Assigned_To__c'));
+        taskEPTaskFieldMap.put('Description', UTIL_Namespace.StrTokenNSPrefix('Comments__c'));
+        taskEPTaskFieldMap.put('Type', UTIL_Namespace.StrTokenNSPrefix('Type__c'));
+        taskEPTaskFieldMap.put('Status', UTIL_Namespace.StrTokenNSPrefix('Status__c'));
 
         //copy fields
         Task taskResult = new Task();

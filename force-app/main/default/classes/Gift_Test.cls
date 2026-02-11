@@ -31,6 +31,11 @@
 @isTest
 private class Gift_Test {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     @isTest
     static void shouldReturnTrueWhenGiftHasRecurringFieldsPopulated() {
         // Arrange

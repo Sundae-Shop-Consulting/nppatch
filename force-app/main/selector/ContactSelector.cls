@@ -83,7 +83,9 @@ public inherited sharing class ContactSelector {
         if (queryForContactNamingFields == null) {
             //we use dynamic soql so we can include all contact fields, since custom naming may refer to any field.
             String[] selectFields = new String[]{
-                    'Id', 'HHId__c', 'Naming_Exclusions__c', 'Deceased__c'
+                    'Id', UTIL_Namespace.StrTokenNSPrefix('HHId__c'),
+                    UTIL_Namespace.StrTokenNSPrefix('Naming_Exclusions__c'),
+                    UTIL_Namespace.StrTokenNSPrefix('Deceased__c')
             };
             selectFields.addAll(
                     new HouseholdNamingService()
@@ -119,7 +121,7 @@ public inherited sharing class ContactSelector {
         return new UTIL_Query()
                 .withSelectFields(selectFields)
                 .withFrom(String.valueOf(Contact.SObjectType))
-                .withWhere('Account.SYSTEM_AccountType__c = :householdAccountType')
+                .withWhere('Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEM_AccountType__c') + ' = :householdAccountType')
                 .withWhere('AccountId != Null')
                 .withWhere('AccountId IN :householdAccountIds')
                 .build();
@@ -127,13 +129,13 @@ public inherited sharing class ContactSelector {
 
     private static List<String> contactAddressFields() {
         List<String> selectFields = new List<String>{
-                'Id', 'is_Address_Override__c',
-                'Current_Address__c', 'AccountId',
+                'Id', UTIL_Namespace.StrTokenNSPrefix('is_Address_Override__c'),
+                UTIL_Namespace.StrTokenNSPrefix('Current_Address__c'), 'AccountId',
                 'MailingStreet', 'MailingCity', 'MailingState',
                 'MailingPostalCode', 'MailingCountry', 'MailingLatitude',
                 'MailingLongitude',
-                'Primary_Address_Type__c',
-                'Undeliverable_Address__c',
+                UTIL_Namespace.StrTokenNSPrefix('Primary_Address_Type__c'),
+                UTIL_Namespace.StrTokenNSPrefix('Undeliverable_Address__c'),
                 'LastName'
         };
 
@@ -179,11 +181,15 @@ public inherited sharing class ContactSelector {
 
     private List<String> getContactSelectionFields() {
         List<String> selectFields = new List<String>{
-                'Id', 'Private__c', 'AccountId', 'Account.SYSTEMIsIndividual__c',
-                'Account.SYSTEM_AccountType__c', 'Account.One2OneContact__c',
-                'Organization_Type__c', 'Account.Name', 'Deceased__c',
-                'FirstName', 'LastName', 'OwnerId', 'Salutation', 'Naming_Exclusions__c',
-                'Household_Naming_Order__c',
+                'Id', UTIL_Namespace.StrTokenNSPrefix('Private__c'), 'AccountId',
+                'Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEMIsIndividual__c'),
+                'Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEM_AccountType__c'),
+                'Account.' + UTIL_Namespace.StrTokenNSPrefix('One2OneContact__c'),
+                UTIL_Namespace.StrTokenNSPrefix('Organization_Type__c'), 'Account.Name',
+                UTIL_Namespace.StrTokenNSPrefix('Deceased__c'),
+                'FirstName', 'LastName', 'OwnerId', 'Salutation',
+                UTIL_Namespace.StrTokenNSPrefix('Naming_Exclusions__c'),
+                UTIL_Namespace.StrTokenNSPrefix('Household_Naming_Order__c'),
                 'MailingStreet', 'MailingCity', 'MailingState', 'MailingPostalCode',
                 'MailingCountry', 'MailingLatitude', 'MailingLongitude',
                 'OtherStreet', 'OtherCity', 'OtherState', 'OtherPostalCode',

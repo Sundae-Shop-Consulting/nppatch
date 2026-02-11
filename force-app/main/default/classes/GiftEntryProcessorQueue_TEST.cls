@@ -39,6 +39,10 @@ private class GiftEntryProcessorQueue_TEST {
     @isTest
     static void shouldCreateRecurringDonationWhenGiftBatchHasRecurringGift() {
         // Arrange
+        String openStage = UTIL_UnitTestData_TEST.getOpenStage();
+        RD2_Settings_TEST.setUpConfiguration(new Map<String, Object>{
+            'InstallmentOppStageName__c' => openStage
+        });
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Data_Import_Settings__c dataImportSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
         dataImportSettings.Field_Mapping_Method__c = BDI_DataImportService.FM_DATA_IMPORT_FIELD_MAPPING;
@@ -113,6 +117,10 @@ private class GiftEntryProcessorQueue_TEST {
     @isTest
     static void shouldCreateRDWhenGiftBatchHasRecurringGiftCsvImport() {
         // Arrange
+        String openStage = UTIL_UnitTestData_TEST.getOpenStage();
+        RD2_Settings_TEST.setUpConfiguration(new Map<String, Object>{
+            'InstallmentOppStageName__c' => openStage
+        });
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Data_Import_Settings__c dataImportSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
         dataImportSettings.Field_Mapping_Method__c = BDI_DataImportService.FM_DATA_IMPORT_FIELD_MAPPING;
@@ -190,7 +198,7 @@ private class GiftEntryProcessorQueue_TEST {
             'First Opp should have the correct Close Date');
         System.assertEquals(33.00, resultingOpportunities[1].Amount,
             'Second Opp should have the correct Amount');
-        System.assertEquals('Pledged', resultingOpportunities[1].StageName,
+        System.assertEquals(openStage, resultingOpportunities[1].StageName,
             'Second Opp should have the correct Stage');
     }
 

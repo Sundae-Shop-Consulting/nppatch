@@ -36,6 +36,12 @@
 */
 @isTest
 private class CON_DeleteContactOverride_TEST {
+
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /** @description Contact home page. */
     private static final String CONTACT_HOME = '/003/o';
     /** @description LEx navigation value to go back. */
@@ -685,7 +691,7 @@ private class CON_DeleteContactOverride_TEST {
                 '"LastName": "' + 'Contact' + '", ' +
                 '"AccountId": "' + this.accountId + '", ' +
                 '"Account": {"Name": "' + ACCOUNT_NAME + '", ' +
-                '"SYSTEMIsIndividual__c": true}' +
+                '"' + UTIL_Namespace.StrTokenNSPrefix('SYSTEMIsIndividual__c') + '": true}' +
                 '}', Contact.class);
             return contactDetails;
         }

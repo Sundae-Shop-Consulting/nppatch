@@ -39,10 +39,10 @@ public class DeceasedBatch implements Database.Batchable<sObject> {
 
     public Database.QueryLocator start(Database.BatchableContext info) {
         return Database.getQueryLocator(
-            'SELECT AccountId, Account.All_Members_Deceased__c ' +
+            'SELECT AccountId, Account.' + UTIL_Namespace.StrTokenNSPrefix('All_Members_Deceased__c') + ' ' +
                 'FROM Contact ' +
-                'WHERE Organization_Type__c = :HH_ACCOUNT_TYPE ' +
-                'AND (Deceased__c = TRUE OR Account.All_Members_Deceased__c = TRUE) ' +
+                'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Organization_Type__c') + ' = :HH_ACCOUNT_TYPE ' +
+                'AND (' + UTIL_Namespace.StrTokenNSPrefix('Deceased__c') + ' = TRUE OR Account.' + UTIL_Namespace.StrTokenNSPrefix('All_Members_Deceased__c') + ' = TRUE) ' +
                 'ORDER BY AccountId'
         );
     }

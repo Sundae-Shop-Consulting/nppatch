@@ -57,6 +57,8 @@ private class RD2_RecurringDonationsOpp_TEST {
     */
     @TestSetup
     private static void setUp() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         RD2_ScheduleService.currentDate = TODAY;
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();

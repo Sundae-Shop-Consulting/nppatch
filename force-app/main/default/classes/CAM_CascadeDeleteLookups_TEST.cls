@@ -36,6 +36,11 @@
 @isTest
 private class CAM_CascadeDeleteLookups_TEST {
 
+    @TestSetup
+    static void setupPermissions() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+    }
+
     /*********************************************************************************************************
     * @description Deletes the Campaigns which deletes the related Allocations. Verifies results.
     * Then undeletes the Campaigns, which undeletes the Allocations. Verifies results.

@@ -98,7 +98,7 @@ public with sharing class MTCH_FindGifts_CTRL {
     */
     private void init() {
         Id oppId = opp.Id;
-        String oppQuery = 'SELECT Id, Name, AccountId, Account.Name, Amount, StageName, Account.Matching_Gift_Percent__c';
+        String oppQuery = 'SELECT Id, Name, AccountId, Account.Name, Amount, StageName, Account.' + UTIL_Namespace.StrTokenNSPrefix('Matching_Gift_Percent__c');
 
         if (UserInfo.isMultiCurrencyOrganization()) {
             oppQuery += ', CurrencyIsoCode';
@@ -114,22 +114,22 @@ public with sharing class MTCH_FindGifts_CTRL {
         }
 
         String giftStatusFilter =
-            '(Matching_Gift_Status__c = \'Potential\' OR Matching_Gift_Status__c = \'Submitted\')';
+            '(' + UTIL_Namespace.StrTokenNSPrefix('Matching_Gift_Status__c') + ' = \'Potential\' OR ' + UTIL_Namespace.StrTokenNSPrefix('Matching_Gift_Status__c') + ' = \'Submitted\')';
 
         String whereClause =
             '(' +
                 '(' +
-                    'Matching_Gift__c = null ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Matching_Gift__c') + ' = null ' +
                     'AND StageName IN :closedWonStages ' +
                     'AND AccountId = \'' + opp.AccountId + '\' ' +
                     'AND ' + giftStatusFilter +
                 ')' +
-                'OR (Matching_Gift__c = null ' +
+                'OR (' + UTIL_Namespace.StrTokenNSPrefix('Matching_Gift__c') + ' = null ' +
                     'AND StageName IN :closedWonStages ' +
-                    'AND Matching_Gift_Account__c = \'' + opp.AccountId + '\' ' +
+                    'AND ' + UTIL_Namespace.StrTokenNSPrefix('Matching_Gift_Account__c') + ' = \'' + opp.AccountId + '\' ' +
                     'AND ' + giftStatusFilter +
                 ')' +
-                'OR Matching_Gift__c = \'' + opp.Id + '\'' +
+                'OR ' + UTIL_Namespace.StrTokenNSPrefix('Matching_Gift__c') + ' = \'' + opp.Id + '\'' +
             ')';
 
         UTIL_Query queryBuilder = new UTIL_Query()
@@ -430,13 +430,13 @@ public with sharing class MTCH_FindGifts_CTRL {
                 'Name',
                 'AccountId',
                 'Account.Name',
-                'Primary_Contact__c',
-                'Primary_Contact__r.Name',
+                UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c'),
+                UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__r') + '.Name',
                 'Amount',
                 'CloseDate',
-                'Matching_Gift__c',
-                'Matching_Gift_Account__c',
-                'Matching_Gift_Account__r.Matching_Gift_Percent__c',
+                UTIL_Namespace.StrTokenNSPrefix('Matching_Gift__c'),
+                UTIL_Namespace.StrTokenNSPrefix('Matching_Gift_Account__c'),
+                UTIL_Namespace.StrTokenNSPrefix('Matching_Gift_Account__r') + '.' + UTIL_Namespace.StrTokenNSPrefix('Matching_Gift_Percent__c'),
                 '(SELECT Id, ContactId FROM OpportunityContactRoles WHERE IsPrimary = true AND IsDeleted = false)'
             };
         }

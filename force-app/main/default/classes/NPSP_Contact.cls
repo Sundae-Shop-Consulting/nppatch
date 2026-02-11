@@ -208,12 +208,11 @@ public inherited sharing class NPSP_Contact {
     }
 
     private Object currentAddress(SObject sObj) {
-        return sObj.get('Current_Address__c');
+        return sObj.get(UTIL_Namespace.StrTokenNSPrefix('Current_Address__c'));
     }
 
     private String primaryAddressType(SObject sObj) {
-        return (String) sObj.get
-                ('Primary_Address_Type__c');
+        return (String) sObj.get(UTIL_Namespace.StrTokenNSPrefix('Primary_Address_Type__c'));
     }
 
     public NPSP_Contact oldVersion() {

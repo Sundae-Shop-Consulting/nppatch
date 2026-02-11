@@ -147,9 +147,7 @@ public inherited sharing class RD2_SustainerEvaluationService {
 
     private List<SObject> evaluateCurrentSustainerTypeAndReturnNotMatchingRecords(SustainerType state, List<SObject> sustainerCandidates) {
         List<SObject> needFurtherEvaluation = new List<SObject>();
-        String lookupReference = sustainerCandidates[0].getSObjectType() == Schema.Account.getSObjectType()
-            ? 'RecurringDonations__r'
-            : 'R00N80000002bOmREAU__r';
+        String lookupReference = UTIL_Namespace.StrTokenNSPrefix('RecurringDonations__r');
         
         for (Integer i = 0; i < sustainerCandidates.size(); i++) {
             SObject candidate = sustainerCandidates[i];

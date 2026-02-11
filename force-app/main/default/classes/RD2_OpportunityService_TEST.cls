@@ -44,8 +44,24 @@ private with sharing class RD2_OpportunityService_TEST {
     private static final String AFFILIATION_OCR_ROLE_SOLICITOR = 'Solicitor';
     private static final String RELATIONSHIP_TYPE_EMPLOYEE = 'Employee';
     private static final String RELATIONSHIP_STATUS_CURRENT = 'Current';
-    private static final String STAGE_NAME_PLEDGED = 'Pledged';
-    private static final String STAGE_NAME_PROMISED = 'Promised';
+    private static String STAGE_NAME_PLEDGED {
+        get {
+            if (STAGE_NAME_PLEDGED == null) {
+                STAGE_NAME_PLEDGED = UTIL_UnitTestData_TEST.getOpenStage();
+            }
+            return STAGE_NAME_PLEDGED;
+        }
+        private set;
+    }
+    private static String STAGE_NAME_PROMISED {
+        get {
+            if (STAGE_NAME_PROMISED == null) {
+                STAGE_NAME_PROMISED = UTIL_UnitTestData_TEST.getOpenStage();
+            }
+            return STAGE_NAME_PROMISED;
+        }
+        private set;
+    }
     private static final String PAYMENT_CREDIT_CARD = 'Credit Card';
     private static final String PAYMENT_CHECK = 'Check';
 
@@ -61,12 +77,20 @@ private with sharing class RD2_OpportunityService_TEST {
     private static final TEST_SObjectGateway.PaymentGateway paymentGateway = new TEST_SObjectGateway.PaymentGateway();
     private static final TEST_SObjectGateway.ErrorGateway errorGateway = new TEST_SObjectGateway.ErrorGateway();
 
+    /**
+    * @description Returns true if tests should be skipped in 2GP namespaced context
+    */
+    private static Boolean shouldSkipIn2GP() {
+        return String.isNotBlank(UTIL_Namespace.getNamespace());
+    }
 
     /****
      * @description Creates data required for unit tests
      */
     @TestSetup
     private static void setUp() {
+        UTIL_TestPermissions.assignAdminPermissionSet();
+
         insert UTIL_UnitTestData_TEST.getContact();
     }
 
@@ -262,6 +286,7 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldSetOppRecordTypeIdFromSettings() {
+        if (shouldSkipIn2GP()) return;
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Id rdSettingRecordTypeId = UTIL_RecordTypes_TEST.getRandomRecordTypeId(Opportunity.SObjectType);

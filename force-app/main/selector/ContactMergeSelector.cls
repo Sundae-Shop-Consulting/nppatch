@@ -167,11 +167,14 @@ public with sharing class ContactMergeSelector {
 
     private List<String> getContactSelectionFields() {
         List<String> selectFields = new List<String>{
-                'Id', 'Private__c', 'AccountId', 'Account.SYSTEMIsIndividual__c',
-                'Account.SYSTEM_AccountType__c', 'Account.One2OneContact__c',
-                'Organization_Type__c', 'Account.Name',
-                'FirstName', 'LastName', 'OwnerId', 'Salutation', 'Naming_Exclusions__c',
-                'Household_Naming_Order__c',
+                'Id', UTIL_Namespace.StrTokenNSPrefix('Private__c'), 'AccountId',
+                'Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEMIsIndividual__c'),
+                'Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEM_AccountType__c'),
+                'Account.' + UTIL_Namespace.StrTokenNSPrefix('One2OneContact__c'),
+                UTIL_Namespace.StrTokenNSPrefix('Organization_Type__c'), 'Account.Name',
+                'FirstName', 'LastName', 'OwnerId', 'Salutation',
+                UTIL_Namespace.StrTokenNSPrefix('Naming_Exclusions__c'),
+                UTIL_Namespace.StrTokenNSPrefix('Household_Naming_Order__c'),
                 'MailingStreet', 'MailingCity', 'MailingState', 'MailingPostalCode',
                 'MailingCountry', 'MailingLatitude', 'MailingLongitude',
                 'OtherStreet', 'OtherCity', 'OtherState', 'OtherPostalCode',

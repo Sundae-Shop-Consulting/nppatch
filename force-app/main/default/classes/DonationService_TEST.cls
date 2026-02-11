@@ -123,7 +123,7 @@ private class DonationService_TEST {
         List<OppPayment__c> childPayments) {
 
             String parentJSON = JSON.serialize(parentOpportunity);
-            String childPaymentsJSON = '"OppPayment__r": {'
+            String childPaymentsJSON = '"' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + '": {'
                 + '"totalSize": ' + childPayments.size() + ', '
                 + '"done": true,'
                 + '"records": ' + JSON.serialize(childPayments)

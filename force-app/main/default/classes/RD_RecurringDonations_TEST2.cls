@@ -500,7 +500,7 @@ private with sharing class RD_RecurringDonations_TEST2 {
         update o;
 
         //kick it off from the vf page
-        Test.setCurrentPageReference(new PageReference('Page.RecurringDonationsSettings'));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('RecurringDonationsSettings')));
 
         Test.StartTest();
         RD_RecurringDonations_BATCH rdbatch = new RD_RecurringDonations_BATCH();
