@@ -41,20 +41,11 @@ private class CAM_CascadeDeleteLookups_TEST {
         UTIL_TestPermissions.assignAdminPermissionSet();
     }
 
-    /**
-     * @description Returns true if running in a namespaced 2GP context where FLS checks
-     * fail due to Schema describe caching issues. Tests should skip in this context.
-     */
-    private static Boolean shouldSkipIn2GP() {
-        return String.isNotBlank(UTIL_Namespace.getNamespace());
-    }
-
     /*********************************************************************************************************
     * @description Deletes the Campaigns which deletes the related Allocations. Verifies results.
     * Then undeletes the Campaigns, which undeletes the Allocations. Verifies results.
     */
     static testMethod void testCampaignCascadeDelete(){
-        if (shouldSkipIn2GP()) { return; }
         Integer maxRecords = 1;
 
         List<Campaign> campaigns = CDL_CascadeDeleteLookups_TEST.buildCampaigns(maxRecords);

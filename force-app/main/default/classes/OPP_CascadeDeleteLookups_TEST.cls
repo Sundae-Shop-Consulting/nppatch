@@ -41,14 +41,6 @@ private class OPP_CascadeDeleteLookups_TEST {
         UTIL_TestPermissions.assignAdminPermissionSet();
     }
 
-    /**
-     * @description Returns true if running in a namespaced 2GP context where FLS checks
-     * fail due to Schema describe caching issues. Tests should skip in this context.
-     */
-    private static Boolean shouldSkipIn2GP() {
-        return String.isNotBlank(UTIL_Namespace.getNamespace());
-    }
-
     /*********************************************************************************************************
     * @description Deletes the Opportunities which deletes the related Allocations.
     * Then undeletes the Opportunities, which undeletes the Allocations.
@@ -56,7 +48,6 @@ private class OPP_CascadeDeleteLookups_TEST {
     * Then the Allocations will be undeleted after the Opportunities are undeleted.
     */
     static testMethod void testOppCascade() {
-        if (shouldSkipIn2GP()) { return; }
         Integer maxRecords = 1;
 
         List<Account> accounts = CDL_CascadeDeleteLookups_TEST.buildAccounts(maxRecords);
@@ -85,7 +76,6 @@ private class OPP_CascadeDeleteLookups_TEST {
     }
 
     static testMethod void testOppCascadeWithPaymentAllocations() {
-        if (shouldSkipIn2GP()) { return; }
         General_Accounting_Unit__c defaultAccountingUnit = 
           new General_Accounting_Unit__c(Name = 'DEFAULT_GAU');
         insert defaultAccountingUnit;

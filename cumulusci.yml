@@ -39,6 +39,11 @@ tasks:
         options:
             path: unpackaged/config/delete
 
+    log_package_install_info:
+        description: Display package installation command and URL
+        class_path: tasks.package_info.LogPackageInstallInfo
+        group: Utilities
+
     default_settings:
         description: Configure the default Settings including Membership RecordType
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
@@ -291,6 +296,11 @@ flows:
                 task: None
             4:
                 task: None
+            5:
+                task: log_package_install_info
+                options:
+                    version_number: ^^create_package_version.version_number
+                    package_version_id: ^^create_package_version.subscriber_package_version_id
 
     config_dev:
         steps:

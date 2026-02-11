@@ -18,5 +18,6 @@
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "63.0",
   "packageAliases": {
+    "spinoff": "0Hoal00000036LpCAI"
   }
 }
