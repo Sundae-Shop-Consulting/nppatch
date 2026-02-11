@@ -2,7 +2,7 @@
 
 ## Overview
 
-nppatch extends Salesforce's standard objects (Account, Contact, Opportunity) with custom objects supporting nonprofit-specific features. The data model is designed for flexibility, supporting both household account models and traditional contact-centric approaches.
+NPPatch extends Salesforce's standard objects (Account, Contact, Opportunity) with custom objects supporting nonprofit-specific features. The data model is designed for flexibility, supporting both household account models and traditional contact-centric approaches.
 
 ## Constituent Management
 
@@ -506,7 +506,7 @@ Configuration for scheduled job execution.
 
 ## Custom Settings Objects
 
-nppatch uses 21 hierarchy custom settings for configuration:
+NPPatch uses 21 hierarchy custom settings for configuration:
 
 | Setting | Purpose | Key Fields |
 |---------|---------|-----------|
@@ -534,7 +534,7 @@ nppatch uses 21 hierarchy custom settings for configuration:
 
 ## Custom Metadata Types
 
-nppatch includes 12+ custom metadata types for configuration:
+NPPatch includes 12+ custom metadata types for configuration:
 
 | CMT | Purpose |
 |-----|---------|

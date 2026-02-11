@@ -2,7 +2,7 @@
 
 ## What is an Unlocked Package?
 
-nppatch is distributed as a **namespaced unlocked 2GP package**, which fundamentally changes how you work with the codebase compared to traditional managed packages like the original NPSP.
+NPPatch is distributed as a **namespaced unlocked 2GP package**, which fundamentally changes how you work with the codebase compared to traditional managed packages like the original NPSP.
 
 ### Managed Package vs. Unlocked Package
 
@@ -17,7 +17,7 @@ nppatch is distributed as a **namespaced unlocked 2GP package**, which fundament
 
 ### Key Implication
 
-Because nppatch is an **unlocked package**, you have complete access to and control over the underlying Apex code, object definitions, and Lightning Web Components. This flexibility comes with responsibility: when you modify package code, future upgrades may introduce conflicts or overwrite your changes.
+Because NPPatch is an **unlocked package**, you have complete access to and control over the underlying Apex code, object definitions, and Lightning Web Components. This flexibility comes with responsibility: when you modify package code, future upgrades may introduce conflicts or overwrite your changes.
 
 ## What You Can Now Do
 
@@ -50,7 +50,7 @@ This enables you to:
 
 ### 2. Add Fields Directly to Package Objects
 
-Unlike managed packages, you can add custom fields to any nppatch object:
+Unlike managed packages, you can add custom fields to any NPPatch object:
 
 ```
 force-app/main/default/objects/Account/fields/
@@ -154,7 +154,7 @@ Then register in the UI:
 
 ### The Risk: Changes Get Overwritten
 
-When nppatch publishes an upgrade to a newer version, the package installation process may overwrite your direct modifications to package code:
+When NPPatch publishes an upgrade to a newer version, the package installation process may overwrite your direct modifications to package code:
 
 ```
 Scenario: You've modified OPP_OpportunityBeforeInsert_TDTM.cls
@@ -288,7 +288,7 @@ Sandbox Testing Checklist:
 
 ### Installation Process
 
-When you upgrade nppatch:
+When you upgrade NPPatch:
 
 1. **Salesforce validates the package** against your org's configuration
 2. **Namespace metadata is updated** - all `nppatch__` prefixed items are replaced with new versions
@@ -369,7 +369,7 @@ your-nppatch-project/
 
 ## Modification Checklist
 
-Before modifying any nppatch code, ask yourself:
+Before modifying any NPPatch code, ask yourself:
 
 - [ ] Does this modification need to survive package upgrades?
 - [ ] Would an extension (new handler class) be better than a modification?
@@ -382,6 +382,6 @@ If you answer "yes" to the first question, consider an extension instead.
 
 ## Next Steps
 
-- **[Extending nppatch](extending.md)** - Create new handlers, metadata, and custom code
+- **[Extending NPPatch](extending.md)** - Create new handlers, metadata, and custom code
 - **[Architecture Overview](../architecture/overview.md)** - Understand the technical foundation
 - **[Getting Started](../getting-started/overview.md)** - Initial setup and configuration

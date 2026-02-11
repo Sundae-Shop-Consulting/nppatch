@@ -2,7 +2,7 @@
 
 ## Overview
 
-nppatch uses **Table-Driven Trigger Management (TDTM)** for all trigger automation. Rather than embedding logic in Salesforce triggers, TDTM externalizes handler configuration to a custom object (`Trigger_Handler__c`), enabling trigger handlers to be managed purely through configuration.
+NPPatch uses **Table-Driven Trigger Management (TDTM)** for all trigger automation. Rather than embedding logic in Salesforce triggers, TDTM externalizes handler configuration to a custom object (`Trigger_Handler__c`), enabling trigger handlers to be managed purely through configuration.
 
 ## How TDTM Works
 
@@ -248,7 +248,7 @@ Run_Order: 100
 
 ## All 26 Triggers
 
-nppatch includes one trigger per object (26 total):
+NPPatch includes one trigger per object (26 total):
 
 | Trigger | Object | Handles |
 |---------|--------|---------|

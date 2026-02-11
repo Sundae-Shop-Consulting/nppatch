@@ -1,6 +1,6 @@
 # Source Deployment
 
-This guide covers setting up a development environment and deploying nppatch from source using CumulusCI. This path is intended for developers contributing to the project, consultants who want to explore the codebase in a scratch org, or anyone who wants to build the package themselves.
+This guide covers setting up a development environment and deploying NPPatch from source using CumulusCI. This path is intended for developers contributing to the project, consultants who want to explore the codebase in a scratch org, or anyone who wants to build the package themselves.
 
 ## Prerequisites
 
@@ -20,7 +20,7 @@ sf version
 
 ### CumulusCI
 
-nppatch uses CumulusCI (cci) as its build and automation tool. CumulusCI is a Python-based tool built by Salesforce.org specifically for managing the development lifecycle of Salesforce packages.
+NPPatch uses CumulusCI (cci) as its build and automation tool. CumulusCI is a Python-based tool built by Salesforce.org specifically for managing the development lifecycle of Salesforce packages.
 
 Install CumulusCI:
 
@@ -34,7 +34,7 @@ Verify the installation:
 cci version
 ```
 
-nppatch requires CumulusCI version 4.6.0 or later.
+NPPatch requires CumulusCI version 4.6.0 or later.
 
 ### Salesforce Dev Hub
 
@@ -52,7 +52,7 @@ This opens a browser window for OAuth authentication. Log in with your Dev Hub a
 
 ### Git
 
-Clone the nppatch repository:
+Clone the NPPatch repository:
 
 ```bash
 git clone https://github.com/Sundae-Shop-Consulting/nppatch.git
@@ -72,7 +72,7 @@ cci flow run dev_org --org dev
 This command does the following:
 
 1. Creates a scratch org using the default scratch org definition
-2. Deploys the nppatch source code to the org
+2. Deploys the NPPatch source code to the org
 3. Runs the `config_dev` flow, which:
     - Updates the admin profile with necessary permissions
     - Removes default layouts and profiles that aren't needed

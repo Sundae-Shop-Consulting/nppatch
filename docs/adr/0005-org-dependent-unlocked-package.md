@@ -11,7 +11,7 @@ When creating a 2GP Unlocked package, there are two packaging modes:
 
 2. **Org-Dependent Package**: The package can reference metadata that already exists in the target org without packaging it. Dependencies are resolved at install time from the org.
 
-Our package (spinoff/nppatch) consolidates NPSP component packages that were originally designed for 1GP. These packages make extensive use of:
+Our package (spinoff/NPPatch) consolidates NPSP component packages that were originally designed for 1GP. These packages make extensive use of:
 
 - Standard objects and fields (Account, Contact, Opportunity, Campaign)
 - Standard picklist values (Opportunity Stages, Contact Roles)

@@ -4,7 +4,7 @@ The Enhanced Recurring Donations (RD2) feature provides comprehensive management
 
 ## Overview
 
-Recurring donations in nppatch represent ongoing financial commitments from contacts or accounts. Unlike opportunities that represent single transactions, recurring donations automatically generate installment opportunities at defined intervals, supporting both flexible and structured donation schedules.
+Recurring donations in NPPatch represent ongoing financial commitments from contacts or accounts. Unlike opportunities that represent single transactions, recurring donations automatically generate installment opportunities at defined intervals, supporting both flexible and structured donation schedules.
 
 ### Key Concepts
 

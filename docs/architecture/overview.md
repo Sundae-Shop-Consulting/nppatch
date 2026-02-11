@@ -2,11 +2,11 @@
 
 ## Introduction
 
-nppatch is an enterprise-scale nonprofit package built on Salesforce using industry-standard patterns and frameworks. The architecture emphasizes maintainability, testability, and scalability through separation of concerns and configuration-driven automation.
+NPPatch is an enterprise-scale nonprofit package built on Salesforce using industry-standard patterns and frameworks. The architecture emphasizes maintainability, testability, and scalability through separation of concerns and configuration-driven automation.
 
 ## High-Level Architecture
 
-nppatch follows the Apex Enterprise Patterns (fflib) layered architecture, decomposing the application into discrete, testable tiers:
+NPPatch follows the Apex Enterprise Patterns (fflib) layered architecture, decomposing the application into discrete, testable tiers:
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -34,7 +34,7 @@ This layered approach ensures that:
 
 ## TDTM Trigger Framework
 
-All Salesforce triggers in nppatch follow the **Table-Driven Trigger Management (TDTM)** pattern. Instead of embedding logic directly in triggers, trigger handlers are registered in the `Trigger_Handler__c` custom object, enabling:
+All Salesforce triggers in NPPatch follow the **Table-Driven Trigger Management (TDTM)** pattern. Instead of embedding logic directly in triggers, trigger handlers are registered in the `Trigger_Handler__c` custom object, enabling:
 
 - **Zero-Code Trigger Management**: Handlers can be enabled, disabled, or reordered without modifying code
 - **Async Execution**: Individual handlers can be marked to run asynchronously
@@ -60,7 +60,7 @@ All Salesforce triggers in nppatch follow the **Table-Driven Trigger Management 
 
 ## Module Structure
 
-nppatch organizes code into functional modules, each with a two-letter or three-letter prefix. This convention appears in class names throughout the codebase:
+NPPatch organizes code into functional modules, each with a two-letter or three-letter prefix. This convention appears in class names throughout the codebase:
 
 ### Core Modules
 
@@ -204,7 +204,7 @@ Service classes are stateless and can be reused across controllers, batch jobs, 
 
 ## Settings Management
 
-nppatch uses a **two-tier settings architecture** for configuration:
+NPPatch uses a **two-tier settings architecture** for configuration:
 
 ### Custom Settings (Hierarchy)
 
@@ -244,7 +244,7 @@ Custom metadata is:
 
 ## Error Handling
 
-nppatch provides a comprehensive error handling framework:
+NPPatch provides a comprehensive error handling framework:
 
 ### Error Logging
 
@@ -356,7 +356,7 @@ TDTM_Runnable.DmlWrapper result = handler.run(
 
 ### Package Structure
 
-nppatch is deployed as a managed package with:
+NPPatch is deployed as a managed package with:
 - Core functionality in the managed namespace
 - Extensibility points for customer customizations
 - Configuration-first approach minimizing custom code needs
