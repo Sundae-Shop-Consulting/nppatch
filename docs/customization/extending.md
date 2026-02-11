@@ -323,7 +323,7 @@ You can define mappings that the Data Import process uses automatically:
 | Required | ☐ |
 
 The Data Import process then:
-- Reads `NPSP_Data_Import__c.Contact_1_Department__c`
+- Reads `DataImport__c.Contact_1_Department__c`
 - Maps to `Contact.Department__c`
 - Applies the same transformation rules as native mappings
 

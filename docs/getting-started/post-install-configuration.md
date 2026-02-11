@@ -6,7 +6,7 @@ After installing NPPatch, the package initializes a set of default settings auto
 
 NPPatch uses Salesforce hierarchy custom settings to store its configuration. These settings can be configured at the org level (applied to everyone), at the profile level (applied to users with a specific profile), or at the individual user level.
 
-The primary interface for managing these settings is the **NPSP Settings** page, accessible from the App Launcher or the NPSP Settings tab.
+The primary interface for managing these settings is the **NPPatch Settings** page, accessible from the App Launcher or the NPPatch Settings tab.
 
 Under the hood, settings are managed through a centralized facade (`UTIL_CustomSettingsFacade`) that provides in-memory caching to minimize database queries. When you change a setting through the UI, it updates the corresponding custom setting record.
 
@@ -59,7 +59,7 @@ The GAU (General Accounting Unit) Allocations feature allows organizations to sp
 
 To enable allocations:
 
-1. Open **NPSP Settings**
+1. Open **NPPatch Settings**
 2. Navigate to **Donations > Allocations**
 3. Enable the feature
 4. Configure a default General Accounting Unit if desired
@@ -72,7 +72,7 @@ Customizable Rollups (CRLP) replace the legacy rollup mechanism with a more flex
 
 Most organizations should enable Customizable Rollups for better performance and flexibility:
 
-1. Open **NPSP Settings**
+1. Open **NPPatch Settings**
 2. Navigate to **Customizable Rollups**
 3. Enable the feature
 4. Review and adjust the default rollup definitions
@@ -101,7 +101,7 @@ NPPatch uses the TDTM (Table-Driven Trigger Management) framework to manage all 
 
 You can view and manage trigger handlers through:
 
-1. **NPSP Settings > System Tools > Trigger Handlers** — the settings UI
+1. **NPPatch Settings > System Tools > Trigger Handlers** — the settings UI
 2. **Trigger_Handler__c records** — directly querying or viewing the custom object
 
 Each handler can be individually enabled or disabled without modifying code. This is useful for troubleshooting or for temporarily disabling specific automation during data migrations.

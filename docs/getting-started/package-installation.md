@@ -8,8 +8,6 @@ Before installing NPPatch, confirm the following:
 
 **Salesforce Edition.** NPPatch requires Enterprise Edition, Unlimited Edition, or Developer Edition. It will not install on Professional Edition or Group Edition orgs.
 
-**API Version.** The target org must support Salesforce API version 63.0 or later.
-
 **Admin Access.** You'll need System Administrator access to the target org to install the package.
 
 **Existing NPSP Status.** If the target org already has the Salesforce-managed NPSP installed, read the [namespace implications](#installing-alongside-existing-npsp) section below before proceeding.
@@ -81,7 +79,7 @@ After installation completes:
 
 2. **Check custom objects.** Navigate to **Setup > Object Manager** and verify that NPPatch custom objects are present (they'll be prefixed with `nppatch__`), including: Recurring_Donation__c, Address__c, Allocation__c, General_Accounting_Unit__c, Relationship__c, and others.
 
-3. **Check NPSP Settings.** Navigate to the **NPSP Settings** tab (if installed as a tab) or search for "NPSP Settings" in the App Launcher. The settings page should load and display the current configuration.
+3. **Check NPPatch Settings.** Navigate to the **NPPatch Settings** tab (if installed as a tab) or search for "NPPatch Settings" in the App Launcher. The settings page should load and display the current configuration.
 
 4. **Run a smoke test.** Create a test Contact and verify that a Household Account is automatically created (if household management is enabled in settings).
 
