@@ -8417,7 +8417,7 @@ Remarque : l’onglet de paramètres NPPatch est visible dans l’application N
         <label>Paramètres NPPatch</label>
     </customTabs>
     <customApplications>
-        <name>Nonprofit_CRM</name>
+        <name>NPPatch_Lightning</name>
         <label>NPPatch</label>
     </customApplications>
     <quickActions>

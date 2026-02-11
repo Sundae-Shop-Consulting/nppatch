@@ -2,7 +2,7 @@
 <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
     <customApplications>
         <label><!-- NPPatch --></label>
-        <name>Nonprofit_CRM</name>
+        <name>NPPatch_Lightning</name>
     </customApplications>
     <customLabels>
         <label>מזהה האימות לא יכול להיות ריק.</label>

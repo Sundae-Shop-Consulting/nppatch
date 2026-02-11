@@ -8415,7 +8415,7 @@ Opmerking: Het tabblad NPPatch-instellingen is zichtbaar in de toepassing NPPatc
         <label>NPPatch-Instellingen</label>
     </customTabs>
     <customApplications>
-        <name>Nonprofit_CRM</name>
+        <name>NPPatch_Lightning</name>
         <label>NPPatch</label>
     </customApplications>
     <quickActions>

@@ -8416,7 +8416,7 @@ Note: The NPPatch Settings tab is visible in the NPPatch application. If you don
         <label>NPPatch Settings</label>
     </customTabs>
     <customApplications>
-        <name>Nonprofit_CRM</name>
+        <name>NPPatch_Lightning</name>
         <label>NPPatch</label>
     </customApplications>
     <quickActions>

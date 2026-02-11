@@ -8416,7 +8416,7 @@ Nota: a guia Configurações do NPPatch está visível no aplicativo Pacote de s
         <label>Configurações do NPPatch</label>
     </customTabs>
     <customApplications>
-        <name>Nonprofit_CRM</name>
+        <name>NPPatch_Lightning</name>
         <label>Pacote de sucesso para organizações sem fins lucrativos</label>
     </customApplications>
     <quickActions>
