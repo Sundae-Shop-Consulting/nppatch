@@ -38,7 +38,7 @@
 public class CRLP_DefaultConfigBuilder {
 
     /** @description Prefix all CMT DeveloperName values with this */
-    public static final String RecordNamePrefix = 'NPSP_';
+    public static final String RecordNamePrefix = 'nppatch_';
 
     /** @description Legacy Account/Contact rollup settings are stored in this custom settings object */
     public static final Households_Settings__c legacySettings = UTIL_CustomSettingsFacade.getHouseholdsSettings();

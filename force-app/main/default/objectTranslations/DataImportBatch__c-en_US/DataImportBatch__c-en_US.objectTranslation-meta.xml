@@ -13,7 +13,7 @@
         <name>BatchGiftEntryTabColumns</name>
     </fieldSets>
     <layouts>
-        <layout>NPSP Data Import Batch Layout</layout>
+        <layout>NPPatch Data Import Batch Layout</layout>
         <sections>
             <label></label>
             <section>Contact &amp; Account Matching</section>

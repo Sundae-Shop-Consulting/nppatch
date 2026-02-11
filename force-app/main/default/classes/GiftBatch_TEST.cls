@@ -253,7 +253,7 @@ private class GiftBatch_TEST {
         Map<Id, DataImport__c> dataImportMap = new Map<Id, DataImport__c>();
         dataImportMap.put(getDummyDataImportId(),
             new DataImport__c(Id = getDummyDataImportId(),
-                Status__c = BDI_DataImport_API.bdiProcessing, NPSP_Data_Import_Batch__c = batchId));
+                Status__c = BDI_DataImport_API.bdiProcessing, NPPatch_Data_Import_Batch__c = batchId));
         return dataImportMap;
     }
 
@@ -386,7 +386,7 @@ private class GiftBatch_TEST {
             DataImport__c dummyGift = new DataImport__c(
                 Id = UTIL_UnitTestData_TEST.mockId(DataImport__c.getSObjectType()),
                 Status__c = null,
-                NPSP_Data_Import_Batch__c = UTIL_UnitTestData_TEST.mockId(DataImportBatch__c.getSObjectType()),
+                NPPatch_Data_Import_Batch__c = UTIL_UnitTestData_TEST.mockId(DataImportBatch__c.getSObjectType()),
                 Account1_Name__c = 'DUMMY ACCOUNT ' +  i,
                 Donation_Amount__c = 1,
                 Donation_Date__c = Date.today(),

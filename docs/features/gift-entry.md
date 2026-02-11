@@ -66,7 +66,7 @@ Individual gift records within a batch:
 
 | Field | Purpose |
 |-------|---------|
-| `NPSP_Data_Import_Batch__c` | Reference to parent batch |
+| `NPPatch_Data_Import_Batch__c` | Reference to parent batch |
 | `Status__c` | Draft, Imported, Failed, Dry Run |
 | `Contact_Firstname__c` | Donor first name |
 | `Contact_Lastname__c` | Donor last name |

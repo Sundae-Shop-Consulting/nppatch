@@ -306,7 +306,7 @@
     </customLabels>
     <customLabels>
         <name>CONV_All_Triggers_Disabled</name>
-        <label>すべての NPSP トリガが無効になる (カスタムトリガはユーティリティによって無効化されません。安全性のため、カスタムトリガも無効にしてください)</label>
+        <label>すべての NPPatch トリガが無効になる (カスタムトリガはユーティリティによって無効化されません。安全性のため、カスタムトリガも無効にしてください)</label>
     </customLabels>
     <customLabels>
         <name>CONV_All_Users_Logged_Out</name>
@@ -369,8 +369,8 @@
         <label>既存の各世帯に対して新しい世帯取引先が作成される</label>
     </customLabels>
     <customLabels>
-        <name>CONV_Non_NPSP_Apps</name>
-        <label>NPSP 以外のすべてのアプリケーションは一時的にアンインストールまたは無効化されています。</label>
+        <name>CONV_Non_NPPatch_Apps</name>
+        <label>NPPatch 以外のすべてのアプリケーションは一時的にアンインストールまたは無効化されています。</label>
     </customLabels>
     <customLabels>
         <name>CONV_Old_Household_Objects</name>
@@ -430,7 +430,7 @@
     </customLabels>
     <customLabels>
         <name>CONV_Triggers_Reenabled</name>
-        <label>すべての NPSP トリガは再度有効化されます。変換のために無効にしたカスタムトリガは手動で再度有効にする必要があります。また、ユーティリティによって&lt;b&gt;すべて&lt;/b&gt;の NPSP トリガが再度有効化されるため、事前に選択的に無効にしたトリガも手動で再度無効にする必要があります。</label>
+        <label>すべての NPPatch トリガは再度有効化されます。変換のために無効にしたカスタムトリガは手動で再度有効にする必要があります。また、ユーティリティによって&lt;b&gt;すべて&lt;/b&gt;の NPPatch トリガが再度有効化されるため、事前に選択的に無効にしたトリガも手動で再度無効にする必要があります。</label>
     </customLabels>
     <customLabels>
         <name>CONV_Warning</name>
@@ -618,7 +618,7 @@
     </customLabels>
     <customLabels>
         <name>CRLP_DisabledMessage</name>
-        <label>[カスタマイズ可能な積み上げ集計] が有効になっていません。[NPSP 設定] に戻り、有効にする方法を確認します。</label>
+        <label>[カスタマイズ可能な積み上げ集計] が有効になっていません。[NPPatch 設定] に戻り、有効にする方法を確認します。</label>
     </customLabels>
     <customLabels>
         <name>CRLP_DuplicateTargetField</name>
@@ -654,7 +654,7 @@
     </customLabels>
     <customLabels>
         <name>CRLP_ResetRollupsWarning</name>
-        <label>カスタマイズ可能な積み上げ集計をリセットしてよろしいですか? これにより、作成された新しいカスタマイズ可能な積み上げ集計、絞り込みルール、絞り込みグループが削除されて、すべての NPSP の積み上げ集計はそれらのデフォルト動作にリセットされます。</label>
+        <label>カスタマイズ可能な積み上げ集計をリセットしてよろしいですか? これにより、作成された新しいカスタマイズ可能な積み上げ集計、絞り込みルール、絞り込みグループが削除されて、すべての NPPatch の積み上げ集計はそれらのデフォルト動作にリセットされます。</label>
     </customLabels>
     <customLabels>
         <name>CRLP_Return</name>
@@ -766,7 +766,7 @@
     </customLabels>
     <customLabels>
         <name>ErrorEmailMessage</name>
-        <label>Salesforce でこれらの NPSP エラーが発生しました。エラーの解決方法がわからない場合は、Nonprofit Success Pack グループ (https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHitSAE) にメッセージを投稿してください</label>
+        <label>Salesforce でこれらの NPPatch エラーが発生しました。エラーの解決方法がわからない場合は、NPPatch グループにメッセージを投稿してください</label>
     </customLabels>
     <customLabels>
         <name>FieldSetRelatedFieldError</name>
@@ -846,11 +846,11 @@
     </customLabels>
     <customLabels>
         <name>RD2_DataMigrationInvalidCloseAction</name>
-        <label>[NPSP 設定] | [継続支援] で、[継続支援完了時の進行中の商談の動作] に [No_Action] 以外の値を選択します。データ移行が完了した後に設定を前の値に戻すことができます。</label>
+        <label>[NPPatch 設定] | [継続支援] で、[継続支援完了時の進行中の商談の動作] に [No_Action] 以外の値を選択します。データ移行が完了した後に設定を前の値に戻すことができます。</label>
     </customLabels>
     <customLabels>
         <name>RD2_DataMigrationInvalidInstallmentPeriod</name>
-        <label>継続支援の間隔「{0}」は拡張継続支援形式に変換できません。[NPSP 設定] -&gt; [継続支援] -&gt; [継続支援のカスタム間隔] で間隔が定義されていることを確認してください。</label>
+        <label>継続支援の間隔「{0}」は拡張継続支援形式に変換できません。[NPPatch 設定] -&gt; [継続支援] -&gt; [継続支援のカスタム間隔] で間隔が定義されていることを確認してください。</label>
     </customLabels>
     <customLabels>
         <name>RD2_DataMigrationInvalidOpenEndedStatus</name>
@@ -994,7 +994,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementDisabledMessage</name>
-        <label>(1) Lightning Experience を使用する準備ができていない場合、画面上部の [Lightning Experience に切り替え] をクリックします。&lt;br/&gt;(2) [NPSP 設定] | [支援] | [カスタマイズ可能な積み上げ集計] に移動して、[カスタマイズ可能な積み上げ集計] を有効にします。&lt;br/&gt;&lt;br/&gt;ここに戻って、[拡張継続支援にアップグレード] ページに移動します。</label>
+        <label>(1) Lightning Experience を使用する準備ができていない場合、画面上部の [Lightning Experience に切り替え] をクリックします。&lt;br/&gt;(2) [NPPatch 設定] | [支援] | [カスタマイズ可能な積み上げ集計] に移動して、[カスタマイズ可能な積み上げ集計] を有効にします。&lt;br/&gt;&lt;br/&gt;ここに戻って、[拡張継続支援にアップグレード] ページに移動します。</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementDryRunBatchTitle</name>
@@ -1034,7 +1034,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementDryRunIntro</name>
-        <label>NPSP は、拡張継続支援モデルへの既存のデータの移行をシミュレーションし、エラーを識別します。エラーがある場合、[NPSP 設定] | [システムツール] | [エラーログ] に移動します。エラーを修正したら、ここに戻って移行を再度検証します。エラーなしで検証が完了したら、次のステップに進むことができます。&lt;br/&gt;&lt;br/&gt;検証プロセスが完了するまで時間がかかることがあります。このページから移動し、後で戻って進行状況を確認できます。</label>
+        <label>NPPatch は、拡張継続支援モデルへの既存のデータの移行をシミュレーションし、エラーを識別します。エラーがある場合、[NPPatch 設定] | [システムツール] | [エラーログ] に移動します。エラーを修正したら、ここに戻って移行を再度検証します。エラーなしで検証が完了したら、次のステップに進むことができます。&lt;br/&gt;&lt;br/&gt;検証プロセスが完了するまで時間がかかることがあります。このページから移動し、後で戻って進行状況を確認できます。</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementEnableConfirm</name>
@@ -1058,16 +1058,16 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementEnableWarning</name>
-        <label>&lt;b&gt;警告: NPSP には、従来の継続支援に戻す方法は用意されていません。&lt;/b&gt;</label>
+        <label>&lt;b&gt;警告: NPPatch には、従来の継続支援に戻す方法は用意されていません。&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementIncomplete</name>
-        <label>まだ拡張継続支援機能が有効化されていないため、継続支援を作成または更新することはできません。[NPSP 設定]、[継続支援]、[拡張継続支援にアップグレード] の順に選択して、有効化手順を完了してください。</label>
+        <label>まだ拡張継続支援機能が有効化されていないため、継続支援を作成または更新することはできません。[NPPatch 設定]、[継続支援]、[拡張継続支援にアップグレード] の順に選択して、有効化手順を完了してください。</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementIntro</name>
-        <label>拡張継続支援は、Nonprofit Success Pack (NPSP) の再設計および改善された継続支援機能です。フィードバックを提供し、拡張継続支援の実現を支援してくれたコミュニティメンバーに感謝します。
-        &lt;br/&gt;&lt;br/&gt;NPSP にはすでに継続支援機能があるため、いくつかのアップグレードタスクを実行し、既存のデータを拡張継続支援モデルに移行する必要があります。必要なタスクの概要を以下に示します。</label>
+        <label>拡張継続支援は、NPPatch の再設計および改善された継続支援機能です。フィードバックを提供し、拡張継続支援の実現を支援してくれたコミュニティメンバーに感謝します。
+        &lt;br/&gt;&lt;br/&gt;NPPatch にはすでに継続支援機能があるため、いくつかのアップグレードタスクを実行し、既存のデータを拡張継続支援モデルに移行する必要があります。必要なタスクの概要を以下に示します。</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementMetaDeployConfirm</name>
@@ -1107,7 +1107,7 @@
         &lt;br/&gt;団体で拡張継続支援の使用を開始する前に次の作業を行ってください:&lt;br/&gt;
         &lt;ul&gt;&lt;li&gt;アップグレード前に無効にしたワークフロー、プロセス、入力規則、トリガを有効にする。&lt;/li&gt;
         &lt;li&gt;拡張継続支援ページレイアウトをすべてのユーザプロファイルに割り当て、古い継続支援ページレイアウトを削除する。&lt;/li&gt;
-        &lt;li&gt;NPSP 継続支援 Lightning レコードページを団体のデフォルトとして割り当てる。&lt;/li&gt;
+        &lt;li&gt;NPPatch 継続支援 Lightning レコードページを団体のデフォルトとして割り当てる。&lt;/li&gt;
         &lt;li&gt;RD2_VisualizeScheduleController Apex クラスをカスタムプロファイルに割り当てる。&lt;/li&gt;
         &lt;li&gt;プロファイルおよび権限セットで必要に応じて継続支援項目の項目レベルセキュリティを調整する。&lt;/li&gt;
         &lt;li&gt;拡張継続支援で機能するように継続支援レポートを調整する。&lt;/li&gt;
@@ -1115,7 +1115,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementMigrationErrorMessage</name>
-        <label>移行の実行でエラーが発生しました。正常に完了するには、これらのエラーを修正する必要があります。エラーを確認するには、[NPSP 設定] &gt; [システムツール] &gt; [エラーログ] に移動します。</label>
+        <label>移行の実行でエラーが発生しました。正常に完了するには、これらのエラーを修正する必要があります。エラーを確認するには、[NPPatch 設定] &gt; [システムツール] &gt; [エラーログ] に移動します。</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementMigrationIntro</name>
@@ -1255,7 +1255,7 @@
         <name>RD2_EntryFormSaveCommitmentFailedMessage</name>
         <label>Elevate に継続支払が作成されました。 Elevate 継続 ID: {0}.
         
-        ただし、次のようなエラーが発生したため、対応する継続支援は NPSP に作成されませんでした:
+        ただし、次のようなエラーが発生したため、対応する継続支援は NPPatch に作成されませんでした:
         ● {1}
         
         このフォームを開いたままエラーを修正し、継続支援を再度保存することができます。または、キャンセルしてシステム管理者にお問い合わせください。</label>
@@ -1366,7 +1366,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_PageNotAvailableMessage</name>
-        <label>このページは拡張継続支援では使用できません。ブラウザを更新して [NPSP 設定] に戻ってください。</label>
+        <label>このページは拡張継続支援では使用できません。ブラウザを更新して [NPPatch 設定] に戻ってください。</label>
     </customLabels>
     <customLabels>
         <name>RD2_PauseCannotExistOnScheduleChange</name>
@@ -1430,7 +1430,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_PauseStatusMustExist</name>
-        <label>NPSP は、一時停止した継続支援の [状況] および [状況の理由] を更新できません。[状況] 項目に選択リスト値 [一時停止] を追加する必要があります。</label>
+        <label>NPPatch は、一時停止した継続支援の [状況] および [状況の理由] を更新できません。[状況] 項目に選択リスト値 [一時停止] を追加する必要があります。</label>
     </customLabels>
     <customLabels>
         <name>RD2_PaymentInformation</name>
@@ -1486,7 +1486,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationClosedDefinition</name>
-        <label>指定した日数を経過後に、期待していた支援を受領していない場合は、NPSP の [継続支援状況] が [完了状況値] に更新されます。この値は、[失効までの日数] より長くなければなりません。完了した継続支援については割賦商談が作成されません。</label>
+        <label>指定した日数を経過後に、期待していた支援を受領していない場合は、NPPatch の [継続支援状況] が [完了状況値] に更新されます。この値は、[失効までの日数] より長くなければなりません。完了した継続支援については割賦商談が作成されません。</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationDaysForClosed</name>
@@ -1526,7 +1526,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationLapsedDefinition</name>
-        <label>指定した日数を経過後に、期待していた支援を受領していない場合は、NPSP の [継続支援状況] が [失効状況値] に更新されます。失効した継続支援については引き続きスケジュールで定義されたとおりに割賦商談が作成されます。</label>
+        <label>指定した日数を経過後に、期待していた支援を受領していない場合は、NPPatch の [継続支援状況] が [失効状況値] に更新されます。失効した継続支援については引き続きスケジュールで定義されたとおりに割賦商談が作成されます。</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationSetClosedStatus</name>
@@ -1546,17 +1546,17 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusMappingDefinitions</name>
-        <label>&lt;B&gt;状態定義&lt;/b&gt;&lt;br/&gt;&lt;ul&gt;&lt;li&gt;有効: 支援者は積極的に支援を行っています。NPSP は継続支援スケジュールで定義されたとおりに割賦商談を作成します。&lt;/li&gt;
-&lt;li&gt;失効: 予想されたとおりに支援を受けていませんが、NPSP は引き続き継続支援スケジュールで定義されたとおりに割賦商談を作成します。&lt;/li&gt;
-&lt;li&gt;クローズ: 支援者はこの継続支援の支援を停止しました。NPSP は新しい割賦商談を作成しません。&lt;/li&gt;&lt;/ul&gt;</label>
+        <label>&lt;B&gt;状態定義&lt;/b&gt;&lt;br/&gt;&lt;ul&gt;&lt;li&gt;有効: 支援者は積極的に支援を行っています。NPPatch は継続支援スケジュールで定義されたとおりに割賦商談を作成します。&lt;/li&gt;
+&lt;li&gt;失効: 予想されたとおりに支援を受けていませんが、NPPatch は引き続き継続支援スケジュールで定義されたとおりに割賦商談を作成します。&lt;/li&gt;
+&lt;li&gt;クローズ: 支援者はこの継続支援の支援を停止しました。NPPatch は新しい割賦商談を作成しません。&lt;/li&gt;&lt;/ul&gt;</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusMappingDeploymentAlreadyInProgress</name>
-        <label>NPSP が状況と状態間の別の対応付けを処理している間、対応付けを保存できません。</label>
+        <label>NPPatch が状況と状態間の別の対応付けを処理している間、対応付けを保存できません。</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusMappingIntro</name>
-        <label>[継続支援状況] のカスタム選択リスト値を作成する場合、NPSP がそのカスタム状況値でレコードをどのように処理するかを認識できるように、状況値を状態に対応付ける必要があります。
+        <label>[継続支援状況] のカスタム選択リスト値を作成する場合、NPPatch がそのカスタム状況値でレコードをどのように処理するかを認識できるように、状況値を状態に対応付ける必要があります。
         &lt;br/&gt;&lt;br/&gt;[継続支援状況] のカスタム選択リスト値を作成していない場合、何も対応付ける必要はありません。</label>
     </customLabels>
     <customLabels>
@@ -1577,7 +1577,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusMustBeMappedSolution</name>
-        <label>[NPSP 設定] | [継続支援] | [状況と状態間の対応付け] に移動するか、システム管理者にお問い合わせください。</label>
+        <label>[NPPatch 設定] | [継続支援] | [状況と状態間の対応付け] に移動するか、システム管理者にお問い合わせください。</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusMustBeActiveOrPause</name>
@@ -1721,7 +1721,7 @@
     </customLabels>
     <customLabels>
         <name>RD_RefreshOppsContinueMessage</name>
-        <label>このプロセスでは、この継続支援の現在のデータに一致するように今後のすべての割賦商談を更新します。割賦によっては、NPSP が割賦を削除して新しい割賦を再作成する場合があります。
+        <label>このプロセスでは、この継続支援の現在のデータに一致するように今後のすべての割賦商談を更新します。割賦によっては、NPPatch が割賦を削除して新しい割賦を再作成する場合があります。
 &lt;br/&gt;&lt;br/&gt;プロセスを開始するには [続行] をクリックし、[継続支援] ページに戻るには [キャンセル] をクリックします。</label>
     </customLabels>
     <customLabels>
@@ -1786,7 +1786,7 @@
     </customLabels>
     <customLabels>
         <name>RP_ProductNameLabel</name>
-        <label>Nonprofit Success Pack (NPSP)</label>
+        <label>NPPatch</label>
     </customLabels>
     <customLabels>
         <name>RP_ReleaseGitHub</name>
@@ -1806,19 +1806,19 @@
     </customLabels>
     <customLabels>
         <name>RP_SubTitle</name>
-        <label>Salesforce Enterprise Edition のすべての機能に加えて、Nonprofit Success Pack アプリケーションにより、支援者を管理する優れた機能を利用できます。それでは開始しましょう。</label>
+        <label>Salesforce Enterprise Edition のすべての機能に加えて、NPPatch アプリケーションにより、支援者を管理する優れた機能を利用できます。それでは開始しましょう。</label>
     </customLabels>
     <customLabels>
         <name>RP_Title</name>
-        <label>Salesforce および Nonprofit Success Pack (NPSP) をご利用いただきありがとうございます。</label>
+        <label>Salesforce および NPPatch をご利用いただきありがとうございます。</label>
     </customLabels>
     <customLabels>
         <name>RP_TrailheadLinkLabel</name>
-        <label>Salesforce と NPSP Trailmix をはじめよう</label>
+        <label>Salesforce と NPPatch Trailmix をはじめよう</label>
     </customLabels>
     <customLabels>
         <name>RP_TrailheadParagraph</name>
-        <label>Salesforce の基本や、支援者およびボランティア管理の基本を知り、Nonprofit Success Pack を使用開始します。</label>
+        <label>Salesforce の基本や、支援者およびボランティア管理の基本を知り、NPPatch を使用開始します。</label>
     </customLabels>
     <customLabels>
         <name>RP_TrailheadSubtitle</name>
@@ -1826,7 +1826,7 @@
     </customLabels>
     <customLabels>
         <name>RP_USParagraph</name>
-        <label>他の NPSP ユーザも参加する活発なコミュニティでサポートを受けたり、Salesforce.org に問い合わせたりします。</label>
+        <label>他の NPPatch ユーザも参加する活発なコミュニティでサポートを受けたり、Salesforce.org に問い合わせたりします。</label>
     </customLabels>
     <customLabels>
         <name>RP_UsHubLinkLabel</name>
@@ -1842,7 +1842,7 @@
     </customLabels>
     <customLabels>
         <name>RP_WebinarLinkLabel</name>
-        <label>NPSP 商品ドキュメント</label>
+        <label>NPPatch 商品ドキュメント</label>
     </customLabels>
     <customLabels>
         <name>RP_YoutubeChannel</name>
@@ -2098,11 +2098,11 @@
     </customLabels>
     <customLabels>
         <name>bdeRetirementBlockerMessage</name>
-        <label>2020 年 10 月 1 日以降、バッチデータエントリはサポートされなくなりました。ほとんどの機能は NPSP の新機能に置き換えられました。進行中のバッチがある場合、それらのレコードには引き続きアクセスできますが、バッチデータエントリを使用して処理することはできません。進行中のバッチにアクセスする必要がある場合は、サポートにお問い合わせください。&lt;br/&gt;バッチデータエントリの代わりとして、支援エントリを検討することをお勧めします。</label>
+        <label>2020 年 10 月 1 日以降、バッチデータエントリはサポートされなくなりました。ほとんどの機能は NPPatch の新機能に置き換えられました。進行中のバッチがある場合、それらのレコードには引き続きアクセスできますが、バッチデータエントリを使用して処理することはできません。進行中のバッチにアクセスする必要がある場合は、サポートにお問い合わせください。&lt;br/&gt;バッチデータエントリの代わりとして、支援エントリを検討することをお勧めします。</label>
     </customLabels>
     <customLabels>
         <name>bdeRetirementWarningBody</name>
-        <label>2020 年 10 月 1 日にバッチデータエントリは廃止になり、NPSP では機能しなくなります。その時点で進行中のバッチがあった場合、レコードには引き続きアクセスできますが、バッチデータエントリを使用して処理することはできません。スムーズに移行できるように、10 月 1 日に先立って支援エントリを有効化して使用するようにしてください。</label>
+        <label>2020 年 10 月 1 日にバッチデータエントリは廃止になり、NPPatch では機能しなくなります。その時点で進行中のバッチがあった場合、レコードには引き続きアクセスできますが、バッチデータエントリを使用して処理することはできません。スムーズに移行できるように、10 月 1 日に先立って支援エントリを有効化して使用するようにしてください。</label>
     </customLabels>
     <customLabels>
         <name>bdeRetirementWarningHeader</name>
@@ -2118,7 +2118,7 @@
     </customLabels>
     <customLabels>
         <name>bdiAccountCustomIdError</name>
-        <label>[一意の取引先カスタム ID] 設定項目の {0} には、API 参照名が {1} および {2} の NPSP データインポートオブジェクトのマッチング項目が必要です。</label>
+        <label>[一意の取引先カスタム ID] 設定項目の {0} には、API 参照名が {1} および {2} の NPPatch データインポートオブジェクトのマッチング項目が必要です。</label>
     </customLabels>
     <customLabels>
         <name>bdiAdditionalObjChildNotUpdated</name>
@@ -2178,7 +2178,7 @@
     </customLabels>
     <customLabels>
         <name>bdiContactCustomIdError</name>
-        <label>[一意の取引先責任者カスタム ID] 設定項目の {0} には、API 参照名が {1} および {2} の NPSP データインポートオブジェクトのマッチング項目が必要です。</label>
+        <label>[一意の取引先責任者カスタム ID] 設定項目の {0} には、API 参照名が {1} および {2} の NPPatch データインポートオブジェクトのマッチング項目が必要です。</label>
     </customLabels>
     <customLabels>
         <name>bdiContactMatchDupeMgmt</name>
@@ -2218,7 +2218,7 @@
     </customLabels>
     <customLabels>
         <name>bdiDataImporterDescription</name>
-        <label>NPSP データインポーターを使用すると、簡単にデータを Nonprofit Success Pack にインポートできます</label>
+        <label>NPPatch データインポーターを使用すると、簡単にデータを NPPatch にインポートできます</label>
     </customLabels>
     <customLabels>
         <name>bdiDataImporterInfoLine1</name>
@@ -2230,7 +2230,7 @@
     </customLabels>
     <customLabels>
         <name>bdiDataImporterInfoLine2b</name>
-        <label>サービスの制限に達することを回避するために、NPSP データインポーターは NPSP 設定で指定した可能性のある検証サービスを介して住所を検証しません。</label>
+        <label>サービスの制限に達することを回避するために、NPPatch データインポーターは NPPatch 設定で指定した可能性のある検証サービスを介して住所を検証しません。</label>
     </customLabels>
     <customLabels>
         <name>bdiDataImporterInfoLine3</name>
@@ -2250,7 +2250,7 @@
     </customLabels>
     <customLabels>
         <name>bdiDataImporterTitle</name>
-        <label>NPSP データインポート</label>
+        <label>NPPatch データインポート</label>
     </customLabels>
     <customLabels>
         <name>bdiDeploymentInProgress</name>
@@ -2294,7 +2294,7 @@
     </customLabels>
     <customLabels>
         <name>bdiDryRunTitle</name>
-        <label>NPSP データインポーター - Dry Run</label>
+        <label>NPPatch データインポーター - Dry Run</label>
     </customLabels>
     <customLabels>
         <name>bdiDupeMgmtMatchImportStatus</name>
@@ -2322,23 +2322,23 @@
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationMultiMatch</name>
-        <label>支援情報は複数の商談にマッチングしたため、NPSP データインポーターによるインポートは実行されませんでした。[支援見込みマッチ] 項目に、マッチングする商談の Salesforce ID が含まれています。</label>
+        <label>支援情報は複数の商談にマッチングしたため、NPPatch データインポーターによるインポートは実行されませんでした。[支援見込みマッチ] 項目に、マッチングする商談の Salesforce ID が含まれています。</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationNoMatch</name>
-        <label>NPSP データインポーターは、マッチング支援を検出しませんでした。</label>
+        <label>NPPatch データインポーターは、マッチング支援を検出しませんでした。</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationRequireNoMatch</name>
-        <label>1 つ以上の商談とマッチングする支援情報はありましたが、設定ではマッチなしが必要となっていたため、NPSP データインポーターによるインポートは実行されませんでした。[支援見込みマッチ] 項目に、マッチングする商談の Salesforce ID が含まれています。</label>
+        <label>1 つ以上の商談とマッチングする支援情報はありましたが、設定ではマッチなしが必要となっていたため、NPPatch データインポーターによるインポートは実行されませんでした。[支援見込みマッチ] 項目に、マッチングする商談の Salesforce ID が含まれています。</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorExistingDonationAllocations</name>
-        <label>指定された一般会計単位の割り当てが支援の商談レコードの既存の割り当てと競合しています。商談レコードまたは NPSP データインポートレコードからすべての割り当てを削除して、NPSP データインポーターを使用してもう一度処理してください。</label>
+        <label>指定された一般会計単位の割り当てが支援の商談レコードの既存の割り当てと競合しています。商談レコードまたは NPPatch データインポートレコードからすべての割り当てを削除して、NPPatch データインポーターを使用してもう一度処理してください。</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorExistingPaymentAllocations</name>
-        <label>指定された一般会計単位の割り当てが支援の支払レコードの既存の割り当てと競合しています。支払レコードまたは NPSP データインポートレコードからすべての割り当てを削除して、NPSP データインポーターを使用してもう一度処理してください。</label>
+        <label>指定された一般会計単位の割り当てが支援の支払レコードの既存の割り当てと競合しています。支払レコードまたは NPPatch データインポートレコードからすべての割り当てを削除して、NPPatch データインポーターを使用してもう一度処理してください。</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorGAUAllocationOver100</name>
@@ -2354,7 +2354,7 @@
     </customLabels>
     <customLabels>
         <name>bdiErrorInvalidIMatchDonations</name>
-        <label>NPSP データインポーターが Apex クラス {0} を見つけられない、またはこのクラスが {1} インターフェースをサポートしていません。</label>
+        <label>NPPatch データインポーターが Apex クラス {0} を見つけられない、またはこのクラスが {1} インターフェースをサポートしていません。</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorInvalidLastname</name>
@@ -2378,7 +2378,7 @@
     </customLabels>
     <customLabels>
         <name>bdiErrorPaymentMultiMatch</name>
-        <label>支援情報は複数の支払にマッチングしたため、NPSP データインポーターによるインポートは実行されませんでした。[支払見込みマッチ] 項目に、マッチングした支払の Salesforce ID が含まれています。</label>
+        <label>支援情報は複数の支払にマッチングしたため、NPPatch データインポーターによるインポートは実行されませんでした。[支払見込みマッチ] 項目に、マッチングした支払の Salesforce ID が含まれています。</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUIBackToMapGroup</name>
@@ -2394,13 +2394,13 @@
     </customLabels>
     <customLabels>
         <name>bdiFMUIDescription1</name>
-        <label>NPSP データインポートオブジェクトで作成した項目を以下のグリッドの対象オブジェクトの項目
+        <label>NPPatch データインポートオブジェクトで作成した項目を以下のグリッドの対象オブジェクトの項目
            に接続します。項目は、項目表示ラベルまたは項目 API 参照名で検索できます。</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUIDescription2</name>
-        <label>NPSP データインポートオブジェクトの項目は、対象オブジェクトの互換性のある項目種別に対応付ける必要があります。
-            NPSP データインポート項目を選択する場合、互換性のある対象項目のみを使用できます。</label>
+        <label>NPPatch データインポートオブジェクトの項目は、対象オブジェクトの互換性のある項目種別に対応付ける必要があります。
+            NPPatch データインポート項目を選択する場合、互換性のある対象項目のみを使用できます。</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUIFieldAPIName</name>
@@ -2412,15 +2412,15 @@
     </customLabels>
     <customLabels>
         <name>bdiFMUISourceFieldLabelHelp</name>
-        <label>対応付ける NPSP データインポート項目。項目表示ラベルまたは API 参照名のいずれかで検索します。項目が見つからない場合、NPSP データインポートオブジェクトの項目を作成していることを確認してください。</label>
+        <label>対応付ける NPPatch データインポート項目。項目表示ラベルまたは API 参照名のいずれかで検索します。項目が見つからない場合、NPPatch データインポートオブジェクトの項目を作成していることを確認してください。</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUISourceFieldDataTypeHelp</name>
-        <label>NPSP データインポートオブジェクトで選択した項目のデータ型。</label>
+        <label>NPPatch データインポートオブジェクトで選択した項目のデータ型。</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUITargetFieldLabelHelp</name>
-        <label>NPSP データインポート項目に接続する対象項目。項目表示ラベルまたは API 参照名のいずれかで検索します。これは、NPSP データインポートオブジェクトで選択した項目と互換性のある対象オブジェクトの項目のみが表示されるように絞り込まれます。</label>
+        <label>NPPatch データインポート項目に接続する対象項目。項目表示ラベルまたは API 参照名のいずれかで検索します。これは、NPPatch データインポートオブジェクトで選択した項目と互換性のある対象オブジェクトの項目のみが表示されるように絞り込まれます。</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUITargetFieldDataTypeHelp</name>
@@ -2448,7 +2448,7 @@
     </customLabels>
     <customLabels>
         <name>bdiFMUISearchSourceInputLabel</name>
-        <label>表示ラベルまたは API 参照名で NPSP データインポートオブジェクトの項目を検索します。</label>
+        <label>表示ラベルまたは API 参照名で NPPatch データインポートオブジェクトの項目を検索します。</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUISearchTargetInputLabel</name>
@@ -2456,7 +2456,7 @@
     </customLabels>
     <customLabels>
         <name>bdiFMUISourceObject</name>
-        <label>ソース (NPSP データインポートオブジェクト)</label>
+        <label>ソース (NPPatch データインポートオブジェクト)</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUISuccessful</name>
@@ -2492,7 +2492,7 @@
     </customLabels>
     <customLabels>
         <name>bdiHouseholdModelRequired</name>
-        <label>NPSP データインポーターは、世帯取引先モデルでのみ機能します。</label>
+        <label>NPPatch データインポーターは、世帯取引先モデルでのみ機能します。</label>
     </customLabels>
     <customLabels>
         <name>bdiIgnored</name>
@@ -2504,7 +2504,7 @@
     </customLabels>
     <customLabels>
         <name>bdiInvalidBatchId</name>
-        <label>NPSP データインポートバッチ ID {0} は無効です。</label>
+        <label>NPPatch データインポートバッチ ID {0} は無効です。</label>
     </customLabels>
     <customLabels>
         <name>bdiInvalidDonationMatchingBehavior</name>
@@ -2518,7 +2518,7 @@
         <name>bdiMassDeleteWarning</name>
         <label>{0} レコードを削除しようとしています。
         &lt;br/&gt;
-        &lt;br/&gt;&lt;b&gt;重要:&lt;/b&gt; バッチ支援エントリ機能を使用して団体に支援を作成する場合、[一括削除] ボタンを使用しないことをお勧めします。データローダによるレコード削除の手順の詳細は、NPSP ドキュメントを参照してください。</label>
+        &lt;br/&gt;&lt;b&gt;重要:&lt;/b&gt; バッチ支援エントリ機能を使用して団体に支援を作成する場合、[一括削除] ボタンを使用しないことをお勧めします。データローダによるレコード削除の手順の詳細は、NPPatch ドキュメントを参照してください。</label>
     </customLabels>
     <customLabels>
         <name>bdiMatched</name>
@@ -2626,7 +2626,7 @@
     </customLabels>
     <customLabels>
         <name>bdiOMUIPageDescriptionPt2</name>
-        <label>オブジェクトグループは、作成または更新するレコードタイプ (取引先責任者、商談、支払など) を NPSP データインポートツールに通知する項目の対応付けのコレクションです。項目の対応付けが次のようにオブジェクトグループにバンドルされているため、NPSP はインポートの 1 つの行内の関連レコードを相互にリンクできます。</label>
+        <label>オブジェクトグループは、作成または更新するレコードタイプ (取引先責任者、商談、支払など) を NPPatch データインポートツールに通知する項目の対応付けのコレクションです。項目の対応付けが次のようにオブジェクトグループにバンドルされているため、NPPatch はインポートの 1 つの行内の関連レコードを相互にリンクできます。</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIPageDescriptionPt3</name>
@@ -2671,11 +2671,11 @@
     </customLabels>
     <customLabels>
         <name>bdiOMUIErrorNoUnmappedFieldsPt1</name>
-        <label>エラー: NPSP データインポートオブジェクトに次で使用する対応付けられていない項目がありません:</label>
+        <label>エラー: NPPatch データインポートオブジェクトに次で使用する対応付けられていない項目がありません:</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIErrorNoUnmappedFieldsPt2</name>
-        <label>必要に応じて、NPSP データインポートオブジェクトに新しい項目を作成してください。</label>
+        <label>必要に応じて、NPPatch データインポートオブジェクトに新しい項目を作成してください。</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIFieldMappingProblemHeader</name>
@@ -2687,7 +2687,7 @@
     </customLabels>
     <customLabels>
         <name>bdiOMUIFieldMappingProblemMessagePart2</name>
-        <label>NPSP データインポートと対象項目がまだ存在することを確認してから、項目の対応付けを編集または削除してください。</label>
+        <label>NPPatch データインポートと対象項目がまだ存在することを確認してから、項目の対応付けを編集または削除してください。</label>
     </customLabels>
     <customLabels>
         <name>bdiPositiveNumber</name>
@@ -2711,7 +2711,7 @@
     </customLabels>
     <customLabels>
         <name>bdiSelectCantProcessBatchDIRecords</name>
-        <label>NPSP データインポートバッチにリンクされているレコードを選択しました。NPSP データインポートバッチに関連付けられているレコードをインポートするには、バッチを開いて [バッチを処理] をクリックしてください。</label>
+        <label>NPPatch データインポートバッチにリンクされているレコードを選択しました。NPPatch データインポートバッチに関連付けられているレコードをインポートするには、バッチを開いて [バッチを処理] をクリックしてください。</label>
     </customLabels>
     <customLabels>
         <name>bdiSelectCantProcessImportedRecords</name>
@@ -2783,15 +2783,15 @@
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationDateRangeHelp</name>
-        <label>マッチング商談または支払を探すときの [日付(支援)] からの日数を入力します。NPSP はその日数範囲内で最も近い、マッチングする商談または支払を選択します。</label>
+        <label>マッチング商談または支払を探すときの [日付(支援)] からの日数を入力します。NPPatch はその日数範囲内で最も近い、マッチングする商談または支払を選択します。</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationMatchingBehaviorHelp</name>
-        <label>NPSP がマッチング支援をどのように処理するか定義します。</label>
+        <label>NPPatch がマッチング支援をどのように処理するか定義します。</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationMatchingClassHelp</name>
-        <label>支援の BDI_IMatching インターフェースを実装する Apex クラスの API 参照名。NPSP がマッチングを処理できるように、空のままにします。</label>
+        <label>支援の BDI_IMatching インターフェースを実装する Apex クラスの API 参照名。NPPatch がマッチングを処理できるように、空のままにします。</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationMatchingRuleHelp</name>
@@ -2815,7 +2815,7 @@
     </customLabels>
     <customLabels>
         <name>bgeBatchPostProcessClassHelp</name>
-        <label>NPSP バッチレコードの BDI_IPostProcess インターフェースを実装する Apex クラスの API 参照名。</label>
+        <label>NPPatch バッチレコードの BDI_IPostProcess インターフェースを実装する Apex クラスの API 参照名。</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchProcessUsingScheduledJobHelp</name>
@@ -2823,7 +2823,7 @@
     </customLabels>
     <customLabels>
         <name>bgeBatchRunOpportunityRollupsWhileProcessingHelp</name>
-        <label>オンの場合、NPSP は支援処理時に支援者の積み上げ集計を計算します。オフの場合、支援者の積み上げ集計はデフォルトの夜間スケジュール済みジョブ時に計算されます。このチェックボックスを選択すると、バッチの処理が遅くなることがあります。</label>
+        <label>オンの場合、NPPatch は支援処理時に支援者の積み上げ集計を計算します。オフの場合、支援者の積み上げ集計はデフォルトの夜間スケジュール済みジョブ時に計算されます。このチェックボックスを選択すると、バッチの処理が遅くなることがあります。</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchOverview</name>
@@ -3007,7 +3007,7 @@
     </customLabels>
     <customLabels>
         <name>bgeRetirementWarningBody</name>
-        <label>2021 年 7 月 13 日にバッチ支援エントリは廃止になり、NPSP では機能しなくなります。その時点で進行中のバッチがあった場合、レコードには引き続きアクセスできますが、バッチ支援エントリを使用して処理することはできません。スムーズに移行できるように、7 月 13 日に先立って新しい支援エントリを有効化して使用するようにしてください。</label>
+        <label>2021 年 7 月 13 日にバッチ支援エントリは廃止になり、NPPatch では機能しなくなります。その時点で進行中のバッチがあった場合、レコードには引き続きアクセスできますが、バッチ支援エントリを使用して処理することはできません。スムーズに移行できるように、7 月 13 日に先立って新しい支援エントリを有効化して使用するようにしてください。</label>
     </customLabels>
     <customLabels>
         <name>bgeRetirementWarningHeader</name>
@@ -3038,11 +3038,11 @@
     </customLabels>
     <customLabels>
         <name>bgeUnmappedFieldsNoticeMessageAdvancedMapping</name>
-        <label>このバッチには次の項目が含まれていますが、それらの項目の対応付けが削除されています: {0}。これを修正するには、[NPSP 設定] の高度な対応付けに移動し、項目を再度対応付けます。</label>
+        <label>このバッチには次の項目が含まれていますが、それらの項目の対応付けが削除されています: {0}。これを修正するには、[NPPatch 設定] の高度な対応付けに移動し、項目を再度対応付けます。</label>
     </customLabels>
     <customLabels>
         <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>このバッチには次の項目が含まれていますが、それらの項目の対応付けが削除されています: {0}。これを修正するには、NPSP データインポートオブジェクトに移動し、ヘルプテキストを使用して項目を再度対応付けます。</label>
+        <label>このバッチには次の項目が含まれていますが、それらの項目の対応付けが削除されています: {0}。これを修正するには、NPPatch データインポートオブジェクトに移動し、ヘルプテキストを使用して項目を再度対応付けます。</label>
     </customLabels>
     <customLabels>
         <name>bgeWizardShowAdvancedOptions</name>
@@ -3149,7 +3149,7 @@
     </customLabels>
     <customLabels>
         <name>batchNumberSettingsDescription</name>
-        <label>バッチ番号は、支援エントリおよび NPSP データインポートで使用される一意の識別子です。自動採番値は、商談および支払の [バッチ番号] 項目に表示されます。</label>
+        <label>バッチ番号は、支援エントリおよび NPPatch データインポートで使用される一意の識別子です。自動採番値は、商談および支払の [バッチ番号] 項目に表示されます。</label>
     </customLabels>
     <customLabels>
         <name>batchNumberSettingsHeader</name>
@@ -3181,19 +3181,19 @@
     </customLabels>
     <customLabels>
         <name>gePaymentProcessedWarning</name>
-        <label>{0} が支払を正常に処理しました。支援者、日付、金額、または支払方法を変更すると、{0} と NPSP で同じトランザクションのレコードで整合性が失われます。</label>
+        <label>{0} が支払を正常に処理しました。支援者、日付、金額、または支払方法を変更すると、{0} と NPPatch で同じトランザクションのレコードで整合性が失われます。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAdvancedMapping3</name>
-        <label>高度な対応付けの完全な設定ドキュメントについては、&lt;a href=&quot;https://powerofus.force.com/NPSP_Advanced_Mapping&quot; target=&quot;_blank&quot;&gt;こちら&lt;/a&gt;を参照してください。</label>
+        <label>高度な対応付けの完全な設定ドキュメントについては、こちらを参照してください。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
-        <label>カスタマイズ可能な積み上げ集計のドキュメントの詳細は&lt;a href=&quot;https://powerofus.force.com/NPSP_Customizable_Rollups_Overview&quot; target=&quot;_blank&quot;&gt;こちら&lt;/a&gt;。</label>
+        <label>カスタマイズ可能な積み上げ集計のドキュメントの詳細はこちら。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpHHObjectOverview</name>
-        <label>推奨される世帯取引先モデルについての詳細は、&lt;a href=&quot;https://powerofus.force.com/NPSP_Account_Model&quot; target=&quot;_blank&quot;&gt;NPSP ドキュメント&lt;/a&gt;を参照してください。</label>
+        <label>推奨される世帯取引先モデルについての詳細は、NPPatch ドキュメントを参照してください。</label>
     </customLabels>
     <customLabels>
         <name>commonAssistiveError</name>
@@ -3573,7 +3573,7 @@
     </customLabels>
     <customLabels>
         <name>conMergeSeeDupConText</name>
-        <label>一致ルールを使用して、見つかったすべての重複する取引先責任者を表示します。&lt;a href=&quot;https://help.salesforce.com/s/articleView?id=sfdo.NPSP_Merge_Contacts.htm&amp;type=5&quot; target=&quot;_blank&quot;&gt;&lt;b&gt;詳細はこちら&lt;/b&gt;&lt;/a&gt;</label>
+        <label>一致ルールを使用して、見つかったすべての重複する取引先責任者を表示します。</label>
     </customLabels>
     <customLabels>
         <name>conMergeSeeDupConDRS</name>
@@ -3581,11 +3581,11 @@
     </customLabels>
     <customLabels>
         <name>elevateAdNotificationFor234Body</name>
-        <label>Elevate が NPSP に接続されていると、オンラインフォームからの支援が自動的に NPSP に取り込まれます。Elevate では支払も処理され、NPSP の支援レコードも更新されます。</label>
+        <label>Elevate が NPPatch に接続されていると、オンラインフォームからの支援が自動的に NPPatch に取り込まれます。Elevate では支払も処理され、NPPatch の支援レコードも更新されます。</label>
     </customLabels>
     <customLabels>
         <name>elevateAdNotificationFor234Title</name>
-        <label>Salesforce.org Elevate と NPSP を使用した支援処理の合理化</label>
+        <label>Salesforce.org Elevate と NPPatch を使用した支援処理の合理化</label>
     </customLabels>
     <customLabels>
         <name>engagementPlanCantEdit</name>
@@ -3807,7 +3807,7 @@
     </customLabels>
     <customLabels>
         <name>geBodyBatchHeaderLeftCol</name>
-        <label>バッチヘッダーに含める項目を選択します。項目を追加するにはチェックボックスをオンにし、フォームから項目を削除するにはオフにします。追加のカスタム項目をバッチヘッダーで使用できるようにするには、NPSP データインポートバッチオブジェクトにそれらを追加します。</label>
+        <label>バッチヘッダーに含める項目を選択します。項目を追加するにはチェックボックスをオンにし、フォームから項目を削除するにはオフにします。追加のカスタム項目をバッチヘッダーで使用できるようにするには、NPPatch データインポートバッチオブジェクトにそれらを追加します。</label>
     </customLabels>
     <customLabels>
         <name>geBodyBatchHeaderRightCol</name>
@@ -3844,11 +3844,11 @@
         &lt;/br&gt;
         &lt;ol&gt;
             &lt;li&gt; 対象オブジェクトの項目を作成します。&lt;/li&gt;
-            &lt;li&gt; NPSP データインポートオブジェクトの項目を作成します。&lt;/li&gt;
-            &lt;li&gt; これが新規オブジェクトグループに含まれている場合、新規オブジェクトグループの追加項目を作成し、[NPSP 設定] で新規オブジェクトグループを作成します。&lt;/li&gt;
-            &lt;li&gt; [NPSP 設定] で項目の対応付けを追加し、NPSP データインポート項目を対象項目に接続します。&lt;/li&gt;
+            &lt;li&gt; NPPatch データインポートオブジェクトの項目を作成します。&lt;/li&gt;
+            &lt;li&gt; これが新規オブジェクトグループに含まれている場合、新規オブジェクトグループの追加項目を作成し、[NPPatch 設定] で新規オブジェクトグループを作成します。&lt;/li&gt;
+            &lt;li&gt; [NPPatch 設定] で項目の対応付けを追加し、NPPatch データインポート項目を対象項目に接続します。&lt;/li&gt;
         &lt;/ol&gt;
-        高度な対応付けについての詳細は、NPSP ドキュメントを参照してください。</label>
+        高度な対応付けについての詳細は、NPPatch ドキュメントを参照してください。</label>
     </customLabels>
     <customLabels>
         <name>geBodyFormFieldsModalDeleteSection</name>
@@ -4024,15 +4024,15 @@
     </customLabels>
     <customLabels>
         <name>geErrorCardChargedBDIFailed</name>
-        <label>Elevate で支払が正常に処理されましたが、NPSP で Salesforce のトランザクションのレコードが作成されませんでした。エラーを修正してフォームを再送信し、Salesforce レコードを作成してください。</label>
+        <label>Elevate で支払が正常に処理されましたが、NPPatch で Salesforce のトランザクションのレコードが作成されませんでした。エラーを修正してフォームを再送信し、Salesforce レコードを作成してください。</label>
     </customLabels>
     <customLabels>
         <name>geElevateDeleteErrorLog</name>
-        <label>支援は {0} から削除されますが、支援エントリで支援を削除することはできません。ID が {1} の支援の NPSP データインポートレコードを NPSP データインポートバッチの ID が {2} のバッチから削除してください。</label>
+        <label>支援は {0} から削除されますが、支援エントリで支援を削除することはできません。ID が {1} の支援の NPPatch データインポートレコードを NPPatch データインポートバッチの ID が {2} のバッチから削除してください。</label>
     </customLabels>
     <customLabels>
         <name>geElevateUpdateErrorLog</name>
-        <label>支援は {0} で更新されますが、支援エントリで支援を更新することはできません。ID が {1} の支援の NPSP データインポートレコードを NPSP データインポートバッチの ID が {2} のバッチから更新してください。</label>
+        <label>支援は {0} で更新されますが、支援エントリで支援を更新することはできません。ID が {1} の支援の NPPatch データインポートレコードを NPPatch データインポートバッチの ID が {2} のバッチから更新してください。</label>
     </customLabels>
     <customLabels>
         <name>geErrorElevateDelete</name>
@@ -4091,16 +4091,16 @@
         <label>管理者設定チェックリスト</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistExploreNPSPDesc</name>
+        <name>gsChecklistExploreNPPatchDesc</name>
         <label>重要な概念と機能を把握します。</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistExploreNPSPTitle</name>
-        <label>Nonprofit Success Pack (NPSP) を探索</label>
+        <name>gsChecklistExploreNPPatchTitle</name>
+        <label>NPPatch を探索</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemAddUserDesc</name>
-        <label>ユーザに NPSP へのアクセス権を付与し、組織の権限を管理して、適切なユーザが物事をスムーズに実行し続けるために必要なものだけにアクセスできるようにします。</label>
+        <label>ユーザに NPPatch へのアクセス権を付与し、組織の権限を管理して、適切なユーザが物事をスムーズに実行し続けるために必要なものだけにアクセスできるようにします。</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemAddUserLinkLabel</name>
@@ -4124,7 +4124,7 @@
     </customLabels>
     <customLabels>
         <name>gsChecklistItemCreateDonationDesc</name>
-        <label>支援、助成金、またはその他の種別の収益を追跡することで、支援のパターンを特定し、賛助者レベルで支援の促進要因を理解できます。NPSP に支援を入力する方法について学習することから始めます。</label>
+        <label>支援、助成金、またはその他の種別の収益を追跡することで、支援のパターンを特定し、賛助者レベルで支援の促進要因を理解できます。NPPatch に支援を入力する方法について学習することから始めます。</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemCreateDonationLinkLabel</name>
@@ -4172,7 +4172,7 @@
     </customLabels>
     <customLabels>
         <name>gsChecklistItemGoFurtherLinkLabel</name>
-        <label>Trailhead で NPSP の理解を深める</label>
+        <label>Trailhead で NPPatch の理解を深める</label>
     </customLabels>
     <customLabels>
         <name>donationHistoryFilterSelectAYear</name>
@@ -4184,7 +4184,7 @@
     </customLabels>
     <customLabels>
         <name>gsChecklistItemImportDataDesc</name>
-        <label>NPSP データインポーターを使用して、レコードを Salesforce に取り込みます。</label>
+        <label>NPPatch データインポーターを使用して、レコードを Salesforce に取り込みます。</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemImportDataPriBtnLabel</name>
@@ -4219,48 +4219,48 @@
         <label>組織への変更を管理</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudDesc</name>
-        <label>この簡単な概要は、NPSP で何ができるかを簡潔に説明することを目的としていますが、さらに深く掘り下げて、組織で使用可能な他の多くの機能を見つけることもできます。</label>
+        <name>gsChecklistItemNPPatchCloudDesc</name>
+        <label>この簡単な概要は、NPPatch で何ができるかを簡潔に説明することを目的としていますが、さらに深く掘り下げて、組織で使用可能な他の多くの機能を見つけることもできます。</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudPriBtnLabel</name>
+        <name>gsChecklistItemNPPatchCloudPriBtnLabel</name>
         <label>機能を確認</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudLinkLabel</name>
-        <label>Trailhead で NPSP の機能について学習する</label>
+        <name>gsChecklistItemNPPatchCloudLinkLabel</name>
+        <label>Trailhead で NPPatch の機能について学習する</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudTitle</name>
+        <name>gsChecklistItemNPPatchCloudTitle</name>
         <label>その他の Nonprofit Cloud の機能の詳細</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPGuideDesc</name>
+        <name>gsChecklistItemNPPatchGuideDesc</name>
         <label>時間をかけて実装を慎重に計画し、Salesforce 組織が非営利団体のニーズを満たすことを確認します。</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPGuidePriBtnLabel</name>
+        <name>gsChecklistItemNPPatchGuidePriBtnLabel</name>
         <label>PDF をダウンロード</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPGuideTitle</name>
-        <label>NPSP 計画ガイド</label>
+        <name>gsChecklistItemNPPatchGuideTitle</name>
+        <label>NPPatch 計画ガイド</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsDesc</name>
-        <label>[NPSP 設定] ページに移動し、徹底的な見直しを行って、設定が組織にとって適切かつ期待どおりに機能することを確認します。</label>
+        <name>gsChecklistItemNPPatchSettingsDesc</name>
+        <label>[NPPatch 設定] ページに移動し、徹底的な見直しを行って、設定が組織にとって適切かつ期待どおりに機能することを確認します。</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsPriBtnLabel</name>
-        <label>NPSP 設定</label>
+        <name>gsChecklistItemNPPatchSettingsPriBtnLabel</name>
+        <label>NPPatch 設定</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsLinkLabel</name>
-        <label>計画ガイドで NPSP 設定について学習する</label>
+        <name>gsChecklistItemNPPatchSettingsLinkLabel</name>
+        <label>計画ガイドで NPPatch 設定について学習する</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsTitle</name>
-        <label>NPSP 設定を調整</label>
+        <name>gsChecklistItemNPPatchSettingsTitle</name>
+        <label>NPPatch 設定を調整</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemPageLayoutsDesc</name>
@@ -4275,19 +4275,19 @@
         <label>ページレイアウトをカスタマイズ</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPDesc</name>
+        <name>gsChecklistItemPrepareNPPatchDesc</name>
         <label>特定の目標を設定し、Nonprofit Cloud を実装するためのベストプラクティスについて学習します。</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPPriBtnLabel</name>
+        <name>gsChecklistItemPrepareNPPatchPriBtnLabel</name>
         <label>目標を設定</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPLinkLabel</name>
-        <label>Trailhead で NPSP の成功について学習する</label>
+        <name>gsChecklistItemPrepareNPPatchLinkLabel</name>
+        <label>Trailhead で NPPatch の成功について学習する</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPTitle</name>
+        <name>gsChecklistItemPrepareNPPatchTitle</name>
         <label>Nonprofit Cloud を使用した成功への準備</label>
     </customLabels>
     <customLabels>
@@ -4312,7 +4312,7 @@
     </customLabels>
     <customLabels>
         <name>gsChecklistItemRunningReportsLinkLabel</name>
-        <label>Trailhead で NPSP レポート &amp; ダッシュボードをカスタマイズする方法を学習する</label>
+        <label>Trailhead で NPPatch レポート &amp; ダッシュボードをカスタマイズする方法を学習する</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemRunningReportsTitle</name>
@@ -4368,7 +4368,7 @@
     </customLabels>
     <customLabels>
         <name>gseuChecklistCreateConstituentRecordsDesc</name>
-        <label>非営利団体の要となるのは人です。Nonprofit Success Pack の機能が賛助者とその世帯、個人、そして専門家との関係をどのように管理するかについて説明します。</label>
+        <label>非営利団体の要となるのは人です。NPPatch の機能が賛助者とその世帯、個人、そして専門家との関係をどのように管理するかについて説明します。</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistCreateConstituentRecordsTitle</name>
@@ -4380,7 +4380,7 @@
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactOrganizationDesc</name>
-        <label>NPSP のアフィリエーションは、賛助者と関連団体 (勤務先、学校、会社など) との重要な関係を取得します。団体アフィリエーションを使用して、取引先責任者を団体に接続します。</label>
+        <label>NPPatch のアフィリエーションは、賛助者と関連団体 (勤務先、学校、会社など) との重要な関係を取得します。団体アフィリエーションを使用して、取引先責任者を団体に接続します。</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactOrganizationLink</name>
@@ -4396,7 +4396,7 @@
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactsRelationshipsDesc</name>
-        <label>NPSP のリレーションは、賛助者どうしの重要な関係を取得します。取引先責任者レコードの [リレーション] 関連リストを使用して、取引先責任者を接続します。</label>
+        <label>NPPatch のリレーションは、賛助者どうしの重要な関係を取得します。取引先責任者レコードの [リレーション] 関連リストを使用して、取引先責任者を接続します。</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactsRelationshipsLink</name>
@@ -4412,7 +4412,7 @@
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemCreateContactAndAccountDesc</name>
-        <label>非営利団体にとって人は最も重要なリソースであるため、NPSP で取引先責任者オブジェクトをどのように利用して人を追跡するかが鍵となります。取引先責任者オブジェクトは、賛助者の名前、住所、雇用主などのデータを格納します。</label>
+        <label>非営利団体にとって人は最も重要なリソースであるため、NPPatch で取引先責任者オブジェクトをどのように利用して人を追跡するかが鍵となります。取引先責任者オブジェクトは、賛助者の名前、住所、雇用主などのデータを格納します。</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemCreateContactAndAccountLink</name>
@@ -4435,16 +4435,16 @@
         <label>Nonprofit Cloud には、非営利団体に特有のニーズに合わせて設計されたアプリケーション、ツール、機能、サービス、そしてテクノロジが含まれています。</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemWhatIsNPSPDesc</name>
-        <label>Nonprofit Cloud の基盤は Nonprofit Success Pack (NPSP) アプリケーションです。NPSP は、賛助者と活動資金集めの管理を支援します。Salesforce の「非営利バージョン」と言った場合、通常は NPSP を指します。</label>
+        <name>gseuChecklistItemWhatIsNPPatchDesc</name>
+        <label>Nonprofit Cloud の基盤は NPPatch アプリケーションです。NPPatch は、賛助者と活動資金集めの管理を支援します。Salesforce の「非営利バージョン」と言った場合、通常は NPPatch を指します。</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemWhatIsNPSPLink</name>
-        <label>Trailhead で Nonprofit Success Pack について学習する</label>
+        <name>gseuChecklistItemWhatIsNPPatchLink</name>
+        <label>Trailhead で NPPatch について学習する</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemWhatIsNPSPTitle</name>
-        <label>Nonprofit Success Pack とは</label>
+        <name>gseuChecklistItemWhatIsNPPatchTitle</name>
+        <label>NPPatch とは</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistMakeItYourDesc</name>
@@ -4463,12 +4463,12 @@
         <label>ユーザのオンボーディング</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistWelcomeNPSPDesc</name>
-        <label>NPSP を初めて使用する場合は、以下の基本リソースを参照してください。</label>
+        <name>gseuChecklistWelcomeNPPatchDesc</name>
+        <label>NPPatch を初めて使用する場合は、以下の基本リソースを参照してください。</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistWelcomeNPSPTitle</name>
-        <label>Nonprofit Success Pack と Nonprofit Cloud の紹介</label>
+        <name>gseuChecklistWelcomeNPPatchTitle</name>
+        <label>NPPatch と Nonprofit Cloud の紹介</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemFundraisingProcessDesc</name>
@@ -4488,7 +4488,7 @@
     </customLabels>
     <customLabels>
         <name>gseuChecklistWorkRecordsDesc</name>
-        <label>賛助者と支援のデータを NPSP に取り込んだら、必要なレコードを簡単に見つけて処理できる必要があります。</label>
+        <label>賛助者と支援のデータを NPPatch に取り込んだら、必要なレコードを簡単に見つけて処理できる必要があります。</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistWorkRecordsTitle</name>
@@ -4496,7 +4496,7 @@
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemGlobalSearchDesc</name>
-        <label>NPSP を初めて使用した人は、レコードを探すのが大変だと思うかも知れません。グローバル検索を使用すれば、Salesforce 組織全体から必要なレコードを簡単に見つけることができます。</label>
+        <label>NPPatch を初めて使用した人は、レコードを探すのが大変だと思うかも知れません。グローバル検索を使用すれば、Salesforce 組織全体から必要なレコードを簡単に見つけることができます。</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemGlobalSearchLinkLabel</name>
@@ -4543,24 +4543,24 @@
         <label>リストビューで複数のレコードを処理</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportDesc</name>
-        <label>NPSP には、最もよく使用する 87 件の賛助者と活動資金集めのレポートが用意されており、そのまま使用するか、またはカスタマイズして使用できます。</label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportDesc</name>
+        <label>NPPatch には、最もよく使用する 87 件の賛助者と活動資金集めのレポートが用意されており、そのまま使用するか、またはカスタマイズして使用できます。</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportLinkLabel</name>
-        <label>Trailhead で NPSP のレポートについて学習する</label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportLinkLabel</name>
+        <label>Trailhead で NPPatch のレポートについて学習する</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportPriBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</name>
         <label>レポートを実行</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportSecBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</name>
         <label>レポートワークブック</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportTitle</name>
-        <label>事前作成済み NPSP レポートを実行</label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportTitle</name>
+        <label>事前作成済み NPPatch レポートを実行</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemStandardReportTypeDesc</name>
@@ -4580,7 +4580,7 @@
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemViewDashboardDesc</name>
-        <label>ダッシュボードは、1 件以上のレポートからデータを取得して、同じウィンドウ内に並べて表示します。NPSP には、そのまま使用するか、またはカスタマイズして使用できる 3 つのダッシュボードが用意されています。</label>
+        <label>ダッシュボードは、1 件以上のレポートからデータを取得して、同じウィンドウ内に並べて表示します。NPPatch には、そのまま使用するか、またはカスタマイズして使用できる 3 つのダッシュボードが用意されています。</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemViewDashboardLinkLabel</name>
@@ -4596,7 +4596,7 @@
     </customLabels>
     <customLabels>
         <name>gseuChecklistYourDataDesc</name>
-        <label>レポートとダッシュボードは、データを整理して組織への影響を把握するのに役立ちます。NPSP には標準レポートが用意されていますが、カスタムレポートも作成できます。</label>
+        <label>レポートとダッシュボードは、データを整理して組織への影響を把握するのに役立ちます。NPPatch には標準レポートが用意されていますが、カスタムレポートも作成できます。</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistYourDataTitle</name>
@@ -4684,11 +4684,11 @@
     </customLabels>
     <customLabels>
         <name>gseuChecklistTrackDonationDesc</name>
-        <label>NPSP では、商談オブジェクトを使用して、支援、助成金、確約、その他の種別の収益を追跡します。支援は、個人または団体 (財団、企業、政府機関) から作成できます。</label>
+        <label>NPPatch では、商談オブジェクトを使用して、支援、助成金、確約、その他の種別の収益を追跡します。支援は、個人または団体 (財団、企業、政府機関) から作成できます。</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistTrackDonationTitle</name>
-        <label>NPSP で支援や他の種別の収益を追跡</label>
+        <label>NPPatch で支援や他の種別の収益を追跡</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemExtraTwoMinutesVideo</name>
@@ -4764,7 +4764,7 @@
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
-        <label>この機能を使用するには、高度な対応付けと支援エントリの両方が必要です。[NPSP 設定] でこれらを有効にしてください。</label>
+        <label>この機能を使用するには、高度な対応付けと支援エントリの両方が必要です。[NPPatch 設定] でこれらを有効にしてください。</label>
     </customLabels>
     <customLabels>
         <name>geServiceLevelErrorAdvancedMapping</name>
@@ -4780,11 +4780,11 @@
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelFieldPermission2</name>
-        <label>または、保存せずにこのフォームを終了し、対象オブジェクトと NPSP データインポートオブジェクトの両方の権限を確認してください。</label>
+        <label>または、保存せずにこのフォームを終了し、対象オブジェクトと NPPatch データインポートオブジェクトの両方の権限を確認してください。</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelMissingRequiredFields</name>
-        <label>すべての必須項目をテンプレートに含める必要があります。ソース項目 (NPSP データインポートオブジェクト) で次の項目を確認してください:</label>
+        <label>すべての必須項目をテンプレートに含める必要があります。ソース項目 (NPPatch データインポートオブジェクト) で次の項目を確認してください:</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelMissingRequiredGroupFields</name>
@@ -4944,7 +4944,7 @@
     </customLabels>
     <customLabels>
         <name>geHelpTextAddressMapping</name>
-        <label>取引先責任者1 の世帯に関連付けられている住所レコード。NPSP の自動化により、この住所が取引先責任者1 の世帯および同じ世帯内のすべての取引先責任者にも入力される場合があります。EDA 住所オブジェクトを使用している場合は、そのオブジェクトの新しいオブジェクトグループを作成し、その項目をテンプレートで使用する必要があります。</label>
+        <label>取引先責任者1 の世帯に関連付けられている住所レコード。NPPatch の自動化により、この住所が取引先責任者1 の世帯および同じ世帯内のすべての取引先責任者にも入力される場合があります。EDA 住所オブジェクトを使用している場合は、そのオブジェクトの新しいオブジェクトグループを作成し、その項目をテンプレートで使用する必要があります。</label>
     </customLabels>
     <customLabels>
         <name>geHelpTextAllocation1Mapping</name>
@@ -5291,7 +5291,7 @@
     </customLabels>
     <customLabels>
         <name>healthDetailsAccountDefaultRTIssue</name>
-        <label>取引先モデルレコードタイプ {0} ([NPSP 設定] で設定) は、現在、プロファイルのデフォルト取引先レコードタイプとして設定されています。</label>
+        <label>取引先モデルレコードタイプ {0} ([NPPatch 設定] で設定) は、現在、プロファイルのデフォルト取引先レコードタイプとして設定されています。</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsAccountModel</name>
@@ -5427,7 +5427,7 @@
     </customLabels>
     <customLabels>
         <name>healthDetailsMailingListReportMissing</name>
-        <label>[世帯郵送先名簿] ボタンで使用される NPSP_Campaign_Household_Mailing_List レポートがありません。</label>
+        <label>[世帯郵送先名簿] ボタンで使用される NPPatch_Campaign_Household_Mailing_List レポートがありません。</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsMissingOppPayments</name>
@@ -5439,7 +5439,7 @@
     </customLabels>
     <customLabels>
         <name>healthDetailsNothingScheduled</name>
-        <label>NPSP グローバルスケジュールクラスがスケジュールされていません。</label>
+        <label>NPPatch グローバルスケジュールクラスがスケジュールされていません。</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsOCR</name>
@@ -5455,11 +5455,11 @@
     </customLabels>
     <customLabels>
         <name>healthDetailsOCRSettingsResolution</name>
-        <label>[NPSP 設定] タブで、[支援] | [取引先責任者の役割] をクリックし、上の設定値を編集します。</label>
+        <label>[NPPatch 設定] タブで、[支援] | [取引先責任者の役割] をクリックし、上の設定値を編集します。</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsOCRSettingsValid</name>
-        <label>NPSP の [商談取引先責任者の役割] 設定が有効になっています。</label>
+        <label>NPPatch の [商談取引先責任者の役割] 設定が有効になっています。</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsPaymentMappingBadDataTypes</name>
@@ -5487,15 +5487,15 @@
     </customLabels>
     <customLabels>
         <name>healthDetailsTriggerHandlerDuplicate</name>
-        <label>同じハンドラ項目のあるオブジェクト {1} のトリガハンドラ {0} が複数回繰り返されているため、NPSP の動作に影響します。</label>
+        <label>同じハンドラ項目のあるオブジェクト {1} のトリガハンドラ {0} が複数回繰り返されているため、NPPatch の動作に影響します。</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsTriggerHandlerMismatch</name>
-        <label>オブジェクト {1} のトリガハンドラ {0} がデフォルトの NPSP 設定にマッチングしません。</label>
+        <label>オブジェクト {1} のトリガハンドラ {0} がデフォルトの NPPatch 設定にマッチングしません。</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsTriggerHandlerMissing</name>
-        <label>オブジェクト {1} のトリガハンドラ {0} がないため、NPSP の動作に影響します。</label>
+        <label>オブジェクト {1} のトリガハンドラ {0} がないため、NPPatch の動作に影響します。</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsUDFBadDatatypes</name>
@@ -5543,7 +5543,7 @@
     </customLabels>
     <customLabels>
         <name>healthLabelDisableRecordBatchDescription</name>
-        <label>選択した場合、状態チェックでは、NPSP 設定に問題がないかどうかのみが確認されます。組織に大量のレコードがあり、状態チェックがなかなか完了しない場合は、このオプションを選択してください。</label>
+        <label>選択した場合、状態チェックでは、NPPatch 設定に問題がないかどうかのみが確認されます。組織に大量のレコードがあり、状態チェックがなかなか完了しない場合は、このオプションを選択してください。</label>
     </customLabels>
     <customLabels>
         <name>healthLabelErrorRecipientValid</name>
@@ -5571,7 +5571,7 @@
     </customLabels>
     <customLabels>
         <name>healthLabelIntro</name>
-        <label>状態チェックでは、すべての NPSP 設定が有効であることと、レコードデータに問題がないかどうかが確認されます。完了したら、失敗の詳細情報を含め以下で結果を参照できます。</label>
+        <label>状態チェックでは、すべての NPPatch 設定が有効であることと、レコードデータに問題がないかどうかが確認されます。完了したら、失敗の詳細情報を含め以下で結果を参照できます。</label>
     </customLabels>
     <customLabels>
         <name>healthLabelLastRun</name>
@@ -5619,11 +5619,11 @@
     </customLabels>
     <customLabels>
         <name>healthLabelScheduler</name>
-        <label>NPSP グローバルスケジューラ</label>
+        <label>NPPatch グローバルスケジューラ</label>
     </customLabels>
     <customLabels>
         <name>healthLabelSchedulerValid</name>
-        <label>NPSP グローバルスケジューラジョブがスケジュールされました。</label>
+        <label>NPPatch グローバルスケジューラジョブがスケジュールされました。</label>
     </customLabels>
     <customLabels>
         <name>healthLabelShowPassedTests</name>
@@ -5639,7 +5639,7 @@
     </customLabels>
     <customLabels>
         <name>healthLabelTriggerHandlersValid</name>
-        <label>NPSP のデフォルトトリガにトリガが設定されています。</label>
+        <label>NPPatch のデフォルトトリガにトリガが設定されています。</label>
     </customLabels>
     <customLabels>
         <name>healthLabelUDFValid</name>
@@ -5683,7 +5683,7 @@
     </customLabels>
     <customLabels>
         <name>healthSolutionAccountModel</name>
-        <label>すべての各取引先責任者で同じ取引先モデルを使用する必要があります。これらの取引先責任者を表示するには、NPSP 状態チェックレポートフォルダで&lt;b&gt;取引先種別ごとの別各取引先責任者&lt;/b&gt;レポートを実行します。</label>
+        <label>すべての各取引先責任者で同じ取引先モデルを使用する必要があります。これらの取引先責任者を表示するには、NPPatch 状態チェックレポートフォルダで&lt;b&gt;取引先種別ごとの別各取引先責任者&lt;/b&gt;レポートを実行します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAccountRTIssue</name>
@@ -5691,43 +5691,43 @@
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelFieldsMissing</name>
-        <label>[NPSP 設定] タブで、{0} | {1} をクリックし、無効なリレーション自動作成レコードを削除します。</label>
+        <label>[NPPatch 設定] タブで、{0} | {1} をクリックし、無効なリレーション自動作成レコードを削除します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelInvalidCMField</name>
-        <label>[NPSP 設定] タブで、{0} | {1} をクリックし、リレーション自動作成レコードを削除します。</label>
+        <label>[NPPatch 設定] タブで、{0} | {1} をクリックし、リレーション自動作成レコードを削除します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelInvalidContactField</name>
-        <label>[NPSP 設定] タブで、{0} | {1} をクリックし、リレーション自動作成レコードを削除します。</label>
+        <label>[NPPatch 設定] タブで、{0} | {1} をクリックし、リレーション自動作成レコードを削除します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelInvalidLookupField</name>
-        <label>[NPSP 設定] タブで、{0} | {1} をクリックし、リレーション自動作成レコードを削除します。</label>
+        <label>[NPPatch 設定] タブで、{0} | {1} をクリックし、リレーション自動作成レコードを削除します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionBadRDField</name>
-        <label>[NPSP 設定] タブで、{0} | {1} をクリックし、欠落している継続支援項目を追加するか、継続支援項目の対応付けレコードを削除します。</label>
+        <label>[NPPatch 設定] タブで、{0} | {1} をクリックし、欠落している継続支援項目を追加するか、継続支援項目の対応付けレコードを削除します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionContactData</name>
-        <label>これらの取引先責任者を表示するには、NPSP 状態チェックレポートフォルダで&lt;b&gt;取引先が関連しない取引先責任者&lt;/b&gt;レポートを実行します。</label>
+        <label>これらの取引先責任者を表示するには、NPPatch 状態チェックレポートフォルダで&lt;b&gt;取引先が関連しない取引先責任者&lt;/b&gt;レポートを実行します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionEditSetting</name>
-        <label>[NPSP 設定] タブで、{1} | {2} をクリックし、{0} 設定を編集します。</label>
+        <label>[NPPatch 設定] タブで、{1} | {2} をクリックし、{0} 設定を編集します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionHHAccNoContacts</name>
-        <label>これらの未使用の世帯取引先レコードを削除して領域を節約することを検討してください。これらの世帯取引先レコードを表示するには、NPSP 状態チェックレポートフォルダで&lt;b&gt;空の世帯取引先&lt;/b&gt;レポートを実行します。</label>
+        <label>これらの未使用の世帯取引先レコードを削除して領域を節約することを検討してください。これらの世帯取引先レコードを表示するには、NPPatch 状態チェックレポートフォルダで&lt;b&gt;空の世帯取引先&lt;/b&gt;レポートを実行します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionHHObjNoContacts</name>
-        <label>これらの未使用の世帯オブジェクトを削除して領域を節約することを検討してください。世帯取引先モデルへの変換が完了し、世帯オブジェクトレコードのデータが必要なくなった場合、それらを削除できます。これらの世帯オブジェクトを表示するには、NPSP 状態チェックレポートフォルダで&lt;b&gt;空の世帯オブジェクト&lt;/b&gt;レポートを実行します。</label>
+        <label>これらの未使用の世帯オブジェクトを削除して領域を節約することを検討してください。世帯取引先モデルへの変換が完了し、世帯オブジェクトレコードのデータが必要なくなった場合、それらを削除できます。これらの世帯オブジェクトを表示するには、NPPatch 状態チェックレポートフォルダで&lt;b&gt;空の世帯オブジェクト&lt;/b&gt;レポートを実行します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidFiscalYears</name>
-        <label>Salesforce では、カスタム会計年度の無効化がサポートされていないため、NPSP の積み上げ集計はデフォルトの [年] になります。</label>
+        <label>Salesforce では、カスタム会計年度の無効化がサポートされていないため、NPPatch の積み上げ集計はデフォルトの [年] になります。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidLevelField</name>
@@ -5735,7 +5735,7 @@
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidOppField</name>
-        <label>[NPSP 設定] タブで、{0} | {1} をクリックし、欠落している支援項目を追加するか、支払の対応付けレコードを削除します。</label>
+        <label>[NPPatch 設定] タブで、{0} | {1} をクリックし、欠落している支援項目を追加するか、支払の対応付けレコードを削除します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidOppStage</name>
@@ -5743,7 +5743,7 @@
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidPaymentField</name>
-        <label>[NPSP 設定] タブで、{0} | {1} をクリックし、欠落している支払項目を追加するか、支払の対応付けレコードを削除します。</label>
+        <label>[NPPatch 設定] タブで、{0} | {1} をクリックし、欠落している支払項目を追加するか、支払の対応付けレコードを削除します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidRDCustomPeriod</name>
@@ -5751,7 +5751,7 @@
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidRDCustomPeriodPicklist</name>
-        <label>[NPSP 設定] タブで、{0} | {1} をクリックし、欠落している継続支援のカスタム間隔を追加するか、間隔項目から選択リスト値を削除します。</label>
+        <label>[NPPatch 設定] タブで、{0} | {1} をクリックし、欠落している継続支援のカスタム間隔を追加するか、間隔項目から選択リスト値を削除します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidScheduledJob</name>
@@ -5759,15 +5759,15 @@
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidUDFObjectField</name>
-        <label>[NPSP 設定] タブで、{0} | {1} をクリックし、欠落している項目を追加するか、ユーザ積み上げ集計レコードを削除します。</label>
+        <label>[NPPatch 設定] タブで、{0} | {1} をクリックし、欠落している項目を追加するか、ユーザ積み上げ集計レコードを削除します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionMailingListReportMissing</name>
-        <label>[メンバーの状況] に [重複] が含まれていない、取引先責任者が関連するキャンペーンに基づいてレポートを作成します。次に、[NPSP 設定] の {0} &gt; {1} タブでこのレポートを指定します。</label>
+        <label>[メンバーの状況] に [重複] が含まれていない、取引先責任者が関連するキャンペーンに基づいてレポートを作成します。次に、[NPPatch 設定] の {0} &gt; {1} タブでこのレポートを指定します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionMissingOppPayments</name>
-        <label>これらの商談を表示するには、NPSP 状態チェックレポートフォルダで&lt;b&gt;支払が関連しない商談&lt;/b&gt;レポートを実行します。NPSP の支払設定で除外した商談種別や商談 RecTypes の場合、レポートに検索条件を追加する必要があります。これらを作成するには、[NPSP 設定] &gt; [商談] &gt; [支払] の [欠落している支払を作成] ボタンを使用します。</label>
+        <label>これらの商談を表示するには、NPPatch 状態チェックレポートフォルダで&lt;b&gt;支払が関連しない商談&lt;/b&gt;レポートを実行します。NPPatch の支払設定で除外した商談種別や商談 RecTypes の場合、レポートに検索条件を追加する必要があります。これらを作成するには、[NPPatch 設定] &gt; [商談] &gt; [支払] の [欠落している支払を作成] ボタンを使用します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionMissingPicklistValue</name>
@@ -5775,11 +5775,11 @@
     </customLabels>
     <customLabels>
         <name>healthSolutionNothingScheduled</name>
-        <label>デフォルトの NPSP ジョブを再スケジュールするには、[NPSP 設定] | [一括データ処理] | [プロセススケジューラ] に移動します。[編集] をクリックします。[デフォルトの NPSP ジョブを自動スケジュールしない] が選択されていないことを確認します。[保存] をクリックします。</label>
+        <label>デフォルトの NPPatch ジョブを再スケジュールするには、[NPPatch 設定] | [一括データ処理] | [プロセススケジューラ] に移動します。[編集] をクリックします。[デフォルトの NPPatch ジョブを自動スケジュールしない] が選択されていないことを確認します。[保存] をクリックします。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionOCRDupPrimary</name>
-        <label>複数の OpportunityContactRoles を [主] としてマークすると、これまでの商談総額などの商談積み上げ集計が誤って計算される可能性があります。これらの商談を表示するには、NPSP 状態チェックレポートフォルダで&lt;b&gt;主取引先責任者の役割が関連する商談&lt;/b&gt;レポートを実行し、2 つ以上の主取引先責任者の役割のあるレコードを見つけます。</label>
+        <label>複数の OpportunityContactRoles を [主] としてマークすると、これまでの商談総額などの商談積み上げ集計が誤って計算される可能性があります。これらの商談を表示するには、NPPatch 状態チェックレポートフォルダで&lt;b&gt;主取引先責任者の役割が関連する商談&lt;/b&gt;レポートを実行し、2 つ以上の主取引先責任者の役割のあるレコードを見つけます。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionOCRException</name>
@@ -5787,19 +5787,19 @@
     </customLabels>
     <customLabels>
         <name>healthSolutionPaymentMappingBadDataTypes</name>
-        <label>[NPSP 設定] タブで、{0} | {1} をクリックし、支払の対応付けレコードを削除します。</label>
+        <label>[NPPatch 設定] タブで、{0} | {1} をクリックし、支払の対応付けレコードを削除します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionRDBadOppField</name>
-        <label>[NPSP 設定] タブで、{0} | {1} をクリックし、欠落している支援項目を追加するか、継続支援項目の対応付けレコードを削除します。</label>
+        <label>[NPPatch 設定] タブで、{0} | {1} をクリックし、欠落している支援項目を追加するか、継続支援項目の対応付けレコードを削除します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionRDFieldsBadDatatypes</name>
-        <label>[NPSP 設定] タブで、{0} | {1} をクリックし、継続支援項目の対応付けレコードを削除します。</label>
+        <label>[NPPatch 設定] タブで、{0} | {1} をクリックし、継続支援項目の対応付けレコードを削除します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionRelReciprocalInvalid</name>
-        <label>[NPSP 設定] タブで、{0} | {1} をクリックし、相互関係レコードを削除して、必要な情報で新規相互関係レコードを作成します。</label>
+        <label>[NPPatch 設定] タブで、{0} | {1} をクリックし、相互関係レコードを削除して、必要な情報で新規相互関係レコードを作成します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionSaveOppsFailed</name>
@@ -5807,11 +5807,11 @@
     </customLabels>
     <customLabels>
         <name>healthSolutionScheduleJobs</name>
-        <label>これらの機能が正常に動作するには、すべての NPSP のスケジュール済みクラスに Schedulable__c のレコードが含まれている必要があります。</label>
+        <label>これらの機能が正常に動作するには、すべての NPPatch のスケジュール済みクラスに Schedulable__c のレコードが含まれている必要があります。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionTriggerHandlerMismatch</name>
-        <label>トリガを変更すると NPSP のコア機能に予期しない影響が生じる可能性があるため、本番にリリースする前に綿密にテストする必要があります。トリガへの変更が意図的でない場合は、トリガハンドラをリセットしてデフォルト設定に一致させます。</label>
+        <label>トリガを変更すると NPPatch のコア機能に予期しない影響が生じる可能性があるため、本番にリリースする前に綿密にテストする必要があります。トリガへの変更が意図的でない場合は、トリガハンドラをリセットしてデフォルト設定に一致させます。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionUnsupportedPicklistValue</name>
@@ -5819,11 +5819,11 @@
     </customLabels>
     <customLabels>
         <name>healthSolutionUDFBadDatatypes</name>
-        <label>[NPSP 設定] タブで、{0} | {1} をクリックし、ユーザ積み上げ集計レコードを削除します。</label>
+        <label>[NPPatch 設定] タブで、{0} | {1} をクリックし、ユーザ積み上げ集計レコードを削除します。</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionUDFOppField</name>
-        <label>[NPSP 設定] タブで、{0} | {1} をクリックし、欠落している支援項目を追加するか、ユーザ積み上げ集計レコードを削除します。</label>
+        <label>[NPPatch 設定] タブで、{0} | {1} をクリックし、欠落している支援項目を追加するか、ユーザ積み上げ集計レコードを削除します。</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupLabelReturnToCmp</name>
@@ -5843,7 +5843,7 @@
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeNoReport</name>
-        <label>レポートが見つかりませんでした。[レポートの一意の名前] が「NPSP_Campaign_Household_Mailing_List」のレポートを作成します。注意: [レポートタイプ] は [取引先責任者が関連するキャンペーン] である必要があります。[メンバーの状況] に [重複] が含まれていないものを抽出する検索条件。</label>
+        <label>レポートが見つかりませんでした。[レポートの一意の名前] が「NPPatch_Campaign_Household_Mailing_List」のレポートを作成します。注意: [レポートタイプ] は [取引先責任者が関連するキャンペーン] である必要があります。[メンバーの状況] に [重複] が含まれていないものを抽出する検索条件。</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeStatus</name>
@@ -5982,8 +5982,8 @@
         <label>世帯をマージ</label>
     </customLabels>
     <customLabels>
-        <name>lblNPSPSettings</name>
-        <label>NPSP 設定</label>
+        <name>lblNPPatchSettings</name>
+        <label>NPPatch 設定</label>
     </customLabels>
     <customLabels>
         <name>lblNoHHMergePermissions</name>
@@ -6103,7 +6103,7 @@
     </customLabels>
     <customLabels>
         <name>leadConvertRecordTypeWarning</name>
-        <label>あなたのプロファイルのデフォルトの取引先レコードタイプが、[NPSP 設定] で [取引先モデル] として設定されているレコードタイプと同じです。このため、データに関するさまざまな問題が発生する可能性があります。すべてのプロファイルに対して取引先のデフォルトのレコードタイプを異なる値に変更することをお勧めします。</label>
+        <label>あなたのプロファイルのデフォルトの取引先レコードタイプが、[NPPatch 設定] で [取引先モデル] として設定されているレコードタイプと同じです。このため、データに関するさまざまな問題が発生する可能性があります。すべてのプロファイルに対して取引先のデフォルトのレコードタイプを異なる値に変更することをお勧めします。</label>
     </customLabels>
     <customLabels>
         <name>leadConvertSectionTitle</name>
@@ -6391,11 +6391,11 @@
     </customLabels>
     <customLabels>
         <name>pmtWizardPaymentsDisabled</name>
-        <label>NPSP の支払が有効になっていません。支払スケジュールウィザードを使用するには、[NPSP 設定] ページで支払を有効にしてください。</label>
+        <label>NPPatch の支払が有効になっていません。支払スケジュールウィザードを使用するには、[NPPatch 設定] ページで支払を有効にしてください。</label>
     </customLabels>
     <customLabels>
         <name>pmtWizardPaymentsDisabledTitle</name>
-        <label>NPSP の支払が有効になっていません</label>
+        <label>NPPatch の支払が有効になっていません</label>
     </customLabels>
     <customLabels>
         <name>pmtWizardPaymentsNoAccessMessage</name>
@@ -6475,7 +6475,7 @@
     </customLabels>
     <customLabels>
         <name>psGatewaySelectionLabel</name>
-        <label>NPSP では、上書きしない限り、最近 Elevate に追加されたゲートウェイが使用されます。デフォルトの Elevate 支払ゲートウェイを設定するには、ここで選択します。</label>
+        <label>NPPatch では、上書きしない限り、最近 Elevate に追加されたゲートウェイが使用されます。デフォルトの Elevate 支払ゲートウェイを設定するには、ここで選択します。</label>
     </customLabels>
     <customLabels>
         <name>psGatewaysNotFound</name>
@@ -6535,7 +6535,7 @@
     </customLabels>
     <customLabels>
         <name>psGatewayIDHelp</name>
-        <label>NPSP では、上書きしない限り、最近 Elevate に追加されたゲートウェイが使用されます。NPSP で使用されるゲートウェイを変更するには、[編集] をクリックし、ゲートウェイ ID を入力して、作業内容を保存します。[Elevate 管理コンソール] | [ゲートウェイ管理] でゲートウェイ ID を見つけます。</label>
+        <label>NPPatch では、上書きしない限り、最近 Elevate に追加されたゲートウェイが使用されます。NPPatch で使用されるゲートウェイを変更するには、[編集] をクリックし、ゲートウェイ ID を入力して、作業内容を保存します。[Elevate 管理コンソール] | [ゲートウェイ管理] でゲートウェイ ID を見つけます。</label>
     </customLabels>
     <customLabels>
         <name>psShowPaymentMethods</name>
@@ -6591,7 +6591,7 @@
     </customLabels>
     <customLabels>
         <name>pscManageSoftCreditsNoRoles</name>
-        <label>[ソフトクレジットの役割] に役割が指定されていません。[NPSP 設定]、[支援]、[取引先責任者の役割] で、適切な役割を [ソフトクレジットの役割] 設定に追加する必要があります。</label>
+        <label>[ソフトクレジットの役割] に役割が指定されていません。[NPPatch 設定]、[支援]、[取引先責任者の役割] で、適切な役割を [ソフトクレジットの役割] 設定に追加する必要があります。</label>
     </customLabels>
     <customLabels>
         <name>pscManageSoftCreditsOppAmount</name>
@@ -6703,7 +6703,7 @@
     </customLabels>
     <customLabels>
         <name>stgAddrGeneralSettingsIntro</name>
-        <label>世帯および団体取引先の管理では、取引先への複数の住所の追加、デフォルト住所の指定、住所 (季節性) の指定ができます。住所管理は、世帯取引先モデルを備えた NPSP3 以降でのみ利用できます。</label>
+        <label>世帯および団体取引先の管理では、取引先への複数の住所の追加、デフォルト住所の指定、住所 (季節性) の指定ができます。住所管理は、世帯取引先モデルを備えた NPPatch3 以降でのみ利用できます。</label>
     </customLabels>
     <customLabels>
         <name>stgAddrMustChooseClass</name>
@@ -6861,7 +6861,7 @@
             ● 絞り込みにより、手軽に特定のレコードやデータを除外する&lt;br/&gt;
             ● 2 年以上前のデータを積み上げ集計する&lt;br/&gt;
             &lt;br/&gt;
-            [NPSP 設定] | [商談] | [カスタマイズ可能な積み上げ集計] に移動して、[カスタマイズ可能な積み上げ集計] を有効にすれば、使用できます!</label>
+            [NPPatch 設定] | [商談] | [カスタマイズ可能な積み上げ集計] に移動して、[カスタマイズ可能な積み上げ集計] を有効にすれば、使用できます!</label>
     </customLabels>
     <customLabels>
         <name>stgCRLPInfoOnUDRHeading</name>
@@ -6921,13 +6921,13 @@
     </customLabels>
     <customLabels>
         <name>stgDontAutoScheduleHelpText</name>
-        <label>オンになっていると、NPSP は自動的にデフォルトの定期的なジョブをスケジュールしません。 
+        <label>オンになっていると、NPPatch は自動的にデフォルトの定期的なジョブをスケジュールしません。 
 &lt;br/&gt; 
 &lt;br/&gt; 
 これらの定期的なジョブは、積み上げ集計の計算、継続支援や住所 (季節性) の更新、エラー処理の実行を行います。 
 &lt;br/&gt; 
 &lt;br/&gt; 
-オフにした場合、NPSP 設定ページにアクセスするたびに NPSP はデフォルトの定期的なジョブがスケジュールされていることを確認します。再スケジュールは、更新されたジョブではなく、欠落しているジョブにのみ適用されます。 
+オフにした場合、NPPatch 設定ページにアクセスするたびに NPPatch はデフォルトの定期的なジョブがスケジュールされていることを確認します。再スケジュールは、更新されたジョブではなく、欠落しているジョブにのみ適用されます。 
 &lt;br/&gt; 
 &lt;br/&gt; 
 このジョブを表示するには、Salesforce の設定でスケジュール済みジョブを検索します。</label>
@@ -6950,11 +6950,11 @@
     </customLabels>
     <customLabels>
         <name>stgErrorMissingDefaultGauRecordWithPmtAllocEnabled</name>
-        <label>以前に設定したデフォルト一般会計単位は存在しなくなり、削除されています。支払の割り当てを使用するには、デフォルトの割り当てを再度有効にし、デフォルト一般会計単位を選択する必要があります。[NPSP 設定] で [一般会計単位の割り当て] ページを開き、デフォルトの割り当て設定を更新してください。</label>
+        <label>以前に設定したデフォルト一般会計単位は存在しなくなり、削除されています。支払の割り当てを使用するには、デフォルトの割り当てを再度有効にし、デフォルト一般会計単位を選択する必要があります。[NPPatch 設定] で [一般会計単位の割り当て] ページを開き、デフォルトの割り当て設定を更新してください。</label>
     </customLabels>
     <customLabels>
         <name>stgErrorMissingDefaultGauRecord</name>
-        <label>以前に設定したデフォルト一般会計単位は存在しなくなり、削除されています。デフォルトの割り当てを再度有効にするには、[NPSP 設定] で [一般会計単位の割り当て] ページを開いてください。</label>
+        <label>以前に設定したデフォルト一般会計単位は存在しなくなり、削除されています。デフォルトの割り当てを再度有効にするには、[NPPatch 設定] で [一般会計単位の割り当て] ページを開いてください。</label>
     </customLabels>
     <customLabels>
         <name>stgHHDataRefreshTitle</name>
@@ -6989,7 +6989,7 @@
     </customLabels>
     <customLabels>
         <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>NPSP データインポート項目</label>
+        <label>NPPatch データインポート項目</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAdvancedMappingTableHeader2</name>
@@ -6997,7 +6997,7 @@
     </customLabels>
     <customLabels>
         <name>stgHelpAlloFiscalYearRollups</name>
-        <label>このオプションをオンにすると、割り当ての積み上げ集計総額に対してカレンダー年度設定ではなく会計年度設定が有効になります。会計年度情報を設定するには、[設定] | [組織プロファイル] | [会計年度] に移動します。注意: Nonprofit Success Pack では、カスタム会計年度設定はサポートされていません。</label>
+        <label>このオプションをオンにすると、割り当ての積み上げ集計総額に対してカレンダー年度設定ではなく会計年度設定が有効になります。会計年度情報を設定するには、[設定] | [組織プロファイル] | [会計年度] に移動します。注意: NPPatch では、カスタム会計年度設定はサポートされていません。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAlloNDayValue</name>
@@ -7124,13 +7124,13 @@
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable2</name>
-        <label>初めてカスタマイズ可能な積み上げ集計を有効にすると、既存の積み上げ集計と 87 個の事前定義済み NPSP 積み上げ集計が、カスタマイズ可能な積み上げ集計に自動的に変換されます。
+        <label>初めてカスタマイズ可能な積み上げ集計を有効にすると、既存の積み上げ集計と 87 個の事前定義済み NPPatch 積み上げ集計が、カスタマイズ可能な積み上げ集計に自動的に変換されます。
             &lt;br/&gt;&lt;br/&gt;
             無効にして従来の積み上げ集計に戻すこともできますが、新しい積み上げ集計や、カスタマイズ可能な積み上げ集計で実行した積み上げ集計および検索条件の変更は、従来の積み上げ集計設定に適用されません。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable3</name>
-        <label>カスタマイズ可能な積み上げ集計の使用時に作成した新しい積み上げ集計、絞り込みグループ、絞り込みルールを削除し、すべての NPSP の従来の積み上げ集計をデフォルト動作にリセットします。</label>
+        <label>カスタマイズ可能な積み上げ集計の使用時に作成した新しい積み上げ集計、絞り込みグループ、絞り込みルールを削除し、すべての NPPatch の従来の積み上げ集計をデフォルト動作にリセットします。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpDefaultAllocationsEnabled</name>
@@ -7212,7 +7212,7 @@
     </customLabels>
     <customLabels>
         <name>stgHelpHealthCheck</name>
-        <label>&lt;a href=&quot;#&quot; onclick=&quot;ShowPanel(&apos;idPanelHealthCheck&apos;);return false;&quot;&gt;状態チェック&lt;/a&gt;を使用して NPSP 設定を検証してください!</label>
+        <label>&lt;a href=&quot;#&quot; onclick=&quot;ShowPanel(&apos;idPanelHealthCheck&apos;);return false;&quot;&gt;状態チェック&lt;/a&gt;を使用して NPPatch 設定を検証してください!</label>
     </customLabels>
     <customLabels>
         <name>stgHelpIGFormat</name>
@@ -7250,12 +7250,12 @@
         <label>他の商談レコードタイプから個別に積み上げ集計する、「会員」などの商談レコードタイプの名前。</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpNPSPDoc</name>
-        <label>NPSP ドキュメント</label>
+        <name>stgHelpNPPatchDoc</name>
+        <label>NPPatch ドキュメント</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpNPSPSettings</name>
-        <label>団体のニーズに合わせて Nonprofit Success Pack を設定します。Salesforce 組織の状態を監視したり、バッチ処理を実行してデータを更新したりできます。</label>
+        <name>stgHelpNPPatchSettings</name>
+        <label>団体のニーズに合わせて NPPatch を設定します。Salesforce 組織の状態を監視したり、バッチ処理を実行してデータを更新したりできます。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpNameConnector</name>
@@ -7280,7 +7280,7 @@
     </customLabels>
     <customLabels>
         <name>stgHelpOCR</name>
-        <label>ソフトクレジット、取引先責任者の役割、およびマッチング支援はいくつかの重要な点で相互に関連します。これらの概念および相互関係をよく理解していない場合は、この設定を調整する前に &lt;a href=&quot;https://help.salesforce.com/s/articleView?id=sfdo.NPSP_Automated_Soft_Credits.htm&amp;type=5&quot; target=&quot;_blank&quot;&gt;NPSP ドキュメント&lt;/a&gt;全体を読む必要があります。</label>
+        <label>ソフトクレジット、取引先責任者の役割、およびマッチング支援はいくつかの重要な点で相互に関連します。これらの概念および相互関係をよく理解していない場合は、この設定を調整する前に NPPatch ドキュメント全体を読む必要があります。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpOCRDefaultRole</name>
@@ -7352,7 +7352,7 @@
     </customLabels>
     <customLabels>
         <name>stgHelpPowerOfUsHub</name>
-        <label>質問を受けましたか? NPSP に関する質問には、&lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHitSAE&quot; target=&quot;_blank&quot;&gt;「Nonprofit Success Pack」&lt;/a&gt;グループをお試しください。Salesforce の管理と設定に関する質問には、&lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHiLSAU?tab=discussion&quot; target=&quot;_blank&quot;&gt;「System Administrators」&lt;/a&gt;グループをお試しください。&lt;br/&gt;&lt;br/&gt;最新の NPSP リリースノートについては、&lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHOXSA2?tab=discussion&amp;sort=LAST_MODIFIED_DATE_DESC.htm&quot; target=&quot;_blank&quot;&gt;「NPSP Release Announcements」&lt;/a&gt;グループで確認できます。</label>
+        <label>質問を受けましたか? NPPatch に関する質問には、NPPatch グループをお試しください。Salesforce の管理と設定に関する質問には、System Administrators グループをお試しください。&lt;br/&gt;&lt;br/&gt;最新の NPPatch リリースノートについては、NPPatch Release Announcements グループで確認できます。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpPrimaryContactBatch</name>
@@ -7390,7 +7390,7 @@
     </customLabels>
     <customLabels>
         <name>stgHelpRDAddCampaign</name>
-        <label>選択した場合、NPSP は継続支援で指定したキャンペーンをその割賦商談にコピーします。</label>
+        <label>選択した場合、NPPatch は継続支援で指定したキャンペーンをその割賦商談にコピーします。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRDBatch</name>
@@ -7448,7 +7448,7 @@
     </customLabels>
     <customLabels>
         <name>stgHelpRDInstallmentCreateOptionMessage</name>
-        <label>NPSP が継続支援の割賦商談を作成するタイミングを指定します。デフォルトは [常に次の割賦を作成] です。</label>
+        <label>NPPatch が継続支援の割賦商談を作成するタイミングを指定します。デフォルトは [常に次の割賦を作成] です。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRDPeriodFrequency</name>
@@ -7468,7 +7468,7 @@
     </customLabels>
     <customLabels>
         <name>stgHelpRecDon</name>
-        <label>この設定を使用すると、NPSP に付属するデフォルトの間隔 (月、四半期、年など) とは異なる、継続支援のカスタム間隔を作成できます。</label>
+        <label>この設定を使用すると、NPPatch に付属するデフォルトの間隔 (月、四半期、年など) とは異なる、継続支援のカスタム間隔を作成できます。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRelAutoCreatedDup</name>
@@ -7601,7 +7601,7 @@
     </customLabels>
     <customLabels>
         <name>stgHelpTriggerHandlers</name>
-        <label>これらのトリガで Nonprofit Success Pack のコア機能が制御されるため、これらを変更する場合は細心の注意を払ってください。</label>
+        <label>これらのトリガで NPPatch のコア機能が制御されるため、これらを変更する場合は細心の注意を払ってください。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpTriggerHandlersAsync</name>
@@ -7637,9 +7637,9 @@
     </customLabels>
     <customLabels>
         <name>stgInstallScriptError</name>
-        <label>インストールに成功しましたが、軽微な問題が検出されました。問題を修正するには、Salesforce で [NPSP 設定] ページを読み込みます。
+        <label>インストールに成功しましたが、軽微な問題が検出されました。問題を修正するには、Salesforce で [NPPatch 設定] ページを読み込みます。
 
-注意: [NPSP 設定] が Nonprofit Success Pack アプリケーションに表示されます。タブが表示されない場合は、右上隅のアプリケーションメニューから [Nonprofit Success Pack] を選択します。</label>
+注意: [NPPatch 設定] が NPPatch アプリケーションに表示されます。タブが表示されない場合は、右上隅のアプリケーションメニューから [NPPatch] を選択します。</label>
     </customLabels>
     <customLabels>
         <name>stgLabelActionColumn</name>
@@ -7998,20 +7998,20 @@
         <label>{0} は見つかりません。</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPGuideImportData</name>
-        <label>データのインポートに関する NPSP ガイド</label>
+        <name>stgNPPatchGuideImportData</name>
+        <label>データのインポートに関する NPPatch ガイド</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPSettings</name>
-        <label>Nonprofit Success Pack アプリケーション設定</label>
+        <name>stgNPPatchSettings</name>
+        <label>NPPatch アプリケーション設定</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPSettingsTitle</name>
-        <label>Nonprofit Success Pack 設定</label>
+        <name>stgNPPatchSettingsTitle</name>
+        <label>NPPatch 設定</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPWorkbook</name>
-        <label>NPSP 活動資金集めのトレイル</label>
+        <name>stgNPPatchWorkbook</name>
+        <label>NPPatch 活動資金集めのトレイル</label>
     </customLabels>
     <customLabels>
         <name>stgNavAccountModel</name>
@@ -8179,7 +8179,7 @@
     </customLabels>
     <customLabels>
         <name>stgRDNamingDescription</name>
-        <label>継続支援を作成すると、NPSP は、指定された名前形式を使用して名前を自動的に入力します。この機能を無効にするには、[自動命名を無効化] を選択してください。</label>
+        <label>継続支援を作成すると、NPPatch は、指定された名前形式を使用して名前を自動的に入力します。この機能を無効にするには、[自動命名を無効化] を選択してください。</label>
     </customLabels>
     <customLabels>
         <name>stgRDNamingDisable</name>
@@ -8279,7 +8279,7 @@
     </customLabels>
     <customLabels>
         <name>gsResourcesVideographyLabel</name>
-        <label>NPSP ビデオグラフィチャネル</label>
+        <label>NPPatch ビデオグラフィチャネル</label>
     </customLabels>
     <customLabels>
         <name>gsResourcesVideographyLinkLabel</name>
@@ -8287,7 +8287,7 @@
     </customLabels>
     <customLabels>
         <name>gsVideoHeaderTitle</name>
-        <label>NPSP の使用開始</label>
+        <label>NPPatch の使用開始</label>
     </customLabels>
     <customLabels>
         <name>gseuPageTitle</name>
@@ -8302,12 +8302,12 @@
         <label>Trailblazer Community</label>
     </customLabels>
     <customLabels>
-        <name>gseuResourcesItemAboutNPSPLabel</name>
-        <label>NPSP の詳細</label>
+        <name>gseuResourcesItemAboutNPPatchLabel</name>
+        <label>NPPatch の詳細</label>
     </customLabels>
     <customLabels>
-        <name>gseuResourcesItemAboutNPSPLinkLabel</name>
-        <label>NPSP ドキュメント</label>
+        <name>gseuResourcesItemAboutNPPatchLinkLabel</name>
+        <label>NPPatch ドキュメント</label>
     </customLabels>
     <customLabels>
         <name>gseuResourcesItemWatchVideosLabel</name>
@@ -8315,7 +8315,7 @@
     </customLabels>
     <customLabels>
         <name>gseuResourcesItemWatchVideosLinkLabel</name>
-        <label>NPSP ビデオグラフィチャネル</label>
+        <label>NPPatch ビデオグラフィチャネル</label>
     </customLabels>
     <customLabels>
         <name>gseuResourcesItemWebinarsLabel</name>
@@ -8391,23 +8391,23 @@
     </customTabs>
     <customTabs>
         <name>GetStarted</name>
-        <label>NPSP の使用開始 - 管理</label>
+        <label>NPPatch の使用開始 - 管理</label>
     </customTabs>
     <customTabs>
         <name>GetStartedEndUser</name>
-        <label>NPSP の使用開始</label>
+        <label>NPPatch の使用開始</label>
     </customTabs>
     <customTabs>
-        <name>NPSP_Resources</name>
+        <name>NPPatch_Resources</name>
         <label>はじめよう</label>
     </customTabs>
     <customTabs>
-        <name>NPSP_Settings</name>
-        <label>NPSP 設定</label>
+        <name>NPPatch_Settings</name>
+        <label>NPPatch 設定</label>
     </customTabs>
     <customApplications>
         <name>Nonprofit_CRM</name>
-        <label>Nonprofit Success Pack</label>
+        <label>NPPatch</label>
     </customApplications>
     <quickActions>
         <name>Account.New_Address</name>

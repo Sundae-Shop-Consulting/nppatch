@@ -1,5 +1,5 @@
 <apex:page controller="BDI_DataImportDeleteBTN_CTRL"
-    title="NPSP Data Import Delete"
+    title="NPPatch Data Import Delete"
     tabStyle="DataImport__c"
     showHeader="true"
     sidebar="false"
@@ -14,7 +14,7 @@
     <div class="slds-scope slds-p-bottom_x-large">
         <apex:form id="idForm" styleClass="slds-p-bottom_x-large">
             <c:UTIL_PageHeader headerLabel="{!$ObjectType.DataImport__c.Label}"
-                header="NPSP Data Import Delete"
+                header="NPPatch Data Import Delete"
                 icon="custom67" iconCategory="custom"
                 showSaveBtn="false" cancelLabel="{!$Label.bdiBtnClose}"
                 cancelAction="{!close}" />

@@ -306,7 +306,7 @@
     </customLabels>
     <customLabels>
         <name>CONV_All_Triggers_Disabled</name>
-        <label>Schakelt alle NPSP-triggers uit. OPMERKING: het hulpmiddel schakelt uw aangepaste triggers niet uit. U dient aangepaste triggers handmatig uit te schakelen voordat u verdergaat.</label>
+        <label>Schakelt alle NPPatch-triggers uit. OPMERKING: het hulpmiddel schakelt uw aangepaste triggers niet uit. U dient aangepaste triggers handmatig uit te schakelen voordat u verdergaat.</label>
     </customLabels>
     <customLabels>
         <name>CONV_All_Users_Logged_Out</name>
@@ -369,8 +369,8 @@
         <label>Maakt een nieuwe Huishoudenaccount voor elke Huishoudenobjectrecord.</label>
     </customLabels>
     <customLabels>
-        <name>CONV_Non_NPSP_Apps</name>
-        <label>Ik heb alle niet-NPSP-toepassingen uitgeschakeld of tijdelijk gede-installeerd.</label>
+        <name>CONV_Non_NPPatch_Apps</name>
+        <label>Ik heb alle niet-NPPatch-toepassingen uitgeschakeld of tijdelijk gede-installeerd.</label>
     </customLabels>
     <customLabels>
         <name>CONV_Old_Household_Objects</name>
@@ -430,7 +430,7 @@
     </customLabels>
     <customLabels>
         <name>CONV_Triggers_Reenabled</name>
-        <label>Schakelt alle NPSP-triggers opnieuw in. OPMERKING: u dient enige aangepaste triggers die u voor de conversie hebt uitgeschakeld handmatig terug in te schakelen. De functionaliteit schakelt ook &lt;b&gt;alle&lt;/b&gt; NPSP-triggers opnieuw in. Dus als u bepaalde triggers op voorhand hebt uitgeschakeld, moet u ze handmatig opnieuw uitschakelen.</label>
+        <label>Schakelt alle NPPatch-triggers opnieuw in. OPMERKING: u dient enige aangepaste triggers die u voor de conversie hebt uitgeschakeld handmatig terug in te schakelen. De functionaliteit schakelt ook &lt;b&gt;alle&lt;/b&gt; NPPatch-triggers opnieuw in. Dus als u bepaalde triggers op voorhand hebt uitgeschakeld, moet u ze handmatig opnieuw uitschakelen.</label>
     </customLabels>
     <customLabels>
         <name>CONV_Warning</name>
@@ -618,7 +618,7 @@
     </customLabels>
     <customLabels>
         <name>CRLP_DisabledMessage</name>
-        <label>Aanpasbare Totaliseringen zijn bij u niet ingeschakeld. Ga terug naar NPSP-Instellingen voor informatie over hoe u deze inschakelt.</label>
+        <label>Aanpasbare Totaliseringen zijn bij u niet ingeschakeld. Ga terug naar NPPatch-Instellingen voor informatie over hoe u deze inschakelt.</label>
     </customLabels>
     <customLabels>
         <name>CRLP_DuplicateTargetField</name>
@@ -654,7 +654,7 @@
     </customLabels>
     <customLabels>
         <name>CRLP_ResetRollupsWarning</name>
-        <label>Weet u zeker dat u Aanpasbare totaliseringen opnieuw wilt instellen? Hierdoor worden alle nieuwe aanpasbare totaliseringen, filterregels en filtergroepen die u hebt gemaakt, verwijderd en worden alle NPSP-totaliseringen terug op hun standaardgedrag ingesteld.</label>
+        <label>Weet u zeker dat u Aanpasbare totaliseringen opnieuw wilt instellen? Hierdoor worden alle nieuwe aanpasbare totaliseringen, filterregels en filtergroepen die u hebt gemaakt, verwijderd en worden alle NPPatch-totaliseringen terug op hun standaardgedrag ingesteld.</label>
     </customLabels>
     <customLabels>
         <name>CRLP_Return</name>
@@ -766,7 +766,7 @@
     </customLabels>
     <customLabels>
         <name>ErrorEmailMessage</name>
-        <label>Salesforce heeft deze NPSP-fouten ontdekt. Als u niet zeker weet hoe u de fouten oplost, plaatst u een bericht in de Nonprofit Success Pack-groep: https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHitSAE</label>
+        <label>Salesforce heeft deze NPPatch-fouten ontdekt. Als u niet zeker weet hoe u de fouten oplost, plaatst u een bericht in de NPPatch-groep.</label>
     </customLabels>
     <customLabels>
         <name>FieldSetRelatedFieldError</name>
@@ -846,11 +846,11 @@
     </customLabels>
     <customLabels>
         <name>RD2_DataMigrationInvalidCloseAction</name>
-        <label>Selecteer bij NPSP-instellingen | Terugkerende donaties elke andere waarde dan &quot;No_Action&quot; voor Werking voor Open opportunity bij TD sluiten. Nadat gegevensmigratie is voltooid, kunt u de instelling weer terug wijzigen naar de vorige waarde.</label>
+        <label>Selecteer bij NPPatch-instellingen | Terugkerende donaties elke andere waarde dan &quot;No_Action&quot; voor Werking voor Open opportunity bij TD sluiten. Nadat gegevensmigratie is voltooid, kunt u de instelling weer terug wijzigen naar de vorige waarde.</label>
     </customLabels>
     <customLabels>
         <name>RD2_DataMigrationInvalidInstallmentPeriod</name>
-        <label>Termijn voor terugkerende donatie &quot;{0}&quot; kan niet worden geconverteerd naar de notatie voor Uitgebreide terugkerende donaties. Zorg ervoor dat Termijnperiode is gedefinieerd in NPSP-instellingen -&gt; Terugkerende donaties -&gt; Aangepaste termijnenperioden voor Terugkerende donaties.</label>
+        <label>Termijn voor terugkerende donatie &quot;{0}&quot; kan niet worden geconverteerd naar de notatie voor Uitgebreide terugkerende donaties. Zorg ervoor dat Termijnperiode is gedefinieerd in NPPatch-instellingen -&gt; Terugkerende donaties -&gt; Aangepaste termijnenperioden voor Terugkerende donaties.</label>
     </customLabels>
     <customLabels>
         <name>RD2_DataMigrationInvalidOpenEndedStatus</name>
@@ -994,7 +994,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementDisabledMessage</name>
-        <label>(1) Als u niet al gebruikmaakt van Lightning Experience, klikt u op Overschakelen naar Lightning Experience boven aan uw scherm.&lt;br/&gt;(2) Schakel Aanpasbare totaliseringen in door naar NPSP-instellingen | Donaties | Aanpasbare totaliseringen te gaan.&lt;br/&gt;&lt;br/&gt;Keer hier terug naar de pagina Upgrade naar Uitgebreide terugkerende donaties.</label>
+        <label>(1) Als u niet al gebruikmaakt van Lightning Experience, klikt u op Overschakelen naar Lightning Experience boven aan uw scherm.&lt;br/&gt;(2) Schakel Aanpasbare totaliseringen in door naar NPPatch-instellingen | Donaties | Aanpasbare totaliseringen te gaan.&lt;br/&gt;&lt;br/&gt;Keer hier terug naar de pagina Upgrade naar Uitgebreide terugkerende donaties.</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementDryRunBatchTitle</name>
@@ -1034,7 +1034,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementDryRunIntro</name>
-        <label>NPSP simuleert het migreren van uw bestaande gegevens naar het model Uitgebreide terugkerende donaties en identificeert fouten. Als er fouten zijn, gaat u naar NPSP-instellingen | Systeemtools | Foutenlogboek. Nadat u de fouten hebt gecorrigeerd, komt u hier terug en valideert u de migratie opnieuw. Zodra de validatie zonder fouten is voltooid, kunt u doorgaan naar de volgende stap.&lt;br/&gt;&lt;br/&gt;De voltooiing van het validatieproces kan wel enige tijd duren. U kunt deze pagina verlaten en later terugkeren om de voortgang te controleren.</label>
+        <label>NPPatch simuleert het migreren van uw bestaande gegevens naar het model Uitgebreide terugkerende donaties en identificeert fouten. Als er fouten zijn, gaat u naar NPPatch-instellingen | Systeemtools | Foutenlogboek. Nadat u de fouten hebt gecorrigeerd, komt u hier terug en valideert u de migratie opnieuw. Zodra de validatie zonder fouten is voltooid, kunt u doorgaan naar de volgende stap.&lt;br/&gt;&lt;br/&gt;De voltooiing van het validatieproces kan wel enige tijd duren. U kunt deze pagina verlaten en later terugkeren om de voortgang te controleren.</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementEnableConfirm</name>
@@ -1058,16 +1058,16 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementEnableWarning</name>
-        <label>&lt;b&gt;WAARSCHUWING: NPSP beschikt niet over een manier om te herstellen naar oudere Terugkerende donaties.&lt;/b&gt;</label>
+        <label>&lt;b&gt;WAARSCHUWING: NPPatch beschikt niet over een manier om te herstellen naar oudere Terugkerende donaties.&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementIncomplete</name>
-        <label>U kunt geen terugkerende donaties maken of bijwerken omdat u Uitgebreide terugkerende donaties nog niet hebt ingeschakeld. Ga naar NPSP-instellingen | Terugkerende donaties | Upgrade naar Uitgebreide terugkerende donaties uitvoeren en voltooi alle stappen voor het inschakelen.</label>
+        <label>U kunt geen terugkerende donaties maken of bijwerken omdat u Uitgebreide terugkerende donaties nog niet hebt ingeschakeld. Ga naar NPPatch-instellingen | Terugkerende donaties | Upgrade naar Uitgebreide terugkerende donaties uitvoeren en voltooi alle stappen voor het inschakelen.</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementIntro</name>
-        <label>Gegroet! Uitgebreide terugkerende donaties is onze nieuw ontworpen en verbeterde voorziening voor terugkerende donaties voor het Nonprofit Success Pack (NPSP). Onze grote dank gaat naar communityleden die hun feedback hebben gegeven en hebben geholpen om uitgebreide terugkerende donaties mogelijk te maken.
-        &lt;br/&gt;&lt;br/&gt;Aangezien er al een voorziening Terugkerende donaties in NPSP is, moet u diverse upgradetaken uitvoeren en uw bestaande gegevens overzetten naar het model Uitgebreide terugkerende donaties. Hieronder hebben we de vereiste taken voor u op een rijtje gezet.</label>
+        <label>Gegroet! Uitgebreide terugkerende donaties is onze nieuw ontworpen en verbeterde voorziening voor terugkerende donaties voor het NPPatch. Onze grote dank gaat naar communityleden die hun feedback hebben gegeven en hebben geholpen om uitgebreide terugkerende donaties mogelijk te maken.
+        &lt;br/&gt;&lt;br/&gt;Aangezien er al een voorziening Terugkerende donaties in NPPatch is, moet u diverse upgradetaken uitvoeren en uw bestaande gegevens overzetten naar het model Uitgebreide terugkerende donaties. Hieronder hebben we de vereiste taken voor u op een rijtje gezet.</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementMetaDeployConfirm</name>
@@ -1107,7 +1107,7 @@
         &lt;br/&gt;Voordat uw organisatie uitgebreide terugkerende donaties gaat gebruiken:&lt;br/&gt;
         &lt;ul&gt;&lt;li&gt;Schakel workflows, processen, validatieregels en triggers in, die u vóór de upgrade hebt uitgeschakeld.&lt;/li&gt;
         &lt;li&gt;Wijs de pagina-indeling voor uitgebreide terugkerende donaties toe aan alle gebruikersprofielen en verwijder de oude pagina-indeling voor terugkerende donaties.&lt;/li&gt;
-        &lt;li&gt;Wijs de Lightning-recordpagina Terugkerende donatie voor NPSP toe als standaard van de organisatie.&lt;/li&gt;
+        &lt;li&gt;Wijs de Lightning-recordpagina Terugkerende donatie voor NPPatch toe als standaard van de organisatie.&lt;/li&gt;
         &lt;li&gt;Wijs de Apex-klasse RD2_VisualizeScheduleController toe aan uw aangepaste profielen.&lt;/li&gt;
         &lt;li&gt;Pas beveiliging op veldniveau voor velden van terugkerende donaties naar behoefte aan voor uw profielen en machtigingensets.&lt;/li&gt;
         &lt;li&gt;Pas rapporten van terugkerende donaties dusdanig aan dat deze werken bij uitgebreide terugkerende donaties.&lt;/li&gt;
@@ -1115,7 +1115,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementMigrationErrorMessage</name>
-        <label>Uw migratie-uitvoering bevat fouten. Deze moeten worden opgelost om een migratie te voltooien. Bekijk de fouten door naar NPSP-instellingen &gt; Systeemtools &gt; Foutenlogboeken te gaan.</label>
+        <label>Uw migratie-uitvoering bevat fouten. Deze moeten worden opgelost om een migratie te voltooien. Bekijk de fouten door naar NPPatch-instellingen &gt; Systeemtools &gt; Foutenlogboeken te gaan.</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementMigrationIntro</name>
@@ -1255,7 +1255,7 @@
         <name>RD2_EntryFormSaveCommitmentFailedMessage</name>
         <label>Er is een terugkerende betaling gemaakt in Elevate. Herhalings-ID Elevate: {0}.
         
-        Er is echter geen overeenkomende terugkerende donatie gemaakt in NPSP, vanwege de volgende fout:
+        Er is echter geen overeenkomende terugkerende donatie gemaakt in NPPatch, vanwege de volgende fout:
         ● {1}
         
         U kunt dit formulier geopend houden, de fout oplossen en de terugkerende donatie opnieuw opslaan. In plaats daarvan kunt u ook annuleren en voor hulp contact opnemen met uw systeembeheerder.</label>
@@ -1366,7 +1366,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_PageNotAvailableMessage</name>
-        <label>Deze pagina is niet beschikbaar in Uitgebreide terugkerende donaties. Vernieuw uw browser en ga terug naar NPSP-instellingen.</label>
+        <label>Deze pagina is niet beschikbaar in Uitgebreide terugkerende donaties. Vernieuw uw browser en ga terug naar NPPatch-instellingen.</label>
     </customLabels>
     <customLabels>
         <name>RD2_PauseCannotExistOnScheduleChange</name>
@@ -1430,7 +1430,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_PauseStatusMustExist</name>
-        <label>NPSP kan Status en Statusreden niet bijwerken voor onderbroken terugkerende donaties. Voeg de keuzelijstwaarde &apos;Onderbroken&apos; toe aan het veld Status.</label>
+        <label>NPPatch kan Status en Statusreden niet bijwerken voor onderbroken terugkerende donaties. Voeg de keuzelijstwaarde &apos;Onderbroken&apos; toe aan het veld Status.</label>
     </customLabels>
     <customLabels>
         <name>RD2_PaymentInformation</name>
@@ -1486,7 +1486,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationClosedDefinition</name>
-        <label>Na het opgegeven aantal dagen werkt NPSP de status van de terugkerende donatie(s) bij naar de statuswaarde Gesloten als de donaties niet naar verwachting worden ontvangen. Deze waarde moet hoger zijn dan het aantal dagen verstreken. NPSP maakt geen opportunities voor tussentijdse betalingen bij gesloten terugkerende donaties.</label>
+        <label>Na het opgegeven aantal dagen werkt NPPatch de status van de terugkerende donatie(s) bij naar de statuswaarde Gesloten als de donaties niet naar verwachting worden ontvangen. Deze waarde moet hoger zijn dan het aantal dagen verstreken. NPPatch maakt geen opportunities voor tussentijdse betalingen bij gesloten terugkerende donaties.</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationDaysForClosed</name>
@@ -1526,7 +1526,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationLapsedDefinition</name>
-        <label>Na het opgegeven aantal dagen werkt NPSP de status van de terugkerende donatie bij naar de statuswaarde Verstreken als de donaties niet naar verwachting worden ontvangen. NPSP blijft betalingsopportunities maken voor verstreken terugkerende donaties, zoals gedefinieerd in de planning.</label>
+        <label>Na het opgegeven aantal dagen werkt NPPatch de status van de terugkerende donatie bij naar de statuswaarde Verstreken als de donaties niet naar verwachting worden ontvangen. NPPatch blijft betalingsopportunities maken voor verstreken terugkerende donaties, zoals gedefinieerd in de planning.</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationSetClosedStatus</name>
@@ -1546,17 +1546,17 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusMappingDefinitions</name>
-        <label>&lt;b&gt;Statusdefinities&lt;/b&gt;&lt;br/&gt;&lt;ul&gt;&lt;li&gt;Actief: de donateur doneert actief. NPSP maakt termijnopportunity&apos;s zoals wordt gedefinieerd in de planning voor de terugkerende donatie.&lt;/li&gt;
-&lt;li&gt;Verstreken: donaties worden niet naar verwachting ontvangen, maar NPSP maakt nog altijd termijnopportunity&apos;s zoals wordt gedefinieerd in de planning voor de terugkerende donatie.&lt;/li&gt;
-&lt;li&gt;Gesloten: de donateur doneert niet meer voor deze terugkerende donatie. NPSP maakt geen nieuwe termijnopportunity&apos;s.&lt;/li&gt;&lt;/ul&gt;</label>
+        <label>&lt;b&gt;Statusdefinities&lt;/b&gt;&lt;br/&gt;&lt;ul&gt;&lt;li&gt;Actief: de donateur doneert actief. NPPatch maakt termijnopportunity&apos;s zoals wordt gedefinieerd in de planning voor de terugkerende donatie.&lt;/li&gt;
+&lt;li&gt;Verstreken: donaties worden niet naar verwachting ontvangen, maar NPPatch maakt nog altijd termijnopportunity&apos;s zoals wordt gedefinieerd in de planning voor de terugkerende donatie.&lt;/li&gt;
+&lt;li&gt;Gesloten: de donateur doneert niet meer voor deze terugkerende donatie. NPPatch maakt geen nieuwe termijnopportunity&apos;s.&lt;/li&gt;&lt;/ul&gt;</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusMappingDeploymentAlreadyInProgress</name>
-        <label>U kunt toewijzingen niet opslaan terwijl NPSP een andere status-naar-staat-toewijzing verwerkt.</label>
+        <label>U kunt toewijzingen niet opslaan terwijl NPPatch een andere status-naar-staat-toewijzing verwerkt.</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusMappingIntro</name>
-        <label>Als u aangepaste keuzelijstwaarden maakt voor &apos;Status terugkerende donatie(s)&apos; moet u deze toewijzen aan een status, zodat NPSP weet hoe records met die aangepaste statuswaarden moeten worden verwerkt.
+        <label>Als u aangepaste keuzelijstwaarden maakt voor &apos;Status terugkerende donatie(s)&apos; moet u deze toewijzen aan een status, zodat NPPatch weet hoe records met die aangepaste statuswaarden moeten worden verwerkt.
         &lt;br/&gt;&lt;br/&gt;Als u nog geen aangepaste keuzelijstwaarden hebt gemaakt voor &apos;Status terugkerende donatie(s)&apos;, hoeft u niets toe te wijzen.</label>
     </customLabels>
     <customLabels>
@@ -1577,7 +1577,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusMustBeMappedSolution</name>
-        <label>Ga naar NPSP-instellingen | Terugkerende donaties | Status-naar-staat-toewijzingen, of neem voor hulp contact op met de beheerder.</label>
+        <label>Ga naar NPPatch-instellingen | Terugkerende donaties | Status-naar-staat-toewijzingen, of neem voor hulp contact op met de beheerder.</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusMustBeActiveOrPause</name>
@@ -1721,7 +1721,7 @@
     </customLabels>
     <customLabels>
         <name>RD_RefreshOppsContinueMessage</name>
-        <label>Met dit proces worden alle toekomstige termijnopportunity&apos;s bijgewerkt zodat ze overeenkomen met de huidige gegevens voor deze terugkerende donatie. In sommige gevallen verwijdert NPSP mogelijk de termijnen en worden er nieuwe aangemaakt.
+        <label>Met dit proces worden alle toekomstige termijnopportunity&apos;s bijgewerkt zodat ze overeenkomen met de huidige gegevens voor deze terugkerende donatie. In sommige gevallen verwijdert NPPatch mogelijk de termijnen en worden er nieuwe aangemaakt.
 &lt;br/&gt;&lt;br/&gt;Klik op Doorgaan om te beginnen of op Annuleren om terug te gaan naar de pagina Terugkerende donatie.</label>
     </customLabels>
     <customLabels>
@@ -1786,7 +1786,7 @@
     </customLabels>
     <customLabels>
         <name>RP_ProductNameLabel</name>
-        <label>Nonprofit Success Pack (NPSP)</label>
+        <label>NPPatch</label>
     </customLabels>
     <customLabels>
         <name>RP_ReleaseGitHub</name>
@@ -1806,19 +1806,19 @@
     </customLabels>
     <customLabels>
         <name>RP_SubTitle</name>
-        <label>U hebt nu toegang tot ALLE krachtige voorzieningen van de Salesforce Enterprise Edition EN de mogelijkheid om donateurs beter te beheren met het Nonprofit Success Pack. Laten we van start gaan.</label>
+        <label>U hebt nu toegang tot ALLE krachtige voorzieningen van de Salesforce Enterprise Edition EN de mogelijkheid om donateurs beter te beheren met het NPPatch. Laten we van start gaan.</label>
     </customLabels>
     <customLabels>
         <name>RP_Title</name>
-        <label>Welkom bij Salesforce en het Nonprofit Success Pack (NPSP)!</label>
+        <label>Welkom bij Salesforce en het NPPatch!</label>
     </customLabels>
     <customLabels>
         <name>RP_TrailheadLinkLabel</name>
-        <label>Beginnen met Salesforce en NPSP Trailmix</label>
+        <label>Beginnen met Salesforce en NPPatch Trailmix</label>
     </customLabels>
     <customLabels>
         <name>RP_TrailheadParagraph</name>
-        <label>Maak kennis met het Nonprofit Success Pack door de grondbeginselen van Salesforce en het beheer van donateurs en vrijwilligers te leren.</label>
+        <label>Maak kennis met het NPPatch door de grondbeginselen van Salesforce en het beheer van donateurs en vrijwilligers te leren.</label>
     </customLabels>
     <customLabels>
         <name>RP_TrailheadSubtitle</name>
@@ -1826,7 +1826,7 @@
     </customLabels>
     <customLabels>
         <name>RP_USParagraph</name>
-        <label>Krijg hulp van onze actieve community met medegebruikers van NPSP, of neem contact op met Salesforce.org.</label>
+        <label>Krijg hulp van onze actieve community met medegebruikers van NPPatch, of neem contact op met Salesforce.org.</label>
     </customLabels>
     <customLabels>
         <name>RP_UsHubLinkLabel</name>
@@ -1842,7 +1842,7 @@
     </customLabels>
     <customLabels>
         <name>RP_WebinarLinkLabel</name>
-        <label>NPSP-Productdocumentatie</label>
+        <label>NPPatch-Productdocumentatie</label>
     </customLabels>
     <customLabels>
         <name>RP_YoutubeChannel</name>
@@ -1894,7 +1894,7 @@
     </customLabels>
     <customLabels>
         <name>addrCiceroMissingAPIKey</name>
-        <label>U moet de Cicero API-Sleutel instellen in het veld Auth.-Token voor Adresverificatie. Log in op Salesforce en ga naar Mensen | Adressen op de NPSP-Instellingenpagina.</label>
+        <label>U moet de Cicero API-Sleutel instellen in het veld Auth.-Token voor Adresverificatie. Log in op Salesforce en ga naar Mensen | Adressen op de NPPatch-Instellingenpagina.</label>
     </customLabels>
     <customLabels>
         <name>addrCopyConAddBtnConfirm</name>
@@ -1914,7 +1914,7 @@
     </customLabels>
     <customLabels>
         <name>addrHHAccountOnly</name>
-        <label>Om Adresobjecten te gebruiken met niet-Huishoudenaccounts, moet u Organisatieaccountadressen Ingeschakeld selecteren in NPSP-instellingen | Mensen | Adressen.</label>
+        <label>Om Adresobjecten te gebruiken met niet-Huishoudenaccounts, moet u Organisatieaccountadressen Ingeschakeld selecteren in NPPatch-instellingen | Mensen | Adressen.</label>
     </customLabels>
     <customLabels>
         <name>addrHHAddressAlwaysDefault</name>
@@ -1984,7 +1984,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>alloDefaultNotPercent</name>
-        <label>De GAU die als standaard is ingesteld in de NPSP-Instellingen kan enkel Toewijzingen op basis van bedrag hebben, niet op basis van percentage.</label>
+        <label>De GAU die als standaard is ingesteld in de NPPatch-Instellingen kan enkel Toewijzingen op basis van bedrag hebben, niet op basis van percentage.</label>
     </customLabels>
     <customLabels>
         <name>alloDeleteRow</name>
@@ -2016,7 +2016,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>alloModifyCurrency</name>
-        <label>U kunt de valuta van Toewijzingen niet rechtstreeks wijzigen. NPSP werkt Toewijzingsvaluta bij wanneer u de valuta van een bovenliggende Opportunity, Campagne of Terugkerende Donatie bijwerkt.</label>
+        <label>U kunt de valuta van Toewijzingen niet rechtstreeks wijzigen. NPPatch werkt Toewijzingsvaluta bij wanneer u de valuta van een bovenliggende Opportunity, Campagne of Terugkerende Donatie bijwerkt.</label>
     </customLabels>
     <customLabels>
         <name>alloNegativeAmount</name>
@@ -2104,11 +2104,11 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdeRetirementBlockerMessage</name>
-        <label>Sinds 1 oktober 2020 wordt Batchgegevensinvoer niet meer ondersteund. De meeste opties zijn vervangen door nieuwere functies in NPSP. Als u nog actieve batches hebt, kunt u de records nog wel openen, maar niet meer verwerken met Batchgegevensinvoer. Neem contact op met Support als u toegang wilt tot deze batches. &lt;br/&gt; Mogelijk is Opgave van gift een goed alternatief voor Batchgegevensinvoer.</label>
+        <label>Sinds 1 oktober 2020 wordt Batchgegevensinvoer niet meer ondersteund. De meeste opties zijn vervangen door nieuwere functies in NPPatch. Als u nog actieve batches hebt, kunt u de records nog wel openen, maar niet meer verwerken met Batchgegevensinvoer. Neem contact op met Support als u toegang wilt tot deze batches. &lt;br/&gt; Mogelijk is Opgave van gift een goed alternatief voor Batchgegevensinvoer.</label>
     </customLabels>
     <customLabels>
         <name>bdeRetirementWarningBody</name>
-        <label>Op 1 oktober 2020 wordt Batchgegevensinvoer buiten gebruik gesteld; de functie is dan niet meer beschikbaar in NPSP. Als u op dat moment actieve batches hebt, kunt u de records nog wel openen, maar u kunt ze niet meer verwerken met Batchgegevensinvoer. Als u voor een goede overgang wilt zorgen, schakelt u Opgave van gift op voorhand in en neemt u dit al in gebruik vóór 1 oktober.</label>
+        <label>Op 1 oktober 2020 wordt Batchgegevensinvoer buiten gebruik gesteld; de functie is dan niet meer beschikbaar in NPPatch. Als u op dat moment actieve batches hebt, kunt u de records nog wel openen, maar u kunt ze niet meer verwerken met Batchgegevensinvoer. Als u voor een goede overgang wilt zorgen, schakelt u Opgave van gift op voorhand in en neemt u dit al in gebruik vóór 1 oktober.</label>
     </customLabels>
     <customLabels>
         <name>bdeRetirementWarningHeader</name>
@@ -2124,7 +2124,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiAccountCustomIdError</name>
-        <label>Het instellingenveld {0} Aangepast Uniek ID voor Account moet overeenkomende velden hebben in het object NPSP-Gegevensimport waarvan de API Namen {1} en {2} zijn.</label>
+        <label>Het instellingenveld {0} Aangepast Uniek ID voor Account moet overeenkomende velden hebben in het object NPPatch-Gegevensimport waarvan de API Namen {1} en {2} zijn.</label>
     </customLabels>
     <customLabels>
         <name>bdiAdditionalObjChildNotUpdated</name>
@@ -2184,7 +2184,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiContactCustomIdError</name>
-        <label>Het instellingenveld {0} Aangepast Uniek ID voor Contactpersoon moet overeenkomende velden hebben in het object NPSP-Gegevensimport waarvan de API-Namen {1} en {2} zijn.</label>
+        <label>Het instellingenveld {0} Aangepast Uniek ID voor Contactpersoon moet overeenkomende velden hebben in het object NPPatch-Gegevensimport waarvan de API-Namen {1} en {2} zijn.</label>
     </customLabels>
     <customLabels>
         <name>bdiContactMatchDupeMgmt</name>
@@ -2224,7 +2224,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiDataImporterDescription</name>
-        <label>De NPSP-Gegevensimporteur helpt bij het eenvoudig importeren van gegevens in het Nonprofit Success Pack.</label>
+        <label>De NPPatch-Gegevensimporteur helpt bij het eenvoudig importeren van gegevens in het NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>bdiDataImporterInfoLine1</name>
@@ -2236,7 +2236,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiDataImporterInfoLine2b</name>
-        <label>Om te vermijden dat dienstlimieten worden bereikt, verifieert de NPSP-Gegevensimporteur geen adressen via de verificatiedienst die u hebt ingesteld in de NPSP-Instellingen.</label>
+        <label>Om te vermijden dat dienstlimieten worden bereikt, verifieert de NPPatch-Gegevensimporteur geen adressen via de verificatiedienst die u hebt ingesteld in de NPPatch-Instellingen.</label>
     </customLabels>
     <customLabels>
         <name>bdiDataImporterInfoLine3</name>
@@ -2256,7 +2256,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiDataImporterTitle</name>
-        <label>NPSP-Gegevensimport</label>
+        <label>NPPatch-Gegevensimport</label>
     </customLabels>
     <customLabels>
         <name>bdiDeploymentInProgress</name>
@@ -2300,7 +2300,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiDryRunTitle</name>
-        <label>NPSP-Gegevensimporteur - Testuitvoering</label>
+        <label>NPPatch-Gegevensimporteur - Testuitvoering</label>
     </customLabels>
     <customLabels>
         <name>bdiDupeMgmtMatchImportStatus</name>
@@ -2328,23 +2328,23 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationMultiMatch</name>
-        <label>De Donatie-informatie komt overeen met meerdere Opportunities, dus heeft NPSP-Gegevensimporter niet geïmporteerd. Het veld Donatie Mogelijke Overeenkomsten bevat de Salesforce-ID&apos;s van de overeenkomende Opportunities.</label>
+        <label>De Donatie-informatie komt overeen met meerdere Opportunities, dus heeft NPPatch-Gegevensimporter niet geïmporteerd. Het veld Donatie Mogelijke Overeenkomsten bevat de Salesforce-ID&apos;s van de overeenkomende Opportunities.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationNoMatch</name>
-        <label>De NPSP-Gegevensimporter heeft geen overeenkomende donaties gevonden.</label>
+        <label>De NPPatch-Gegevensimporter heeft geen overeenkomende donaties gevonden.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationRequireNoMatch</name>
-        <label>De Donatie-informatie komt overeen met een of meer Opportunities, maar volgens de instellingen mogen er geen overeenkomsten zijn, dus heeft de NPSP-Gegevensimporter niet geïmporteerd. Het veld Donatie Mogelijke Overeenkomsten bevat de Salesforce-ID&apos;s van de overeenkomende Opportunities.</label>
+        <label>De Donatie-informatie komt overeen met een of meer Opportunities, maar volgens de instellingen mogen er geen overeenkomsten zijn, dus heeft de NPPatch-Gegevensimporter niet geïmporteerd. Het veld Donatie Mogelijke Overeenkomsten bevat de Salesforce-ID&apos;s van de overeenkomende Opportunities.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorExistingDonationAllocations</name>
-        <label>De verschafte GAU-toewijzigingen leveren een conflict op met bestaande toewijzingen op de opportunityrecord voor de donatie. Verwijder de toewijzingen uit de opportunityrecord of uit de gegevensimportrecords van NPSP. Verwerk vervolgens de NPSP-gegevensimporter.</label>
+        <label>De verschafte GAU-toewijzigingen leveren een conflict op met bestaande toewijzingen op de opportunityrecord voor de donatie. Verwijder de toewijzingen uit de opportunityrecord of uit de gegevensimportrecords van NPPatch. Verwerk vervolgens de NPPatch-gegevensimporter.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorExistingPaymentAllocations</name>
-        <label>De verschafte GAU-toewijzingen leveren een conflict op met de bestaande toewijzingen op de betalingsrecord van de donatie. Verwijder de toewijzingen uit de opportunityrecord of uit de gegevensimportrecords van NPSP. Verwerk vervolgens de NPSP-gegevensimporter.</label>
+        <label>De verschafte GAU-toewijzingen leveren een conflict op met de bestaande toewijzingen op de betalingsrecord van de donatie. Verwijder de toewijzingen uit de opportunityrecord of uit de gegevensimportrecords van NPPatch. Verwerk vervolgens de NPPatch-gegevensimporter.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorGAUAllocationOver100</name>
@@ -2360,7 +2360,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiErrorInvalidIMatchDonations</name>
-        <label>Of de NPSP-Gegevensimporteur kon de Apex-klasse {0} niet vinden, of deze klasse ondersteunt de {1} interface niet.</label>
+        <label>Of de NPPatch-Gegevensimporteur kon de Apex-klasse {0} niet vinden, of deze klasse ondersteunt de {1} interface niet.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorInvalidLastname</name>
@@ -2384,7 +2384,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiErrorPaymentMultiMatch</name>
-        <label>De Donatie-informatie komt overeen met verscheidene Betalingen, dus heeft de NPSP-Gegevensimporter de Donatie niet geïmporteerd. Het veld Betaling Mogelijke Overeenkomsten bevat de Salesforce-ID&apos;s van de overeenkomende Betalingen.</label>
+        <label>De Donatie-informatie komt overeen met verscheidene Betalingen, dus heeft de NPPatch-Gegevensimporter de Donatie niet geïmporteerd. Het veld Betaling Mogelijke Overeenkomsten bevat de Salesforce-ID&apos;s van de overeenkomende Betalingen.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUIBackToMapGroup</name>
@@ -2400,13 +2400,13 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiFMUIDescription1</name>
-        <label>Verbind het veld dat u hebt gemaakt voor het object NPSP-gegevensimport, met het veld voor uw doelobject in
+        <label>Verbind het veld dat u hebt gemaakt voor het object NPPatch-gegevensimport, met het veld voor uw doelobject in
             het onderstaande raster. U kunt velden zoeken op veldlabel of de veld-API-naam.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUIDescription2</name>
-        <label>Velden voor het object NPSP-gegevensimport moeten zijn toegewezen aan compatibele veldtypen voor uw doelobject.
-            Wanneer u een veld NPSP-gegevensimport selecteert, zijn alleen de compatibele doelvelden beschikbaar.</label>
+        <label>Velden voor het object NPPatch-gegevensimport moeten zijn toegewezen aan compatibele veldtypen voor uw doelobject.
+            Wanneer u een veld NPPatch-gegevensimport selecteert, zijn alleen de compatibele doelvelden beschikbaar.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUIFieldAPIName</name>
@@ -2418,15 +2418,15 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiFMUISourceFieldLabelHelp</name>
-        <label>Het veld NPSP-gegevensimport, dat u wilt toewijzen. Zoek op Veldlabel of API-naam. Als u het veld niet kunt vinden, bevestigt u dat u het veld hebt gemaakt voor het object NPSP-gegevensimport.</label>
+        <label>Het veld NPPatch-gegevensimport, dat u wilt toewijzen. Zoek op Veldlabel of API-naam. Als u het veld niet kunt vinden, bevestigt u dat u het veld hebt gemaakt voor het object NPPatch-gegevensimport.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUISourceFieldDataTypeHelp</name>
-        <label>Het gegevenstype van het veld dat u hebt gekozen voor het object NPSP-gegevensimport.</label>
+        <label>Het gegevenstype van het veld dat u hebt gekozen voor het object NPPatch-gegevensimport.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUITargetFieldLabelHelp</name>
-        <label>Het doelveld dat u wilt verbinden met het veld NPSP-gegevensimport. Zoek op Veldlabel of API-naam. Dit wordt gefilterd om alleen velden voor uw doelobject te tonen, die compatibel zijn met het veld dat u hebt gekozen voor het object NPSP-gegevensimport.</label>
+        <label>Het doelveld dat u wilt verbinden met het veld NPPatch-gegevensimport. Zoek op Veldlabel of API-naam. Dit wordt gefilterd om alleen velden voor uw doelobject te tonen, die compatibel zijn met het veld dat u hebt gekozen voor het object NPPatch-gegevensimport.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUITargetFieldDataTypeHelp</name>
@@ -2454,7 +2454,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiFMUISearchSourceInputLabel</name>
-        <label>Zoek naar het veld van het object NPSP-gegevensimport op label of API-naam.</label>
+        <label>Zoek naar het veld van het object NPPatch-gegevensimport op label of API-naam.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUISearchTargetInputLabel</name>
@@ -2462,7 +2462,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiFMUISourceObject</name>
-        <label>Bron (object NPSP-gegevensimport)</label>
+        <label>Bron (object NPPatch-gegevensimport)</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUISuccessful</name>
@@ -2498,7 +2498,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiHouseholdModelRequired</name>
-        <label>De NPSP-Gegevensimporteur werkt enkel met een Huishoudenaccountmodel.</label>
+        <label>De NPPatch-Gegevensimporteur werkt enkel met een Huishoudenaccountmodel.</label>
     </customLabels>
     <customLabels>
         <name>bdiIgnored</name>
@@ -2510,7 +2510,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiInvalidBatchId</name>
-        <label>Het Batch-ID {0} van de NPSP-Gegevensimporteur is ongeldig.</label>
+        <label>Het Batch-ID {0} van de NPPatch-Gegevensimporteur is ongeldig.</label>
     </customLabels>
     <customLabels>
         <name>bdiInvalidDonationMatchingBehavior</name>
@@ -2524,7 +2524,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
         <name>bdiMassDeleteWarning</name>
         <label>U staat op het punt {0} record(s) te verwijderen.
         &lt;br/&gt;
-        &lt;br/&gt;&lt;b&gt;BELANGRIJK:&lt;/b&gt; Als u in uw organisatie giften maakt aan de hand de voorziening Batchinvoer voor giften, raden we niet aan om de knop In bulk verwijderen te gebruiken. Raadpleeg de NPSP-documentatie voor instructies over het verwijderen van records aan de hand van de gegevenslader.</label>
+        &lt;br/&gt;&lt;b&gt;BELANGRIJK:&lt;/b&gt; Als u in uw organisatie giften maakt aan de hand de voorziening Batchinvoer voor giften, raden we niet aan om de knop In bulk verwijderen te gebruiken. Raadpleeg de NPPatch-documentatie voor instructies over het verwijderen van records aan de hand van de gegevenslader.</label>
     </customLabels>
     <customLabels>
         <name>bdiMatched</name>
@@ -2632,7 +2632,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiOMUIPageDescriptionPt2</name>
-        <label>Objectgroepen zijn verzamelingen veldtoewijzingen die aan de tool NPSP-gegevensimport doorgeven welke typen records (bijvoorbeeld Contactpersonen, Opportunities, Betalingen, enz.) moeten worden gemaakt of bijgewerkt. NPSP kan gerelateerde records binnen één rij van uw import koppelen aan elkaar, omdat veldtoewijzingen in objectgroepen op dezelfde manier zijn of worden gebundeld.</label>
+        <label>Objectgroepen zijn verzamelingen veldtoewijzingen die aan de tool NPPatch-gegevensimport doorgeven welke typen records (bijvoorbeeld Contactpersonen, Opportunities, Betalingen, enz.) moeten worden gemaakt of bijgewerkt. NPPatch kan gerelateerde records binnen één rij van uw import koppelen aan elkaar, omdat veldtoewijzingen in objectgroepen op dezelfde manier zijn of worden gebundeld.</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIPageDescriptionPt3</name>
@@ -2677,11 +2677,11 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiOMUIErrorNoUnmappedFieldsPt1</name>
-        <label>Fout: er zijn geen niet-toegewezen velden voor het object NPSP-gegevensimport voor gebruik voor</label>
+        <label>Fout: er zijn geen niet-toegewezen velden voor het object NPPatch-gegevensimport voor gebruik voor</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIErrorNoUnmappedFieldsPt2</name>
-        <label>. Maak nieuwe velden voor het object NPSP-gegevensimport, indien benodigd.</label>
+        <label>. Maak nieuwe velden voor het object NPPatch-gegevensimport, indien benodigd.</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIFieldMappingProblemHeader</name>
@@ -2693,7 +2693,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiOMUIFieldMappingProblemMessagePart2</name>
-        <label>Controleer of het veld &apos;NPSP-Gegevensimport&apos; en de doelvelden nog bestaan en bewerk of verwijder de veldtoewijzing.</label>
+        <label>Controleer of het veld &apos;NPPatch-Gegevensimport&apos; en de doelvelden nog bestaan en bewerk of verwijder de veldtoewijzing.</label>
     </customLabels>
     <customLabels>
         <name>bdiPositiveNumber</name>
@@ -2717,7 +2717,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bdiSelectCantProcessBatchDIRecords</name>
-        <label>U hebt records geselecteerd die zijn gekoppeld aan een NPSP-gegevensimportbatch. Voor het importeren van records die zijn gekoppeld aan een NPSP-importbatch opent u de batch en klikt u op Batch verwerken.</label>
+        <label>U hebt records geselecteerd die zijn gekoppeld aan een NPPatch-gegevensimportbatch. Voor het importeren van records die zijn gekoppeld aan een NPPatch-importbatch opent u de batch en klikt u op Batch verwerken.</label>
     </customLabels>
     <customLabels>
         <name>bdiSelectCantProcessImportedRecords</name>
@@ -2789,15 +2789,15 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationDateRangeHelp</name>
-        <label>Voer het te overwegen aantal dagen vanaf de Donatiedatum in wanneer er wordt gezocht naar een overeenkomende Opportunity of Betaling. NPSP kiest een overeenkomende Opportunity of Betaling met een datum die binnen het aantal dagen valt EN die het dichtst in de buurt van de Donatiedatum valt.</label>
+        <label>Voer het te overwegen aantal dagen vanaf de Donatiedatum in wanneer er wordt gezocht naar een overeenkomende Opportunity of Betaling. NPPatch kiest een overeenkomende Opportunity of Betaling met een datum die binnen het aantal dagen valt EN die het dichtst in de buurt van de Donatiedatum valt.</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationMatchingBehaviorHelp</name>
-        <label>Definieert hoe NPSP moet omgaan met overeenkomende Donaties.</label>
+        <label>Definieert hoe NPPatch moet omgaan met overeenkomende Donaties.</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationMatchingClassHelp</name>
-        <label>De developernaam van een Apex-klasse die de BDI_IMatching-interface voor Donaties implementeert. Laat blanco om overeenkomst over te laten aan NPSP.</label>
+        <label>De developernaam van een Apex-klasse die de BDI_IMatching-interface voor Donaties implementeert. Laat blanco om overeenkomst over te laten aan NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationMatchingRuleHelp</name>
@@ -2821,7 +2821,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bgeBatchPostProcessClassHelp</name>
-        <label>De developernaam van een Apex-klasse die de BDI_PostProcess-interface implementeert voor NPSP-batchrecords.</label>
+        <label>De developernaam van een Apex-klasse die de BDI_PostProcess-interface implementeert voor NPPatch-batchrecords.</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchProcessUsingScheduledJobHelp</name>
@@ -2829,7 +2829,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bgeBatchRunOpportunityRollupsWhileProcessingHelp</name>
-        <label>Wanneer aangevinkt, berekent NPSP donateurtotaliseringen wanneer donaties worden verwerkt. Wanneer niet aangevinkt, worden donateurtotaliseringen berekend tijdens de standaard nachtelijke Geplande Taak. Het aanvinken van dit selectievakje kan de verwerking van deze batch vertragen.</label>
+        <label>Wanneer aangevinkt, berekent NPPatch donateurtotaliseringen wanneer donaties worden verwerkt. Wanneer niet aangevinkt, worden donateurtotaliseringen berekend tijdens de standaard nachtelijke Geplande Taak. Het aanvinken van dit selectievakje kan de verwerking van deze batch vertragen.</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchOverview</name>
@@ -3013,7 +3013,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bgeRetirementWarningBody</name>
-        <label>Op 13 juli 2021 wordt de verouderde Batchinvoer van giften buiten gebruik gesteld; de functie is dan niet meer beschikbaar in NPSP. Als u op dat moment actieve batches hebt, kunt u de records nog wel openen, maar u kunt ze niet meer verwerken met Batchinvoer van giften. Als u voor een goede overgang wilt zorgen, schakelt u de nieuwere Opgave van gift op voorhand in en neemt u dit al in gebruik vóór 1 oktober.</label>
+        <label>Op 13 juli 2021 wordt de verouderde Batchinvoer van giften buiten gebruik gesteld; de functie is dan niet meer beschikbaar in NPPatch. Als u op dat moment actieve batches hebt, kunt u de records nog wel openen, maar u kunt ze niet meer verwerken met Batchinvoer van giften. Als u voor een goede overgang wilt zorgen, schakelt u de nieuwere Opgave van gift op voorhand in en neemt u dit al in gebruik vóór 1 oktober.</label>
     </customLabels>
     <customLabels>
         <name>bgeRetirementWarningHeader</name>
@@ -3044,11 +3044,11 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>bgeUnmappedFieldsNoticeMessageAdvancedMapping</name>
-        <label>De volgende velden zijn wel opgenomen in deze batch, maar hun veldtoewijzingen zijn verwijderd: {0}. Ga ter correctie hiervan naar Geavanceerd toewijzen in NPSP-instellingen en wijs de velden opnieuw toe.</label>
+        <label>De volgende velden zijn wel opgenomen in deze batch, maar hun veldtoewijzingen zijn verwijderd: {0}. Ga ter correctie hiervan naar Geavanceerd toewijzen in NPPatch-instellingen en wijs de velden opnieuw toe.</label>
     </customLabels>
     <customLabels>
         <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>De volgende velden zijn wel opgenomen in deze batch, maar hun veldtoewijzingen zijn verwijderd: {0}. Ga ter correctie hiervan naar het object NPSP-gegevensimport en wijs de velden opnieuw toe met behulp van Help-tekst.</label>
+        <label>De volgende velden zijn wel opgenomen in deze batch, maar hun veldtoewijzingen zijn verwijderd: {0}. Ga ter correctie hiervan naar het object NPPatch-gegevensimport en wijs de velden opnieuw toe met behulp van Help-tekst.</label>
     </customLabels>
     <customLabels>
         <name>bgeWizardShowAdvancedOptions</name>
@@ -3158,7 +3158,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>batchNumberSettingsDescription</name>
-        <label>Batchnummers zijn unieke aanduidingen die in Opgave van gift en NPSP-gegevensimport worden gebruikt. De automatisch genummerde waarde wordt weergegeven in de velden met batchnummers in Opportunity&apos;s en Betalingen.</label>
+        <label>Batchnummers zijn unieke aanduidingen die in Opgave van gift en NPPatch-gegevensimport worden gebruikt. De automatisch genummerde waarde wordt weergegeven in de velden met batchnummers in Opportunity&apos;s en Betalingen.</label>
     </customLabels>
     <customLabels>
         <name>batchNumberSettingsHeader</name>
@@ -3190,19 +3190,19 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>gePaymentProcessedWarning</name>
-        <label>{0} heeft de betaling verwerkt. Als u de donateur, de datum, het bedrag of de betalingswijze wijzigt, krijgt u inconsistente records voor dezelfde transactie in {0} en NPSP.</label>
+        <label>{0} heeft de betaling verwerkt. Als u de donateur, de datum, het bedrag of de betalingswijze wijzigt, krijgt u inconsistente records voor dezelfde transactie in {0} en NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAdvancedMapping3</name>
-        <label>Zoek &lt;a href=&quot;https://powerofus.force.com/NPSP_Advanced_Mapping&quot; target=&quot;_blank&quot;&gt;hier&lt;/a&gt; naar de volledige set-updocumentatie voor Geavanceerd toewijzen.</label>
+        <label>Zoek hier naar de volledige set-updocumentatie voor Geavanceerd toewijzen.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
-        <label>U vindt &lt;a href=&quot;https://powerofus.force.com/NPSP_Customizable_Rollups_Overview&quot; target=&quot;_blank&quot;&gt;hier&lt;/a&gt; alle documentatie over aanpasbare totaliseringen.</label>
+        <label>U vindt hier alle documentatie over aanpasbare totaliseringen.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpHHObjectOverview</name>
-        <label>Om meer te weten over het aangeraden Huishoudenaccountmodel, raadpleeg &lt;a href=&quot;https://powerofus.force.com/NPSP_Account_Model&quot; target=&quot;_blank&quot;&gt;NPSP-Documentatie&lt;/a&gt;.</label>
+        <label>Om meer te weten over het aangeraden Huishoudenaccountmodel, raadpleeg NPPatch-Documentatie.</label>
     </customLabels>
     <customLabels>
         <name>commonAssistiveError</name>
@@ -3582,7 +3582,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>conMergeSeeDupConText</name>
-        <label>Bekijk alle dubbele contactpersonen die zijn gevonden aan de hand van overeenkomstregels. &lt;a href=&quot;https://help.salesforce.com/s/articleView?id=sfdo.NPSP_Merge_Contacts.htm&amp;type=5&quot; target=&quot;_blank&quot;&gt;&lt;b&gt; Meer informatie &lt;/b&gt;&lt;/a&gt;</label>
+        <label>Bekijk alle dubbele contactpersonen die zijn gevonden aan de hand van overeenkomstregels. </label>
     </customLabels>
     <customLabels>
         <name>conMergeSeeDupConDRS</name>
@@ -3590,11 +3590,11 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>elevateAdNotificationFor234Body</name>
-        <label>Wanneer Elevate is gekoppeld aan NPSP, worden donaties uit uw online formulieren automatisch aan NPSP geleverd. Daarnaast worden in Elevate betalingen verwerkt en donateurrecords bijgewerkt in NPSP.</label>
+        <label>Wanneer Elevate is gekoppeld aan NPPatch, worden donaties uit uw online formulieren automatisch aan NPPatch geleverd. Daarnaast worden in Elevate betalingen verwerkt en donateurrecords bijgewerkt in NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>elevateAdNotificationFor234Title</name>
-        <label>Stroomlijn uw donatieproces met Elevate en NPSP van Salesforce.org</label>
+        <label>Stroomlijn uw donatieproces met Elevate en NPPatch van Salesforce.org</label>
     </customLabels>
     <customLabels>
         <name>engagementPlanCantEdit</name>
@@ -3816,7 +3816,7 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     </customLabels>
     <customLabels>
         <name>geBodyBatchHeaderLeftCol</name>
-        <label>Kies velden die moeten worden opgenomen in uw Koptekst van batch. Vink het selectievakje aan om een veld toe te voegen en hef de selectie op om het veld uit het formulier te verwijderen. Als u graag extra aangepaste velden beschikbaar wilt hebben voor Koptekst van batch, voegt u ze toe in het object NPSP-gegevensimportbatch.</label>
+        <label>Kies velden die moeten worden opgenomen in uw Koptekst van batch. Vink het selectievakje aan om een veld toe te voegen en hef de selectie op om het veld uit het formulier te verwijderen. Als u graag extra aangepaste velden beschikbaar wilt hebben voor Koptekst van batch, voegt u ze toe in het object NPPatch-gegevensimportbatch.</label>
     </customLabels>
     <customLabels>
         <name>geBodyBatchHeaderRightCol</name>
@@ -3852,11 +3852,11 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
         &lt;/br&gt;
         &lt;/br&gt;        &lt;ol&gt;
             &lt;li&gt; Maak het veld voor het doelobject. &lt;/li&gt;
-            &lt;li&gt; Maak het veld voor het object NPSP-gegevensimport. &lt;/li&gt;
-            &lt;li&gt; Als dit onderdeel vormt van een nieuwe objectgroep, maakt u extra velden voor een nieuwe objectgroep en creëert u de nieuwe objectgroep in NPSP-instellingen. &lt;/li&gt;
-            &lt;li&gt; Voeg Veldtoewijzing in NPSP-instellingen toe om het veld NPSP-gegevensimport te verbinden met het doelveld. &lt;/li&gt;
+            &lt;li&gt; Maak het veld voor het object NPPatch-gegevensimport. &lt;/li&gt;
+            &lt;li&gt; Als dit onderdeel vormt van een nieuwe objectgroep, maakt u extra velden voor een nieuwe objectgroep en creëert u de nieuwe objectgroep in NPPatch-instellingen. &lt;/li&gt;
+            &lt;li&gt; Voeg Veldtoewijzing in NPPatch-instellingen toe om het veld NPPatch-gegevensimport te verbinden met het doelveld. &lt;/li&gt;
         &lt;/ol&gt;
-        Raadpleeg de NPSP-documentatie over Geavanceerd toewijzen voor aanvullende gegevens.</label>
+        Raadpleeg de NPPatch-documentatie over Geavanceerd toewijzen voor aanvullende gegevens.</label>
     </customLabels>
     <customLabels>
         <name>geBodyFormFieldsModalDeleteSection</name>
@@ -4032,15 +4032,15 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>geErrorCardChargedBDIFailed</name>
-        <label>De betaling is door Elevate verwerkt, maar NPSP heeft geen record voor de transactie gemaakt in Salesforce. Corrigeer de fouten en verzend het formulier opnieuw, zodat de Salesforce-record alsnog wordt gemaakt.</label>
+        <label>De betaling is door Elevate verwerkt, maar NPPatch heeft geen record voor de transactie gemaakt in Salesforce. Corrigeer de fouten en verzend het formulier opnieuw, zodat de Salesforce-record alsnog wordt gemaakt.</label>
     </customLabels>
     <customLabels>
         <name>geElevateDeleteErrorLog</name>
-        <label>Gift verwijderd uit {0}, maar Opgave van gift kan de gift niet verwijderen. Verwijder de NPSP-gegevensimportrecord van de gift met ID: {1} uit de batch met ID {2} in Batches van NPSP-gegevensimport.</label>
+        <label>Gift verwijderd uit {0}, maar Opgave van gift kan de gift niet verwijderen. Verwijder de NPPatch-gegevensimportrecord van de gift met ID: {1} uit de batch met ID {2} in Batches van NPPatch-gegevensimport.</label>
     </customLabels>
     <customLabels>
         <name>geElevateUpdateErrorLog</name>
-        <label>Gift bijgewerkt in {0}, maar Opgave van gift kan de gift niet bijwerken. Werk de NPSP-gegevensimportrecord van de gift met ID: {1} uit de batch met ID {2} bij in Batches van NPSP-gegevensimport.</label>
+        <label>Gift bijgewerkt in {0}, maar Opgave van gift kan de gift niet bijwerken. Werk de NPPatch-gegevensimportrecord van de gift met ID: {1} uit de batch met ID {2} bij in Batches van NPPatch-gegevensimport.</label>
     </customLabels>
     <customLabels>
         <name>geErrorElevateDelete</name>
@@ -4099,16 +4099,16 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
         <label>INSTALLATIECHECKLIST VOOR BEHEERDER</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistExploreNPSPDesc</name>
+        <name>gsChecklistExploreNPPatchDesc</name>
         <label>Maak het u makkelijk met sleutelconcepten en -functies.</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistExploreNPSPTitle</name>
-        <label>Kennismaking met het Nonprofit Success Pack (NPSP)</label>
+        <name>gsChecklistExploreNPPatchTitle</name>
+        <label>Kennismaking met het NPPatch</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemAddUserDesc</name>
-        <label>Geef gebruikers toegang tot NPSP en beheer machtigingen voor uw organisatie zodanig dat de juiste mensen toegang krijgen tot hetgeen ze nodig hebben om de zaak soepel te laten draaien.</label>
+        <label>Geef gebruikers toegang tot NPPatch en beheer machtigingen voor uw organisatie zodanig dat de juiste mensen toegang krijgen tot hetgeen ze nodig hebben om de zaak soepel te laten draaien.</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemAddUserLinkLabel</name>
@@ -4132,7 +4132,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>gsChecklistItemCreateDonationDesc</name>
-        <label>Houd donaties, subsidies en andere vormen van inkomsten bij, zodat u geefpatronen kunt identificeren en inzicht krijgt in wat volmachtgevers drijft om te geven. Start nu door te leren hoe u donaties invoert in NPSP.</label>
+        <label>Houd donaties, subsidies en andere vormen van inkomsten bij, zodat u geefpatronen kunt identificeren en inzicht krijgt in wat volmachtgevers drijft om te geven. Start nu door te leren hoe u donaties invoert in NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemCreateDonationLinkLabel</name>
@@ -4180,7 +4180,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>gsChecklistItemGoFurtherLinkLabel</name>
-        <label>Ontdek meer over NPSP in Trailhead</label>
+        <label>Ontdek meer over NPPatch in Trailhead</label>
     </customLabels>
     <customLabels>
         <name>donationHistoryFilterSelectAYear</name>
@@ -4192,7 +4192,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>gsChecklistItemImportDataDesc</name>
-        <label>Gebruik NPSP-gegevensimport om uw records in Salesforce te importeren.</label>
+        <label>Gebruik NPPatch-gegevensimport om uw records in Salesforce te importeren.</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemImportDataPriBtnLabel</name>
@@ -4227,48 +4227,48 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
         <label>Wijzigingen in uw organisatie beheren</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudDesc</name>
-        <label>Dit beknopte overzicht is bedoeld als kennismaking met de mogelijkheden die NPSP te bieden heeft, maar u kunt zich ook verdiepen in de vele andere functies die er zijn voor uw organisatie.</label>
+        <name>gsChecklistItemNPPatchCloudDesc</name>
+        <label>Dit beknopte overzicht is bedoeld als kennismaking met de mogelijkheden die NPPatch te bieden heeft, maar u kunt zich ook verdiepen in de vele andere functies die er zijn voor uw organisatie.</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudPriBtnLabel</name>
+        <name>gsChecklistItemNPPatchCloudPriBtnLabel</name>
         <label>Functies bekijken</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudLinkLabel</name>
-        <label>Meer informatie over NPSP-functies in Trailhead</label>
+        <name>gsChecklistItemNPPatchCloudLinkLabel</name>
+        <label>Meer informatie over NPPatch-functies in Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudTitle</name>
+        <name>gsChecklistItemNPPatchCloudTitle</name>
         <label>Meer informatie over andere functies van Nonprofit Cloud</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPGuideDesc</name>
+        <name>gsChecklistItemNPPatchGuideDesc</name>
         <label>Neem de tijd om uw implementatie zorgvuldig te plannen en u ervan te verzekeren dat uw Salesforce-organisatie voldoet aan de behoeften van uw non-profitorganisatie.</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPGuidePriBtnLabel</name>
+        <name>gsChecklistItemNPPatchGuidePriBtnLabel</name>
         <label>PDF downloaden</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPGuideTitle</name>
-        <label>NPSP-planningsgids</label>
+        <name>gsChecklistItemNPPatchGuideTitle</name>
+        <label>NPPatch-planningsgids</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsDesc</name>
-        <label>Ga naar de pagina met de instellingen voor NPSP en controleer nauwkeurig of deze geschikt zijn voor uw organisatie en de verwachte resultaten opleveren.</label>
+        <name>gsChecklistItemNPPatchSettingsDesc</name>
+        <label>Ga naar de pagina met de instellingen voor NPPatch en controleer nauwkeurig of deze geschikt zijn voor uw organisatie en de verwachte resultaten opleveren.</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsPriBtnLabel</name>
-        <label>NPSP-instellingen</label>
+        <name>gsChecklistItemNPPatchSettingsPriBtnLabel</name>
+        <label>NPPatch-instellingen</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsLinkLabel</name>
-        <label>Meer informatie over NPSP-instellingen in de planningsgids</label>
+        <name>gsChecklistItemNPPatchSettingsLinkLabel</name>
+        <label>Meer informatie over NPPatch-instellingen in de planningsgids</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsTitle</name>
-        <label>NPSP-instellingen aanpassen</label>
+        <name>gsChecklistItemNPPatchSettingsTitle</name>
+        <label>NPPatch-instellingen aanpassen</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemPageLayoutsDesc</name>
@@ -4283,19 +4283,19 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
         <label>Paginalay-outs aanpassen</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPDesc</name>
+        <name>gsChecklistItemPrepareNPPatchDesc</name>
         <label>Stel specifieke doelen en leer hoe Nonprofit Cloud het beste kan worden geïmplementeerd.</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPPriBtnLabel</name>
+        <name>gsChecklistItemPrepareNPPatchPriBtnLabel</name>
         <label>Doelen stellen</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPLinkLabel</name>
-        <label>Meer informatie over successen met NPSP in Trailhead</label>
+        <name>gsChecklistItemPrepareNPPatchLinkLabel</name>
+        <label>Meer informatie over successen met NPPatch in Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPTitle</name>
+        <name>gsChecklistItemPrepareNPPatchTitle</name>
         <label>Succes voorbereiden met Nonprofit Cloud</label>
     </customLabels>
     <customLabels>
@@ -4320,7 +4320,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>gsChecklistItemRunningReportsLinkLabel</name>
-        <label>NPSP-rapporten en -dashboards aanpassen in Trailhead</label>
+        <label>NPPatch-rapporten en -dashboards aanpassen in Trailhead</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemRunningReportsTitle</name>
@@ -4376,7 +4376,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>gseuChecklistCreateConstituentRecordsDesc</name>
-        <label>Mensen vormen de kern van elke non-profit. Ontdek de functies van Nonprofit Success Pack om te leren hoe u uw volmachtgevers en hun huishoudelijke, persoonlijke en professionele connecties beheert.</label>
+        <label>Mensen vormen de kern van elke non-profit. Ontdek de functies van NPPatch om te leren hoe u uw volmachtgevers en hun huishoudelijke, persoonlijke en professionele connecties beheert.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistCreateConstituentRecordsTitle</name>
@@ -4388,7 +4388,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactOrganizationDesc</name>
-        <label>Met gelieerde organisaties in NPSP kunt u belangrijke connecties vastleggen tussen uw volmachtgevers en gerelateerde organisaties, zoals werk, school of bedrijf. Koppel een contactpersoon aan een organisatie met gebruik van gelieerde organisaties.</label>
+        <label>Met gelieerde organisaties in NPPatch kunt u belangrijke connecties vastleggen tussen uw volmachtgevers en gerelateerde organisaties, zoals werk, school of bedrijf. Koppel een contactpersoon aan een organisatie met gebruik van gelieerde organisaties.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactOrganizationLink</name>
@@ -4404,7 +4404,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactsRelationshipsDesc</name>
-        <label>Met relaties in NPSP kunt u belangrijke connecties vastleggen tussen uw volmachtgevers. Koppel contactpersonen met gebruik van de gerelateerde lijst Relaties in het contactpersoonrecord.</label>
+        <label>Met relaties in NPPatch kunt u belangrijke connecties vastleggen tussen uw volmachtgevers. Koppel contactpersonen met gebruik van de gerelateerde lijst Relaties in het contactpersoonrecord.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactsRelationshipsLink</name>
@@ -4420,7 +4420,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemCreateContactAndAccountDesc</name>
-        <label>Mensen vormen de meest belangrijke resource voor een non-profit. Daarom is het van groot belang dat we begrijpen hoe we het object Contactpersoon kunnen gebruiken om mensen in NPSP te volgen. Het object Contactpersoon omvat gegevens van volmachtgevers, zoals naam, adres en werkgever.</label>
+        <label>Mensen vormen de meest belangrijke resource voor een non-profit. Daarom is het van groot belang dat we begrijpen hoe we het object Contactpersoon kunnen gebruiken om mensen in NPPatch te volgen. Het object Contactpersoon omvat gegevens van volmachtgevers, zoals naam, adres en werkgever.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemCreateContactAndAccountLink</name>
@@ -4443,16 +4443,16 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
         <label>Nonprofit Cloud omvat apps, tools, functies, services en technologieën die zijn ontworpen om te voldoen aan de specifieke behoeften van non-profits.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemWhatIsNPSPDesc</name>
-        <label>De basis van Nonprofit Cloud is de Nonprofit Success Pack-app (NPSP). Met NPSP kunt u uw volmachtgevers en hun inspanningen wat betreft fondsenwerving beheren. Als iemand het heeft over de &quot;non-profitversie&quot; van Salesforce, hebben ze het meestal over NPSP.</label>
+        <name>gseuChecklistItemWhatIsNPPatchDesc</name>
+        <label>De basis van Nonprofit Cloud is de NPPatch-app (NPPatch). Met NPPatch kunt u uw volmachtgevers en hun inspanningen wat betreft fondsenwerving beheren. Als iemand het heeft over de &quot;non-profitversie&quot; van Salesforce, hebben ze het meestal over NPPatch.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemWhatIsNPSPLink</name>
-        <label>Meer informatie over Nonprofit Success Pack in Trailhead</label>
+        <name>gseuChecklistItemWhatIsNPPatchLink</name>
+        <label>Meer informatie over NPPatch in Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemWhatIsNPSPTitle</name>
-        <label>Wat is Nonprofit Success Pack?</label>
+        <name>gseuChecklistItemWhatIsNPPatchTitle</name>
+        <label>Wat is NPPatch?</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistMakeItYourDesc</name>
@@ -4471,12 +4471,12 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
         <label>Uw gebruikers meekrijgen</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistWelcomeNPSPDesc</name>
-        <label>Gebruik deze belangrijke resources om aan de slag te gaan met NPSP.</label>
+        <name>gseuChecklistWelcomeNPPatchDesc</name>
+        <label>Gebruik deze belangrijke resources om aan de slag te gaan met NPPatch.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistWelcomeNPSPTitle</name>
-        <label>Welkom bij Nonprofit Success Pack en Nonprofit Cloud</label>
+        <name>gseuChecklistWelcomeNPPatchTitle</name>
+        <label>Welkom bij NPPatch en Nonprofit Cloud</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemFundraisingProcessDesc</name>
@@ -4496,7 +4496,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>gseuChecklistWorkRecordsDesc</name>
-        <label>Nadat u uw gegevens over volmachtgevers en donaties in NPSP hebt gezet, kunt u eenvoudig de records waaraan u werkt vinden.</label>
+        <label>Nadat u uw gegevens over volmachtgevers en donaties in NPPatch hebt gezet, kunt u eenvoudig de records waaraan u werkt vinden.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistWorkRecordsTitle</name>
@@ -4504,7 +4504,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemGlobalSearchDesc</name>
-        <label>Als u net bent begonnen met het gebruik van NPSP kan het zoeken van NPSP lastig zijn. Gebruik de algemene zoekfunctie om te zoeken binnen uw volledige Salesforce-organisatie en snel te vinden wat u nodig hebt.</label>
+        <label>Als u net bent begonnen met het gebruik van NPPatch kan het zoeken van NPPatch lastig zijn. Gebruik de algemene zoekfunctie om te zoeken binnen uw volledige Salesforce-organisatie en snel te vinden wat u nodig hebt.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemGlobalSearchLinkLabel</name>
@@ -4551,24 +4551,24 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
         <label>Werken met meerdere records met gebruik van lijstweergaven</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportDesc</name>
-        <label>NPSP bevat 87 van de meest gebruikte volmachtgever- en fondsenwervingsrapporten. Gebruik deze rapporten zoals ze zijn of pas ze aan.</label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportDesc</name>
+        <label>NPPatch bevat 87 van de meest gebruikte volmachtgever- en fondsenwervingsrapporten. Gebruik deze rapporten zoals ze zijn of pas ze aan.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportLinkLabel</name>
-        <label>Meer informatie over NPSP-rapporten in Trailhead</label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportLinkLabel</name>
+        <label>Meer informatie over NPPatch-rapporten in Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportPriBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</name>
         <label>Rapporten uitvoeren</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportSecBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</name>
         <label>Rapporten-workbook</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportTitle</name>
-        <label>Een vooraf gebouwd NPSP-rapport uitvoeren</label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportTitle</name>
+        <label>Een vooraf gebouwd NPPatch-rapport uitvoeren</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemStandardReportTypeDesc</name>
@@ -4588,7 +4588,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemViewDashboardDesc</name>
-        <label>Dashboard gebruiken gegevens van een of meerdere rapporten en tonen deze naast elkaar in hetzelfde venster. NPSP bevat drie dashboards die u kunt gebruiken zoals ze zijn of u kunt deze aanpassen.</label>
+        <label>Dashboard gebruiken gegevens van een of meerdere rapporten en tonen deze naast elkaar in hetzelfde venster. NPPatch bevat drie dashboards die u kunt gebruiken zoals ze zijn of u kunt deze aanpassen.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemViewDashboardLinkLabel</name>
@@ -4604,7 +4604,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>gseuChecklistYourDataDesc</name>
-        <label>Rapporten en dashboards zorgen ervoor dat u uw gegevens kunt organiseren en dat u de invloed van uw organisatie kunt laten zien. NPSP bevat kant-en-klare rapporten of u kunt uw eigen rapporten maken.</label>
+        <label>Rapporten en dashboards zorgen ervoor dat u uw gegevens kunt organiseren en dat u de invloed van uw organisatie kunt laten zien. NPPatch bevat kant-en-klare rapporten of u kunt uw eigen rapporten maken.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistYourDataTitle</name>
@@ -4692,11 +4692,11 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>gseuChecklistTrackDonationDesc</name>
-        <label>In NPSP kunt u donaties, subsidies, toekenningen en andere soorten omzet bijhouden met gebruik van het object Opportunity. U kunt donaties maken van een individu of organisaties zoals stichtingen, bedrijven of overheidsinstellingen.</label>
+        <label>In NPPatch kunt u donaties, subsidies, toekenningen en andere soorten omzet bijhouden met gebruik van het object Opportunity. U kunt donaties maken van een individu of organisaties zoals stichtingen, bedrijven of overheidsinstellingen.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistTrackDonationTitle</name>
-        <label>Donaties en andere soorten omzet bijhouden met NPSP</label>
+        <label>Donaties en andere soorten omzet bijhouden met NPPatch</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemExtraTwoMinutesVideo</name>
@@ -4772,7 +4772,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
-        <label>Deze voorziening vereist zowel Geavanceerd toewijzen als Opgave van gift. Schakel ze in bij NPSP-instellingen.</label>
+        <label>Deze voorziening vereist zowel Geavanceerd toewijzen als Opgave van gift. Schakel ze in bij NPPatch-instellingen.</label>
     </customLabels>
     <customLabels>
         <name>geServiceLevelErrorAdvancedMapping</name>
@@ -4788,11 +4788,11 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelFieldPermission2</name>
-        <label>Of verlaat dit formulier zonder opslaan en controleer uw machtigingen voor zowel het doelobject als het object NPSP-gegevensimport.</label>
+        <label>Of verlaat dit formulier zonder opslaan en controleer uw machtigingen voor zowel het doelobject als het object NPPatch-gegevensimport.</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelMissingRequiredFields</name>
-        <label>U moet alle verplichte velden opnemen in uw sjabloon. Controleer de bronvelden (object NPSP-gegevensimport) voor de volgende velden:</label>
+        <label>U moet alle verplichte velden opnemen in uw sjabloon. Controleer de bronvelden (object NPPatch-gegevensimport) voor de volgende velden:</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelMissingRequiredGroupFields</name>
@@ -4952,7 +4952,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>geHelpTextAddressMapping</name>
-        <label>De adresrecord die is gekoppeld aan het huishoudenaccount van Contact1. Met NPSP-automatisering wordt dit adres mogelijk ook ingevuld voor het huishouden van Contact1 en alle contactpersonen binnen hetzelfde huishouden. Als u ook gebruikmaakt van het EDA-adresobject, moet u een nieuwe objectgroep maken voor het object en de velden hiervan gebruiken in uw sjabloon.</label>
+        <label>De adresrecord die is gekoppeld aan het huishoudenaccount van Contact1. Met NPPatch-automatisering wordt dit adres mogelijk ook ingevuld voor het huishouden van Contact1 en alle contactpersonen binnen hetzelfde huishouden. Als u ook gebruikmaakt van het EDA-adresobject, moet u een nieuwe objectgroep maken voor het object en de velden hiervan gebruiken in uw sjabloon.</label>
     </customLabels>
     <customLabels>
         <name>geHelpTextAllocation1Mapping</name>
@@ -5299,7 +5299,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthDetailsAccountDefaultRTIssue</name>
-        <label>Het recordtype voor Accountmodel, {0} (ingesteld in NPSP-instellingen), is momenteel ingesteld als het standaard Accountrecordtype voor uw Profiel.</label>
+        <label>Het recordtype voor Accountmodel, {0} (ingesteld in NPPatch-instellingen), is momenteel ingesteld als het standaard Accountrecordtype voor uw Profiel.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsAccountModel</name>
@@ -5347,7 +5347,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthDetailsHHAccountModel</name>
-        <label>Bij het gebruik van het Huishoudenaccountmodel, moet u Huishoudenobjectregels instellen op &apos;Geen Contactpersonen&apos;. U kunt het veld Huishoudenobjectregels instellen op de NPSP-Instellingenpagina onder Mensen | Huishoudens.</label>
+        <label>Bij het gebruik van het Huishoudenaccountmodel, moet u Huishoudenobjectregels instellen op &apos;Geen Contactpersonen&apos;. U kunt het veld Huishoudenobjectregels instellen op de NPPatch-Instellingenpagina onder Mensen | Huishoudens.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsHHActNoContacts</name>
@@ -5383,7 +5383,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthDetailsInvalidFiscalYears</name>
-        <label>Uw organisatie gebruikt Aangepaste Fiscale Jaren. NPSP ondersteunt Totaliseringen van Fiscale Jaren met Aangepaste Fiscale Jaren niet.</label>
+        <label>Uw organisatie gebruikt Aangepaste Fiscale Jaren. NPPatch ondersteunt Totaliseringen van Fiscale Jaren met Aangepaste Fiscale Jaren niet.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsInvalidLevelField</name>
@@ -5435,7 +5435,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthDetailsMailingListReportMissing</name>
-        <label>Het Rapport NPSP-Campagne Huishoudenverzendlijst ontbreekt. Dit rapport wordt uitgevoerd wanneer u op de knop Huishoudenverzendlijst van een Campagnerecord drukt.</label>
+        <label>Het Rapport NPPatch-Campagne Huishoudenverzendlijst ontbreekt. Dit rapport wordt uitgevoerd wanneer u op de knop Huishoudenverzendlijst van een Campagnerecord drukt.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsMissingOppPayments</name>
@@ -5447,7 +5447,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthDetailsNothingScheduled</name>
-        <label>De NPSP-standaardtaken zijn niet gepland. Geplande taken werken elke nacht overzichtsvelden op records bij.</label>
+        <label>De NPPatch-standaardtaken zijn niet gepland. Geplande taken werken elke nacht overzichtsvelden op records bij.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsOCR</name>
@@ -5463,11 +5463,11 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthDetailsOCRSettingsResolution</name>
-        <label>Op het tabblad NPSP-Instellingen, klikt u op Donaties | Contactpersoonrollen en bewerkt u de waarden van de bovenstaande instellingen.</label>
+        <label>Op het tabblad NPPatch-Instellingen, klikt u op Donaties | Contactpersoonrollen en bewerkt u de waarden van de bovenstaande instellingen.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsOCRSettingsValid</name>
-        <label>Instellingen voor NPSP-Opportunitycontactpersoonrollen zijn geldig.</label>
+        <label>Instellingen voor NPPatch-Opportunitycontactpersoonrollen zijn geldig.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsPaymentMappingBadDataTypes</name>
@@ -5495,15 +5495,15 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthDetailsTriggerHandlerDuplicate</name>
-        <label>Controle van de Toestand heeft meer dan één Triggerhandler {0} op object {1} met dezelfde veldwaarden gevonden. Duplicaattriggerhandlers hebben een invloed op NPSP-gedrag.</label>
+        <label>Controle van de Toestand heeft meer dan één Triggerhandler {0} op object {1} met dezelfde veldwaarden gevonden. Duplicaattriggerhandlers hebben een invloed op NPPatch-gedrag.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsTriggerHandlerMismatch</name>
-        <label>Triggerhandler {0} op object {1} komt niet overeen met de standaard NPSP-configuratie.</label>
+        <label>Triggerhandler {0} op object {1} komt niet overeen met de standaard NPPatch-configuratie.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsTriggerHandlerMissing</name>
-        <label>Triggerhandler {0} op object {1} ontbreekt en heeft een invloed op NPSP-gedrag.</label>
+        <label>Triggerhandler {0} op object {1} ontbreekt en heeft een invloed op NPPatch-gedrag.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsUDFBadDatatypes</name>
@@ -5551,7 +5551,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthLabelDisableRecordBatchDescription</name>
-        <label>Als deze optie wordt geselecteerd, worden met &apos;Controle van de Toestand&apos; alleen de NPSP-configuratie-instellingen gecontroleerd op problemen. Selecteer deze optie als uw organisatie veel records heeft en &apos;Controle van de Toestand&apos; niet kan worden voltooid.</label>
+        <label>Als deze optie wordt geselecteerd, worden met &apos;Controle van de Toestand&apos; alleen de NPPatch-configuratie-instellingen gecontroleerd op problemen. Selecteer deze optie als uw organisatie veel records heeft en &apos;Controle van de Toestand&apos; niet kan worden voltooid.</label>
     </customLabels>
     <customLabels>
         <name>healthLabelErrorRecipientValid</name>
@@ -5579,7 +5579,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthLabelIntro</name>
-        <label>Controle van de Toestand verifieert of al uw NPSP-instellingen geldig zijn en zoekt naar problemen in uw recordgegevens. Na voltooiing kunt u de resultaten, met inbegrip van gedetailleerde informatie over mogelijke fouten, onderaan weergeven.</label>
+        <label>Controle van de Toestand verifieert of al uw NPPatch-instellingen geldig zijn en zoekt naar problemen in uw recordgegevens. Na voltooiing kunt u de resultaten, met inbegrip van gedetailleerde informatie over mogelijke fouten, onderaan weergeven.</label>
     </customLabels>
     <customLabels>
         <name>healthLabelLastRun</name>
@@ -5627,11 +5627,11 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthLabelScheduler</name>
-        <label>NPSP-Standaardplanner</label>
+        <label>NPPatch-Standaardplanner</label>
     </customLabels>
     <customLabels>
         <name>healthLabelSchedulerValid</name>
-        <label>NPSP-Terugkerende Taken zijn ingepland.</label>
+        <label>NPPatch-Terugkerende Taken zijn ingepland.</label>
     </customLabels>
     <customLabels>
         <name>healthLabelShowPassedTests</name>
@@ -5647,7 +5647,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthLabelTriggerHandlersValid</name>
-        <label>Triggers zijn geconfigureerd voor NPSP-standaardtriggers.</label>
+        <label>Triggers zijn geconfigureerd voor NPPatch-standaardtriggers.</label>
     </customLabels>
     <customLabels>
         <name>healthLabelUDFValid</name>
@@ -5671,7 +5671,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthPaymentAutoCloseStageMustBeActiveClosedWonOrBlank</name>
-        <label>Selecteer een actieve Gesloten/Gewonnen fase in de Opportunityfase voor de instelling Wanneer Volledig Betaald. U kunt de waarde ook leeg laten, wat voorkomt dat NPSP de Opportunityfase automatisch bijwerkt wanneer alle Betalingen zijn ontvangen.</label>
+        <label>Selecteer een actieve Gesloten/Gewonnen fase in de Opportunityfase voor de instelling Wanneer Volledig Betaald. U kunt de waarde ook leeg laten, wat voorkomt dat NPPatch de Opportunityfase automatisch bijwerkt wanneer alle Betalingen zijn ontvangen.</label>
     </customLabels>
     <customLabels>
         <name>healthPaymentAutoCloseStageValid</name>
@@ -5691,7 +5691,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthSolutionAccountModel</name>
-        <label>Al uw Accounts moeten gebruikmaken van hetzelfde Accountmodel. Bekijk al uw Accounts en hun typen door het rapport &lt;b&gt;Individuele Accounts per Accounttype&lt;/b&gt; in de rapportenmap Controle van de NPSP-Toestand uit te voeren.</label>
+        <label>Al uw Accounts moeten gebruikmaken van hetzelfde Accountmodel. Bekijk al uw Accounts en hun typen door het rapport &lt;b&gt;Individuele Accounts per Accounttype&lt;/b&gt; in de rapportenmap Controle van de NPPatch-Toestand uit te voeren.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAccountRTIssue</name>
@@ -5699,43 +5699,43 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelFieldsMissing</name>
-        <label>Klik op het tabblad NPSP-Instellingen op {0} | {1} en verwijder de ongeldige record Autocreatie van Relaties.</label>
+        <label>Klik op het tabblad NPPatch-Instellingen op {0} | {1} en verwijder de ongeldige record Autocreatie van Relaties.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelInvalidCMField</name>
-        <label>Klik op het tabblad NPSP-Instellingen op {0} | {1} en verwijder de record Autocreatie van Relaties die naar dit veld verwijst.</label>
+        <label>Klik op het tabblad NPPatch-Instellingen op {0} | {1} en verwijder de record Autocreatie van Relaties die naar dit veld verwijst.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelInvalidContactField</name>
-        <label>Klik op het tabblad NPSP-Instellingen op {0} | {1} en verwijder de record Autocreatie van Relaties die naar dit veld verwijst.</label>
+        <label>Klik op het tabblad NPPatch-Instellingen op {0} | {1} en verwijder de record Autocreatie van Relaties die naar dit veld verwijst.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelInvalidLookupField</name>
-        <label>Klik op het tabblad NPSP-Instellingen op {0} | {1} en verwijder de record Autocreatie van Relaties die naar dit veld verwijst.</label>
+        <label>Klik op het tabblad NPPatch-Instellingen op {0} | {1} en verwijder de record Autocreatie van Relaties die naar dit veld verwijst.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionBadRDField</name>
-        <label>Klik op het tabblad NPSP-Instellingen op {0} | {1} en verwijder de record Veldtoewijzing voor Terugkerende Donatie die naar dit veld verwijst.</label>
+        <label>Klik op het tabblad NPPatch-Instellingen op {0} | {1} en verwijder de record Veldtoewijzing voor Terugkerende Donatie die naar dit veld verwijst.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionContactData</name>
-        <label>Bekijk deze Contactpersonen door het rapport &lt;b&gt;Contactpersonen zonder Accounts&lt;/b&gt; uit te voeren in de rapportenmap Controle van de NPSP-Toestand.</label>
+        <label>Bekijk deze Contactpersonen door het rapport &lt;b&gt;Contactpersonen zonder Accounts&lt;/b&gt; uit te voeren in de rapportenmap Controle van de NPPatch-Toestand.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionEditSetting</name>
-        <label>Klik op het tabblad NPSP-Instellingen op {1} | {2} en bewerk instelling {0}.</label>
+        <label>Klik op het tabblad NPPatch-Instellingen op {1} | {2} en bewerk instelling {0}.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionHHAccNoContacts</name>
-        <label>Overweeg het verwijderen van deze ongebruikt records voor Account van huishouden om ruimte te besparen. Geef deze records voor Account van huishouden weer door het rapport &lt;b&gt;Lege accounts voor huishouden&lt;/b&gt; in de map NPSP-rapporten over controle van toestand uit te voeren.</label>
+        <label>Overweeg het verwijderen van deze ongebruikt records voor Account van huishouden om ruimte te besparen. Geef deze records voor Account van huishouden weer door het rapport &lt;b&gt;Lege accounts voor huishouden&lt;/b&gt; in de map NPPatch-rapporten over controle van toestand uit te voeren.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionHHObjNoContacts</name>
-        <label>Overweeg om deze ongebruikte Huishoudenobject te verwijderen om ruimte te besparen. Als u een conversie naar het Huishoudenaccountmodel hebt voltooid en de gegevens op de Huishoudenobjectrecords niet meer nodig hebt, kunt u ze veilig verwijderen. Bekijk deze Huishoudenobjecten door het rapport &lt;b&gt;Lege Huishoudenobjecten&lt;/b&gt; in de rapportenmap Controle van de NPSP-Toestand uit te voeren.</label>
+        <label>Overweeg om deze ongebruikte Huishoudenobject te verwijderen om ruimte te besparen. Als u een conversie naar het Huishoudenaccountmodel hebt voltooid en de gegevens op de Huishoudenobjectrecords niet meer nodig hebt, kunt u ze veilig verwijderen. Bekijk deze Huishoudenobjecten door het rapport &lt;b&gt;Lege Huishoudenobjecten&lt;/b&gt; in de rapportenmap Controle van de NPPatch-Toestand uit te voeren.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidFiscalYears</name>
-        <label>Omdat Salesforce het uitschakelen van Aangepaste Fiscale Jaren niet ondersteunt, gebruiken NPSP-Totaliseringen standaard het Kalenderjaar.</label>
+        <label>Omdat Salesforce het uitschakelen van Aangepaste Fiscale Jaren niet ondersteunt, gebruiken NPPatch-Totaliseringen standaard het Kalenderjaar.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidLevelField</name>
@@ -5743,7 +5743,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidOppField</name>
-        <label>Klik op het tabblad NPSP-Instellingen op {0} | {1} en verwijder de record Betalingstoewijzing die naar dit veld verwijst.</label>
+        <label>Klik op het tabblad NPPatch-Instellingen op {0} | {1} en verwijder de record Betalingstoewijzing die naar dit veld verwijst.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidOppStage</name>
@@ -5751,7 +5751,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidPaymentField</name>
-        <label>Klik op het tabblad NPSP-Instellingen op {0} | {1} en verwijder de Betalingstoewijzingsrecord die naar dit veld verwijst.</label>
+        <label>Klik op het tabblad NPPatch-Instellingen op {0} | {1} en verwijder de Betalingstoewijzingsrecord die naar dit veld verwijst.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidRDCustomPeriod</name>
@@ -5759,7 +5759,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidRDCustomPeriodPicklist</name>
-        <label>Klik op het tabblad NPSP-Instellingen op {0} | {1} en voeg de ontbrekende Aangepaste Termijnperiode voor Terugkerende Donatie toe of verwijder de keuzelijstwaarde uit het veld Termijnperiode.</label>
+        <label>Klik op het tabblad NPPatch-Instellingen op {0} | {1} en voeg de ontbrekende Aangepaste Termijnperiode voor Terugkerende Donatie toe of verwijder de keuzelijstwaarde uit het veld Termijnperiode.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidScheduledJob</name>
@@ -5767,15 +5767,15 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidUDFObjectField</name>
-        <label>Klik op het tabblad NPSP-Instellingen op {0} | {1} en verwijder de record Gebruikerstotalisering die naar dit veld verwijst.</label>
+        <label>Klik op het tabblad NPPatch-Instellingen op {0} | {1} en verwijder de record Gebruikerstotalisering die naar dit veld verwijst.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionMailingListReportMissing</name>
-        <label>Maak een rapport Campagnes met Contactpersonen, en voeg een filter toe voor Lidstatus bevat niet &apos;Duplicaat&apos;. Specificeer dit rapport vervolgens op het tabblad {0} | {1} in NPSP-Instellingen.</label>
+        <label>Maak een rapport Campagnes met Contactpersonen, en voeg een filter toe voor Lidstatus bevat niet &apos;Duplicaat&apos;. Specificeer dit rapport vervolgens op het tabblad {0} | {1} in NPPatch-Instellingen.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionMissingOppPayments</name>
-        <label>Bekijk deze Opportunities door het rapport &lt;b&gt;Opportunities zonder Betalingen&lt;/b&gt; uit te voeren in de rapportenmap Controle van de NPSP-Toestand. Merk op dat u filtercriteria op het rapport moet toevoegen om Opportunitytypen en Opportunityrecordtypen die u hebt uitgesloten in NPSP-Betalingsinstellingen uit te sluiten. U kunt de ontbrekende Betalingsrecords maken aan de hand van de knop Ontbrekende Betalingen maken onder NPSP-Instellingen &gt; Bulk Gegevensprocessen &gt; Ontbrekende Betalingen maken.</label>
+        <label>Bekijk deze Opportunities door het rapport &lt;b&gt;Opportunities zonder Betalingen&lt;/b&gt; uit te voeren in de rapportenmap Controle van de NPPatch-Toestand. Merk op dat u filtercriteria op het rapport moet toevoegen om Opportunitytypen en Opportunityrecordtypen die u hebt uitgesloten in NPPatch-Betalingsinstellingen uit te sluiten. U kunt de ontbrekende Betalingsrecords maken aan de hand van de knop Ontbrekende Betalingen maken onder NPPatch-Instellingen &gt; Bulk Gegevensprocessen &gt; Ontbrekende Betalingen maken.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionMissingPicklistValue</name>
@@ -5783,11 +5783,11 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthSolutionNothingScheduled</name>
-        <label>Om de standaard NPSP-taken opnieuw te plannen, gaat u naar NPSP-instellingen | Bulkgegevensprocessen | Procesplanner. Klik op Bewerken. Zorg dat Automatisch plannen van standaard NPSP-taken niet inschakelen niet is geselecteerd. Klik op Opslaan.</label>
+        <label>Om de standaard NPPatch-taken opnieuw te plannen, gaat u naar NPPatch-instellingen | Bulkgegevensprocessen | Procesplanner. Klik op Bewerken. Zorg dat Automatisch plannen van standaard NPPatch-taken niet inschakelen niet is geselecteerd. Klik op Opslaan.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionOCRDupPrimary</name>
-        <label>Als u meer dan een Opportunitycontactpersoonrol hebt die is gemarkeerd als Primair, kan dit ervoor zorgen dat NPSP-Opportunitytotaliseringen, zoals Totaal Giften, verkeerd berekent. Om te zien welke Opportunities meer dan een Opportunitycontactpersoonrol gemarkeerd als Primair hebben, voert u het rapport &lt;b&gt;Opportunities met Primaire Contactpersoonrollen&lt;/b&gt; in de rapportenmap Controle van de NPSP-Toestand uit.</label>
+        <label>Als u meer dan een Opportunitycontactpersoonrol hebt die is gemarkeerd als Primair, kan dit ervoor zorgen dat NPPatch-Opportunitytotaliseringen, zoals Totaal Giften, verkeerd berekent. Om te zien welke Opportunities meer dan een Opportunitycontactpersoonrol gemarkeerd als Primair hebben, voert u het rapport &lt;b&gt;Opportunities met Primaire Contactpersoonrollen&lt;/b&gt; in de rapportenmap Controle van de NPPatch-Toestand uit.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionOCRException</name>
@@ -5795,19 +5795,19 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthSolutionPaymentMappingBadDataTypes</name>
-        <label>Klik op het tabblad NPSP-Instellingen op {0} | {1} en verwijder de Betalingstoewijzingsrecord die naar deze velden verwijst.</label>
+        <label>Klik op het tabblad NPPatch-Instellingen op {0} | {1} en verwijder de Betalingstoewijzingsrecord die naar deze velden verwijst.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionRDBadOppField</name>
-        <label>Klik op het tabblad NPSP-Instellingen op {0} | {1} en verwijder de Veldtoewijzingsrecord voor Terugkerende Donatie die naar dit veld verwijst.</label>
+        <label>Klik op het tabblad NPPatch-Instellingen op {0} | {1} en verwijder de Veldtoewijzingsrecord voor Terugkerende Donatie die naar dit veld verwijst.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionRDFieldsBadDatatypes</name>
-        <label>Klik op het tabblad NPSP-Instellingen op {0} | {1} en verwijder de Veldtoewijzingsrecord voor Terugkerende Donatie die naar deze velden verwijst.</label>
+        <label>Klik op het tabblad NPPatch-Instellingen op {0} | {1} en verwijder de Veldtoewijzingsrecord voor Terugkerende Donatie die naar deze velden verwijst.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionRelReciprocalInvalid</name>
-        <label>Klik op het tabblad NPSP-Instellingen op {0} | {1} en verwijder de record Wederkerige Relatie. Maak vervolgens een nieuwe record met de nodige informatie.</label>
+        <label>Klik op het tabblad NPPatch-Instellingen op {0} | {1} en verwijder de record Wederkerige Relatie. Maak vervolgens een nieuwe record met de nodige informatie.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionSaveOppsFailed</name>
@@ -5815,11 +5815,11 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthSolutionScheduleJobs</name>
-        <label>Alle NPSP geplande klassen moeten records hebben in Schedulable__c opdat deze functionaliteiten correct functioneren.</label>
+        <label>Alle NPPatch geplande klassen moeten records hebben in Schedulable__c opdat deze functionaliteiten correct functioneren.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionTriggerHandlerMismatch</name>
-        <label>Wijzigen aan triggers kunnen op onverwachte wijze invloed hebben op kernfunctionaliteit van NPSP, en moeten grondig worden getest voordat ze in productie worden uitgerold. Als deze wijzigingen onbedoeld zijn, moet u de triggerhandlers opnieuw instellen om ze te laten overeenkomen met de standaardconfiguratie voor NPSP.</label>
+        <label>Wijzigen aan triggers kunnen op onverwachte wijze invloed hebben op kernfunctionaliteit van NPPatch, en moeten grondig worden getest voordat ze in productie worden uitgerold. Als deze wijzigingen onbedoeld zijn, moet u de triggerhandlers opnieuw instellen om ze te laten overeenkomen met de standaardconfiguratie voor NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionUnsupportedPicklistValue</name>
@@ -5827,11 +5827,11 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>healthSolutionUDFBadDatatypes</name>
-        <label>Klik op het tabblad NPSP-Instellingen op {0} | {1} en verwijder de record Gebruikerstotalisering die naar deze twee velden verwijst.</label>
+        <label>Klik op het tabblad NPPatch-Instellingen op {0} | {1} en verwijder de record Gebruikerstotalisering die naar deze twee velden verwijst.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionUDFOppField</name>
-        <label>Klik op het tabblad NPSP Instellingen op {0} | {1} en verwijder de record Gebruikerstotalisering die naar dit veld verwijst.</label>
+        <label>Klik op het tabblad NPPatch Instellingen op {0} | {1} en verwijder de record Gebruikerstotalisering die naar dit veld verwijst.</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupLabelReturnToCmp</name>
@@ -5839,7 +5839,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeBatchMessage</name>
-        <label>Door het grote aantal Campagneleden op deze Campagne gebruikt NPSP een batchproces om Huishoudenleden te identificeren. Dit kan enkele minuten in beslag nemen. Als het proces is voltooid, kunt u het Huishouden Verzendrapport bekijken door te klikken op de koppeling Huishouden Verzendrapport.</label>
+        <label>Door het grote aantal Campagneleden op deze Campagne gebruikt NPPatch een batchproces om Huishoudenleden te identificeren. Dit kan enkele minuten in beslag nemen. Als het proces is voltooid, kunt u het Huishouden Verzendrapport bekijken door te klikken op de koppeling Huishouden Verzendrapport.</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeBatchProgressTitle</name>
@@ -5851,7 +5851,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeNoReport</name>
-        <label>Kan rapport niet vinden. Maak een rapport en sla het op met de Unieke Naam Rapport &apos;NPSP_Campaign_Household_Mailing_List_V2&apos;. Gebruik het rapporttype Campagnes met Contactpersonen en voeg filters toe voor CampaignId is gelijk aan blanco en Lidstatus bevat niet &apos;Duplicaat&apos;.</label>
+        <label>Kan rapport niet vinden. Maak een rapport en sla het op met de Unieke Naam Rapport &apos;NPPatch_Campaign_Household_Mailing_List_V2&apos;. Gebruik het rapporttype Campagnes met Contactpersonen en voeg filters toe voor CampaignId is gelijk aan blanco en Lidstatus bevat niet &apos;Duplicaat&apos;.</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeStatus</name>
@@ -5990,8 +5990,8 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
         <label>Huishoudens samenvoegen</label>
     </customLabels>
     <customLabels>
-        <name>lblNPSPSettings</name>
-        <label>NPSP-Instellingen</label>
+        <name>lblNPPatchSettings</name>
+        <label>NPPatch-Instellingen</label>
     </customLabels>
     <customLabels>
         <name>lblNoHHMergePermissions</name>
@@ -6111,7 +6111,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>leadConvertRecordTypeWarning</name>
-        <label>Het standaard Accountrecordtype voor uw Profiel is hetzelfde Recordtype ingesteld als het Accountmodel in NPSP-Instellingen, wat verschillende problemen met gegevens kan veroorzaken. Het is aan te raden voor alle profielen de standaard Accountrecordtypen te wijzigen in verschillende waarden.</label>
+        <label>Het standaard Accountrecordtype voor uw Profiel is hetzelfde Recordtype ingesteld als het Accountmodel in NPPatch-Instellingen, wat verschillende problemen met gegevens kan veroorzaken. Het is aan te raden voor alle profielen de standaard Accountrecordtypen te wijzigen in verschillende waarden.</label>
     </customLabels>
     <customLabels>
         <name>leadConvertSectionTitle</name>
@@ -6231,7 +6231,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>pmtModifyCurrency</name>
-        <label>U kunt Betalingsvaluta niet rechtstreeks wijzigen. Werk de valuta van de bovenliggende Opportunity bij en NPSP werkt de valuta van alle gerelateerde Betalingsrecords automatisch bij.</label>
+        <label>U kunt Betalingsvaluta niet rechtstreeks wijzigen. Werk de valuta van de bovenliggende Opportunity bij en NPPatch werkt de valuta van alle gerelateerde Betalingsrecords automatisch bij.</label>
     </customLabels>
     <customLabels>
         <name>pmtNoRefundPermissionMessage</name>
@@ -6399,11 +6399,11 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>pmtWizardPaymentsDisabled</name>
-        <label>NPSP-Betalingen zijn bij u niet ingeschakeld. Om de Wizard Betalingsplanning te gebruiken, schakelt u Betalingen in op de NPSP-Instellingenpagina onder Donaties | Betalingen.</label>
+        <label>NPPatch-Betalingen zijn bij u niet ingeschakeld. Om de Wizard Betalingsplanning te gebruiken, schakelt u Betalingen in op de NPPatch-Instellingenpagina onder Donaties | Betalingen.</label>
     </customLabels>
     <customLabels>
         <name>pmtWizardPaymentsDisabledTitle</name>
-        <label>NPSP-Betalingen niet ingeschakeld</label>
+        <label>NPPatch-Betalingen niet ingeschakeld</label>
     </customLabels>
     <customLabels>
         <name>pmtWizardPaymentsNoAccessMessage</name>
@@ -6483,7 +6483,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>psGatewaySelectionLabel</name>
-        <label>NPSP gebruikt de gateway die het meest recent is toegevoegd aan Elevate, tenzij u deze overschrijft. Als u een standaard Elevate-betalingsgateaway wilt instellen, moet u deze hier selecteren.</label>
+        <label>NPPatch gebruikt de gateway die het meest recent is toegevoegd aan Elevate, tenzij u deze overschrijft. Als u een standaard Elevate-betalingsgateaway wilt instellen, moet u deze hier selecteren.</label>
     </customLabels>
     <customLabels>
         <name>psGatewaysNotFound</name>
@@ -6543,7 +6543,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>psGatewayIDHelp</name>
-        <label>NPSP gebruikt de gateway die het meest recent is toegevoegd aan Elevate, tenzij u deze overschrijft. Om de gateway die NPSP gebruikt te wijzigen, voert u de gateway-ID in en slaat u uw werk op. Zoek de gateway-ID in de Elevate-beheedersconsole | Gatewaybeheer.</label>
+        <label>NPPatch gebruikt de gateway die het meest recent is toegevoegd aan Elevate, tenzij u deze overschrijft. Om de gateway die NPPatch gebruikt te wijzigen, voert u de gateway-ID in en slaat u uw werk op. Zoek de gateway-ID in de Elevate-beheedersconsole | Gatewaybeheer.</label>
     </customLabels>
     <customLabels>
         <name>psShowPaymentMethods</name>
@@ -6583,7 +6583,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>pscManageSoftCreditsCantChangeCurrency</name>
-        <label>U kunt soft credits-valuta niet rechtstreeks wijzigen. Werk de valuta van de bovenliggende Opportunity bij en NPSP zal de valuta van alle gerelateerde soft credits automatisch bijwerken.</label>
+        <label>U kunt soft credits-valuta niet rechtstreeks wijzigen. Werk de valuta van de bovenliggende Opportunity bij en NPPatch zal de valuta van alle gerelateerde soft credits automatisch bijwerken.</label>
     </customLabels>
     <customLabels>
         <name>pscManageSoftCreditsPermissionDenied</name>
@@ -6599,7 +6599,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>pscManageSoftCreditsNoRoles</name>
-        <label>Er zijn bij u geen Rollen gespecificeerd als Soft Credit-Rollen. In NPSP-Instellingen onder Donaties | Contactpersoonrollen, selecteert u minstens één Rol in de instelling Soft Credits.</label>
+        <label>Er zijn bij u geen Rollen gespecificeerd als Soft Credit-Rollen. In NPPatch-Instellingen onder Donaties | Contactpersoonrollen, selecteert u minstens één Rol in de instelling Soft Credits.</label>
     </customLabels>
     <customLabels>
         <name>pscManageSoftCreditsOppAmount</name>
@@ -6655,7 +6655,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>sendAcknowledgmentFailureReasons</name>
-        <label>NPSP heeft de erkenningen voor de volgende records niet verzonden. Erkenningen kunnen mislukken als er geen werkstroomregel (Erkenningsstatus EQUALS &apos;Erkenning Verzenden&apos;) geactiveerd is om de erkenning te verzenden, of als de records niet voldeden aan de bijkomende criteria om de werkflowregel in werking te laten treden. Bijvoorbeeld, als Primaire Contactpersoon niet is ingesteld, of als het e-mailveld voor de Primaire Contactpersoon leeg of ongeldig is.</label>
+        <label>NPPatch heeft de erkenningen voor de volgende records niet verzonden. Erkenningen kunnen mislukken als er geen werkstroomregel (Erkenningsstatus EQUALS &apos;Erkenning Verzenden&apos;) geactiveerd is om de erkenning te verzenden, of als de records niet voldeden aan de bijkomende criteria om de werkflowregel in werking te laten treden. Bijvoorbeeld, als Primaire Contactpersoon niet is ingesteld, of als het e-mailveld voor de Primaire Contactpersoon leeg of ongeldig is.</label>
     </customLabels>
     <customLabels>
         <name>sendAcknowledgmentFireStatus</name>
@@ -6667,7 +6667,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>sendAcknowledgmentNumberNoEmail</name>
-        <label>NPSP is er niet in geslaagd {0} erkenning(en) te verzenden.</label>
+        <label>NPPatch is er niet in geslaagd {0} erkenning(en) te verzenden.</label>
     </customLabels>
     <customLabels>
         <name>sendAcknowledgmentNumberSent</name>
@@ -6711,7 +6711,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>stgAddrGeneralSettingsIntro</name>
-        <label>Huishouden- en Organisatieaccountbeheer laat u meerdere Adressen toevoegen aan een Account, Standaardadressen instellen en Seizoenadressen opgeven. Adresbeheer is enkel beschikbaar in NPSP3 en later met het Huishoudenaccountmodel.</label>
+        <label>Huishouden- en Organisatieaccountbeheer laat u meerdere Adressen toevoegen aan een Account, Standaardadressen instellen en Seizoenadressen opgeven. Adresbeheer is enkel beschikbaar in NPPatch3 en later met het Huishoudenaccountmodel.</label>
     </customLabels>
     <customLabels>
         <name>stgAddrMustChooseClass</name>
@@ -6869,7 +6869,7 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
             ● Filters gebruiken om bepaalde records of gegevens eenvoudig uit te sluiten&lt;br/&gt;
             ● Gegevens van meer dan 2 jaar terug totaliseren&lt;br/&gt;
             &lt;br/&gt;
-            Ga naar NPSP-instellingen | Donaties | Aanpasbare totaliseringen om Aanpasbare totaliseringen in te schakelen en ze te beginnen gebruiken!</label>
+            Ga naar NPPatch-instellingen | Donaties | Aanpasbare totaliseringen om Aanpasbare totaliseringen in te schakelen en ze te beginnen gebruiken!</label>
     </customLabels>
     <customLabels>
         <name>stgCRLPInfoOnUDRHeading</name>
@@ -6929,16 +6929,16 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     </customLabels>
     <customLabels>
         <name>stgDontAutoScheduleHelpText</name>
-        <label>NPSP heeft een aantal geplande taken die totaliseringen berekenen, terugkerende donaties en seizoenadressen bijwerken en fouten afhandelen.
+        <label>NPPatch heeft een aantal geplande taken die totaliseringen berekenen, terugkerende donaties en seizoenadressen bijwerken en fouten afhandelen.
 &lt;br/&gt;
 &lt;br/&gt;
-Wanneer Standaard NPSP-taken niet automatisch plannen niet is geselecteerd, controleert NPSP, wanneer u de NPSP-instellingenpagina laadt, dat alle standaard NPSP-taken gepland zijn. Als ze niet gepland zijn, plant NPSP ze opnieuw. NPSP plant alleen ontbrekende NPSP-taken; NPSP zal geen taken overschrijven die zijn bijgewerkt.
+Wanneer Standaard NPPatch-taken niet automatisch plannen niet is geselecteerd, controleert NPPatch, wanneer u de NPPatch-instellingenpagina laadt, dat alle standaard NPPatch-taken gepland zijn. Als ze niet gepland zijn, plant NPPatch ze opnieuw. NPPatch plant alleen ontbrekende NPPatch-taken; NPPatch zal geen taken overschrijven die zijn bijgewerkt.
 &lt;br/&gt;
 &lt;br/&gt;
 Om deze taken weer te geven, zoekt u naar geplande taken in Salesforce Set-up.
 &lt;br/&gt;
 &lt;br/&gt;
-Door Standaard NPSP-taken niet automatisch plannen te selecteren, laat u NPSP weten standaardtaken niet te controleren of niet opnieuw te plannen.</label>
+Door Standaard NPPatch-taken niet automatisch plannen te selecteren, laat u NPPatch weten standaardtaken niet te controleren of niet opnieuw te plannen.</label>
     </customLabels>
     <customLabels>
         <name>stgEditPermissionError</name>
@@ -6946,7 +6946,7 @@ Door Standaard NPSP-taken niet automatisch plannen te selecteren, laat u NPSP we
     </customLabels>
     <customLabels>
         <name>stgErrorINaming</name>
-        <label>De Apex-klasse die u in het Implementatieklasseveld hebt geselecteerd, implementeert de HH_INaming-interface niet. Selecteer een andere Apex-klasse of gebruik de standaard NPSP-klasse HH_NameSpec.</label>
+        <label>De Apex-klasse die u in het Implementatieklasseveld hebt geselecteerd, implementeert de HH_INaming-interface niet. Selecteer een andere Apex-klasse of gebruik de standaard NPPatch-klasse HH_NameSpec.</label>
     </customLabels>
     <customLabels>
         <name>stgErrorInvalidClass</name>
@@ -6958,11 +6958,11 @@ Door Standaard NPSP-taken niet automatisch plannen te selecteren, laat u NPSP we
     </customLabels>
     <customLabels>
         <name>stgErrorMissingDefaultGauRecordWithPmtAllocEnabled</name>
-        <label>De vorige geconfigureerde Standaardeenheid voor algemeen accounting bestaat niet langer en is verwijderd. U moet Standaardtoewijzingen opnieuw inschakelen en een Standaardeenheid voor algemeen accounting selecteren om betalingstoewijzingen te kunnen gebruiken. Open de pagina GAU-toewijzingen in NPSP-instellingen om Standaard toewijzingsinstellingen bij te werken.</label>
+        <label>De vorige geconfigureerde Standaardeenheid voor algemeen accounting bestaat niet langer en is verwijderd. U moet Standaardtoewijzingen opnieuw inschakelen en een Standaardeenheid voor algemeen accounting selecteren om betalingstoewijzingen te kunnen gebruiken. Open de pagina GAU-toewijzingen in NPPatch-instellingen om Standaard toewijzingsinstellingen bij te werken.</label>
     </customLabels>
     <customLabels>
         <name>stgErrorMissingDefaultGauRecord</name>
-        <label>De vorige geconfigureerde Standaardeenheid voor algemeen accounting bestaat niet langer en is verwijderd. Open voor het opnieuw inschakelen van Standaardtoewijzingen de pagina GAU-toewijzingen in NPSP-instellingen.</label>
+        <label>De vorige geconfigureerde Standaardeenheid voor algemeen accounting bestaat niet langer en is verwijderd. Open voor het opnieuw inschakelen van Standaardtoewijzingen de pagina GAU-toewijzingen in NPPatch-instellingen.</label>
     </customLabels>
     <customLabels>
         <name>stgHHDataRefreshTitle</name>
@@ -6974,7 +6974,7 @@ Door Standaard NPSP-taken niet automatisch plannen te selecteren, laat u NPSP we
     </customLabels>
     <customLabels>
         <name>stgHelpAccountModel</name>
-        <label>Het Accountmodel dat wordt gebruikt door het Nonprofit Success Pack. Deze optie bepaalt wat er gebeurt wanneer u een Contactpersoon maakt met een blanco Accountveldwaarde. WAARSCHUWING: gebruik het Accountmodelrecordtype dat u voor Profielen als standaard Accountrecordtype selecteert niet. Dit zou voor verscheidene problemen met gegevens kunnen zorgen.</label>
+        <label>Het Accountmodel dat wordt gebruikt door het NPPatch. Deze optie bepaalt wat er gebeurt wanneer u een Contactpersoon maakt met een blanco Accountveldwaarde. WAARSCHUWING: gebruik het Accountmodelrecordtype dat u voor Profielen als standaard Accountrecordtype selecteert niet. Dit zou voor verscheidene problemen met gegevens kunnen zorgen.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAdvancedMapping1</name>
@@ -6997,7 +6997,7 @@ Door Standaard NPSP-taken niet automatisch plannen te selecteren, laat u NPSP we
     </customLabels>
     <customLabels>
         <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>Importveld voor NPSP-gegevens</label>
+        <label>Importveld voor NPPatch-gegevens</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAdvancedMappingTableHeader2</name>
@@ -7006,7 +7006,7 @@ Door Standaard NPSP-taken niet automatisch plannen te selecteren, laat u NPSP we
     <customLabels>
         <name>stgHelpAlloFiscalYearRollups</name>
         <label>Wanneer aangevinkt, zal deze optie de instellingen voor fiscaal jaar inschakelen, in plaats van de instellingen voor kalenderjaar, voor Toewijzingstotaliseringstotalen.
-OPMERKING: Nonprofit Success Pack ondersteunt instellingen voor aangepaste fiscale jaren niet.</label>
+OPMERKING: NPPatch ondersteunt instellingen voor aangepaste fiscale jaren niet.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAlloNDayValue</name>
@@ -7048,7 +7048,7 @@ Wanneer u betalingstoewijzingen inschakelt, blijven bestaande totaliseringen onv
     </customLabels>
     <customLabels>
         <name>stgHelpBDEOppNaming</name>
-        <label>Indien aangevinkt, gebruikt NPSP de standaardbenoemingsconventie voor door batch ingevoerde Opportunities, ongeacht de waarde die u in het Naamveld van het scherm voor batchinvoer opgeeft. OPMERKING: deze instelling heeft geen effect als aangepaste Opportunitynamen zijn geconfigureerd.</label>
+        <label>Indien aangevinkt, gebruikt NPPatch de standaardbenoemingsconventie voor door batch ingevoerde Opportunities, ongeacht de waarde die u in het Naamveld van het scherm voor batchinvoer opgeeft. OPMERKING: deze instelling heeft geen effect als aangepaste Opportunitynamen zijn geconfigureerd.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpBatchAlloRollup</name>
@@ -7111,7 +7111,7 @@ Wanneer het proces 100% is voltooid, is het veilig de pagina af te sluiten of op
     </customLabels>
     <customLabels>
         <name>stgHelpCreateMissingPayments</name>
-        <label>&lt;b&gt;WAARSCHUWING:&lt;/b&gt; Door op deze knop te klikken, wordt de batch Betaling maken geactiveerd. NPSP maakt een betaling voor elke opportunity zonder betaling die: 
+        <label>&lt;b&gt;WAARSCHUWING:&lt;/b&gt; Door op deze knop te klikken, wordt de batch Betaling maken geactiveerd. NPPatch maakt een betaling voor elke opportunity zonder betaling die: 
 &lt;br/&gt;
 &lt;br/&gt; 
 ● een bedrag groter dan nul heeft&lt;br/&gt; 
@@ -7133,21 +7133,21 @@ Wanneer het proces 100% is voltooid, is het veilig de pagina af te sluiten of op
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable2</name>
-        <label>Wanneer u aanpasbare totaliseringen voor het eerst inschakelt, converteren we uw bestaande totaliseringen en de 87 kant-en-klare NPSP-totaliseringen automatisch in Aanpasbare totaliseringen.
+        <label>Wanneer u aanpasbare totaliseringen voor het eerst inschakelt, converteren we uw bestaande totaliseringen en de 87 kant-en-klare NPPatch-totaliseringen automatisch in Aanpasbare totaliseringen.
             &lt;br/&gt;&lt;br/&gt;
             U kunt uitschakelen en terugkeren naar verouderde totaliseringen, maar nieuwe totaliseringen of wijzigingen van totaliseringen/filters die zijn aangebracht in Aanpasbare totaliseringen worden niet toegepast op uw verouderde totaliseringsinstellingen.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable3</name>
-        <label>Verwijdert alle nieuwe totaliseringen, filtergroepen en filterregels die u gemaakt hebt tijdens het gebruik van Aanpasbare totaliseringen EN stelt alle verouderde NPSP-totaliseringen terug in op hun standaardgedrag.</label>
+        <label>Verwijdert alle nieuwe totaliseringen, filtergroepen en filterregels die u gemaakt hebt tijdens het gebruik van Aanpasbare totaliseringen EN stelt alle verouderde NPPatch-totaliseringen terug in op hun standaardgedrag.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpDefaultAllocationsEnabled</name>
-        <label>Indien aangevinkt, maakt NPSP automatisch GAU-Toewijzingsrecords toegewezen aan de GAU gespecificeerd in het onderstaande veld Standaard GAU. Deze functionaliteit zorgt voor een betere rapportage over de Standaard GAU, maar gebruikt meer gegevensopslag.</label>
+        <label>Indien aangevinkt, maakt NPPatch automatisch GAU-Toewijzingsrecords toegewezen aan de GAU gespecificeerd in het onderstaande veld Standaard GAU. Deze functionaliteit zorgt voor een betere rapportage over de Standaard GAU, maar gebruikt meer gegevensopslag.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpDefaultGAU</name>
-        <label>Wanneer Standaardtoewijzingen Ingeschakeld is aangevinkt, maakt NPSP een GAU-Toewijzing aan voor alle nieuwe Opportunities die niet zijn uitgesloten in de Instellingen voor GAU-Toewijzingstotaliseringen, en wijst deze toe aan deze GAU. Let op: dit betreft niet de bestaande Opportunities zonder Toewijzing. U kunt ze toewijzen aan de standaard GAU in NPSP-Instellingen onder Bulk Gegevensprocessen | Batch Maken van Standaardtoewijzingen.</label>
+        <label>Wanneer Standaardtoewijzingen Ingeschakeld is aangevinkt, maakt NPPatch een GAU-Toewijzing aan voor alle nieuwe Opportunities die niet zijn uitgesloten in de Instellingen voor GAU-Toewijzingstotaliseringen, en wijst deze toe aan deze GAU. Let op: dit betreft niet de bestaande Opportunities zonder Toewijzing. U kunt ze toewijzen aan de standaard GAU in NPPatch-Instellingen onder Bulk Gegevensprocessen | Batch Maken van Standaardtoewijzingen.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpDisableHHAccountAddr</name>
@@ -7169,7 +7169,7 @@ Wanneer het proces 100% is voltooid, is het veilig de pagina af te sluiten of op
     </customLabels>
     <customLabels>
         <name>stgHelpErrorNotifyOn</name>
-        <label>Indien geselecteerd, geeft NPSP kennisgevingen voor bepaalde typen fouten weer.</label>
+        <label>Indien geselecteerd, geeft NPPatch kennisgevingen voor bepaalde typen fouten weer.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpErrorNotifyTo</name>
@@ -7185,7 +7185,7 @@ Wanneer het proces 100% is voltooid, is het veilig de pagina af te sluiten of op
     </customLabels>
     <customLabels>
         <name>stgHelpFiscalYearRollups</name>
-        <label>Wanneer aangevinkt, schakelt deze optie de instellingen voor fiscaal jaar in, in plaats van de instellingen voor kalenderjaar, voor Opportunitytotaliseringstotalen. Om de informatie voor fiscale jaren in te stellen, gaat u naar Set-up | Bedrijfsprofiel | Fiscaal Jaar. OPMERKING: het Nonprofit Success Pack ondersteunt instellingen voor aangepaste fiscale jaren niet.</label>
+        <label>Wanneer aangevinkt, schakelt deze optie de instellingen voor fiscaal jaar in, in plaats van de instellingen voor kalenderjaar, voor Opportunitytotaliseringstotalen. Om de informatie voor fiscale jaren in te stellen, gaat u naar Set-up | Bedrijfsprofiel | Fiscaal Jaar. OPMERKING: het NPPatch ondersteunt instellingen voor aangepaste fiscale jaren niet.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpHHAccountRTID</name>
@@ -7201,7 +7201,7 @@ Wanneer het proces 100% is voltooid, is het veilig de pagina af te sluiten of op
     </customLabels>
     <customLabels>
         <name>stgHelpHHMailingListReport</name>
-        <label>Het Huishouden Verzendlijstrapport ontdubbelt een Campagne die meerdere Contactpersonen uit hetzelfde huishouden bevat om te helpen voorkomen dat dezelfde verzending meermaals naar hetzelfde adres wordt verzonden. NPSP heeft een rapport dat &apos;NPSP-Campagne Huishouden Verzendlijst V2&apos; heet dat u kunt selecteren. Als dit rapport opnieuw is benoemd of is verwijderd, selecteer dan een rapport dat het recordtype Campagnes met Contactpersonen gebruikt, met filters voor Lidstatus bevat niet &apos;Duplicaat&apos; en Campagne-ID = blanco.</label>
+        <label>Het Huishouden Verzendlijstrapport ontdubbelt een Campagne die meerdere Contactpersonen uit hetzelfde huishouden bevat om te helpen voorkomen dat dezelfde verzending meermaals naar hetzelfde adres wordt verzonden. NPPatch heeft een rapport dat &apos;NPPatch-Campagne Huishouden Verzendlijst V2&apos; heet dat u kunt selecteren. Als dit rapport opnieuw is benoemd of is verwijderd, selecteer dan een rapport dat het recordtype Campagnes met Contactpersonen gebruikt, met filters voor Lidstatus bevat niet &apos;Duplicaat&apos; en Campagne-ID = blanco.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpHHNameFormat</name>
@@ -7213,7 +7213,7 @@ Wanneer het proces 100% is voltooid, is het veilig de pagina af te sluiten of op
     </customLabels>
     <customLabels>
         <name>stgHelpHHOCROn</name>
-        <label>Wanneer aangevinkt, maakt NPSP automatisch Contactpersoonrollen op Individuele giften voor Huishoudenleden van de Primaire Contactpersoon van de Opportunity.</label>
+        <label>Wanneer aangevinkt, maakt NPPatch automatisch Contactpersoonrollen op Individuele giften voor Huishoudenleden van de Primaire Contactpersoon van de Opportunity.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpHHRules</name>
@@ -7221,7 +7221,7 @@ Wanneer het proces 100% is voltooid, is het veilig de pagina af te sluiten of op
     </customLabels>
     <customLabels>
         <name>stgHelpHealthCheck</name>
-        <label>Gebruik &lt;a href=&quot;#&quot; onclick=&quot;ShowPanel(&apos;idPanelHealthCheck&apos;);return false;&quot;&gt;Controle van de Toestand&lt;/a&gt; om de NPSP-configuratie te controleren!</label>
+        <label>Gebruik &lt;a href=&quot;#&quot; onclick=&quot;ShowPanel(&apos;idPanelHealthCheck&apos;);return false;&quot;&gt;Controle van de Toestand&lt;/a&gt; om de NPPatch-configuratie te controleren!</label>
     </customLabels>
     <customLabels>
         <name>stgHelpIGFormat</name>
@@ -7259,12 +7259,12 @@ Wanneer het proces 100% is voltooid, is het veilig de pagina af te sluiten of op
         <label>Het Recordtype dat gebruikt wordt bij het maken van Opportunities die Lidmaatschapdonaties volgen. We raden aan Lidmaatschap te gebruiken. Opportunities met dit recordtype totaliseren afzonderlijk van andere Opportunityrecordtypen.</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpNPSPDoc</name>
-        <label>NPSP-Documentatie</label>
+        <name>stgHelpNPPatchDoc</name>
+        <label>NPPatch-Documentatie</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpNPSPSettings</name>
-        <label>Configureer het Nonprofit Success Pack zo dat het voldoet aan de behoeften van uw organisatie. U kunt ook de toestand van uw Salesforce-organisatie volgen of batchprocessen uitvoeren om gegevens bij te werken.</label>
+        <name>stgHelpNPPatchSettings</name>
+        <label>Configureer het NPPatch zo dat het voldoet aan de behoeften van uw organisatie. U kunt ook de toestand van uw Salesforce-organisatie volgen of batchprocessen uitvoeren om gegevens bij te werken.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpNameConnector</name>
@@ -7276,7 +7276,7 @@ Wanneer het proces 100% is voltooid, is het veilig de pagina af te sluiten of op
     </customLabels>
     <customLabels>
         <name>stgHelpNewRDFieldMap</name>
-        <label>Selecteer het veld Terugkerende donatie dat u wilt toewijzen en het opportunityveld dat u voor de toewijzing wilt gebruiken. NPSP kopieert de waarde van het veld Terugkerende donatie dat u selecteert naar uw geselecteerde opportunityveld op alle onderliggende opportunity&apos;s voor de terugkerende donatie.
+        <label>Selecteer het veld Terugkerende donatie dat u wilt toewijzen en het opportunityveld dat u voor de toewijzing wilt gebruiken. NPPatch kopieert de waarde van het veld Terugkerende donatie dat u selecteert naar uw geselecteerde opportunityveld op alle onderliggende opportunity&apos;s voor de terugkerende donatie.
 BELANGRIJK: Beide velden moeten van hetzelfde gegevenstype zijn.</label>
     </customLabels>
     <customLabels>
@@ -7289,7 +7289,7 @@ BELANGRIJK: Beide velden moeten van hetzelfde gegevenstype zijn.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpOCR</name>
-        <label>Soft Credits, contactpersoonrollen en overeenkomende giften zijn in belangrijke mate met elkaar verbonden. Bent u niet vertrouwd met deze concepten en hoe ze elkaar beïnvloeden, leest u de &lt;a href=&quot;https://help.salesforce.com/s/articleView?id=sfdo.NPSP_Automated_Soft_Credits.htm&amp;type=5&quot; target=&quot;_blank&quot;&gt;NPSP-documentatie&lt;/a&gt; door voordat u enige wijzigingen aan deze instellingen aanbrengt.</label>
+        <label>Soft Credits, contactpersoonrollen en overeenkomende giften zijn in belangrijke mate met elkaar verbonden. Bent u niet vertrouwd met deze concepten en hoe ze elkaar beïnvloeden, leest u de NPPatch-documentatie door voordat u enige wijzigingen aan deze instellingen aanbrengt.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpOCRDefaultRole</name>
@@ -7305,7 +7305,7 @@ BELANGRIJK: Beide velden moeten van hetzelfde gegevenstype zijn.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpOneToOneRTID</name>
-        <label>Het Accountrecordtype dat u wilt gebruiken voor nieuwe Accounts als u het bovenstaande One-to-One-Accountmodel hebt geselecteerd. NPSP biedt geen standaardrecordtype voor One-to-One-Accounts, dus u moet er een maken (zoals &apos;Individueel&apos;) voordat u dit model selecteert. Als u --Geen-- selecteert, gebruikt Salesforce het standaard Accounttyperecord voor de gebruiker die de nieuwe Contactpersoon (en gekoppelde One-to-One-Account) maakt.</label>
+        <label>Het Accountrecordtype dat u wilt gebruiken voor nieuwe Accounts als u het bovenstaande One-to-One-Accountmodel hebt geselecteerd. NPPatch biedt geen standaardrecordtype voor One-to-One-Accounts, dus u moet er een maken (zoals &apos;Individueel&apos;) voordat u dit model selecteert. Als u --Geen-- selecteert, gebruikt Salesforce het standaard Accounttyperecord voor de gebruiker die de nieuwe Contactpersoon (en gekoppelde One-to-One-Account) maakt.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpOppNamingAttribution</name>
@@ -7361,7 +7361,7 @@ BELANGRIJK: Beide velden moeten van hetzelfde gegevenstype zijn.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpPowerOfUsHub</name>
-        <label>Hebt u vragen? Probeer de groep &lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHitSAE&quot; target=&quot;_blank&quot;&gt;Nonprofit Success Pack&lt;/a&gt; uit voor vragen over NPSP en de groep &lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHiLSAU?tab=discussion&quot; target=&quot;_blank&quot;&gt;Systeembeheerders&lt;/a&gt; voor vragen over Salesforce-administratie en -configuratie.&lt;br/&gt;&lt;br/&gt;Zorg dat u altijd op de hoogte bent dankzij de notities bij de nieuwste NPSP-releases in de groep &lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHOXSA2?tab=discussion&amp;sort=LAST_MODIFIED_DATE_DESC.htm&quot; target=&quot;_blank&quot;&gt;Aankondigingen NPSP-release&lt;/a&gt;.</label>
+        <label>Hebt u vragen? Probeer de NPPatch-groep uit voor vragen over NPPatch en de Systeembeheerders-groep voor vragen over Salesforce-administratie en -configuratie.&lt;br/&gt;&lt;br/&gt;Zorg dat u altijd op de hoogte bent dankzij de notities bij de nieuwste NPPatch-releases in de groep NPPatch Release Announcements.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpPrimaryContactBatch</name>
@@ -7399,7 +7399,7 @@ Wanneer het proces 100% is voltooid, is het veilig de pagina af te sluiten of op
     </customLabels>
     <customLabels>
         <name>stgHelpRDAddCampaign</name>
-        <label>Indien geselecteerd, kopieert NPSP de campagne die u hebt opgegeven voor Terugkerende donatie, naar Opportunities voor termijnen ervan.</label>
+        <label>Indien geselecteerd, kopieert NPPatch de campagne die u hebt opgegeven voor Terugkerende donatie, naar Opportunities voor termijnen ervan.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRDBatch</name>
@@ -7445,11 +7445,11 @@ Dit proces kan enige tijd duren, maar u kunt deze pagina afsluiten en het proces
     </customLabels>
     <customLabels>
         <name>stgHelpRDOpenOppBehavior</name>
-        <label>Laat NPSP weten wat te doen met enige openstaande Opportunities wanneer u de status van een Open Terugkerende Donatie markeert als Gesloten.</label>
+        <label>Laat NPPatch weten wat te doen met enige openstaande Opportunities wanneer u de status van een Open Terugkerende Donatie markeert als Gesloten.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRDOppForecastMonths</name>
-        <label>Het aantal maanden aan open Opportunities die NPSP behoudt op Open Terugkerende Donaties. NPSP zorgt ervoor dat er zoveel maanden aan Opportunities zijn door elke maand het juiste aantal nieuwe Opportunities te maken.</label>
+        <label>Het aantal maanden aan open Opportunities die NPPatch behoudt op Open Terugkerende Donaties. NPPatch zorgt ervoor dat er zoveel maanden aan Opportunities zijn door elke maand het juiste aantal nieuwe Opportunities te maken.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRDOppRT</name>
@@ -7457,7 +7457,7 @@ Dit proces kan enige tijd duren, maar u kunt deze pagina afsluiten en het proces
     </customLabels>
     <customLabels>
         <name>stgHelpRDInstallmentCreateOptionMessage</name>
-        <label>Geeft op wanneer NPSP Opportunities voor termijnen gaat maken voor Terugkerende donaties. De standaardinstelling is Altijd volgende termijn maken.</label>
+        <label>Geeft op wanneer NPPatch Opportunities voor termijnen gaat maken voor Terugkerende donaties. De standaardinstelling is Altijd volgende termijn maken.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRDPeriodFrequency</name>
@@ -7477,11 +7477,11 @@ Dit proces kan enige tijd duren, maar u kunt deze pagina afsluiten en het proces
     </customLabels>
     <customLabels>
         <name>stgHelpRecDon</name>
-        <label>Deze instelling laat u Aangepaste Termijnperiodes voor Terugkerende Donaties maken, anders dan de Standaardtermijnperiodes (maandelijks, driemaandelijks, jaarlijks enzovoort) van NPSP.</label>
+        <label>Deze instelling laat u Aangepaste Termijnperiodes voor Terugkerende Donaties maken, anders dan de Standaardtermijnperiodes (maandelijks, driemaandelijks, jaarlijks enzovoort) van NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRelAutoCreatedDup</name>
-        <label>NPSP ontdubbelt automatisch gemaakte Relaties. Selecteer deze optie om dit uit te schakelen, waardoor meerdere Relaties van hetzelfde Type kunnen bestaan tussen twee Contactpersonen.</label>
+        <label>NPPatch ontdubbelt automatisch gemaakte Relaties. Selecteer deze optie om dit uit te schakelen, waardoor meerdere Relaties van hetzelfde Type kunnen bestaan tussen twee Contactpersonen.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRelFieldSyncToggle</name>
@@ -7578,7 +7578,7 @@ Om uw bestaande instellingen te controleren, gaat u naar Duplicaatregels onder S
     </customLabels>
     <customLabels>
         <name>stgHelpStoreErrorsOn</name>
-        <label>Wanneer aangevinkt, zal NPSP fouten opslaan. U kunt de bewaarde fouten weergeven in Systeemhulpmiddelen | Foutenlogboek op de NPSP-Instellingenpagina.</label>
+        <label>Wanneer aangevinkt, zal NPPatch fouten opslaan. U kunt de bewaarde fouten weergeven in Systeemhulpmiddelen | Foutenlogboek op de NPPatch-Instellingenpagina.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpTDTM</name>
@@ -7610,7 +7610,7 @@ Om uw bestaande instellingen te controleren, gaat u naar Duplicaatregels onder S
     </customLabels>
     <customLabels>
         <name>stgHelpTriggerHandlers</name>
-        <label>Deze triggers controleren de kernfunctionaliteiten in het Nonprofit Success Pack, wees dus voorzichtig wanneer u deze maakt of wijzigt.</label>
+        <label>Deze triggers controleren de kernfunctionaliteiten in het NPPatch, wees dus voorzichtig wanneer u deze maakt of wijzigt.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpTriggerHandlersAsync</name>
@@ -7646,9 +7646,9 @@ Om uw bestaande instellingen te controleren, gaat u naar Duplicaatregels onder S
     </customLabels>
     <customLabels>
         <name>stgInstallScriptError</name>
-        <label>Uw installatie was succesvol, maar we hebben een klein probleem ontdekt. Om dat op te lossen, laadt u de NPSP-instellingenpagina in Salesforce. 
+        <label>Uw installatie was succesvol, maar we hebben een klein probleem ontdekt. Om dat op te lossen, laadt u de NPPatch-instellingenpagina in Salesforce. 
 
-Opmerking: Het tabblad NPSP-instellingen is zichtbaar in de toepassing Nonprofit Success Pack. Als u dit tabblad niet ziet, selecteert u Nonprofit Success Pack uit het menu in de rechterbovenhoek van de toepassing.</label>
+Opmerking: Het tabblad NPPatch-instellingen is zichtbaar in de toepassing NPPatch. Als u dit tabblad niet ziet, selecteert u NPPatch uit het menu in de rechterbovenhoek van de toepassing.</label>
     </customLabels>
     <customLabels>
         <name>stgLabelActionColumn</name>
@@ -8007,20 +8007,20 @@ Opmerking: Het tabblad NPSP-instellingen is zichtbaar in de toepassing Nonprofit
         <label>Geen {0} gevonden.</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPGuideImportData</name>
-        <label>NPSP-Gids voor Importeren van Gegevens</label>
+        <name>stgNPPatchGuideImportData</name>
+        <label>NPPatch-Gids voor Importeren van Gegevens</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPSettings</name>
-        <label>Instellingen Nonprofit Success Pack-toepassing</label>
+        <name>stgNPPatchSettings</name>
+        <label>Instellingen NPPatch-toepassing</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPSettingsTitle</name>
-        <label>Instellingen Nonprofit Success Pack</label>
+        <name>stgNPPatchSettingsTitle</name>
+        <label>Instellingen NPPatch</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPWorkbook</name>
-        <label>NPSP-Fondsenverwervingstraject</label>
+        <name>stgNPPatchWorkbook</name>
+        <label>NPPatch-Fondsenverwervingstraject</label>
     </customLabels>
     <customLabels>
         <name>stgNavAccountModel</name>
@@ -8188,7 +8188,7 @@ Opmerking: Het tabblad NPSP-instellingen is zichtbaar in de toepassing Nonprofit
     </customLabels>
     <customLabels>
         <name>stgRDNamingDescription</name>
-        <label>Als u een terugkerende donatie maakt, vult NPSP het veld Naam automatisch in op basis van de opgegeven naamindeling. Kies Automatisch benoemen uitschakelen om deze functie uit te schakelen.</label>
+        <label>Als u een terugkerende donatie maakt, vult NPPatch het veld Naam automatisch in op basis van de opgegeven naamindeling. Kies Automatisch benoemen uitschakelen om deze functie uit te schakelen.</label>
     </customLabels>
     <customLabels>
         <name>stgRDNamingDisable</name>
@@ -8288,7 +8288,7 @@ Opmerking: Het tabblad NPSP-instellingen is zichtbaar in de toepassing Nonprofit
     </customLabels>
     <customLabels>
         <name>gsResourcesVideographyLabel</name>
-        <label>NPSP-videografiekanaal</label>
+        <label>NPPatch-videografiekanaal</label>
     </customLabels>
     <customLabels>
         <name>gsResourcesVideographyLinkLabel</name>
@@ -8296,7 +8296,7 @@ Opmerking: Het tabblad NPSP-instellingen is zichtbaar in de toepassing Nonprofit
     </customLabels>
     <customLabels>
         <name>gsVideoHeaderTitle</name>
-        <label>Aan de slag met NPSP</label>
+        <label>Aan de slag met NPPatch</label>
     </customLabels>
     <customLabels>
         <name>gseuPageTitle</name>
@@ -8311,12 +8311,12 @@ Opmerking: Het tabblad NPSP-instellingen is zichtbaar in de toepassing Nonprofit
         <label>Trailblazer Community</label>
     </customLabels>
     <customLabels>
-        <name>gseuResourcesItemAboutNPSPLabel</name>
-        <label>Meer informatie over NPSP</label>
+        <name>gseuResourcesItemAboutNPPatchLabel</name>
+        <label>Meer informatie over NPPatch</label>
     </customLabels>
     <customLabels>
-        <name>gseuResourcesItemAboutNPSPLinkLabel</name>
-        <label>NPSP-documentatie</label>
+        <name>gseuResourcesItemAboutNPPatchLinkLabel</name>
+        <label>NPPatch-documentatie</label>
     </customLabels>
     <customLabels>
         <name>gseuResourcesItemWatchVideosLabel</name>
@@ -8324,7 +8324,7 @@ Opmerking: Het tabblad NPSP-instellingen is zichtbaar in de toepassing Nonprofit
     </customLabels>
     <customLabels>
         <name>gseuResourcesItemWatchVideosLinkLabel</name>
-        <label>NPSP-videografiekanaal</label>
+        <label>NPPatch-videografiekanaal</label>
     </customLabels>
     <customLabels>
         <name>gseuResourcesItemWebinarsLabel</name>
@@ -8400,23 +8400,23 @@ Opmerking: Het tabblad NPSP-instellingen is zichtbaar in de toepassing Nonprofit
     </customTabs>
     <customTabs>
         <name>GetStarted</name>
-        <label>Aan de slag met NPSP - Beheerder</label>
+        <label>Aan de slag met NPPatch - Beheerder</label>
     </customTabs>
     <customTabs>
         <name>GetStartedEndUser</name>
-        <label>Aan de slag met NPSP</label>
+        <label>Aan de slag met NPPatch</label>
     </customTabs>
     <customTabs>
-        <name>NPSP_Resources</name>
+        <name>NPPatch_Resources</name>
         <label>Introductie</label>
     </customTabs>
     <customTabs>
-        <name>NPSP_Settings</name>
-        <label>NPSP-Instellingen</label>
+        <name>NPPatch_Settings</name>
+        <label>NPPatch-Instellingen</label>
     </customTabs>
     <customApplications>
         <name>Nonprofit_CRM</name>
-        <label>Nonprofit Success Pack</label>
+        <label>NPPatch</label>
     </customApplications>
     <quickActions>
         <name>Account.New_Address</name>

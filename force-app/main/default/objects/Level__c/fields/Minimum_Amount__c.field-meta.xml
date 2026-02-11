@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Minimum_Amount__c</fullName>
-    <description>The minimum amount needed for NPSP to assign this Level. If this field is empty, then NPSP will assign this Level to any amount less than this Level&apos;s Maximum Amount.</description>
+    <description>The minimum amount needed for NPPatch to assign this Level. If this field is empty, then NPPatch will assign this Level to any amount less than this Level&apos;s Maximum Amount.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The minimum amount needed for NPSP to assign this Level. If this field is empty, then NPSP will assign this Level to any amount less than this Level&apos;s Maximum Amount.</inlineHelpText>
+    <inlineHelpText>The minimum amount needed for NPPatch to assign this Level. If this field is empty, then NPPatch will assign this Level to any amount less than this Level&apos;s Maximum Amount.</inlineHelpText>
     <label>Minimum Amount (&gt;=)</label>
     <precision>18</precision>
     <required>false</required>

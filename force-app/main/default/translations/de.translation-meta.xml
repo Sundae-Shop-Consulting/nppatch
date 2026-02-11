@@ -306,7 +306,7 @@
     </customLabels>
     <customLabels>
         <name>CONV_All_Triggers_Disabled</name>
-        <label>Alle NPSP-Auslöser werden deaktiviert. HINWEIS: Das Tool deaktiviert ihre benutzerdefinierten Auslöser nicht. Sie sollten alle benutzerdefinierten Auslöser manuell deaktivieren, bevor Sie fortfahren.</label>
+        <label>Alle NPPatch-Auslöser werden deaktiviert. HINWEIS: Das Tool deaktiviert ihre benutzerdefinierten Auslöser nicht. Sie sollten alle benutzerdefinierten Auslöser manuell deaktivieren, bevor Sie fortfahren.</label>
     </customLabels>
     <customLabels>
         <name>CONV_All_Users_Logged_Out</name>
@@ -369,8 +369,8 @@
         <label>Neue Haushalt-Accounts werden für jeden bestehenden Haushaltsobjektdatensatz erstellt.</label>
     </customLabels>
     <customLabels>
-        <name>CONV_Non_NPSP_Apps</name>
-        <label>Alle Nicht-NPSP-Apps wurden deaktiviert oder vorübergehend deinstalliert.</label>
+        <name>CONV_Non_NPPatch_Apps</name>
+        <label>Alle Nicht-NPPatch-Apps wurden deaktiviert oder vorübergehend deinstalliert.</label>
     </customLabels>
     <customLabels>
         <name>CONV_Old_Household_Objects</name>
@@ -430,7 +430,7 @@
     </customLabels>
     <customLabels>
         <name>CONV_Triggers_Reenabled</name>
-        <label>Alle NPSP-Auslöser sind erneut aktiviert. HINWEIS: Sie müssen alle benutzerdefinierten Auslöser, die Sie für die Konvertierung deaktiviert haben, manuell neu aktivieren. Außerdem werden &lt;b&gt;alle&lt;/b&gt; NPSP-Auslöser vom Dienstprogramm neu aktiviert. Wenn Sie also einige davon vorher selektiv deaktiviert haben, müssen Sie diese ebenfalls manuell erneut deaktivieren.</label>
+        <label>Alle NPPatch-Auslöser sind erneut aktiviert. HINWEIS: Sie müssen alle benutzerdefinierten Auslöser, die Sie für die Konvertierung deaktiviert haben, manuell neu aktivieren. Außerdem werden &lt;b&gt;alle&lt;/b&gt; NPPatch-Auslöser vom Dienstprogramm neu aktiviert. Wenn Sie also einige davon vorher selektiv deaktiviert haben, müssen Sie diese ebenfalls manuell erneut deaktivieren.</label>
     </customLabels>
     <customLabels>
         <name>CONV_Warning</name>
@@ -618,7 +618,7 @@
     </customLabels>
     <customLabels>
         <name>CRLP_DisabledMessage</name>
-        <label>Sie haben die anpassbaren Rollups nicht aktiviert. Kehren Sie zu den NPSP-Einstellungen zurück, wo Sie erfahren, wie Sie sie aktivieren.</label>
+        <label>Sie haben die anpassbaren Rollups nicht aktiviert. Kehren Sie zu den NPPatch-Einstellungen zurück, wo Sie erfahren, wie Sie sie aktivieren.</label>
     </customLabels>
     <customLabels>
         <name>CRLP_DuplicateTargetField</name>
@@ -654,7 +654,7 @@
     </customLabels>
     <customLabels>
         <name>CRLP_ResetRollupsWarning</name>
-        <label>Möchten Sie die Anpassbaren Rollups wirklich zurücksetzen? Dadurch werden etwaige neue Rollups, Filterregeln und Filtergruppen, die Sie erstellt haben, gelöscht und alle NPSP-Rollups werden auf ihr Standardverhalten zurückgesetzt.</label>
+        <label>Möchten Sie die Anpassbaren Rollups wirklich zurücksetzen? Dadurch werden etwaige neue Rollups, Filterregeln und Filtergruppen, die Sie erstellt haben, gelöscht und alle NPPatch-Rollups werden auf ihr Standardverhalten zurückgesetzt.</label>
     </customLabels>
     <customLabels>
         <name>CRLP_Return</name>
@@ -766,7 +766,7 @@
     </customLabels>
     <customLabels>
         <name>ErrorEmailMessage</name>
-        <label>Salesforce hat diese NPSP-Fehler festgestellt. Wenn Sie nicht sicher sind, wie Sie diese Fehler beheben können, veröffentlichen Sie eine Nachricht in der Nonprofit Success Pack-Gruppe: https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHitSAE</label>
+        <label>Salesforce hat diese NPPatch-Fehler festgestellt. Wenn Sie nicht sicher sind, wie Sie diese Fehler beheben können, veröffentlichen Sie eine Nachricht in der NPPatch-Gruppe.</label>
     </customLabels>
     <customLabels>
         <name>FieldSetRelatedFieldError</name>
@@ -846,11 +846,11 @@
     </customLabels>
     <customLabels>
         <name>RD2_DataMigrationInvalidCloseAction</name>
-        <label>Wählen Sie in den NPSP-Einstellungen | Wiederkehrende Spenden für &quot;Verhalten einer offenen Opportunity bei Abschluss einer wiederkehrenden Spende&quot; einen anderen Wert als &quot;No_Action&quot; aus. Nach dem Abschluss der Datenmigration können Sie die Einstellung wieder auf den vorherigen Wert ändern.</label>
+        <label>Wählen Sie in den NPPatch-Einstellungen | Wiederkehrende Spenden für &quot;Verhalten einer offenen Opportunity bei Abschluss einer wiederkehrenden Spende&quot; einen anderen Wert als &quot;No_Action&quot; aus. Nach dem Abschluss der Datenmigration können Sie die Einstellung wieder auf den vorherigen Wert ändern.</label>
     </customLabels>
     <customLabels>
         <name>RD2_DataMigrationInvalidInstallmentPeriod</name>
-        <label>Die Ratenlaufzeit für die wiederkehrende Spende &quot;{0}&quot; kann nicht in das Format für erweiterte wiederkehrende Spenden geändert werden. Vergewissern Sie sich, dass die Ratenlaufzeit in NPSP-Einstellungen &gt; Wiederkehrende Spenden &gt; Ratenlaufzeiten für wiederkehrende Spenden definiert ist.</label>
+        <label>Die Ratenlaufzeit für die wiederkehrende Spende &quot;{0}&quot; kann nicht in das Format für erweiterte wiederkehrende Spenden geändert werden. Vergewissern Sie sich, dass die Ratenlaufzeit in NPPatch-Einstellungen &gt; Wiederkehrende Spenden &gt; Ratenlaufzeiten für wiederkehrende Spenden definiert ist.</label>
     </customLabels>
     <customLabels>
         <name>RD2_DataMigrationInvalidOpenEndedStatus</name>
@@ -994,7 +994,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementDisabledMessage</name>
-        <label>(1) Wenn Sie Lightning Experience noch nicht verwenden, klicken Sie oben auf dem Bildschirm auf &quot;Zu Lightning Experience wechseln&quot;.&lt;br/&gt;(2) Aktivieren Sie anpassbare Rollups, indem Sie zu NPSP-Einstellungen | Spenden | Anpassbare Rollups navigieren.&lt;br/&gt;&lt;br/&gt;Kehren Sie hierher zur Seite &quot;Upgrade auf erweiterte wiederkehrende Spenden&quot; zurück.</label>
+        <label>(1) Wenn Sie Lightning Experience noch nicht verwenden, klicken Sie oben auf dem Bildschirm auf &quot;Zu Lightning Experience wechseln&quot;.&lt;br/&gt;(2) Aktivieren Sie anpassbare Rollups, indem Sie zu NPPatch-Einstellungen | Spenden | Anpassbare Rollups navigieren.&lt;br/&gt;&lt;br/&gt;Kehren Sie hierher zur Seite &quot;Upgrade auf erweiterte wiederkehrende Spenden&quot; zurück.</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementDryRunBatchTitle</name>
@@ -1034,7 +1034,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementDryRunIntro</name>
-        <label>NPSP simuliert die Migration Ihrer vorhandenen Daten zum Erweiterte wiederkehrende Spenden-Modell und erkennt Fehler. Wenn Fehler auftreten, wechseln Sie zu NPSP-Einstellungen | Systemtools | Fehlerprotokoll. Kehren Sie nach dem Beheben der Fehler hierher zurück, und validieren Sie die Migration erneut. Sobald die Validierung ohne Fehler abgeschlossen wird, können Sie mit dem nächsten Schritt fortfahren.&lt;br/&gt;&lt;br/&gt;Der Validierungsvorgang kann einige Zeit in Anspruch nehmen. Sie können diese Seite verlassen und später zurückkehren, um den Status zu überprüfen.</label>
+        <label>NPPatch simuliert die Migration Ihrer vorhandenen Daten zum Erweiterte wiederkehrende Spenden-Modell und erkennt Fehler. Wenn Fehler auftreten, wechseln Sie zu NPPatch-Einstellungen | Systemtools | Fehlerprotokoll. Kehren Sie nach dem Beheben der Fehler hierher zurück, und validieren Sie die Migration erneut. Sobald die Validierung ohne Fehler abgeschlossen wird, können Sie mit dem nächsten Schritt fortfahren.&lt;br/&gt;&lt;br/&gt;Der Validierungsvorgang kann einige Zeit in Anspruch nehmen. Sie können diese Seite verlassen und später zurückkehren, um den Status zu überprüfen.</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementEnableConfirm</name>
@@ -1058,16 +1058,16 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementEnableWarning</name>
-        <label>&lt;b&gt;WARNUNG: NPSP bietet keine Möglichkeit, zur Legacyfunktionalität Wiederkehrende Spenden zurückzukehren.&lt;/b&gt;</label>
+        <label>&lt;b&gt;WARNUNG: NPPatch bietet keine Möglichkeit, zur Legacyfunktionalität Wiederkehrende Spenden zurückzukehren.&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementIncomplete</name>
-        <label>Wiederkehrende Spenden können nicht erstellt oder aktualisiert werden, da Sie die Aktivierung von Erweiterte wiederkehrende Spenden nicht abgeschlossen haben. Wechseln Sie zu &quot;NPSP-Einstellungen&quot; | &quot;Wiederkehrende Spenden&quot; | &quot;Upgrade auf Erweiterte wiederkehrende Spenden&quot;, und führen Sie alle Schritte zur Aktivierung aus.</label>
+        <label>Wiederkehrende Spenden können nicht erstellt oder aktualisiert werden, da Sie die Aktivierung von Erweiterte wiederkehrende Spenden nicht abgeschlossen haben. Wechseln Sie zu &quot;NPPatch-Einstellungen&quot; | &quot;Wiederkehrende Spenden&quot; | &quot;Upgrade auf Erweiterte wiederkehrende Spenden&quot;, und führen Sie alle Schritte zur Aktivierung aus.</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementIntro</name>
-        <label>Herzlich Willkommen! Erweiterte wiederkehrende Spenden ist unsere neu gestaltete und verbesserte Funktion Wiederkehrende Spenden für das Nonprofit Success Pack (NPSP). Ein großes Dankeschön an unsere Community-Mitglieder, die ihr Feedback gegeben und ihren Beitrag zu Erweiterte wiederkehrende Spenden geleistet haben.
-        &lt;br/&gt;&lt;br/&gt;Da bereits eine Funktion für wiederkehrende Spenden in NPSP vorhanden ist, müssen Sie eine Reihe von Upgradeschritten ausführen und Ihre vorhandenen Daten in das Erweiterte wiederkehrende Spenden-Modell verschieben. Wir haben die erforderlichen Schritte unten dargestellt.</label>
+        <label>Herzlich Willkommen! Erweiterte wiederkehrende Spenden ist unsere neu gestaltete und verbesserte Funktion Wiederkehrende Spenden für das NPPatch. Ein großes Dankeschön an unsere Community-Mitglieder, die ihr Feedback gegeben und ihren Beitrag zu Erweiterte wiederkehrende Spenden geleistet haben.
+        &lt;br/&gt;&lt;br/&gt;Da bereits eine Funktion für wiederkehrende Spenden in NPPatch vorhanden ist, müssen Sie eine Reihe von Upgradeschritten ausführen und Ihre vorhandenen Daten in das Erweiterte wiederkehrende Spenden-Modell verschieben. Wir haben die erforderlichen Schritte unten dargestellt.</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementMetaDeployConfirm</name>
@@ -1107,7 +1107,7 @@
         &lt;br/&gt;Bevor Ihre Organisation mit der Nutzung von Erweiterte wiederkehrende Spenden beginnt:&lt;br/&gt;
         &lt;ul&gt;&lt;li&gt;Aktivieren Sie Workflows, Prozesse, Validierungsregeln und Trigger, die Sie vor dem Upgrade deaktiviert haben.&lt;/li&gt;
         &lt;li&gt;Weisen Sie das Erweiterte wiederkehrende Spenden-Seitenlayout allen Benutzerprofilen zu, und entfernen Sie das alte Wiederkehrende Spenden-Seitenlayout.&lt;/li&gt;
-        &lt;li&gt;Weisen Sie die NPSP Wiederkehrende Spende-Lightning-Datensatzseite als Organisationsstandard zu.&lt;/li&gt;
+        &lt;li&gt;Weisen Sie die NPPatch Wiederkehrende Spende-Lightning-Datensatzseite als Organisationsstandard zu.&lt;/li&gt;
         &lt;li&gt;Weisen Sie Ihren benutzerdefinierten Profilen die RD2_VisualizeScheduleController-Apex-Klasse zu.&lt;/li&gt;
         &lt;li&gt;Passen Sie Sicherheit auf Feldebene für die Wiederkehrende Spenden-Felder entsprechend Ihren Profilen und Berechtigungssätzen an.&lt;/li&gt;
         &lt;li&gt;Passen Sie Wiederkehrende Spenden-Berichte so an, dass sie mit Erweiterte wiederkehrende Spenden funktionieren.&lt;/li&gt;
@@ -1115,7 +1115,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_EnablementMigrationErrorMessage</name>
-        <label>Bei der Ausführung Ihrer Migration sind Fehler aufgetreten, die behoben werden müssen, damit die Migration erfolgreich abgeschlossen werden kann. Sehen Sie sich die Fehler unter &quot;NPSP-Einstellungen&quot; &gt; &quot;Systemtools&quot; &gt; &quot;Fehlerprotokolle&quot; an.</label>
+        <label>Bei der Ausführung Ihrer Migration sind Fehler aufgetreten, die behoben werden müssen, damit die Migration erfolgreich abgeschlossen werden kann. Sehen Sie sich die Fehler unter &quot;NPPatch-Einstellungen&quot; &gt; &quot;Systemtools&quot; &gt; &quot;Fehlerprotokolle&quot; an.</label>
     </customLabels>
     <customLabels>
         <name>RD2_EnablementMigrationIntro</name>
@@ -1255,7 +1255,7 @@
         <name>RD2_EntryFormSaveCommitmentFailedMessage</name>
         <label>Es wurde eine wiederkehrende Zahlung in Elevate erstellt. Wiederholungs-ID in Elevate: {0}.
         
-        Jedoch wurde keine entsprechende wiederkehrende Spende in NPSP erstellt, aufgrund des folgenden Fehlers:
+        Jedoch wurde keine entsprechende wiederkehrende Spende in NPPatch erstellt, aufgrund des folgenden Fehlers:
         ● {1}
         
         Sie können dieses Formular geöffnet lassen, den Fehler beheben und die wiederkehrende Spende erneut speichern. Brechen Sie alternativ den Vorgang ab, und bitten Sie Ihren Systemadministrator um Hilfe.</label>
@@ -1366,7 +1366,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_PageNotAvailableMessage</name>
-        <label>Diese Seite ist in Erweiterte wiederkehrende Spenden nicht verfügbar. Aktualisieren Sie Ihren Browser, und kehren Sie zu den NPSP-Einstellungen zurück.</label>
+        <label>Diese Seite ist in Erweiterte wiederkehrende Spenden nicht verfügbar. Aktualisieren Sie Ihren Browser, und kehren Sie zu den NPPatch-Einstellungen zurück.</label>
     </customLabels>
     <customLabels>
         <name>RD2_PauseCannotExistOnScheduleChange</name>
@@ -1430,7 +1430,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_PauseStatusMustExist</name>
-        <label>NPSP kann den Status und den Grund für den Status für aufgeschobene wiederkehrende Spenden nicht aktualisieren. Sie müssen dem Statusfeld den Wert &apos;Aufschub&apos; aus der Auswahlliste hinzufügen.</label>
+        <label>NPPatch kann den Status und den Grund für den Status für aufgeschobene wiederkehrende Spenden nicht aktualisieren. Sie müssen dem Statusfeld den Wert &apos;Aufschub&apos; aus der Auswahlliste hinzufügen.</label>
     </customLabels>
     <customLabels>
         <name>RD2_PaymentInformation</name>
@@ -1486,7 +1486,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationClosedDefinition</name>
-        <label>Nach der angegebenen Anzahl von Tagen aktualisiert NPSP den Status wiederkehrender Spenden auf den Statuswert &quot;Geschlossen&quot;, falls Spenden nicht erwartungsgemäß eingehen. Dieser Wert muss größer als die Anzahl der Tage für &quot;Ausgesetzt&quot; sein. NPSP erstellt keine Raten-Opportunities für geschlossene wiederkehrende Spenden.</label>
+        <label>Nach der angegebenen Anzahl von Tagen aktualisiert NPPatch den Status wiederkehrender Spenden auf den Statuswert &quot;Geschlossen&quot;, falls Spenden nicht erwartungsgemäß eingehen. Dieser Wert muss größer als die Anzahl der Tage für &quot;Ausgesetzt&quot; sein. NPPatch erstellt keine Raten-Opportunities für geschlossene wiederkehrende Spenden.</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationDaysForClosed</name>
@@ -1526,7 +1526,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationLapsedDefinition</name>
-        <label>Nach der angegebenen Anzahl Tage aktualisiert NPSP den Status wiederkehrender Spenden auf den Status &quot;Ausgesetzt&quot;, wenn die Spenden nicht wie erwartet eingehen. NPSP erstellt aber weiterhin Raten-Opportunities für ausgesetzte wiederkehrende Spenden, wie im Zeitplan festgelegt.</label>
+        <label>Nach der angegebenen Anzahl Tage aktualisiert NPPatch den Status wiederkehrender Spenden auf den Status &quot;Ausgesetzt&quot;, wenn die Spenden nicht wie erwartet eingehen. NPPatch erstellt aber weiterhin Raten-Opportunities für ausgesetzte wiederkehrende Spenden, wie im Zeitplan festgelegt.</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusAutomationSetClosedStatus</name>
@@ -1546,17 +1546,17 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusMappingDefinitions</name>
-        <label>&lt;b&gt;Statusdefinitionen&lt;/b&gt;&lt;br/&gt;&lt;ul&gt;&lt;li&gt;Aktiv: Der Spender spendet aktiv. NPSP erstellt Raten-Opportunities gemäß der Definition im Zeitplan für wiederkehrende Spenden.&lt;/li&gt;
-&lt;li&gt;Ausgesetzt: Spenden werden nicht erwartungsgemäß empfangen, NPSP erstellt jedoch weiterhin Raten-Opportunities gemäß der Definition im Zeitplan für wiederkehrende Spenden.&lt;/li&gt;
-&lt;li&gt;Geschlossen: Der Spender hat das Spenden für diese wiederkehrende Spende eingestellt. NPSP erstellt keine weiteren Raten-Opportunities.&lt;/li&gt;&lt;/ul&gt;</label>
+        <label>&lt;b&gt;Statusdefinitionen&lt;/b&gt;&lt;br/&gt;&lt;ul&gt;&lt;li&gt;Aktiv: Der Spender spendet aktiv. NPPatch erstellt Raten-Opportunities gemäß der Definition im Zeitplan für wiederkehrende Spenden.&lt;/li&gt;
+&lt;li&gt;Ausgesetzt: Spenden werden nicht erwartungsgemäß empfangen, NPPatch erstellt jedoch weiterhin Raten-Opportunities gemäß der Definition im Zeitplan für wiederkehrende Spenden.&lt;/li&gt;
+&lt;li&gt;Geschlossen: Der Spender hat das Spenden für diese wiederkehrende Spende eingestellt. NPPatch erstellt keine weiteren Raten-Opportunities.&lt;/li&gt;&lt;/ul&gt;</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusMappingDeploymentAlreadyInProgress</name>
-        <label>Sie können keine Zuordnung speichern, während NPSP einen anderen Status in der Statuszuordnung verarbeitet.</label>
+        <label>Sie können keine Zuordnung speichern, während NPPatch einen anderen Status in der Statuszuordnung verarbeitet.</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusMappingIntro</name>
-        <label>Wenn Sie benutzerdefinierte Werte in der Auswahlliste für den Status wiederkehrender Spenden erstellen, müssen Sie diese einem Status zuordnen, damit NPSP weiß, wie Datensätze mit diesen benutzerdefinierten Statuswerten verarbeitet werden sollen.
+        <label>Wenn Sie benutzerdefinierte Werte in der Auswahlliste für den Status wiederkehrender Spenden erstellen, müssen Sie diese einem Status zuordnen, damit NPPatch weiß, wie Datensätze mit diesen benutzerdefinierten Statuswerten verarbeitet werden sollen.
         &lt;br/&gt;&lt;br/&gt;Wenn Sie keine benutzerdefinierten Werte in der Auswahlliste für den Status wiederkehrender Spenden erstellt haben, brauchen Sie nichts zuzuordnen.</label>
     </customLabels>
     <customLabels>
@@ -1577,7 +1577,7 @@
     </customLabels>
     <customLabels>
         <name>RD2_StatusMustBeMappedSolution</name>
-        <label>Navigieren Sie zu NPSP-Einstellungen | Wiederkehrende Spenden | Statuszuordnungen, oder bitten Sie Ihren Administrator um Hilfe.</label>
+        <label>Navigieren Sie zu NPPatch-Einstellungen | Wiederkehrende Spenden | Statuszuordnungen, oder bitten Sie Ihren Administrator um Hilfe.</label>
     </customLabels>
     <customLabels>
         <name>RD2_StatusMustBeActiveOrPause</name>
@@ -1721,7 +1721,7 @@
     </customLabels>
     <customLabels>
         <name>RD_RefreshOppsContinueMessage</name>
-        <label>Bei diesem Vorgang werden alle zukünftigen Raten-Opportunities so aktualisiert, dass sie mit den aktuellen Daten für diese wiederkehrende Spende übereinstimmen. Für einige Raten löscht NPSP möglicherweise Raten und erstellt stattdessen neue.
+        <label>Bei diesem Vorgang werden alle zukünftigen Raten-Opportunities so aktualisiert, dass sie mit den aktuellen Daten für diese wiederkehrende Spende übereinstimmen. Für einige Raten löscht NPPatch möglicherweise Raten und erstellt stattdessen neue.
 &lt;br/&gt;&lt;br/&gt;Klicken Sie auf &quot;Weiter&quot;, um den Vorgang zu starten, oder auf &quot;Abbrechen&quot;, um zur Seite Wiederkehrende Spenden zurückzukehren.</label>
     </customLabels>
     <customLabels>
@@ -1786,7 +1786,7 @@
     </customLabels>
     <customLabels>
         <name>RP_ProductNameLabel</name>
-        <label>Nonprofit Success Pack (NPSP)</label>
+        <label>NPPatch</label>
     </customLabels>
     <customLabels>
         <name>RP_ReleaseGitHub</name>
@@ -1806,19 +1806,19 @@
     </customLabels>
     <customLabels>
         <name>RP_SubTitle</name>
-        <label>Jetzt haben Sie Zugriff auf ALLE leistungsstarken Funktionen der Salesforce Enterprise Edition UND können Spender besser mit der Anwendung Nonprofit Success Pack verwalten. Legen wir also los.</label>
+        <label>Jetzt haben Sie Zugriff auf ALLE leistungsstarken Funktionen der Salesforce Enterprise Edition UND können Spender besser mit der Anwendung NPPatch verwalten. Legen wir also los.</label>
     </customLabels>
     <customLabels>
         <name>RP_Title</name>
-        <label>Willkommen bei Salesforce und dem Nonprofit Success Pack (NPSP)!</label>
+        <label>Willkommen bei Salesforce und dem NPPatch!</label>
     </customLabels>
     <customLabels>
         <name>RP_TrailheadLinkLabel</name>
-        <label>Erste Schritte mit Salesforce und dem NPSP-Trailmix</label>
+        <label>Erste Schritte mit Salesforce und dem NPPatch-Trailmix</label>
     </customLabels>
     <customLabels>
         <name>RP_TrailheadParagraph</name>
-        <label>Beginnen Sie mit der Arbeit mit dem Nonprofit Success Pack, indem Sie sich die Grundlagen von Salesforce und der Spender- und Freiwilligenverwaltung aneignen.</label>
+        <label>Beginnen Sie mit der Arbeit mit dem NPPatch, indem Sie sich die Grundlagen von Salesforce und der Spender- und Freiwilligenverwaltung aneignen.</label>
     </customLabels>
     <customLabels>
         <name>RP_TrailheadSubtitle</name>
@@ -1826,7 +1826,7 @@
     </customLabels>
     <customLabels>
         <name>RP_USParagraph</name>
-        <label>Holen Sie sich Hilfe bei Ihrer aktiven Community aus NPSP-Benutzern oder wenden Sie sich an Salesforce.org.</label>
+        <label>Holen Sie sich Hilfe bei Ihrer aktiven Community aus NPPatch-Benutzern oder wenden Sie sich an Salesforce.org.</label>
     </customLabels>
     <customLabels>
         <name>RP_UsHubLinkLabel</name>
@@ -1842,7 +1842,7 @@
     </customLabels>
     <customLabels>
         <name>RP_WebinarLinkLabel</name>
-        <label>NPSP-Produktdokumentation</label>
+        <label>NPPatch-Produktdokumentation</label>
     </customLabels>
     <customLabels>
         <name>RP_YoutubeChannel</name>
@@ -1894,7 +1894,7 @@
     </customLabels>
     <customLabels>
         <name>addrCiceroMissingAPIKey</name>
-        <label>Der Cicero-API-Schlüssel muss zur Adressüberprüfung im Feld &quot;Authentifizierungstoken&quot; angegeben sein. Melden Sie sich bei Salesforce an und gehen Sie auf der Seite &quot;NPSP-Einstellungen&quot; zu Personen | Adressen.</label>
+        <label>Der Cicero-API-Schlüssel muss zur Adressüberprüfung im Feld &quot;Authentifizierungstoken&quot; angegeben sein. Melden Sie sich bei Salesforce an und gehen Sie auf der Seite &quot;NPPatch-Einstellungen&quot; zu Personen | Adressen.</label>
     </customLabels>
     <customLabels>
         <name>addrCopyConAddBtnConfirm</name>
@@ -1914,7 +1914,7 @@
     </customLabels>
     <customLabels>
         <name>addrHHAccountOnly</name>
-        <label>Um Adressen in anderen Accounts als Haushalt-Accounts zu verwenden, müssen Sie unter &quot;NPSP-Einstellungen &gt; Personen &gt; Adressen&quot; Organisations-Account-Adressen auswählen.</label>
+        <label>Um Adressen in anderen Accounts als Haushalt-Accounts zu verwenden, müssen Sie unter &quot;NPPatch-Einstellungen &gt; Personen &gt; Adressen&quot; Organisations-Account-Adressen auswählen.</label>
     </customLabels>
     <customLabels>
         <name>addrHHAddressAlwaysDefault</name>
@@ -1984,7 +1984,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>alloDefaultNotPercent</name>
-        <label>Der Verwendungzweck, der in den NPSP-Einstellungen als Standard eingestellt ist, darf nur betragsbasierte und keine prozentsatzbasierten Zuweisungen haben.</label>
+        <label>Der Verwendungzweck, der in den NPPatch-Einstellungen als Standard eingestellt ist, darf nur betragsbasierte und keine prozentsatzbasierten Zuweisungen haben.</label>
     </customLabels>
     <customLabels>
         <name>alloDeleteRow</name>
@@ -2016,7 +2016,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>alloModifyCurrency</name>
-        <label>Sie können Zuweisungswährungen nicht direkt bearbeiten. NPSP aktualisiert Zuweisungswährungen, wenn Sie die Währung der übergeordneten Opportunity, Kampagne oder wiederkehrenden Spende aktualisieren.</label>
+        <label>Sie können Zuweisungswährungen nicht direkt bearbeiten. NPPatch aktualisiert Zuweisungswährungen, wenn Sie die Währung der übergeordneten Opportunity, Kampagne oder wiederkehrenden Spende aktualisieren.</label>
     </customLabels>
     <customLabels>
         <name>alloNegativeAmount</name>
@@ -2104,11 +2104,11 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdeRetirementBlockerMessage</name>
-        <label>Seit dem 1. Oktober 2020 wird die Batch-Dateneingabe nicht mehr unterstützt. Die meisten Funktionen wurden durch neuere Features in NPSP ersetzt. Wenn sich bei Ihnen noch Batches in Bearbeitung befinden, können Sie auf die entsprechenden Datensätze weiterhin zugreifen, Sie können sie aber nicht mehr mithilfe der Batch-Dateneingabe verarbeiten. Wenden Sie sich an den Support, wenn Sie auf in Bearbeitung befindliche Datensätze zugreifen müssen. &lt;br/&gt; Sie sollten sich Spendeneintrag als Alternative zur Batch-Dateneingabe ansehen.</label>
+        <label>Seit dem 1. Oktober 2020 wird die Batch-Dateneingabe nicht mehr unterstützt. Die meisten Funktionen wurden durch neuere Features in NPPatch ersetzt. Wenn sich bei Ihnen noch Batches in Bearbeitung befinden, können Sie auf die entsprechenden Datensätze weiterhin zugreifen, Sie können sie aber nicht mehr mithilfe der Batch-Dateneingabe verarbeiten. Wenden Sie sich an den Support, wenn Sie auf in Bearbeitung befindliche Datensätze zugreifen müssen. &lt;br/&gt; Sie sollten sich Spendeneintrag als Alternative zur Batch-Dateneingabe ansehen.</label>
     </customLabels>
     <customLabels>
         <name>bdeRetirementWarningBody</name>
-        <label>Am 1. Oktober 2020 wird die Batch-Dateneingabe deaktiviert und funktioniert dann in NPSP nicht mehr. Wenn sich zu diesem Zeitpunkt bei Ihnen noch Batches in Bearbeitung befinden, können Sie auf die entsprechenden Datensätze weiterhin zugreifen, Sie können sie aber nicht mehr mithilfe der Batch-Dateneingabe verarbeiten. Um einen reibungslosen Übergang zu gewährleisten, aktivieren und verwenden Sie den Spendeneintrag vor dem 1. Oktober.</label>
+        <label>Am 1. Oktober 2020 wird die Batch-Dateneingabe deaktiviert und funktioniert dann in NPPatch nicht mehr. Wenn sich zu diesem Zeitpunkt bei Ihnen noch Batches in Bearbeitung befinden, können Sie auf die entsprechenden Datensätze weiterhin zugreifen, Sie können sie aber nicht mehr mithilfe der Batch-Dateneingabe verarbeiten. Um einen reibungslosen Übergang zu gewährleisten, aktivieren und verwenden Sie den Spendeneintrag vor dem 1. Oktober.</label>
     </customLabels>
     <customLabels>
         <name>bdeRetirementWarningHeader</name>
@@ -2124,7 +2124,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiAccountCustomIdError</name>
-        <label>Das Feld {0} für die Einstellung der benutzerdefinierten eindeutigen Kennung des Accounts muss mit Feldern im NPSP-Datenimportobjekt übereinstimmen, deren API-Namen {1} und {2} lauten.</label>
+        <label>Das Feld {0} für die Einstellung der benutzerdefinierten eindeutigen Kennung des Accounts muss mit Feldern im NPPatch-Datenimportobjekt übereinstimmen, deren API-Namen {1} und {2} lauten.</label>
     </customLabels>
     <customLabels>
         <name>bdiAdditionalObjChildNotUpdated</name>
@@ -2184,7 +2184,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiContactCustomIdError</name>
-        <label>Das Feld {0} für die Einstellung der benutzerdefinierten eindeutigen Kennung des Kontakts muss mit Feldern im NPSP-Datenimportobjekt übereinstimmen, deren API-Namen {1} und {2} lauten.</label>
+        <label>Das Feld {0} für die Einstellung der benutzerdefinierten eindeutigen Kennung des Kontakts muss mit Feldern im NPPatch-Datenimportobjekt übereinstimmen, deren API-Namen {1} und {2} lauten.</label>
     </customLabels>
     <customLabels>
         <name>bdiContactMatchDupeMgmt</name>
@@ -2224,7 +2224,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiDataImporterDescription</name>
-        <label>Das NPSP-Datenimportprogramm hilft Ihnen, Ihre Daten leicht in das Nonprofit Success Pack zu importieren.</label>
+        <label>Das NPPatch-Datenimportprogramm hilft Ihnen, Ihre Daten leicht in das NPPatch zu importieren.</label>
     </customLabels>
     <customLabels>
         <name>bdiDataImporterInfoLine1</name>
@@ -2236,7 +2236,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiDataImporterInfoLine2b</name>
-        <label>Um nicht an die Grenzen des Service zu kommen, prüft das NPSP-Datenimportprogramm Adressen nicht über den Überprüfungsservice, den Sie möglicherweise in den NPSP-Einstellungen angegeben haben.</label>
+        <label>Um nicht an die Grenzen des Service zu kommen, prüft das NPPatch-Datenimportprogramm Adressen nicht über den Überprüfungsservice, den Sie möglicherweise in den NPPatch-Einstellungen angegeben haben.</label>
     </customLabels>
     <customLabels>
         <name>bdiDataImporterInfoLine3</name>
@@ -2256,7 +2256,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiDataImporterTitle</name>
-        <label>NPSP-Datenimport</label>
+        <label>NPPatch-Datenimport</label>
     </customLabels>
     <customLabels>
         <name>bdiDeploymentInProgress</name>
@@ -2300,7 +2300,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiDryRunTitle</name>
-        <label>NPSP-Datenimportprogramm – Testausführung</label>
+        <label>NPPatch-Datenimportprogramm – Testausführung</label>
     </customLabels>
     <customLabels>
         <name>bdiDupeMgmtMatchImportStatus</name>
@@ -2328,23 +2328,23 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationMultiMatch</name>
-        <label>Die Spendeninformationen wurden mit mehreren Opportunities abgeglichen, sodass das NPSP-Datenimportprogramm sie nicht importiert hat. Das Feld &quot;Mögliche Spendenverdopplungen&quot; enthält die Salesforce-IDs der übereinstimmenden Opportunities.</label>
+        <label>Die Spendeninformationen wurden mit mehreren Opportunities abgeglichen, sodass das NPPatch-Datenimportprogramm sie nicht importiert hat. Das Feld &quot;Mögliche Spendenverdopplungen&quot; enthält die Salesforce-IDs der übereinstimmenden Opportunities.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationNoMatch</name>
-        <label>Das NPSP-Datenimportprogramm hat keine Spendenverdopplung gefunden.</label>
+        <label>Das NPPatch-Datenimportprogramm hat keine Spendenverdopplung gefunden.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationRequireNoMatch</name>
-        <label>Die Spendeninformationen wurden mit einer oder mehreren Opportunities abgeglichen, aber die Einstellung erforderte keine Übereinstimmungen, sodass das NPSP-Datenimportprogramm sie nicht importiert hat. Das Feld &quot;Mögliche Spendenverdopplungen&quot; enthält die Salesforce-IDs der übereinstimmenden Opportunities.</label>
+        <label>Die Spendeninformationen wurden mit einer oder mehreren Opportunities abgeglichen, aber die Einstellung erforderte keine Übereinstimmungen, sodass das NPPatch-Datenimportprogramm sie nicht importiert hat. Das Feld &quot;Mögliche Spendenverdopplungen&quot; enthält die Salesforce-IDs der übereinstimmenden Opportunities.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorExistingDonationAllocations</name>
-        <label>Die angegebenen Zuweisungen zum Verwendungszweck stehen im Konflikt mit bestehenden Zuweisungen im Opportunity- Datensatz der Spende. Entfernen Sie die Zuweisungen aus dem Opportunity-Datensatz oder dem NPSP-Datenimport-Datensatz, und führen Sie dann die Verarbeitung mit dem NPSP-Datenimport erneut aus.</label>
+        <label>Die angegebenen Zuweisungen zum Verwendungszweck stehen im Konflikt mit bestehenden Zuweisungen im Opportunity- Datensatz der Spende. Entfernen Sie die Zuweisungen aus dem Opportunity-Datensatz oder dem NPPatch-Datenimport-Datensatz, und führen Sie dann die Verarbeitung mit dem NPPatch-Datenimport erneut aus.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorExistingPaymentAllocations</name>
-        <label>Die angegebenen Zuweisungen zum Verwendungszweck stehen im Konflikt mit bestehenden Zuweisungen im Zahlungsdatensatz der Spende. Entfernen Sie die Zuweisungen aus dem Zahlungsdatensatz oder dem NPSP-Datenimport-Datensatz, und führen Sie dann die Verarbeitung mit dem NPSP-Datenimport erneut aus.</label>
+        <label>Die angegebenen Zuweisungen zum Verwendungszweck stehen im Konflikt mit bestehenden Zuweisungen im Zahlungsdatensatz der Spende. Entfernen Sie die Zuweisungen aus dem Zahlungsdatensatz oder dem NPPatch-Datenimport-Datensatz, und führen Sie dann die Verarbeitung mit dem NPPatch-Datenimport erneut aus.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorGAUAllocationOver100</name>
@@ -2360,7 +2360,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiErrorInvalidIMatchDonations</name>
-        <label>Entweder konnte das NPSP-Datenimportprogramm die Apex-Klasse {0} nicht finden, oder diese Klasse unterstützt die {1} Oberfläche nicht.</label>
+        <label>Entweder konnte das NPPatch-Datenimportprogramm die Apex-Klasse {0} nicht finden, oder diese Klasse unterstützt die {1} Oberfläche nicht.</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorInvalidLastname</name>
@@ -2384,7 +2384,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiErrorPaymentMultiMatch</name>
-        <label>Die Spendeninformationen wurden mit mehreren Zahlungen abgeglichen, sodass das NPSP-Datenimportprogramm sie nicht importiert hat. Das Zahlungsfeld &quot;Mögliche Übereinstimmungen&quot; enthält die Salesforce-IDs der übereinstimmenden Zahlungen.</label>
+        <label>Die Spendeninformationen wurden mit mehreren Zahlungen abgeglichen, sodass das NPPatch-Datenimportprogramm sie nicht importiert hat. Das Zahlungsfeld &quot;Mögliche Übereinstimmungen&quot; enthält die Salesforce-IDs der übereinstimmenden Zahlungen.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUIBackToMapGroup</name>
@@ -2400,13 +2400,13 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiFMUIDescription1</name>
-        <label>Verbinden Sie das Feld, das Sie für das NPSP-Datenimportobjekt erstellt haben, mit dem Feld für Ihr Zielobjekt im
+        <label>Verbinden Sie das Feld, das Sie für das NPPatch-Datenimportobjekt erstellt haben, mit dem Feld für Ihr Zielobjekt im
             Raster unten. Sie können Felder anhand der Feldbezeichnung oder des Namens der Feld-API suchen.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUIDescription2</name>
-        <label>Felder des NPSP-Datenimportobjekts müssen kompatiblen Feldtypen Ihres Zielobjekts zugeordnet werden.
-            Wenn Sie ein NPSP-Datenimportfeld auswählen, stehen nur die kompatiblen Zielfelder zur Verfügung.</label>
+        <label>Felder des NPPatch-Datenimportobjekts müssen kompatiblen Feldtypen Ihres Zielobjekts zugeordnet werden.
+            Wenn Sie ein NPPatch-Datenimportfeld auswählen, stehen nur die kompatiblen Zielfelder zur Verfügung.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUIFieldAPIName</name>
@@ -2418,15 +2418,15 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiFMUISourceFieldLabelHelp</name>
-        <label>Das NPSP-Datenimportfeld, das Sie zuordnen möchten. Suchen Sie entweder nach der Feldbezeichnung oder dem API-Namen. Wenn Sie das Feld nicht finden können, überprüfen Sie, ob Sie das Feld für das NPSP-Datenimportobjekt erstellt haben.</label>
+        <label>Das NPPatch-Datenimportfeld, das Sie zuordnen möchten. Suchen Sie entweder nach der Feldbezeichnung oder dem API-Namen. Wenn Sie das Feld nicht finden können, überprüfen Sie, ob Sie das Feld für das NPPatch-Datenimportobjekt erstellt haben.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUISourceFieldDataTypeHelp</name>
-        <label>Der Datentyp des Felds, das Sie auf dem NPSP-Datenimportobjekt ausgewählt haben.</label>
+        <label>Der Datentyp des Felds, das Sie auf dem NPPatch-Datenimportobjekt ausgewählt haben.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUITargetFieldLabelHelp</name>
-        <label>Das Zielfeld, das Sie mit dem NPSP-Datenimportfeld verbinden möchten. Suchen Sie entweder nach der Feldbezeichnung oder dem API-Namen. Diese werden so gefiltert, dass nur Felder angezeigt werden, die mit dem Feld kompatibel sind, das Sie auf dem NPSP-Datenimportobjekt ausgewählt haben.</label>
+        <label>Das Zielfeld, das Sie mit dem NPPatch-Datenimportfeld verbinden möchten. Suchen Sie entweder nach der Feldbezeichnung oder dem API-Namen. Diese werden so gefiltert, dass nur Felder angezeigt werden, die mit dem Feld kompatibel sind, das Sie auf dem NPPatch-Datenimportobjekt ausgewählt haben.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUITargetFieldDataTypeHelp</name>
@@ -2454,7 +2454,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiFMUISearchSourceInputLabel</name>
-        <label>Suchen Sie nach dem Feld des NPSP-Datenimportobjekts anhand der Bezeichnung oder des API-Namens.</label>
+        <label>Suchen Sie nach dem Feld des NPPatch-Datenimportobjekts anhand der Bezeichnung oder des API-Namens.</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUISearchTargetInputLabel</name>
@@ -2462,7 +2462,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiFMUISourceObject</name>
-        <label>Quelle (NPSP-Datenimportobjekt)</label>
+        <label>Quelle (NPPatch-Datenimportobjekt)</label>
     </customLabels>
     <customLabels>
         <name>bdiFMUISuccessful</name>
@@ -2498,7 +2498,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiHouseholdModelRequired</name>
-        <label>Das NPSP-Datenimportprogramm funktioniert nur mit dem Haushalt-Accountmodell.</label>
+        <label>Das NPPatch-Datenimportprogramm funktioniert nur mit dem Haushalt-Accountmodell.</label>
     </customLabels>
     <customLabels>
         <name>bdiIgnored</name>
@@ -2510,7 +2510,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiInvalidBatchId</name>
-        <label>Die NPSP Datenimport-Batch-ID {0} ist ungültig.</label>
+        <label>Die NPPatch Datenimport-Batch-ID {0} ist ungültig.</label>
     </customLabels>
     <customLabels>
         <name>bdiInvalidDonationMatchingBehavior</name>
@@ -2524,7 +2524,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
         <name>bdiMassDeleteWarning</name>
         <label>Sie sind dabei, {0} Datensatz/Datensätze zu löschen.
         &lt;br/&gt;
-        &lt;br/&gt;&lt;b&gt;WICHTIG:&lt;/b&gt; Wenn Sie mithilfe der Funktion Batch-Spendeneintrag Spenden in Ihrer Organisation erstellen, wird die Verwendung der Schaltfläche &quot;Massenlöschen&quot; nicht empfohlen. Hinweise zum Löschen von Datensätzen mit dem Data Loader finden Sie in der NPSP-Dokumentation.</label>
+        &lt;br/&gt;&lt;b&gt;WICHTIG:&lt;/b&gt; Wenn Sie mithilfe der Funktion Batch-Spendeneintrag Spenden in Ihrer Organisation erstellen, wird die Verwendung der Schaltfläche &quot;Massenlöschen&quot; nicht empfohlen. Hinweise zum Löschen von Datensätzen mit dem Data Loader finden Sie in der NPPatch-Dokumentation.</label>
     </customLabels>
     <customLabels>
         <name>bdiMatched</name>
@@ -2632,7 +2632,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiOMUIPageDescriptionPt2</name>
-        <label>Objektgruppen sind Sammlungen von Feldzuordnungen, die dem NPSP-Datenimport-Tool mitteilen, welche Datensatztypen (z. B. Kontakte, Opportunities, Zahlungen usw.) erstellt oder aktualisiert werden sollen. NPSP kann verknüpfte Datensätze innerhalb einer einzelnen Zeile Ihres Imports miteinander verknüpfen, da Feldzuordnungen in dieser Weise in Objektgruppen gebündelt sind.</label>
+        <label>Objektgruppen sind Sammlungen von Feldzuordnungen, die dem NPPatch-Datenimport-Tool mitteilen, welche Datensatztypen (z. B. Kontakte, Opportunities, Zahlungen usw.) erstellt oder aktualisiert werden sollen. NPPatch kann verknüpfte Datensätze innerhalb einer einzelnen Zeile Ihres Imports miteinander verknüpfen, da Feldzuordnungen in dieser Weise in Objektgruppen gebündelt sind.</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIPageDescriptionPt3</name>
@@ -2677,11 +2677,11 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiOMUIErrorNoUnmappedFieldsPt1</name>
-        <label>Fehler: Es sind keine nicht zugeordneten Felder im NPSP-Datenimportobjekt vorhanden zur Verwendung durch</label>
+        <label>Fehler: Es sind keine nicht zugeordneten Felder im NPPatch-Datenimportobjekt vorhanden zur Verwendung durch</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIErrorNoUnmappedFieldsPt2</name>
-        <label>. Erstellen Sie im NPSP-Datenimportobjekt bei Bedarf neue Felder.</label>
+        <label>. Erstellen Sie im NPPatch-Datenimportobjekt bei Bedarf neue Felder.</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIFieldMappingProblemHeader</name>
@@ -2693,7 +2693,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiOMUIFieldMappingProblemMessagePart2</name>
-        <label>Vergewissern Sie sich, dass die NPSP-Datenimport- und Zielfelder noch vorhanden sind, und bearbeiten oder löschen Sie die Feldzuordnung.</label>
+        <label>Vergewissern Sie sich, dass die NPPatch-Datenimport- und Zielfelder noch vorhanden sind, und bearbeiten oder löschen Sie die Feldzuordnung.</label>
     </customLabels>
     <customLabels>
         <name>bdiPositiveNumber</name>
@@ -2717,7 +2717,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bdiSelectCantProcessBatchDIRecords</name>
-        <label>Sie haben Datensätze ausgewählt, die mit einem NPSP-Datenimport-Batch verknüpft sind. Zum Importieren von Datensätzen, die einem NPSP-Datenimport-Batch zugeordnet sind, öffnen Sie den Batch, und klicken Sie auf &quot;Batch verarbeiten&quot;.</label>
+        <label>Sie haben Datensätze ausgewählt, die mit einem NPPatch-Datenimport-Batch verknüpft sind. Zum Importieren von Datensätzen, die einem NPPatch-Datenimport-Batch zugeordnet sind, öffnen Sie den Batch, und klicken Sie auf &quot;Batch verarbeiten&quot;.</label>
     </customLabels>
     <customLabels>
         <name>bdiSelectCantProcessImportedRecords</name>
@@ -2789,15 +2789,15 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationDateRangeHelp</name>
-        <label>Geben Sie die Anzahl an Tagen ab dem Spendendatum ein, die auf der Suche nach einer übereinstimmenden Opportunity oder Zahlung berücksichtigt werden sollen. NPSP wählt die übereinstimmende Opportunity oder Zahlung aus, deren Datum in die Anzahl an Tagen fällt UND am nächsten am Spendendatum liegt.</label>
+        <label>Geben Sie die Anzahl an Tagen ab dem Spendendatum ein, die auf der Suche nach einer übereinstimmenden Opportunity oder Zahlung berücksichtigt werden sollen. NPPatch wählt die übereinstimmende Opportunity oder Zahlung aus, deren Datum in die Anzahl an Tagen fällt UND am nächsten am Spendendatum liegt.</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationMatchingBehaviorHelp</name>
-        <label>Definiert, wie NPSP Spendenverdopplungen handhaben sollte.</label>
+        <label>Definiert, wie NPPatch Spendenverdopplungen handhaben sollte.</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationMatchingClassHelp</name>
-        <label>Der Entwicklername einer Apex-Klasse, die die BDI_IMatching-Schnittstelle für Spenden implementiert. Ohne Angabe nimmt NPSP die Verdopplung vor.</label>
+        <label>Der Entwicklername einer Apex-Klasse, die die BDI_IMatching-Schnittstelle für Spenden implementiert. Ohne Angabe nimmt NPPatch die Verdopplung vor.</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchDonationMatchingRuleHelp</name>
@@ -2821,7 +2821,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bgeBatchPostProcessClassHelp</name>
-        <label>Der Entwicklername einer Apex-Klasse, der die BDI_IPostProcess-Oberfläche für NPSP-Batch-Datensätze implementiert.</label>
+        <label>Der Entwicklername einer Apex-Klasse, der die BDI_IPostProcess-Oberfläche für NPPatch-Batch-Datensätze implementiert.</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchProcessUsingScheduledJobHelp</name>
@@ -2829,7 +2829,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bgeBatchRunOpportunityRollupsWhileProcessingHelp</name>
-        <label>Wenn dieses Kontrollkästchen aktiviert ist, berechnet NPSP die Spender-Rollups, wenn Spenden verarbeitet werden. Ist es nicht aktiviert, werden die Spender-Rollups während des nächtlichen standardmäßig geplanten Auftrags berechnet. Beachten Sie, dass die Verarbeitung dieses Batches durch Auswahl dieses Kontrollkästchens verlangsamt werden kann.</label>
+        <label>Wenn dieses Kontrollkästchen aktiviert ist, berechnet NPPatch die Spender-Rollups, wenn Spenden verarbeitet werden. Ist es nicht aktiviert, werden die Spender-Rollups während des nächtlichen standardmäßig geplanten Auftrags berechnet. Beachten Sie, dass die Verarbeitung dieses Batches durch Auswahl dieses Kontrollkästchens verlangsamt werden kann.</label>
     </customLabels>
     <customLabels>
         <name>bgeBatchOverview</name>
@@ -3013,7 +3013,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bgeRetirementWarningBody</name>
-        <label>Am 13. Juli 2021 wird das Legacy-Batch-Spendeneintragsmodul deaktiviert und funktioniert dann in NPSP nicht mehr. Wenn sich zu diesem Zeitpunkt bei Ihnen noch Batches in Bearbeitung befinden, können Sie auf die entsprechenden Datensätze weiterhin zugreifen, Sie können sie aber nicht mehr mithilfe der Batch-Spendeneingabe verarbeiten. Um einen reibungslosen Übergang zu gewährleisten, aktivieren und verwenden Sie vor dem 13. Juli den neueren Spendeneintrag.</label>
+        <label>Am 13. Juli 2021 wird das Legacy-Batch-Spendeneintragsmodul deaktiviert und funktioniert dann in NPPatch nicht mehr. Wenn sich zu diesem Zeitpunkt bei Ihnen noch Batches in Bearbeitung befinden, können Sie auf die entsprechenden Datensätze weiterhin zugreifen, Sie können sie aber nicht mehr mithilfe der Batch-Spendeneingabe verarbeiten. Um einen reibungslosen Übergang zu gewährleisten, aktivieren und verwenden Sie vor dem 13. Juli den neueren Spendeneintrag.</label>
     </customLabels>
     <customLabels>
         <name>bgeRetirementWarningHeader</name>
@@ -3044,11 +3044,11 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>bgeUnmappedFieldsNoticeMessageAdvancedMapping</name>
-        <label>Die folgenden Felder sind in diesem Batch enthalten, aber ihre Feldzuordnungen wurden gelöscht: {0}. Um dieses Problem zu beheben, navigieren Sie in den NPSP-Einstellungen zu &quot;Erweiterte Zuordnung&quot;, und ordnen Sie die Felder erneut zu.</label>
+        <label>Die folgenden Felder sind in diesem Batch enthalten, aber ihre Feldzuordnungen wurden gelöscht: {0}. Um dieses Problem zu beheben, navigieren Sie in den NPPatch-Einstellungen zu &quot;Erweiterte Zuordnung&quot;, und ordnen Sie die Felder erneut zu.</label>
     </customLabels>
     <customLabels>
         <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>Die folgenden Felder sind in diesem Batch enthalten, aber ihre Feldzuordnungen wurden gelöscht: {0}. Um dieses Problem zu beheben, navigieren Sie zum NPSP-Datenimportobjekt, und ordnen Sie die Felder erneut mithilfe von Hilfetext zu.</label>
+        <label>Die folgenden Felder sind in diesem Batch enthalten, aber ihre Feldzuordnungen wurden gelöscht: {0}. Um dieses Problem zu beheben, navigieren Sie zum NPPatch-Datenimportobjekt, und ordnen Sie die Felder erneut mithilfe von Hilfetext zu.</label>
     </customLabels>
     <customLabels>
         <name>bgeWizardShowAdvancedOptions</name>
@@ -3158,7 +3158,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>batchNumberSettingsDescription</name>
-        <label>Batch-Nummern sind eindeutige Bezeichner, die im Spendeneintrag und im NPSP-Datenimport verwendet werden. Der automatisch nummerierte Wert wird in den Batch-Nummernfeldern für Opportunities und Zahlungen angezeigt.</label>
+        <label>Batch-Nummern sind eindeutige Bezeichner, die im Spendeneintrag und im NPPatch-Datenimport verwendet werden. Der automatisch nummerierte Wert wird in den Batch-Nummernfeldern für Opportunities und Zahlungen angezeigt.</label>
     </customLabels>
     <customLabels>
         <name>batchNumberSettingsHeader</name>
@@ -3190,19 +3190,19 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>gePaymentProcessedWarning</name>
-        <label>{0} hat die Zahlung erfolgreich verarbeitet. Das Ändern von Spender, Datum, Betrag oder Zahlungsmethode führt zu inkonsistenten Datensätzen für die gleiche Transaktion in {0} und NPSP.</label>
+        <label>{0} hat die Zahlung erfolgreich verarbeitet. Das Ändern von Spender, Datum, Betrag oder Zahlungsmethode führt zu inkonsistenten Datensätzen für die gleiche Transaktion in {0} und NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAdvancedMapping3</name>
-        <label>Die vollständige Dokumentation zum Einrichten der Erweiterten Zuordnung finden Sie &lt;a href=&quot;https://powerofus.force.com/NPSP_Advanced_Mapping&quot; target=&quot;_blank&quot;&gt;hier&lt;/a&gt;.</label>
+        <label>Die vollständige Dokumentation zum Einrichten der Erweiterten Zuordnung finden Sie hier.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
-        <label>Die vollständige Dokumentation zu anpassbaren Rollups finden Sie &lt;a href=&quot;https://powerofus.force.com/NPSP_Customizable_Rollups_Overview&quot; target=&quot;_blank&quot;&gt;hier&lt;/a&gt;.</label>
+        <label>Die vollständige Dokumentation zu anpassbaren Rollups finden Sie hier.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpHHObjectOverview</name>
-        <label>Weitere Informationen zum empfohlenen Haushalt-Account-Modell finden Sie in der &lt;a href=&quot;https://powerofus.force.com/NPSP_Account_Model&quot; target=&quot;_blank&quot;&gt;NPSP-Dokumentation&lt;/a&gt;.</label>
+        <label>Weitere Informationen zum empfohlenen Haushalt-Account-Modell finden Sie in der NPPatch-Dokumentation.</label>
     </customLabels>
     <customLabels>
         <name>commonAssistiveError</name>
@@ -3582,7 +3582,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>conMergeSeeDupConText</name>
-        <label>Zeigen Sie alle doppelten Kontakte an, die mithilfe von Zuordnungsregeln gefunden wurden. &lt;a href=&quot;https://help.salesforce.com/s/articleView?id=sfdo.NPSP_Merge_Contacts.htm&amp;type=5&quot; target=&quot;_blank&quot;&gt;&lt;b&gt; Weitere Informationen &lt;/b&gt;&lt;/a&gt;</label>
+        <label>Zeigen Sie alle doppelten Kontakte an, die mithilfe von Zuordnungsregeln gefunden wurden.</label>
     </customLabels>
     <customLabels>
         <name>conMergeSeeDupConDRS</name>
@@ -3590,11 +3590,11 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>elevateAdNotificationFor234Body</name>
-        <label>Wenn Elevate mit NPSP verbunden ist, fließen Spenden aus Ihren Online-Formularen automatisch in NPSP. Elevate verarbeitet außerdem Zahlungen und aktualisiert die Spenderdaten in NPSP.</label>
+        <label>Wenn Elevate mit NPPatch verbunden ist, fließen Spenden aus Ihren Online-Formularen automatisch in NPPatch. Elevate verarbeitet außerdem Zahlungen und aktualisiert die Spenderdaten in NPPatch.</label>
     </customLabels>
     <customLabels>
         <name>elevateAdNotificationFor234Title</name>
-        <label>Optimieren der Verarbeitung von Spenden mit Salesforce.org Elevate und NPSP</label>
+        <label>Optimieren der Verarbeitung von Spenden mit Salesforce.org Elevate und NPPatch</label>
     </customLabels>
     <customLabels>
         <name>engagementPlanCantEdit</name>
@@ -3816,7 +3816,7 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     </customLabels>
     <customLabels>
         <name>geBodyBatchHeaderLeftCol</name>
-        <label>Wählen Sie die Felder aus, die Sie in Ihren Batch-Header aufnehmen möchten. Aktivieren Sie das Kontrollkästchen, um ein Feld hinzuzufügen, und deaktivieren Sie es, um das Feld vom Formular zu entfernen. Wenn Sie im Batch-Header über zusätzliche benutzerdefinierte Felder verfügen möchten, fügen Sie diese im NPSP-Datenimport-Batch-Objekt hinzu.</label>
+        <label>Wählen Sie die Felder aus, die Sie in Ihren Batch-Header aufnehmen möchten. Aktivieren Sie das Kontrollkästchen, um ein Feld hinzuzufügen, und deaktivieren Sie es, um das Feld vom Formular zu entfernen. Wenn Sie im Batch-Header über zusätzliche benutzerdefinierte Felder verfügen möchten, fügen Sie diese im NPPatch-Datenimport-Batch-Objekt hinzu.</label>
     </customLabels>
     <customLabels>
         <name>geBodyBatchHeaderRightCol</name>
@@ -3853,11 +3853,11 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
         &lt;/br&gt;
         &lt;ol&gt;
             &lt;li&gt; Feld auf dem Zielobjekt erstellen. &lt;/li&gt;
-            &lt;li&gt; Feld auf dem NPSP-Datenimportobjekt erstellen. &lt;/li&gt;
-            &lt;li&gt; Wenn diese Teil einer neuen Objektgruppe ist, erstellen Sie zusätzliche Felder für eine neue Objektgruppe, und erstellen Sie die neue Objektgruppe in den NPSP-Einstellungen. &lt;/li&gt;
-            &lt;li&gt; Fügen Sie in den NPSP-Einstellungen &quot;Feldzuordnung&quot; hinzu, um das NPSP-Datenimportfeld mit dem Zielfeld zu verbinden. &lt;/li&gt;
+            &lt;li&gt; Feld auf dem NPPatch-Datenimportobjekt erstellen. &lt;/li&gt;
+            &lt;li&gt; Wenn diese Teil einer neuen Objektgruppe ist, erstellen Sie zusätzliche Felder für eine neue Objektgruppe, und erstellen Sie die neue Objektgruppe in den NPPatch-Einstellungen. &lt;/li&gt;
+            &lt;li&gt; Fügen Sie in den NPPatch-Einstellungen &quot;Feldzuordnung&quot; hinzu, um das NPPatch-Datenimportfeld mit dem Zielfeld zu verbinden. &lt;/li&gt;
         &lt;/ol&gt;
-        Weitere Detailinformationen erfahren Sie aus der NPSP-Dokumentation zur erweiterten Zuordnung.</label>
+        Weitere Detailinformationen erfahren Sie aus der NPPatch-Dokumentation zur erweiterten Zuordnung.</label>
     </customLabels>
     <customLabels>
         <name>geBodyFormFieldsModalDeleteSection</name>
@@ -4033,15 +4033,15 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>geErrorCardChargedBDIFailed</name>
-        <label>Elevate hat die Zahlung erfolgreich verarbeitet, jedoch hat NPSP den Datensatz für die Transaktion in Salesforce nicht erstellt. Beheben Sie die Fehler, und reichen Sie das Formular erneut ein, um den Salesforce-Datensatz zu erstellen.</label>
+        <label>Elevate hat die Zahlung erfolgreich verarbeitet, jedoch hat NPPatch den Datensatz für die Transaktion in Salesforce nicht erstellt. Beheben Sie die Fehler, und reichen Sie das Formular erneut ein, um den Salesforce-Datensatz zu erstellen.</label>
     </customLabels>
     <customLabels>
         <name>geElevateDeleteErrorLog</name>
-        <label>Die Spende wurde aus {0} gelöscht, aber Spendeneintrag kann die Spende nicht löschen. Entfernen Sie den NPSP-Datenimport-Datensatz der Spende mit der ID {1} aus dem Batch mit der ID {2} in den NPSP-Datenimport-Batches.</label>
+        <label>Die Spende wurde aus {0} gelöscht, aber Spendeneintrag kann die Spende nicht löschen. Entfernen Sie den NPPatch-Datenimport-Datensatz der Spende mit der ID {1} aus dem Batch mit der ID {2} in den NPPatch-Datenimport-Batches.</label>
     </customLabels>
     <customLabels>
         <name>geElevateUpdateErrorLog</name>
-        <label>Die Spende wurde in {0} aktualisiert, aber Spendeneintrag kann die Spende nicht aktualisieren. Aktualisieren Sie den NPSP-Datenimport-Datensatz der Spende mit der ID {1} aus dem Batch mit der ID {2} in den NPSP-Datenimport-Batches.</label>
+        <label>Die Spende wurde in {0} aktualisiert, aber Spendeneintrag kann die Spende nicht aktualisieren. Aktualisieren Sie den NPPatch-Datenimport-Datensatz der Spende mit der ID {1} aus dem Batch mit der ID {2} in den NPPatch-Datenimport-Batches.</label>
     </customLabels>
     <customLabels>
         <name>geErrorElevateDelete</name>
@@ -4100,16 +4100,16 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
         <label>SETUP-CHECKLISTE FÜR ADMINISTRATOREN</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistExploreNPSPDesc</name>
+        <name>gsChecklistExploreNPPatchDesc</name>
         <label>Machen Sie sich mit den wichtigsten Konzepten und Funktionen vertraut.</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistExploreNPSPTitle</name>
-        <label>Erkunden Sie das Nonprofit Success Pack (NPSP)</label>
+        <name>gsChecklistExploreNPPatchTitle</name>
+        <label>Erkunden Sie das NPPatch</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemAddUserDesc</name>
-        <label>Erteilen Sie Benutzern Zugriff auf NPSP, und verwalten Sie die Berechtigungen für Ihre Organisation, um sicherzustellen, dass die richtigen Personen Zugriff auf genau das haben, was sie brauchen, damit alles reibungslos läuft.</label>
+        <label>Erteilen Sie Benutzern Zugriff auf NPPatch, und verwalten Sie die Berechtigungen für Ihre Organisation, um sicherzustellen, dass die richtigen Personen Zugriff auf genau das haben, was sie brauchen, damit alles reibungslos läuft.</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemAddUserLinkLabel</name>
@@ -4133,7 +4133,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>gsChecklistItemCreateDonationDesc</name>
-        <label>Behalten Sie den Überblick über Spenden, Zuschüsse oder andere Arten von Einnahmen, damit Sie Spendenmuster erkennen und verstehen können, was das Spenden auf der Seite der Auftraggeber antreibt. Lernen Sie zunächst, wie Sie Spenden in NPSP eingeben.</label>
+        <label>Behalten Sie den Überblick über Spenden, Zuschüsse oder andere Arten von Einnahmen, damit Sie Spendenmuster erkennen und verstehen können, was das Spenden auf der Seite der Auftraggeber antreibt. Lernen Sie zunächst, wie Sie Spenden in NPPatch eingeben.</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemCreateDonationLinkLabel</name>
@@ -4181,7 +4181,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>gsChecklistItemGoFurtherLinkLabel</name>
-        <label>Erfahren Sie mehr über NPSP in Trailhead</label>
+        <label>Erfahren Sie mehr über NPPatch in Trailhead</label>
     </customLabels>
     <customLabels>
         <name>donationHistoryFilterSelectAYear</name>
@@ -4193,7 +4193,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>gsChecklistItemImportDataDesc</name>
-        <label>Verwenden Sie den NPSP-Datenimport, um Ihre Datensätze in Salesforce zu übertragen.</label>
+        <label>Verwenden Sie den NPPatch-Datenimport, um Ihre Datensätze in Salesforce zu übertragen.</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemImportDataPriBtnLabel</name>
@@ -4228,48 +4228,48 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
         <label>Verwalten von Änderungen an Ihrer Organisation</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudDesc</name>
-        <label>Dieser kurze Überblick soll Ihnen zeigen, was mit NPSP alles möglich ist. Sie können aber auch tiefer eintauchen und die vielen anderen Funktionen entdecken, die Ihrer Organisation zur Verfügung stehen.</label>
+        <name>gsChecklistItemNPPatchCloudDesc</name>
+        <label>Dieser kurze Überblick soll Ihnen zeigen, was mit NPPatch alles möglich ist. Sie können aber auch tiefer eintauchen und die vielen anderen Funktionen entdecken, die Ihrer Organisation zur Verfügung stehen.</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudPriBtnLabel</name>
+        <name>gsChecklistItemNPPatchCloudPriBtnLabel</name>
         <label>Funktionen anzeigen</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudLinkLabel</name>
-        <label>Weitere Informationen zu NPSP-Funktionen in Trailhead</label>
+        <name>gsChecklistItemNPPatchCloudLinkLabel</name>
+        <label>Weitere Informationen zu NPPatch-Funktionen in Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPCloudTitle</name>
+        <name>gsChecklistItemNPPatchCloudTitle</name>
         <label>Informationen zu anderen Funktionen der Nonprofit Cloud</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPGuideDesc</name>
+        <name>gsChecklistItemNPPatchGuideDesc</name>
         <label>Nehmen Sie sich Zeit, Ihre Implementierung sorgfältig zu planen und sicherzustellen, dass Ihre Salesforce-Organisation den Anforderungen Ihrer gemeinnützigen Organisation entspricht.</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPGuidePriBtnLabel</name>
+        <name>gsChecklistItemNPPatchGuidePriBtnLabel</name>
         <label>PDF herunterladen</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPGuideTitle</name>
-        <label>NPSP-Planungshilfe</label>
+        <name>gsChecklistItemNPPatchGuideTitle</name>
+        <label>NPPatch-Planungshilfe</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsDesc</name>
-        <label>Navigieren Sie zur Seite &quot;NPSP-Einstellungen&quot;, und überprüfen Sie gründlich, ob die Einstellungen für Ihre Organisation korrekt sind und so funktionieren, wie Sie es erwarten.</label>
+        <name>gsChecklistItemNPPatchSettingsDesc</name>
+        <label>Navigieren Sie zur Seite &quot;NPPatch-Einstellungen&quot;, und überprüfen Sie gründlich, ob die Einstellungen für Ihre Organisation korrekt sind und so funktionieren, wie Sie es erwarten.</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsPriBtnLabel</name>
-        <label>NPSP-Einstellungen</label>
+        <name>gsChecklistItemNPPatchSettingsPriBtnLabel</name>
+        <label>NPPatch-Einstellungen</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsLinkLabel</name>
-        <label>Weitere Informationen zu NPSP-Einstellungen finden Sie in der Planungshilfe</label>
+        <name>gsChecklistItemNPPatchSettingsLinkLabel</name>
+        <label>Weitere Informationen zu NPPatch-Einstellungen finden Sie in der Planungshilfe</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemNPSPSettingsTitle</name>
-        <label>Anpassen von NPSP-Einstellungen</label>
+        <name>gsChecklistItemNPPatchSettingsTitle</name>
+        <label>Anpassen von NPPatch-Einstellungen</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemPageLayoutsDesc</name>
@@ -4284,19 +4284,19 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
         <label>Anpassen von Seitenlayouts</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPDesc</name>
+        <name>gsChecklistItemPrepareNPPatchDesc</name>
         <label>Setzen Sie sich konkrete Ziele, und lernen Sie bewährte Methoden für die Implementierung der Nonprofit Cloud kennen.</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPPriBtnLabel</name>
+        <name>gsChecklistItemPrepareNPPatchPriBtnLabel</name>
         <label>Festlegen von Zielen</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPLinkLabel</name>
-        <label>Weitere Informationen zu Erfolgen mit NPSP Success in Trailhead</label>
+        <name>gsChecklistItemPrepareNPPatchLinkLabel</name>
+        <label>Weitere Informationen zu Erfolgen mit NPPatch Success in Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gsChecklistItemPrepareNPSPTitle</name>
+        <name>gsChecklistItemPrepareNPPatchTitle</name>
         <label>Bereiten Sie Ihren Erfolg mit Nonprofit Cloud vor</label>
     </customLabels>
     <customLabels>
@@ -4321,7 +4321,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>gsChecklistItemRunningReportsLinkLabel</name>
-        <label>Erfahren Sie in Trailhead, wie Sie NPSP-Berichte und -Dashboards anpassen</label>
+        <label>Erfahren Sie in Trailhead, wie Sie NPPatch-Berichte und -Dashboards anpassen</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemRunningReportsTitle</name>
@@ -4377,7 +4377,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>gseuChecklistCreateConstituentRecordsDesc</name>
-        <label>Menschen sind das Herzstück jeder gemeinnützigen Organisation. Entdecken Sie die Funktionen des Nonprofit Success Packs, um zu erfahren, wie Sie Ihre Auftraggeber und deren private, persönliche und berufliche Verbindungen verwalten können.</label>
+        <label>Menschen sind das Herzstück jeder gemeinnützigen Organisation. Entdecken Sie die Funktionen des NPPatchs, um zu erfahren, wie Sie Ihre Auftraggeber und deren private, persönliche und berufliche Verbindungen verwalten können.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistCreateConstituentRecordsTitle</name>
@@ -4389,7 +4389,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactOrganizationDesc</name>
-        <label>Mithilfe von Zugehörigkeiten erfassen Sie in NPSP wichtige Verbindungen zwischen Ihren Auftraggebern und den ihnen zugeordneten Organisationen, wie Arbeitgeber, Schule oder Unternehmen. Verbinden Sie einen Kontakt mit einer Organisation, indem Sie Organisationszugehörigkeiten verwenden.</label>
+        <label>Mithilfe von Zugehörigkeiten erfassen Sie in NPPatch wichtige Verbindungen zwischen Ihren Auftraggebern und den ihnen zugeordneten Organisationen, wie Arbeitgeber, Schule oder Unternehmen. Verbinden Sie einen Kontakt mit einer Organisation, indem Sie Organisationszugehörigkeiten verwenden.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactOrganizationLink</name>
@@ -4405,7 +4405,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactsRelationshipsDesc</name>
-        <label>Mithilfe von Beziehungen erfassen Sie in NPSP wichtige Verbindungen zwischen Ihren Auftraggebern. Verbinden Sie Kontakte mithilfe der auf Beziehungen bezogenen Liste in Kontaktdatensätzen.</label>
+        <label>Mithilfe von Beziehungen erfassen Sie in NPPatch wichtige Verbindungen zwischen Ihren Auftraggebern. Verbinden Sie Kontakte mithilfe der auf Beziehungen bezogenen Liste in Kontaktdatensätzen.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemConnectContactsRelationshipsLink</name>
@@ -4444,16 +4444,16 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
         <label>Nonprofit Cloud beinhaltet Apps, Tools, Features, Services und Technologie, die dafür ausgelegt sind, die besonderen Bedürfnisse von gemeinnützigen Organisationen zu erfüllen.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemWhatIsNPSPDesc</name>
-        <label>Die Grundlage der Nonprofit Cloud bildet die App Nonprofit Success Pack (NPSP). NPSP hilft Ihnen, Ihre Auftraggeber und Spendenaktionen zu verwalten. Wenn Ihnen jemand sagt, dass er die &quot;gemeinnützige Version&quot; von Salesforce verwendet, spricht er in der Regel von NPSP.</label>
+        <name>gseuChecklistItemWhatIsNPPatchDesc</name>
+        <label>Die Grundlage der Nonprofit Cloud bildet die App NPPatch. NPPatch hilft Ihnen, Ihre Auftraggeber und Spendenaktionen zu verwalten. Wenn Ihnen jemand sagt, dass er die &quot;gemeinnützige Version&quot; von Salesforce verwendet, spricht er in der Regel von NPPatch.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemWhatIsNPSPLink</name>
-        <label>Erfahren Sie mehr über Nonprofit Success Pack in Trailhead</label>
+        <name>gseuChecklistItemWhatIsNPPatchLink</name>
+        <label>Erfahren Sie mehr über NPPatch in Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemWhatIsNPSPTitle</name>
-        <label>Was ist Nonprofit Success Pack?</label>
+        <name>gseuChecklistItemWhatIsNPPatchTitle</name>
+        <label>Was ist NPPatch?</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistMakeItYourDesc</name>
@@ -4472,12 +4472,12 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
         <label>Bringen Sie Ihre Benutzer an Bord</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistWelcomeNPSPDesc</name>
-        <label>Nutzen Sie diese grundlegenden Ressourcen, um mit Ihrer NPSP-Reise zu beginnen.</label>
+        <name>gseuChecklistWelcomeNPPatchDesc</name>
+        <label>Nutzen Sie diese grundlegenden Ressourcen, um mit Ihrer NPPatch-Reise zu beginnen.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistWelcomeNPSPTitle</name>
-        <label>Willkommen beim Nonprofit Success Pack und der Nonprofit Cloud</label>
+        <name>gseuChecklistWelcomeNPPatchTitle</name>
+        <label>Willkommen beim NPPatch und der Nonprofit Cloud</label>
     </customLabels>
     <customLabels>
         <name>gsChecklistItemFundraisingProcessDesc</name>
@@ -4497,7 +4497,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>gseuChecklistWorkRecordsDesc</name>
-        <label>Nachdem Sie Ihre Auftraggeber- und Spendendaten in NPSP eingegeben haben, müssen Sie die Datensätze, die Sie bearbeiten, auch leicht finden können, um mit ihnen zu arbeiten.</label>
+        <label>Nachdem Sie Ihre Auftraggeber- und Spendendaten in NPPatch eingegeben haben, müssen Sie die Datensätze, die Sie bearbeiten, auch leicht finden können, um mit ihnen zu arbeiten.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistWorkRecordsTitle</name>
@@ -4505,7 +4505,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemGlobalSearchDesc</name>
-        <label>Wenn Sie gerade erst in NPSP einsteigen, kann es schwierig sein, Datensätze zu finden. Verwenden Sie die globale Suche, um Ihre gesamte Salesforce-Organisation zu durchsuchen und schnell zu finden, was Sie brauchen.</label>
+        <label>Wenn Sie gerade erst in NPPatch einsteigen, kann es schwierig sein, Datensätze zu finden. Verwenden Sie die globale Suche, um Ihre gesamte Salesforce-Organisation zu durchsuchen und schnell zu finden, was Sie brauchen.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemGlobalSearchLinkLabel</name>
@@ -4552,24 +4552,24 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
         <label>Arbeiten mit mehreren Datensätzen mithilfe von Listenansichten</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportDesc</name>
-        <label>NPSP enthält 87 der gängigsten Berichte zu Auftraggebern und Spendenaktionen. Verwenden Sie diese Berichte wie sie sind, oder passen Sie sie an.</label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportDesc</name>
+        <label>NPPatch enthält 87 der gängigsten Berichte zu Auftraggebern und Spendenaktionen. Verwenden Sie diese Berichte wie sie sind, oder passen Sie sie an.</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportLinkLabel</name>
-        <label>Erfahren Sie mehr über NPSP-Berichte in Trailhead</label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportLinkLabel</name>
+        <label>Erfahren Sie mehr über NPPatch-Berichte in Trailhead</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportPriBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel</name>
         <label>Ausführen von Berichten</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportSecBtnLabel</name>
+        <name>gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel</name>
         <label>Arbeitsmappe &quot;Berichte&quot;</label>
     </customLabels>
     <customLabels>
-        <name>gseuChecklistItemPrebuiltNPSPReportTitle</name>
-        <label>Ausführen eines vorkonfigurierten NPSP-Berichts</label>
+        <name>gseuChecklistItemPrebuiltNPPatchReportTitle</name>
+        <label>Ausführen eines vorkonfigurierten NPPatch-Berichts</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemStandardReportTypeDesc</name>
@@ -4589,7 +4589,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemViewDashboardDesc</name>
-        <label>Dashboards ziehen Daten aus einem oder mehreren Berichten und stellen sie nebeneinander im gleichen Fenster dar. NPSP enthält drei Dashboards, die Sie unverändert verwenden oder anpassen können.</label>
+        <label>Dashboards ziehen Daten aus einem oder mehreren Berichten und stellen sie nebeneinander im gleichen Fenster dar. NPPatch enthält drei Dashboards, die Sie unverändert verwenden oder anpassen können.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemViewDashboardLinkLabel</name>
@@ -4605,7 +4605,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>gseuChecklistYourDataDesc</name>
-        <label>Berichte und Dashboards helfen Ihnen, Ihre Daten so zu strukturieren, dass Sie den Einfluss Ihrer Organisation im zeitlichen Verlauf darstellen können. NPSP beinhaltet vorkonfigurierte Berichte – alternativ können Sie eigene Berichte erstellen.</label>
+        <label>Berichte und Dashboards helfen Ihnen, Ihre Daten so zu strukturieren, dass Sie den Einfluss Ihrer Organisation im zeitlichen Verlauf darstellen können. NPPatch beinhaltet vorkonfigurierte Berichte – alternativ können Sie eigene Berichte erstellen.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistYourDataTitle</name>
@@ -4693,11 +4693,11 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>gseuChecklistTrackDonationDesc</name>
-        <label>In NPSP verfolgen Sie Spenden, Zuschüsse, Zusagen und andere Arten von Einnahmen mit dem Opportunity-Objekt nach. Sie können Spenden von Einzelpersonen oder von Organisationen wie einer Stiftung, einem Unternehmen oder einer Behörde nachverfolgen.</label>
+        <label>In NPPatch verfolgen Sie Spenden, Zuschüsse, Zusagen und andere Arten von Einnahmen mit dem Opportunity-Objekt nach. Sie können Spenden von Einzelpersonen oder von Organisationen wie einer Stiftung, einem Unternehmen oder einer Behörde nachverfolgen.</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistTrackDonationTitle</name>
-        <label>Nachverfolgen von Spenden und anderen Einnahmearten mit NPSP</label>
+        <label>Nachverfolgen von Spenden und anderen Einnahmearten mit NPPatch</label>
     </customLabels>
     <customLabels>
         <name>gseuChecklistItemExtraTwoMinutesVideo</name>
@@ -4773,7 +4773,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
-        <label>Für diese Funktion ist sowohl Erweiterte Zuordnung als auch Spendeneintrag erforderlich. Bitte aktivieren Sie diese in den NPSP-Einstellungen.</label>
+        <label>Für diese Funktion ist sowohl Erweiterte Zuordnung als auch Spendeneintrag erforderlich. Bitte aktivieren Sie diese in den NPPatch-Einstellungen.</label>
     </customLabels>
     <customLabels>
         <name>geServiceLevelErrorAdvancedMapping</name>
@@ -4789,11 +4789,11 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelFieldPermission2</name>
-        <label>Alternativ können Sie dieses Formular ohne zu speichern schließen und Ihre Berechtigungen sowohl für da Zielobjekt als auch für das NPSP-Datenimportobjekt überprüfen.</label>
+        <label>Alternativ können Sie dieses Formular ohne zu speichern schließen und Ihre Berechtigungen sowohl für da Zielobjekt als auch für das NPPatch-Datenimportobjekt überprüfen.</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelMissingRequiredFields</name>
-        <label>Sie müssen alle erforderlichen Felder in Ihre Vorlage aufnehmen. Überprüfen Sie die Quellfelder (NPSP-Datenimportobjekt) für die folgenden Felder:</label>
+        <label>Sie müssen alle erforderlichen Felder in Ihre Vorlage aufnehmen. Überprüfen Sie die Quellfelder (NPPatch-Datenimportobjekt) für die folgenden Felder:</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelMissingRequiredGroupFields</name>
@@ -4953,7 +4953,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>geHelpTextAddressMapping</name>
-        <label>Der Adressdatensatz, der dem Haushalt-Account von Kontakt1 zugeordnet ist. Die NPSP-Automatisierung kann außerdem bewirken, dass diese Adresse für den Haushalt von Kontakt1 und alle Konten im gleichen Haushalt eingesetzt wird. Wenn Sie das EDA-Adressobjekt verwenden, sollten Sie eine neue Objektgruppe für das Objekt erstellen und seine Felder in Ihrer Vorlage verwenden.</label>
+        <label>Der Adressdatensatz, der dem Haushalt-Account von Kontakt1 zugeordnet ist. Die NPPatch-Automatisierung kann außerdem bewirken, dass diese Adresse für den Haushalt von Kontakt1 und alle Konten im gleichen Haushalt eingesetzt wird. Wenn Sie das EDA-Adressobjekt verwenden, sollten Sie eine neue Objektgruppe für das Objekt erstellen und seine Felder in Ihrer Vorlage verwenden.</label>
     </customLabels>
     <customLabels>
         <name>geHelpTextAllocation1Mapping</name>
@@ -5300,7 +5300,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthDetailsAccountDefaultRTIssue</name>
-        <label>Der Datensatztyp &quot;Accountmodell&quot; {0} (eingestellt in den NPSP Einstellungen) ist gegenwärtig als Standard-Accountdatensatztyp Ihres Profils eingestellt.</label>
+        <label>Der Datensatztyp &quot;Accountmodell&quot; {0} (eingestellt in den NPPatch Einstellungen) ist gegenwärtig als Standard-Accountdatensatztyp Ihres Profils eingestellt.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsAccountModel</name>
@@ -5348,7 +5348,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthDetailsHHAccountModel</name>
-        <label>Bei Verwendung des Haushalt-Accountmodells müssen die Haushalt-Objektregeln auf &quot;Keine Kontakte&quot; festgelegt sein. Sie können das Objektregelfeld auf der Seite NPSP-Einstellungen unter Personen | Haushalte einstellen.</label>
+        <label>Bei Verwendung des Haushalt-Accountmodells müssen die Haushalt-Objektregeln auf &quot;Keine Kontakte&quot; festgelegt sein. Sie können das Objektregelfeld auf der Seite NPPatch-Einstellungen unter Personen | Haushalte einstellen.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsHHActNoContacts</name>
@@ -5384,7 +5384,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthDetailsInvalidFiscalYears</name>
-        <label>Ihre Organisation verwendet benutzerdefinierte Geschäftsjahre. In NPSP werden keine Geschäftsjahr-Rollups mit benutzerdefinierten Geschäftsjahren verwendet.</label>
+        <label>Ihre Organisation verwendet benutzerdefinierte Geschäftsjahre. In NPPatch werden keine Geschäftsjahr-Rollups mit benutzerdefinierten Geschäftsjahren verwendet.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsInvalidLevelField</name>
@@ -5436,7 +5436,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthDetailsMailingListReportMissing</name>
-        <label>Der Bericht zur Haushalt-Mailingliste der NPSP-Kampagne ist nicht vorhanden. Dieser Bericht wird ausgeführt, wenn Sie in einem Kampagnendatensatz auf die Schaltfläche &quot;Haushalt-Mailingliste&quot; klicken.</label>
+        <label>Der Bericht zur Haushalt-Mailingliste der NPPatch-Kampagne ist nicht vorhanden. Dieser Bericht wird ausgeführt, wenn Sie in einem Kampagnendatensatz auf die Schaltfläche &quot;Haushalt-Mailingliste&quot; klicken.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsMissingOppPayments</name>
@@ -5448,7 +5448,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthDetailsNothingScheduled</name>
-        <label>Die NPSP-Standardaufträge sind nicht geplant. Geplante Aufträge werden jede Nacht in den Zusammenfassungsfeldern der Datensätze aktualisiert.</label>
+        <label>Die NPPatch-Standardaufträge sind nicht geplant. Geplante Aufträge werden jede Nacht in den Zusammenfassungsfeldern der Datensätze aktualisiert.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsOCR</name>
@@ -5464,11 +5464,11 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthDetailsOCRSettingsResolution</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf &quot;Spenden&quot; | &quot;Kontaktrollen&quot; und bearbeiten Sie die obenstehenden Einstellungswerte.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf &quot;Spenden&quot; | &quot;Kontaktrollen&quot; und bearbeiten Sie die obenstehenden Einstellungswerte.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsOCRSettingsValid</name>
-        <label>Die Einstellungen für NPSP-Opportunity-Kontaktrollen sind gültig.</label>
+        <label>Die Einstellungen für NPPatch-Opportunity-Kontaktrollen sind gültig.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsPaymentMappingBadDataTypes</name>
@@ -5496,15 +5496,15 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthDetailsTriggerHandlerDuplicate</name>
-        <label>Bei der Statusprüfung wurde mehr als eine Auslöserverarbeitung {0} für Objekt {1} mit denselben Feldwerten gefunden. Doppelte Auslöserverarbeitungen beeinträchtigen das NPSP-Verhalten.</label>
+        <label>Bei der Statusprüfung wurde mehr als eine Auslöserverarbeitung {0} für Objekt {1} mit denselben Feldwerten gefunden. Doppelte Auslöserverarbeitungen beeinträchtigen das NPPatch-Verhalten.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsTriggerHandlerMismatch</name>
-        <label>Auslöserverarbeitung {0} in Objekt {1} stimmt nicht mit der Standard-NPSP-Konfiguration überein.</label>
+        <label>Auslöserverarbeitung {0} in Objekt {1} stimmt nicht mit der Standard-NPPatch-Konfiguration überein.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsTriggerHandlerMissing</name>
-        <label>Auslöserverarbeitung {0} in Objekt {1} fehlt, was das NPSP-Verhalten beeinträchtigt.</label>
+        <label>Auslöserverarbeitung {0} in Objekt {1} fehlt, was das NPPatch-Verhalten beeinträchtigt.</label>
     </customLabels>
     <customLabels>
         <name>healthDetailsUDFBadDatatypes</name>
@@ -5552,7 +5552,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthLabelDisableRecordBatchDescription</name>
-        <label>Wenn dies aktiviert ist, prüfen die Statusüberprüfungen lediglich Ihre NPSP-Konfigurationseinstellungen auf Probleme. Aktivieren Sie diese Option, wenn Ihre Organisation große Datensatzmengen verarbeitet und Probleme beim Abschluss der Statusüberprüfungen auftreten.</label>
+        <label>Wenn dies aktiviert ist, prüfen die Statusüberprüfungen lediglich Ihre NPPatch-Konfigurationseinstellungen auf Probleme. Aktivieren Sie diese Option, wenn Ihre Organisation große Datensatzmengen verarbeitet und Probleme beim Abschluss der Statusüberprüfungen auftreten.</label>
     </customLabels>
     <customLabels>
         <name>healthLabelErrorRecipientValid</name>
@@ -5580,7 +5580,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthLabelIntro</name>
-        <label>Bei der Statusprüfung wird überprüft, ob alle Ihre NPSP-Einstellungen gültig sind, und es wird nach Problemen in den Daten Ihrer Datensätze gesucht. Nach Abschluss der Prüfung können Sie unten die Ergebnisse einschließlich detaillierter Informationen zu etwaigen Fehlern anzeigen.</label>
+        <label>Bei der Statusprüfung wird überprüft, ob alle Ihre NPPatch-Einstellungen gültig sind, und es wird nach Problemen in den Daten Ihrer Datensätze gesucht. Nach Abschluss der Prüfung können Sie unten die Ergebnisse einschließlich detaillierter Informationen zu etwaigen Fehlern anzeigen.</label>
     </customLabels>
     <customLabels>
         <name>healthLabelLastRun</name>
@@ -5628,11 +5628,11 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthLabelScheduler</name>
-        <label>NPSP-Standardplanungsprogramm</label>
+        <label>NPPatch-Standardplanungsprogramm</label>
     </customLabels>
     <customLabels>
         <name>healthLabelSchedulerValid</name>
-        <label>Die wiederkehrenden NPSP-Aufträge sind geplant.</label>
+        <label>Die wiederkehrenden NPPatch-Aufträge sind geplant.</label>
     </customLabels>
     <customLabels>
         <name>healthLabelShowPassedTests</name>
@@ -5648,7 +5648,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthLabelTriggerHandlersValid</name>
-        <label>Auslöser sind für NPSP-Standardauslöser konfiguriert.</label>
+        <label>Auslöser sind für NPPatch-Standardauslöser konfiguriert.</label>
     </customLabels>
     <customLabels>
         <name>healthLabelUDFValid</name>
@@ -5672,7 +5672,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthPaymentAutoCloseStageMustBeActiveClosedWonOrBlank</name>
-        <label>Wählen Sie in de Opportunity-Phase für die vollständige Zahlung eine Geschlossen/Gewonnen-Phase aus. Sie können den Wert auch leer lassen, wodurch verhindert wird, dass NPSP die Opportunity-Phase automatisch aktualisiert, wenn alle Zahlungen eingegangen sind.</label>
+        <label>Wählen Sie in de Opportunity-Phase für die vollständige Zahlung eine Geschlossen/Gewonnen-Phase aus. Sie können den Wert auch leer lassen, wodurch verhindert wird, dass NPPatch die Opportunity-Phase automatisch aktualisiert, wenn alle Zahlungen eingegangen sind.</label>
     </customLabels>
     <customLabels>
         <name>healthPaymentAutoCloseStageValid</name>
@@ -5692,7 +5692,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthSolutionAccountModel</name>
-        <label>Alle ihre Kontakte sollten dasselbe Accountmodell verwenden. Zeigen Sie all Ihre Accounts und deren Typen an, indem Sie den Bericht &lt;b&gt;Einzelne Kontakte nach Account-Typ&lt;/b&gt; im Ordner &quot;Berichte zu NPSP-Statusprüfungen&quot; ausführen.</label>
+        <label>Alle ihre Kontakte sollten dasselbe Accountmodell verwenden. Zeigen Sie all Ihre Accounts und deren Typen an, indem Sie den Bericht &lt;b&gt;Einzelne Kontakte nach Account-Typ&lt;/b&gt; im Ordner &quot;Berichte zu NPPatch-Statusprüfungen&quot; ausführen.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAccountRTIssue</name>
@@ -5700,43 +5700,43 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelFieldsMissing</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {0} | {1} und löschen Sie den ungültigen Datensatz &quot;Automatische Erstellung von Beziehungen&quot;.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {0} | {1} und löschen Sie den ungültigen Datensatz &quot;Automatische Erstellung von Beziehungen&quot;.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelInvalidCMField</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Automatische Erstellung von Beziehungen“ der auf dieses Feld verweist.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Automatische Erstellung von Beziehungen“ der auf dieses Feld verweist.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelInvalidContactField</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Automatische Erstellung von Beziehungen“ der auf dieses Feld verweist.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Automatische Erstellung von Beziehungen“ der auf dieses Feld verweist.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionAutoRelInvalidLookupField</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Automatische Erstellung von Beziehungen“ der auf dieses Feld verweist.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Automatische Erstellung von Beziehungen“ der auf dieses Feld verweist.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionBadRDField</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {0} | {1} und löschen Sie den Zuordnungsdatensatz zum Feld &quot;Wiederkehrende Spende&quot;, der auf dieses Feld verweist.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {0} | {1} und löschen Sie den Zuordnungsdatensatz zum Feld &quot;Wiederkehrende Spende&quot;, der auf dieses Feld verweist.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionContactData</name>
-        <label>Zeigen Sie diese Kontakt an, um den Bericht &lt;b&gt;Kontakte ohne Account&lt;/b&gt; im Berichtsordner &quot;NPSP-Statusprüfungen&quot; auszuführen.</label>
+        <label>Zeigen Sie diese Kontakt an, um den Bericht &lt;b&gt;Kontakte ohne Account&lt;/b&gt; im Berichtsordner &quot;NPPatch-Statusprüfungen&quot; auszuführen.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionEditSetting</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {1} | {2} und bearbeiten Sie die {0}-Einstellung.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {1} | {2} und bearbeiten Sie die {0}-Einstellung.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionHHAccNoContacts</name>
-        <label>Erwägen Sie, diese nicht verwendeten Haushalt-Account-Datensätze zu löschen, um Platz zu sparen. Führen Sie zur Anzeige der Haushalt-Account-Datensätze den Bericht &lt;b&gt;Leere Haushalt-Accounts&lt;/b&gt; im Ordner &quot;Berichte zu NPSP-Statusprüfungen&quot; aus..</label>
+        <label>Erwägen Sie, diese nicht verwendeten Haushalt-Account-Datensätze zu löschen, um Platz zu sparen. Führen Sie zur Anzeige der Haushalt-Account-Datensätze den Bericht &lt;b&gt;Leere Haushalt-Accounts&lt;/b&gt; im Ordner &quot;Berichte zu NPPatch-Statusprüfungen&quot; aus..</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionHHObjNoContacts</name>
-        <label>Erwägen Sie, diese nicht verwendeten Haushalt-Objekte zu löschen, um Platz zu sparen. Wenn Sie eine Konvertierung zum Haushalt-Accountmodell durchgeführt haben und die Daten der Haushalt-Objektdatensätze nicht mehr benötigen, können diese gelöscht werden. Führen Sie zur Anzeige der Haushalt-Objekte den Bericht &lt;b&gt;Leere Haushalt-Objekte&lt;/b&gt; im Berichtsordner &quot;NPSP-Statusprüfungen&quot; aus.</label>
+        <label>Erwägen Sie, diese nicht verwendeten Haushalt-Objekte zu löschen, um Platz zu sparen. Wenn Sie eine Konvertierung zum Haushalt-Accountmodell durchgeführt haben und die Daten der Haushalt-Objektdatensätze nicht mehr benötigen, können diese gelöscht werden. Führen Sie zur Anzeige der Haushalt-Objekte den Bericht &lt;b&gt;Leere Haushalt-Objekte&lt;/b&gt; im Berichtsordner &quot;NPPatch-Statusprüfungen&quot; aus.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidFiscalYears</name>
-        <label>Da in Salesforce das Ausschalten von &quot;Benutzerdefinierte Geschäftsjahre&quot; nicht unterstützt wird, werden NPSP-Rollups standardmäßig auf &quot;Kalenderjahr&quot; festgelegt.</label>
+        <label>Da in Salesforce das Ausschalten von &quot;Benutzerdefinierte Geschäftsjahre&quot; nicht unterstützt wird, werden NPPatch-Rollups standardmäßig auf &quot;Kalenderjahr&quot; festgelegt.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidLevelField</name>
@@ -5744,7 +5744,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidOppField</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Zahlungszuordnung&quot;, der auf dieses Feld verweist.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Zahlungszuordnung&quot;, der auf dieses Feld verweist.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidOppStage</name>
@@ -5752,7 +5752,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidPaymentField</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Zahlungszuordnung&quot;, der auf dieses Feld verweist.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Zahlungszuordnung&quot;, der auf dieses Feld verweist.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidRDCustomPeriod</name>
@@ -5760,7 +5760,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidRDCustomPeriodPicklist</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {0} | {1} und fügen Sie die fehlende &quot;Benutzerdefinierte Ratenlaufzeit für wiederkehrende Spenden&quot; hinzu oder löschen Sie den Auswahllistenwert im Feld &quot;Ratenlaufzeit&quot;.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {0} | {1} und fügen Sie die fehlende &quot;Benutzerdefinierte Ratenlaufzeit für wiederkehrende Spenden&quot; hinzu oder löschen Sie den Auswahllistenwert im Feld &quot;Ratenlaufzeit&quot;.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidScheduledJob</name>
@@ -5768,15 +5768,15 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthSolutionInvalidUDFObjectField</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Benutzer-Rollup&quot;, der auf dieses Feld verweist.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Benutzer-Rollup&quot;, der auf dieses Feld verweist.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionMailingListReportMissing</name>
-        <label>Erstellen Sie einen Bericht basierend auf Kampagnen mit Kontakten und fügen Sie einen Filter hinzu, damit der Mitgliederstatus keine &quot;Duplikate&quot; enthält. Geben Sie diesen Bericht dann auf der Registerkarte {0} &gt; {1} in den NPSP-Einstellungen an.</label>
+        <label>Erstellen Sie einen Bericht basierend auf Kampagnen mit Kontakten und fügen Sie einen Filter hinzu, damit der Mitgliederstatus keine &quot;Duplikate&quot; enthält. Geben Sie diesen Bericht dann auf der Registerkarte {0} &gt; {1} in den NPPatch-Einstellungen an.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionMissingOppPayments</name>
-        <label>Führen Sie zur Anzeige der Opportunities den Bericht &lt;b&gt;Opportunities ohne Zahlungen&lt;/b&gt; im Berichtsordner &quot;NPSP-Statusprüfungen&quot; aus. Beachten Sie, dass Sie in dem Bericht Filterkriterien hinzufügen sollten, um alle Opportunity-Typen und Opportunity-Datensatztypen, die Sie in den NPSP-Zahlungseinstellungen ausgeschlossen haben, auszuschließen. Sie können die fehlenden Zahlungsdatensätze über die Schaltfläche &quot;Fehlende Zahlungen erstellen&quot; unter &quot;NPSP-Einstellungen&quot; &gt; &quot;Bulk-Datenprozesse&quot; &gt; &quot;Fehlende Zahlungen erstellen&quot; erstellen.</label>
+        <label>Führen Sie zur Anzeige der Opportunities den Bericht &lt;b&gt;Opportunities ohne Zahlungen&lt;/b&gt; im Berichtsordner &quot;NPPatch-Statusprüfungen&quot; aus. Beachten Sie, dass Sie in dem Bericht Filterkriterien hinzufügen sollten, um alle Opportunity-Typen und Opportunity-Datensatztypen, die Sie in den NPPatch-Zahlungseinstellungen ausgeschlossen haben, auszuschließen. Sie können die fehlenden Zahlungsdatensätze über die Schaltfläche &quot;Fehlende Zahlungen erstellen&quot; unter &quot;NPPatch-Einstellungen&quot; &gt; &quot;Bulk-Datenprozesse&quot; &gt; &quot;Fehlende Zahlungen erstellen&quot; erstellen.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionMissingPicklistValue</name>
@@ -5784,11 +5784,11 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthSolutionNothingScheduled</name>
-        <label>Um die Standard-NPSP-Aufträge neu zu planen, rufen Sie &quot;NPSP-Einstellungen&quot; &gt; &quot;Bulk-Datenprozesse&quot; &gt; &quot;Vorgangsplanung&quot; auf. Klicken Sie auf &quot;Bearbeiten&quot;. Vergewissern Sie sich, dass &quot;NPSP-Standardaufträge n. automat. planen&quot; nicht ausgewählt ist. Klicken Sie auf &quot;Speichern&quot;.</label>
+        <label>Um die Standard-NPPatch-Aufträge neu zu planen, rufen Sie &quot;NPPatch-Einstellungen&quot; &gt; &quot;Bulk-Datenprozesse&quot; &gt; &quot;Vorgangsplanung&quot; auf. Klicken Sie auf &quot;Bearbeiten&quot;. Vergewissern Sie sich, dass &quot;NPPatch-Standardaufträge n. automat. planen&quot; nicht ausgewählt ist. Klicken Sie auf &quot;Speichern&quot;.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionOCRDupPrimary</name>
-        <label>Wenn mehrere &quot;Opportunity-Kontaktrollen&quot; mit &quot;Primär&quot; gekennzeichnet sind, kann dies dazu führen, dass Opportunity-Rollups wie &quot;Spenden gesamt&quot; in NPSP falsch berechnet werden. Um zu sehen, welche Opportunities über mehr als eine Opportunity-Kontaktrolle verfügen, die als &quot;Primär&quot; gekennzeichnet ist, führen Sie den Bericht &lt;b&gt;Opportunities mit primären Kontaktrollen&lt;/b&gt; im Berichtsordner &quot;NPSP-Statusprüfungen&quot; aus.</label>
+        <label>Wenn mehrere &quot;Opportunity-Kontaktrollen&quot; mit &quot;Primär&quot; gekennzeichnet sind, kann dies dazu führen, dass Opportunity-Rollups wie &quot;Spenden gesamt&quot; in NPPatch falsch berechnet werden. Um zu sehen, welche Opportunities über mehr als eine Opportunity-Kontaktrolle verfügen, die als &quot;Primär&quot; gekennzeichnet ist, führen Sie den Bericht &lt;b&gt;Opportunities mit primären Kontaktrollen&lt;/b&gt; im Berichtsordner &quot;NPPatch-Statusprüfungen&quot; aus.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionOCRException</name>
@@ -5796,19 +5796,19 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthSolutionPaymentMappingBadDataTypes</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Zahlungszuordnung&quot;, der auf diese Felder verweist.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Zahlungszuordnung&quot;, der auf diese Felder verweist.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionRDBadOppField</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Zuordnung des Felds für wiederkehrende Spende&quot;, der auf dieses Feld verweist.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Zuordnung des Felds für wiederkehrende Spende&quot;, der auf dieses Feld verweist.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionRDFieldsBadDatatypes</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Zuordnung des Felds für wiederkehrende Spende&quot;, der auf diese Felder verweist.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Zuordnung des Felds für wiederkehrende Spende&quot;, der auf diese Felder verweist.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionRelReciprocalInvalid</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Wechselseitige Beziehung&quot;. Erstellen Sie anschließend einen neuen Datensatz mit den erforderlichen Informationen.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Wechselseitige Beziehung&quot;. Erstellen Sie anschließend einen neuen Datensatz mit den erforderlichen Informationen.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionSaveOppsFailed</name>
@@ -5816,11 +5816,11 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthSolutionScheduleJobs</name>
-        <label>Alle NPSP-geplanten Klassen sollten Datensätze unter &quot;Schedulable__c&quot; enthalten, damit diese Funktionen einwandfrei arbeiten.</label>
+        <label>Alle NPPatch-geplanten Klassen sollten Datensätze unter &quot;Schedulable__c&quot; enthalten, damit diese Funktionen einwandfrei arbeiten.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionTriggerHandlerMismatch</name>
-        <label>Änderungen an den Auslösern können die NPSP-Kernfunktionalität unerwartet beeinträchtigen und sollten vor Beginn der Produktion sorgfältig getestet werden. Falls diese Änderungen unbeabsichtigt erfolgt sind, sollten Sie Ihre Auslöserverarbeitung zurücksetzen, damit sie der Standard-NPSP-Konfiguration entsprechen.</label>
+        <label>Änderungen an den Auslösern können die NPPatch-Kernfunktionalität unerwartet beeinträchtigen und sollten vor Beginn der Produktion sorgfältig getestet werden. Falls diese Änderungen unbeabsichtigt erfolgt sind, sollten Sie Ihre Auslöserverarbeitung zurücksetzen, damit sie der Standard-NPPatch-Konfiguration entsprechen.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionUnsupportedPicklistValue</name>
@@ -5828,11 +5828,11 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>healthSolutionUDFBadDatatypes</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Benutzer-Rollup&quot;, der auf diese beiden Felder verweist.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Benutzer-Rollup&quot;, der auf diese beiden Felder verweist.</label>
     </customLabels>
     <customLabels>
         <name>healthSolutionUDFOppField</name>
-        <label>Klicken Sie auf der Registerkarte &quot;NPSP-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Benutzer-Rollup&quot;, der auf dieses Feld verweist.</label>
+        <label>Klicken Sie auf der Registerkarte &quot;NPPatch-Einstellungen&quot; auf {0} | {1} und löschen Sie den Datensatz &quot;Benutzer-Rollup&quot;, der auf dieses Feld verweist.</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupLabelReturnToCmp</name>
@@ -5840,7 +5840,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeBatchMessage</name>
-        <label>Aufgrund der großen Zahl an Kampagnenmitgliedern in dieser Kampagne verwendet NPSP einen Batch-Prozess, um Haushalt-Mitglieder zu erkennen, was einige Minuten Zeit in Anspruch nehmen kann. Klicken Sie nach Abschluss des Vorgangs auf den Link zum Haushalt-Mailing-Bericht, um den Haushalt-Mailing-Bericht anzuzeigen.</label>
+        <label>Aufgrund der großen Zahl an Kampagnenmitgliedern in dieser Kampagne verwendet NPPatch einen Batch-Prozess, um Haushalt-Mitglieder zu erkennen, was einige Minuten Zeit in Anspruch nehmen kann. Klicken Sie nach Abschluss des Vorgangs auf den Link zum Haushalt-Mailing-Bericht, um den Haushalt-Mailing-Bericht anzuzeigen.</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeBatchProgressTitle</name>
@@ -5852,7 +5852,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeNoReport</name>
-        <label>Bericht nicht gefunden. Erstellen Sie einen Bericht mit dem eindeutigen Berichtnamen &quot;NPSP_Kampagne_Haushalt_Mailingliste_V2&quot;. Der Berichttyp sollte &quot;Kampagnen mit Kontakten&quot; lauten. Fügen Sie Filter hinzu, damit die Kampagnen_ID leer ist und der Mitgliederstatus kein &quot;Duplikat“ enthält.</label>
+        <label>Bericht nicht gefunden. Erstellen Sie einen Bericht mit dem eindeutigen Berichtnamen &quot;NPPatch_Kampagne_Haushalt_Mailingliste_V2&quot;. Der Berichttyp sollte &quot;Kampagnen mit Kontakten&quot; lauten. Fügen Sie Filter hinzu, damit die Kampagnen_ID leer ist und der Mitgliederstatus kein &quot;Duplikat“ enthält.</label>
     </customLabels>
     <customLabels>
         <name>hhCmpDedupeStatus</name>
@@ -5991,8 +5991,8 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
         <label>Haushalte zusammenführen</label>
     </customLabels>
     <customLabels>
-        <name>lblNPSPSettings</name>
-        <label>NPSP-Einstellungen</label>
+        <name>lblNPPatchSettings</name>
+        <label>NPPatch-Einstellungen</label>
     </customLabels>
     <customLabels>
         <name>lblNoHHMergePermissions</name>
@@ -6112,7 +6112,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>leadConvertRecordTypeWarning</name>
-        <label>Der standardmäßige Account-Datensatztyp für Ihr Profil entspricht dem Datensatztyp, der in den NPSP-Einstellungen als Account-Modell festgelegt wurde. Dies kann zu verschiedenen Datenproblemen führen. Es wird empfohlen, den standardmäßigen Account-Datensatztyp in einen anderen Wert für alle Profile zu ändern.</label>
+        <label>Der standardmäßige Account-Datensatztyp für Ihr Profil entspricht dem Datensatztyp, der in den NPPatch-Einstellungen als Account-Modell festgelegt wurde. Dies kann zu verschiedenen Datenproblemen führen. Es wird empfohlen, den standardmäßigen Account-Datensatztyp in einen anderen Wert für alle Profile zu ändern.</label>
     </customLabels>
     <customLabels>
         <name>leadConvertSectionTitle</name>
@@ -6232,7 +6232,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>pmtModifyCurrency</name>
-        <label>Sie können Währungen bei Zahlungen nicht direkt ändern. Wenn Sie die Währung der übergeordneten Opportunity aktualisieren, aktualisiert NPSP automatisch die Währung aller verwandten Zahlungsdatensätze.</label>
+        <label>Sie können Währungen bei Zahlungen nicht direkt ändern. Wenn Sie die Währung der übergeordneten Opportunity aktualisieren, aktualisiert NPPatch automatisch die Währung aller verwandten Zahlungsdatensätze.</label>
     </customLabels>
     <customLabels>
         <name>pmtNoRefundPermissionMessage</name>
@@ -6400,11 +6400,11 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>pmtWizardPaymentsDisabled</name>
-        <label>Sie haben NPSP-Zahlungen nicht aktiviert. Aktivieren Sie &quot;Zahlungen&quot; auf der Seite &quot;NPSP-Einstellungen&quot;, um den Zahlungsplanungsassistenten zu verwenden.</label>
+        <label>Sie haben NPPatch-Zahlungen nicht aktiviert. Aktivieren Sie &quot;Zahlungen&quot; auf der Seite &quot;NPPatch-Einstellungen&quot;, um den Zahlungsplanungsassistenten zu verwenden.</label>
     </customLabels>
     <customLabels>
         <name>pmtWizardPaymentsDisabledTitle</name>
-        <label>NPSP-Zahlungen nicht aktiviert</label>
+        <label>NPPatch-Zahlungen nicht aktiviert</label>
     </customLabels>
     <customLabels>
         <name>pmtWizardPaymentsNoAccessMessage</name>
@@ -6484,7 +6484,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>psGatewaySelectionLabel</name>
-        <label>NPSP verwendet das Gateway, das zuletzt zu Elevate hinzugefügt wurde, es sei denn, Sie setzen es außer Kraft. Zum Festlegen eines Standard-Zahlungs-Gateways für Elevate wählen Sie es hier aus.</label>
+        <label>NPPatch verwendet das Gateway, das zuletzt zu Elevate hinzugefügt wurde, es sei denn, Sie setzen es außer Kraft. Zum Festlegen eines Standard-Zahlungs-Gateways für Elevate wählen Sie es hier aus.</label>
     </customLabels>
     <customLabels>
         <name>psGatewaysNotFound</name>
@@ -6544,7 +6544,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>psGatewayIDHelp</name>
-        <label>NPSP verwendet das Gateway, das Elevate zuletzt hinzugefügt wurde, es sei denn, Sie setzen es außer Kraft. Zum Ändern des Gateways, das von NPSP verwendet wird, klicken Sie auf &quot;Bearbeiten&quot;, geben Sie die Gateway-ID ein, und speichern Sie Ihre Arbeit. Suchen Sie die Gateway-ID in der Elevate-Verwaltungskonsole | Gateway-Management.</label>
+        <label>NPPatch verwendet das Gateway, das Elevate zuletzt hinzugefügt wurde, es sei denn, Sie setzen es außer Kraft. Zum Ändern des Gateways, das von NPPatch verwendet wird, klicken Sie auf &quot;Bearbeiten&quot;, geben Sie die Gateway-ID ein, und speichern Sie Ihre Arbeit. Suchen Sie die Gateway-ID in der Elevate-Verwaltungskonsole | Gateway-Management.</label>
     </customLabels>
     <customLabels>
         <name>psShowPaymentMethods</name>
@@ -6584,7 +6584,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>pscManageSoftCreditsCantChangeCurrency</name>
-        <label>Sie können die Währungen von Soft Credits nicht direkt bearbeiten. Wenn Sie die Währung der übergeordneten Opportunity aktualisieren, aktualisiert NPSP automatisch die Währung aller damit verbundenen Soft Credits.</label>
+        <label>Sie können die Währungen von Soft Credits nicht direkt bearbeiten. Wenn Sie die Währung der übergeordneten Opportunity aktualisieren, aktualisiert NPPatch automatisch die Währung aller damit verbundenen Soft Credits.</label>
     </customLabels>
     <customLabels>
         <name>pscManageSoftCreditsPermissionDenied</name>
@@ -6600,7 +6600,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>pscManageSoftCreditsNoRoles</name>
-        <label>Sie haben keine Rollen als Rollen für Soft Credits angegeben. Wählen Sie in den &quot;NPSP-Einstellungen“ unter &quot;Spenden“ &gt; &quot;Kontaktrollen“ mindestens eine Rolle in den Einstellungen für &quot;Rollen für Soft Credits&quot; aus.</label>
+        <label>Sie haben keine Rollen als Rollen für Soft Credits angegeben. Wählen Sie in den &quot;NPPatch-Einstellungen“ unter &quot;Spenden“ &gt; &quot;Kontaktrollen“ mindestens eine Rolle in den Einstellungen für &quot;Rollen für Soft Credits&quot; aus.</label>
     </customLabels>
     <customLabels>
         <name>pscManageSoftCreditsOppAmount</name>
@@ -6656,7 +6656,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>sendAcknowledgmentFailureReasons</name>
-        <label>NPSP hat die folgenden Datensätze nicht bestätigt. Bestätigungen können fehlschlagen, wenn keine Workflowregel (Bestätigungsstatus GLEICH &quot;Bestätigung senden&quot;) aktiviert ist, um die Bestätigung zu senden oder wenn die Datensätze die zusätzlichen Kriterien zum Auslösen der Workflowregel nicht erfüllen. Beispiel: Wenn kein Hauptansprechpartner festgelegt ist oder wenn das Feld für die E-Mail-Adresse des Hauptansprechpartners leer oder ungültig ist.</label>
+        <label>NPPatch hat die folgenden Datensätze nicht bestätigt. Bestätigungen können fehlschlagen, wenn keine Workflowregel (Bestätigungsstatus GLEICH &quot;Bestätigung senden&quot;) aktiviert ist, um die Bestätigung zu senden oder wenn die Datensätze die zusätzlichen Kriterien zum Auslösen der Workflowregel nicht erfüllen. Beispiel: Wenn kein Hauptansprechpartner festgelegt ist oder wenn das Feld für die E-Mail-Adresse des Hauptansprechpartners leer oder ungültig ist.</label>
     </customLabels>
     <customLabels>
         <name>sendAcknowledgmentFireStatus</name>
@@ -6668,7 +6668,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>sendAcknowledgmentNumberNoEmail</name>
-        <label>NPSP hat {0} Bestätigungen nicht gesendet.</label>
+        <label>NPPatch hat {0} Bestätigungen nicht gesendet.</label>
     </customLabels>
     <customLabels>
         <name>sendAcknowledgmentNumberSent</name>
@@ -6712,7 +6712,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>stgAddrGeneralSettingsIntro</name>
-        <label>In der Verwaltung für Haushalts- und Organisationsaccounts können Sie einem Account mehrere Adressen hinzufügen und Standardadressen sowie saisonale Adressen angeben. Die Adressenverwaltung ist nur im Haushaltsaccount-Modell von NPSP3 und höher verfügbar.</label>
+        <label>In der Verwaltung für Haushalts- und Organisationsaccounts können Sie einem Account mehrere Adressen hinzufügen und Standardadressen sowie saisonale Adressen angeben. Die Adressenverwaltung ist nur im Haushaltsaccount-Modell von NPPatch3 und höher verfügbar.</label>
     </customLabels>
     <customLabels>
         <name>stgAddrMustChooseClass</name>
@@ -6870,7 +6870,7 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
             ● Filter verwenden, um problemlos bestimmte Datensätze oder Daten auszuschließen&lt;br/&gt;
             ● Daten aus mehr als 2 zurückliegenden Jahren zusammenfassen&lt;br/&gt;
             &lt;br/&gt;
-            Gehen Sie zu NPSP-Einstellungen | Spenden | Anpassbare Rollups, um anpassbare Rollups zu aktivieren und zu beginnen, sie zu nutzen!</label>
+            Gehen Sie zu NPPatch-Einstellungen | Spenden | Anpassbare Rollups, um anpassbare Rollups zu aktivieren und zu beginnen, sie zu nutzen!</label>
     </customLabels>
     <customLabels>
         <name>stgCRLPInfoOnUDRHeading</name>
@@ -6930,16 +6930,16 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     </customLabels>
     <customLabels>
         <name>stgDontAutoScheduleHelpText</name>
-        <label>NPSP hat verschiedene geplante Aufträge, die Rollups berechnen, wiederkehrende Spenden und saisonale Adressen aktualisieren und Fehler behandeln.
+        <label>NPPatch hat verschiedene geplante Aufträge, die Rollups berechnen, wiederkehrende Spenden und saisonale Adressen aktualisieren und Fehler behandeln.
 &lt;br/&gt;
 &lt;br/&gt;
-Wenn &quot;NPSP-Standardaufträge n. automat. planen&quot; nicht ausgewählt ist, wenn Sie die NSPS-Einstellungsseite laden, prüft NPSP, ob alle NPSP-Standardaufträge geplant sind. Wenn sie nicht geplant sind, plant NPSP sie neu. NPSP plant nur fehlende NPSP-Aufträge neu; Aufträge, die aktualisiert wurden, werden nicht überschrieben.
+Wenn &quot;NPPatch-Standardaufträge n. automat. planen&quot; nicht ausgewählt ist, wenn Sie die NSPS-Einstellungsseite laden, prüft NPPatch, ob alle NPPatch-Standardaufträge geplant sind. Wenn sie nicht geplant sind, plant NPPatch sie neu. NPPatch plant nur fehlende NPPatch-Aufträge neu; Aufträge, die aktualisiert wurden, werden nicht überschrieben.
 &lt;Br/&gt;
 &lt;br/&gt;
 Um diese Aufträge anzuzeigen, suchen Sie in Salesforce-Setup nach geplanten Aufträgen.
 &lt;br/&gt;
 &lt;br/&gt;
-Indem Sie &quot;NPSP-Standardaufträge n. automat. planen&quot; auswählen, teilen Sie NPSP mit, dass Standardaufträge nicht geprüft oder neu geplant werden sollen.</label>
+Indem Sie &quot;NPPatch-Standardaufträge n. automat. planen&quot; auswählen, teilen Sie NPPatch mit, dass Standardaufträge nicht geprüft oder neu geplant werden sollen.</label>
     </customLabels>
     <customLabels>
         <name>stgEditPermissionError</name>
@@ -6947,7 +6947,7 @@ Indem Sie &quot;NPSP-Standardaufträge n. automat. planen&quot; auswählen, teil
     </customLabels>
     <customLabels>
         <name>stgErrorINaming</name>
-        <label>Die Apex-Klasse, die Sie im Feld &quot;Implementierungsklasse&quot; ausgewählt haben, implementiert nicht die Schnittstelle HH-INaming. Wählen Sie eine andere Apex-Klasse aus oder verwenden Sie die Standard-NPSP-Klasse HH_NameSpec.</label>
+        <label>Die Apex-Klasse, die Sie im Feld &quot;Implementierungsklasse&quot; ausgewählt haben, implementiert nicht die Schnittstelle HH-INaming. Wählen Sie eine andere Apex-Klasse aus oder verwenden Sie die Standard-NPPatch-Klasse HH_NameSpec.</label>
     </customLabels>
     <customLabels>
         <name>stgErrorInvalidClass</name>
@@ -6959,11 +6959,11 @@ Indem Sie &quot;NPSP-Standardaufträge n. automat. planen&quot; auswählen, teil
     </customLabels>
     <customLabels>
         <name>stgErrorMissingDefaultGauRecordWithPmtAllocEnabled</name>
-        <label>Der zuvor konfigurierte Standard-Verwendungszweck ist nicht mehr vorhanden und wurde entfernt. Sie müssen die Standardzuweisungen wieder aktivieren und einen Verwendungszweck als Standard festlegen, um Zahlungszuweisungen zu nutzen. Öffnen Sie die Seite &quot;Zuweisungen Verwendungszweck&quot; in den NPSP-Einstellungen, um die Einstellungen für Standardzuweisungen zu aktualisieren.</label>
+        <label>Der zuvor konfigurierte Standard-Verwendungszweck ist nicht mehr vorhanden und wurde entfernt. Sie müssen die Standardzuweisungen wieder aktivieren und einen Verwendungszweck als Standard festlegen, um Zahlungszuweisungen zu nutzen. Öffnen Sie die Seite &quot;Zuweisungen Verwendungszweck&quot; in den NPPatch-Einstellungen, um die Einstellungen für Standardzuweisungen zu aktualisieren.</label>
     </customLabels>
     <customLabels>
         <name>stgErrorMissingDefaultGauRecord</name>
-        <label>Der zuvor konfigurierte Standard-Verwendungszweck ist nicht mehr vorhanden und wurde entfernt. Um die Standardzuweisungen wieder zu aktivieren, öffnen Sie die Seite &quot;Zuweisungen Verwendungszweck&quot; in den NPSP-Einstellungen.</label>
+        <label>Der zuvor konfigurierte Standard-Verwendungszweck ist nicht mehr vorhanden und wurde entfernt. Um die Standardzuweisungen wieder zu aktivieren, öffnen Sie die Seite &quot;Zuweisungen Verwendungszweck&quot; in den NPPatch-Einstellungen.</label>
     </customLabels>
     <customLabels>
         <name>stgHHDataRefreshTitle</name>
@@ -6975,7 +6975,7 @@ Indem Sie &quot;NPSP-Standardaufträge n. automat. planen&quot; auswählen, teil
     </customLabels>
     <customLabels>
         <name>stgHelpAccountModel</name>
-        <label>Das im Nonprofit Success Pack verwendete Accountmodell. Mit dieser Option steuern Sie, was geschieht, wenn Sie einen Kontakt mit einem leeren Accountfeld-Wert erstellen. Sie sollten den ausgewählten Accountmodell-Datensatztyp nicht für jedes Profil als Standard-Accountdatensatztyp verwenden. Dies kann zu zahlreichen Datenproblemen führen.</label>
+        <label>Das im NPPatch verwendete Accountmodell. Mit dieser Option steuern Sie, was geschieht, wenn Sie einen Kontakt mit einem leeren Accountfeld-Wert erstellen. Sie sollten den ausgewählten Accountmodell-Datensatztyp nicht für jedes Profil als Standard-Accountdatensatztyp verwenden. Dies kann zu zahlreichen Datenproblemen führen.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAdvancedMapping1</name>
@@ -6998,7 +6998,7 @@ Indem Sie &quot;NPSP-Standardaufträge n. automat. planen&quot; auswählen, teil
     </customLabels>
     <customLabels>
         <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>NPSP-Datenimportfeld</label>
+        <label>NPPatch-Datenimportfeld</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAdvancedMappingTableHeader2</name>
@@ -7006,7 +7006,7 @@ Indem Sie &quot;NPSP-Standardaufträge n. automat. planen&quot; auswählen, teil
     </customLabels>
     <customLabels>
         <name>stgHelpAlloFiscalYearRollups</name>
-        <label>Wenn diese Option aktiviert ist, werden für die Summen des Zuweisungs-Rollups die Geschäftsjahreinstellungen statt der Kalenderjahreinstellungen aktiviert. Gehen Sie zur Festlegung der Geschäftsjahrinformationen zu Setup und suchen Sie nach dem Geschäftsjahr. HINWEIS: Das Nonprofit Success Pack unterstützt keine benutzerdefinierten Geschäftsjahreinstellungen.</label>
+        <label>Wenn diese Option aktiviert ist, werden für die Summen des Zuweisungs-Rollups die Geschäftsjahreinstellungen statt der Kalenderjahreinstellungen aktiviert. Gehen Sie zur Festlegung der Geschäftsjahrinformationen zu Setup und suchen Sie nach dem Geschäftsjahr. HINWEIS: Das NPPatch unterstützt keine benutzerdefinierten Geschäftsjahreinstellungen.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAlloNDayValue</name>
@@ -7048,7 +7048,7 @@ Wenn Sie Zahlungszuweisungen aktivieren, bleiben die vorhandenen Rollups dieselb
     </customLabels>
     <customLabels>
         <name>stgHelpBDEOppNaming</name>
-        <label>Wenn diese Option ausgewählt ist, verwendet NPSP die Standardnamenskonvention für als Batch eingegebene Opportunities, und zwar unabhängig von dem Wert, den Sie auf dem Batch-Eingabe-Bildschirm in das Namensfeld eingeben. HINWEIS: Diese Einstellung hat keine Auswirkungen, wenn benutzerdefinierte Opportunity-Namen konfiguriert wurden.</label>
+        <label>Wenn diese Option ausgewählt ist, verwendet NPPatch die Standardnamenskonvention für als Batch eingegebene Opportunities, und zwar unabhängig von dem Wert, den Sie auf dem Batch-Eingabe-Bildschirm in das Namensfeld eingeben. HINWEIS: Diese Einstellung hat keine Auswirkungen, wenn benutzerdefinierte Opportunity-Namen konfiguriert wurden.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpBatchAlloRollup</name>
@@ -7111,7 +7111,7 @@ Wenn der Vorgang zu 100 % abgeschlossen ist, können Sie die Seite verlassen od
     </customLabels>
     <customLabels>
         <name>stgHelpCreateMissingPayments</name>
-        <label>&lt;b&gt;WARNUNG:&lt;/b&gt; Durch Klicken auf diese Schaltfläche wird die Batch-Erstellung von Zahlungen aktiviert. In NPSP wird eine Zahlung für jede Opportunity ohne Zahlung mit den folgenden Eigenschaften erstellt:
+        <label>&lt;b&gt;WARNUNG:&lt;/b&gt; Durch Klicken auf diese Schaltfläche wird die Batch-Erstellung von Zahlungen aktiviert. In NPPatch wird eine Zahlung für jede Opportunity ohne Zahlung mit den folgenden Eigenschaften erstellt:
 &lt;br/&gt;
 &lt;br/&gt;
 ● Ein Betrag ist größer als null&lt;br/&gt;
@@ -7134,21 +7134,21 @@ Wenn der Vorgang zu 100 % abgeschlossen ist, können Sie die Seite verlassen od
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable2</name>
-        <label>Wenn Sie anpassbare Rollups zum ersten Mal aktivieren, werden Ihre vorhandenen Rollups und die 87 vorgefertigten NPSP-Rollups in anpassbare Rollups konvertiert.
+        <label>Wenn Sie anpassbare Rollups zum ersten Mal aktivieren, werden Ihre vorhandenen Rollups und die 87 vorgefertigten NPPatch-Rollups in anpassbare Rollups konvertiert.
             &lt;br/&gt;&lt;br/&gt;
             Sie können sie deaktivieren und zu den alten Rollups zurückkehren, aber neue Rollups und Rollup-/Filteränderungen, die in anpassbaren Rollups vorgenommen werden, werden nicht auf Ihre alten Rollup-Einstellungen angewendet.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable3</name>
-        <label>Entfernt alle neuen Rollups, Filtergruppen und Filterregeln, die Sie erstellt haben, während Sie anpassbare Rollups verwendet haben, UND setzt alle alten NPSP-Rollups auf ihr Standardverhalten zurück.</label>
+        <label>Entfernt alle neuen Rollups, Filtergruppen und Filterregeln, die Sie erstellt haben, während Sie anpassbare Rollups verwendet haben, UND setzt alle alten NPPatch-Rollups auf ihr Standardverhalten zurück.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpDefaultAllocationsEnabled</name>
-        <label>Wenn diese Option ausgewählt ist, erstellt NPSP automatisch Zuweisungsdatensätze zum Verwendungszweck, die zu dem im nachfolgenden Feld &quot;Standard-Verwendungszweck&quot; angegebenen Verwendungszweck zugeordnet werden. Dies ermöglicht eine bessere Berichterstellung zum Standard-Verwendungszweck, doch es wird auch mehr Datenspeicherplatz belegt.</label>
+        <label>Wenn diese Option ausgewählt ist, erstellt NPPatch automatisch Zuweisungsdatensätze zum Verwendungszweck, die zu dem im nachfolgenden Feld &quot;Standard-Verwendungszweck&quot; angegebenen Verwendungszweck zugeordnet werden. Dies ermöglicht eine bessere Berichterstellung zum Standard-Verwendungszweck, doch es wird auch mehr Datenspeicherplatz belegt.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpDefaultGAU</name>
-        <label>Wenn &quot;Standardzuweisungen aktiviert&quot; ausgewählt ist, erstellt NPSP eine Zuweisung zum Verwendungszweck für alle neuen Opportunities, die nicht aus den Zuweisungs-Rollup-Einstellungen des Verwendungszwecks ausgeschlossen sind, und weist sie diesem Verwendungszweck zu. HINWEIS: Dies schließt keine vorhandenen nicht zugewiesenen Opportunities ein. Diese können Sie in den NPSP-Einstellungen zum Standard-Verwendungszweck zuweisen, indem Sie Bulk-Datenprozesse | Batch-Erstellung von Standardzuweisungen auswählen.</label>
+        <label>Wenn &quot;Standardzuweisungen aktiviert&quot; ausgewählt ist, erstellt NPPatch eine Zuweisung zum Verwendungszweck für alle neuen Opportunities, die nicht aus den Zuweisungs-Rollup-Einstellungen des Verwendungszwecks ausgeschlossen sind, und weist sie diesem Verwendungszweck zu. HINWEIS: Dies schließt keine vorhandenen nicht zugewiesenen Opportunities ein. Diese können Sie in den NPPatch-Einstellungen zum Standard-Verwendungszweck zuweisen, indem Sie Bulk-Datenprozesse | Batch-Erstellung von Standardzuweisungen auswählen.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpDisableHHAccountAddr</name>
@@ -7170,7 +7170,7 @@ Wenn der Vorgang zu 100 % abgeschlossen ist, können Sie die Seite verlassen od
     </customLabels>
     <customLabels>
         <name>stgHelpErrorNotifyOn</name>
-        <label>Wenn diese Optionen aktiviert sind, zeigt NPSP für bestimmte Fehlerarten Benachrichtigungen an.</label>
+        <label>Wenn diese Optionen aktiviert sind, zeigt NPPatch für bestimmte Fehlerarten Benachrichtigungen an.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpErrorNotifyTo</name>
@@ -7186,7 +7186,7 @@ Wenn der Vorgang zu 100 % abgeschlossen ist, können Sie die Seite verlassen od
     </customLabels>
     <customLabels>
         <name>stgHelpFiscalYearRollups</name>
-        <label>Durch Aktivierung dieses Kontrollkästchens wird für die Gesamtwerte des Opportunity-Rollups das Geschäftsjahr herangezogen anstelle der Einstellungen für das Kalenderjahr. Gehen Sie zum Festlegen der Geschäftsjahrinformationen zu &quot;Setup&quot; -&gt; &quot;Unternehmensprofil&quot; -&gt; &quot;Geschäftsjahr&quot;. HINWEIS: Benutzerdefinierte Geschäftsjahreinstellungen werden im Nonprofit Success Pack nicht unterstützt.</label>
+        <label>Durch Aktivierung dieses Kontrollkästchens wird für die Gesamtwerte des Opportunity-Rollups das Geschäftsjahr herangezogen anstelle der Einstellungen für das Kalenderjahr. Gehen Sie zum Festlegen der Geschäftsjahrinformationen zu &quot;Setup&quot; -&gt; &quot;Unternehmensprofil&quot; -&gt; &quot;Geschäftsjahr&quot;. HINWEIS: Benutzerdefinierte Geschäftsjahreinstellungen werden im NPPatch nicht unterstützt.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpHHAccountRTID</name>
@@ -7202,7 +7202,7 @@ Wenn der Vorgang zu 100 % abgeschlossen ist, können Sie die Seite verlassen od
     </customLabels>
     <customLabels>
         <name>stgHelpHHMailingListReport</name>
-        <label>Der Haushalt-Mailinglistenbericht entfernt Dopplungen einer Kampagne, die mehrere Kontakte aus demselben Haushalt enthält, damit nicht mehrere identische Anschreiben an dieselbe Adresse gesendet werden. NPSP beinhaltet einen Bericht, den Sie auswählen können, der &quot;NPSP_Kampagne_Haushalt_Mailingliste_V2&quot; heißt. Wurde dieser Bericht umbenannt oder gelöscht, wählen Sie einen Bericht aus, der den Berichtstyp &quot;Kampagnen mit Kontakten&quot; verwendet, dessen Filter für den Mitgliedsstatus nicht &quot;Doppelt&quot; enthalten und bei dem die Kampagnen-ID leer ist.</label>
+        <label>Der Haushalt-Mailinglistenbericht entfernt Dopplungen einer Kampagne, die mehrere Kontakte aus demselben Haushalt enthält, damit nicht mehrere identische Anschreiben an dieselbe Adresse gesendet werden. NPPatch beinhaltet einen Bericht, den Sie auswählen können, der &quot;NPPatch_Kampagne_Haushalt_Mailingliste_V2&quot; heißt. Wurde dieser Bericht umbenannt oder gelöscht, wählen Sie einen Bericht aus, der den Berichtstyp &quot;Kampagnen mit Kontakten&quot; verwendet, dessen Filter für den Mitgliedsstatus nicht &quot;Doppelt&quot; enthalten und bei dem die Kampagnen-ID leer ist.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpHHNameFormat</name>
@@ -7214,7 +7214,7 @@ Wenn der Vorgang zu 100 % abgeschlossen ist, können Sie die Seite verlassen od
     </customLabels>
     <customLabels>
         <name>stgHelpHHOCROn</name>
-        <label>Wenn diese Option ausgewählt ist, erstellt NPSP automatisch Kontaktrollen zu einzelnen Spenden für Haushalt-Mitglieder des Hauptansprechpartners der Opportunity.</label>
+        <label>Wenn diese Option ausgewählt ist, erstellt NPPatch automatisch Kontaktrollen zu einzelnen Spenden für Haushalt-Mitglieder des Hauptansprechpartners der Opportunity.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpHHRules</name>
@@ -7222,7 +7222,7 @@ Wenn der Vorgang zu 100 % abgeschlossen ist, können Sie die Seite verlassen od
     </customLabels>
     <customLabels>
         <name>stgHelpHealthCheck</name>
-        <label>Verwenden Sie die &lt;a href=&quot;#&quot; onclick=&quot;ShowPanel(&apos;idPanelHealthCheck&apos;);return false;&quot;&gt;Statusprüfung&lt;/a&gt;, um Ihre NPSP-Konfiguration zu prüfen!</label>
+        <label>Verwenden Sie die &lt;a href=&quot;#&quot; onclick=&quot;ShowPanel(&apos;idPanelHealthCheck&apos;);return false;&quot;&gt;Statusprüfung&lt;/a&gt;, um Ihre NPPatch-Konfiguration zu prüfen!</label>
     </customLabels>
     <customLabels>
         <name>stgHelpIGFormat</name>
@@ -7260,12 +7260,12 @@ Wenn der Vorgang zu 100 % abgeschlossen ist, können Sie die Seite verlassen od
         <label>Der Datensatztyp, der beim Erstellen von Opportunities verwendet wird, die Mitgliederspenden nachverfolgen. Wir empfehlen die Verwendung von &quot;Mitgliedschaft&quot;. Bei Opportunities mit diesem Datensatztyp wird separat ein Rollup von anderen Opportunity-Datensatztypen durchgeführt.</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpNPSPDoc</name>
-        <label>NPSP-Dokumentation</label>
+        <name>stgHelpNPPatchDoc</name>
+        <label>NPPatch-Dokumentation</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpNPSPSettings</name>
-        <label>Konfigurieren Sie das Nonprofit Success Pack entsprechend den Anforderungen Ihrer Organisation. Sie können auch den Status Ihrer Salesforce-Organisation überwachen oder Batch-Vorgänge zum Aktualisieren von Daten ausführen.</label>
+        <name>stgHelpNPPatchSettings</name>
+        <label>Konfigurieren Sie das NPPatch entsprechend den Anforderungen Ihrer Organisation. Sie können auch den Status Ihrer Salesforce-Organisation überwachen oder Batch-Vorgänge zum Aktualisieren von Daten ausführen.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpNameConnector</name>
@@ -7277,7 +7277,7 @@ Wenn der Vorgang zu 100 % abgeschlossen ist, können Sie die Seite verlassen od
     </customLabels>
     <customLabels>
         <name>stgHelpNewRDFieldMap</name>
-        <label>Wählen Sie zunächst das Feld für &quot;Wiederkehrende Spende&quot; aus, das Sie zuordnen möchten. Wählen Sie dann das Feld für &quot;Opportunity&quot; aus, das Sie zuordnen möchten. NPSP kopiert den Wert des ausgewählten Felds &quot;Wiederkehrende Spende“ in das von Ihnen ausgewählte Feld &quot;Opportunity&quot; bei allen untergeordneten Opportunites für die wiederkehrende Spende.
+        <label>Wählen Sie zunächst das Feld für &quot;Wiederkehrende Spende&quot; aus, das Sie zuordnen möchten. Wählen Sie dann das Feld für &quot;Opportunity&quot; aus, das Sie zuordnen möchten. NPPatch kopiert den Wert des ausgewählten Felds &quot;Wiederkehrende Spende“ in das von Ihnen ausgewählte Feld &quot;Opportunity&quot; bei allen untergeordneten Opportunites für die wiederkehrende Spende.
 WICHTIG: Die Datentypen beider Felder müssen identisch sein.</label>
     </customLabels>
     <customLabels>
@@ -7290,7 +7290,7 @@ WICHTIG: Die Datentypen beider Felder müssen identisch sein.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpOCR</name>
-        <label>Zwischen Soft Credits, Kontaktrollen und Spendenverdopplung bestehen wichtige Beziehungen. Wenn Sie mit diesen Konzepten und der Art und Weise, in der sie interagieren, nicht vertraut sind, lesen Sie die&lt;a href=&quot;https://help.salesforce.com/s/articleView?id=sfdo.NPSP_Automated_Soft_Credits.htm&amp;type=5&quot; target=&quot;_blank&quot;&gt;NPSP-Dokumentation&lt;/a&gt;, bevor Sie diese Einstellungen ändern.</label>
+        <label>Zwischen Soft Credits, Kontaktrollen und Spendenverdopplung bestehen wichtige Beziehungen. Wenn Sie mit diesen Konzepten und der Art und Weise, in der sie interagieren, nicht vertraut sind, lesen Sie die NPPatch-Dokumentation, bevor Sie diese Einstellungen ändern.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpOCRDefaultRole</name>
@@ -7306,7 +7306,7 @@ WICHTIG: Die Datentypen beider Felder müssen identisch sein.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpOneToOneRTID</name>
-        <label>Der Account-Datensatztyp, den Sie für neue Accounts verwenden möchten, wenn Sie das Eins-zu-Eins-Accountmodell oben ausgewählt haben. NPSP enthält keinen Standarddatensatztyp für Eins-zu-eins-Accounts, sodass Sie selber einen erstellen müssen (wie z. B. &quot;Einzelperson&quot;), bevor Sie dieses Modell auswählen. Wenn Sie &quot;Keine/r/s&quot; auswählen, verwendet Salesforce den Standard-Accountdatensatztyp für den Benutzer, der den neuen Kontakt erstellt (und den damit verbundenen Eins-zu-eins-Account).</label>
+        <label>Der Account-Datensatztyp, den Sie für neue Accounts verwenden möchten, wenn Sie das Eins-zu-Eins-Accountmodell oben ausgewählt haben. NPPatch enthält keinen Standarddatensatztyp für Eins-zu-eins-Accounts, sodass Sie selber einen erstellen müssen (wie z. B. &quot;Einzelperson&quot;), bevor Sie dieses Modell auswählen. Wenn Sie &quot;Keine/r/s&quot; auswählen, verwendet Salesforce den Standard-Accountdatensatztyp für den Benutzer, der den neuen Kontakt erstellt (und den damit verbundenen Eins-zu-eins-Account).</label>
     </customLabels>
     <customLabels>
         <name>stgHelpOppNamingAttribution</name>
@@ -7362,7 +7362,7 @@ WICHTIG: Die Datentypen beider Felder müssen identisch sein.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpPowerOfUsHub</name>
-        <label>Haben Sie Fragen? Antworten zu Fragen über NPSP können Sie in der Gruppe &lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHitSAE&quot; target=&quot;_blank&quot;&gt;Nonprofit Success Pack&lt;/a&gt; finden. Antworten zu Fragen über die Verwaltung und Konfiguration von Salesforce können Sie in der Gruppe &lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHiLSAU?tab=discussion&quot; target=&quot;_blank&quot;&gt;System Administrators&lt;/a&gt; finden.&lt;br/&gt;&lt;br/&gt;Lesen Sie die neuesten NPSP-Versionshinweise in der Gruppe &lt;a href=&quot;https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHOXSA2?tab=discussion&amp;sort=LAST_MODIFIED_DATE_DESC.htm&quot; target=&quot;_blank&quot;&gt;NPSP Release Announcements&lt;/a&gt;, um auf dem Laufenden zu bleiben.</label>
+        <label>Haben Sie Fragen? Antworten zu Fragen über NPPatch können Sie in der NPPatch-Gruppe finden. Antworten zu Fragen über die Verwaltung und Konfiguration von Salesforce können Sie in der System Administrators-Gruppe finden.&lt;br/&gt;&lt;br/&gt;Lesen Sie die neuesten NPPatch-Versionshinweise in der NPPatch Release Announcements-Gruppe, um auf dem Laufenden zu bleiben.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpPrimaryContactBatch</name>
@@ -7400,7 +7400,7 @@ Sobald der Vorgang zu 100 % abgeschlossen ist, können Sie diese Seite sicher v
     </customLabels>
     <customLabels>
         <name>stgHelpRDAddCampaign</name>
-        <label>Bei aktivierter Option kopiert NPSP die Kampagne, die Sie für die wiederkehrende Spende angegeben haben, in ihre Ratenzahlungs-Opportunities.</label>
+        <label>Bei aktivierter Option kopiert NPPatch die Kampagne, die Sie für die wiederkehrende Spende angegeben haben, in ihre Ratenzahlungs-Opportunities.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRDBatch</name>
@@ -7450,7 +7450,7 @@ Dieser Vorgang kann etwas Zeit in Anspruch nehmen, Sie können die Seite jedoch 
     </customLabels>
     <customLabels>
         <name>stgHelpRDOppForecastMonths</name>
-        <label>Anzahl der Monate für offene Opportunities, die NPSP bei unbefristeten wiederkehrenden Spenden erstellt. NPSP sorgt dafür, dass es immer Opportunities mit dieser Anzahl an Monaten gibt, indem das Programm in jedem Monat die entsprechende Anzahl an neuen Opportunities erstellt.</label>
+        <label>Anzahl der Monate für offene Opportunities, die NPPatch bei unbefristeten wiederkehrenden Spenden erstellt. NPPatch sorgt dafür, dass es immer Opportunities mit dieser Anzahl an Monaten gibt, indem das Programm in jedem Monat die entsprechende Anzahl an neuen Opportunities erstellt.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRDOppRT</name>
@@ -7458,7 +7458,7 @@ Dieser Vorgang kann etwas Zeit in Anspruch nehmen, Sie können die Seite jedoch 
     </customLabels>
     <customLabels>
         <name>stgHelpRDInstallmentCreateOptionMessage</name>
-        <label>Legt fest, wann NPSP Ratenzahlungs-Opportunities für wiederkehrende Spenden erstellt. Der Standardwert ist &quot;Always Create Next Installment&quot; (Immer nächste Rate erstellen).</label>
+        <label>Legt fest, wann NPPatch Ratenzahlungs-Opportunities für wiederkehrende Spenden erstellt. Der Standardwert ist &quot;Always Create Next Installment&quot; (Immer nächste Rate erstellen).</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRDPeriodFrequency</name>
@@ -7478,11 +7478,11 @@ Dieser Vorgang kann etwas Zeit in Anspruch nehmen, Sie können die Seite jedoch 
     </customLabels>
     <customLabels>
         <name>stgHelpRecDon</name>
-        <label>Diese Einstellung ermöglicht Ihnen, benutzerdefinierte Ratenlaufzeiten für wiederkehrende Spenden zu erstellen, die sich von den Standard-Ratenlaufzeiten (monatlich, vierteljährlich, jährlich usw.) in NPSP unterscheiden.</label>
+        <label>Diese Einstellung ermöglicht Ihnen, benutzerdefinierte Ratenlaufzeiten für wiederkehrende Spenden zu erstellen, die sich von den Standard-Ratenlaufzeiten (monatlich, vierteljährlich, jährlich usw.) in NPPatch unterscheiden.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRelAutoCreatedDup</name>
-        <label>Duplikate der automatisch erstellten Beziehungen werden in NPSP entfernt. Aktivieren Sie dieses Kontrollkästchen, um die automatische Entfernung von Duplikaten zu deaktivieren und mehrere Beziehungen desselben Typs zwischen zwei Kontakten zuzulassen.</label>
+        <label>Duplikate der automatisch erstellten Beziehungen werden in NPPatch entfernt. Aktivieren Sie dieses Kontrollkästchen, um die automatische Entfernung von Duplikaten zu deaktivieren und mehrere Beziehungen desselben Typs zwischen zwei Kontakten zuzulassen.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpRelFieldSyncToggle</name>
@@ -7579,7 +7579,7 @@ Um Ihre vorhandenen Einstellungen zu überprüfen, gehen Sie zu &quot;Setup&quot
     </customLabels>
     <customLabels>
         <name>stgHelpStoreErrorsOn</name>
-        <label>Wenn diese Option ausgewählt ist, speichert NPSP Fehler. Sie können gespeicherte Fehler auf der NPSP-Einstellungsseite unter Systemtools &gt;Fehlerprotokoll anzeigen.</label>
+        <label>Wenn diese Option ausgewählt ist, speichert NPPatch Fehler. Sie können gespeicherte Fehler auf der NPPatch-Einstellungsseite unter Systemtools &gt;Fehlerprotokoll anzeigen.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpTDTM</name>
@@ -7611,7 +7611,7 @@ Um Ihre vorhandenen Einstellungen zu überprüfen, gehen Sie zu &quot;Setup&quot
     </customLabels>
     <customLabels>
         <name>stgHelpTriggerHandlers</name>
-        <label>Diese Auslöser steuern Kernfunktionen im Nonprofit Success Pack. Gehen Sie äußerst vorsichtig vor, wenn Sie sie erstellen oder ändern.</label>
+        <label>Diese Auslöser steuern Kernfunktionen im NPPatch. Gehen Sie äußerst vorsichtig vor, wenn Sie sie erstellen oder ändern.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpTriggerHandlersAsync</name>
@@ -7647,9 +7647,9 @@ Um Ihre vorhandenen Einstellungen zu überprüfen, gehen Sie zu &quot;Setup&quot
     </customLabels>
     <customLabels>
         <name>stgInstallScriptError</name>
-        <label>Die Installation war erfolgreich, doch es ist ein kleines Problem aufgetreten. Laden Sie einfach die Seite &quot;NPSP-Einstellungen&quot; in Salesforce, um das Problem zu beheben.
+        <label>Die Installation war erfolgreich, doch es ist ein kleines Problem aufgetreten. Laden Sie einfach die Seite &quot;NPPatch-Einstellungen&quot; in Salesforce, um das Problem zu beheben.
 
-Hinweis: Die Registerkarte &quot;NPSP-Einstellungen&quot; ist in der Nonprofit Success Pack-Anwendung sichtbar. Wenn Sie die Registerkarte nicht sehen, wählen Sie das Nonprofit Success Pack im App-Menü in der oberen rechten Ecke aus.</label>
+Hinweis: Die Registerkarte &quot;NPPatch-Einstellungen&quot; ist in der NPPatch-Anwendung sichtbar. Wenn Sie die Registerkarte nicht sehen, wählen Sie das NPPatch im App-Menü in der oberen rechten Ecke aus.</label>
     </customLabels>
     <customLabels>
         <name>stgLabelActionColumn</name>
@@ -8008,20 +8008,20 @@ Hinweis: Die Registerkarte &quot;NPSP-Einstellungen&quot; ist in der Nonprofit S
         <label>Kein(e) {0} gefunden.</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPGuideImportData</name>
-        <label>NPSP-Leitfaden zum Importieren von Daten</label>
+        <name>stgNPPatchGuideImportData</name>
+        <label>NPPatch-Leitfaden zum Importieren von Daten</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPSettings</name>
-        <label>Nonprofit Success Pack-Anwendungseinstellungen</label>
+        <name>stgNPPatchSettings</name>
+        <label>NPPatch-Anwendungseinstellungen</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPSettingsTitle</name>
-        <label>Nonprofit Success Pack-Einstellungen</label>
+        <name>stgNPPatchSettingsTitle</name>
+        <label>NPPatch-Einstellungen</label>
     </customLabels>
     <customLabels>
-        <name>stgNPSPWorkbook</name>
-        <label>Trail für NPSP-Spendenaktionen</label>
+        <name>stgNPPatchWorkbook</name>
+        <label>Trail für NPPatch-Spendenaktionen</label>
     </customLabels>
     <customLabels>
         <name>stgNavAccountModel</name>
@@ -8189,7 +8189,7 @@ Hinweis: Die Registerkarte &quot;NPSP-Einstellungen&quot; ist in der Nonprofit S
     </customLabels>
     <customLabels>
         <name>stgRDNamingDescription</name>
-        <label>Wenn Sie eine wiederkehrende Spende erstellen, füllt NPSP den Namen automatisch im angegebenen Namensformat auf. Wählen Sie &quot;Automatische Benennung deaktivieren&quot; aus, um dieses Feature zu deaktivieren.</label>
+        <label>Wenn Sie eine wiederkehrende Spende erstellen, füllt NPPatch den Namen automatisch im angegebenen Namensformat auf. Wählen Sie &quot;Automatische Benennung deaktivieren&quot; aus, um dieses Feature zu deaktivieren.</label>
     </customLabels>
     <customLabels>
         <name>stgRDNamingDisable</name>
@@ -8289,7 +8289,7 @@ Hinweis: Die Registerkarte &quot;NPSP-Einstellungen&quot; ist in der Nonprofit S
     </customLabels>
     <customLabels>
         <name>gsResourcesVideographyLabel</name>
-        <label>NPSP-Videokanal</label>
+        <label>NPPatch-Videokanal</label>
     </customLabels>
     <customLabels>
         <name>gsResourcesVideographyLinkLabel</name>
@@ -8297,7 +8297,7 @@ Hinweis: Die Registerkarte &quot;NPSP-Einstellungen&quot; ist in der Nonprofit S
     </customLabels>
     <customLabels>
         <name>gsVideoHeaderTitle</name>
-        <label>Erste Schritte in NPSP</label>
+        <label>Erste Schritte in NPPatch</label>
     </customLabels>
     <customLabels>
         <name>gseuPageTitle</name>
@@ -8312,12 +8312,12 @@ Hinweis: Die Registerkarte &quot;NPSP-Einstellungen&quot; ist in der Nonprofit S
         <label>Trailblazer Community</label>
     </customLabels>
     <customLabels>
-        <name>gseuResourcesItemAboutNPSPLabel</name>
-        <label>Mehr über NPSP erfahren</label>
+        <name>gseuResourcesItemAboutNPPatchLabel</name>
+        <label>Mehr über NPPatch erfahren</label>
     </customLabels>
     <customLabels>
-        <name>gseuResourcesItemAboutNPSPLinkLabel</name>
-        <label>NPSP-Dokumentation</label>
+        <name>gseuResourcesItemAboutNPPatchLinkLabel</name>
+        <label>NPPatch-Dokumentation</label>
     </customLabels>
     <customLabels>
         <name>gseuResourcesItemWatchVideosLabel</name>
@@ -8325,7 +8325,7 @@ Hinweis: Die Registerkarte &quot;NPSP-Einstellungen&quot; ist in der Nonprofit S
     </customLabels>
     <customLabels>
         <name>gseuResourcesItemWatchVideosLinkLabel</name>
-        <label>NPSP-Videokanal</label>
+        <label>NPPatch-Videokanal</label>
     </customLabels>
     <customLabels>
         <name>gseuResourcesItemWebinarsLabel</name>
@@ -8401,23 +8401,23 @@ Hinweis: Die Registerkarte &quot;NPSP-Einstellungen&quot; ist in der Nonprofit S
     </customTabs>
     <customTabs>
         <name>GetStarted</name>
-        <label>Erste Schritte mit NPSP – Administrator</label>
+        <label>Erste Schritte mit NPPatch – Administrator</label>
     </customTabs>
     <customTabs>
         <name>GetStartedEndUser</name>
-        <label>Erste Schritte mit NPSP</label>
+        <label>Erste Schritte mit NPPatch</label>
     </customTabs>
     <customTabs>
-        <name>NPSP_Resources</name>
+        <name>NPPatch_Resources</name>
         <label>Erste Schritte</label>
     </customTabs>
     <customTabs>
-        <name>NPSP_Settings</name>
-        <label>NPSP-Einstellungen</label>
+        <name>NPPatch_Settings</name>
+        <label>NPPatch-Einstellungen</label>
     </customTabs>
     <customApplications>
         <name>Nonprofit_CRM</name>
-        <label>Nonprofit Success Pack</label>
+        <label>NPPatch</label>
     </customApplications>
     <quickActions>
         <name>Account.New_Address</name>

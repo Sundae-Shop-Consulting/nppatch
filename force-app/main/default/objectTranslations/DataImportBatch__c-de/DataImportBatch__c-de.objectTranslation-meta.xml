@@ -9,7 +9,7 @@
         <label>Batch verarbeiten</label>
     </webLinks>
     <layouts>
-        <layout>NPSP Data Import Batch Layout</layout>
+        <layout>NPPatch Data Import Batch Layout</layout>
         <sections>
             <label>Kontakt- und Account-Abgleich</label>
             <section>Contact &amp; Account Matching</section>

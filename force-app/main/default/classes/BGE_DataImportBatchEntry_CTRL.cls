@@ -53,7 +53,7 @@ public with sharing class BGE_DataImportBatchEntry_CTRL {
 
     /*******************************************************************************************************
     * @description deletes DataImport__c record and returns updated totals in the model
-    * @param batchId: ID of the NPSP_Data_Import_Batch__c
+    * @param batchId: ID of the NPPatch_Data_Import_Batch__c
     * @param dataImportId: ID of the DataImport__c
     * @return String serialized DataImportModel to update totals
     */
@@ -77,7 +77,7 @@ public with sharing class BGE_DataImportBatchEntry_CTRL {
 
     /*******************************************************************************************************
     * @description initializes the data model for the BGE_DataImportBatchEntry component
-    * @param batchId: ID of the NPSP_Data_Import_Batch__c
+    * @param batchId: ID of the NPPatch_Data_Import_Batch__c
     * @return serialized string of dataImportModel
     */
     @AuraEnabled
@@ -118,7 +118,7 @@ public with sharing class BGE_DataImportBatchEntry_CTRL {
         for (DataImport__c dataImport: [
             SELECT Donation_Amount__c
             FROM DataImport__c
-            WHERE NPSP_Data_Import_Batch__c =: batchId
+            WHERE NPPatch_Data_Import_Batch__c =: batchId
         ]) {
             totalAmount+= dataImport.Donation_Amount__c == null
                 ? 0
@@ -177,7 +177,7 @@ public with sharing class BGE_DataImportBatchEntry_CTRL {
 
     /*******************************************************************************************************
     * @description queries the DataImport__c records associated with the given batchId
-    * @param batchId: ID of the NPSP_Data_Import_Batch__c
+    * @param batchId: ID of the NPPatch_Data_Import_Batch__c
     * @param offset: next offset to query
     * @return list of custom DataImportRow objects for use in the lightning:datatable
     */
@@ -309,7 +309,7 @@ public with sharing class BGE_DataImportBatchEntry_CTRL {
     /*******************************************************************************************************
     * @description runs BDI Dry Run against a given Id based on the processing settings of a given batch
     * @param dataImportId: the NPSP_Data_Import__c record to update
-    * @param batchId: ID of the NPSP_Data_Import_Batch__c
+    * @param batchId: ID of the NPPatch_Data_Import_Batch__c
     * @return DataImportModel with updated data import record row and updated totals for the batch
     */
     @AuraEnabled
@@ -337,7 +337,7 @@ public with sharing class BGE_DataImportBatchEntry_CTRL {
     /*******************************************************************************************************
     * @description runs BDI Dry Run against all Data Import records based on the processing settings of a 
     *  given batch
-    * @param batchId: ID of the NPSP_Data_Import_Batch__c
+    * @param batchId: ID of the NPPatch_Data_Import_Batch__c
     * @return DataImportModel with updated data import record row and updated totals for the batch
     */
     @AuraEnabled
@@ -381,7 +381,7 @@ public with sharing class BGE_DataImportBatchEntry_CTRL {
 
     /*******************************************************************************************************
     * @description updates data import record, dry runs the record, and returns updated totals with the new row.
-    * @param batchId: ID of the NPSP_Data_Import_Batch__c
+    * @param batchId: ID of the NPPatch_Data_Import_Batch__c
     * @param dataImport: the NPSP_Data_Import__c record to update
     * @return String serialized DataImportModel to update totals
     */
@@ -399,7 +399,7 @@ public with sharing class BGE_DataImportBatchEntry_CTRL {
 
     /*******************************************************************************************************
     * @description gets updated amount total and row count for the batch
-    * @param batchId: ID of the NPSP_Data_Import_Batch__c
+    * @param batchId: ID of the NPPatch_Data_Import_Batch__c
     * @return DataImportModel updated model with total amount and number of rows
     */
     public static DataImportModel getUpdatedTotals(Id batchId) {
@@ -423,7 +423,7 @@ public with sharing class BGE_DataImportBatchEntry_CTRL {
         Map<String, String> labels = new Map<String, String> {
             'accountObject' => Schema.SObjectType.Account.getLabel(),
             'accountLookup' => Schema.SObjectType.DataImport__c.fields.Account1Imported__c.getName(),
-            'batchIdField' => Schema.SObjectType.DataImport__c.fields.NPSP_Data_Import_Batch__c.getName(),
+            'batchIdField' => Schema.SObjectType.DataImport__c.fields.NPPatch_Data_Import_Batch__c.getName(),
             'bdiBatchClass' => UTIL_Namespace.StrTokenNSPrefix('BDI_DataImport'),
             'contactLookup' => Schema.SObjectType.DataImport__c.fields.Contact1Imported__c.getName(),
             'contactObject' => Schema.SObjectType.Contact.getLabel(),
@@ -452,24 +452,24 @@ public with sharing class BGE_DataImportBatchEntry_CTRL {
 
     /*******************************************************************************************************
     * @description Gets the sum of the amount totals of all rows for that batch
-    * @param recordId the ID of the NPSP_Data_Import_Batch__c
+    * @param recordId the ID of the NPPatch_Data_Import_Batch__c
     * @return Decimal amount
     */
     private static AggregateResult[] getDataImportBatchTotalAmount(Id recordId) {
         return [
             SELECT Sum(Donation_Amount__c)amount
             FROM DataImport__c
-            WHERE NPSP_Data_Import_Batch__c =: recordId
+            WHERE NPPatch_Data_Import_Batch__c =: recordId
         ];
     }
 
     /*******************************************************************************************************
     * @description Gets the count of Data Import Batch records in a particular batch
-    * @param recordId the ID of the NPSP_Data_Import_Batch__c
+    * @param recordId the ID of the NPPatch_Data_Import_Batch__c
     * @return Integer count of batch records
     */
     private static Integer getDataImportBatchTotalCount(Id recordId) {
-        return [SELECT Count() FROM DataImport__c WHERE NPSP_Data_Import_Batch__c =: recordId];
+        return [SELECT Count() FROM DataImport__c WHERE NPPatch_Data_Import_Batch__c =: recordId];
     }
 
     /*******************************************************************************************************
@@ -590,7 +590,7 @@ public with sharing class BGE_DataImportBatchEntry_CTRL {
 
         String query =  'SELECT ' + String.join(dataImportFields,', ') +
                         ' FROM DataImport__c' +
-                        ' WHERE NPSP_Data_Import_Batch__c = :batchId';
+                        ' WHERE NPPatch_Data_Import_Batch__c = :batchId';
 
         if (dataImportIds != null && dataImportIds.size() > 0) {
             query += ' AND Id IN :dataImportIds';

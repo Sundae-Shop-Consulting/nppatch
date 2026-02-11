@@ -341,7 +341,7 @@ private class Gifts_TEST {
             DataImport__c dummyGift = new DataImport__c(
                 Id = UTIL_UnitTestData_TEST.mockId(DataImport__c.getSObjectType()),
                 Status__c = BDI_DataImport_API.bdiDryRunValidated,
-                NPSP_Data_Import_Batch__c = UTIL_UnitTestData_TEST.mockId(DataImportBatch__c.getSObjectType()),
+                NPPatch_Data_Import_Batch__c = UTIL_UnitTestData_TEST.mockId(DataImportBatch__c.getSObjectType()),
                 Account1_Name__c = 'DUMMY ACCOUNT ' +  i,
                 Donation_Amount__c = 1,
                 Donation_Date__c = Date.today(),

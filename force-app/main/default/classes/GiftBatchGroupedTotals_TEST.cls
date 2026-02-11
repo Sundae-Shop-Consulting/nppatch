@@ -44,7 +44,7 @@ private with sharing class GiftBatchGroupedTotals_TEST {
         String elevatePaymentDeclinedStatus = ElevateTransactionStatus.DECLINED.name();
         String elevatePaymentExpiredStatus = ElevateTransactionStatus.EXPIRED.name();
 
-        String dataImportBatchFieldAPIName = String.valueOf(DataImport__c.fields.NPSP_Data_Import_Batch__c);
+        String dataImportBatchFieldAPIName = String.valueOf(DataImport__c.fields.NPPatch_Data_Import_Batch__c);
         String dataImportPaymentStatusFieldAPIName = String.valueOf(DataImport__c.fields.Payment_Status__c);
         String dataImportStatusFieldName = String.valueOf(DataImport__c.fields.Status__c);
 

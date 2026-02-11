@@ -18,8 +18,8 @@ import gsResourcesVideographyLabel from '@salesforce/label/c.gsResourcesVideogra
 import gsResourcesVideographyLinkLabel from '@salesforce/label/c.gsResourcesVideographyLinkLabel';
 import gseuResourcesItemQuestionsAnsweredLabel from '@salesforce/label/c.gseuResourcesItemQuestionsAnsweredLabel';
 import gseuResourcesItemQuestionsAnsweredLinkLabel from '@salesforce/label/c.gseuResourcesItemQuestionsAnsweredLinkLabel';
-import gseuResourcesItemAboutNPSPLabel from '@salesforce/label/c.gseuResourcesItemAboutNPSPLabel';
-import gseuResourcesItemAboutNPSPLinkLabel from '@salesforce/label/c.gseuResourcesItemAboutNPSPLinkLabel';
+import gseuResourcesItemAboutNPPatchLabel from '@salesforce/label/c.gseuResourcesItemAboutNPPatchLabel';
+import gseuResourcesItemAboutNPPatchLinkLabel from '@salesforce/label/c.gseuResourcesItemAboutNPPatchLinkLabel';
 import gseuResourcesItemWatchVideosLabel from '@salesforce/label/c.gseuResourcesItemWatchVideosLabel';
 import gseuResourcesItemWatchVideosLinkLabel from '@salesforce/label/c.gseuResourcesItemWatchVideosLinkLabel';
 import gseuResourcesItemWebinarsLabel from '@salesforce/label/c.gseuResourcesItemWebinarsLabel';
@@ -99,10 +99,10 @@ const END_USER_RESOURCES = [
     },
     {
         id: 2,
-        label: gseuResourcesItemAboutNPSPLabel,
-        linkLabel: gseuResourcesItemAboutNPSPLinkLabel,
+        label: gseuResourcesItemAboutNPPatchLabel,
+        linkLabel: gseuResourcesItemAboutNPPatchLinkLabel,
         href: 'https://sforce.co/3oCXOxY',
-        ariaLabel: `${gseuResourcesItemAboutNPSPLinkLabel} ${opensInNewLink}`
+        ariaLabel: `${gseuResourcesItemAboutNPPatchLinkLabel} ${opensInNewLink}`
     },
     {
         id: 3,

@@ -53,7 +53,7 @@ private class GiftBatchService_TEST {
         List<DataImport__c> dataImports = new List<DataImport__c>();
         for (Integer i = 0; i < 10; i++) {
             DataImport__c dataImport = BDI_DataImport_TEST.newDI('John'+i,'Doe'+i, 200);
-            dataImport.NPSP_Data_Import_Batch__c = dataImportBatch.Id;
+            dataImport.NPPatch_Data_Import_Batch__c = dataImportBatch.Id;
             dataImports.add(dataImport);
         }
         insert dataImports;

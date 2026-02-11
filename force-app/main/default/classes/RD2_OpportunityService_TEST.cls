@@ -303,7 +303,7 @@ private with sharing class RD2_OpportunityService_TEST {
         System.assertEquals(1, opps.size(), 'An opportunity should be created');
 
         System.assertEquals(rdSettingRecordTypeId, opps[0].RecordTypeId,
-            'The record type should be configured according to the NPSP Opportunity Default Record Type');
+            'The record type should be configured according to the NPPatch Opportunity Default Record Type');
     }
 
     /***
@@ -325,7 +325,7 @@ private with sharing class RD2_OpportunityService_TEST {
 
         Id defaultRecordTypeId = UTIL_RecordTypes_TEST.getDefaultRecordTypeId(Opportunity.SObjectType);
         System.assertEquals(defaultRecordTypeId, opps[0].RecordTypeId,
-            'The record type should be the default opp record type when NPSP default record type is null');
+            'The record type should be the default opp record type when NPPatch default record type is null');
     }
 
     /***

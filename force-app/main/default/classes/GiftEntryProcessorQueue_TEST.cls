@@ -62,7 +62,7 @@ private class GiftEntryProcessorQueue_TEST {
             Recurring_Donation_Amount__c = 25.00,
             Recurring_Donation_Date_Established__c = Date.today(),
             Donation_Date__c = Date.today(),
-            NPSP_Data_Import_Batch__c = giftBatch.Id,
+            NPPatch_Data_Import_Batch__c = giftBatch.Id,
             Contact1_Lastname__c = 'Dummy Last Name',
             Donation_Donor__c = 'Contact1'
         ));
@@ -142,7 +142,7 @@ private class GiftEntryProcessorQueue_TEST {
             Donation_Amount__c = 50.00,
             Recurring_Donation_Date_Established__c = Date.today(),
             Donation_Date__c = Date.today(),
-            NPSP_Data_Import_Batch__c = giftBatch.Id,
+            NPPatch_Data_Import_Batch__c = giftBatch.Id,
             Contact1_Lastname__c = 'Dummy Last Name',
             Donation_Donor__c = 'Contact1'
         ));
@@ -341,7 +341,7 @@ private class GiftEntryProcessorQueue_TEST {
                 Donation_Amount__c = 33.33,
                 Donation_Date__c = Date.today(),
                 Status__c = status,
-                NPSP_Data_Import_Batch__c = giftBatchId,
+                NPPatch_Data_Import_Batch__c = giftBatchId,
                 Contact1_LastName__c = 'Dummy Last Name',
                 Donation_Donor__c = 'Contact1'
             ));
@@ -358,7 +358,7 @@ private class GiftEntryProcessorQueue_TEST {
                 Donation_Date__c = Date.today(),
                 Status__c = status,
                 Payment_Status__c = 'AUTHORIZED',
-                NPSP_Data_Import_Batch__c = giftBatchId,
+                NPPatch_Data_Import_Batch__c = giftBatchId,
                 Contact1_LastName__c = 'Dummy Last Name',
                 Donation_Donor__c = 'Contact1'
             ));

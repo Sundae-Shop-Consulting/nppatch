@@ -3,7 +3,7 @@
     <matchingRules>
         <fullName>NPSP_Contact_Personal_Email_Match</fullName>
         <description>Matching rule for contact records; matches on First Name, Last Name, and Personal Email.</description>
-        <label>NPSP Contact Personal Email Match</label>
+        <label>NPPatch Contact Personal Email Match</label>
         <matchingRuleItems>
             <blankValueBehavior>NullNotAllowed</blankValueBehavior>
             <fieldName>FirstName</fieldName>

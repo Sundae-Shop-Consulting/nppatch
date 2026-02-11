@@ -47,8 +47,8 @@ public without sharing class UTIL_MasterSchedulableHelper {
     public static void abortOldScheduledJobs() {
         //Abort the old NPSPv3 schedulable, since we have changed the name and are using a new class now (as of July 24 2014).
         //Abort the scheduled jobs from the old NPSP packages.
-        List<String> jobNames = new List<String>{'NPSP Global Scheduler', 'Nightly Opportunity Roll Up', 'Recurring Donation Updates',
-            'NPSP Scheduler1', 'NPSP Scheduler2', 'NPSP Scheduler3', 'NPSP Scheduler 1', 'NPSP Scheduler 2', 'NPSP Scheduler 3'};
+        List<String> jobNames = new List<String>{'NPPatch Global Scheduler', 'Nightly Opportunity Roll Up', 'Recurring Donation Updates',
+            'NPPatch Scheduler1', 'NPPatch Scheduler2', 'NPPatch Scheduler3', 'NPPatch Scheduler 1', 'NPPatch Scheduler 2', 'NPPatch Scheduler 3'};
         List<CronTrigger> oldScheduledJobs = [select Id, CronJobDetail.Id from CronTrigger
            where CronJobDetail.Name IN :jobNames and CronJobDetail.JobType = '7'];
         if(oldScheduledJobs != null && oldScheduledJobs.size() > 0) {
@@ -73,71 +73,71 @@ public without sharing class UTIL_MasterSchedulableHelper {
                 jobsToAbort.clear();
 
                 defaultScheduledJobs = new Map<String, List<String>>{
-                    'NPSP 00 - Error Processing'                => new List<String>{'0 0 * * * ?',  'ERR_AsyncErrors_SCHED'},
-                    'NPSP 07 - Seasonal Address Updates'        => new List<String>{'0 0 23 ? * *', 'ADDR_Seasonal_SCHED'},
-                    'NPSP 08 - Level Assignment Updates'        => new List<String>{'0 0 4 ? * *',  'LVL_LevelAssign_SCHED'},
-                    'NPSP 09 - Data Import Batch Processing'    => new List<String>{'0 0 22 ? * *', 'BDI_DataImportBatch_SCHED'}
+                    'NPPatch 00 - Error Processing'                => new List<String>{'0 0 * * * ?',  'ERR_AsyncErrors_SCHED'},
+                    'NPPatch 07 - Seasonal Address Updates'        => new List<String>{'0 0 23 ? * *', 'ADDR_Seasonal_SCHED'},
+                    'NPPatch 08 - Level Assignment Updates'        => new List<String>{'0 0 4 ? * *',  'LVL_LevelAssign_SCHED'},
+                    'NPPatch 09 - Data Import Batch Processing'    => new List<String>{'0 0 22 ? * *', 'BDI_DataImportBatch_SCHED'}
                 };
 
                 // Start the Recurring Donations job one hour before the Rollup jobs to avoid any conflict with
                 // the Opps that may be created/modified by the RD job.
                 if (RD2_EnablementService.isRecurringDonations2Enabled) {
-                    defaultScheduledJobs.put('NPSP 06 - Enhanced Recurring Donation Updates',
+                    defaultScheduledJobs.put('NPPatch 06 - Enhanced Recurring Donation Updates',
                         new List<String>{'0 0 22 ? * *', 'RD2_OpportunityEvaluation_BATCH'} );
-                    jobsToAbort.add('NPSP 06 - Recurring Donation Updates');
+                    jobsToAbort.add('NPPatch 06 - Recurring Donation Updates');
                 } else {
-                    defaultScheduledJobs.put('NPSP 06 - Recurring Donation Updates',
+                    defaultScheduledJobs.put('NPPatch 06 - Recurring Donation Updates',
                         new List<String>{'0 0 22 ? * *', 'RD_RecurringDonations_BATCH'} );
-                    jobsToAbort.add('NPSP 06 - Enhanced Recurring Donation Updates');
+                    jobsToAbort.add('NPPatch 06 - Enhanced Recurring Donation Updates');
                 }
 
                 if (CRLP_Rollup_SVC.isCustomizableRollupEngineEnabled) {
                     // When the Customizable Rollups Engine is enabled, the actual rollup job target classes change, but
                     // keep the naming similar and stagger the job start times slightly.
-                    defaultScheduledJobs.put('NPSP 01A - Customizable Rollups - Account Hard Credit', new List<String>{'0 0 23 ? * *', 'CRLP_Account_BATCH'});
-                    defaultScheduledJobs.put('NPSP 02A - Customizable Rollups - Contact Hard Credit', new List<String>{'0 05 23 ? * *', 'CRLP_Contact_BATCH'});
-                    defaultScheduledJobs.put('NPSP 03A - Customizable Rollups - Account-level Contact Soft Credit', new List<String>{'0 10 23 ? * *', 'CRLP_Account_SoftCredit_BATCH'});
-                    defaultScheduledJobs.put('NPSP 03B - Customizable Rollups - Account Soft Credit', new List<String>{'0 10 23 ? * *', 'CRLP_Account_AccSoftCredit_BATCH'});
-                    defaultScheduledJobs.put('NPSP 04A - Customizable Rollups - Contact Soft Credit', new List<String>{'0 15 23 ? * *', 'CRLP_Contact_SoftCredit_BATCH'});
-                    defaultScheduledJobs.put('NPSP 01B - Customizable Rollups - Account Hard Credit Skew', new List<String>{'0 0 23 ? * *', 'CRLP_AccountSkew_BATCH'});
-                    defaultScheduledJobs.put('NPSP 02B - Customizable Rollups - Contact Hard Credit Skew', new List<String>{'0 05 23 ? * *', 'CRLP_ContactSkew_BATCH'});
-                    defaultScheduledJobs.put('NPSP 03C - Customizable Rollups - Account-level Contact Soft Credit Skew', new List<String>{'0 10 23 ? * *', 'CRLP_AccountSkew_SoftCredit_BATCH'});
-                    defaultScheduledJobs.put('NPSP 03D - Customizable Rollups - Account Soft Credit Skew', new List<String>{'0 10 23 ? * *', 'CRLP_AccountSkew_AccSoftCredit_BATCH'});
-                    defaultScheduledJobs.put('NPSP 04B - Customizable Rollups - Contact Soft Credit Skew', new List<String>{'0 15 23 ? * *', 'CRLP_ContactSkew_SoftCredit_BATCH'});
-                    defaultScheduledJobs.put('NPSP 05 - Customizable Rollups - General Accounting Units', new List<String>{'0 20 23 ? * *', 'CRLP_GAU_BATCH'});
-                    defaultScheduledJobs.put('NPSP 06A - Customizable Rollups - Recurring Donations', new List<String>{'0 25 23 ? * *', 'CRLP_RD_BATCH'});
-                    defaultScheduledJobs.put('NPSP 06B - Customizable Rollups - Recurring Donations Skew', new List<String>{'0 30 23 ? * *', 'CRLP_RDSkew_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 01A - Customizable Rollups - Account Hard Credit', new List<String>{'0 0 23 ? * *', 'CRLP_Account_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 02A - Customizable Rollups - Contact Hard Credit', new List<String>{'0 05 23 ? * *', 'CRLP_Contact_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 03A - Customizable Rollups - Account-level Contact Soft Credit', new List<String>{'0 10 23 ? * *', 'CRLP_Account_SoftCredit_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 03B - Customizable Rollups - Account Soft Credit', new List<String>{'0 10 23 ? * *', 'CRLP_Account_AccSoftCredit_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 04A - Customizable Rollups - Contact Soft Credit', new List<String>{'0 15 23 ? * *', 'CRLP_Contact_SoftCredit_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 01B - Customizable Rollups - Account Hard Credit Skew', new List<String>{'0 0 23 ? * *', 'CRLP_AccountSkew_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 02B - Customizable Rollups - Contact Hard Credit Skew', new List<String>{'0 05 23 ? * *', 'CRLP_ContactSkew_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 03C - Customizable Rollups - Account-level Contact Soft Credit Skew', new List<String>{'0 10 23 ? * *', 'CRLP_AccountSkew_SoftCredit_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 03D - Customizable Rollups - Account Soft Credit Skew', new List<String>{'0 10 23 ? * *', 'CRLP_AccountSkew_AccSoftCredit_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 04B - Customizable Rollups - Contact Soft Credit Skew', new List<String>{'0 15 23 ? * *', 'CRLP_ContactSkew_SoftCredit_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 05 - Customizable Rollups - General Accounting Units', new List<String>{'0 20 23 ? * *', 'CRLP_GAU_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 06A - Customizable Rollups - Recurring Donations', new List<String>{'0 25 23 ? * *', 'CRLP_RD_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 06B - Customizable Rollups - Recurring Donations Skew', new List<String>{'0 30 23 ? * *', 'CRLP_RDSkew_BATCH'});
 
 
                     // The following jobs should be aborted if the Customizable Rollups jobs are being enabled
-                    jobsToAbort.add('NPSP 01 - Opportunity Account Rollups');
-                    jobsToAbort.add('NPSP 02 - Opportunity Contact Rollups');
-                    jobsToAbort.add('NPSP 03 - Opportunity Household Rollups');
-                    jobsToAbort.add('NPSP 04 - Opportunity Soft Credit Rollups');
-                    jobsToAbort.add('NPSP 05 - GAU Allocation Rollups');
+                    jobsToAbort.add('NPPatch 01 - Opportunity Account Rollups');
+                    jobsToAbort.add('NPPatch 02 - Opportunity Contact Rollups');
+                    jobsToAbort.add('NPPatch 03 - Opportunity Household Rollups');
+                    jobsToAbort.add('NPPatch 04 - Opportunity Soft Credit Rollups');
+                    jobsToAbort.add('NPPatch 05 - GAU Allocation Rollups');
 
                 } else {
                     // Legacy Rollups Engine jobs are enabled
-                    defaultScheduledJobs.put('NPSP 01 - Opportunity Account Rollups', new List<String>{'0 0 23 ? * *', 'RLLP_OppAccRollup_BATCH'});
-                    defaultScheduledJobs.put('NPSP 02 - Opportunity Contact Rollups', new List<String>{'0 0 23 ? * *', 'RLLP_OppContactRollup_BATCH'});
-                    defaultScheduledJobs.put('NPSP 03 - Opportunity Household Rollups', new List<String>{'0 0 23 ? * *', 'RLLP_OppHouseholdRollup_BATCH'});
-                    defaultScheduledJobs.put('NPSP 04 - Opportunity Soft Credit Rollups', new List<String>{'0 0 23 ? * *', 'RLLP_OppSoftCreditRollup_BATCH'});
-                    defaultScheduledJobs.put('NPSP 05 - GAU Allocation Rollups', new List<String>{'0 0 23 ? * *', 'ALLO_Rollup_SCHED'});
+                    defaultScheduledJobs.put('NPPatch 01 - Opportunity Account Rollups', new List<String>{'0 0 23 ? * *', 'RLLP_OppAccRollup_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 02 - Opportunity Contact Rollups', new List<String>{'0 0 23 ? * *', 'RLLP_OppContactRollup_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 03 - Opportunity Household Rollups', new List<String>{'0 0 23 ? * *', 'RLLP_OppHouseholdRollup_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 04 - Opportunity Soft Credit Rollups', new List<String>{'0 0 23 ? * *', 'RLLP_OppSoftCreditRollup_BATCH'});
+                    defaultScheduledJobs.put('NPPatch 05 - GAU Allocation Rollups', new List<String>{'0 0 23 ? * *', 'ALLO_Rollup_SCHED'});
 
                     // The following jobs should be aborted if the Customizable Rollups jobs are NOT enabled
-                    jobsToAbort.add('NPSP 01A - Customizable Rollups - Account Hard Credit');
-                    jobsToAbort.add('NPSP 02A - Customizable Rollups - Contact Hard Credit');
-                    jobsToAbort.add('NPSP 03A - Customizable Rollups - Account-level Contact Soft Credit');
-                    jobsToAbort.add('NPSP 03B - Customizable Rollups - Account Soft Credit');
-                    jobsToAbort.add('NPSP 04A - Customizable Rollups - Contact Soft Credit');
-                    jobsToAbort.add('NPSP 01B - Customizable Rollups - Account Hard Credit Skew');
-                    jobsToAbort.add('NPSP 02B - Customizable Rollups - Contact Hard Credit Skew');
-                    jobsToAbort.add('NPSP 03C - Customizable Rollups - Account-level Contact Soft Credit Skew');
-                    jobsToAbort.add('NPSP 03D - Customizable Rollups - Account Soft Credit Skew');
-                    jobsToAbort.add('NPSP 04B - Customizable Rollups - Contact Soft Credit Skew');
-                    jobsToAbort.add('NPSP 05 - Customizable Rollups - General Accounting Units');
-                    jobsToAbort.add('NPSP 06A - Customizable Rollups - Recurring Donations');
-                    jobsToAbort.add('NPSP 06B - Customizable Rollups - Recurring Donations Skew');
+                    jobsToAbort.add('NPPatch 01A - Customizable Rollups - Account Hard Credit');
+                    jobsToAbort.add('NPPatch 02A - Customizable Rollups - Contact Hard Credit');
+                    jobsToAbort.add('NPPatch 03A - Customizable Rollups - Account-level Contact Soft Credit');
+                    jobsToAbort.add('NPPatch 03B - Customizable Rollups - Account Soft Credit');
+                    jobsToAbort.add('NPPatch 04A - Customizable Rollups - Contact Soft Credit');
+                    jobsToAbort.add('NPPatch 01B - Customizable Rollups - Account Hard Credit Skew');
+                    jobsToAbort.add('NPPatch 02B - Customizable Rollups - Contact Hard Credit Skew');
+                    jobsToAbort.add('NPPatch 03C - Customizable Rollups - Account-level Contact Soft Credit Skew');
+                    jobsToAbort.add('NPPatch 03D - Customizable Rollups - Account Soft Credit Skew');
+                    jobsToAbort.add('NPPatch 04B - Customizable Rollups - Contact Soft Credit Skew');
+                    jobsToAbort.add('NPPatch 05 - Customizable Rollups - General Accounting Units');
+                    jobsToAbort.add('NPPatch 06A - Customizable Rollups - Recurring Donations');
+                    jobsToAbort.add('NPPatch 06B - Customizable Rollups - Recurring Donations Skew');
                 }
             }
             return defaultScheduledJobs;
@@ -162,14 +162,14 @@ public without sharing class UTIL_MasterSchedulableHelper {
         for (String jobName : defaultScheduledJobs.keySet()) {
             //schedule the job if it doesn't exist and they haven't disabled auto scheduling
             if (!scheduledJobs.containsKey(jobName)) {
-                if (!UTIL_CustomSettingsFacade.getOrgErrorSettings().Don_t_Auto_Schedule_Default_NPSP_Jobs__c) {
+                if (!UTIL_CustomSettingsFacade.getOrgErrorSettings().Don_t_Auto_Schedule_Default_NPPatch_Jobs__c) {
                     createJob(jobName);
                 }
             } else {
                 //if it's already scheduled, but the ghost user or an inactive user scheduled it,
                 //then abort and reschedule
                 CronTrigger currentJob = scheduledJobs.get(jobName);
-                if (currentJob.CreatedBy.Name == 'Nonprofit Success Pack' || !currentJob.CreatedBy.isActive) {
+                if (currentJob.CreatedBy.Name == 'NPPatch' || !currentJob.CreatedBy.isActive) {
                     System.abortJob(currentJob.Id);
 
                     //reuse their CronExpression so it's scheduled at the time they chose

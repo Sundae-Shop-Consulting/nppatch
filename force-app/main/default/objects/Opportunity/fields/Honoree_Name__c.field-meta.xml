@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Honoree_Name__c</fullName>
-    <description>The honoree name as provided by the donor. If this field is left blank, and the Honoree Contact field contains a value, NPSP automatically populates this field with that value.</description>
+    <description>The honoree name as provided by the donor. If this field is left blank, and the Honoree Contact field contains a value, NPPatch automatically populates this field with that value.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The honoree name as provided by the donor. If this field is left blank, and the Honoree Contact field contains a value, NPSP automatically populates this field with that value.</inlineHelpText>
+    <inlineHelpText>The honoree name as provided by the donor. If this field is left blank, and the Honoree Contact field contains a value, NPPatch automatically populates this field with that value.</inlineHelpText>
     <label>Honoree Name</label>
     <length>255</length>
     <required>false</required>

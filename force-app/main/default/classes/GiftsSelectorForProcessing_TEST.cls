@@ -104,7 +104,7 @@ private class GiftsSelectorForProcessing_TEST {
             gifts.add(new DataImport__c(
                 Donation_Amount__c = 33.33,
                 Status__c = status,
-                NPSP_Data_Import_Batch__c = giftBatchId
+                NPPatch_Data_Import_Batch__c = giftBatchId
             ));
         }
         return gifts;

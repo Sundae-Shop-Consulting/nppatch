@@ -216,7 +216,7 @@ public class BDI_Donations {
                     }
 
                     if (shouldSetDonationBatchNumber(opp, dataImport)) {
-                        opp.put(Opportunity.Batch_Number__c, dataImport.NPSP_Data_Import_Batch__r.Batch_Number__c);
+                        opp.put(Opportunity.Batch_Number__c, dataImport.NPPatch_Data_Import_Batch__r.Batch_Number__c);
                     }
 
                     if (opp.Id == null) {
@@ -305,8 +305,8 @@ public class BDI_Donations {
     @TestVisible
     private Boolean shouldSetDonationBatchNumber(SObject targetObject, DataImport__c dataImport) {
         if (bdi.isDryRun ||
-            String.isBlank(dataImport.NPSP_Data_Import_Batch__c) ||
-            String.isBlank(dataImport.NPSP_Data_Import_Batch__r.Batch_Number__c)) {
+            String.isBlank(dataImport.NPPatch_Data_Import_Batch__c) ||
+            String.isBlank(dataImport.NPPatch_Data_Import_Batch__r.Batch_Number__c)) {
             return false;
         }
 
@@ -787,7 +787,7 @@ public class BDI_Donations {
                 if (payment != null) {
                     if (shouldSetDonationBatchNumber(payment, dataImport)) {
                         payment.put(OppPayment__c.Batch_Number__c,
-                            dataImport.NPSP_Data_Import_Batch__r.Batch_Number__c);
+                            dataImport.NPPatch_Data_Import_Batch__r.Batch_Number__c);
                     }
 
                     Integer numberOfCopiedFields = 0;

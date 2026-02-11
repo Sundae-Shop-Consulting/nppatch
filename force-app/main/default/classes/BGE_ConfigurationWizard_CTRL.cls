@@ -67,7 +67,7 @@ public with sharing class BGE_ConfigurationWizard_CTRL {
             'HomeAddressImportStatus__c',
             'HouseholdAccountImported__c',
             'ImportedDate__c',
-            'NPSP_Data_Import_Batch__c',
+            'NPPatch_Data_Import_Batch__c',
             'PaymentImported__c',
             'PaymentImportStatus__c',
             'Payment_Possible_Matches__c',
@@ -138,7 +138,7 @@ public with sharing class BGE_ConfigurationWizard_CTRL {
                 throw new AuraHandledException('ERROR: ' + ex.getMessage());
             }
 
-            model.recordCount = [SELECT COUNT() FROM DataImport__c WHERE NPSP_Data_Import_Batch__c = :recordId];
+            model.recordCount = [SELECT COUNT() FROM DataImport__c WHERE NPPatch_Data_Import_Batch__c = :recordId];
 
         }
 

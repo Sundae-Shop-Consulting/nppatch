@@ -22,7 +22,7 @@
     <apex:attribute name="iconContainer" type="String"
                     description="The icon name for the container class will default to the icon name, e.g. account, custom1"/>
     <apex:attribute name="useNPSPicon" type="Boolean" default="false"
-                    description="Use the RGB_npsp-stacked-color.png icon from static resources in the header instead of lex icon"/>
+                    description="Use the RGB_nppatch-stacked-color.png icon from static resources in the header instead of lex icon"/>
     <apex:attribute name="smallSubtitleFont" type="Boolean" default="false"
                     description="When true, longer text in the header subtitle text is displayed in a smaller font"/>
     <!-- Cancel button attributes -->
@@ -108,7 +108,7 @@
                     </apex:outputPanel>
                     <apex:outputPanel layout="block" rendered="{!useNPSPicon == true}" styleClass="slds-media__figure" id="npspIcon">
                         <div class="slds-media__figure slds-media__figure_reverse">
-                            <apex:image alt="" value="{!URLFOR($Resource.CumulusStaticResources, '/Images/RGB_npsp-stacked-color.png')}" styleClass="img-rounded img-responsive" style="height: 75px"/>
+                            <apex:image alt="" value="{!URLFOR($Resource.CumulusStaticResources, '/Images/RGB_nppatch-stacked-color.png')}" styleClass="img-rounded img-responsive" style="height: 75px"/>
                         </div>
                     </apex:outputPanel>
 

@@ -1221,7 +1221,7 @@ private class BDI_AdditionalObjectService_TEST {
         // ensures that the additional objects that depend on the Opp don't fail the Data
         // Import record when dry run process is run.
         DataImport__c dataImport = new DataImport__c(
-                NPSP_Data_Import_Batch__c = testBatch.Id,
+                NPPatch_Data_Import_Batch__c = testBatch.Id,
                 Account1_Name__c = 'testAcct',
                 Donation_Donor__c = 'Account1',
                 Donation_Amount__c = 100,

@@ -41,9 +41,9 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>NPSP_Address_Compact_Layout</compactLayoutAssignment>
+    <compactLayoutAssignment>NPPatch_Address_Compact_Layout</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Custom object for storing additional addresses for Household Accounts in the Nonprofit Success Pack.</description>
+    <description>Custom object for storing additional addresses for Household Accounts in the NPPatch.</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>true</enableFeeds>

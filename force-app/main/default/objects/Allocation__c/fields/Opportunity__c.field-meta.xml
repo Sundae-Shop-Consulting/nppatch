@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Opportunity__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>The Opportunity you want this Allocation attributed to. NPSP rolls up all Opportunities in a Closed/Won stage to this Allocation&apos;s General Accounting Unit.</description>
+    <description>The Opportunity you want this Allocation attributed to. NPPatch rolls up all Opportunities in a Closed/Won stage to this Allocation&apos;s General Accounting Unit.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Opportunity you want this Allocation attributed to. NPSP rolls up all Opportunities in a Closed/Won stage to this Allocation&apos;s General Accounting Unit.</inlineHelpText>
+    <inlineHelpText>The Opportunity you want this Allocation attributed to. NPPatch rolls up all Opportunities in a Closed/Won stage to this Allocation&apos;s General Accounting Unit.</inlineHelpText>
     <label>Opportunity</label>
     <referenceTo>Opportunity</referenceTo>
     <relationshipLabel>GAU Allocations</relationshipLabel>

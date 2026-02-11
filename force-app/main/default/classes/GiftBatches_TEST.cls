@@ -79,7 +79,7 @@ private class GiftBatches_TEST {
     private static String elevatePaymentDeclinedStatus = ElevateTransactionStatus.DECLINED.name();
     private static String elevatePaymentExpiredStatus = ElevateTransactionStatus.EXPIRED.name();
 
-    private static String dataImportBatchFieldAPIName = String.valueOf(DataImport__c.fields.NPSP_Data_Import_Batch__c);
+    private static String dataImportBatchFieldAPIName = String.valueOf(DataImport__c.fields.NPPatch_Data_Import_Batch__c);
     private static String dataImportPaymentStatusFieldAPIName = String.valueOf(DataImport__c.fields.Payment_Status__c);
     private static String dataImportStatusFieldName = String.valueOf(DataImport__c.fields.Status__c);
 

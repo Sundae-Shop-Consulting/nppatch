@@ -43,7 +43,7 @@ public with sharing class GiftsSelectorForProcessing {
                 Map<String, Schema.SObjectField> mapS = Schema.SObjectType.DataImport__c.fields.getMap();
                 giftFields = new List<String>();
                 giftFields.addAll(mapS.keySet());
-                giftFields.add('NPSP_Data_Import_Batch__r.Batch_Number__c');
+                giftFields.add('NPPatch_Data_Import_Batch__r.Batch_Number__c');
             }
             return giftFields;
         }
@@ -51,7 +51,7 @@ public with sharing class GiftsSelectorForProcessing {
     }
 
     public List<DataImport__c> getGiftsReadyToMoveToProcessing(List<Id> giftIds, Integer chunkSize) {
-        String dataImportBatchLookup = String.valueOf(DataImport__c.NPSP_Data_Import_Batch__c);
+        String dataImportBatchLookup = String.valueOf(DataImport__c.NPPatch_Data_Import_Batch__c);
         String status = String.valueOf(DataImport__c.Status__c);
 
         List<String> whereClauses = new List<String>{
@@ -73,7 +73,7 @@ public with sharing class GiftsSelectorForProcessing {
     }
 
     public List<DataImport__c> getGiftsReadyToMoveToProcessing(GiftBatchId giftBatchId) {
-        String dataImportBatchLookup = String.valueOf(DataImport__c.NPSP_Data_Import_Batch__c);
+        String dataImportBatchLookup = String.valueOf(DataImport__c.NPPatch_Data_Import_Batch__c);
         String status = String.valueOf(DataImport__c.Status__c);
         Id giftBatchIdValue = giftBatchId.value();
 

@@ -40,7 +40,7 @@
 global with sharing class BDI_DataImportService {
     private static DescribeFieldResult batchNumberDescribe = UTIL_Describe.getFieldDescribe(
         String.valueOf(DataImport__c.SObjectType),
-        String.valueOf(DataImport__c.NPSP_Data_Import_Batch__c)
+        String.valueOf(DataImport__c.NPPatch_Data_Import_Batch__c)
     );
 
     public static final String DATAIMPORT_BATCH_NUMBER_FIELD = String.join(new List<String>{
@@ -122,9 +122,9 @@ global with sharing class BDI_DataImportService {
         String batchIdClause;
 
         if (batchId != null) {
-            batchIdClause = 'NPSP_Data_Import_Batch__c = \'' + batchId + '\'';
+            batchIdClause = 'NPPatch_Data_Import_Batch__c = \'' + batchId + '\'';
         } else {
-            batchIdClause = 'NPSP_Data_Import_Batch__c = NULL';
+            batchIdClause = 'NPPatch_Data_Import_Batch__c = NULL';
         }
         List<String> whereClauses = new List<String>{
             'Status__c != \'' + BDI_DataImport_API.bdiImported + '\'',
@@ -331,13 +331,13 @@ global with sharing class BDI_DataImportService {
             Integer cRecordsProcessed = [
                 SELECT COUNT()
                 FROM DataImport__c
-                WHERE NPSP_Data_Import_Batch__c = :dataImportBatch.Id
+                WHERE NPPatch_Data_Import_Batch__c = :dataImportBatch.Id
                 AND ApexJobId__c = :apexJobId
             ];
             Integer cRecordsSucceeded = [
                 SELECT COUNT()
                 FROM DataImport__c
-                WHERE NPSP_Data_Import_Batch__c = :dataImportBatch.Id
+                WHERE NPPatch_Data_Import_Batch__c = :dataImportBatch.Id
                 AND Status__c = :BDI_DataImport_API.bdiImported
                 AND ApexJobId__c = :apexJobId
             ];
@@ -562,7 +562,7 @@ global with sharing class BDI_DataImportService {
         }
 
         // initialize our performance logger
-        perfLogger = new BDI_PerfLogger(filteredDataImports[0].NPSP_Data_Import_Batch__c, filteredDataImports.size());
+        perfLogger = new BDI_PerfLogger(filteredDataImports[0].NPPatch_Data_Import_Batch__c, filteredDataImports.size());
         BDI_PerfLogger.PerfLog pl;
 
         SavePoint sp = Database.setSavepoint();
@@ -595,7 +595,7 @@ global with sharing class BDI_DataImportService {
                 List<DataImportBatch__c> listBatch = [SELECT Name, Batch_Number__c, Batch_Status__c, Batch_Defaults__c, 
                                             Form_Template__c, RequireTotalMatch__c, Expected_Count_of_Gifts__c, 
                                             Expected_Total_Batch_Amount__c, Batch_Table_Columns__c, LastModifiedDate, GiftBatch__c 
-                                            FROM DataImportBatch__c WHERE Id= :listDI[0].NPSP_Data_Import_Batch__c LIMIT 1];
+                                            FROM DataImportBatch__c WHERE Id= :listDI[0].NPPatch_Data_Import_Batch__c LIMIT 1];
                 if (listBatch.size() > 0 && listBatch[0].GiftBatch__c) {
                     GiftBatch giftBatch = new GiftBatch(listBatch[0]);
                     Boolean firstInstallmentPaid = giftBatch.shouldPayFirstInstallment();
@@ -1952,8 +1952,8 @@ global with sharing class BDI_DataImportService {
                 addr.Address_Type__c = 'Home';
 
                 if (con1 != null) {
-                    NPSP_Address npspAddress = new NPSP_Address(addr);
-                    NPSP_Contact npspContact = new NPSP_Contact(con1);
+                    NPPatch_Address npspAddress = new NPPatch_Address(addr);
+                    NPPatch_Contact npspContact = new NPPatch_Contact(con1);
                     npspContact.mailingAddress(npspAddress);
                     if (setIdUpdate.add(con1.Id)) {
                         listCon1Update.add(npspContact.getRecord());
@@ -1961,8 +1961,8 @@ global with sharing class BDI_DataImportService {
                     }
                 }
                 if (con2 != null) {
-                    NPSP_Address npspAddress = new NPSP_Address(addr);
-                    NPSP_Contact npspContact = new NPSP_Contact(con2);
+                    NPPatch_Address npspAddress = new NPPatch_Address(addr);
+                    NPPatch_Contact npspContact = new NPPatch_Contact(con2);
                     npspContact.mailingAddress(npspAddress);
                     if (setIdUpdate.add(con2.Id)) {
                         listCon2Update.add(npspContact.getRecord());
@@ -1970,8 +1970,8 @@ global with sharing class BDI_DataImportService {
                     }
                 }
                 if (accHH != null) {
-                    NPSP_Address npspAddress = new NPSP_Address(addr);
-                    NPSP_HouseholdAccount npspHousehold = new NPSP_HouseholdAccount(accHH);
+                    NPPatch_Address npspAddress = new NPPatch_Address(addr);
+                    NPPatch_HouseholdAccount npspHousehold = new NPPatch_HouseholdAccount(accHH);
                     npspHousehold.setBillingAddress(npspAddress);
                     if (setIdUpdate.add(accHH.Id)) {
                         listAccUpdate.add(npspHousehold.getRecord());

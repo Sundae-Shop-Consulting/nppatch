@@ -4,12 +4,12 @@
     <div class="slds-m-around_x-large slds-p-bottom_large slds-col-rule_bottom">
         <div class="slds-media slds-media_center slds-media_responsive">
             <div class="slds-media__body">
-                <h3 class="slds-text-heading_large slds-m-bottom_large">{!$Label.stgNPSPSettings}</h3>
-                <p>{!$Label.stgHelpNPSPSettings}</p>
+                <h3 class="slds-text-heading_large slds-m-bottom_large">{!$Label.stgNPPatchSettings}</h3>
+                <p>{!$Label.stgHelpNPPatchSettings}</p>
                 <p class="slds-text-body_small slds-m-top_x-small"><c:UTIL_HtmlOutput html="{!$Label.stgHelpSalesforceSetup}" hasLink="true" /></p>
             </div>
             <div class="slds-media__figure slds-media__figure_reverse">
-                <img src="{!URLFOR($Resource.CumulusStaticResources, '/Images/RGB_npsp-stacked-color.png')}" style="height: 75px" alt="NPSP Logo"/>
+                <img src="{!URLFOR($Resource.CumulusStaticResources, '/Images/RGB_nppatch-stacked-color.png')}" style="height: 75px" alt="NPPatch Logo"/>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
             </h3>
             <div>
                 <ul>
-                    <li><a href="https://developer.salesforce.com/trailhead/trail/nonprofit_fundraising" target="_blank" >{!$Label.stgNPSPWorkbook}</a></li>
+                    <li><a href="https://developer.salesforce.com/trailhead/trail/nonprofit_fundraising" target="_blank" >{!$Label.stgNPPatchWorkbook}</a></li>
                 </ul>
             </div>
         </div>

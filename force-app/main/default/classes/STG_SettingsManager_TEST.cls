@@ -735,7 +735,7 @@ private with sharing class STG_SettingsManager_TEST {
             Stg_Panel.stgService.stgRD.InstallmentOppAutoCreateOption__c);
 
         System.assertEquals(currentOppSettingLabel, panel.selectedInstallmentCreateOption,
-            'The installment opp displayed label should matches the one stored in the NPSP setting');
+            'The installment opp displayed label should matches the one stored in the NPPatch setting');
     }
 
     /***
@@ -1784,12 +1784,12 @@ private with sharing class STG_SettingsManager_TEST {
     private static void testPanelSchedule() {
         STG_PanelSchedule_CTRL panel = new STG_PanelSchedule_CTRL();
         system.assertEquals('idPanelSchedule', panel.idPanel());
-        STG_Panel.stgService.stgErr.Don_t_Auto_Schedule_Default_NPSP_Jobs__c = true;
+        STG_Panel.stgService.stgErr.Don_t_Auto_Schedule_Default_NPPatch_Jobs__c = true;
         panel.saveSettings();
-        system.assertEquals(true, UTIL_CustomSettingsFacade.getOrgErrorSettings().Don_t_Auto_Schedule_Default_NPSP_Jobs__c);
-        STG_Panel.stgService.stgErr.Don_t_Auto_Schedule_Default_NPSP_Jobs__c = false;
+        system.assertEquals(true, UTIL_CustomSettingsFacade.getOrgErrorSettings().Don_t_Auto_Schedule_Default_NPPatch_Jobs__c);
+        STG_Panel.stgService.stgErr.Don_t_Auto_Schedule_Default_NPPatch_Jobs__c = false;
         panel.saveSettings();
-        system.assertEquals(false, UTIL_CustomSettingsFacade.getOrgErrorSettings().Don_t_Auto_Schedule_Default_NPSP_Jobs__c);
+        system.assertEquals(false, UTIL_CustomSettingsFacade.getOrgErrorSettings().Don_t_Auto_Schedule_Default_NPPatch_Jobs__c);
     }
 
     /*********************************************************************************************************

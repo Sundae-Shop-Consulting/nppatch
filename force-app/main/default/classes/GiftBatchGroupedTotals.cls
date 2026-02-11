@@ -66,7 +66,7 @@ public inherited sharing class GiftBatchGroupedTotals {
 
         Id batchId = (Id) queryResultProxy
             .getValuesByAlias()
-            .get(String.valueOf(DataImport__c.fields.NPSP_Data_Import_Batch__c));
+            .get(String.valueOf(DataImport__c.fields.NPPatch_Data_Import_Batch__c));
         List<AggregateResultProxy> queryResultProxies = queryResultsByBatchId.get(batchId);
         if (queryResultProxies == null) {
             queryResultsByBatchId.put(batchId, new List<AggregateResultProxy> { queryResultProxy });

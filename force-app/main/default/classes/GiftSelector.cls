@@ -58,7 +58,7 @@ public with sharing class GiftSelector {
     }
 
     public List<DataImport__c> getGiftsFor(GiftBatchId giftBatchId) {
-        String dataImportBatchLookup = String.valueOf(DataImport__c.NPSP_Data_Import_Batch__c);
+        String dataImportBatchLookup = String.valueOf(DataImport__c.NPPatch_Data_Import_Batch__c);
         Id dataImportBatchId = giftBatchId.value();
         UTIL_Query query = new UTIL_Query()
             .withFrom(DataImport__c.SObjectType)
@@ -127,7 +127,7 @@ public with sharing class GiftSelector {
             String.valueOf(DataImport__c.Donation_Donor__c),
             String.valueOf(DataImport__c.FailureInformation__c),
             String.valueOf(DataImport__c.Id),
-            String.valueOf(DataImport__c.NPSP_Data_Import_Batch__c),
+            String.valueOf(DataImport__c.NPPatch_Data_Import_Batch__c),
             String.valueOf(DataImport__c.PaymentImportStatus__c),
             String.valueOf(DataImport__c.PaymentImported__c),
             String.valueOf(DataImport__c.Payment_Status__c),

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Related_Opportunity_Contact_Role__c</fullName>
-    <description>When you create an Opportunity for the Organization in this Affiliation, NPSP assigns this Opportunity Contact Role to the affiliated Contact.</description>
+    <description>When you create an Opportunity for the Organization in this Affiliation, NPPatch assigns this Opportunity Contact Role to the affiliated Contact.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When you create an Opportunity for the Organization in this Affiliation, NPSP assigns this Opportunity Contact Role to the affiliated Contact.</inlineHelpText>
+    <inlineHelpText>When you create an Opportunity for the Organization in this Affiliation, NPPatch assigns this Opportunity Contact Role to the affiliated Contact.</inlineHelpText>
     <label>Related Opportunity Contact Role</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

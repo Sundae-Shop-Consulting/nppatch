@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Current_Address__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Lookup to the current Address record for this Contact. NPSP populates the Contact&apos;s Mailing Address field with the street, city, state, and postal code from the current Address record.</description>
+    <description>Lookup to the current Address record for this Contact. NPPatch populates the Contact&apos;s Mailing Address field with the street, city, state, and postal code from the current Address record.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Lookup to the current Address record for this Contact. NPSP populates the Contact&apos;s Mailing Address field with the street, city, state, and postal code from the current Address record.</inlineHelpText>
+    <inlineHelpText>Lookup to the current Address record for this Contact. NPPatch populates the Contact&apos;s Mailing Address field with the street, city, state, and postal code from the current Address record.</inlineHelpText>
     <label>Current Address</label>
     <lookupFilter>
         <active>true</active>

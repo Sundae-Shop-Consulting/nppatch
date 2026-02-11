@@ -81,7 +81,7 @@
                     <div class="slds-grid slds-grid_align-center">
                         <div class="slds-col">
                             <apex:outputLink value="{!URLFOR($Page.STG_SettingsManager)}" styleClass="slds-button slds-button_neutral">
-                                <apex:outputText value="{!$Label.lblNPSPSettings}"/>
+                                <apex:outputText value="{!$Label.lblNPPatchSettings}"/>
                             </apex:outputLink>
                         </div>
                     </div>

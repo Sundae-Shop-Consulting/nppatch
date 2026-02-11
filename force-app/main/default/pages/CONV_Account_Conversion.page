@@ -108,7 +108,7 @@
                                     <label class="slds-checkbox" for="check-apps">
                                         <input name="checkbox" type="checkbox" id="check-apps" />
                                         <span class="slds-checkbox_faux"></span>
-                                        <span class="slds-form-element__label">{!$Label.CONV_Non_NPSP_Apps}</span>
+                                        <span class="slds-form-element__label">{!$Label.CONV_Non_NPPatch_Apps}</span>
                                     </label>
                                 </div>
 

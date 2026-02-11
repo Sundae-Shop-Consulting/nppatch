@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <customSettingsType>Hierarchy</customSettingsType>
-    <description>Application settings for the Contacts and Organizations package of the Nonprofit Success Pack</description>
+    <description>Application settings for the Contacts and Organizations package of the NPPatch</description>
     <enableFeeds>false</enableFeeds>
     <label>Contacts And Orgs Settings</label>
     <visibility>Public</visibility>

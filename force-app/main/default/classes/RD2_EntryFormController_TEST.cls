@@ -259,9 +259,9 @@ private with sharing class RD2_EntryFormController_TEST {
             System.assert(!excludedCustomFields.contains(field.apiName),
                 'Excluded fields should not be return:' + field.apiName);
             System.assert(!field.apiName.startsWith('%%%NAMESPACE%%%'),
-                'NPSP package field should not be return:' + field.apiName);
+                'NPPatch package field should not be return:' + field.apiName);
             System.assert(!field.apiName.startsWith(''),
-                'NPSP package field should not be return:' + field.apiName);
+                'NPPatch package field should not be return:' + field.apiName);
         }
     }
 

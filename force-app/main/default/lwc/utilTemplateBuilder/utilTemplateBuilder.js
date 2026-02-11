@@ -122,7 +122,7 @@ Object.freeze(DEFAULT_BATCH_HEADER_FIELDS);
 // matching logic as we're removing the matching options page
 // from this flow.
 // We're considering putting matching options in a 'global
-// batch settings' area. Potentially in NPSP Settings.
+// batch settings' area. Potentially in NPPatch Settings.
 const EXCLUDED_BATCH_HEADER_FIELDS = [
     DI_BATCH_PROCESS_SIZE_INFO.fieldApiName,
     DI_BATCH_RUN_ROLLUPS_WHILE_PROCESSING_INFO.fieldApiName,

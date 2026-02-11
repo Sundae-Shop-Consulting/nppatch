@@ -281,7 +281,7 @@ private with sharing class BDI_DataImportService_TEST {
         insert testDataImports;
     
         // Extract batch ID from the first DataImport record
-        Id batchId = testDataImports[0].NPSP_Data_Import_Batch__c;
+        Id batchId = testDataImports[0].NPPatch_Data_Import_Batch__c;
     
         // Create an instance of BDI_PerfLogger with required parameters
         Integer countRecords = testDataImports.size();
@@ -299,7 +299,7 @@ private with sharing class BDI_DataImportService_TEST {
         List<DataImport__c> testDataImportss = new List<DataImport__c>();
         for (Integer i = 0; i < 5; i++) {
             DataImport__c dataImport = new DataImport__c(
-                NPSP_Data_Import_Batch__c = testDataImports[0].NPSP_Data_Import_Batch__c,
+                NPPatch_Data_Import_Batch__c = testDataImports[0].NPPatch_Data_Import_Batch__c,
                 Account1_Name__c = 'Test Account ' + i,
                 Contact1_Firstname__c = 'FirstName' + i,
                 Contact1_Lastname__c = 'LastName' + i,

@@ -592,8 +592,8 @@ public with sharing class LD_LeadConvertOverride_CTRL {
             );
             //copy address from temporary address__c record, handles state and country
             // picklists if enabled
-            NPSP_Address npspAddress = new NPSP_Address(tempAddr);
-            NPSP_HouseholdAccount npspHousehold = new NPSP_HouseholdAccount(acc);
+            NPPatch_Address npspAddress = new NPPatch_Address(tempAddr);
+            NPPatch_HouseholdAccount npspHousehold = new NPPatch_HouseholdAccount(acc);
             npspHousehold.setBillingAddress(npspAddress);
             new DMLWithoutSharing(npspHousehold.getRecord()).insertRecord();
             affiliationId = acc.Id;
@@ -624,8 +624,8 @@ public with sharing class LD_LeadConvertOverride_CTRL {
         );
         //copy address from temporary address__c record, handles state and country
         // picklists if enabled
-        NPSP_Address npspAddress = new NPSP_Address(tempAddr);
-        NPSP_HouseholdAccount npspHousehold = new NPSP_HouseholdAccount(acc);
+        NPPatch_Address npspAddress = new NPPatch_Address(tempAddr);
+        NPPatch_HouseholdAccount npspHousehold = new NPPatch_HouseholdAccount(acc);
         npspHousehold.setBillingAddress(npspAddress);
         new DMLWithoutSharing(npspHousehold.getRecord()).updateRecord();
     }
@@ -705,7 +705,7 @@ public with sharing class LD_LeadConvertOverride_CTRL {
         // now create the address object if appropriate
         if (CAO_Constants.isHHAccountModel() && !isHouseholdAddressesDisabled()) {
             Address__c addr = new Address__c();
-            NPSP_Address npspAddress = new NPSP_Address(addr);
+            NPPatch_Address npspAddress = new NPPatch_Address(addr);
             npspAddress.getRecord().Household_Account__c = myAccount.Id;
             npspAddress.getRecord().Default_Address__c = true;
             npspAddress.getRecord().Latest_Start_Date__c = System.today();

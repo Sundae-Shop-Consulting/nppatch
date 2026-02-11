@@ -385,7 +385,7 @@ public with sharing class GE_GiftEntryController {
     /**
      * @description Validates that the currency of a batch matches the currently logged in
      * user's currency
-     * @param batchId : ID of the NPSP_Data_Import_Batch__c
+     * @param batchId : ID of the NPPatch_Data_Import_Batch__c
      */
     private static Boolean areCurrenciesValid (Id batchId) {
         if (!UserInfo.isMultiCurrencyOrganization()) {

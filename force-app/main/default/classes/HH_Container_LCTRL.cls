@@ -732,7 +732,7 @@ public with sharing class HH_Container_LCTRL {
             if (existingAddresses != null) {
                 for (Address__c address : existingAddresses) {
                     listAddr.add(address);
-                    NPSP_Address npspAddress = new NPSP_Address(address);
+                    NPPatch_Address npspAddress = new NPPatch_Address(address);
                     setAddrKey.add(npspAddress.getAddrKey());
                 }
             }
@@ -753,7 +753,7 @@ public with sharing class HH_Container_LCTRL {
                 address.Default_Address__c = true;
                 defaultAddress = address;
             }  // the HH address is the default.
-            String strKey = new NPSP_Address(address).getAddrKey();
+            String strKey = new NPPatch_Address(address).getAddrKey();
             if (setAddrKey.add(strKey)) {
                 listAddr.add(address);
             }
@@ -773,7 +773,7 @@ public with sharing class HH_Container_LCTRL {
                 if (canUpdateAddressUndeliverable && canReadContactUndeliverable) {
                     address.Undeliverable__c = con.Undeliverable_Address__c;
                 }
-                strKey = new NPSP_Address(address).getAddrKey();
+                strKey = new NPPatch_Address(address).getAddrKey();
                 if (setAddrKey.add(strKey)) {
                     listAddr.add(address);
                 }
@@ -813,7 +813,7 @@ public with sharing class HH_Container_LCTRL {
                     addrT.Seasonal_End_Day__c = null;
                     addrT.Seasonal_End_Month__c = null;
                     addrT.Address_Type__c = null;
-                    strKey = new NPSP_Address(addrT).getAddrKey();
+                    strKey = new NPPatch_Address(addrT).getAddrKey();
                     if (setAddrKey.add(strKey)) {
                         listAddr.add(addrT);
                     } else if (defaultAddress != null && canUpdateAddressUndeliverable && addrT.Default_Address__c) {
@@ -855,7 +855,7 @@ public with sharing class HH_Container_LCTRL {
             if (listAddrExisting != null) {
                 for (Address__c addr : listAddrExisting) {
                     listAddr.add(addr);
-                    setAddrKey.add(new NPSP_Address(addr).getAddrKey());
+                    setAddrKey.add(new NPPatch_Address(addr).getAddrKey());
                 }
             }
 
@@ -871,7 +871,7 @@ public with sharing class HH_Container_LCTRL {
                 addr.MailingState__c = con.MailingState;
                 addr.MailingPostalCode__c = con.MailingPostalCode;
                 addr.MailingCountry__c = con.MailingCountry;
-                String strKey = new NPSP_Address(addr).getAddrKey();
+                String strKey = new NPPatch_Address(addr).getAddrKey();
                 if (setAddrKey.add(strKey)) {
                     listAddr.add(addr);
                 }

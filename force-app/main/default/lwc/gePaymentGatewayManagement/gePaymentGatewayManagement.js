@@ -125,7 +125,7 @@ export default class GePaymentGatewayManagement extends LightningElement {
         if (!this.isSystemAdmin) {
             return this.CUSTOM_LABELS.commonAdminPermissionErrorMessage
         }
-        // Temporary Hardcoded Text until this functionality is moved out of NPSP entirely
+        // Temporary Hardcoded Text until this functionality is moved out of NPPatch entirely
         if (!this.isElevateCustomer) {
             return 'You must be an Elevate customer to use this setting.';
         }

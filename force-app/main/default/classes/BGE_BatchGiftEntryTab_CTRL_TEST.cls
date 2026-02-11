@@ -39,8 +39,8 @@
 private class BGE_BatchGiftEntryTab_CTRL_TEST {
 
     /*********************************************************************************************************
-    * @description Sets up new NPSP_Data_Import_Batch__c records
-    * @return List of the new NPSP_Data_Import_Batch__c records
+    * @description Sets up new NPPatch_Data_Import_Batch__c records
+    * @return List of the new NPPatch_Data_Import_Batch__c records
     */
     @testSetup
     private static void createDataImportBatches() {

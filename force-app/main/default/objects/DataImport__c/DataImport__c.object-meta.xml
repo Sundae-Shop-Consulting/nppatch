@@ -43,7 +43,7 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Custom object to hold denormalized data records that can be imported into the Nonprofit Success Pack.</description>
+    <description>Custom object to hold denormalized data records that can be imported into the NPPatch.</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
@@ -52,13 +52,13 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <label>NPSP Data Import</label>
+    <label>NPPatch Data Import</label>
     <nameField>
         <displayFormat>DI-{000000}</displayFormat>
         <label>Data Import ID</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>NPSP Data Imports</pluralLabel>
+    <pluralLabel>NPPatch Data Imports</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>FailureInformation__c</customTabListAdditionalFields>

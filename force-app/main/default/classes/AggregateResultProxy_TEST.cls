@@ -53,7 +53,7 @@ private with sharing class AggregateResultProxy_TEST {
         List<AggregateResultProxy> queryResultProxies = new List<AggregateResultProxy>();
         for (AggregateResult result : [SELECT COUNT(Id)recordCount, Status__c
                                         FROM DataImport__c
-                                        WHERE NPSP_Data_Import_Batch__c = :batch.Id
+                                        WHERE NPPatch_Data_Import_Batch__c = :batch.Id
                                         GROUP BY Status__c]) {
             queryResultProxies.add(new AggregateResultProxy().withAggregateResult(result));
         }
@@ -87,7 +87,7 @@ private with sharing class AggregateResultProxy_TEST {
         DataImport__c dataImport = new DataImport__c(
             Status__c = status,
             Payment_Status__c = paymentStatus,
-            NPSP_Data_Import_Batch__c = batchId
+            NPPatch_Data_Import_Batch__c = batchId
         );
         return dataImport;
     }

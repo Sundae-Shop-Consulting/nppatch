@@ -86,7 +86,7 @@ public with sharing class Gift {
     }
 
     public Id giftBatchId() {
-        return this.dataImport.NPSP_Data_Import_Batch__c;
+        return this.dataImport.NPPatch_Data_Import_Batch__c;
     }
 
     public Boolean requiresReauthorizationBeforeChange() {

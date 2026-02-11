@@ -1,7 +1,7 @@
 <apex:page  controller="STG_SettingsManager_CTRL"
     showHeader="true"
     sidebar="false"
-    title="{!$Label.stgNPSPSettingsTitle}"
+    title="{!$Label.stgNPPatchSettingsTitle}"
     action="{!onNpspSettingsLoad}"
     docType="html-5.0"
     standardStylesheets="false"
@@ -126,7 +126,7 @@
     <div class="slds-grid" style="max-width: 100%;">
         <div class="sidebar slds-col slds-small-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12 slds-p-top_large slds-col-rule_right">
             <div class="slds-tree-container" role="application">
-                <div class="slds-text-heading_small slds-tree__item" id="treeheading"><a href="#" onclick="ShowPanel('idPanelHome');return false;" class="slds-grow">{!$Label.stgNPSPSettingsTitle}</a></div>
+                <div class="slds-text-heading_small slds-tree__item" id="treeheading"><a href="#" onclick="ShowPanel('idPanelHome');return false;" class="slds-grow">{!$Label.stgNPPatchSettingsTitle}</a></div>
                     <nav role="navigation">
                         <ul id="mynavbar" class="slds-tree slds-list_vertical slds-has-block-links-space" role="tree" aria-labelledby="treeheading" aria-activedescendant="tree0-node0" >
                             <!-- People -->

@@ -36,7 +36,7 @@ import bdiOMUIFieldMappingProblemHeader from '@salesforce/label/c.bdiOMUIFieldMa
 import bdiOMUIFieldMappingProblemMessagePart1 from '@salesforce/label/c.bdiOMUIFieldMappingProblemMessagePart1';
 import bdiOMUIFieldMappingProblemMessagePart2 from '@salesforce/label/c.bdiOMUIFieldMappingProblemMessagePart2';
 import DATA_IMPORT from '@salesforce/schema/DataImport__c';
-const NPSP_SETTINGS_URL = '/lightning/n/NPSP_Settings';
+const NPSP_SETTINGS_URL = '/lightning/n/NPPatch_Settings';
 
 export default class bdiObjectMappings extends LightningElement {
     @api shouldRender;

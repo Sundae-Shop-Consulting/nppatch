@@ -325,7 +325,7 @@ public inherited sharing class Households extends fflib_SObjects2 {
                     continue;
                 }
                 listCon.add(con);
-                NPSP_Address npspAddressFromContact = new NPSP_Address(con);
+                NPPatch_Address npspAddressFromContact = new NPPatch_Address(con);
                 mapConAddr.put(con, npspAddressFromContact.getRecord());
             }
 

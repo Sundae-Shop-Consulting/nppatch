@@ -2006,7 +2006,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%NPSP_Data_Import_Batch__c</field>
+        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%NPPatch_Data_Import_Batch__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2631,7 +2631,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>%%%NAMESPACE%%%Error_Settings__c.%%%NAMESPACE%%%Don_t_Auto_Schedule_Default_NPSP_Jobs__c</field>
+        <field>%%%NAMESPACE%%%Error_Settings__c.%%%NAMESPACE%%%Don_t_Auto_Schedule_Default_NPPatch_Jobs__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

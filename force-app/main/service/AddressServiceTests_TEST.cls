@@ -54,7 +54,7 @@ private class AddressServiceTests_TEST {
         String stateName = 'Minnesota';
         String stateCode = 'MN';
         Contact aContact = new Contact();
-        IAddress anAddress = new NPSP_Address(
+        IAddress anAddress = new NPPatch_Address(
                 new Address__c(
                         MailingState__c = stateName,
                         MailingCountry__c = 'United States'
@@ -79,7 +79,7 @@ private class AddressServiceTests_TEST {
     static void shouldCopyUndeliverableStatus(){
         // Arrange
         Contact aContact = new Contact();
-        IAddress anUndeliverableAddress = new NPSP_Address(
+        IAddress anUndeliverableAddress = new NPPatch_Address(
                 new Address__c(
                         Undeliverable__c = true
                 )

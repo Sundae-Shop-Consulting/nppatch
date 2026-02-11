@@ -1439,7 +1439,7 @@ public with sharing class ADDR_Addresses_TEST {
         String countryCode = 'US';
         String country = 'United States';
 
-        NPSP_Address npspAddressEmptyCountry = new NPSP_Address(addressEmptyCountry);
+        NPPatch_Address npspAddressEmptyCountry = new NPPatch_Address(addressEmptyCountry);
         npspAddressEmptyCountry.populateAddressCountryFromCountryCode(con, 'Mailing');
         System.assertEquals(null, npspAddressEmptyCountry.country());
 
@@ -1474,7 +1474,7 @@ public with sharing class ADDR_Addresses_TEST {
 
         String stateCode = 'CA';
 
-        NPSP_Address npspAddressEmptyState = new NPSP_Address(addressEmptyState);
+        NPPatch_Address npspAddressEmptyState = new NPPatch_Address(addressEmptyState);
         npspAddressEmptyState.populateAddressStateFromStateCode(con, 'Mailing');
         System.assertEquals(null, npspAddressEmptyState.state());
 
@@ -1510,7 +1510,7 @@ public with sharing class ADDR_Addresses_TEST {
 
         String stateCode = 'CA';
 
-        NPSP_Address npspAddressMatch = new NPSP_Address(addressMatch);
+        NPPatch_Address npspAddressMatch = new NPPatch_Address(addressMatch);
         npspAddressMatch.state(null);
         System.assertEquals(false, npspAddressMatch.isMatchingStateCode(stateCode));
 
@@ -2254,8 +2254,8 @@ public with sharing class ADDR_Addresses_TEST {
             return;
         }
         buildTestAddress(2);
-        NPSP_Contact npspContact = new NPSP_Contact(UTIL_UnitTestData_TEST.getContact());
-        npspContact.mailingAddress(new NPSP_Address(testAddresses[0]));
+        NPPatch_Contact npspContact = new NPPatch_Contact(UTIL_UnitTestData_TEST.getContact());
+        npspContact.mailingAddress(new NPPatch_Address(testAddresses[0]));
 
         insert npspContact.getRecord();
 
@@ -2307,8 +2307,8 @@ public with sharing class ADDR_Addresses_TEST {
             return;
         }
         buildTestAddress(1);
-        NPSP_Contact npspContact = new NPSP_Contact(UTIL_UnitTestData_TEST.getContact());
-        npspContact.mailingAddress(new NPSP_Address(testAddresses[0]));
+        NPPatch_Contact npspContact = new NPPatch_Contact(UTIL_UnitTestData_TEST.getContact());
+        npspContact.mailingAddress(new NPPatch_Address(testAddresses[0]));
 
         insert npspContact.getRecord();
 
@@ -2346,8 +2346,8 @@ public with sharing class ADDR_Addresses_TEST {
             return;
         }
         buildTestAddress(2);
-        NPSP_Contact npspContact = new NPSP_Contact(UTIL_UnitTestData_TEST.getContact());
-        npspContact.mailingAddress(new NPSP_Address(testAddresses[0]));
+        NPPatch_Contact npspContact = new NPPatch_Contact(UTIL_UnitTestData_TEST.getContact());
+        npspContact.mailingAddress(new NPPatch_Address(testAddresses[0]));
 
         insert npspContact.getRecord();
 
@@ -2384,8 +2384,8 @@ public with sharing class ADDR_Addresses_TEST {
             return;
         }
         buildTestAddress(2);
-        NPSP_Contact npspContact = new NPSP_Contact(UTIL_UnitTestData_TEST.getContact());
-        npspContact.mailingAddress(new NPSP_Address(testAddresses[0]));
+        NPPatch_Contact npspContact = new NPPatch_Contact(UTIL_UnitTestData_TEST.getContact());
+        npspContact.mailingAddress(new NPPatch_Address(testAddresses[0]));
 
         insert npspContact.getRecord();
 

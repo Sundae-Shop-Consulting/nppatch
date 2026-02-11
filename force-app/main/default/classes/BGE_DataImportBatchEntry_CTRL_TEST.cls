@@ -45,8 +45,8 @@ private class BGE_DataImportBatchEntry_CTRL_TEST {
     }
 
     /*********************************************************************************************************
-    * @description Sets up a new NPSP_Data_Import_Batch__c Record
-    * @return Id of the new NPSP_Data_Import_Batch__c
+    * @description Sets up a new NPPatch_Data_Import_Batch__c Record
+    * @return Id of the new NPPatch_Data_Import_Batch__c
     */
     private static Id createDataImportBatch() {
         DataImportBatch__c dataImportBatch = new DataImportBatch__c();
@@ -59,7 +59,7 @@ private class BGE_DataImportBatchEntry_CTRL_TEST {
     /*********************************************************************************************************
     * @description Sets up a list of DataImport__c Records
     * @param numOfImports number of imports to create
-    * @param batchId ID of the related NPSP_Data_Import_Batch__c
+    * @param batchId ID of the related NPPatch_Data_Import_Batch__c
     * @return list of new DataImport__c records
     */
     private static List<DataImport__c> createDataImports(Integer numOfImports, Id batchId) {
@@ -68,7 +68,7 @@ private class BGE_DataImportBatchEntry_CTRL_TEST {
         for (Integer i=0; i < numOfImports; i++) {
             DataImport__c dataImport = new DataImport__c();
             dataImport.Account1_Name__c = 'Test Record ' + i;
-            dataImport.NPSP_Data_Import_Batch__c = batchId;
+            dataImport.NPPatch_Data_Import_Batch__c = batchId;
             dataImports.add(dataImport);
         }
 
@@ -161,7 +161,7 @@ private class BGE_DataImportBatchEntry_CTRL_TEST {
 
         Test.startTest();
         BGE_DataImportBatchEntry_CTRL.deleteDataImportRow(batchId, dataImports[0].Id);
-        List<DataImport__c> updatedDataImports = [SELECT Name, Id FROM DataImport__c WHERE NPSP_Data_Import_Batch__c = :batchId];
+        List<DataImport__c> updatedDataImports = [SELECT Name, Id FROM DataImport__c WHERE NPPatch_Data_Import_Batch__c = :batchId];
         Test.stopTest();
 
         System.assertEquals(2, dataImports.size(), 'Data Imports should return 2 rows');

@@ -98,7 +98,7 @@ public without sharing class HH_CampaignDedupeBTN_CTRL {
             //try looking it up by name...
             Report r = new Report();
             try{
-                r = [select id from Report where DeveloperName = 'NPSP_Campaign_Household_Mailing_List_V2'];
+                r = [select id from Report where DeveloperName = 'NPPatch_Campaign_Household_Mailing_List_V2'];
             } catch(QueryException e){
                 haveReportID = false;
                 showmsg(e.getMessage(), ApexPages.Severity.ERROR);

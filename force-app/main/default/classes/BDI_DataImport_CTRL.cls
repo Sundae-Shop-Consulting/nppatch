@@ -114,7 +114,7 @@ public with sharing class BDI_DataImport_CTRL {
             // load up the batch and get our settings from it
             diBatch = BDI_DataImportBatch_SEL.selectById(strBatchId);
             diSettings = BDI_DataImportService.diSettingsFromDiBatch(diBatch);
-            diTemp.NPSP_Data_Import_Batch__c = diBatch.Id;
+            diTemp.NPPatch_Data_Import_Batch__c = diBatch.Id;
         } else {
             diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
             // need to create our in-memory batch to hold the custom settings
@@ -396,7 +396,7 @@ public with sharing class BDI_DataImport_CTRL {
                 countQuery += ' AND Id IN: dataImportIds';
             } else if (diBatch != null) {
                 Id batchId = diBatch.Id;
-                countQuery += ' AND ' + UTIL_Namespace.StrTokenNSPrefix('NPSP_Data_Import_Batch__c') + ' =: batchId';
+                countQuery += ' AND ' + UTIL_Namespace.StrTokenNSPrefix('NPPatch_Data_Import_Batch__c') + ' =: batchId';
             }
 
             countQuery += ' WITH SECURITY_ENFORCED';

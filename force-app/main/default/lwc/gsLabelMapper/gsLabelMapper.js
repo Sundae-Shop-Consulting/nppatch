@@ -1,5 +1,5 @@
-import gsChecklistExploreNPSPTitle from '@salesforce/label/c.gsChecklistExploreNPSPTitle';
-import gsChecklistExploreNPSPDesc from '@salesforce/label/c.gsChecklistExploreNPSPDesc';
+import gsChecklistExploreNPPatchTitle from '@salesforce/label/c.gsChecklistExploreNPPatchTitle';
+import gsChecklistExploreNPPatchDesc from '@salesforce/label/c.gsChecklistExploreNPPatchDesc';
 import gsChecklistItemAddUserDesc from '@salesforce/label/c.gsChecklistItemAddUserDesc';
 import gsChecklistItemAddUserLinkLabel from '@salesforce/label/c.gsChecklistItemAddUserLinkLabel';
 import gsChecklistItemAddUserTitle from '@salesforce/label/c.gsChecklistItemAddUserTitle';
@@ -29,28 +29,28 @@ import gsChecklistItemImportDataPriBtnLabel from '@salesforce/label/c.gsChecklis
 import gsChecklistItemImportDataLinkLabel from '@salesforce/label/c.gsChecklistItemImportDataLinkLabel';
 import gsChecklistItemImportDataSecBtnLabel from '@salesforce/label/c.gsChecklistItemImportDataSecBtnLabel';
 import gsChecklistItemImportDataTitle from '@salesforce/label/c.gsChecklistItemImportDataTitle';
-import gsChecklistItemNPSPCloudDesc from '@salesforce/label/c.gsChecklistItemNPSPCloudDesc';
-import gsChecklistItemNPSPCloudPriBtnLabel from '@salesforce/label/c.gsChecklistItemNPSPCloudPriBtnLabel';
-import gsChecklistItemNPSPCloudLinkLabel from '@salesforce/label/c.gsChecklistItemNPSPCloudLinkLabel';
-import gsChecklistItemNPSPCloudTitle from '@salesforce/label/c.gsChecklistItemNPSPCloudTitle';
-import gsChecklistItemNPSPSettingsDesc from '@salesforce/label/c.gsChecklistItemNPSPSettingsDesc';
-import gsChecklistItemNPSPSettingsPriBtnLabel from '@salesforce/label/c.gsChecklistItemNPSPSettingsPriBtnLabel';
-import gsChecklistItemNPSPSettingsLinkLabel from '@salesforce/label/c.gsChecklistItemNPSPSettingsLinkLabel';
-import gsChecklistItemNPSPSettingsTitle from '@salesforce/label/c.gsChecklistItemNPSPSettingsTitle';
+import gsChecklistItemNPPatchCloudDesc from '@salesforce/label/c.gsChecklistItemNPPatchCloudDesc';
+import gsChecklistItemNPPatchCloudPriBtnLabel from '@salesforce/label/c.gsChecklistItemNPPatchCloudPriBtnLabel';
+import gsChecklistItemNPPatchCloudLinkLabel from '@salesforce/label/c.gsChecklistItemNPPatchCloudLinkLabel';
+import gsChecklistItemNPPatchCloudTitle from '@salesforce/label/c.gsChecklistItemNPPatchCloudTitle';
+import gsChecklistItemNPPatchSettingsDesc from '@salesforce/label/c.gsChecklistItemNPPatchSettingsDesc';
+import gsChecklistItemNPPatchSettingsPriBtnLabel from '@salesforce/label/c.gsChecklistItemNPPatchSettingsPriBtnLabel';
+import gsChecklistItemNPPatchSettingsLinkLabel from '@salesforce/label/c.gsChecklistItemNPPatchSettingsLinkLabel';
+import gsChecklistItemNPPatchSettingsTitle from '@salesforce/label/c.gsChecklistItemNPPatchSettingsTitle';
 import gsChecklistItemManageChangeDesc from '@salesforce/label/c.gsChecklistItemManageChangeDesc';
 import gsChecklistItemManageChangeLinkLabel from '@salesforce/label/c.gsChecklistItemManageChangeLinkLabel';
 import gsChecklistItemManageChangePriBtnLabel from '@salesforce/label/c.gsChecklistItemManageChangePriBtnLabel';
 import gsChecklistItemManageChangeTitle from '@salesforce/label/c.gsChecklistItemManageChangeTitle';
-import gsChecklistItemNPSPGuideDesc from '@salesforce/label/c.gsChecklistItemNPSPGuideDesc';
-import gsChecklistItemNPSPGuidePriBtnLabel from '@salesforce/label/c.gsChecklistItemNPSPGuidePriBtnLabel';
-import gsChecklistItemNPSPGuideTitle from '@salesforce/label/c.gsChecklistItemNPSPGuideTitle';
+import gsChecklistItemNPPatchGuideDesc from '@salesforce/label/c.gsChecklistItemNPPatchGuideDesc';
+import gsChecklistItemNPPatchGuidePriBtnLabel from '@salesforce/label/c.gsChecklistItemNPPatchGuidePriBtnLabel';
+import gsChecklistItemNPPatchGuideTitle from '@salesforce/label/c.gsChecklistItemNPPatchGuideTitle';
 import gsChecklistItemPageLayoutsDesc from '@salesforce/label/c.gsChecklistItemPageLayoutsDesc';
 import gsChecklistItemPageLayoutsLinkLabel from '@salesforce/label/c.gsChecklistItemPageLayoutsLinkLabel';
 import gsChecklistItemPageLayoutsTitle from '@salesforce/label/c.gsChecklistItemPageLayoutsTitle';
-import gsChecklistItemPrepareNPSPDesc from '@salesforce/label/c.gsChecklistItemPrepareNPSPDesc';
-import gsChecklistItemPrepareNPSPPriBtnLabel from '@salesforce/label/c.gsChecklistItemPrepareNPSPPriBtnLabel';
-import gsChecklistItemPrepareNPSPLinkLabel from '@salesforce/label/c.gsChecklistItemPrepareNPSPLinkLabel';
-import gsChecklistItemPrepareNPSPTitle from '@salesforce/label/c.gsChecklistItemPrepareNPSPTitle';
+import gsChecklistItemPrepareNPPatchDesc from '@salesforce/label/c.gsChecklistItemPrepareNPPatchDesc';
+import gsChecklistItemPrepareNPPatchPriBtnLabel from '@salesforce/label/c.gsChecklistItemPrepareNPPatchPriBtnLabel';
+import gsChecklistItemPrepareNPPatchLinkLabel from '@salesforce/label/c.gsChecklistItemPrepareNPPatchLinkLabel';
+import gsChecklistItemPrepareNPPatchTitle from '@salesforce/label/c.gsChecklistItemPrepareNPPatchTitle';
 import gsChecklistItemReviewCompanyDesc from '@salesforce/label/c.gsChecklistItemReviewCompanyDesc';
 import gsChecklistItemReviewCompanyLinkLabel from '@salesforce/label/c.gsChecklistItemReviewCompanyLinkLabel';
 import gsChecklistItemReviewCompanyTitle from '@salesforce/label/c.gsChecklistItemReviewCompanyTitle';
@@ -74,11 +74,11 @@ import gsChecklistMakeItYourDesc from '@salesforce/label/c.gsChecklistMakeItYour
 import gsChecklistMakeItYourTitle from '@salesforce/label/c.gsChecklistMakeItYourTitle';
 import gsChecklistOnboardUsersTitle from '@salesforce/label/c.gsChecklistOnboardUsersTitle';
 import gsChecklistOnboardUsersDesc from '@salesforce/label/c.gsChecklistOnboardUsersDesc';
-import gseuChecklistItemPrebuiltNPSPReportDesc from '@salesforce/label/c.gseuChecklistItemPrebuiltNPSPReportDesc';
-import gseuChecklistItemPrebuiltNPSPReportLinkLabel from '@salesforce/label/c.gseuChecklistItemPrebuiltNPSPReportLinkLabel';
-import gseuChecklistItemPrebuiltNPSPReportPriBtnLabel from '@salesforce/label/c.gseuChecklistItemPrebuiltNPSPReportPriBtnLabel';
-import gseuChecklistItemPrebuiltNPSPReportSecBtnLabel from '@salesforce/label/c.gseuChecklistItemPrebuiltNPSPReportSecBtnLabel';
-import gseuChecklistItemPrebuiltNPSPReportTitle from '@salesforce/label/c.gseuChecklistItemPrebuiltNPSPReportTitle';
+import gseuChecklistItemPrebuiltNPPatchReportDesc from '@salesforce/label/c.gseuChecklistItemPrebuiltNPPatchReportDesc';
+import gseuChecklistItemPrebuiltNPPatchReportLinkLabel from '@salesforce/label/c.gseuChecklistItemPrebuiltNPPatchReportLinkLabel';
+import gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel from '@salesforce/label/c.gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel';
+import gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel from '@salesforce/label/c.gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel';
+import gseuChecklistItemPrebuiltNPPatchReportTitle from '@salesforce/label/c.gseuChecklistItemPrebuiltNPPatchReportTitle';
 import gseuChecklistItemStandardReportTypeDesc from '@salesforce/label/c.gseuChecklistItemStandardReportTypeDesc';
 import gseuChecklistItemStandardReportTypeLinkLabel from '@salesforce/label/c.gseuChecklistItemStandardReportTypeLinkLabel';
 import gseuChecklistItemStandardReportTypePriBtnLabel from '@salesforce/label/c.gseuChecklistItemStandardReportTypePriBtnLabel';
@@ -127,11 +127,11 @@ import gseuChecklistItemTrackDonationPriBtnLabel from '@salesforce/label/c.gseuC
 import gseuChecklistItemTrackDonationTitle from '@salesforce/label/c.gseuChecklistItemTrackDonationTitle';
 import gseuChecklistTrackDonationDesc from '@salesforce/label/c.gseuChecklistTrackDonationDesc';
 import gseuChecklistTrackDonationTitle from '@salesforce/label/c.gseuChecklistTrackDonationTitle';
-import gseuChecklistWelcomeNPSPTitle from '@salesforce/label/c.gseuChecklistWelcomeNPSPTitle';
-import gseuChecklistWelcomeNPSPDesc from '@salesforce/label/c.gseuChecklistWelcomeNPSPDesc';
-import gseuChecklistItemWhatIsNPSPTitle from '@salesforce/label/c.gseuChecklistItemWhatIsNPSPTitle';
-import gseuChecklistItemWhatIsNPSPDesc from '@salesforce/label/c.gseuChecklistItemWhatIsNPSPDesc';
-import gseuChecklistItemWhatIsNPSPLink from '@salesforce/label/c.gseuChecklistItemWhatIsNPSPLink';
+import gseuChecklistWelcomeNPPatchTitle from '@salesforce/label/c.gseuChecklistWelcomeNPPatchTitle';
+import gseuChecklistWelcomeNPPatchDesc from '@salesforce/label/c.gseuChecklistWelcomeNPPatchDesc';
+import gseuChecklistItemWhatIsNPPatchTitle from '@salesforce/label/c.gseuChecklistItemWhatIsNPPatchTitle';
+import gseuChecklistItemWhatIsNPPatchDesc from '@salesforce/label/c.gseuChecklistItemWhatIsNPPatchDesc';
+import gseuChecklistItemWhatIsNPPatchLink from '@salesforce/label/c.gseuChecklistItemWhatIsNPPatchLink';
 import gseuChecklistItemWhatIsNPCloudTitle from '@salesforce/label/c.gseuChecklistItemWhatIsNPCloudTitle';
 import gseuChecklistItemWhatIsNPCloudTitleDesc from '@salesforce/label/c.gseuChecklistItemWhatIsNPCloudTitleDesc';
 import gseuChecklistItemWhatIsNPCloudLink from '@salesforce/label/c.gseuChecklistItemWhatIsNPCloudLink';
@@ -158,8 +158,8 @@ import gseuChecklistItemExtraTwoMinutesVideo from '@salesforce/label/c.gseuCheck
 const labelMap = {
     gsAdminSetupTitle,
     gseuPageTitle,
-    gsChecklistExploreNPSPTitle,
-    gsChecklistExploreNPSPDesc,
+    gsChecklistExploreNPPatchTitle,
+    gsChecklistExploreNPPatchDesc,
     gsChecklistItemAddUserDesc,
     gsChecklistItemAddUserLinkLabel,
     gsChecklistItemAddUserTitle,
@@ -193,24 +193,24 @@ const labelMap = {
     gsChecklistItemManageChangeLinkLabel,
     gsChecklistItemManageChangePriBtnLabel,
     gsChecklistItemManageChangeTitle,
-    gsChecklistItemNPSPCloudDesc,
-    gsChecklistItemNPSPCloudPriBtnLabel,
-    gsChecklistItemNPSPCloudLinkLabel,
-    gsChecklistItemNPSPCloudTitle,
-    gsChecklistItemNPSPGuideDesc,
-    gsChecklistItemNPSPGuidePriBtnLabel,
-    gsChecklistItemNPSPGuideTitle,
-    gsChecklistItemNPSPSettingsDesc,
-    gsChecklistItemNPSPSettingsPriBtnLabel,
-    gsChecklistItemNPSPSettingsLinkLabel,
-    gsChecklistItemNPSPSettingsTitle,
+    gsChecklistItemNPPatchCloudDesc,
+    gsChecklistItemNPPatchCloudPriBtnLabel,
+    gsChecklistItemNPPatchCloudLinkLabel,
+    gsChecklistItemNPPatchCloudTitle,
+    gsChecklistItemNPPatchGuideDesc,
+    gsChecklistItemNPPatchGuidePriBtnLabel,
+    gsChecklistItemNPPatchGuideTitle,
+    gsChecklistItemNPPatchSettingsDesc,
+    gsChecklistItemNPPatchSettingsPriBtnLabel,
+    gsChecklistItemNPPatchSettingsLinkLabel,
+    gsChecklistItemNPPatchSettingsTitle,
     gsChecklistItemPageLayoutsDesc,
     gsChecklistItemPageLayoutsLinkLabel,
     gsChecklistItemPageLayoutsTitle,
-    gsChecklistItemPrepareNPSPDesc,
-    gsChecklistItemPrepareNPSPPriBtnLabel,
-    gsChecklistItemPrepareNPSPLinkLabel,
-    gsChecklistItemPrepareNPSPTitle,
+    gsChecklistItemPrepareNPPatchDesc,
+    gsChecklistItemPrepareNPPatchPriBtnLabel,
+    gsChecklistItemPrepareNPPatchLinkLabel,
+    gsChecklistItemPrepareNPPatchTitle,
     gsChecklistItemReviewCompanyDesc,
     gsChecklistItemReviewCompanyLinkLabel,
     gsChecklistItemReviewCompanyTitle,
@@ -234,11 +234,11 @@ const labelMap = {
     gsChecklistMakeItYourTitle,
     gsChecklistOnboardUsersTitle,
     gsChecklistOnboardUsersDesc,
-    gseuChecklistItemPrebuiltNPSPReportDesc,
-    gseuChecklistItemPrebuiltNPSPReportLinkLabel,
-    gseuChecklistItemPrebuiltNPSPReportPriBtnLabel,
-    gseuChecklistItemPrebuiltNPSPReportSecBtnLabel,
-    gseuChecklistItemPrebuiltNPSPReportTitle,
+    gseuChecklistItemPrebuiltNPPatchReportDesc,
+    gseuChecklistItemPrebuiltNPPatchReportLinkLabel,
+    gseuChecklistItemPrebuiltNPPatchReportPriBtnLabel,
+    gseuChecklistItemPrebuiltNPPatchReportSecBtnLabel,
+    gseuChecklistItemPrebuiltNPPatchReportTitle,
     gseuChecklistItemStandardReportTypeDesc,
     gseuChecklistItemStandardReportTypeLinkLabel,
     gseuChecklistItemStandardReportTypePriBtnLabel,
@@ -285,11 +285,11 @@ const labelMap = {
     gseuChecklistItemTrackDonationTitle,
     gseuChecklistTrackDonationDesc,
     gseuChecklistTrackDonationTitle,
-    gseuChecklistWelcomeNPSPTitle,
-    gseuChecklistWelcomeNPSPDesc,
-    gseuChecklistItemWhatIsNPSPTitle,
-    gseuChecklistItemWhatIsNPSPDesc,
-    gseuChecklistItemWhatIsNPSPLink,
+    gseuChecklistWelcomeNPPatchTitle,
+    gseuChecklistWelcomeNPPatchDesc,
+    gseuChecklistItemWhatIsNPPatchTitle,
+    gseuChecklistItemWhatIsNPPatchDesc,
+    gseuChecklistItemWhatIsNPPatchLink,
     gseuChecklistItemWhatIsNPCloudTitle,
     gseuChecklistItemWhatIsNPCloudTitleDesc,
     gseuChecklistItemWhatIsNPCloudLink,

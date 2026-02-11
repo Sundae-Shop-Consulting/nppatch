@@ -9,7 +9,7 @@
         <label>Traiter le lot</label>
     </webLinks>
     <layouts>
-        <layout>NPSP Data Import Batch Layout</layout>
+        <layout>NPPatch Data Import Batch Layout</layout>
         <sections>
             <label>Correspondance contact et compte</label>
             <section>Contact &amp; Account Matching</section>
