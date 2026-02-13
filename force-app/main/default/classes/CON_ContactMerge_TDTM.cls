@@ -340,7 +340,7 @@ public class CON_ContactMerge_TDTM extends TDTM_Runnable {
             String query = oppRollupUtil.buildContactQuery();
 
             query = query.replace('from Contact', '');
-            query += ', AccountId, Account.SYSTEM_AccountType__c, Primary_Affiliation__c FROM Contact WHERE Id IN :contactIds';
+            query += ', AccountId, Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEM_AccountType__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Primary_Affiliation__c') + ' FROM Contact WHERE Id IN :contactIds';
             return Database.query(query);
         }
 

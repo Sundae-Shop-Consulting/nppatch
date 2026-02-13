@@ -613,9 +613,9 @@ public with sharing class BDI_ContactService {
 
                 strSoql += strAnd + '(' +
                     'Email IN :setEmail OR ' +
-                    'AlternateEmail__c IN :setEmail OR ' +
-                    'HomeEmail__c IN :setEmail OR ' +
-                    'WorkEmail__c IN :setEmail) ';
+                    UTIL_Namespace.StrTokenNSPrefix('AlternateEmail__c') + ' IN :setEmail OR ' +
+                    UTIL_Namespace.StrTokenNSPrefix('HomeEmail__c') + ' IN :setEmail OR ' +
+                    UTIL_Namespace.StrTokenNSPrefix('WorkEmail__c') + ' IN :setEmail) ';
                 strAnd = ' AND ';
             }
 
@@ -627,8 +627,8 @@ public with sharing class BDI_ContactService {
                     'HomePhone IN :setPhone OR ' +
                     'MobilePhone IN :setPhone OR ' +
                     'OtherPhone IN :setPhone OR ' +
-                    'Formula_HouseholdPhone__c IN :setPhone OR ' +
-                    'WorkPhone__c IN :setPhone)';
+                    UTIL_Namespace.StrTokenNSPrefix('Formula_HouseholdPhone__c') + ' IN :setPhone OR ' +
+                    UTIL_Namespace.StrTokenNSPrefix('WorkPhone__c') + ' IN :setPhone)';
             }
 
             strSoql += String.isBlank(strAnd) ? '' : ')';

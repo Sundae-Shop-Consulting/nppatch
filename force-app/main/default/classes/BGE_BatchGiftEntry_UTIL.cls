@@ -45,7 +45,7 @@ public with sharing class BGE_BatchGiftEntry_UTIL {
     */
     public static Map<String, String> objectGroupNameByAllowedObjects = new Map<String,String> {
         'Opportunity' => 'Opportunity',
-        'OppPayment__c' => 'Payment'
+        Schema.SObjectType.OppPayment__c.getName() => 'Payment'
     };
 
     /*******************************************************************************************************

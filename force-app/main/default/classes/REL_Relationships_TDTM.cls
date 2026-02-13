@@ -40,7 +40,11 @@ public class REL_Relationships_TDTM extends TDTM_Runnable {
     * @description Set of field names ineligible for syncing across reciprocal pairs  
     */
     private static final Set<String> relSystemFields = new Set<String>{
-        'system_systemcreated__c','contact__c','reciprocalrelationship__c','relatedcontact__c','type__c'};
+        UTIL_Namespace.StrTokenNSPrefix('SYSTEM_SystemCreated__c').toLowerCase(),
+        String.valueOf(Relationship__c.Contact__c).toLowerCase(),
+        String.valueOf(Relationship__c.ReciprocalRelationship__c).toLowerCase(),
+        String.valueOf(Relationship__c.RelatedContact__c).toLowerCase(),
+        String.valueOf(Relationship__c.Type__c).toLowerCase()};
 
     /*********************************************************************
     * @description Set of field names synced across reciprocal pairs  
