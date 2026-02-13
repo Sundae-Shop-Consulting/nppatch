@@ -37,7 +37,7 @@
 */
 public class BDI_Donations {
 
-    public static final String[] campaignImportedFields = new String[]{'%%%NAMESPACE%%%DonationCampaignImported__c',
+    public static final String[] campaignImportedFields = new String[]{UTIL_Namespace.StrTokenNSPrefix('DonationCampaignImported__c'),
                                                                         'DonationCampaignImported__c'};
 
     /*******************************************************************************************************
