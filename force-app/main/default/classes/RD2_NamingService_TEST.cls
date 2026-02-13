@@ -710,7 +710,7 @@ public with sharing class RD2_NamingService_TEST {
     */
     private static Account getHHAccountMock() {
 
-        Id hhRecordTypeId = [SELECT Id FROM RecordType WHERE DeveloperName = 'HH_Account'].Id;
+        Id hhRecordTypeId = [SELECT Id FROM RecordType WHERE DeveloperName = 'HH_Account' AND SObjectType = 'Account' LIMIT 1].Id;
         UTIL_CustomSettingsFacade.getContactsSettingsForTests(
             new Contacts_And_Orgs_Settings__c (
                 HH_Account_RecordTypeID__c = hhRecordTypeId

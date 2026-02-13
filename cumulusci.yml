@@ -39,6 +39,13 @@ tasks:
         options:
             path: unpackaged/config/delete
 
+    deploy_ci_profile:
+        description: Deploys the Admin profile with RecordType visibility for CI testing
+        class_path: cumulusci.tasks.salesforce.Deploy
+        group: Salesforce Metadata
+        options:
+            path: unpackaged/config/ci
+
     log_package_install_info:
         description: Display package installation command and URL
         class_path: tasks.package_info.LogPackageInstallInfo
@@ -312,6 +319,28 @@ flows:
                 task: deploy_dev_config
             5:
                 task: default_settings
+
+    # =========================================
+    # CI Feature 2GP: Override to add test org
+    # configuration after package installation
+    # =========================================
+    ci_feature_2gp:
+        description: Install managed 2GP package, configure test org, and run Apex tests
+        steps:
+            2.5:
+                task: add_opportunity_stages
+            2.6:
+                task: add_ocr_roles
+            2.7:
+                task: deploy_ci_profile
+                options:
+                    managed: True
+                    namespace_inject: $project_config.project__package__namespace
+            2.8:
+                task: default_settings
+                options:
+                    managed: True
+                    namespace_inject: $project_config.project__package__namespace
 
 orgs:
     scratch:
