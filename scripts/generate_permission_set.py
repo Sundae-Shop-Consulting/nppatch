@@ -162,16 +162,10 @@ def generate_permission_set():
             ET.SubElement(field_perm, "field").text = f"{ns_object_name}.{ns_field_name}"
             ET.SubElement(field_perm, "readable").text = "true"
 
-    # Add object permissions for standard objects (needed for relationships)
-    for object_name in sorted(STANDARD_OBJECTS_FOR_CRUD):
-        obj_perm = ET.SubElement(root, "objectPermissions")
-        ET.SubElement(obj_perm, "allowCreate").text = "true"
-        ET.SubElement(obj_perm, "allowDelete").text = "true"
-        ET.SubElement(obj_perm, "allowEdit").text = "true"
-        ET.SubElement(obj_perm, "allowRead").text = "true"
-        ET.SubElement(obj_perm, "modifyAllRecords").text = "true"
-        ET.SubElement(obj_perm, "object").text = object_name
-        ET.SubElement(obj_perm, "viewAllRecords").text = "true"
+    # Note: Standard object permissions (Account, Contact, etc.) are intentionally
+    # excluded. In 2GP packages, standard object permissions get stripped during
+    # packaging, which causes custom object permissions that depend on them to fail
+    # at install time. Standard object access must come from the user's profile.
 
     # Add object permissions for custom objects (not settings or CMT)
     for object_name in all_objects:
