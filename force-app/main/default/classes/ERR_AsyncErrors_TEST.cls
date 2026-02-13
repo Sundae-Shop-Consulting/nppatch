@@ -188,16 +188,19 @@ public class ERR_AsyncErrors_TEST {
 
         stub.execute(null);
 
+        String nsPrefix = String.isNotBlank(UTIL_Namespace.HARDCODED_NAMESPACE)
+            ? UTIL_Namespace.HARDCODED_NAMESPACE + '__' : '';
+
         Set<Error__c> expectedErrors = new Set<Error__c>{
             new Error__c(
                 Error_Type__c = 'Future method error',
-                Context_Type__c = '%%%NAMESPACE%%%TestFuture.callFuture',
+                Context_Type__c = nsPrefix + 'TestFuture.callFuture',
                 DateTime__c = errorDateTime,
                 Full_Message__c = 'Future Error'
             ),
             new Error__c(
                 Error_Type__c = 'Scheduled Apex error',
-                Context_Type__c = '%%%NAMESPACE%%%TestScheduled',
+                Context_Type__c = nsPrefix + 'TestScheduled',
                 DateTime__c = errorDateTime,
                 Full_Message__c = 'Scheduled Error'
             ),

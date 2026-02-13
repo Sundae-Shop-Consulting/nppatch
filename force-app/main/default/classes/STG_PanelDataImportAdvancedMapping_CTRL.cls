@@ -38,7 +38,7 @@ public with sharing class STG_PanelDataImportAdvancedMapping_CTRL extends STG_Pa
     /*********************************************************************************************************
     * @description URL of the Advanced Mapping Custom UI aura component container
     */
-    public static String componentUrl = '/lightning/cmp/%%%NAMESPACE%%%BDI_ManageAdvancedMapping';
+    public static String componentUrl = '/lightning/cmp/' + UTIL_Namespace.StrTokenNSPrefix('BDI_ManageAdvancedMapping');
 
     /*********************************************************************************************************
     * @description Returns the string Id of the Data Import Advanced Mapping panel
