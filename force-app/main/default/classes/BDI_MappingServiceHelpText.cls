@@ -170,18 +170,11 @@ public with sharing class BDI_MappingServiceHelpText implements BDI_MappingServi
 
                 if (parts.size() == 2 && parts[0] == dataImportObjectName && parts[1] != '') {
                     String fieldName = parts[1];
-                    //if we aren't in the npsp namespace, remove those tokens from help text
-                    //also removes tokens from actual detected namespace, if we happen to be
-                    //in a non-npsp namespace
+                    //Ensure the field name from help text has the correct namespace
+                    //prefix for the current environment. This handles cases where
+                    //%%%NAMESPACE%%% tokens were stripped during 2GP packaging.
                     if (UTIL_Namespace.shouldAlignNamespace) {
-                        String fieldNameOld = fieldName;
-                        fieldName = UTIL_Namespace.StrTokenRemoveNSPrefix(fieldName);
-
-                        //if we have a detected namespace, and removed a namespace from the current field
-                        //add the current namespace back in, allowing this code to run in any namespace
-                        if (fieldName != fieldNameOld && UTIL_Namespace.getNamespace() != '') {
-                            fieldName = UTIL_Namespace.StrAllNSPrefix(fieldName);
-                        }
+                        fieldName = UTIL_Namespace.alignSchemaNSWithEnvironment(fieldName);
                     }
 
                     targetFieldByDataImportField.put(dataImportField, fieldName);
