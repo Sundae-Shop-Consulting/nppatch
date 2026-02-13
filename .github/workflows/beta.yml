@@ -1,0 +1,38 @@
+name: Beta Test
+on:
+    push:
+        branches:
+            - main
+jobs:
+    beta-test:
+        name: "Beta Test"
+        runs-on: ubuntu-latest
+        container:
+            image: ghcr.io/muselab-d2x/d2x:latest
+            options: --user root
+            credentials:
+                username: "${{ github.actor }}"
+                password: "${{ secrets.GITHUB_TOKEN }}"
+            env:
+                DEV_HUB_AUTH_URL: "${{ secrets.DEV_HUB_AUTH_URL }}"
+                CUMULUSCI_SERVICE_github: '{ "username": "${{ github.actor }}", "token": "${{ secrets.GITHUB_TOKEN }}", "email": "${{ secrets.GH_EMAIL }}" }'
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Auth to DevHub
+              run: /usr/local/bin/devhub.sh
+            - name: Set default org
+              run: cci org default beta
+            - name: Build Beta Package
+              env:
+                  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+              run: cci flow run release_unlocked_beta
+              shell: bash
+            - name: Run Beta Test
+              env:
+                  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+              run: cci flow run ci_beta
+            - name: Delete Scratch Org
+              if: ${{ always() }}
+              run: cci org scratch_delete beta
+              shell: bash
