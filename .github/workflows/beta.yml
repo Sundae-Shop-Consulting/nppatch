@@ -17,8 +17,6 @@ jobs:
                 DEV_HUB_AUTH_URL: "${{ secrets.DEV_HUB_AUTH_URL }}"
                 CUMULUSCI_SERVICE_github: '{ "username": "${{ github.actor }}", "token": "${{ secrets.GITHUB_TOKEN }}", "email": "${{ secrets.GH_EMAIL }}" }'
         steps:
-            - name: Upgrade CumulusCI
-              run: pip install --upgrade cumulusci
             - name: Checkout
               uses: actions/checkout@v4
             - name: Auth to DevHub

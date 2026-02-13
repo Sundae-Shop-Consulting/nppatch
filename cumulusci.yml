@@ -1,4 +1,4 @@
-minimum_cumulusci_version: '4.6.0'
+minimum_cumulusci_version: '3.93.0'
 project:
     name: nppatch
     package:
