@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <applicationVisibilities>
-        <application>NPPatch_Lightning</application>
+        <application>%%%NAMESPACE%%%NPPatch_Lightning</application>
         <default>true</default>
         <visible>true</visible>
     </applicationVisibilities>
     <layoutAssignments>
         <layout>Account-Household Layout</layout>
-        <recordType>Account.HH_Account</recordType>
+        <recordType>Account.%%%NAMESPACE%%%HH_Account</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Account-Organization Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Account-Organization Layout</layout>
-        <recordType>Account.Organization</recordType>
+        <recordType>Account.%%%NAMESPACE%%%Organization</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Campaign-NPPatch Campaign Layout</layout>
@@ -25,56 +25,56 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Opportunity-Donation Layout</layout>
-        <recordType>Opportunity.Donation</recordType>
+        <recordType>Opportunity.%%%NAMESPACE%%%Donation</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Opportunity-Grant Layout</layout>
-        <recordType>Opportunity.Grant</recordType>
+        <recordType>Opportunity.%%%NAMESPACE%%%Grant</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Opportunity-In-Kind Gift Layout</layout>
-        <recordType>Opportunity.InKindGift</recordType>
+        <recordType>Opportunity.%%%NAMESPACE%%%InKindGift</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Opportunity-Major Gift Layout</layout>
-        <recordType>Opportunity.MajorGift</recordType>
+        <recordType>Opportunity.%%%NAMESPACE%%%MajorGift</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Opportunity-Matching Gift Layout</layout>
-        <recordType>Opportunity.MatchingGift</recordType>
+        <recordType>Opportunity.%%%NAMESPACE%%%MatchingGift</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Opportunity-Membership Layout</layout>
-        <recordType>Opportunity.Membership</recordType>
+        <recordType>Opportunity.%%%NAMESPACE%%%Membership</recordType>
     </layoutAssignments>
     <recordTypeVisibilities>
         <default>true</default>
-        <recordType>Opportunity.Donation</recordType>
+        <recordType>Opportunity.%%%NAMESPACE%%%Donation</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Opportunity.Grant</recordType>
+        <recordType>Opportunity.%%%NAMESPACE%%%Grant</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Opportunity.InKindGift</recordType>
+        <recordType>Opportunity.%%%NAMESPACE%%%InKindGift</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Opportunity.MajorGift</recordType>
+        <recordType>Opportunity.%%%NAMESPACE%%%MajorGift</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Opportunity.MatchingGift</recordType>
+        <recordType>Opportunity.%%%NAMESPACE%%%MatchingGift</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Opportunity.Membership</recordType>
+        <recordType>Opportunity.%%%NAMESPACE%%%Membership</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
@@ -83,63 +83,63 @@
         <visible>false</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
-        <tab>Address__c</tab>
+        <tab>%%%NAMESPACE%%%Address__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Batch_Data_Entry</tab>
+        <tab>%%%NAMESPACE%%%Batch_Data_Entry</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Batch_Gift_Entry</tab>
+        <tab>%%%NAMESPACE%%%Batch_Gift_Entry</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Contact_Merge</tab>
+        <tab>%%%NAMESPACE%%%Contact_Merge</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>DataImport__c</tab>
+        <tab>%%%NAMESPACE%%%DataImport__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>DataImportBatch__c</tab>
+        <tab>%%%NAMESPACE%%%DataImportBatch__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Engagement_Plan_Template__c</tab>
+        <tab>%%%NAMESPACE%%%Engagement_Plan_Template__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>General_Accounting_Unit__c</tab>
+        <tab>%%%NAMESPACE%%%General_Accounting_Unit__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Level__c</tab>
+        <tab>%%%NAMESPACE%%%Level__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>NPPatch_Resources</tab>
+        <tab>%%%NAMESPACE%%%NPPatch_Resources</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>NPPatch_Settings</tab>
+        <tab>%%%NAMESPACE%%%NPPatch_Settings</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>OppPayment__c</tab>
+        <tab>%%%NAMESPACE%%%OppPayment__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Relationship__c</tab>
+        <tab>%%%NAMESPACE%%%Relationship__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Affiliation__c</tab>
+        <tab>%%%NAMESPACE%%%Affiliation__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>GE_Gift_Entry</tab>
+        <tab>%%%NAMESPACE%%%GE_Gift_Entry</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
 </Profile>

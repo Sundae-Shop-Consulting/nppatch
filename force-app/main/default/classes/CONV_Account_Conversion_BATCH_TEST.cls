@@ -526,7 +526,7 @@ public with sharing class CONV_Account_Conversion_BATCH_TEST {
         );
 
         //get the HH account rectype
-        Id hhAccountid = [select Id from RecordType where DeveloperName = 'HH_Account'].Id;
+        Id hhAccountid = [select Id from RecordType where DeveloperName = 'HH_Account' AND SObjectType = 'Account' LIMIT 1].Id;
         Contacts_and_Orgs_Settings__c contactSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(
             new Contacts_and_Orgs_Settings__c (
                 Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR, 
