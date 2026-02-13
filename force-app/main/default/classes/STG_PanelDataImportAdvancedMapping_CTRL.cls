@@ -169,7 +169,7 @@ public with sharing class STG_PanelDataImportAdvancedMapping_CTRL extends STG_Pa
             } else {
                 newPrefix = 'c';
             }
-            componentUrl = componentUrl.replace(UTIL_Namespace.HARDCODED_NPSP_NAMESPACE + '__', newPrefix + '__');
+            componentUrl = componentUrl.replace(UTIL_Namespace.HARDCODED_NAMESPACE + '__', newPrefix + '__');
         }
 
         PageReference advancedMapping = new PageReference(componentUrl);

@@ -43,11 +43,10 @@ public class UTIL_Namespace {
     private static string plainNamespace;
 
     /******************************************************************************************************
-    * @description Constant value for the npsp namespace, for use only when necessary in replacing hardcoded
-    * namespace prefixes in field/object name strings Custom Settings/Custom Metadata.  This should not be
-    * modified regardless of which namespace this code is being packaged in.
+    * @description Constant value for the package namespace, for use in replacing hardcoded
+    * namespace prefixes in field/object name strings in Custom Settings/Custom Metadata.
     *******************************************************************************************************/
-    public static final String HARDCODED_NPSP_NAMESPACE = 'npsp';
+    public static final String HARDCODED_NAMESPACE = 'nppatch';
 
     /***
     * @description Constant value for the Einstein enabled namespace, for checking if the org has
@@ -113,8 +112,8 @@ public class UTIL_Namespace {
     ********************************************************************************************************/
     public static String StrTokenRemoveNSPrefix(String str) {
         if (str != null) {
-            if (str.startsWith(HARDCODED_NPSP_NAMESPACE + '__')) {
-                str = str.replaceFirst(HARDCODED_NPSP_NAMESPACE + '__', '');
+            if (str.startsWith(HARDCODED_NAMESPACE + '__')) {
+                str = str.replaceFirst(HARDCODED_NAMESPACE + '__', '');
             }
 
             if(getNamespace() != '' && str.startsWith(getNamespace() + '__')) {
@@ -132,8 +131,8 @@ public class UTIL_Namespace {
     ********************************************************************************************************/
     public static String StrTokenRemoveClassNSPrefix(String str) {
         if (str != null) {
-            if (str.startsWith(HARDCODED_NPSP_NAMESPACE + '.')) {
-                str = str.replaceFirst(HARDCODED_NPSP_NAMESPACE + '.', '');
+            if (str.startsWith(HARDCODED_NAMESPACE + '.')) {
+                str = str.replaceFirst(HARDCODED_NAMESPACE + '.', '');
             }
 
             if(getNamespace() != '' && str.startsWith(getNamespace() + '.')) {
@@ -235,7 +234,7 @@ public class UTIL_Namespace {
     public static Boolean shouldAlignNamespace {
         get {
             if (shouldAlignNamespace == null) {
-                shouldAlignNamespace = (UTIL_Namespace.getNamespace() != UTIL_Namespace.HARDCODED_NPSP_NAMESPACE);
+                shouldAlignNamespace = (UTIL_Namespace.getNamespace() != UTIL_Namespace.HARDCODED_NAMESPACE);
             }
             return shouldAlignNamespace;
         } set;
@@ -254,7 +253,7 @@ public class UTIL_Namespace {
     ********************************************************************************************************/
     public static Boolean isCustomerOrg() {
         try {
-            return UserInfo.isCurrentUserLicensed(HARDCODED_NPSP_NAMESPACE);
+            return UserInfo.isCurrentUserLicensed(HARDCODED_NAMESPACE);
         } catch (Exception ex) {}
         return false;
     }
