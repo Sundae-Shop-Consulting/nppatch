@@ -4,6 +4,10 @@ on:
         branches:
             - feature/**
             - main
+permissions:
+    contents: read
+    statuses: write
+    packages: read
 jobs:
     feature-test:
         name: "Feature Test"
