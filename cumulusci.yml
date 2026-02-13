@@ -333,6 +333,10 @@ flows:
                 options:
                     sobject: Opportunity
             2.9:
+                task: assign_permission_sets
+                options:
+                    api_names: NPPatch_Admin
+            2.91:
                 task: default_settings
                 options:
                     managed: True
