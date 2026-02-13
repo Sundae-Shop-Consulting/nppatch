@@ -39,13 +39,6 @@ tasks:
         options:
             path: unpackaged/config/delete
 
-    deploy_ci_profile:
-        description: Deploys the Admin profile with RecordType visibility for CI testing
-        class_path: cumulusci.tasks.salesforce.Deploy
-        group: Salesforce Metadata
-        options:
-            path: unpackaged/config/ci
-
     log_package_install_info:
         description: Display package installation command and URL
         class_path: tasks.package_info.LogPackageInstallInfo
@@ -332,11 +325,14 @@ flows:
             2.6:
                 task: add_ocr_roles
             2.7:
-                task: deploy_ci_profile
+                task: ensure_record_types
                 options:
-                    managed: True
-                    namespace_inject: $project_config.project__package__namespace
+                    sobject: Account
             2.8:
+                task: ensure_record_types
+                options:
+                    sobject: Opportunity
+            2.9:
                 task: default_settings
                 options:
                     managed: True
