@@ -173,10 +173,10 @@ public class ERR_AsyncErrors_TEST {
         DateTime errorDateTime = DateTime.newInstanceGmt(2016, 8, 29, 7, 0, 0);
         stub.pendingAsyncJobErrors = new List<ERR_AsyncErrors.AsyncApexJobWrapper>{
             new ERR_AsyncErrors.AsyncApexJobWrapper(
-                'Future', 'TestFuture', 'npsp', 'callFuture', errorDateTime, 'Future Error'
+                'Future', 'TestFuture', UTIL_Namespace.HARDCODED_NAMESPACE, 'callFuture', errorDateTime, 'Future Error'
             ),
             new ERR_AsyncErrors.AsyncApexJobWrapper(
-                'ScheduledApex', 'TestScheduled', 'npsp', '', errorDateTime, 'Scheduled Error'
+                'ScheduledApex', 'TestScheduled', UTIL_Namespace.HARDCODED_NAMESPACE, '', errorDateTime, 'Scheduled Error'
             ),
             new ERR_AsyncErrors.AsyncApexJobWrapper(
                 'BatchApex', 'TestBatch', 'foo', '', errorDateTime, 'BatchApex Error'
@@ -239,7 +239,7 @@ public class ERR_AsyncErrors_TEST {
         DateTime errorDateTime = DateTime.newInstanceGmt(2016, 8, 29, 7, 0, 0);
         stub.pendingAsyncJobErrors = new List<ERR_AsyncErrors.AsyncApexJobWrapper>{
             new ERR_AsyncErrors.AsyncApexJobWrapper(
-                'Future', 'TestFuture', 'npsp', 'callFuture', errorDateTime, 'Future Error'
+                'Future', 'TestFuture', UTIL_Namespace.HARDCODED_NAMESPACE, 'callFuture', errorDateTime, 'Future Error'
             )
         };
 
