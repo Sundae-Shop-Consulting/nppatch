@@ -1,6 +1,18 @@
 {
   "packageDirectories": [
     {
+      "path": "force-app/infrastructure",
+      "package": "nppatch"
+    },
+    {
+      "path": "force-app/tdtm",
+      "package": "nppatch"
+    },
+    {
+      "path": "force-app/bdi",
+      "package": "nppatch"
+    },
+    {
       "path": "force-app/main",
       "default": true,
       "package": "nppatch",
@@ -12,18 +24,6 @@
       "apexTestAccess": {
         "permissionSets": ["NPPatch_Admin"]
       }
-    },
-    {
-      "path": "force-app/bdi",
-      "package": "nppatch"
-    },
-    {
-      "path": "force-app/infrastructure",
-      "package": "nppatch"
-    },
-    {
-      "path": "force-app/tdtm",
-      "package": "nppatch"
     },
     {
       "path": "force-app/test",
