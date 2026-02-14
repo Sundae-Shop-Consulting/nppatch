@@ -1,0 +1,58 @@
+name: 2GP Feature Test
+on:
+    push:
+        branches:
+            - feature/**
+            - main
+permissions:
+    contents: read
+    statuses: write
+    packages: read
+jobs:
+    feature-test:
+        name: "Feature Test"
+        runs-on: ubuntu-latest
+        container:
+            image: ghcr.io/muselab-d2x/d2x:latest
+            options: --user root
+            credentials:
+                username: "${{ github.actor }}"
+                password: "${{ secrets.GITHUB_TOKEN }}"
+            env:
+                DEV_HUB_AUTH_URL: "${{ secrets.DEV_HUB_AUTH_URL }}"
+                CUMULUSCI_SERVICE_github: '{ "username": "${{ github.actor }}", "token": "${{ secrets.GITHUB_TOKEN }}", "email": "${{ secrets.GH_EMAIL }}" }'
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Auth to DevHub
+              run: /usr/local/bin/devhub.sh
+            - name: Set default org
+              run: cci org default feature
+            - name: Setup Build Org
+              run: cci flow run setup_build_org
+            - name: Build Feature Test Package
+              env:
+                  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+              run: cci flow run build_feature_test_package | tee cumulusci-flow.log
+              shell: bash
+            - name: Set Commit Status
+              env:
+                  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+              run: |
+                  VERSION=$(cat cumulusci-flow.log | grep -o -E -m 1 "04t[a-zA-Z0-9]{15}")
+                  gh api \
+                    --method POST \
+                    -H "Accept: application/vnd.github.v3+json" \
+                    '/repos/${{ github.repository }}/statuses/${{ github.sha }}' \
+                    -f state='success' \
+                    -f description="version_id: $VERSION" \
+                    -f context='Build Feature Test Package'
+              shell: bash
+            - name: Run Feature Test
+              env:
+                  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+              run: cci flow run ci_feature_2gp
+            - name: Delete Scratch Org
+              if: ${{ always() }}
+              run: cci org scratch_delete feature
+              shell: bash

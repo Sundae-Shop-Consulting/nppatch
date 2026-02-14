@@ -43,11 +43,10 @@ public class UTIL_Namespace {
     private static string plainNamespace;
 
     /******************************************************************************************************
-    * @description Constant value for the npsp namespace, for use only when necessary in replacing hardcoded
-    * namespace prefixes in field/object name strings Custom Settings/Custom Metadata.  This should not be
-    * modified regardless of which namespace this code is being packaged in.
+    * @description Constant value for the package namespace, for use in replacing hardcoded
+    * namespace prefixes in field/object name strings in Custom Settings/Custom Metadata.
     *******************************************************************************************************/
-    public static final String HARDCODED_NPSP_NAMESPACE = 'npsp';
+    public static final String HARDCODED_NAMESPACE = 'nppatch';
 
     /***
     * @description Constant value for the Einstein enabled namespace, for checking if the org has
@@ -113,8 +112,8 @@ public class UTIL_Namespace {
     ********************************************************************************************************/
     public static String StrTokenRemoveNSPrefix(String str) {
         if (str != null) {
-            if (str.startsWith(HARDCODED_NPSP_NAMESPACE + '__')) {
-                str = str.replaceFirst(HARDCODED_NPSP_NAMESPACE + '__', '');
+            if (str.startsWith(HARDCODED_NAMESPACE + '__')) {
+                str = str.replaceFirst(HARDCODED_NAMESPACE + '__', '');
             }
 
             if(getNamespace() != '' && str.startsWith(getNamespace() + '__')) {
@@ -132,8 +131,8 @@ public class UTIL_Namespace {
     ********************************************************************************************************/
     public static String StrTokenRemoveClassNSPrefix(String str) {
         if (str != null) {
-            if (str.startsWith(HARDCODED_NPSP_NAMESPACE + '.')) {
-                str = str.replaceFirst(HARDCODED_NPSP_NAMESPACE + '.', '');
+            if (str.startsWith(HARDCODED_NAMESPACE + '.')) {
+                str = str.replaceFirst(HARDCODED_NAMESPACE + '.', '');
             }
 
             if(getNamespace() != '' && str.startsWith(getNamespace() + '.')) {
@@ -192,11 +191,11 @@ public class UTIL_Namespace {
 
             newName = StrTokenRemoveNSPrefix(name);
 
-            //If a prefix was removed by StrTokenRemoveNSPrefix then attempt to add the current NS for
-            //UTIL_Namespace (if there is one).
-            if (newName != name) {
-                newName = StrAllNSPrefix(newName);
-            }
+            //Always ensure custom API names have the current namespace prefix.
+            //This handles both re-prefixing (when a different prefix was stripped)
+            //and adding a prefix to unprefixed values (e.g. from 2GP CMDT string values
+            //where %%%NAMESPACE%%% tokens were stripped during packaging).
+            newName = StrAllNSPrefix(newName);
         }
 
         return newName;
@@ -216,9 +215,10 @@ public class UTIL_Namespace {
 
             newName = StrTokenRemoveClassNSPrefix(name);
 
-            //If a prefix was removed by StrTokenRemoveClassNSPrefix then attempt to add the current NS for
-            //UTIL_Namespace (if there is one).
-            if (newName != name) {
+            //Add namespace prefix if a prefix was stripped or if the name has no
+            //namespace qualifier (no dot). This handles unprefixed values from 2GP
+            //packaging while preserving names from other namespaces (e.g. foo.Bar).
+            if (newName != name || !newName.contains('.')) {
                 newName = StrTokenNSPrefixDotNotation(newName);
             }
         }
@@ -227,15 +227,15 @@ public class UTIL_Namespace {
     }
 
     /*******************************************************************************************************
-    * @description Will return true if the namespace currently being applied to Util_Namespace is different
-    * from the hardcoded NPSP namespace, which indicates that the namespace on certain field/object and class
-    * names stored in metadata may need to be changed.
+    * @description Returns true when running in a namespaced context, indicating that field/object and class
+    * names stored in metadata may need namespace prefix alignment. This is needed because 2GP packaging
+    * strips %%%NAMESPACE%%% tokens from CMDT string values, leaving them without namespace prefixes.
     * @return shouldAlignNamespace Boolean : indicates whether the namespace needs to be aligned
     ********************************************************************************************************/
     public static Boolean shouldAlignNamespace {
         get {
             if (shouldAlignNamespace == null) {
-                shouldAlignNamespace = (UTIL_Namespace.getNamespace() != UTIL_Namespace.HARDCODED_NPSP_NAMESPACE);
+                shouldAlignNamespace = (UTIL_Namespace.getNamespace() != '');
             }
             return shouldAlignNamespace;
         } set;
@@ -254,7 +254,7 @@ public class UTIL_Namespace {
     ********************************************************************************************************/
     public static Boolean isCustomerOrg() {
         try {
-            return UserInfo.isCurrentUserLicensed(HARDCODED_NPSP_NAMESPACE);
+            return UserInfo.isCurrentUserLicensed(HARDCODED_NAMESPACE);
         } catch (Exception ex) {}
         return false;
     }

@@ -32,8 +32,9 @@
 * @date 2024
 * @group Utilities
 * @description Utility class for assigning permission sets in tests.
-* In 2GP packages, the admin profile doesn't automatically have FLS access to package fields.
-* Tests that use WITH SECURITY_ENFORCED queries need to assign the NPPatch_Admin permission set.
+* In 2GP packages, FLS access is granted automatically via the apexTestAccess
+* configuration in sfdx-project.json. These methods are intentional no-ops
+* retained for backward compatibility with existing test classes.
 */
 @IsTest
 public class UTIL_TestPermissions {
@@ -41,54 +42,28 @@ public class UTIL_TestPermissions {
     private static final String ADMIN_PERMISSION_SET = 'NPPatch_Admin';
 
     /**
-    * @description Assigns the NPPatch_Admin permission set to the current user.
-    * Call this in @TestSetup or at the beginning of test methods that need FLS access.
+    * @description No-op. In 2GP packages, the NPPatch_Admin permission set is
+    * automatically granted to the test runner via apexTestAccess in sfdx-project.json.
+    * Manual PermissionSetAssignment DML fails in parallel test execution.
     */
     public static void assignAdminPermissionSet() {
-        assignPermissionSet(ADMIN_PERMISSION_SET);
+        // No-op: apexTestAccess in sfdx-project.json handles this automatically.
+        // Manual PermissionSetAssignment DML is not allowed in parallel Apex tests
+        // and causes MIXED_DML_OPERATION errors when combined with non-setup object DML.
     }
 
     /**
-    * @description Assigns a permission set by name to the current user.
-    * @param permissionSetName The API name of the permission set to assign
+    * @description No-op. See assignAdminPermissionSet().
+    * @param permissionSetName The API name of the permission set (ignored)
     */
     public static void assignPermissionSet(String permissionSetName) {
-        // Get the permission set - use namespace prefix if running in namespaced context
-        String nsPrefix = UTIL_Namespace.getNamespace();
-        String fullName = String.isNotBlank(nsPrefix) ? nsPrefix + '__' + permissionSetName : permissionSetName;
-
-        List<PermissionSet> permSets = [
-            SELECT Id FROM PermissionSet
-            WHERE Name = :permissionSetName OR Name = :fullName
-            LIMIT 1
-        ];
-
-        if (permSets.isEmpty()) {
-            // Permission set not found - this might be okay in some test contexts
-            System.debug(LoggingLevel.WARN, 'Permission set not found: ' + permissionSetName);
-            return;
-        }
-
-        // Check if already assigned
-        List<PermissionSetAssignment> existingAssignments = [
-            SELECT Id FROM PermissionSetAssignment
-            WHERE AssigneeId = :UserInfo.getUserId()
-            AND PermissionSetId = :permSets[0].Id
-            LIMIT 1
-        ];
-
-        if (existingAssignments.isEmpty()) {
-            insert new PermissionSetAssignment(
-                AssigneeId = UserInfo.getUserId(),
-                PermissionSetId = permSets[0].Id
-            );
-        }
+        // No-op: see assignAdminPermissionSet()
     }
 
     /**
-    * @description Creates a test user with the NPPatch_Admin permission set assigned.
-    * Use with System.runAs() to execute code that requires FLS access.
-    * @return User A test user with admin permissions
+    * @description Creates a test user without permission set assignment.
+    * In 2GP, FLS access comes from apexTestAccess, not PermissionSetAssignment DML.
+    * @return User A test user
     */
     public static User createUserWithAdminPermissions() {
         Profile p = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1];
@@ -106,23 +81,6 @@ public class UTIL_TestPermissions {
             UserName = uniqueUserName
         );
         insert u;
-
-        // Assign permission set
-        String nsPrefix = UTIL_Namespace.getNamespace();
-        String fullName = String.isNotBlank(nsPrefix) ? nsPrefix + '__' + ADMIN_PERMISSION_SET : ADMIN_PERMISSION_SET;
-
-        List<PermissionSet> permSets = [
-            SELECT Id FROM PermissionSet
-            WHERE Name = :ADMIN_PERMISSION_SET OR Name = :fullName
-            LIMIT 1
-        ];
-
-        if (!permSets.isEmpty()) {
-            insert new PermissionSetAssignment(
-                AssigneeId = u.Id,
-                PermissionSetId = permSets[0].Id
-            );
-        }
 
         return u;
     }

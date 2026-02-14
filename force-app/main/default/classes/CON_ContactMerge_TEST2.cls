@@ -264,8 +264,9 @@ private class CON_ContactMerge_TEST2 {
         CON_ContactMerge_TEST.selectMasterRecord(controller, con.id);
         //Select the household of the one that is not the one we selected as master
         List<CON_ContactMerge_CTRL.FieldRow> fieldRows = controller.fieldRows;  
+        String hhFieldName = String.valueOf(Contact.Household__c).toLowerCase();
         for (CON_ContactMerge_CTRL.FieldRow row : fieldRows) {
-            if(row.fieldName == 'household__c') {
+            if(row.fieldName == hhFieldName) {
                 row.selectedValue = String.valueOf(con2.id);
                 break;
             }

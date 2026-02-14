@@ -3,27 +3,27 @@
     <compactLayouts>
         <fullName>NPPatch_Household_Account</fullName>
         <fields>Name</fields>
-        <fields>TotalOppAmount__c</fields>
+        <fields>%%%NAMESPACE%%%TotalOppAmount__c</fields>
         <fields>%%%NAMESPACE%%%Number_of_Household_Members__c</fields>
         <label>NPPatch Household Account</label>
     </compactLayouts>
     <compactLayouts>
         <fullName>NPPatch_Organization_Account</fullName>
         <fields>Name</fields>
-        <fields>NumberOfClosedOpps__c</fields>
-        <fields>TotalOppAmount__c</fields>
+        <fields>%%%NAMESPACE%%%NumberOfClosedOpps__c</fields>
+        <fields>%%%NAMESPACE%%%TotalOppAmount__c</fields>
         <fields>Website</fields>
         <label>NPPatch Organization Account</label>
     </compactLayouts>
     <listViews>
         <fullName>Household_Accounts</fullName>
         <columns>ACCOUNT.NAME</columns>
-        <columns>Formal_Greeting__c</columns>
-        <columns>Informal_Greeting__c</columns>
-        <columns>TotalOppAmount__c</columns>
-        <columns>AverageAmount__c</columns>
-        <columns>Best_Gift_Year__c</columns>
-        <columns>HouseholdPhone__c</columns>
+        <columns>%%%NAMESPACE%%%Formal_Greeting__c</columns>
+        <columns>%%%NAMESPACE%%%Informal_Greeting__c</columns>
+        <columns>%%%NAMESPACE%%%TotalOppAmount__c</columns>
+        <columns>%%%NAMESPACE%%%AverageAmount__c</columns>
+        <columns>%%%NAMESPACE%%%Best_Gift_Year__c</columns>
+        <columns>%%%NAMESPACE%%%HouseholdPhone__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>ACCOUNT.RECORDTYPE</field>

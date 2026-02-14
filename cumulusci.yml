@@ -1,4 +1,4 @@
-minimum_cumulusci_version: '4.6.0'
+minimum_cumulusci_version: '3.93.0'
 project:
     name: nppatch
     package:
@@ -312,6 +312,35 @@ flows:
                 task: deploy_dev_config
             5:
                 task: default_settings
+
+    # =========================================
+    # CI Feature 2GP: Override to add test org
+    # configuration after package installation
+    # =========================================
+    ci_feature_2gp:
+        description: Install managed 2GP package, configure test org, and run Apex tests
+        steps:
+            2.5:
+                task: add_opportunity_stages
+            2.6:
+                task: add_ocr_roles
+            2.7:
+                task: ensure_record_types
+                options:
+                    sobject: Account
+            2.8:
+                task: ensure_record_types
+                options:
+                    sobject: Opportunity
+            2.9:
+                task: assign_permission_sets
+                options:
+                    api_names: NPPatch_Admin
+            2.91:
+                task: default_settings
+                options:
+                    managed: True
+                    namespace_inject: $project_config.project__package__namespace
 
 orgs:
     scratch:

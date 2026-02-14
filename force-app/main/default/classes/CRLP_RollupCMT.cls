@@ -683,7 +683,7 @@ public class CRLP_RollupCMT {
                 replace('Partial Soft Credit', 'PSC').
                 replace('Partial_Soft_Credit', 'PSC').
                 replace('ClosedWon', 'Won').
-                replace('%%%NAMESPACE%%%', '').replace('', '').replace('', '').replace('__c', '').
+                replace(UTIL_Namespace.StrTokenNSPrefix(''), '').replace('__c', '').
                 replace(' of ', '');
 
         if (forDeveloperName) {

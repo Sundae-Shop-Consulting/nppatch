@@ -1004,7 +1004,7 @@ public with sharing class CRLP_RollupUI_SVC {
     * @return Boolean
     */
     private static Boolean excludeField(Schema.DescribeFieldResult dfr) {
-        return fieldsToExclude.contains(dfr.name.toLowerCase());
+        return fieldsToExclude.contains(UTIL_Namespace.StrTokenRemoveNSPrefix(dfr.name).toLowerCase());
     }
 
     public class RollupException extends Exception {}

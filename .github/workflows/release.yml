@@ -1,0 +1,38 @@
+name: Production Release
+on:
+    workflow_dispatch:
+jobs:
+    release:
+        name: "Production Release"
+        runs-on: ubuntu-latest
+        container:
+            image: ghcr.io/muselab-d2x/d2x:latest
+            options: --user root
+            credentials:
+                username: "${{ github.actor }}"
+                password: "${{ secrets.GITHUB_TOKEN }}"
+            env:
+                DEV_HUB_AUTH_URL: "${{ secrets.DEV_HUB_AUTH_URL }}"
+                CUMULUSCI_SERVICE_github: '{ "username": "${{ github.actor }}", "token": "${{ secrets.GITHUB_TOKEN }}", "email": "${{ secrets.GH_EMAIL }}" }'
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Auth to DevHub
+              run: /usr/local/bin/devhub.sh
+            - name: Set default org
+              run: cci org default release
+            - name: Install Dependencies
+              run: cci flow run dependencies
+            - name: Promote Latest Beta
+              env:
+                  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+              run: cci flow run release_2gp_production
+              shell: bash
+            - name: Run Release Test
+              env:
+                  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+              run: cci flow run ci_release
+            - name: Delete Scratch Org
+              if: ${{ always() }}
+              run: cci org scratch_delete release
+              shell: bash

@@ -850,7 +850,7 @@ public class BDI_ManageAdvancedMappingCtrl {
 
         public NamespaceWrapper(){
             this.currentNamespace = UTIL_Namespace.getNamespace();
-            this.npspNamespace = UTIL_Namespace.HARDCODED_NPSP_NAMESPACE;
+            this.npspNamespace = UTIL_Namespace.HARDCODED_NAMESPACE;
         }
     }
 
