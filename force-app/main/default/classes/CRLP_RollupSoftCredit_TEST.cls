@@ -72,19 +72,6 @@ public class CRLP_RollupSoftCredit_TEST {
     }
 
     /**
-     * @description Returns true if running in a namespaced 2GP context where record types
-     * may not be available. Tests should skip in this context.
-     */
-    private static Boolean shouldSkipIn2GP() {
-        if (String.isBlank(UTIL_Namespace.getNamespace())) {
-            return false;
-        }
-        // Check if record types are available
-        String rtId = UTIL_RecordTypes.getRecordTypeIdForGiftsTests(Opportunity.SObjectType);
-        return rtId == null;
-    }
-
-    /**
      * @description Create Rollup__mdt records to test rolling up from the Opp and Payment objects to the Account
      */
     public static void mockRollupCMTValues() {
@@ -174,19 +161,19 @@ public class CRLP_RollupSoftCredit_TEST {
     }
 
     static testMethod void test_Rollups_Contact() {
-        if (shouldSkipIn2GP()) { return; }
+
         testRollupsServices(TestType.testBatchContact);
     }
     static testMethod void test_Rollups_ContactSkew() {
-        if (shouldSkipIn2GP()) { return; }
+
         testRollupsServices(TestType.testSkewBatchContact);
     }
     static testMethod void test_Rollups_Account() {
-        if (shouldSkipIn2GP()) { return; }
+
         testRollupsServices(TestType.testBatchAccount);
     }
     static testMethod void test_Rollups_AlwaysRollupToPrimaryEnabled() {
-        if (shouldSkipIn2GP()) { return; }
+
         testRollupsServices(TestType.TestWithAlwaysRollupToPrimary);
     }
 

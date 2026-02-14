@@ -45,12 +45,6 @@ public with sharing class RLLP_OppRollup_TEST2 {
 
     static String giftRecordTypeIdForTests = UTIL_RecordTypes.GetRecordTypeId(Opportunity.sObjectType, UTIL_RecordTypes.getRecordTypeNameForGiftsTests(Opportunity.sObjectType));
 
-    /**
-    * @description Returns true if tests should be skipped in 2GP namespaced context
-    */
-    private static Boolean shouldSkipIn2GP() {
-        return String.isNotBlank(UTIL_Namespace.getNamespace());
-    }
 
     /*********************************************************************************************************
     * @description Runs testOpportunityUtilityErrorHandling test method for the One to One account processor.
@@ -297,14 +291,14 @@ public with sharing class RLLP_OppRollup_TEST2 {
     * @description Runs testUserDefinedRollup test method for the One to One account processor.
     */
     static testMethod void testUserDefinedRollupOne2One(){
-        if (shouldSkipIn2GP()) return;
+
         testUserDefinedRollup(CAO_Constants.ONE_TO_ONE_PROCESSOR);
     }
     /*********************************************************************************************************
     * @description Runs testUserDefinedRollup test method for the household account processor.
     */
     static testMethod void testUserDefinedRollupHHAccount(){
-        if (shouldSkipIn2GP()) return;
+
         testUserDefinedRollup(CAO_Constants.HH_ACCOUNT_PROCESSOR);
     }
     /*********************************************************************************************************

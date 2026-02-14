@@ -62,19 +62,6 @@ private class CRLP_RollupGAU_TEST {
         insert allocs;
     }
 
-    /**
-     * @description Returns true if running in a namespaced 2GP context where record types
-     * may not be available. Tests should skip in this context.
-     */
-    private static Boolean shouldSkipIn2GP() {
-        if (String.isBlank(UTIL_Namespace.getNamespace())) {
-            return false;
-        }
-        // Check if record types are available
-        String rtId = UTIL_RecordTypes.getRecordTypeIdForGiftsTests(Opportunity.SObjectType);
-        return rtId == null;
-    }
-
     private Enum TestType {
         testSkewBatch
     }
@@ -143,7 +130,7 @@ private class CRLP_RollupGAU_TEST {
     }
 
     static testMethod void test_Rollups_SkewBatch() {
-        if (shouldSkipIn2GP()) { return; }
+
         testRollupsServices(TestType.testSkewBatch);
     }
 

@@ -51,3 +51,7 @@ $RECYCLE.BIN/
 .idea
 .project
 .settings
+
+# Local only
+TODO.md
+manifest/
