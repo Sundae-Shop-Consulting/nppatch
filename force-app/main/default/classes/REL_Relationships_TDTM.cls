@@ -44,7 +44,8 @@ public class REL_Relationships_TDTM extends TDTM_Runnable {
         String.valueOf(Relationship__c.Contact__c).toLowerCase(),
         String.valueOf(Relationship__c.ReciprocalRelationship__c).toLowerCase(),
         String.valueOf(Relationship__c.RelatedContact__c).toLowerCase(),
-        String.valueOf(Relationship__c.Type__c).toLowerCase()};
+        String.valueOf(Relationship__c.Type__c).toLowerCase(),
+        String.valueOf(Relationship__c.Related_Opportunity_Contact_Role__c).toLowerCase()};
 
     /*********************************************************************
     * @description Set of field names synced across reciprocal pairs  
