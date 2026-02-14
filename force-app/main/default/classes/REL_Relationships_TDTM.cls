@@ -527,19 +527,59 @@ public class REL_Relationships_TDTM extends TDTM_Runnable {
                 listRel.add(rel);                
             }
             
-            // now we have the lists of duplicate relationships, remove the duplicates.            
+            // now we have the lists of duplicate relationships, remove the duplicates.
             for (string relKey : mapRelKeyRel.keySet()) {
                 listRel = mapRelKeyRel.get(relKey);
-                
+
                 // keep the oldest and delete the others
                 for (integer i = 1; i < listRel.size(); i++) {
                     dmlWrapper.objectsToDelete.add(listRel[i]);
                 }
             }
         }
-        
+
+        // also deduplicate relationships where the merged contact is on the RelatedContact side
+        list<Relationship__c> listRelByRelated = [select Id, Contact__c, RelatedContact__c,
+            Status__c, Type__c, Description__c
+            from Relationship__c
+            where RelatedContact__c in :listCon
+            order by RelatedContact__c, LastModifiedDate asc];
+
+        map<Id, list<Relationship__c>> mapRelConIdListRel = new map<Id, list<Relationship__c>>();
+        for (Relationship__c rel : listRelByRelated) {
+            list<Relationship__c> listConRel = mapRelConIdListRel.get(rel.RelatedContact__c);
+            if (listConRel == null) {
+                listConRel = new list<Relationship__c>();
+                mapRelConIdListRel.put(rel.RelatedContact__c, listConRel);
+            }
+            listConRel.add(rel);
+        }
+
+        for (Contact con : listCon) {
+            if (!mapRelConIdListRel.containsKey(con.Id))
+               continue;
+
+            map<string, list<Relationship__c>> mapRelKeyRel2 = new map<string, list<Relationship__c>>();
+            for (Relationship__c rel : mapRelConIdListRel.get(con.Id)) {
+                string relKey = getRelKey(rel);
+                list<Relationship__c> relList = mapRelKeyRel2.get(relKey);
+                if (relList == null) {
+                    relList = new list<Relationship__c>();
+                    mapRelKeyRel2.put(relKey, relList);
+                }
+                relList.add(rel);
+            }
+
+            for (string relKey : mapRelKeyRel2.keySet()) {
+                list<Relationship__c> relList = mapRelKeyRel2.get(relKey);
+                for (integer i = 1; i < relList.size(); i++) {
+                    dmlWrapper.objectsToDelete.add(relList[i]);
+                }
+            }
+        }
+
         // perform our updates & deletes for dealing with the duplicate relationships
-        TDTM_TriggerHandler.processDml(dmlWrapper); 
+        TDTM_TriggerHandler.processDml(dmlWrapper);
     }
 
     /*******************************************************************************************************
