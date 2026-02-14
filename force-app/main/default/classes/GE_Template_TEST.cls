@@ -316,14 +316,14 @@ public with sharing class GE_Template_TEST {
                 null,
                 'CustomLabel',
                 new List<String>{'Payment_Check_Reference_Number'});
-        field.fieldApiName = 'Check_Reference_Number__c';
+        field.fieldApiName = String.valueOf(OppPayment__c.Check_Reference_Number__c);
 
         GE_Template.Element field2 = new GE_Template.Element('field',
                 'True',
                 null,
                 'CustomLabel',
                 new List<String>{'Payment_Method'});
-        field2.fieldApiName = 'Payment_Method__c';
+        field2.fieldApiName = String.valueOf(OppPayment__c.Payment_Method__c);
 
         GE_Template.Element[] elements = new GE_Template.Element[]{field,field2};
 

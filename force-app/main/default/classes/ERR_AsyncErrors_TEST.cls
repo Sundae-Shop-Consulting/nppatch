@@ -108,14 +108,14 @@ public class ERR_AsyncErrors_TEST {
             Async_Error_Check_Last_Run__c = null
         );
 
-        stub.currentNamespace = UTIL_Namespace.HARDCODED_NPSP_NAMESPACE;
+        stub.currentNamespace = UTIL_Namespace.HARDCODED_NAMESPACE;
 
         stub.pendingAsyncJobErrors = new List<ERR_AsyncErrors.AsyncApexJobWrapper>();
 
         stub.execute(null);
 
         System.assertEquals(
-            UTIL_Namespace.HARDCODED_NPSP_NAMESPACE,
+            UTIL_Namespace.HARDCODED_NAMESPACE,
             stub.pendingAsyncJobErrorsNamespace
         );
     }
@@ -173,10 +173,10 @@ public class ERR_AsyncErrors_TEST {
         DateTime errorDateTime = DateTime.newInstanceGmt(2016, 8, 29, 7, 0, 0);
         stub.pendingAsyncJobErrors = new List<ERR_AsyncErrors.AsyncApexJobWrapper>{
             new ERR_AsyncErrors.AsyncApexJobWrapper(
-                'Future', 'TestFuture', 'npsp', 'callFuture', errorDateTime, 'Future Error'
+                'Future', 'TestFuture', UTIL_Namespace.HARDCODED_NAMESPACE, 'callFuture', errorDateTime, 'Future Error'
             ),
             new ERR_AsyncErrors.AsyncApexJobWrapper(
-                'ScheduledApex', 'TestScheduled', 'npsp', '', errorDateTime, 'Scheduled Error'
+                'ScheduledApex', 'TestScheduled', UTIL_Namespace.HARDCODED_NAMESPACE, '', errorDateTime, 'Scheduled Error'
             ),
             new ERR_AsyncErrors.AsyncApexJobWrapper(
                 'BatchApex', 'TestBatch', 'foo', '', errorDateTime, 'BatchApex Error'
@@ -188,16 +188,19 @@ public class ERR_AsyncErrors_TEST {
 
         stub.execute(null);
 
+        String nsPrefix = String.isNotBlank(UTIL_Namespace.HARDCODED_NAMESPACE)
+            ? UTIL_Namespace.HARDCODED_NAMESPACE + '__' : '';
+
         Set<Error__c> expectedErrors = new Set<Error__c>{
             new Error__c(
                 Error_Type__c = 'Future method error',
-                Context_Type__c = '%%%NAMESPACE%%%TestFuture.callFuture',
+                Context_Type__c = nsPrefix + 'TestFuture.callFuture',
                 DateTime__c = errorDateTime,
                 Full_Message__c = 'Future Error'
             ),
             new Error__c(
                 Error_Type__c = 'Scheduled Apex error',
-                Context_Type__c = '%%%NAMESPACE%%%TestScheduled',
+                Context_Type__c = nsPrefix + 'TestScheduled',
                 DateTime__c = errorDateTime,
                 Full_Message__c = 'Scheduled Error'
             ),
@@ -239,7 +242,7 @@ public class ERR_AsyncErrors_TEST {
         DateTime errorDateTime = DateTime.newInstanceGmt(2016, 8, 29, 7, 0, 0);
         stub.pendingAsyncJobErrors = new List<ERR_AsyncErrors.AsyncApexJobWrapper>{
             new ERR_AsyncErrors.AsyncApexJobWrapper(
-                'Future', 'TestFuture', 'npsp', 'callFuture', errorDateTime, 'Future Error'
+                'Future', 'TestFuture', UTIL_Namespace.HARDCODED_NAMESPACE, 'callFuture', errorDateTime, 'Future Error'
             )
         };
 

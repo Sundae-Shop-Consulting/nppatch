@@ -848,11 +848,11 @@ private class REL_Relationships_TEST {
         System.assertNotEquals(null, namespace);
         // In 2GP context, namespace could be the package namespace (e.g., 'nppatch')
         String currentNamespace = UTIL_Namespace.getNamespace();
-        Boolean isExpectedNamespace = namespace == UTIL_Namespace.HARDCODED_NPSP_NAMESPACE
+        Boolean isExpectedNamespace = namespace == UTIL_Namespace.HARDCODED_NAMESPACE
             || namespace == 'c'
             || (String.isNotBlank(currentNamespace) && namespace == currentNamespace);
         System.assert(isExpectedNamespace,
-                'Namespace should be "c", "npsp", or current package namespace, got: ' + namespace);
+                'Namespace should be "c", "nppatch", or current package namespace, got: ' + namespace);
     }
 
     /*********************************************************************************************************

@@ -135,8 +135,7 @@ public with sharing class RD2_Settings {
 
         for (Schema.FieldSetMember field : fieldSetFields) {
             if (excludedCustomFields.contains(field.getFieldPath())
-                    || field.getFieldPath().startsWith('%%%NAMESPACE%%%')
-                    || field.getFieldPath().startsWith('')
+                    || (UTIL_Namespace.getNamespace() != '' && field.getFieldPath().startsWith(UTIL_Namespace.getNamespace() + '__'))
                     || !UTIL_Describe.getFieldDescribe('Recurring_Donation__c', field.getFieldPath()).isAccessible()
                     ) {
                 continue;
