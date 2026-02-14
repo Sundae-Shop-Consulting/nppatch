@@ -1,7 +1,7 @@
 {
   "packageDirectories": [
     {
-      "path": "force-app",
+      "path": "force-app/main",
       "default": true,
       "package": "nppatch",
       "versionName": "ver 1.0",
@@ -12,6 +12,22 @@
       "apexTestAccess": {
         "permissionSets": ["NPPatch_Admin"]
       }
+    },
+    {
+      "path": "force-app/bdi",
+      "package": "nppatch"
+    },
+    {
+      "path": "force-app/infrastructure",
+      "package": "nppatch"
+    },
+    {
+      "path": "force-app/tdtm",
+      "package": "nppatch"
+    },
+    {
+      "path": "force-app/test",
+      "package": "nppatch"
     }
   ],
   "namespace": "nppatch",
