@@ -793,14 +793,8 @@ global with sharing class BDI_DataImportService {
         String paymentStatus = dataImport.Payment_Status__c;
 
         return String.isBlank(paymentStatus) ||
-            (dataImport.Payment_Status__c.equalsIgnoreCase(
-                ElevateTransactionStatus.CAPTURED.name()
-            ) ||
-            (isDryRun && dataImport.Payment_Status__c.equalsIgnoreCase(
-                ElevateTransactionStatus.AUTHORIZED.name()
-            ) ||
-            (dataImport.Payment_Method__c == ACH_PAYMENT_METHOD
-                && dataImport.Payment_Elevate_ID__c != null)));
+            (dataImport.Payment_Status__c.equalsIgnoreCase('CAPTURED') ||
+            (isDryRun && dataImport.Payment_Status__c.equalsIgnoreCase('AUTHORIZED')));
     }
 
     /**

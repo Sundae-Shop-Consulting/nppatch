@@ -475,9 +475,7 @@
                     <apex:include pageName="STG_PanelDataImportAdvancedMapping" />
                 </div>
 
-                <div class="panel noborder" id="idPanelGatewayManagement" style="display:none" >
-                    <apex:include pageName="STG_PanelGatewayManagement" />
-                </div>
+                <!-- Elevate Gateway Management panel removed (Phase 1) -->
             </div>
         </div>
     </apex:outputPanel>

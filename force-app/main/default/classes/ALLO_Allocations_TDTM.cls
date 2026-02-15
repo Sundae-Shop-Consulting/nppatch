@@ -298,7 +298,7 @@ public class ALLO_Allocations_TDTM extends TDTM_Runnable {
         List<OppPayment__c> refunds = new List<OppPayment__c>();
         List<OppPayment__c> oldRefunds = new List<OppPayment__c>();
         for (Integer i = 0; i < newList.size(); i++) {
-            if (newList[i].Payment_Amount__c < 0 && String.isBlank(newList[i].Elevate_Payment_ID__c) && hasRefundDebitType(newList[i])) {
+            if (newList[i].Payment_Amount__c < 0 && hasRefundDebitType(newList[i])) {
                 refunds.add(newList[i]);
                 if ( oldList != null) {
                     oldRefunds.add(oldList[i]);

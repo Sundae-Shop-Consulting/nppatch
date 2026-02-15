@@ -93,10 +93,7 @@ private class GiftSelector_TEST {
         GiftSelector selector = new GiftSelector();
         List<String> selectFields = selector.fields();
 
-        System.assert(selectFields.contains(String.valueOf(DataImport__c.Elevate_Payment_Status__c)), 'List is missing Elevate_Payment_Status__c');
         System.assert(selectFields.contains(String.valueOf(DataImport__c.Payment_Declined_Reason__c)), 'List is missing Payment_Declined_Reason__c');
-        System.assert(selectFields.contains(String.valueOf(DataImport__c.Payment_Elevate_Batch_ID__c)), 'List is missing Payment_Elevate_Batch_ID__c');
-        System.assert(selectFields.contains(String.valueOf(DataImport__c.Payment_Elevate_ID__c)), 'List is missing Payment_Elevate_ID__c');
     }
 
     @isTest
@@ -105,10 +102,7 @@ private class GiftSelector_TEST {
         GiftSelector selector = new GiftSelector();
         List<String> selectFields = selector.fields();
 
-        System.assert(!selectFields.contains(String.valueOf(DataImport__c.Elevate_Payment_Status__c)), 'List should not include Elevate_Payment_Status__c');
         System.assert(!selectFields.contains(String.valueOf(DataImport__c.Payment_Declined_Reason__c)), 'List should not include Payment_Declined_Reason__c');
-        System.assert(!selectFields.contains(String.valueOf(DataImport__c.Payment_Elevate_Batch_ID__c)), 'List should not include Payment_Elevate_Batch_ID__c');
-        System.assert(!selectFields.contains(String.valueOf(DataImport__c.Payment_Elevate_ID__c)), 'List should not include Payment_Elevate_ID__c');
     }
 
     private static void mockElevateCustomerStatus(Boolean isCustomer) {

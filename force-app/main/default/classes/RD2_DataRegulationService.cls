@@ -80,11 +80,6 @@ public inherited sharing class RD2_DataRegulationService {
     * @return void 
     */
     public void markRDsAsElevate(List<Recurring_Donation__c> rds) {
-        for (Recurring_Donation__c rd : rds) {
-            if (rd.CommitmentId__c == null) {
-                rd.CommitmentId__c = TEMP_COMMITMENT_ID;
-            }
-        }
     }
 
     /**
@@ -93,11 +88,6 @@ public inherited sharing class RD2_DataRegulationService {
     * @return void 
     */
     public void removeElevateMarker(List<Recurring_Donation__c> rds) {
-        for (Recurring_Donation__c rd : rds) {
-            if (rd.CommitmentId__c == TEMP_COMMITMENT_ID) {
-                rd.CommitmentId__c = null;
-            }
-        }
     }
 
     /***

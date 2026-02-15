@@ -196,8 +196,7 @@ public with sharing class BGE_BatchGiftEntry_UTIL {
             && hasElevateWidgetOnTemplate(batchId)) {
 
             elevateFieldApiNames = new List<String>{
-                String.valueOf(DataImport__c.Payment_Declined_Reason__c),
-                String.valueOf(DataImport__c.Elevate_Payment_Status__c)
+                String.valueOf(DataImport__c.Payment_Declined_Reason__c)
             };
         }
 

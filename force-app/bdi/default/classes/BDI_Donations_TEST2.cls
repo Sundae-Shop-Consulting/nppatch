@@ -67,7 +67,6 @@ public with sharing class BDI_Donations_TEST2 {
                                                 Contact1_LastName__c = 'TestCont1',
                                                 Contact1_Personal_Email__c = 'testDI1@fakeDI.com',
                                                 Donation_Amount__c = 100,
-                                                Payment_Elevate_ID__c = '123',
                                                 Payment_ACH_Last_4__c = '4567',
                                                 Payment_Method__c = 'ACH',
                                                 Payment_Status__c = SUBMITTED_STATUS,
@@ -78,7 +77,6 @@ public with sharing class BDI_Donations_TEST2 {
                                                 Contact1_LastName__c = 'TestCont2',
                                                 Contact1_Personal_Email__c = 'testDI2@fakeDI.com',
                                                 Donation_Amount__c = 100,
-                                                Payment_Elevate_ID__c = '124',
                                                 Payment_ACH_Last_4__c = '4568',
                                                 Payment_Method__c = 'ACH',
                                                 Payment_Status__c = SUBMITTED_STATUS,
@@ -89,7 +87,6 @@ public with sharing class BDI_Donations_TEST2 {
                                                 Contact1_LastName__c = 'TestCont3',
                                                 Contact1_Personal_Email__c = 'testDI3@fakeDI.com',
                                                 Donation_Amount__c = 100,
-                                                Payment_Elevate_ID__c = '125',
                                                 Payment_ACH_Last_4__c = '4569',
                                                 Payment_Method__c = 'ACH',
                                                 Payment_Status__c = DECLINED_STATUS,
@@ -153,14 +150,11 @@ public with sharing class BDI_Donations_TEST2 {
         OppPayment__c pmt2;
         OppPayment__c pmt3;
 
-        OppPayment__c[] paymentResults = [SELECT Id, 
-                                                        Payment_Amount__c, 
+        OppPayment__c[] paymentResults = [SELECT Id,
+                                                        Payment_Amount__c,
                                                         Opportunity__c,
-                                                        Elevate_Payment_Id__c,
                                                         Check_Reference_Number__c,
                                                         Paid__c,
-                                                        Elevate_Payment_API_Status__c,
-                                                        Elevate_Payment_API_Declined_Reason__c,
                                                         ACH_Code__c,
                                                         ACH_Last_4__c,
                                                         Opportunity__r.StageName,
@@ -171,11 +165,11 @@ public with sharing class BDI_Donations_TEST2 {
                                                 FROM OppPayment__c];
 
         for (OppPayment__c pmt : paymentResults) {
-            if (pmt.Elevate_Payment_Id__c == '123') {
+            if (pmt.ACH_Last_4__c == '4567') {
                 pmt1 = pmt;
-            } else if (pmt.Elevate_Payment_Id__c == '124') {
+            } else if (pmt.ACH_Last_4__c == '4568') {
                 pmt2 = pmt;
-            } else if (pmt.Elevate_Payment_Id__c == '125') {
+            } else if (pmt.ACH_Last_4__c == '4569') {
                 pmt3 = pmt;
             }
         }
@@ -185,7 +179,6 @@ public with sharing class BDI_Donations_TEST2 {
         //Confirm that the Oppt is Closed Won and the Payment is SUBMITTED
         System.assertNotEquals(null, pmt1);
         System.assertEquals(100,pmt1.Payment_Amount__c);
-        System.assertEquals(SUBMITTED_STATUS,pmt1.Elevate_Payment_API_Status__c);
         System.assertEquals(true, pmt1.Paid__c);
         System.assertEquals('4567', pmt1.ACH_Last_4__c);
         System.assertEquals(true, pmt1.Opportunity__r.IsClosed);
@@ -196,7 +189,6 @@ public with sharing class BDI_Donations_TEST2 {
         //Confirm that the Oppt is Closed Won and the Payment is submitted
         System.assertNotEquals(null, pmt2);
         System.assertEquals(100,pmt2.Payment_Amount__c);
-        System.assertEquals(SUBMITTED_STATUS,pmt2.Elevate_Payment_API_Status__c);
         System.assertEquals(true, pmt2.Paid__c);
         System.assertEquals('4568', pmt2.ACH_Last_4__c);
         System.assertEquals(true, pmt2.Opportunity__r.IsClosed);
@@ -207,7 +199,6 @@ public with sharing class BDI_Donations_TEST2 {
         //Confirm that the Oppt is Closed Lost and the Payment is DECLINED
         System.assertNotEquals(null, pmt3);
         System.assertEquals(100,pmt3.Payment_Amount__c);
-        System.assertEquals(DECLINED_STATUS,pmt3.Elevate_Payment_API_Status__c);
         System.assertEquals(false, pmt3.Paid__c);
         System.assertEquals('4569', pmt3.ACH_Last_4__c);
         System.assertEquals(true, pmt3.Opportunity__r.IsClosed);
@@ -221,14 +212,12 @@ public with sharing class BDI_Donations_TEST2 {
                                                     PaymentImported__c = pmt1.Id,
                                                     Payment_Status__c = SETTLED_STATUS,
                                                     Payment_Paid__c = null,
-                                                    Payment_Elevate_ID__c = '123',
                                                     Payment_Method__c = 'ACH');
         DataImport__c diUpdate2 = new DataImport__c(DonationImported__c = pmt2.Opportunity__c,
                                                     Donation_Stage__c = CLOSED_LOST_STAGE,
                                                     PaymentImported__c = pmt2.Id,
                                                     Payment_Status__c = DECLINED_STATUS,
                                                     Payment_Paid__c = 'False',
-                                                    Payment_Elevate_ID__c = '124',
                                                     Payment_Method__c = 'ACH');
 
         DataImport__c[] diUpdates = new DataImport__c[]{diUpdate1,diUpdate2};
@@ -250,7 +239,6 @@ public with sharing class BDI_Donations_TEST2 {
                 Contact1Imported__c,
                 PaymentImported__c,
                 PaymentImportStatus__c,
-                Payment_Elevate_ID__c,
                 DonationImported__c,
                 DonationImportStatus__c,
                 HouseholdAccountImported__c,
@@ -263,10 +251,9 @@ public with sharing class BDI_Donations_TEST2 {
         WHERE Id IN: diUpdateMap.keySet()];
 
         for (DataImport__c di : resultDis2) {
-
-            if (di.Payment_Elevate_ID__c == '123') {
+            if (di.Id == diUpdate1.Id) {
                 di1update = di;
-            } else if (di.Payment_Elevate_ID__c == '124') {
+            } else if (di.Id == diUpdate2.Id) {
                 di2update = di;
             }
         }
@@ -282,11 +269,8 @@ public with sharing class BDI_Donations_TEST2 {
         OppPayment__c[] paymentResults2 = [SELECT Id,
                                                         Payment_Amount__c,
                                                         Opportunity__c,
-                                                        Elevate_Payment_Id__c,
                                                         Payment_Date__c,
                                                         Paid__c,
-                                                        Elevate_Payment_API_Status__c,
-                                                        Elevate_Payment_API_Declined_Reason__c,
                                                         ACH_Code__c,
                                                         ACH_Last_4__c,
                                                         Opportunity__r.IsClosed,
@@ -298,9 +282,9 @@ public with sharing class BDI_Donations_TEST2 {
         OppPayment__c pmtUpdate2;
 
         for (OppPayment__c pmt : paymentResults2) {
-            if (pmt.Elevate_Payment_Id__c == '123') {
+            if (pmt.ACH_Last_4__c == '4567') {
                 pmtUpdate1 = pmt;
-            } else if (pmt.Elevate_Payment_Id__c == '124') {
+            } else if (pmt.ACH_Last_4__c == '4568') {
                 pmtUpdate2 = pmt;
             }
         }
@@ -310,7 +294,6 @@ public with sharing class BDI_Donations_TEST2 {
         //Confirm that the Payment Status was updated to Settled and the Oppt is still Closed Won
         System.assertNotEquals(null, pmtUpdate1);
         System.assertEquals(100,pmtUpdate1.Payment_Amount__c);
-        System.assertEquals(SETTLED_STATUS,pmtUpdate1.Elevate_Payment_API_Status__c);
         System.assertEquals(true, pmtUpdate1.Paid__c);
         System.assertEquals('4567', pmtUpdate1.ACH_Last_4__c);
         System.assertEquals(true, pmtUpdate1.Opportunity__r.IsClosed);
@@ -319,7 +302,6 @@ public with sharing class BDI_Donations_TEST2 {
         //Confirm that the payment status was changed to DECLINED and the Oppt was changed to Closed Lost
         System.assertNotEquals(null, pmtUpdate2);
         System.assertEquals(100,pmtUpdate2.Payment_Amount__c);
-        System.assertEquals(DECLINED_STATUS,pmtUpdate2.Elevate_Payment_API_Status__c);
         System.assertEquals(false, pmtUpdate2.Paid__c);
         System.assertEquals('4568', pmtUpdate2.ACH_Last_4__c);
         System.assertEquals(true, pmtUpdate2.Opportunity__r.IsClosed);

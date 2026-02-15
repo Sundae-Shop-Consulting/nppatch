@@ -816,28 +816,7 @@ private class RD2_ApiService_TEST {
             'Result should be message that both dates must be populated for pause request.');
     }
 
-    @IsTest
-    private static void shouldReturnErrorForPauseOfElevateRecurringDonation() {
-        PS_IntegrationServiceConfig_TEST.Stub configStub = new PS_IntegrationServiceConfig_TEST.Stub()
-            .withIsIntegrationEnabled(true)
-            .withHasIntegrationPermissions(false);
-        RD2_ElevateIntegrationService.config = (PS_IntegrationServiceConfig) Test.createStub(
-            PS_IntegrationServiceConfig.class,
-            configStub
-        );
-
-        Recurring_Donation__c rd = rdGateway.getRecords()[0];
-        rd.CommitmentId__c = 'random';
-
-        RD2_ApiService.PauseObject pauseObject = createUnPauseObject(false);
-
-        new RD2_ApiService().isValidPauseData(rd.Id, pauseObject, new RD2_RecurringDonation(rd));
-    
-        System.assertEquals(System.Label.RD2_ElevateRDCannotBePaused, pauseObject.error,
-            'Result should be message indicate that Elevate RD cannot be paused.');
-        System.assertEquals(false, pauseObject.isSuccess,
-            'Response should have set isSucess to false');
-    }
+    // Removed test: shouldReturnErrorForPauseOfElevateRecurringDonation - referenced deleted Elevate classes
 
     @IsTest
     private static void shouldReturnErrorIfPassInIdIsNotaRecurringDonationId() {
