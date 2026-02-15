@@ -39,19 +39,7 @@ public with sharing class GE_PaymentServices {
 
     private static GE_PaymentServices paymentServicesInstance;
 
-    /***
-     * @description Payment Services configuration
-     */
-    @TestVisible
-    private PS_IntegrationServiceConfig.Service configService {
-        get {
-            if (configService == null) {
-                configService = new PS_IntegrationServiceConfig.Service();
-            }
-            return configService;
-        }
-        set;
-    }
+    // Elevate payment services configuration removed
 
     /**
     * @description Returns static instance of this class. Primarily used to facilitate
@@ -76,66 +64,57 @@ public with sharing class GE_PaymentServices {
     }
 
     /**
-     * @description Checks whether an org is a customer of Elevate Payment Services.
-     *              After onboarding within Elevate, these configuration key-value
-     *              pairs should exist in the org.  If this required set of keys is not
-     *              in the org, NPSP cannot load the Elevate SDK or successfully make
-     *              callouts to Elevate services.
+     * @description Elevate has been removed. Always returns false.
      * @return Boolean
      */
     public Boolean isElevateCustomer() {
-        PS_IntegrationServiceConfig ps = new PS_IntegrationServiceConfig();
-        return ps.isIntegrationEnabled();
+        return false;
     }
 
     /**
-     * @description Returns Elevate SDK URL to payments services tokenize card iframe
+     * @description Elevate SDK URL - removed with Elevate.
      * @return String
      */
     public String getElevateSDKURL() {
-        return configService.getElevateSDKURL();
+        return null;
     }
 
     /**
-     * @description Returns Elevate Product Id to payments services tokenize card iframe
+     * @description Elevate client ID - removed with Elevate.
      * @return String
      */
     public String getClientId() {
-        return configService.getClientId();
+        return null;
     }
 
     /**
-     * @description Returns Elevate Gateway Ids to payments services tokenize card iframe
+     * @description Elevate gateway IDs - removed with Elevate.
      * @return String
      */
     public String getGatewayIds() {
-        return configService.getGatewayIds();
+        return null;
     }
 
     public String getMerchantIds() {
-        return configService.getMerchantIds();
+        return null;
     }
 
     /**
-     * @description Returns JSON Web Token to payments services tokenize card iframe
+     * @description Elevate JWT - removed with Elevate.
      * @return String
      */
     public String getJwtForToken() {
-        return new PS_Request.Builder().getJWT(PS_Request.ElevateEndpoint.TOKENIZE);
+        return null;
     }
 
     /**
-     * @description Returns Payments Services transaction status values
+     * @description Returns Payments Services transaction status values.
+     * Elevate has been removed; returns empty map.
      * @return String JSON of the transaction status values by name
      */
     @AuraEnabled(cacheable=true)
     public static String getPaymentTransactionStatusValues() {
         Map<String, String> paymentStatusNameByEnum = new Map<String, String>();
-
-        for (ElevateTransactionStatus status : ElevateTransactionStatus.values()) {
-            paymentStatusNameByEnum.put(status.name(), status.name());
-        }
-
         return JSON.serialize(paymentStatusNameByEnum);
     }
 
@@ -179,18 +158,12 @@ public with sharing class GE_PaymentServices {
         Map<String, Object> requestBodyParameters =
             (Map<String, Object>) JSON.deserializeUntyped(jsonRequestBody);
 
-        PS_ProductMetadata productMetadata = new PS_ProductMetadata()
-            .withOrigin(PS_Request.OriginType.CRM.name());    
-
         PurchaseCallBody requestBody = new PurchaseCallBody(
             UserInfo.getDefaultCurrency(),
-            configService.getMerchantIds(),
-            configService.getGatewayIds()
+            null,
+            null
         ).applyAll(requestBodyParameters);
 
-        requestBody.productMetadata = productMetadata.toUntypedMap();
-        requestBody.productMetadataSchemaUri = PS_Request.PRODUCT_METADATA_SCHEMA_URI;
-        
         return requestBody;
     }
 
@@ -222,17 +195,13 @@ public with sharing class GE_PaymentServices {
     }
 
     /***
-    * @description Creates an HttpRequest for a new one-time payment (purchase) creation
+    * @description Creates an HttpRequest for a new one-time payment (purchase) creation.
+    * Elevate has been removed; this method returns null.
     * @param jsonRequestBody JSON containing parameters for the purchase call request body
     * @return HttpRequest
     */
     private HttpRequest buildPurchaseRequest(String jsonRequestBody) {
-        return new PS_Request.Builder()
-            .withMethod(UTIL_Http.Method.POST)
-            .withEndpoint(PS_Request.ElevateEndpoint.PURCHASE)
-            .withRecommendedTimeout()
-            .withBody(jsonRequestBody)
-            .build();
+        return null;
     }
 
     /***

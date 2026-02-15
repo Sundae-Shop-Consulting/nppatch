@@ -44,16 +44,6 @@ public with sharing class Gifts {
 
     public Gifts() {}
 
-    @TestVisible
-    private PS_IntegrationServiceConfig paymentIntegrationServiceConfig {
-        get {
-            if (paymentIntegrationServiceConfig == null) {
-                paymentIntegrationServiceConfig = new PS_IntegrationServiceConfig();
-            }
-            return paymentIntegrationServiceConfig;
-        }
-        set;
-    }
 
     public Gifts(List<DataImport__c> dataImports) {
         this.giftSelector = new GiftSelector();
@@ -74,9 +64,6 @@ public with sharing class Gifts {
     private void init(List<DataImport__c> dataImports) {
         populateDataImportsById(dataImports);
         populateDonationsFrom(dataImports);
-        if (GE_PaymentServices.getInstance().isElevateCustomer()) {
-            setElevateBatchIds(dataImports);
-        }
     }
 
     private void populateDonationsFrom(List<DataImport__c> dataImports) {
@@ -124,7 +111,7 @@ public with sharing class Gifts {
     public List<DataImport__c> authorizedGifts() {
         List<DataImport__c> giftsToReturn = new List<DataImport__c>();
         for (DataImport__c gift : dataImportsById.values()) {
-            if (gift.Payment_Status__c == ElevateTransactionStatus.AUTHORIZED.name()) {
+            if (gift.Payment_Status__c == 'AUTHORIZED') {
                 giftsToReturn.add(gift);
             }
         }
@@ -136,13 +123,11 @@ public with sharing class Gifts {
 
         giftsToProcessingStatus();
 
-        Boolean paymentIntegrationUnavailable = !paymentIntegrationServiceConfig.isIntegrationEnabled();
-        if (paymentIntegrationUnavailable) {
-            String failReason = String.format(
-                Label.gePaymentServicesUnavailableFailureMessage,
-                new List<String> { Label.commonPaymentServices });
-            failGiftsWithAuthorizedPaymentsWith(failReason);
-        }
+        // Elevate integration removed; always treat as unavailable for authorized payments
+        String failReason = String.format(
+            Label.gePaymentServicesUnavailableFailureMessage,
+            new List<String> { Label.commonPaymentServices });
+        failGiftsWithAuthorizedPaymentsWith(failReason);
     }
 
     public void moveProcessableToProcessingStatus() {
@@ -179,7 +164,7 @@ public with sharing class Gifts {
 
     public void authorizedToPaymentProcessingStatus() {
         for (DataImport__c gift : authorizedGifts()) {
-            gift.Payment_Status__c = ElevateTransactionStatus.PAYMENTPROCESSING.name();
+            gift.Payment_Status__c = 'PAYMENTPROCESSING';
             giftsToUpdate.put(gift.Id, gift);
         }
     }
@@ -239,38 +224,20 @@ public with sharing class Gifts {
 
     private void applyFailReasonToGiftsIn(List<DataImport__c> giftsInElevateBatch, String failReason) {
         for (DataImport__c gift : giftsInElevateBatch) {
-            gift.Payment_Status__c = ElevateTransactionStatus.RETRYABLEERROR.name();
+            gift.Payment_Status__c = 'RETRYABLEERROR';
             gift.FailureInformation__c = failReason;
             giftsToUpdate.put(gift.Id, gift);
         }
     }
 
     private List<DataImport__c> findGiftsByElevateBatchId(String elevateBatchId) {
-        List<DataImport__c> giftsInElevateBatch = new List<DataImport__c>();
-        for (DataImport__c gift : dataImportsById.values()) {
-            if (gift.Payment_Elevate_Batch_ID__c == elevateBatchId) {
-                giftsInElevateBatch.add(gift);
-            }
-        }
-        return giftsInElevateBatch;
+        // Payment_Elevate_Batch_ID__c has been removed; return empty list
+        return new List<DataImport__c>();
     }
 
     private void setElevateBatchIds(List<DataImport__c> dataImports) {
+        // Elevate batch IDs removed; always empty
         elevateBatchIds = new Set<String>();
-        for (DataImport__c dataImport : dataImportsById.values()) {
-            if (hasCapturableElevateBatchId(dataImport)) {
-                elevateBatchIds.add(dataImport.Payment_Elevate_Batch_ID__c);
-            }
-        }
-    }
-
-    private Boolean hasCapturableElevateBatchId(DataImport__c dataImport) {
-        if (dataImport == null) {
-            return false;
-        }
-        return dataImport?.Status__c == BDI_DataImport_API.bdiDryRunValidated
-            && (dataImport?.Payment_Status__c == ElevateTransactionStatus.AUTHORIZED.name() ||
-                dataImport?.Recurring_Donation_Elevate_Recurring_ID__c != null);
     }
 
     private void populateDataImportsById(List<DataImport__c> dataImports) {

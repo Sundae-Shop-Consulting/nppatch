@@ -208,31 +208,6 @@
                                         </template>
                                     </lightning-layout-item>
                                     
-                                    <lightning-layout-item size="12" class="slds-p-bottom_small"
-                                        if:true={isElevateWidgetEnabled}>
-                                        <div class={cssExperienceElevate}>
-                                            <template if:true={isPaymentModal}>
-                                                <h3 class="slds-section__title slds-theme_shade">
-                                                    <span class="paymentDetails experienceTitle">{customLabels.RD2_Payment_Details}</span>
-                                                </h3>
-                                            </template>
-                                            <c-rd2-elevate-credit-card-form data-id='elevateWidget'
-                                                rd2-state={rd2State}
-                                                data-qa-locator='widget Elevate'
-                                                is-edit-mode={isCommitmentEdit}
-                                                rd2-record-id={recordId}
-                                                card-last-four-label={cardLastFourLabel}
-                                                ach-last-four-label={achLastFourLabel}
-                                                next-donation-date={nextDonationDate}
-                                                payer-organization-name={rd2State.accountName}
-                                                payer-first-name={rd2State.contactFirstName}
-                                                payer-last-name={rd2State.contactLastName}
-                                                existing-payment-method={originalPaymentMethod}
-                                                payment-method={rd2State.paymentMethod}
-                                                is-digital-experience={isPaymentModal}>
-                                            </c-rd2-elevate-credit-card-form>
-                                        </div>
-                                    </lightning-layout-item>
                                 </lightning-layout>
 
                             </div>

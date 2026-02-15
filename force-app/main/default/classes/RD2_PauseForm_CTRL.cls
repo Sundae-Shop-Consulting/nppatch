@@ -113,7 +113,7 @@ public with sharing class RD2_PauseForm_CTRL {
             pause.hasAccess = hasAccess();
             if (hasAccess()) {
                 pause.isElevateRecord = pause.hasAccess
-                    ? RD2_ElevateIntegrationService.isIntegrationEnabled() && rd.isElevateRecord()
+                    ? false && rd.isElevateRecord()
                     : false;
                 pause.isRDClosed = pause.hasAccess ? rd.isClosed() : false;
 
@@ -188,8 +188,7 @@ public with sharing class RD2_PauseForm_CTRL {
             'Total_Paid_Installments__c',
             'EndDate__c',
             'Contact__c',
-            'Organization__c',
-            'CommitmentId__c'
+            'Organization__c'
         };
         if (UserInfo.isMultiCurrencyOrganization()) {
             queryFields.add('CurrencyIsoCode');
@@ -349,7 +348,7 @@ public with sharing class RD2_PauseForm_CTRL {
     }
 
     private static Boolean isOnlineRecurringDonationRecord(RD2_RecurringDonation rd) {
-        return RD2_ElevateIntegrationService.isIntegrationEnabled() && rd.isElevateRecord();
+        return false && rd.isElevateRecord();
     }
 
 

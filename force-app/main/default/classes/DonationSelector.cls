@@ -106,8 +106,7 @@ public with sharing class DonationSelector {
             String.valueOf(OppPayment__c.Payment_Amount__c),
             String.valueOf(OppPayment__c.Payment_Date__c),
             String.valueOf(OppPayment__c.Paid__c),
-            String.valueOf(OppPayment__c.Written_Off__c),
-            String.valueOf(OppPayment__c.Elevate_Payment_API_Status__c)
+            String.valueOf(OppPayment__c.Written_Off__c)
         };
 
         List<String> whereClause = new List<String> {

@@ -19,9 +19,9 @@ import getInitialView from "@salesforce/apex/RD2_EntryFormController.getInitialV
 import saveRecurringDonation from "@salesforce/apex/RD2_EntryFormController.saveRecurringDonation";
 
 import FIELD_ID from "@salesforce/schema/Recurring_Donation__c.Id";
-import FIELD_ACH_LAST4 from "@salesforce/schema/Recurring_Donation__c.ACH_Last_4__c";
+const FIELD_ACH_LAST4 = { fieldApiName: 'ACH_Last_4__c', objectApiName: 'Recurring_Donation__c' };
 import FIELD_INSTALLMENT_FREQUENCY from "@salesforce/schema/Recurring_Donation__c.InstallmentFrequency__c";
-import FIELD_COMMITMENT_ID from "@salesforce/schema/Recurring_Donation__c.CommitmentId__c";
+const FIELD_COMMITMENT_ID = { fieldApiName: 'CommitmentId__c', objectApiName: 'Recurring_Donation__c' };
 import FIELD_CARD_LAST4 from "@salesforce/schema/Recurring_Donation__c.CardLast4__c";
 import FIELD_CARD_EXPIRY_MONTH from "@salesforce/schema/Recurring_Donation__c.CardExpirationMonth__c";
 import FIELD_CARD_EXPIRY_YEAR from "@salesforce/schema/Recurring_Donation__c.CardExpirationYear__c";

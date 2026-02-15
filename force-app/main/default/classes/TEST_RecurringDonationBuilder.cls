@@ -550,16 +550,6 @@ public without sharing class TEST_RecurringDonationBuilder {
     }
 
     /***
-    * @description Sets CommitmentId field
-    * @param commitmentId  value
-    * @return TEST_RecurringDonationBuilder Builder instance
-    */
-    public TEST_RecurringDonationBuilder withCommitmentId(String commitmentId) {
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('CommitmentId__c'), commitmentId);
-        return this;
-    }
-
-    /***
     * @description Tell the build process to call the ScheduleService method
     * to calculate the Next Donation Date on the Recurring Donation
     * @return TEST_RecurringDonationBuilder Builder instance
@@ -577,16 +567,6 @@ public without sharing class TEST_RecurringDonationBuilder {
     public TEST_RecurringDonationBuilder withFirstInstallmentDisabled() {
         validateMode(Mode.Enhanced);
         valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('DisableFirstInstallment__c'), true);
-        return this;
-    }
-
-    /***
-    * @description Set LastElevateVersionPlayed
-    * @param version Integer for the 'Last Elevate Version Played'
-    * @return TEST_RecurringDonationBuilder Builder instance
-    */
-    public TEST_RecurringDonationBuilder withLastElevateVersionPlayed(Integer version) {
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('LastElevateVersionPlayed__c'), version);
         return this;
     }
 

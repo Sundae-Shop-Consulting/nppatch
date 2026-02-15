@@ -279,18 +279,7 @@ public with sharing class RD2_ETableController {
     private String getPaymentMethod(Recurring_Donation__c recurringDonation) {
         String paymentMethod = '';
 
-        if(GE_GiftEntryController.isElevateCustomer() && String.IsBlank(recurringDonation.CommitmentId__c) || !GE_GiftEntryController.isElevateCustomer()) {
-            //Non-Elevate RD
-            paymentMethod = recurringDonation.PaymentMethod__c;
-        
-        } else {
-            //Elevate RD
-            if(recurringDonation.PaymentMethod__c == RD2_Constants.PAYMENT_PICKLIST_VALUE_CARD) {
-                paymentMethod = String.format(System.Label.RD_creditCardElevatePayment, new List<String>{recurringDonation.PaymentMethod__c, recurringDonation.CardLast4__c, recurringDonation.CardExpirationMonth__c, recurringDonation.CardExpirationYear__c});
-            } else {
-                paymentMethod = String.format(System.Label.RD_achElevatePayment, new List<String>{recurringDonation.PaymentMethod__c, recurringDonation.ACH_Last_4__c});
-            }
-        }
+        paymentMethod = recurringDonation.PaymentMethod__c;
 
         return paymentMethod;
     }
@@ -359,7 +348,6 @@ public with sharing class RD2_ETableController {
         };
 
         if(GE_GiftEntryController.isElevateCustomer()) {
-            fields.add(Recurring_Donation__c.CommitmentId__c);
             fields.add(Recurring_Donation__c.CardLast4__c);
             fields.add(Recurring_Donation__c.CardExpirationYear__c);
             fields.add(Recurring_Donation__c.CardExpirationMonth__c);

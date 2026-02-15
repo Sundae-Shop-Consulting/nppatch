@@ -48,7 +48,6 @@ private class BDI_RecurringDonations_TEST {
                     Recurring_Donation_Card_Expiration_Year__c = '2022',
                     Recurring_Donation_Card_Expiration_Month__c = '10',
                     Recurring_Donation_ACH_Last_4__c = '1234',
-                    Recurring_Donation_Elevate_Event_Version__c = 5,
                     Recurring_Donation_Card_Last_4__c = '1234',
                     Donation_Donor__c = 'Contact1',
                     Donation_Amount__c = 100,
@@ -305,10 +304,8 @@ private class BDI_RecurringDonations_TEST {
                                                         Installment_Period__c,
                                                         Recurring_Donation_Campaign__c,
                                                         RecurringType__c,
-                                                        CommitmentId__c,
                                                         StartDate__c,
                                                         Date_Established__c,
-                                                        LastElevateVersionPlayed__c,
                                                         ACH_Last_4__c,
                                                         CardLast4__c,
                                                         CardExpirationMonth__c,
@@ -333,7 +330,6 @@ private class BDI_RecurringDonations_TEST {
         System.assertNotEquals(null,rdA);
         System.assertEquals(testDIResultA.Contact1Imported__c, rdA.Contact__c);
         System.assertEquals(100, rdA.Amount__c);
-        System.assertEquals(null,rdA.CommitmentId__c);
         System.assertEquals(testDIResultA.HouseholdAccountImported__c,rdA.Organization__c);
         System.assertEquals('Active',rdA.Status__c);
         System.assertEquals('Monthly',rdA.Installment_Period__c);
@@ -344,12 +340,10 @@ private class BDI_RecurringDonations_TEST {
         System.assertEquals('10',rdA.CardExpirationMonth__c);
         System.assertEquals('1234',rdA.ACH_Last_4__c);
         System.assertEquals('1234',rdA.CardLast4__c);
-        System.assertEquals(5,rdA.LastElevateVersionPlayed__c);
 
         System.assertNotEquals(null,rdB);
         System.assertEquals(testDIResultB.Contact1Imported__c, rdB.Contact__c);
         System.assertEquals(200, rdB.Amount__c);
-        System.assertEquals(null,rdB.CommitmentId__c);
         System.assertEquals(testDIResultB.HouseholdAccountImported__c,rdB.Organization__c);
         System.assertEquals(testDIResultB.DonationCampaignImported__c,rdB.Recurring_Donation_Campaign__c);
         System.assertEquals('Active',rdB.Status__c);
@@ -359,7 +353,6 @@ private class BDI_RecurringDonations_TEST {
         System.assertNotEquals(null,rdC);
         System.assertEquals(null, rdC.Contact__c);
         System.assertEquals(300, rdC.Amount__c);
-        System.assertEquals(null,rdC.CommitmentId__c);
         System.assertEquals(testDIResultC.Account1Imported__c,rdC.Organization__c);
         System.assertEquals('Active',rdC.Status__c);
         System.assertEquals('Monthly',rdC.Installment_Period__c);
@@ -481,7 +474,6 @@ private class BDI_RecurringDonations_TEST {
                                                         InstallmentFrequency__c,
                                                         Installment_Period__c,
                                                         RecurringType__c,
-                                                        CommitmentId__c,
                                                         ClosedReason__c,
                                                         StartDate__c,
                                                         EndDate__c,

@@ -123,8 +123,7 @@ private class DonationSelector_TEST {
                     UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' +
                     UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c') + ', ' +
                     UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ', ' +
-                    String.valueOf(OppPayment__c.Elevate_Payment_API_Status__c) + ' ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' ' +
                 'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
                 'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false ' +
                 'AND ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ' = false), ' +

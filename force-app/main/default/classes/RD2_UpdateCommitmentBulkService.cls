@@ -31,26 +31,12 @@
 * @author Salesforce.org
 * @date 2022
 * @group Recurring Donations
-* @description Update Elevate Commitment In Bulk
+* @description Update Elevate Commitment In Bulk.
+* Elevate integration has been removed; public methods are stubbed as no-ops.
 */
 public with sharing class RD2_UpdateCommitmentBulkService {
     public static final Integer MAXIMUM_API_CALL_PER_TRANSACTION = 5;
     public static final Integer REQUEST_SIZE = 50;
-   
-    private ERR_LogService.Logger logger = new ERR_LogService.Logger(
-        ERR_Handler_API.Context.Elevate,
-        Recurring_Donation__c.SObjectType
-    );
-
-    private UTIL_Http.RequestService requestService {
-        get {
-            if (requestService == null) {
-                requestService = new UTIL_Http.RequestService();
-            }
-            return requestService;
-        }
-        set;
-    }
 
     private List<RD2_Commitment> commitments;
 
@@ -67,75 +53,11 @@ public with sharing class RD2_UpdateCommitmentBulkService {
         return this;
     }
 
+    /**
+    * @description Stubbed no-op. Elevate integration has been removed.
+    */
     public void processCommitments() {
-        if (!RD2_ElevateIntegrationService.isIntegrationEnabled() ) {
-            return;
-        }
-
-        for (Integer i = 0; i < MAXIMUM_API_CALL_PER_TRANSACTION; i++) {
-            if (noCommitmentToProcess()) {
-                break;
-            }
-
-            RequestBody reqBody = new RequestBody();
-            reqBody.commitments =  getCommitmentsToProcess();
-
-            HttpRequest request = buildBulkStatusUpdateRequest(reqBody);
-
-            UTIL_Http.Response response;
-            try {
-                response = requestService.sendRequest(request);
-            } catch (Exception ex) {
-                response = requestService.buildErrorResponse(ex);
-            }
-
-            processResponse(response);
-        }
-
-        this.logger.processErrors();
-    }
-
-    private List<RD2_Commitment> getCommitmentsToProcess() {
-        List<RD2_Commitment> toProcess = new List<RD2_Commitment>();
-
-        for (Integer i = 0; i < REQUEST_SIZE; i++) {
-            if (noCommitmentToProcess()) {
-                break;
-            }
-
-            toProcess.add(this.commitments.remove(0));
-        }
-        return toProcess;
-    }
-
-    private Boolean noCommitmentToProcess() {
-        return this.commitments == null || this.commitments.isEmpty();
-    }
-
-    private HttpRequest buildBulkStatusUpdateRequest(RequestBody reqBody) {
-        return new PS_Request.Builder()
-            .withMethod(UTIL_Http.Method.POST)
-            .withEndpoint(PS_Request.ElevateEndpoint.COMMITMENT_UPDATE_BULK)
-            .withRecommendedTimeout()
-            .withBody(JSON.serialize(reqBody))
-            .build();
-    }
-
-    private void processResponse(UTIL_Http.Response response) {
-        if (isCommitmentSuccess(response)) {
-            return;
-        }
-
-        this.logger.addError(
-            null,
-            response.getErrorMessages(),
-            RD2_ElevateIntegrationService.LOG_TYPE_COMMITMENT_UPDATE_BULK
-        );
-    }
-
-    private Boolean isCommitmentSuccess(UTIL_Http.Response response) {
-        return response.statusCode == UTIL_Http.STATUS_CODE_CREATED
-            || response.statusCode == UTIL_Http.STATUS_CODE_OK;
+        // No-op: Elevate integration removed
     }
 
     public class RequestBody {

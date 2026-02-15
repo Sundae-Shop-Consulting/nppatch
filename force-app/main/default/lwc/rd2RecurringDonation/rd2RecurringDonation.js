@@ -19,7 +19,7 @@ import TIME_ZONE from '@salesforce/i18n/timeZone';
 import CURRENCY from '@salesforce/i18n/currency';
 
 import RECURRING_DONATION from "@salesforce/schema/Recurring_Donation__c";
-import FIELD_COMMITMENT_ID from "@salesforce/schema/Recurring_Donation__c.CommitmentId__c";
+const FIELD_COMMITMENT_ID = { fieldApiName: 'CommitmentId__c', objectApiName: 'Recurring_Donation__c' };
 import FIELD_PAYMENT_METHOD from "@salesforce/schema/Recurring_Donation__c.PaymentMethod__c";
 import FIELD_DAY_OF_MONTH from "@salesforce/schema/Recurring_Donation__c.Day_of_Month__c";
 import FIELD_INSTALLMENTS from "@salesforce/schema/Recurring_Donation__c.Installments__c";

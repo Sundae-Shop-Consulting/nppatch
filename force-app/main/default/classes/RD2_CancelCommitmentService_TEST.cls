@@ -31,13 +31,13 @@
 * @author Salesforce.org
 * @date 2020
 * @group Recurring Donations
-* @description Unit Tests for the Cancel Commitment Service
+* @description Unit Tests for the Cancel Commitment Service.
+* Tests that required full Elevate integration (deleted classes) have been removed.
 */
 @IsTest
 public with sharing class RD2_CancelCommitmentService_TEST {
     public static final String COMMITMENT_ID = '11a1c101-bcde-001-111f-g1dh00i0jk111';
     private static final TEST_SObjectGateway.RecurringDonationGateway rdGateway = new TEST_SObjectGateway.RecurringDonationGateway();
-    private static final String LOG_TYPE_COMMITMENT_CANCEL = RD2_ElevateIntegrationService.LOG_TYPE_COMMITMENT_CANCEL;
 
     /****
     * @description Creates data required for unit tests
@@ -48,136 +48,6 @@ public with sharing class RD2_CancelCommitmentService_TEST {
 
         Contact contact = UTIL_UnitTestData_TEST.getContact();
         insert contact;
-    }
-
-    /**
-    * @description Verifies RD Close Reason will not be updated back
-    * to the user provided Closed Reason value
-    * when Elevate callout results in an error response.
-    */
-    @isTest
-    private static void shouldSetClosedReasonToErrorResponseMessageStatusWhenCancelFails() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-        RD2_ElevateIntegrationService_TEST.enableElevateUserPermissions();
-        PS_IntegrationService.setConfiguration(PS_IntegrationServiceConfig_TEST.testConfig);
-        RD2_CancelCommitmentService.maxCancelRetries = 0;
-
-        Recurring_Donation__c rd = RD2_ElevateIntegrationService_TEST.getElevateRecurringDonationBaseBuilder().build();
-        insert rd;
-
-        Test.startTest();
-        UTIL_Http_TEST.mockBadRequestCalloutResponse();
-
-        String closedReason = 'Original Reason';
-        rd.ClosedReason__c = closedReason;
-        rd.Status__c = RD2_Constants.STATUS_CLOSED;
-        update rd;
-
-        Test.stopTest();
-
-        rd = rdGateway.getRecord(rd.Id);
-
-        String expectedMessage = UTIL_Http_TEST.BAD_REQUEST_MESSAGE;
-        System.assertEquals(expectedMessage, rd.ClosedReason__c,
-            'RD Closed Reason be set to the error response message');
-
-        assertCancelCommitmentError(expectedMessage, rd.Id);
-    }
-
-    /**
-    * @description Verifies RD Closed Reason will be switched to
-    * the user provided Closed Reason value
-    * when the Commitment in Elevate cannot be found.
-    */
-    @isTest
-    private static void shouldSetClosedReasonToUserSpecifiedValueWhenCommitmentCannotBeFound() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-        RD2_ElevateIntegrationService_TEST.enableElevateUserPermissions();
-        PS_IntegrationService.setConfiguration(PS_IntegrationServiceConfig_TEST.testConfig);
-        RD2_CancelCommitmentService.maxCancelRetries = 0;
-
-        Recurring_Donation__c rd = RD2_ElevateIntegrationService_TEST.getElevateRecurringDonationBaseBuilder().build();
-        insert rd;
-
-        Test.startTest();
-        UTIL_Http_TEST.mockNotFoundCalloutResponse();
-
-        String closedReason = 'Original Reason';
-        rd.ClosedReason__c = closedReason;
-        rd.Status__c = RD2_Constants.STATUS_CLOSED;
-        update rd;
-
-        Test.stopTest();
-
-        rd = rdGateway.getRecord(rd.Id);
-        System.assertEquals(UTIL_Http_TEST.MESSAGE_NOT_FOUND, rd.ClosedReason__c,
-            'RD Closed Reason should contain the error response message');
-
-        assertCancelCommitmentError(UTIL_Http_TEST.MESSAGE_NOT_FOUND, rd.Id);
-    }
-
-    /**
-    * @description Verifies RD Closed Reason will be switched to
-    * the user provided Closed Reason value
-    * when the Commitment in Elevate is already cancelled.
-    */
-    @isTest
-    private static void shouldSetClosedReasonToUserSpecifiedValueWhenCommitmentIsAlreadyCancelled() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-        RD2_ElevateIntegrationService_TEST.enableElevateUserPermissions();
-        PS_IntegrationService.setConfiguration(PS_IntegrationServiceConfig_TEST.testConfig);
-        RD2_CancelCommitmentService.maxCancelRetries = 0;
-
-        Recurring_Donation__c rd = RD2_ElevateIntegrationService_TEST.getElevateRecurringDonationBaseBuilder().build();
-        insert rd;
-
-        Test.startTest();
-        UTIL_Http_TEST.mockDataConflictCalloutResponse();
-
-        String closedReason = 'Original Reason';
-        rd.ClosedReason__c = closedReason;
-        rd.Status__c = RD2_Constants.STATUS_CLOSED;
-        update rd;
-
-        Test.stopTest();
-
-        rd = rdGateway.getRecord(rd.Id);
-        System.assertEquals(UTIL_Http_TEST.MESSAGE_DATA_CONFLICT, rd.ClosedReason__c,
-            'RD Closed Reason should contain the error response message');
-
-        assertCancelCommitmentError(UTIL_Http_TEST.MESSAGE_DATA_CONFLICT, rd.Id);
-    }
-
-    /**
-    * @description Verifies RD Closed Reason will be switched to
-    * the user provided Closed Reason value
-    * when the Commitment in Elevate is cancelled.
-    */
-    @isTest
-    private static void shouldSetClosedReasonToUserSpecifiedValueWhenCancelIsSuccess() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-        RD2_ElevateIntegrationService_TEST.enableElevateUserPermissions();
-        PS_IntegrationService.setConfiguration(PS_IntegrationServiceConfig_TEST.testConfig);
-        RD2_CancelCommitmentService.maxCancelRetries = 0;
-
-        Recurring_Donation__c rd = RD2_ElevateIntegrationService_TEST.getElevateRecurringDonationBaseBuilder().build();
-        insert rd;
-
-        Test.startTest();
-        UTIL_Http_TEST.mockSuccessCalloutResponse(buildCommitmentCanceledResponseBody());
-
-        String closedReason = 'Original Reason';
-        rd.ClosedReason__c = closedReason;
-        rd.Status__c = RD2_Constants.STATUS_CLOSED;
-        update rd;
-
-        Test.stopTest();
-
-        rd = rdGateway.getRecord(rd.Id);
-        System.assertEquals(closedReason, rd.ClosedReason__c,
-            'RD Closed Reason should be swapped back to the user provided value');
-
-        RD2_ElevateIntegrationService_TEST.assertNoError();
     }
 
     /***
@@ -194,7 +64,7 @@ public with sharing class RD2_CancelCommitmentService_TEST {
         UTIL_Http.Response response = buildCommitmentResponse('ACTIVE');
 
         RD2_CancelCommitmentService service = new RD2_CancelCommitmentService();
-        ERR_LogService.Logger logger = buildLogger();        
+        ERR_LogService.Logger logger = buildLogger();
         service.handleResponse(wrapper, response, logger);
 
         System.assertEquals(false, wrapper.isDone,
@@ -305,7 +175,12 @@ public with sharing class RD2_CancelCommitmentService_TEST {
     ) {
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
-        Recurring_Donation__c rd = RD2_ElevateIntegrationService_TEST.getElevateRecurringDonationBaseBuilder().build();
+        Recurring_Donation__c rd = TEST_RecurringDonationBuilder.constructEnhancedBuilder()
+            .withDefaultValues()
+            .withContact(UTIL_UnitTestData_TEST.mockId(Contact.SObjectType))
+            .withAmount(100)
+            .withInstallmentFrequency(1)
+            .build();
 
         rd.ClosedReason__c = originalReason;
         rd.Status__c = RD2_Constants.STATUS_CLOSED;
@@ -401,17 +276,6 @@ public with sharing class RD2_CancelCommitmentService_TEST {
         return '{"id":"' + COMMITMENT_ID
             + '","status":"INACTIVE","statusReason":"DONOR_CANCELED"'
             + '"}}';
-    }
-
-    /****
-    * @description Verifies an error is created with
-    * the specified error message and referencing expected record Id
-    * @param message Expected error message
-    * @param recordId Expected Recurring Donation Id
-    * @return void
-    */
-    private static void assertCancelCommitmentError(String message, Id recordId) {
-        RD2_ElevateIntegrationService_TEST.assertError(message, recordId, LOG_TYPE_COMMITMENT_CANCEL);
     }
 
     /****

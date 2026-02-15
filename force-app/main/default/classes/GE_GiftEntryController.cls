@@ -71,34 +71,12 @@ public with sharing class GE_GiftEntryController {
         set;
     }
 
-    @TestVisible
-    private static ElevateBatchService elevateBatchService {
-        get {
-            if (elevateBatchService == null) {
-                elevateBatchService = new ElevateBatchService();
-            }
-            return elevateBatchService;
-        }
-        set;
-    }
-
     private static GE_SettingsService geSettingsService {
         get {
             if (geSettingsService == null) {
                 geSettingsService = new GE_SettingsService();
             }
             return geSettingsService;
-        }
-        set;
-    }
-
-    @TestVisible
-    private static PS_GatewayService gatewayService {
-        get {
-            if (gatewayService == null) {
-                gatewayService = new PS_GatewayService();
-            }
-            return gatewayService;
         }
         set;
     }
@@ -338,34 +316,6 @@ public with sharing class GE_GiftEntryController {
     }
 
     @AuraEnabled
-    public static ElevateBatchItem addToElevateBatch(ElevateCreateBatchItemRequestDTO batchItemRequestDTO,
-                                                     String elevateBatchId) {
-        ElevateBatchItem batchItem;
-        try {
-            batchItem = elevateBatchService.addToElevateBatch(batchItemRequestDTO, elevateBatchId);
-        } catch (AuraHandledException ex) {
-          UTIL_AuraEnabledCommon.throwAuraHandledException(ex.getMessage());
-        }
-
-        return batchItem;
-    }
-
-    @AuraEnabled
-    public static void removeFromElevateBatch(ElevateBatchItem batchItem) {
-        try {
-           elevateBatchService.removeFromElevateBatch(batchItem);
-        } catch (AuraHandledException ex) {
-          UTIL_AuraEnabledCommon.throwAuraHandledException(ex.getMessage());
-        }
-    }
-
-    @AuraEnabled
-    public static ElevateBatch createElevateBatch() {
-        ElevateBatch elevateBatch = elevateBatchService.createElevateBatch();
-        return elevateBatch;
-    }
-
-    @AuraEnabled
     public static void validateAuthorizedGiftEdit(DataImport__c dataImport){
         Gift editedGift = new Gift(dataImport);
         if (editedGift.requiresReauthorizationBeforeChange()) { 
@@ -521,8 +471,7 @@ public with sharing class GE_GiftEntryController {
                 UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c') + ', ' +
                 UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.Name, ' +
                 UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ', ' +
-                UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' +
-                UTIL_Namespace.StrTokenNSPrefix('Elevate_Payment_API_Status__c') + ' ' +
+                UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ' ' +
                 'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' ' +
                 'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.' + relationshipField + ' = :donorId ' +
                 'AND ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false ' +
@@ -552,8 +501,7 @@ public with sharing class GE_GiftEntryController {
                     UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ',' +
                     UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c') + ',' +
                     UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ', ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Elevate_Payment_API_Status__c') + ' ' +
+                    UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' ' +
                     'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
                     'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false ' +
                     'AND ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ' = false)' +
@@ -977,82 +925,12 @@ public with sharing class GE_GiftEntryController {
             formTemplates.add(deserializedFormTemplate);
         }
 
-        if (!getGiftEntrySettings().Enable_Gateway_Assignment__c) {
-            return formTemplates;
-        }
-
-        return getMappedGateways(formTemplates);
-    }
-
-    private static GE_Template.Template[] getMappedGateways(GE_Template.Template[] formTemplates) {
-        List<PS_GatewayService.GatewayTemplateSetting> gatewayTemplateSettings = getGatewayTemplateSettings();
-        Map<String, String> gatewayNameById = getGatewayNameById(gatewayTemplateSettings);
-
-        String defaultGatewayId = new PS_IntegrationServiceConfig.Service().getGatewayIds();
-        for (GE_Template.Template formTemplate : formTemplates) {
-            if (String.isNotBlank(formTemplate.elevateSettings?.uniqueKey)) {
-
-                try {
-                    formTemplate.elevateSettings.gatewayName =
-                        gatewayNameById.get(decryptGatewayId(formTemplate.elevateSettings.uniqueKey));
-                    if (String.isBlank(formTemplate.elevateSettings.gatewayName)) {
-                        formTemplate.elevateSettings.gatewayName = System.Label.psGatewayNotValid;
-                    }
-
-                } catch (Exception e) {
-                    throw new AuraHandledException(e.getMessage());
-                }
-
-            } else {
-                if (formTemplate.elevateSettings != null) {
-                    formTemplate.elevateSettings.gatewayName = gatewayNameById.get(defaultGatewayId);
-                }
-            }
-        }
-
         return formTemplates;
-    }
-
-    private static Map<String, String> getGatewayNameById(List<PS_GatewayService.GatewayTemplateSetting> gatewayTemplateSettings) {
-        Map<String, String> gatewayNameById = new Map<String, String>();
-
-        for (PS_GatewayService.GatewayTemplateSetting gatewayTemplateSetting : gatewayTemplateSettings) {
-            gatewayNameById.put(gatewayTemplateSetting.id, gatewayTemplateSetting.gatewayName);
-        }
-
-        return gatewayNameById;
-    }
-
-    private static List<PS_GatewayService.GatewayTemplateSetting> getGatewayTemplateSettings() {
-        List<PS_GatewayService.GatewayTemplateSetting> gatewayTemplateSettings =
-                new List<PS_GatewayService.GatewayTemplateSetting>();
-        PS_GatewayService gatewayService = new PS_GatewayService();
-        String gatewaysByMerchant = gatewayService.getGatewaysByMerchant();
-
-        try {
-            gatewayTemplateSettings = (List<PS_GatewayService.GatewayTemplateSetting>)
-                    JSON.deserialize(gatewaysByMerchant,
-                            List<PS_GatewayService.GatewayTemplateSetting>.class);
-
-        } catch (Exception e) {
-            throw new AuraHandledException(e.getMessage());
-        }
-
-        return gatewayTemplateSettings;
     }
 
     @AuraEnabled
     public static String getGatewayAssignmentSettingsWithDefaultGatewayName() {
-        GatewayAssignmentSettings gaSettings = new GatewayAssignmentSettings();
-        gaSettings.gatewayAssignmentEnabled = getGiftEntrySettings().Enable_Gateway_Assignment__c;
-
-        if (gaSettings.gatewayAssignmentEnabled) {
-            List<PS_GatewayService.GatewayTemplateSetting> gatewayTemplateSettings = getGatewayTemplateSettings();
-            Map<String, String> gatewayNameById = getGatewayNameById(gatewayTemplateSettings);
-            gaSettings.defaultGatewayName = gatewayNameById.get(new PS_IntegrationServiceConfig.Service().getGatewayIds());
-        }
-
-        return JSON.serialize(gaSettings);
+        return null;
     }
 
     /*******************************************************************************************************
@@ -1391,50 +1269,21 @@ public with sharing class GE_GiftEntryController {
 
     @AuraEnabled
     public static String getGatewaysFromElevate() {
-        return gatewayService.getGatewaysByMerchant();
+        return null;
     }
 
     @AuraEnabled
     public static String encryptGatewayId(String gatewayId) {
-        PS_IntegrationServiceConfig.Service integrationService = new PS_IntegrationServiceConfig.Service();
-        try {
-            return EncodingUtil.base64Encode(Crypto.encryptWithManagedIV(ENCRYPTION_ALGORITHM,
-                    Blob.valueOf(integrationService.getMerchantIds().left(16)), Blob.valueOf(gatewayId)));
-        }
-        catch (Exception e) {
-            return null;
-        }
+        return null;
     }
 
     @AuraEnabled
     public static String decryptGatewayId(String encryptedGatewayId) {
-        PS_IntegrationServiceConfig.Service integrationService = new PS_IntegrationServiceConfig.Service();
-        try {
-            return (Crypto.decryptWithManagedIV(ENCRYPTION_ALGORITHM,
-                    Blob.valueOf(integrationService.getMerchantIds().left(16)),
-                    EncodingUtil.base64Decode(encryptedGatewayId))).toString();
-        }
-        catch (Exception e) {
-            return null;
-        }
+        return null;
     }
 
     @AuraEnabled
     public static String getGatewayAssignmentSettings() {
-
-        try {
-            GatewayAssignmentSettings gaSettings = new GatewayAssignmentSettings();
-
-            gaSettings.defaultGatewayId = PS_GatewayManagement.getGatewayIdFromConfig();
-            gaSettings.defaultTemplateId = getGiftEntrySettings().Default_Gift_Entry_Template__c;
-            gaSettings.gatewayAssignmentEnabled = getGiftEntrySettings().Enable_Gateway_Assignment__c;
-
-            return JSON.serialize(gaSettings);
-
-        } catch (Exception e) {
-            UTIL_AuraEnabledCommon.throwAuraHandledException(e.getMessage());
-        }
-
         return null;
     }
 

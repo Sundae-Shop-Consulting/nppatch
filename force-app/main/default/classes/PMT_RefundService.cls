@@ -47,16 +47,6 @@ public inherited sharing class PMT_RefundService {
         set;
     }
 
-    private UTIL_Http.RequestService requestService {
-        get {
-            if (requestService == null) {
-                requestService = new UTIL_Http.RequestService();
-            }
-            return requestService;
-        }
-        set;
-    }
-
     @TestVisible
     private PaymentSelector paymentSelector {
         get {
@@ -137,19 +127,8 @@ public inherited sharing class PMT_RefundService {
     private List<Allocation__c> allocationsToUpdate = new List<Allocation__c>();
     private Map<Id, ErrorRecord> paymentIdToErrorRecord = new Map<Id, ErrorRecord>();
 
-    @TestVisible
-    private static PS_IntegrationServiceConfig config {
-        get {
-            if (config == null) {
-                config = new PS_IntegrationServiceConfig();
-            }
-            return config;
-        }
-        set;
-    }
-
     public static Boolean isElevateEnabled() {
-        return config.isIntegrationEnabled();
+        return false;
     }
 
     public PMT_RefundService withOriginalPayments(List<OppPayment__c> originalPayments) {
@@ -198,30 +177,11 @@ public inherited sharing class PMT_RefundService {
     }
 
     public UTIL_Http.Response getElevatePaymentRefundInfo(String transactionId) {
-        HttpRequest request = buildTransactionRequest(transactionId);
-
-        UTIL_Http.Response response;
-        try {
-            response = requestService.sendRequest(request);
-        } catch (Exception ex) {
-            response = requestService.buildErrorResponse(ex);
-        }
-
-        return response;
+        return null;
     }
 
     public UTIL_Http.Response processElevateRefund(String transactionId, Decimal refundAmount) {
-        HttpRequest request = buildRefundRequest(transactionId, refundAmount);
-
-        UTIL_Http.Response response;
-        try {
-            response = requestService.sendRequest(request);
-        } catch (Exception ex) {
-            response = requestService.buildErrorResponse(ex);
-        }
-
-        processPaymentStatusCode(response);
-        return response;
+        return null;
     }
 
     public OppPayment__c buildRefundRecord(OppPayment__c originalPayment, Decimal refundAmount) {
@@ -413,57 +373,6 @@ public inherited sharing class PMT_RefundService {
         }
 
         this.allocationsToUpdate.addAll(toUpdate);
-    }
-
-    private HttpRequest buildTransactionRequest(String transactionId) {
-        return new PS_Request.Builder()
-            .withMethod(UTIL_Http.Method.GET)
-            .withEndpoint(PS_Request.ElevateEndpoint.TRANSACTIONS)
-            .withCommitmentId(transactionId)
-            .withRecommendedTimeout()
-            .build();
-    }
-
-    private HttpRequest buildRefundRequest(String transactionId, Decimal refundAmount) {
-        RequestBody reqBody = new RequestBody(transactionId, refundAmount);
-
-        return new PS_Request.Builder()
-            .withMethod(UTIL_Http.Method.POST)
-            .withEndpoint(PS_Request.ElevateEndpoint.REFUND)
-            .withRecommendedTimeout()
-            .withBody(JSON.serialize(reqBody))
-            .build();
-    }
-
-    private void processPaymentStatusCode(UTIL_Http.Response response) {
-        String paymentErrorMessage;
-        if (response.statusCode == UTIL_Http.STATUS_CODE_NOT_FOUND) {
-            paymentErrorMessage = System.Label.pmtPaymentNotFound;
-
-        } else if (response.statusCode == UTIL_Http.STATUS_CODE_CONFLICT) {
-            paymentErrorMessage = System.Label.pmtPaymentNotRefundable;
-
-        }  else if (response.statusCode == UTIL_Http.STATUS_CODE_UNPROCESSABLE_ENTITY) {
-            paymentErrorMessage =  System.Label.pmtOriginalPaymentNotCompleted;
-        }
-        
-        if (String.isNotBlank(paymentErrorMessage)) {
-            response.body = new UTIL_Http.ErrorResponseBody()
-                .withError(paymentErrorMessage)
-                .getAsJson();
-        }
-    }
-
-    public inherited sharing class RequestBody {
-        @TestVisible
-        String transactionId;
-        Integer amount;
-
-        public RequestBody(String transactionId, Decimal refundAmount) {
-            this.transactionId = transactionId;
-            Decimal scaleRefundAmount = refundAmount * PS_CommitmentRequest.DEFAULT_CURRENCY_MULTIPLIER;
-            this.amount = scaleRefundAmount.intValue();
-        }
     }
 
     public inherited sharing class RefundInfo {

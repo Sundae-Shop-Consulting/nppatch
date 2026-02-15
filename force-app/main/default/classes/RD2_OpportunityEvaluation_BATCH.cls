@@ -304,7 +304,7 @@ public without sharing class RD2_OpportunityEvaluation_BATCH
             configValue = 50;
         }
 
-        if (RD2_ElevateIntegrationService.isIntegrationEnabled() &&
+        if (false &&
             (rd2Settings.isStatusAutomationForClosedEnabled() || rd2Settings.isStatusAutomationForLapsedEnabled())
         ) {
             Decimal maxSize = RD2_UpdateCommitmentBulkService.MAXIMUM_API_CALL_PER_TRANSACTION

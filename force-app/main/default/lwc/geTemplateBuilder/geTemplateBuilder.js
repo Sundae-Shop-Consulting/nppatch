@@ -52,7 +52,7 @@ import DONATION_DATE_FIELD from '@salesforce/schema/DataImport__c.Donation_Date_
 import DONATION_CAMPAIGN_SOURCE_FIELD from '@salesforce/schema/DataImport__c.DonationCampaignImported__c';
 import STATUS_FIELD from '@salesforce/schema/DataImport__c.Status__c';
 import FAILURE_INFORMATION_FIELD from '@salesforce/schema/DataImport__c.FailureInformation__c';
-import ELEVATE_PAYMENT_STATUS from '@salesforce/schema/DataImport__c.Elevate_Payment_Status__c';
+const ELEVATE_PAYMENT_STATUS = { fieldApiName: 'Elevate_Payment_Status__c', objectApiName: 'DataImport__c' };
 
 const DEFAULT_BATCH_TABLE_HEADERS_WITH_FIELD_MAPPINGS = [
     DONATION_AMOUNT_FIELD.fieldApiName,

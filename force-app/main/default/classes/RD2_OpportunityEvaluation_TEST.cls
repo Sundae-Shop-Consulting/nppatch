@@ -192,34 +192,7 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
     }
 
 
-   /**
-    * @description Verifies no installment Opportunity is created by the RD batch when
-    * Elevate integration is enabled and Commitment Id is specified on the RD.
-    */
-    @IsTest
-    private static void shouldNotCreateNextOppForElevateRDWhenIntegrationIsEnabled() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-        final Date today = START_DATE.addMonths(1);
-        RD2_ScheduleService.currentDate = today;
-
-        PS_IntegrationServiceConfig_TEST.Stub configStub = new PS_IntegrationServiceConfig_TEST.Stub()
-            .withIsIntegrationEnabled(true);
-        RD2_ElevateIntegrationService.config = (PS_IntegrationServiceConfig) Test.createStub(PS_IntegrationServiceConfig.class, configStub);
-
-        Recurring_Donation__c rd = getRecurringDonationBuilder()
-            .withCommitmentId(RD2_ElevateIntegrationService_TEST.COMMITMENT_ID)
-            .withPaymentMethod(RD2_Constants.PAYMENT_PICKLIST_VALUE_CARD)
-            .build();
-        insert rd;
-
-        runBatch(new RD2_OpportunityEvaluation_BATCH(today));
-
-        assertBatchJobIteration(1);
-
-        List<Opportunity> opps = oppGateway.getRecords(rd);
-        System.assertEquals(0, opps.size(),
-            'No installment Opportunity should be created for the Elevate RD when integration is enabled: ' + opps);
-    }
+    // Removed test: shouldNotCreateNextOppForElevateRDWhenIntegrationIsEnabled - referenced deleted Elevate classes
 
     /**
      * @description Verifies an Opp with Close Date today is not created if it already exists
@@ -1250,67 +1223,9 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
             'The parent Contact should be mark as Former Sustainer');
     }
 
-    @isTest
-    private static void shouldCallBulkStatusAPIWhenAutomationUpdateElevateRDStatus() {
-        Date startDate = Date.newInstance(2020, 1, 1);
-        Date currentDate = Date.newInstance(2020, 3, 7);
+    // Removed test: shouldCallBulkStatusAPIWhenAutomationUpdateElevateRDStatus - referenced deleted Elevate classes
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-        RD2_StatusAutomationService_TEST.setupStatusAutomationSettings(10, 20);
-        PS_IntegrationServiceConfig_TEST.enableElevateIntegrationService();
-        
-        Recurring_Donation__c rd = getRecurringDonationBuilder()
-        .withStartDate(startDate)
-        .withStatusActive()
-        .withLastPaymentDate(Date.newInstance(2020, 1, 15))
-        .withCommitmentId('random-id')
-        .withPaymentMethod(RD2_Constants.PAYMENT_PICKLIST_VALUE_CARD)
-        .build();
-        insert rd;
-        
-        UTIL_Http_TEST.CalloutMock calloutMock = UTIL_Http_TEST.mockSuccessCalloutResponse(
-            RD2_UpdateCommitmentBulkService_TEST.mockSuccessResponseBody(1)
-        );
-        runBatch(new RD2_OpportunityEvaluation_BATCH(currentDate));
-
-        assertBatchJobIteration(1);
-
-        rd = rdGateway.getRecord(rd.Id);
-        System.assertEquals(RD2_Constants.STATUS_ACTIVE, rd.Status__c,
-            'ElevateRD should still be Active because due to Bulk API being Async');
-        System.assertEquals(1, calloutMock.getCalloutCounter(),
-            '1 callout should be made when there is less than 50 records in the transaction.');
-        System.assertEquals(0, errorGateway.getRecords().size(),
-            'No error record should be created when the callout is successful');
-
-        RD2_UpdateCommitmentBulkService.RequestBody requestBody = (RD2_UpdateCommitmentBulkService.RequestBody) JSON.deserialize(
-            calloutMock.getRequestBody(),
-            RD2_UpdateCommitmentBulkService.RequestBody.class
-        );
-        System.assertEquals(1, requestBody.commitments.size(), '1 Commitment should be included in the payload');
-        System.assertEquals('random-id', requestBody.commitments[0].id, 'The commitment Id should match the Recurring Donation Commitment Id');
-        System.assertEquals(PS_CommitmentRequest.STATUS_INACTIVE, requestBody.commitments[0].status, 'The commitment status should be set to INACTIVE');
-    }
-
-    @isTest
-    private static void verifyRDBatchSizeSizeIsCappedWhenElevateAndStatusAutomationAreEnabled() {
-        RD2_Settings_TEST.setUpConfiguration(
-            new Map<String, Object>{
-                'StatusAutomationDaysForLapsed__c' => 10,
-                'Recurring_Donation_Batch_Size__c' => 500
-            }
-        );
-
-        PS_IntegrationServiceConfig_TEST.enableElevateIntegrationService();
-
-        Test.startTest();
-        RD2_OpportunityEvaluation_BATCH batch = new RD2_OpportunityEvaluation_BATCH();
-        Integer batchSize = batch.batchSize;
-        Test.stopTest();
-
-        System.assertEquals(250, batchSize,
-            'The batch should be capped at 250 when both Elevate and Status Automation are enabled');
-    }
+    // Removed test: verifyRDBatchSizeSizeIsCappedWhenElevateAndStatusAutomationAreEnabled - referenced deleted Elevate classes
 
     @isTest
     private static void verifyRDBatchSizeSizeIsNotCappedWhenElevateIsDisabled() {
@@ -1330,24 +1245,7 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
             'The batch should be set to Custom Setting Recurring_Donation_Batch_Size__c value');
     }
 
-    @isTest
-    private static void verifyRDBatchSizeSizeIsNotCappedWhenStatusAutomationIsDisabled() {
-        PS_IntegrationServiceConfig_TEST.enableElevateIntegrationService();
-
-        RD2_Settings_TEST.setUpConfiguration(
-            new Map<String, Object>{
-                'Recurring_Donation_Batch_Size__c' => 500
-            }
-        );
-
-        Test.startTest();
-        RD2_OpportunityEvaluation_BATCH batch = new RD2_OpportunityEvaluation_BATCH();
-        Integer batchSize = batch.batchSize;
-        Test.stopTest();
-
-        System.assertEquals(500, batchSize,
-            'The batch should be set to Custom Setting Recurring_Donation_Batch_Size__c value');
-    }
+    // Removed test: verifyRDBatchSizeSizeIsNotCappedWhenStatusAutomationIsDisabled - referenced deleted Elevate classes
 
     // Helpers
     //////////////

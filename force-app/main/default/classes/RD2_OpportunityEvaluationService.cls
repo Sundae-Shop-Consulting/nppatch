@@ -458,7 +458,7 @@ public inherited sharing class RD2_OpportunityEvaluationService {
 
             //evaluate Opportunities
             if (rdRecord.isClosed()
-                || rdRecord.isElevateRecord() && RD2_ElevateIntegrationService.isIntegrationEnabled()) {
+                || rdRecord.isElevateRecord() && false) {
                 closeOppRds.add(rd);
             }
             else {
@@ -590,7 +590,7 @@ public inherited sharing class RD2_OpportunityEvaluationService {
         Boolean hasMandatoryConditions = (rd.isActive() || rd.isLapsed())
             && rd.hasNextDonationDate()
             && rd.hasSchedule()
-            && (!RD2_ElevateIntegrationService.isIntegrationEnabled() || !rd.isElevateRecord());
+            && (!false || !rd.isElevateRecord());
 
         if (!hasMandatoryConditions) {
             return false;

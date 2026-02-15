@@ -31,7 +31,8 @@
 * @author Salesforce.org
 * @date 2020
 * @group Recurring Donations
-* @description Services related to the cancellation of Elevate commitments
+* @description Services related to the cancellation of Elevate commitments.
+* Elevate integration has been removed; public methods are stubbed as no-ops.
 */
 public without sharing class RD2_CancelCommitmentService {
 
@@ -68,103 +69,11 @@ public without sharing class RD2_CancelCommitmentService {
     }
 
     /**
-    * @description Sends cancel commitment requests for closed Recurring Donations.
-    * Sets RD closed reason back to user specified reason and insert any error.
+    * @description Stubbed no-op. Elevate integration has been removed.
     * @return void
     */
     public void cancelCommitments(List<RecordWrapper> closedRecords) {
-        List<Recurring_Donation__c> rdsToUpdate = new List<Recurring_Donation__c>();
-        List<RecordWrapper> queuedRecords = new List<RecordWrapper>();
-        ERR_LogService.Logger logger = new ERR_LogService.Logger(
-            ERR_Handler_API.Context.Elevate,
-            Recurring_Donation__c.SObjectType
-        );
-
-        for (RecordWrapper record : closedRecords) {
-            Integer calloutsRemaining = Limits.getLimitCallouts();
-
-            if (calloutsRemaining > 0) {
-                //Cancel the commitment or GET the commitment to verify if already cancelled
-                UTIL_Http.Response response = sendRequest(record);
-
-                //Set Recurring Donation Status Reason and its wrapper data to reflect response.
-                handleResponse(record, response, logger);
-
-                //Add the Recurring Donation to update list if it cannot be retried,
-                //it is already cancelled or the cancel succeeded
-                if (record.isDone) {
-                    rdsToUpdate.add(record.getRecurringDonation());
-                    continue;
-                }
-            }
-
-            queuedRecords.add(record);
-        }
-
-        //Update Recurring Donations that succeeded or the max retry limit is reached
-        List<Database.SaveResult> dmlResults = Database.update(rdsToUpdate, false);
-        logger.addErrors(dmlResults, rdsToUpdate);
-
-        //Log errors
-        logger.processErrors();
-
-        //Chain another queueable with Recurring Donations that should be retried or data GET
-        if (!queuedRecords.isEmpty()) {
-            System.enqueueJob(new RD2_QueueableService.CancelCommitmentService(queuedRecords));
-        }
-    }
-
-    /**
-    * @description Sends request for closed Recurring Donations.
-    * @param closedRecord RecordWrapper
-    * @return UTIL_Http.Response
-    */
-    private UTIL_Http.Response sendRequest(RecordWrapper closedRecord) {
-        UTIL_Http.Response response;
-
-        try {
-            HttpRequest request;
-
-            if (getRequestType(closedRecord) == PS_Request.ElevateEndpoint.COMMITMENT_CANCEL) {
-                request = PS_CommitmentRequest.buildRequest(closedRecord.rd.CommitmentId__c,
-                    UTIL_Http.Method.POST, PS_Request.ElevateEndpoint.COMMITMENT_CANCEL);
-            }
-            else if (getRequestType(closedRecord) == PS_Request.ElevateEndpoint.COMMITMENT_GET) {
-                request = PS_CommitmentRequest.buildRequest(closedRecord.rd.CommitmentId__c,
-                    UTIL_Http.Method.GET, PS_Request.ElevateEndpoint.COMMITMENT_GET);
-            }
-            response = requestService.sendRequest(request);
-
-        }
-        catch (Exception ex) {
-            response = requestService.buildErrorResponse(ex);
-        }
-
-        return response;
-    }
-
-    /**
-    * @description Returns request type to send to Payment API endpoint.
-    * @param closedRecord RecordWrapper
-    * @return PS_Request.ElevateEndpoint
-    */
-    private PS_Request.ElevateEndpoint getRequestType(RecordWrapper closedRecord) {
-        PS_Request.ElevateEndpoint requestType = PS_Request.ElevateEndpoint.COMMITMENT_CANCEL;
-
-        if (hasPreviousTimeoutOrConflict(closedRecord)) {
-            requestType = PS_Request.ElevateEndpoint.COMMITMENT_GET;
-        }
-
-        return requestType;
-    }
-
-    /**
-    * @description Returns true if a previous cancel attempt result was timeout or conflict.
-    * @param closedRecord RecordWrapper
-    * @return Boolean
-    */
-    private Boolean hasPreviousTimeoutOrConflict(RecordWrapper closedRecord) {
-        return closedRecord.isConfirmationRequired;
+        // No-op: Elevate integration removed
     }
 
     /**
@@ -203,7 +112,7 @@ public without sharing class RD2_CancelCommitmentService {
             logger.addError(
                 closedRecord.rd.Id,
                 closedRecord.firstErrorMessage,
-                RD2_ElevateIntegrationService.LOG_TYPE_COMMITMENT_CANCEL
+                'Commitment Cancel'
             );
             closedRecord.rd.ClosedReason__c = closedRecord.firstErrorMessage.abbreviate(MAX_PICKLIST_FIELD_LEN);
         }

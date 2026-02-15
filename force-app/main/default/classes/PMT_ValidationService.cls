@@ -47,17 +47,6 @@ public inherited sharing class PMT_ValidationService {
     }
 
     @TestVisible
-    private static PS_IntegrationServiceConfig config {
-        get {
-            if (config == null) {
-                config = new PS_IntegrationServiceConfig();
-            }
-            return config;
-        }
-        set;
-    }
-
-    @TestVisible
     private PMT_RefundService refundService {
         get {
             if (refundService == null) {
@@ -105,10 +94,6 @@ public inherited sharing class PMT_ValidationService {
                 validateRefund(payment);
             }
 
-            if (this.currentAction == TDTM_Runnable.Action.BeforeUpdate) {
-                validateElevatePayments(payment, oldPayment);
-            }
-
         }
 
         return this;
@@ -148,10 +133,6 @@ public inherited sharing class PMT_ValidationService {
     }
 
     private void validateRefund(OppPayment__c payment) {
-        if (String.isNotBlank(payment.Elevate_Payment_ID__c) && config.isIntegrationEnabled()) {
-            return;
-        }
-
         if (payment.DebitType__c == PMT_RefundService.FULL_REFUND
             || payment.DebitType__c == PMT_RefundService.PARTIAL_REFUND) {
             PMT_RefundService.RefundInfo refundInfo = refundService.getRefundInfoFor(payment.OriginalPayment__c);
@@ -184,25 +165,6 @@ public inherited sharing class PMT_ValidationService {
 
         refundInfo.updateRemainingBalance(refund);
         return this;
-    }
-
-    private void validateElevatePayments(OppPayment__c payment, OppPayment__c oldPayment) {
-        if (String.isBlank(payment.Elevate_Payment_ID__c)
-            || String.isBlank(oldPayment.Elevate_Payment_ID__c)
-            || !config.isIntegrationEnabled()
-            || config.hasIntegrationPermissions()
-        ) {
-            return;
-        }
-
-        if (payment.Payment_Amount__c != oldPayment.Payment_Amount__c ||
-                payment.Elevate_Payment_ID__c != oldPayment.Elevate_Payment_ID__c ||
-                payment.Payment_Date__c != oldPayment.Payment_Date__c ||
-                payment.DebitType__c != oldPayment.DebitType__c ||
-                payment.OriginalPayment__c != oldPayment.OriginalPayment__c
-            ) {
-                addError(payment, System.Label.pmtElevatePermissionRequired);
-        }
     }
 
     private void addError(OppPayment__c payment, String errorMessage) {

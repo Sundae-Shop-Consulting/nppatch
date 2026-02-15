@@ -163,8 +163,7 @@ private class Gift_Test {
     @isTest
     static void validateThatGiftNeedsToBeReauthorized() {
         DataImport__c dataImport = new DataImport__c(
-            Payment_Status__c = ElevateTransactionStatus.AUTHORIZED.name(),
-            Payment_Elevate_Batch_ID__c = 'test-valid-group-id',
+            Payment_Status__c = 'AUTHORIZED',
             Donation_Amount__c = 3.00
         );
         Gift authorizedGift = new Gift(dataImport);
@@ -277,7 +276,7 @@ private class Gift_Test {
 
     @isTest
     static void shouldReturnTrueForAuthorizedGift() {
-        DataImport__c dataImport = new DataImport__c(Payment_Status__c = ElevateTransactionStatus.AUTHORIZED.name());
+        DataImport__c dataImport = new DataImport__c(Payment_Status__c = 'AUTHORIZED');
         Gift gift = new Gift(dataImport);
 
         System.assertEquals(true, gift.hasAuthorizedPayment());
@@ -395,8 +394,7 @@ private class Gift_Test {
             switch on (stubbedMethodName) {
                 when 'getGiftById' {
                     return new DataImport__c(
-                        Payment_Status__c = ElevateTransactionStatus.AUTHORIZED.name(),
-                        Payment_Elevate_Batch_ID__c = 'test-valid-group-id',
+                        Payment_Status__c = 'AUTHORIZED',
                         Donation_Amount__c = newDonationAmount
                     );
                 }

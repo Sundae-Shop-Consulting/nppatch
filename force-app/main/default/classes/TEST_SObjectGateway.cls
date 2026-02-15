@@ -112,7 +112,6 @@ public class TEST_SObjectGateway {
                     ClosedReason__c,
                     CurrentYearValue__c,
                     NextYearValue__c,
-                    CommitmentId__c,
                     CardExpirationMonth__c,
                     CardExpirationYear__c,
                     CardLast4__c,
@@ -187,8 +186,7 @@ public class TEST_SObjectGateway {
             UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c'),
             UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation_Installment_Number__c'),
             UTIL_Namespace.StrTokenNSPrefix('Contact_Id_for_Role__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c'),
-            UTIL_Namespace.StrTokenNSPrefix('CommitmentId__c')
+            UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c')
         };
 
 

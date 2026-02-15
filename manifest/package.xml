@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>NPPatch_Lightning</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>                                                                                                                                                     
+        <members>peapatch</members>                                            
+        <name>ContentAsset</name>                                                                                                                               
+    </types>                                                                                                                                                    
+    <version>63.0</version>
+</Package>

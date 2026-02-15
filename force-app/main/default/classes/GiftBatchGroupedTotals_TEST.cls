@@ -40,9 +40,9 @@ private with sharing class GiftBatchGroupedTotals_TEST {
     @isTest
     private static void shouldReturnMapContainingCorrectRecordCounts() {
         Id DUMMY_BATCH_ID_0 = Id.valueOf('001xa000003DIlo');
-        String elevatePaymentAuthorizedStatus = ElevateTransactionStatus.AUTHORIZED.name();
-        String elevatePaymentDeclinedStatus = ElevateTransactionStatus.DECLINED.name();
-        String elevatePaymentExpiredStatus = ElevateTransactionStatus.EXPIRED.name();
+        String elevatePaymentAuthorizedStatus = 'AUTHORIZED';
+        String elevatePaymentDeclinedStatus = 'DECLINED';
+        String elevatePaymentExpiredStatus = 'EXPIRED';
 
         String dataImportBatchFieldAPIName = String.valueOf(DataImport__c.fields.NPPatch_Data_Import_Batch__c);
         String dataImportPaymentStatusFieldAPIName = String.valueOf(DataImport__c.fields.Payment_Status__c);

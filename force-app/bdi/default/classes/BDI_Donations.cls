@@ -841,7 +841,7 @@ public class BDI_Donations {
     * @return result 
     */
     private Boolean isElevatePaymentDI(DataImport__c di) {
-        return di.Payment_Elevate_Id__c != null;
+        return false;
     }
 
 

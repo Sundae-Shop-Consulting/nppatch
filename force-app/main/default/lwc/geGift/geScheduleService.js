@@ -20,8 +20,7 @@ import RECURRING_DONATION_DATE_ESTABLISHED from '@salesforce/schema/DataImport__
 import RECURRING_DONATION_IMPORT_STATUS from '@salesforce/schema/DataImport__c.RecurringDonationImportStatus__c';
 import RECURRING_DONATION_PAYMENT_METHOD
     from '@salesforce/schema/DataImport__c.Recurring_Donation_Payment_Method__c';
-import RECURRING_DONATION_ACH_LAST_4
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_ACH_Last_4__c';
+const RECURRING_DONATION_ACH_LAST_4 = { fieldApiName: 'Recurring_Donation_ACH_Last_4__c', objectApiName: 'DataImport__c' };
 import RECURRING_DONATION_END_DATE
     from '@salesforce/schema/DataImport__c.Recurring_Donation_End_Date__c';
 import RECURRING_DONATION_NAME
