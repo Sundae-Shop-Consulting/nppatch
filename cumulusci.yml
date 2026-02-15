@@ -312,6 +312,8 @@ flows:
                 task: deploy_dev_config
             5:
                 task: default_settings
+            6:
+                task: reorder_app_menu
 
     # =========================================
     # CI Feature 2GP: Override to add test org
