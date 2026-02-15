@@ -69,7 +69,6 @@ public with sharing class PaymentSelector {
     private Set<String> getRefundFields() {
         return new Set<String>{
             'Id',
-            String.valueOf(OppPayment__c.Elevate_Payment_ID__c),
             'Payment_Amount__c',
             'Opportunity__c',
             'Opportunity__r.Amount',

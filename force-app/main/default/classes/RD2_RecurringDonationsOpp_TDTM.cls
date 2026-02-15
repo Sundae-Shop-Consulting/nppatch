@@ -64,19 +64,14 @@ public class RD2_RecurringDonationsOpp_TDTM extends TDTM_Runnable {
     }
 
     /**
-    * @description Match new Opportunities not referencing any Recurring Donation and originated from Elevate 
-    * with a Recurring Donation having the same Commitment Id.
+    * @description Previously matched new Opportunities to Recurring Donations via Elevate Commitment Id.
+    * Elevate integration has been removed; this method is now a no-op.
     * @param opps Opportunities to be created
     * @param triggerAction BeforeInsert, AfterInsert, etc.
     * @return void
     */
     private void matchOppsToRecurringDonations(List<Opportunity> opps, TDTM_Runnable.Action triggerAction) {
-        if (triggerAction != TDTM_Runnable.Action.BeforeInsert) {
-            return;
-        }
-
-        new RD2_ElevateIntegrationService()
-            .matchOppsToRecurringDonations(opps);
+        // No-op: Elevate integration removed
     }
 
     /***

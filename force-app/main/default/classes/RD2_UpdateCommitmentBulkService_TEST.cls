@@ -31,19 +31,21 @@
 * @author Salesforce.org
 * @date 2022
 * @group Recurring Donations
-* @description Test class for RD2_UpdateCommitmentBulkService
+* @description Test class for RD2_UpdateCommitmentBulkService.
+* Tests that required deleted Elevate integration classes have been removed.
 */
 @IsTest
 public class RD2_UpdateCommitmentBulkService_TEST {
     private static final TEST_SObjectGateway.ErrorGateway errorGateway = new TEST_SObjectGateway.ErrorGateway();
 
+    /**
+    * @description Verifies processCommitments is a no-op after Elevate removal.
+    */
     @isTest
-    private static void verifyElevateBulkApiIsExecuteSuccessfullyWhenThereIsAtLeast1Record() {
-        PS_IntegrationServiceConfig_TEST.enableElevateIntegrationService();
+    private static void verifyProcessCommitmentsIsNoOp() {
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-        UTIL_Http_TEST.CalloutMock calloutMock = UTIL_Http_TEST.mockSuccessCalloutResponse(mockSuccessResponseBody(1));
 
-        List<Recurring_Donation__c> rds = constrcutRecurringDonations(1);
+        List<Recurring_Donation__c> rds = constructRecurringDonations(1);
 
         Test.startTest();
         new RD2_UpdateCommitmentBulkService()
@@ -51,102 +53,8 @@ public class RD2_UpdateCommitmentBulkService_TEST {
             .processCommitments();
         Test.stopTest();
 
-        System.assertEquals(1, calloutMock.getCalloutCounter(),
-            '1 callout should be made when there is less than 50 records in the transaction.');
         System.assertEquals(0, errorGateway.getRecords().size(),
-            'No error record should be created when the callout is successful');
-    }
-
-    @isTest
-    private static void verifyOnly2CalloutWillbeMadeWhenTotalProcessRecordIsBetween50and100() {
-        Integer recordCount = 100;
-        PS_IntegrationServiceConfig_TEST.enableElevateIntegrationService();
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-        UTIL_Http_TEST.CalloutMock calloutMock = UTIL_Http_TEST.mockSuccessCalloutResponse(mockSuccessResponseBody(recordCount));
-
-        List<Recurring_Donation__c> rds = constrcutRecurringDonations(recordCount);
-
-        Test.startTest();
-        new RD2_UpdateCommitmentBulkService()
-            .withCommitments(rds)
-            .processCommitments();
-        Test.stopTest();
-
-        System.assertEquals(2, calloutMock.getCalloutCounter(),
-            '1 callout should be made when there is less than 50 records in the transaction.');
-        System.assertEquals(0, errorGateway.getRecords().size(),
-            'No error record should be created when the callout is successful');
-    }
-
-    @isTest
-    private static void verifyMaximumOnly5CalloutCanBeMadeDuringOneProcess() {
-        Integer recordCount = 251;
-        PS_IntegrationServiceConfig_TEST.enableElevateIntegrationService();
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-        UTIL_Http_TEST.CalloutMock calloutMock = UTIL_Http_TEST.mockSuccessCalloutResponse(mockSuccessResponseBody(recordCount));
-
-        List<Recurring_Donation__c> rds = constrcutRecurringDonations(recordCount);
-
-        Test.startTest();
-        new RD2_UpdateCommitmentBulkService()
-            .withCommitments(rds)
-            .processCommitments();
-        Test.stopTest();
-
-        System.assertEquals(5, calloutMock.getCalloutCounter(),
-            '1 callout should be made when there is less than 50 records in the transaction.');
-        System.assertEquals(0, errorGateway.getRecords().size(),
-            'No error record should be created when the callout is successful');
-    }
-
-    @isTest
-    private static void verifyAnErrorWithElevateBulkApiErrorWillBeLoggedWhenCalloutFail() {
-        Integer recordCount = 1;
-        PS_IntegrationServiceConfig_TEST.enableElevateIntegrationService();
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-        UTIL_Http_TEST.mockBadRequestCalloutResponse();
-
-        List<Recurring_Donation__c> rds = constrcutRecurringDonations(recordCount);
-
-        Test.startTest();
-        new RD2_UpdateCommitmentBulkService()
-            .withCommitments(rds)
-            .processCommitments();
-        Test.stopTest();
-
-        List<Error__c> errors = errorGateway.getRecords();
-        System.assertEquals(1, errorGateway.getRecords().size(),
-            '1 error record should be created when the callout is successful');
-            System.assertEquals(ERR_Handler_API.Context.Elevate.name(),errors[0].Context_Type__c,
-            'The error record context type should match with Elevate context.');
-            System.assertEquals(RD2_ElevateIntegrationService.LOG_TYPE_COMMITMENT_UPDATE_BULK,errors[0].Error_Type__c,
-            'The error type type should specific the update bulk context.');
-    }
-
-    @isTest
-    private static void verifyMaximum5ErrorRecordsWithElevateBulkApiErrorWillBeLoggedWhenCalloutFail() {
-        Integer recordCount = 251;
-        PS_IntegrationServiceConfig_TEST.enableElevateIntegrationService();
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-        UTIL_Http_TEST.mockBadRequestCalloutResponse();
-
-        List<Recurring_Donation__c> rds = constrcutRecurringDonations(recordCount);
-
-        Test.startTest();
-        new RD2_UpdateCommitmentBulkService()
-            .withCommitments(rds)
-            .processCommitments();
-        Test.stopTest();
-
-        List<Error__c> errors = errorGateway.getRecords();
-        System.assertEquals(5, errorGateway.getRecords().size(),
-            '1 error record should be created when the callout is successful');
-        for (Error__c error : errors) {
-            System.assertEquals(ERR_Handler_API.Context.Elevate.name(),error.Context_Type__c,
-            'The error record context type should match with Elevate context.');
-            System.assertEquals(RD2_ElevateIntegrationService.LOG_TYPE_COMMITMENT_UPDATE_BULK,error.Error_Type__c,
-            'The error type type should specific the update bulk context.');
-        }
+            'No error record should be created when processCommitments is a no-op');
     }
 
     public static String mockSuccessResponseBody(Integer recordCount) {
@@ -157,11 +65,11 @@ public class RD2_UpdateCommitmentBulkService_TEST {
             + '}';
     }
 
-    private static List<Recurring_Donation__c> constrcutRecurringDonations(Integer recordCount) {
+    private static List<Recurring_Donation__c> constructRecurringDonations(Integer recordCount) {
         List<Recurring_Donation__c> rds = new List<Recurring_Donation__c>();
 
         for (Integer i = 0; i < recordCount; i++) {
-            rds.add(        
+            rds.add(
                 TEST_RecurringDonationBuilder.constructEnhancedBuilder()
                     .withClosedReason('random')
                     .withStatusClosed()

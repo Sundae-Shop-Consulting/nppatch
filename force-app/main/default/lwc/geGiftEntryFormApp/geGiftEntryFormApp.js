@@ -30,7 +30,6 @@ const GIFT_ENTRY_TAB_NAME = 'GE_Gift_Entry';
 
 import GiftBatch from 'c/geGiftBatch';
 import Gift from 'c/geGift';
-import ElevateBatch from 'c/geElevateBatch';
 import { fireEvent } from 'c/pubsubNoPageRef';
 
 export default class GeGiftEntryFormApp extends NavigationMixin(LightningElement) {
@@ -65,7 +64,7 @@ export default class GeGiftEntryFormApp extends NavigationMixin(LightningElement
     isFormSaveDisabled = false;
 
     giftBatch = new GiftBatch();
-    elevateBatch = new ElevateBatch();
+    elevateBatch = null;
     @track giftBatchState = {};
     gift = new Gift();
     @track giftInView = {};

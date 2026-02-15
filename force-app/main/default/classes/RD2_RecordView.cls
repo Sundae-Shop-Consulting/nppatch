@@ -94,7 +94,7 @@ public class RD2_RecordView {
         this.nextDonationDate = record.Next_Payment_Date__c;
         this.recurringType = record.RecurringType__c;
         this.campaignId = record.Recurring_Donation_Campaign__c;
-        this.commitmentId = record.CommitmentId__c;
+        this.commitmentId = null;
         this.achLastFour = record.ACH_Last_4__c;
         this.cardLastFour = record.CardLast4__c;
         this.cardExpirationMonth = record.CardExpirationMonth__c;

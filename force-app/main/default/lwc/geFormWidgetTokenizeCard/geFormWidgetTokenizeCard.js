@@ -1,7 +1,16 @@
 import { api, LightningElement, wire } from 'lwc';
 import { refreshApex } from '@salesforce/apex';
 import GeLabelService from 'c/geLabelService';
-import tokenHandler from 'c/psElevateTokenHandler';
+// Elevate removed — stub tokenHandler (Phase 2 cleanup)
+const tokenHandler = {
+    setVisualforceOriginURLs() {},
+    registerPostMessageListener() {},
+    getTokenizeCardPageURL() { return ''; },
+    handleMessage() {},
+    setPaymentMethod() {},
+    mount() {},
+    requestToken() { return Promise.resolve({}); }
+};
 import { apiNameFor, format, isEmpty, isNotEmpty } from 'c/utilCommon';
 import { fireEvent, registerListener, unregisterListener } from 'c/pubsubNoPageRef';
 import { getFieldValue, getRecord } from "lightning/uiRecordApi";
@@ -25,7 +34,7 @@ import Settings from 'c/geSettings';
 import GeGatewaySettings from 'c/geGatewaySettings';
 
 import DATA_IMPORT_PAYMENT_AUTHORIZATION_TOKEN_FIELD from '@salesforce/schema/DataImport__c.Payment_Authorization_Token__c';
-import DATA_IMPORT_PAYMENT_STATUS_FIELD from '@salesforce/schema/DataImport__c.Payment_Status__c';
+const DATA_IMPORT_PAYMENT_STATUS_FIELD = { fieldApiName: 'Payment_Status__c', objectApiName: 'DataImport__c' };
 import DATA_IMPORT_PAYMENT_METHOD from '@salesforce/schema/DataImport__c.Payment_Method__c';
 import DATA_IMPORT_CONTACT_FIRSTNAME from '@salesforce/schema/DataImport__c.Contact1_Firstname__c';
 import DATA_IMPORT_CONTACT_LASTNAME from '@salesforce/schema/DataImport__c.Contact1_Lastname__c';
@@ -36,20 +45,15 @@ import DATA_IMPORT_ACCOUNT_NAME from '@salesforce/schema/DataImport__c.Account1_
 import DATA_IMPORT_PARENT_BATCH_LOOKUP from '@salesforce/schema/DataImport__c.NPPatch_Data_Import_Batch__c';
 import DATA_IMPORT_RECURRING_TYPE
     from '@salesforce/schema/DataImport__c.Recurring_Donation_Recurring_Type__c';
-import DATA_IMPORT_RECURRING_DONATION_ACH_LAST_4
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_ACH_Last_4__c';
-import DATA_IMPORT_RECURRING_DONATION_CARD_LAST_4
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_Card_Last_4__c';
-import DATA_IMPORT_RECURRING_DONATION_CARD_EXPIRATION_YEAR
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_Card_Expiration_Year__c';
-import DATA_IMPORT_RECURRING_DONATION_CARD_EXPIRATION_MONTH
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_Card_Expiration_Month__c';
-import DATA_IMPORT_RECURRING_DONATION_ELEVATE_ID
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_Elevate_Recurring_ID__c';
-import PAYMENT_EXPIRATION_YEAR from '@salesforce/schema/DataImport__c.Payment_Card_Expiration_Year__c';
-import PAYMENT_EXPIRATION_MONTH from '@salesforce/schema/DataImport__c.Payment_Card_Expiration_Month__c';
-import ACH_PAYMENT_LAST_4 from '@salesforce/schema/DataImport__c.Payment_ACH_Last_4__c';
-import PAYMENT_LAST_4 from '@salesforce/schema/DataImport__c.Payment_Card_Last_4__c';
+const DATA_IMPORT_RECURRING_DONATION_ACH_LAST_4 = { fieldApiName: 'Recurring_Donation_ACH_Last_4__c', objectApiName: 'DataImport__c' };
+const DATA_IMPORT_RECURRING_DONATION_CARD_LAST_4 = { fieldApiName: 'Recurring_Donation_Card_Last_4__c', objectApiName: 'DataImport__c' };
+const DATA_IMPORT_RECURRING_DONATION_CARD_EXPIRATION_YEAR = { fieldApiName: 'Recurring_Donation_Card_Expiration_Year__c', objectApiName: 'DataImport__c' };
+const DATA_IMPORT_RECURRING_DONATION_CARD_EXPIRATION_MONTH = { fieldApiName: 'Recurring_Donation_Card_Expiration_Month__c', objectApiName: 'DataImport__c' };
+const DATA_IMPORT_RECURRING_DONATION_ELEVATE_ID = { fieldApiName: 'Recurring_Donation_Elevate_Recurring_ID__c', objectApiName: 'DataImport__c' };
+const PAYMENT_EXPIRATION_YEAR = { fieldApiName: 'Payment_Card_Expiration_Year__c', objectApiName: 'DataImport__c' };
+const PAYMENT_EXPIRATION_MONTH = { fieldApiName: 'Payment_Card_Expiration_Month__c', objectApiName: 'DataImport__c' };
+const ACH_PAYMENT_LAST_4 = { fieldApiName: 'Payment_ACH_Last_4__c', objectApiName: 'DataImport__c' };
+const PAYMENT_LAST_4 = { fieldApiName: 'Payment_Card_Last_4__c', objectApiName: 'DataImport__c' };
 import DATA_IMPORT_ID from '@salesforce/schema/DataImport__c.Id';
 import DATA_IMPORT from '@salesforce/schema/DataImport__c';
 

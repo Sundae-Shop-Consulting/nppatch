@@ -7,6 +7,7 @@ project:
         api_version: '63.0'
     git:
         default_branch: 'main'
+        repo_url: https://github.com/Sundae-Shop-Consulting/nppatch
     source_format: sfdx
 
 tasks:
@@ -312,6 +313,8 @@ flows:
                 task: deploy_dev_config
             5:
                 task: default_settings
+            6:
+                task: reorder_app_menu
 
     # =========================================
     # CI Feature 2GP: Override to add test org
@@ -346,3 +349,41 @@ orgs:
     scratch:
         build:
             config_file: orgs/build.json
+
+plans:
+     preview:
+        slug: beta
+        title: Install NPPatch Beta - Sandbox, Scratch Org, or Developer Edition Only 
+        tier: primary
+        is_listed: True
+        checks:
+            - when: "not tasks.check_my_domain_active()"
+              action: error
+              message: "Please enable My Domain in your org prior to installing."
+            - when: "not tasks.check_chatter_enabled()"
+              action: error
+              message: "NPPatch requires Chatter. Please enable Chatter in your org and try again."
+            - when: "'nppatch' in org_config.installed_packages"
+              action: error
+              message: "NPPatch is already installed in this org. This installer cannot be used with orgs that already have NPPatch."
+            - when: "tasks.check_advanced_currency_management()"
+              action: error
+              message: "Advanced Currency Management must be disabled to install NPPatch, but can be enabled after installation."
+            - when: "tasks.check_org_is_not_production()"                                                                                                               
+              action: error                                                                                                                                             
+              message: "NPPatch Beta cannot be installed in a production org. Please use a sandbox, scratch org, or Developer Edition."  
+        steps:
+            1:
+                task: update_dependencies
+            2:
+                task: deploy
+                options:
+                    path: unpackaged/pre/account_record_types
+                ui_options:
+                    name: Account Record Types
+            3:
+                task: ensure_record_type
+                ui_options:
+                    name: Opportunity Record Types
+            4:
+                task: install_managed_beta

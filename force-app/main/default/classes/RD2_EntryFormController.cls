@@ -110,7 +110,7 @@ public with sharing class RD2_EntryFormController {
         view.InstallmentPeriodPermissions = getFieldPermissionsMap('Installment_Period__c');
         view.InstallmentFrequencyPermissions = getFieldPermissionsMap(String.valueOf(Recurring_Donation__c.InstallmentFrequency__c));
         view.customFieldSets = getCustomFieldSectionFields();
-        view.isElevateCustomer = RD2_ElevateIntegrationService.isIntegrationEnabled();
+        view.isElevateCustomer = false;
         view.isChangeLogEnabled = RD2_ChangeLogService.isChangeLogEnabled;
         view.periodToYearlyFrequencyMap = RD2_Constants.PERIOD_TO_YEARLY_FREQUENCY;
         view.closedStatusValues = new List<String>(RD2_StatusMapper.getInstance().getClosedStatusValues());

@@ -5,10 +5,9 @@ import FAILURE_INFORMATION from '@salesforce/schema/DataImport__c.FailureInforma
 import STATUS from '@salesforce/schema/DataImport__c.Status__c';
 import DONATION_IMPORTED from '@salesforce/schema/DataImport__c.DonationImported__c';
 import PAYMENT_AUTHORIZE_TOKEN from '@salesforce/schema/DataImport__c.Payment_Authorization_Token__c';
-import PAYMENT_STATUS from '@salesforce/schema/DataImport__c.Payment_Status__c';
-import PAYMENT_ELEVATE_ID from '@salesforce/schema/DataImport__c.Payment_Elevate_ID__c';
-import DATA_IMPORT_RECURRING_DONATION_ELEVATE_ID
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_Elevate_Recurring_ID__c';
+const PAYMENT_STATUS = { fieldApiName: 'Payment_Status__c', objectApiName: 'DataImport__c' };
+const PAYMENT_ELEVATE_ID = { fieldApiName: 'Payment_Elevate_ID__c', objectApiName: 'DataImport__c' };
+const DATA_IMPORT_RECURRING_DONATION_ELEVATE_ID = { fieldApiName: 'Recurring_Donation_Elevate_Recurring_ID__c', objectApiName: 'DataImport__c' };
 
 import SoftCredits from './geSoftCredits';
 import GiftScheduleService from './geScheduleService';

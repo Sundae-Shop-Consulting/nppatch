@@ -1,5 +1,4 @@
 import { LightningElement, api, track, wire } from "lwc";
-import { registerListener } from "c/pubsubNoPageRef";
 import { Rd2Service, ACTIONS } from "c/rd2Service";
 import {
     isNull,
@@ -23,7 +22,7 @@ import FIELD_AMOUNT from "@salesforce/schema/Recurring_Donation__c.Amount__c";
 import FIELD_PAYMENT_METHOD from "@salesforce/schema/Recurring_Donation__c.PaymentMethod__c";
 import FIELD_STATUS from "@salesforce/schema/Recurring_Donation__c.Status__c";
 import FIELD_STATUS_REASON from "@salesforce/schema/Recurring_Donation__c.ClosedReason__c";
-import FIELD_ACH_LAST4 from "@salesforce/schema/Recurring_Donation__c.ACH_Last_4__c";
+const FIELD_ACH_LAST4 = { fieldApiName: 'ACH_Last_4__c', objectApiName: 'Recurring_Donation__c' };
 import FIELD_CARD_LAST4 from "@salesforce/schema/Recurring_Donation__c.CardLast4__c";
 import FIELD_INSTALLMENT_FREQUENCY from "@salesforce/schema/Recurring_Donation__c.InstallmentFrequency__c";
 import FIELD_INSTALLMENT_PERIOD from "@salesforce/schema/Recurring_Donation__c.Installment_Period__c";
@@ -71,11 +70,6 @@ import CONTACT_LAST_NAME from "@salesforce/schema/Contact.LastName";
 import ACCOUNT_NAME from "@salesforce/schema/Account.Name";
 import ACCOUNT_PRIMARY_CONTACT_LAST_NAME from "@salesforce/schema/Account.One2OneContact__r.LastName";
 
-/***
- * @description Event name fired when the Elevate credit card widget
- * is displayed or hidden on the RD2 entry form
- */
-const ELEVATE_WIDGET_EVENT_NAME = "rd2ElevateCreditCardForm";
 const CREDIT_CARD = "Credit Card";
 const ACH = "ACH";
 
@@ -283,7 +277,6 @@ export default class rd2EntryForm extends LightningElement {
             });
         }
 
-        registerListener(ELEVATE_WIDGET_EVENT_NAME, this.handleElevateWidgetDisplayState, this);
         this.applyExperienceSiteChanges();
     }
 
@@ -316,22 +309,6 @@ export default class rd2EntryForm extends LightningElement {
 
     perform(action) {
         this.rd2State = this.rd2Service.dispatch(this.rd2State, action);
-    }
-
-    /**
-     * @description Set variable that informs the RD form when the
-     *  credit card widget is displayed or hidden by a user
-     * @param event
-     */
-    handleElevateWidgetDisplayState(event) {
-        if (this.shouldResetPaymentMethodOnStateChange(event)) {
-            this.resetPaymentMethod();
-        }
-        this.hasUserDisabledElevateWidget = event.isDisabled;
-    }
-
-    shouldResetPaymentMethodOnStateChange(event) {
-        return event.isDisabled && this.isEdit && this.isPaymentMethodChanged() && this.isCommitmentEdit;
     }
 
     /***
@@ -674,22 +651,6 @@ export default class rd2EntryForm extends LightningElement {
      * Elevate recurring commitment record is to be created or updated.
      */
     async processCommitmentSubmit(allFields) {
-        try {
-            if (this.isElevateWidgetDisplayed()) {
-                
-                this.loadingText = this.isExperienceSite && String.valueOf(this.rd2State.paymentMethod) === String.valueOf(this.ACH) ? '' : this.rd2Service.getPaymentProcessingMessage(this.rd2State.paymentMethod);
-                const elevateWidget = this.template.querySelector('[data-id="elevateWidget"]');
-                const paymentToken = await elevateWidget.returnToken().payload;
-                this.perform({
-                    type: ACTIONS.SET_PAYMENT_TOKEN,
-                    payload: paymentToken,
-                });
-            }
-        } catch (error) {
-            this.enableSaveButton();
-            this.isLoading = false;
-            return;
-        }
 
         if(!this.isExperienceSite) {
             this.loadingText = this.customLabels.savingCommitmentMessage;
@@ -968,14 +929,6 @@ export default class rd2EntryForm extends LightningElement {
      */
     get customFieldsComponent() {
         return this.template.querySelectorAll('[data-id="customFieldsComponent"]')[0];
-    }
-
-    /**
-     * @description Returns the Credit Card Child Component instance
-     * @returns rd2ElevateCreditCardForm component dom
-     */
-    get creditCardComponent() {
-        return this.template.querySelector('[data-id="elevateWidget"]');
     }
 
     /**

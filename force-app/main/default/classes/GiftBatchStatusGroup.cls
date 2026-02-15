@@ -61,17 +61,17 @@ public inherited sharing class GiftBatchStatusGroup {
     }
 
     public Boolean isPaymentFailed() {
-      return paymentStatus == ElevateTransactionStatus.DECLINED.name()
-          || paymentStatus == ElevateTransactionStatus.EXPIRED.name()
-          || paymentStatus == ElevateTransactionStatus.NONRETRYABLEERROR.name()
-          || paymentStatus == ElevateTransactionStatus.RETRYABLEERROR.name();
+      return paymentStatus == 'DECLINED'
+          || paymentStatus == 'EXPIRED'
+          || paymentStatus == 'NONRETRYABLEERROR'
+          || paymentStatus == 'RETRYABLEERROR';
     }
-    
+
     public Boolean isPaymentAuthorizationExpired() {
-      return paymentStatus == ElevateTransactionStatus.EXPIRED.name();
+      return paymentStatus == 'EXPIRED';
     }
 
     public Boolean isPaymentAuthorized() {
-      return paymentStatus == ElevateTransactionStatus.AUTHORIZED.name();
+      return paymentStatus == 'AUTHORIZED';
     }
 }

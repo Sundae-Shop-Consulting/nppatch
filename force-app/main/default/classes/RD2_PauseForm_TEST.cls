@@ -170,136 +170,9 @@ public with sharing class RD2_PauseForm_TEST {
         assertNextDonationDateAndYearValues(rd.Id, totalSkipped, nextDonationDate);
     }
 
-    @IsTest
-    private static void shouldSavePauseWhenRDIsElevateRecord() {
-        if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-        RD2_ElevateIntegrationService_TEST.enableElevateUserPermissions();
-        PS_IntegrationService.setConfiguration(PS_IntegrationServiceConfig_TEST.testConfig);
-
-        Recurring_Donation__c recurringDonation = rdGateway.getRecords()[0];
-        recurringDonation.CommitmentId__c = 'TEST COMMITMENT';
-        recurringDonation.PaymentMethod__c = RD2_Constants.PAYMENT_PICKLIST_VALUE_CARD;
-        update recurringDonation;
-
-        RD2_PauseForm_CTRL.PauseData pause = new RD2_PauseForm_CTRL.PauseData();
-        pause.rdId = recurringDonation.Id;
-        pause.startDate = START_DATE.addMonths(3);
-        pause.resumeAfterDate = START_DATE.addMonths(6);
-        pause.pausedReason = new RD2_PauseForm_CTRL.PausedReason();
-        pause.pausedReason.value = 'Unknown';
-
-        Test.startTest();
-
-        mockRecordCreatedCalloutResponse();
-
-        Exception auraEx;
-
-        try {
-            RD2_PauseForm_CTRL.savePause(JSON.serialize(pause));
-        } catch (Exception ex) {
-            auraEx = ex;
-        }
-
-        Test.stopTest();
-
-        RecurringDonationSchedule__c schedule = [SELECT Id FROM RecurringDonationSchedule__c][0];
-        System.assertEquals(null, auraEx, 'No exception was thrown as a result of the callout');
-        System.assertNotEquals(null, schedule, 'The Commitment response should be returned');
-    }
-
-
-    @IsTest
-    private static void shouldThrowExceptionWhenPauseStartDateIsOnedayFromNextInstallment() {
-        if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-        RD2_ElevateIntegrationService_TEST.enableElevateUserPermissions();
-        PS_IntegrationService.setConfiguration(PS_IntegrationServiceConfig_TEST.testConfig);
-        RD2_PauseForm_CTRL.currentDate = START_DATE.addDays(-1);
-        Recurring_Donation__c recurringDonation = rdGateway.getRecords()[0];
-        recurringDonation.CommitmentId__c = 'TEST COMMITMENT';
-        recurringDonation.PaymentMethod__c = RD2_Constants.PAYMENT_PICKLIST_VALUE_CARD;
-        update recurringDonation;
-
-        RD2_PauseForm_CTRL.PauseData pause = new RD2_PauseForm_CTRL.PauseData();
-        pause.rdId = recurringDonation.Id;
-        pause.startDate = START_DATE;
-        pause.resumeAfterDate = pause.startDate.addMonths(6);
-        pause.pausedReason = new RD2_PauseForm_CTRL.PausedReason();
-        pause.pausedReason.value = 'Unknown';
-
-        Test.startTest();
-
-        mockRecordCreatedCalloutResponse();
-
-        Exception auraEx;
-
-        try {
-            RD2_PauseForm_CTRL.savePause(JSON.serialize(pause));
-        } catch (Exception ex) {
-            auraEx = ex;
-
-        }
-
-        Test.stopTest();
-
-        System.assertEquals(System.Label.RD2_ElevatePauseInstallmentDateErrorMessage,
-            auraEx.getMessage(), 'An exception should be thrown');
-
-    }
-
-
-    @IsTest
-    private static void shouldSavePauseWhenRDIsElevateRecordAndPauseIsRemoved() {
-        if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-        RD2_ElevateIntegrationService_TEST.enableElevateUserPermissions();
-        PS_IntegrationService.setConfiguration(PS_IntegrationServiceConfig_TEST.testConfig);
-
-        Recurring_Donation__c recurringDonation = rdGateway.getRecords()[0];
-        recurringDonation.CommitmentId__c = 'TEST COMMITMENT';
-        recurringDonation.PaymentMethod__c = RD2_Constants.PAYMENT_PICKLIST_VALUE_CARD;
-        update recurringDonation;
-
-        RD2_PauseForm_CTRL.PauseData pause = new RD2_PauseForm_CTRL.PauseData();
-        pause.rdId = recurringDonation.Id;
-        pause.startDate = null;
-        pause.resumeAfterDate = null;
-        pause.pausedReason = new RD2_PauseForm_CTRL.PausedReason();
-        pause.pausedReason.value = 'Unknown';
-
-        Test.startTest();
-
-        UTIL_Http_TEST.mockNoContentCalloutResponse();
-
-        Exception auraEx;
-
-        try {
-            RD2_PauseForm_CTRL.savePause(JSON.serialize(pause));
-        } catch (Exception ex) {
-            auraEx = ex;
-        }
-
-        Test.stopTest();
-
-        RecurringDonationSchedule__c schedule = [SELECT Id, EndDate__c FROM RecurringDonationSchedule__c][0];
-        System.assertEquals(null, auraEx, 'No exception was thrown as a result of the callout');
-        System.assertNotEquals(null, schedule, 'The Commitment response should be returned');
-        System.assertEquals(START_DATE.addDays(-1), schedule.EndDate__c, 'The End Date should be backdated');
-    }
-
-    private static void mockRecordCreatedCalloutResponse() {
-        UTIL_Http_TEST.mockRecordCreatedCalloutResponse(mockSuccessResponseBody());
-    }
-
-
-    private static String mockSuccessResponseBody() {
-        return '{' +
-            '"startTimestamp":"' + System.today()  +'",' +
-            '"endTimestamp":"' + System.today().addDays(5) + '",' +
-            '"reason":"' + PAUSED_REASON_VALUE +
-            '"}' ;
-    }
+    // Removed test: shouldSavePauseWhenRDIsElevateRecord - referenced deleted Elevate classes
+    // Removed test: shouldThrowExceptionWhenPauseStartDateIsOnedayFromNextInstallment - referenced deleted Elevate classes
+    // Removed test: shouldSavePauseWhenRDIsElevateRecordAndPauseIsRemoved - referenced deleted Elevate classes
 
     /****
     * @description Verifies the existing pause is deactivated when a new one is created
@@ -605,7 +478,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldReturnPauseDataWhenRDIsNotElevateRecord() {
         if (shouldSkipIn2GP()) return;
-        RD2_ElevateIntegrationService_TEST.enableElevateUserPermissions();
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         RD2_PauseForm_CTRL.PauseData pause = getPauseData(rdGateway.getRecords()[0].Id);
@@ -632,8 +504,6 @@ public with sharing class RD2_PauseForm_TEST {
         RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
-        rd.CommitmentId__c = 'TEST COMMITMENT';
-        update rd;
 
         RD2_PauseForm_CTRL.PauseData pause = getPauseData(rd.Id);
 

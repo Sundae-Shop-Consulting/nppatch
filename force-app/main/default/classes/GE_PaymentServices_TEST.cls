@@ -50,96 +50,21 @@ public class GE_PaymentServices_TEST {
     public static final String BAD_PURCHASE_CALL_BODY = BASE_PURCHASE_CALL_BODY + '"paymentMethodToken":"' + BAD_TOKEN + '"}';  
 
     @IsTest
-    private static void shouldRequireConfigurationKeysToBeAnElevateCustomer() {
-        List<Payment_Services_Configuration__c> requiredConfigs = new
-                List<Payment_Services_Configuration__c>();
-
-        for (Integer i = 0; i < PS_IntegrationServiceConfig.REQUIRED_CONFIG_KEYS.size(); i++) {
-            requiredConfigs.add(new Payment_Services_Configuration__c(
-                Service__c = PS_IntegrationServiceConfig.PAYMENTS_SERVICE_NAME,
-                Key__c = PS_IntegrationServiceConfig.REQUIRED_CONFIG_KEYS.get(i),
-                Value__c = String.valueOf(i)
-            ));
-        }
-        requiredConfigs.add(new Payment_Services_Configuration__c(
-                Service__c = PS_IntegrationServiceConfig.PAYMENTS_SERVICE_NAME,
-            Key__c = 'isActive',
-            Value__c = 'false'
-        ));
-        requiredConfigs.add(new Payment_Services_Configuration__c(
-                Service__c = PS_IntegrationServiceConfig.PAYMENTS_SERVICE_NAME,
-            Key__c = 'clientId',
-            Value__c = 'dummy'
-        ));
-
-        insert requiredConfigs;
+    private static void shouldNotBeAnElevateCustomer() {
         GE_PaymentServices paymentServices = new GE_PaymentServices();
         System.assertEquals(false, paymentServices.isElevateCustomer(),
-            'The org should not be considered an Elevate customer when '
-            + 'all required configuration keys are present but isActive is false.');
+            'The org should not be considered an Elevate customer '
+            + 'since Elevate has been removed.');
     }
 
-    @isTest static void shouldReturnSuccessfulResponse() {
-        PS_IntegrationService.setConfiguration(PS_IntegrationServiceConfig_TEST.testConfig);
-
-        // Set mock callout class
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
-
-        Test.startTest();
-        GE_PaymentServices paymentServices = new GE_PaymentServices();
-        UTIL_Http.Response response = paymentServices.createTransaction(GOOD_PURCHASE_CALL_BODY);
-        Test.stopTest();
-
-        String actualValue = response.body;
-        String expectedValue = SUCCESS_RESPONSE_BODY;
-        System.assertEquals(UTIL_Http.STATUS_CODE_CREATED, response.statusCode);
-        System.assertEquals(actualValue, expectedValue);
-    }
-
-    @isTest static void shouldReturnPaymentTransactionStatusValues() {
-        Set<String> paymentStatusValues = new Set<String>();
-
+    @isTest static void shouldReturnEmptyPaymentTransactionStatusValues() {
         Map<String, Object> paymentStatusEnumByName =
             ( Map<String, Object> ) JSON.deserializeUntyped(
                 GE_PaymentServices.getPaymentTransactionStatusValues()
             );
 
-        for (String enumName : paymentStatusEnumByName.keySet()) {
-            paymentStatusValues.add(enumName);
-        }
-
-        for (ElevateTransactionStatus value :
-                ElevateTransactionStatus.values()) {
-                    System.assert(paymentStatusValues.contains(value.name()), 'Every payment transaction status value' +
-                        'should be included in the enum returned by the method.');
-        }
-
-        System.assert(!paymentStatusValues.isEmpty(), 'List of payment transaction status values should not be empty.');
-    }
-
-    @isTest static void shouldReturnFailedResponse() {
-        PS_IntegrationService.setConfiguration(PS_IntegrationServiceConfig_TEST.testConfig);
-
-        // Set mock callout class
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
-
-        Test.startTest();
-        GE_PaymentServices paymentServices = new GE_PaymentServices();
-        UTIL_Http.Response response = paymentServices.createTransaction(BAD_PURCHASE_CALL_BODY);
-        Test.stopTest();
-
-        String actualValue = response.body;
-        String expectedValue = FAILED_RESPONSE_BODY;
-        System.assertEquals(UTIL_Http.STATUS_CODE_FORBIDDEN, response.statusCode);
-        System.assertEquals(actualValue, expectedValue);
-    }
-
-    @IsTest
-    private static void shouldNotBeAnElevateCustomer() {
-        GE_PaymentServices paymentServices = new GE_PaymentServices();
-        System.assertEquals(false, paymentServices.isElevateCustomer(),
-            'The org should not be considered an Elevate customer without '
-            + 'all required configuration keys present.');
+        System.assert(paymentStatusEnumByName.isEmpty(),
+            'Payment transaction status values should be empty since Elevate has been removed.');
     }
 
 
