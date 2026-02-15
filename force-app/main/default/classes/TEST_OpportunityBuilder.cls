@@ -233,16 +233,6 @@ public without sharing class TEST_OpportunityBuilder {
     }
 
     /***
-    * @description Sets CommitmentId field
-    * @param commitmentId  value
-    * @return TEST_OpportunityBuilder Builder instance
-    */
-    public TEST_OpportunityBuilder withCommitmentId(String commitmentId) {
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('CommitmentId__c'), commitmentId);
-        return this;
-    }
-
-    /***
     * @description Sets the specified custom or standard field to the specified value
     * @param fieldName Any field name on the Opportunity
     * @param value The field value

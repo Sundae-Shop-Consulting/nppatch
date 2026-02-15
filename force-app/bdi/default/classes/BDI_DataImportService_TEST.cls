@@ -160,7 +160,7 @@ private with sharing class BDI_DataImportService_TEST {
         insert testDataImports;
 
         for (DataImport__c dataImport : testDataImports) {
-            dataImport.Payment_Status__c = ElevateTransactionStatus.CAPTURED.name();
+            dataImport.Payment_Status__c = 'CAPTURED';
         }
 
         Test.startTest();
@@ -190,7 +190,7 @@ private with sharing class BDI_DataImportService_TEST {
         insert testDataImports;
 
         for (DataImport__c dataImport : testDataImports) {
-            dataImport.Payment_Status__c = ElevateTransactionStatus.AUTHORIZED.name();
+            dataImport.Payment_Status__c = 'AUTHORIZED';
         }
 
         Test.startTest();

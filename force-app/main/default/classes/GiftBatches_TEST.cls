@@ -75,9 +75,9 @@ private class GiftBatches_TEST {
     }
 
     private static Id DUMMY_BATCH_ID_0 = UTIL_UnitTestData_TEST.mockId(DataImportBatch__c.SObjectType);
-    private static String elevatePaymentAuthorizedStatus = ElevateTransactionStatus.AUTHORIZED.name();
-    private static String elevatePaymentDeclinedStatus = ElevateTransactionStatus.DECLINED.name();
-    private static String elevatePaymentExpiredStatus = ElevateTransactionStatus.EXPIRED.name();
+    private static String elevatePaymentAuthorizedStatus = 'AUTHORIZED';
+    private static String elevatePaymentDeclinedStatus = 'DECLINED';
+    private static String elevatePaymentExpiredStatus = 'EXPIRED';
 
     private static String dataImportBatchFieldAPIName = String.valueOf(DataImport__c.fields.NPPatch_Data_Import_Batch__c);
     private static String dataImportPaymentStatusFieldAPIName = String.valueOf(DataImport__c.fields.Payment_Status__c);
