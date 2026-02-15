@@ -6,26 +6,25 @@ import validateAuthorizedGiftEdit from '@salesforce/apex/GE_GiftEntryController.
 import getPaymentTransactionStatusValues from '@salesforce/apex/GE_PaymentServices.getPaymentTransactionStatusValues';
 import { getCurrencyLowestCommonDenominator } from 'c/utilNumberFormatter';
 import PAYMENT_AUTHORIZE_TOKEN from '@salesforce/schema/DataImport__c.Payment_Authorization_Token__c';
-import PAYMENT_ELEVATE_ID from '@salesforce/schema/DataImport__c.Payment_Elevate_ID__c';
-import PAYMENT_ELEVATE_ELEVATE_BATCH_ID from '@salesforce/schema/DataImport__c.Payment_Elevate_Batch_Id__c';
-import PAYMENT_CARD_NETWORK from '@salesforce/schema/DataImport__c.Payment_Card_Network__c';
-import PAYMENT_EXPIRATION_YEAR from '@salesforce/schema/DataImport__c.Payment_Card_Expiration_Year__c';
-import PAYMENT_EXPIRATION_MONTH from '@salesforce/schema/DataImport__c.Payment_Card_Expiration_Month__c';
+const PAYMENT_ELEVATE_ID = { fieldApiName: 'Payment_Elevate_ID__c', objectApiName: 'DataImport__c' };
+const PAYMENT_ELEVATE_ELEVATE_BATCH_ID = { fieldApiName: 'Payment_Elevate_Batch_Id__c', objectApiName: 'DataImport__c' };
+const PAYMENT_CARD_NETWORK = { fieldApiName: 'Payment_Card_Network__c', objectApiName: 'DataImport__c' };
+const PAYMENT_EXPIRATION_YEAR = { fieldApiName: 'Payment_Card_Expiration_Year__c', objectApiName: 'DataImport__c' };
+const PAYMENT_EXPIRATION_MONTH = { fieldApiName: 'Payment_Card_Expiration_Month__c', objectApiName: 'DataImport__c' };
 import PAYMENT_GATEWAY_ID from '@salesforce/schema/DataImport__c.Payment_Gateway_ID__c';
 import PAYMENT_GATEWAY_TRANSACTION_ID from '@salesforce/schema/DataImport__c.Payment_Gateway_Payment_ID__c';
 import PAYMENT_AUTHORIZED_AT from '@salesforce/schema/DataImport__c.Payment_Authorized_UTC_Timestamp__c';
-import PAYMENT_CREATED_AT from '@salesforce/schema/DataImport__c.Payment_Elevate_Created_UTC_Timestamp__c';
-import PAYMENT_LAST_4 from '@salesforce/schema/DataImport__c.Payment_Card_Last_4__c';
-import PAYMENT_STATUS from '@salesforce/schema/DataImport__c.Payment_Status__c';
-import PAYMENT_DECLINED_REASON from '@salesforce/schema/DataImport__c.Payment_Declined_Reason__c';
+const PAYMENT_CREATED_AT = { fieldApiName: 'Payment_Elevate_Created_UTC_Timestamp__c', objectApiName: 'DataImport__c' };
+const PAYMENT_LAST_4 = { fieldApiName: 'Payment_Card_Last_4__c', objectApiName: 'DataImport__c' };
+const PAYMENT_STATUS = { fieldApiName: 'Payment_Status__c', objectApiName: 'DataImport__c' };
+const PAYMENT_DECLINED_REASON = { fieldApiName: 'Payment_Declined_Reason__c', objectApiName: 'DataImport__c' };
 import DONATION_CAMPAIGN_NAME from '@salesforce/schema/DataImport__c.Donation_Campaign_Name__c';
 import PAYMENT_ACH_CODE from '@salesforce/schema/DataImport__c.Payment_ACH_Code__c';
-import PAYMENT_ACH_LAST_4 from '@salesforce/schema/DataImport__c.Payment_ACH_Last_4__c';
+const PAYMENT_ACH_LAST_4 = { fieldApiName: 'Payment_ACH_Last_4__c', objectApiName: 'DataImport__c' };
 import PAYMENT_METHOD from '@salesforce/schema/DataImport__c.Payment_Method__c';
-import PAYMENT_ELEVATE_ORIGINAL_PAYMENT_ID
-    from '@salesforce/schema/DataImport__c.Payment_Elevate_Original_Payment_ID__c';
+const PAYMENT_ELEVATE_ORIGINAL_PAYMENT_ID = { fieldApiName: 'Payment_Elevate_Original_Payment_ID__c', objectApiName: 'DataImport__c' };
 import PAYMENT_TYPE from '@salesforce/schema/DataImport__c.Payment_Type__c';
-import PAYMENT_ACH_CONSENT from '@salesforce/schema/DataImport__c.ACH_Consent__c';
+const PAYMENT_ACH_CONSENT = { fieldApiName: 'ACH_Consent__c', objectApiName: 'DataImport__c' };
 import DATA_IMPORT_BATCH_ALLOW_RECURRING_DONATIONS from '@salesforce/schema/DataImportBatch__c.Allow_Recurring_Donations__c';
 
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
@@ -74,7 +73,7 @@ import {
     isEmptyObject
 } from 'c/utilCommon';
 import ExceptionDataError from './exceptionDataError';
-import ElevateBatch from 'c/geElevateBatch';
+// ElevateBatch import removed - component deleted
 import Gift from 'c/geGift';
 import ElevateTokenizeableGift from './elevateTokenizeableGift';
 import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
@@ -83,22 +82,16 @@ import BATCH_DEFAULTS_FIELD from '@salesforce/schema/DataImportBatch__c.Batch_De
 import STATUS_FIELD from '@salesforce/schema/DataImport__c.Status__c';
 import NPSP_DATA_IMPORT_BATCH_FIELD from '@salesforce/schema/DataImport__c.NPPatch_Data_Import_Batch__c';
 
-import DATA_IMPORT_RECURRING_DONATION_EVENT_VERSION
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_Elevate_Event_Version__c';
-import DATA_IMPORT_RECURRING_DONATION_ELEVATE_ID
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_Elevate_Recurring_ID__c';
+const DATA_IMPORT_RECURRING_DONATION_EVENT_VERSION = { fieldApiName: 'Recurring_Donation_Elevate_Event_Version__c', objectApiName: 'DataImport__c' };
+const DATA_IMPORT_RECURRING_DONATION_ELEVATE_ID = { fieldApiName: 'Recurring_Donation_Elevate_Recurring_ID__c', objectApiName: 'DataImport__c' };
 import DATA_IMPORT_RECURRING_DONATION_PAYMENT_METHOD
     from '@salesforce/schema/DataImport__c.Recurring_Donation_Payment_Method__c';
 import DATA_IMPORT_RECURRING_DONATION_RECURRING_AMOUNT from '@salesforce/schema/DataImport__c.Recurring_Donation_Amount__c';
 import DATA_IMPORT_RECURRING_DONATION_DATE_ESTABLISHED from '@salesforce/schema/DataImport__c.Recurring_Donation_Date_Established__c';
-import DATA_IMPORT_RECURRING_DONATION_CARD_EXPIRATION_MONTH
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_Card_Expiration_Month__c';
-import DATA_IMPORT_RECURRING_DONATION_CARD_EXPIRATION_YEAR
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_Card_Expiration_Year__c';
-import DATA_IMPORT_RECURRING_DONATION_CARD_LAST_4
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_Card_Last_4__c';
-import DATA_IMPORT_RECURRING_DONATION_ACH_LAST_4
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_ACH_Last_4__c';
+const DATA_IMPORT_RECURRING_DONATION_CARD_EXPIRATION_MONTH = { fieldApiName: 'Recurring_Donation_Card_Expiration_Month__c', objectApiName: 'DataImport__c' };
+const DATA_IMPORT_RECURRING_DONATION_CARD_EXPIRATION_YEAR = { fieldApiName: 'Recurring_Donation_Card_Expiration_Year__c', objectApiName: 'DataImport__c' };
+const DATA_IMPORT_RECURRING_DONATION_CARD_LAST_4 = { fieldApiName: 'Recurring_Donation_Card_Last_4__c', objectApiName: 'DataImport__c' };
+const DATA_IMPORT_RECURRING_DONATION_ACH_LAST_4 = { fieldApiName: 'Recurring_Donation_ACH_Last_4__c', objectApiName: 'DataImport__c' };
 import DATA_IMPORT_RECURRING_TYPE
     from '@salesforce/schema/DataImport__c.Recurring_Donation_Recurring_Type__c';
 
@@ -145,8 +138,7 @@ import OPP_PAYMENT_OBJECT from '@salesforce/schema/OppPayment__c';
 import OPPORTUNITY_OBJECT from '@salesforce/schema/Opportunity';
 import PARENT_OPPORTUNITY_FIELD
     from '@salesforce/schema/OppPayment__c.Opportunity__c';
-import ELEVATE_PAYMENT_STATUS_FIELD
-    from '@salesforce/schema/OppPayment__c.Elevate_Payment_API_Status__c';
+const ELEVATE_PAYMENT_STATUS_FIELD = { fieldApiName: 'Elevate_Payment_API_Status__c', objectApiName: 'OppPayment__c' };
 import DATA_IMPORT_OBJECT from '@salesforce/schema/DataImport__c';
 import DATA_IMPORT_ACCOUNT1_NAME
     from '@salesforce/schema/DataImport__c.Account1_Name__c';
@@ -212,7 +204,7 @@ export default class GeFormRenderer extends LightningElement{
     _isElevateWidgetInDisabledState = false;
     cardholderNamesNotInTemplate = {};
     _openedGiftId;
-    currentElevateBatch = new ElevateBatch();
+    currentElevateBatch = null;
    @track _batch = {};
 
     erroredFields = [];

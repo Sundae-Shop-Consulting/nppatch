@@ -133,15 +133,11 @@ public class RD2_RecurringDonations_TDTM extends TDTM_Runnable {
         TDTM_TriggerHandler.processDMLWithErrors(dmlActions);
         dmlActions = null;
 
-        findMatchingElevateOpps(rds, triggerAction);
-
         if (TDTM_TriggerHandler.noErrorInCurrentTransaction(objResult, rds)) {
             evaluateOpportunities(rds, oldRds, triggerAction);
         }
 
         dispatchToIntegrationGateway(rds, oldRds, triggerAction);
-
-        cancelCommitments(rds, oldRds, triggerAction);
 
         updateSustainerForDeleteAndUndelete(rds, oldRds, triggerAction);
 
@@ -313,41 +309,6 @@ public class RD2_RecurringDonations_TDTM extends TDTM_Runnable {
         dmlActions.objectsWithError.addAll(errorRds);
     }
 
-    /**
-    * @description When new recurring donations are inserted that have a value in the CommitmentId field
-    * launch up a queueable process to look for matching existing Opportunities with that same CommmitmentId.
-    * @param rds Inserted Recurring Donations
-    * @param triggerAction BeforeInsert, AfterInsert, etc.
-    */
-    private void findMatchingElevateOpps(List<Recurring_Donation__c> rds, TDTM_Runnable.Action triggerAction) {
-
-        if (triggerAction != Action.AfterInsert) {
-            return;
-        }
-
-        Map<String, Id> rdIdByCommitmentId = new Map<String, Id>();
-        for (Recurring_Donation__c rd : rds) {
-            if (String.isNotBlank(rd.CommitmentId__c)) {
-                rdIdByCommitmentId.put(rd.CommitmentId__c, rd.Id);
-            }
-        }
-
-        if (rdIdByCommitmentId.isEmpty()) {
-            return;
-        }
-
-        RD2_QueueableService.ElevateOpportunityMatcher service
-            = new RD2_QueueableService.ElevateOpportunityMatcher(rdIdByCommitmentId);
-
-        if (Limits.getQueueableJobs() < Limits.getLimitQueueableJobs()) {
-            System.enqueueJob(service);
-
-        } else {
-            service.match();
-        }
-
-    }
-
     /***
     * @description Determine if Installment Opportunities need to be created or updated.
     * Opportunities are evaluated *asynchronously* unless the async job limit has been reached.
@@ -493,51 +454,4 @@ public class RD2_RecurringDonations_TDTM extends TDTM_Runnable {
         }
     }
 
-    /**
-    * @description Cancel Commitments in Elevate for closed Recurring Donations containing a Commitment Id.
-    *   If the Elevate RD is closed and Elevate Service is enabled,
-    *   the RD status will be set to pending process and an async job will be kick off
-    *   to cancel the mathced commitment in Elevate.
-    * @param rds Trigger.new records
-    * @param oldRds Trigger.old records
-    * @param triggerAction BeforeInsert, AfterInsert, etc.
-    */
-    private void cancelCommitments(List<Recurring_Donation__c> rds, List<Recurring_Donation__c> oldRds, TDTM_Runnable.Action triggerAction ) {
-        if (triggerAction != TDTM_Runnable.Action.BeforeUpdate
-            || !RD2_ElevateIntegrationService.isIntegrationEnabled()) {
-            return;
-        }
-
-        List<RD2_CancelCommitmentService.RecordWrapper> commitmentRDs = new List<RD2_CancelCommitmentService.RecordWrapper>();
-
-        for (Integer i = 0; i < rds.size(); i++) {
-            Recurring_Donation__c closedRd = rds[i];
-            RD2_RecurringDonation rd = new RD2_RecurringDonation(closedRd);
-            RD2_RecurringDonation oldRd = new RD2_RecurringDonation(oldRds[i]);
-
-            if (rd.isElevateRecord() && rd.isClosed() && !oldRd.isClosed()) {
-
-                // If the Event originated from Elevate, we do not want to send it to Elevate again
-                if (RD2_ElevateIntegrationService.isElevateEvent(rd, oldRd)) {
-                    continue;
-                }
-
-                //send the RD details including the user provided Closed Reason to the commitment service
-                commitmentRDs.add(new RD2_CancelCommitmentService.RecordWrapper(
-                    new Recurring_Donation__c(
-                        Id = closedRd.Id,
-                        ClosedReason__c = closedRd.ClosedReason__c,
-                        CommitmentId__c = closedRd.CommitmentId__c
-                    )
-                ));
-
-                // update the closed RD reason to Elevate pending status
-                closedRd.ClosedReason__c = System.Label.RD2_ElevatePendingStatus;
-            }
-        }
-
-        if (!commitmentRDs.isEmpty()) {
-            System.enqueueJob(new RD2_QueueableService.CancelCommitmentService(commitmentRDs));
-        }
-    }
 }

@@ -73,7 +73,6 @@ public inherited sharing class RD2_ApiService {
     private String getRecurringDonationQuery() {
         Set<String> queryFields = new Set<String>{
             'Id',
-            'CommitmentId__c',
             'EndDate__c',
             'Status__c'
         };

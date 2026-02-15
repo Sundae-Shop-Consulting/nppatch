@@ -126,19 +126,6 @@ public with sharing class RD2_ValidationService {
         set;
     }
 
-    /***
-    * @descripton Elevate integration service
-    */
-    private RD2_ElevateIntegrationService elevateService {
-        get {
-            if (elevateService == null) {
-                elevateService = new RD2_ElevateIntegrationService();
-            }
-            return elevateService;
-        }
-        set;
-    }
-
     /**
      * @description Current date is the cut off date to determine all functionality related a Recurring Donation.
      * Moreover, it is used to calculate the RD end date and can be a past date, today or a future date when testing.
@@ -241,13 +228,7 @@ public with sharing class RD2_ValidationService {
     */
     public void validateOnChange(RD2_RecurringDonation recurringDonation, Recurring_Donation__c oldRd, ErrorRecord errorCollection) {
         Recurring_Donation__c rd = recurringDonation.getSObject();
-        if (elevateService.isElevateRecordReactivated(rd, oldRd)) {
-            errorCollection.addError(System.Label.RD2_ElevateRDClosedStatusCannotBeChanged);
-        }
-
-        if (!elevateService.hasUpdatePermissions(rd, oldRd)) {
-            errorCollection.addError(System.Label.RD2_ElevatePermissionRequired);
-        }
+        // Elevate integration removed - reactivation and permission checks no longer applicable
 
         validateCurrencyChange(rd, oldRd, errorCollection);
         validateRecurringDonationEndDate(recurringDonation, errorCollection);
@@ -318,13 +299,7 @@ public with sharing class RD2_ValidationService {
     * @param errorCollection Error wrapper which contains all error related to the RD
     */
     private void validateAmount(Recurring_Donation__c rd, ErrorRecord errorCollection) {
-        if (RD2_ElevateIntegrationService.isIntegrationEnabled()
-            && String.isNotBlank(rd.CommitmentId__c)
-            && (rd.Amount__c == null || rd.Amount__c < 1)) {
-
-             errorCollection.addError(System.Label.RD2_ElevateRDAmountMustBeValid);
-
-        } else if (rd.Amount__c == null || rd.Amount__c == 0 || rd.Amount__c < 0) {
+        if (rd.Amount__c == null || rd.Amount__c == 0 || rd.Amount__c < 0) {
             errorCollection.addError(System.Label.RD2_AmountMustBeValid);
         }
     }
@@ -345,15 +320,7 @@ public with sharing class RD2_ValidationService {
     }
 
     private void validateElevateInstallmentPeriod(RD2_RecurringDonation recurringDonation, ErrorRecord errorCollection) {
-        if (RD2_ElevateIntegrationService.isIntegrationEnabled() && recurringDonation.isElevateRecord()) {
-            if (recurringDonation.isFirstAndFifteenthPeriod()) {
-                String errorMessage = String.format(
-                        System.Label.RD2_ElevateInstallmentPeriodMustBeValid,
-                        new String[]{ recurringDonation.getInstallmentPeriod() }
-                );
-                errorCollection.addError(errorMessage);
-            }
-        }
+        // Elevate integration removed - installment period validation no longer applicable
     }
 
     /***
@@ -530,9 +497,8 @@ public with sharing class RD2_ValidationService {
     * @return Boolean
     */
     private Boolean isElevateRDChange(Recurring_Donation__c rd, Recurring_Donation__c oldRd) {
-        return RD2_ElevateIntegrationService.isIntegrationEnabled()
-            && String.isNotBlank(rd.CommitmentId__c)
-            && String.isNotBlank(oldRd.CommitmentId__c);
+        // Elevate integration removed - always returns false
+        return false;
     }
 
     /***

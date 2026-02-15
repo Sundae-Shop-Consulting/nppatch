@@ -65,7 +65,6 @@ public inherited sharing class RD2_ERecurringDonationsSelector {
                                 + nsPrefix + 'InstallmentFrequency__c, '
                                 + nsPrefix + 'Day_of_Month__c, '
                                 + nsPrefix + 'Status__c, '
-                                + nsPrefix + 'CommitmentId__c, '
                                 + nsPrefix + 'PaymentMethod__c, '
                                 + nsPrefix + 'CardLast4__c, '
                                 + nsPrefix + 'CardExpirationYear__c, '
@@ -80,12 +79,6 @@ public inherited sharing class RD2_ERecurringDonationsSelector {
                                 + 'Lastmodifieddate '
                                 + 'FROM ' + nsPrefix + 'Recurring_Donation__c '
                                 + 'WHERE ' + nsPrefix + 'Contact__c = \'' + currentContactId + '\' ';
-
-            if(elevateFilter == ELEVATE_RD) {
-                queryString += 'AND ' + nsPrefix + 'CommitmentId__c != NULL ';
-            } else if (elevateFilter == NONELEVATE_RD) {
-                queryString += 'AND ' + nsPrefix + 'CommitmentId__c = NULL ';
-            }
 
             queryString += 'WITH SECURITY_ENFORCED ';
             queryString += 'ORDER BY ' + nsPrefix + 'Next_Payment_Date__c DESC NULLS LAST';

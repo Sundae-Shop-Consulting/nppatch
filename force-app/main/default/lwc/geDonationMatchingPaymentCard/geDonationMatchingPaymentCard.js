@@ -10,8 +10,7 @@ import PAYMENT_AMOUNT_FIELD from '@salesforce/schema/OppPayment__c.Payment_Amoun
 import PAYMENT_SCHEDULED_DATE_FIELD from '@salesforce/schema/OppPayment__c.Scheduled_Date__c';
 import PAYMENT_PAID_FIELD from '@salesforce/schema/OppPayment__c.Paid__c';
 import PAYMENT_NAME_FIELD from '@salesforce/schema/OppPayment__c.Name';
-import ELEVATE_PAYMENT_STATUS_FIELD
-    from '@salesforce/schema/OppPayment__c.Elevate_Payment_API_Status__c';
+const ELEVATE_PAYMENT_STATUS_FIELD = { fieldApiName: 'Elevate_Payment_API_Status__c', objectApiName: 'OppPayment__c' };
 
 const FIELDS = [
     PAYMENT_AMOUNT_FIELD,

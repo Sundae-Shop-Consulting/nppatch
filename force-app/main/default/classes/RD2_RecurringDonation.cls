@@ -619,10 +619,11 @@ public inherited sharing class RD2_RecurringDonation {
     }
 
     /***
-    * @description Checks if the Recurring Donation is originated in Elevate
+    * @description Checks if the Recurring Donation is originated in Elevate.
+    * Elevate integration has been removed; always returns false.
     */
     public Boolean isElevateRecord() {
-       return RD2_ElevateIntegrationService.isIntegrationEnabled() && String.isNotBlank(rd.CommitmentId__c);
+       return false;
     }
 
     public Boolean hasValidRecurringDonationPaymentMethod() {

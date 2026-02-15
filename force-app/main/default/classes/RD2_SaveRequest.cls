@@ -126,7 +126,6 @@ public with sharing class RD2_SaveRequest {
         rd.Installments__c = plannedInstallments;
         rd.RecurringType__c = recurringType;
         rd.Recurring_Donation_Campaign__c = campaignId;
-        rd.CommitmentId__c = commitmentId;
         rd.PaymentMethod__c = paymentMethod;
         rd.CardExpirationMonth__c = cardExpirationMonth;
         rd.CardExpirationYear__c = cardExpirationYear;

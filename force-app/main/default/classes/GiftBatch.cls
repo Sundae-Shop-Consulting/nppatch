@@ -71,27 +71,6 @@ public inherited sharing class GiftBatch implements IGiftBatch {
         set;
     }
 
-    @TestVisible
-    private ElevateBatchService elevateBatchService {
-        get {
-            if (elevateBatchService == null) {
-                elevateBatchService = new ElevateBatchService();
-            }
-            return elevateBatchService;
-        }
-        set;
-    }
-
-    @TestVisible
-    private PS_IntegrationServiceConfig paymentIntegrationServiceConfig {
-        get {
-            if (paymentIntegrationServiceConfig == null) {
-                paymentIntegrationServiceConfig = new PS_IntegrationServiceConfig();
-            }
-            return paymentIntegrationServiceConfig;
-        }
-        set;
-    }
 
     @TestVisible
     private GiftBatch() {}
@@ -167,8 +146,7 @@ public inherited sharing class GiftBatch implements IGiftBatch {
     }
 
     public void captureAuthorizedGifts() {
-        elevateBatchService.enqueuePaymentCaptureJobFor(id(), gifts?.elevateBatchIds());
-        gifts.authorizedToPaymentProcessingStatus();
+        // Elevate batch service removed - no-op
     }
 
     public void failGiftsWithReason(Map<String, String> failReasonByElevateBatchId) {

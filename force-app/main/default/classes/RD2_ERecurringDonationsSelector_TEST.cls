@@ -109,7 +109,6 @@ public class RD2_ERecurringDonationsSelector_TEST {
                                                                                 .withDayOfMonth('23')
                                                                                 .withInstallmentFrequency(1)
                                                                                 .build();
-        rDonation01.CommitmentId__c = '123';
         insert rDonation01;
 
         Test.startTest();

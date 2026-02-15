@@ -15,14 +15,10 @@ import updateSuccessMessage from "@salesforce/label/c.RD2_EntryFormUpdateSuccess
 import savingCommitmentMessage from "@salesforce/label/c.RD2_EntryFormSaveCommitmentMessage";
 import savingRDMessage from "@salesforce/label/c.RD2_EntryFormSaveRecurringDonationMessage";
 import FIELD_NAME from "@salesforce/schema/Recurring_Donation__c.Name";
-import FIELD_NEXT_PAYMENT_DATE from "@salesforce/schema/Recurring_Donation__c.Next_Payment_Date__c";
 import FIELD_PAYMENT_METHOD from "@salesforce/schema/Recurring_Donation__c.PaymentMethod__c";
-import FIELD_COMMITMENT_ID from "@salesforce/schema/Recurring_Donation__c.CommitmentId__c";
+const FIELD_COMMITMENT_ID = { fieldApiName: 'CommitmentId__c', objectApiName: 'Recurring_Donation__c' };
 import FIELD_CONTACT_ID from "@salesforce/schema/Recurring_Donation__c.Contact__c";
 import FIELD_ORGANIZATION_ID from "@salesforce/schema/Recurring_Donation__c.Organization__c";
-import FIELD_RD_ACCOUNT_NAME from "@salesforce/schema/Recurring_Donation__c.Organization__r.Name";
-import FIELD_RD_CONTACT_FIRST_NAME from "@salesforce/schema/Recurring_Donation__c.Contact__r.FirstName";
-import FIELD_RD_CONTACT_LAST_NAME from "@salesforce/schema/Recurring_Donation__c.Contact__r.LastName";
 
 import handleUpdatePaymentCommitment from "@salesforce/apex/RD2_EntryFormController.handleUpdatePaymentCommitment";
 import logError from "@salesforce/apex/RD2_EntryFormController.logError";
@@ -65,18 +61,6 @@ export default class rd2EditPaymentInformationModal extends LightningElement {
         }
     }
 
-    get contactFirstName() {
-        return this.getValue(FIELD_RD_CONTACT_FIRST_NAME);
-    }
-
-    get contactLastName() {
-        return this.getValue(FIELD_RD_CONTACT_LAST_NAME);
-    }
-
-    get organizationAccountName() {
-        return this.getValue(FIELD_RD_ACCOUNT_NAME);
-    }
-
     /**
      * @description Dynamically render the payment edit form via CSS to show/hide based on the status of
      * the callout and saving process
@@ -94,10 +78,6 @@ export default class rd2EditPaymentInformationModal extends LightningElement {
 
     get existingPaymentMethod() {
         return this.getValue(FIELD_PAYMENT_METHOD);
-    }
-
-    get nextDonationDate() {
-        return this.getValue(FIELD_NEXT_PAYMENT_DATE);
     }
 
     get commitmentId() {
@@ -131,17 +111,6 @@ export default class rd2EditPaymentInformationModal extends LightningElement {
         this.isSaving = true;
         this.isSaveButtonDisabled = true;
 
-        this.loadingText = this.rd2Service.getPaymentProcessingMessage(this.paymentMethod);
-
-        try {
-            const elevateWidget = this.template.querySelector('[data-id="elevateWidget"]');
-
-            this.paymentMethodToken = await elevateWidget.returnToken().payload;
-        } catch (error) {
-            this.setSaveButtonDisabled(false);
-            return;
-        }
-
         this.loadingText = this.labels.savingCommitmentMessage;
 
         try {
@@ -153,7 +122,7 @@ export default class rd2EditPaymentInformationModal extends LightningElement {
 
             handleUpdatePaymentCommitment({
                 jsonRecord: rd.asJSON(),
-                paymentMethodToken: this.paymentMethodToken,
+                paymentMethodToken: null,
             })
                 .then((jsonResponse) => {
                     const response = isNull(jsonResponse) ? null : JSON.parse(jsonResponse);

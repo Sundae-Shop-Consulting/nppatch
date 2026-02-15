@@ -1466,11 +1466,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%ACH_Consent__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Account1ImportStatus__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1801,11 +1796,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Donation_Elevate_Recurring_ID__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Donation_Honoree_Information__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1887,16 +1877,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Donation_Type__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Elevate_Custom_Metadata__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Elevate_Payment_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2056,11 +2036,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_ACH_Last_4__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Authorization_Token__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2076,67 +2051,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Card_Expiration_Month__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Card_Expiration_Year__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Card_Last_4__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Card_Network__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Check_Reference_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Declined_Reason__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Donor_Cover_Amount__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Elevate_Batch_ID__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Elevate_Created_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Elevate_Created_UTC_Timestamp__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Elevate_ID__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Elevate_Original_Payment_ID__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Elevate_Transaction_Fee__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2186,11 +2106,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Status__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Payment_Total_Transaction_Fees__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2211,27 +2126,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Recurring_Donation_ACH_Last_4__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Recurring_Donation_Amount__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Recurring_Donation_Card_Expiration_Month__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Recurring_Donation_Card_Expiration_Year__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Recurring_Donation_Card_Last_4__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2252,16 +2147,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Recurring_Donation_Effective_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Recurring_Donation_Elevate_Event_Version__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%DataImport__c.%%%NAMESPACE%%%Recurring_Donation_Elevate_Recurring_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3411,11 +3296,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%ACH_Last_4__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Authorized_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3427,26 +3307,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Batch_Number__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Card_Expiration_Month__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Card_Expiration_Year__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Card_Last_4__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Card_Network__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3467,41 +3327,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Donor_Cover_Amount__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Elevate_Original_Payment_ID__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Elevate_Payment_API_Declined_Reason__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Elevate_Payment_API_Status__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Elevate_Payment_Created_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Elevate_Payment_Created_UTC_Timestamp__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Elevate_Payment_ID__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Elevate_Transaction_Fee__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3576,11 +3401,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Total_Transaction_Fees__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>%%%NAMESPACE%%%OppPayment__c.%%%NAMESPACE%%%Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3632,11 +3452,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.%%%NAMESPACE%%%CombinedRollupFieldset__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Opportunity.%%%NAMESPACE%%%CommitmentId__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3931,31 +3746,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>%%%NAMESPACE%%%Payment_Services_Configuration__c.%%%NAMESPACE%%%Is_Secret__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Payment_Services_Configuration__c.%%%NAMESPACE%%%Key__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Payment_Services_Configuration__c.%%%NAMESPACE%%%Service_Key__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Payment_Services_Configuration__c.%%%NAMESPACE%%%Service__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Payment_Services_Configuration__c.%%%NAMESPACE%%%Value__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>%%%NAMESPACE%%%RecurringDonationChangeLog__c.%%%NAMESPACE%%%ChangeType__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4141,11 +3931,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%ACH_Last_4__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%Always_Use_Last_Day_Of_Month__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4177,11 +3962,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%ClosedReason__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%CommitmentId__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4237,16 +4017,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%Installments__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%LastElevateEventPlayed__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%LastElevateVersionPlayed__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
