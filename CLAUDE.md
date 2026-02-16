@@ -8,3 +8,8 @@
 ## Preferences
 - When making changes, describe what to test but let me run the commands
 - Summarize changes made and provide the commands I should run to verify
+
+## Pull Requests
+- When creating PRs, use the template in `.github/PULL_REQUEST_TEMPLATE.md`
+- PR descriptions MUST use H1 headings (`# Changes`, `# Critical Changes`, `# Issues Closed`) for CumulusCI release notes parsing
+- Do NOT use `## Summary` or other H2 headings as the primary structure
