@@ -1,0 +1,21 @@
+/* NPPatch brand colors */
+:root > * {
+  /* Teal - primary */
+  --md-primary-fg-color:        #05878a;
+  --md-primary-fg-color--light: #3aabae;
+  --md-primary-fg-color--dark:  #046567;
+
+  /* Gold - accent */
+  --md-accent-fg-color:         #dd9933;
+  --md-accent-fg-color--transparent: rgba(221, 153, 51, 0.1);
+}
+
+/* Dark mode overrides */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #05878a;
+  --md-primary-fg-color--light: #3aabae;
+  --md-primary-fg-color--dark:  #046567;
+
+  --md-accent-fg-color:         #dd9933;
+  --md-accent-fg-color--transparent: rgba(221, 153, 51, 0.1);
+}
