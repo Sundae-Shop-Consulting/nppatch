@@ -1,389 +1,399 @@
-minimum_cumulusci_version: '3.93.0'
+minimum_cumulusci_version: "3.93.0"
 project:
+  name: nppatch
+  package:
     name: nppatch
-    package:
-        name: nppatch
-        namespace: nppatch
-        api_version: '63.0'
-    git:
-        default_branch: 'main'
-        repo_url: https://github.com/Sundae-Shop-Consulting/nppatch
-    source_format: sfdx
+    namespace: nppatch
+    api_version: "63.0"
+  git:
+    default_branch: "main"
+    repo_url: https://github.com/Sundae-Shop-Consulting/nppatch
+  source_format: sfdx
 
 tasks:
-    robot:
-        options:
-            suites: robot/nppatch/tests
-            options:
-                outputdir: robot/nppatch/results
+  check_org_is_not_production:
+    description: Check if org is a sandbox, scratch org, or Developer Edition
+    class_path: cumulusci.tasks.preflight.settings.CheckSettingsValue
+    options:
+      settings_type: Organization
+      settings_field: IsSandbox
+      value: true
 
-    robot_testdoc:
-        options:
-            path: robot/nppatch/tests
-            output: robot/nppatch/doc/nppatch_tests.html
+  robot:
+    options:
+      suites: robot/nppatch/tests
+      options:
+        outputdir: robot/nppatch/results
 
-    run_tests:
-        options:
-            required_org_code_coverage_percent: 75
+  robot_testdoc:
+    options:
+      path: robot/nppatch/tests
+      output: robot/nppatch/doc/nppatch_tests.html
 
-    deploy_dev_config:
-        description: Deploys the post-install configuration for an unmanaged DE org
-        class_path: cumulusci.tasks.salesforce.Deploy
-        group: Salesforce Metadata
-        options:
-            path: unpackaged/config/dev
+  run_tests:
+    options:
+      required_org_code_coverage_percent: 75
 
-    deploy_dev_config_delete:
-        description: Deploys the metadata deletions for the post-install DE org config
-        class_path: cumulusci.tasks.salesforce.Deploy
-        group: Salesforce Metadata
-        options:
-            path: unpackaged/config/delete
+  deploy_dev_config:
+    description: Deploys the post-install configuration for an unmanaged DE org
+    class_path: cumulusci.tasks.salesforce.Deploy
+    group: Salesforce Metadata
+    options:
+      path: unpackaged/config/dev
 
-    log_package_install_info:
-        description: Display package installation command and URL
-        class_path: tasks.package_info.LogPackageInstallInfo
-        group: Utilities
+  deploy_dev_config_delete:
+    description: Deploys the metadata deletions for the post-install DE org config
+    class_path: cumulusci.tasks.salesforce.Deploy
+    group: Salesforce Metadata
+    options:
+      path: unpackaged/config/delete
 
-    default_settings:
-        description: Configure the default Settings including Membership RecordType
-        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
-        group: Configuration
-        options:
-            path: scripts/configure_default_settings.cls
-            apex: initializeDefaultSettings();
+  log_package_install_info:
+    description: Display package installation command and URL
+    class_path: tasks.package_info.LogPackageInstallInfo
+    group: Utilities
 
-    # =========================================
-    # Metadata ETL: Picklist Value Setup
-    # =========================================
-    add_opportunity_stages:
-        description: Add Opportunity stages required by tests
-        class_path: cumulusci.tasks.metadata_etl.AddValueSetEntries
-        group: Metadata ETL
-        options:
-            api_names:
-                - OpportunityStage
-            entries:
-                - fullName: Pledged
-                  label: Pledged
-                  probability: 50
-                  forecastCategory: Pipeline
-                  closed: false
-                  won: false
-                - fullName: Promised
-                  label: Promised
-                  probability: 75
-                  forecastCategory: Pipeline
-                  closed: false
-                  won: false
+  default_settings:
+    description: Configure the default Settings including Membership RecordType
+    class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+    group: Configuration
+    options:
+      path: scripts/configure_default_settings.cls
+      apex: initializeDefaultSettings();
 
-    add_ocr_roles:
-        description: Add OCR roles required by automated soft credit tests
-        class_path: cumulusci.tasks.metadata_etl.AddValueSetEntries
-        group: Metadata ETL
-        options:
-            api_names:
-                - ContactRole
-            entries:
-                - fullName: Soft Credit
-                  label: Soft Credit
-                  default: false
-                - fullName: Solicitor
-                  label: Solicitor
-                  default: false
-                - fullName: Tribute
-                  label: Tribute
-                  default: false
-                - fullName: Household Member
-                  label: Household Member
-                  default: false
-                - fullName: Matched Donor
-                  label: Matched Donor
-                  default: false
+  # =========================================
+  # Metadata ETL: Picklist Value Setup
+  # =========================================
+  add_opportunity_stages:
+    description: Add Opportunity stages required by tests
+    class_path: cumulusci.tasks.metadata_etl.AddValueSetEntries
+    group: Metadata ETL
+    options:
+      api_names:
+        - OpportunityStage
+      entries:
+        - fullName: Pledged
+          label: Pledged
+          probability: 50
+          forecastCategory: Pipeline
+          closed: false
+          won: false
+        - fullName: Promised
+          label: Promised
+          probability: 75
+          forecastCategory: Pipeline
+          closed: false
+          won: false
 
-    # =========================================
-    # Custom Picklist Values
-    # =========================================
-    add_rd_day_of_month:
-        description: Add Day_of_Month picklist values
-        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: Metadata ETL
-        options:
-            managed: True
-            namespace_inject: $project_config.project__package__namespace
-            picklists:
-                - "%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%Day_of_Month__c"
-            entries:
-                - fullName: Last_Day
-                  label: Last Day
+  add_ocr_roles:
+    description: Add OCR roles required by automated soft credit tests
+    class_path: cumulusci.tasks.metadata_etl.AddValueSetEntries
+    group: Metadata ETL
+    options:
+      api_names:
+        - ContactRole
+      entries:
+        - fullName: Soft Credit
+          label: Soft Credit
+          default: false
+        - fullName: Solicitor
+          label: Solicitor
+          default: false
+        - fullName: Tribute
+          label: Tribute
+          default: false
+        - fullName: Household Member
+          label: Household Member
+          default: false
+        - fullName: Matched Donor
+          label: Matched Donor
+          default: false
 
-    add_rd_status:
-        description: Add RD Status picklist values
-        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: Metadata ETL
-        options:
-            managed: True
-            namespace_inject: $project_config.project__package__namespace
-            picklists:
-                - "%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%Status__c"
-            entries:
-                - fullName: Active
-                  label: Active
-                - fullName: Lapsed
-                  label: Lapsed
-                - fullName: Closed
-                  label: Closed
-                - fullName: Paused
-                  label: Paused
+  # =========================================
+  # Custom Picklist Values
+  # =========================================
+  add_rd_day_of_month:
+    description: Add Day_of_Month picklist values
+    class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+    group: Metadata ETL
+    options:
+      managed: True
+      namespace_inject: $project_config.project__package__namespace
+      picklists:
+        - "%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%Day_of_Month__c"
+      entries:
+        - fullName: Last_Day
+          label: Last Day
 
-    add_rd_recurring_type:
-        description: Add RD RecurringType picklist values
-        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: Metadata ETL
-        options:
-            managed: True
-            namespace_inject: $project_config.project__package__namespace
-            picklists:
-                - "%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%RecurringType__c"
-            entries:
-                - fullName: Open
-                  label: Open
-                - fullName: Fixed
-                  label: Fixed
+  add_rd_status:
+    description: Add RD Status picklist values
+    class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+    group: Metadata ETL
+    options:
+      managed: True
+      namespace_inject: $project_config.project__package__namespace
+      picklists:
+        - "%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%Status__c"
+      entries:
+        - fullName: Active
+          label: Active
+        - fullName: Lapsed
+          label: Lapsed
+        - fullName: Closed
+          label: Closed
+        - fullName: Paused
+          label: Paused
 
-    add_rd_installment_period:
-        description: Add RD InstallmentPeriod picklist values
-        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: Metadata ETL
-        options:
-            managed: True
-            namespace_inject: $project_config.project__package__namespace
-            picklists:
-                - "%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%InstallmentPeriod__c"
-            entries:
-                - fullName: Monthly
-                  label: Monthly
-                - fullName: Yearly
-                  label: Yearly
-                - fullName: Weekly
-                  label: Weekly
-                - fullName: 1st and 15th
-                  label: 1st and 15th
+  add_rd_recurring_type:
+    description: Add RD RecurringType picklist values
+    class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+    group: Metadata ETL
+    options:
+      managed: True
+      namespace_inject: $project_config.project__package__namespace
+      picklists:
+        - "%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%RecurringType__c"
+      entries:
+        - fullName: Open
+          label: Open
+        - fullName: Fixed
+          label: Fixed
 
-    add_relationship_type:
-        description: Add Relationship Type picklist values
-        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: Metadata ETL
-        options:
-            managed: True
-            namespace_inject: $project_config.project__package__namespace
-            picklists:
-                - "%%%NAMESPACE%%%Relationship__c.%%%NAMESPACE%%%Type__c"
-            entries:
-                - fullName: Friend
-                  label: Friend
-                - fullName: Partner
-                  label: Partner
-                - fullName: Family
-                  label: Family
-                - fullName: Coworker
-                  label: Coworker
-                - fullName: Spouse
-                  label: Spouse
-                - fullName: Sibling
-                  label: Sibling
-                - fullName: Parent
-                  label: Parent
-                - fullName: Child
-                  label: Child
+  add_rd_installment_period:
+    description: Add RD InstallmentPeriod picklist values
+    class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+    group: Metadata ETL
+    options:
+      managed: True
+      namespace_inject: $project_config.project__package__namespace
+      picklists:
+        - "%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%InstallmentPeriod__c"
+      entries:
+        - fullName: Monthly
+          label: Monthly
+        - fullName: Yearly
+          label: Yearly
+        - fullName: Weekly
+          label: Weekly
+        - fullName: 1st and 15th
+          label: 1st and 15th
 
-    add_relationship_status:
-        description: Add Relationship Status picklist values
-        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: Metadata ETL
-        options:
-            managed: True
-            namespace_inject: $project_config.project__package__namespace
-            picklists:
-                - "%%%NAMESPACE%%%Relationship__c.%%%NAMESPACE%%%Status__c"
-            entries:
-                - fullName: Current
-                  label: Current
-                - fullName: Former
-                  label: Former
+  add_relationship_type:
+    description: Add Relationship Type picklist values
+    class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+    group: Metadata ETL
+    options:
+      managed: True
+      namespace_inject: $project_config.project__package__namespace
+      picklists:
+        - "%%%NAMESPACE%%%Relationship__c.%%%NAMESPACE%%%Type__c"
+      entries:
+        - fullName: Friend
+          label: Friend
+        - fullName: Partner
+          label: Partner
+        - fullName: Family
+          label: Family
+        - fullName: Coworker
+          label: Coworker
+        - fullName: Spouse
+          label: Spouse
+        - fullName: Sibling
+          label: Sibling
+        - fullName: Parent
+          label: Parent
+        - fullName: Child
+          label: Child
 
-    add_affiliation_status:
-        description: Add Affiliation Status picklist values
-        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: Metadata ETL
-        options:
-            managed: True
-            namespace_inject: $project_config.project__package__namespace
-            picklists:
-                - "%%%NAMESPACE%%%Affiliation__c.%%%NAMESPACE%%%Status__c"
-            entries:
-                - fullName: Current
-                  label: Current
-                - fullName: Former
-                  label: Former
+  add_relationship_status:
+    description: Add Relationship Status picklist values
+    class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+    group: Metadata ETL
+    options:
+      managed: True
+      namespace_inject: $project_config.project__package__namespace
+      picklists:
+        - "%%%NAMESPACE%%%Relationship__c.%%%NAMESPACE%%%Status__c"
+      entries:
+        - fullName: Current
+          label: Current
+        - fullName: Former
+          label: Former
 
-    add_affiliation_role:
-        description: Add Affiliation Role picklist values
-        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: Metadata ETL
-        options:
-            managed: True
-            namespace_inject: $project_config.project__package__namespace
-            picklists:
-                - "%%%NAMESPACE%%%Affiliation__c.%%%NAMESPACE%%%Role__c"
-            entries:
-                - fullName: Employee
-                  label: Employee
-                - fullName: Volunteer
-                  label: Volunteer
-                - fullName: Board Member
-                  label: Board Member
+  add_affiliation_status:
+    description: Add Affiliation Status picklist values
+    class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+    group: Metadata ETL
+    options:
+      managed: True
+      namespace_inject: $project_config.project__package__namespace
+      picklists:
+        - "%%%NAMESPACE%%%Affiliation__c.%%%NAMESPACE%%%Status__c"
+      entries:
+        - fullName: Current
+          label: Current
+        - fullName: Former
+          label: Former
 
-    add_address_type:
-        description: Add Address Type picklist values
-        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: Metadata ETL
-        options:
-            managed: True
-            namespace_inject: $project_config.project__package__namespace
-            picklists:
-                - "%%%NAMESPACE%%%Address__c.%%%NAMESPACE%%%Address_Type__c"
-            entries:
-                - fullName: Home
-                  label: Home
-                - fullName: Work
-                  label: Work
-                - fullName: Other
-                  label: Other
+  add_affiliation_role:
+    description: Add Affiliation Role picklist values
+    class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+    group: Metadata ETL
+    options:
+      managed: True
+      namespace_inject: $project_config.project__package__namespace
+      picklists:
+        - "%%%NAMESPACE%%%Affiliation__c.%%%NAMESPACE%%%Role__c"
+      entries:
+        - fullName: Employee
+          label: Employee
+        - fullName: Volunteer
+          label: Volunteer
+        - fullName: Board Member
+          label: Board Member
 
-    reorder_app_menu:
-        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
-        group: "NPPatch Config"
-        options:
-            path: scripts/ReorderAppMenu.cls
-            apex: setPPatchAppToFirst();
+  add_address_type:
+    description: Add Address Type picklist values
+    class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+    group: Metadata ETL
+    options:
+      managed: True
+      namespace_inject: $project_config.project__package__namespace
+      picklists:
+        - "%%%NAMESPACE%%%Address__c.%%%NAMESPACE%%%Address_Type__c"
+      entries:
+        - fullName: Home
+          label: Home
+        - fullName: Work
+          label: Work
+        - fullName: Other
+          label: Other
+
+  reorder_app_menu:
+    class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+    group: "NPPatch Config"
+    options:
+      path: scripts/ReorderAppMenu.cls
+      apex: setPPatchAppToFirst();
 
 flows:
-    # =========================================
-    # Setup Build Org with test prerequisites
-    # =========================================
-    setup_build_org:
-        description: Configure build org with StandardValueSet picklist values required by tests
-        steps:
-            1:
-                task: add_opportunity_stages
-            2:
-                task: add_ocr_roles
-            3:
-                task: deploy_pre
+  # =========================================
+  # Setup Build Org with test prerequisites
+  # =========================================
+  setup_build_org:
+    description: Configure build org with StandardValueSet picklist values required by tests
+    steps:
+      1:
+        task: add_opportunity_stages
+      2:
+        task: add_ocr_roles
+      3:
+        task: deploy_pre
 
-    release_unlocked_beta:
-        steps:
-            0:
-                flow: setup_build_org
-            1:
-                task: create_package_version
-                options:
-                    package_type: Unlocked
-                    package_name: $project_config.project__package__name
-                    skip_validation: False
-                    version_base: latest_github_release
-                    version_type: minor
-                    force_upload: True
-                    create_unlocked_dependency_packages: False
-                    org_dependent: True
-            5:
-                task: log_package_install_info
-                options:
-                    version_number: ^^create_package_version.version_number
-                    package_version_id: ^^create_package_version.subscriber_package_version_id
+  release_unlocked_beta:
+    steps:
+      0:
+        flow: setup_build_org
+      1:
+        task: create_package_version
+        options:
+          package_type: Unlocked
+          package_name: $project_config.project__package__name
+          skip_validation: False
+          version_base: latest_github_release
+          version_type: minor
+          force_upload: True
+          create_unlocked_dependency_packages: False
+          org_dependent: True
+      5:
+        task: log_package_install_info
+        options:
+          version_number: ^^create_package_version.version_number
+          package_version_id: ^^create_package_version.subscriber_package_version_id
 
-    config_dev:
-        steps:
-            2:
-                task: update_admin_profile
-            3:
-                task: deploy_dev_config_delete
-            4:
-                task: deploy_dev_config
-            5:
-                task: default_settings
-            6:
-                task: reorder_app_menu
+  config_dev:
+    steps:
+      2:
+        task: update_admin_profile
+      3:
+        task: deploy_dev_config_delete
+      4:
+        task: deploy_dev_config
+      5:
+        task: default_settings
+      6:
+        task: reorder_app_menu
 
-    # =========================================
-    # CI Feature 2GP: Override to add test org
-    # configuration after package installation
-    # =========================================
-    ci_feature_2gp:
-        description: Install managed 2GP package, configure test org, and run Apex tests
-        steps:
-            2.5:
-                task: add_opportunity_stages
-            2.6:
-                task: add_ocr_roles
-            2.7:
-                task: ensure_record_types
-                options:
-                    sobject: Account
-            2.8:
-                task: ensure_record_types
-                options:
-                    sobject: Opportunity
-            2.9:
-                task: assign_permission_sets
-                options:
-                    api_names: NPPatch_Admin
-            2.91:
-                task: default_settings
-                options:
-                    managed: True
-                    namespace_inject: $project_config.project__package__namespace
+  # =========================================
+  # CI Feature 2GP: Override to add test org
+  # configuration after package installation
+  # =========================================
+  ci_feature_2gp:
+    description: Install managed 2GP package, configure test org, and run Apex tests
+    steps:
+      2.5:
+        task: add_opportunity_stages
+      2.6:
+        task: add_ocr_roles
+      2.7:
+        task: ensure_record_types
+        options:
+          sobject: Account
+      2.8:
+        task: ensure_record_types
+        options:
+          sobject: Opportunity
+      2.9:
+        task: assign_permission_sets
+        options:
+          api_names: NPPatch_Admin
+      2.91:
+        task: default_settings
+        options:
+          managed: True
+          namespace_inject: $project_config.project__package__namespace
 
 orgs:
-    scratch:
-        build:
-            config_file: orgs/build.json
+  scratch:
+    build:
+      config_file: orgs/build.json
 
 plans:
-     preview:
-        slug: beta
-        title: Install NPPatch Beta - Sandbox, Scratch Org, or Developer Edition Only 
-        tier: primary
-        is_listed: True
-        checks:
-            - when: "not tasks.check_my_domain_active()"
-              action: error
-              message: "Please enable My Domain in your org prior to installing."
-            - when: "not tasks.check_chatter_enabled()"
-              action: error
-              message: "NPPatch requires Chatter. Please enable Chatter in your org and try again."
-            - when: "'nppatch' in org_config.installed_packages"
-              action: error
-              message: "NPPatch is already installed in this org. This installer cannot be used with orgs that already have NPPatch."
-            - when: "tasks.check_advanced_currency_management()"
-              action: error
-              message: "Advanced Currency Management must be disabled to install NPPatch, but can be enabled after installation."
-            - when: "tasks.check_org_is_not_production()"                                                                                                               
-              action: error                                                                                                                                             
-              message: "NPPatch Beta cannot be installed in a production org. Please use a sandbox, scratch org, or Developer Edition."  
-        steps:
-            1:
-                task: update_dependencies
-            2:
-                task: deploy
-                options:
-                    path: unpackaged/pre/account_record_types
-                ui_options:
-                    name: Account Record Types
-            3:
-                task: ensure_record_type
-                ui_options:
-                    name: Opportunity Record Types
-            4:
-                task: install_managed_beta
+  preview:
+    slug: beta
+    title: Install NPPatch Beta - Sandbox, Scratch Org, or Developer Edition Only
+    tier: primary
+    is_listed: True
+    checks:
+      - when: "not tasks.check_my_domain_active()"
+        action: error
+        message: "Please enable My Domain in your org prior to installing."
+      - when: "not tasks.check_chatter_enabled()"
+        action: error
+        message: "NPPatch requires Chatter. Please enable Chatter in your org and try again."
+      - when: "'nppatch' in org_config.installed_packages"
+        action: error
+        message: "NPPatch is already installed in this org. This installer cannot be used with orgs that already have NPPatch."
+      - when: "tasks.check_advanced_currency_management()"
+        action: error
+        message: "Advanced Currency Management must be disabled to install NPPatch, but can be enabled after installation."
+      - when: "tasks.check_org_is_not_production()"
+        action: error
+        message: "NPPatch Beta cannot be installed in a production org. Please use a sandbox, scratch org, or Developer Edition."
+    steps:
+      1:
+        task: update_dependencies
+      2:
+        task: deploy
+        options:
+          path: unpackaged/pre/account_record_types
+        ui_options:
+          name: Account Record Types
+      3:
+        task: ensure_record_types
+        options:
+          sobject: Opportunity
+        ui_options:
+          name: Opportunity Record Types
+      4:
+        task: install_managed_beta
