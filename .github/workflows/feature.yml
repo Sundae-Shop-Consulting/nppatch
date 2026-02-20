@@ -38,7 +38,6 @@ jobs:
                     --package_type Unlocked \
                     --package_name nppatch-common \
                     --skip_validation True \
-                    --org_dependent True \
                     --force_upload True \
                     --version_type minor 2>&1 | tee common-build.log
                   COMMON_VERSION=$(grep -o -E "04t[a-zA-Z0-9]{15}" common-build.log | tail -1)
