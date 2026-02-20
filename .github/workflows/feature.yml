@@ -31,15 +31,12 @@ jobs:
             - name: Setup Build Org
               run: cci flow run setup_build_org
             - name: Build Common Package
-              env:
-                  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
               run: |
-                  cci task run create_package_version \
-                    --package_type Unlocked \
-                    --package_name nppatch-common \
-                    --skip_validation True \
-                    --force_upload True \
-                    --version_type minor 2>&1 | tee common-build.log
+                  sf package version create \
+                    --package nppatch-common \
+                    --skip-validation \
+                    --wait 20 \
+                    --target-dev-hub DevHub 2>&1 | tee common-build.log
                   COMMON_VERSION=$(grep -o -E "04t[a-zA-Z0-9]{15}" common-build.log | tail -1)
                   echo "COMMON_VERSION=$COMMON_VERSION" >> $GITHUB_ENV
               shell: bash
