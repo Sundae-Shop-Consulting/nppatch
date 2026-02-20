@@ -30,6 +30,20 @@ jobs:
               run: cci org default feature
             - name: Setup Build Org
               run: cci flow run setup_build_org
+            - name: Build Common Package
+              env:
+                  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+              run: |
+                  cci task run create_package_version \
+                    --package_type Unlocked \
+                    --package_name nppatch-common \
+                    --skip_validation True \
+                    --org_dependent True \
+                    --force_upload True \
+                    --version_type minor 2>&1 | tee common-build.log
+                  COMMON_VERSION=$(grep -o -E "04t[a-zA-Z0-9]{15}" common-build.log | tail -1)
+                  echo "COMMON_VERSION=$COMMON_VERSION" >> $GITHUB_ENV
+              shell: bash
             - name: Build Feature Test Package
               env:
                   GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
@@ -48,6 +62,8 @@ jobs:
                     -f description="version_id: $VERSION" \
                     -f context='Build Feature Test Package'
               shell: bash
+            - name: Install Common Package
+              run: cci task run install_managed --version ${{ env.COMMON_VERSION }}
             - name: Run Feature Test
               env:
                   GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
