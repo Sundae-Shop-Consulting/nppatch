@@ -1,0 +1,66 @@
+{
+    "product": {
+        "title": {
+            "message": "NPPatch",
+            "description": "name of product"
+        },
+        "short_description": {
+            "message": "A community-owned, open-source Salesforce package for nonprofit organizations",
+            "description": "tagline of product"
+        },
+        "description": {
+            "message": "A community-owned, open-source Salesforce package for nonprofit organizations \u2014 built on the Nonprofit Success Pack (NPSP) codebase.",
+            "description": "shown on product detail page (markdown)"
+        },
+        "click_through_agreement": {
+            "message": "By clicking \"Install,\" you acknowledge and agree to the following:                                                                                             \r\n\r\nThis software is provided \"as is\" without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement. In no event shall the authors or distributors be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from, out of, or in connection with the software or the use or other dealings in the software.\r\n\r\nYou are solely responsible for evaluating the suitability of this software for your environment. Installation may modify metadata, data, and configuration in your Salesforce org. It is strongly recommended that you install in a sandbox or test environment before installing in production.\r\n\r\nBy proceeding, you confirm that you have the authority to install software in the target Salesforce org and accept all risks associated with this installation.",
+            "description": "legal text shown in modal dialog"
+        },
+        "error_message": {
+            "message": "Something went wrong",
+            "description": "shown after failed installation (markdown)"
+        }
+    },
+    "plan:preview": {
+        "title": {
+            "message": "Install NPPatch Beta - Sandbox, Scratch Org, or Developer Edition Only",
+            "description": "title of installation plan"
+        }
+    },
+    "checks": {
+        "Please enable My Domain in your org prior to installing.": {
+            "message": "Please enable My Domain in your org prior to installing.",
+            "description": "shown if validation fails"
+        },
+        "NPPatch requires Chatter. Please enable Chatter in your org and try again.": {
+            "message": "NPPatch requires Chatter. Please enable Chatter in your org and try again.",
+            "description": "shown if validation fails"
+        },
+        "NPPatch is already installed in this org. This installer cannot be used with orgs that already have NPPatch.": {
+            "message": "NPPatch is already installed in this org. This installer cannot be used with orgs that already have NPPatch.",
+            "description": "shown if validation fails"
+        },
+        "Advanced Currency Management must be disabled to install NPPatch, but can be enabled after installation.": {
+            "message": "Advanced Currency Management must be disabled to install NPPatch, but can be enabled after installation.",
+            "description": "shown if validation fails"
+        },
+        "NPPatch Beta cannot be installed in a production org. Please use a sandbox, scratch org, or Developer Edition.": {
+            "message": "NPPatch Beta cannot be installed in a production org. Please use a sandbox, scratch org, or Developer Edition.",
+            "description": "shown if validation fails"
+        }
+    },
+    "steps": {
+        "Account Record Types": {
+            "message": "Account Record Types",
+            "description": "title of installation step"
+        },
+        "Opportunity Record Types": {
+            "message": "Opportunity Record Types",
+            "description": "title of installation step"
+        },
+        "Install {product} {version}": {
+            "message": "Install {product} {version}",
+            "description": "title of installation step"
+        }
+    }
+}
