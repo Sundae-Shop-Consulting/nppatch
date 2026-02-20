@@ -769,10 +769,6 @@
         <label>Salesforce encountered these NPPatch errors. If you&apos;re unsure how to resolve the errors, post a message in the NPPatch group.</label>
     </customLabels>
     <customLabels>
-        <name>FieldSetRelatedFieldError</name>
-        <label>Related field {0} not supported in field set {1}. You can only include fields directly on object {2}.</label>
-    </customLabels>
-    <customLabels>
         <name>HiddenForSecurity</name>
         <label>Hidden for security</label>
     </customLabels>
@@ -3645,10 +3641,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</label
         <label>A validation rule is preventing the record from saving:</label>
     </customLabels>
     <customLabels>
-        <name>flsError</name>
-        <label>You do not have permissions to modify {0}.</label>
-    </customLabels>
-    <customLabels>
         <name>flsReadAccessError</name>
         <label>You do not have permissions to access {0}.</label>
     </customLabels>
@@ -6103,10 +6095,6 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <label>Do not create a new {0} upon conversion.</label>
     </customLabels>
     <customLabels>
-        <name>leadConvertOwner</name>
-        <label>Record Owner</label>
-    </customLabels>
-    <customLabels>
         <name>leadConvertPageTitle</name>
         <label>Convert Lead:</label>
     </customLabels>
@@ -6853,10 +6841,6 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
     <customLabels>
         <name>stgCountOf</name>
         <label>Count of</label>
-    </customLabels>
-    <customLabels>
-        <name>stgCreatedBy</name>
-        <label>Created By</label>
     </customLabels>
     <customLabels>
         <name>stgCRLPHouseholdAccountError</name>
@@ -7994,10 +7978,6 @@ Note: The NPPatch Settings tab is visible in the NPPatch application. If you don
     <customLabels>
         <name>stgLabelYearPicklistYearsAgo</name>
         <label>{0} Years Ago</label>
-    </customLabels>
-    <customLabels>
-        <name>stgLastModifiedBy</name>
-        <label>Last Modified By</label>
     </customLabels>
     <customLabels>
         <name>stgLinkDelete</name>

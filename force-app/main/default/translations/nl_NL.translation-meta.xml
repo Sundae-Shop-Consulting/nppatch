@@ -769,10 +769,6 @@
         <label>Salesforce heeft deze NPPatch-fouten ontdekt. Als u niet zeker weet hoe u de fouten oplost, plaatst u een bericht in de NPPatch-groep.</label>
     </customLabels>
     <customLabels>
-        <name>FieldSetRelatedFieldError</name>
-        <label>Gerelateerd veld {0} wordt niet ondersteund in de veldset {1}. U kunt alleen in object {2} velden rechtstreeks opnemen.</label>
-    </customLabels>
-    <customLabels>
         <name>HiddenForSecurity</name>
         <label>Verborgen uit veiligheid</label>
     </customLabels>
@@ -3645,10 +3641,6 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
         <label>Een validatieregel weerhoudt de record van opslaan:</label>
     </customLabels>
     <customLabels>
-        <name>flsError</name>
-        <label>U beschikt niet over machtigingen om {0} te wijzigen.</label>
-    </customLabels>
-    <customLabels>
         <name>flsReadAccessError</name>
         <label>U hebt geen machtigingen voor toegang tot {0}.</label>
     </customLabels>
@@ -6102,10 +6094,6 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
         <label>Maak bij conversie geen nieuwe {0}.</label>
     </customLabels>
     <customLabels>
-        <name>leadConvertOwner</name>
-        <label>Recordeigenaar</label>
-    </customLabels>
-    <customLabels>
         <name>leadConvertPageTitle</name>
         <label>Lead converteren:</label>
     </customLabels>
@@ -6852,10 +6840,6 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     <customLabels>
         <name>stgCountOf</name>
         <label>Telling van</label>
-    </customLabels>
-    <customLabels>
-        <name>stgCreatedBy</name>
-        <label>Gecreëerd door</label>
     </customLabels>
     <customLabels>
         <name>stgCRLPHouseholdAccountError</name>
@@ -7993,10 +7977,6 @@ Opmerking: Het tabblad NPPatch-instellingen is zichtbaar in de toepassing NPPatc
     <customLabels>
         <name>stgLabelYearPicklistYearsAgo</name>
         <label>{0} Jaar geleden</label>
-    </customLabels>
-    <customLabels>
-        <name>stgLastModifiedBy</name>
-        <label>Laatst bijgewerkt door</label>
     </customLabels>
     <customLabels>
         <name>stgLinkDelete</name>

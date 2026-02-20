@@ -769,10 +769,6 @@
         <label>Salesforce hat diese NPPatch-Fehler festgestellt. Wenn Sie nicht sicher sind, wie Sie diese Fehler beheben können, veröffentlichen Sie eine Nachricht in der NPPatch-Gruppe.</label>
     </customLabels>
     <customLabels>
-        <name>FieldSetRelatedFieldError</name>
-        <label>Das zugehörige Feld {0} wird in der Feldgruppe {1} nicht unterstützt. Sie können nur Felder einschließen, die sich direkt auf Objekt {2} befinden.</label>
-    </customLabels>
-    <customLabels>
         <name>HiddenForSecurity</name>
         <label>Aus Sicherheitsgründen ausgeblendet</label>
     </customLabels>
@@ -3645,10 +3641,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
         <label>Eine Validierungsregel verhindert, dass der Datensatz gespeichert wird:</label>
     </customLabels>
     <customLabels>
-        <name>flsError</name>
-        <label>Sie sind nicht berechtigt, {0} zu ändern.</label>
-    </customLabels>
-    <customLabels>
         <name>flsReadAccessError</name>
         <label>Sie sind nicht zum Zugriff auf {0} berechtigt.</label>
     </customLabels>
@@ -6103,10 +6095,6 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
         <label>Keinen neuen {0} bei Konvertierung erstellen</label>
     </customLabels>
     <customLabels>
-        <name>leadConvertOwner</name>
-        <label>Datensatzeigentümer</label>
-    </customLabels>
-    <customLabels>
         <name>leadConvertPageTitle</name>
         <label>Lead konvertieren:</label>
     </customLabels>
@@ -6853,10 +6841,6 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     <customLabels>
         <name>stgCountOf</name>
         <label>Anzahl an</label>
-    </customLabels>
-    <customLabels>
-        <name>stgCreatedBy</name>
-        <label>Erstellt von</label>
     </customLabels>
     <customLabels>
         <name>stgCRLPHouseholdAccountError</name>
@@ -7994,10 +7978,6 @@ Hinweis: Die Registerkarte &quot;NPPatch-Einstellungen&quot; ist in der NPPatch-
     <customLabels>
         <name>stgLabelYearPicklistYearsAgo</name>
         <label>Vor {0} Jahren</label>
-    </customLabels>
-    <customLabels>
-        <name>stgLastModifiedBy</name>
-        <label>Zuletzt geändert von</label>
     </customLabels>
     <customLabels>
         <name>stgLinkDelete</name>

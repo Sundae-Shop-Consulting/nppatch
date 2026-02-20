@@ -769,10 +769,6 @@
         <label>Salesforce a rencontré ces erreurs NPPatch. Si vous ne savez pas comment corriger les erreurs, publiez un message dans le groupe NPPatch.</label>
     </customLabels>
     <customLabels>
-        <name>FieldSetRelatedFieldError</name>
-        <label>Champ associé {0} non pris en charge dans l’ensemble de champs {1}. Vous pouvez uniquement inclure des champs directement sur l’objet {2}.</label>
-    </customLabels>
-    <customLabels>
         <name>HiddenForSecurity</name>
         <label>Caché pour sécurité</label>
     </customLabels>
@@ -3646,10 +3642,6 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
         <label>Une règle de validation empêche d’enregistrer cet enregistrement :</label>
     </customLabels>
     <customLabels>
-        <name>flsError</name>
-        <label>Vous n’êtes pas autorisé à modifier {0}.</label>
-    </customLabels>
-    <customLabels>
         <name>flsReadAccessError</name>
         <label>Vous n’êtes pas autorisé(e) à accéder à {0}.</label>
     </customLabels>
@@ -6104,10 +6096,6 @@ Si vous préférez, vous pouvez désactiver la Saisie de dons et utiliser à la 
         <label>Ne pas créer de nouveau {0} lors de la conversion.</label>
     </customLabels>
     <customLabels>
-        <name>leadConvertOwner</name>
-        <label>Propriétaire de l’enregistrement</label>
-    </customLabels>
-    <customLabels>
         <name>leadConvertPageTitle</name>
         <label>Convertir la piste :</label>
     </customLabels>
@@ -6854,10 +6842,6 @@ Si vous préférez, vous pouvez désactiver la Saisie de dons et utiliser à la 
     <customLabels>
         <name>stgCountOf</name>
         <label>Nombre de</label>
-    </customLabels>
-    <customLabels>
-        <name>stgCreatedBy</name>
-        <label>Créé par</label>
     </customLabels>
     <customLabels>
         <name>stgCRLPHouseholdAccountError</name>
@@ -7995,10 +7979,6 @@ Remarque : l’onglet de paramètres NPPatch est visible dans l’application N
     <customLabels>
         <name>stgLabelYearPicklistYearsAgo</name>
         <label>Il y a {0} ans</label>
-    </customLabels>
-    <customLabels>
-        <name>stgLastModifiedBy</name>
-        <label>Dernière modification par</label>
     </customLabels>
     <customLabels>
         <name>stgLinkDelete</name>

@@ -769,10 +769,6 @@
         <label>O Salesforce encontrou estes erros do NPPatch. Se você não sabe como resolver os erros, poste uma mensagem no grupo NPPatch.</label>
     </customLabels>
     <customLabels>
-        <name>FieldSetRelatedFieldError</name>
-        <label>Campo relacionado {0} não suportado no conjunto de campos {1}. Você só pode incluir campos diretamente no objeto {2}.</label>
-    </customLabels>
-    <customLabels>
         <name>HiddenForSecurity</name>
         <label>Ocultado por questões de segurança</label>
     </customLabels>
@@ -3645,10 +3641,6 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
         <label>Uma regra de validação está impedindo que o registro seja salvo:</label>
     </customLabels>
     <customLabels>
-        <name>flsError</name>
-        <label>Você não tem permissões para modificar {0}.</label>
-    </customLabels>
-    <customLabels>
         <name>flsReadAccessError</name>
         <label>Você não tem permissões para acessar {0}.</label>
     </customLabels>
@@ -6103,10 +6095,6 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
         <label>Não criar {0} após a conversão.</label>
     </customLabels>
     <customLabels>
-        <name>leadConvertOwner</name>
-        <label>Proprietário do registro</label>
-    </customLabels>
-    <customLabels>
         <name>leadConvertPageTitle</name>
         <label>Converter lead:</label>
     </customLabels>
@@ -6853,10 +6841,6 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     <customLabels>
         <name>stgCountOf</name>
         <label>Contagem de</label>
-    </customLabels>
-    <customLabels>
-        <name>stgCreatedBy</name>
-        <label>Criado por</label>
     </customLabels>
     <customLabels>
         <name>stgCRLPHouseholdAccountError</name>
@@ -7994,10 +7978,6 @@ Nota: a guia Configurações do NPPatch está visível no aplicativo Pacote de s
     <customLabels>
         <name>stgLabelYearPicklistYearsAgo</name>
         <label>{0} anos atrás</label>
-    </customLabels>
-    <customLabels>
-        <name>stgLastModifiedBy</name>
-        <label>Última modificação por</label>
     </customLabels>
     <customLabels>
         <name>stgLinkDelete</name>

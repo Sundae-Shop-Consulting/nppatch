@@ -3203,10 +3203,6 @@
         <name>exceptionValidationRule</name>
     </customLabels>
     <customLabels>
-        <label>אין לך הרשאות לשנות את {0}.</label>
-        <name>flsError</name>
-    </customLabels>
-    <customLabels>
         <label><!-- flsReadAccessError --></label>
         <name>flsReadAccessError</name>
     </customLabels>
@@ -5611,10 +5607,6 @@
         <name>leadConvertNewOpp</name>
     </customLabels>
     <customLabels>
-        <label>בעל רשומה</label>
-        <name>leadConvertOwner</name>
-    </customLabels>
-    <customLabels>
         <label>המר הפניה:</label>
         <name>leadConvertPageTitle</name>
     </customLabels>
@@ -6209,10 +6201,6 @@
     <customLabels>
         <label><!-- stgCountOf --></label>
         <name>stgCountOf</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- stgCreatedBy --></label>
-        <name>stgCreatedBy</name>
     </customLabels>
     <customLabels>
         <label><!-- stgDIFMNonAdminError --></label>
@@ -7276,10 +7264,6 @@
     <customLabels>
         <label><!-- Label for dynamic number of years ago --></label>
         <name>stgLabelYearPicklistYearsAgo</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Last Modified By --></label>
-        <name>stgLastModifiedBy</name>
     </customLabels>
     <customLabels>
         <label>מחק</label>

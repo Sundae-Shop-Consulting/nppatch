@@ -769,10 +769,6 @@
         <label>Salesforce でこれらの NPPatch エラーが発生しました。エラーの解決方法がわからない場合は、NPPatch グループにメッセージを投稿してください</label>
     </customLabels>
     <customLabels>
-        <name>FieldSetRelatedFieldError</name>
-        <label>{0} 関連項目は {1} 項目セットでサポートされていません。項目を直接含めることができるのは {2} オブジェクトのみです。</label>
-    </customLabels>
-    <customLabels>
         <name>HiddenForSecurity</name>
         <label>非表示にしてセキュリティを確保</label>
     </customLabels>
@@ -3636,10 +3632,6 @@
         <label>入力規則が原因でレコードを保存できません:</label>
     </customLabels>
     <customLabels>
-        <name>flsError</name>
-        <label>{0} を変更する権限がありません。</label>
-    </customLabels>
-    <customLabels>
         <name>flsReadAccessError</name>
         <label>{0} にアクセスする権限がありません。</label>
     </customLabels>
@@ -6094,10 +6086,6 @@
         <label>変換時に新規{0}は作成しない。</label>
     </customLabels>
     <customLabels>
-        <name>leadConvertOwner</name>
-        <label>レコードの所有者</label>
-    </customLabels>
-    <customLabels>
         <name>leadConvertPageTitle</name>
         <label>リードの取引開始:</label>
     </customLabels>
@@ -6844,10 +6832,6 @@
     <customLabels>
         <name>stgCountOf</name>
         <label>数:</label>
-    </customLabels>
-    <customLabels>
-        <name>stgCreatedBy</name>
-        <label>作成:</label>
     </customLabels>
     <customLabels>
         <name>stgCRLPHouseholdAccountError</name>
@@ -7984,10 +7968,6 @@
     <customLabels>
         <name>stgLabelYearPicklistYearsAgo</name>
         <label>{0} 年前</label>
-    </customLabels>
-    <customLabels>
-        <name>stgLastModifiedBy</name>
-        <label>最終変更:</label>
     </customLabels>
     <customLabels>
         <name>stgLinkDelete</name>

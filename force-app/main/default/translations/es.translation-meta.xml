@@ -769,10 +769,6 @@
         <label>Salesforce encontró estos errores de NPPatch. Si no está seguro de cómo resolver los errores, publique un mensaje en el grupo NPPatch.</label>
     </customLabels>
     <customLabels>
-        <name>FieldSetRelatedFieldError</name>
-        <label>No se admite el campo relacionado {0} en el conjunto de campos {1}. Solo puede incluir campos directamente en el objeto {2}.</label>
-    </customLabels>
-    <customLabels>
         <name>HiddenForSecurity</name>
         <label>Oculto por seguridad</label>
     </customLabels>
@@ -3639,10 +3635,6 @@ Para comprobar su configuración de asignaciones de CCG, vaya a Donaciones | Asi
         <label>Una regla de validación está impidiendo que se guarde el registro:</label>
     </customLabels>
     <customLabels>
-        <name>flsError</name>
-        <label>No tiene permisos para modificar {0}.</label>
-    </customLabels>
-    <customLabels>
         <name>flsReadAccessError</name>
         <label>No tiene permisos para acceder a {0}.</label>
     </customLabels>
@@ -6097,10 +6089,6 @@ Si lo prefiere, puede desactivar Entrada de regalos y utilizar la herramienta En
         <label>No crear una nueva {0} en la conversión</label>
     </customLabels>
     <customLabels>
-        <name>leadConvertOwner</name>
-        <label>Propietario del registro</label>
-    </customLabels>
-    <customLabels>
         <name>leadConvertPageTitle</name>
         <label>Convertir candidato:</label>
     </customLabels>
@@ -6847,10 +6835,6 @@ Si lo prefiere, puede desactivar Entrada de regalos y utilizar la herramienta En
     <customLabels>
         <name>stgCountOf</name>
         <label>Recuento de</label>
-    </customLabels>
-    <customLabels>
-        <name>stgCreatedBy</name>
-        <label>Creado por</label>
     </customLabels>
     <customLabels>
         <name>stgCRLPHouseholdAccountError</name>
@@ -7984,10 +7968,6 @@ Nota: La ficha Configuración de NPPatch es visible en la aplicación NPPatch. S
     <customLabels>
         <name>stgLabelYearPicklistYearsAgo</name>
         <label>Hace {0} años</label>
-    </customLabels>
-    <customLabels>
-        <name>stgLastModifiedBy</name>
-        <label>Última modificación por</label>
     </customLabels>
     <customLabels>
         <name>stgLinkDelete</name>
