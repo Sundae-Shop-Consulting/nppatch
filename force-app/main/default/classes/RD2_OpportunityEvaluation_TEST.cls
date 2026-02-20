@@ -963,7 +963,7 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
             .build();
 
         // Disable the trigger to ensure the change happens in the batch job vs. the trigger.
-        TDTM_ProcessControl.toggleTriggerState('Recurring_Donation__c', 'RD2_RecurringDonations_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Recurring_Donation__c', 'RD2_RecurringDonations_TDTM', false);
 
         rd.Total_Paid_Installments__c = plannedInstallments-1;
         update rd;
@@ -1000,7 +1000,7 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
         insert rd;
 
         // Disable the trigger to ensure the change happens in the batch job vs. the trigger.
-        TDTM_ProcessControl.toggleTriggerState('Recurring_Donation__c', 'RD2_RecurringDonations_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Recurring_Donation__c', 'RD2_RecurringDonations_TDTM', false);
 
         TEST_OpportunityBuilder oppBuilder = TEST_OpportunityBuilder.getOpportunityBuilder(rd).withClosedWonStage();
         List<Opportunity> opps = new List<Opportunity>();

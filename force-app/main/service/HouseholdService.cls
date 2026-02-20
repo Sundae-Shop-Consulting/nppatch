@@ -426,9 +426,9 @@ public inherited sharing class HouseholdService {
         TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.flag.HH, true);
         // Suppress the trigger handler that creates Addresses from Accounts, as
         // the Addresses will be inserted using the Contact info as a next step.
-        TDTM_ProcessControl.toggleTriggerState('Account', 'ADDR_Account_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Account', 'ADDR_Account_TDTM', false);
         List<Database.SaveResult> insertResults = UTIL_DMLService.insertRecords(accountsToInsert, false);
-        TDTM_ProcessControl.toggleTriggerState('Account', 'ADDR_Account_TDTM', true);
+        TDTM_Config_API.toggleTriggerState('Account', 'ADDR_Account_TDTM', true);
         TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.flag.HH, false);
 
         applyErrorsToContactRecords(insertResults, accountsToInsert, contactRecords);

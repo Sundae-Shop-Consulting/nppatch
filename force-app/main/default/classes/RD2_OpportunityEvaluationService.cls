@@ -566,8 +566,8 @@ public inherited sharing class RD2_OpportunityEvaluationService {
      * @return void
      */
     private void toggleTriggerState(Boolean isActive) {
-        TDTM_ProcessControl.toggleTriggerState('Recurring_Donation__c', 'RD2_RecurringDonations_TDTM', isActive);
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'RD2_RecurringDonationsOpp_TDTM', isActive);
+        TDTM_Config_API.toggleTriggerState('Recurring_Donation__c', 'RD2_RecurringDonations_TDTM', isActive);
+        TDTM_Config_API.toggleTriggerState('Opportunity', 'RD2_RecurringDonationsOpp_TDTM', isActive);
     }
 
     /**

@@ -915,62 +915,62 @@ public class UTIL_UnitTestData_TEST {
     /* @description Disable all Affiliations related trigger handlers when not needed to improve performance */
     public static void disableAffiliationsTriggers() {
         createDefaultTDTMHandlers();
-        TDTM_ProcessControl.toggleTriggerState('Contact', 'AFFL_Affiliations_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Account', 'AFFL_Affiliations_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Affiliation__c', 'AFFL_Affiliations_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Contact', 'AFFL_Affiliations_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Account', 'AFFL_Affiliations_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Affiliation__c', 'AFFL_Affiliations_TDTM', false);
     }
     /* @description Disable all Relationship related trigger handlers when not needed to improve performance */
     public static void disableRelationshipTriggers() {
         createDefaultTDTMHandlers();
-        TDTM_ProcessControl.toggleTriggerState('CampaignMember', 'REL_Relationships_Cm_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Contact', 'REL_Relationships_Con_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Relationship__c', 'REL_Relationships_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('CampaignMember', 'REL_Relationships_Cm_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Contact', 'REL_Relationships_Con_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Relationship__c', 'REL_Relationships_TDTM', false);
     }
     /* @description Disable all OppContactRole elated trigger handlers when not needed to improve performance */
     public static void disableOCRTriggers() {
         createDefaultTDTMHandlers();
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'OPP_OpportunityContactRoles_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'HH_OppContactRoles_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Opportunity', 'OPP_OpportunityContactRoles_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Opportunity', 'HH_OppContactRoles_TDTM', false);
     }
     /* @description Disable all non-OCR related Opportunity trigger handlers when not needed to improve performance */
     public static void disableOppNonOCRTriggers() {
         createDefaultTDTMHandlers();
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'MTCH_Opportunity_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'PSC_Opportunity_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'OPP_CampaignMember_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Opportunity', 'MTCH_Opportunity_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Opportunity', 'PSC_Opportunity_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Opportunity', 'OPP_CampaignMember_TDTM', false);
     }
     /* @description Disable all OppRollup related trigger handlers when not needed to improve performance */
     public static void disableRollupTriggers() {
         createDefaultTDTMHandlers();
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'RLLP_OppRollup_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Task', 'EP_TaskRollup_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Opportunity', 'RLLP_OppRollup_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Task', 'EP_TaskRollup_TDTM', false);
     }
     /* @description Disable all OppRollup related trigger handlers when not needed to improve performance */
     public static void disableCustomizableRollupTriggers() {
         createDefaultTDTMHandlers();
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'CRLP_Rollup_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('OppPayment__c', 'CRLP_Rollup_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Allocation__c', 'CRLP_Rollup_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Opportunity', 'CRLP_Rollup_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('OppPayment__c', 'CRLP_Rollup_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Allocation__c', 'CRLP_Rollup_TDTM', false);
     }
     /* @description Disable all Account/Contact Merge related trigger handlers when not needed to improve performance */
     public static void disableMergeTriggers() {
         createDefaultTDTMHandlers();
-        TDTM_ProcessControl.toggleTriggerState('Contact', 'CON_ContactMerge_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Account', 'ACCT_AccountMerge_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Contact', 'CON_ContactMerge_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Account', 'ACCT_AccountMerge_TDTM', false);
     }
     /* @description Disable all HH Naming related trigger handlers and setting when not needed to improve performance */
     public static void disableHHNamingTriggers() {
         createDefaultTDTMHandlers();
-        TDTM_ProcessControl.toggleTriggerState('Contact', 'HH_Households_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Contact', 'HH_Households_TDTM', false);
         turnOffAutomaticHHNaming();
     }
     /* @description Disable all HH Naming related trigger handlers and setting when not needed to improve performance */
     public static void disableAddressTriggers() {
         createDefaultTDTMHandlers();
-        TDTM_ProcessControl.toggleTriggerState('Account', 'ADDR_Account_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Contact', 'ADDR_Contact_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Address__c', 'ADDR_Addresses_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Address__c', 'ADDR_Validator_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Account', 'ADDR_Account_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Contact', 'ADDR_Contact_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Address__c', 'ADDR_Addresses_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Address__c', 'ADDR_Validator_TDTM', false);
         turnOffAutomaticHHNaming();
     }
 

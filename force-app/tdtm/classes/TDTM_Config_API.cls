@@ -97,9 +97,25 @@ global class TDTM_Config_API {
      */
     @InvocableMethod(Label='Disable NPPatch Rollup Triggers')
     global static void disableAllRollupTriggers() {
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'RLLP_OppRollup_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'CRLP_Rollup_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('OppPayment__c', 'CRLP_Rollup_TDTM', false);
+        toggleTriggerState('Opportunity', 'RLLP_OppRollup_TDTM', false);
+        toggleTriggerState('Opportunity', 'CRLP_Rollup_TDTM', false);
+        toggleTriggerState('OppPayment__c', 'CRLP_Rollup_TDTM', false);
+    }
+
+    /*******************************************************************************************************
+    * @description Modifies the global static collection of Trigger_Handler records to disable or enable
+    * a specific TriggerHander by SObjectName and ApexClass name.
+    * @param objName SObject Name
+    * @param className Apex Class Name
+    * @param state True (enable) | False (disable)
+    */
+    public static void toggleTriggerState(String objName, String className, Boolean state) {
+        List<Trigger_Handler__c> triggerHandlers = getCachedRecords();
+        for (Trigger_Handler__c th : triggerHandlers) {
+            if (th.Object__c == objName && th.Class__c == className) {
+                th.Active__c = state;
+            }
+        }
     }
 
 

@@ -1135,7 +1135,7 @@ private with sharing class ALLO_Allocations_TEST {
         setupSettings(new Allocations_Settings__c(Default_Allocations_Enabled__c = true, Default__c = defaultGau.Id));
 
         // disable the allocations trigger to prevent allocations from being created at all
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'ALLO_Allocations_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Opportunity', 'ALLO_Allocations_TDTM', false);
 
         Account acc = new Account(Name='foo');
         insert acc;

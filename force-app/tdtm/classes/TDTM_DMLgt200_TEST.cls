@@ -326,8 +326,8 @@ private class TDTM_DMLgt200_TEST {
         UTIL_UnitTestData_TEST.disableRelationshipTriggers();
         UTIL_UnitTestData_TEST.disableMergeTriggers();
         UTIL_UnitTestData_TEST.disableHHNamingTriggers();
-        TDTM_ProcessControl.toggleTriggerState('Contact', 'CON_DoNotContact_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Address__c', 'ADDR_Validator_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Contact', 'CON_DoNotContact_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Address__c', 'ADDR_Validator_TDTM', false);
 
         // Create more than 200 Contact records and then validate that all of the Addresses were verified
         List<Contact> contacts = createMultipleTestContactsWithAddress(insertCnt);

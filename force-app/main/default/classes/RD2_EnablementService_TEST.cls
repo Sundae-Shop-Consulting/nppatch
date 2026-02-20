@@ -340,8 +340,8 @@ public with sharing class RD2_EnablementService_TEST {
     * @return none
     */
     private static void disableRD2Trigger() {
-        TDTM_ProcessControl.toggleTriggerState('Recurring_Donation__c', 'RD2_RecurringDonations_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'RD2_RecurringDonationsOpp_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Recurring_Donation__c', 'RD2_RecurringDonations_TDTM', false);
+        TDTM_Config_API.toggleTriggerState('Opportunity', 'RD2_RecurringDonationsOpp_TDTM', false);
     }
 
     /***

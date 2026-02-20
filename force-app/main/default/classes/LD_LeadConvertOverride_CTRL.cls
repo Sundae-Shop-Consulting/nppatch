@@ -602,7 +602,7 @@ public with sharing class LD_LeadConvertOverride_CTRL {
         }
         if (affiliationId != null) {
             // Re-Enable the Affilations Trigger for the Contact
-            TDTM_ProcessControl.toggleTriggerState(
+            TDTM_Config_API.toggleTriggerState(
                     'Contact', 'AFFL_Affiliations_TDTM', true);
             new AffiliationNonDupeWithoutSharing(leadToConvert, leadConversionResult.getContactId(),
                     affiliationId, true).createNonDupeAffiliation();
@@ -737,7 +737,7 @@ public with sharing class LD_LeadConvertOverride_CTRL {
     }
 
     private void disableAffiliationTrigger() {
-        TDTM_ProcessControl.toggleTriggerState(
+        TDTM_Config_API.toggleTriggerState(
                 'Contact', 'AFFL_Affiliations_TDTM', false);
     }
 

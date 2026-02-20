@@ -308,7 +308,7 @@ public class RD2_QueueableService {
                 }
             }
 
-            TDTM_ProcessControl.toggleTriggerState('Opportunity', 'RD2_RecurringDonationsOpp_TDTM', false);
+            TDTM_Config_API.toggleTriggerState('Opportunity', 'RD2_RecurringDonationsOpp_TDTM', false);
             update renamedOpps;
         }
     }

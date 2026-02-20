@@ -395,12 +395,12 @@ public with sharing class CON_ContactMergeTDTM_TEST2 {
         insert listOpp;
 
         // Re-enable Legacy Rollup Triggers
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'RLLP_OppRollup_TDTM', true);
-        TDTM_ProcessControl.toggleTriggerState('Task', 'EP_TaskRollup_TDTM', true);
+        TDTM_Config_API.toggleTriggerState('Opportunity', 'RLLP_OppRollup_TDTM', true);
+        TDTM_Config_API.toggleTriggerState('Task', 'EP_TaskRollup_TDTM', true);
 
         // Re-enable CRLP Rollup Triggers
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'CRLP_Rollup_TDTM', true);
-        TDTM_ProcessControl.toggleTriggerState('OppPayment__c', 'CRLP_Rollup_TDTM', true);
+        TDTM_Config_API.toggleTriggerState('Opportunity', 'CRLP_Rollup_TDTM', true);
+        TDTM_Config_API.toggleTriggerState('OppPayment__c', 'CRLP_Rollup_TDTM', true);
 
         return contacts;
     }
