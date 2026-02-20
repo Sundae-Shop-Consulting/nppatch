@@ -1,16 +1,32 @@
 {
   "packageDirectories": [
     {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "force-app-common",
+      "default": false,
+      "package": "nppatch-common",
+      "versionDescription": ""
+    },
+    {
       "path": "force-app",
       "default": true,
       "package": "nppatch",
       "versionName": "ver 1.0",
       "versionNumber": "1.0.0.NEXT",
+      "dependencies": [
+        {
+          "package": "nppatch-common",
+          "versionNumber": "1.0.0.LATEST"
+        }
+      ],
       "unpackagedMetadata": {
         "path": "unpackaged/config/all_record_types"
       },
       "apexTestAccess": {
-        "permissionSets": ["NPPatch_Admin"]
+        "permissionSets": [
+          "NPPatch_Admin"
+        ]
       }
     }
   ],
@@ -18,6 +34,7 @@
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "63.0",
   "packageAliases": {
-    "nppatch": "0Hoal00000036LpCAI"
+    "nppatch": "0Hoal00000036LpCAI",
+    "nppatch-common": "0Hoal000000393ZCAQ"
   }
 }

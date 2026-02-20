@@ -261,6 +261,13 @@ tasks:
         - fullName: Other
           label: Other
 
+  deploy_common:
+    description: Deploy the nppatch-common (infrastructure) package directory
+    class_path: cumulusci.tasks.salesforce.Deploy
+    group: Salesforce Metadata
+    options:
+      path: force-app-common
+
   reorder_app_menu:
     class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
     group: "NPPatch Config"
@@ -269,6 +276,16 @@ tasks:
       apex: setPPatchAppToFirst();
 
 flows:
+  # =========================================
+  # Deploy: Override to include force-app-common
+  # The built-in deploy_unmanaged only deploys
+  # force-app; we need force-app-common first.
+  # =========================================
+  deploy_unmanaged:
+    steps:
+      2.9:
+        task: deploy_common
+        when: project_config.project__source_format == "sfdx" and org_config.scratch
   # =========================================
   # Setup Build Org with test prerequisites
   # =========================================
@@ -295,7 +312,7 @@ flows:
           version_base: latest_github_release
           version_type: minor
           force_upload: True
-          create_unlocked_dependency_packages: False
+          create_unlocked_dependency_packages: True
           org_dependent: True
       5:
         task: log_package_install_info
@@ -389,3 +406,11 @@ plans:
           name: Opportunity Record Types
       4:
         task: install_managed_beta
+        options:
+          package: nppatch-common
+        ui_options:
+          name: Install NPPatch Common (Infrastructure)
+      5:
+        task: install_managed_beta
+        ui_options:
+          name: Install NPPatch
