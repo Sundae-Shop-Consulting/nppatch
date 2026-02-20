@@ -1482,14 +1482,6 @@
         <value>Salesforce encountered these NPPatch errors. If you&apos;re unsure how to resolve the errors, post a message in the NPPatch group.</value>
     </labels>
     <labels>
-        <fullName>FieldSetRelatedFieldError</fullName>
-        <categories>Error</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Error when including Related Fields in a managed Field Set</shortDescription>
-        <value>Related field {0} not supported in field set {1}. You can only include fields directly on object {2}.</value>
-    </labels>
-    <labels>
         <fullName>HiddenForSecurity</fullName>
         <categories>settings</categories>
         <language>en_US</language>
@@ -7092,14 +7084,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <value>A validation rule is preventing the record from saving:</value>
     </labels>
     <labels>
-        <fullName>flsError</fullName>
-        <categories>Batch Data Import</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>flsError</shortDescription>
-        <value>You do not have permissions to modify {0}.</value>
-    </labels>
-    <labels>
         <fullName>flsReadAccessError</fullName>
         <categories>Batch Data Import</categories>
         <language>en_US</language>
@@ -11987,14 +11971,6 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <value>Do not create a new {0} upon conversion.</value>
     </labels>
     <labels>
-        <fullName>leadConvertOwner</fullName>
-        <categories>Lead Converter</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>leadConvertOwner</shortDescription>
-        <value>Record Owner</value>
-    </labels>
-    <labels>
         <fullName>leadConvertPageTitle</fullName>
         <categories>Lead Converter</categories>
         <language>en_US</language>
@@ -13488,14 +13464,6 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <protected>false</protected>
         <shortDescription>stgCountOf</shortDescription>
         <value>Count of</value>
-    </labels>
-    <labels>
-        <fullName>stgCreatedBy</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>stgCreatedBy</shortDescription>
-        <value>Created By</value>
     </labels>
     <labels>
         <fullName>stgCRLPHouseholdAccountError</fullName>
@@ -15667,14 +15635,6 @@ Note: The NPPatch Settings tab is visible in the NPPatch application. If you don
         <protected>true</protected>
         <shortDescription>Label for dynamic number of years ago</shortDescription>
         <value>{0} Years Ago</value>
-    </labels>
-    <labels>
-        <fullName>stgLastModifiedBy</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Last Modified By</shortDescription>
-        <value>Last Modified By</value>
     </labels>
     <labels>
         <fullName>stgLinkDelete</fullName>
