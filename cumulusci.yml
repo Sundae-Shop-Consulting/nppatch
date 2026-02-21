@@ -268,6 +268,21 @@ tasks:
     options:
       path: force-app-common
 
+  build_common_package:
+    description: Build nppatch-common Unlocked package version
+    class_path: cumulusci.tasks.command.Command
+    group: "2GP Packaging"
+    options:
+      command: "sf package version create --package nppatch-common --installation-key-bypass --wait 20 --target-dev-hub DevHub"
+
+  install_common:
+    description: Install nppatch-common package
+    class_path: cumulusci.tasks.salesforce.InstallPackageVersion
+    group: Salesforce Packages
+    options:
+      namespace: nppatch
+      name: nppatch-common
+
   reorder_app_menu:
     class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
     group: "NPPatch Config"
@@ -320,6 +335,39 @@ flows:
           version_number: ^^create_package_version.version_number
           package_version_id: ^^create_package_version.subscriber_package_version_id
 
+  # =========================================
+  # Build: Both packages in dependency order
+  # =========================================
+  build_unlocked_betas:
+    description: Build both package versions in dependency order
+    group: "2GP Packaging"
+    steps:
+      0:
+        flow: setup_build_org
+      1:
+        task: build_common_package
+      2:
+        task: deploy_common
+      3:
+        task: create_package_version
+        options:
+          package_type: Unlocked
+          org_dependent: True
+          skip_validation: False
+          force_upload: True
+
+  # =========================================
+  # Install: Both packages in dependency order
+  # =========================================
+  install_packages:
+    description: Install both packages in dependency order
+    group: Salesforce Packages
+    steps:
+      1:
+        task: install_common
+      2:
+        task: install_managed
+
   config_dev:
     steps:
       2:
@@ -337,8 +385,6 @@ flows:
   # Build: Override to use Unlocked package type
   # The built-in build_feature_test_package creates
   # a Managed package, but nppatch uses Unlocked.
-  # Managed can't see public classes from the
-  # Unlocked nppatch-common dependency package.
   # =========================================
   build_feature_test_package:
     steps:

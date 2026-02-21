@@ -35,6 +35,8 @@
   "sourceApiVersion": "63.0",
   "packageAliases": {
     "nppatch": "0Hoal00000036aLCAQ",
-    "nppatch-common": "0Hoal000000393ZCAQ"
+    "nppatch-common": "0Hoal000000393ZCAQ",
+    "nppatch-common@0.1.0-5": "04tal000005cxLxAAI",
+    "nppatch-common@0.1.0-6": "04tal000005cxSPAAY"
   }
 }
