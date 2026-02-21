@@ -35,6 +35,7 @@ jobs:
                   sf package version create \
                     --package nppatch-common \
                     --skip-validation \
+                    --installation-key-bypass \
                     --wait 20 \
                     --target-dev-hub DevHub 2>&1 | tee common-build.log
                   COMMON_VERSION=$(grep -o -E "04t[a-zA-Z0-9]{15}" common-build.log | tail -1)
