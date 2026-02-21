@@ -117,9 +117,10 @@ public class REL_Relationships_TDTM extends TDTM_Runnable {
         List<Relationship__c> relationshipsToDelete = new List<Relationship__c>();
         List<Relationship__c> reciprocalsToUpdate = new List<Relationship__c>();
 
-        // Set the recursion flag up front because there could be DML operations before the main method ends.
-        if (triggerAction == TDTM_Runnable.Action.afterUpdate ||
-            triggerAction == TDTM_Runnable.Action.afterInsert) {
+        // Set the recursion flag for updates to prevent infinite cascading.
+        // Note: afterInsert must NOT set this flag — the mirror relationship's AfterInsert
+        // handler needs to run reciprocate() to set the original's ReciprocalRelationship__c.
+        if (triggerAction == TDTM_Runnable.Action.afterUpdate) {
             TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.flag.REL, true);
         }
 
@@ -181,8 +182,7 @@ public class REL_Relationships_TDTM extends TDTM_Runnable {
         }
 
         TDTM_TriggerHandler.processDML(mainWrapper);
-        if (triggerAction == TDTM_Runnable.Action.afterUpdate ||
-            triggerAction == TDTM_Runnable.Action.afterInsert) {
+        if (triggerAction == TDTM_Runnable.Action.afterUpdate) {
             TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.flag.REL, false);
         }
         return null;
