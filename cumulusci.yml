@@ -334,6 +334,20 @@ flows:
         task: reorder_app_menu
 
   # =========================================
+  # Build: Override to use Unlocked package type
+  # The built-in build_feature_test_package creates
+  # a Managed package, but nppatch uses Unlocked.
+  # Managed can't see public classes from the
+  # Unlocked nppatch-common dependency package.
+  # =========================================
+  build_feature_test_package:
+    steps:
+      2:
+        options:
+          package_type: Unlocked
+          org_dependent: True
+
+  # =========================================
   # CI Feature 2GP: Override to add test org
   # configuration after package installation
   # =========================================
