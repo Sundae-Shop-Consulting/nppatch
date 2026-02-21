@@ -1,4 +1,4 @@
-name: 2GP Feature Test
+name: Feature Test
 on:
     push:
         branches:
@@ -30,8 +30,10 @@ jobs:
               run: cci org default feature
             - name: Setup Build Org
               run: cci flow run setup_build_org
-            - name: Deploy Common Source
-              run: cci task run deploy_common
+            - name: Run Feature Test
+              env:
+                  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+              run: cci flow run ci_feature
             - name: Build Feature Test Package
               env:
                   GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
@@ -50,10 +52,6 @@ jobs:
                     -f description="version_id: $VERSION" \
                     -f context='Build Feature Test Package'
               shell: bash
-            - name: Run Feature Test
-              env:
-                  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-              run: cci flow run ci_feature_2gp
             - name: Delete Scratch Org
               if: ${{ always() }}
               run: cci org scratch_delete feature

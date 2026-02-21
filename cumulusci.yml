@@ -348,33 +348,27 @@ flows:
           org_dependent: True
 
   # =========================================
-  # CI Feature 2GP: Override to add test org
-  # configuration after package installation
+  # CI Feature: Deploy unmanaged + configure
+  # test org + run Apex tests.
+  # deploy_unmanaged (step 2) already includes
+  # deploy_common via the override above.
   # =========================================
-  ci_feature_2gp:
-    description: Install managed 2GP package, configure test org, and run Apex tests
+  ci_feature:
     steps:
-      2.5:
-        task: add_opportunity_stages
-      2.6:
-        task: add_ocr_roles
-      2.7:
+      3.5:
         task: ensure_record_types
         options:
           sobject: Account
-      2.8:
+      3.6:
         task: ensure_record_types
         options:
           sobject: Opportunity
-      2.9:
+      3.7:
         task: assign_permission_sets
         options:
           api_names: NPPatch_Admin
-      2.91:
+      3.8:
         task: default_settings
-        options:
-          managed: True
-          namespace_inject: $project_config.project__package__namespace
 
 orgs:
   scratch:
