@@ -2,19 +2,14 @@
         <c:UTIL_PageMessages />
         <c:UTIL_SingleToastMessage severity="error" isRendered = "{!NOT(ISBLANK(errorMsg))}"  message="{!errorMsg}" />
     <div class="slds-m-around_x-large slds-p-bottom_large slds-col-rule_bottom">
-        <div class="slds-media slds-media_center slds-media_responsive">
-            <div class="slds-media__body">
+        <div>
                 <h3 class="slds-text-heading_large slds-m-bottom_large">{!$Label.stgNPPatchSettings}</h3>
                 <p>{!$Label.stgHelpNPPatchSettings}</p>
                 <p class="slds-text-body_small slds-m-top_x-small"><c:UTIL_HtmlOutput html="{!$Label.stgHelpSalesforceSetup}" hasLink="true" /></p>
-            </div>
-            <div class="slds-media__figure slds-media__figure_reverse">
-                <img src="{!URLFOR($Resource.CumulusStaticResources, '/Images/RGB_nppatch-stacked-color.png')}" style="height: 75px" alt="NPPatch Logo"/>
-            </div>
         </div>
     </div>
-    <div class="slds-grid">
-        <div class="slds-col_padded slds-size_4-of-12">
+    <div class="slds-grid slds-m-around_x-large">
+        <div class="slds-col_padded slds-size_1-of-2">
             <div class="slds-text-heading_medium slds-m-bottom_medium">
                 {!$Label.stgTools}
             </div>
@@ -23,21 +18,15 @@
                 <li><c:UTIL_HtmlOutput html="{!$Label.stgHelpReviewErrorLog}" hasLink="true" /></li>
             </ul>
         </div>
-        <div class="slds-col_padded slds-size_4-of-12">
+        <div class="slds-col_padded slds-size_1-of-2">
             <h3 class="slds-text-heading_medium slds-m-bottom_medium">
                 {!$Label.stgDocumentation}
             </h3>
             <div>
                 <ul>
-                    <li><a href="https://developer.salesforce.com/trailhead/trail/nonprofit_fundraising" target="_blank" >{!$Label.stgNPPatchWorkbook}</a></li>
+                    <li><a href="https://nppatch.readthedocs.io" target="_blank">NPPatch Documentation</a></li>
                 </ul>
             </div>
-        </div>
-        <div class="slds-col_padded slds-size_4-of-12">
-            <div class="slds-text-heading_medium slds-m-bottom_medium">
-                {!$Label.stgPowerOfUsHub}
-            </div>
-            <p><c:UTIL_HtmlOutput html="{!$Label.stgHelpPowerOfUsHub}" hasLink="true" /></p>
         </div>
     </div>
 
