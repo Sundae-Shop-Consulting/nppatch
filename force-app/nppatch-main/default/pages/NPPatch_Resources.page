@@ -1,0 +1,116 @@
+<apex:page docType="html-5.0" title="NPPatch Resources" showHeader="false" sidebar="false" lightningStylesheets="true">
+
+    <apex:slds/>
+
+    <div class="slds-scope">
+        <div class="slds-p-around_large slds-p-horizontal_xx-large">
+
+            <div class="slds-m-bottom_large">
+                <h1 class="slds-text-heading_large slds-m-bottom_x-small">NPPatch Resources</h1>
+                <p class="slds-text-body_regular slds-text-color_weak">Everything you need to get started with NPPatch and manage your nonprofit on Salesforce.</p>
+            </div>
+
+            <div class="slds-grid slds-wrap slds-gutters">
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-bottom_medium">
+                    <article class="slds-card" style="height: 100%;">
+                        <div class="slds-card__header slds-grid">
+                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                <div class="slds-media__figure">
+                                    <span class="slds-icon_container slds-icon-standard-knowledge" title="Documentation">
+                                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                 xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/standard-sprite/svg/symbols.svg#knowledge')}"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title slds-text-heading_small">Documentation</h2>
+                                </div>
+                            </header>
+                        </div>
+                        <div class="slds-card__body slds-card__body_inner">
+                            <p>Guides, tutorials, and reference documentation for NPPatch.</p>
+                        </div>
+                        <footer class="slds-card__footer">
+                            <a href="https://nppatch.readthedocs.io" target="_blank" rel="noopener noreferrer">
+                                Visit Documentation
+                                <svg class="slds-icon slds-icon_xx-small slds-icon-text-default slds-m-left_xx-small" aria-hidden="true">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#new_window')}"/>
+                                </svg>
+                            </a>
+                        </footer>
+                    </article>
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-bottom_medium">
+                    <article class="slds-card" style="height: 100%;">
+                        <div class="slds-card__header slds-grid">
+                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                <div class="slds-media__figure">
+                                    <span class="slds-icon_container slds-icon-standard-home" title="Website">
+                                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                 xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/standard-sprite/svg/symbols.svg#home')}"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title slds-text-heading_small">Website</h2>
+                                </div>
+                            </header>
+                        </div>
+                        <div class="slds-card__body slds-card__body_inner">
+                            <p>News, updates, and information about the NPPatch project.</p>
+                        </div>
+                        <footer class="slds-card__footer">
+                            <a href="https://nppatch.com" target="_blank" rel="noopener noreferrer">
+                                Visit nppatch.com
+                                <svg class="slds-icon slds-icon_xx-small slds-icon-text-default slds-m-left_xx-small" aria-hidden="true">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#new_window')}"/>
+                                </svg>
+                            </a>
+                        </footer>
+                    </article>
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-bottom_medium">
+                    <article class="slds-card" style="height: 100%;">
+                        <div class="slds-card__header slds-grid">
+                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                <div class="slds-media__figure">
+                                    <span class="slds-icon_container slds-icon-standard-custom" title="GitHub">
+                                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                 xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/standard-sprite/svg/symbols.svg#custom')}"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title slds-text-heading_small">GitHub</h2>
+                                </div>
+                            </header>
+                        </div>
+                        <div class="slds-card__body slds-card__body_inner">
+                            <p>Source code, issue tracker, and release notes.</p>
+                        </div>
+                        <footer class="slds-card__footer">
+                            <a href="https://github.com/Sundae-Shop-Consulting/nppatch" target="_blank" rel="noopener noreferrer">
+                                View on GitHub
+                                <svg class="slds-icon slds-icon_xx-small slds-icon-text-default slds-m-left_xx-small" aria-hidden="true">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#new_window')}"/>
+                                </svg>
+                            </a>
+                        </footer>
+                    </article>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</apex:page>
