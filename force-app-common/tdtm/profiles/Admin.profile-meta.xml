@@ -13,17 +13,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Trigger_Handler__c.Class__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Trigger_Handler__c.Load_Order__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Trigger_Handler__c.Object__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

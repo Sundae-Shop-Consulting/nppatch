@@ -34,7 +34,7 @@
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "63.0",
   "packageAliases": {
-    "nppatch": "0Hoal00000036LpCAI",
+    "nppatch": "0Hoal00000036aLCAQ",
     "nppatch-common": "0Hoal000000393ZCAQ"
   }
 }
