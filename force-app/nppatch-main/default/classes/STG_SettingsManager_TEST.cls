@@ -1053,7 +1053,7 @@ private with sharing class STG_SettingsManager_TEST {
         System.assertEquals(true, panel.isPolling, 'Polling should be active.');
         //fake the success result.
         UTIL_CustomSettingsFacade.getCustomizableRollupSettings().CMT_API_Status__c = '123 Succeeded';
-        deploymentPR = panel.checkDeploymentStatus();
+        PageReference deploymentPR = panel.checkDeploymentStatus();
         System.assertEquals(null, deploymentPR, 'Returned PageReference should be null');
         System.assertEquals(false, panel.isPolling, 'Polling should not be active.');
 
