@@ -117,7 +117,7 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>%%%NAMESPACE_OR_C%%%:rdActiveSchedule</componentName>
+                <componentName>%%%NAMESPACED_ORG_OR_C%%%:rdActiveSchedule</componentName>
                 <identifier>rdActiveSchedule</identifier>
             </componentInstance>
         </itemInstances>
@@ -127,7 +127,7 @@
                     <name>displayNum</name>
                     <value>12</value>
                 </componentInstanceProperties>
-                <componentName>%%%NAMESPACE_OR_C%%%:rdScheduleVisualizer</componentName>
+                <componentName>%%%NAMESPACED_ORG_OR_C%%%:rdScheduleVisualizer</componentName>
                 <identifier>rdScheduleVisualizer</identifier>
             </componentInstance>
         </itemInstances>
