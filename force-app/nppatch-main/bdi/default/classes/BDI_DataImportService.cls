@@ -653,11 +653,6 @@ global with sharing class BDI_DataImportService {
             importCampaigns();
             pl.stop();
 
-            pl = perfLogger.newPerfLog('importRecurringDonations');
-            BDI_RecurringDonations bdiRDs= new BDI_RecurringDonations(this);
-            bdiRDs.importRecurringDonations();
-            pl.stop();
-
             pl = perfLogger.newPerfLog('importDonations');
             BDI_Donations bdiDonations = new BDI_Donations(this);
             bdiDonations.importDonations();
@@ -741,21 +736,6 @@ global with sharing class BDI_DataImportService {
      * @return             Returns the DIs after they have been checked.
      */
     private List<DataImport__c> checkRDFields(List<DataImport__C> dataImports) {
-        String RDImportStatusField = 'RecurringDonationImportStatus__c';
-
-        for (DataImport__c DI : dataImports) {
-            if (BDI_RecurringDonations.areRDFieldsPopulated(DI)) {
-
-                if (!(mappingService instanceof BDI_MappingServiceAdvanced)) {
-                    LogBDIError(DI, DI_WITH_RD_FIELDS_NO_ADV_MAPPING, RDImportStatusField);
-                }
-
-                if (!RD2_EnablementService.isRecurringDonations2Enabled) {
-                    LogBDIError(DI, DI_WITH_RD_FIELDS_NO_RD2, RDImportStatusField);
-                }
-            }
-        }
-
         return dataImports;
     }
 

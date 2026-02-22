@@ -63,7 +63,6 @@ public class RD2_ERecurringDonationsSelector_TEST {
     private static void testGetRecurringDonationsAll() {
         if (shouldSkipIn2GP()) return;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         
         Contact con = UTIL_UnitTestData_TEST.getContact();
         insert con;
@@ -96,7 +95,6 @@ public class RD2_ERecurringDonationsSelector_TEST {
     private static void testGetRecurringDonationsElevate() {
         if (shouldSkipIn2GP()) return;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         
         Contact con = UTIL_UnitTestData_TEST.getContact();
         insert con;
@@ -129,7 +127,6 @@ public class RD2_ERecurringDonationsSelector_TEST {
     private static void testGetRecurringDonationsNonElevate() {
         if (shouldSkipIn2GP()) return;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
             
         Contact con = UTIL_UnitTestData_TEST.getContact();
         insert con;

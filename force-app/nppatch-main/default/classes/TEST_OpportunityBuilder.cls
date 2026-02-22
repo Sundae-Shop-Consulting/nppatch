@@ -229,7 +229,7 @@ public without sharing class TEST_OpportunityBuilder {
     * @return TEST_OpportunityBuilder Builder instance
     */
     public TEST_OpportunityBuilder withInstallmentNumberMigrationFlag() {
-        return withInstallmentNumber(RD2_DataMigrationBase_BATCH.MIGRATION_INSTALLMENT_NUMBER_FLAG);
+        return withInstallmentNumber(0);
     }
 
     /***

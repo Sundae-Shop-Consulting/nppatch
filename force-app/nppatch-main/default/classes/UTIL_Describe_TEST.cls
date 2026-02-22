@@ -86,23 +86,22 @@ private with sharing class UTIL_Describe_TEST {
     }
 
     /**
-    * @description Validate that the Picklist value for "Open" is returned as the English value.
+    * @description Validate that the Picklist value for "Active" is returned as the English value.
     */
     @IsTest
     private static void shouldReturnEnglishPicklist() {
-        Recurring_Donation__c rd = TEST_RecurringDonationBuilder.constructLegacyBuilder()
+        Recurring_Donation__c rd = TEST_RecurringDonationBuilder.constructEnhancedBuilder()
             .withDefaultValues()
-            .withOpenEndedStatusOpen()
             .build();
 
-        System.assertEquals(RD_Constants.OPEN_ENDED_STATUS_OPEN, rd.Open_Ended_Status__c);
+        System.assertEquals('Active', rd.Status__c);
         User englishUser = buildEnglishUser();
         System.runAs(englishUser) {
-            System.assertEquals(RD_Constants.OPEN_ENDED_STATUS_OPEN,
+            System.assertEquals('Active',
                 UTIL_Describe.getTranslatedPicklistLabel(Recurring_Donation__c.SObjectType,
-                    Recurring_Donation__c.Open_Ended_Status__c,
-                    rd.Open_Ended_Status__c),
-                'The English translation for Open should be Open');
+                    Recurring_Donation__c.Status__c,
+                    rd.Status__c),
+                'The English translation for Active should be Active');
         }
     }
 
@@ -150,18 +149,17 @@ private with sharing class UTIL_Describe_TEST {
             return;
         }
 
-        Recurring_Donation__c rd = TEST_RecurringDonationBuilder.constructLegacyBuilder()
+        Recurring_Donation__c rd = TEST_RecurringDonationBuilder.constructEnhancedBuilder()
             .withDefaultValues()
-            .withOpenEndedStatusOpen()
             .build();
 
-        System.assertEquals(RD_Constants.OPEN_ENDED_STATUS_OPEN, rd.Open_Ended_Status__c);
+        System.assertEquals('Active', rd.Status__c);
 
-        System.assertEquals('Abierto',
+        System.assertEquals('Activo',
             UTIL_Describe.getTranslatedPicklistLabel(Recurring_Donation__c.SObjectType,
-                Recurring_Donation__c.Open_Ended_Status__c,
-                rd.Open_Ended_Status__c),
-            'The Spanish translation for Open should be Abierto');
+                Recurring_Donation__c.Status__c,
+                rd.Status__c),
+            'The Spanish translation for Active should be Activo');
     }
 
     // Helpers

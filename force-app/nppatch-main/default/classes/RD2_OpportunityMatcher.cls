@@ -37,7 +37,7 @@ public inherited sharing class RD2_OpportunityMatcher {
      * The flag is used to exclude such Opps from yearly values as well as in Opp eval service
      * when determining if the next Opp with the same Close Date can be created.
      */
-    public static final Integer MIGRATION_INSTALLMENT_NUMBER_FLAG = RD2_DataMigrationBase_BATCH.MIGRATION_INSTALLMENT_NUMBER_FLAG;
+    public static final Integer MIGRATION_INSTALLMENT_NUMBER_FLAG = 0;
 
     /**
      * @description Current date is the cut off date to evaluate current existing Opportunities.

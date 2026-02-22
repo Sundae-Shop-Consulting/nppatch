@@ -197,50 +197,14 @@
                                 <a id="tree3-node0-link" tabindex="-1" role="presentation">{!$Label.stgNavRecurringDonations}</a>
                             </div>
                             <ul class="slds-tree__group slds-nested" role="group" aria-labelledby="tree3-node0-link">
-                                <li role="treeitem" aria-level="2" id="idPanelRD2EnablementNav"
-                                    class="{!IF(isDisplayingRD2UpgradePage, 'slds-tree__item', 'hide')}"
-                                    style="{!IF(isDisplayingRD2UpgradePage, 'display: block', 'display: none')}">
-
-                                    <a href="#" onclick="ShowPanel('idPanelRD2Enablement'); fireRefreshViewEvent(); return false;"
-                                        class="slds-grow slds-m-left_large"
-                                        style="{!IF(isDisplayingRD2UpgradePage, 'display: block', 'display: none')}">
-                                        {!$Label.stgNavRD2Enablement}
-                                    </a>
-                                </li>
-                                <li class="slds-tree__item" role="treeitem" aria-level="2" id="idPanelRDNav">
-                                    <a href="#" onclick="ShowPanel('idPanelRD');return false;" class="slds-grow slds-m-left_large">{!$Label.stgNavRecurringDonations}</a>
-                                </li>
-                                <li role="treeitem" aria-level="2" id="idPanelRD2StatusMappingNav"
-                                    class="{!IF(isRD2Enabled, 'slds-tree__item', 'hide')}"
-                                    style="{!IF(isRD2Enabled, 'display: block', 'display: none')}">
-
+                                <li class="slds-tree__item" role="treeitem" aria-level="2" id="idPanelRD2StatusMappingNav">
                                     <a href="#" onclick="ShowPanel('idPanelRD2StatusMapping');return false;"
-                                        class="slds-grow slds-m-left_large"
-                                        style="{!IF(isRD2Enabled, 'display: block', 'display: none')}">
+                                        class="slds-grow slds-m-left_large">
                                         {!$Label.stgNavRD2StatusMapping}</a>
                                 </li>
-                                <li role="treeitem" aria-level="2" id="idPanelRDInstPdNav"
-                                    class="{!IF(!isRD2Enabled, 'slds-tree__item', 'hide')}"
-                                    style="{!IF(!isRD2Enabled, 'display: block', 'display: none')}">
-
-                                    <a href="#" onclick="ShowPanel('idPanelRDInstPd');return false;"
-                                        class="slds-grow slds-m-left_large"
-                                        style="{!IF(!isRD2Enabled, 'display: block', 'display: none')}">
-                                        {!$Label.stgNavRDInstallmentPeriods}</a>
-                                </li>
-                                <li role="treeitem" aria-level="2" id="idPanelRDFieldMapNav" class="slds-tree__item">
-
-                                    <a href="#" onclick="ShowPanel('idPanelRDFieldMap');return false;"
-                                        class="slds-grow slds-m-left_large">
-                                        {!$Label.stgNavRDFieldMap}</a>
-                                </li>
-                                <li role="treeitem" aria-level="2" id="idPanelRD2StatusAutomationNav"
-                                    class="{!IF(isRD2Enabled, 'slds-tree__item', 'hide')}"
-                                    style="{!IF(isRD2Enabled, 'display: block', 'display: none')}">
-
+                                <li class="slds-tree__item" role="treeitem" aria-level="2" id="idPanelRD2StatusAutomationNav">
                                     <a href="#" onclick="ShowPanel('idPanelRD2StatusAutomation');return false;"
-                                        class="slds-grow slds-m-left_large"
-                                        style="{!IF(isRD2Enabled, 'display: block', 'display: none')}">
+                                        class="slds-grow slds-m-left_large">
                                         {!$Label.stgNavRD2StatusAutomation}</a>
                                 </li>
                             </ul>
@@ -264,8 +228,7 @@
                                 <li class="slds-tree__item" role="treeitem" aria-level="2" id="idPanelRefreshHouseholdDataNav"><a href="#" onclick="ShowPanel('idPanelRefreshHouseholdData');return false;" class="slds-grow slds-m-left_large">{!$Label.stgHHDataRefreshTitle}</a></li>
                                 <li class="slds-tree__item" role="treeitem" aria-level="2" id="idPanelOppNamingBatchNav"><a href="#" onclick="ShowPanel('idPanelOppNamingBatch');return false;" class="slds-grow slds-m-left_large">{!$Label.stgLabelOppNamingRefreshTitle}</a></li>
                                 <li class="slds-tree__item" role="treeitem" aria-level="2" id="idPanelUpdatePrimaryContactNav"><a href="#" onclick="ShowPanel('idPanelUpdatePrimaryContact');return false;" class="slds-grow slds-m-left_large">{!$Label.stgLabelOppPrimaryContactTitle}</a></li>
-                                <li class="slds-tree__item" role="treeitem" aria-level="2" id="idPanelRDBatchNav"><a href="#" onclick="ShowPanel('idPanelRDBatch');return false;" class="slds-grow slds-m-left_large">{!$Label.stgNavRDBatch}</a></li>
-                                <li class="slds-tree__item" role="treeitem" aria-level="2" id="idPanelLvlAssignBatchNav"><a href="#" onclick="ShowPanel('idPanelLvlAssignBatch');return false;" class="slds-grow slds-m-left_large">{!$Label.stgLabelLvlAssignBatchTitle}</a></li>
+                                                <li class="slds-tree__item" role="treeitem" aria-level="2" id="idPanelLvlAssignBatchNav"><a href="#" onclick="ShowPanel('idPanelLvlAssignBatch');return false;" class="slds-grow slds-m-left_large">{!$Label.stgLabelLvlAssignBatchTitle}</a></li>
                                 <li class="slds-tree__item" role="treeitem" aria-level="2" id="idPanelPrimaryContactRoleMergeNav"><a href="#" onclick="ShowPanel('idPanelPrimaryContactRoleMergeBatch');return false;" class="slds-grow slds-m-left_large">{!$Label.stgLabelPrimaryContactRoleMergeBatch}</a></li>
                             </ul>
                             <!-- System Tools -->
@@ -385,24 +348,8 @@
                 </div>
 
                 <!-- Recurring Donations -->
-                <div class="panel noborder" id="idPanelRD2Enablement" style="display:none">
-                    <apex:include pageName="STG_PanelRD2Enablement" />
-                </div>
-
-                <div class="panel noborder" id="idPanelRD" style="display:none" >
-                    <apex:include pageName="STG_PanelRD" id="idPanelRD"/>
-                </div>
-
                 <div class="panel noborder" id="idPanelRD2StatusMapping" style="display:none">
                     <apex:include pageName="STG_PanelRD2StatusMapping" id="idPanelRD2StatusMapping"/>
-                </div>
-
-                <div class="panel noborder" id="idPanelRDInstPd" style="display:none" >
-                    <apex:include pageName="STG_PanelRDCustomInstallment" id="idPanelRDInstPd" />
-                </div>
-
-                <div class="panel noborder" id="idPanelRDFieldMap" style="display:none" >
-                    <apex:include pageName="STG_PanelRDCustomFieldMapping" id="idPanelRDFieldMap" />
                 </div>
 
                 <div class="panel noborder" id="idPanelRD2StatusAutomation" style="display:none">
@@ -450,10 +397,6 @@
                     <apex:include pageName="STG_PanelUpdatePrimaryContact" />
                 </div>
 
-                <div class="panel noborder" id="idPanelRDBatch" style="display:none" >
-                    <apex:include pageName="STG_PanelRDBatch" />
-                </div>
-
                 <!-- System Tools -->
                 <div class="panel noborder" id="idPanelHealthCheck" style="display:none" >
                     <apex:include pageName="STG_PanelHealthCheck" />
@@ -480,11 +423,5 @@
         </div>
     </apex:outputPanel>
 
-    <script type="text/javascript">
-        function fireRefreshViewEvent() {
-            var refresheEvent = $A.get("e.force:refreshView");
-            refresheEvent.fire();
-        }
-    </script>
 </div>
 </apex:page>

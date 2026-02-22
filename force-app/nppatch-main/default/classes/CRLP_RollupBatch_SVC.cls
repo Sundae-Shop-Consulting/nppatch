@@ -150,9 +150,6 @@ public class CRLP_RollupBatch_SVC {
                     when GAU {
                         Database.executeBatch(new CRLP_GAU_BATCH(recordIds, lastIdProcessed), batchSize);
                     }
-                    when RecurringDonations {
-                        Database.executeBatch(new CRLP_RDSkew_BATCH(recordIds, lastIdProcessed), batchSize);
-                    }
                 }
             }
 
@@ -176,9 +173,6 @@ public class CRLP_RollupBatch_SVC {
                     when GAU {
                         // Technically this job is always processed in "skew" mode
                         Database.executeBatch(new CRLP_GAU_BATCH(recordIds, lastIdProcessed), batchSize);
-                    }
-                    when RecurringDonations {
-                        Database.executeBatch(new CRLP_RD_BATCH(recordIds), batchSize);
                     }
                 }
             }

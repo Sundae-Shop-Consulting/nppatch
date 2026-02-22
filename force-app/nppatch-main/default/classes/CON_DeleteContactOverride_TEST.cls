@@ -653,12 +653,14 @@ private class CON_DeleteContactOverride_TEST {
     * @return Recurring_Donation__c
     */
     private static TEST_RecurringDonationBuilder getRecurringDonationBuilder() {
-        return new TEST_RecurringDonationBuilder()
+        return TEST_RecurringDonationBuilder.constructEnhancedBuilder()
+            .withDefaultValues()
             .withAmount(2)
+            .withRecurringTypeFixed()
             .withPlannedInstallments(2)
             .withInstallmentPeriodYearly()
-            .withDateEstablished()
-            .withScheduleTypeMultiplyValue();
+            .withInstallmentFrequency(1)
+            .withDateEstablished();
     }
 
     private class CON_DeleteContactOverrideStub implements System.StubProvider {

@@ -60,7 +60,6 @@ private class RD2_RecurringDonationsOpp_TEST {
         UTIL_TestPermissions.assignAdminPermissionSet();
 
         RD2_ScheduleService.currentDate = TODAY;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
 
         Contact contact = UTIL_UnitTestData_TEST.getContact();
@@ -95,7 +94,6 @@ private class RD2_RecurringDonationsOpp_TEST {
     private static void shouldNotChangeCurrentYearValueWhenOppIsUpdatedToClosedWon() {
         final Date nextDonationDate = START_DATE.addMonths(1);
         RD2_ScheduleService.currentDate = TODAY;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
         Opportunity opp = getOpenOpportunity(rd);
@@ -123,7 +121,6 @@ private class RD2_RecurringDonationsOpp_TEST {
     private static void shouldUpdateCurrentYearValueWhenOppIsClosedLost() {
         final Date nextDonationDate = START_DATE.addMonths(1);
         RD2_ScheduleService.currentDate = TODAY;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
         Opportunity opp = getOpenOpportunity(rd);
@@ -150,7 +147,6 @@ private class RD2_RecurringDonationsOpp_TEST {
     @IsTest
     private static void shouldUpdateCurrentYearValueWhenPastClosedWonOppIsDeleted() {
         RD2_ScheduleService.currentDate = TODAY;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
         Opportunity opp = getClosedOpportunity(rd);
@@ -178,7 +174,6 @@ private class RD2_RecurringDonationsOpp_TEST {
         final Decimal oppNewAmount = RD_AMOUNT + 100;
 
         RD2_ScheduleService.currentDate = TODAY;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
         Opportunity opp = getOpenOpportunity(rd);
@@ -215,7 +210,6 @@ private class RD2_RecurringDonationsOpp_TEST {
         final Date today = nextDonationDate.addDays(-3);
 
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
         Opportunity opp = getOpenOpportunity(rd);
@@ -254,7 +248,6 @@ private class RD2_RecurringDonationsOpp_TEST {
         }
 
         RD2_ScheduleService.currentDate = TODAY;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
         
@@ -288,7 +281,6 @@ private class RD2_RecurringDonationsOpp_TEST {
         }
 
         RD2_ScheduleService.currentDate = TODAY;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
         
@@ -320,7 +312,6 @@ private class RD2_RecurringDonationsOpp_TEST {
         }
 
         RD2_ScheduleService.currentDate = TODAY;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
         Opportunity opp = getOpenOpportunity(rd);
@@ -344,7 +335,6 @@ private class RD2_RecurringDonationsOpp_TEST {
         }
 
         RD2_ScheduleService.currentDate = TODAY;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
         Opportunity opp = getOpenOpportunity(rd);
@@ -368,7 +358,6 @@ private class RD2_RecurringDonationsOpp_TEST {
         }
 
         RD2_ScheduleService.currentDate = TODAY;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         
         Exception actualException;
         try {
@@ -404,7 +393,6 @@ private class RD2_RecurringDonationsOpp_TEST {
         final Date today = nextDonationDate.addDays(-1);
 
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
         Opportunity opp = getOpenOpportunity(rd);
@@ -436,7 +424,6 @@ private class RD2_RecurringDonationsOpp_TEST {
         final Date today = nextDonationDate.addDays(-3);
 
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
         Opportunity opp = getOpenOpportunity(rd);
@@ -471,7 +458,6 @@ private class RD2_RecurringDonationsOpp_TEST {
         final Date today = nextDonationDate.addDays(-3);
 
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
         Opportunity opp = getOpenOpportunity(rd);
@@ -513,7 +499,6 @@ private class RD2_RecurringDonationsOpp_TEST {
         final Date today = nextDonationDate.addDays(-3);
 
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
         Opportunity opp = getOpenOpportunity(rd);
@@ -545,7 +530,6 @@ private class RD2_RecurringDonationsOpp_TEST {
         final Date today = nextDonationDate.addDays(-3);
 
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
         Opportunity opp = getOpenOpportunity(rd);

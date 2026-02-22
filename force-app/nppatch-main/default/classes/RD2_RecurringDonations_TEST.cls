@@ -63,7 +63,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldAutogenerateNameOnInsertWhenAutoNamingIsEnabled() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact contact = getContact();
         Account account = getAccount();
@@ -107,7 +106,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldAutogenerateNameOnUpdateWhenAutoNamingIsEnabled() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Account account = getAccount();
 
@@ -140,7 +138,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldAutoPopulateRDAccountWhenContactAccountIsOrganization() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact contact = getContact();
 
@@ -153,7 +150,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldAutoPopulateHRDAccountWhenContactAccountIsHousehold() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact contact = UTIL_UnitTestData_TEST.getContact();
         insert contact;
@@ -167,7 +163,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldAutoPopulateRDAccountWhenAccountIsRemovedOnRDUpdate() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact contact = getContact();
 
@@ -190,7 +185,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldDispatchRDsToIntegrationGatewayOnBeforeDelete() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         List<Recurring_Donation__c> rds = new List<Recurring_Donation__c> {
             new TEST_RecurringDonationBuilder()
@@ -227,7 +221,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldCreateNewRDScheduleOnInsert() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact contact = getContact();
 
@@ -260,7 +253,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldCreateNewRDScheduleOnUpdate() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact contact = getContact();
 
@@ -302,7 +294,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldCalculateNextDonationDateOnInsert() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact contact = getContact();
 
@@ -328,7 +319,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldCalculateNextDonationDateOnUpdate() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact contact = getContact();
 
@@ -357,7 +347,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldCalculateNextDonationDateOnUpdateFromClosedToLapsed() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact contact = getContact();
 
@@ -390,7 +379,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     @isTest
     private static void shouldNotOverrideStartDateWithCurrentDate() {
         final Date startDate = DATE_ESTABLISHED.addMonths(1);
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact contact = getContact();
 
@@ -432,7 +420,6 @@ private with sharing class RD2_RecurringDonations_TEST {
             .withStartDate(startDate)
             .build();
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         insert rd;
         Test.startTest();
@@ -460,7 +447,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldUseInputStartDateForFutureStartDate() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
             .build();
@@ -486,7 +472,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldUseInputStartDateForPastStartDate() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
             .build();
@@ -513,7 +498,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldNotCreateNewRDScheduleOnUpdateWhenRelevantFieldIsUnchanged() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
             .build();
@@ -539,7 +523,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     private static void shouldSetNumberOfPlannedInstallmentsToNullWhenOpenEnded() {
         final Integer plannedInstallments = 1;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
             .withPlannedInstallments(plannedInstallments)
@@ -563,7 +546,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     private static void shouldNotChangeNumberOfPlannedInstallmentsWhenFixedLength() {
         final Integer plannedInstallments = 1;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
             .withPlannedInstallments(plannedInstallments)
@@ -587,7 +569,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     private static void shouldNotChangeFixedLengthRecurringDonationWhenNumberPaidInstallmentsChanged() {
         final Integer plannedInstallments = 5;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
             .withPlannedInstallments(plannedInstallments)
@@ -616,7 +597,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     private static void shouldCloseFixedLengthRecurringDonationWhenReachNumberPlannedInstallments() {
         final Integer plannedInstallments = 5;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
             .withPlannedInstallments(plannedInstallments)
@@ -649,7 +629,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldCreateRDWithDefaultInstallmentFrequencyWhenNull() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
             .withInstallmentFrequency(null)
@@ -671,7 +650,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldTransformDayOfMonthWhenValueIs31ForMonthlyInstallments() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         String day = '31';
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
@@ -705,7 +683,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldAutoPopulateEndDateToRDWhenRdIsUpdatedToClosed() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
             .withStatusActive()
@@ -728,7 +705,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldLeaveRdStatusNotClosedWhenEndDateIsInTheFuture() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Date endDate = Date.today().addMonths(10);
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
@@ -754,7 +730,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldClearEndDateIfRDIsReOpened() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
             .withStatusClosed()
@@ -778,7 +753,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldClearDayOfMonthWhenSpecifiedOnUpdateAndRDIsNotMonthly() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
         insert rd;
@@ -801,7 +775,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldClearDayOfMonthWhenSpecifiedOnInsertAndRDIsNotMonthly() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationWeeklyBuilder()
             .withDayOfMonth('1')
@@ -822,7 +795,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldAllowRDUpdateWhenPauseDoesNotExist() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
 
         final Date nextDonationDate = Date.newInstance(2019, 10, 1);
@@ -861,7 +833,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldPreventRDUpdateWhenPauseExistsAndDayOfMonthIsChanged() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
 
         final Date nextDonationDate = Date.newInstance(2019, 10, 1);
@@ -909,7 +880,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldPreventRDUpdateWhenPauseExistsAndRDFrequencyIsChanged() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
 
         final Date nextDonationDate = Date.newInstance(2019, 10, 1);
@@ -958,7 +928,6 @@ private with sharing class RD2_RecurringDonations_TEST {
     */
     @isTest
     private static void shouldAllowRDUpdateWhenPauseExistsAndAmountIsChanged() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
         final Date nextDonationDate = Date.newInstance(2019, 10, 1);
 
@@ -991,7 +960,6 @@ private with sharing class RD2_RecurringDonations_TEST {
 
     @IsTest
     private static void shouldUpdateSchedulesOnGoodBulkRDUpdate() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
 
         Recurring_Donation__c badRd = getRecurringDonationMonthlyBuilder().build();

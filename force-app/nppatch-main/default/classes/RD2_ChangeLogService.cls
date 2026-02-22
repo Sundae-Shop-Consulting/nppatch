@@ -82,7 +82,7 @@ public inherited sharing class RD2_ChangeLogService {
         RD2_ChangeLogView changeLogView = new RD2_ChangeLogView();
 
         changeLogView.settingEnabled = isChangeLogEnabled;
-        changeLogView.rd2Enabled = RD2_EnablementService.isRecurringDonations2Enabled;
+        changeLogView.rd2Enabled = true;
         changeLogView.hasMore = changes.size() > recordLimit;
 
         for (Integer i = 0; i < recordLimit && i < changes.size(); i++) {

@@ -57,7 +57,6 @@ private class RD2_ApiService_TEST {
 
         RD2_ScheduleService.currentDate = CURRENT_DATE;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact contact = UTIL_UnitTestData_TEST.getContact();
         insert contact;
@@ -72,7 +71,6 @@ private class RD2_ApiService_TEST {
      */
     @isTest
     static void shouldReturnValidSerializedSchedules() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
@@ -165,27 +163,11 @@ private class RD2_ApiService_TEST {
     }
 
     /**
-     * @description Validate an empty schedule response from the rd2.queryschedules API call
-     * when RD2 is not enabled
-     */
-    @isTest
-    static void shouldReturnEmptyResponseWhenRd2NotEnabled() {
-        Recurring_Donation__c rd = rdGateway.getRecords()[0];
-
-        Test.startTest();
-        Map<Id, List<Schedule>> schedulesByRd = retrieveSchedulesUsingApi(rd.Id);
-        Test.stopTest();
-
-        System.assertEquals(0, schedulesByRd.size(), 'There should be nothing returned when RD2 is not enabled');
-    }
-
-    /**
      * @description Validate a Paused RD returns the expected api response with active/paused/inactive
      * schedules when the pause is current as of today
      */
     @IsTest
     private static void shouldReturnValidResponseWithActivePausedRd() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
@@ -229,7 +211,6 @@ private class RD2_ApiService_TEST {
      */
     @IsTest
     private static void shouldReturnValidResponseWithFuturePausedRd() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
@@ -264,23 +245,6 @@ private class RD2_ApiService_TEST {
         System.assertEquals(0, isActiveCurrentPausedCount, 'There should be no current paused schedules returned');
         System.assertEquals(1, isActiveNotCurrentPaused, 'There should be one active not current paused schedules returned');
         System.assertEquals(1, isActiveCurrentNotPaused, 'There should be one active and current unpaused schedules returned');
-    }
-
-    /**
-     * @description Validate an empty installment response when RD2 is not enabled
-     */
-    @IsTest
-    private static void shouldReturnNoInstallmentsWhenRD2NotEnabled() {
-        RD2_ScheduleService.currentDate = CURRENT_DATE;
-
-        Recurring_Donation__c rd = rdGateway.getRecords()[0];
-
-        Map<Id, List<Installment>> installmentsByRd = queryInstallments(
-            START_DATE, START_DATE.addYears(2), rd.Id
-        );
-
-        System.assertEquals(0, installmentsByRd.size(),
-            'There should be no recurring donation installments returned when RD2 is not enabled');
     }
 
     /**
@@ -398,7 +362,6 @@ private class RD2_ApiService_TEST {
 
     @IsTest
     private static void shouldReturnMapOfIDsAndOKMessagesForSuccessfulPause() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = CURRENT_DATE;
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
@@ -424,28 +387,6 @@ private class RD2_ApiService_TEST {
             'Response should have set isSucess to true');
         System.assertEquals('OK', pauseObjectsByIdOut.values()[0].error,
             'The error status should be OK');
-    }
-
-    @IsTest
-    private static void shouldReturnErrorForPauseWhenEnhancedRecurringDonationsIsNotEnabled() {
-        Map<Id, RD2_ApiService.PauseObject> pauseObjectsByIdIn =
-            new Map<Id, RD2_ApiService.PauseObject>{
-                UTIL_UnitTestData_TEST.MOCK_ACCOUNT_ID => createUnPauseObject(true)};
-
-        String errorMessage;
-        Test.startTest();
-        try {
-            RD2_ApiService apiService = new RD2_ApiService();
-            String response = apiService.pause(pauseObjectsByIdIn);
-        } catch(Exception ex) {
-            errorMessage = ex.getMessage();
-        }
-        Test.stopTest();
-
-        String expectedError = String.format( System.Label.CallableApiProcessingError,
-                new List<String>{ 'rd2.pause', System.Label.RD2_EnhancedRecurringDonationsNotEnabled} );
-        System.assertEquals(expectedError, errorMessage,
-            'Custom Exception should throw an error indicating Enhanced RD is not enabled');
     }
 
     @IsTest
@@ -551,7 +492,6 @@ private class RD2_ApiService_TEST {
 
     @IsTest
     private static void shouldActivatePausedRecurringDonationWhenUnpauseIsTrue() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = CURRENT_DATE;
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
@@ -590,7 +530,6 @@ private class RD2_ApiService_TEST {
 
     @IsTest
     private static void shouldUnPausedRDWhenMultiplePauseSchedulesExist() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = CURRENT_DATE;
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
@@ -653,7 +592,6 @@ private class RD2_ApiService_TEST {
 
     @IsTest
     private static void shouldReturnSuccessWhenNoPauseScheduleExistsDuringUnpausing() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = CURRENT_DATE;
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
@@ -683,7 +621,6 @@ private class RD2_ApiService_TEST {
 
     @IsTest
     private static void shouldSuccessfullyDeactivateFuturePauseSchedules() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = CURRENT_DATE;
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
@@ -750,7 +687,6 @@ private class RD2_ApiService_TEST {
     @IsTest
     private static void shouldPermitNewStartAndEndDateForPausedRecurringDonation() {
         String statusReason = 'random Reason';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = CURRENT_DATE;
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
@@ -838,7 +774,6 @@ private class RD2_ApiService_TEST {
     private static void setUpEnv() {
         RD2_ScheduleService.currentDate = CURRENT_DATE;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
     }
 
 

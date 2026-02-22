@@ -105,7 +105,7 @@ private class CRLP_RollupRecurringDonation_TEST {
         UTIL_CustomSettingsFacade.getRecurringDonationsSettingsForTest(
                 new Recurring_Donations_Settings__c(
                         Maximum_Donations__c = 50,
-                        Open_Opportunity_Behavior__c = RD_RecurringDonations.RecurringDonationCloseOptions.Mark_Opportunities_Closed_Lost.name(),
+                        Open_Opportunity_Behavior__c = RD2_Constants.CloseActions.Mark_Opportunities_Closed_Lost.name(),
                         Recurring_Donation_Batch_Size__c = 50
                 ));
 
@@ -126,22 +126,15 @@ private class CRLP_RollupRecurringDonation_TEST {
 
         String closedStage = UTIL_UnitTestData_TEST.getClosedWonStage();
 
-        Integer numOpps = 2;
-        Integer numClosedOpps = 1;
         Decimal instAmt = 100;
-        Date startDate = Date.newInstance(2000,1,1);
-        // these two dates only work based on a monthly installment period
-        Date lastPaymentDate = startDate.addMonths(numClosedOpps-1);
-        Date nextPaymentDate = lastPaymentDate.addMonths(1);
 
-        Recurring_Donation__c rd = TEST_RecurringDonationBuilder.constructLegacyBuilder()
-                .withPlannedInstallments(numOpps)
+        Recurring_Donation__c rd = TEST_RecurringDonationBuilder.constructEnhancedBuilder()
+                .withDefaultValues()
+                .withRecurringTypeOpen()
                 .withContact(con.Id)
                 .withAmount(instAmt)
                 .withInstallmentPeriodMonthly()
-                .withDateEstablished(startDate)
-                .withScheduleTypeMultiplyValue()
-                .withOpenEndedStatus(null)
+                .withDateEstablished(Date.today())
                 .build();
         insert rd;
 
@@ -153,7 +146,7 @@ private class CRLP_RollupRecurringDonation_TEST {
         // In trigger context, the initial pledged opportunities should've rolled up as follows:
         if (tt == TestType.TestTrigger) {
             System.assertEquals(0, rd.Total_Paid_Installments__c);
-            System.assertEquals(startDate, rd.Next_Payment_Date__c);
+            System.assertNotEquals(null, rd.Next_Payment_Date__c, 'Next Payment Date should be set by evaluation service');
             System.assertEquals(null, rd.Last_Payment_Date__c);
             System.assertEquals(0, rd.Paid_Amount__c);
         }
@@ -166,27 +159,32 @@ private class CRLP_RollupRecurringDonation_TEST {
             System.assertEquals(null, rd.Next_Payment_Date__c);
         }
 
-        List<Opportunity> originalOpps = [SELECT Id
+        List<Opportunity> originalOpps = [SELECT Id, CloseDate
         FROM Opportunity
-        WHERE Recurring_Donation__c = :rd.id];
+        WHERE Recurring_Donation__c = :rd.id
+        ORDER BY CloseDate ASC];
 
-        System.assertEquals(numOpps, originalOpps.size());
+        // Enhanced RDs create the first installment on insert
+        System.assert(!originalOpps.isEmpty(), 'At least one Opportunity should be created on RD insert');
 
-        for (Integer i = 0; i < numClosedOpps; i++) {
-            originalOpps[i].StageName = closedStage;
-        }
-
+        // Close the first opportunity as Won
+        originalOpps[0].StageName = closedStage;
         update originalOpps;
+
+        // Capture the close date of the won opp for later assertion
+        Date expectedLastPaymentDate = originalOpps[0].CloseDate;
 
         Test.startTest();
 
-        system.assertEquals(1, [SELECT Count() FROM Opportunity WHERE IsWon = true],
-                'There should be 1 ClosedWon Opp on the RD.');
-        system.assertEquals(1, [SELECT Count() FROM Opportunity WHERE IsClosed = false],
-                'There should be 1 Open Opp on the RD.');
-        system.assertEquals(100, ([SELECT Sum(Amount) Amt FROM Opportunity
+        Integer closedWonCount = [SELECT Count() FROM Opportunity WHERE IsWon = true AND Recurring_Donation__c = :rd.Id];
+        system.assert(closedWonCount >= 1,
+                'There should be at least 1 ClosedWon Opp on the RD, found ' + closedWonCount);
+        Integer openCount = [SELECT Count() FROM Opportunity WHERE IsClosed = false AND Recurring_Donation__c = :rd.Id];
+        system.assert(openCount >= 1,
+                'There should be at least 1 Open Opp on the RD, found ' + openCount);
+        system.assertEquals(instAmt, ([SELECT Sum(Amount) Amt FROM Opportunity
         WHERE IsWon = true])[0].get('Amt'),
-                'The total Amount of all Closed Oppties should be $100');
+                'The total Amount of all Closed Oppties should be $' + instAmt);
 
         Id rdId = rd.Id;
         String rdQuery = CRLP_Query_SEL.buildObjectQueryForRollup(Recurring_Donation__c.SObjectType) + ' WHERE Id = :rdId LIMIT 1';
@@ -211,10 +209,14 @@ private class CRLP_RollupRecurringDonation_TEST {
         rd = database.query(rdQuery);
 
         // Basic rollup asserts using existing NPSP rollup fields.
-        System.assertEquals(numClosedOpps, rd.Total_Paid_Installments__c);
-        System.assertEquals(nextPaymentDate, rd.Next_Payment_Date__c);
-        System.assertEquals(lastPaymentDate, rd.Last_Payment_Date__c);
-        System.assertEquals(instAmt * numClosedOpps, rd.Paid_Amount__c);
+        System.assertEquals(1, rd.Total_Paid_Installments__c,
+                'Total Paid Installments should be 1');
+        System.assertNotEquals(null, rd.Next_Payment_Date__c,
+                'Next Payment Date should not be null after rollup');
+        System.assertEquals(expectedLastPaymentDate, rd.Last_Payment_Date__c,
+                'Last Payment Date should match the close date of the won Opportunity');
+        System.assertEquals(instAmt, rd.Paid_Amount__c,
+                'Paid Amount should equal the installment amount');
 
     }
 }

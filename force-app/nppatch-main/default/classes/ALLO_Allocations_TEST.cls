@@ -773,13 +773,13 @@ private with sharing class ALLO_Allocations_TEST {
         insert acc;
         General_Accounting_Unit__c gau = new General_Accounting_Unit__c(Name = 'foo');
         insert gau;
-        Recurring_Donation__c rd = new TEST_RecurringDonationBuilder()
+        Recurring_Donation__c rd = TEST_RecurringDonationBuilder.constructEnhancedBuilder()
+            .withDefaultValues()
             .withInstallmentPeriodYearly()
+            .withInstallmentFrequency(1)
             .withDateEstablished(System.today())
             .withAccount(acc.id)
             .withAmount(20)
-            .withScheduleTypeMultiplyValue()
-            .withOpenEndedStatusOpen()
             .build();
 
         // this initial creation of the RD with default allocations set up, which get copied to the opp
@@ -872,13 +872,13 @@ private with sharing class ALLO_Allocations_TEST {
         insert gaus;
 
 
-        Recurring_Donation__c rd = new TEST_RecurringDonationBuilder()
+        Recurring_Donation__c rd = TEST_RecurringDonationBuilder.constructEnhancedBuilder()
+            .withDefaultValues()
             .withInstallmentPeriodYearly()
+            .withInstallmentFrequency(1)
             .withDateEstablished(System.today())
             .withAccount(acc.id)
             .withAmount(20)
-            .withScheduleTypeMultiplyValue()
-            .withOpenEndedStatusOpen()
             .build();
 
         // this initial creation of the RD with default allocations set up, which get copied to the opp
