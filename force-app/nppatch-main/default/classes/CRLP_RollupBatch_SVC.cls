@@ -95,9 +95,11 @@ public class CRLP_RollupBatch_SVC {
      * @return True or False
      */
     public static Boolean doesRecordNeedSkewRollupMethod(Id recordId, CRLP_RollupProcessingOptions.RollupType jobType) {
-        if (jobType != CRLP_RollupProcessingOptions.RollupType.GAU &&
-            jobType != CRLP_RollupProcessingOptions.RollupType.RecurringDonations)
-        {
+        if (jobType == CRLP_RollupProcessingOptions.RollupType.RecurringDonations) {
+            // RD rollups always use the Queueable path (dedicated RD batch classes were removed with RD1)
+            return false;
+        }
+        if (jobType != CRLP_RollupProcessingOptions.RollupType.GAU) {
             String objName = recordId.getSobjectType().getDescribe().getName();
             String soql = 'SELECT Id FROM ' + objName + ' WHERE Id = :recordID ';
             String filter = getSkewWhereClause(jobType, CRLP_RollupProcessingOptions.BatchJobMode.SkewMode);

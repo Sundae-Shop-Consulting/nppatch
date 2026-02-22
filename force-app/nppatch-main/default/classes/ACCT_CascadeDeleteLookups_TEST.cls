@@ -59,8 +59,18 @@ private class ACCT_CascadeDeleteLookups_TEST {
             WHERE Id IN (SELECT AccountId FROM Contact WHERE Id IN :contacts)
         ];
 
+        // Re-query contacts to get AccountId for RD creation
+        contacts = [SELECT Id, AccountId FROM Contact WHERE Id IN :contacts];
+
         List<Recurring_Donation__c> recurringDonations = getRecurringDonationBuilder().build(contacts);
-        recurringDonations.addAll(getRecurringDonationBuilder().build(accounts));
+        // For account-based RDs on Household Accounts, also set the Contact
+        // to satisfy RD2 validation (Contact must belong to Household Account)
+        for (Contact c : contacts) {
+            recurringDonations.add(getRecurringDonationBuilder()
+                .withAccount(c.AccountId)
+                .withContact(c.Id)
+                .build());
+        }
         insert recurringDonations;
 
         General_Accounting_Unit__c generalAccountingUnit = new General_Accounting_Unit__c(Name = 'TEST_GAU');
@@ -122,8 +132,18 @@ private class ACCT_CascadeDeleteLookups_TEST {
             WHERE Id IN (SELECT AccountId FROM Contact WHERE Id = :contacts)
         ];
 
+        // Re-query contacts to get AccountId for RD creation
+        contacts = [SELECT Id, AccountId FROM Contact WHERE Id IN :contacts];
+
         List<Recurring_Donation__c> recurringDonations = getRecurringDonationBuilder().build(contacts);
-        recurringDonations.addAll(getRecurringDonationBuilder().build(accounts));
+        // For account-based RDs on Household Accounts, also set the Contact
+        // to satisfy RD2 validation (Contact must belong to Household Account)
+        for (Contact c : contacts) {
+            recurringDonations.add(getRecurringDonationBuilder()
+                .withAccount(c.AccountId)
+                .withContact(c.Id)
+                .build());
+        }
         insert recurringDonations;
 
         General_Accounting_Unit__c generalAccountingUnit = new General_Accounting_Unit__c(Name = 'TEST_GAU');
