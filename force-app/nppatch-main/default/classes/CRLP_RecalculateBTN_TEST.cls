@@ -50,14 +50,15 @@ private class CRLP_RecalculateBTN_TEST {
 
         insert new General_Accounting_Unit__c(Name = 'UNITTEST');
 
-        insert new TEST_RecurringDonationBuilder()
+        insert TEST_RecurringDonationBuilder.constructEnhancedBuilder()
+            .withDefaultValues()
+            .withRecurringTypeFixed()
             .withPlannedInstallments(2)
             .withContact(c.Id)
             .withAmount(1)
             .withInstallmentPeriodYearly()
+            .withInstallmentFrequency(1)
             .withDateEstablished(Date.newInstance(1970,6,12))
-            .withScheduleTypeMultiplyValue()
-            .withOpenEndedStatusNone()
             .build();
     }
 
@@ -190,7 +191,6 @@ private class CRLP_RecalculateBTN_TEST {
     private static void shouldSubmitCRLPBatchWhenCRLPAndEhancedRDsAreEnabled() {
 
         enableCustomizableRollups();
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = TEST_RecurringDonationBuilder.constructEnhancedBuilder()
             .withDefaultValues()
@@ -216,7 +216,6 @@ private class CRLP_RecalculateBTN_TEST {
     private static void shouldNotUpdateRollupFieldsOnRDWhenCRLPIsDisabledAndEhancedRDsAreEnabled() {
 
         disableCustomizableRollups();
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = TEST_RecurringDonationBuilder.constructEnhancedBuilder()
             .withDefaultValues()

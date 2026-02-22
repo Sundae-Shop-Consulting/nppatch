@@ -57,7 +57,6 @@ public with sharing class BDI_GAUAllocationsUtil_TEST {
 
     @IsTest
     static void gauValidationsShouldBeEnforcedAndGAUsAssignedCorrectly() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Data_Import_Settings__c dis = UTIL_CustomSettingsFacade.getDataImportSettings();
         dis.Field_Mapping_Method__c = BDI_DataImportService.FM_DATA_IMPORT_FIELD_MAPPING;
@@ -525,7 +524,6 @@ public with sharing class BDI_GAUAllocationsUtil_TEST {
      */
     @isTest
     static void defaultGAUAllocsShouldNotThrowError(){
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Data_Import_Settings__c dis = UTIL_CustomSettingsFacade.getDataImportSettings();
         dis.Field_Mapping_Method__c = BDI_DataImportService.FM_DATA_IMPORT_FIELD_MAPPING;

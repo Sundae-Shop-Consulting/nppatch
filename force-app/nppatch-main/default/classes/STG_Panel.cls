@@ -116,7 +116,7 @@ public with sharing virtual class STG_Panel {
     */
     public Boolean isRD2Enabled {
         get {
-            return RD2_EnablementService.isRecurringDonations2Enabled;
+            return true;
         } private set;
     }
 
@@ -133,18 +133,7 @@ public with sharing virtual class STG_Panel {
     * @description Determine if Enhanced RD page should be displayed
     */
     private Boolean isDisplayingRD2UpgradePage() {
-        if (RD2_EnablementService.isMetadataDeployed == false) {
-            return true;
-        }
-
-        Recurring_Donations_Settings__c rdSettings = UTIL_CustomSettingsFacade.getRecurringDonationsSettings();            
-        Map<String, UTIL_BatchJobService.JobSummary> summaryByType =
-            new RD2_DataMigrationEnablement.BatchJob().getSummaryByType(rdSettings);
-        
-        return isSimpleEnablementCompleteInThePast7Days(summaryByType)
-            || isMigrationNotFullyCompleted(summaryByType)
-            || isMigrationCompleteInThePast7Days(summaryByType)
-            ;
+        return false;
     }
 
     public Boolean isMigrationNotFullyCompleted(Map<String, UTIL_BatchJobService.JobSummary> summaryByType) {

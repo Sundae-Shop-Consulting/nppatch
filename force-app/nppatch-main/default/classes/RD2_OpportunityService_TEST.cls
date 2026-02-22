@@ -100,7 +100,6 @@ private with sharing class RD2_OpportunityService_TEST {
      */
     @isTest
     private static void shouldCreateOppWhenRDHasContact() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration(STAGE_NAME_PLEDGED);
 
@@ -127,7 +126,6 @@ private with sharing class RD2_OpportunityService_TEST {
      */
     @isTest
     private static void shouldCreateOppWhenRDHasOrgAffiliation() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration(STAGE_NAME_PROMISED);
 
@@ -167,7 +165,6 @@ private with sharing class RD2_OpportunityService_TEST {
      */
     @isTest
     private static void shouldCreateOppWithSpecialFormatWhenNoOppNamingSpecified() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -186,7 +183,6 @@ private with sharing class RD2_OpportunityService_TEST {
      */
     @isTest
     private static void shouldCreateOppsWithCorrectNameWhenRdIsOpen() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -207,7 +203,6 @@ private with sharing class RD2_OpportunityService_TEST {
      */
     @isTest
     private static void shouldCreateOppNameWithOppNamingSpecifiedInSettings() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         insert new Opportunity_Naming_Settings__c(
             Name = 'Test Opp Naming Settings',
@@ -237,7 +232,6 @@ private with sharing class RD2_OpportunityService_TEST {
     @isTest
     private static void shouldUpdateOppNameWithOppNamingSpecifiedInSettings() {
         final Datetime closeDatetime = Datetime.newInstance(CLOSE_DATE.year(), CLOSE_DATE.month(), CLOSE_DATE.day());
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         TDTM_TriggerHandler.disableTDTM = true;
 
@@ -287,7 +281,6 @@ private with sharing class RD2_OpportunityService_TEST {
     @isTest
     private static void shouldSetOppRecordTypeIdFromSettings() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Id rdSettingRecordTypeId = UTIL_RecordTypes_TEST.getRandomRecordTypeId(Opportunity.SObjectType);
 
@@ -312,7 +305,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldSetOppRecordTypeToDefaultWhenSettingsNotConfigured() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -333,7 +325,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldNotCreateOppWhenSettingRecordTypeIsInvalid() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration(new Map<String, Object>{
             'Record_Type__c' => UTIL_RecordTypes_TEST.MOCK_ID
@@ -358,7 +349,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldUpdateOppWhenCloseDateIsInFuture() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService scheduleService = new RD2_ScheduleService();
 
         Date nextCloseDate = CLOSE_DATE.addDays(1);
@@ -396,7 +386,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldNotUpdateOppWhenCloseDateInThePast() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
         RD2_ScheduleService.currentDate = CLOSE_DATE.addDays(1);
@@ -433,7 +422,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldUpdateOppWhenOpenAndCloseDateIsToday() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -467,7 +455,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldNotUpdateOppWhenClosedAndCloseDateIsToday() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -506,7 +493,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldNotUpdateOppWhenClosedAndCloseDateIsTodayAndFutureOpenOppExists() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -565,7 +551,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldUpdateOppWhenOpenAndCloseDateAreTodayAndInFuture() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService scheduleService = new RD2_ScheduleService();
 
         setUpConfiguration();
@@ -620,7 +605,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldNotUpdateFutureOppWhenClosed() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -650,7 +634,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldNotUpdateOppWhenOppCloseDateIsBeforeRDStartDate() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -687,7 +670,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldUpdateOpenOppCloseDateWhenClosedOppExistsAndRDScheduleIsModified() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
         setUpConfiguration();
 
@@ -736,7 +718,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldUpdateOppCampaignWhenSettingsEnabled() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -767,7 +748,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldNotUpdateOppCampaignWhenSettingsDisabled() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -804,7 +784,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldReturnNoErrorWhenUpdatedRDHasNoOpp() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -841,7 +820,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldUpdateFutureOpenOppWhenRDDonorIsChanged() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -1080,7 +1058,6 @@ private with sharing class RD2_OpportunityService_TEST {
     */
     @isTest
     private static void shouldNotRemoveAccountOnOppWhenRDWithoutAccountIsModified() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -1120,7 +1097,6 @@ private with sharing class RD2_OpportunityService_TEST {
      */
     @IsTest
     private static void shouldCreateOpportunityWhenPaymentsIsDisabled() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration(STAGE_NAME_PLEDGED);
 
@@ -1151,7 +1127,6 @@ private with sharing class RD2_OpportunityService_TEST {
     * when Recurring Donation having Organization specified is updated
     */
     private static void shouldNotRemoveAccountOnOppWhenRDWithAccountIsModified() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -1188,7 +1163,6 @@ private with sharing class RD2_OpportunityService_TEST {
     * Account on the Recurring Donation when the RD Account is changed
     */
     private static void shouldUpdateAccountOnOppWhenRDAccountIsChanged() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -1226,7 +1200,6 @@ private with sharing class RD2_OpportunityService_TEST {
     * when Recurring Donation has Organization removed
     */
     private static void shouldUpdateAccountOnOppWhenRDHasOrganizationRemoved() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -1270,7 +1243,6 @@ private with sharing class RD2_OpportunityService_TEST {
     * when Recurring Donation has Organization removed and the Contact replaced
     */
     private static void shouldUpdateAccountOnOppWhenRDHasOrganizationRemovedAndContactReplaced() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         setUpConfiguration();
 
@@ -1363,7 +1335,6 @@ private with sharing class RD2_OpportunityService_TEST {
     * @return Recurring_Donation__c
     */
     private static Recurring_Donation__c createRecurringDonation(String currencyCode) {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         setUpConfiguration();
 
         Recurring_Donation__c rd = buildRecurringDonation()

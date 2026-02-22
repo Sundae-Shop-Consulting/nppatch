@@ -191,10 +191,7 @@ public with sharing class STG_InstallScript_TEST {
         System.assertEquals('Matched Donor;Soft Credit;Household Member', npo02Settings.Soft_Credit_Roles__c);
         System.assertEquals(true, npo02Settings.Household_Contact_Roles_On__c);
 
-        System.assertEquals(RD_RecurringDonations.RecurringDonationCloseOptions.Mark_Opportunities_Closed_Lost.name(), npe03Settings.Open_Opportunity_Behavior__c);
-        System.assertEquals(true, npe03Settings.Add_Campaign_to_All_Opportunites__c);
-        System.assertEquals(50, npe03Settings.Maximum_Donations__c);
-        System.assertEquals(12, npe03Settings.Opportunity_Forecast_Months__c);
+        System.assertEquals(RD2_Constants.CloseActions.Mark_Opportunities_Closed_Lost.name(), npe03Settings.Open_Opportunity_Behavior__c);
         System.assertEquals([select id from RecordType where sobjecttype = 'Opportunity' limit 1].id, npe03Settings.Record_Type__c);
 
         System.assertEquals('List Setting', npe04Settings.Reciprocal_Method__c);
@@ -576,13 +573,13 @@ public with sharing class STG_InstallScript_TEST {
         Account acc = new Account(Name = 'foo');
         insert acc;
 
-        Recurring_Donation__c rd = new TEST_RecurringDonationBuilder()
+        Recurring_Donation__c rd = TEST_RecurringDonationBuilder.constructEnhancedBuilder()
+            .withDefaultValues()
             .withAccount(acc.Id)
             .withInstallmentPeriodYearly()
+            .withInstallmentFrequency(1)
             .withDateEstablished(Date.newInstance(1984,01,29))
             .withAmount(20)
-            .withScheduleTypeMultiplyValue()
-            .withOpenEndedStatusOpen()
             .build();
 
         insert rd;

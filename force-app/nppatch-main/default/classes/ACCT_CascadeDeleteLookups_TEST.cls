@@ -163,11 +163,13 @@ private class ACCT_CascadeDeleteLookups_TEST {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     private static TEST_RecurringDonationBuilder getRecurringDonationBuilder() {
-        return new TEST_RecurringDonationBuilder()
+        return TEST_RecurringDonationBuilder.constructEnhancedBuilder()
+            .withDefaultValues()
             .withAmount(2)
+            .withRecurringTypeFixed()
             .withPlannedInstallments(2)
             .withInstallmentPeriodYearly()
-            .withDateEstablished()
-            .withScheduleTypeMultiplyValue();
+            .withInstallmentFrequency(1)
+            .withDateEstablished();
     }
 }

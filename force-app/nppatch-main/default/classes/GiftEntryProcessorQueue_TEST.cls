@@ -43,7 +43,6 @@ private class GiftEntryProcessorQueue_TEST {
         RD2_Settings_TEST.setUpConfiguration(new Map<String, Object>{
             'InstallmentOppStageName__c' => openStage
         });
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Data_Import_Settings__c dataImportSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
         dataImportSettings.Field_Mapping_Method__c = BDI_DataImportService.FM_DATA_IMPORT_FIELD_MAPPING;
         dataImportSettings.Default_Data_Import_Field_Mapping_Set__c =
@@ -121,7 +120,6 @@ private class GiftEntryProcessorQueue_TEST {
         RD2_Settings_TEST.setUpConfiguration(new Map<String, Object>{
             'InstallmentOppStageName__c' => openStage
         });
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Data_Import_Settings__c dataImportSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
         dataImportSettings.Field_Mapping_Method__c = BDI_DataImportService.FM_DATA_IMPORT_FIELD_MAPPING;
         dataImportSettings.Default_Data_Import_Field_Mapping_Set__c =

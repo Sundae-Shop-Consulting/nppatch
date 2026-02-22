@@ -40,7 +40,7 @@ private class RD2_StatusAutomationSettings_TEST {
 
     @IsTest
     private static void verifyStatusAutomationSettingsRetrieveCorrectData() {
-        RD2_enablementService_TEST.setRecurringDonations2Enabled();
+
         RD2_StatusAutomationService.statusMapper = (RD2_StatusMapper) Test.createStub(
             RD2_StatusMapper.Class,
             new RD2_StatusMapper_TEST.Stub().withDefaultMapping()
@@ -82,7 +82,7 @@ private class RD2_StatusAutomationSettings_TEST {
 
     @IsTest
     private static void verifyStatusAutomationIsCorrectlySave() {
-        RD2_enablementService_TEST.setRecurringDonations2Enabled();
+
         RD2_StatusAutomationService.statusMapper = (RD2_StatusMapper) Test.createStub(
             RD2_StatusMapper.Class,
             new RD2_StatusMapper_TEST.Stub().withDefaultMapping()

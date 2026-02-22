@@ -128,9 +128,6 @@ global with sharing class Callable_API implements System.Callable {
                 // parameter service depending on which action was invoked
                 return CallableDispatchService_ERR.getInstanceOf(paramService).dispatch();
 
-            } when 'rd2.executedatamigration' {
-                return RD2_EnablementDelegate_CTRL.callableApiRunMigration();
-
             } when 'rd2.pause' {
                 Map<Id, RD2_ApiService.PauseObject> pauseObjectsById = paramService
                     .withRequiredParamCheck()
@@ -155,11 +152,6 @@ global with sharing class Callable_API implements System.Callable {
                     .getSetId(CallableApiParameters.PARAM_RECORD_IDS);
 
                 return new RD2_ApiService().queryInstallments(startDate, endDate, rdIds);
-
-            } when 'settings.enableenhancedrecurringdonations' {
-                Boolean scheduleJobsWhenComplete = paramService.getBoolean(CallableApiParameters.PARAM_SCHEDULE_JOBS, true);
-                RD2_EnablementDelegate_CTRL.callableApiEnableEnhancement(scheduleJobsWhenComplete);
-                return null;
 
             } when 'allo.processoppsandpmts' {
                 // This method is to be used only by Salesforce.org apps and is subject to change at any time. Do NOT call this method.

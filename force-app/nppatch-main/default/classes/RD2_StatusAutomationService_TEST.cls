@@ -184,7 +184,6 @@ public class RD2_StatusAutomationService_TEST {
 
     @Istest
     private static void verifyStatusAutomationShouldNotMarkRDToLapsedOnTheThresholdDay() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         setupStatusAutomationSettings(15, 20);
         RD2_ScheduleService scheduleService = new RD2_ScheduleService();
         RD2_StatusAutomationService automationService = new RD2_StatusAutomationService();
@@ -212,7 +211,6 @@ public class RD2_StatusAutomationService_TEST {
 
     @Istest
     private static void verifyStatusAutomationShouldMarkRDToLapsedAfterThresholdDay() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         setupStatusAutomationSettings(15, 20);
         RD2_ScheduleService scheduleService = new RD2_ScheduleService();
         RD2_StatusAutomationService automationService = new RD2_StatusAutomationService();
@@ -240,7 +238,6 @@ public class RD2_StatusAutomationService_TEST {
 
     @Istest
     private static void verifyStatusAutomationShouldNotMarkRDToClosedOnThresholdDay() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         setupStatusAutomationSettings(15, 20);
         RD2_ScheduleService scheduleService = new RD2_ScheduleService();
         RD2_StatusAutomationService automationService = new RD2_StatusAutomationService();
@@ -268,7 +265,6 @@ public class RD2_StatusAutomationService_TEST {
 
     @Istest
     private static void verifyStatusAutomationShouldNotRDToClosedOnThresholdDay() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         setupStatusAutomationSettings(15, 20);
         RD2_ScheduleService scheduleService = new RD2_ScheduleService();
         RD2_StatusAutomationService automationService = new RD2_StatusAutomationService();

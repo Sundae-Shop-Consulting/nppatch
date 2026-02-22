@@ -288,9 +288,7 @@ public with sharing class RD2_ValidationService {
     * @return void
     */
     private void validateRD2MetadataDeployed(ErrorRecord errorCollection) {
-        if (!RD2_EnablementService.isMetadataDeployed) {
-            errorCollection.addError(System.Label.RD2_EnablementIncomplete);
-        }
+        // RD2 metadata is always deployed — no validation needed
     }
 
     /**
@@ -582,7 +580,7 @@ public with sharing class RD2_ValidationService {
     */
     private void validateElevateDayOfMonthChange(Recurring_Donation__c rd, Recurring_Donation__c oldRd, ErrorRecord errorCollection) {
         if (isElevateRDChange(rd, oldRd)
-            && rd.Installment_Period__c == RD_Constants.INSTALLMENT_PERIOD_MONTHLY
+            && rd.Installment_Period__c == RD2_Constants.INSTALLMENT_PERIOD_MONTHLY
             && rd.Installment_Period__c == oldRd.Installment_Period__c
             && rd.Day_of_Month__c != oldRd.Day_of_Month__c) {
                 errorCollection.addError(System.Label.RD2_ElevateRDDayOfMonthCannotChange);

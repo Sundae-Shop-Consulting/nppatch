@@ -37,7 +37,7 @@ global without sharing class STG_InstallScript implements InstallHandler {
 
     @TestVisible
     private enum InstallAction {
-        POPULATE_RD_INSTALLMENT_NUMBER, RUN_NEW_ORG_SCRIPT,
+        RUN_NEW_ORG_SCRIPT,
         INSERT_TDTM_DEFAULTS, ABORT_OLD_SCHEDULED_JOBS,
         CLEANUP_RECORD_TYPE_SETTINGS, UPDATE_CAMPAIGN_LIST_REPORT,
         CREATE_DEFAULT_SETTINGS_FOR_UPGRADE,
@@ -70,10 +70,6 @@ global without sharing class STG_InstallScript implements InstallHandler {
         if (context.previousVersion() == null) {
             // Ensure custom settings that we manage are populated
             executeAction(InstallAction.CREATE_DEFAULT_SETTINGS_FOR_NEW_INSTALL, logger);
-
-            // Populate Recurring Donation Installment Number on Opportunity for fresh installs;
-            // This also covers upgrades from v2
-            executeAction(InstallAction.POPULATE_RD_INSTALLMENT_NUMBER, logger);
 
             executeAction(InstallAction.RUN_NEW_ORG_SCRIPT, logger);
 
@@ -110,10 +106,7 @@ global without sharing class STG_InstallScript implements InstallHandler {
         Savepoint sp = Database.setSavepoint();
 
         try {
-            if (action == InstallAction.POPULATE_RD_INSTALLMENT_NUMBER) {
-                database.executeBatch(new RD_InstallScript_BATCH(), 10);
-
-            } else if (action == InstallAction.RUN_NEW_ORG_SCRIPT) {
+            if (action == InstallAction.RUN_NEW_ORG_SCRIPT) {
                 runNewOrgScript();
 
             } else if (action == InstallAction.INSERT_TDTM_DEFAULTS) {

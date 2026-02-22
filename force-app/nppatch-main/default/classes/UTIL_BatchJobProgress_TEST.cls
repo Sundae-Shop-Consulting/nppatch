@@ -43,10 +43,10 @@ private with sharing class UTIL_BatchJobProgress_TEST {
     @isTest
     private static void shouldLoadBatchJob() {
         Test.startTest();
-        Database.executeBatch(new RD_InstallScript_BATCH());
+        Database.executeBatch(new RD2_OpportunityEvaluation_BATCH());
         Test.stopTest();
 
-        UTIL_BatchJobService.BatchJob batchJob = getBatchJob('RD_InstallScript_BATCH');
+        UTIL_BatchJobService.BatchJob batchJob = getBatchJob('RD2_OpportunityEvaluation_BATCH');
         System.assertNotEquals(null, batchJob, 'Batch Job should be returned');
     }
 

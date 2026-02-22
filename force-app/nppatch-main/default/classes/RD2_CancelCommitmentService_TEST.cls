@@ -173,7 +173,6 @@ public with sharing class RD2_CancelCommitmentService_TEST {
         String originalReason,
         String firstError
     ) {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = TEST_RecurringDonationBuilder.constructEnhancedBuilder()
             .withDefaultValues()

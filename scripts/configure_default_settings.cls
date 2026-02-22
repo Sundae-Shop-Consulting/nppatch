@@ -82,7 +82,7 @@ private static void setCustomizableRollupSettings() {
 
     if (settings.Id == null) {
         // These are copied from UTIL_CustomSettingsFacade.configRollupSettings();
-        settings.%%%NAMESPACE%%%Customizable_Rollups_Enabled__c = false;
+        settings.%%%NAMESPACE%%%Customizable_Rollups_Enabled__c = true;
         settings.%%%NAMESPACE%%%Rollups_Account_Batch_Size__c = DEFAULT_ROLLUP_BATCH_SIZE;
         settings.%%%NAMESPACE%%%Rollups_Contact_Batch_Size__c = DEFAULT_ROLLUP_BATCH_SIZE;
         settings.%%%NAMESPACE%%%Rollups_Account_SkewMode_Batch_Size__c = DEFAULT_ROLLUP_SKEW_MODE_BATCH_SIZE;
@@ -170,19 +170,10 @@ private void setRecurringDonationSettings() {
     %%%NAMESPACE%%%Recurring_Donations_Settings__c settings = %%%NAMESPACE%%%Recurring_Donations_Settings__c.getOrgDefaults();
     if (settings.Id == null) {
         // These are copied from UTIL_CustomSettingsFacade.configRecurringDonationSettings();
-        settings.%%%NAMESPACE%%%Add_Campaign_to_All_Opportunites__c = true;
-        settings.%%%NAMESPACE%%%Maximum_Donations__c = 50;
-        settings.%%%NAMESPACE%%%Recurring_Donation_Batch_Size__c = 50;
-        settings.%%%NAMESPACE%%%DataMigrationBatchSize__c = 25;
-        settings.%%%NAMESPACE%%%Opportunity_Forecast_Months__c = 12;
-        settings.%%%NAMESPACE%%%Open_Opportunity_Behavior__c = 'Mark_Opportunities_Closed_Lost';
-        settings.%%%NAMESPACE%%%InstallmentOppAutoCreateOption__c = 'Always_Create_Next_Installment';
-        settings.%%%NAMESPACE%%%InstallmentOppFirstCreateMode__c = 'Synchronous';
-        settings.%%%NAMESPACE%%%DisableRollupsWhenCreatingInstallments__c = false;
         settings.%%%NAMESPACE%%%NextDonationDateMatchRangeDays__c = 3;
 
         settings.%%%NAMESPACE%%%EnableAutomaticNaming__c = false;
-        settings.%%%NAMESPACE%%%IsRecurringDonations2Enabled__c = false;
+        settings.%%%NAMESPACE%%%IsRecurringDonations2Enabled__c = true;
         settings.%%%NAMESPACE%%%UseFiscalYearForRecurringDonationValue__c = false;
 
     }
