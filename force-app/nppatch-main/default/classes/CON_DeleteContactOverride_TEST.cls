@@ -481,10 +481,16 @@ private class CON_DeleteContactOverride_TEST {
         allocations.addAll(CDL_CascadeDeleteLookups_TEST.buildOpportunityAllocations(generalAccountingUnit, opportunities));
         insert allocations;
 
+        // Disable TDTM to avoid record locking during friend Contact and
+        // Relationship creation. Enhanced RD processing above holds locks on
+        // related Account/Contact records, and the Household Account auto-creation
+        // triggered by the friend Contact insert conflicts with those locks.
+        TDTM_TriggerHandler.disableTDTM = true;
         List<Relationship__c> relationships = CDL_CascadeDeleteLookups_TEST.buildRelationships(new List<Contact>{
             contact1
         });
         insert relationships;
+        TDTM_TriggerHandler.disableTDTM = false;
 
         Test.setCurrentPage(Page.CON_DeleteContactOverride);
         ApexPages.currentPage().getParameters().put('Id', contact1.Id);

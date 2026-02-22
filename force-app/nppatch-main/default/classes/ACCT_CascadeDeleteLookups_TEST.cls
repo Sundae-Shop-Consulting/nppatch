@@ -60,7 +60,7 @@ private class ACCT_CascadeDeleteLookups_TEST {
         ];
 
         // Re-query contacts to get AccountId for RD creation
-        contacts = [SELECT Id, AccountId FROM Contact WHERE Id IN :contacts];
+        contacts = [SELECT Id, AccountId, LastName FROM Contact WHERE Id IN :contacts];
 
         List<Recurring_Donation__c> recurringDonations = getRecurringDonationBuilder().build(contacts);
         // For account-based RDs on Household Accounts, also set the Contact
@@ -133,7 +133,7 @@ private class ACCT_CascadeDeleteLookups_TEST {
         ];
 
         // Re-query contacts to get AccountId for RD creation
-        contacts = [SELECT Id, AccountId FROM Contact WHERE Id IN :contacts];
+        contacts = [SELECT Id, AccountId, LastName FROM Contact WHERE Id IN :contacts];
 
         List<Recurring_Donation__c> recurringDonations = getRecurringDonationBuilder().build(contacts);
         // For account-based RDs on Household Accounts, also set the Contact

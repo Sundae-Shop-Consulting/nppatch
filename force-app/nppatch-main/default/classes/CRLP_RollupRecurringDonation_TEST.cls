@@ -177,6 +177,23 @@ private class CRLP_RollupRecurringDonation_TEST {
         // Capture the close date of the won opp for later assertion
         Date expectedLastPaymentDate = originalOpps[0].CloseDate;
 
+        // With RD2 always-on, closing the first Opp triggers the evaluation service
+        // to create the next installment Opp asynchronously via a Queueable. In test
+        // context, that Queueable won't execute (it was enqueued before Test.startTest).
+        // Manually insert the next installment Opportunity so rollup tests have both
+        // a Closed Won and an Open Opp to work with.
+        String openStage = UTIL_UnitTestData_TEST.getOpenStage();
+        Opportunity nextInstallment = new Opportunity(
+                Name = 'RD Test Next Installment',
+                AccountId = acctId,
+                Recurring_Donation__c = rd.Id,
+                Amount = instAmt,
+                CloseDate = expectedLastPaymentDate.addMonths(1),
+                StageName = openStage,
+                Primary_Contact__c = con.Id
+        );
+        insert nextInstallment;
+
         Test.startTest();
 
         Integer closedWonCount = [SELECT Count() FROM Opportunity WHERE IsWon = true AND Recurring_Donation__c = :rd.Id];
