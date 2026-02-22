@@ -55,11 +55,6 @@ public class CRLP_Rollup_TDTM extends TDTM_Runnable {
     public override DmlWrapper run(List<SObject> newlist, List<SObject> oldlist,
             TDTM_Runnable.Action triggerAction, Schema.DescribeSObjectResult objResult) {
 
-        // Don't continue if the Customizable Rollups engine is not enabled
-        if (!CRLP_Rollup_SVC.isCustomizableRollupEngineEnabled) {
-            return null;
-        }
-
         List<SObject> recordsToRecalculate = new List<SObject>();
         for (Integer i=0; i < ((newlist == null ? oldlist.size() : newlist.size())); i++) {
             SObject record = (newlist == null ? oldlist[i] : newlist[i]);

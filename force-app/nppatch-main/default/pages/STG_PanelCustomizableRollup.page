@@ -14,43 +14,14 @@
             <c:UTIL_PageMessages allowClose="false" id="messages" />
             <c:UTIL_SingleToastMessage isRendered="{!NOT(showCRLPSettings)}" message="{!$Label.stgCRLPHouseholdAccountError}" />
 
-            <!-- BEGIN INTRO TEXT AND TOGGLE -->
             <div class="slds-grid {!IF(showCRLPSettings, '', 'slds-hide')}">
-                <apex:outputPanel rendered="{! !isPolling }">
-                    <label class="slds-checkbox_toggle slds-grid slds-m-vertical_small">
-                        <span class="slds-form-element__label slds-m-bottom_none">{!$Label.CRLP_RollupSummary}</span>
-                        <apex:inputCheckbox onClick="onToggle(); return false;" id="enableCRLPToggle" html-name="checkbox-toggle-2" value="{!stgService.stgCRLP.Customizable_Rollups_Enabled__c}"
-                            html-aria-describedby="checkbox-toggle-2" />
-                        <span class="slds-checkbox_faux_container" aria-live="assertive">
-                            <span class="slds-checkbox_faux"></span>
-                            <span class="slds-checkbox_on">{!$Label.stgStatusEnabled}</span>
-                            <span class="slds-checkbox_off">{!$Label.stgStatusDisabled}</span>
-                        </span>
-                    </label>
-
-                </apex:outputPanel>
-            </div>
-            <!-- END INTRO TEXT AND TOGGLE -->
-
-            <apex:outputPanel rendered="{! and(stgService.stgCRLP.Customizable_Rollups_Enabled__c, isRD2Enabled) }">
-                <div role="alert" class="slds-notify notify__content slds-media slds-text-body_small slds-m-top_small slds-m-bottom_small">
-                    <div class="slds-media__figure">
-                        <c:UTIL_SLDS_Icon icon="warning" iconCategory="utility" size="x-small" fillColor="orange" />
-                    </div>
-                    <div class="slds-media__body">
-                        <c:UTIL_HtmlOutput html="{!$Label.RD2_DisableCustomizableRollupWarning}" />
-                    </div>
-                </div>
-            </apex:outputPanel>
-
-            <div class="slds-grid {!IF(!isPolling, '', 'slds-hide')}">
                 <p class="slds-text-body_small slds-m-top_x-small">
                     <c:UTIL_HtmlOutput html="{!$Label.stgHelpCustomizableRollupsEnable2}" hasLink="true" />
                 </p>
             </div>
 
             <!-- BEGIN ENABLED OPTIONS -->
-            <apex:outputPanel rendered="{! stgService.stgCRLP.Customizable_Rollups_Enabled__c && !isPolling}">
+            <apex:outputPanel rendered="{! !isPolling}">
 
                 <apex:commandButton id="navigateCRLPs" value="{!$Label.stgCRLPGoToSetup}" styleClass="slds-m-vertical_large slds-button slds-button_brand"
                     action="{!navigate}" />
@@ -84,10 +55,6 @@
             />
 
             <apex:actionFunction name="reset" action="{!resetRollupsToDefaultConfig}" reRender="form" status="statusLoad" />
-            <apex:actionFunction name="enableCRLPs" action="{!enableCRLPs}" reRender="form, status, idPanelSchedule, idPanelConRole, idPanelMembership, idPanelAllocations, UDRsTreeItem, donorStatsTreeItem"
-                status="statusLoad" />
-            <apex:actionFunction name="disableCRLPs" action="{!disableCRLPs}" reRender="form, status, idPanelSchedule, idPanelConRole, idPanelMembership, idPanelAllocations, UDRsTreeItem, donorStatsTreeItem"
-                status="statusLoad" />
 
         </apex:form>
 
@@ -125,13 +92,6 @@
 
         <script type="text/javascript">
             document.getElementById('warning_modal_reset_button').addEventListener('click', reset);
-            function onToggle() {
-                if (document.getElementById('{!$Component.form.enableCRLPToggle}').checked) {
-                    enableCRLPs();
-                } else {
-                    disableCRLPs();
-                }
-            }
         </script>
 
     </div>

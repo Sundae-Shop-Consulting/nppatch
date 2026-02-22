@@ -78,7 +78,7 @@ public with sharing class CRLP_RecalculateBTN_CTRL {
         if (hasError == true || recordId == null) {
             // do nothing if there is no record id or there is a permissions error
 
-        } else if (CRLP_Rollup_SVC.isCustomizableRollupEngineEnabled) {
+        } else {
 
             CRLP_RollupProcessingOptions.RollupType jobType;
             CRLP_RollupProcessingOptions.BatchJobMode jobMode = CRLP_RollupProcessingOptions.BatchJobMode.NonSkewMode;
@@ -133,20 +133,6 @@ public with sharing class CRLP_RecalculateBTN_CTRL {
 
             }
 
-        } else {
-            // Legacy Roll-Ups - async action
-            if (this.objType == Contact.SObjectType) {
-                calculateContactSoftCredit(recordId);
-                RLLP_OppRollup.rollupContactsFuture(new Set<Id>{ recordId });
-
-            } else if (this.objType == Account.SObjectType) {
-                RLLP_OppRollup.rollupAccountsFuture(new Set<Id>{ recordId });
-
-            } else if (this.objType == General_Accounting_Unit__c.SObjectType) {
-                ALLO_Rollup_SCHED rollup = new ALLO_Rollup_SCHED(recordId);
-                rollup.runRollups();
-
-            }
         }
 
         ApexPages.addMessage(new ApexPages.Message(
@@ -156,17 +142,4 @@ public with sharing class CRLP_RecalculateBTN_CTRL {
         return null;
     }
 
-    /*********************************************************************************************************
-    * @description Calculates the Soft Credit for the Contact.
-    * @return void.
-    */
-    @future
-    private static void calculateContactSoftCredit(Id recordId) {
-        RLLP_OppRollup_UTIL oppRollupUtil = new RLLP_OppRollup_UTIL();
-        String contactQuery = oppRollupUtil.buildContactQuery();
-        contactQuery += ' WHERE Id = \'' + recordId + '\'';
-
-        RLLP_OppRollup rollup = new RLLP_OppRollup();
-        rollup.RollupSoftCreditsWithPartialSupport(Database.query(contactQuery));
-    }
 }

@@ -741,13 +741,12 @@ public inherited sharing class ContactAdapter extends fflib_SObjects2 {
             return;
         }
 
-        Set<Id> oppIds = getOppIdsForWinningContacts(winningContacts);
-        if (!oppIds.isEmpty()) {
-            if (System.isFuture() || System.isBatch()) {
-                RLLP_OppRollup.rollupContactsandHouseholdsForTrigger(oppIds);
-            } else {
-                RLLP_OppRollup.rollupContactsandHouseholdsForTriggerFuture(oppIds);
-            }
+        // Non-HH Account model path: trigger CRLP rollups for the winning contacts
+        List<Id> contactIdList = new List<Id>(winningContacts);
+        if (contactIdList.size() == 1 || System.isFuture() || System.isBatch() || System.isQueueable()) {
+            CRLP_RollupQueueable.runRollupsForIds(contactIdList);
+        } else {
+            System.enqueueJob(new CRLP_RollupQueueable(contactIdList));
         }
     }
 

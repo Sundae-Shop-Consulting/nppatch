@@ -149,16 +149,8 @@ public inherited sharing class LegacyHouseholds extends fflib_SObjects2 {
     }
 
     public void calculateLegacyHouseholdRollups() {
-        LegacyHouseholds nonEmptyHouseholds =
-                nonEmptyHouseholds();
-        if (nonEmptyHouseholds.ids().size() > 0) {
-            if (rollupsShouldRunSynchronously(nonEmptyHouseholds.ids())) {
-                RLLP_OppRollup rg = new RLLP_OppRollup();
-                rg.rollupHouseholds(getHouseholdMap(nonEmptyHouseholds.ids()));
-            } else {
-                RLLP_OppRollup.rollupHouseholdsFuture(nonEmptyHouseholds.ids());
-            }
-        }
+        // No-op: CRLP does not roll up to Household__c objects.
+        // NPPatch uses the HH Account model, so this is never needed.
     }
 
     public void updateHouseholdNameAndMemberCount() {
@@ -428,15 +420,4 @@ public inherited sharing class LegacyHouseholds extends fflib_SObjects2 {
                 && !System.isFuture() && !System.isBatch();
     }
 
-    private Map<Id, Household__c> getHouseholdMap(Set<Id> householdIds) {
-        RLLP_OppRollup_UTIL oppRollupUtil = new RLLP_OppRollup_UTIL();
-        Map<Id, Household__c> hhmap = new Map<Id, Household__c>(
-                (List<Household__c>) Database.query(oppRollupUtil.buildHouseholdQuery() +
-                        ' WHERE Id IN :householdIds'));
-        return hhmap;
-    }
-
-    private Boolean rollupsShouldRunSynchronously(Set<Id> householdIds) {
-        return System.isFuture() || System.isBatch() || householdIds.size() <= 2;
-    }
 }

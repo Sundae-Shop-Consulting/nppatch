@@ -47,37 +47,6 @@ public inherited sharing class CRLP_EnablementService {
 
 
     /*******************************************************************************************************
-    * @description Fully enable Customizable Rollups by building the default configuration and deploying using
-    * the Apex Metadata Api. If there are already defined rollups in the Rollup__mdt object, then just set the
-    * custom settings field to true and reschedule the batch jobs (skipping the deployment step)
-    * @return DeploymentJobId
-    */
-    public String enable(Boolean rescheduleBatchJobs) {
-        verifyPermissions();
-
-        // If there are existing Rollup__mdt records, just set the custom settings field to true, reschedule jobs, and return
-        List<Rollup__mdt> existingRollups = CRLP_Rollup_SEL.cachedRollups;
-        if (!existingRollups.isEmpty()) {
-            crlpSettings.Customizable_Rollups_Enabled__c = true;
-            Database.upsert(crlpSettings);
-            if (rescheduleBatchJobs) {
-                UTIL_MasterSchedulableHelper.setScheduledJobs();
-            }
-            return null;
-        }
-
-        // Execute the full Custom Metadata Type deployment process
-        String jobId = new CRLP_DefaultConfigBuilder_SVC()
-            .withScheduleNpspBatchJobs(rescheduleBatchJobs)
-            .convertLegacyRollupsIntoCustomizableRollups();
-        if (Test.isRunningTest()) {
-            jobId = '123';
-        }
-
-        return jobId;
-    }
-
-    /*******************************************************************************************************
     * @description Reset all Customizable Rollups by effectively redeploying them in their entirety
     * @return DeploymentJobId
     */
@@ -95,20 +64,8 @@ public inherited sharing class CRLP_EnablementService {
         return jobId;
     }
 
-    /*******************************************************************************************************
-    * @description Action Method to disable Customizable Rollups and reschedule batch Jobs
-    */
-    public void disable() {
-        verifyPermissions();
-
-        crlpSettings.Customizable_Rollups_Enabled__c = false;
-        Database.upsert(crlpSettings);
-
-        UTIL_MasterSchedulableHelper.setScheduledJobs();
-    }
-
     /**
-    * @description Verify that the current user has the appropriate permissions to Enable, Reset or Disable
+    * @description Verify that the current user has the appropriate permissions to Reset
     * Customizable Rollups. Throws an InsufficientPermissions exception if not.
     */
     private void verifyPermissions() {

@@ -208,7 +208,6 @@ public without sharing class STG_PanelHealthCheck_CTRL extends STG_Panel {
         verifyFields();
         new STG_PanelADDRVerification_CTRL().verifyAddressVerificationService(this);
         STG_PanelPaymentMapping_CTRL.verifyPaymentMappings(this);
-        STG_PanelUserRollup_CTRL.verifyUserRollups(this);
         STG_PanelRelAuto_CTRL.verifyAutoCreateRels(this);
         STG_PanelRelReciprocal_CTRL.verifyRelLookups(this);
         STG_PanelOppRollups_CTRL.verifyFiscalYearRollups(this);

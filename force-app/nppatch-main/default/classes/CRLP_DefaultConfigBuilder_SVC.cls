@@ -60,7 +60,6 @@ public inherited sharing class CRLP_DefaultConfigBuilder_SVC {
 
         List<CRLP_RollupCMT.Rollup> rollups = new List<CRLP_RollupCMT.Rollup>();
         rollups.addAll(buildDefaultRollups());
-        rollups.addAll(buildUserDefinedRollups());
 
         List<CRLP_RollupCMT.Rollup> rollupsToSoftDelete = softDeleteExtraRollups(rollups);
 
@@ -861,71 +860,6 @@ public inherited sharing class CRLP_DefaultConfigBuilder_SVC {
             rollups.add(rollup);
         }
 
-        return rollups;
-    }
-
-    /*************************************************************************************************************
-     * @description Convert any existing NPSP User Defined Rollups to the new CMT format
-     * @return List<Rollup> defined Rollup wrapper classes
-     */
-    private List<CRLP_RollupCMT.Rollup> buildUserDefinedRollups() {
-        List<CRLP_RollupCMT.Rollup> rollups = new List<CRLP_RollupCMT.Rollup>();
-
-        Map<String, String> convertUDROperationMap = new Map<String, String>{
-                'MIN' => CRLP_Operation.RollupType.Smallest.name(),
-                'MAX' => CRLP_Operation.RollupType.Largest.name(),
-                'AVG' => CRLP_Operation.RollupType.Average.name(),
-                'SUM' => CRLP_Operation.RollupType.Sum.name()
-        };
-
-        Map<String, String> convertDateUDROperationMap = new Map<String, String>{
-                'MIN' => CRLP_Operation.RollupType.First.name(),
-                'MAX' => CRLP_Operation.RollupType.Last.name()
-        };
-
-        for (User_Rollup_Field_Settings__c udr : CRLP_DefaultConfigBuilder.legacyUDRSettings) {
-            try {
-                if(udr.Object_Name__c != 'Household__c') {
-                    String udrSourceFieldType = UTIL_Describe.getFieldType('Opportunity', udr.Source_Field__c.toLowerCase());
-                    String udrTargetFieldType = UTIL_Describe.getFieldType(udr.Object_Name__c, udr.Target_Field__c.toLowerCase());
-
-                    Boolean sourceFieldIsAmount = (udrSourceFieldType == 'CURRENCY'
-                            || udrSourceFieldType == 'INTEGER'
-                            || udrSourceFieldType == 'PERCENT'
-                            || udrSourceFieldType == 'DOUBLE');
-                    Boolean sourceFieldIsDate = (udrSourceFieldType == 'DATE'
-                            || udrSourceFieldType == 'DATETIME');
-                    String operation = (sourceFieldIsDate ? convertDateUDROperationMap.get(udr.Field_Action__c) : convertUDROperationMap.get(udr.Field_Action__c));
-                    List<String> sourceListWithoutNamespace = udr.Source_Field__c.split('__');
-                    String sourceWithoutNamespace = (sourceListWithoutNamespace.size() == 3 ? sourceListWithoutNamespace[1]: sourceListWithoutNamespace[0]);
-
-                    String udrName = 'UDR: ' + operation + ' ' + sourceWithoutNamespace.replace('_', '') + ' to ' +
-                            udr.Object_Name__c + '.' + udr.Target_Field__c.replace('__c', '').replace('_', '');
-                    CRLP_RollupCMT.Rollup rollup = new CRLP_RollupCMT.Rollup(udrName.left(40));
-
-                    rollup.description = 'User Defined Roll-up';
-                    rollup.filterGroupRecordName = (udr.Object_Name__c == 'Account'
-                            ? CRLP_DefaultConfigBuilder.FilterGroup_Opps_Accounts_HC
-                            : CRLP_DefaultConfigBuilder.FilterGroup_Opps_Contacts_HC);
-                    rollup.summaryObject = udr.Object_Name__c;
-                    rollup.summaryField = udr.Target_Field__c;
-                    rollup.detailObject = 'Opportunity';
-                    rollup.detailField = udr.Source_Field__c;
-                    rollup.amountObject = 'Opportunity';
-                    rollup.amountField = (sourceFieldIsAmount ? udr.Source_Field__c : 'Amount');
-                    rollup.dateObject = 'Opportunity';
-                    rollup.dateField = (sourceFieldIsDate ? udr.Source_Field__c : 'CloseDate');
-                    rollup.operation = operation;
-                    rollup.useFiscalYear = CRLP_DefaultConfigBuilder.legacySettings.Use_Fiscal_Year_for_Rollups__c;
-                    rollup.isActive = true;
-                    rollup.isDeleted = false;
-                    rollups.add(rollup);
-                }
-            }
-            catch(Exception ex) {
-                continue;
-            }
-        }
         return rollups;
     }
 

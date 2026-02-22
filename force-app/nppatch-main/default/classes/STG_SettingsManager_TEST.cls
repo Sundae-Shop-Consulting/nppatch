@@ -871,62 +871,11 @@ private with sharing class STG_SettingsManager_TEST {
     * @description Should prevent read only user to delete user roll up field setting
     * as they do not have delete permission
     */
-    @isTest
-    private static void shouldPreventDeleteForUserRollupWhenUserDoesNotHaveDelPermission() {
-        User_Rollup_Field_Settings__c HHurfs = setUpUserRollupFieldSettings();
-
-        Test.startTest();
-
-        System.runAs(createReadOnlyUser()) {
-            Test.setCurrentPage(Page.STG_PanelUserRollup);
-            STG_PanelUserRollup_CTRL panel = new STG_PanelUserRollup_CTRL();
-            panel.startBuild();
-
-            panel.activeUDR.SourceField = HHurfs.Source_Field__c;
-            panel.activeUDR.Operation = HHurfs.Field_Action__c;
-            panel.activeUDR.TargetObject = HHurfs.Object_Name__c;
-            panel.activeUDR.TargetField = HHurfs.Target_Field__c;
-
-            panel.activeUDR = panel.udrlist[0];
-            panel.activeUDR.deleteMe();
-
-            UTIL_UnitTestData_TEST.assertPageHasError(System.Label.stgDeletePermissionError);
-            System.assertEquals(1, User_Rollup_Field_Settings__c.getAll().size());
-            System.assertEquals(1, panel.udrlist.size());
-        }
-
-        Test.stopTest();
-    }
+    // UDR panel tests removed — User Defined Rollups panel has been removed
 
     /**
     * @description Verify if admin users can delete user rollup field settings
     */
-    @isTest
-    private static void shouldAllowDeleteForUserRollupWhenUserHasAdminPermission() {
-        User_Rollup_Field_Settings__c HHurfs = setUpUserRollupFieldSettings();
-
-        Test.startTest();
-
-        Test.setCurrentPage(Page.STG_PanelUserRollup);
-        STG_PanelUserRollup_CTRL panel = new STG_PanelUserRollup_CTRL();
-
-        panel.startBuild();
-
-        panel.activeUDR.SourceField = HHurfs.Source_Field__c;
-        panel.activeUDR.Operation = HHurfs.Field_Action__c;
-        panel.activeUDR.TargetObject = HHurfs.Object_Name__c;
-        panel.activeUDR.TargetField = HHurfs.Target_Field__c;
-
-        panel.activeUDR = panel.udrlist[0];
-        panel.activeUDR.deleteMe();
-        panel.udrList = null;
-        UTIL_ListCustomSettingsFacade.mapUserRollupFieldSettings = null;
-
-        System.assertEquals(0, User_Rollup_Field_Settings__c.getAll().size());
-        System.assertEquals(0, panel.udrlist.size());
-
-        Test.stopTest();
-    }
 
     /**
     * @description Verifies that the api value of the picklist will be converted into corresponding label
@@ -1078,172 +1027,11 @@ private with sharing class STG_SettingsManager_TEST {
     * @description Tests the User Defined Rollups panel
     * @return void
     */
-    @isTest
-    private static void testPanelUserRollup() {
-        STG_PanelUserRollup_CTRL panel = new STG_PanelUserRollup_CTRL();
-        system.assertEquals('idPanelUserRollup', panel.idPanel());
-        system.assertEquals(false, ApexPages.hasMessages());
-        panel.startBuild();
-        system.assertNotEquals(null, panel.activeUDR);
-        system.assertEquals(true, panel.isEditMode);
-        system.assertNotEquals(null, panel.getSourceFields());
-        system.assertNotEquals(null, panel.getTargetFields());
-        system.assertNotEquals(null, panel.getTargetObjects());
-        system.assertNotEquals(null, panel.getValidOperators());
-        panel.clearForSourceField();
-        panel.clearForOperation();
-        panel.clearForTargetObject();
-        panel.cancel();
-        system.assertEquals(false, panel.isEditMode);
-        panel.startBuild();
-        system.assertNotEquals(null, panel.activeUDR);
-        system.assertEquals(true, panel.isEditMode);
-        panel.activeUDR.SourceField = null;
-        panel.activeUDR.Operation = null;
-        panel.activeUDR.TargetObject = null;
-        panel.activeUDR.TargetField = null;
-        system.assertEquals(false, panel.activeUDR.getisValid());
-        panel.activeUDR.save();
-        system.assertEquals(true, panel.isEditMode);
-        panel.activeUDR.SourceField = 'Amount';
-        panel.activeUDR.Operation = 'SUM';
-        panel.activeUDR.TargetObject = 'Contact';
-        panel.activeUDR.TargetField = 'Description';
-        system.assertEquals(true, panel.activeUDR.getisValid());
-        system.assertNotEquals(null, panel.getSourceFields());
-        system.assertNotEquals(null, panel.getTargetFields());
-        system.assertNotEquals(null, panel.getTargetObjects());
-        system.assertNotEquals(null, panel.getValidOperators());
-        system.assertNotEquals(null, panel.udrList);
-        panel.activeUDR.TargetObject = 'Account';
-        system.assertNotEquals(null, panel.getTargetFields());
-        panel.activeUDR.TargetObject = 'Household__c';
-        system.assertNotEquals(null, panel.getTargetFields());
-        panel.activeUDR.TargetObject = 'Contact';
-        panel.activeUDR.save();
-        system.assertEquals(false, panel.isEditMode);
-        system.assertNotEquals(null, panel.udrlist);
-        panel.udrList = null;
-        UTIL_ListCustomSettingsFacade.mapUserRollupFieldSettings = null;
-        system.assertEquals(1, panel.udrlist.size());
-        panel.startBuild();
-        system.assertNotEquals(null, panel.getTargetFields());
-        panel.activeUDR = panel.udrlist[0];
-        panel.activeUDR.deleteMe();
-        panel.udrList = null;
-        UTIL_ListCustomSettingsFacade.mapUserRollupFieldSettings = null;
-        system.assertNotEquals(null, panel.udrlist);
-        system.assertEquals(0, panel.udrlist.size());
-
-    }
 
     /*********************************************************************************************************
     * @description Tests the User Rollup Settings panel
     * @return void
     */
-    @isTest
-    private static void TEST_userRollupSettings() {
-        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('STG_SettingsManager')));
-
-        //pass the controller into the extension
-        STG_PanelUserRollup_CTRL controller = new STG_PanelUserRollup_CTRL();
-
-        //kickoff a new rollup
-        controller.startBuild();
-
-        //call the major getter methods
-        list<SelectOption> oppyList = controller.getSourceFields();
-        controller.activeUDR.SourceField = 'Amount';
-
-        list<SelectOption> operatorList = controller.getValidOperators();
-        system.assert(operatorList.size() == 4);
-
-        controller.activeUDR.SourceField = 'CloseDate';
-        operatorList = controller.getValidOperators();
-        system.assert(operatorList.size() == 2);
-
-        controller.activeUDR.Operation = 'MAX';
-
-        list<SelectOption> targetObjectList = controller.getTargetObjects();
-        system.assertEquals(targetObjectList.size(), 3);
-
-        controller.activeUDR.TargetObject = 'Account';
-
-        list<SelectOption> targetFieldList = controller.getTargetFields();
-
-        //change target object to test other options
-        controller.activeUDR.TargetObject = 'Household__c';
-        targetFieldList = controller.getTargetFields();
-
-        controller.activeUDR.TargetObject = 'Contact';
-        targetFieldList = controller.getTargetFields();
-        controller.activeUDR.TargetField = 'Birthdate';
-        STG_PanelUserRollup_CTRL.UDR udr = controller.activeUDR;
-        controller.activeUDR.save();
-        //load a UDR
-        udr.loadMe();
-
-        //run through the loop with a newly inserted UDR
-        targetFieldList = controller.getTargetFields();
-
-        //blank out settings so they are queried again
-        controller.udrList = null;
-        UTIL_ListCustomSettingsFacade.mapUserRollupFieldSettings = null;
-
-        //existing invalid rollups will cause test failure
-        system.assertEquals(controller.activeUDR.getisValid(), true);
-        list<STG_PanelUserRollup_CTRL.UDR> udrlist = controller.udrList;
-        system.assert(udrList.size() > 0);
-
-        //test clearing the three different lists
-        controller.clearForTargetObject();
-        system.assert(controller.activeUDR.TargetField == null);
-        controller.clearForOperation();
-        system.assert(controller.activeUDR.TargetObject != null);
-        controller.clearForSourceField();
-        system.assert(controller.activeUDR.Operation == null);
-
-        controller.cancel();
-        system.assertEquals(null, controller.activeUDR);
-
-        //generate a new one so we can call its delete sequence
-        controller.startBuild();
-        //delete it
-        controller.activeUDR.deleteMe();
-
-        //call the other UDR contructor
-        STG_PanelUserRollup_CTRL.UDR u = new STG_PanelUserRollup_CTRL.UDR('', '', '', '', controller);
-
-        //insert invalid rollup to test error handling methods
-        User_Rollup_Field_Settings__c badurfs = new User_Rollup_Field_Settings__c(
-        Name = 'Invalid Test Rollup',
-        Target_Field__c = 'InvalidTargetField__test',
-        Source_Field__c = 'InvalidSourceField__test',
-        Object_Name__c = 'Account',
-        Field_Action__c = 'TEST'
-        );
-        insert badurfs;
-
-        //exercise household code
-        User_Rollup_Field_Settings__c HHurfs = new User_Rollup_Field_Settings__c(
-        Name = 'Household Test Rollup',
-        Target_Field__c = UTIL_Namespace.StrTokenNSPrefix('lastoppamount__c'),
-        Source_Field__c = 'Amount',
-        Object_Name__c = UTIL_Namespace.StrTokenNSPrefix('Household__c'),
-        Field_Action__c = 'MAX'
-        );
-        insert HHurfs;
-
-        User_Rollup_Field_Settings__c badobject = new User_Rollup_Field_Settings__c(
-        Name = 'Invalid Object Rollup',
-        Target_Field__c = 'InvalidTargetField__test',
-        Source_Field__c = 'InvalidSourceField__test',
-        Object_Name__c = 'BadAccount',
-        Field_Action__c = 'TEST'
-        );
-        insert badobject;
-    }
-
     /*********************************************************************************************************
     * @description Tests the Customizable Rollups CRLP panel
     * @return void
@@ -1261,8 +1049,7 @@ private with sharing class STG_SettingsManager_TEST {
 
         // Clear cache so test passes in orgs that have rollups
         CRLP_Rollup_SEL.cachedRollups = new List<Rollup__mdt>();
-        panel.enableCRLPs();
-        System.assertNotEquals(null, panel.jobId, 'JobId should not be null');
+        panel.resetRollupsToDefaultConfig();
         System.assertEquals(true, panel.isPolling, 'Polling should be active.');
         //fake the success result.
         UTIL_CustomSettingsFacade.getCustomizableRollupSettings().CMT_API_Status__c = '123 Succeeded';
@@ -1270,16 +1057,6 @@ private with sharing class STG_SettingsManager_TEST {
         System.assertEquals(null, deploymentPR, 'Returned PageReference should be null');
         System.assertEquals(false, panel.isPolling, 'Polling should not be active.');
 
-        panel.resetRollupsToDefaultConfig();
-        System.assertEquals(true, panel.isPolling, 'Polling should be active.');
-        //fake the success result.
-        UTIL_CustomSettingsFacade.getCustomizableRollupSettings().CMT_API_Status__c = '123 Succeeded';
-        deploymentPR = panel.checkDeploymentStatus();
-        System.assertEquals(null, deploymentPR, 'Returned PageReference should be null');
-        System.assertEquals(false, panel.isPolling, 'Polling should not be active.');
-
-        panel.disableCRLPs();
-        System.assertEquals(false, panel.isPolling, 'Polling should not be active.');
         //fake the fail result.
         UTIL_CustomSettingsFacade.getCustomizableRollupSettings().CMT_API_Status__c = '123 Failed';
         deploymentPR = panel.checkDeploymentStatus();
@@ -1549,23 +1326,6 @@ private with sharing class STG_SettingsManager_TEST {
             Field__c = 'ReportsToId',
             Relationship_Type__c = 'coworker'
 
-        );
-        insert settings;
-
-        return settings;
-    }
-
-    /**
-    * @description create a instance of user roll up field settings
-    * @return user roll up field settings
-    */
-     private static User_Rollup_Field_Settings__c setUpUserRollupFieldSettings() {
-        User_Rollup_Field_Settings__c settings = new User_Rollup_Field_Settings__c(
-            Name = 'Household Test Rollup',
-            Target_Field__c = UTIL_Namespace.StrTokenNSPrefix('lastoppamount__c'),
-            Source_Field__c = 'Amount',
-            Object_Name__c = UTIL_Namespace.StrTokenNSPrefix('Household__c'),
-            Field_Action__c = 'MAX'
         );
         insert settings;
 

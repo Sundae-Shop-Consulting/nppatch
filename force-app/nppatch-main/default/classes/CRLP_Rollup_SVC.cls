@@ -169,7 +169,7 @@ public class CRLP_Rollup_SVC {
     */
     public static Boolean isCustomizableRollupEngineEnabled {
         get {
-            return (customizableRollupSettings.Customizable_Rollups_Enabled__c == true);
+            return true;
         } private set;
     }
 

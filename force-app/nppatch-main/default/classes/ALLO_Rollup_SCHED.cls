@@ -40,15 +40,8 @@ public without sharing class ALLO_Rollup_SCHED extends UTIL_AbstractRollup_BATCH
     * @description Schedulable execute method executes this batch job.
     ********************************************************************************************************/
     public void execute(SchedulableContext context) {
-        try {
-            if (customizableRollupEngineEnabled == false) {
-                ALLO_Rollup_SCHED rollup = new ALLO_Rollup_SCHED(CRLP_RollupBatch_SVC.getBatchSize(
-                        CRLP_RollupProcessingOptions.RollupType.GAU, CRLP_RollupProcessingOptions.BatchJobMode.NonSkewMode));
-                rollup.runRollups();
-            }
-        } catch(Exception e) {
-            ERR_Handler.processError(e, ERR_Handler_API.Context.ALLO);
-        }
+        // No-op: GAU allocation rollups are handled by CRLP batch jobs.
+        // This class is kept only for backward compatibility with scheduled job references.
     }
 
     /*******************************************************************************************************

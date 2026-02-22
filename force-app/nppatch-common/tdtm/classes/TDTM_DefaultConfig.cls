@@ -183,11 +183,6 @@ public without sharing class TDTM_DefaultConfig {
               Class__c = 'RD2_RecurringDonations_TDTM', Load_Order__c = 2, Object__c = 'Recurring_Donation__c',
               Trigger_Action__c = 'BeforeDelete;BeforeInsert;BeforeUpdate;AfterInsert;AfterUpdate;AfterDelete;AfterUndelete'));
 
-        // OppRollups on Opportunity
-        handlers.add(new Trigger_Handler__c(Active__c = true, Asynchronous__c = false,
-              Class__c = 'RLLP_OppRollup_TDTM', Load_Order__c = 1, Object__c = 'Opportunity',
-              Trigger_Action__c = 'AfterInsert;AfterUpdate;AfterDelete'));
-
         // Payments on Opportunity
         handlers.add(new Trigger_Handler__c(Active__c = true, Asynchronous__c = false,
               Class__c = 'PMT_Payment_TDTM', Load_Order__c = 1, Object__c = 'Opportunity',
