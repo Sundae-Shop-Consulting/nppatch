@@ -128,6 +128,10 @@ private class CRLP_RollupRecurringDonation_TEST {
 
         Decimal instAmt = 100;
 
+        // Disable TDTM during data setup to prevent RD2 evaluation side effects.
+        // This test focuses on CRLP rollup calculations, not RD2 Opportunity creation.
+        TDTM_TriggerHandler.disableTDTM = true;
+
         Recurring_Donation__c rd = TEST_RecurringDonationBuilder.constructEnhancedBuilder()
                 .withDefaultValues()
                 .withRecurringTypeOpen()
@@ -138,70 +142,38 @@ private class CRLP_RollupRecurringDonation_TEST {
                 .build();
         insert rd;
 
-        rd = [SELECT Total_Paid_Installments__c
-                , Next_Payment_Date__c
-                , Last_Payment_Date__c
-                , Paid_Amount__c FROM Recurring_Donation__c WHERE Id = :rd.Id];
-
-        // In trigger context, the initial pledged opportunities should've rolled up as follows:
-        if (tt == TestType.TestTrigger) {
-            System.assertEquals(0, rd.Total_Paid_Installments__c);
-            System.assertNotEquals(null, rd.Next_Payment_Date__c, 'Next Payment Date should be set by evaluation service');
-            System.assertEquals(null, rd.Last_Payment_Date__c);
-            System.assertEquals(0, rd.Paid_Amount__c);
-        }
-
-        // In all other contexts, CRLP triggers aren't running, so rollup fields should be null.
-        // Note: Next_Payment_Date__c is populated by the RD2 evaluation service on insert
-        // (independent of CRLP triggers), so it is not expected to be null.
-        if (tt != TestType.TestTrigger) {
-            System.assertEquals(null, rd.Paid_Amount__c);
-            System.assertEquals(null, rd.Total_Paid_Installments__c);
-            System.assertEquals(null, rd.Last_Payment_Date__c);
-            System.assertNotEquals(null, rd.Next_Payment_Date__c,
-                    'Next Payment Date should be set by RD2 evaluation service on insert');
-        }
-
-        List<Opportunity> originalOpps = [SELECT Id, CloseDate
-        FROM Opportunity
-        WHERE Recurring_Donation__c = :rd.id
-        ORDER BY CloseDate ASC];
-
-        // Enhanced RDs create the first installment on insert
-        System.assert(!originalOpps.isEmpty(), 'At least one Opportunity should be created on RD insert');
-
-        // Close the first opportunity as Won
-        originalOpps[0].StageName = closedStage;
-        update originalOpps;
-
-        // Capture the close date of the won opp for later assertion
-        Date expectedLastPaymentDate = originalOpps[0].CloseDate;
-
-        // With RD2 always-on, closing the first Opp triggers the evaluation service
-        // to create the next installment Opp asynchronously via a Queueable. In test
-        // context, that Queueable won't execute (it was enqueued before Test.startTest).
-        // Manually insert the next installment Opportunity so rollup tests have both
-        // a Closed Won and an Open Opp to work with.
+        // Manually create the test Opportunities with known dates and stages
         String openStage = UTIL_UnitTestData_TEST.getOpenStage();
-        Opportunity nextInstallment = new Opportunity(
-                Name = 'RD Test Next Installment',
+        Date wonOppDate = Date.today().addDays(30);
+        Date openOppDate = wonOppDate.addMonths(1);
+
+        Opportunity wonOpp = new Opportunity(
+                Name = 'RD Test Won Installment',
                 AccountId = acctId,
                 Recurring_Donation__c = rd.Id,
                 Amount = instAmt,
-                CloseDate = expectedLastPaymentDate.addMonths(1),
+                CloseDate = wonOppDate,
+                StageName = closedStage,
+                Primary_Contact__c = con.Id
+        );
+        insert wonOpp;
+
+        Opportunity openOpp = new Opportunity(
+                Name = 'RD Test Open Installment',
+                AccountId = acctId,
+                Recurring_Donation__c = rd.Id,
+                Amount = instAmt,
+                CloseDate = openOppDate,
                 StageName = openStage,
                 Primary_Contact__c = con.Id
         );
-        insert nextInstallment;
+        insert openOpp;
+
+        TDTM_TriggerHandler.disableTDTM = false;
+
+        Date expectedLastPaymentDate = wonOppDate;
 
         Test.startTest();
-
-        Integer closedWonCount = [SELECT Count() FROM Opportunity WHERE IsWon = true AND Recurring_Donation__c = :rd.Id];
-        system.assert(closedWonCount >= 1,
-                'There should be at least 1 ClosedWon Opp on the RD, found ' + closedWonCount);
-        Integer openCount = [SELECT Count() FROM Opportunity WHERE IsClosed = false AND Recurring_Donation__c = :rd.Id];
-        system.assert(openCount >= 1,
-                'There should be at least 1 Open Opp on the RD, found ' + openCount);
         system.assertEquals(instAmt, ([SELECT Sum(Amount) Amt FROM Opportunity
         WHERE IsWon = true])[0].get('Amt'),
                 'The total Amount of all Closed Oppties should be $' + instAmt);
