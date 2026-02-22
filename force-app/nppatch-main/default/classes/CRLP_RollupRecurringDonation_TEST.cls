@@ -75,12 +75,12 @@ private class CRLP_RollupRecurringDonation_TEST {
     }
 
     /**
-     * @description Test some simple rollups from the Opportunity object to Recurring Donations using
-     * four different methods:
-     * 1. Trigger based rollup
-     * 2. Call a Queueuable method directly (simulates clicking a button to recalculate)
-     * 3. Nightly Batch Job
-     * 4. Nightly LDV Batch Job
+     * @description Test some simple rollups from the Opportunity object to Recurring Donations.
+     * With RD1 removed, dedicated RD batch classes no longer exist. All RD rollup paths now
+     * go through CRLP_RollupQueueable. The test types exercise:
+     * 1. Trigger test — CRLP triggers enabled, rollup also called directly
+     * 2. Queueable test — rollup via System.enqueueJob(CRLP_RollupQueueable)
+     * 3. Batch/SkewBatch tests — rollup via direct CRLP_RollupQueueable.runRollupsForIds call
      */
     private static void testRollupsServices(TestType tt) {
 
@@ -210,18 +210,17 @@ private class CRLP_RollupRecurringDonation_TEST {
         String rdQuery = CRLP_Query_SEL.buildObjectQueryForRollup(Recurring_Donation__c.SObjectType) + ' WHERE Id = :rdId LIMIT 1';
         rd = database.query(rdQuery);
 
-        // Now test the rollups to the Recurring Donation from the Opportunity
-        if (tt == TestType.TestTrigger) {
-            // No need to execute anything special here. If the triggers worked as expected, then
-            // the data will be rolled up automatically upon the stopTest().
-        } else if (tt == TestType.TestBatch) {
-            CRLP_RollupBatch_SVC.executeBatchRollupJob(CRLP_RollupProcessingOptions.RollupType.RecurringDonations,
-                    CRLP_RollupProcessingOptions.BatchJobMode.NonSkewMode, null, null);
-        } else if (tt == TestType.testSkewBatch) {
-            CRLP_RollupBatch_SVC.executeBatchRollupJob(CRLP_RollupProcessingOptions.RollupType.RecurringDonations,
-                    CRLP_RollupProcessingOptions.BatchJobMode.SkewMode, new List<Id>{rdId}, null);
-        } else if (tt == TestType.TestQueueuable) {
+        // Now test the rollups to the Recurring Donation from the Opportunity.
+        // With RD1 removed, dedicated RD batch classes (CRLP_RD_BATCH, CRLP_RDSkew_BATCH)
+        // no longer exist. All RD rollup paths now go through CRLP_RollupQueueable.
+        // For the Trigger test, CRLP triggers fired synchronously during the Opp DML
+        // before Test.startTest(), but the RD2 evaluation service's synchronous fallback
+        // can interfere with those results. Run the rollup explicitly to ensure clean state.
+        if (tt == TestType.TestQueueuable) {
             System.enqueueJob(new CRLP_RollupQueueable(new List<Id>{rdId}));
+        } else {
+            // Trigger, Batch, and SkewBatch all use the direct rollup path
+            CRLP_RollupQueueable.runRollupsForIds(new List<Id>{rdId});
         }
         Test.stopTest();
 

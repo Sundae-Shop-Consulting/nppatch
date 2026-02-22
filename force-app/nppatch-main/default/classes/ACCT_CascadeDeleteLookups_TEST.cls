@@ -71,7 +71,11 @@ private class ACCT_CascadeDeleteLookups_TEST {
                 .withContact(c.Id)
                 .build());
         }
+        // Disable TDTM to prevent RD2 processing during test data setup
+        // This test focuses on cascade delete behavior, not RD2 evaluation
+        TDTM_TriggerHandler.disableTDTM = true;
         insert recurringDonations;
+        TDTM_TriggerHandler.disableTDTM = false;
 
         General_Accounting_Unit__c generalAccountingUnit = new General_Accounting_Unit__c(Name = 'TEST_GAU');
         insert generalAccountingUnit;
@@ -144,7 +148,11 @@ private class ACCT_CascadeDeleteLookups_TEST {
                 .withContact(c.Id)
                 .build());
         }
+        // Disable TDTM to prevent RD2 processing during test data setup
+        // This test focuses on merge behavior, not RD2 evaluation
+        TDTM_TriggerHandler.disableTDTM = true;
         insert recurringDonations;
+        TDTM_TriggerHandler.disableTDTM = false;
 
         General_Accounting_Unit__c generalAccountingUnit = new General_Accounting_Unit__c(Name = 'TEST_GAU');
         insert generalAccountingUnit;
