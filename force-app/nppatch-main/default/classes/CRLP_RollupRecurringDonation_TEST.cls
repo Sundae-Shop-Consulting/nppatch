@@ -202,8 +202,8 @@ private class CRLP_RollupRecurringDonation_TEST {
         // Basic rollup asserts using existing NPSP rollup fields.
         System.assertEquals(1, rd.Total_Paid_Installments__c,
                 'Total Paid Installments should be 1');
-        System.assertNotEquals(null, rd.Next_Payment_Date__c,
-                'Next Payment Date should not be null after rollup');
+        // Next_Payment_Date is set by RD2 evaluation, not CRLP rollups.
+        // Since TDTM is disabled during setup, it won't be populated here.
         System.assertEquals(expectedLastPaymentDate, rd.Last_Payment_Date__c,
                 'Last Payment Date should match the close date of the won Opportunity');
         System.assertEquals(instAmt, rd.Paid_Amount__c,
