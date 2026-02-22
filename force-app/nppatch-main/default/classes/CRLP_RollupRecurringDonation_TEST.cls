@@ -151,12 +151,15 @@ private class CRLP_RollupRecurringDonation_TEST {
             System.assertEquals(0, rd.Paid_Amount__c);
         }
 
-        // In all other contexts, since triggers aren't running, just make sure everything is null first!
+        // In all other contexts, CRLP triggers aren't running, so rollup fields should be null.
+        // Note: Next_Payment_Date__c is populated by the RD2 evaluation service on insert
+        // (independent of CRLP triggers), so it is not expected to be null.
         if (tt != TestType.TestTrigger) {
             System.assertEquals(null, rd.Paid_Amount__c);
             System.assertEquals(null, rd.Total_Paid_Installments__c);
             System.assertEquals(null, rd.Last_Payment_Date__c);
-            System.assertEquals(null, rd.Next_Payment_Date__c);
+            System.assertNotEquals(null, rd.Next_Payment_Date__c,
+                    'Next Payment Date should be set by RD2 evaluation service on insert');
         }
 
         List<Opportunity> originalOpps = [SELECT Id, CloseDate

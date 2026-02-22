@@ -464,6 +464,7 @@ private class CON_DeleteContactOverride_TEST {
                 .build(),
             getRecurringDonationBuilder()
                 .withAccount(account.Id)
+                .withContact(contact2.Id)
                 .build()
         };
         insert recurringDonations;

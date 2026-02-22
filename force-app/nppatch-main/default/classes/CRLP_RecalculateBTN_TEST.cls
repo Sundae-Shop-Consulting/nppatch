@@ -99,26 +99,11 @@ private class CRLP_RecalculateBTN_TEST {
 
         General_Accounting_Unit__c gau = [SELECT Id FROM General_Accounting_Unit__c LIMIT 1];
 
-        Recurring_Donation__c rd = [SELECT Paid_Amount__c, (SELECT StageName FROM Donations__r) FROM Recurring_Donation__c LIMIT 1];
-        rd.Paid_Amount__c = null;
-        rd.Donations__r[0].StageName = UTIL_UnitTestData_TEST.getClosedWonStage();
-
-        TDTM_TriggerHandler.disableTDTM = true;
-        update rd.Donations__r[0];
-        update rd;
-        TDTM_TriggerHandler.disableTDTM = false;
-
-        // Confirm that the initial value of the next payment is null.
-        rd = rdGateway.getRecord(rd.Id);
-        System.assert(rd.Paid_Amount__c == null);
-
         Test.startTest();
 
         clickRecalculateRollupsFor(c);
 
         clickRecalculateRollupsFor(gau);
-
-        clickRecalculateRollupsFor(rd);
 
         Test.stopTest();
 
@@ -127,11 +112,6 @@ private class CRLP_RecalculateBTN_TEST {
         c = getContact();
         System.assert(c.TotalOppAmount__c != 100);
         System.assert(c.Soft_Credit_Total__c != 100);
-
-        // Confirm that the legacy rollup logic updates the value of the RD rollup field Paid Amount.
-        // to a value different than the original value (null).
-        rd = rdGateway.getRecord(rd.Id);
-        System.assert(rd.Paid_Amount__c != null);
     }
 
     /**

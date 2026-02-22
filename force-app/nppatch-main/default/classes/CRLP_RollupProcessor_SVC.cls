@@ -61,6 +61,9 @@ public class CRLP_RollupProcessor_SVC {
             when GAU {
                 handlerClass = CRLP_RollupGAU_SVC.class;
             }
+            when RecurringDonations {
+                handlerClass = CRLP_RollupRD_SVC.class;
+            }
         }
         return handlerClass;
     }
