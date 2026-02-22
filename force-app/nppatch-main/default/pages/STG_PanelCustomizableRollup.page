@@ -12,16 +12,14 @@
             <c:STG_PageHeader sectionLabel="{!$Label.stgNavDonations}" pageLabel="{!$Label.CRLP_RollupSummary}" />
 
             <c:UTIL_PageMessages allowClose="false" id="messages" />
-            <c:UTIL_SingleToastMessage isRendered="{!NOT(showCRLPSettings)}" message="{!$Label.stgCRLPHouseholdAccountError}" />
-
-            <div class="slds-grid {!IF(showCRLPSettings, '', 'slds-hide')}">
+            <div class="slds-grid">
                 <p class="slds-text-body_small slds-m-top_x-small">
                     <c:UTIL_HtmlOutput html="{!$Label.stgHelpCustomizableRollupsEnable2}" hasLink="true" />
                 </p>
             </div>
 
             <!-- BEGIN ENABLED OPTIONS -->
-            <apex:outputPanel rendered="{! !isPolling}">
+            <apex:outputPanel rendered="{!NOT(isPolling)}">
 
                 <apex:commandButton id="navigateCRLPs" value="{!$Label.stgCRLPGoToSetup}" styleClass="slds-m-vertical_large slds-button slds-button_brand"
                     action="{!navigate}" />

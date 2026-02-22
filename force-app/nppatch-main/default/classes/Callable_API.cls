@@ -180,11 +180,7 @@ global with sharing class Callable_API implements System.Callable {
                 
                 return null;
             } 
-            when 'settings.enablecustomizablerollups' {
-                // CRLP is always enabled; this is a no-op for backward compatibility
-                return null;
-
-            } when 'apex.schedulejob' {
+            when 'apex.schedulejob' {
                 // This method schedules the specified Schedulable class using the specified job name & cron expression.
                 // It should only be used for Schedulable classes that are in the NPSP Managed Package.
                 // It returns the Job ID of the Scheduled Job.

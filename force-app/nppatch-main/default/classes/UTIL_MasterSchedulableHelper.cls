@@ -98,12 +98,6 @@ public without sharing class UTIL_MasterSchedulableHelper {
                 defaultScheduledJobs.put('NPPatch 04B - Customizable Rollups - Contact Soft Credit Skew', new List<String>{'0 15 23 ? * *', 'CRLP_ContactSkew_SoftCredit_BATCH'});
                 defaultScheduledJobs.put('NPPatch 05 - Customizable Rollups - General Accounting Units', new List<String>{'0 20 23 ? * *', 'CRLP_GAU_BATCH'});
 
-                // Always abort any legacy rollup jobs
-                jobsToAbort.add('NPPatch 01 - Opportunity Account Rollups');
-                jobsToAbort.add('NPPatch 02 - Opportunity Contact Rollups');
-                jobsToAbort.add('NPPatch 03 - Opportunity Household Rollups');
-                jobsToAbort.add('NPPatch 04 - Opportunity Soft Credit Rollups');
-                jobsToAbort.add('NPPatch 05 - GAU Allocation Rollups');
             }
             return defaultScheduledJobs;
         } private set;

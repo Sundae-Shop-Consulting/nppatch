@@ -868,16 +868,6 @@ private with sharing class STG_SettingsManager_TEST {
     }
 
     /**
-    * @description Should prevent read only user to delete user roll up field setting
-    * as they do not have delete permission
-    */
-    // UDR panel tests removed — User Defined Rollups panel has been removed
-
-    /**
-    * @description Verify if admin users can delete user rollup field settings
-    */
-
-    /**
     * @description Verifies that the api value of the picklist will be converted into corresponding label
     */
     @isTest
@@ -1043,9 +1033,7 @@ private with sharing class STG_SettingsManager_TEST {
         System.assertEquals(true, panel.isRunningUserIsAdmin);
         System.assertEquals(false, panel.isPolling);
         System.assertEquals(false, ApexPages.hasMessages());
-        System.assert(panel.showCRLPSettings);
         System.assert(panel.isRunningUserIsAdmin);
-        System.assertEquals(false, ApexPages.hasMessages());
 
         // Clear cache so test passes in orgs that have rollups
         CRLP_Rollup_SEL.cachedRollups = new List<Rollup__mdt>();
