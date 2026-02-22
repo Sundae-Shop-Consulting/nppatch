@@ -117,7 +117,7 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>c:rdActiveSchedule</componentName>
+                <componentName>%%%NAMESPACE_OR_C%%%:rdActiveSchedule</componentName>
                 <identifier>rdActiveSchedule</identifier>
             </componentInstance>
         </itemInstances>
@@ -127,15 +127,15 @@
                     <name>displayNum</name>
                     <value>12</value>
                 </componentInstanceProperties>
-                <componentName>c:rdScheduleVisualizer</componentName>
+                <componentName>%%%NAMESPACE_OR_C%%%:rdScheduleVisualizer</componentName>
                 <identifier>rdScheduleVisualizer</identifier>
             </componentInstance>
         </itemInstances>
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>NPPatch Recurring Donation</masterLabel>
-    <sobjectType>Recurring_Donation__c</sobjectType>
+    <masterLabel>Recurring Donation</masterLabel>
+    <sobjectType>%%%NAMESPACE%%%Recurring_Donation__c</sobjectType>
     <template>
         <name>flexipage:recordHomeTemplateDesktop</name>
     </template>
