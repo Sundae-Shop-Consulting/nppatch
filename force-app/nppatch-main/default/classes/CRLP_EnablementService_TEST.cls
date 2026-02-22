@@ -40,55 +40,6 @@ private class CRLP_EnablementService_TEST {
     private static Customizable_Rollup_Settings__c crlpSettings;
 
     /**
-    * @description Verify that calling the Enable() method returns back a Job Id. The rest of the process
-    * is never actually executed in a unit test context
-    */
-    @IsTest
-    private static void shouldEnableCustomizableRollupsWithoutSchedulingJobs() {
-        initCrlpSettings();
-        CRLP_Rollup_SEL.cachedRollups.clear();
-
-        CRLP_EnablementService.RollupMetadataHandler deploymentHandler = new CRLP_EnablementService.RollupMetadataHandler();
-
-        Test.startTest();
-        CRLP_EnablementService enablementService = new CRLP_EnablementService();
-        String jobId = enablementService.enable(false);
-        System.assertNotEquals(null, jobId, 'There should be a jobId returned');
-        deploymentHandler.performSuccessHandler(
-            new Map<String, Object> {
-                CallableApiParameters.PARAM_SCHEDULE_JOBS => false
-            },
-            CMT_MetadataAPI.DEPLOYMENT_SUCCESS_TEXT
-        );
-        Test.stopTest();
-
-        crlpSettings = Customizable_Rollup_Settings__c.getOrgDefaults();
-        System.assertEquals(true, crlpSettings.Customizable_Rollups_Enabled__c, 'CRLP Should be Enabled');
-
-        Integer scheduledJobCount = [SELECT COUNT()
-            FROM AsyncApexJob
-            WHERE JobType = 'ScheduledApex'
-            LIMIT 1];
-        System.assertEquals(0, scheduledJobCount, 'There should be no scheduled jobs');
-    }
-
-    /**
-    * @description Verify that calling the Disable() properly disables CRLP
-    */
-    @IsTest
-    private static void shouldDisableCustomizableRollups() {
-        initCrlpSettings();
-
-        Test.startTest();
-        CRLP_EnablementService enablementService = new CRLP_EnablementService();
-        enablementService.disable();
-        Test.stopTest();
-
-        crlpSettings = Customizable_Rollup_Settings__c.getOrgDefaults();
-        System.assertEquals(false, crlpSettings.Customizable_Rollups_Enabled__c, 'CRLP Should be Disabled');
-    }
-
-    /**
     * @description Verify that calling the reset() properly enables CRLP
     */
     @IsTest
@@ -118,32 +69,6 @@ private class CRLP_EnablementService_TEST {
             WHERE JobType = 'ScheduledApex'
             LIMIT 1];
         System.assertEquals(1, scheduledJobCount, 'There should be scheduled jobs');
-    }
-
-    /**
-    * @description Verify that a non-admin User is unable to enable crlp
-    */
-    @IsTest
-    private static void shouldBlockEnableForNonAdminUser() {
-        initCrlpSettings();
-        CRLP_Rollup_SEL.cachedRollups.clear();
-
-        User roUser = createReadOnlyUser();
-        System.runAs(roUser) {
-            CRLP_EnablementService.RollupMetadataHandler deploymentHandler = new CRLP_EnablementService.RollupMetadataHandler();
-
-            Test.startTest();
-            try {
-                CRLP_EnablementService enablementService = new CRLP_EnablementService();
-                String jobId = enablementService.enable(false);
-                System.assert(false, 'An Exception should have been thrown');
-            } catch (Exception ex) {
-                System.assert(ex.getMessage().contains(System.Label.stgCRLPNonAdminError),
-                    'The generated Exception should reference the "' + System.Label.stgCRLPNonAdminError + '" message');
-            }
-            Test.stopTest();
-
-        }
     }
 
     /**

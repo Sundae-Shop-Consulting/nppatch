@@ -181,8 +181,8 @@ global with sharing class Callable_API implements System.Callable {
                 return null;
             } 
             when 'settings.enablecustomizablerollups' {
-                Boolean scheduleJobsWhenComplete = paramService.getBoolean(CallableApiParameters.PARAM_SCHEDULE_JOBS, true);
-                return new CRLP_EnablementService().enable(scheduleJobsWhenComplete);
+                // CRLP is always enabled; this is a no-op for backward compatibility
+                return null;
 
             } when 'apex.schedulejob' {
                 // This method schedules the specified Schedulable class using the specified job name & cron expression.

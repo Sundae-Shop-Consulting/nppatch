@@ -314,7 +314,12 @@ public class CON_ContactMerge_TDTM extends TDTM_Runnable {
         * @param masterContacts the collection of master contacts
         ********************************************************************************************************/
         private void fixupContactData(List<Contact> masterContacts) {
-            new RLLP_OppRollup().rollupContacts(new Map<Id, SObject>(masterContacts).keySet());
+            Set<Id> contactIds = new Map<Id, SObject>(masterContacts).keySet();
+            if (contactIds.size() == 1 || System.isFuture() || System.isBatch() || System.isQueueable()) {
+                CRLP_RollupQueueable.runRollupsForIds(new List<Id>(contactIds));
+            } else {
+                System.enqueueJob(new CRLP_RollupQueueable(new List<Id>(contactIds)));
+            }
 
             AFFL_Affiliations_TDTM.cleanupContactAffiliations(masterContacts);
             REL_Relationships_TDTM.cleanupContactRelationships(masterContacts);
@@ -336,10 +341,9 @@ public class CON_ContactMerge_TDTM extends TDTM_Runnable {
         * @return List<Contact> the list of contacts that match the ids provided
         ********************************************************************************************************/
         private List<Contact> getContacts(List<Id> contactIds) {
-            RLLP_OppRollup_UTIL oppRollupUtil = new RLLP_OppRollup_UTIL(); 
-            String query = oppRollupUtil.buildContactQuery();
+            String query = CRLP_Query_SEL.buildObjectQueryForRollup(Contact.SObjectType);
 
-            query = query.replace('from Contact', '');
+            query = query.replace('FROM Contact', '');
             query += ', AccountId, Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEM_AccountType__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Primary_Affiliation__c') + ' FROM Contact WHERE Id IN :contactIds';
             return Database.query(query);
         }

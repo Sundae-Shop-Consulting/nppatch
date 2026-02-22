@@ -85,52 +85,25 @@ public without sharing class UTIL_MasterSchedulableHelper {
                     new List<String>{'0 0 22 ? * *', 'RD2_OpportunityEvaluation_BATCH'} );
                 jobsToAbort.add('NPPatch 06 - Recurring Donation Updates');
 
-                if (CRLP_Rollup_SVC.isCustomizableRollupEngineEnabled) {
-                    // When the Customizable Rollups Engine is enabled, the actual rollup job target classes change, but
-                    // keep the naming similar and stagger the job start times slightly.
-                    defaultScheduledJobs.put('NPPatch 01A - Customizable Rollups - Account Hard Credit', new List<String>{'0 0 23 ? * *', 'CRLP_Account_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 02A - Customizable Rollups - Contact Hard Credit', new List<String>{'0 05 23 ? * *', 'CRLP_Contact_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 03A - Customizable Rollups - Account-level Contact Soft Credit', new List<String>{'0 10 23 ? * *', 'CRLP_Account_SoftCredit_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 03B - Customizable Rollups - Account Soft Credit', new List<String>{'0 10 23 ? * *', 'CRLP_Account_AccSoftCredit_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 04A - Customizable Rollups - Contact Soft Credit', new List<String>{'0 15 23 ? * *', 'CRLP_Contact_SoftCredit_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 01B - Customizable Rollups - Account Hard Credit Skew', new List<String>{'0 0 23 ? * *', 'CRLP_AccountSkew_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 02B - Customizable Rollups - Contact Hard Credit Skew', new List<String>{'0 05 23 ? * *', 'CRLP_ContactSkew_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 03C - Customizable Rollups - Account-level Contact Soft Credit Skew', new List<String>{'0 10 23 ? * *', 'CRLP_AccountSkew_SoftCredit_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 03D - Customizable Rollups - Account Soft Credit Skew', new List<String>{'0 10 23 ? * *', 'CRLP_AccountSkew_AccSoftCredit_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 04B - Customizable Rollups - Contact Soft Credit Skew', new List<String>{'0 15 23 ? * *', 'CRLP_ContactSkew_SoftCredit_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 05 - Customizable Rollups - General Accounting Units', new List<String>{'0 20 23 ? * *', 'CRLP_GAU_BATCH'});
+                // Customizable Rollups jobs
+                defaultScheduledJobs.put('NPPatch 01A - Customizable Rollups - Account Hard Credit', new List<String>{'0 0 23 ? * *', 'CRLP_Account_BATCH'});
+                defaultScheduledJobs.put('NPPatch 02A - Customizable Rollups - Contact Hard Credit', new List<String>{'0 05 23 ? * *', 'CRLP_Contact_BATCH'});
+                defaultScheduledJobs.put('NPPatch 03A - Customizable Rollups - Account-level Contact Soft Credit', new List<String>{'0 10 23 ? * *', 'CRLP_Account_SoftCredit_BATCH'});
+                defaultScheduledJobs.put('NPPatch 03B - Customizable Rollups - Account Soft Credit', new List<String>{'0 10 23 ? * *', 'CRLP_Account_AccSoftCredit_BATCH'});
+                defaultScheduledJobs.put('NPPatch 04A - Customizable Rollups - Contact Soft Credit', new List<String>{'0 15 23 ? * *', 'CRLP_Contact_SoftCredit_BATCH'});
+                defaultScheduledJobs.put('NPPatch 01B - Customizable Rollups - Account Hard Credit Skew', new List<String>{'0 0 23 ? * *', 'CRLP_AccountSkew_BATCH'});
+                defaultScheduledJobs.put('NPPatch 02B - Customizable Rollups - Contact Hard Credit Skew', new List<String>{'0 05 23 ? * *', 'CRLP_ContactSkew_BATCH'});
+                defaultScheduledJobs.put('NPPatch 03C - Customizable Rollups - Account-level Contact Soft Credit Skew', new List<String>{'0 10 23 ? * *', 'CRLP_AccountSkew_SoftCredit_BATCH'});
+                defaultScheduledJobs.put('NPPatch 03D - Customizable Rollups - Account Soft Credit Skew', new List<String>{'0 10 23 ? * *', 'CRLP_AccountSkew_AccSoftCredit_BATCH'});
+                defaultScheduledJobs.put('NPPatch 04B - Customizable Rollups - Contact Soft Credit Skew', new List<String>{'0 15 23 ? * *', 'CRLP_ContactSkew_SoftCredit_BATCH'});
+                defaultScheduledJobs.put('NPPatch 05 - Customizable Rollups - General Accounting Units', new List<String>{'0 20 23 ? * *', 'CRLP_GAU_BATCH'});
 
-
-                    // The following jobs should be aborted if the Customizable Rollups jobs are being enabled
-                    jobsToAbort.add('NPPatch 01 - Opportunity Account Rollups');
-                    jobsToAbort.add('NPPatch 02 - Opportunity Contact Rollups');
-                    jobsToAbort.add('NPPatch 03 - Opportunity Household Rollups');
-                    jobsToAbort.add('NPPatch 04 - Opportunity Soft Credit Rollups');
-                    jobsToAbort.add('NPPatch 05 - GAU Allocation Rollups');
-
-                } else {
-                    // Legacy Rollups Engine jobs are enabled
-                    defaultScheduledJobs.put('NPPatch 01 - Opportunity Account Rollups', new List<String>{'0 0 23 ? * *', 'RLLP_OppAccRollup_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 02 - Opportunity Contact Rollups', new List<String>{'0 0 23 ? * *', 'RLLP_OppContactRollup_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 03 - Opportunity Household Rollups', new List<String>{'0 0 23 ? * *', 'RLLP_OppHouseholdRollup_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 04 - Opportunity Soft Credit Rollups', new List<String>{'0 0 23 ? * *', 'RLLP_OppSoftCreditRollup_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 05 - GAU Allocation Rollups', new List<String>{'0 0 23 ? * *', 'ALLO_Rollup_SCHED'});
-
-                    // The following jobs should be aborted if the Customizable Rollups jobs are NOT enabled
-                    jobsToAbort.add('NPPatch 01A - Customizable Rollups - Account Hard Credit');
-                    jobsToAbort.add('NPPatch 02A - Customizable Rollups - Contact Hard Credit');
-                    jobsToAbort.add('NPPatch 03A - Customizable Rollups - Account-level Contact Soft Credit');
-                    jobsToAbort.add('NPPatch 03B - Customizable Rollups - Account Soft Credit');
-                    jobsToAbort.add('NPPatch 04A - Customizable Rollups - Contact Soft Credit');
-                    jobsToAbort.add('NPPatch 01B - Customizable Rollups - Account Hard Credit Skew');
-                    jobsToAbort.add('NPPatch 02B - Customizable Rollups - Contact Hard Credit Skew');
-                    jobsToAbort.add('NPPatch 03C - Customizable Rollups - Account-level Contact Soft Credit Skew');
-                    jobsToAbort.add('NPPatch 03D - Customizable Rollups - Account Soft Credit Skew');
-                    jobsToAbort.add('NPPatch 04B - Customizable Rollups - Contact Soft Credit Skew');
-                    jobsToAbort.add('NPPatch 05 - Customizable Rollups - General Accounting Units');
-                    jobsToAbort.add('NPPatch 06A - Customizable Rollups - Recurring Donations');
-                    jobsToAbort.add('NPPatch 06B - Customizable Rollups - Recurring Donations Skew');
-                }
+                // Always abort any legacy rollup jobs
+                jobsToAbort.add('NPPatch 01 - Opportunity Account Rollups');
+                jobsToAbort.add('NPPatch 02 - Opportunity Contact Rollups');
+                jobsToAbort.add('NPPatch 03 - Opportunity Household Rollups');
+                jobsToAbort.add('NPPatch 04 - Opportunity Soft Credit Rollups');
+                jobsToAbort.add('NPPatch 05 - GAU Allocation Rollups');
             }
             return defaultScheduledJobs;
         } private set;

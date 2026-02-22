@@ -154,7 +154,6 @@
                 idPanelConRole,
                 idPanelMembership,
                 idPanelAllocations,
-                UDRsTreeItem,
                 donorStatsTreeItem"
                 status="statusLoad" />
             <apex:actionFunction
@@ -166,7 +165,6 @@
                 idPanelConRole,
                 idPanelMembership,
                 idPanelAllocations,
-                UDRsTreeItem,
                 donorStatsTreeItem"
                 status="statusLoad" />
 

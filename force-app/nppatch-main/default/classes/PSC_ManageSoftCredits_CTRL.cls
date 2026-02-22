@@ -163,12 +163,8 @@ public with sharing class PSC_ManageSoftCredits_CTRL {
         softCredits = new List<SoftCredit>();
         Set<String> softCreditRoles = new Set<String>();
 
-        if (UTIL_CustomSettingsFacade.getCustomizableRollupSettings().Customizable_Rollups_Enabled__c) {
-            for(Schema.PicklistEntry pe : Schema.sObjectType.OpportunityContactRole.fields.Role.getPicklistValues()) {
-                softCreditRoles.add(pe.getLabel());
-            }
-        } else if (UTIL_CustomSettingsFacade.getHouseholdsSettings().Soft_Credit_Roles__c != null) {
-            softCreditRoles = new Set<String>(UTIL_CustomSettingsFacade.getHouseholdsSettings().Soft_Credit_Roles__c.split(';'));
+        for(Schema.PicklistEntry pe : Schema.sObjectType.OpportunityContactRole.fields.Role.getPicklistValues()) {
+            softCreditRoles.add(pe.getLabel());
         }
 
         // get all OCR's for the Opp

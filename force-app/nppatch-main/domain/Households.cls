@@ -229,7 +229,11 @@ public inherited sharing class Households extends fflib_SObjects2 {
     * @param accountIds the list of Account (Id's) that need updating.
     */
     public static void rollupAccounts(List<Id> accountIds) {
-        new RLLP_OppRollup().rollupAccounts(new Set<Id>(accountIds));
+        if (accountIds.size() == 1 || System.isFuture() || System.isBatch() || System.isQueueable()) {
+            CRLP_RollupQueueable.runRollupsForIds(accountIds);
+        } else {
+            System.enqueueJob(new CRLP_RollupQueueable(accountIds));
+        }
     }
 
     /*******************************************************************************************************
