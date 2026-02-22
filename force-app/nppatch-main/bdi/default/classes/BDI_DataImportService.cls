@@ -654,7 +654,7 @@ global with sharing class BDI_DataImportService {
             pl.stop();
 
             pl = perfLogger.newPerfLog('importRecurringDonations');
-            BDI_RecurringDonations bdiRDs= new BDI_RecurringDonations(this);
+            BDI_RecurringDonations bdiRDs = new BDI_RecurringDonations(this);
             bdiRDs.importRecurringDonations();
             pl.stop();
 
@@ -745,13 +745,8 @@ global with sharing class BDI_DataImportService {
 
         for (DataImport__c DI : dataImports) {
             if (BDI_RecurringDonations.areRDFieldsPopulated(DI)) {
-
                 if (!(mappingService instanceof BDI_MappingServiceAdvanced)) {
                     LogBDIError(DI, DI_WITH_RD_FIELDS_NO_ADV_MAPPING, RDImportStatusField);
-                }
-
-                if (!RD2_EnablementService.isRecurringDonations2Enabled) {
-                    LogBDIError(DI, DI_WITH_RD_FIELDS_NO_RD2, RDImportStatusField);
                 }
             }
         }

@@ -98,7 +98,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         UTIL_TestPermissions.assignAdminPermissionSet();
 
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact contact = UTIL_UnitTestData_TEST.getContact();
         insert contact;
@@ -120,7 +119,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         Integer numberOfInstallments = null;
         Id rdId = null;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         try {
             RD2_VisualizeScheduleController.getInstallments(rdId, numberOfInstallments);
         } catch (Exception e) {
@@ -138,7 +136,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         if (shouldSkipIn2GP()) return;
         Exception actualException;
         Integer numberOfInstallments = 0;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
@@ -159,7 +156,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         if (shouldSkipIn2GP()) return;
         Exception actualException;
         Integer numberOfInstallments = -5;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
@@ -184,7 +180,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         Date installment5Date = Date.newInstance(1968, 12, 1);
         Date installment10Date = Date.newInstance(1969, 5, 1);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
             .withDateEstablished(startDate)
@@ -217,7 +212,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         Date today = DATE_ESTABLISHED.addMonths(1);
         Date newStartDate =  DATE_ESTABLISHED.addMonths(3);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
@@ -237,34 +231,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
     }
 
     /****
-    * @description Validates that AuraHandledException is thrown when Enhanced RD is not enabled
-    */
-    @IsTest
-    private static void shouldThrowAuraHandledExceptionWhenEnhancedRDNotEnabled() {
-        if (shouldSkipIn2GP()) return;
-        Exception actualException;
-        Integer numberOfInstallments = 12;
-
-        Recurring_Donation__c rd = TEST_RecurringDonationBuilder.constructLegacyBuilder()
-            .withContact(getContact().Id)
-            .withAmount(50)
-            .withDateEstablished(DATE_ESTABLISHED)
-            .build();
-
-        Test.startTest();
-        insert rd;
-        Test.stopTest();
-
-        try {
-            RD2_VisualizeScheduleController.getInstallments(rd.Id, numberOfInstallments);
-        } catch (Exception e) {
-            actualException = e;
-        }
-
-        assertRD2IsNotEnabledException(actualException);
-    }
-
-    /****
     * @description Validates that AuraHandledException is thrown when incorrect SObject Id is used
     */
     @IsTest
@@ -272,7 +238,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         if (shouldSkipIn2GP()) return;
         Exception actualException;
         Integer numberOfInstallments = 12;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Account acc = UTIL_UnitTestData_TEST.buildHouseholdAccount();
         insert acc;
@@ -292,7 +257,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
     @IsTest
     private static void shouldReturnOneActiveScheduleForNewRD() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
@@ -316,7 +280,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         if (shouldSkipIn2GP()) return;
         Date newStartDate = DATE_ESTABLISHED.addMonths(4);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
@@ -349,7 +312,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
     @IsTest
     private static void shouldThrowAuraHandledExceptionRDIsClosed() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
@@ -380,7 +342,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         Date newStartDate = Date.newInstance(2018, 4, 1);
         String dayOfMonth = '12';
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationFirstAndFifteenthBuilder()
             .withStartDate(startDate)
@@ -420,7 +381,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         if (shouldSkipIn2GP()) return;
         Date newStartDate = DATE_ESTABLISHED.addMonths(3);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
@@ -454,7 +414,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
     @IsTest
     private static void shouldDisplayFutureInstallmentsWhenRDIsFixedLength() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
 
         Date startDate = Date.newInstance(2018, 2, 1);
@@ -516,7 +475,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         Integer numberOfInstallments = 3;
         Date today = DATE_ESTABLISHED.addMonths(2);
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
 
@@ -559,7 +517,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         Integer numberOfInstallments = 3;
         Date today = DATE_ESTABLISHED.addMonths(2);
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
 
@@ -594,7 +551,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         Integer numberOfInstallments = 3;
         Date today = DATE_ESTABLISHED.addMonths(2);
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
 
@@ -621,7 +577,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         if (shouldSkipIn2GP()) return;
         Date today = DATE_ESTABLISHED.addMonths(2);
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
 
@@ -651,7 +606,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         if (shouldSkipIn2GP()) return;
         Date today = DATE_ESTABLISHED.addMonths(2);
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
 
@@ -704,7 +658,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         if (shouldSkipIn2GP()) return;
         Date today = DATE_ESTABLISHED.addMonths(2);
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
 
@@ -735,7 +688,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         if (shouldSkipIn2GP()) return;
         Date today = DATE_ESTABLISHED.addMonths(2);
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
 
@@ -766,7 +718,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         if (shouldSkipIn2GP()) return;
         Date today = DATE_ESTABLISHED.addMonths(2);
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
 
@@ -812,7 +763,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         if (shouldSkipIn2GP()) return;
         String newStatus = 'New';
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         RD2_StatusMapper_TEST.Stub mapperStub = new RD2_StatusMapper_TEST.Stub()
             .withMapping(newStatus, RD2_Constants.STATUS_ACTIVE);
@@ -851,7 +801,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         if (shouldSkipIn2GP()) return;
         Exception actualException;
         String newStatus = 'End';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
             .withStatus(newStatus)
@@ -892,7 +841,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
         String dayOfMonth = '12';
         RD2_ScheduleService.currentDate = today;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
             .withStartDate(startDate)
@@ -1096,15 +1044,6 @@ private with sharing class RD2_VisualizeScheduleController_TEST {
     * @param actualException Actual exception (if any)
     * @return void
     */
-    private static void assertRD2IsNotEnabledException(Exception actualException) {
-        // The label name does not match the label value.
-        // The label value: "You must enable Enhanced Recurring Donations to use this component."
-        // This switch will be fixed in another WI.
-        System.assertNotEquals(null, actualException, 'An exception should be generated');
-
-        System.assertEquals(System.Label.RD2_ScheduleVisualizerErrorInvalidUsage, actualException.getMessage(),
-            'Exception message should match');
-    }
 
     /****
     * @description Asserts the schedule or installment component is added on a detail page

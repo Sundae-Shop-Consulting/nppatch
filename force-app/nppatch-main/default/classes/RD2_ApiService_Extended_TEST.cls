@@ -57,7 +57,6 @@ private class RD2_ApiService_Extended_TEST {
 
         RD2_ScheduleService.currentDate = CURRENT_DATE;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact contact = UTIL_UnitTestData_TEST.getContact();
         insert contact;
@@ -86,7 +85,6 @@ private class RD2_ApiService_Extended_TEST {
      */
     @IsTest
     static void shouldHandleMultipleRecurringDonationsInSingleCall() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         List<Recurring_Donation__c> rds = rdGateway.getRecords();
         System.assert(rds.size() >= 3, 'Should have at least 3 RDs for this test');
@@ -148,7 +146,6 @@ private class RD2_ApiService_Extended_TEST {
      */
     @IsTest
     static void shouldHandleRecurringDonationsWithNoSchedules() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rdWithoutSchedules = rdGateway.getRecords()[0];
 
@@ -173,7 +170,6 @@ private class RD2_ApiService_Extended_TEST {
      */
     @IsTest
     static void shouldHandleRecurringDonationsWithDeletedSchedules() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
         
@@ -238,7 +234,6 @@ private class RD2_ApiService_Extended_TEST {
      */
     @IsTest
     static void shouldHandleRecurringDonationsWithMultipleActiveSchedules() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
@@ -275,7 +270,6 @@ private class RD2_ApiService_Extended_TEST {
      */
     @IsTest
     static void shouldHandleRecurringDonationsWithComplexPausePatterns() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
@@ -358,7 +352,6 @@ private class RD2_ApiService_Extended_TEST {
      */
     @IsTest
     static void shouldHandleRecurringDonationsWithVaryingAmounts() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
@@ -409,7 +402,6 @@ private class RD2_ApiService_Extended_TEST {
      */
     @IsTest
     static void shouldHandleConcurrentPauseRequests() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = CURRENT_DATE;
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
@@ -439,7 +431,6 @@ private class RD2_ApiService_Extended_TEST {
      */
     @IsTest
     static void shouldHandlePauseRequestsWithSpecialCharactersInReason() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = CURRENT_DATE;
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
@@ -473,7 +464,6 @@ private class RD2_ApiService_Extended_TEST {
      */
     @IsTest
     static void shouldHandlePauseRequestsForRecurringDonationsWithExistingPauses() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = CURRENT_DATE;
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
@@ -505,7 +495,6 @@ private class RD2_ApiService_Extended_TEST {
 
     private static void setUpEnv() {
         RD2_ScheduleService.currentDate = CURRENT_DATE;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
     }
 
     private static Map<Id, List<Schedule>> retrieveSchedulesUsingApi(Id rdId) {

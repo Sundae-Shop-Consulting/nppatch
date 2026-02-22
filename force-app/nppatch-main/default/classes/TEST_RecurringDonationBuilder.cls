@@ -74,9 +74,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @description Constructor
     */
     public TEST_RecurringDonationBuilder() {
-        this.recordMode = RD2_EnablementService.isRecurringDonations2Enabled
-            ? Mode.Enhanced
-            : Mode.Legacy;
+        this.recordMode = Mode.Enhanced;
 
         this.withName();
     }
@@ -91,10 +89,12 @@ public without sharing class TEST_RecurringDonationBuilder {
     }
 
     /***
-    * @description Returns legacy Recurring Donation builder
+    * @description Returns legacy Recurring Donation builder.
+    * Since RD1 (Legacy mode) has been removed, this now returns an Enhanced builder
+    * with default values applied to ensure backward compatibility for tests.
     */
     public static TEST_RecurringDonationBuilder constructLegacyBuilder() {
-        return new TEST_RecurringDonationBuilder(Mode.Legacy);
+        return constructEnhancedBuilder().withDefaultValues();
     }
 
     /***
@@ -105,12 +105,13 @@ public without sharing class TEST_RecurringDonationBuilder {
     }
 
     /***
-    * @description Validates field is set on the correct Recurring Donation type that depends on the Mode
+    * @description Validates field is set on the correct Recurring Donation type that depends on the Mode.
+    * Since RD1 (Legacy mode) has been removed, validation for Legacy mode is skipped --
+    * legacy-only setters become no-ops when the builder is in Enhanced mode.
+    * @return true if the field should be set, false if it should be silently skipped
     */
-    private void validateMode(Mode validMode) {
-        if (recordMode != validMode) {
-            throw new BuilderException('This settings is not applicable to ' + validMode.name() + ' Recurring Donations');
-        }
+    private Boolean shouldSetField(Mode validMode) {
+        return (recordMode == validMode);
     }
 
     /***
@@ -205,7 +206,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withPaymentMethod(String payMethod) {
-        validateMode(Mode.Enhanced);
+        if (!shouldSetField(Mode.Enhanced)) { return this; }
 
         valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('PaymentMethod__c'), payMethod);
         return this;
@@ -276,7 +277,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withNextPaymentDate(Date dt) {
-        validateMode(Mode.Legacy);
+        if (!shouldSetField(Mode.Legacy)) { return this; }
 
         valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Next_Payment_Date__c'), dt);
         return this;
@@ -288,7 +289,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withAlwaysUseLastDayOfMonth(Boolean shouldUse) {
-        validateMode(Mode.Legacy);
+        if (!shouldSetField(Mode.Legacy)) { return this; }
 
         valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Always_Use_Last_Day_Of_Month__c'), shouldUse);
         return this;
@@ -310,7 +311,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withStartDate(Date startDate) {
-        validateMode(Mode.Enhanced);
+        if (!shouldSetField(Mode.Enhanced)) { return this; }
 
         valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('StartDate__c'), startDate);
         return this;
@@ -337,7 +338,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withInstallmentFrequency(Integer frequency) {
-        validateMode(Mode.Enhanced);
+        if (!shouldSetField(Mode.Enhanced)) { return this; }
 
         valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('InstallmentFrequency__c'), frequency);
         return this;
@@ -358,7 +359,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withInstallmentPeriodYearly() {
-        return withInstallmentPeriod(RD_Constants.INSTALLMENT_PERIOD_YEARLY);
+        return withInstallmentPeriod(RD2_Constants.INSTALLMENT_PERIOD_YEARLY);
     }
 
     /***
@@ -366,9 +367,9 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withInstallmentPeriodQuarterly() {
-        validateMode(Mode.Legacy);
+        if (!shouldSetField(Mode.Legacy)) { return this; }
 
-        return withInstallmentPeriod(RD_Constants.INSTALLMENT_PERIOD_QUARTERLY);
+        return withInstallmentPeriod(RD2_Constants.INSTALLMENT_PERIOD_QUARTERLY);
     }
 
     /***
@@ -376,7 +377,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withInstallmentPeriodMonthly() {
-        return withInstallmentPeriod(RD_Constants.INSTALLMENT_PERIOD_MONTHLY);
+        return withInstallmentPeriod(RD2_Constants.INSTALLMENT_PERIOD_MONTHLY);
     }
 
     /***
@@ -384,7 +385,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withInstallmentPeriodWeekly() {
-        return withInstallmentPeriod(RD_Constants.INSTALLMENT_PERIOD_WEEKLY);
+        return withInstallmentPeriod(RD2_Constants.INSTALLMENT_PERIOD_WEEKLY);
     }
 
     /***
@@ -402,7 +403,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withScheduleTypeMultiplyValue() {
-        return withScheduleType(RD_Constants.SCHEDULE_TYPE_MULTIPLY_BY);
+        return withScheduleType('Multiply By');
     }
 
     /***
@@ -411,7 +412,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withScheduleType(String scheduleType) {
-        validateMode(Mode.Legacy);
+        if (!shouldSetField(Mode.Legacy)) { return this; }
 
         valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Schedule_Type__c'), scheduleType);
         return this;
@@ -422,7 +423,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withOpenEndedStatusOpen() {
-        return withOpenEndedStatus(RD_Constants.OPEN_ENDED_STATUS_OPEN);
+        return withOpenEndedStatus('Open');
     }
 
     /***
@@ -430,7 +431,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withOpenEndedStatusClosed() {
-        return withOpenEndedStatus(RD_Constants.OPEN_ENDED_STATUS_CLOSED);
+        return withOpenEndedStatus('Closed');
     }
 
     /***
@@ -447,7 +448,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withOpenEndedStatus(String status) {
-        validateMode(Mode.Legacy);
+        if (!shouldSetField(Mode.Legacy)) { return this; }
 
         valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Open_Ended_Status__c'), status);
         return this;
@@ -491,7 +492,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withStatus(String status) {
-        validateMode(Mode.Enhanced);
+        if (!shouldSetField(Mode.Enhanced)) { return this; }
 
         valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Status__c'), status);
         return this;
@@ -502,7 +503,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withClosedReason(String closedReason) {
-        validateMode(Mode.Enhanced);
+        if (!shouldSetField(Mode.Enhanced)) { return this; }
 
         valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('ClosedReason__c'), closedReason);
         return this;
@@ -532,7 +533,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withRecurringType(String recurringType) {
-        validateMode(Mode.Enhanced);
+        if (!shouldSetField(Mode.Enhanced)) { return this; }
 
         valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('RecurringType__c'), recurringType);
         return this;
@@ -555,7 +556,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withCalculateNextDonationDate() {
-        validateMode(Mode.Enhanced);
+        if (!shouldSetField(Mode.Enhanced)) { return this; }
         this.calculateNextDonationDate = true;
         return this;
     }
@@ -565,7 +566,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withFirstInstallmentDisabled() {
-        validateMode(Mode.Enhanced);
+        if (!shouldSetField(Mode.Enhanced)) { return this; }
         valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('DisableFirstInstallment__c'), true);
         return this;
     }

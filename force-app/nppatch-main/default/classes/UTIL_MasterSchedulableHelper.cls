@@ -81,15 +81,9 @@ public without sharing class UTIL_MasterSchedulableHelper {
 
                 // Start the Recurring Donations job one hour before the Rollup jobs to avoid any conflict with
                 // the Opps that may be created/modified by the RD job.
-                if (RD2_EnablementService.isRecurringDonations2Enabled) {
-                    defaultScheduledJobs.put('NPPatch 06 - Enhanced Recurring Donation Updates',
-                        new List<String>{'0 0 22 ? * *', 'RD2_OpportunityEvaluation_BATCH'} );
-                    jobsToAbort.add('NPPatch 06 - Recurring Donation Updates');
-                } else {
-                    defaultScheduledJobs.put('NPPatch 06 - Recurring Donation Updates',
-                        new List<String>{'0 0 22 ? * *', 'RD_RecurringDonations_BATCH'} );
-                    jobsToAbort.add('NPPatch 06 - Enhanced Recurring Donation Updates');
-                }
+                defaultScheduledJobs.put('NPPatch 06 - Enhanced Recurring Donation Updates',
+                    new List<String>{'0 0 22 ? * *', 'RD2_OpportunityEvaluation_BATCH'} );
+                jobsToAbort.add('NPPatch 06 - Recurring Donation Updates');
 
                 if (CRLP_Rollup_SVC.isCustomizableRollupEngineEnabled) {
                     // When the Customizable Rollups Engine is enabled, the actual rollup job target classes change, but
@@ -105,8 +99,6 @@ public without sharing class UTIL_MasterSchedulableHelper {
                     defaultScheduledJobs.put('NPPatch 03D - Customizable Rollups - Account Soft Credit Skew', new List<String>{'0 10 23 ? * *', 'CRLP_AccountSkew_AccSoftCredit_BATCH'});
                     defaultScheduledJobs.put('NPPatch 04B - Customizable Rollups - Contact Soft Credit Skew', new List<String>{'0 15 23 ? * *', 'CRLP_ContactSkew_SoftCredit_BATCH'});
                     defaultScheduledJobs.put('NPPatch 05 - Customizable Rollups - General Accounting Units', new List<String>{'0 20 23 ? * *', 'CRLP_GAU_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 06A - Customizable Rollups - Recurring Donations', new List<String>{'0 25 23 ? * *', 'CRLP_RD_BATCH'});
-                    defaultScheduledJobs.put('NPPatch 06B - Customizable Rollups - Recurring Donations Skew', new List<String>{'0 30 23 ? * *', 'CRLP_RDSkew_BATCH'});
 
 
                     // The following jobs should be aborted if the Customizable Rollups jobs are being enabled

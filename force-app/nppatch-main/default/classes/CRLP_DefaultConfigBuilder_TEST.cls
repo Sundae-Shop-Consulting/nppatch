@@ -105,7 +105,9 @@ private class CRLP_DefaultConfigBuilder_TEST {
         }
 
         System.assertEquals(8, fgCount, 'There should be 8 filter groups');
-        System.assertEquals(CRLP_DefaultConfigBuilder.rollupDetailsBySummaryField.size(), rlpCount, 'There should be 87 rollups');
+        // The builder skips the RD Next_Payment_Date rollup (RD2 always-on), so expect one fewer than the map size
+        Integer expectedRollupCount = CRLP_DefaultConfigBuilder.rollupDetailsBySummaryField.size() - 1;
+        System.assertEquals(expectedRollupCount, rlpCount, 'There should be ' + expectedRollupCount + ' rollups');
     }
 
     /**
@@ -256,7 +258,9 @@ private class CRLP_DefaultConfigBuilder_TEST {
 
 
         System.assertEquals(12, fgCount, 'There should be 12 filter groups');
-        System.assertEquals(CRLP_DefaultConfigBuilder.rollupDetailsBySummaryField.size(), rlpCount, 'There should be 87 rollups');
+        // The builder skips the RD Next_Payment_Date rollup (RD2 always-on), so expect one fewer than the map size
+        Integer expectedRollupCount = CRLP_DefaultConfigBuilder.rollupDetailsBySummaryField.size() - 1;
+        System.assertEquals(expectedRollupCount, rlpCount, 'There should be ' + expectedRollupCount + ' rollups');
     }
 
     /**

@@ -153,7 +153,7 @@ private class BDI_RecurringDonations_TEST {
 
     @isTest
     static void shouldCreateAndUpdateRecurringDonation() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
+
 
         General_Accounting_Unit__c gau1;
         General_Accounting_Unit__c gau2;
@@ -517,7 +517,7 @@ private class BDI_RecurringDonations_TEST {
     */
     @isTest
     static void shouldRunBDIDryRunAndMatchAndImportNewDonationOnExistingRD() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
+
         Account testAccount = new Account(name = 'testAcct');
         insert testAccount;
         Date testDate = Date.newInstance(2021, 1, 15);

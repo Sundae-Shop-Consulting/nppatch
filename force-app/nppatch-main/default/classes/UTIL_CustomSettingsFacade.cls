@@ -600,22 +600,15 @@ public without sharing class UTIL_CustomSettingsFacade {
         //the only field w/o a default defined
         if (settings.Open_Opportunity_Behavior__c == null) {
 
-            settings.Add_Campaign_to_All_Opportunites__c = true;
-            settings.Maximum_Donations__c = 50;
-            settings.Recurring_Donation_Batch_Size__c = 50;
-            settings.DataMigrationBatchSize__c = 25;
-            settings.Opportunity_Forecast_Months__c = 12;
-            settings.Open_Opportunity_Behavior__c = RD_RecurringDonations.RecurringDonationCloseOptions.Mark_Opportunities_Closed_Lost.name();
+            settings.Open_Opportunity_Behavior__c = RD2_Constants.CloseActions.Mark_Opportunities_Closed_Lost.name();
             settings.InstallmentOppAutoCreateOption__c = RD2_Constants.InstallmentCreateOptions.Always_Create_Next_Installment.name();
             settings.InstallmentOppFirstCreateMode__c = RD2_Constants.FirstInstallmentOppCreateOptions.Synchronous.name();
-            settings.DisableRollupsWhenCreatingInstallments__c = false;
             settings.NextDonationDateMatchRangeDays__c = RD2_Constants.DEFAULT_NEXT_DONATION_DATE_MATCH_RANGE_DAYS;
 
             settings.EnableAutomaticNaming__c = false;
-            settings.IsRecurringDonations2Enabled__c = false;
+            settings.IsRecurringDonations2Enabled__c = true;
             settings.UseFiscalYearForRecurringDonationValue__c = false;
             settings.EnableChangeLog__c = false;
-            settings.ExcludeClosedRecurringDonations__c = false;
 
             List<RecordType> oppRecordTypes = [SELECT Id FROM RecordType WHERE SObjectType = 'Opportunity' AND IsActive = true];
             if (oppRecordTypes.size() > 0) {
@@ -863,22 +856,21 @@ public without sharing class UTIL_CustomSettingsFacade {
             recurringDonationsSettings = new Recurring_Donations_Settings__c();
         }
 
-        recurringDonationsSettings.Opportunity_Forecast_Months__c = settings.Opportunity_Forecast_Months__c;
-        recurringDonationsSettings.Maximum_Donations__c = settings.Maximum_Donations__c;
         recurringDonationsSettings.Open_Opportunity_Behavior__c = settings.Open_Opportunity_Behavior__c;
-        recurringDonationsSettings.Add_Campaign_to_All_Opportunites__c = settings.Add_Campaign_to_All_Opportunites__c;
         recurringDonationsSettings.Error_Email_Notifications__c = settings.Error_Email_Notifications__c;
         recurringDonationsSettings.Recurring_Donation_Batch_Size__c = settings.Recurring_Donation_Batch_Size__c;
+        recurringDonationsSettings.Maximum_Donations__c = settings.Maximum_Donations__c;
+        recurringDonationsSettings.Opportunity_Forecast_Months__c = settings.Opportunity_Forecast_Months__c;
+        recurringDonationsSettings.Add_Campaign_to_All_Opportunites__c = settings.Add_Campaign_to_All_Opportunites__c;
 
         recurringDonationsSettings.EnableAutomaticNaming__c = settings.EnableAutomaticNaming__c;
         recurringDonationsSettings.IsRecurringDonations2Enabled__c = settings.IsRecurringDonations2Enabled__c;
-        recurringDonationsSettings.RecurringDonations2MigrationState__c = settings.RecurringDonations2MigrationState__c;
-        recurringDonationsSettings.RecurringDonations2EnablementState__c = settings.RecurringDonations2EnablementState__c;
         recurringDonationsSettings.UseFiscalYearForRecurringDonationValue__c = settings.UseFiscalYearForRecurringDonationValue__c;
         recurringDonationsSettings.InstallmentOppStageName__c = settings.InstallmentOppStageName__c;
         recurringDonationsSettings.InstallmentOppAutoCreateOption__c = settings.InstallmentOppAutoCreateOption__c;
         recurringDonationsSettings.InstallmentOppFirstCreateMode__c = settings.InstallmentOppFirstCreateMode__c;
         recurringDonationsSettings.DisableRollupsWhenCreatingInstallments__c = settings.DisableRollupsWhenCreatingInstallments__c;
+        recurringDonationsSettings.ExcludeClosedRecurringDonations__c = settings.ExcludeClosedRecurringDonations__c;
         recurringDonationsSettings.Record_Type__c = settings.Record_Type__c;
         recurringDonationsSettings.NextDonationDateMatchRangeDays__c = settings.NextDonationDateMatchRangeDays__c;
         recurringDonationsSettings.StatusMappingDeploymentId__c = settings.StatusMappingDeploymentId__c;
@@ -887,7 +879,6 @@ public without sharing class UTIL_CustomSettingsFacade {
         recurringDonationsSettings.StatusAutomationDaysForClosed__c = settings.StatusAutomationDaysForClosed__c;
         recurringDonationsSettings.StatusAutomationLapsedValue__c = settings.StatusAutomationLapsedValue__c;
         recurringDonationsSettings.StatusAutomationClosedValue__c = settings.StatusAutomationClosedValue__c;
-        recurringDonationsSettings.ExcludeClosedRecurringDonations__c = settings.ExcludeClosedRecurringDonations__c;
 
         orgRecurringDonationsSettings = recurringDonationsSettings;
 

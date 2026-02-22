@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>Schedule_Type__c</name>
+    <label>Deprecated-&#x05E1;&#x05D5;&#x05D2; &#x05DC;&#x05D5;&#x05D7; &#x05D6;&#x05DE;&#x05E0;&#x05D9;&#x05DD;</label>
+</CustomFieldTranslation>

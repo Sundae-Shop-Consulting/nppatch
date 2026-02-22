@@ -174,16 +174,6 @@ public without sharing class TDTM_DefaultConfig {
               Class__c = 'HH_Households_TDTM', Load_Order__c = 0, Object__c = 'Contact',
               Trigger_Action__c = 'BeforeInsert;BeforeUpdate;AfterInsert;AfterUpdate;AfterDelete'));
 
-        // RecurringDonations on Opportunity
-        handlers.add(new Trigger_Handler__c(Active__c = true, Asynchronous__c = false,
-              Class__c = 'RD_RecurringDonations_Opp_TDTM', Load_Order__c = 1, Object__c = 'Opportunity',
-              Trigger_Action__c = 'AfterInsert;AfterUpdate'));
-
-        // RecurringDonations on RecurringDonations
-        handlers.add(new Trigger_Handler__c(Active__c = true, Asynchronous__c = false,
-              Class__c = 'RD_RecurringDonations_TDTM', Load_Order__c = 1, Object__c = 'Recurring_Donation__c',
-              Trigger_Action__c = 'BeforeDelete;BeforeInsert;BeforeUpdate;AfterInsert;AfterUpdate'));
-
         // Enhanced Recurring Donations trigger handlers
         handlers.add(new Trigger_Handler__c(Active__c = true, Asynchronous__c = false,
               Class__c = 'RD2_RecurringDonationsOpp_TDTM', Load_Order__c = 2, Object__c = 'Opportunity',
@@ -357,10 +347,6 @@ public without sharing class TDTM_DefaultConfig {
               Class__c = 'PMT_CascadeDeleteLookups_TDTM', Load_Order__c = 1, Object__c = 'OppPayment__c',
               Trigger_Action__c = 'BeforeDelete;AfterDelete;AfterUndelete'));
 
-        handlers.add(new Trigger_Handler__c(Active__c = true, Asynchronous__c = false,
-              Class__c = 'RD_CascadeDeleteLookups_TDTM', Load_Order__c = 1, Object__c = 'Recurring_Donation__c',
-              Trigger_Action__c = 'BeforeDelete;AfterDelete;AfterUndelete'));
-
         // Customizable Rollups on Opportunity
         handlers.add(new Trigger_Handler__c(Active__c = true, Asynchronous__c = false,
                 Class__c = 'CRLP_Rollup_TDTM', Load_Order__c = 4, Object__c = 'Opportunity',
@@ -386,5 +372,5 @@ public without sharing class TDTM_DefaultConfig {
     * @description Any trigger handler classes that have been removed and should be deleted from a client
     * instance if they exist.
     */
-    public static final set<string> deletedClasses = new set<string>{'OPP_OpportunityNaming_TDTM','UTIL_CascadeDeleteLookups_TDTM'};
+    public static final set<string> deletedClasses = new set<string>{'OPP_OpportunityNaming_TDTM','UTIL_CascadeDeleteLookups_TDTM','RD_CascadeDeleteLookups_TDTM'};
 }

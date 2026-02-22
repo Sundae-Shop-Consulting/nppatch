@@ -802,7 +802,6 @@ private class HH_Container_TEST {
         //skip the test if Advancement is installed
         if(ADV_PackageInfo_SVC.useAdv()) return;
         if (shouldSkipIn2GP()) { return; }
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         List<Account> householdAccounts = buildAccounts(2);
         insert householdAccounts;

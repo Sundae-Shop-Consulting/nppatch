@@ -146,10 +146,6 @@ public with sharing class CRLP_RecalculateBTN_CTRL {
                 ALLO_Rollup_SCHED rollup = new ALLO_Rollup_SCHED(recordId);
                 rollup.runRollups();
 
-            } else if (this.objType == Recurring_Donation__c.SObjectType
-                && !RD2_EnablementService.isRecurringDonations2Enabled
-            ) {
-                RD_RecurringDonations.updateRecurringDonationOnOppChangeFuture(new Set<Id>{ recordId });
             }
         }
 

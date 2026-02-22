@@ -39,8 +39,6 @@ private with sharing class Callable_API_TEST {
 
     private static final String TDTM_TRIGGER_ACTION = 'TDTM.DisableAllTriggers';
     private static final String CRLP_IS_ENABLED_ACTION = 'CRLP.iscrlpenabled';
-    private static final String RD2_EXECUTE_MIGRATION_ACTION = 'RD2.ExecuteDataMigration';
-    private static final String RD2_ENABLE_ACTION = 'Settings.EnableEnhancedRecurringDonations';
     private static final String JOB_SCHEDULE_ACTION = 'Apex.ScheduleJob';
     private static final String RD2_PAUSE_ACTION = 'rd2.pause';
     private static final String ADVANCED_MAPPING_ACTION = 'settings.enableadvancedmapping';
@@ -182,47 +180,8 @@ private with sharing class Callable_API_TEST {
                 'method should not be called.');
     }
 
-    /**
-     * @description Verifies if Enhanced Recurring Donations are enabled
-     */
-    @IsTest
-    private static void shouldEnableRD2OnEnableRD2Action() {
-        RD2_EnablementService_Test.setCustomizableRollups(true);
-
-        Test.startTest();
-
-        Callable callableApi = (Callable) Type.forName('Callable_API').newInstance();
-        Map<String, Object> args = new Map<String, Object>{ 'ScheduleJobs' => false };
-        callableApi.call(RD2_ENABLE_ACTION, args);
-
-        Test.stopTest();
-
-        System.assertEquals(true,  STG_Panel.stgService.stgRD.IsRecurringDonations2Enabled__c);
-    }
-
-    /**
-     * @description Verifies Enhanced Recurring Donations migration batch job is executed
-     */
-    @IsTest
-    private static void shouldRunRD2DataMigrationWhenRD2IsEnabled() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-
-        Test.startTest();
-
-        Callable callableApi = (Callable) Type.forName('Callable_API').newInstance();
-        Map<String, Object> args = new Map<String, Object>();
-        Object result = callableApi.call(RD2_EXECUTE_MIGRATION_ACTION, args);
-
-        Test.stopTest();
-        
-        AsyncApexJob job = new TEST_SObjectGateway.AsyncApexJobGateway()
-            .getRecord('RD2_DataMigration_BATCH');
-        System.assertNotEquals(null, job, 'The batch should be executed');
-    }
-
     @isTest
     private static void shouldProcessPauseRequestWhenCallingPauseAPI() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         
 
         Map<String, Object> pauseData = new Map<String, Object> {

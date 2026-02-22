@@ -4094,12 +4094,7 @@
         <field>%%%NAMESPACE%%%Recurring_Donations_Settings__c.%%%NAMESPACE%%%Add_Campaign_to_All_Opportunites__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Recurring_Donations_Settings__c.%%%NAMESPACE%%%DataMigrationBatchSize__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
+<fieldPermissions>
         <editable>true</editable>
         <field>%%%NAMESPACE%%%Recurring_Donations_Settings__c.%%%NAMESPACE%%%DisableRollupsWhenCreatingInstallments__c</field>
         <readable>true</readable>
@@ -4189,17 +4184,7 @@
         <field>%%%NAMESPACE%%%Recurring_Donations_Settings__c.%%%NAMESPACE%%%RecurringDonationNameFormat__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Recurring_Donations_Settings__c.%%%NAMESPACE%%%RecurringDonations2EnablementState__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Recurring_Donations_Settings__c.%%%NAMESPACE%%%RecurringDonations2MigrationState__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
+<fieldPermissions>
         <editable>true</editable>
         <field>%%%NAMESPACE%%%Recurring_Donations_Settings__c.%%%NAMESPACE%%%Recurring_Donation_Batch_Size__c</field>
         <readable>true</readable>

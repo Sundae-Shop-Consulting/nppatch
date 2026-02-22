@@ -415,7 +415,6 @@ public class CON_ContactMerge_TEST {
     private static void mergingTwoContactsWithActiveRDSustainersChangeToActive() {
         //skip the test if Advancement is installed
         if(ADV_PackageInfo_SVC.useAdv()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         CON_ContactMerge_CTRL controller = getController();
         List<Contact> testContacts = getContacts(1);
@@ -485,7 +484,6 @@ public class CON_ContactMerge_TEST {
     private static void mergingTwoContactsWithLapsedRDResultSustainerSetToLapsed() {
         //skip the test if Advancement is installed
         if(ADV_PackageInfo_SVC.useAdv()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         CON_ContactMerge_CTRL controller = getController();
         List<Contact> testContacts = getContacts(1);
@@ -555,7 +553,6 @@ public class CON_ContactMerge_TEST {
     private static void mergingTwoContactsWithClosedRDResultSustainerSetToFormer() {
         //skip the test if Advancement is installed
         if(ADV_PackageInfo_SVC.useAdv()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         CON_ContactMerge_CTRL controller = getController();
         List<Contact> testContacts = getContacts(1);

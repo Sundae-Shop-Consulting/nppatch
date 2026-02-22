@@ -57,25 +57,11 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
     }
 
     /**
-     * @description Verify that when Enhanced RD is NOT enabled in an org, attempting to execute the new RD2 batch
-     * job throws an exception
-     */
-    @IsTest
-    private static void shouldThrowExceptionForEnhancedRDJobIfEnhancedRDIsNotEnabled() {
-        Exception actuaException = runBatch(new RD2_OpportunityEvaluation_BATCH());
-
-        System.assertNotEquals(null, actuaException, 'An exception should have been thrown because Enhanced RD is not enabled');
-        System.assert(actuaException.getMessage().containsIgnoreCase(System.Label.RD2_ErrorEnhancedRDBatchJobCannotBeRun),
-            'The job cannot be executed because Enhanced RD is not enabled: ' + actuaException.getMessage());
-    }
-
-    /**
      * @description Verify that when RD2 is enabled in an org, executing the new Enhanced RD batch job does not
      * throw an exception
      */
     @IsTest
     private static void shouldNotThrowExceptionForEnhancedRDJobIfEnhancedRDIsEnabled() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Exception actuaException = runBatch(new RD2_OpportunityEvaluation_BATCH());
 
@@ -83,22 +69,10 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
     }
 
     /**
-     * @description Verify that when Enhanced RD is NOT enabled in an org, executing the new Legacy RD
-     * batch job does not throw an exception
-     */
-    @IsTest
-    private static void shouldNotThrowExceptionForLegacyRDJobIfEnhancedRDIsNotEnabled() {
-        Exception actuaException = runBatch(new RD_RecurringDonations_BATCH());
-
-        System.assertEquals(null, actuaException, 'An exception is expected because Enhanced RD is not enabled');
-    }
-
-    /**
      * @description Verifies Closed Recurring Donations are not processed when Batch Filtering is enabled
      */
     @IsTest
     private static void shouldNotProcessClosedRDs() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         configureRecurringDonationsClosedFilter();
         final Date batchRunDate = Date.today();
         RD2_ScheduleService.currentDate = batchRunDate;
@@ -135,7 +109,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @IsTest
     private static void shouldNotProcessClosedRDsWithOpenOpps() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         configureRecurringDonationsClosedFilter();
         final Date batchRunDate = Date.today();
         RD2_ScheduleService.currentDate = batchRunDate;
@@ -163,7 +136,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @IsTest
     private static void shouldProcessClosedRDs() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         final Date today = START_DATE.addMonths(1);
         RD2_ScheduleService.currentDate = today;
 
@@ -199,7 +171,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @IsTest
     private static void shouldNotCreateDuplicateOppWhenNextCloseDateIsToday() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
 
         final Date today = START_DATE.addMonths(1);
@@ -230,7 +201,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @IsTest
     private static void shouldNotCreateDuplicateOppWhenNextCloseDateIsInFuture() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
 
         final Date today = START_DATE.addMonths(1).addDays(1);
@@ -269,7 +239,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
 
         Date today = prevCloseDate.addDays(-1);
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder().build();
@@ -313,7 +282,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @IsTest
     private static void shouldCreateNextOppWhenCloseDateIsToday() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
 
         final Date prevCloseDate = START_DATE.addMonths(1);
@@ -348,7 +316,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @IsTest
     private static void shouldCreateNextOppWhenRDStatusIsActive() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder().build();
@@ -361,7 +328,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @IsTest
     private static void shouldCreateNextOppWhenRDStatusIsLapsed() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
@@ -377,7 +343,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @isTest
     private static void shouldNotRunTheBatchIfAnotherJobIsRunning() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         
         final Date prevCloseDate = START_DATE.addMonths(1);
         final Date today = prevCloseDate.addDays(1);
@@ -439,7 +404,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @IsTest
     private static void shouldCreateNextOppWhenInstallmentPeriodIs1stAnd15th() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
 
         final Date prevCloseDate = START_DATE.addMonths(1);
@@ -477,7 +441,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @IsTest
     private static void shouldNotCreateNextOppWhenScheduleEndDateIsPassed() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
 
         final Date today = START_DATE.addMonths(1).addDays(1);
@@ -504,7 +467,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @IsTest
     private static void shouldCreateNextOppWhenScheduleEndDateIsNextCloseDate() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         final Date today = START_DATE.addMonths(1).addDays(1);
         RD2_ScheduleService.currentDate = today;
@@ -532,7 +494,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @IsTest
     private static void shouldCreateNextOppWhenRDNextDonationDateIsOutdated() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
 
         Date today = START_DATE.addDays(1);
@@ -578,7 +539,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @IsTest
     private static void shouldReturnZeroRecordsFailedWhenOppDMLSucceeds() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         final Date today = START_DATE.addMonths(1).addDays(1);
         final Date nextCloseDate = START_DATE.addMonths(2);
@@ -603,7 +563,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @IsTest
     private static void shouldReturnRecordsFailedWhenOppDMLFails() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         configInvalidOppRecordTypeId();
 
@@ -682,7 +641,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @IsTest
     private static void shouldCreateNextOppWhenSameCloseDateOppIsClosedLostInMigration() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
 
         final Date today = START_DATE.addDays(1);
@@ -723,7 +681,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
      */
     @IsTest
     private static void shouldNotCreateNextOppWhenSameCloseDateOppIsClosedLostOutsideMigration() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
 
         final Date today = START_DATE.addDays(1);
@@ -824,7 +781,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
     private static Recurring_Donation__c runInstallmentCreateTestFor(String createOption) {
         final Date today = START_DATE;
         RD2_ScheduleService.currentDate = today;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         RD2_Settings_TEST.setUpConfiguration(new Map<String, Object> {
             'InstallmentOppAutoCreateOption__c' => createOption
@@ -844,7 +800,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
     */
     @IsTest
     private static void shouldUpdateYearValuesWhenYearChanges() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Date today = START_DATE.addMonths(1);
         RD2_ScheduleService.currentDate = today;
@@ -878,7 +833,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
         Date today = startDate.addMonths(1).addDays(-1);
         RD2_ScheduleService.currentDate = today;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Recurring_Donation__c rd = getRecurringDonationBuilder()
             .withStartDate(startDate)
             .withDateEstablished(startDate)
@@ -914,7 +868,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
         Date today = startDate.addMonths(1).addDays(-1);
         RD2_ScheduleService.currentDate = today;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Recurring_Donation__c rd = getRecurringDonationBuilder()
             .withStartDate(startDate)
             .withDateEstablished(startDate)
@@ -949,7 +902,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
     private static void shouldLeaveFixedRDActiveWhenPlannedInstallmentsNotReached() {
         final Integer plannedInstallments = 5;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
             .withRecurringTypeFixed()
@@ -991,7 +943,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
     private static void shouldCloseFixedRDWhenPlannedInstallmentsReached() {
         final Integer plannedInstallments = 5;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
             .withRecurringTypeFixed()
@@ -1045,7 +996,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
         Date today = Date.newInstance(2020, 3, 1);
         RD2_ScheduleService.currentDate = today;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
@@ -1095,7 +1045,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
         Date today = Date.newInstance(2020, 3, 1);
         RD2_ScheduleService.currentDate = today;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_Settings_TEST.configureForASyncFirstOpportunityCreate();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
@@ -1146,7 +1095,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
         Date endDate = Date.newInstance(2020, 3, 1);
         RD2_ScheduleService.currentDate = startDate;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
             .withStartDate(startDate)
@@ -1172,7 +1120,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
         Date startDate = Date.newInstance(2020, 1, 1);
         Date currentDate = Date.newInstance(2020, 2, 26);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_StatusAutomationService_TEST.setupStatusAutomationSettings(10, 20);
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
@@ -1200,7 +1147,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
         Date startDate = Date.newInstance(2020, 1, 1);
         Date currentDate = Date.newInstance(2020, 3, 7);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_StatusAutomationService_TEST.setupStatusAutomationSettings(10, 20);
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
@@ -1364,7 +1310,6 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
         CMT_UnitTestData_TEST.mockEnhancedRecurringDonationRollupCMTValues();
         CRLP_Rollup_SVC.UPDATE_NULL_TO_ZERO = true;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         RD2_Settings_TEST.setUpConfiguration(new Map<String, Object>{
             'DisableRollupsWhenCreatingInstallments__c' => isDisableRollups

@@ -55,7 +55,6 @@ public with sharing class GE_SettingsService {
 
         return advancedMappingEnablementService.isEnabled()
             && giftEntryEnablementService.isEnabled()
-            && RD2_EnablementService.getInstance().isRecurringDonations2Enabled()
             && canAccessRecurringDonationFields();
     }
 

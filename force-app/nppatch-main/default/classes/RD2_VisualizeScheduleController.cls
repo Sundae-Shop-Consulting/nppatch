@@ -379,11 +379,6 @@ public with sharing class RD2_VisualizeScheduleController {
      * @return String An alert message if validation failes, otherwise null.
      */
     public static String getValidationAlert(Id recordId) {
-        if (!RD2_EnablementService.isRecurringDonations2Enabled) {
-            // The label value: "You must enable Enhanced Recurring Donations to use this component."
-            return System.Label.RD2_ScheduleVisualizerErrorInvalidUsage;
-        }
-
         if (recordId == null || recordId.getSObjectType() != Recurring_Donation__c.SObjectType) {
             // The label value: "This component must be used on a Recurring Donations record page."
            return System.Label.RD2_ScheduleVisualizerErrorEnhancedRDNot;

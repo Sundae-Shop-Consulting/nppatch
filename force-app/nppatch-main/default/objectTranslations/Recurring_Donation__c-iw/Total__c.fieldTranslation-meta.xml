@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>Total__c</name>
+    <label>Deprecated-&#x05E1;&#x05DA; &#x05D4;&#x05DB;&#x05D5;&#x05DC;</label>
+</CustomFieldTranslation>

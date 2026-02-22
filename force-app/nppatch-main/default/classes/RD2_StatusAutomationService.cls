@@ -75,7 +75,7 @@ public with sharing class RD2_StatusAutomationService {
         view.lapsedStatusOption = createStatusOption(
             new List<String>(statusMapper.getLapsedStatusValues())
         );
-        view.rd2Enabled = RD2_EnablementService.isRecurringDonations2Enabled;
+        view.rd2Enabled = true;
         return view;
     }
 

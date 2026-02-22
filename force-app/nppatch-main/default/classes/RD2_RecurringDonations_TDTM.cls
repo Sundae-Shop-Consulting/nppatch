@@ -112,9 +112,6 @@ public class RD2_RecurringDonations_TDTM extends TDTM_Runnable {
             TDTM_TriggerHandler.enableOldListCachingEvaluation();
         }
 
-        if (!RD2_EnablementService.isRecurringDonations2Enabled) {
-            return null;
-        }
         if (TDTM_ProcessControl.isRecursive(TDTM_ProcessControl.flag.RD)) {
             return null;
         }

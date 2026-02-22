@@ -191,10 +191,7 @@ public with sharing class STG_InstallScript_TEST {
         System.assertEquals('Matched Donor;Soft Credit;Household Member', npo02Settings.Soft_Credit_Roles__c);
         System.assertEquals(true, npo02Settings.Household_Contact_Roles_On__c);
 
-        System.assertEquals(RD_RecurringDonations.RecurringDonationCloseOptions.Mark_Opportunities_Closed_Lost.name(), npe03Settings.Open_Opportunity_Behavior__c);
-        System.assertEquals(true, npe03Settings.Add_Campaign_to_All_Opportunites__c);
-        System.assertEquals(50, npe03Settings.Maximum_Donations__c);
-        System.assertEquals(12, npe03Settings.Opportunity_Forecast_Months__c);
+        System.assertEquals(RD2_Constants.CloseActions.Mark_Opportunities_Closed_Lost.name(), npe03Settings.Open_Opportunity_Behavior__c);
         System.assertEquals([select id from RecordType where sobjecttype = 'Opportunity' limit 1].id, npe03Settings.Record_Type__c);
 
         System.assertEquals('List Setting', npe04Settings.Reciprocal_Method__c);
@@ -247,40 +244,9 @@ public with sharing class STG_InstallScript_TEST {
         System.assertEquals('Test Exception', errors[0].Full_Message__c, 'Error message has not been applied correctly.');
     }
 
-    /*********************************************************************************************************
-    @description
-        Test install on a new org populates Recurring Donation Installment Number
-    verify:
-        Opportunities' Recurring Donation Installment Number is populated.
-    **********************************************************************************************************/
-    @isTest
-    private static void testNewInstallSetsRecurringDonationInstallmentNumber() {
-        Recurring_Donation__c rd = createRecurringDonation();
-        List<Opportunity> opps = getRecurringDonationOpportunities(rd.Id);
-        System.assertEquals(false, opps.isEmpty(), 'At least one Opportunity should be created for the Recurring Donation');
-
-        for (Opportunity opp : opps) {
-            opp.Recurring_Donation_Installment_Number__c = null;
-        }
-        update opps;
-
-        opps = getRecurringDonationOpportunities(rd.Id);
-        for (Opportunity opp : opps) {
-            System.assertEquals(null, opp.Recurring_Donation_Installment_Number__c, 'Recurring Donation Installment Number should be empty');
-        }
-
-        Test.startTest();
-        Test.testInstall(new STG_InstallScript(), null);
-        Test.stopTest();
-
-        opps = getRecurringDonationOpportunities(rd.Id);
-        for (Opportunity opp : opps) {
-            System.assertNotEquals(null, opp.Recurring_Donation_Installment_Number__c, 'Recurring Donation Installment Number should be set by the installation script');
-        }
-
-        List<Error__c> errors = getErrors();
-        System.assertEquals(0, errors.size(), 'No exception error should be created: ' + errors);
-    }
+    // Test testNewInstallSetsRecurringDonationInstallmentNumber was removed because it tested the
+    // POPULATE_RD_INSTALLMENT_NUMBER install action and RD_InstallScript_BATCH, both of which were
+    // deleted as part of the RD1 removal.
 
     /*********************************************************************************************************
     @description
@@ -570,35 +536,6 @@ public with sharing class STG_InstallScript_TEST {
                 Rollups_AcctContactSoftCredit_Batch_Size__c = null
             )
         );
-    }
-
-    private static Recurring_Donation__c createRecurringDonation() {
-        Account acc = new Account(Name = 'foo');
-        insert acc;
-
-        Recurring_Donation__c rd = new TEST_RecurringDonationBuilder()
-            .withAccount(acc.Id)
-            .withInstallmentPeriodYearly()
-            .withDateEstablished(Date.newInstance(1984,01,29))
-            .withAmount(20)
-            .withScheduleTypeMultiplyValue()
-            .withOpenEndedStatusOpen()
-            .build();
-
-        insert rd;
-        return rd;
-    }
-
-    /*******************************************************************************************************
-    * @description Gets errors.
-    * @return List<Error__c> The List of errors.
-    ********************************************************************************************************/
-    private static List<Opportunity> getRecurringDonationOpportunities(Id rdId) {
-        return [
-            SELECT Id, Recurring_Donation_Installment_Number__c
-            FROM Opportunity
-            WHERE Recurring_Donation__c = :rdId
-        ];
     }
 
     /*******************************************************************************************************

@@ -4,5 +4,8 @@
     <fields>Name</fields>
     <fields>Amount__c</fields>
     <fields>Installment_Period__c</fields>
+    <fields>InstallmentFrequency__c</fields>
+    <fields>Next_Payment_Date__c</fields>
+    <fields>Status__c</fields>
     <label>NPPatch Recurring Donation Compact Layout</label>
 </CompactLayout>

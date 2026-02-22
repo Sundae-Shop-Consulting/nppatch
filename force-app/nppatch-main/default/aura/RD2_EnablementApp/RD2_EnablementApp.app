@@ -34,8 +34,6 @@
 	@description Harness app for NPPatch Settings Lightning Components.
 -->
 <aura:application access="GLOBAL" extends="ltng:outApp">
-    <aura:dependency resource="c:RD2_EnablementDelegate" />
-    <aura:dependency resource="c:RD2_EnablementDelegateSimple" />
     <aura:dependency resource="c:rd2StatusMappingSettings" />
     <aura:dependency resource="c:rd2StatusAutomationSettings" />
     <aura:dependency resource="c:utilIllustration" />

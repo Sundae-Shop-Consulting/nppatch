@@ -43,7 +43,6 @@ public class RD2_UpdateCommitmentBulkService_TEST {
     */
     @isTest
     private static void verifyProcessCommitmentsIsNoOp() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         List<Recurring_Donation__c> rds = constructRecurringDonations(1);
 
