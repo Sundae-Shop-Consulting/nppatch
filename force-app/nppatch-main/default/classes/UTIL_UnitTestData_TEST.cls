@@ -942,12 +942,11 @@ public class UTIL_UnitTestData_TEST {
         TDTM_ProcessControl.toggleTriggerState('Opportunity', 'PSC_Opportunity_TDTM', false);
         TDTM_ProcessControl.toggleTriggerState('Opportunity', 'OPP_CampaignMember_TDTM', false);
     }
-    /* @description Disable all OppRollup related trigger handlers when not needed to improve performance */
+    /* @description Disable non-CRLP rollup trigger handlers (EP_TaskRollup_TDTM).
+     * With legacy RLLP removed, CRLP is the only rollup engine. Use disableCustomizableRollupTriggers()
+     * to explicitly disable CRLP triggers when needed to avoid SOQL limits. */
     public static void disableRollupTriggers() {
         createDefaultTDTMHandlers();
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'CRLP_Rollup_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('OppPayment__c', 'CRLP_Rollup_TDTM', false);
-        TDTM_ProcessControl.toggleTriggerState('Allocation__c', 'CRLP_Rollup_TDTM', false);
         TDTM_ProcessControl.toggleTriggerState('Task', 'EP_TaskRollup_TDTM', false);
     }
     /* @description Disable all OppRollup related trigger handlers when not needed to improve performance */

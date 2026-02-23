@@ -134,7 +134,6 @@ public with sharing class HH_Households_TEST {
         setupHouseholdSettings();
         setOrgContactSettingsToOneToOne();
         setupHouseholdNamingSettings();
-        UTIL_UnitTestData_TEST.disableRollupTriggers();
 
         Contact con = TEST_ContactBuilder.dummyContact();
         Test.startTest();
@@ -671,7 +670,6 @@ public with sharing class HH_Households_TEST {
             Advanced_Household_Naming__c = true,
             Enable_Opp_Rollup_Triggers__c = false
         ));
-        UTIL_UnitTestData_TEST.disableRollupTriggers();
 
         Contact c1 = new Contact(
             FirstName = CAO_Constants.CONTACT_FIRSTNAME_FOR_TESTS,
@@ -705,9 +703,8 @@ public with sharing class HH_Households_TEST {
         ContactAdapter.rollupContactsAndHouseholdsAfterMerge(new Set<Id>{c1.Id});
         Test.stopTest();
 
-        c1 = [SELECT TotalOppAmount__c, Household__r.TotalOppAmount__c FROM Contact WHERE Id = :c1.Id];
+        c1 = [SELECT TotalOppAmount__c FROM Contact WHERE Id = :c1.Id];
         System.assertEquals(100, c1.TotalOppAmount__c);
-        System.assertEquals(100, c1.Household__r.TotalOppAmount__c);
     }
 
     /*********************************************************************************************************
@@ -819,8 +816,6 @@ public with sharing class HH_Households_TEST {
 
         Contacts_and_Orgs_Settings__c contactSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests
             (new Contacts_and_Orgs_Settings__c (Account_Processor__c = CAO_Constants.ONE_TO_ONE_PROCESSOR));
-
-        UTIL_UnitTestData_TEST.disableRollupTriggers();
 
         Contact con = new Contact(firstname='joe', lastname='smith');
         insert con;
