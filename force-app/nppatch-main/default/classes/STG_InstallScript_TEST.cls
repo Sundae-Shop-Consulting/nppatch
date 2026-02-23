@@ -154,7 +154,6 @@ public with sharing class STG_InstallScript_TEST {
         Affiliations_Settings__c npe05Settings = UTIL_CustomSettingsFacade.getOrgAffiliationsSettings();
         Error_Settings__c errorSettings = UTIL_CustomSettingsFacade.getOrgErrorSettings();
         Addr_Verification_Settings__c addrVerificationSetgs = UTIL_CustomSettingsFacade.getOrgAddressVerificationSettings();
-        Batch_Data_Entry_Settings__c batchDataEntrySetgs = UTIL_CustomSettingsFacade.getOrgBDESettings();
         Household_Naming_Settings__c householdNamingSettings = UTIL_CustomSettingsFacade.getOrgHouseholdNamingSettings();
         Allocations_Settings__c allocationsSettings = UTIL_CustomSettingsFacade.getOrgAllocationsSettings();
         Data_Import_Settings__c dataImportSettings = UTIL_CustomSettingsFacade.getOrgDataImportSettings();
@@ -204,9 +203,6 @@ public with sharing class STG_InstallScript_TEST {
 
         System.assertEquals(false, addrVerificationSetgs.Enable_Automatic_Verification__c);
         System.assertEquals(false, addrVerificationSetgs.Reject_Ambiguous_Addresses__c);
-
-        System.assertEquals(true, batchDataEntrySetgs.Allow_Blank_Opportunity_Names__c);
-        System.assertEquals(true, batchDataEntrySetgs.Opportunity_Naming__c);
 
         System.assertEquals('HH_NameSpec',householdNamingSettings.Implementing_Class__c);
         System.assertEquals(365,allocationsSettings.Rollup_N_Day_Value__c);

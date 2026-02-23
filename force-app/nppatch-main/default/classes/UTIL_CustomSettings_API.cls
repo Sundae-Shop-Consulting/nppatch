@@ -98,16 +98,6 @@ global class UTIL_CustomSettings_API {
     }
     
     /*******************************************************************************************************
-    * @description Returns the default Batch Data Entry settings. 
-    * @return Batch_Data_Entry_Settings__c Custom settings record for Batch Data Entry configuration. At the org level, 
-    * if no user level settings are defined. The ID field should be checked to determine if the returned record already
-    * exists or doesn't exist in the database.
-    */
-    global static Batch_Data_Entry_Settings__c getBDESettings() {
-        return UTIL_CustomSettingsFacade.getBDESettings();
-    }
-    
-    /*******************************************************************************************************
     * @description Returns the default Address Verification settings. 
     * @return Addr_Verification_Settings__c Custom settings record for Address Verification configuration. At the org level, 
     * if no user level settings are defined. The ID field should be checked to determine if the returned record already

@@ -52,7 +52,6 @@ public without sharing class UTIL_CustomSettingsFacade {
     static Relationship_Settings__c relationshipsSettings;
     static Affiliations_Settings__c affiliationsSettings;
     static Error_Settings__c errorSettings;
-    static Batch_Data_Entry_Settings__c bdeSettings;
     static Addr_Verification_Settings__c addressVerificationSettings;
     static Household_Naming_Settings__c householdNamingSettings;
     static Allocations_Settings__c allocationsSettings;
@@ -68,7 +67,6 @@ public without sharing class UTIL_CustomSettingsFacade {
     static Relationship_Settings__c orgRelationshipsSettings;
     static Affiliations_Settings__c orgAffiliationsSettings;
     static Error_Settings__c orgErrorSettings;
-    static Batch_Data_Entry_Settings__c orgBdeSettings;
     static Addr_Verification_Settings__c orgAddressVerificationSettings;
     static Household_Naming_Settings__c orgHouseholdNamingSettings;
     static Allocations_Settings__c orgAllocationsSettings;
@@ -215,24 +213,6 @@ public without sharing class UTIL_CustomSettingsFacade {
                 errorSettings = getOrgErrorSettings();
         }
         return errorSettings;
-    }
-
-    /*******************************************************************************************************
-    * @description Returns the default Batch Data Entry settings.
-    * @return Batch_Data_Entry_Settings__c Custom settings record for Batch Data Entry configuration. At the org level,
-    * if no user level settings are defined. The ID field should be checked to determine if the returned record already
-    * exists or doesn't exist in the database.
-    */
-    public static Batch_Data_Entry_Settings__c getBDESettings() {
-        if(Test.isRunningTest() && bdeSettings == null) {
-            bdeSettings = new Batch_Data_Entry_Settings__c();
-            configBDESettings(bdeSettings);
-        } else if(bdeSettings == null) {
-            bdeSettings = Batch_Data_Entry_Settings__c.getInstance();
-            if(bdeSettings.Id == null)
-                bdeSettings = getOrgBDESettings();
-        }
-        return bdeSettings;
     }
 
     /*******************************************************************************************************
@@ -439,23 +419,6 @@ public without sharing class UTIL_CustomSettingsFacade {
     }
 
     /*******************************************************************************************************
-    * @description Returns the org-level Batch Data Entry settings. Default org-level settings will be created
-    * if none exist. Meant to be called only from settings page and install script.
-    * @return Batch_Data_Entry_Settings__c Org-level settings for Batch Data Entry.
-    */
-    public static Batch_Data_Entry_Settings__c getOrgBDESettings() {
-        if(orgBDESettings == null) {
-            orgBDESettings = Batch_Data_Entry_Settings__c.getOrgDefaults();
-            if(orgBDESettings.Id == null) {
-                configBDESettings(orgBDESettings);
-                if(!Test.isRunningTest())
-                    upsert orgBDESettings;
-            }
-        }
-        return orgBDESettings;
-    }
-
-    /*******************************************************************************************************
     * @description Returns the org-level Address Verification settings. Default org-level settings will be created
     * if none exist. Meant to be called only from settings page and install script.
     * @return Addr_Verification_Settings__c Org-level settings for Address Verification.
@@ -633,11 +596,6 @@ public without sharing class UTIL_CustomSettingsFacade {
         es.OverrideFeature_PilotEnabled__c = false;
         es.Enable_Debug__c = false;
         es.Respect_Duplicate_Rule_Settings__c = false;
-    }
-
-    private static void configBDESettings(Batch_Data_Entry_Settings__c bds) {
-        bds.Allow_Blank_Opportunity_Names__c = true;
-        bds.Opportunity_Naming__c = true;
     }
 
     private static void configAddressVerificationSettings(Addr_Verification_Settings__c avs) {

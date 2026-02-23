@@ -2093,22 +2093,6 @@
         <label>未割り当て</label>
     </customLabels>
     <customLabels>
-        <name>bdeRetirementBlockerHeader</name>
-        <label>バッチデータエントリはサポートされていません</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementBlockerMessage</name>
-        <label>2020 年 10 月 1 日以降、バッチデータエントリはサポートされなくなりました。ほとんどの機能は NPPatch の新機能に置き換えられました。進行中のバッチがある場合、それらのレコードには引き続きアクセスできますが、バッチデータエントリを使用して処理することはできません。進行中のバッチにアクセスする必要がある場合は、サポートにお問い合わせください。&lt;br/&gt;バッチデータエントリの代わりとして、支援エントリを検討することをお勧めします。</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningBody</name>
-        <label>2020 年 10 月 1 日にバッチデータエントリは廃止になり、NPPatch では機能しなくなります。その時点で進行中のバッチがあった場合、レコードには引き続きアクセスできますが、バッチデータエントリを使用して処理することはできません。スムーズに移行できるように、10 月 1 日に先立って支援エントリを有効化して使用するようにしてください。</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningHeader</name>
-        <label>バッチデータエントリの廃止</label>
-    </customLabels>
-    <customLabels>
         <name>bdiAPIBatchError</name>
         <label>次のエラーのため、データインポートレコードを処理できませんでした:</label>
     </customLabels>
@@ -7034,14 +7018,6 @@
         <label>ベースオブジェクトと参照オブジェクト間で作成されるリレーション種別。参照オブジェクトには相互関係が割り当てられます (使用可能な場合)。</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpBDEAllowBlankOppNames</name>
-        <label>オンにすると、商談名が空白の場合 (バッチデータエントリページに含まれていない場合)、バッチデータエントリで商談に名前が付けられることはありません。</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpBDEOppNaming</name>
-        <label>この設定は、バッチ入力された商談レコードのレコード名を入力された項目値に基づいて自動的に生成します。</label>
-    </customLabels>
-    <customLabels>
         <name>stgHelpBatchAlloRollup</name>
         <label>[バッチを実行] をクリックし、完了したすべての商談の総額を商談に設定された割り当てを使用して積み上げ集計します。結果は、一般会計単位レコードに保存されます。
 このページはいつでも閉じることができます。このページを閉じても処理はバックグラウンドで実行されます。</label>
@@ -7694,10 +7670,6 @@
         <label>バッチ処理オプション</label>
     </customLabels>
     <customLabels>
-        <name>stgLabelBDESettings</name>
-        <label>バッチデータエントリ設定</label>
-    </customLabels>
-    <customLabels>
         <name>stgLabelBatchStatus</name>
         <label>バッチ状況</label>
     </customLabels>
@@ -8032,10 +8004,6 @@
     <customLabels>
         <name>stgNavBatchProcessSettings</name>
         <label>バッチ処理設定</label>
-    </customLabels>
-    <customLabels>
-        <name>stgNavBDE</name>
-        <label>バッチデータエントリ</label>
     </customLabels>
     <customLabels>
         <name>stgNavBulkProcesses</name>
@@ -8373,10 +8341,6 @@
             <name>Contacts</name>
         </sections>
     </reportTypes>
-    <customTabs>
-        <name>Batch_Data_Entry</name>
-        <label>バッチデータエントリ</label>
-    </customTabs>
     <customTabs>
         <name>Batch_Gift_Entry</name>
         <label>バッチ支援エントリ</label>

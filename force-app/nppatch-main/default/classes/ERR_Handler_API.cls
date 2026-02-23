@@ -44,8 +44,6 @@ global class ERR_Handler_API {
         AFFL,
         /* @description Allocations context. */
         ALLO,
-        /* @description Batch Data Entry context. */
-        BDE,
         /* @description Batch Data Import context. */
         BDI,
         /* @description Contacts context. */

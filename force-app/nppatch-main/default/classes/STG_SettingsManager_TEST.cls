@@ -272,7 +272,6 @@ private with sharing class STG_SettingsManager_TEST {
         system.assertNotEquals(null, svc.stgRD);
         system.assertNotEquals(null, svc.stgRel);
         system.assertNotEquals(null, svc.stgAffl);
-        system.assertNotEquals(null, svc.stgBDE);
         system.assertNotEquals(null, svc.stgCRLP);
         system.assertNotEquals(null, svc.mapRDCustomField);
         system.assertNotEquals(null, svc.listRDCustomInstallment);
@@ -342,22 +341,6 @@ private with sharing class STG_SettingsManager_TEST {
         system.assertEquals(true, UTIL_CustomSettingsFacade.getOrgAllocationsSettings().Default_Allocations_Enabled__c, 'Settings should save successfully.');
         system.assertNotEquals(null,UTIL_CustomSettingsFacade.getOrgAllocationsSettings().Default__c, 'Default GAU value should be filled in.');
         system.assertEquals(true, UTIL_CustomSettingsFacade.getOrgAllocationsSettings().Payment_Allocations_Enabled__c, 'Payment Allocations should be enabled.');
-    }
-
-    /*********************************************************************************************************
-    * @description Tests the Batch Data Entry panel
-    * @return void
-    */
-    @isTest
-    private static void testPanelBDE() {
-        STG_PanelBDE_CTRL panel = new STG_PanelBDE_CTRL();
-        system.assertEquals('idPanelBDE', panel.idPanel());
-        STG_Panel.stgService.stgBDE.Opportunity_Naming__c = true;
-        panel.saveSettings();
-        system.assertEquals(true, UTIL_CustomSettingsFacade.getOrgBDESettings().Opportunity_Naming__c);
-        STG_Panel.stgService.stgBDE.Opportunity_Naming__c = false;
-        panel.saveSettings();
-        system.assertEquals(false, UTIL_CustomSettingsFacade.getOrgBDESettings().Opportunity_Naming__c);
     }
 
     /*********************************************************************************************************
