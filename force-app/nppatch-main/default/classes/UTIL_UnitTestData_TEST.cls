@@ -945,6 +945,9 @@ public class UTIL_UnitTestData_TEST {
     /* @description Disable all OppRollup related trigger handlers when not needed to improve performance */
     public static void disableRollupTriggers() {
         createDefaultTDTMHandlers();
+        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'CRLP_Rollup_TDTM', false);
+        TDTM_ProcessControl.toggleTriggerState('OppPayment__c', 'CRLP_Rollup_TDTM', false);
+        TDTM_ProcessControl.toggleTriggerState('Allocation__c', 'CRLP_Rollup_TDTM', false);
         TDTM_ProcessControl.toggleTriggerState('Task', 'EP_TaskRollup_TDTM', false);
     }
     /* @description Disable all OppRollup related trigger handlers when not needed to improve performance */

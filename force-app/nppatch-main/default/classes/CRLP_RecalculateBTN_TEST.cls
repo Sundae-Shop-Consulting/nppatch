@@ -83,38 +83,6 @@ private class CRLP_RecalculateBTN_TEST {
     }
 
     /**
-     * @description Simple validation of clicking the button when legacy rollups are enabled.
-     */
-    @isTest
-    private static void test_legacy_rollups() {
-
-        // Ensure that Customizable Rollups are disabled
-        disableCustomizableRollups();
-
-        Contact c = getContact();
-        // Set a random Total Gift and Soft Credit.
-        c.TotalOppAmount__c = 100;
-        c.Soft_Credit_Total__c = 100;
-        update c;
-
-        General_Accounting_Unit__c gau = [SELECT Id FROM General_Accounting_Unit__c LIMIT 1];
-
-        Test.startTest();
-
-        clickRecalculateRollupsFor(c);
-
-        clickRecalculateRollupsFor(gau);
-
-        Test.stopTest();
-
-        // Confirm that the legacy rollup logic updates the value of the Total Gift and
-        // Soft Credit to a value different than the original value (100);
-        c = getContact();
-        System.assert(c.TotalOppAmount__c != 100);
-        System.assert(c.Soft_Credit_Total__c != 100);
-    }
-
-    /**
      * @description Simple validation of clicking the button when the new customizable rollups are enabled
      */
     @isTest

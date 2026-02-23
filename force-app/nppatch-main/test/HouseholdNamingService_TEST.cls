@@ -102,6 +102,7 @@ public class HouseholdNamingService_TEST {
     */
     @isTest
     public static void HouseholdNamingTest(){
+      UTIL_UnitTestData_TEST.disableRollupTriggers();
       //settings
       Households_Settings__c householdSettingsForTests = UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
                 new Households_Settings__c (

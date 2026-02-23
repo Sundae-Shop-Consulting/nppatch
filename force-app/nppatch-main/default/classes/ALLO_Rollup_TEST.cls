@@ -58,6 +58,7 @@ private with sharing class ALLO_Rollup_TEST {
     /** @description Tests rollup button on general accounting units. */
     static testMethod void rollupBTN() {
         setupSettings(null);
+        UTIL_UnitTestData_TEST.disableRollupTriggers();
 
         Account acc = new Account(Name='foo');
         insert acc;
@@ -80,7 +81,9 @@ private with sharing class ALLO_Rollup_TEST {
 
         CRLP_RecalculateBTN_CTRL ctrl = new CRLP_RecalculateBTN_CTRL(new ApexPages.StandardController(gau));
 
+        Test.startTest();
         ctrl.buttonClick();
+        Test.stopTest();
 
         list<General_Accounting_Unit__c> queryGAU = [SELECT Id, First_Allocation_Date__c, Largest_Allocation__c, Last_Allocation_Date__c, Number_of_Allocations_Last_N_Days__c, Number_of_Allocations_Last_Year__c, Number_of_Allocations_This_Year__c,
                                                     Number_of_Allocations_Two_Years_Ago__c, Smallest_Allocation__c, Total_Allocations__c, Total_Allocations_Last_N_Days__c, Total_Allocations_Last_Year__c, Total_Allocations_This_Year__c,
@@ -99,6 +102,7 @@ private with sharing class ALLO_Rollup_TEST {
     * from the above test if fiscal years are enabled in the current org; we can't set that setting in tests. */
     static testMethod void rollupFiscalYear() {
         setupSettings(new Allocations_Settings__c(Use_Fiscal_Year_for_Rollups__c=true));
+        UTIL_UnitTestData_TEST.disableRollupTriggers();
 
         Account acc = new Account(Name='foo');
         insert acc;
@@ -121,7 +125,9 @@ private with sharing class ALLO_Rollup_TEST {
 
         CRLP_RecalculateBTN_CTRL ctrl = new CRLP_RecalculateBTN_CTRL(new ApexPages.StandardController(gau));
 
+        Test.startTest();
         ctrl.buttonClick();
+        Test.stopTest();
 
         list<General_Accounting_Unit__c> queryGAU = [SELECT Id, First_Allocation_Date__c, Largest_Allocation__c, Last_Allocation_Date__c, Number_of_Allocations_Last_N_Days__c, Number_of_Allocations_Last_Year__c, Number_of_Allocations_This_Year__c,
                                                     Number_of_Allocations_Two_Years_Ago__c, Smallest_Allocation__c, Total_Allocations__c, Total_Allocations_Last_N_Days__c, Total_Allocations_Last_Year__c, Total_Allocations_This_Year__c,

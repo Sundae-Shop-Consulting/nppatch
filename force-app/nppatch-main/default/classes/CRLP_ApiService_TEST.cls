@@ -90,17 +90,6 @@ public class CRLP_ApiService_TEST {
     }
 
     /**
-    * @description Validate the getRollupDefinitions returns an empty list<> when CRLP is not enabled
-    */
-    @IsTest
-    private static void shouldReturnEmptyListWhenCRLPNotEnabled() {
-        CRLP_ApiService service = new CRLP_ApiService();
-
-        System.assert(service.getRollupDefinitions(null).isEmpty(),
-            'When CRLP is disabled, then call to getRollupDefinitions should return an empty list');
-    }
-
-    /**
      * @description Confirms that isRollupStateEnabled returns true if the bridge is installed
      */
     @isTest

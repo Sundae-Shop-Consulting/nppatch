@@ -140,6 +140,7 @@ private class CMT_FilterRuleEvaluation_TEST {
      */
     static testMethod void test_evaluateFilterRules() {
         mockFilterCMTValues();
+        UTIL_UnitTestData_TEST.disableRollupTriggers();
 
         Contact con = UTIL_UnitTestData_TEST.getContact();
         insert con;
