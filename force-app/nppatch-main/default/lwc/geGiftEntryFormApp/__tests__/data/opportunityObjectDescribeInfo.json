@@ -496,46 +496,6 @@
       "unique": false,
       "updateable": true
     },
-    "Batch__c": {
-      "apiName": "Batch__c",
-      "calculated": false,
-      "compound": false,
-      "compoundComponentName": null,
-      "compoundFieldName": null,
-      "controllerName": null,
-      "controllingFields": [],
-      "createable": true,
-      "custom": true,
-      "dataType": "Reference",
-      "extraTypeInfo": null,
-      "filterable": true,
-      "filteredLookupInfo": null,
-      "highScaleNumber": false,
-      "htmlFormatted": false,
-      "inlineHelpText": null,
-      "label": "Batch",
-      "length": 18,
-      "nameField": false,
-      "polymorphicForeignKey": false,
-      "precision": 0,
-      "reference": true,
-      "referenceTargetField": null,
-      "referenceToInfos": [
-        {
-          "apiName": "Batch__c",
-          "nameFields": [
-            "Name"
-          ]
-        }
-      ],
-      "relationshipName": "Batch__r",
-      "required": false,
-      "scale": 0,
-      "searchPrefilterable": true,
-      "sortable": true,
-      "unique": false,
-      "updateable": true
-    },
     "CampaignId": {
       "apiName": "CampaignId",
       "calculated": false,
