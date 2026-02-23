@@ -84,14 +84,13 @@ global class CONV_Account_Conversion_BATCH implements Database.Batchable<SObject
         TDTM_TriggerHandler.disableTDTM = true;
 
         SavePoint sp = Database.setSavepoint();
+        Map<Id, Account> hh2account = new Map<Id, Account>();
 
         try{
 
             List<Contact> consForUpdate = new List<Contact>();
             List<OpportunityContactRole> ocrsForUpdate = new List<OpportunityContactRole>();
             List<Opportunity> oppsForUpdate = new List<Opportunity>();
-
-            Map<Id, Account> hh2account = new Map<Id, Account>();
             Map<Id, Account> con2account = new Map<Id, Account>();
             Map<Id, Household__c> addressedHouseholds = new Map<Id, Household__c>();
 
@@ -577,6 +576,21 @@ global class CONV_Account_Conversion_BATCH implements Database.Batchable<SObject
 
         //restore the trigger handlers
         TDTM_TriggerHandler.disableTDTM = false;
+
+        // Run CRLP rollups on the newly created HH Accounts to populate rollup
+        // fields. Previously these were copied from Household__c where they had
+        // been maintained by legacy rollups (RLLP), which have been removed.
+        try {
+            if (!hh2account.isEmpty()) {
+                List<Id> newAccountIds = new List<Id>();
+                for (Account a : hh2account.values()) {
+                    newAccountIds.add(a.Id);
+                }
+                CRLP_RollupQueueable.runRollupsForIds(newAccountIds);
+            }
+        } catch (Exception ex) {
+            ERR_Handler.processError(ex, ERR_Handler_API.Context.CONV);
+        }
     }//close execute method
 
     /*******************************************************************************************************
