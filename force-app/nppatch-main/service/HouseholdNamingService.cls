@@ -263,11 +263,11 @@ public without sharing class HouseholdNamingService {
 
     private Boolean qualifiesForHouseholdRenaming(SObject household, HouseholdName householdName, String formalGreeting, String informalGreeting) {
         return !household.get('Name').equals(householdName.asName())
-                || formalGreeting != null
-                && !formalGreeting.equals(String.valueOf(
+                || formalGreeting == null
+                || !formalGreeting.equals(String.valueOf(
                 householdName.asFormalGreeting()))
-                || informalGreeting != null
-                && !informalGreeting.equals(String.valueOf(
+                || informalGreeting == null
+                || !informalGreeting.equals(String.valueOf(
                 householdName.asInformalGreeting()));
     }
 
