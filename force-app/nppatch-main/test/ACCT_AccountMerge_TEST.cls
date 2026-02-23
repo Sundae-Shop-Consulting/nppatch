@@ -239,7 +239,7 @@ private with sharing class ACCT_AccountMerge_TEST {
         if(ADV_PackageInfo_SVC.useAdv()) return;
 
         setAccountModelForTest(CAO_Constants.ONE_TO_ONE_PROCESSOR);
-        UTIL_UnitTestData_TEST.disableRollupTriggers();
+        UTIL_UnitTestData_TEST.disableCustomizableRollupTriggers();
 
         list<Contact> listCon = UTIL_UnitTestData_TEST.CreateMultipleTestContacts(2);
         insert listCon;
@@ -413,7 +413,7 @@ private with sharing class ACCT_AccountMerge_TEST {
     *   Opp Rollups are recalculated for the winning account
     */
     static void testNamesAndOppsMerge(string accTypeLoser, string accTypeWinner) {
-        UTIL_UnitTestData_TEST.disableRollupTriggers();
+        UTIL_UnitTestData_TEST.disableCustomizableRollupTriggers();
 
         // create our source account and contacts
         UTIL_UnitTestData_TEST.createAccountContactTestData(accTypeLoser, 1, 2, 1);
