@@ -2099,22 +2099,6 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
         <label>não alocado</label>
     </customLabels>
     <customLabels>
-        <name>bdeRetirementBlockerHeader</name>
-        <label>Entrada de dados em lote não suportada</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementBlockerMessage</name>
-        <label>A partir de 1º de outubro de 2020, a Entrada de dados em lote não é mais suportada. A maioria dos recursos foi substituída por recursos mais novos no NPPatch. Se você tiver algum lote em andamento, ainda poderá acessar esses registros, mas não poderá processá-los usando a Entrada de dados em lote. Entre em contato com o suporte se precisar acessar lotes em andamento. &lt;br/&gt; Talvez seja melhor explorar a Entrada de doações como uma alternativa à Entrada de dados em lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningBody</name>
-        <label>Em 1º de outubro de 2020, a Entrada de dados em lote será aposentada e não funcionará mais no NPPatch. Se você tiver algum lote em andamento no momento, ainda poderá acessar esses registros, mas não poderá processá-los usando a Entrada de dados em lote. Para garantir uma transição suave, ative e use a Entrada de doações antes de 1º de outubro.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningHeader</name>
-        <label>Desativação da Entrada de dados em lote</label>
-    </customLabels>
-    <customLabels>
         <name>bdiAPIBatchError</name>
         <label>Não foi possível processar os registros de importação de dados devido aos seguintes erros:</label>
     </customLabels>
@@ -7043,14 +7027,6 @@ Quando você ativa as Alocações de pagamento, as totalizações existentes per
         <label>O Tipo de relacionamento que você deseja criar entre o Contato ou Membro da campanha base e o Contato ou Membro da campanha correspondente. O Contato ou Membro da campanha correspondente receberá um valor de Relacionamento recíproco, se estiver disponível.</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpBDEAllowBlankOppNames</name>
-        <label>Se selecionada, a Entrada de dados em lote não nomeará Oportunidades, mesmo que você deixe o campo Nome em branco na página Entrada de dados em lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpBDEOppNaming</name>
-        <label>Quando selecionado, o NPPatch usa a convenção de nomenclatura padrão para Oportunidades inseridas em lote, independentemente do valor inserido no campo Nome na tela de entrada em lote. NOTA: esta configuração não terá efeito se os nomes de oportunidade personalizados estiverem configurados.</label>
-    </customLabels>
-    <customLabels>
         <name>stgHelpBatchAlloRollup</name>
         <label>Este utilitário calcula as totalizações para todas as Oportunidades fechadas com Alocações e atualiza os registros relevantes da Unidade contábil geral (GAU).
 Esse processo pode levar algum tempo, mas você pode fechar esta página com segurança, pois o processo continuará em segundo plano.</label>
@@ -7704,10 +7680,6 @@ Nota: a guia Configurações do NPPatch está visível no aplicativo Pacote de s
         <label>Opções de processamento em lote</label>
     </customLabels>
     <customLabels>
-        <name>stgLabelBDESettings</name>
-        <label>Configurações da Entrada de dados em lote</label>
-    </customLabels>
-    <customLabels>
         <name>stgLabelBatchStatus</name>
         <label>Status do lote</label>
     </customLabels>
@@ -8042,10 +8014,6 @@ Nota: a guia Configurações do NPPatch está visível no aplicativo Pacote de s
     <customLabels>
         <name>stgNavBatchProcessSettings</name>
         <label>Configurações de processo em lote</label>
-    </customLabels>
-    <customLabels>
-        <name>stgNavBDE</name>
-        <label>Entrada de dados em lote</label>
     </customLabels>
     <customLabels>
         <name>stgNavBulkProcesses</name>
@@ -8383,10 +8351,6 @@ Nota: a guia Configurações do NPPatch está visível no aplicativo Pacote de s
             <name>Contacts</name>
         </sections>
     </reportTypes>
-    <customTabs>
-        <name>Batch_Data_Entry</name>
-        <label>Entrada de dados em lote</label>
-    </customTabs>
     <customTabs>
         <name>Batch_Gift_Entry</name>
         <label>Entrada de doações em lote</label>

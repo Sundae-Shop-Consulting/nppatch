@@ -134,19 +134,6 @@ public with sharing class STG_SettingsService {
     }
 
     /*********************************************************************************************************
-    * @description The Batch Data Entry Settings object
-    */
-    public Batch_Data_Entry_Settings__c stgBDE {
-        get {
-            if (stgBDE == null) {
-                stgBDE = UTIL_CustomSettingsFacade.getOrgBDESettings();
-            }
-            return stgBDE;
-        }
-        private set;
-    }
-
-    /*********************************************************************************************************
     * @description The Allocations Settings object
     */
     public Allocations_Settings__c stgAllo {
@@ -278,7 +265,6 @@ public with sharing class STG_SettingsService {
             upsert stgRD;
             upsert stgRel;
             upsert stgAffl;
-            upsert stgBDE;
             upsert stgErr;
             upsert stgAllo;
             upsert stgCRLP;

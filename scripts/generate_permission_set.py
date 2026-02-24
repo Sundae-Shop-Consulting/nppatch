@@ -18,7 +18,6 @@ CUSTOM_SETTINGS = {
     "Address_Verification_Settings__c",
     "Affiliations_Settings__c",
     "Allocations_Settings__c",
-    "Batch_Data_Entry_Settings__c",
     "Contacts_And_Orgs_Settings__c",
     "Custom_Column_Header__c",
     "Custom_Field_Mapping__c",

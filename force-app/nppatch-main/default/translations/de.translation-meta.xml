@@ -2099,22 +2099,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
         <label>nicht zugewiesen</label>
     </customLabels>
     <customLabels>
-        <name>bdeRetirementBlockerHeader</name>
-        <label>Die Batch-Dateneingabe wird nicht unterstützt</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementBlockerMessage</name>
-        <label>Seit dem 1. Oktober 2020 wird die Batch-Dateneingabe nicht mehr unterstützt. Die meisten Funktionen wurden durch neuere Features in NPPatch ersetzt. Wenn sich bei Ihnen noch Batches in Bearbeitung befinden, können Sie auf die entsprechenden Datensätze weiterhin zugreifen, Sie können sie aber nicht mehr mithilfe der Batch-Dateneingabe verarbeiten. Wenden Sie sich an den Support, wenn Sie auf in Bearbeitung befindliche Datensätze zugreifen müssen. &lt;br/&gt; Sie sollten sich Spendeneintrag als Alternative zur Batch-Dateneingabe ansehen.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningBody</name>
-        <label>Am 1. Oktober 2020 wird die Batch-Dateneingabe deaktiviert und funktioniert dann in NPPatch nicht mehr. Wenn sich zu diesem Zeitpunkt bei Ihnen noch Batches in Bearbeitung befinden, können Sie auf die entsprechenden Datensätze weiterhin zugreifen, Sie können sie aber nicht mehr mithilfe der Batch-Dateneingabe verarbeiten. Um einen reibungslosen Übergang zu gewährleisten, aktivieren und verwenden Sie den Spendeneintrag vor dem 1. Oktober.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningHeader</name>
-        <label>Einstellung der Batch-Dateneingabe</label>
-    </customLabels>
-    <customLabels>
         <name>bdiAPIBatchError</name>
         <label>Wir konnten die Datenimportdatensätze aufgrund der folgenden Fehler nicht verarbeiten:</label>
     </customLabels>
@@ -7043,14 +7027,6 @@ Wenn Sie Zahlungszuweisungen aktivieren, bleiben die vorhandenen Rollups dieselb
         <label>Der Beziehungstyp, der zwischen dem Basiskontakt oder -kampagnenmitglied und dem entsprechenden Kontakt oder Kampagnenmitglied erstellt werden soll. Der entsprechende Kontakt oder das entsprechende Kampagnenmitglied erhält, sofern vorhanden, einen Wert für die wechselseitige Beziehung.</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpBDEAllowBlankOppNames</name>
-        <label>Wenn diese Option ausgewählt ist, werden bei der Batch-Dateneingabe niemals Opportunity-Namen vergeben, auch wenn das Namensfeld auf der Seite &quot;Batch-Dateneingabe&quot; leer ist.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpBDEOppNaming</name>
-        <label>Wenn diese Option ausgewählt ist, verwendet NPPatch die Standardnamenskonvention für als Batch eingegebene Opportunities, und zwar unabhängig von dem Wert, den Sie auf dem Batch-Eingabe-Bildschirm in das Namensfeld eingeben. HINWEIS: Diese Einstellung hat keine Auswirkungen, wenn benutzerdefinierte Opportunity-Namen konfiguriert wurden.</label>
-    </customLabels>
-    <customLabels>
         <name>stgHelpBatchAlloRollup</name>
         <label>Dieses Dienstprogramm berechnet Gesamt-Rollups für alle geschlossenen Opportunities mit Zuweisungen und aktualisiert die jeweiligen Datensätze zum Verwendungszweck.
 Dieser Vorgang kann einige Zeit dauern, aber Sie können diese Seite ruhig schließen, da der Vorgang im Hintergrund weiter ausgeführt wird.</label>
@@ -7704,10 +7680,6 @@ Hinweis: Die Registerkarte &quot;NPPatch-Einstellungen&quot; ist in der NPPatch-
         <label>Batch-Verarbeitungsoptionen</label>
     </customLabels>
     <customLabels>
-        <name>stgLabelBDESettings</name>
-        <label>Einstellungen für die Batch-Dateneingabe</label>
-    </customLabels>
-    <customLabels>
         <name>stgLabelBatchStatus</name>
         <label>Batch-Status</label>
     </customLabels>
@@ -8042,10 +8014,6 @@ Hinweis: Die Registerkarte &quot;NPPatch-Einstellungen&quot; ist in der NPPatch-
     <customLabels>
         <name>stgNavBatchProcessSettings</name>
         <label>Batch-Prozess-Einstellungen</label>
-    </customLabels>
-    <customLabels>
-        <name>stgNavBDE</name>
-        <label>Batch-Dateneingabe</label>
     </customLabels>
     <customLabels>
         <name>stgNavBulkProcesses</name>
@@ -8383,10 +8351,6 @@ Hinweis: Die Registerkarte &quot;NPPatch-Einstellungen&quot; ist in der NPPatch-
             <name>Contacts</name>
         </sections>
     </reportTypes>
-    <customTabs>
-        <name>Batch_Data_Entry</name>
-        <label>Batch-Dateneingabe</label>
-    </customTabs>
     <customTabs>
         <name>Batch_Gift_Entry</name>
         <label>Batch-Spendeneintrag</label>

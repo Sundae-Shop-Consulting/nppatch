@@ -2099,22 +2099,6 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
         <label>niet toegewezen</label>
     </customLabels>
     <customLabels>
-        <name>bdeRetirementBlockerHeader</name>
-        <label>Batchgegevensinvoer niet ondersteund</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementBlockerMessage</name>
-        <label>Sinds 1 oktober 2020 wordt Batchgegevensinvoer niet meer ondersteund. De meeste opties zijn vervangen door nieuwere functies in NPPatch. Als u nog actieve batches hebt, kunt u de records nog wel openen, maar niet meer verwerken met Batchgegevensinvoer. Neem contact op met Support als u toegang wilt tot deze batches. &lt;br/&gt; Mogelijk is Opgave van gift een goed alternatief voor Batchgegevensinvoer.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningBody</name>
-        <label>Op 1 oktober 2020 wordt Batchgegevensinvoer buiten gebruik gesteld; de functie is dan niet meer beschikbaar in NPPatch. Als u op dat moment actieve batches hebt, kunt u de records nog wel openen, maar u kunt ze niet meer verwerken met Batchgegevensinvoer. Als u voor een goede overgang wilt zorgen, schakelt u Opgave van gift op voorhand in en neemt u dit al in gebruik vóór 1 oktober.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningHeader</name>
-        <label>Batchgegevensinvoer wordt buiten gebruik gesteld</label>
-    </customLabels>
-    <customLabels>
         <name>bdiAPIBatchError</name>
         <label>We kunnen de gegevensimportrecords niet verwerken vanwege de volgende fouten:</label>
     </customLabels>
@@ -7043,14 +7027,6 @@ Wanneer u betalingstoewijzingen inschakelt, blijven bestaande totaliseringen onv
         <label>Het Relatietype dat u wenst te maken tussen de basiscontactpersoon of het Campagnelid, en de overeenstemmende Contactpersoon of het overeenstemmende Campagnelid. De overeenstemmende Contactpersoon of het overeenstemmende Campagnelid ontvangt, indien beschikbaar, een Wederkerige Relatie-waarde.</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpBDEAllowBlankOppNames</name>
-        <label>Wanneer aangevinkt, zal de Batchgegevensinvoer geen Opportunities benoemen, zelfs al laat u het Naamveld op de pagina Batchgegevensinvoer leeg.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpBDEOppNaming</name>
-        <label>Indien aangevinkt, gebruikt NPPatch de standaardbenoemingsconventie voor door batch ingevoerde Opportunities, ongeacht de waarde die u in het Naamveld van het scherm voor batchinvoer opgeeft. OPMERKING: deze instelling heeft geen effect als aangepaste Opportunitynamen zijn geconfigureerd.</label>
-    </customLabels>
-    <customLabels>
         <name>stgHelpBatchAlloRollup</name>
         <label>Deze functionaliteit berekent totaliseringstotalen voor alle gesloten opportunity&apos;s met toewijzingen en werkt de relevante GAU-records bij.
 Dit proces kan enige tijd in beslag nemen, maar u kunt deze pagina veilig afsluiten en het proces wordt op de achtergrond verder uitgevoerd.</label>
@@ -7703,10 +7679,6 @@ Opmerking: Het tabblad NPPatch-instellingen is zichtbaar in de toepassing NPPatc
         <label>Opties voor Batchverwerking</label>
     </customLabels>
     <customLabels>
-        <name>stgLabelBDESettings</name>
-        <label>Instellingen voor Batchgegevensinvoer</label>
-    </customLabels>
-    <customLabels>
         <name>stgLabelBatchStatus</name>
         <label>Batchstatus</label>
     </customLabels>
@@ -8041,10 +8013,6 @@ Opmerking: Het tabblad NPPatch-instellingen is zichtbaar in de toepassing NPPatc
     <customLabels>
         <name>stgNavBatchProcessSettings</name>
         <label>Instellingen Batchproces</label>
-    </customLabels>
-    <customLabels>
-        <name>stgNavBDE</name>
-        <label>Batchgegevensinvoer</label>
     </customLabels>
     <customLabels>
         <name>stgNavBulkProcesses</name>
@@ -8382,10 +8350,6 @@ Opmerking: Het tabblad NPPatch-instellingen is zichtbaar in de toepassing NPPatc
             <name>Contacts</name>
         </sections>
     </reportTypes>
-    <customTabs>
-        <name>Batch_Data_Entry</name>
-        <label>Batchgegevensinvoer</label>
-    </customTabs>
     <customTabs>
         <name>Batch_Gift_Entry</name>
         <label>Batchinvoer van giften</label>

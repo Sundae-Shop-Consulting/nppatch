@@ -2099,22 +2099,6 @@ Para comprobar su configuración de asignaciones de CCG, vaya a Donaciones | Asi
         <label>sin asignar</label>
     </customLabels>
     <customLabels>
-        <name>bdeRetirementBlockerHeader</name>
-        <label>No se admite la entrada de datos en lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementBlockerMessage</name>
-        <label>Desde el 1 de octubre de 2020, Entrada de datos en lote ya no se admite. La mayoría de las funciones han sido sustituidas por nuevas funciones en NPPatch. Si tiene algún lote en curso en ese momento, podrá seguir accediendo a esos registros, pero no podrá procesarlos empleando Entrada de datos en lote. Póngase en contacto con el servicio de asistencia si necesita acceder a lotes en curso&lt;br/&gt;. Puede explorar Entrada de regalos como una alternativa a Entrada de datos en lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningBody</name>
-        <label>El 1 de octubre de 2020, Entrada de datos en lote quedará retirada y dejará de funcionar en NPPatch. Si tiene algún lote en curso en ese momento, podrá seguir accediendo a esos registros, pero no podrá procesarlos empleando Entrada de datos en lote. Para garantizar una transición sin problemas, active y utilice Entrada de regalos antes del 1 de octubre.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningHeader</name>
-        <label>Retirada de Entrada de datos en lote</label>
-    </customLabels>
-    <customLabels>
         <name>bdiAPIBatchError</name>
         <label>No pudimos procesar los registros de importación de datos debido a los siguientes errores:</label>
     </customLabels>
@@ -7037,14 +7021,6 @@ Cuando habilita Asignaciones de pago, las totalizaciones existentes se mantienen
         <label>El tipo de relación que se desea crear entre el contacto base yo miembro de campaña y el contacto o miembro de campaña correspondiente. El contacto o miembro de campaña correspondiente recibirá un valor de la relación recíproca, si hay alguno disponible.</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpBDEAllowBlankOppNames</name>
-        <label>Si se selecciona Entrada de datos en lote no asignará un nombre a las oportunidades, incluso si deja el campo Nombre en blanco en la página Entrada de datos en lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpBDEOppNaming</name>
-        <label>Cuando se selecciona, NPPatch utiliza la convención de nombres oportunidades introducidas por lotes, independientemente del valor que introduzca en el campo Nombre de la pantalla de entrada por lotes. NOTA: Este parámetro no tiene efecto si se configuran los nombre de oportunidades personalizados.</label>
-    </customLabels>
-    <customLabels>
         <name>stgHelpBatchAlloRollup</name>
         <label>Esta utilidad calcula los totales de totalización para todas las Oportunidades cerradas con asignaciones y actualiza los registros Cuentas Contables Generales (CCG).
 Este proceso puede tardar algún tiempo, pero puede cerrar esta página con seguridad y el proceso seguirá en segundo plano.</label>
@@ -7694,10 +7670,6 @@ Nota: La ficha Configuración de NPPatch es visible en la aplicación NPPatch. S
         <label>Opciones de procesamiento por lotes</label>
     </customLabels>
     <customLabels>
-        <name>stgLabelBDESettings</name>
-        <label>Configuración de Entrada de datos en lote</label>
-    </customLabels>
-    <customLabels>
         <name>stgLabelBatchStatus</name>
         <label>Estado del lote</label>
     </customLabels>
@@ -8032,10 +8004,6 @@ Nota: La ficha Configuración de NPPatch es visible en la aplicación NPPatch. S
     <customLabels>
         <name>stgNavBatchProcessSettings</name>
         <label>Configuración del proceso por lotes</label>
-    </customLabels>
-    <customLabels>
-        <name>stgNavBDE</name>
-        <label>Entrada de datos en lote</label>
     </customLabels>
     <customLabels>
         <name>stgNavBulkProcesses</name>
@@ -8373,10 +8341,6 @@ Nota: La ficha Configuración de NPPatch es visible en la aplicación NPPatch. S
             <name>Contacts</name>
         </sections>
     </reportTypes>
-    <customTabs>
-        <name>Batch_Data_Entry</name>
-        <label>Entrada de datos en lote</label>
-    </customTabs>
     <customTabs>
         <name>Batch_Gift_Entry</name>
         <label>Entrada de regalo en lote</label>
