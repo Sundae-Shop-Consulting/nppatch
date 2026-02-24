@@ -4090,38 +4090,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <value>unallocated</value>
     </labels>
     <labels>
-        <fullName>bdeRetirementBlockerHeader</fullName>
-        <categories>Batch Data Entry</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Header about Batch Data Entry being unsupported</shortDescription>
-        <value>Batch Data Entry Not Supported</value>
-    </labels>
-    <labels>
-        <fullName>bdeRetirementBlockerMessage</fullName>
-        <categories>Batch Data Entry</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Explanation of Batch Data Entry not being supported &amp; recommendations</shortDescription>
-        <value>As of October 1, 2020, Batch Data Entry is no longer supported. Most capabilities have been replaced with newer features in NPPatch. If you have any in-progress batches, you can still access those records, but you can&apos;t process them using Batch Data Entry. Contact support if you need to access in-progress batches. &lt;br/&gt; You may want to explore Gift Entry as an alternative to Batch Data Entry.</value>
-    </labels>
-    <labels>
-        <fullName>bdeRetirementWarningBody</fullName>
-        <categories>Batch Data Entry</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Explanation of Batch Data Entry retirement &amp; recommendations</shortDescription>
-        <value>On October 1, 2020, Batch Data Entry will be retired and will no longer work in NPPatch. If you have any in-progress batches at that time, you can still access those records, but you can&apos;t process them using Batch Data Entry. To ensure a smooth transition, enable and use Gift Entry in advance of October 1st.</value>
-    </labels>
-    <labels>
-        <fullName>bdeRetirementWarningHeader</fullName>
-        <categories>Batch Data Entry</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Header for warning about Batch Data Entry retiring</shortDescription>
-        <value>Retiring Batch Data Entry</value>
-    </labels>
-    <labels>
         <fullName>bdiAPIBatchError</fullName>
         <categories>Data Importer</categories>
         <language>en_US</language>
@@ -13843,22 +13811,6 @@ When you enable Payment Allocations, existing rollups remain the same. We do not
         <value>The Relationship Type that you want to create between the base Contact or Campaign Member, and the corresponding Contact or Campaign Member. The corresponding Contact or Campaign Member will receive a Reciprocal Relationship value, if one is available.</value>
     </labels>
     <labels>
-        <fullName>stgHelpBDEAllowBlankOppNames</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>stgHelpBDEAllowBlankOppNames</shortDescription>
-        <value>If selected, Batch Data Entry will not name Opportunities, even if you leave the Name field blank on the Batch Data Entry page.</value>
-    </labels>
-    <labels>
-        <fullName>stgHelpBDEOppNaming</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>stgHelpBDEOppNaming</shortDescription>
-        <value>When selected, NPPatch uses the default naming convention for batch-entered Opportunities, regardless of the value you enter in the Name field of the batch entry screen. NOTE: This setting has no effect if custom Opportunity Names are configured.</value>
-    </labels>
-    <labels>
         <fullName>stgHelpBatchAlloRollup</fullName>
         <categories>Allocation, Settings</categories>
         <language>en_US</language>
@@ -15077,14 +15029,6 @@ Note: The NPPatch Settings tab is visible in the NPPatch application. If you don
         <value>Batch Processing Options</value>
     </labels>
     <labels>
-        <fullName>stgLabelBDESettings</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>stgLabelBDESettings</shortDescription>
-        <value>Batch Data Entry Settings</value>
-    </labels>
-    <labels>
         <fullName>stgLabelBatchStatus</fullName>
         <categories>Settings</categories>
         <language>en_US</language>
@@ -15755,14 +15699,6 @@ Note: The NPPatch Settings tab is visible in the NPPatch application. If you don
         <protected>false</protected>
         <shortDescription>stgNavBatchProcessSettings</shortDescription>
         <value>Batch Process Settings</value>
-    </labels>
-    <labels>
-        <fullName>stgNavBDE</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>stgNavBDE</shortDescription>
-        <value>Batch Data Entry</value>
     </labels>
     <labels>
         <fullName>stgNavBulkProcesses</fullName>

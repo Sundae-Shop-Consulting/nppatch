@@ -27,11 +27,6 @@
         <isRequired>false</isRequired>
     </availableFields>
     <availableFields>
-        <field>Batch__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </availableFields>
-    <availableFields>
         <field>Best_Gift_Year_Total__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>

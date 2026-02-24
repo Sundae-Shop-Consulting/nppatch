@@ -108,7 +108,6 @@ private with sharing class UTIL_Namespace_TEST {
         str = System.Label.DeleteContactLeaveAccount;
         str = Label.stgHHNameRefreshTitle;
         str = Label.stgLabelAfflSettings;
-        str = Label.stgLabelBDESettings;
         str = Label.stgLabelBatchStatus;
         str = Label.stgLabelCurrentUDR;
         str = Label.stgLabelErrorNotify;

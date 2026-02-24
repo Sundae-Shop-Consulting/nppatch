@@ -1863,22 +1863,6 @@
         <name>batchNumberSettingsHeaderFormats</name>
     </customLabels>
     <customLabels>
-        <label><!-- Header about Batch Data Entry being unsupported --></label>
-        <name>bdeRetirementBlockerHeader</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Explanation of Batch Data Entry not being supported &amp; recommendations --></label>
-        <name>bdeRetirementBlockerMessage</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Explanation of Batch Data Entry retirement &amp; recommendations --></label>
-        <name>bdeRetirementWarningBody</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Header for warning about Batch Data Entry retiring --></label>
-        <name>bdeRetirementWarningHeader</name>
-    </customLabels>
-    <customLabels>
         <label>לשדה ההגדרה {0} של המזהה הייחודי והמותאם אישית של החשבון חייבים להיות שדות תואמים באובייקט של ייבוא נתוני NPPatch ששמות ה-API שלו הם {1} ו-{2}.</label>
         <name>bdiAccountCustomIdError</name>
     </customLabels>
@@ -6356,14 +6340,6 @@
         <name>stgHelpAutoRelType</name>
     </customLabels>
     <customLabels>
-        <label>אם אפשרות זו מוגדרת, הזנת ערכים באצווה לעולם לא תעניק שמות להזדמנויות, גם אם הם ריקים (לא נכלל בדף BDE).</label>
-        <name>stgHelpBDEAllowBlankOppNames</name>
-    </customLabels>
-    <customLabels>
-        <label>הגדרה זו יוצרת באופן אוטומטי את שם הרשומה עבור רשומות הזדמנות שהוזנו באצווה, על בסיס ערך השדות שהוזנו.</label>
-        <name>stgHelpBDEOppNaming</name>
-    </customLabels>
-    <customLabels>
         <label>כלי שירות זה מחשב סיכומים כוללים עבור כל ההזדמנויות הסגורות עם הקצאות, ומעדכן את הרשומות של היחידה החשבונאית הכללית (GAU) הרלוונטית.
 תהליך זה עשוי לארוך זמן מה, אך ניתן לסגור דף זה ללא חשש והתהליך ימשיך לפעול ברקע.</label>
         <name>stgHelpBatchAlloRollup</name>
@@ -6978,10 +6954,6 @@
         <name>stgLabelAutoContactRoles</name>
     </customLabels>
     <customLabels>
-        <label>הגדרות הזנת נתונים באצווה</label>
-        <name>stgLabelBDESettings</name>
-    </customLabels>
-    <customLabels>
         <label><!-- stgLabelBatchJobRollupSkewSizes --></label>
         <name>stgLabelBatchJobRollupSkewSizes</name>
     </customLabels>
@@ -7316,10 +7288,6 @@
     <customLabels>
         <label>הקצאות GAU</label>
         <name>stgNavAllocations</name>
-    </customLabels>
-    <customLabels>
-        <label>הזנת נתונים באצווה</label>
-        <name>stgNavBDE</name>
     </customLabels>
     <customLabels>
         <label><!-- stgNavBatchProcessSettings --></label>

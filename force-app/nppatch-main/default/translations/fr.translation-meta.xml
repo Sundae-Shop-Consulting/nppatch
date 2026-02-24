@@ -2099,22 +2099,6 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
         <label>non alloué</label>
     </customLabels>
     <customLabels>
-        <name>bdeRetirementBlockerHeader</name>
-        <label>Saisie de données par lots non prise en charge</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementBlockerMessage</name>
-        <label>Depuis le 1er octobre 2020, la saisie de données par lots n’est plus prise en charge. La plupart des capacités ont été remplacées par de nouvelles fonctionnalités dans NPPatch. Si vous avez des lots en cours, vous pouvez accéder aux enregistrements, mais vous ne pouvez pas les traiter en utilisant la saisie de données par lots. Pour accéder à des lots en cours, contactez le support. &lt;br/&gt; Découvrez la saisie de dons comme alternative à la saisie de données par lots.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningBody</name>
-        <label>La saisie de données par lots ne sera plus prise en charge à partir du 1er octobre 2020 et ne fonctionnera plus dans NPPatch. Si vous avez des lots en cours à cette date, vous pourrez accéder à ces enregistrements, mais vous ne pourrez pas les traiter en utilisant la saisie de données par lots. Pour garantir une transition transparente, activez et utilisez la saisie de dons avant le 1er octobre.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningHeader</name>
-        <label>Retrait de la Saisie de données par lots</label>
-    </customLabels>
-    <customLabels>
         <name>bdiAPIBatchError</name>
         <label>Nous n’avons pas pu traiter les enregistrements d’importation de données en raison des erreurs suivantes :</label>
     </customLabels>
@@ -7044,14 +7028,6 @@ Lorsque vous activez les affectations de paiement, les cumuls existants restent 
         <label>Le type de relation que vous voulez créer entre le contact ou membre de campagne de base et le contact ou membre de campagne correspondant. Le contact ou membre de campagne correspondant recevra une valeur de relation réciproque, si une est disponible.</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpBDEAllowBlankOppNames</name>
-        <label>Lorsque cette option est sélectionnée, la saisie de données par lots ne nommera pas les opportunités, même si les noms sont vides sur la page de saisie de données par lots.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpBDEOppNaming</name>
-        <label>Lorsque cette option est sélectionnée, le paramètre génère automatiquement le nom de l’enregistrement pour les enregistrements d’opportunités saisis par lots en fonction de la valeur des champs saisis. REMARQUE : Ce paramètre n&apos;a aucun effet si des noms d&apos;opportunité personnalisés sont configurés.</label>
-    </customLabels>
-    <customLabels>
         <name>stgHelpBatchAlloRollup</name>
         <label>Cet utilitaire calcule les cumuls totaux pour toutes les opportunités Clôturées avec des affectations et met à jour l’unité comptable générale (UCG) concernée.
 Ce processus peut prendre un certain temps, mais vous pouvez fermer cette page en toute sécurité et le processus continuera en arrière-plan.</label>
@@ -7705,10 +7681,6 @@ Remarque : l’onglet de paramètres NPPatch est visible dans l’application N
         <label>Options de traitement de lot</label>
     </customLabels>
     <customLabels>
-        <name>stgLabelBDESettings</name>
-        <label>Paramètres de saisie de données par lots</label>
-    </customLabels>
-    <customLabels>
         <name>stgLabelBatchStatus</name>
         <label>Statut du lot</label>
     </customLabels>
@@ -8043,10 +8015,6 @@ Remarque : l’onglet de paramètres NPPatch est visible dans l’application N
     <customLabels>
         <name>stgNavBatchProcessSettings</name>
         <label>Paramètres de traitement par lots</label>
-    </customLabels>
-    <customLabels>
-        <name>stgNavBDE</name>
-        <label>Saisie de données par lots</label>
     </customLabels>
     <customLabels>
         <name>stgNavBulkProcesses</name>
@@ -8384,10 +8352,6 @@ Remarque : l’onglet de paramètres NPPatch est visible dans l’application N
             <name>Contacts</name>
         </sections>
     </reportTypes>
-    <customTabs>
-        <name>Batch_Data_Entry</name>
-        <label>Saisie de données par lots</label>
-    </customTabs>
     <customTabs>
         <name>Batch_Gift_Entry</name>
         <label>Saisie de dons par lots</label>
