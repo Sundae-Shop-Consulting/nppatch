@@ -873,10 +873,6 @@
         <label>&lt;b&gt;WARNUNG: Sie haben &quot;Erweiterte wiederkehrende Spenden&quot; aktiviert. Wenn Sie &quot;Anpassbare Rollups&quot; deaktivieren, funktionieren Rollups für wiederkehrende Spenden nicht mehr.&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
-        <name>RD2_DisabledAdvancedMappingError</name>
-        <label>Sie müssen die erweiterte Zuordnung aktivieren, damit Sie wiederkehrende Spenden verarbeiten können.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_DisabledRD2Error</name>
         <label>Sie müssen Erweiterte wiederkehrende Spenden aktivieren, damit Sie wiederkehrende Spenden verarbeiten können.</label>
     </customLabels>
@@ -2243,10 +2239,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
         <label>NPPatch-Datenimport</label>
     </customLabels>
     <customLabels>
-        <name>bdiDeploymentInProgress</name>
-        <label>Hilfetext-Zuordnungen werden zurzeit in Erweiterte Zuordnung konvertiert.</label>
-    </customLabels>
-    <customLabels>
         <name>bdiDonation</name>
         <label>Spende</label>
     </customLabels>
@@ -2293,18 +2285,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     <customLabels>
         <name>bdiErrorBatchNameRequired</name>
         <label>&quot;Batch-Name&quot; ist ein Pflichtfeld.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDataImportCustomSettings</name>
-        <label>Bei dem Versuch, die benutzerdefinierten Einstellungen mit der Bezeichnung Datenimporteinstellungen zu aktualisieren, ist ein Fehler aufgetreten.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailed</name>
-        <label>Fehler beim Versuch der Konvertierung von Hilfetext-Zuordnung und der Aktivierung von Erweiterter Zuordnung.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailedLink</name>
-        <label>&lt;a href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;Sie können den Bereitstellungsstatus hier anzeigen.&lt;/a&gt;</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationLookupMatch</name>
@@ -2561,10 +2541,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     <customLabels>
         <name>bdiOMUILongDeployment</name>
         <label>Das Ändern dieser Objektgruppe dauert länger als erwartet.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiMigrationLongDeployment</name>
-        <label>Das Konvertieren von Hilfetext-Zuordnungen in Erweiterte Zuordnung dauert länger als erwartet.</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIGroupNameHelp</name>
@@ -3031,10 +3007,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
         <label>Die folgenden Felder sind in diesem Batch enthalten, aber ihre Feldzuordnungen wurden gelöscht: {0}. Um dieses Problem zu beheben, navigieren Sie in den NPPatch-Einstellungen zu &quot;Erweiterte Zuordnung&quot;, und ordnen Sie die Felder erneut zu.</label>
     </customLabels>
     <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>Die folgenden Felder sind in diesem Batch enthalten, aber ihre Feldzuordnungen wurden gelöscht: {0}. Um dieses Problem zu beheben, navigieren Sie zum NPPatch-Datenimportobjekt, und ordnen Sie die Felder erneut mithilfe von Hilfetext zu.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeWizardShowAdvancedOptions</name>
         <label>Erweiterte Optionen anzeigen</label>
     </customLabels>
@@ -3175,10 +3147,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     <customLabels>
         <name>gePaymentProcessedWarning</name>
         <label>{0} hat die Zahlung erfolgreich verarbeitet. Das Ändern von Spender, Datum, Betrag oder Zahlungsmethode führt zu inkonsistenten Datensätzen für die gleiche Transaktion in {0} und NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping3</name>
-        <label>Die vollständige Dokumentation zum Einrichten der Erweiterten Zuordnung finden Sie hier.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
@@ -4758,10 +4726,6 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
         <label>Für diese Funktion ist sowohl Erweiterte Zuordnung als auch Spendeneintrag erforderlich. Bitte aktivieren Sie diese in den NPPatch-Einstellungen.</label>
-    </customLabels>
-    <customLabels>
-        <name>geServiceLevelErrorAdvancedMapping</name>
-        <label>Sie müssen die erweiterte Zuordnung aktivieren, bevor Sie Spendeneintrag aktivieren können.</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingHeader</name>
@@ -6889,24 +6853,8 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
         <label>Dokumentation</label>
     </customLabels>
     <customLabels>
-        <name>stgDeploymentCustomMetadataMappingEnabled</name>
-        <label>Die erweiterte Zuordnung ist aktiviert.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHasInvalidHelpTextMappings</name>
-        <label>Erweiterte Zuordnung ist aktiviert, wir fanden aber einige ungültige Hilfetextzuordnungen, die nicht migriert werden konnten. &lt;b&gt;Erstellen Sie einen Screenshot der Tabelle unten, sie wird nach dem Verlassen dieser Seite nicht mehr angezeigt.&lt;/b&gt;</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHelpTextMappingEnabled</name>
-        <label>Die Zuordnung von Hilfetext ist aktiviert.</label>
-    </customLabels>
-    <customLabels>
         <name>stgDeploymentInProgress</name>
         <label>Bereitstellung in Bearbeitung. Sie können diese Seite verlassen. Die Seite wird neu geladen, wenn die Bereitstellung abgeschlossen ist.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentTimedOut</name>
-        <label>Timeout der Seite.</label>
     </customLabels>
     <customLabels>
         <name>stgDeploymentTryAgain</name>
@@ -6960,33 +6908,6 @@ Indem Sie &quot;NPPatch-Standardaufträge n. automat. planen&quot; auswählen, t
     <customLabels>
         <name>stgHelpAccountModel</name>
         <label>Das im NPPatch verwendete Accountmodell. Mit dieser Option steuern Sie, was geschieht, wenn Sie einen Kontakt mit einem leeren Accountfeld-Wert erstellen. Sie sollten den ausgewählten Accountmodell-Datensatztyp nicht für jedes Profil als Standard-Accountdatensatztyp verwenden. Dies kann zu zahlreichen Datenproblemen führen.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping1</name>
-        <label>Wenn Sie Erweiterte Zuordnung aktivieren, konvertieren wir Ihre bestehenden Hilfetext-Feldzuordnungen zu Erweiterte Zuordnung. Nach der Aktivierung erfolgt die Bearbeitung und Erstellung von Zuordnungen auf dieser Seite.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping2</name>
-        <label>Sie können die Erweiterte Zuordnung deaktivieren und zur Zuordnung von Hilfetexten zurückkehren, jedoch verlieren Sie dabei alle Änderungen, die Sie in der Erweiterten Zuordnung vorgenommen haben.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping4</name>
-        <label>&lt;b&gt;Diese Nachricht wird nicht mehr angezeigt, wenn Sie diese Seite verlassen! Erstellen Sie einen Screenshot dieser Seite, oder kopieren Sie die Informationen in der Tabelle unten, um die Hilfetext-Zuordnungen nachzuverfolgen, die Sie korrigieren müssen. &lt;/b&gt;
-            &lt;br/&gt;
-            &lt;br/&gt;
-            Wir konnten einige Ihrer bestehenden Hilfetext-Zuordnungen nicht konvertieren, da sie ungültig sind. Wir empfehlen, die Erweiterte Zuordnung zu deaktivieren, die ungültigen Hilfetext-Zuordnungen zu korrigieren und die Erweiterte Zuordnung anschließend wieder zu aktivieren. Alternativ können Sie diese Zuordnungen hinzufügen, wenn Sie die Erweiterte Zuordnung auf der nächsten Seite konfigurieren, diese zusätzlichen Zuordnungen werden aber auf den ursprünglichen ungültigen Hilfetext zurückgesetzt, wenn Sie die Erweiterte Zuordnung deaktivieren.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingInvalidHelpText</name>
-        <label>Ungültige Hilfetext-Zuordnungen</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>NPPatch-Datenimportfeld</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader2</name>
-        <label>Aktueller Wert des Hilfetextes</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAlloFiscalYearRollups</name>

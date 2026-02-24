@@ -873,10 +873,6 @@
         <label>&lt;b&gt;WAARSCHUWING: u hebt Uitgebreide terugkerende donaties ingeschakeld. Bij uitschakeling van Aanpasbare totaliseringen zullen totaliseringen voor Terugkerende donaties niet langer functioneren.&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
-        <name>RD2_DisabledAdvancedMappingError</name>
-        <label>U moet Geavanceerd toewijzen inschakelen voordat u terugkerende donaties kunt verwerken.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_DisabledRD2Error</name>
         <label>U moet Uitgebreide terugkerende donaties inschakelen voordat u terugkerende donaties kunt verwerken.</label>
     </customLabels>
@@ -2243,10 +2239,6 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
         <label>NPPatch-Gegevensimport</label>
     </customLabels>
     <customLabels>
-        <name>bdiDeploymentInProgress</name>
-        <label>Help-teksttoewijzingen worden momenteel geconverteerd naar Geavanceerd toewijzen.</label>
-    </customLabels>
-    <customLabels>
         <name>bdiDonation</name>
         <label>Donaties</label>
     </customLabels>
@@ -2293,18 +2285,6 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     <customLabels>
         <name>bdiErrorBatchNameRequired</name>
         <label>Batchnaam is een verplicht veld.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDataImportCustomSettings</name>
-        <label>Er heeft zich een fout voorgedaan tijdens een poging tot het bijwerken van Aangepaste instellingen met de naam Gegevensimportinstellingen.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailed</name>
-        <label>Er heeft zich een fout voorgedaan tijdens een poging tot het converteren van Help-teksttoewijzingen en het inschakelen van Geavanceerd toewijzen.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailedLink</name>
-        <label>&lt;a href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;U kunt de implementatiestatus hier weergeven.&lt;/a&gt;</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationLookupMatch</name>
@@ -2561,10 +2541,6 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     <customLabels>
         <name>bdiOMUILongDeployment</name>
         <label>Het wijzigen van deze objectgroep duurt langer dan verwacht.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiMigrationLongDeployment</name>
-        <label>Het converteren van Helptekst toewijzingen naar Geavanceerd toewijzen duurt langer dan verwacht.</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIGroupNameHelp</name>
@@ -3031,10 +3007,6 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
         <label>De volgende velden zijn wel opgenomen in deze batch, maar hun veldtoewijzingen zijn verwijderd: {0}. Ga ter correctie hiervan naar Geavanceerd toewijzen in NPPatch-instellingen en wijs de velden opnieuw toe.</label>
     </customLabels>
     <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>De volgende velden zijn wel opgenomen in deze batch, maar hun veldtoewijzingen zijn verwijderd: {0}. Ga ter correctie hiervan naar het object NPPatch-gegevensimport en wijs de velden opnieuw toe met behulp van Help-tekst.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeWizardShowAdvancedOptions</name>
         <label>Geavanceerde opties weergaven</label>
     </customLabels>
@@ -3175,10 +3147,6 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     <customLabels>
         <name>gePaymentProcessedWarning</name>
         <label>{0} heeft de betaling verwerkt. Als u de donateur, de datum, het bedrag of de betalingswijze wijzigt, krijgt u inconsistente records voor dezelfde transactie in {0} en NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping3</name>
-        <label>Zoek hier naar de volledige set-updocumentatie voor Geavanceerd toewijzen.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
@@ -4757,10 +4725,6 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
         <label>Deze voorziening vereist zowel Geavanceerd toewijzen als Opgave van gift. Schakel ze in bij NPPatch-instellingen.</label>
-    </customLabels>
-    <customLabels>
-        <name>geServiceLevelErrorAdvancedMapping</name>
-        <label>U moet Geavanceerd toewijzen inschakelen voordat u de invoer van giften kunt inschakelen.</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingHeader</name>
@@ -6888,24 +6852,8 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
         <label>Documentatie</label>
     </customLabels>
     <customLabels>
-        <name>stgDeploymentCustomMetadataMappingEnabled</name>
-        <label>Geavanceerd toewijzen is ingeschakeld.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHasInvalidHelpTextMappings</name>
-        <label>Geavanceerd toewijzen is wel ingeschakeld, maar we hebben enkele ongeldige Help-teksttoewijzingen gevonden, die niet kunnen worden gemigreerd. &lt;b&gt;Maak een screenshot van de tabel hieronder; deze wordt niet meer/niet opnieuw weergegeven nadat u deze pagina hebt verlaten.&lt;/b&gt;</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHelpTextMappingEnabled</name>
-        <label>Help-tekst toewijzen is ingeschakeld.</label>
-    </customLabels>
-    <customLabels>
         <name>stgDeploymentInProgress</name>
         <label>Uitrol in uitvoering. U mag deze pagina verlaten. De pagina wordt opnieuw geladen wanneer de uitrol voltooid is.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentTimedOut</name>
-        <label>Pagina afgebroken wegens time-out.</label>
     </customLabels>
     <customLabels>
         <name>stgDeploymentTryAgain</name>
@@ -6959,33 +6907,6 @@ Door Standaard NPPatch-taken niet automatisch plannen te selecteren, laat u NPPa
     <customLabels>
         <name>stgHelpAccountModel</name>
         <label>Het Accountmodel dat wordt gebruikt door het NPPatch. Deze optie bepaalt wat er gebeurt wanneer u een Contactpersoon maakt met een blanco Accountveldwaarde. WAARSCHUWING: gebruik het Accountmodelrecordtype dat u voor Profielen als standaard Accountrecordtype selecteert niet. Dit zou voor verscheidene problemen met gegevens kunnen zorgen.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping1</name>
-        <label>Wanneer u Geavanceerd toewijzen inschakelt, converteren we uw bestaande veldtoewijzingen voor Help-tekst naar Geavanceerd toewijzen. Eenmaal ingeschakeld, bewerkt u toewijzingen en maakt u nieuwe op deze pagina.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping2</name>
-        <label>U kunt Geavanceerd toewijzen uitschakelen en teruggaan naar toewijzingen voor Help-tekst, maar alle wijzigingen die u aanbrengt met Geavanceerd toewijzen, gaan verloren.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping4</name>
-        <label>&lt;b&gt;Dit bericht wordt niet weergegeven als u deze pagina verlaat. Maak een screenshot van deze pagina of kopieer de gegevens in de onderstaande tabel om de toewijzingen voor Help-tekst bij te houden die u nodig hebt. &lt;/b&gt;
-            &lt;br/&gt;
-            &lt;br/&gt;
-            We kunnen enkele van uw bestaande toewijzingen voor Help-tekst niet converteren, omdat ze ongeldig zijn. U wordt aangeraden om Geavanceerd toewijzen uit te schakelen, de ongeldige toewijzingen van Help-tekst te corrigeren en vervolgens Geavanceerd toewijzen opnieuw in te schakelen. Of anders kunt u deze toewijzingen toevoegen wanneer u Geavanceerd toewijzen configureert op het volgende scherm, maar deze extra toewijzingen zetten alles terug naar de oorspronkelijke ongeldig Help-tekst als u Geavanceerd toewijzen uitschakelt.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingInvalidHelpText</name>
-        <label>Ongeldige toewijzingen van Help-tekst</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>Importveld voor NPPatch-gegevens</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader2</name>
-        <label>Huidige waarde van Help-tekst</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAlloFiscalYearRollups</name>

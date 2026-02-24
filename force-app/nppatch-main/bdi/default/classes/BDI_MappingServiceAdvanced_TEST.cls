@@ -94,7 +94,7 @@ private class BDI_MappingServiceAdvanced_TEST {
         //set correctly for the two CMT mapping related fields
         Data_Import_Settings__c dis2 = UTIL_CustomSettingsFacade.getDataImportSettings();
 
-        System.assertEquals(BDI_DataImportService.FM_HELP_TEXT,dis2.Field_Mapping_Method__c);
+        System.assertEquals(BDI_DataImportService.FM_DATA_IMPORT_FIELD_MAPPING,dis2.Field_Mapping_Method__c);
         System.assertEquals(BDI_MappingServiceAdvanced.DEFAULT_DATA_IMPORT_FIELD_MAPPING_SET_NAME,dis2.Default_Data_Import_Field_Mapping_Set__c);
 
     }

@@ -873,10 +873,6 @@
         <label>&lt;b&gt;AVERTISSEMENT : Vous avez activé les Dons récurrents avancés. Si vous désactivez les Cumuls personnalisables, les cumuls ne fonctionneront plus pour les Dons récurrents.&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
-        <name>RD2_DisabledAdvancedMappingError</name>
-        <label>Vous devez activer le mappage avancé pour pouvoir traiter les dons récurrents.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_DisabledRD2Error</name>
         <label>Vous devez activer les dons récurrents avancés pour pouvoir traiter les dons récurrents.</label>
     </customLabels>
@@ -2243,10 +2239,6 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
         <label>Importation de données NPPatch</label>
     </customLabels>
     <customLabels>
-        <name>bdiDeploymentInProgress</name>
-        <label>Les mappages Texte d&apos;aide sont actuellement convertis vers le Mappage avancé.</label>
-    </customLabels>
-    <customLabels>
         <name>bdiDonation</name>
         <label>Don</label>
     </customLabels>
@@ -2293,18 +2285,6 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
     <customLabels>
         <name>bdiErrorBatchNameRequired</name>
         <label>Le nom du lot est un champ obligatoire.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDataImportCustomSettings</name>
-        <label>Une erreur s&apos;est produite en tentant de mettre à jour les Paramètres personnalisés nommés Paramètres d&apos;importation de données.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailed</name>
-        <label>Une erreur s&apos;est produite en tentant de convertir le mappage Texte d&apos;aide et d&apos;activer le Mappage avancé.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailedLink</name>
-        <label>&lt;a href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;Vous pouvez afficher le statut de déploiement ici.&lt;/a&gt;</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationLookupMatch</name>
@@ -2561,10 +2541,6 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
     <customLabels>
         <name>bdiOMUILongDeployment</name>
         <label>La modification de ce groupe d&apos;objets est plus longue que prévu.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiMigrationLongDeployment</name>
-        <label>La conversion des mappages Texte d&apos;aide en Mappage avancé est plus longue que prévu.</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIGroupNameHelp</name>
@@ -3031,10 +3007,6 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
         <label>Les champs suivants sont inclus dans ce lot, mais leurs mappages ont été supprimés : {0}. Pour les corriger, accédez à Mappage avancé dans Paramètres de NPPatch, puis mappez de nouveau les champs.</label>
     </customLabels>
     <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>Les champs suivants sont inclus dans ce lot, mais leurs mappages ont été supprimés : {0}. Pour les corriger, accédez à l&apos;objet Importation de données NPPatch, puis mappez de nouveau les champs en utilisant Texte d&apos;aide.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeWizardShowAdvancedOptions</name>
         <label>Afficher les options avancées</label>
     </customLabels>
@@ -3176,10 +3148,6 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
     <customLabels>
         <name>gePaymentProcessedWarning</name>
         <label>{0} a traité le paiement. La modification du donateur, de la date, du montant ou du mode de paiement entraînera des incohérences dans les enregistrements pour la même transaction dans {0} et NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping3</name>
-        <label>Vous pouvez consulter la documentation complète sur la configuration du Mappage avancé ici.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
@@ -4759,10 +4727,6 @@ Si vous préférez, vous pouvez désactiver la Saisie de dons et utiliser à la 
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
         <label>Cette fonctionnalité nécessite le Mappage avancé et la Saisie de dons. Activez-les dans les Paramètres de NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>geServiceLevelErrorAdvancedMapping</name>
-        <label>Vous devez activer le mappage avancé pour pouvoir activer la saisie de dons.</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingHeader</name>
@@ -6890,24 +6854,8 @@ Si vous préférez, vous pouvez désactiver la Saisie de dons et utiliser à la 
         <label>Documentation</label>
     </customLabels>
     <customLabels>
-        <name>stgDeploymentCustomMetadataMappingEnabled</name>
-        <label>Le Mappage avancé est activé.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHasInvalidHelpTextMappings</name>
-        <label>Le Mappage avancé est activé, mais nous avons détecté des mappages Texte d&apos;aide non valides qui n&apos;ont pas pu être migrés. &lt;b&gt;Prenez une capture d&apos;écran du tableau ci-dessous, qui ne sera plus affiché lorsque vous aurez quitté la page.&lt;/b&gt;</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHelpTextMappingEnabled</name>
-        <label>Le mappage Texte d&apos;aide est activé.</label>
-    </customLabels>
-    <customLabels>
         <name>stgDeploymentInProgress</name>
         <label>Déploiement en cours. Vous pouvez quitter cette page. La page se rechargera une fois le déploiement terminé.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentTimedOut</name>
-        <label>Page expirée.</label>
     </customLabels>
     <customLabels>
         <name>stgDeploymentTryAgain</name>
@@ -6961,33 +6909,6 @@ Si vous sélectionnez Ne pas planifier automatiquement les tâches NPPatch par d
     <customLabels>
         <name>stgHelpAccountModel</name>
         <label>Le modèle de compte utilisé par le pack NPPatch. Cette option détermine ce qui se produit lorsque vous créez un compte ayant un champ de compte vide. AVERTISSEMENT : Le type d’enregistrement sélectionné pour le modèle de compte ne doit pas être utilisé comme type d’enregistrement de compte par défaut pour les profils de votre organisation. Utiliser le même type d’enregistrement peut provoquer diverses erreurs de données.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping1</name>
-        <label>Lorsque vous activez le Mappage avancé, nous convertissons les mappages de champs Texte d&apos;aide existants vers le Mappage avancé. Une fois activé, vous pouvez ensuite modifier les mappages et créer d&apos;autres mappages sur cette page.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping2</name>
-        <label>Vous pouvez désactiver le Mappage avancé et rétablir le mappage Texte d&apos;aide, mais les modifications apportées au Mappage avancé sont perdues.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping4</name>
-        <label>&lt;b&gt;Ce message ne sera pas affiché si vous quittez la page. Prenez une capture d’écran de cette page ou copiez les informations du tableau ci-dessous pour garder une trace des mappages Texte d’aide que vous devez corriger. &lt;/b&gt;
-            &lt;br/&gt;
-            &lt;br/&gt;
-            Nous n’avons pas pu convertir certains mappages Texte d’aide, car ceux-ci n’étaient pas valides. Nous vous recommandons de désactiver le mappage avancé, de corriger les mappages Texte d’aide non valides, puis de réactiver le mappage avancé. Vous pouvez aussi ajouter ces mappages en configurant le mappage avancé à l’écran suivant, mais si vous désactivez le mappage avancé, le texte d’aide non valide d’origine sera rétabli pour ces mappages supplémentaires.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingInvalidHelpText</name>
-        <label>Mappages Texte d&apos;aide non valides</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>Champ d&apos;importation de données NPPatch</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader2</name>
-        <label>Valeur Texte d&apos;aide actuelle</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAlloFiscalYearRollups</name>

@@ -44,17 +44,6 @@ global with sharing class Callable_API implements System.Callable {
 
 
     @TestVisible
-    private AdvancedMappingEnablementService advancedMappingEnablementService {
-        get {
-            if (advancedMappingEnablementService == null) {
-                advancedMappingEnablementService = new AdvancedMappingEnablementService();
-            }
-            return advancedMappingEnablementService;
-        }
-        set;
-    }
-
-    @TestVisible
     private GiftEntryEnablementService giftEntryEnablementService {
         get {
             if (giftEntryEnablementService == null) {
@@ -187,12 +176,7 @@ global with sharing class Callable_API implements System.Callable {
                 return CallableApiApexDelegationService.handleApexScheduleJob(params);
 
             } when 'settings.enableadvancedmapping' {
-                if (advancedMappingEnablementService.isEnabled()) {
-                    return null;
-                }
-
-                advancedMappingEnablementService.enable();
-
+                // Advanced Mapping is always on; no-op for backward compatibility
                 return null;
 
             } when 'settings.enablegiftentry' {

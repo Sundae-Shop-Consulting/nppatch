@@ -1688,14 +1688,6 @@
         <value>&lt;b&gt;WARNING: You have Enhanced Recurring Donations enabled. If you disable Customizable Rollups, rollups to Recurring Donations will no longer function.&lt;/b&gt;</value>
     </labels>
     <labels>
-        <fullName>RD2_DisabledAdvancedMappingError</fullName>
-        <categories>Recurring Donation</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Error for DIs with populated RD fields when Advanced Mapping is disabled.</shortDescription>
-        <value>You must enable Advanced Mapping before you can process Recurring Donations.</value>
-    </labels>
-    <labels>
         <fullName>RD2_DisabledRD2Error</fullName>
         <categories>Recurring Donation</categories>
         <language>en_US</language>
@@ -4377,14 +4369,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <value>NPPatch Data Import</value>
     </labels>
     <labels>
-        <fullName>bdiDeploymentInProgress</fullName>
-        <categories>Data Importer</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>bdiDeploymentInProgress</shortDescription>
-        <value>Help Text mappings are currently being converted to Advanced Mapping.</value>
-    </labels>
-    <labels>
         <fullName>bdiDonation</fullName>
         <categories>Data Importer</categories>
         <language>en_US</language>
@@ -4479,30 +4463,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <protected>true</protected>
         <shortDescription>error when a batch is missing a name</shortDescription>
         <value>Batch Name is a required field.</value>
-    </labels>
-    <labels>
-        <fullName>bdiErrorDataImportCustomSettings</fullName>
-        <categories>Data Importer</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>error when updating data import custom settings</shortDescription>
-        <value>There was an error attempting to update the Custom Settings named Data Import Settings.</value>
-    </labels>
-    <labels>
-        <fullName>bdiErrorDeploymentFailed</fullName>
-        <categories>Data Importer</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>error deploying metadata during migration from help text to metadata mapping</shortDescription>
-        <value>There was an error attempting to convert Help Text mapping and enable Advanced Mapping.</value>
-    </labels>
-    <labels>
-        <fullName>bdiErrorDeploymentFailedLink</fullName>
-        <categories>Data Importer</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>link to the deployment status page</shortDescription>
-        <value>&lt;a href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;You can view the deployment status here.&lt;/a&gt;</value>
     </labels>
     <labels>
         <fullName>bdiErrorDonationLookupMatch</fullName>
@@ -5015,14 +4975,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <protected>false</protected>
         <shortDescription>Error message for long deployment</shortDescription>
         <value>Modifying this Object Group is taking longer than expected.</value>
-    </labels>
-    <labels>
-        <fullName>bdiMigrationLongDeployment</fullName>
-        <categories>Advanced Mapping</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Error message for long deployment</shortDescription>
-        <value>Converting Help Text mappings to Advanced Mapping is taking longer than expected.</value>
     </labels>
     <labels>
         <fullName>bdiOMUIGroupNameHelp</fullName>
@@ -5883,13 +5835,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <value>The following fields are included in this Batch, but their Field Mappings were deleted: {0}. To fix this, go to Advanced Mapping in NPPatch Settings and map the fields again.</value>
     </labels>
     <labels>
-        <fullName>bgeUnmappedFieldsNoticeMessageHelpTextMapping</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Message for Batch Gift Entry unmapped fields when Advanced Mapping disabled.</shortDescription>
-        <value>The following fields are included in this Batch, but their Field Mappings were deleted: {0}. To fix this, go to the NPPatch Data Import object and map the fields again using Help Text.</value>
-    </labels>
-    <labels>
         <fullName>bgeWizardShowAdvancedOptions</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -6152,14 +6097,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <protected>true</protected>
         <shortDescription>Warning about editing fields when transaction already processed</shortDescription>
         <value>{0} successfully processed the payment. Changing the donor, date, amount, or payment method will result in inconsistent records for the same transaction in {0} and NPPatch.</value>
-    </labels>
-    <labels>
-        <fullName>stgHelpAdvancedMapping3</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>stgHelpAdvancedMapping3</shortDescription>
-        <value>Find complete Advanced Mapping setup documentation .</value>
     </labels>
     <labels>
         <fullName>stgHelpCustomizableRollupsEnable1</fullName>
@@ -9311,14 +9248,6 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <protected>true</protected>
         <shortDescription>Page-level error message body when Advanced Mapping and Gift Entry are off</shortDescription>
         <value>This feature requires both Advanced Mapping and Gift Entry. Please enable them in NPPatch Settings.</value>
-    </labels>
-    <labels>
-        <fullName>geServiceLevelErrorAdvancedMapping</fullName>
-        <categories>Gift Entry</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Service-level error message when advanced mapping is not enabled.</shortDescription>
-        <value>You must enable Advanced Mapping before you can enable Gift Entry.</value>
     </labels>
     <labels>
         <fullName>geErrorPageLevelAdvancedMappingHeader</fullName>
@@ -13551,44 +13480,12 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <value>Documentation</value>
     </labels>
     <labels>
-        <fullName>stgDeploymentCustomMetadataMappingEnabled</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>stgDeploymentCustomMetadataMappingEnabled</shortDescription>
-        <value>Advanced Mapping is enabled.</value>
-    </labels>
-    <labels>
-        <fullName>stgDeploymentHasInvalidHelpTextMappings</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>stgDeploymentHasInvalidHelpTextMappings</shortDescription>
-        <value>Advanced Mapping is enabled, but we found some invalid Help Text mappings that couldn&apos;t be migrated. &lt;b&gt;Take a screenshot of the table below; it will not be displayed again after you leave this page.&lt;/b&gt;</value>
-    </labels>
-    <labels>
-        <fullName>stgDeploymentHelpTextMappingEnabled</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>stgDeploymentHelpTextMappingEnabled</shortDescription>
-        <value>Help Text mapping is enabled.</value>
-    </labels>
-    <labels>
         <fullName>stgDeploymentInProgress</fullName>
         <categories>Settings</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>stgDeploymentInProgress</shortDescription>
         <value>Deployment in progress. You can leave this page. The page will reload when deployment is finished.</value>
-    </labels>
-    <labels>
-        <fullName>stgDeploymentTimedOut</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>stgDeploymentInProgress</shortDescription>
-        <value>Page timed out.</value>
     </labels>
     <labels>
         <fullName>stgDeploymentTryAgain</fullName>
@@ -13686,59 +13583,6 @@ Selecting Don&apos;t Auto Schedule Default NPPatch Jobs tells NPPatch not to che
         <protected>false</protected>
         <shortDescription>stgHelpAccountModel</shortDescription>
         <value>The Account model used by the NPPatch. This option controls what happens when you create a Contact with a blank Account field value. WARNING: You should not use the Account Model record type you select as the default Account record type for any Profile. Doing so can cause various data issues.</value>
-    </labels>
-    <labels>
-        <fullName>stgHelpAdvancedMapping1</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>stgHelpAdvancedMapping1</shortDescription>
-        <value>When you enable Advanced Mapping, we convert your existing Help Text field mappings to Advanced Mapping. Once enabled, you&apos;ll edit mappings and create new ones on this page.</value>
-    </labels>
-    <labels>
-        <fullName>stgHelpAdvancedMapping2</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>stgHelpAdvancedMapping2</shortDescription>
-        <value>You can disable Advanced Mapping and go back to Help Text mapping, but any changes you made with Advanced Mapping will be lost.</value>
-    </labels>
-    <labels>
-        <fullName>stgHelpAdvancedMapping4</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>stgHelpAdvancedMapping4</shortDescription>
-        <value>
-            &lt;b&gt;This message won&apos;t be displayed if you leave this page! Take a screenshot of this page or copy the information in the table below to track the Help Text mappings you need correct. &lt;/b&gt;
-            &lt;br/&gt;
-            &lt;br/&gt;
-            We couldn&apos;t convert some of your existing Help Text mappings because they&apos;re invalid. We recommend disabling Advanced Mapping, correcting the invalid Help Text mappings, then re-enabling Advanced Mapping. Alternatively, you could add these mappings when you configure Advanced Mapping on the next screen, but these additional mappings will revert to the original invalid Help Text if you disable Advanced Mapping.
-        </value>
-    </labels>
-    <labels>
-        <fullName>stgHelpAdvancedMappingInvalidHelpText</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>stgHelpAdvancedMappingInvalidHelpText</shortDescription>
-        <value>Invalid Help Text Mappings</value>
-    </labels>
-    <labels>
-        <fullName>stgHelpAdvancedMappingTableHeader1</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>stgHelpAdvancedMappingTableHeader1</shortDescription>
-        <value>NPPatch Data Import Field</value>
-    </labels>
-    <labels>
-        <fullName>stgHelpAdvancedMappingTableHeader2</fullName>
-        <categories>Settings</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>stgHelpAdvancedMappingTableHeader2</shortDescription>
-        <value>Current Help Text Value</value>
     </labels>
     <labels>
         <fullName>stgHelpAlloFiscalYearRollups</fullName>
