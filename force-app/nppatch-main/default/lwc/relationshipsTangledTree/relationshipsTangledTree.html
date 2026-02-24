@@ -1,0 +1,101 @@
+<template>
+    <template if:true={isLoading}>
+        <div class="slds-is-relative slds-p-around_large">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+    </template>
+
+    <template if:true={hasError}>
+        <div class="slds-p-vertical_medium slds-border_top">
+            <c-util-illustration
+                size="small"
+                variant="no-access"
+                message={errorMessage}>
+            </c-util-illustration>
+        </div>
+    </template>
+
+    <template if:true={hasNoRelationships}>
+        <div class="slds-p-vertical_medium slds-border_top">
+            <c-util-illustration
+                size="small"
+                variant="going-camping"
+                message={labels.REL_No_Relationships}>
+            </c-util-illustration>
+        </div>
+    </template>
+
+    <template if:true={hasData}>
+        <div class="toolbar slds-p-horizontal_small slds-p-vertical_xx-small slds-border_bottom">
+            <lightning-button-group>
+                <lightning-button-icon
+                    icon-name="utility:zoomin"
+                    alternative-text="Zoom In"
+                    onclick={handleZoomIn}>
+                </lightning-button-icon>
+                <lightning-button-icon
+                    icon-name="utility:zoomout"
+                    alternative-text="Zoom Out"
+                    onclick={handleZoomOut}>
+                </lightning-button-icon>
+                <lightning-button-icon
+                    icon-name="utility:contract"
+                    alternative-text="Reset Zoom"
+                    onclick={handleZoomReset}>
+                </lightning-button-icon>
+            </lightning-button-group>
+            <lightning-button-menu
+                class="slds-m-left_small"
+                alternative-text="Depth"
+                label={depthLabel}
+                variant="border"
+                onselect={handleDepthSelect}>
+                <template for:each={depthOptions} for:item="opt">
+                    <lightning-menu-item
+                        key={opt.value}
+                        value={opt.value}
+                        label={opt.label}
+                        checked={opt.checked}>
+                    </lightning-menu-item>
+                </template>
+            </lightning-button-menu>
+        </div>
+
+        <div class="svg-container">
+            <svg class="tree-svg"></svg>
+        </div>
+
+        <template if:true={showDetailPanel}>
+            <div class="detail-panel slds-box slds-theme_default">
+                <div class="slds-grid slds-grid_align-spread slds-m-bottom_small">
+                    <h3 class="slds-text-heading_small slds-truncate">{detailName}</h3>
+                    <lightning-button-icon
+                        icon-name="utility:close"
+                        alternative-text="Close"
+                        variant="bare"
+                        onclick={handleCloseDetail}>
+                    </lightning-button-icon>
+                </div>
+                <template if:true={detailTitle}>
+                    <p class="slds-text-body_small slds-m-bottom_xx-small">{detailTitle}</p>
+                </template>
+                <template if:true={detailAccountName}>
+                    <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">{detailAccountName}</p>
+                </template>
+                <div class="slds-grid slds-grid_align-spread">
+                    <lightning-button
+                        label="View Record"
+                        variant="brand"
+                        onclick={handleViewRecord}>
+                    </lightning-button>
+                    <template if:false={isSelectedNodeRoot}>
+                        <lightning-button
+                            label="Explore From Here"
+                            onclick={handleRecenter}>
+                        </lightning-button>
+                    </template>
+                </div>
+            </div>
+        </template>
+    </template>
+</template>

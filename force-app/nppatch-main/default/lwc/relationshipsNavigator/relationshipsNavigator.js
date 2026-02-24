@@ -1,8 +1,9 @@
 import { LightningElement, api, wire } from "lwc";
-import { getFieldValue, getRecord } from "lightning/uiRecordApi";
-import CONTACT_NAME from "@salesforce/schema/Contact.Name";
+import getContactName from "@salesforce/apex/RelationshipsTreeGridController.getContactName";
 import accessDeniedMessage from "@salesforce/label/c.addrCopyConAddBtnFls";
 import insufficientPermissions from "@salesforce/label/c.commonInsufficientPermissions";
+import graphicalView from "@salesforce/label/c.REL_ViewerGraphical";
+import tabularView from "@salesforce/label/c.REL_ViewerTabular";
 
 export default class RelationshipsNavigator extends LightningElement {
     @api recordId;
@@ -20,10 +21,18 @@ export default class RelationshipsNavigator extends LightningElement {
     labels = {
         accessDeniedMessage,
         insufficientPermissions,
+        graphicalView,
+        tabularView,
     };
 
-    @wire(getRecord, { recordId: "$recordId", fields: [CONTACT_NAME] })
-    contact;
+    _contactName;
+
+    @wire(getContactName, { contactId: "$recordId" })
+    wiredContactName({ data }) {
+        if (data) {
+            this._contactName = data;
+        }
+    }
 
     error;
 
@@ -32,8 +41,6 @@ export default class RelationshipsNavigator extends LightningElement {
     }
 
     get contactName() {
-        if (this.contact.data) {
-            return getFieldValue(this.contact.data, CONTACT_NAME);
-        }
+        return this._contactName;
     }
 }
