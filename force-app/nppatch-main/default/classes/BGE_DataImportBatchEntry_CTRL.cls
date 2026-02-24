@@ -806,17 +806,7 @@ public with sharing class BGE_DataImportBatchEntry_CTRL {
 
         private String getMessage() {
             String fieldNames = String.join(new List<String>(unmappedFieldNames), ', ');
-            String unmappedFieldsTemplate = '';
-            String fieldMappingMethod =
-                    UTIL_CustomSettingsFacade.getDataImportSettings().Field_Mapping_Method__c;
-
-            if (fieldMappingMethod == BDI_DataImportService.FM_DATA_IMPORT_FIELD_MAPPING) {
-                unmappedFieldsTemplate =
-                        Label.bgeUnmappedFieldsNoticeMessageAdvancedMapping;
-            } else if (fieldMappingMethod == BDI_DataImportService.FM_HELP_TEXT) {
-                unmappedFieldsTemplate =
-                        Label.bgeUnmappedFieldsNoticeMessageHelpTextMapping;
-            }
+            String unmappedFieldsTemplate = Label.bgeUnmappedFieldsNoticeMessageAdvancedMapping;
 
             return String.format(
                     unmappedFieldsTemplate, new List<String>{

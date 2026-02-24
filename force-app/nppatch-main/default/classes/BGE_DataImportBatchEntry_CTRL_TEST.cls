@@ -502,24 +502,6 @@ private class BGE_DataImportBatchEntry_CTRL_TEST {
         givenActiveFieldIsUnmappedWhenLoadedThenColumnNotIncludedOnBGEForm(mock);
     }
 
-    @isTest
-    static void
-    givenActiveFieldIsUnmappedWhenLoadedThenColumnNotIncludedOnBGEForm_HelpTextMapping
-            () {
-        UTIL_CustomSettingsFacade.enableHelpTextMapping();
-
-        //Create a stub of BDI_MappingServiceHelpText, to mock the scenario where some
-        //active/selected fields on the Batch are not mapped.
-        BDIFieldMappingMock mock = new BDIFieldMappingMock();
-        BDI_MappingServiceHelpText stub = (BDI_MappingServiceHelpText) Test.createStub(
-                BDI_MappingServiceHelpText.class,
-                mock
-        );
-        BDI_MappingServiceHelpText.setInstance(stub);
-
-        givenActiveFieldIsUnmappedWhenLoadedThenColumnNotIncludedOnBGEForm(mock);
-    }
-
     static void givenActiveFieldIsUnmappedWhenLoadedThenColumnNotIncludedOnBGEForm(
             BDIFieldMappingMock mockInstance
     ) {

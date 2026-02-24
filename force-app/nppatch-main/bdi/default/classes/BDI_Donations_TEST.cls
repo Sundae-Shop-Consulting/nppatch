@@ -88,7 +88,7 @@ public with sharing class BDI_Donations_TEST {
         dataImport.NPPatch_Data_Import_Batch__c = batch[0].Id;
         insert dataImport;
 
-        BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
+        BDI_MappingServiceAdvanced fieldMapper = BDI_MappingServiceAdvanced.getInstance();
         BDI_DataImportService dataImportService = new BDI_DataImportService(false, fieldMapper);
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
 
@@ -124,7 +124,7 @@ public with sharing class BDI_Donations_TEST {
         dataImport.NPPatch_Data_Import_Batch__c = batch[0].Id;
         insert dataImport;
 
-        BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
+        BDI_MappingServiceAdvanced fieldMapper = BDI_MappingServiceAdvanced.getInstance();
         BDI_DataImportService dataImportService = new BDI_DataImportService(false, fieldMapper);
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
 
@@ -166,7 +166,7 @@ public with sharing class BDI_Donations_TEST {
         dataImport.NPPatch_Data_Import_Batch__c = batch[0].Id;
         insert dataImport;
 
-        BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
+        BDI_MappingServiceAdvanced fieldMapper = BDI_MappingServiceAdvanced.getInstance();
         BDI_DataImportService dataImportService = new BDI_DataImportService(false, fieldMapper);
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
 
@@ -208,7 +208,7 @@ public with sharing class BDI_Donations_TEST {
         dataImport.NPPatch_Data_Import_Batch__c = batch[0].Id;
         insert dataImport;
 
-        BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
+        BDI_MappingServiceAdvanced fieldMapper = BDI_MappingServiceAdvanced.getInstance();
         BDI_DataImportService dataImportService = new BDI_DataImportService(false, fieldMapper);
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
 
@@ -249,7 +249,7 @@ public with sharing class BDI_Donations_TEST {
         dataImport.NPPatch_Data_Import_Batch__c = batch[0].Id;
         insert dataImport;
 
-        BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
+        BDI_MappingServiceAdvanced fieldMapper = BDI_MappingServiceAdvanced.getInstance();
         BDI_DataImportService dataImportService = new BDI_DataImportService(false, fieldMapper);
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
 
@@ -310,7 +310,7 @@ public with sharing class BDI_Donations_TEST {
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.RequireNoMatch;
         diSettings.Run_Opportunity_Rollups_while_Processing__c = true;
 
-        BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
+        BDI_MappingServiceAdvanced fieldMapper = BDI_MappingServiceAdvanced.getInstance();
 
         // manually insert checkbox field mapping
         fieldMapper.addMappedField('Opportunity', 
@@ -402,7 +402,7 @@ public with sharing class BDI_Donations_TEST {
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.RequireNoMatch;
         diSettings.Run_Opportunity_Rollups_while_Processing__c = true;
 
-        BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
+        BDI_MappingServiceAdvanced fieldMapper = BDI_MappingServiceAdvanced.getInstance();
 
         // manually insert checkbox field mapping
         fieldMapper.addMappedField('Opportunity', 

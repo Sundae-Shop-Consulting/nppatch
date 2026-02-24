@@ -873,10 +873,6 @@
         <label>&lt;b&gt;警告: 拡張継続支援が有効になっています。カスタマイズ可能な積み上げ集計を無効にすると、継続支援への積み上げ集計が機能しなくなります。&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
-        <name>RD2_DisabledAdvancedMappingError</name>
-        <label>継続支援を処理する前に高度な対応付けを有効する必要があります。</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_DisabledRD2Error</name>
         <label>継続支援を処理する前に拡張継続支援を有効にする必要があります。</label>
     </customLabels>
@@ -2237,10 +2233,6 @@
         <label>NPPatch データインポート</label>
     </customLabels>
     <customLabels>
-        <name>bdiDeploymentInProgress</name>
-        <label>現在、ヘルプテキストの対応付けは高度な対応付けに変換されています。</label>
-    </customLabels>
-    <customLabels>
         <name>bdiDonation</name>
         <label>支援</label>
     </customLabels>
@@ -2287,18 +2279,6 @@
     <customLabels>
         <name>bdiErrorBatchNameRequired</name>
         <label>[バッチ名] は必須項目です。</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDataImportCustomSettings</name>
-        <label>[Data Import Setting (データインポート設定)] という名前のカスタム設定を更新しようとしたときにエラーが発生しました。</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailed</name>
-        <label>ヘルプテキストの対応付けを変換し、高度な対応付けを有効にしようとしたときにエラーが発生しました。</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailedLink</name>
-        <label>&lt;a href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;ここでリリース状況を確認できます。&lt;/a&gt;</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationLookupMatch</name>
@@ -2555,10 +2535,6 @@
     <customLabels>
         <name>bdiOMUILongDeployment</name>
         <label>このオブジェクトグループの変更に予測よりも長い時間がかかっています。</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiMigrationLongDeployment</name>
-        <label>ヘルプテキストの対応付けから高度な対応付けへの変換に予測よりも長い時間がかかっています。</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIGroupNameHelp</name>
@@ -3025,10 +3001,6 @@
         <label>このバッチには次の項目が含まれていますが、それらの項目の対応付けが削除されています: {0}。これを修正するには、[NPPatch 設定] の高度な対応付けに移動し、項目を再度対応付けます。</label>
     </customLabels>
     <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>このバッチには次の項目が含まれていますが、それらの項目の対応付けが削除されています: {0}。これを修正するには、NPPatch データインポートオブジェクトに移動し、ヘルプテキストを使用して項目を再度対応付けます。</label>
-    </customLabels>
-    <customLabels>
         <name>bgeWizardShowAdvancedOptions</name>
         <label>その他のオプションを表示</label>
     </customLabels>
@@ -3166,10 +3138,6 @@
     <customLabels>
         <name>gePaymentProcessedWarning</name>
         <label>{0} が支払を正常に処理しました。支援者、日付、金額、または支払方法を変更すると、{0} と NPPatch で同じトランザクションのレコードで整合性が失われます。</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping3</name>
-        <label>高度な対応付けの完全な設定ドキュメントについては、こちらを参照してください。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
@@ -4749,10 +4717,6 @@
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
         <label>この機能を使用するには、高度な対応付けと支援エントリの両方が必要です。[NPPatch 設定] でこれらを有効にしてください。</label>
-    </customLabels>
-    <customLabels>
-        <name>geServiceLevelErrorAdvancedMapping</name>
-        <label>支援エントリを有効にする前に高度な対応付けを有効にする必要があります。</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingHeader</name>
@@ -6880,24 +6844,8 @@
         <label>ドキュメント</label>
     </customLabels>
     <customLabels>
-        <name>stgDeploymentCustomMetadataMappingEnabled</name>
-        <label>高度な対応付けが有効になっています。</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHasInvalidHelpTextMappings</name>
-        <label>高度な対応付けが有効になっていますが、移行できなかったいくつかの無効なヘルプテキストの対応付けが見つかりました。&lt;b&gt;以下のテーブルのスクリーンショットを撮ってください。このページから移動すると、再度表示されません。&lt;/b&gt;</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHelpTextMappingEnabled</name>
-        <label>ヘルプテキストの対応付けが有効になっています。</label>
-    </customLabels>
-    <customLabels>
         <name>stgDeploymentInProgress</name>
         <label>リリースが進行中です。このページから移動できます。リリース完了時にページは再読み込みされます。</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentTimedOut</name>
-        <label>ページがタイムアウトしました。</label>
     </customLabels>
     <customLabels>
         <name>stgDeploymentTryAgain</name>
@@ -6951,33 +6899,6 @@
     <customLabels>
         <name>stgHelpAccountModel</name>
         <label>取引先モデルの設定。「世帯取引先」、「1 対 1」、「取引先責任者」のいずれかを指定します。「世帯取引先」が推奨モデルです。</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping1</name>
-        <label>高度な対応付けを有効にすると、既存のヘルプテキストの項目の対応付けが高度な対応付けに変換されます。有効になったら、このページで対応付けを編集したり、新しい対応付けを作成したりします。</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping2</name>
-        <label>高度な対応付けを無効にして、ヘルプテキストの対応付けに戻ることはできますが、高度な対応付けで行った変更は失われます。</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping4</name>
-        <label>&lt;b&gt;このメッセージは、このページから移動すると表示されなくなります。修正する必要のあるヘルプテキストの対応付けを追跡できるように、このページのスクリーンショットを撮るか、以下のテーブルの情報をコピーしてください。&lt;/b&gt;
-            &lt;br/&gt;
-            &lt;br/&gt;
-            既存のヘルプテキストの対応付けの一部は無効であったため変換できませんでした。高度な対応付けを無効にし、無効なヘルプテキストの対応付けを修正してから高度な対応付けを再度有効にすることをお勧めします。または、次の画面で高度な対応付けを設定するときにこれらの対応付けを追加することもできますが、高度な対応付けを無効にすると、これらの追加の対応付けは元の無効なヘルプテキストに戻ります。</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingInvalidHelpText</name>
-        <label>無効なヘルプテキストの対応付け</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>NPPatch データインポート項目</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader2</name>
-        <label>現在のヘルプテキスト値</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAlloFiscalYearRollups</name>

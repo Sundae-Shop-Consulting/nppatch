@@ -873,10 +873,6 @@
         <label>&lt;b&gt;AVISO: você tem a opção Doações recorrentes aprimoradas ativada. Se você desativar Totalizações personalizáveis, as totalizações de Doações recorrentes não funcionarão mais.&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
-        <name>RD2_DisabledAdvancedMappingError</name>
-        <label>Você precisa habilitar o Mapeamento avançado antes de processar Doações recorrentes.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_DisabledRD2Error</name>
         <label>Você precisa habilitar Doações recorrentes aprimoradas antes de processar Doações recorrentes.</label>
     </customLabels>
@@ -2243,10 +2239,6 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
         <label>Importação de dados do NPPatch</label>
     </customLabels>
     <customLabels>
-        <name>bdiDeploymentInProgress</name>
-        <label>Os mapeamentos de Texto de ajuda estão sendo convertidos para Mapeamento avançado.</label>
-    </customLabels>
-    <customLabels>
         <name>bdiDonation</name>
         <label>Doação</label>
     </customLabels>
@@ -2293,18 +2285,6 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     <customLabels>
         <name>bdiErrorBatchNameRequired</name>
         <label>Nome do lote é um campo obrigatório.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDataImportCustomSettings</name>
-        <label>Houve um erro ao tentar atualizar as Configurações personalizadas chamadas Configurações de importação de dados.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailed</name>
-        <label>Houve um erro ao tentar converter o mapeamento do Texto de ajuda e ativar o Mapeamento avançado.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailedLink</name>
-        <label>&lt;a href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;Você pode visualizar o status de implantação aqui.&lt;/a&gt;</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationLookupMatch</name>
@@ -2561,10 +2541,6 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     <customLabels>
         <name>bdiOMUILongDeployment</name>
         <label>A modificação deste Grupo de objetos está demorando mais do que o esperado.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiMigrationLongDeployment</name>
-        <label>A conversão de mapeamentos de Texto de ajuda para Mapeamento avançado está demorando mais do que o esperado.</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIGroupNameHelp</name>
@@ -3031,10 +3007,6 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
         <label>Os seguintes campos estão incluídos neste Lote, mas seus Mapeamentos de campo foram excluídos: {0}. Para corrigir isso, acesse o Mapeamento avançado em Configurações do NPPatch e mapeie os campos novamente.</label>
     </customLabels>
     <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>Os seguintes campos estão incluídos neste Lote, mas seus Mapeamentos de campo foram excluídos: {0}. Para corrigir isso, acesse o objeto Importar dados do NPPatch em Configurações do NPPatch e mapeie os campos novamente usando o Texto de ajuda.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeWizardShowAdvancedOptions</name>
         <label>Mostrar opções avançadas</label>
     </customLabels>
@@ -3175,10 +3147,6 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
     <customLabels>
         <name>gePaymentProcessedWarning</name>
         <label>{0} processou com sucesso o pagamento. A alteração de doador, data, valor ou método de pagamento resultará em registros inconsistentes para a mesma transação em {0} e no NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping3</name>
-        <label>Encontre a documentação completa da configuração do Mapeamento Avançado aqui.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
@@ -4758,10 +4726,6 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
         <label>Este recurso requer Mapeamento avançado e Entrada de doações. Ative-os em Configurações do NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>geServiceLevelErrorAdvancedMapping</name>
-        <label>Você precisa habilitar o Mapeamento avançado antes de ativar a Entrada de doações.</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingHeader</name>
@@ -6889,24 +6853,8 @@ Se preferir, você pode desativar a Entrada de doações e, em vez disso, usar a
         <label>Documentação</label>
     </customLabels>
     <customLabels>
-        <name>stgDeploymentCustomMetadataMappingEnabled</name>
-        <label>O Mapeamento avançado foi ativado.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHasInvalidHelpTextMappings</name>
-        <label>O Mapeamento avançado foi ativado, mas encontramos alguns mapeamentos inválidos de Texto de ajuda que não puderam ser migrados. &lt;b&gt;Faça uma captura de tela da tabela abaixo; ela não será exibida novamente depois que você sair desta página.&lt;/b&gt;</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHelpTextMappingEnabled</name>
-        <label>O mapeamento de Texto de ajuda foi ativado.</label>
-    </customLabels>
-    <customLabels>
         <name>stgDeploymentInProgress</name>
         <label>Implantação em andamento. Você pode sair desta página. A página será recarregada quando a implantação estiver concluída.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentTimedOut</name>
-        <label>A página atingiu o tempo limite.</label>
     </customLabels>
     <customLabels>
         <name>stgDeploymentTryAgain</name>
@@ -6960,33 +6908,6 @@ A escolha de Não agendar automaticamente trabalhos do NPPatch padrão diz ao NP
     <customLabels>
         <name>stgHelpAccountModel</name>
         <label>O modelo de Conta usado pelo Pacote de sucesso para organizações sem fins lucrativos. Esta opção controla o que acontece quando você cria um contato com um valor do campo Conta em branco. AVISO: você não deverá usar o tipo de registro Modelo de conta que selecionar como o Tipo de registro de conta padrão para um Perfil. Isso pode causar vários problemas de dados.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping1</name>
-        <label>Quando você ativa o Mapeamento avançado, convertemos seus mapeamentos de campo de Texto de ajuda existentes em Mapeamento avançado. Uma vez ativado, você editará mapeamentos e criará outros nesta página.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping2</name>
-        <label>Você pode desativar o Mapeamento avançado e voltar para o mapeamento do Texto de ajuda, mas todas as alterações feitas com o Mapeamento avançado serão perdidas.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping4</name>
-        <label>&lt;b&gt;Esta mensagem não será exibida se você sair desta página! Faça uma captura de tela desta página ou copie as informações na tabela abaixo para acompanhar os mapeamentos do Texto de ajuda que você precisa corrigir. &lt;/b&gt;
-            &lt;br/&gt;
-            &lt;br/&gt;
-            Não pudemos converter alguns dos seus mapeamentos de Texto de ajuda existentes porque eles são inválidos. Recomendamos desativar o Mapeamento avançado, corrigir os mapeamentos inválidos do Texto de ajuda e reativar o Mapeamento avançado. Alternativamente, você pode adicionar esses mapeamentos quando configurar o Mapeamento avançado na próxima tela, mas esses mapeamentos adicionais serão revertidos para o Texto de ajuda original inválido se você desativar o Mapeamento avançado.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingInvalidHelpText</name>
-        <label>Mapeamentos de Texto de ajuda inválidos</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>Campo Importar dados do NPPatch</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader2</name>
-        <label>Valor atual do texto da ajuda</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAlloFiscalYearRollups</name>
