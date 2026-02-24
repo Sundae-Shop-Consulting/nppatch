@@ -68,6 +68,9 @@ public class CRLP_RollupQueueable implements System.Queueable {
             // If there are no summary record Id's, then using a List of a List of Summary Id's
             // In this case, use the first set in the list as the records to roll up to, and
             // remove that list from the queue.
+            if (this.queueOfSummaryIds == null || this.queueOfSummaryIds.isEmpty()) {
+                return;
+            }
             List<Id> summaryRecordIds = this.queueOfSummaryIds[0];
             this.queueOfSummaryIds.remove(0);
             runRollupsForIds(summaryRecordIds);
@@ -88,6 +91,9 @@ public class CRLP_RollupQueueable implements System.Queueable {
      * @param summaryRecordIds
      */
     public static void runRollupsForIds(List<Id> summaryRecordIds) {
+        if (summaryRecordIds == null || summaryRecordIds.isEmpty()) {
+            return;
+        }
         SObjectType objType = summaryRecordIds[0].getSobjectType();
         CRLP_RollupProcessingOptions.RollupType rollupType;
 

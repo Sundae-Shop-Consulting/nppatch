@@ -1117,7 +1117,7 @@ public with sharing class RD2_OpportunityEvaluation_TEST {
 
     @isTest
     private static void shouldChangeRDStatusToLapsedWhenAutomationThresholdDaysReachAndUpdateSustainer() {
-        UTIL_UnitTestData_TEST.disableRollupTriggers();
+        UTIL_UnitTestData_TEST.disableCustomizableRollupTriggers();
 
         Date startDate = Date.newInstance(2020, 1, 1);
         Date currentDate = Date.newInstance(2020, 2, 26);

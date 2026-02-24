@@ -47,7 +47,6 @@ public with sharing class CONV_Account_Conversion_BATCH_TEST {
     public testmethod static void testAccountConversion1to1(){
         //skip the test if Advancement is installed
         if(ADV_PackageInfo_SVC.useAdv()) return;
-        UTIL_UnitTestData_TEST.disableRollupTriggers();
         Integer numberOfContacts = 50;
         Integer randomIndex = Integer.valueof( (Math.random() * (numberOfContacts - 1)) );
 
@@ -159,8 +158,6 @@ public with sharing class CONV_Account_Conversion_BATCH_TEST {
         if(ADV_PackageInfo_SVC.useAdv()) return;
 
         if (UTIL_UnitTestData_TEST.isAccountNameEncrypted()) return;
-
-        UTIL_UnitTestData_TEST.disableRollupTriggers();
 
         //setup bucket model and test account creation
         CONV_Account_Conversion_BATCH_TEST.setPreHHAccountModel(false);
