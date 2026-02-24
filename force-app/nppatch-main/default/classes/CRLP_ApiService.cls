@@ -72,10 +72,6 @@ public without sharing class CRLP_ApiService {
     */
     public List<CRLP_Rollup> getRollupDefinitions(String rollupTypeName) {
 
-        if (!CRLP_Rollup_SVC.isCustomizableRollupEngineEnabled) {
-            return new List<CRLP_Rollup>();
-        }
-
         CRLP_RollupProcessingOptions.RollupType rollupType;
         try {
             rollupType = CRLP_RollupProcessingOptions.rollupTypeByName.get((String) rollupTypeName.toLowerCase());
@@ -215,7 +211,7 @@ public without sharing class CRLP_ApiService {
     * @return Boolean
     */
     public Boolean isCrlpEnabled() {
-        return CRLP_Rollup_SVC.isCustomizableRollupEngineEnabled;
+        return true;
     }
 
     /**

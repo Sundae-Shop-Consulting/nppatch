@@ -414,8 +414,7 @@ private with sharing class BDI_DataImportService_TEST {
     * @description Returns true if the trigger handler calculates rollups
     */
     private static Boolean isRollupTriggerHandler(Trigger_Handler__c handler) {
-         return (handler.Object__c == 'Opportunity' && handler.Class__c == 'RLLP_OppRollup_TDTM') ||
-            (handler.Object__c == 'Opportunity' && handler.Class__c == 'CRLP_Rollup_TDTM') ||
-            (handler.Object__c == 'OppPayment__c' && handler.Class__c == 'CRLP_Rollup_TDTM'); 
+         return (handler.Object__c == 'Opportunity' && handler.Class__c == 'CRLP_Rollup_TDTM') ||
+            (handler.Object__c == 'OppPayment__c' && handler.Class__c == 'CRLP_Rollup_TDTM');
     }
 }

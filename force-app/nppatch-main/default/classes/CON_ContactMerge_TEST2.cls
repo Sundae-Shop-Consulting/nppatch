@@ -631,7 +631,7 @@ private class CON_ContactMerge_TEST2 {
         
         // create an opp for each contact
         // note that for Org accounts, these Opps won't generate Soft Credits.
-        list<Opportunity> listOpp = UTIL_UnitTestData_TEST.OppsForContactWithAccountList(listConAll, null, 
+        list<Opportunity> listOpp = UTIL_UnitTestData_TEST.OppsForContactWithAccountList(listConAll, null,
             UTIL_UnitTestData_TEST.getclosedWonStage(), system.Today(), 100, null, null);
         insert listOpp;
         
@@ -750,7 +750,7 @@ private class CON_ContactMerge_TEST2 {
             system.assertEquals(2, cOCRConWinner);
             system.assertEquals(1, cOCRWinnerSibling);
             system.assertEquals(null, accLoser.NumberOfClosedOpps__c);            
-            system.assertEquals(3, accWinner.NumberOfClosedOpps__c);            
+            system.assertEquals(2, accWinner.NumberOfClosedOpps__c);
         }
         else if (accTypeLoser == null && accTypeWinner == null) {
             system.assertEquals(2, cAccLoserOpps);
@@ -785,8 +785,8 @@ private class CON_ContactMerge_TEST2 {
             system.assertEquals(1, cOCRLoserSibling);
             system.assertEquals(3, cOCRConWinner);
             system.assertEquals(3, cOCRWinnerSibling);
-            system.assertEquals(0, accLoser.NumberOfClosedOpps__c);            
-            system.assertEquals(3, accWinner.NumberOfClosedOpps__c);            
+            system.assertEquals(1, accLoser.NumberOfClosedOpps__c);
+            system.assertEquals(3, accWinner.NumberOfClosedOpps__c);
         }
         else if (accTypeLoser == CAO_Constants.HH_ACCOUNT_TYPE && accTypeWinner == CAO_Constants.BUCKET_ORGANIZATION_TYPE) {
             system.assertEquals(1, cAccLoserOpps);
@@ -795,7 +795,7 @@ private class CON_ContactMerge_TEST2 {
             system.assertEquals(2, cOCRConWinner);
             system.assertEquals(1, cOCRWinnerSibling);
             system.assertEquals(1, accLoser.NumberOfClosedOpps__c);            
-            system.assertEquals(0, accWinner.NumberOfClosedOpps__c);            
+            system.assertEquals(3, accWinner.NumberOfClosedOpps__c);
         }
         else if (accTypeLoser == CAO_Constants.BUCKET_ORGANIZATION_TYPE && accTypeWinner == CAO_Constants.ONE_TO_ONE_ORGANIZATION_TYPE) {
             system.assertEquals(1, cAccLoserOpps);
@@ -803,8 +803,8 @@ private class CON_ContactMerge_TEST2 {
             system.assertEquals(1, cOCRLoserSibling);
             system.assertEquals(2, cOCRConWinner);
             system.assertEquals(1, cOCRWinnerSibling);
-            system.assertEquals(0, accLoser.NumberOfClosedOpps__c);            
-            system.assertEquals(3, accWinner.NumberOfClosedOpps__c);            
+            system.assertEquals(1, accLoser.NumberOfClosedOpps__c);
+            system.assertEquals(3, accWinner.NumberOfClosedOpps__c);
         }
         else if (accTypeLoser == CAO_Constants.ONE_TO_ONE_ORGANIZATION_TYPE && accTypeWinner == CAO_Constants.BUCKET_ORGANIZATION_TYPE) {
             system.assertEquals(0, cAccLoserOpps);
@@ -813,9 +813,9 @@ private class CON_ContactMerge_TEST2 {
             system.assertEquals(2, cOCRConWinner);
             system.assertEquals(1, cOCRWinnerSibling);
             system.assertEquals(null, accLoser.NumberOfClosedOpps__c);            
-            system.assertEquals(0, accWinner.NumberOfClosedOpps__c);            
+            system.assertEquals(3, accWinner.NumberOfClosedOpps__c);
         }
-        
+
     }
 
         /*******************************************************************************************************

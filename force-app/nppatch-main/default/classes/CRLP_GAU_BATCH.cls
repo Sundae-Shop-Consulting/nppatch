@@ -67,15 +67,13 @@ public class CRLP_GAU_BATCH extends CRLP_Batch_Base_Skew implements Database.Bat
      */
     public void execute(SchedulableContext context) {
         String className = CRLP_GAU_BATCH.class.getName();
-        if (CRLP_Rollup_SVC.isCustomizableRollupEngineEnabled) {
-            if (!UTIL_MasterSchedulableHelper.hasRunningJob(className)) {
-                Database.executeBatch(new CRLP_SkewDispatcher_BATCH(
-                    CRLP_RollupProcessingOptions.RollupType.GAU), 
-                    CRLP_SkewDispatcher_BATCH.BATCH_SIZE
-                );
-            } else {
-                logDuplicateBatchError(className);
-            }
+        if (!UTIL_MasterSchedulableHelper.hasRunningJob(className)) {
+            Database.executeBatch(new CRLP_SkewDispatcher_BATCH(
+                CRLP_RollupProcessingOptions.RollupType.GAU),
+                CRLP_SkewDispatcher_BATCH.BATCH_SIZE
+            );
+        } else {
+            logDuplicateBatchError(className);
         }
     }
 }

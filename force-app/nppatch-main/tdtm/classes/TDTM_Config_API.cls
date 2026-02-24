@@ -97,7 +97,6 @@ global class TDTM_Config_API {
      */
     @InvocableMethod(Label='Disable NPPatch Rollup Triggers')
     global static void disableAllRollupTriggers() {
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'RLLP_OppRollup_TDTM', false);
         TDTM_ProcessControl.toggleTriggerState('Opportunity', 'CRLP_Rollup_TDTM', false);
         TDTM_ProcessControl.toggleTriggerState('OppPayment__c', 'CRLP_Rollup_TDTM', false);
     }

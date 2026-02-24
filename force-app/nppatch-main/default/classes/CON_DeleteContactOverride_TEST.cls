@@ -293,6 +293,8 @@ private class CON_DeleteContactOverride_TEST {
     * @description Attempts to delete contact with closed/won and org opps, verifies correct exception is thrown.
     */
     static testMethod void testContactDeleteExceptionWithOverride() {
+        UTIL_UnitTestData_TEST.disableCustomizableRollupTriggers();
+
         //use a non-system account for the contact's account, so that the delete override doesn't redirect us to delete the account
         Account account = new Account(Name = 'TEST_ACCOUNT');
         insert account;
@@ -370,6 +372,8 @@ private class CON_DeleteContactOverride_TEST {
     * verifies Recurring Donation is deleted.
     */
     static testMethod void testContactDeleteWithOverride() {
+        UTIL_UnitTestData_TEST.disableCustomizableRollupTriggers();
+
         //use a non-system account for the contact's account, so that the delete override doesn't redirect us to delete the account
         Account account = new Account(Name = 'TEST_ACCOUNT');
         insert account;

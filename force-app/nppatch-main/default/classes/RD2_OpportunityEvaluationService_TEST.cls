@@ -858,6 +858,8 @@ private class RD2_OpportunityEvaluationService_TEST {
      */
     @IsTest
     private static void yearValuesShouldIgnoreClosedLostOppsInDataMigration() {
+        UTIL_UnitTestData_TEST.disableCustomizableRollupTriggers();
+
         final Integer monthsToMigration = 1;
         final Date today = START_DATE.addMonths(MONTHS_TO_DEC).addDays(-1);
         RD2_ScheduleService.currentDate = today;

@@ -64,13 +64,7 @@ public with sharing class STG_PanelOppBatch_CTRL extends STG_Panel {
     public PageReference runBatch() {
         isRunningBatch = true;
 
-        if (!CRLP_Rollup_SVC.isCustomizableRollupEngineEnabled) {
-            // run legacy batch rollups
-            RLLP_OppRollup rg = new RLLP_OppRollup();
-            rg.rollupAll();
-            this.numJobSubmitted = 4; // hardcoded to match what this runs
-        } else {
-
+        {
             // Customizable Rollup Jobs are more complicated. There are 5 base jobs, but there may be 5 more
             // Skew jobs to execute if necessary.
             List<CRLP_RollupProcessingOptions.RollupType> jobTypeList = new List<CRLP_RollupProcessingOptions.RollupType>{
