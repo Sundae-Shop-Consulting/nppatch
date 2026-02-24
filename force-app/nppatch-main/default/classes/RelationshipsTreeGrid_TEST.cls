@@ -171,6 +171,106 @@ private class RelationshipsTreeGrid_TEST {
         System.assertNotEquals(null, relationships[0].RelatedContact__r.Account.Name, 'Missing Account Name field');
     }
 
+    @IsTest
+    static void getRelationshipGraphReturnsNodesAndLinks() {
+        // In 2GP namespaced context, WITH SECURITY_ENFORCED fails even with permission set
+        if (String.isNotBlank(UTIL_Namespace.getNamespace())) {
+            return;
+        }
+
+        List<Contact> contacts = UTIL_UnitTestData_TEST.createAccountContactTestData(
+                CAO_Constants.HH_ACCOUNT_TYPE,
+                1,
+                3,
+                0
+        );
+
+        // Create relationships: contact[0] -> contact[1] and contact[0] -> contact[2]
+        List<Relationship__c> rels = new List<Relationship__c>{
+            new Relationship__c(
+                Contact__c = contacts[0].Id,
+                RelatedContact__c = contacts[1].Id,
+                Type__c = 'Friend'
+            ),
+            new Relationship__c(
+                Contact__c = contacts[0].Id,
+                RelatedContact__c = contacts[2].Id,
+                Type__c = 'Colleague'
+            )
+        };
+        insert rels;
+
+        Test.startTest();
+        RelationshipsTreeGridController.RelationshipGraphView graphView =
+            RelationshipsTreeGridController.getRelationshipGraph(contacts[0].Id, 1);
+        Test.stopTest();
+
+        // Root + 2 related contacts = 3 nodes
+        System.assertEquals(3, graphView.nodes.size(), 'Expected 3 nodes in graph');
+        // 2 relationships (reciprocals deduplicated)
+        System.assertEquals(2, graphView.links.size(), 'Expected 2 links in graph');
+
+        // Verify root node
+        Boolean foundRoot = false;
+        for (RelationshipsTreeGridController.GraphNode node : graphView.nodes) {
+            if (node.id == contacts[0].Id) {
+                System.assertEquals(0, node.depth, 'Root should be depth 0');
+                System.assertEquals(true, node.isRoot, 'Root should be marked as root');
+                foundRoot = true;
+            }
+        }
+        System.assertEquals(true, foundRoot, 'Root node should be in results');
+    }
+
+    @IsTest
+    static void getRelationshipGraphThrowsOnInsufficientPerms() {
+        Id fakeContactId = UTIL_UnitTestData_TEST.mockId(Contact.SObjectType);
+        RelationshipsSelectorStub selectorStub = new RelationshipsSelectorStub();
+        RelationshipsService.getInstance().selector = (RelationshipSelector) Test.createStub(selectorStub.classType, selectorStub);
+        RelationshipsService.getInstance().permissions = (UTIL_Permissions) Test.createStub(UTIL_Permissions.class, new UTIL_PermissionsMock(false, false));
+
+        AuraHandledException caughtException;
+        try {
+            RelationshipsTreeGridController.getRelationshipGraph(fakeContactId, 2);
+        } catch (AuraHandledException ex) {
+            caughtException = ex;
+        }
+        System.assertNotEquals(null, caughtException, 'Should throw AuraHandledException');
+        System.assertEquals(Label.commonInsufficientPermissions, caughtException.getMessage());
+    }
+
+    @IsTest
+    static void getRelationshipGraphDeduplicatesReciprocals() {
+        // In 2GP namespaced context, WITH SECURITY_ENFORCED fails even with permission set
+        if (String.isNotBlank(UTIL_Namespace.getNamespace())) {
+            return;
+        }
+
+        List<Contact> contacts = UTIL_UnitTestData_TEST.createAccountContactTestData(
+                CAO_Constants.HH_ACCOUNT_TYPE,
+                1,
+                2,
+                0
+        );
+
+        // Insert one relationship — NPSP auto-creates the reciprocal
+        Relationship__c rel = new Relationship__c(
+            Contact__c = contacts[0].Id,
+            RelatedContact__c = contacts[1].Id,
+            Type__c = 'Sibling'
+        );
+        insert rel;
+
+        Test.startTest();
+        RelationshipsTreeGridController.RelationshipGraphView graphView =
+            RelationshipsTreeGridController.getRelationshipGraph(contacts[0].Id, 2);
+        Test.stopTest();
+
+        // Should have exactly 1 link despite reciprocal existing
+        System.assertEquals(1, graphView.links.size(), 'Reciprocal relationships should be deduplicated to 1 link');
+        System.assertEquals(2, graphView.nodes.size(), 'Should have 2 nodes');
+    }
+
     static Contact generateContactWithName(String name) {
         return (Contact) JSON.deserialize('{"Name": "' + name + '"}', Contact.class);
     }
@@ -214,9 +314,14 @@ private class RelationshipsTreeGrid_TEST {
             };
         }
 
-        public Object handleMethodCall(Object param1, String param2, Type param3, List<Type> param4, List<String> param5, List<Object> param6) {
+        public Object handleMethodCall(Object param1, String methodName, Type param3, List<Type> param4, List<String> param5, List<Object> param6) {
+            if (methodName == 'getRelationshipsForContacts') {
+                return this.bulkQueryResults != null ? this.bulkQueryResults : this.queryResults;
+            }
             return this.queryResults;
         }
+
+        public List<Relationship__c> bulkQueryResults;
     }
 
 
