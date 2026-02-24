@@ -115,8 +115,7 @@ private class BDI_DataImportFLSService_TEST {
         DataImport__c dataImport = new DataImport__c(
                 Contact1_Firstname__c = 'testFirst',
                 Contact1_Lastname__c = 'testLast',
-                Contact1_Work_Email__c = 'test@test99875409948.com',
-                Opportunity_Contact_Role_1_Role__c = 'Test'
+                Contact1_Work_Email__c = 'test@test99875409948.com'
         );
         insert dataImport;
 
