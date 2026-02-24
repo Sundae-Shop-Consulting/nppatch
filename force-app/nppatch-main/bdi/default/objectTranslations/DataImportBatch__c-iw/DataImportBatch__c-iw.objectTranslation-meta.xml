@@ -20,10 +20,6 @@
         <plural>true</plural>
         <value></value>
     </caseValues>
-    <fieldSets>
-        <label></label>
-        <name>BatchGiftEntryTabColumns</name>
-    </fieldSets>
     <gender></gender>
     <layouts>
         <layout>NPPatch Data Import Batch Layout</layout>
