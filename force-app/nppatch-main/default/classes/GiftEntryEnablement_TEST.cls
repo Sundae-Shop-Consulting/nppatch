@@ -33,40 +33,11 @@ private class GiftEntryEnablement_TEST {
     @IsTest
     private static void enableShouldUpdateCustomSetting() {
         GiftEntryEnablementService giftEntryEnablementService = new GiftEntryEnablementService();
-        AdvancedMappingEnablementServiceMock advancedMappingEnablementServiceMock = new
-                AdvancedMappingEnablementServiceMock();
-        advancedMappingEnablementServiceMock.setEnabled();
-
-        giftEntryEnablementService.advancedMappingEnablementService = (AdvancedMappingEnablementService)Test.createStub(
-                AdvancedMappingEnablementService.class, advancedMappingEnablementServiceMock);
 
         Test.startTest();
             giftEntryEnablementService.enable();
         Test.stopTest();
 
         System.assert(giftEntryEnablementService.isEnabled(), 'Gift entry should be enabled');
-    }
-
-    @IsTest
-    private static void enableThrowsExceptionWhenMappingIsNotEnabled() {
-        GiftEntryEnablementService giftEntryEnablementService = new GiftEntryEnablementService();
-        AdvancedMappingEnablementServiceMock advancedMappingEnablementServiceMock = new
-                AdvancedMappingEnablementServiceMock();
-
-        giftEntryEnablementService.advancedMappingEnablementService = (AdvancedMappingEnablementService)Test.createStub(
-                AdvancedMappingEnablementService.class, advancedMappingEnablementServiceMock);
-
-        GiftEntryEnablementService.GiftEntryEnablementException enablementException;
-
-        Test.startTest();
-            try {
-                giftEntryEnablementService.enable();
-            } catch(GiftEntryEnablementService.GiftEntryEnablementException ex) {
-                enablementException = ex;
-            }
-        Test.stopTest();
-
-        System.assert(enablementException != null, 'An exception should be thrown when advanced mapping is not ' +
-                'enabled.');
     }
 }

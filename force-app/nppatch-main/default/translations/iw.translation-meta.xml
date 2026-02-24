@@ -865,10 +865,6 @@
         <name>RD2_DisableCustomizableRollupWarning</name>
     </customLabels>
     <customLabels>
-        <label><!-- Error for DIs with populated RD fields when Advanced Mapping is disabled. --></label>
-        <name>RD2_DisabledAdvancedMappingError</name>
-    </customLabels>
-    <customLabels>
         <label><!-- Error for DIs with populated RD fields when RD2 is disabled. --></label>
         <name>RD2_DisabledRD2Error</name>
     </customLabels>
@@ -1995,10 +1991,6 @@
         <name>bdiDataImporterTitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- bdiDeploymentInProgress --></label>
-        <name>bdiDeploymentInProgress</name>
-    </customLabels>
-    <customLabels>
         <label>תרומה</label>
         <name>bdiDonation</name>
     </customLabels>
@@ -2041,18 +2033,6 @@
     <customLabels>
         <label><!-- error when a batch is missing a name --></label>
         <name>bdiErrorBatchNameRequired</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- error when updating data import custom settings --></label>
-        <name>bdiErrorDataImportCustomSettings</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- error deploying metadata during migration from help text to metadata mapping --></label>
-        <name>bdiErrorDeploymentFailed</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- link to the deployment status page --></label>
-        <name>bdiErrorDeploymentFailedLink</name>
     </customLabels>
     <customLabels>
         <label><!-- error on BDI record if DonationImported or PaymentImported lookups are invalid --></label>
@@ -2281,10 +2261,6 @@
     <customLabels>
         <label><!-- Status on a bdi object when no matching record found --></label>
         <name>bdiMatchedNone</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Error message for long deployment --></label>
-        <name>bdiMigrationLongDeployment</name>
     </customLabels>
     <customLabels>
         <label><!-- Is Child/Parent Help Text --></label>
@@ -2737,10 +2713,6 @@
     <customLabels>
         <label><!-- Message for Batch Gift Entry unmapped fields when Advanced Mapping enabled. --></label>
         <name>bgeUnmappedFieldsNoticeMessageAdvancedMapping</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Message for Batch Gift Entry unmapped fields when Advanced Mapping disabled. --></label>
-        <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
     </customLabels>
     <customLabels>
         <label><!-- Title used for the Batch Gift Entry tab unmapped fields notice. --></label>
@@ -6211,24 +6183,8 @@
         <name>stgDeletePermissionError</name>
     </customLabels>
     <customLabels>
-        <label><!-- stgDeploymentCustomMetadataMappingEnabled --></label>
-        <name>stgDeploymentCustomMetadataMappingEnabled</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- stgDeploymentHasInvalidHelpTextMappings --></label>
-        <name>stgDeploymentHasInvalidHelpTextMappings</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- stgDeploymentHelpTextMappingEnabled --></label>
-        <name>stgDeploymentHelpTextMappingEnabled</name>
-    </customLabels>
-    <customLabels>
         <label><!-- stgDeploymentInProgress --></label>
         <name>stgDeploymentInProgress</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- stgDeploymentInProgress --></label>
-        <name>stgDeploymentTimedOut</name>
     </customLabels>
     <customLabels>
         <label><!-- stgDeploymentTryAgain --></label>
@@ -6282,30 +6238,6 @@
     <customLabels>
         <label>מודל החשבון המשמש את &apos;ערכת ההצלחה למלכ&quot;רים&apos;. אפשרות זו קובעת מה יקרה כשתיצור איש קשר עם שדה חשבון ריק. אזהרה: סוג הרשומה שנבחר עבור מודל החשבון לא צריך לשמש כסוג ברירת המחדל של רשומת חשבון עבור פרופילים בארגון שלך. שימוש באותו סוג רשומה יכול ליצור בעיות שונות בנתונים.</label>
         <name>stgHelpAccountModel</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- stgHelpAdvancedMapping1 --></label>
-        <name>stgHelpAdvancedMapping1</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- stgHelpAdvancedMapping2 --></label>
-        <name>stgHelpAdvancedMapping2</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- stgHelpAdvancedMapping4 --></label>
-        <name>stgHelpAdvancedMapping4</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- stgHelpAdvancedMappingInvalidHelpText --></label>
-        <name>stgHelpAdvancedMappingInvalidHelpText</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- stgHelpAdvancedMappingTableHeader1 --></label>
-        <name>stgHelpAdvancedMappingTableHeader1</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- stgHelpAdvancedMappingTableHeader2 --></label>
-        <name>stgHelpAdvancedMappingTableHeader2</name>
     </customLabels>
     <customLabels>
         <label>כשאפשרות זו מסומנת, היא מפעילה את ההגדרות של שנת הכספים, במקום הגדרות השנה הקלנדרית, עבור סיכומים כוללים של הקצאות. כדי להגדיר פרטי שנת כספים, עבור אל &apos;הגדרה | פרופיל חברה | שנת כספים&apos;. הערה: &apos;ערכת ההצלחה למלכ&quot;רים&apos; אינה תומכת בהגדרות מותאמות אישית של שנת כספים.</label>

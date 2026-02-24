@@ -88,7 +88,7 @@ public with sharing class BDI_Donations_TEST {
         dataImport.NPPatch_Data_Import_Batch__c = batch[0].Id;
         insert dataImport;
 
-        BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
+        BDI_MappingServiceAdvanced fieldMapper = BDI_MappingServiceAdvanced.getInstance();
         BDI_DataImportService dataImportService = new BDI_DataImportService(false, fieldMapper);
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
 
@@ -124,7 +124,7 @@ public with sharing class BDI_Donations_TEST {
         dataImport.NPPatch_Data_Import_Batch__c = batch[0].Id;
         insert dataImport;
 
-        BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
+        BDI_MappingServiceAdvanced fieldMapper = BDI_MappingServiceAdvanced.getInstance();
         BDI_DataImportService dataImportService = new BDI_DataImportService(false, fieldMapper);
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
 
@@ -166,7 +166,7 @@ public with sharing class BDI_Donations_TEST {
         dataImport.NPPatch_Data_Import_Batch__c = batch[0].Id;
         insert dataImport;
 
-        BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
+        BDI_MappingServiceAdvanced fieldMapper = BDI_MappingServiceAdvanced.getInstance();
         BDI_DataImportService dataImportService = new BDI_DataImportService(false, fieldMapper);
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
 
@@ -208,7 +208,7 @@ public with sharing class BDI_Donations_TEST {
         dataImport.NPPatch_Data_Import_Batch__c = batch[0].Id;
         insert dataImport;
 
-        BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
+        BDI_MappingServiceAdvanced fieldMapper = BDI_MappingServiceAdvanced.getInstance();
         BDI_DataImportService dataImportService = new BDI_DataImportService(false, fieldMapper);
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
 
@@ -249,7 +249,7 @@ public with sharing class BDI_Donations_TEST {
         dataImport.NPPatch_Data_Import_Batch__c = batch[0].Id;
         insert dataImport;
 
-        BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
+        BDI_MappingServiceAdvanced fieldMapper = BDI_MappingServiceAdvanced.getInstance();
         BDI_DataImportService dataImportService = new BDI_DataImportService(false, fieldMapper);
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
 
@@ -310,13 +310,8 @@ public with sharing class BDI_Donations_TEST {
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.RequireNoMatch;
         diSettings.Run_Opportunity_Rollups_while_Processing__c = true;
 
-        BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
+        BDI_MappingService fieldMapper = BDI_MappingServiceAdvanced.getInstance();
 
-        // manually insert checkbox field mapping
-        fieldMapper.addMappedField('Opportunity', 
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Membership_Origin__c'),
-                'IsPrivate');
-                
         BDI_DataImportService dataImportService = new BDI_DataImportService(false, fieldMapper);
 
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
@@ -328,28 +323,18 @@ public with sharing class BDI_Donations_TEST {
         Test.stopTest();
 
         // verify expected results
-        list<Opportunity> updatedOpps = [SELECT 
-                    Id, 
-                    Name, 
-                    Amount, 
-                    StageName, 
-                    IsWon, 
-                    IsPrivate, 
-                    IsClosed, 
-                    AccountId 
-            FROM Opportunity 
+        list<Opportunity> updatedOpps = [SELECT
+                    Id,
+                    Name,
+                    Amount,
+                    StageName,
+                    IsWon,
+                    IsClosed,
+                    AccountId
+            FROM Opportunity
             ORDER BY Id];
 
         System.assertEquals(2, updatedOpps.size());
-        for(Opportunity opp: updatedOpps) {
-            if(opp.Id == opportunities[0].Id) {
-                System.assertEquals(true, opp.IsPrivate, 
-                    'Import should have set checkbox IsPrivate to true');
-            } else {
-                System.assertEquals(false, opp.IsPrivate, 
-                    'Import should have set checkbox IsPrivate to false');                
-            }
-        }
     }
 
     /*********************************************************************************************************
@@ -402,13 +387,8 @@ public with sharing class BDI_Donations_TEST {
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.RequireNoMatch;
         diSettings.Run_Opportunity_Rollups_while_Processing__c = true;
 
-        BDI_MappingServiceHelpText fieldMapper = BDI_MappingServiceHelpText.getInstance();
+        BDI_MappingService fieldMapper = BDI_MappingServiceAdvanced.getInstance();
 
-        // manually insert checkbox field mapping
-        fieldMapper.addMappedField('Opportunity', 
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Membership_Origin__c'),
-                'IsPrivate');
-                
         BDI_DataImportService dataImportService = new BDI_DataImportService(false, fieldMapper);
 
         BDI_Donations donationImportHandler = new BDI_Donations(dataImportService);
@@ -420,28 +400,18 @@ public with sharing class BDI_Donations_TEST {
         Test.stopTest();
     
         // verify expected results
-        list<Opportunity> updatedOpps = [SELECT 
-                    Id, 
-                    Name, 
-                    Amount, 
-                    StageName, 
-                    IsWon, 
-                    IsPrivate, 
-                    IsClosed, 
-                    AccountId 
-            FROM Opportunity 
+        list<Opportunity> updatedOpps = [SELECT
+                    Id,
+                    Name,
+                    Amount,
+                    StageName,
+                    IsWon,
+                    IsClosed,
+                    AccountId
+            FROM Opportunity
             ORDER BY Id];
 
-        system.assertEquals(2, updatedOpps.size());
-        for(Opportunity opp: updatedOpps) {
-            if(opp.Id == opportunities[0].Id) {
-                System.assertEquals(true, opp.IsPrivate, 
-                    'Import should not have changed initial value of IsPrivate');
-            } else {
-                System.assertEquals(false, opp.IsPrivate, 
-                    'Import should not have changed initial value of IsPrivate');                
-            }
-        }
+        System.assertEquals(2, updatedOpps.size());
     }
 
     /*********************************************************************************************************

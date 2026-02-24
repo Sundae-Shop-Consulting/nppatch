@@ -873,10 +873,6 @@
         <label>&lt;b&gt;ADVERTENCIA: Tiene Donaciones recurrentes mejoradas activada. Si desactiva Totalizaciones personalizables, las totalizaciones de las donaciones recurrentes dejarán de funcionar.&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
-        <name>RD2_DisabledAdvancedMappingError</name>
-        <label>Debe activar Asignación avanzada antes de poder procesar donaciones recurrentes.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_DisabledRD2Error</name>
         <label>Debe activar Donaciones recurrentes mejoradas avanzada antes de poder procesar donaciones recurrentes.</label>
     </customLabels>
@@ -2243,10 +2239,6 @@ Para comprobar su configuración de asignaciones de CCG, vaya a Donaciones | Asi
         <label>Importación de datos de NPPatch</label>
     </customLabels>
     <customLabels>
-        <name>bdiDeploymentInProgress</name>
-        <label>Las asignaciones de texto de ayuda se están convirtiendo en estos momentos a Asignación avanzada.</label>
-    </customLabels>
-    <customLabels>
         <name>bdiDonation</name>
         <label>Donación</label>
     </customLabels>
@@ -2293,18 +2285,6 @@ Para comprobar su configuración de asignaciones de CCG, vaya a Donaciones | Asi
     <customLabels>
         <name>bdiErrorBatchNameRequired</name>
         <label>El Nombre de lote es un campo obligatorio.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDataImportCustomSettings</name>
-        <label>Se produjo un error al intentar actualizar la Configuración personalizada denominada Configuración de importación de datos.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailed</name>
-        <label>Se produjo un error al intentar convertir la asignación de Texto de ayuda y activar la Asignación avanzada.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailedLink</name>
-        <label>&lt;a href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;Puede ver el estado de implementación aquí.&lt;/a&gt;</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationLookupMatch</name>
@@ -2561,10 +2541,6 @@ Para comprobar su configuración de asignaciones de CCG, vaya a Donaciones | Asi
     <customLabels>
         <name>bdiOMUILongDeployment</name>
         <label>La modificación de este grupo de objetos está tardando más de lo esperado.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiMigrationLongDeployment</name>
-        <label>La conversión de asignaciones de Texto de ayuda a Asignación avanzada está tardando más de lo esperado.</label>
     </customLabels>
     <customLabels>
         <name>bdiOMUIGroupNameHelp</name>
@@ -3028,10 +3004,6 @@ Para comprobar su configuración de asignaciones de CCG, vaya a Donaciones | Asi
         <label>Los siguientes campos están incluidos en este lote, pero se eliminaron sus asignaciones de campos: {0}. Para solucionar esto, vaya a Asignación avanzada en Configuración de NPPatch y asigne los campos de nuevo.</label>
     </customLabels>
     <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>Los siguientes campos están incluidos en este lote, pero se eliminaron sus asignaciones de campos: {0}. Para solucionar esto, vaya al objeto Importación de datos de NPPatch y asigne los campos de nuevo empleando Texto de ayuda.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeWizardShowAdvancedOptions</name>
         <label>Mostrar opciones avanzadas</label>
     </customLabels>
@@ -3169,10 +3141,6 @@ Para comprobar su configuración de asignaciones de CCG, vaya a Donaciones | Asi
     <customLabels>
         <name>gePaymentProcessedWarning</name>
         <label>{0} procesó correctamente el pago. Al cambiar el donante, la fecha, el importe o el método de pago dará como resultado registros incoherentes para la misma transacción en {0} y NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping3</name>
-        <label>Encontrará la documentación completa de configuración de Asignación avanzada aquí.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
@@ -4752,10 +4720,6 @@ Si lo prefiere, puede desactivar Entrada de regalos y utilizar la herramienta En
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
         <label>Esta función requiere Asignación avanzada y Entrada de regalos. Actívelas en Configuración de NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>geServiceLevelErrorAdvancedMapping</name>
-        <label>Debe activar Asignación avanzada antes de poder activar Entrada de regalos.</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingHeader</name>
@@ -6883,24 +6847,8 @@ Si lo prefiere, puede desactivar Entrada de regalos y utilizar la herramienta En
         <label>Documentación</label>
     </customLabels>
     <customLabels>
-        <name>stgDeploymentCustomMetadataMappingEnabled</name>
-        <label>Asignación avanzada está activada.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHasInvalidHelpTextMappings</name>
-        <label>Asignación avanzada está activada, pero encontramos algunas asignaciones de Texto de ayuda no válidas que no se pudieron migrar. &lt;b&gt;Realice una captura de pantalla de la tabla que aparece a continuación; no se mostrará de nuevo después de que salga de esta página.&lt;/b&gt;</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHelpTextMappingEnabled</name>
-        <label>La asignación de Texto de ayuda está activada.</label>
-    </customLabels>
-    <customLabels>
         <name>stgDeploymentInProgress</name>
         <label>Implementación en curso. Puede salir de esta página. La página volverá a cargarse cuando finalice la implementación.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentTimedOut</name>
-        <label>La página agotó el tiempo de espera.</label>
     </customLabels>
     <customLabels>
         <name>stgDeploymentTryAgain</name>
@@ -6954,33 +6902,6 @@ La selección de No programar automáticamente trabajos de NPPatch predeterminad
     <customLabels>
         <name>stgHelpAccountModel</name>
         <label>El modelo de cuenta utilizado por NPPatch. Esta opción controla lo que ocurre cuando crea un contacto con un valor del campo Cuenta en blanco. ADVERTENCIA: No debe utilizar el tipo de registro Modelo de cuenta como el tipo de registro Cuenta predeterminado para ningún perfil. Al hacerlo pueden aparecer varios problemas con los datos.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping1</name>
-        <label>Cuando activa Asignación avanzada, convertimos sus asignaciones de campos de Texto de ayuda a Asignación avanzada. Una vez activada, podrá modificar las asignaciones y crear nuevas en esta página.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping2</name>
-        <label>Puede desactivar Asignación avanzada y volver a la asignación de Texto de ayuda, pero se perderán los campos realizados con Asignación avanzada.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping4</name>
-        <label>&lt;b&gt;¡Este mensaje no se mostrará si sale de esta página! Realice una captura de pantalla de esta página o copie la información de la tabla que aparece a continuación para seguir las asignaciones de Texto de ayuda que tiene que corregir. &lt;/b&gt;
-            &lt;br/&gt;
-            &lt;br/&gt;
-            No pudimos convertir algunas de sus asignaciones de Texto de ayuda existentes porque no son válidas. Recomendamos desactivar Asignación avanzada, corregir las asignaciones de Texto de ayuda no válidas y luego volver a activar Asignación avanzada. De forma alternativa, puede agregar estas asignaciones cuando configura Asignación avanzada en la pantalla siguiente, pero estas asignaciones adicionales volverán al Texto de ayuda no válido original si desactiva Asignación avanzada.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingInvalidHelpText</name>
-        <label>Asignaciones de Texto de ayuda no válidas</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>Campo de Importación de datos de NPPatch</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader2</name>
-        <label>Valor de Texto de ayuda actual</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAlloFiscalYearRollups</name>

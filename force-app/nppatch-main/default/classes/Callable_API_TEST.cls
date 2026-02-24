@@ -119,34 +119,14 @@ private with sharing class Callable_API_TEST {
     }
 
     @IsTest
-    private static void shouldCallEnableAdvancedMappingOnAction() {
+    private static void shouldReturnNullForEnableAdvancedMappingAction() {
         Callable_API callableApi = new Callable_API();
-        AdvancedMappingEnablementServiceMock mappingServiceMock = new AdvancedMappingEnablementServiceMock();
-        callableApi.advancedMappingEnablementService = stubFor(mappingServiceMock);
 
         Test.startTest();
-            callableApi.call(ADVANCED_MAPPING_ACTION, null);
+            Object result = callableApi.call(ADVANCED_MAPPING_ACTION, null);
         Test.stopTest();
 
-        System.assert(mappingServiceMock.enableAdvancedMappingCalled, 'The enable advanced mapping service method ' +
-                'should be called.');
-    }
-
-    @IsTest
-    private static void shouldNotCallEnableAdvancedMappingIfMappingIsEnabled() {
-        Callable_API callableApi = new Callable_API();
-        AdvancedMappingEnablementServiceMock mappingServiceMock = new
-                AdvancedMappingEnablementServiceMock();
-        mappingServiceMock.setEnabled();
-
-        callableApi.advancedMappingEnablementService = stubFor(mappingServiceMock);
-
-        Test.startTest();
-            callableApi.call(ADVANCED_MAPPING_ACTION, null);
-        Test.stopTest();
-
-        System.assert(!mappingServiceMock.enableAdvancedMappingCalled, 'The enable advanced mapping service method ' +
-                'should not be called.');
+        System.assertEquals(null, result, 'Advanced Mapping is always on; action should return null.');
     }
 
     @IsTest
@@ -258,11 +238,6 @@ private with sharing class Callable_API_TEST {
                 GiftEntryEnablementService.class, giftEntryEnablementServiceMock);
     }
 
-    private static AdvancedMappingEnablementService stubFor(AdvancedMappingEnablementServiceMock
-            advancedMappingControllerMock) {
-        return (AdvancedMappingEnablementService) Test.createStub(
-                AdvancedMappingEnablementService.class, advancedMappingControllerMock);
-    }
 
     private class GiftEntryEnablementServiceMock implements StubProvider {
         Boolean enableGiftEntryCalled = false;

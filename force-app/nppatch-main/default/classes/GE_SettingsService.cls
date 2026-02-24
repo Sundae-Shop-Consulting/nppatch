@@ -50,11 +50,9 @@ public with sharing class GE_SettingsService {
     }
 
     public Boolean isRecurringGiftsEnabled() {
-        AdvancedMappingEnablementService advancedMappingEnablementService = new AdvancedMappingEnablementService();
         GiftEntryEnablementService giftEntryEnablementService = new GiftEntryEnablementService();
 
-        return advancedMappingEnablementService.isEnabled()
-            && giftEntryEnablementService.isEnabled()
+        return giftEntryEnablementService.isEnabled()
             && canAccessRecurringDonationFields();
     }
 
