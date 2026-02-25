@@ -55,7 +55,6 @@ private with sharing class RD2_ValidationService_TEST {
     @isTest
     private static void shouldFailWhenNoDonorIsSpecified() {
         String errMessage = '';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder().build();
 
@@ -74,7 +73,6 @@ private with sharing class RD2_ValidationService_TEST {
     @isTest
     private static void shouldFailWhenNoContactIsSpecifiedForHHAccount() {
         String errMessage = '';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Account acc = UTIL_UnitTestData_TEST.buildHouseholdAccount();
         insert acc;
@@ -98,7 +96,6 @@ private with sharing class RD2_ValidationService_TEST {
     @isTest
     private static void shouldFailWhenContactDoesNotBelongToHHAccount() {
         String errMessage = '';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Account acc = UTIL_UnitTestData_TEST.buildHouseholdAccount();
         insert acc;
@@ -115,57 +112,6 @@ private with sharing class RD2_ValidationService_TEST {
         System.assert(errMessage.contains(System.Label.RD_ContactMustBelongToAccount));
     }
 
-    /***
-    * @description Verifies that donation insert fails when metadata not deployed
-    */
-    @isTest
-    private static void shouldFailWhenMetadataNotDeployedOnInsert() {
-        String errMessage = '';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-
-        Recurring_Donation__c rd = getRecurringDonationBuilder()
-            .withContact(getContact().Id)
-            .withInstallmentPeriodYearly()
-            .build();
-
-        RD2_EnablementService.isMetadataDeployed = false;
-
-        try {
-            insert rd;
-        } catch (Exception e) {
-            errMessage = e.getMessage();
-        }
-
-        System.assert(errMessage.contains(System.Label.RD2_EnablementIncomplete));
-    }
-
-    /***
-    * @description Verifies that donation update fails when metadata not deployed
-    */
-    @isTest
-    private static void shouldFailWhenMetadataNotDeployedOnUpdate() {
-        String errMessage = '';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-
-        Recurring_Donation__c rd = getRecurringDonationBuilder()
-            .withContact(getContact().Id)
-            .withInstallmentPeriodYearly()
-            .build();
-
-        insert rd;
-
-        RD2_EnablementService.isMetadataDeployed = false;
-        rd.StartDate__c = rd.StartDate__c.addDays(1);
-
-        try {
-            update rd;
-        } catch (Exception e) {
-            errMessage = e.getMessage();
-        }
-
-        System.assert(errMessage.contains(System.Label.RD2_EnablementIncomplete));
-    }
-
     /**
     * @description Should fail when there is an invalid contact for the account in the Recurring Donations list.
     */
@@ -173,7 +119,6 @@ private with sharing class RD2_ValidationService_TEST {
     private static void shouldFailOnlyInvalidRecurringDonations() {
 
         String errMessage ='';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         List<Contact> contacts = getContacts();
 
@@ -204,7 +149,6 @@ private with sharing class RD2_ValidationService_TEST {
     @isTest
     private static void shouldCreateRDSForHouseholdContact() {
         String errMessage = '';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
             .withContact(getContact().Id)
@@ -226,7 +170,6 @@ private with sharing class RD2_ValidationService_TEST {
     @isTest
     private static void shouldCreateRDSForOrganizationAccounts() {
         String errMessage = '';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Account acc = UTIL_UnitTestData_TEST.buildOrganizationAccount();
         insert acc;
@@ -250,7 +193,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldNotCreateActiveRDWhenAmountIsNotValid() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         TEST_RecurringDonationBuilder rdBuilder = getRecurringDonationBuilder()
             .withContact(getContact().Id);
@@ -280,7 +222,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldCreateRDForClosedRDWhenAmountIsNotValid() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         TEST_RecurringDonationBuilder rdBuilder = getRecurringDonationBuilder()
             .withContact(getContact().Id)
@@ -311,7 +252,6 @@ private with sharing class RD2_ValidationService_TEST {
     @isTest
     private static void shouldFailWhenDayOfMonthIsBlankForMonthlyInstallmentPeriod() {
         String errMessage = '';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
             .withContact(getContact().Id)
@@ -335,7 +275,6 @@ private with sharing class RD2_ValidationService_TEST {
     private static void shouldNotCreateRDWhenInstallmentPeriodIsNotValid() {
         String errMessage = '';
         String customInstallmentPeriod = 'Occasionally';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
             .withContact(getContact().Id)
@@ -360,7 +299,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldCreateRDWhenDayOfMonthIsValid() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         TEST_RecurringDonationBuilder rdBuilder = getRecurringDonationBuilder()
             .withContact(getContact().Id);
@@ -391,7 +329,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldBlockRdWithClosedOppUpdateWhenChangeHouseholdContact() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         List<Contact> householdContacts = getContacts();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
@@ -426,7 +363,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldBlockRdUpdateWithClosedOppWhenChangeDonorFromHouseholdToOrganization() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         List<Contact> householdContacts = getContacts();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
@@ -463,7 +399,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldUpdateRdWithoutClosedOppWhenDonorContactChange() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         List<Contact> householdContacts = getContacts();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
@@ -492,7 +427,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldUpdateRdWithClosedOppWhenOrganizationChange() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         List<Account> organizations = UTIL_UnitTestData_TEST.buildOrganizationAccounts(2);
         insert organizations;
@@ -525,7 +459,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldUpdateRdWithClosedOppWhenContactUnderOrganizationChange() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Contact householdContact = getContact();
 
         Account organization = UTIL_UnitTestData_TEST.buildOrganizationAccount();
@@ -560,7 +493,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldUpdateRdWhenAccountFromContactIsAdded() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         List<Contact> householdContacts = getContacts();
 
         Recurring_Donation__c oldRd = getRecurringDonationBuilder()
@@ -595,7 +527,6 @@ private with sharing class RD2_ValidationService_TEST {
     @isTest
     private static void shouldFailWhenFixedLengthWithNoInstallments() {
         String errMessage = '';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilderFixed()
             .withContact(getContact().Id)
@@ -617,7 +548,6 @@ private with sharing class RD2_ValidationService_TEST {
     @isTest
     private static void shouldFailWhenOpenWithInstallmentsGreaterThanOne() {
         String errMessage = '';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
             .withContact(getContact().Id)
@@ -639,7 +569,6 @@ private with sharing class RD2_ValidationService_TEST {
     @isTest
     private static void shouldFailWhenFixedLengthInstallmentsNegative() {
         String errMessage = '';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilderFixed()
             .withContact(getContact().Id)
@@ -661,7 +590,6 @@ private with sharing class RD2_ValidationService_TEST {
     @isTest
     private static void shouldFailWhenFixedLengthPaidInstallmentsGreaterThanPlanned() {
         String errMessage = '';
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilderFixed()
             .withContact(getContact().Id)
@@ -682,7 +610,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldBlockRdUpdateWhenInstallmentFrequencyChangesToNull() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
             .withContact(getContact().Id)
@@ -712,7 +639,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldBlockRDUpdateWhenInstallmentFrequencyIsOutOfRange() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         List<Recurring_Donation__c> rds = getRecurringDonationBuilder()
             .withContact(getContact().Id)
@@ -748,7 +674,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldUpdateRDWhenInstallmentFrequencyIsWithinRange() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
             .withContact(getContact().Id)
@@ -773,7 +698,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldCreateRDWhenStatusIsMapped() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         RD2_StatusMapper_TEST.Stub mapperStub = new RD2_StatusMapper_TEST.Stub()
             .withDefaultMapping();
@@ -806,7 +730,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldFailRDInsertWhenStatusIsNotMapped() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         RD2_StatusMapper_TEST.Stub mapperStub = new RD2_StatusMapper_TEST.Stub()
             .withMapping(RD2_Constants.STATUS_ACTIVE, RD2_Constants.STATUS_ACTIVE);
@@ -840,7 +763,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldUpdateRDWhenStatusIsMapped() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         RD2_StatusMapper_TEST.Stub mapperStub = new RD2_StatusMapper_TEST.Stub()
             .withDefaultMapping();
@@ -876,7 +798,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldFailRDUpdateWhenStatusIsNotMapped() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         RD2_StatusMapper_TEST.Stub mapperStub = new RD2_StatusMapper_TEST.Stub()
             .withMapping(RD2_Constants.STATUS_ACTIVE, RD2_Constants.STATUS_ACTIVE);
@@ -913,7 +834,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldFailRDUpdateWhenEndDateIsBeforeOppClosedWonDate() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Date rdEndDate = Date.today().addDays(20);
         RD2_ScheduleService.currentDate = rdEndDate;
@@ -949,7 +869,6 @@ private with sharing class RD2_ValidationService_TEST {
     */
     @isTest
     private static void shouldFailFixedRDUpdateWhenEndDateIsInTheFuture() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Date today = START_DATE;
         RD2_ScheduleService.currentDate = today;

@@ -354,17 +354,7 @@ public without sharing class UTIL_BatchJobService {
                 return null; //the summary is available for the completed batch only
             }
 
-            JobSummary summary;
-            switch on className {
-                when 'RD2_DataMigration_BATCH', 'RD2_DataMigrationDryRun_BATCH' {
-                    summary = new RD2_DataMigrationEnablement.BatchJob().getSummary(batchId, className);
-                }
-            }
-            if (summary != null && numberOfErrors == 0 && summary.failed > 0) {
-                numberOfErrors = summary.failed;
-            }
-
-            return summary;
+            return null;
         }
 
         /***

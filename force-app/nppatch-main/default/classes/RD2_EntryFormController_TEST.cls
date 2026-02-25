@@ -66,7 +66,6 @@ private with sharing class RD2_EntryFormController_TEST {
         // Assign admin permission set to ensure CRUD/FLS access
         UTIL_TestPermissions.assignAdminPermissionSet();
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact c = UTIL_UnitTestData_TEST.getContact();
         insert c;
@@ -137,7 +136,6 @@ private with sharing class RD2_EntryFormController_TEST {
     @IsTest
     private static void shouldReturnAccountDonorType() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Account a = UTIL_UnitTestData_TEST.buildOrganizationAccount();
         insert a;
@@ -170,7 +168,6 @@ private with sharing class RD2_EntryFormController_TEST {
         //skip the test if Advancement is installed
         if(ADV_PackageInfo_SVC.useAdv()) return;
         
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
@@ -249,7 +246,6 @@ private with sharing class RD2_EntryFormController_TEST {
     @IsTest
     private static void canSaveRecurringDonation() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Contact donorContact = getContact();
 
         RD2_SaveRequest req = new RD2_SaveRequest();
@@ -273,7 +269,6 @@ private with sharing class RD2_EntryFormController_TEST {
 
     @IsTest
     private static void canSaveRDWithCustomFieldsNotCreateable() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Contact donorContact = getContact();
 
         UTIL_PermissionsMock utilPermissionsMockInstance = new UTIL_PermissionsMock().canUpdate();
@@ -402,7 +397,6 @@ private with sharing class RD2_EntryFormController_TEST {
     @IsTest
     private static void saveResponseIncludesErrorInformation() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Contact donorContact = getContact();
 
         RD2_SaveRequest req = new RD2_SaveRequest();

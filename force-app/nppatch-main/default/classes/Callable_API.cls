@@ -44,28 +44,6 @@ global with sharing class Callable_API implements System.Callable {
 
 
     @TestVisible
-    private AdvancedMappingEnablementService advancedMappingEnablementService {
-        get {
-            if (advancedMappingEnablementService == null) {
-                advancedMappingEnablementService = new AdvancedMappingEnablementService();
-            }
-            return advancedMappingEnablementService;
-        }
-        set;
-    }
-
-    @TestVisible
-    private GiftEntryEnablementService giftEntryEnablementService {
-        get {
-            if (giftEntryEnablementService == null) {
-                giftEntryEnablementService = new GiftEntryEnablementService();
-            }
-            return giftEntryEnablementService;
-        }
-        set;
-    }
-
-    @TestVisible
     PMT_RefundService refundService {
         get {
             if (refundService == null) {
@@ -128,9 +106,6 @@ global with sharing class Callable_API implements System.Callable {
                 // parameter service depending on which action was invoked
                 return CallableDispatchService_ERR.getInstanceOf(paramService).dispatch();
 
-            } when 'rd2.executedatamigration' {
-                return RD2_EnablementDelegate_CTRL.callableApiRunMigration();
-
             } when 'rd2.pause' {
                 Map<Id, RD2_ApiService.PauseObject> pauseObjectsById = paramService
                     .withRequiredParamCheck()
@@ -155,11 +130,6 @@ global with sharing class Callable_API implements System.Callable {
                     .getSetId(CallableApiParameters.PARAM_RECORD_IDS);
 
                 return new RD2_ApiService().queryInstallments(startDate, endDate, rdIds);
-
-            } when 'settings.enableenhancedrecurringdonations' {
-                Boolean scheduleJobsWhenComplete = paramService.getBoolean(CallableApiParameters.PARAM_SCHEDULE_JOBS, true);
-                RD2_EnablementDelegate_CTRL.callableApiEnableEnhancement(scheduleJobsWhenComplete);
-                return null;
 
             } when 'allo.processoppsandpmts' {
                 // This method is to be used only by Salesforce.org apps and is subject to change at any time. Do NOT call this method.
@@ -188,32 +158,18 @@ global with sharing class Callable_API implements System.Callable {
                 
                 return null;
             } 
-            when 'settings.enablecustomizablerollups' {
-                Boolean scheduleJobsWhenComplete = paramService.getBoolean(CallableApiParameters.PARAM_SCHEDULE_JOBS, true);
-                return new CRLP_EnablementService().enable(scheduleJobsWhenComplete);
-
-            } when 'apex.schedulejob' {
+            when 'apex.schedulejob' {
                 // This method schedules the specified Schedulable class using the specified job name & cron expression.
                 // It should only be used for Schedulable classes that are in the NPSP Managed Package.
                 // It returns the Job ID of the Scheduled Job.
                 return CallableApiApexDelegationService.handleApexScheduleJob(params);
 
             } when 'settings.enableadvancedmapping' {
-                if (advancedMappingEnablementService.isEnabled()) {
-                    return null;
-                }
-
-                advancedMappingEnablementService.enable();
-
+                // Advanced Mapping is always on; no-op for backward compatibility
                 return null;
 
             } when 'settings.enablegiftentry' {
-                if (giftEntryEnablementService.isEnabled()) {
-                    return null;
-                }
-
-                giftEntryEnablementService.enable();
-
+                // Gift Entry is always enabled; no-op for backward compatibility
                 return null;
             }
             when else {

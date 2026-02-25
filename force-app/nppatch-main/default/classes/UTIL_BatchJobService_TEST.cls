@@ -219,57 +219,6 @@ public with sharing class UTIL_BatchJobService_TEST {
         System.assertEquals(completedTime, summary.completedDate, 'Completed Date should match');
     }
 
-    /**
-     * @description Verifies Enhanced Recurring Donations migration batch job summary is returned
-     */
-    @IsTest
-    private static void shouldReturnEnhancedRDMigrationSummary() {
-        setRDSettings();
-
-        insert getLegacyRecurringDonationBuilder(getContact().Id).build();
-
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-
-        Test.startTest();
-        Id jobId = Database.executeBatch(new RD2_DataMigration_BATCH());
-        Test.stopTest();
-
-        assertBatchJobSummary(jobId, 'RD2_DataMigration_BATCH');
-    }
-
-    /**
-     * @description Verifies Enhanced Recurring Donations dry run migration batch job summary is returned
-     */
-    @IsTest
-    private static void shouldReturnEnhancedRDDryRunMigrationSummary() {
-        setRDSettings();
-
-        insert getLegacyRecurringDonationBuilder(getContact().Id).build();
-
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-
-        Test.startTest();
-        Id jobId = Database.executeBatch(new RD2_DataMigrationDryRun_BATCH());
-        Test.stopTest();
-
-        assertBatchJobSummary(jobId, 'RD2_DataMigrationDryRun_BATCH');
-    }
-
-    /***
-    * @description Asserts batch job summary
-    * @param className Class Name
-    * @return void
-    */
-    private static void assertBatchJobSummary(Id jobId, String className) {
-        UTIL_BatchJobService.BatchJob batchJob = getBatchJob(className);
-        System.assertNotEquals(null, batchJob, 'Batch Job should be returned');
-        System.assertNotEquals(null, batchJob.summary, 'Batch Job summary should be returned');
-
-        System.assertEquals(jobId, batchJob.summary.batchId, 'Batch Id should match: ' + batchJob.summary);
-        System.assertEquals(1, batchJob.summary.processed, 'Total Records Processed should match: ' + batchJob.summary);
-        System.assertEquals(0, batchJob.summary.failed, 'Total Records Failed should match: ' + batchJob.summary);
-        System.assertNotEquals(null, batchJob.summary.completedDate, 'The completed time should be stored');
-    }
 
 
     /***
@@ -494,15 +443,15 @@ public with sharing class UTIL_BatchJobService_TEST {
     }
 
     /**
-     * @description Instantiate a legacy recurring donation for a specific ContactId
+     * @description Instantiate a recurring donation for a specific ContactId
      * @param contactId
      * @return TEST_RecurringDonationBuilder New Recurring Donation builder
      */
-    private static TEST_RecurringDonationBuilder getLegacyRecurringDonationBuilder(Id contactId) {
-        return TEST_RecurringDonationBuilder.constructLegacyBuilder()
+    private static TEST_RecurringDonationBuilder getRecurringDonationBuilder(Id contactId) {
+        return TEST_RecurringDonationBuilder.constructEnhancedBuilder()
+            .withDefaultValues()
             .withId(null)
             .withDateEstablished(Date.today().addMonths(-1))
-            .withOpenEndedStatusOpen()
             .withContact(contactId)
             .withAmount(100)
             .withInstallmentPeriodMonthly()

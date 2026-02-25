@@ -433,7 +433,7 @@ public inherited sharing class RD2_RecurringDonation {
     * @return Boolean
     */
     public Boolean isFixedLength() {
-        return RD2_EnablementService.isFixedLength(rd);
+        return rd.RecurringType__c == RD2_Constants.RECURRING_TYPE_FIXED;
     }
 
     /**

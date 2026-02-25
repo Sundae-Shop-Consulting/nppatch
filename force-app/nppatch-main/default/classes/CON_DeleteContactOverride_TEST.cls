@@ -293,6 +293,8 @@ private class CON_DeleteContactOverride_TEST {
     * @description Attempts to delete contact with closed/won and org opps, verifies correct exception is thrown.
     */
     static testMethod void testContactDeleteExceptionWithOverride() {
+        UTIL_UnitTestData_TEST.disableCustomizableRollupTriggers();
+
         //use a non-system account for the contact's account, so that the delete override doesn't redirect us to delete the account
         Account account = new Account(Name = 'TEST_ACCOUNT');
         insert account;
@@ -370,6 +372,8 @@ private class CON_DeleteContactOverride_TEST {
     * verifies Recurring Donation is deleted.
     */
     static testMethod void testContactDeleteWithOverride() {
+        UTIL_UnitTestData_TEST.disableCustomizableRollupTriggers();
+
         //use a non-system account for the contact's account, so that the delete override doesn't redirect us to delete the account
         Account account = new Account(Name = 'TEST_ACCOUNT');
         insert account;
@@ -464,6 +468,7 @@ private class CON_DeleteContactOverride_TEST {
                 .build(),
             getRecurringDonationBuilder()
                 .withAccount(account.Id)
+                .withContact(contact2.Id)
                 .build()
         };
         insert recurringDonations;
@@ -480,10 +485,16 @@ private class CON_DeleteContactOverride_TEST {
         allocations.addAll(CDL_CascadeDeleteLookups_TEST.buildOpportunityAllocations(generalAccountingUnit, opportunities));
         insert allocations;
 
+        // Disable TDTM to avoid record locking during friend Contact and
+        // Relationship creation. Enhanced RD processing above holds locks on
+        // related Account/Contact records, and the Household Account auto-creation
+        // triggered by the friend Contact insert conflicts with those locks.
+        TDTM_TriggerHandler.disableTDTM = true;
         List<Relationship__c> relationships = CDL_CascadeDeleteLookups_TEST.buildRelationships(new List<Contact>{
             contact1
         });
         insert relationships;
+        TDTM_TriggerHandler.disableTDTM = false;
 
         Test.setCurrentPage(Page.CON_DeleteContactOverride);
         ApexPages.currentPage().getParameters().put('Id', contact1.Id);
@@ -653,12 +664,14 @@ private class CON_DeleteContactOverride_TEST {
     * @return Recurring_Donation__c
     */
     private static TEST_RecurringDonationBuilder getRecurringDonationBuilder() {
-        return new TEST_RecurringDonationBuilder()
+        return TEST_RecurringDonationBuilder.constructEnhancedBuilder()
+            .withDefaultValues()
             .withAmount(2)
+            .withRecurringTypeFixed()
             .withPlannedInstallments(2)
             .withInstallmentPeriodYearly()
-            .withDateEstablished()
-            .withScheduleTypeMultiplyValue();
+            .withInstallmentFrequency(1)
+            .withDateEstablished();
     }
 
     private class CON_DeleteContactOverrideStub implements System.StubProvider {

@@ -33,30 +33,13 @@
 * @description Enablement Service for the Gift Entry feature
 */
 public with sharing class GiftEntryEnablementService {
-    @TestVisible
-    private AdvancedMappingEnablementService advancedMappingEnablementService {
-        get {
-            if (advancedMappingEnablementService == null) {
-                advancedMappingEnablementService = new AdvancedMappingEnablementService();
-            }
-            return advancedMappingEnablementService;
-        }
-        set;
-    }
 
     public Boolean isEnabled() {
-        return UTIL_CustomSettingsFacade.getGiftEntrySettings().Enable_Gift_Entry__c;
+        return true;
     }
 
     public void enable() {
-        if (!advancedMappingEnablementService.isEnabled()) {
-            throw new GiftEntryEnablementException(System.Label.geServiceLevelErrorAdvancedMapping);
-        }
-
-        Gift_Entry_Settings__c giftEntrySettings = UTIL_CustomSettingsFacade.getGiftEntrySettings();
-        giftEntrySettings.Enable_Gift_Entry__c = true;
-
-        upsert giftEntrySettings;
+        // Gift Entry is always enabled; no-op for backward compatibility
     }
 
     public class GiftEntryEnablementException extends Exception {}

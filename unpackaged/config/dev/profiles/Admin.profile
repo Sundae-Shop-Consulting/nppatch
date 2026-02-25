@@ -87,14 +87,6 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>%%%NAMESPACE%%%Batch_Data_Entry</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>%%%NAMESPACE%%%Batch_Gift_Entry</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
         <tab>%%%NAMESPACE%%%Contact_Merge</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>

@@ -49,10 +49,6 @@ public inherited sharing class RD2_ApiService {
     public String querySchedules(Set<Id> rdIds) {
         Map<Id, List<Schedule>> schedulesByRdId = new Map<Id, List<Schedule>>();
 
-        if (!RD2_EnablementService.isRecurringDonations2Enabled) {
-            return JSON.serialize(schedulesByRdId);
-        }
-
         String soql = getRecurringDonationQuery();
         for (Recurring_Donation__c rd : Database.query(soql)) {
 
@@ -184,10 +180,6 @@ public inherited sharing class RD2_ApiService {
     public String queryInstallments(Date startDate, Date endDate, Set<Id> rdIds) {
         Map<Id, List<Installment>> installmentsByRdId = new Map<Id, List<Installment>>();
 
-        if (!RD2_EnablementService.isRecurringDonations2Enabled) {
-            return JSON.serialize(installmentsByRdId);
-        }
-
         if (startDate == null) {
             startDate = RD2_ScheduleService.currentDate;
         }
@@ -269,10 +261,7 @@ public inherited sharing class RD2_ApiService {
     private void validateEnvironment(Integer recordsCount) {
         String errorMessage;
 
-        if (!RD2_EnablementService.isRecurringDonations2Enabled) {
-            errorMessage = System.Label.RD2_EnhancedRecurringDonationsNotEnabled;
-
-        } else if (recordsCount > MAXIMUM_RECORDS_TO_PROCESS) {
+        if (recordsCount > MAXIMUM_RECORDS_TO_PROCESS) {
            errorMessage = String.format(System.Label.CallableApiMaximumRecordsExceeded,
             new List<String> { String.valueOf(MAXIMUM_RECORDS_TO_PROCESS) });
         }

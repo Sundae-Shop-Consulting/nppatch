@@ -165,15 +165,6 @@ public class CRLP_Rollup_SVC {
     }
 
     /**
-    * @description Returns true if the new Customizable Rollups Engine is enabled (i.e., Do Not Run Legacy Rollups)
-    */
-    public static Boolean isCustomizableRollupEngineEnabled {
-        get {
-            return (customizableRollupSettings.Customizable_Rollups_Enabled__c == true);
-        } private set;
-    }
-
-    /**
      * @description Get the setting that defines the max number of attached Opportunities an Account can
      * have before it's considered an LDV data scenario.
      * @return Integer value

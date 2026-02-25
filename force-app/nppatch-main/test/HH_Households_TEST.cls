@@ -703,9 +703,8 @@ public with sharing class HH_Households_TEST {
         ContactAdapter.rollupContactsAndHouseholdsAfterMerge(new Set<Id>{c1.Id});
         Test.stopTest();
 
-        c1 = [SELECT TotalOppAmount__c, Household__r.TotalOppAmount__c FROM Contact WHERE Id = :c1.Id];
+        c1 = [SELECT TotalOppAmount__c FROM Contact WHERE Id = :c1.Id];
         System.assertEquals(100, c1.TotalOppAmount__c);
-        System.assertEquals(100, c1.Household__r.TotalOppAmount__c);
     }
 
     /*********************************************************************************************************

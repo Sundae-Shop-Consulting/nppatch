@@ -394,8 +394,6 @@ public with sharing class CON_ContactMergeTDTM_TEST2 {
 
         insert listOpp;
 
-        // Re-enable Legacy Rollup Triggers
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'RLLP_OppRollup_TDTM', true);
         TDTM_ProcessControl.toggleTriggerState('Task', 'EP_TaskRollup_TDTM', true);
 
         // Re-enable CRLP Rollup Triggers

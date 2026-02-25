@@ -283,29 +283,29 @@ private class TDTM_DMLgt200_TEST {
         UTIL_CustomSettingsFacade.getRecurringDonationsSettingsForTest(
             new Recurring_Donations_Settings__c(
                 Opportunity_Forecast_Months__c = 6,
-                Maximum_Donations__c = 2,
-                Open_Opportunity_Behavior__c = RD_RecurringDonations.RecurringDonationCloseOptions.Mark_Opportunities_Closed_Lost.name()
+                Open_Opportunity_Behavior__c = RD2_Constants.CloseActions.Mark_Opportunities_Closed_Lost.name()
             ));
 
         Test.startTest();
 
-        // Insert the RecurringDonation records
-        List<Recurring_Donation__c> rds = new TEST_RecurringDonationBuilder()
+        // Insert Enhanced Recurring Donation records (Fixed Length with 2 planned installments)
+        List<Recurring_Donation__c> rds = TEST_RecurringDonationBuilder.constructEnhancedBuilder()
+            .withDefaultValues()
+            .withRecurringTypeFixed()
             .withPlannedInstallments(2)
             .withContact(c.Id)
             .withAmount(100)
             .withInstallmentPeriodMonthly()
             .withDateEstablished(Date.newInstance(1970,6,12))
-            .withScheduleTypeMultiplyValue()
-            .withOpenEndedStatusNone()
             .build(insertCnt);
 
         Database.insert(rds);
         Test.stopTest();
 
-        System.assertEquals(insertCnt*2, [SELECT Count() FROM Opportunity
-            WHERE Recurring_Donation__c IN :rds],
-            'There should be exactly ' + (insertCnt*2).format() + ' Installment Opps');
+        // Enhanced RDs create the first installment opportunity synchronously on insert
+        Integer oppCount = [SELECT Count() FROM Opportunity WHERE Recurring_Donation__c IN :rds];
+        System.assert(oppCount >= insertCnt,
+            'There should be at least ' + insertCnt.format() + ' Installment Opps, found ' + oppCount);
     }
 
     /*********************************************************************************************************
@@ -403,61 +403,6 @@ private class TDTM_DMLgt200_TEST {
         }
     }
 
-    /**
-     * @description Tests issue #1960 where changing the number of OpportunityForecastMonths and then executing the
-     * RD batch job does not properly create all of the necessary default allocations records.
-     *   NOTE: THIS WILL FAIL IN AN ORG WITHOUT THE STATIC FLAG CHANGES
-     */
-    @isTest
-    static void testAllocationsCreatedForManyOpenEndedRecurringDonations() {
-
-        UTIL_Debug.disableDebugLogging();     // Override debug logging for this test because it's an expensive operation
-        UTIL_UnitTestData_TEST.disableAddressTriggers();
-
-        Contact c = UTIL_UnitTestData_TEST.getContact();
-        insert c;
-
-        Recurring_Donations_Settings__c rdSettings = UTIL_CustomSettingsFacade.getRecurringDonationsSettingsForTest(
-            new Recurring_Donations_Settings__c(
-                Opportunity_Forecast_Months__c = 1,
-                Maximum_Donations__c = 12,
-                Open_Opportunity_Behavior__c = RD_RecurringDonations.RecurringDonationCloseOptions.Mark_Opportunities_Closed_Lost.name()
-            ));
-
-        General_Accounting_Unit__c defaultGau = UTIL_UnitTestData_TEST.createGAUs(1)[0];
-        insert defaultGau;
-
-        UTIL_CustomSettingsFacade.getAllocationsSettingsForTests(new Allocations_Settings__c(
-            Default_Allocations_Enabled__c = true, Default__c = defaultGau.Id));
-
-        List<Recurring_Donation__c> rds = new TEST_RecurringDonationBuilder()
-            .withContact(c.Id)
-            .withAmount(100.0)
-            .withInstallmentPeriodMonthly()
-            .withOpenEndedStatusOpen()
-            .build(20);
-
-        insert rds;
-
-        Test.startTest();
-
-        rdSettings.Opportunity_Forecast_Months__c = 12;
-        STG_PanelRDBatch_CTRL rdBatch = new STG_PanelRDBatch_CTRL();
-        rdBatch.runBatch();
-
-        Test.stopTest();
-
-        List<Opportunity> createdOpportunities = [SELECT Id FROM Opportunity WHERE Recurring_Donation__c IN :rds];
-
-        // Validate that there are 240 (12*20) Opps, Payments and Allocations created by the batch job.
-        System.assertEquals(240, createdOpportunities.size(), 'There should be 240 generated Installment Opportunities created');
-
-        System.assertEquals(240, [SELECT Count() FROM OppPayment__c WHERE Opportunity__c IN :createdOpportunities],
-            'There should be 240 generated payment records');
-
-        System.assertEquals(240, [SELECT Count() FROM Allocation__c WHERE Opportunity__c IN :createdOpportunities],
-            'There should be 240 generated default allocations records');
-    }
 
     //////////////////////////////////////////////////////////////////////////
     // Helper Methods

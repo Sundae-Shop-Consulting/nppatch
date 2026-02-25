@@ -873,10 +873,6 @@
         <label>&lt;b&gt;WARNUNG: Sie haben &quot;Erweiterte wiederkehrende Spenden&quot; aktiviert. Wenn Sie &quot;Anpassbare Rollups&quot; deaktivieren, funktionieren Rollups für wiederkehrende Spenden nicht mehr.&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
-        <name>RD2_DisabledAdvancedMappingError</name>
-        <label>Sie müssen die erweiterte Zuordnung aktivieren, damit Sie wiederkehrende Spenden verarbeiten können.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_DisabledRD2Error</name>
         <label>Sie müssen Erweiterte wiederkehrende Spenden aktivieren, damit Sie wiederkehrende Spenden verarbeiten können.</label>
     </customLabels>
@@ -2099,22 +2095,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
         <label>nicht zugewiesen</label>
     </customLabels>
     <customLabels>
-        <name>bdeRetirementBlockerHeader</name>
-        <label>Die Batch-Dateneingabe wird nicht unterstützt</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementBlockerMessage</name>
-        <label>Seit dem 1. Oktober 2020 wird die Batch-Dateneingabe nicht mehr unterstützt. Die meisten Funktionen wurden durch neuere Features in NPPatch ersetzt. Wenn sich bei Ihnen noch Batches in Bearbeitung befinden, können Sie auf die entsprechenden Datensätze weiterhin zugreifen, Sie können sie aber nicht mehr mithilfe der Batch-Dateneingabe verarbeiten. Wenden Sie sich an den Support, wenn Sie auf in Bearbeitung befindliche Datensätze zugreifen müssen. &lt;br/&gt; Sie sollten sich Spendeneintrag als Alternative zur Batch-Dateneingabe ansehen.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningBody</name>
-        <label>Am 1. Oktober 2020 wird die Batch-Dateneingabe deaktiviert und funktioniert dann in NPPatch nicht mehr. Wenn sich zu diesem Zeitpunkt bei Ihnen noch Batches in Bearbeitung befinden, können Sie auf die entsprechenden Datensätze weiterhin zugreifen, Sie können sie aber nicht mehr mithilfe der Batch-Dateneingabe verarbeiten. Um einen reibungslosen Übergang zu gewährleisten, aktivieren und verwenden Sie den Spendeneintrag vor dem 1. Oktober.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningHeader</name>
-        <label>Einstellung der Batch-Dateneingabe</label>
-    </customLabels>
-    <customLabels>
         <name>bdiAPIBatchError</name>
         <label>Wir konnten die Datenimportdatensätze aufgrund der folgenden Fehler nicht verarbeiten:</label>
     </customLabels>
@@ -2259,10 +2239,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
         <label>NPPatch-Datenimport</label>
     </customLabels>
     <customLabels>
-        <name>bdiDeploymentInProgress</name>
-        <label>Hilfetext-Zuordnungen werden zurzeit in Erweiterte Zuordnung konvertiert.</label>
-    </customLabels>
-    <customLabels>
         <name>bdiDonation</name>
         <label>Spende</label>
     </customLabels>
@@ -2309,18 +2285,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     <customLabels>
         <name>bdiErrorBatchNameRequired</name>
         <label>&quot;Batch-Name&quot; ist ein Pflichtfeld.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDataImportCustomSettings</name>
-        <label>Bei dem Versuch, die benutzerdefinierten Einstellungen mit der Bezeichnung Datenimporteinstellungen zu aktualisieren, ist ein Fehler aufgetreten.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailed</name>
-        <label>Fehler beim Versuch der Konvertierung von Hilfetext-Zuordnung und der Aktivierung von Erweiterter Zuordnung.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailedLink</name>
-        <label>&lt;a href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;Sie können den Bereitstellungsstatus hier anzeigen.&lt;/a&gt;</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationLookupMatch</name>
@@ -2579,10 +2543,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
         <label>Das Ändern dieser Objektgruppe dauert länger als erwartet.</label>
     </customLabels>
     <customLabels>
-        <name>bdiMigrationLongDeployment</name>
-        <label>Das Konvertieren von Hilfetext-Zuordnungen in Erweiterte Zuordnung dauert länger als erwartet.</label>
-    </customLabels>
-    <customLabels>
         <name>bdiOMUIGroupNameHelp</name>
         <label>Der Name dieser Objektgruppe. Eine gängige Benennungskonvention ist [Objektname] Gruppe.</label>
     </customLabels>
@@ -2776,188 +2736,12 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
         <label>Anzeigen</label>
     </customLabels>
     <customLabels>
-        <name>bgeBatchSelectedFields</name>
-        <label>Ausgewählte Felder</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchAvailableFields</name>
-        <label>Verfügbare Felder</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchBatchProcessSizeHelp</name>
-        <label>Die Anzahl der jeweils in jedem Batch zu verarbeitenden Datensätze.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationDateRangeHelp</name>
-        <label>Geben Sie die Anzahl an Tagen ab dem Spendendatum ein, die auf der Suche nach einer übereinstimmenden Opportunity oder Zahlung berücksichtigt werden sollen. NPPatch wählt die übereinstimmende Opportunity oder Zahlung aus, deren Datum in die Anzahl an Tagen fällt UND am nächsten am Spendendatum liegt.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingBehaviorHelp</name>
-        <label>Definiert, wie NPPatch Spendenverdopplungen handhaben sollte.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingClassHelp</name>
-        <label>Der Entwicklername einer Apex-Klasse, die die BDI_IMatching-Schnittstelle für Spenden implementiert. Ohne Angabe nimmt NPPatch die Verdopplung vor.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingRuleHelp</name>
-        <label>Sie können den Abgleich gegen alle Opportunity- und Zahlungsfelder vornehmen, die Sie in diesen Batch einschließen möchten.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonorLookupInfo</name>
-        <label>Wählen Sie die Felder aus, die Sie zum Eingeben von Spenden in diesem Batch verwenden möchten. Es werden immer der Spendertyp und ein Account- oder Kontakt-Nachschlagefeld angezeigt. Angezeigt werden nur Felder, auf die Sie Zugriff nehmen können.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchErrorRequiredFields</name>
-        <label>Die folgenden Felder sind Pflichtfelder, da andere Felder aus ihrem Objekt ausgewählt wurden. Wählen Sie sie aus, bevor Sie fortfahren.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchInfoWizard</name>
-        <label>Batch-Informationen eingeben</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchOverviewWizard</name>
-        <label>Batch-Informationen eingeben</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchPostProcessClassHelp</name>
-        <label>Der Entwicklername einer Apex-Klasse, der die BDI_IPostProcess-Oberfläche für NPPatch-Batch-Datensätze implementiert.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchProcessUsingScheduledJobHelp</name>
-        <label>Wenn dieses Kontrollkästchen aktiviert ist, wird der Batch automatisch basierend auf dem Zeitplan für den verbundenen Auftrag verarbeitet.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchRunOpportunityRollupsWhileProcessingHelp</name>
-        <label>Wenn dieses Kontrollkästchen aktiviert ist, berechnet NPPatch die Spender-Rollups, wenn Spenden verarbeitet werden. Ist es nicht aktiviert, werden die Spender-Rollups während des nächtlichen standardmäßig geplanten Auftrags berechnet. Beachten Sie, dass die Verarbeitung dieses Batches durch Auswahl dieses Kontrollkästchens verlangsamt werden kann.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchOverview</name>
-        <label>Batch-Informationen</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSelectFields</name>
-        <label>Felder auswählen</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSetBatchOptions</name>
-        <label>Batch-Optionen festlegen</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSetFieldOptions</name>
-        <label>Feldoptionen festlegen</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeCopyBatchSetupButton</name>
-        <label>Batch-Setup kopieren</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeCopyBatchSetupBatchNameAppend</name>
-        <label>KOPIEREN</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeDryRunComplete</name>
-        <label>Batch-Testausführung abgeschlossen</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeDonationSelectorHelp</name>
-        <label>Auf diesem Bildschirm werden nicht ausgeführte Zahlungen angezeigt und offene Opportunities ohne nicht ausgeführte Zahlungen. </label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchFieldOptionsWarning</name>
-        <label>WARNUNG: In diesem Batch wurden Datensätze gespeichert. Änderungen, die Sie vornehmen, haben keine Auswirkung auf vorhandene Datensätze.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchFieldSelectionWarning</name>
-        <label>WARNUNG: In diesem Batch wurden Datensätze gespeichert. Änderungen, die Sie vornehmen, haben keine Auswirkung auf vorhandene Datensätze. Wenn Sie Felder entfernen, werden diese Felder nicht mehr auf dem Spendeneintragsbildschirm angezeigt, aber die Daten werden in vorhandenen Datensätzen nicht aus diesen Feldern gelöscht. Daher wird empfohlen, keine Felder zu entfernen.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchOptionsWarning</name>
-        <label>WARNUNG: In diesem Batch wurden Datensätze gespeichert. Änderungen, die Sie vornehmen, haben keine Auswirkung auf vorhandene Datensätze. Wir werden nur versuchen, vorhandene Datensätze mithilfe aktualisierter Spendenverdopplungs-Regeleinstellungen abzugleichen, wenn diese Datensätze bearbeitet werden.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFLSError</name>
-        <label>Sie verfügen nicht über die erforderlichen Feldberechtigungen. Wenden Sie sich an Ihren Systemadministrator und fragen Sie ihn nach den erforderlichen Berechtigungen.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormMatchingModalText</name>
-        <label>Wählen Sie den Datensatz aus, den Sie aktualisieren möchten.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNewDonationHelptext</name>
-        <label>Sie erstellen gerade eine neue Opportunity.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNewPaymentHelptext</name>
-        <label>Sie wenden gerade eine neue Zahlung auf die Opportunity an.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNoneLink</name>
-        <label>Erstellen Sie alternativ eine neue Opportunity.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedOpportunityApplyNewPayment</name>
-        <label>Neue Zahlung wird angewendet...</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedOpportunity</name>
-        <label>Diese Opportunity wird aktualisiert...</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedPayment</name>
-        <label>Ausgewählte Zahlung</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateDonation</name>
-        <label>Aktualisieren Sie Ihre Spendenauswahl.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateHelptext</name>
-        <label>Sie aktualisieren gerade:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateOpportunity</name>
-        <label>Aktualisieren Sie diese Opportunity.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdatePayment</name>
-        <label>Aktualisieren Sie diese Zahlung.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridAllGifts</name>
-        <label>Alle Spenden</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridDonorType</name>
-        <label>Spendertyp</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorFromDryRun</name>
-        <label>Mindestens ein Eintrag enthält Fehler. Sie müssen alle Fehler beheben, bevor Sie diesen Batch verarbeiten können.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorConflictingGifts</name>
-        <label>Dieser Batch enthält in Konflikt stehende Spenden. Sie müssen diese Konflikte klären, bevor Sie diesen Batch verarbeiten können.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorRequiredTotalsExpected</name>
-        <label>Entweder die Anzahl der Spenden oder die Spenden insgesamt entsprechen nicht den für diesen Batch erwarteten Werten. Diese Werte müssen übereinstimmen, bevor Sie den Batch verarbeiten können.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridGiftCountHeader</name>
-        <label>Eingegebene Spenden</label>
-    </customLabels>
-    <customLabels>
         <name>bgeGridGiftDeleted</name>
         <label>Spende erfolgreich gelöscht.</label>
     </customLabels>
     <customLabels>
         <name>bgeGridGiftSaved</name>
         <label>Es wurde eine neue Spende zu dem Batch hinzugefügt.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridGiftUpdated</name>
-        <label>Spenden erfolgreich aktualisiert.</label>
     </customLabels>
     <customLabels>
         <name>bgeGridNoGiftsHeader</name>
@@ -2968,36 +2752,8 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
         <label>Wenn Sie eine neue Spende eingeben, wird sie hier angezeigt.</label>
     </customLabels>
     <customLabels>
-        <name>bgeGridTotalAmount</name>
-        <label>Gesamtbetrag:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridTotalCount</name>
-        <label>Gesamtzahl:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridWarningRequiredTotalsExpected</name>
-        <label>&quot;Übereinstimmung der Summen erforderlich&quot; ist ausgewählt, aber die Felder &quot;Erwartete Anzahl an Spenden&quot; und &quot;Erwarteter Batch-Betrag insgesamt&quot; sind leer. Bearbeiten Sie die Batch-Details und deaktivieren Sie entweder &quot;Übereinstimmung der Summen erforderlich&quot; oder geben Sie Werte in die verbundenen Felder ein.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeBatchDryRun</name>
         <label>Batch-Testausführung</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeMatchingAlert</name>
-        <label>Dieser Spender hat ausstehende Spenden.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeMatchingSelect</name>
-        <label>Spenden prüfen</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNewBatch</name>
-        <label>Neuer Batch</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNewGift</name>
-        <label>Neue Spende</label>
     </customLabels>
     <customLabels>
         <name>bgeProcessBatch</name>
@@ -3012,51 +2768,8 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
         <label>Sie können diese mit Elevate verbundene Spende erst bearbeiten, nachdem Sie die Zahlungsinformationen erneut eingegeben haben. Wählen Sie &quot;Zahlungsinformationen bearbeiten&quot; aus.</label>
     </customLabels>
     <customLabels>
-        <name>bgeRetirementWarningBody</name>
-        <label>Am 13. Juli 2021 wird das Legacy-Batch-Spendeneintragsmodul deaktiviert und funktioniert dann in NPPatch nicht mehr. Wenn sich zu diesem Zeitpunkt bei Ihnen noch Batches in Bearbeitung befinden, können Sie auf die entsprechenden Datensätze weiterhin zugreifen, Sie können sie aber nicht mehr mithilfe der Batch-Spendeneingabe verarbeiten. Um einen reibungslosen Übergang zu gewährleisten, aktivieren und verwenden Sie vor dem 13. Juli den neueren Spendeneintrag.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeRetirementWarningHeader</name>
-        <label>Einstellung des Batch-Spendeneintrags</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNotSupportedHeader</name>
-        <label>Der Batch-Spendeneintrag wird nicht unterstützt</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNotSupportedBody</name>
-        <label>Seit dem 13. Juli 2021 wird der Batch-Spendeneintrag nicht mehr unterstützt und durch den Spendeneintrag ersetzt.
-            Wenn sich bei Ihnen noch Batches in Bearbeitung befinden, können Sie auf die entsprechenden Datensätze weiterhin zugreifen, Sie können sie aber nicht mehr mithilfe von Batch-Spendeneintrag verarbeiten.
-            Wenden Sie sich an den Support, wenn Sie auf in Bearbeitung befindliche Datensätze zugreifen müssen.
-            Sie sollten sich Spendeneintrag als Alternative zu Batch-Spendeneintrag ansehen.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeTabHeader</name>
         <label>Batch-Spendeneintrag</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeHeader</name>
-        <label>Geänderte Feldzuordnung</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeTitle</name>
-        <label>Der Batch enthält nicht zugeordnete Felder</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageAdvancedMapping</name>
-        <label>Die folgenden Felder sind in diesem Batch enthalten, aber ihre Feldzuordnungen wurden gelöscht: {0}. Um dieses Problem zu beheben, navigieren Sie in den NPPatch-Einstellungen zu &quot;Erweiterte Zuordnung&quot;, und ordnen Sie die Felder erneut zu.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>Die folgenden Felder sind in diesem Batch enthalten, aber ihre Feldzuordnungen wurden gelöscht: {0}. Um dieses Problem zu beheben, navigieren Sie zum NPPatch-Datenimportobjekt, und ordnen Sie die Felder erneut mithilfe von Hilfetext zu.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeWizardShowAdvancedOptions</name>
-        <label>Erweiterte Optionen anzeigen</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeWizardHideAdvancedOptions</name>
-        <label>Erweiterte Optionen ausblenden</label>
     </customLabels>
     <customLabels>
         <name>btnContinue</name>
@@ -3191,10 +2904,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     <customLabels>
         <name>gePaymentProcessedWarning</name>
         <label>{0} hat die Zahlung erfolgreich verarbeitet. Das Ändern von Spender, Datum, Betrag oder Zahlungsmethode führt zu inkonsistenten Datensätzen für die gleiche Transaktion in {0} und NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping3</name>
-        <label>Die vollständige Dokumentation zum Einrichten der Erweiterten Zuordnung finden Sie hier.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
@@ -4774,10 +4483,6 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
         <label>Für diese Funktion ist sowohl Erweiterte Zuordnung als auch Spendeneintrag erforderlich. Bitte aktivieren Sie diese in den NPPatch-Einstellungen.</label>
-    </customLabels>
-    <customLabels>
-        <name>geServiceLevelErrorAdvancedMapping</name>
-        <label>Sie müssen die erweiterte Zuordnung aktivieren, bevor Sie Spendeneintrag aktivieren können.</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingHeader</name>
@@ -6905,24 +6610,8 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
         <label>Dokumentation</label>
     </customLabels>
     <customLabels>
-        <name>stgDeploymentCustomMetadataMappingEnabled</name>
-        <label>Die erweiterte Zuordnung ist aktiviert.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHasInvalidHelpTextMappings</name>
-        <label>Erweiterte Zuordnung ist aktiviert, wir fanden aber einige ungültige Hilfetextzuordnungen, die nicht migriert werden konnten. &lt;b&gt;Erstellen Sie einen Screenshot der Tabelle unten, sie wird nach dem Verlassen dieser Seite nicht mehr angezeigt.&lt;/b&gt;</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHelpTextMappingEnabled</name>
-        <label>Die Zuordnung von Hilfetext ist aktiviert.</label>
-    </customLabels>
-    <customLabels>
         <name>stgDeploymentInProgress</name>
         <label>Bereitstellung in Bearbeitung. Sie können diese Seite verlassen. Die Seite wird neu geladen, wenn die Bereitstellung abgeschlossen ist.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentTimedOut</name>
-        <label>Timeout der Seite.</label>
     </customLabels>
     <customLabels>
         <name>stgDeploymentTryAgain</name>
@@ -6978,33 +6667,6 @@ Indem Sie &quot;NPPatch-Standardaufträge n. automat. planen&quot; auswählen, t
         <label>Das im NPPatch verwendete Accountmodell. Mit dieser Option steuern Sie, was geschieht, wenn Sie einen Kontakt mit einem leeren Accountfeld-Wert erstellen. Sie sollten den ausgewählten Accountmodell-Datensatztyp nicht für jedes Profil als Standard-Accountdatensatztyp verwenden. Dies kann zu zahlreichen Datenproblemen führen.</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpAdvancedMapping1</name>
-        <label>Wenn Sie Erweiterte Zuordnung aktivieren, konvertieren wir Ihre bestehenden Hilfetext-Feldzuordnungen zu Erweiterte Zuordnung. Nach der Aktivierung erfolgt die Bearbeitung und Erstellung von Zuordnungen auf dieser Seite.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping2</name>
-        <label>Sie können die Erweiterte Zuordnung deaktivieren und zur Zuordnung von Hilfetexten zurückkehren, jedoch verlieren Sie dabei alle Änderungen, die Sie in der Erweiterten Zuordnung vorgenommen haben.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping4</name>
-        <label>&lt;b&gt;Diese Nachricht wird nicht mehr angezeigt, wenn Sie diese Seite verlassen! Erstellen Sie einen Screenshot dieser Seite, oder kopieren Sie die Informationen in der Tabelle unten, um die Hilfetext-Zuordnungen nachzuverfolgen, die Sie korrigieren müssen. &lt;/b&gt;
-            &lt;br/&gt;
-            &lt;br/&gt;
-            Wir konnten einige Ihrer bestehenden Hilfetext-Zuordnungen nicht konvertieren, da sie ungültig sind. Wir empfehlen, die Erweiterte Zuordnung zu deaktivieren, die ungültigen Hilfetext-Zuordnungen zu korrigieren und die Erweiterte Zuordnung anschließend wieder zu aktivieren. Alternativ können Sie diese Zuordnungen hinzufügen, wenn Sie die Erweiterte Zuordnung auf der nächsten Seite konfigurieren, diese zusätzlichen Zuordnungen werden aber auf den ursprünglichen ungültigen Hilfetext zurückgesetzt, wenn Sie die Erweiterte Zuordnung deaktivieren.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingInvalidHelpText</name>
-        <label>Ungültige Hilfetext-Zuordnungen</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>NPPatch-Datenimportfeld</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader2</name>
-        <label>Aktueller Wert des Hilfetextes</label>
-    </customLabels>
-    <customLabels>
         <name>stgHelpAlloFiscalYearRollups</name>
         <label>Wenn diese Option aktiviert ist, werden für die Summen des Zuweisungs-Rollups die Geschäftsjahreinstellungen statt der Kalenderjahreinstellungen aktiviert. Gehen Sie zur Festlegung der Geschäftsjahrinformationen zu Setup und suchen Sie nach dem Geschäftsjahr. HINWEIS: Das NPPatch unterstützt keine benutzerdefinierten Geschäftsjahreinstellungen.</label>
     </customLabels>
@@ -7041,14 +6703,6 @@ Wenn Sie Zahlungszuweisungen aktivieren, bleiben die vorhandenen Rollups dieselb
     <customLabels>
         <name>stgHelpAutoRelType</name>
         <label>Der Beziehungstyp, der zwischen dem Basiskontakt oder -kampagnenmitglied und dem entsprechenden Kontakt oder Kampagnenmitglied erstellt werden soll. Der entsprechende Kontakt oder das entsprechende Kampagnenmitglied erhält, sofern vorhanden, einen Wert für die wechselseitige Beziehung.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpBDEAllowBlankOppNames</name>
-        <label>Wenn diese Option ausgewählt ist, werden bei der Batch-Dateneingabe niemals Opportunity-Namen vergeben, auch wenn das Namensfeld auf der Seite &quot;Batch-Dateneingabe&quot; leer ist.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpBDEOppNaming</name>
-        <label>Wenn diese Option ausgewählt ist, verwendet NPPatch die Standardnamenskonvention für als Batch eingegebene Opportunities, und zwar unabhängig von dem Wert, den Sie auf dem Batch-Eingabe-Bildschirm in das Namensfeld eingeben. HINWEIS: Diese Einstellung hat keine Auswirkungen, wenn benutzerdefinierte Opportunity-Namen konfiguriert wurden.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpBatchAlloRollup</name>
@@ -7704,10 +7358,6 @@ Hinweis: Die Registerkarte &quot;NPPatch-Einstellungen&quot; ist in der NPPatch-
         <label>Batch-Verarbeitungsoptionen</label>
     </customLabels>
     <customLabels>
-        <name>stgLabelBDESettings</name>
-        <label>Einstellungen für die Batch-Dateneingabe</label>
-    </customLabels>
-    <customLabels>
         <name>stgLabelBatchStatus</name>
         <label>Batch-Status</label>
     </customLabels>
@@ -8042,10 +7692,6 @@ Hinweis: Die Registerkarte &quot;NPPatch-Einstellungen&quot; ist in der NPPatch-
     <customLabels>
         <name>stgNavBatchProcessSettings</name>
         <label>Batch-Prozess-Einstellungen</label>
-    </customLabels>
-    <customLabels>
-        <name>stgNavBDE</name>
-        <label>Batch-Dateneingabe</label>
     </customLabels>
     <customLabels>
         <name>stgNavBulkProcesses</name>
@@ -8383,14 +8029,6 @@ Hinweis: Die Registerkarte &quot;NPPatch-Einstellungen&quot; ist in der NPPatch-
             <name>Contacts</name>
         </sections>
     </reportTypes>
-    <customTabs>
-        <name>Batch_Data_Entry</name>
-        <label>Batch-Dateneingabe</label>
-    </customTabs>
-    <customTabs>
-        <name>Batch_Gift_Entry</name>
-        <label>Batch-Spendeneintrag</label>
-    </customTabs>
     <customTabs>
         <name>Contact_Merge</name>
         <label>Kontaktzusammenführung</label>

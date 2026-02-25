@@ -873,10 +873,6 @@
         <label>&lt;b&gt;ADVERTENCIA: Tiene Donaciones recurrentes mejoradas activada. Si desactiva Totalizaciones personalizables, las totalizaciones de las donaciones recurrentes dejarán de funcionar.&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
-        <name>RD2_DisabledAdvancedMappingError</name>
-        <label>Debe activar Asignación avanzada antes de poder procesar donaciones recurrentes.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_DisabledRD2Error</name>
         <label>Debe activar Donaciones recurrentes mejoradas avanzada antes de poder procesar donaciones recurrentes.</label>
     </customLabels>
@@ -2099,22 +2095,6 @@ Para comprobar su configuración de asignaciones de CCG, vaya a Donaciones | Asi
         <label>sin asignar</label>
     </customLabels>
     <customLabels>
-        <name>bdeRetirementBlockerHeader</name>
-        <label>No se admite la entrada de datos en lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementBlockerMessage</name>
-        <label>Desde el 1 de octubre de 2020, Entrada de datos en lote ya no se admite. La mayoría de las funciones han sido sustituidas por nuevas funciones en NPPatch. Si tiene algún lote en curso en ese momento, podrá seguir accediendo a esos registros, pero no podrá procesarlos empleando Entrada de datos en lote. Póngase en contacto con el servicio de asistencia si necesita acceder a lotes en curso&lt;br/&gt;. Puede explorar Entrada de regalos como una alternativa a Entrada de datos en lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningBody</name>
-        <label>El 1 de octubre de 2020, Entrada de datos en lote quedará retirada y dejará de funcionar en NPPatch. Si tiene algún lote en curso en ese momento, podrá seguir accediendo a esos registros, pero no podrá procesarlos empleando Entrada de datos en lote. Para garantizar una transición sin problemas, active y utilice Entrada de regalos antes del 1 de octubre.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdeRetirementWarningHeader</name>
-        <label>Retirada de Entrada de datos en lote</label>
-    </customLabels>
-    <customLabels>
         <name>bdiAPIBatchError</name>
         <label>No pudimos procesar los registros de importación de datos debido a los siguientes errores:</label>
     </customLabels>
@@ -2259,10 +2239,6 @@ Para comprobar su configuración de asignaciones de CCG, vaya a Donaciones | Asi
         <label>Importación de datos de NPPatch</label>
     </customLabels>
     <customLabels>
-        <name>bdiDeploymentInProgress</name>
-        <label>Las asignaciones de texto de ayuda se están convirtiendo en estos momentos a Asignación avanzada.</label>
-    </customLabels>
-    <customLabels>
         <name>bdiDonation</name>
         <label>Donación</label>
     </customLabels>
@@ -2309,18 +2285,6 @@ Para comprobar su configuración de asignaciones de CCG, vaya a Donaciones | Asi
     <customLabels>
         <name>bdiErrorBatchNameRequired</name>
         <label>El Nombre de lote es un campo obligatorio.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDataImportCustomSettings</name>
-        <label>Se produjo un error al intentar actualizar la Configuración personalizada denominada Configuración de importación de datos.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailed</name>
-        <label>Se produjo un error al intentar convertir la asignación de Texto de ayuda y activar la Asignación avanzada.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailedLink</name>
-        <label>&lt;a href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;Puede ver el estado de implementación aquí.&lt;/a&gt;</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationLookupMatch</name>
@@ -2579,10 +2543,6 @@ Para comprobar su configuración de asignaciones de CCG, vaya a Donaciones | Asi
         <label>La modificación de este grupo de objetos está tardando más de lo esperado.</label>
     </customLabels>
     <customLabels>
-        <name>bdiMigrationLongDeployment</name>
-        <label>La conversión de asignaciones de Texto de ayuda a Asignación avanzada está tardando más de lo esperado.</label>
-    </customLabels>
-    <customLabels>
         <name>bdiOMUIGroupNameHelp</name>
         <label>El nombre de este grupo de objetos. Una convención de nomenclatura habitual es Grupo de [nombre de objeto].</label>
     </customLabels>
@@ -2773,188 +2733,12 @@ Para comprobar su configuración de asignaciones de CCG, vaya a Donaciones | Asi
         <label>Ver</label>
     </customLabels>
     <customLabels>
-        <name>bgeBatchSelectedFields</name>
-        <label>Campos seleccionados</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchAvailableFields</name>
-        <label>Campos disponibles</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchBatchProcessSizeHelp</name>
-        <label>El número de registros a procesar al mismo tiempo en cada lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationDateRangeHelp</name>
-        <label>Introduzca el número de días desde la fecha de la donación a tener en cuenta cuando se busque una oportunidad o pago coincidente. NPPatch elegirá la oportunidad o pago coincidente cuya fecha caiga dentro del número de días Y esté más cercana a la fecha de la donación.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingBehaviorHelp</name>
-        <label>Define cómo NPPatch debería tratar las donaciones coincidentes.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingClassHelp</name>
-        <label>El nombre del desarrollador de una clase de Apex que implementa la interfaz BDI_IMatching para donaciones. Deje esta opción en blanco para permitir que NPPatch controle las coincidencias.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingRuleHelp</name>
-        <label>Puede coincidir entre cualquiera de los campos de oportunidades o pagos que elija para incluir en este lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonorLookupInfo</name>
-        <label>Seleccione los campos a utilizar para introducir regalos en este lote. El tipo de donante y una consulta de cuenta o contacto siempre aparecerán. Solo verá los campos a los que tenga acceso.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchErrorRequiredFields</name>
-        <label>Se requieren los siguientes campos porque otros campos de su objeto están seleccionados. Selecciónelos antes de continuar:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchInfoWizard</name>
-        <label>Introducir información de lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchOverviewWizard</name>
-        <label>Introducir información de lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchPostProcessClassHelp</name>
-        <label>El nombre del desarrollador de una clase de Apex que implementa la interfaz BDI_IPostProcess para registros de lotes de NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchProcessUsingScheduledJobHelp</name>
-        <label>Cuando se marca, el lote se procesará automáticamente en base a la programación del trabajo asociado.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchRunOpportunityRollupsWhileProcessingHelp</name>
-        <label>Cuando se marca, NPPatch calcula las totalizaciones de donantes cuando se procesan las donaciones. Si no se marca, las totalizaciones de donantes se calculan durante el trabajo programado nocturno predeterminado. Tenga en cuenta que al seleccionar esta casilla se podría ralentizar el procesamiento de este lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchOverview</name>
-        <label>Información de lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSelectFields</name>
-        <label>Seleccionar campos</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSetBatchOptions</name>
-        <label>Establecer opciones de lotes</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSetFieldOptions</name>
-        <label>Establecer opciones de campos</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeCopyBatchSetupButton</name>
-        <label>Copiar configuración de lotes</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeCopyBatchSetupBatchNameAppend</name>
-        <label>COPIAR</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeDryRunComplete</name>
-        <label>Ejecución en seco de lote completa</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeDonationSelectorHelp</name>
-        <label>Esta pantalla muestra pagos no realizados y oportunidades abiertas que no tienen pagados no realizados.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchFieldOptionsWarning</name>
-        <label>ADVERTENCIA: Hay registros guardados con este lote. Cualquier cambio que realice no afectará a los registros existentes.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchFieldSelectionWarning</name>
-        <label>ADVERTENCIA: Hay registros guardados con este lote. Cualquier cambio que realice no afectará a los registros existentes. Si retira campos, esos campos ya no aparecerán en la pantalla de introducción de regalos, pero los datos no se eliminarán de esos campos en registros existentes. Por lo tanto, recomendamos que no retire campos.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchOptionsWarning</name>
-        <label>ADVERTENCIA: Hay registros guardados con este lote. Cualquier cambio que realice no afectará a los registros existentes. No intentaremos la coincidencia de registros existentes empleando parámetros de la regla de coincidencia de donaciones actualizada a no ser que se modifiquen esos registros.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFLSError</name>
-        <label>No tiene los permisos de campos requeridos. Póngase en contacto con su administrador del sistema para consultar la obtención de los permisos necesarios.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormMatchingModalText</name>
-        <label>Seleccione el registro que desea actualizar.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNewDonationHelptext</name>
-        <label>Está creando en estos momentos una nueva oportunidad.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNewPaymentHelptext</name>
-        <label>Está aplicando en estos momentos un nuevo pago para la oportunidad:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNoneLink</name>
-        <label>También puede crear una nueva oportunidad.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedOpportunityApplyNewPayment</name>
-        <label>Aplicando nuevo pago</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedOpportunity</name>
-        <label>Actualizando esta oportunidad</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedPayment</name>
-        <label>Pago seleccionado</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateDonation</name>
-        <label>Actualizar su selección de donación</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateHelptext</name>
-        <label>Está actualizando en estos momentos:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateOpportunity</name>
-        <label>Actualizar esta oportunidad</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdatePayment</name>
-        <label>Actualizar este pago</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridAllGifts</name>
-        <label>Todos los regalos</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridDonorType</name>
-        <label>Tipo de donante</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorFromDryRun</name>
-        <label>Existen errores en una o más entradas. Debe resolver todos los errores antes de que pueda procesar este lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorConflictingGifts</name>
-        <label>Hay regalos en conflicto en este lote. Tendrá que resolver estos conflictos antes de que pueda procesar este lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorRequiredTotalsExpected</name>
-        <label>El recuento de regalos o el total de regalos no coincide con los valores esperados para este lote. Estos valores deben coincidir antes de que pueda procesar el lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridGiftCountHeader</name>
-        <label>Regalos introducidos</label>
-    </customLabels>
-    <customLabels>
         <name>bgeGridGiftDeleted</name>
         <label>Regalo eliminado correctamente.</label>
     </customLabels>
     <customLabels>
         <name>bgeGridGiftSaved</name>
         <label>Se ha agregado el nuevo regalo al lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridGiftUpdated</name>
-        <label>Regalos actualizados correctamente.</label>
     </customLabels>
     <customLabels>
         <name>bgeGridNoGiftsHeader</name>
@@ -2965,36 +2749,8 @@ Para comprobar su configuración de asignaciones de CCG, vaya a Donaciones | Asi
         <label>Introduzca un nuevo regalo y aparecerá aquí.</label>
     </customLabels>
     <customLabels>
-        <name>bgeGridTotalAmount</name>
-        <label>Importe total:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridTotalCount</name>
-        <label>Recuento total:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridWarningRequiredTotalsExpected</name>
-        <label>Requerir coincidencia de totales esperados está seleccionada ero el Recuento de regalos esperado e Importe de lote total esperado están en blanco. Modifique los detalles del lote y no marque Requerir coincidencia de totales esperados o agregue valores en los campos relacionados.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeBatchDryRun</name>
         <label>Ejecución en seco de lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeMatchingAlert</name>
-        <label>Este donante tiene donaciones pendientes.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeMatchingSelect</name>
-        <label>Revisar donaciones</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNewBatch</name>
-        <label>Nuevo lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNewGift</name>
-        <label>Nuevo regalo</label>
     </customLabels>
     <customLabels>
         <name>bgeProcessBatch</name>
@@ -3009,51 +2765,8 @@ Para comprobar su configuración de asignaciones de CCG, vaya a Donaciones | Asi
         <label>No puede modificar este regalo conectado con Elevate hasta que vuelva a introducir la información de pago. Seleccione Modificar información del pago.</label>
     </customLabels>
     <customLabels>
-        <name>bgeRetirementWarningBody</name>
-        <label>El 13 de julio de 2021, la función heredada Entrada regalos en lote quedará retirada y dejará de funcionar en NPPatch. Si tiene algún lote en curso en ese momento, podrá seguir accediendo a esos registros, pero no podrá procesarlos empleando Entrada regalos en lote. Para garantizar una transición sin problemas, active y utilice Entrada de admisión regalos antes del 13 de julio.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeRetirementWarningHeader</name>
-        <label>Retirada de Entrada de regalos en lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNotSupportedHeader</name>
-        <label>No se admite Entrada de regalos en lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNotSupportedBody</name>
-        <label>Desde el 13 de julio de 2021, Entrada de regalos en lote ya no se admite y se ha sustituido por Entrada de regalos. 
-            Si tiene algún lote en curso en ese momento, podrá seguir accediendo a esos registros, pero no podrá procesarlos empleando Entrada de regalos en lote.
-            Póngase en contacto con el servicio de asistencia si necesita acceder a lotes regalos curso.
-            Puede explorar Entrada de regalos como una alternativa a Entrada de regalos en lote.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeTabHeader</name>
         <label>Entrada de regalo en lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeHeader</name>
-        <label>La asignación de campo se ha modificado</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeTitle</name>
-        <label>El lote incluye campos sin asignar</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageAdvancedMapping</name>
-        <label>Los siguientes campos están incluidos en este lote, pero se eliminaron sus asignaciones de campos: {0}. Para solucionar esto, vaya a Asignación avanzada en Configuración de NPPatch y asigne los campos de nuevo.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>Los siguientes campos están incluidos en este lote, pero se eliminaron sus asignaciones de campos: {0}. Para solucionar esto, vaya al objeto Importación de datos de NPPatch y asigne los campos de nuevo empleando Texto de ayuda.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeWizardShowAdvancedOptions</name>
-        <label>Mostrar opciones avanzadas</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeWizardHideAdvancedOptions</name>
-        <label>Ocultar opciones avanzadas</label>
     </customLabels>
     <customLabels>
         <name>btnContinue</name>
@@ -3185,10 +2898,6 @@ Para comprobar su configuración de asignaciones de CCG, vaya a Donaciones | Asi
     <customLabels>
         <name>gePaymentProcessedWarning</name>
         <label>{0} procesó correctamente el pago. Al cambiar el donante, la fecha, el importe o el método de pago dará como resultado registros incoherentes para la misma transacción en {0} y NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping3</name>
-        <label>Encontrará la documentación completa de configuración de Asignación avanzada aquí.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
@@ -4768,10 +4477,6 @@ Si lo prefiere, puede desactivar Entrada de regalos y utilizar la herramienta En
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
         <label>Esta función requiere Asignación avanzada y Entrada de regalos. Actívelas en Configuración de NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>geServiceLevelErrorAdvancedMapping</name>
-        <label>Debe activar Asignación avanzada antes de poder activar Entrada de regalos.</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingHeader</name>
@@ -6899,24 +6604,8 @@ Si lo prefiere, puede desactivar Entrada de regalos y utilizar la herramienta En
         <label>Documentación</label>
     </customLabels>
     <customLabels>
-        <name>stgDeploymentCustomMetadataMappingEnabled</name>
-        <label>Asignación avanzada está activada.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHasInvalidHelpTextMappings</name>
-        <label>Asignación avanzada está activada, pero encontramos algunas asignaciones de Texto de ayuda no válidas que no se pudieron migrar. &lt;b&gt;Realice una captura de pantalla de la tabla que aparece a continuación; no se mostrará de nuevo después de que salga de esta página.&lt;/b&gt;</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHelpTextMappingEnabled</name>
-        <label>La asignación de Texto de ayuda está activada.</label>
-    </customLabels>
-    <customLabels>
         <name>stgDeploymentInProgress</name>
         <label>Implementación en curso. Puede salir de esta página. La página volverá a cargarse cuando finalice la implementación.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentTimedOut</name>
-        <label>La página agotó el tiempo de espera.</label>
     </customLabels>
     <customLabels>
         <name>stgDeploymentTryAgain</name>
@@ -6972,33 +6661,6 @@ La selección de No programar automáticamente trabajos de NPPatch predeterminad
         <label>El modelo de cuenta utilizado por NPPatch. Esta opción controla lo que ocurre cuando crea un contacto con un valor del campo Cuenta en blanco. ADVERTENCIA: No debe utilizar el tipo de registro Modelo de cuenta como el tipo de registro Cuenta predeterminado para ningún perfil. Al hacerlo pueden aparecer varios problemas con los datos.</label>
     </customLabels>
     <customLabels>
-        <name>stgHelpAdvancedMapping1</name>
-        <label>Cuando activa Asignación avanzada, convertimos sus asignaciones de campos de Texto de ayuda a Asignación avanzada. Una vez activada, podrá modificar las asignaciones y crear nuevas en esta página.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping2</name>
-        <label>Puede desactivar Asignación avanzada y volver a la asignación de Texto de ayuda, pero se perderán los campos realizados con Asignación avanzada.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping4</name>
-        <label>&lt;b&gt;¡Este mensaje no se mostrará si sale de esta página! Realice una captura de pantalla de esta página o copie la información de la tabla que aparece a continuación para seguir las asignaciones de Texto de ayuda que tiene que corregir. &lt;/b&gt;
-            &lt;br/&gt;
-            &lt;br/&gt;
-            No pudimos convertir algunas de sus asignaciones de Texto de ayuda existentes porque no son válidas. Recomendamos desactivar Asignación avanzada, corregir las asignaciones de Texto de ayuda no válidas y luego volver a activar Asignación avanzada. De forma alternativa, puede agregar estas asignaciones cuando configura Asignación avanzada en la pantalla siguiente, pero estas asignaciones adicionales volverán al Texto de ayuda no válido original si desactiva Asignación avanzada.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingInvalidHelpText</name>
-        <label>Asignaciones de Texto de ayuda no válidas</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>Campo de Importación de datos de NPPatch</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader2</name>
-        <label>Valor de Texto de ayuda actual</label>
-    </customLabels>
-    <customLabels>
         <name>stgHelpAlloFiscalYearRollups</name>
         <label>Seleccionar esta opción hará que los totales en oportunidades respeten el año fiscal, en vez del año calendario para los totales de la totalización de asignaciones. Para establecer la información de Año fiscal, vaya a Configuración y busque Año fiscal. NOTA: NPPatch no admite parámetros personalizados de año fiscal.</label>
     </customLabels>
@@ -7035,14 +6697,6 @@ Cuando habilita Asignaciones de pago, las totalizaciones existentes se mantienen
     <customLabels>
         <name>stgHelpAutoRelType</name>
         <label>El tipo de relación que se desea crear entre el contacto base yo miembro de campaña y el contacto o miembro de campaña correspondiente. El contacto o miembro de campaña correspondiente recibirá un valor de la relación recíproca, si hay alguno disponible.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpBDEAllowBlankOppNames</name>
-        <label>Si se selecciona Entrada de datos en lote no asignará un nombre a las oportunidades, incluso si deja el campo Nombre en blanco en la página Entrada de datos en lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpBDEOppNaming</name>
-        <label>Cuando se selecciona, NPPatch utiliza la convención de nombres oportunidades introducidas por lotes, independientemente del valor que introduzca en el campo Nombre de la pantalla de entrada por lotes. NOTA: Este parámetro no tiene efecto si se configuran los nombre de oportunidades personalizados.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpBatchAlloRollup</name>
@@ -7694,10 +7348,6 @@ Nota: La ficha Configuración de NPPatch es visible en la aplicación NPPatch. S
         <label>Opciones de procesamiento por lotes</label>
     </customLabels>
     <customLabels>
-        <name>stgLabelBDESettings</name>
-        <label>Configuración de Entrada de datos en lote</label>
-    </customLabels>
-    <customLabels>
         <name>stgLabelBatchStatus</name>
         <label>Estado del lote</label>
     </customLabels>
@@ -8032,10 +7682,6 @@ Nota: La ficha Configuración de NPPatch es visible en la aplicación NPPatch. S
     <customLabels>
         <name>stgNavBatchProcessSettings</name>
         <label>Configuración del proceso por lotes</label>
-    </customLabels>
-    <customLabels>
-        <name>stgNavBDE</name>
-        <label>Entrada de datos en lote</label>
     </customLabels>
     <customLabels>
         <name>stgNavBulkProcesses</name>
@@ -8373,14 +8019,6 @@ Nota: La ficha Configuración de NPPatch es visible en la aplicación NPPatch. S
             <name>Contacts</name>
         </sections>
     </reportTypes>
-    <customTabs>
-        <name>Batch_Data_Entry</name>
-        <label>Entrada de datos en lote</label>
-    </customTabs>
-    <customTabs>
-        <name>Batch_Gift_Entry</name>
-        <label>Entrada de regalo en lote</label>
-    </customTabs>
     <customTabs>
         <name>Contact_Merge</name>
         <label>Combinar contacto</label>

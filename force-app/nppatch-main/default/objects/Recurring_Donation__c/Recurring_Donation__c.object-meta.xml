@@ -21,6 +21,14 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>Edit</actionName>
+        <comment>Custom Recurring Donation Entry Form</comment>
+        <content>RD2_EntryForm</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>Follow</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -33,6 +41,14 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>New</actionName>
+        <comment>Custom Recurring Donation Entry Form</comment>
+        <content>RD2_EntryForm</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>SaveEdit</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -43,6 +59,14 @@
     <actionOverrides>
         <actionName>View</actionName>
         <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Recurring_Donation</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>NPPatch_Recurring_Donation_Compact_Layout</compactLayoutAssignment>

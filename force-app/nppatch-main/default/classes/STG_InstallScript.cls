@@ -37,25 +37,15 @@ global without sharing class STG_InstallScript implements InstallHandler {
 
     @TestVisible
     private enum InstallAction {
-        POPULATE_RD_INSTALLMENT_NUMBER, RUN_NEW_ORG_SCRIPT,
+        RUN_NEW_ORG_SCRIPT,
         INSERT_TDTM_DEFAULTS, ABORT_OLD_SCHEDULED_JOBS,
         CLEANUP_RECORD_TYPE_SETTINGS, UPDATE_CAMPAIGN_LIST_REPORT,
         CREATE_DEFAULT_SETTINGS_FOR_UPGRADE,
         CREATE_DEFAULT_SETTINGS_FOR_NEW_INSTALL,
-        CREATE_OPP_STAGE_TO_STATE_RECORDS,
-        CREATE_MIGRATED_CUSTOM_FIELD_MAPPINGS
+        CREATE_OPP_STAGE_TO_STATE_RECORDS
     }
 
     public STG_InstallScript() {
-    }
-
-    /*******************************************************************************************************
-    * @description Helper and constructor that enables and supports mocking of test data
-	*/
-    private BDI_MigrationMappingHelper helper = new BDI_MigrationMappingHelper();
-    private BDI_MigrationMappingUtility util = new BDI_MigrationMappingUtility(helper);
-    public STG_InstallScript(BDI_MigrationMappingUtility util) {
-        this.util = util;
     }
 
     /*******************************************************************************************************
@@ -71,10 +61,6 @@ global without sharing class STG_InstallScript implements InstallHandler {
             // Ensure custom settings that we manage are populated
             executeAction(InstallAction.CREATE_DEFAULT_SETTINGS_FOR_NEW_INSTALL, logger);
 
-            // Populate Recurring Donation Installment Number on Opportunity for fresh installs;
-            // This also covers upgrades from v2
-            executeAction(InstallAction.POPULATE_RD_INSTALLMENT_NUMBER, logger);
-
             executeAction(InstallAction.RUN_NEW_ORG_SCRIPT, logger);
 
         // Upgrade of existing Cumulus installation
@@ -84,9 +70,6 @@ global without sharing class STG_InstallScript implements InstallHandler {
 
             // Insert/Update the TDTM defaults as needed
             executeAction(InstallAction.INSERT_TDTM_DEFAULTS, logger);
-
-            // Check for advanced mapping setting then create migrated custom field mappings as needed
-            executeAction(InstallAction.CREATE_MIGRATED_CUSTOM_FIELD_MAPPINGS, logger);
 
         }
 
@@ -110,10 +93,7 @@ global without sharing class STG_InstallScript implements InstallHandler {
         Savepoint sp = Database.setSavepoint();
 
         try {
-            if (action == InstallAction.POPULATE_RD_INSTALLMENT_NUMBER) {
-                database.executeBatch(new RD_InstallScript_BATCH(), 10);
-
-            } else if (action == InstallAction.RUN_NEW_ORG_SCRIPT) {
+            if (action == InstallAction.RUN_NEW_ORG_SCRIPT) {
                 runNewOrgScript();
 
             } else if (action == InstallAction.INSERT_TDTM_DEFAULTS) {
@@ -136,8 +116,6 @@ global without sharing class STG_InstallScript implements InstallHandler {
                 populateNamespacePrefix();
             } else if (action == InstallAction.CREATE_OPP_STAGE_TO_STATE_RECORDS) {
                 createOppStageToStateRecordsIfNecessary();
-            } else if (action == InstallAction.CREATE_MIGRATED_CUSTOM_FIELD_MAPPINGS) {
-                createMigratedCustomFieldMappings();
             }
 
         } catch(Exception e) {
@@ -327,78 +305,6 @@ global without sharing class STG_InstallScript implements InstallHandler {
 
         if (!metadataToInsert.isEmpty()) {
             Opp_StageMappingCMT.deployOppStageToStateMetadata(metadataToInsert, params);
-        }
-    }
-
-    /*******************************************************************************************************
-    * @description Creates a new set of Migrated Custom Field Mappings based on if advanced mapping is turned on
-    */
-    @TestVisible
-    private void createMigratedCustomFieldMappings() {
-
-        STG_PanelDataImportAdvancedMapping_CTRL ctrl = new STG_PanelDataImportAdvancedMapping_CTRL();
-
-        if (ctrl.isAdvancedMappingEnabled) {
-            List<String> newDefaultMappingStrings = new List<String>{
-                    'Payment_ACH_Code',
-                    'Payment_ACH_Last_4',
-                    'Payment_Authorized_Date',
-                    'Payment_Authorized_UTC_Timestamp',
-                    'Payment_Card_Expiration_Month',
-                    'Payment_Card_Expiration_Year',
-                    'Payment_Card_Last_4',
-                    'Payment_Card_Network',
-                    'Payment_Donor_Cover_Amount',
-                    'Payment_Elevate_API_Declined_Reason',
-                    'Payment_Elevate_API_Status',
-                    'Payment_Elevate_Created_Date',
-                    'Payment_Elevate_Created_UTC_Timestamp',
-                    'Payment_Elevate_ID',
-                    'Payment_Elevate_Original_Payment_ID',
-                    'Payment_Gateway_ID',
-                    'Payment_Gateway_Payment_ID',
-                    'Payment_Origin_ID',
-                    'Payment_Origin_Name',
-                    'Payment_Origin_Type',
-                    'Payment_Paid',
-                    'Payment_Type',
-                    'Payment_Elevate_Transaction_Fee',
-                    'Payment_Gateway_Transaction_Fee',
-                    'Payment_Total_Transaction_Fees',
-                    'Donation_Elevate_Recurring_ID',                    
-                    'Donation_Honoree_Information',
-                    'Donation_Honoree_Name',
-                    'Donation_Notification_Message',
-                    'Donation_Notification_Preference',
-                    'Donation_Notification_Recipient_Email',
-                    'Donation_Notification_Recipient_Info',
-                    'Donation_Notification_Recipient_Name',
-                    'Donation_Tribute_Type',
-                    'Recurring_Donation_Amount',
-                    'Recurring_Donation_Date_Established',
-                    'Recurring_Donation_Day_of_Month',
-                    'Recurring_Donation_Effective_Date',
-                    'Recurring_Donation_Elevate_Recurring_Id',
-                    'Recurring_Donation_End_Date',
-                    'Recurring_Donation_Installment_Frequency',
-                    'Recurring_Donation_Installment_Period',
-                    'Recurring_Donation_Name',
-                    'Recurring_Donation_Payment_Method',
-                    'Recurring_Donation_Planned_Installments',
-                    'Recurring_Donation_Recurring_Type',
-                    'Recurring_Donation_Status',
-                    'Recurring_Donation_Status_Reason',
-                    'Recurring_Donation_Campaign',
-                    'Recurring_Donation_ACH_Last_4',
-                    'Recurring_Donation_Card_Expiration_Month',
-                    'Recurring_Donation_Card_Expiration_Year',
-                    'Recurring_Donation_Card_Last_4',
-                    'Recurring_Donation_Elevate_Event_Version',
-                    'GAU_Allocation_1_Recurring_Donation',
-                    'GAU_Allocation_2_Recurring_Donation'
-            };
-
-            util.migrateNewDefaultToCustomMetadata(newDefaultMappingStrings);
         }
     }
 

@@ -63,7 +63,6 @@ public with sharing class RD2_PauseForm_TEST {
         UTIL_TestPermissions.assignAdminPermissionSet();
 
         RD2_ScheduleService.currentDate = START_DATE;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Contact contact = UTIL_UnitTestData_TEST.getContact();
         insert contact;
@@ -79,7 +78,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldReturnPauseDataWhenRDIsNotClosed() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         RD2_PauseForm_CTRL.PauseData pause = getPauseData(rdGateway.getRecords()[0].Id);
         System.assertEquals(false, pause.isRDClosed, 'The Recurring Donation should not be closed');
@@ -102,7 +100,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldReturnOnlyRequiredPauseDataWhenRDIsClosed() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder()
             .withStatusClosed()
@@ -122,7 +119,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldNotReturnPauseDataWhenUserDoesNotHaveCreateAndEditPermissions() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = START_DATE;
         String errorMessage;
 
@@ -150,7 +146,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldSavePause() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = START_DATE.addDays(1);
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
@@ -180,7 +175,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldDeactivateExistingPauseWhenANewOneIsCreated() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
         RecurringDonationSchedule__c existingPause = createPauseSchedule(rd.Id);
@@ -217,7 +211,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldDeactivateExistingPauseWhenUserDeselectsAllInstallments() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
         RecurringDonationSchedule__c existingPause = createPauseSchedule(rd.Id);
@@ -252,7 +245,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldUpdateOppCloseDateToNewNextDonationDateWhenWithinPauseDateRange() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = START_DATE.addDays(1);
         Date nextDonationDate = START_DATE.addMonths(1);
 
@@ -290,7 +282,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldNotReturnPauseScheduleIdWhenPauseHasEnded() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
         RecurringDonationSchedule__c existingPause = createPauseSchedule(rd.Id);
@@ -313,7 +304,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldNotSkipInstallmentsWhenPauseDoesNotExist() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = START_DATE;
 
         Id rdId = rdGateway.getRecords()[0].Id;
@@ -332,7 +322,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldSkipInstallmentsWithinFuturePauseStartAndEndDates() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = START_DATE.addDays(1);
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
@@ -361,7 +350,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldSkipInstallmentsWithinCurrentPauseStartAndEndDates() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = START_DATE.addDays(1);
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
@@ -392,7 +380,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldNotSkipInstallmentsAfterDateThePauseIsDeactivated() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = START_DATE.addDays(1);
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
@@ -427,7 +414,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldNotSkipInstallmentsWhenPauseHasEnded() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = START_DATE.addDays(1);
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
@@ -450,7 +436,6 @@ public with sharing class RD2_PauseForm_TEST {
         if (shouldSkipIn2GP()) return;
         Exception actualException;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = START_DATE.addDays(-1);
         Recurring_Donation__c rd = getRecurringDonationBuilder()
             .withRecurringTypeFixed()
@@ -478,7 +463,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldReturnPauseDataWhenRDIsNotElevateRecord() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         RD2_PauseForm_CTRL.PauseData pause = getPauseData(rdGateway.getRecords()[0].Id);
         System.assertEquals(false, pause.isElevateRecord, 'The Recurring Donation should not be a elevate record');
@@ -501,7 +485,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldReturnPauseDataForRdWithCommitmentIdWhenElevateIsNotEnabled() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = rdGateway.getRecords()[0];
 
@@ -529,7 +512,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldUpdateOpenOppCloseDateWhenPauseIsModified() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = START_DATE;
 
         Test.startTest();
@@ -580,7 +562,6 @@ public with sharing class RD2_PauseForm_TEST {
     @isTest
     private static void shouldUpdateOpenOppCloseDateWhenPauseIsDeactivated() {
         if (shouldSkipIn2GP()) return;
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = START_DATE;
 
         Test.startTest();

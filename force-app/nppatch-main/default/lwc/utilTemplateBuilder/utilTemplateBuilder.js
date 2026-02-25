@@ -45,8 +45,6 @@ import DI_BATCH_FORM_TEMPLATE_INFO from '@salesforce/schema/DataImportBatch__c.F
 import DI_BATCH_ALLOW_RECURRING_DONATIONS from '@salesforce/schema/DataImportBatch__c.Allow_Recurring_Donations__c';
 import DI_BATCH_LATEST_APEX_JOB_ID from '@salesforce/schema/DataImportBatch__c.Latest_Apex_Job_Id__c';
 import FIELD_MAPPING_METHOD_FIELD_INFO from '@salesforce/schema/Data_Import_Settings__c.Field_Mapping_Method__c';
-import GIFT_ENTRY_FEATURE_GATE_INFO from '@salesforce/schema/Gift_Entry_Settings__c.Enable_Gift_Entry__c';
-
 // Import schema for default form field element objects
 import DATA_IMPORT_INFO from '@salesforce/schema/DataImport__c';
 import OPPORTUNITY_INFO from '@salesforce/schema/Opportunity';
@@ -76,8 +74,6 @@ import commonError from '@salesforce/label/c.commonError';
 import commonUnknownError from '@salesforce/label/c.commonUnknownError';
 
 import getDataImportSettings from '@salesforce/apex/GE_GiftEntryController.getDataImportSettings';
-import getGiftEntrySettings from
-        '@salesforce/apex/GE_GiftEntryController.getGiftEntrySettings';
 
 // relevant Donation_Donor picklist values
 const CONTACT1 = 'Contact1';
@@ -503,11 +499,8 @@ const setRecordValuesOnTemplate = (templateSections, fieldMappings, record) => {
  */
 const getPageAccess = async () => {
     const dataImportSettings = await getDataImportSettings();
-    const giftEntryGateSettings = await getGiftEntrySettings();
-    const isAdvancedMappingOn = dataImportSettings &&
+    return dataImportSettings &&
         dataImportSettings[FIELD_MAPPING_METHOD_FIELD_INFO.fieldApiName] === ADVANCED_MAPPING;
-    const isGiftEntryEnabled = giftEntryGateSettings[GIFT_ENTRY_FEATURE_GATE_INFO.fieldApiName];
-    return isAdvancedMappingOn && isGiftEntryEnabled;
 };
 
 /*******************************************************************************
