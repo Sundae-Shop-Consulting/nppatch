@@ -36,36 +36,21 @@
 */
 public with sharing class STG_PanelDataImportAdvancedMapping_CTRL extends STG_Panel {
     /*********************************************************************************************************
-    * @description URL of the Advanced Mapping Custom UI aura component container
-    */
-    public static String componentUrl = '/lightning/cmp/' + UTIL_Namespace.StrTokenNSPrefix('BDI_ManageAdvancedMapping');
-
-    /*********************************************************************************************************
     * @description Returns the string Id of the Data Import Advanced Mapping panel
     */
     public override String idPanel() { return 'idPanelDataImportAdvancedMapping'; }
 
     /*******************************************************************************************************
     * @description Action Method to navigate to separate VF page that contains custom Advanced Mapping UI in
-    * Aura and Lightning
+    * Aura and Lightning. Uses the runtime namespace to build the component URL, falling back to 'c' in
+    * non-namespaced orgs.
     *
     * @return PageReference
     */
     public PageReference navigate() {
         String namespace = UTIL_Namespace.getNamespace();
-        String newPrefix;
-
-        //If the namespace being used is not npsp then replace with the current namespace if there is one
-        if (UTIL_Namespace.shouldAlignNamespace) {
-            if (!String.isBlank(namespace)) {
-                newPrefix = namespace;
-            } else {
-                newPrefix = 'c';
-            }
-            componentUrl = componentUrl.replace(UTIL_Namespace.HARDCODED_NAMESPACE + '__', newPrefix + '__');
-        }
-
-        PageReference advancedMapping = new PageReference(componentUrl);
+        String prefix = String.isBlank(namespace) ? 'c' : namespace;
+        PageReference advancedMapping = new PageReference('/lightning/cmp/' + prefix + '__BDI_ManageAdvancedMapping');
         advancedMapping.setRedirect(true);
         return advancedMapping;
     }
