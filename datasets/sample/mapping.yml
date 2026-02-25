@@ -1,0 +1,285 @@
+# NPPatch Sample Dataset Mapping
+# Load with: cci task run load_dataset --mapping datasets/sample/mapping.yml --sql_path datasets/sample/sample_data.sql
+#
+# This mapping includes only the fields populated by the sample dataset.
+# For a full field mapping, see datasets/mapping.yml (auto-generated).
+#
+# Load order: parent objects first, then children that reference them.
+
+Insert Campaign:
+  sf_object: Campaign
+  fields:
+  - Name
+  - IsActive
+  - Status
+  - Type
+  - StartDate
+  - EndDate
+  - Description
+  - ExpectedRevenue
+  lookups:
+    ParentId:
+      table:
+      - Campaign
+      after: Insert Campaign
+
+Insert General_Accounting_Unit__c:
+  sf_object: General_Accounting_Unit__c
+  fields:
+  - Name
+  - Active__c
+  - Description__c
+
+Insert Engagement_Plan_Template__c:
+  sf_object: Engagement_Plan_Template__c
+  fields:
+  - Name
+  - Description__c
+  - Skip_Weekends__c
+  - Default_Assignee__c
+  - Automatically_Update_Child_Task_Due_Date__c
+
+Insert Engagement_Plan_Task__c:
+  sf_object: Engagement_Plan_Task__c
+  fields:
+  - Name
+  - Days_After__c
+  - Priority__c
+  - Status__c
+  - Type__c
+  - Send_Email__c
+  - Comments__c
+  lookups:
+    Engagement_Plan_Template__c:
+      table:
+      - Engagement_Plan_Template__c
+    Parent_Task__c:
+      table:
+      - Engagement_Plan_Task__c
+      after: Insert Engagement_Plan_Task__c
+
+Insert Account:
+  sf_object: Account
+  fields:
+  - Name
+  - RecordTypeId
+  - Grantmaker__c
+  - Matching_Gift_Company__c
+  - Matching_Gift_Percent__c
+  lookups:
+    ParentId:
+      table:
+      - Account
+      after: Insert Account
+
+Insert Address__c:
+  sf_object: Address__c
+  fields:
+  - Address_Type__c
+  - Default_Address__c
+  - MailingStreet__c
+  - MailingCity__c
+  - MailingState__c
+  - MailingPostalCode__c
+  - MailingCountry__c
+  lookups:
+    Household_Account__c:
+      table:
+      - Account
+
+Insert Contact:
+  sf_object: Contact
+  fields:
+  - FirstName
+  - LastName
+  - HomeEmail__c
+  - WorkEmail__c
+  - WorkPhone__c
+  - PreferredPhone__c
+  - Preferred_Email__c
+  - Primary_Address_Type__c
+  lookups:
+    AccountId:
+      table:
+      - Account
+    Current_Address__c:
+      table:
+      - Address__c
+    Primary_Affiliation__c:
+      table:
+      - Account
+    ReportsToId:
+      table:
+      - Contact
+      after: Insert Contact
+
+Insert Affiliation__c:
+  sf_object: Affiliation__c
+  fields:
+  - Role__c
+  - Status__c
+  - Primary__c
+  - StartDate__c
+  - Description__c
+  lookups:
+    Contact__c:
+      table:
+      - Contact
+    Organization__c:
+      table:
+      - Account
+
+Insert Recurring_Donation__c:
+  sf_object: Recurring_Donation__c
+  fields:
+  - Name
+  - Amount__c
+  - Status__c
+  - RecurringType__c
+  - Installment_Period__c
+  - InstallmentFrequency__c
+  - Day_of_Month__c
+  - StartDate__c
+  - Date_Established__c
+  - PaymentMethod__c
+  lookups:
+    Contact__c:
+      table:
+      - Contact
+    Organization__c:
+      table:
+      - Account
+    Recurring_Donation_Campaign__c:
+      table:
+      - Campaign
+
+Insert Relationship__c:
+  sf_object: Relationship__c
+  fields:
+  - Type__c
+  - Status__c
+  - Description__c
+  lookups:
+    Contact__c:
+      table:
+      - Contact
+    RelatedContact__c:
+      table:
+      - Contact
+    ReciprocalRelationship__c:
+      table:
+      - Relationship__c
+      after: Insert Relationship__c
+
+Insert Opportunity:
+  sf_object: Opportunity
+  fields:
+  - Name
+  - Amount
+  - StageName
+  - CloseDate
+  - RecordTypeId
+  - Acknowledgment_Status__c
+  - Do_Not_Automatically_Create_Payment__c
+  - Fair_Market_Value__c
+  - Gift_Strategy__c
+  - Grant_Period_Start_Date__c
+  - Grant_Period_End_Date__c
+  - Grant_Program_Area_s__c
+  - Honoree_Name__c
+  - In_Kind_Description__c
+  - In_Kind_Type__c
+  - Is_Grant_Renewal__c
+  - Matching_Gift_Status__c
+  - Member_Level__c
+  - Membership_Start_Date__c
+  - Membership_End_Date__c
+  - Membership_Origin__c
+  - Tribute_Type__c
+  lookups:
+    AccountId:
+      table:
+      - Account
+    CampaignId:
+      table:
+      - Campaign
+    Primary_Contact__c:
+      table:
+      - Contact
+    Recurring_Donation__c:
+      table:
+      - Recurring_Donation__c
+    Matching_Gift_Account__c:
+      table:
+      - Account
+    Matching_Gift__c:
+      table:
+      - Opportunity
+      after: Insert Opportunity
+    Honoree_Contact__c:
+      table:
+      - Contact
+
+Insert OppPayment__c:
+  sf_object: OppPayment__c
+  fields:
+  - Payment_Amount__c
+  - Payment_Date__c
+  - Payment_Method__c
+  - Paid__c
+  - Scheduled_Date__c
+  lookups:
+    Opportunity__c:
+      table:
+      - Opportunity
+
+Insert Allocation__c:
+  sf_object: Allocation__c
+  fields:
+  - Amount__c
+  - Percent__c
+  lookups:
+    General_Accounting_Unit__c:
+      table:
+      - General_Accounting_Unit__c
+    Opportunity__c:
+      table:
+      - Opportunity
+
+Insert Account_Soft_Credit__c:
+  sf_object: Account_Soft_Credit__c
+  fields:
+  - Amount__c
+  - Role__c
+  lookups:
+    Account__c:
+      table:
+      - Account
+    Opportunity__c:
+      table:
+      - Opportunity
+
+Insert Partial_Soft_Credit__c:
+  sf_object: Partial_Soft_Credit__c
+  fields:
+  - Amount__c
+  - Role_Name__c
+  lookups:
+    Contact__c:
+      table:
+      - Contact
+    Opportunity__c:
+      table:
+      - Opportunity
+
+Insert Grant_Deadline__c:
+  sf_object: Grant_Deadline__c
+  fields:
+  - Name
+  - Type__c
+  - Grant_Deadline_Due_Date__c
+  - Grant_Deliverable_Requirements__c
+  lookups:
+    Opportunity__c:
+      table:
+      - Opportunity
