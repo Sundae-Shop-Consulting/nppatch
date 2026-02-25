@@ -22,8 +22,12 @@
 
     <apex:outputPanel styleClass="slds-scope stg-panel-data-import-advanced-mapping" rendered="{!isRunningUserIsAdmin}">
         <apex:form id="form" styleClass="slds-m-around_x-large">
-            <c:STG_PageHeader sectionLabel="{!$Label.stgNavSystem}" pageLabel="{!$Label.geHeaderGiftEntry}" />
+            <c:STG_PageHeader sectionLabel="{!$Label.stgNavSystem}" pageLabel="{!$Label.bdiAdvancedMapping}" />
             <c:UTIL_PageMessages escMsg="false" allowClose="false" id="messages" />
+
+            <p class="slds-text-body_regular slds-m-vertical_medium">
+                Advanced Mapping controls how the NPPatch Data Importer and Gift Entry map fields from Data Import records to Salesforce objects. Use Configure Advanced Mapping to view, edit, or create field mappings.
+            </p>
 
             <div class="slds-m-vertical_medium">
                 <apex:commandButton id="navigateAdvancedMapping"
