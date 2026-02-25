@@ -49,7 +49,6 @@ public class RD2_CustomFieldMapper_TEST {
     private static void shouldIndicateRDIsUnchangedWhenFieldIsNotInCustomMapping() {
         createCustomFieldMapping('Name', 'Description');
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder().build();
 
@@ -69,7 +68,6 @@ public class RD2_CustomFieldMapper_TEST {
     private static void shouldIndicateRDIsChangedWhenFieldIsInCustomMapping() {
         createCustomFieldMapping('Amount__c', 'Amount');
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder().build();
 
@@ -86,7 +84,6 @@ public class RD2_CustomFieldMapper_TEST {
      */
     @IsTest
     private static void shouldNotChangeOpportunityWhenCustomMappingIsEmpty() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder().build();
         Opportunity opp = new TEST_OpportunityBuilder()
@@ -111,7 +108,6 @@ public class RD2_CustomFieldMapper_TEST {
     private static void shouldNotOverwriteOpportunityFieldWhenNotIncludedInCustomMapping() {
         createCustomFieldMapping('Name', 'Description');
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder().build();
         Opportunity opp = new TEST_OpportunityBuilder()
@@ -136,7 +132,6 @@ public class RD2_CustomFieldMapper_TEST {
     private static void shouldOverwriteOpportunityFieldWhenIncludedInCustomMapping() {
         createCustomFieldMapping('Amount__c', 'Amount');
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder().build();
         Opportunity opp = new TEST_OpportunityBuilder()
@@ -159,7 +154,6 @@ public class RD2_CustomFieldMapper_TEST {
     private static void shouldIndicateChangeWhenFieldIsIncludedInCustomMappingAndValueIsChanged() {
         createCustomFieldMapping('Amount__c', 'Amount');
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder().build();
         Opportunity opp = new TEST_OpportunityBuilder()
@@ -184,7 +178,6 @@ public class RD2_CustomFieldMapper_TEST {
     private static void shouldNotIndicateChangeWhenFieldIsIncludedInCustomMappingAndValueIsSame() {
         createCustomFieldMapping('Amount__c', 'Amount');
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder().build();
         Opportunity opp = new TEST_OpportunityBuilder()

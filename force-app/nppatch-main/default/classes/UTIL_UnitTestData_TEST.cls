@@ -197,8 +197,11 @@ public class UTIL_UnitTestData_TEST {
             Contact newCon = getContact();
             newCon.FirstName = CAO_Constants.CONTACT_FIRSTNAME_FOR_TESTS + getUniqueString();
             newCon.LastName = CAO_Constants.CONTACT_LASTNAME_FOR_TESTS;
-            if (RLLP_OppRollup_UTIL.isMultiCurrency()) {
-                newCon.put(RLLP_OppRollup_UTIL.mcFieldValues.get('Contact'), RLLP_OppRollup_UTIL.currCorporate);
+            if (UserInfo.isMultiCurrencyOrganization()) {
+                newCon.put(
+                    (String) Schema.sObjectType.Contact.fields.getMap().get('CurrencyIsoCode')?.getDescribe().getName(),
+                    UTIL_Currency.getInstance().getOrgDefaultCurrency()
+                );
             }
 
             contactsToAdd.add (newCon);
@@ -939,10 +942,11 @@ public class UTIL_UnitTestData_TEST {
         TDTM_ProcessControl.toggleTriggerState('Opportunity', 'PSC_Opportunity_TDTM', false);
         TDTM_ProcessControl.toggleTriggerState('Opportunity', 'OPP_CampaignMember_TDTM', false);
     }
-    /* @description Disable all OppRollup related trigger handlers when not needed to improve performance */
+    /* @description Disable non-CRLP rollup trigger handlers (EP_TaskRollup_TDTM).
+     * With legacy RLLP removed, CRLP is the only rollup engine. Use disableCustomizableRollupTriggers()
+     * to explicitly disable CRLP triggers when needed to avoid SOQL limits. */
     public static void disableRollupTriggers() {
         createDefaultTDTMHandlers();
-        TDTM_ProcessControl.toggleTriggerState('Opportunity', 'RLLP_OppRollup_TDTM', false);
         TDTM_ProcessControl.toggleTriggerState('Task', 'EP_TaskRollup_TDTM', false);
     }
     /* @description Disable all OppRollup related trigger handlers when not needed to improve performance */

@@ -36,11 +36,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>%%%NAMESPACE%%%Batch__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>IsClosed</field>
             <table>Opportunity</table>
         </columns>
@@ -435,11 +430,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>AverageAmount__c</field>
-            <table>Opportunity.OpportunityContactRoles</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>%%%NAMESPACE%%%Batch__c</field>
             <table>Opportunity.OpportunityContactRoles</table>
         </columns>
         <columns>
@@ -1181,11 +1171,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Organization__c.AverageAmount__c</field>
-            <table>Opportunity.OpportunityContactRoles.Affiliations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Organization__c.%%%NAMESPACE%%%Batch__c</field>
             <table>Opportunity.OpportunityContactRoles.Affiliations__r</table>
         </columns>
         <columns>

@@ -5,7 +5,7 @@ import GeBatchGiftEntryTable from 'c/geBatchGiftEntryTable';
 import Gift from 'c/geGift';
 
 import retrieveDefaultSGERenderWrapper from '@salesforce/apex/GE_GiftEntryController.retrieveDefaultSGERenderWrapper';
-import getDataImportModel from '@salesforce/apex/BGE_DataImportBatchEntry_CTRL.getDataImportModel';
+
 
 const mockRenderWrapper = require('../../../../../../tests/__mocks__/apex/data/retrieveDefaultSGERenderWrapper.json');
 const mockSections = require('./data/sections.json');
@@ -57,11 +57,6 @@ describe('ge-batch-gift-entry-table', () => {
 
     const setupBatchTableWithData = async (withData = false) => {
         retrieveDefaultSGERenderWrapper.mockResolvedValue(mockRenderWrapper);
-        if (withData) {
-            getDataImportModel.mockResolvedValue(JSON.stringify(mockLegacyDataImportModel));
-        } else {
-            getDataImportModel.mockResolvedValue('{"dummyKey":"dummyValue"}');
-        }
 
         await flushPromises();
 

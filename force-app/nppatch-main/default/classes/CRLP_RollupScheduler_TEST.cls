@@ -79,16 +79,6 @@ private class CRLP_RollupScheduler_TEST {
         System.assertEquals(jobCount, scheduledJobs.size(),
             'There should be ' + jobCount + ' jobs scheduled using the CRLP_RollupScheduler interface');
 
-        // Reset the defaultScheduledJobs collection
-        UTIL_MasterSchedulableHelper.defaultScheduledJobs = null;
-
-        // Turn off Customizable Rollups
-        UTIL_CustomSettingsFacade.getCustomizableRollupSettings().Customizable_Rollups_Enabled__c = false;
-        UTIL_MasterSchedulableHelper.setScheduledJobs();
-
-        System.assertEquals(0, [SELECT count() FROM AsyncApexJob
-            WHERE JobType = 'ScheduledApex' AND ApexClass.Name LIKE 'CRLP_%' AND Status != 'Aborted'],
-            'There should be zero jobs scheduled using the CRLP_RollupScheduler interface');
     }
 
     /**

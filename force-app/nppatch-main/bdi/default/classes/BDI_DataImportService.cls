@@ -47,11 +47,9 @@ global with sharing class BDI_DataImportService {
         batchNumberDescribe.getRelationshipName(),
         String.valueOf(DataImportBatch__c.Batch_Number__c)
     }, '.');
-    public static final String FM_HELP_TEXT = 'Help Text';
     public static final String FM_DATA_IMPORT_FIELD_MAPPING = 'Data Import Field Mapping';
     public static final String ACH_PAYMENT_METHOD = 'ACH';
     public static final String DI_WITH_RD_FIELDS_NO_RD2 = System.label.RD2_DisabledRD2Error;
-    public static final String DI_WITH_RD_FIELDS_NO_ADV_MAPPING = System.label.RD2_DisabledAdvancedMappingError;
 
     public BDI_MappingService mappingService;
 
@@ -64,9 +62,7 @@ global with sharing class BDI_DataImportService {
         this.mappingService = mappingService;
 
         contactService = new BDI_ContactService(this);
-        if (mappingService instanceof BDI_MappingServiceAdvanced){
-            additionalObjectService = new BDI_AdditionalObjectService(this);
-        }
+        additionalObjectService = new BDI_AdditionalObjectService(this);
     }
 
     /*******************************************************************************************************
@@ -74,14 +70,7 @@ global with sharing class BDI_DataImportService {
     * use.
     */
     public static BDI_MappingService getDefaultMappingService() {
-        BDI_MappingService bdiMS;
-        Data_Import_Settings__c dis = UTIL_CustomSettingsFacade.getDataImportSettings();
-        if (dis.Field_Mapping_Method__c == FM_HELP_TEXT) {
-            bdiMS = BDI_MappingServiceHelpText.getInstance();
-        }else if (dis.Field_Mapping_Method__c == FM_DATA_IMPORT_FIELD_MAPPING) {
-            bdiMS = BDI_MappingServiceAdvanced.getInstance();
-        }
-        return bdiMS;
+        return BDI_MappingServiceAdvanced.getInstance();
     }
 
     /*******************************************************************************************************
@@ -654,7 +643,7 @@ global with sharing class BDI_DataImportService {
             pl.stop();
 
             pl = perfLogger.newPerfLog('importRecurringDonations');
-            BDI_RecurringDonations bdiRDs= new BDI_RecurringDonations(this);
+            BDI_RecurringDonations bdiRDs = new BDI_RecurringDonations(this);
             bdiRDs.importRecurringDonations();
             pl.stop();
 
@@ -741,21 +730,6 @@ global with sharing class BDI_DataImportService {
      * @return             Returns the DIs after they have been checked.
      */
     private List<DataImport__c> checkRDFields(List<DataImport__C> dataImports) {
-        String RDImportStatusField = 'RecurringDonationImportStatus__c';
-
-        for (DataImport__c DI : dataImports) {
-            if (BDI_RecurringDonations.areRDFieldsPopulated(DI)) {
-
-                if (!(mappingService instanceof BDI_MappingServiceAdvanced)) {
-                    LogBDIError(DI, DI_WITH_RD_FIELDS_NO_ADV_MAPPING, RDImportStatusField);
-                }
-
-                if (!RD2_EnablementService.isRecurringDonations2Enabled) {
-                    LogBDIError(DI, DI_WITH_RD_FIELDS_NO_RD2, RDImportStatusField);
-                }
-            }
-        }
-
         return dataImports;
     }
 

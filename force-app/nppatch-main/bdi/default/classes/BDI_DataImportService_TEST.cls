@@ -78,7 +78,7 @@ private with sharing class BDI_DataImportService_TEST {
         diSettings.Run_Opportunity_Rollups_while_Processing__c = true;
 
         Boolean isDryRun = false;
-        BDI_DataImportService service = new BDI_DataImportService(isDryRun, BDI_MappingServiceHelpText.getInstance());
+        BDI_DataImportService service = new BDI_DataImportService(isDryRun, BDI_MappingServiceAdvanced.getInstance());
         service.injectDataImportSettings(diSettings);
 
         List<Trigger_Handler__c> expectedHandlers = TDTM_Config_API.getCachedRecords();
@@ -98,7 +98,7 @@ private with sharing class BDI_DataImportService_TEST {
         diSettings.Run_Opportunity_Rollups_while_Processing__c = false;
 
         Boolean isDryRun = false;
-        BDI_DataImportService service = new BDI_DataImportService(isDryRun, BDI_MappingServiceHelpText.getInstance());
+        BDI_DataImportService service = new BDI_DataImportService(isDryRun, BDI_MappingServiceAdvanced.getInstance());
         service.injectDataImportSettings(diSettings);
 
         Map<String, Trigger_Handler__c> handlerByKey = new Map<String, Trigger_Handler__c>();
@@ -414,8 +414,7 @@ private with sharing class BDI_DataImportService_TEST {
     * @description Returns true if the trigger handler calculates rollups
     */
     private static Boolean isRollupTriggerHandler(Trigger_Handler__c handler) {
-         return (handler.Object__c == 'Opportunity' && handler.Class__c == 'RLLP_OppRollup_TDTM') ||
-            (handler.Object__c == 'Opportunity' && handler.Class__c == 'CRLP_Rollup_TDTM') ||
-            (handler.Object__c == 'OppPayment__c' && handler.Class__c == 'CRLP_Rollup_TDTM'); 
+         return (handler.Object__c == 'Opportunity' && handler.Class__c == 'CRLP_Rollup_TDTM') ||
+            (handler.Object__c == 'OppPayment__c' && handler.Class__c == 'CRLP_Rollup_TDTM');
     }
 }

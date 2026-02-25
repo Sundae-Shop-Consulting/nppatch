@@ -56,48 +56,9 @@ public with sharing class STG_PanelCustomizableRollup_CTRL extends STG_Panel {
     }
 
     /*******************************************************************************************************
-    * @description Show CRLP settings if the org is on the HH Account model,
-    * or if the org is on the One to One Account model and HEDA + Advancement is installed
-    * @return Boolean
-    */
-    public Boolean showCRLPSettings {
-        get {
-            Boolean isHHAccountModel = STG_Panel.stgService.stgCon.Account_Processor__c == CAO_Constants.HH_ACCOUNT_PROCESSOR;
-            Boolean isOneToOneModel = STG_Panel.stgService.stgCon.Account_Processor__c == CAO_Constants.ONE_TO_ONE_PROCESSOR;
-            return isHHAccountModel || (ADV_PackageInfo_SVC.useAdv() && isOneToOneModel);
-        }
-        set;
-    }
-
-    /*******************************************************************************************************
     * @description the jobId of the deployment
     */
     public String jobId { get; private set; }
-
-    /*******************************************************************************************************
-    * @description Enable Customizable Rollups by starting the custom metadata deployment
-    * @return null
-    */
-    public PageReference enableCRLPs() {
-        STG_SettingsManager_CTRL.idPanelCurrent = idPanel();
-
-        Savepoint sp = Database.setSavepoint();
-        try {
-            this.isPolling = true;
-            this.jobId = new CRLP_EnablementService().enable(true);
-            STG_Panel.stgService.reset(STG_Panel.stgService.stgCRLP);
-
-        } catch (Exception e) {
-            Database.rollback(sp);
-            ERR_Handler.processError(e, ERR_Handler_API.Context.STTG);
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, e.getMessage()));
-        }
-        if (this.jobId == null) {
-            this.isPolling = false;
-        }
-
-        return null;
-    }
 
     /*******************************************************************************************************
     * @description Action Method to simply redeploy/reset all CMDTs, only offered when CRLPs are enabled
@@ -120,31 +81,6 @@ public with sharing class STG_PanelCustomizableRollup_CTRL extends STG_Panel {
         }
         if (this.jobId == null) {
             this.isPolling = false;
-        }
-        return null;
-    }
-
-    /*******************************************************************************************************
-    * @description Action Method to disable CMDTs, save custom setting,
-    * and reschedule Scheduled Jobs
-    * @return void
-    */
-    public PageReference disableCRLPs() {
-        isPolling = false;
-
-        STG_SettingsManager_CTRL.idPanelCurrent = idPanel();
-
-        Savepoint sp = Database.setSavepoint();
-        try {
-            new CRLP_EnablementService().disable();
-            STG_Panel.stgService.reset(STG_Panel.stgService.stgCRLP);
-
-        } catch (Exception e) {
-            Database.rollback(sp);
-            ERR_Handler.processError(e, ERR_Handler_API.Context.STTG);
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, e.getMessage()));
-            Customizable_Rollup_Settings__c crlpSettings = UTIL_CustomSettingsFacade.getCustomizableRollupSettings();
-            crlpSettings.Customizable_Rollups_Enabled__c = !STG_Panel.stgService.stgCRLP.Customizable_Rollups_Enabled__c;
         }
         return null;
     }

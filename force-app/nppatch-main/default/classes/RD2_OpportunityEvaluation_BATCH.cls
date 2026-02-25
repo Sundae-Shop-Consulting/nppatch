@@ -217,10 +217,6 @@ public without sharing class RD2_OpportunityEvaluation_BATCH
     * @description Batch Start Method
     */
     public Database.QueryLocator start(Database.BatchableContext context) {
-        if (!RD2_EnablementService.isRecurringDonations2Enabled) {
-            throw new BatchException(System.Label.RD2_ErrorEnhancedRDBatchJobCannotBeRun);
-        }
-
         validateStatusField();
 
         return Database.getQueryLocator(getRDBatchQuery());

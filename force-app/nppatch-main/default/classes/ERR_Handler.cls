@@ -426,8 +426,8 @@ public class ERR_Handler {
     public static Boolean isRD2MigrationContext(String context) {
         return String.isNotBlank(context)
             && (
-                context.contains(RD2_DataMigrationBase_BATCH.LOG_CONTEXT_DRY_RUN)
-                || context.contains(RD2_DataMigrationBase_BATCH.LOG_CONTEXT_MIGRATION)
+                context.contains('RDValidateMigration:')
+                || context.contains('RDDataMigration:')
             );
     }
 

@@ -771,7 +771,6 @@ public with sharing class RD2_ScheduleService_TEST {
         final Date startDate = Date.newInstance(2019, 11, 1);
         final Date nextDonationDate = Date.newInstance(2028, 2, 1);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = getScheduleServiceForCurrentDate(startDate);
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
@@ -803,7 +802,6 @@ public with sharing class RD2_ScheduleService_TEST {
         final Integer numberOfInstallments = 0;
         final Date startDate = Date.newInstance(2019, 11, 1);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = getScheduleServiceForCurrentDate(startDate);
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
@@ -833,7 +831,6 @@ public with sharing class RD2_ScheduleService_TEST {
         final Integer numberOfInstallments = 12;
         Date startDate = Date.newInstance(2019, 11, 1);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = getScheduleServiceForCurrentDate(startDate);
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
@@ -881,7 +878,6 @@ public with sharing class RD2_ScheduleService_TEST {
         final Date startDate = Date.newInstance(2019, 11, 1);
         Date nextDonationDate = Date.newInstance(2020, 10, 1);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = getScheduleServiceForCurrentDate(startDate);
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
@@ -911,7 +907,6 @@ public with sharing class RD2_ScheduleService_TEST {
         final Date startDate = Date.newInstance(2019, 11, 1);
         Date nextDonationDate = Date.newInstance(2020, 10, 1);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = getScheduleServiceForCurrentDate(startDate);
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
@@ -943,7 +938,6 @@ public with sharing class RD2_ScheduleService_TEST {
         final Date startDate = Date.newInstance(2019, 11, 1);
         Date nextDonationDate = Date.newInstance(2020, 10, 1);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = getScheduleServiceForCurrentDate(startDate);
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
@@ -974,7 +968,6 @@ public with sharing class RD2_ScheduleService_TEST {
         final Date endDate = Date.newInstance(2020, 10, 31);
         Date nextDonationDate = Date.newInstance(2020, 10, 1);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = getScheduleServiceForCurrentDate(startDate);
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
@@ -1010,7 +1003,6 @@ public with sharing class RD2_ScheduleService_TEST {
         Date nextDonationDate2 = Date.newInstance(2020, 1, 17);
         Date nextDonationDate3 = Date.newInstance(2020, 1, 15);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = new RD2_ScheduleService();
 
         List<Recurring_Donation__c> rds = new List<Recurring_Donation__c>{
@@ -1057,7 +1049,6 @@ public with sharing class RD2_ScheduleService_TEST {
         final Integer numberOfInstallments = -5;
         final Date startDate = Date.newInstance(2019, 11, 1);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = getScheduleServiceForCurrentDate(startDate);
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
@@ -1087,7 +1078,6 @@ public with sharing class RD2_ScheduleService_TEST {
         final Date startDate = Date.newInstance(2019, 11, 1);
         Date nextDonationDate = Date.newInstance(2020, 4, 15);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = getScheduleServiceForCurrentDate(startDate);
 
         Recurring_Donation__c rd = getRecurringDonationFirstAndFifteenthBuilder()
@@ -1115,7 +1105,6 @@ public with sharing class RD2_ScheduleService_TEST {
     */
     @IsTest
     private static void shouldReturnOneActiveSchedulesForNewRD() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = new RD2_ScheduleService();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
@@ -1133,7 +1122,6 @@ public with sharing class RD2_ScheduleService_TEST {
     */
     @IsTest
     private static void shouldReturnActiveSchedulesWhenRDHasCurrentAndFutureSchedule() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = new RD2_ScheduleService();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
@@ -1155,7 +1143,6 @@ public with sharing class RD2_ScheduleService_TEST {
     */
     @IsTest
     private static void shouldReturnZeroActiveSchedulesForClosedRD() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = new RD2_ScheduleService();
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
@@ -1177,7 +1164,6 @@ public with sharing class RD2_ScheduleService_TEST {
     @IsTest
     private static void shouldMarkRDForScheduleUpdateWhenStartDateIsInPast() {
         Date startDate = Date.newInstance(2019, 11, 1);
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         List<Recurring_Donation__c> oldRds = new List<Recurring_Donation__c>{
             getRecurringDonationMonthlyBuilder()
@@ -1208,7 +1194,6 @@ public with sharing class RD2_ScheduleService_TEST {
     @IsTest
     private static void shouldApplyRDChangesIfFutureStartDateUnchanged() {
         Date startDate = Date.today().addYears(12);
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         List<Recurring_Donation__c> oldRds = new List<Recurring_Donation__c>{
             getRecurringDonationMonthlyBuilder()
@@ -1246,7 +1231,6 @@ public with sharing class RD2_ScheduleService_TEST {
         final Date today = startDate;
         final Date scheduleEndDate = Date.newInstance(2020, 3, 1);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = getScheduleServiceForCurrentDate(today);
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
@@ -1283,7 +1267,6 @@ public with sharing class RD2_ScheduleService_TEST {
         final Date today = Date.newInstance(2020, 2, 1);
         final Date scheduleEndDate = Date.newInstance(2020, 3, 1);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = getScheduleServiceForCurrentDate(today);
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
@@ -1334,7 +1317,6 @@ public with sharing class RD2_ScheduleService_TEST {
         final Date nextDonationDate = Date.newInstance(2020, 4, 1);
         final Date scheduleEndDate = Date.newInstance(2020, 6, 1);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = getScheduleServiceForCurrentDate(today);
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
@@ -1394,7 +1376,6 @@ public with sharing class RD2_ScheduleService_TEST {
         final Date scheduleEndDate = Date.newInstance(2020, 3, 1);
         final Date today = Date.newInstance(2020, 3, 1);
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = getScheduleServiceForCurrentDate(today);
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder()
@@ -1448,7 +1429,6 @@ public with sharing class RD2_ScheduleService_TEST {
     */
     @IsTest
     private static void shouldDetermineScheduleEndDateWhenCurrentOppIsClosedLost() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Integer plannedInstallments = 3;
         Integer paidInstallments = 2;
 
@@ -1506,7 +1486,6 @@ public with sharing class RD2_ScheduleService_TEST {
     */
     @IsTest
     private static void shouldDetermineScheduleEndDateWhenAllPlannedOppsExist() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         Integer plannedInstallments = 6;
         Integer paidInstallments = 3;
 
@@ -1741,7 +1720,6 @@ public with sharing class RD2_ScheduleService_TEST {
     */
     @isTest
     private static void shouldExcludePauseScheduleInActiveSchedules() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
@@ -1762,7 +1740,6 @@ public with sharing class RD2_ScheduleService_TEST {
     */
     @isTest
     private static void shouldIncludeActivePauseScheduleInExistingSchedules() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
@@ -1937,7 +1914,6 @@ public with sharing class RD2_ScheduleService_TEST {
     */
     @isTest
     private static void shouldCancelActivePauseSchedule() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
@@ -1963,7 +1939,6 @@ public with sharing class RD2_ScheduleService_TEST {
     */
     @isTest
     private static void shouldNotThrowErrorWhenCancelingPauseAndNoneExists() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
@@ -1988,7 +1963,6 @@ public with sharing class RD2_ScheduleService_TEST {
     */
     @isTest
     private static void shouldReturnFuturePauseSchedule() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
@@ -2010,7 +1984,6 @@ public with sharing class RD2_ScheduleService_TEST {
     */
     @isTest
     private static void shouldReturnCurrentPauseSchedule() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
@@ -2032,7 +2005,6 @@ public with sharing class RD2_ScheduleService_TEST {
     */
     @isTest
     private static void shouldNotReturnPastPauseSchedule() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
@@ -2054,7 +2026,6 @@ public with sharing class RD2_ScheduleService_TEST {
     */
     @isTest
     private static void shouldRollbackExistingPauseDeactivationWhenNewPauseInsertFails() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
@@ -2090,7 +2061,6 @@ public with sharing class RD2_ScheduleService_TEST {
     */
     @isTest
     private static void shouldDeactivateExistingPauseWhenNewPauseIsCreated() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService.currentDate = DATE_ESTABLISHED;
 
         Recurring_Donation__c rd = getRecurringDonationMonthlyBuilder().build();
@@ -2130,7 +2100,6 @@ public with sharing class RD2_ScheduleService_TEST {
         final Integer numberOfInstallments = nextDonationDateByIndex.size();
         Recurring_Donation__c rd;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         RD2_ScheduleService service = getScheduleServiceForCurrentDate(startDate);
 
         if (installmentPeriod == RD2_Constants.INSTALLMENT_PERIOD_MONTHLY) {

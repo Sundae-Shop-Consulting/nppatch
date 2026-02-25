@@ -62,15 +62,13 @@ public class CRLP_AccountSkew_SoftCredit_BATCH extends CRLP_Batch_Base_Skew impl
      */
     public void execute(SchedulableContext context) {
         String className = CRLP_AccountSkew_SoftCredit_BATCH.class.getName();
-        if (CRLP_Rollup_SVC.isCustomizableRollupEngineEnabled) {
-            if (!UTIL_MasterSchedulableHelper.hasRunningJob(className)) {
-                Database.executeBatch(new CRLP_SkewDispatcher_BATCH(
-                    CRLP_RollupProcessingOptions.RollupType.AccountContactSoftCredit), 
-                    CRLP_SkewDispatcher_BATCH.BATCH_SIZE
-                );
-            } else {
-                logDuplicateBatchError(className);
-            }
+        if (!UTIL_MasterSchedulableHelper.hasRunningJob(className)) {
+            Database.executeBatch(new CRLP_SkewDispatcher_BATCH(
+                CRLP_RollupProcessingOptions.RollupType.AccountContactSoftCredit),
+                CRLP_SkewDispatcher_BATCH.BATCH_SIZE
+            );
+        } else {
+            logDuplicateBatchError(className);
         }
     }
 }

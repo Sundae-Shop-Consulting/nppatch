@@ -16,11 +16,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Account.%%%NAMESPACE%%%Batch__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Account.%%%NAMESPACE%%%Best_Gift_Year_Total__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -660,36 +655,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Batch_Data_Entry_Settings__c.%%%NAMESPACE%%%Allow_Blank_Opportunity_Names__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Batch_Data_Entry_Settings__c.%%%NAMESPACE%%%Opportunity_Naming__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Batch_Data_Entry_Settings__c.%%%NAMESPACE%%%Viewed_Retirement_Alert__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Batch__c.%%%NAMESPACE%%%Batch_Status__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Batch__c.%%%NAMESPACE%%%Description__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Batch__c.%%%NAMESPACE%%%Number_of_Items__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>Contact.%%%NAMESPACE%%%Address_Verification_Status__c</field>
         <readable>true</readable>
@@ -702,11 +667,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.%%%NAMESPACE%%%AverageAmount__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contact.%%%NAMESPACE%%%Batch__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3201,11 +3161,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Lead.%%%NAMESPACE%%%Batch__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Lead.%%%NAMESPACE%%%CompanyCity__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3437,11 +3392,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.%%%NAMESPACE%%%Batch_Number__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Opportunity.%%%NAMESPACE%%%Batch__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4094,12 +4044,7 @@
         <field>%%%NAMESPACE%%%Recurring_Donations_Settings__c.%%%NAMESPACE%%%Add_Campaign_to_All_Opportunites__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Recurring_Donations_Settings__c.%%%NAMESPACE%%%DataMigrationBatchSize__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
+<fieldPermissions>
         <editable>true</editable>
         <field>%%%NAMESPACE%%%Recurring_Donations_Settings__c.%%%NAMESPACE%%%DisableRollupsWhenCreatingInstallments__c</field>
         <readable>true</readable>
@@ -4189,17 +4134,7 @@
         <field>%%%NAMESPACE%%%Recurring_Donations_Settings__c.%%%NAMESPACE%%%RecurringDonationNameFormat__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Recurring_Donations_Settings__c.%%%NAMESPACE%%%RecurringDonations2EnablementState__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>%%%NAMESPACE%%%Recurring_Donations_Settings__c.%%%NAMESPACE%%%RecurringDonations2MigrationState__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
+<fieldPermissions>
         <editable>true</editable>
         <field>%%%NAMESPACE%%%Recurring_Donations_Settings__c.%%%NAMESPACE%%%Recurring_Donation_Batch_Size__c</field>
         <readable>true</readable>

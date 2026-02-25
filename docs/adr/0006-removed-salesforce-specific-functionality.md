@@ -37,7 +37,7 @@ SfdoInstrumentation was a proprietary telemetry framework that sent usage data t
 Classes that had instrumentation calls removed:
 - BDI_DataImport_BATCH
 - BDI_DataImportService
-- BGE_DataImportBatchEntry_CTRL
+- BGE_DataImportBatchEntry_CTRL (deleted in ADR-0008)
 - CRLP_RollupProcessor_SVC
 - GE_GiftEntryController
 - HH_Container_LCTRL

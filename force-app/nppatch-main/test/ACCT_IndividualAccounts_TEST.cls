@@ -1287,6 +1287,8 @@ private class ACCT_IndividualAccounts_TEST {
         Contact othercon = new Contact(accountId = acctId, LastName='other');
         insert othercon;
 
+        UTIL_UnitTestData_TEST.disableCustomizableRollupTriggers();
+
         Opportunity opp = new Opportunity(
             Amount = 500,
             AccountId = acctId,

@@ -72,7 +72,6 @@ public with sharing class RD2_ChangeLogService_TEST {
      */
     @IsTest
     private static void shouldNotCreateChangeLogWhenSettingIsNotEnabled() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
 
         Recurring_Donation__c rd = getRecurringDonationBuilder(getContact())
             .build();
@@ -936,7 +935,6 @@ public with sharing class RD2_ChangeLogService_TEST {
             )
         );
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
     }
 
 }

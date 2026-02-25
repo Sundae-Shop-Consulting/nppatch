@@ -48,9 +48,7 @@ public class RD2_RecurringDonationsOpp_TDTM extends TDTM_Runnable {
         List<SObject> opps, List<SObject> oldOpps,
         TDTM_Runnable.Action triggerAction, Schema.DescribeSObjectResult objResult
     ) {
-        if (!RD2_EnablementService.isRecurringDonations2Enabled
-            || TDTM_ProcessControl.isRecursive(TDTM_ProcessControl.flag.RD)
-        ) {
+        if (TDTM_ProcessControl.isRecursive(TDTM_ProcessControl.flag.RD)) {
             return null;
         }
 

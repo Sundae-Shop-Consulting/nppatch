@@ -61,7 +61,6 @@ public class RD2_ETableController_TEST {
     private static void testGetData() {
         if (shouldSkipIn2GP()) return;
 
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         
         Contact con = UTIL_UnitTestData_TEST.getContact();
         insert con;

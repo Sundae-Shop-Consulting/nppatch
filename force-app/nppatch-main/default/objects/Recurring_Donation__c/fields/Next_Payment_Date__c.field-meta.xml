@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Next_Payment_Date__c</fullName>
-    <description>Holds the date of the next recurring payment.  Manually editing this field will recalculate all future opportunity&apos;s close dates based on the scheduled defined.</description>
+    <description>Calculated automatically using the active Recurring Schedule(s). Read only.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The date on which you want the next donation to occur. This date also determines the date of all future donations.</inlineHelpText>
+    <inlineHelpText>Calculated automatically using the active Recurring Schedule(s). Read only.</inlineHelpText>
     <label>Next Donation Date</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

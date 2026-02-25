@@ -59,7 +59,6 @@ private class CRLP_Rollup_SVC_TEST {
         system.assertEquals(400, CRLP_RollupBatch_SVC.getBatchSize(CRLP_RollupProcessingOptions.RollupType.GAU, CRLP_RollupProcessingOptions.BatchJobMode.SkewMode));
 
         system.assertEquals(200, CRLP_Rollup_SVC.getMaxRelatedOppsForNonSkewMode());
-        system.assertEquals(true, CRLP_Rollup_SVC.isCustomizableRollupEngineEnabled);
         system.assertNotEquals(null, CRLP_Rollup_SVC.getSObjectFieldDescribe('Account', 'Name'));
     }
 

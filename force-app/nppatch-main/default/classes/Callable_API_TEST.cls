@@ -39,8 +39,6 @@ private with sharing class Callable_API_TEST {
 
     private static final String TDTM_TRIGGER_ACTION = 'TDTM.DisableAllTriggers';
     private static final String CRLP_IS_ENABLED_ACTION = 'CRLP.iscrlpenabled';
-    private static final String RD2_EXECUTE_MIGRATION_ACTION = 'RD2.ExecuteDataMigration';
-    private static final String RD2_ENABLE_ACTION = 'Settings.EnableEnhancedRecurringDonations';
     private static final String JOB_SCHEDULE_ACTION = 'Apex.ScheduleJob';
     private static final String RD2_PAUSE_ACTION = 'rd2.pause';
     private static final String ADVANCED_MAPPING_ACTION = 'settings.enableadvancedmapping';
@@ -121,108 +119,29 @@ private with sharing class Callable_API_TEST {
     }
 
     @IsTest
-    private static void shouldCallEnableAdvancedMappingOnAction() {
+    private static void shouldReturnNullForEnableAdvancedMappingAction() {
         Callable_API callableApi = new Callable_API();
-        AdvancedMappingEnablementServiceMock mappingServiceMock = new AdvancedMappingEnablementServiceMock();
-        callableApi.advancedMappingEnablementService = stubFor(mappingServiceMock);
 
         Test.startTest();
-            callableApi.call(ADVANCED_MAPPING_ACTION, null);
+            Object result = callableApi.call(ADVANCED_MAPPING_ACTION, null);
         Test.stopTest();
 
-        System.assert(mappingServiceMock.enableAdvancedMappingCalled, 'The enable advanced mapping service method ' +
-                'should be called.');
+        System.assertEquals(null, result, 'Advanced Mapping is always on; action should return null.');
     }
 
     @IsTest
-    private static void shouldNotCallEnableAdvancedMappingIfMappingIsEnabled() {
+    private static void shouldReturnNullForEnableGiftEntryAction() {
         Callable_API callableApi = new Callable_API();
-        AdvancedMappingEnablementServiceMock mappingServiceMock = new
-                AdvancedMappingEnablementServiceMock();
-        mappingServiceMock.setEnabled();
-
-        callableApi.advancedMappingEnablementService = stubFor(mappingServiceMock);
 
         Test.startTest();
-            callableApi.call(ADVANCED_MAPPING_ACTION, null);
+            Object result = callableApi.call(GIFT_ENTRY_ACTION, null);
         Test.stopTest();
 
-        System.assert(!mappingServiceMock.enableAdvancedMappingCalled, 'The enable advanced mapping service method ' +
-                'should not be called.');
-    }
-
-    @IsTest
-    private static void shouldCallEnableGiftEntryOnAction() {
-        Callable_API callableApi = new Callable_API();
-        GiftEntryEnablementServiceMock giftEntryEnablementServiceMock = new GiftEntryEnablementServiceMock();
-
-        callableApi.giftEntryEnablementService = stubFor(giftEntryEnablementServiceMock);
-
-        Test.startTest();
-            callableApi.call(GIFT_ENTRY_ACTION, null);
-        Test.stopTest();
-
-        System.assert(giftEntryEnablementServiceMock.enableGiftEntryCalled, 'The enable gift entry service method ' +
-            'should be called.');
-    }
-
-    @IsTest
-    private static void shouldNotCallEnableGiftEntryIfAlreadyEnabled() {
-        GiftEntryEnablementServiceMock giftEntryEnablementServiceMock = new GiftEntryEnablementServiceMock();
-        giftEntryEnablementServiceMock.setEnabled();
-
-        Callable_API callableApi = new Callable_API();
-        callableApi.giftEntryEnablementService = stubFor(giftEntryEnablementServiceMock);
-
-        Test.startTest();
-            callableApi.call(ADVANCED_MAPPING_ACTION, null);
-        Test.stopTest();
-
-        System.assert(!giftEntryEnablementServiceMock.enableGiftEntryCalled, 'The enable gift entry service ' +
-                'method should not be called.');
-    }
-
-    /**
-     * @description Verifies if Enhanced Recurring Donations are enabled
-     */
-    @IsTest
-    private static void shouldEnableRD2OnEnableRD2Action() {
-        RD2_EnablementService_Test.setCustomizableRollups(true);
-
-        Test.startTest();
-
-        Callable callableApi = (Callable) Type.forName('Callable_API').newInstance();
-        Map<String, Object> args = new Map<String, Object>{ 'ScheduleJobs' => false };
-        callableApi.call(RD2_ENABLE_ACTION, args);
-
-        Test.stopTest();
-
-        System.assertEquals(true,  STG_Panel.stgService.stgRD.IsRecurringDonations2Enabled__c);
-    }
-
-    /**
-     * @description Verifies Enhanced Recurring Donations migration batch job is executed
-     */
-    @IsTest
-    private static void shouldRunRD2DataMigrationWhenRD2IsEnabled() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
-
-        Test.startTest();
-
-        Callable callableApi = (Callable) Type.forName('Callable_API').newInstance();
-        Map<String, Object> args = new Map<String, Object>();
-        Object result = callableApi.call(RD2_EXECUTE_MIGRATION_ACTION, args);
-
-        Test.stopTest();
-        
-        AsyncApexJob job = new TEST_SObjectGateway.AsyncApexJobGateway()
-            .getRecord('RD2_DataMigration_BATCH');
-        System.assertNotEquals(null, job, 'The batch should be executed');
+        System.assertEquals(null, result, 'Gift Entry is always on; action should return null.');
     }
 
     @isTest
     private static void shouldProcessPauseRequestWhenCallingPauseAPI() {
-        RD2_EnablementService_TEST.setRecurringDonations2Enabled();
         
 
         Map<String, Object> pauseData = new Map<String, Object> {
@@ -294,42 +213,4 @@ private with sharing class Callable_API_TEST {
             'Partial Refund Amount should be deducted from the opportunity amount');
     }
 
-    private static GiftEntryEnablementService stubFor(GiftEntryEnablementServiceMock giftEntryEnablementServiceMock) {
-        return (GiftEntryEnablementService) Test.createStub(
-                GiftEntryEnablementService.class, giftEntryEnablementServiceMock);
-    }
-
-    private static AdvancedMappingEnablementService stubFor(AdvancedMappingEnablementServiceMock
-            advancedMappingControllerMock) {
-        return (AdvancedMappingEnablementService) Test.createStub(
-                AdvancedMappingEnablementService.class, advancedMappingControllerMock);
-    }
-
-    private class GiftEntryEnablementServiceMock implements StubProvider {
-        Boolean enableGiftEntryCalled = false;
-        Boolean isEnabled = false;
-
-        public void setEnabled() {
-            isEnabled = true;
-        }
-
-        public Object handleMethodCall(
-                Object stubbedObject,
-                String stubbedMethodName,
-                Type returnType,
-                List<Type> listOfParamTypes,
-                List<String> listOfParamNames,
-                List<Object> listOfArgs) {
-
-            switch on (stubbedMethodName) {
-                when 'enable' {
-                    enableGiftEntryCalled = true;
-                }
-                when 'isEnabled' {
-                    return isEnabled;
-                }
-            }
-            return null;
-        }
-    }
 }

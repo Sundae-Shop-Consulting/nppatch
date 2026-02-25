@@ -1,10 +1,10 @@
 /*
     Copyright (c) 2020 Salesforce.org
     All rights reserved.
-    
+
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are met:
-    
+
     * Redistributions of source code must retain the above copyright
       notice, this list of conditions and the following disclaimer.
     * Redistributions in binary form must reproduce the above copyright
@@ -13,18 +13,18 @@
     * Neither the name of Salesforce.org nor the names of
       its contributors may be used to endorse or promote products derived
       from this software without specific prior written permission.
- 
+
     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS 
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
-    COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, 
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+    COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
     POSSIBILITY OF SUCH DAMAGE.
 */
 /**
@@ -42,19 +42,19 @@ public class BDI_RecurringDonations {
 
     /*******************************************************************************************************
     * @description The Batch Data Import Service the helper should use
-    */ 
+    */
     private BDI_DataImportService bdi { get; set; }
 
     /*******************************************************************************************************
     * @description map to track the Recurring Donation created/matched for each DI record
-    */ 
+    */
     private Map<Id, Recurring_Donation__c> rdByDataImportId = new Map<Id, Recurring_Donation__c>();
 
     /*******************************************************************************************************
     * @description constructor for the BDI Recurring Donations helper
     * @param bdi The Batch Data Import Service the helper should use
     * @return void
-    */ 
+    */
     public BDI_RecurringDonations(BDI_DataImportService bdi) {
         this.bdi = bdi;
     }
@@ -82,7 +82,7 @@ public class BDI_RecurringDonations {
     /*******************************************************************************************************
     * @description Imports the appropriate Recurring Donations into NPSP
     * @return void
-    */ 
+    */
     public void importRecurringDonations() {
         rdByDataImportId = new Map<Id, Recurring_Donation__c>();
         List<Recurring_Donation__c> rdsForInsert = new List<Recurring_Donation__c>();
@@ -144,13 +144,13 @@ public class BDI_RecurringDonations {
                 disForUpdate[i].RecurringDonationImportStatus__c = System.Label.bdiUpdated;
             }
         }
-        
+
     }
 
     /*******************************************************************************************************
     * @description Validate and determine which Data Import records have records to process.
     * @return List<DataImport__c> The list of BDI records that have donations to process
-    */ 
+    */
     private List<DataImport__c> validateRDToProcess(){
         DataImport__c[] diWithRDForProcessing = new DataImport__c[]{};
 
@@ -171,39 +171,39 @@ public class BDI_RecurringDonations {
                 continue;
             }
 
-            //skip di that were created or update on a previous run since we don't 
+            //skip di that were created or update on a previous run since we don't
             //want unnecessary updates.
-            if (dataImport.RecurringDonationImportStatus__c == System.Label.bdiCreated || 
+            if (dataImport.RecurringDonationImportStatus__c == System.Label.bdiCreated ||
                 dataImport.RecurringDonationImportStatus__c == System.Label.bdiUpdated) {
                 continue;
             }
 
             diWithRDForProcessing.add(dataImport);
         }
-        
+
         return diWithRDForProcessing;
     }
 
     /**************************************************
      * @description This checks whether or not the specific set of RD fields are populated. If they are
      *              we consider it as an RD to be processed.
-     * @param  dataImport The DI to check whether the RD fields are populated. 
-     * @return            Returns whether or not RD fields are populated for the provided DI. 
-     */ 
+     * @param  dataImport The DI to check whether the RD fields are populated.
+     * @return            Returns whether or not RD fields are populated for the provided DI.
+     */
     public static Boolean areRDFieldsPopulated(DataImport__c dataImport) {
         return (dataImport.RecurringDonationImported__c != null || dataImport.Recurring_Donation_Amount__c != null);
     }
 
     /*******************************************************************************************************
     * @description Matches certain recurring donation fields against existing recurring donations.  This initial
-    * version is just setting the import status to matched for records that have an Id populated in the recurring 
+    * version is just setting the import status to matched for records that have an Id populated in the recurring
     * donation imported field.
     * @param disForMatching The data import records to match.
     */
     private void matchRecurringDonations(DataImport__c[] disForMatching) {
 
         //Loop through the DIs and if there is a recurring donation id populated, then mark it as matched.
-        //We don't need to actually query it to know it is matched since lookups already validate that it is a 
+        //We don't need to actually query it to know it is matched since lookups already validate that it is a
         //real id for a record that hasn't been deleted on insert of the DI.
         for (DataImport__c di : disForMatching) {
             if (di.RecurringDonationImported__c != null){
@@ -258,9 +258,9 @@ public class BDI_RecurringDonations {
         // Copy the data import fields to the Recurring Donation
         for (String dataImportField : dataImportFieldToRDField.keySet()) {
 
-            BDI_DataImportService.copyDIFieldToDestinationRecord(dataImport, 
-                    dataImportField, 
-                    rd, 
+            BDI_DataImportService.copyDIFieldToDestinationRecord(dataImport,
+                    dataImportField,
+                    rd,
                     dataImportFieldToRDField);
         }
 
@@ -271,7 +271,7 @@ public class BDI_RecurringDonations {
 
         Recurring_Donation__c rd = new Recurring_Donation__c();
 
-        if (dataImport.Donation_Donor__c == CONTACT_1 || 
+        if (dataImport.Donation_Donor__c == CONTACT_1 ||
             (dataImport.Donation_Donor__c == null && dataImport.Recurring_Donation_Amount__c != null)) {
             //Default the donor to contact 1 if none was provided.
             dataImport.Donation_Donor__c = CONTACT_1;
