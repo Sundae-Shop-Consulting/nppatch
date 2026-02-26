@@ -7,8 +7,8 @@
     <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <apex:includeLightning />
         <apex:slds />
-        <apex:stylesheet value="{!URLFOR($Resource.CumulusStaticResources, '/npsp-slds/npsp-common.css')}" />
-        <apex:includeScript value="{!URLFOR($Resource.CumulusStaticResources, '/jquery/jquery-3.5.0.js')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.NPPatchStaticResources, '/npsp-slds/npsp-common.css')}" />
+        <apex:includeScript value="{!URLFOR($Resource.NPPatchStaticResources, '/jquery/jquery-3.5.0.js')}"/>
 
         <div class="slds-scope slds-wcag">
 

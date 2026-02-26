@@ -1,5 +1,5 @@
 import { LightningElement } from 'lwc';
-import Resources from '@salesforce/resourceUrl/CumulusStaticResources'
+import NPPATCH_STATIC_RESOURCES from '@salesforce/resourceUrl/NPPatchStaticResources'
 import gseuTrailheadText from '@salesforce/label/c.gseuTrailheadText'
 import gseuTrailheadLogoText from '@salesforce/label/c.gseuTrailheadLogoText'
 import opensInNewLink from '@salesforce/label/c.opensInNewLink'
@@ -8,7 +8,7 @@ export default class EuTrailhead extends LightningElement {
     /**
      * Url of the image shown in the component
      */
-    imgUrl = Resources + '/gsAssets/trailheadComponent/trailheadLogo.svg';
+    imgUrl = NPPATCH_STATIC_RESOURCES + '/gsAssets/trailheadComponent/trailheadLogo.svg';
 
     /**
      * Object to reference the labels

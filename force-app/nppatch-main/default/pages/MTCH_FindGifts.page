@@ -9,8 +9,8 @@
     </apex:outputPanel>
 
     <apex:slds />
-    <apex:includeScript value="{!URLFOR($Resource.CumulusStaticResources, '/npsp-slds/modal.js')}"/>
-    <apex:stylesheet value="{!URLFOR($Resource.CumulusStaticResources, '/npsp-slds/npsp-common.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.NPPatchStaticResources, '/npsp-slds/modal.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.NPPatchStaticResources, '/npsp-slds/npsp-common.css')}" />
 
     <style type="text/css">
         dt {

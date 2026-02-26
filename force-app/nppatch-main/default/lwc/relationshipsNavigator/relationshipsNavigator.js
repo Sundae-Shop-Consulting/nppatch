@@ -35,6 +35,11 @@ export default class RelationshipsNavigator extends LightningElement {
     }
 
     error;
+    _tabularTabReady = false;
+
+    handleTabularTabActive() {
+        this._tabularTabReady = true;
+    }
 
     handleAccessError(event) {
         this.error = event.detail;

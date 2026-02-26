@@ -22,15 +22,7 @@ Third-Party Components
 
 This project includes the following third-party components:
 
-Bootstrap Icons
-  License: Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported
-  Location: force-app/main/default/staticresources/CumulusStaticResources/Bootstrap/icons/
-
-Bootstrap Fonts
-  License: Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported
-  Location: force-app/main/default/staticresources/CumulusStaticResources/Bootstrap/fonts/
-
 D3.js (v7.9.0)
   Copyright (c) 2010-2023 Mike Bostock
   License: ISC
-  Location: force-app/nppatch-main/default/staticresources/CumulusStaticResources/d3/
+  Location: force-app/nppatch-main/default/staticresources/NPPatchStaticResources/d3/

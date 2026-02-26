@@ -1,11 +1,11 @@
 import { LightningElement, api, wire } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
-import CumulusStaticResources from '@salesforce/resourceUrl/CumulusStaticResources';
+import NPPATCH_STATIC_RESOURCES from '@salesforce/resourceUrl/NPPatchStaticResources';
 import updateCheckItem from '@salesforce/apex/GS_ChecklistSetup.updateCheckItem'
 import getNamespace from '@salesforce/apex/GS_ChecklistSetup.getNamespace';
 import opensInNewLink from '@salesforce/label/c.opensInNewLink'
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-const gsAssetsImage = CumulusStaticResources + '/gsAssets/step';
+const gsAssetsImage = NPPATCH_STATIC_RESOURCES + '/gsAssets/step';
 
 /**
 * @description This component render the Sub Section Item info
