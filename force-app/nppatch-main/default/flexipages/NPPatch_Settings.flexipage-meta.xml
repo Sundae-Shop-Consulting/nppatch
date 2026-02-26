@@ -4,19 +4,15 @@
         <itemInstances>
             <componentInstance>
                 <componentName>nppatchSettings</componentName>
-                <identifier>nppatchSettings</identifier>
+                <identifier>c_nppatchSettings</identifier>
             </componentInstance>
         </itemInstances>
-        <name>region1</name>
-        <type>Region</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <name>region2</name>
+        <name>main</name>
         <type>Region</type>
     </flexiPageRegions>
     <masterLabel>NPPatch Settings</masterLabel>
     <template>
-        <name>flexipage:appHomeTemplateTwoColumnsStacked</name>
+        <name>flexipage:defaultAppHomeTemplate</name>
     </template>
     <type>AppPage</type>
 </FlexiPage>
