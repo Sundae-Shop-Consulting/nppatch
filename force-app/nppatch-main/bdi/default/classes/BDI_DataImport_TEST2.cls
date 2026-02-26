@@ -1402,7 +1402,7 @@ private with sharing class BDI_DataImport_TEST2 {
         System.runAs(readOnlyUser) {
             //run batch data import
             Test.StartTest();
-            BDI_MappingService fieldMapper = BDI_MappingServiceHelpText.getInstance();
+            BDI_MappingService fieldMapper = BDI_MappingServiceAdvanced.getInstance();
             BDI_DataImportService dataImportService =
                     new BDI_DataImportService(false, fieldMapper);
             BDI_DataImport_BATCH bdi = new BDI_DataImport_BATCH(dataImportService);

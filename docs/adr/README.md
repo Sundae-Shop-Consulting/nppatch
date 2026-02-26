@@ -13,6 +13,7 @@ This directory contains Architecture Decision Records (ADRs) for the NPPatch pac
 | [ADR-0005](0005-org-dependent-unlocked-package.md) | Org-Dependent Unlocked Package | Accepted |
 | [ADR-0006](0006-removed-salesforce-specific-functionality.md) | Removed Salesforce-Specific Functionality | Accepted |
 | [ADR-0007](0007-remove-legacy-rollups-and-rd1.md) | Remove Legacy Rollups (RLLP) and Legacy Recurring Donations (RD1) | Accepted |
+| [ADR-0008](0008-remove-legacy-bge-and-always-enable-gift-entry.md) | Remove Legacy Batch Gift Entry (BGE) and Make Gift Entry Always-On | Accepted |
 
 ## ADR Format
 

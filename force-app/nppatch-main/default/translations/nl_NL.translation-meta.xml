@@ -873,10 +873,6 @@
         <label>&lt;b&gt;WAARSCHUWING: u hebt Uitgebreide terugkerende donaties ingeschakeld. Bij uitschakeling van Aanpasbare totaliseringen zullen totaliseringen voor Terugkerende donaties niet langer functioneren.&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
-        <name>RD2_DisabledAdvancedMappingError</name>
-        <label>U moet Geavanceerd toewijzen inschakelen voordat u terugkerende donaties kunt verwerken.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_DisabledRD2Error</name>
         <label>U moet Uitgebreide terugkerende donaties inschakelen voordat u terugkerende donaties kunt verwerken.</label>
     </customLabels>
@@ -2243,10 +2239,6 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
         <label>NPPatch-Gegevensimport</label>
     </customLabels>
     <customLabels>
-        <name>bdiDeploymentInProgress</name>
-        <label>Help-teksttoewijzingen worden momenteel geconverteerd naar Geavanceerd toewijzen.</label>
-    </customLabels>
-    <customLabels>
         <name>bdiDonation</name>
         <label>Donaties</label>
     </customLabels>
@@ -2293,18 +2285,6 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     <customLabels>
         <name>bdiErrorBatchNameRequired</name>
         <label>Batchnaam is een verplicht veld.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDataImportCustomSettings</name>
-        <label>Er heeft zich een fout voorgedaan tijdens een poging tot het bijwerken van Aangepaste instellingen met de naam Gegevensimportinstellingen.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailed</name>
-        <label>Er heeft zich een fout voorgedaan tijdens een poging tot het converteren van Help-teksttoewijzingen en het inschakelen van Geavanceerd toewijzen.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailedLink</name>
-        <label>&lt;a href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;U kunt de implementatiestatus hier weergeven.&lt;/a&gt;</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationLookupMatch</name>
@@ -2563,10 +2543,6 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
         <label>Het wijzigen van deze objectgroep duurt langer dan verwacht.</label>
     </customLabels>
     <customLabels>
-        <name>bdiMigrationLongDeployment</name>
-        <label>Het converteren van Helptekst toewijzingen naar Geavanceerd toewijzen duurt langer dan verwacht.</label>
-    </customLabels>
-    <customLabels>
         <name>bdiOMUIGroupNameHelp</name>
         <label>De naam van deze objectgroep. Een veel voorkomende naamgevingsconventie is [objectnaam]groep.</label>
     </customLabels>
@@ -2760,188 +2736,12 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
         <label>Weergeven</label>
     </customLabels>
     <customLabels>
-        <name>bgeBatchSelectedFields</name>
-        <label>Geselecteerde velden</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchAvailableFields</name>
-        <label>Beschikbare velden</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchBatchProcessSizeHelp</name>
-        <label>Het aantal records om tegelijkertijd te verwerken in elke batch.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationDateRangeHelp</name>
-        <label>Voer het te overwegen aantal dagen vanaf de Donatiedatum in wanneer er wordt gezocht naar een overeenkomende Opportunity of Betaling. NPPatch kiest een overeenkomende Opportunity of Betaling met een datum die binnen het aantal dagen valt EN die het dichtst in de buurt van de Donatiedatum valt.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingBehaviorHelp</name>
-        <label>Definieert hoe NPPatch moet omgaan met overeenkomende Donaties.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingClassHelp</name>
-        <label>De developernaam van een Apex-klasse die de BDI_IMatching-interface voor Donaties implementeert. Laat blanco om overeenkomst over te laten aan NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingRuleHelp</name>
-        <label>U kunt laten overeenkomen met de Opportunity- of Betalingsvelden die u wilt betrekken in deze batch.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonorLookupInfo</name>
-        <label>Selecteer de te gebruiken velden voor het invoeren van gifts in deze batch. Donateurtype en opzoekopdrachten voor Account en Contactpersoon worden altijd weergegeven. U ziet alleen de velden waartoe u toegang hebt.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchErrorRequiredFields</name>
-        <label>De volgende velden zijn vereist omdat andere velden van hun object geselecteerd zijn. Selecteer deze voordat u verdergaat:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchInfoWizard</name>
-        <label>Batchinfo opgeven</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchOverviewWizard</name>
-        <label>Batchinfo opgeven</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchPostProcessClassHelp</name>
-        <label>De developernaam van een Apex-klasse die de BDI_PostProcess-interface implementeert voor NPPatch-batchrecords.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchProcessUsingScheduledJobHelp</name>
-        <label>Indien aangevinkt wordt de batch automatisch verwerkt op basis van de planning voor de bijbehorende taak.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchRunOpportunityRollupsWhileProcessingHelp</name>
-        <label>Wanneer aangevinkt, berekent NPPatch donateurtotaliseringen wanneer donaties worden verwerkt. Wanneer niet aangevinkt, worden donateurtotaliseringen berekend tijdens de standaard nachtelijke Geplande Taak. Het aanvinken van dit selectievakje kan de verwerking van deze batch vertragen.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchOverview</name>
-        <label>Batchinfo</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSelectFields</name>
-        <label>Velden selecteren</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSetBatchOptions</name>
-        <label>Batchopties instellen</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSetFieldOptions</name>
-        <label>Veldopties instellen</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeCopyBatchSetupButton</name>
-        <label>Batchset-up kopiëren</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeCopyBatchSetupBatchNameAppend</name>
-        <label>KOPIËREN</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeDryRunComplete</name>
-        <label>Testuitvoering Batch Voltooid</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeDonationSelectorHelp</name>
-        <label>Dit scherm geeft onbetaalde Betalingen en open Opportunities weer die geen onbetaalde Betalingen hebben.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchFieldOptionsWarning</name>
-        <label>WAARSCHUWING: Voor deze batch zijn records bewaard. Wijzigingen die u doorvoert zullen geen invloed hebben op bestaande records.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchFieldSelectionWarning</name>
-        <label>WAARSCHUWING: Er zijn records bewaard voor deze batch. Als u wijzigingen aanbrengt, heeft dit geen invloed op bestaande records. Als u velden verwijdert, verschijnen die velden niet meer op het scherm voor giftinvoer, maar gegevens worden niet verwijderd van die velden op bestaande records. Daarom raden we aan dat u geen velden verwijdert.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchOptionsWarning</name>
-        <label>WAARSCHUWING: Er zijn records bewaard voor deze batch. Als u wijzigingen aanbrengt, heeft dit geen invloed op bestaande records. We zullen niet proberen om overeenkomst met bestaande records te vinden aan de hand bijgewerkte instellingen voor donatieovereenkomstregels, tenzij die records zijn bewerkt.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFLSError</name>
-        <label>U beschikt niet over de nodige veldmachtigingen. Neem contact op met uw systeembeheerder om te weten hoe u de nodige machtigingen krijgt.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormMatchingModalText</name>
-        <label>Selecteer de record die u wilt bijwerken.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNewDonationHelptext</name>
-        <label>U maakt momenteel een nieuwe Opportunity.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNewPaymentHelptext</name>
-        <label>U past momenteel een nieuwe Betaling toe op Opportunity:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNoneLink</name>
-        <label>Of maak een nieuwe Opportunity.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedOpportunityApplyNewPayment</name>
-        <label>Nieuwe Betaling wordt toegepast</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedOpportunity</name>
-        <label>Deze Opportunity wordt bijgewerkt</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedPayment</name>
-        <label>Geselecteerde Betaling</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateDonation</name>
-        <label>Werk uw donatieselectie bij</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateHelptext</name>
-        <label>U werkt momenteel bij:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateOpportunity</name>
-        <label>Werk deze Opportunity bij</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdatePayment</name>
-        <label>Werk deze Betaling bij</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridAllGifts</name>
-        <label>Alle giften</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridDonorType</name>
-        <label>Donateurtype</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorFromDryRun</name>
-        <label>Er zijn fouten op een of meer items. U moet alle fouten oplossen voordat u deze batch kunt verwerken.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorConflictingGifts</name>
-        <label>Er zijn tegenstrijdige giften in deze batch. U moet deze conflicten oplossen voordat u deze batch kunt verwerken.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorRequiredTotalsExpected</name>
-        <label>Of de telling van giften of de totale giften komen niet overeen met de verwachte waarden voor deze batch. Deze waarden moet overeenkomen voordat u de batch kunt verwerken.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridGiftCountHeader</name>
-        <label>Giften ingevoerd</label>
-    </customLabels>
-    <customLabels>
         <name>bgeGridGiftDeleted</name>
         <label>Giften met succes verwijderd.</label>
     </customLabels>
     <customLabels>
         <name>bgeGridGiftSaved</name>
         <label>Nieuwe gift is toegevoegd aan de batch.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridGiftUpdated</name>
-        <label>Giften met succes bijgewerkt.</label>
     </customLabels>
     <customLabels>
         <name>bgeGridNoGiftsHeader</name>
@@ -2952,36 +2752,8 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
         <label>Voer een nieuwe gift in en deze zal hier verschijnen.</label>
     </customLabels>
     <customLabels>
-        <name>bgeGridTotalAmount</name>
-        <label>Totaalbedrag:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridTotalCount</name>
-        <label>Totale telling:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridWarningRequiredTotalsExpected</name>
-        <label>Overeenkomst Verwachte Totalen Vereisen is aangevinkt, maar de velden Verwachte aantal giften en Verwachte Totale Batchgedrag zijn blanco. Bewerk de batchgegevens en neem het vinkje bij Overeenkomst Verwachte Totalen Vereisen weg of geef waarden op in de gerelateerde velden.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeBatchDryRun</name>
         <label>Testuitvoering van batch</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeMatchingAlert</name>
-        <label>Deze donateur heeft donaties in afwachting.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeMatchingSelect</name>
-        <label>Donaties bekijken</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNewBatch</name>
-        <label>Nieuwe Batch</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNewGift</name>
-        <label>Nieuwe gift</label>
     </customLabels>
     <customLabels>
         <name>bgeProcessBatch</name>
@@ -2996,51 +2768,8 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
         <label>U kunt deze aan Elevate gekoppelde terugkerende donatie niet bewerken, totdat u de betalingsgegevens opnieuw invoert. Selecteer Betalingsgegevens bewerken.</label>
     </customLabels>
     <customLabels>
-        <name>bgeRetirementWarningBody</name>
-        <label>Op 13 juli 2021 wordt de verouderde Batchinvoer van giften buiten gebruik gesteld; de functie is dan niet meer beschikbaar in NPPatch. Als u op dat moment actieve batches hebt, kunt u de records nog wel openen, maar u kunt ze niet meer verwerken met Batchinvoer van giften. Als u voor een goede overgang wilt zorgen, schakelt u de nieuwere Opgave van gift op voorhand in en neemt u dit al in gebruik vóór 1 oktober.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeRetirementWarningHeader</name>
-        <label>Batchinvoer van giften buiten gebruik gesteld</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNotSupportedHeader</name>
-        <label>Batchinvoer van giften niet ondersteund</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNotSupportedBody</name>
-        <label>Sinds 13 juli 2021 wordt Batchinvoer van giften niet meer ondersteund. De meeste opties zijn vervangen door Opgave van gift.
-            Als u nog actieve batches hebt, kunt u de records nog wel openen, maar niet meer verwerken met Batchinvoer van giften.
-            Neem contact op met Support als u toegang wilt tot deze actieve batches.
-            Mogelijk is Opgave van gift een goed alternatief voor Batchinvoer van giften.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeTabHeader</name>
         <label>Batchinvoer van giften</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeHeader</name>
-        <label>Veldtoewijzing gewijzigd</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeTitle</name>
-        <label>Batch is inclusief niet-toegewezen velden</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageAdvancedMapping</name>
-        <label>De volgende velden zijn wel opgenomen in deze batch, maar hun veldtoewijzingen zijn verwijderd: {0}. Ga ter correctie hiervan naar Geavanceerd toewijzen in NPPatch-instellingen en wijs de velden opnieuw toe.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>De volgende velden zijn wel opgenomen in deze batch, maar hun veldtoewijzingen zijn verwijderd: {0}. Ga ter correctie hiervan naar het object NPPatch-gegevensimport en wijs de velden opnieuw toe met behulp van Help-tekst.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeWizardShowAdvancedOptions</name>
-        <label>Geavanceerde opties weergaven</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeWizardHideAdvancedOptions</name>
-        <label>Geavanceerde Opties verbergen</label>
     </customLabels>
     <customLabels>
         <name>btnContinue</name>
@@ -3175,10 +2904,6 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     <customLabels>
         <name>gePaymentProcessedWarning</name>
         <label>{0} heeft de betaling verwerkt. Als u de donateur, de datum, het bedrag of de betalingswijze wijzigt, krijgt u inconsistente records voor dezelfde transactie in {0} en NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping3</name>
-        <label>Zoek hier naar de volledige set-updocumentatie voor Geavanceerd toewijzen.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
@@ -4757,10 +4482,6 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
         <label>Deze voorziening vereist zowel Geavanceerd toewijzen als Opgave van gift. Schakel ze in bij NPPatch-instellingen.</label>
-    </customLabels>
-    <customLabels>
-        <name>geServiceLevelErrorAdvancedMapping</name>
-        <label>U moet Geavanceerd toewijzen inschakelen voordat u de invoer van giften kunt inschakelen.</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingHeader</name>
@@ -6888,24 +6609,8 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
         <label>Documentatie</label>
     </customLabels>
     <customLabels>
-        <name>stgDeploymentCustomMetadataMappingEnabled</name>
-        <label>Geavanceerd toewijzen is ingeschakeld.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHasInvalidHelpTextMappings</name>
-        <label>Geavanceerd toewijzen is wel ingeschakeld, maar we hebben enkele ongeldige Help-teksttoewijzingen gevonden, die niet kunnen worden gemigreerd. &lt;b&gt;Maak een screenshot van de tabel hieronder; deze wordt niet meer/niet opnieuw weergegeven nadat u deze pagina hebt verlaten.&lt;/b&gt;</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHelpTextMappingEnabled</name>
-        <label>Help-tekst toewijzen is ingeschakeld.</label>
-    </customLabels>
-    <customLabels>
         <name>stgDeploymentInProgress</name>
         <label>Uitrol in uitvoering. U mag deze pagina verlaten. De pagina wordt opnieuw geladen wanneer de uitrol voltooid is.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentTimedOut</name>
-        <label>Pagina afgebroken wegens time-out.</label>
     </customLabels>
     <customLabels>
         <name>stgDeploymentTryAgain</name>
@@ -6959,33 +6664,6 @@ Door Standaard NPPatch-taken niet automatisch plannen te selecteren, laat u NPPa
     <customLabels>
         <name>stgHelpAccountModel</name>
         <label>Het Accountmodel dat wordt gebruikt door het NPPatch. Deze optie bepaalt wat er gebeurt wanneer u een Contactpersoon maakt met een blanco Accountveldwaarde. WAARSCHUWING: gebruik het Accountmodelrecordtype dat u voor Profielen als standaard Accountrecordtype selecteert niet. Dit zou voor verscheidene problemen met gegevens kunnen zorgen.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping1</name>
-        <label>Wanneer u Geavanceerd toewijzen inschakelt, converteren we uw bestaande veldtoewijzingen voor Help-tekst naar Geavanceerd toewijzen. Eenmaal ingeschakeld, bewerkt u toewijzingen en maakt u nieuwe op deze pagina.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping2</name>
-        <label>U kunt Geavanceerd toewijzen uitschakelen en teruggaan naar toewijzingen voor Help-tekst, maar alle wijzigingen die u aanbrengt met Geavanceerd toewijzen, gaan verloren.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping4</name>
-        <label>&lt;b&gt;Dit bericht wordt niet weergegeven als u deze pagina verlaat. Maak een screenshot van deze pagina of kopieer de gegevens in de onderstaande tabel om de toewijzingen voor Help-tekst bij te houden die u nodig hebt. &lt;/b&gt;
-            &lt;br/&gt;
-            &lt;br/&gt;
-            We kunnen enkele van uw bestaande toewijzingen voor Help-tekst niet converteren, omdat ze ongeldig zijn. U wordt aangeraden om Geavanceerd toewijzen uit te schakelen, de ongeldige toewijzingen van Help-tekst te corrigeren en vervolgens Geavanceerd toewijzen opnieuw in te schakelen. Of anders kunt u deze toewijzingen toevoegen wanneer u Geavanceerd toewijzen configureert op het volgende scherm, maar deze extra toewijzingen zetten alles terug naar de oorspronkelijke ongeldig Help-tekst als u Geavanceerd toewijzen uitschakelt.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingInvalidHelpText</name>
-        <label>Ongeldige toewijzingen van Help-tekst</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>Importveld voor NPPatch-gegevens</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader2</name>
-        <label>Huidige waarde van Help-tekst</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAlloFiscalYearRollups</name>
@@ -8350,10 +8028,6 @@ Opmerking: Het tabblad NPPatch-instellingen is zichtbaar in de toepassing NPPatc
             <name>Contacts</name>
         </sections>
     </reportTypes>
-    <customTabs>
-        <name>Batch_Gift_Entry</name>
-        <label>Batchinvoer van giften</label>
-    </customTabs>
     <customTabs>
         <name>Contact_Merge</name>
         <label>Samenvoeging van Contactpersonen</label>

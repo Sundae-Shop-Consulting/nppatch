@@ -873,10 +873,6 @@
         <label>&lt;b&gt;警告: 拡張継続支援が有効になっています。カスタマイズ可能な積み上げ集計を無効にすると、継続支援への積み上げ集計が機能しなくなります。&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
-        <name>RD2_DisabledAdvancedMappingError</name>
-        <label>継続支援を処理する前に高度な対応付けを有効する必要があります。</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_DisabledRD2Error</name>
         <label>継続支援を処理する前に拡張継続支援を有効にする必要があります。</label>
     </customLabels>
@@ -2237,10 +2233,6 @@
         <label>NPPatch データインポート</label>
     </customLabels>
     <customLabels>
-        <name>bdiDeploymentInProgress</name>
-        <label>現在、ヘルプテキストの対応付けは高度な対応付けに変換されています。</label>
-    </customLabels>
-    <customLabels>
         <name>bdiDonation</name>
         <label>支援</label>
     </customLabels>
@@ -2287,18 +2279,6 @@
     <customLabels>
         <name>bdiErrorBatchNameRequired</name>
         <label>[バッチ名] は必須項目です。</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDataImportCustomSettings</name>
-        <label>[Data Import Setting (データインポート設定)] という名前のカスタム設定を更新しようとしたときにエラーが発生しました。</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailed</name>
-        <label>ヘルプテキストの対応付けを変換し、高度な対応付けを有効にしようとしたときにエラーが発生しました。</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailedLink</name>
-        <label>&lt;a href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;ここでリリース状況を確認できます。&lt;/a&gt;</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationLookupMatch</name>
@@ -2557,10 +2537,6 @@
         <label>このオブジェクトグループの変更に予測よりも長い時間がかかっています。</label>
     </customLabels>
     <customLabels>
-        <name>bdiMigrationLongDeployment</name>
-        <label>ヘルプテキストの対応付けから高度な対応付けへの変換に予測よりも長い時間がかかっています。</label>
-    </customLabels>
-    <customLabels>
         <name>bdiOMUIGroupNameHelp</name>
         <label>このオブジェクトグループの名前。一般的な命名規則は [オブジェクト名] グループです。</label>
     </customLabels>
@@ -2754,188 +2730,12 @@
         <label>表示</label>
     </customLabels>
     <customLabels>
-        <name>bgeBatchSelectedFields</name>
-        <label>選択された項目</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchAvailableFields</name>
-        <label>使用可能な項目</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchBatchProcessSizeHelp</name>
-        <label>各バッチで一度に処理されるレコードの数。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationDateRangeHelp</name>
-        <label>マッチング商談または支払を探すときの [日付(支援)] からの日数を入力します。NPPatch はその日数範囲内で最も近い、マッチングする商談または支払を選択します。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingBehaviorHelp</name>
-        <label>NPPatch がマッチング支援をどのように処理するか定義します。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingClassHelp</name>
-        <label>支援の BDI_IMatching インターフェースを実装する Apex クラスの API 参照名。NPPatch がマッチングを処理できるように、空のままにします。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingRuleHelp</name>
-        <label>このバッチに含めるように選択した商談または支払項目を対象に、マッチングできます。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonorLookupInfo</name>
-        <label>このバッチの支援入力に使用する項目を選択します。[支援者種別] および [取引先] または [取引先責任者] 参照は常に表示されます。アクセスできる項目のみ表示されます。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchErrorRequiredFields</name>
-        <label>次の項目は、それらのオブジェクトの他の項目が選択されているため、必須です。選択して先に進みます:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchInfoWizard</name>
-        <label>バッチ情報の入力</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchOverviewWizard</name>
-        <label>バッチ情報の入力</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchPostProcessClassHelp</name>
-        <label>NPPatch バッチレコードの BDI_IPostProcess インターフェースを実装する Apex クラスの API 参照名。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchProcessUsingScheduledJobHelp</name>
-        <label>オンの場合、関連ジョブのスケジュールに基づき、バッチは自動的に処理されます。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchRunOpportunityRollupsWhileProcessingHelp</name>
-        <label>オンの場合、NPPatch は支援処理時に支援者の積み上げ集計を計算します。オフの場合、支援者の積み上げ集計はデフォルトの夜間スケジュール済みジョブ時に計算されます。このチェックボックスを選択すると、バッチの処理が遅くなることがあります。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchOverview</name>
-        <label>バッチ情報</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSelectFields</name>
-        <label>項目を選択</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSetBatchOptions</name>
-        <label>バッチオプションの設定</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSetFieldOptions</name>
-        <label>項目オプションの設定</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeCopyBatchSetupButton</name>
-        <label>バッチ設定をコピー</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeCopyBatchSetupBatchNameAppend</name>
-        <label>コピー</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeDryRunComplete</name>
-        <label>バッチ Dry Run 完了</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeDonationSelectorHelp</name>
-        <label>この画面には、支払済でない支払と、支払済でない支払を含まない継続支援が表示されます。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchFieldOptionsWarning</name>
-        <label>警告: このバッチに保存されているレコードがあります。変更しても既存のレコードには影響しません。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchFieldSelectionWarning</name>
-        <label>警告: このバッチに保存されているレコードがあります。変更しても既存のレコードには影響しません。項目を削除すると、それらの項目は支援エントリ画面には表示されなくなりますが、既存のレコードの項目はデータは削除されません。そのため、項目の削除はお勧めしません。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchOptionsWarning</name>
-        <label>警告: このバッチに保存されているレコードがあります。変更しても既存のレコードには影響しません。更新された支援マッチングルール設定による既存のレコードのマッチングは、それらのレコードが編集されないかぎり行われません。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFLSError</name>
-        <label>必要な項目権限を持っていません。必要な権限の付与について、システム管理者に問い合わせてください。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormMatchingModalText</name>
-        <label>更新するレコードを選択します。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNewDonationHelptext</name>
-        <label>現在、新しい商談を作成しています。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNewPaymentHelptext</name>
-        <label>現在、新しい支払を次の商談に適用しています:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNoneLink</name>
-        <label>もしくは、新しい商談を作成します。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedOpportunityApplyNewPayment</name>
-        <label>新規支払の適用</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedOpportunity</name>
-        <label>この商談の更新</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedPayment</name>
-        <label>選択された支払</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateDonation</name>
-        <label>支援選択の更新</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateHelptext</name>
-        <label>現在、次を更新しています:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateOpportunity</name>
-        <label>この商談を更新</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdatePayment</name>
-        <label>この支払を更新</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridAllGifts</name>
-        <label>すべての支援</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridDonorType</name>
-        <label>支援者種別</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorFromDryRun</name>
-        <label>エラーが発生しているエントリがあります。このバッチを処理するには、すべてのエラーを解決する必要があります。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorConflictingGifts</name>
-        <label>このバッチには支援の競合があります。このバッチを処理するには、これらの競合を解決する必要があります。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorRequiredTotalsExpected</name>
-        <label>支援数または支援総額が、このバッチの予測値とマッチングしません。バッチを処理するには、これらの値をマッチさせる必要があります。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridGiftCountHeader</name>
-        <label>支援が入力されています</label>
-    </customLabels>
-    <customLabels>
         <name>bgeGridGiftDeleted</name>
         <label>支援が正常に削除されました。</label>
     </customLabels>
     <customLabels>
         <name>bgeGridGiftSaved</name>
         <label>新しい支援がバッチに追加されました。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridGiftUpdated</name>
-        <label>支援が正常に更新されました。</label>
     </customLabels>
     <customLabels>
         <name>bgeGridNoGiftsHeader</name>
@@ -2946,36 +2746,8 @@
         <label>新しい支援を入力すると、こちらに表示されます。</label>
     </customLabels>
     <customLabels>
-        <name>bgeGridTotalAmount</name>
-        <label>総額:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridTotalCount</name>
-        <label>総数:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridWarningRequiredTotalsExpected</name>
-        <label>[予測合計のマッチが必須] が選択されていますが、[予測支援数] および [予測合計バッチ金額] 項目が空です。バッチの詳細を編集して、[予測合計のマッチが必須] をオフにするか、関連項目に値を追加します。</label>
-    </customLabels>
-    <customLabels>
         <name>bgeBatchDryRun</name>
         <label>バッチ Dry Run</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeMatchingAlert</name>
-        <label>この支援者には保留中の支援があります。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeMatchingSelect</name>
-        <label>支援の確認</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNewBatch</name>
-        <label>新規バッチ</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNewGift</name>
-        <label>新規支援</label>
     </customLabels>
     <customLabels>
         <name>bgeProcessBatch</name>
@@ -2990,51 +2762,8 @@
         <label>この Elevate に接続された支援は、支払情報を再入力するまで編集できません。[支払情報を編集] を選択してください。</label>
     </customLabels>
     <customLabels>
-        <name>bgeRetirementWarningBody</name>
-        <label>2021 年 7 月 13 日にバッチ支援エントリは廃止になり、NPPatch では機能しなくなります。その時点で進行中のバッチがあった場合、レコードには引き続きアクセスできますが、バッチ支援エントリを使用して処理することはできません。スムーズに移行できるように、7 月 13 日に先立って新しい支援エントリを有効化して使用するようにしてください。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeRetirementWarningHeader</name>
-        <label>バッチ支援エントリの廃止</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNotSupportedHeader</name>
-        <label>バッチ支援エントリはサポートされていません</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNotSupportedBody</name>
-        <label>2021 年 7 月 13 日以降、バッチ支援エントリはサポートされなくなり、支援エントリに置き換えられました。
-           進行中のバッチがある場合、それらのレコードには引き続きアクセスできますが、バッチ支援エントリを使用して処理することはできません。
-           進行中のバッチにアクセスする必要がある場合は、サポートにお問い合わせください。
-           バッチ支援エントリの代わりとして、支援エントリを検討することをお勧めします。</label>
-    </customLabels>
-    <customLabels>
         <name>bgeTabHeader</name>
         <label>バッチ支援エントリ</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeHeader</name>
-        <label>項目の対応付けが変更されました</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeTitle</name>
-        <label>対応付けられていない項目がバッチに含まれています</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageAdvancedMapping</name>
-        <label>このバッチには次の項目が含まれていますが、それらの項目の対応付けが削除されています: {0}。これを修正するには、[NPPatch 設定] の高度な対応付けに移動し、項目を再度対応付けます。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>このバッチには次の項目が含まれていますが、それらの項目の対応付けが削除されています: {0}。これを修正するには、NPPatch データインポートオブジェクトに移動し、ヘルプテキストを使用して項目を再度対応付けます。</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeWizardShowAdvancedOptions</name>
-        <label>その他のオプションを表示</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeWizardHideAdvancedOptions</name>
-        <label>その他のオプションを非表示</label>
     </customLabels>
     <customLabels>
         <name>btnContinue</name>
@@ -3166,10 +2895,6 @@
     <customLabels>
         <name>gePaymentProcessedWarning</name>
         <label>{0} が支払を正常に処理しました。支援者、日付、金額、または支払方法を変更すると、{0} と NPPatch で同じトランザクションのレコードで整合性が失われます。</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping3</name>
-        <label>高度な対応付けの完全な設定ドキュメントについては、こちらを参照してください。</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
@@ -4749,10 +4474,6 @@
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
         <label>この機能を使用するには、高度な対応付けと支援エントリの両方が必要です。[NPPatch 設定] でこれらを有効にしてください。</label>
-    </customLabels>
-    <customLabels>
-        <name>geServiceLevelErrorAdvancedMapping</name>
-        <label>支援エントリを有効にする前に高度な対応付けを有効にする必要があります。</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingHeader</name>
@@ -6880,24 +6601,8 @@
         <label>ドキュメント</label>
     </customLabels>
     <customLabels>
-        <name>stgDeploymentCustomMetadataMappingEnabled</name>
-        <label>高度な対応付けが有効になっています。</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHasInvalidHelpTextMappings</name>
-        <label>高度な対応付けが有効になっていますが、移行できなかったいくつかの無効なヘルプテキストの対応付けが見つかりました。&lt;b&gt;以下のテーブルのスクリーンショットを撮ってください。このページから移動すると、再度表示されません。&lt;/b&gt;</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHelpTextMappingEnabled</name>
-        <label>ヘルプテキストの対応付けが有効になっています。</label>
-    </customLabels>
-    <customLabels>
         <name>stgDeploymentInProgress</name>
         <label>リリースが進行中です。このページから移動できます。リリース完了時にページは再読み込みされます。</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentTimedOut</name>
-        <label>ページがタイムアウトしました。</label>
     </customLabels>
     <customLabels>
         <name>stgDeploymentTryAgain</name>
@@ -6951,33 +6656,6 @@
     <customLabels>
         <name>stgHelpAccountModel</name>
         <label>取引先モデルの設定。「世帯取引先」、「1 対 1」、「取引先責任者」のいずれかを指定します。「世帯取引先」が推奨モデルです。</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping1</name>
-        <label>高度な対応付けを有効にすると、既存のヘルプテキストの項目の対応付けが高度な対応付けに変換されます。有効になったら、このページで対応付けを編集したり、新しい対応付けを作成したりします。</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping2</name>
-        <label>高度な対応付けを無効にして、ヘルプテキストの対応付けに戻ることはできますが、高度な対応付けで行った変更は失われます。</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping4</name>
-        <label>&lt;b&gt;このメッセージは、このページから移動すると表示されなくなります。修正する必要のあるヘルプテキストの対応付けを追跡できるように、このページのスクリーンショットを撮るか、以下のテーブルの情報をコピーしてください。&lt;/b&gt;
-            &lt;br/&gt;
-            &lt;br/&gt;
-            既存のヘルプテキストの対応付けの一部は無効であったため変換できませんでした。高度な対応付けを無効にし、無効なヘルプテキストの対応付けを修正してから高度な対応付けを再度有効にすることをお勧めします。または、次の画面で高度な対応付けを設定するときにこれらの対応付けを追加することもできますが、高度な対応付けを無効にすると、これらの追加の対応付けは元の無効なヘルプテキストに戻ります。</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingInvalidHelpText</name>
-        <label>無効なヘルプテキストの対応付け</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>NPPatch データインポート項目</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader2</name>
-        <label>現在のヘルプテキスト値</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAlloFiscalYearRollups</name>
@@ -8341,10 +8019,6 @@
             <name>Contacts</name>
         </sections>
     </reportTypes>
-    <customTabs>
-        <name>Batch_Gift_Entry</name>
-        <label>バッチ支援エントリ</label>
-    </customTabs>
     <customTabs>
         <name>Contact_Merge</name>
         <label>取引先責任者のマージ</label>

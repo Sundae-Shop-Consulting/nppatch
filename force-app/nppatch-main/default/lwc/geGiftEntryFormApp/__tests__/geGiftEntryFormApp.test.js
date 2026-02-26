@@ -10,7 +10,6 @@ import checkForElevateCustomer from '@salesforce/apex/GE_GiftEntryController.isE
 import upsertDataImport from '@salesforce/apex/GE_GiftEntryController.upsertDataImport';
 import sendPurchaseRequest from '@salesforce/apex/GE_GiftEntryController.sendPurchaseRequest';
 import addGiftTo from '@salesforce/apex/GE_GiftEntryController.addGiftTo';
-import getDataImportModel from '@salesforce/apex/BGE_DataImportBatchEntry_CTRL.getDataImportModel';
 import getGiftBatchView from '@salesforce/apex/GE_GiftEntryController.getGiftBatchView';
 import isElevateCustomer from '@salesforce/apex/GE_GiftEntryController.isElevateCustomer';
 import processGiftsFor from '@salesforce/apex/GE_GiftEntryController.processGiftsFor';
@@ -58,7 +57,7 @@ const setupForBatchMode = (giftBatchView) => {
     retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
     getFormRenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
     getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
-    getDataImportModel.mockResolvedValue('{"dummyKey":"dummyValue"}');
+
     getGiftBatchView.mockResolvedValue(giftBatchView);
     isElevateCustomer.mockResolvedValue(true);
     isGiftBatchAccessible.mockResolvedValue(true);
@@ -208,7 +207,7 @@ describe('c-ge-gift-entry-form-app', () => {
         it('should render warning modal when batch has expired payment authorizations', async () => {
             retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
             getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
-            getDataImportModel.mockResolvedValue('{"dummyKey":"dummyValue"}');
+        
             getGiftBatchView.mockResolvedValue({gifts: [], totals: { TOTAL: 1, EXPIRED_PAYMENT: 1, FAILED: 1 }});
             checkForElevateCustomer.mockResolvedValue(true);
 
@@ -714,7 +713,7 @@ describe('c-ge-gift-entry-form-app', () => {
 
             retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
             getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
-            getDataImportModel.mockResolvedValue('{"dummyKey":"dummyValue"}');
+        
             getGiftBatchView.mockResolvedValue({gifts: [], totals: { TOTAL: 1, EXPIRED_PAYMENT: 0, FAILED: 0 }});
             checkForElevateCustomer.mockResolvedValue(true);
 

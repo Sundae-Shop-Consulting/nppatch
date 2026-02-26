@@ -873,10 +873,6 @@
         <label>&lt;b&gt;AVERTISSEMENT : Vous avez activé les Dons récurrents avancés. Si vous désactivez les Cumuls personnalisables, les cumuls ne fonctionneront plus pour les Dons récurrents.&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
-        <name>RD2_DisabledAdvancedMappingError</name>
-        <label>Vous devez activer le mappage avancé pour pouvoir traiter les dons récurrents.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_DisabledRD2Error</name>
         <label>Vous devez activer les dons récurrents avancés pour pouvoir traiter les dons récurrents.</label>
     </customLabels>
@@ -2243,10 +2239,6 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
         <label>Importation de données NPPatch</label>
     </customLabels>
     <customLabels>
-        <name>bdiDeploymentInProgress</name>
-        <label>Les mappages Texte d&apos;aide sont actuellement convertis vers le Mappage avancé.</label>
-    </customLabels>
-    <customLabels>
         <name>bdiDonation</name>
         <label>Don</label>
     </customLabels>
@@ -2293,18 +2285,6 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
     <customLabels>
         <name>bdiErrorBatchNameRequired</name>
         <label>Le nom du lot est un champ obligatoire.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDataImportCustomSettings</name>
-        <label>Une erreur s&apos;est produite en tentant de mettre à jour les Paramètres personnalisés nommés Paramètres d&apos;importation de données.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailed</name>
-        <label>Une erreur s&apos;est produite en tentant de convertir le mappage Texte d&apos;aide et d&apos;activer le Mappage avancé.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailedLink</name>
-        <label>&lt;a href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;Vous pouvez afficher le statut de déploiement ici.&lt;/a&gt;</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationLookupMatch</name>
@@ -2563,10 +2543,6 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
         <label>La modification de ce groupe d&apos;objets est plus longue que prévu.</label>
     </customLabels>
     <customLabels>
-        <name>bdiMigrationLongDeployment</name>
-        <label>La conversion des mappages Texte d&apos;aide en Mappage avancé est plus longue que prévu.</label>
-    </customLabels>
-    <customLabels>
         <name>bdiOMUIGroupNameHelp</name>
         <label>Le nom de ce Groupe d&apos;objets. Une convention de nommage courante est Groupe [nom de l&apos;objet].</label>
     </customLabels>
@@ -2760,188 +2736,12 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
         <label>Afficher</label>
     </customLabels>
     <customLabels>
-        <name>bgeBatchSelectedFields</name>
-        <label>Champs sélectionnés</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchAvailableFields</name>
-        <label>Champs disponibles</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchBatchProcessSizeHelp</name>
-        <label>Le nombre d’enregistrements à traiter en même temps dans chaque lot.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationDateRangeHelp</name>
-        <label>Saisissez le nombre de jours à compter de la date de don à prendre en compte lors de la recherche d’une opportunité ou d&apos;un paiement correspondant. NPPatch choisira l’opportunité ou le paiement correspondant dont la date tombe dans le nombre de jours ET se rapproche le plus de la date du don.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingBehaviorHelp</name>
-        <label>Définit la manière dont NPPatch doit gérer les dons correspondants.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingClassHelp</name>
-        <label>Le nom de développeur d&apos;une classe Apex qui implémente l&apos;interface BDI_IMatching pour les dons. Laissez le champ vide pour que NPPatch gère la correspondance.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingRuleHelp</name>
-        <label>Vous pouvez mettre en correspondance les champs paiement ou opportunité que vous choisissez d’inclure dans ce lot.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonorLookupInfo</name>
-        <label>Sélectionnez les champs à utiliser pour la saisie de dons dans ce lot. Le type de donateur et une recherche de compte ou de contact apparaissent toujours. Vous ne verrez que les champs auxquels vous avez accès.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchErrorRequiredFields</name>
-        <label>Les champs suivants sont obligatoires car d’autres champs de leur objet sont sélectionnés. Sélectionnez-les avant de continuer :</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchInfoWizard</name>
-        <label>Saisir les informations de lot</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchOverviewWizard</name>
-        <label>Saisir les informations de lot</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchPostProcessClassHelp</name>
-        <label>Le nom de développeur d&apos;une classe Apex qui implémente l&apos;interface BDI_IPostProcess pour les enregistrements par lots NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchProcessUsingScheduledJobHelp</name>
-        <label>Lorsque cette option est sélectionnée, le lot sera automatiquement traité en fonction de la planification de la tâche associée.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchRunOpportunityRollupsWhileProcessingHelp</name>
-        <label>Lorsque cette option est sélectionnée, NPPatch calcule les cumuls de donateurs lorsque les dons sont traités. Si cette case est décochée, les cumuls de donateurs sont calculés lors de la tâche planifiée de nuit par défaut. Notez que la sélection de cette case peut ralentir le traitement de ce lot.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchOverview</name>
-        <label>Informations de lot</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSelectFields</name>
-        <label>Sélectionner les champs</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSetBatchOptions</name>
-        <label>Définir les options de lot</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSetFieldOptions</name>
-        <label>Définir les options de champ</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeCopyBatchSetupButton</name>
-        <label>Copier la configuration de lot</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeCopyBatchSetupBatchNameAppend</name>
-        <label>COPIER</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeDryRunComplete</name>
-        <label>Essai par lots terminé</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeDonationSelectorHelp</name>
-        <label>Cet écran affiche les paiements non payés et les opportunités ouvertes qui ont des paiements non payés.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchFieldOptionsWarning</name>
-        <label>AVERTISSEMENT : Des enregistrements sont enregistrés dans ce lot. Les modifications que vous apporterez n’affecteront pas les enregistrements existants.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchFieldSelectionWarning</name>
-        <label>AVERTISSEMENT : Il existe des enregistrements enregistrés dans ce lot. Les modifications que vous apportez n&apos;affecteront pas les enregistrements existants. Si vous supprimez des champs, ceux-ci n&apos;apparaitront plus sur l&apos;écran de saisie du don, mais les données ne seront pas supprimées de ces champs dans les enregistrements existants. Par conséquent, nous vous recommandons de ne pas supprimer de champs.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchOptionsWarning</name>
-        <label>AVERTISSEMENT : Il existe des enregistrements enregistrés dans ce lot. Les modifications que vous apportez n&apos;affecteront pas les enregistrements existants. Nous n&apos;essaierons pas de faire correspondre les enregistrements existants en utilisant les paramètres de règle de mise en correspondance des dons mis à jour, à moins que ces enregistrements ne soient modifiés.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFLSError</name>
-        <label>Vous ne disposez pas des autorisations de champ requises. Pour savoir comment obtenir les autorisations nécessaires, contactez votre administrateur système.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormMatchingModalText</name>
-        <label>Sélectionnez l’enregistrement que vous souhaitez mettre à jour.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNewDonationHelptext</name>
-        <label>Vous créez actuellement une nouvelle opportunité.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNewPaymentHelptext</name>
-        <label>Vous appliquez actuellement un nouveau paiement à une opportunité :</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNoneLink</name>
-        <label>Vous pouvez également créer une nouvelle opportunité.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedOpportunityApplyNewPayment</name>
-        <label>Application d&apos;un nouveau paiement</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedOpportunity</name>
-        <label>Mise à jour de cette opportunité</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedPayment</name>
-        <label>Paiement sélectionné</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateDonation</name>
-        <label>Mettre à jour votre sélection de dons</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateHelptext</name>
-        <label>Vous mettez actuellement à jour :</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateOpportunity</name>
-        <label>Mettre à jour de cette opportunité</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdatePayment</name>
-        <label>Mettre à jour ce paiement</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridAllGifts</name>
-        <label>Tous les dons</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridDonorType</name>
-        <label>Type de donateur</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorFromDryRun</name>
-        <label>Une ou plusieurs entrées comportent des erreurs. Vous devez résoudre toutes les erreurs avant de traiter ce lot.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorConflictingGifts</name>
-        <label>Des dons contradictoires se trouvent dans ce lot. Vous devez résoudre ces conflits avant de pouvoir traiter ce lot.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorRequiredTotalsExpected</name>
-        <label>Le nombre de dons ou le total des dons ne correspond pas aux valeurs attendues pour ce lot. Ces valeurs doivent correspondre avant de pouvoir traiter ce lot.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridGiftCountHeader</name>
-        <label>Dons saisis</label>
-    </customLabels>
-    <customLabels>
         <name>bgeGridGiftDeleted</name>
         <label>Don supprimé avec succès.</label>
     </customLabels>
     <customLabels>
         <name>bgeGridGiftSaved</name>
         <label>Un nouveau don a été ajouté au lot.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridGiftUpdated</name>
-        <label>Dons mis à jour avec succès.</label>
     </customLabels>
     <customLabels>
         <name>bgeGridNoGiftsHeader</name>
@@ -2952,36 +2752,8 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
         <label>Saisissez un nouveau don et il apparaîtra ici.</label>
     </customLabels>
     <customLabels>
-        <name>bgeGridTotalAmount</name>
-        <label>Montant total :</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridTotalCount</name>
-        <label>Nombre total :</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridWarningRequiredTotalsExpected</name>
-        <label>L&apos;option Exiger la correspondance des totaux attendus est sélectionnée, mais les champs Nombre de dons attendus et Montant total des lots attendus sont vides. Modifiez les détails du lot et désélectionnez l&apos;option Exiger la correspondance des totaux attendus ou ajoutez des valeurs dans les champs associés.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeBatchDryRun</name>
         <label>Essai de lot</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeMatchingAlert</name>
-        <label>Ce donateur a des dons en attente.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeMatchingSelect</name>
-        <label>Vérifier les dons</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNewBatch</name>
-        <label>Nouveau lot</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNewGift</name>
-        <label>Nouveau don</label>
     </customLabels>
     <customLabels>
         <name>bgeProcessBatch</name>
@@ -2996,51 +2768,8 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
         <label>Vous ne pouvez pas modifier ce don lié à Elevate tant que vous n’avez pas saisi de nouveau les informations de paiement. Sélectionnez Modifiez les informations de paiement.</label>
     </customLabels>
     <customLabels>
-        <name>bgeRetirementWarningBody</name>
-        <label>La saisie de dons par lots ne sera plus prise en charge à partir du 13 juillet 2021 et ne fonctionnera plus dans NPPatch. Si vous avez des lots en cours à cette date, vous pourrez accéder à ces enregistrements, mais vous ne pourrez pas les traiter en utilisant la saisie de dons par lots. Pour garantir une transition transparente, activez et utilisez la saisie de dons avant le 13 juillet.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeRetirementWarningHeader</name>
-        <label>Retrait de la saisie de dons par lots</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNotSupportedHeader</name>
-        <label>Saisie de dons par lots non prise en charge</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNotSupportedBody</name>
-        <label>Depuis le 13 juillet 2021, la saisie de dons par lots n’est plus prise en charge et est remplacée par la saisie de dons.
-            Si vous avez des lots en cours, vous pouvez accéder aux enregistrements, mais vous ne pouvez pas les traiter en utilisant la saisie de dons par lots.
-            Pour accéder à des lots en cours, contactez le support.
-            Découvrez la saisie de dons comme alternative à la saisie de dons par lots.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeTabHeader</name>
         <label>Saisie de dons par lots</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeHeader</name>
-        <label>Mappage de champs modifié</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeTitle</name>
-        <label>Champs non mappés inclus dans ce lot</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageAdvancedMapping</name>
-        <label>Les champs suivants sont inclus dans ce lot, mais leurs mappages ont été supprimés : {0}. Pour les corriger, accédez à Mappage avancé dans Paramètres de NPPatch, puis mappez de nouveau les champs.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>Les champs suivants sont inclus dans ce lot, mais leurs mappages ont été supprimés : {0}. Pour les corriger, accédez à l&apos;objet Importation de données NPPatch, puis mappez de nouveau les champs en utilisant Texte d&apos;aide.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeWizardShowAdvancedOptions</name>
-        <label>Afficher les options avancées</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeWizardHideAdvancedOptions</name>
-        <label>Masquer les options avancées</label>
     </customLabels>
     <customLabels>
         <name>btnContinue</name>
@@ -3176,10 +2905,6 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
     <customLabels>
         <name>gePaymentProcessedWarning</name>
         <label>{0} a traité le paiement. La modification du donateur, de la date, du montant ou du mode de paiement entraînera des incohérences dans les enregistrements pour la même transaction dans {0} et NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping3</name>
-        <label>Vous pouvez consulter la documentation complète sur la configuration du Mappage avancé ici.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
@@ -4759,10 +4484,6 @@ Si vous préférez, vous pouvez désactiver la Saisie de dons et utiliser à la 
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
         <label>Cette fonctionnalité nécessite le Mappage avancé et la Saisie de dons. Activez-les dans les Paramètres de NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>geServiceLevelErrorAdvancedMapping</name>
-        <label>Vous devez activer le mappage avancé pour pouvoir activer la saisie de dons.</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingHeader</name>
@@ -6890,24 +6611,8 @@ Si vous préférez, vous pouvez désactiver la Saisie de dons et utiliser à la 
         <label>Documentation</label>
     </customLabels>
     <customLabels>
-        <name>stgDeploymentCustomMetadataMappingEnabled</name>
-        <label>Le Mappage avancé est activé.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHasInvalidHelpTextMappings</name>
-        <label>Le Mappage avancé est activé, mais nous avons détecté des mappages Texte d&apos;aide non valides qui n&apos;ont pas pu être migrés. &lt;b&gt;Prenez une capture d&apos;écran du tableau ci-dessous, qui ne sera plus affiché lorsque vous aurez quitté la page.&lt;/b&gt;</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHelpTextMappingEnabled</name>
-        <label>Le mappage Texte d&apos;aide est activé.</label>
-    </customLabels>
-    <customLabels>
         <name>stgDeploymentInProgress</name>
         <label>Déploiement en cours. Vous pouvez quitter cette page. La page se rechargera une fois le déploiement terminé.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentTimedOut</name>
-        <label>Page expirée.</label>
     </customLabels>
     <customLabels>
         <name>stgDeploymentTryAgain</name>
@@ -6961,33 +6666,6 @@ Si vous sélectionnez Ne pas planifier automatiquement les tâches NPPatch par d
     <customLabels>
         <name>stgHelpAccountModel</name>
         <label>Le modèle de compte utilisé par le pack NPPatch. Cette option détermine ce qui se produit lorsque vous créez un compte ayant un champ de compte vide. AVERTISSEMENT : Le type d’enregistrement sélectionné pour le modèle de compte ne doit pas être utilisé comme type d’enregistrement de compte par défaut pour les profils de votre organisation. Utiliser le même type d’enregistrement peut provoquer diverses erreurs de données.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping1</name>
-        <label>Lorsque vous activez le Mappage avancé, nous convertissons les mappages de champs Texte d&apos;aide existants vers le Mappage avancé. Une fois activé, vous pouvez ensuite modifier les mappages et créer d&apos;autres mappages sur cette page.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping2</name>
-        <label>Vous pouvez désactiver le Mappage avancé et rétablir le mappage Texte d&apos;aide, mais les modifications apportées au Mappage avancé sont perdues.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping4</name>
-        <label>&lt;b&gt;Ce message ne sera pas affiché si vous quittez la page. Prenez une capture d’écran de cette page ou copiez les informations du tableau ci-dessous pour garder une trace des mappages Texte d’aide que vous devez corriger. &lt;/b&gt;
-            &lt;br/&gt;
-            &lt;br/&gt;
-            Nous n’avons pas pu convertir certains mappages Texte d’aide, car ceux-ci n’étaient pas valides. Nous vous recommandons de désactiver le mappage avancé, de corriger les mappages Texte d’aide non valides, puis de réactiver le mappage avancé. Vous pouvez aussi ajouter ces mappages en configurant le mappage avancé à l’écran suivant, mais si vous désactivez le mappage avancé, le texte d’aide non valide d’origine sera rétabli pour ces mappages supplémentaires.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingInvalidHelpText</name>
-        <label>Mappages Texte d&apos;aide non valides</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>Champ d&apos;importation de données NPPatch</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader2</name>
-        <label>Valeur Texte d&apos;aide actuelle</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAlloFiscalYearRollups</name>
@@ -8352,10 +8030,6 @@ Remarque : l’onglet de paramètres NPPatch est visible dans l’application N
             <name>Contacts</name>
         </sections>
     </reportTypes>
-    <customTabs>
-        <name>Batch_Gift_Entry</name>
-        <label>Saisie de dons par lots</label>
-    </customTabs>
     <customTabs>
         <name>Contact_Merge</name>
         <label>Fusion de contact</label>

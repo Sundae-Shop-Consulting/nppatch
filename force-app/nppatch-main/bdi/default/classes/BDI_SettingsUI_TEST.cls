@@ -71,29 +71,6 @@ private with sharing class BDI_SettingsUI_TEST {
     }
 
     /*******************************************************************************************************************
-     * @description Verifies that the right Mapping Method is loaded - Help Text
-     *
-     */
-    @IsTest
-    static void testBDI_SettingsUIMapping_HelpText(){
-        UTIL_CustomSettingsFacade.enableHelpTextMapping();
-        BDI_SettingsUI_CTRL ctrl = new BDI_SettingsUI_CTRL();
-        Boolean containsImportedField = false;
-
-        for (SelectOption option : ctrl.listSODonationFields) {
-
-            String paymentOriginIdField = SObjectType.DataImport__c.fields.Payment_Origin_Id__c.Name.toLowerCase();
-            if (option.getValue() == paymentOriginIdField) {
-                containsImportedField = true;
-                break;
-            }
-        }
-        Test.startTest();
-        System.assert(!containsImportedField, 'Help Text Mapping Enabled');
-        Test.stopTest();
-    }
-
-    /*******************************************************************************************************************
      * @description Verifies that the right Mapping Method is loaded - Advanced Mapping
      *
      */

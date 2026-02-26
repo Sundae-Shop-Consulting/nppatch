@@ -873,10 +873,6 @@
         <label>&lt;b&gt;WARNING: You have Enhanced Recurring Donations enabled. If you disable Customisable Rollups, rollups to Recurring Donations will no longer function.&lt;/b&gt;</label>
     </customLabels>
     <customLabels>
-        <name>RD2_DisabledAdvancedMappingError</name>
-        <label>You must enable Advanced Mapping before you can process Recurring Donations.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_DisabledRD2Error</name>
         <label>You must enable Enhanced Recurring Donations before you can process Recurring Donations.</label>
     </customLabels>
@@ -2243,10 +2239,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</label
         <label>NPPatch Data Import</label>
     </customLabels>
     <customLabels>
-        <name>bdiDeploymentInProgress</name>
-        <label>Help Text mappings are currently being converted to Advanced Mapping.</label>
-    </customLabels>
-    <customLabels>
         <name>bdiDonation</name>
         <label>Donation</label>
     </customLabels>
@@ -2293,18 +2285,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</label
     <customLabels>
         <name>bdiErrorBatchNameRequired</name>
         <label>Batch Name is a required field.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDataImportCustomSettings</name>
-        <label>There was an error attempting to update the Custom Settings named Data Import Settings.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailed</name>
-        <label>There was an error attempting to convert Help Text mapping and enable Advanced Mapping.</label>
-    </customLabels>
-    <customLabels>
-        <name>bdiErrorDeploymentFailedLink</name>
-        <label>&lt;a href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;You can view the deployment status here.&lt;/a&gt;</label>
     </customLabels>
     <customLabels>
         <name>bdiErrorDonationLookupMatch</name>
@@ -2563,10 +2543,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</label
         <label>Modifying this Object Group is taking longer than expected.</label>
     </customLabels>
     <customLabels>
-        <name>bdiMigrationLongDeployment</name>
-        <label>Converting Help Text mappings to Advanced Mapping is taking longer than expected.</label>
-    </customLabels>
-    <customLabels>
         <name>bdiOMUIGroupNameHelp</name>
         <label>The name of this Object Group. A common naming convention is [object name] Group.</label>
     </customLabels>
@@ -2760,188 +2736,12 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</label
         <label>View</label>
     </customLabels>
     <customLabels>
-        <name>bgeBatchSelectedFields</name>
-        <label>Selected Fields</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchAvailableFields</name>
-        <label>Available Fields</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchBatchProcessSizeHelp</name>
-        <label>The number of records to process at a time in each batch.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationDateRangeHelp</name>
-        <label>Enter the number of days from the Donation Date to consider when looking for a matching Opportunity or Payment. NPPatch will choose the matching Opp or Payment whose date falls within the number of days AND is closest to the Donation Date.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingBehaviorHelp</name>
-        <label>Defines how NPPatch should handle matching Donations.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingClassHelp</name>
-        <label>The developer name of an Apex class that implements the BDI_IMatching interface for Donations. Leave blank to let NPPatch handle matching.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingRuleHelp</name>
-        <label>You can match against any of the Opportunity or Payment fields that you chose to include in this batch.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonorLookupInfo</name>
-        <label>Select the fields to use for entering gifts in this batch. Donor Type and an Account or Contact lookup will always appear. You will only see fields that you have access to.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchErrorRequiredFields</name>
-        <label>The following fields are required because other fields from their object are selected. Select them before proceeding:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchInfoWizard</name>
-        <label>Enter Batch Info</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchOverviewWizard</name>
-        <label>Enter Batch Info</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchPostProcessClassHelp</name>
-        <label>The developer name of an Apex class that implements the BDI_IPostProcess interface for NPPatch batch records.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchProcessUsingScheduledJobHelp</name>
-        <label>When checked, the batch will be automatically processed based on the schedule for the associated job.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchRunOpportunityRollupsWhileProcessingHelp</name>
-        <label>When checked, NPPatch calculates donor rollups when donations are processed. If unchecked, donor rollups are calculated during the default nightly Scheduled Job. Note that selecting this checkbox may slow down processing of this batch.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchOverview</name>
-        <label>Batch Info</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSelectFields</name>
-        <label>Select Fields</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSetBatchOptions</name>
-        <label>Set Batch Options</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSetFieldOptions</name>
-        <label>Set Field Options</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeCopyBatchSetupButton</name>
-        <label>Copy Batch Setup</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeCopyBatchSetupBatchNameAppend</name>
-        <label>COPY</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeDryRunComplete</name>
-        <label>Batch Dry Run Complete</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeDonationSelectorHelp</name>
-        <label>This screen displays unpaid Payments and open Opportunities that have no unpaid Payments.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchFieldOptionsWarning</name>
-        <label>WARNING: There are records saved to this batch. Any changes you make won&apos;t affect existing records.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchFieldSelectionWarning</name>
-        <label>WARNING: There are records saved to this batch. Any changes you make won&apos;t affect existing records. If you remove fields, those fields no longer appear on the gift entry screen, but data isn&apos;t deleted from those fields on existing records. Therefore, we recommend that you do not remove fields.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchOptionsWarning</name>
-        <label>WARNING: There are records saved to this batch. Any changes you make won&apos;t affect existing records. We will not attempt to match existing records using updated donation matching rule settings, unless those records are edited.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFLSError</name>
-        <label>You don&apos;t have the required field permissions. Contact your system administrator to inquire about getting the necessary permissions.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormMatchingModalText</name>
-        <label>Select the record you want to update.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNewDonationHelptext</name>
-        <label>You are currently creating a new Opportunity.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNewPaymentHelptext</name>
-        <label>You are currently applying a new Payment to Opportunity:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNoneLink</name>
-        <label>Alternatively, create a new Opportunity.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedOpportunityApplyNewPayment</name>
-        <label>Applying New Payment</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedOpportunity</name>
-        <label>Updating this Opportunity</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedPayment</name>
-        <label>Selected Payment</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateDonation</name>
-        <label>Update your donation selection</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateHelptext</name>
-        <label>You are currently updating:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateOpportunity</name>
-        <label>Update this Opportunity</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdatePayment</name>
-        <label>Update this Payment</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridAllGifts</name>
-        <label>All Gifts</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridDonorType</name>
-        <label>Donor Type</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorFromDryRun</name>
-        <label>There are errors on one or more entries. You must resolve all errors before you can process this batch.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorConflictingGifts</name>
-        <label>There are conflicting gifts in this batch. You will need to resolve these conflicts before you&apos;re able to process this batch.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorRequiredTotalsExpected</name>
-        <label>Either the count of gifts or the total gifts doesn&apos;t match the expected values for this batch. These values must match before you can process the batch.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridGiftCountHeader</name>
-        <label>Gifts Entered</label>
-    </customLabels>
-    <customLabels>
         <name>bgeGridGiftDeleted</name>
         <label>Gift successfully deleted.</label>
     </customLabels>
     <customLabels>
         <name>bgeGridGiftSaved</name>
         <label>New gift has been added to the batch.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridGiftUpdated</name>
-        <label>Gifts successfully updated.</label>
     </customLabels>
     <customLabels>
         <name>bgeGridNoGiftsHeader</name>
@@ -2952,36 +2752,8 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</label
         <label>Enter a new gift and it will appear here.</label>
     </customLabels>
     <customLabels>
-        <name>bgeGridTotalAmount</name>
-        <label>Total Amount:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridTotalCount</name>
-        <label>Total Count:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridWarningRequiredTotalsExpected</name>
-        <label>Require Expected Totals Match is selected but the Expected Count of Gifts and Expected Total Batch Amount fields are blank. Edit the batch details and either uncheck Require Expected Totals Match or add values in the related fields.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeBatchDryRun</name>
         <label>Batch Dry Run</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeMatchingAlert</name>
-        <label>This donor has pending donations.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeMatchingSelect</name>
-        <label>Review Donations</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNewBatch</name>
-        <label>New Batch</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNewGift</name>
-        <label>New Gift</label>
     </customLabels>
     <customLabels>
         <name>bgeProcessBatch</name>
@@ -2996,51 +2768,8 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</label
         <label>You can&apos;t edit this Elevate-connected gift until you re-enter the payment information. Select Edit Payment Information.</label>
     </customLabels>
     <customLabels>
-        <name>bgeRetirementWarningBody</name>
-        <label>On July 13, 2021, legacy Batch Gift Entry will be retired and will no longer work in NPPatch. If you have any in-progress batches at that time, you can still access those records, but you can&apos;t process them using Batch Gift Entry. To ensure a smooth transition, enable and use the newer Gift Entry in advance of July 13th.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeRetirementWarningHeader</name>
-        <label>Retiring Batch Gift Entry</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNotSupportedHeader</name>
-        <label>Batch Gift Entry Not Supported</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNotSupportedBody</name>
-        <label>As of July 13, 2021, Batch Gift Entry is no longer supported and has been replaced by Gift Entry.
-            If you have any in-progress batches, you can still access those records, but you can&apos;t process them using Batch Gift Entry.
-            Contact support if you need to access in-progress batches.
-            You may want to explore Gift Entry as an alternative to Batch Gift Entry.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeTabHeader</name>
         <label>Batch Gift Entry</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeHeader</name>
-        <label>Field Mapping Changed</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeTitle</name>
-        <label>Batch Includes Unmapped Fields</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageAdvancedMapping</name>
-        <label>The following fields are included in this Batch, but their Field Mappings were deleted: {0}. To fix this, go to Advanced Mapping in NPPatch Settings and map the fields again.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageHelpTextMapping</name>
-        <label>The following fields are included in this Batch, but their Field Mappings were deleted: {0}. To fix this, go to the NPPatch Data Import object and map the fields again using Help Text.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeWizardShowAdvancedOptions</name>
-        <label>Show Advanced Options</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeWizardHideAdvancedOptions</name>
-        <label>Hide Advanced Options</label>
     </customLabels>
     <customLabels>
         <name>btnContinue</name>
@@ -3175,10 +2904,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</label
     <customLabels>
         <name>gePaymentProcessedWarning</name>
         <label>{0} successfully processed the payment. Changing the donor, date, amount, or payment method will result in inconsistent records for the same transaction in {0} and NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping3</name>
-        <label>Find complete Advanced Mapping setup documentation.</label>
     </customLabels>
     <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
@@ -4758,10 +4483,6 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingBody</name>
         <label>This feature requires both Advanced Mapping and Gift Entry. Please enable them in NPPatch Settings.</label>
-    </customLabels>
-    <customLabels>
-        <name>geServiceLevelErrorAdvancedMapping</name>
-        <label>You must enable Advanced Mapping before you can enable Gift Entry.</label>
     </customLabels>
     <customLabels>
         <name>geErrorPageLevelAdvancedMappingHeader</name>
@@ -6889,24 +6610,8 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <label>Documentation</label>
     </customLabels>
     <customLabels>
-        <name>stgDeploymentCustomMetadataMappingEnabled</name>
-        <label>Advanced Mapping is enabled.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHasInvalidHelpTextMappings</name>
-        <label>Advanced Mapping is enabled, but we found some invalid Help Text mappings that couldn&apos;t be migrated. &lt;b&gt;Take a screenshot of the table below; it will not be displayed again after you leave this page.&lt;/b&gt;</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentHelpTextMappingEnabled</name>
-        <label>Help Text mapping is enabled.</label>
-    </customLabels>
-    <customLabels>
         <name>stgDeploymentInProgress</name>
         <label>Deployment in progress. You can leave this page. The page will reload when deployment is finished.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgDeploymentTimedOut</name>
-        <label>Page timed out.</label>
     </customLabels>
     <customLabels>
         <name>stgDeploymentTryAgain</name>
@@ -6960,33 +6665,6 @@ Selecting Don&apos;t Auto Schedule Default NPPatch Jobs tells NPPatch not to che
     <customLabels>
         <name>stgHelpAccountModel</name>
         <label>The Account model used by the NPPatch. This option controls what happens when you create a Contact with a blank Account field value. WARNING: You should not use the Account Model record type you select as the default Account record type for any Profile. Doing so can cause various data issues.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping1</name>
-        <label>When you enable Advanced Mapping, we convert your existing Help Text field mappings to Advanced Mapping. Once enabled, you&apos;ll edit mappings and create new ones on this page.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping2</name>
-        <label>You can disable Advanced Mapping and go back to Help Text mapping, but any changes you made with Advanced Mapping will be lost.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMapping4</name>
-        <label>&lt;b&gt;This message won&apos;t be displayed if you leave this page! Take a screenshot of this page or copy the information in the table below to track the Help Text mappings you need correct. &lt;/b&gt;
-            &lt;br/&gt;
-            &lt;br/&gt;
-            We couldn&apos;t convert some of your existing Help Text mappings because they&apos;re invalid. We recommend disabling Advanced Mapping, correcting the invalid Help Text mappings, then re-enabling Advanced Mapping. Alternatively, you could add these mappings when you configure Advanced Mapping on the next screen, but these additional mappings will revert to the original invalid Help Text if you disable Advanced Mapping.</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingInvalidHelpText</name>
-        <label>Invalid Help Text Mappings</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader1</name>
-        <label>NPPatch Data Import Field</label>
-    </customLabels>
-    <customLabels>
-        <name>stgHelpAdvancedMappingTableHeader2</name>
-        <label>Current Help Text Value</label>
     </customLabels>
     <customLabels>
         <name>stgHelpAlloFiscalYearRollups</name>
@@ -8351,10 +8029,6 @@ Note: The NPPatch Settings tab is visible in the NPPatch application. If you don
             <name>Contacts</name>
         </sections>
     </reportTypes>
-    <customTabs>
-        <name>Batch_Gift_Entry</name>
-        <label>Batch Gift Entry</label>
-    </customTabs>
     <customTabs>
         <name>Contact_Merge</name>
         <label>Contact Merge</label>
