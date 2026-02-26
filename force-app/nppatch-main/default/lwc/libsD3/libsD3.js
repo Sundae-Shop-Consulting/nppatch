@@ -3,9 +3,9 @@ import { loadScript } from 'lightning/platformResourceLoader';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'
 import NPPATCH_STATIC_RESOURCES from '@salesforce/resourceUrl/NPPatchStaticResources';
 
-class LibsMoment {
+class LibsD3 {
     isInitialized = false;
-    moment;
+    d3;
 
     init = (context) => {
         if (this.isInitialized) {
@@ -14,9 +14,9 @@ class LibsMoment {
         this.isInitialized = true;
 
         return new Promise((resolve, reject) => {
-            loadScript(context, NPPATCH_STATIC_RESOURCES + '/moment/moment.min.js')
+            loadScript(context, NPPATCH_STATIC_RESOURCES + '/d3/d3.min.js')
                 .then(() => {
-                    this.moment = moment;
+                    this.d3 = d3;
                     resolve();
                 })
                 .catch(error => {
@@ -33,4 +33,4 @@ class LibsMoment {
     }
 }
 
-export default new LibsMoment();
+export default new LibsD3();

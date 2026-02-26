@@ -96,6 +96,10 @@ public with sharing class RelationshipsService {
         return permissions.canCreate(Relationship__c.SObjectType);
     }
 
+    public List<Relationship__c> getRelationshipsForContacts(Set<Id> contactIds) {
+        return selector.getRelationshipsForContacts(contactIds);
+    }
+
     public List<Relationship__c> getContactRelations(Id contactId) {
         return selector.getContactRelations(contactId);
     }

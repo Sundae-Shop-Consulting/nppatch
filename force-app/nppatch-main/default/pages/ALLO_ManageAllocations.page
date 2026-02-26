@@ -11,8 +11,8 @@
 
     <apex:slds />
     <apex:includeLightning />
-    <apex:includeScript value="{!URLFOR($Resource.CumulusStaticResources, '/jquery/jquery-3.5.0.min.js')}"/>
-    <apex:stylesheet value="{!URLFOR($Resource.CumulusStaticResources, '/npsp-slds/npsp-common.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.NPPatchStaticResources, '/jquery/jquery-3.5.0.min.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.NPPatchStaticResources, '/npsp-slds/npsp-common.css')}" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="text/javascript">

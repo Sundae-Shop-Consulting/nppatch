@@ -35,6 +35,11 @@
 public with sharing class RelationshipsTreeGridController {
 
     @AuraEnabled(Cacheable=true)
+    public static String getContactName(Id contactId) {
+        return [SELECT Name FROM Contact WHERE Id = :contactId WITH SECURITY_ENFORCED LIMIT 1].Name;
+    }
+
+    @AuraEnabled(Cacheable=true)
     public static RelationshipsListView getInitialView(Id contactId) {
         RelationshipsService service = RelationshipsService.getInstance();
 
@@ -78,6 +83,121 @@ public with sharing class RelationshipsTreeGridController {
         return relations;
     }
 
+
+    @AuraEnabled(Cacheable=true)
+    public static RelationshipGraphView getRelationshipGraph(Id contactId, Integer depth) {
+        RelationshipsService service = RelationshipsService.getInstance();
+        if (!service.hasListViewRequiredPerms()) {
+            AuraHandledException ex = new AuraHandledException(Label.commonInsufficientPermissions);
+            ex.setMessage(Label.commonInsufficientPermissions);
+            throw ex;
+        }
+
+        // Cap depth to prevent excessive SOQL usage
+        Integer maxDepth = (depth == null || depth < 1) ? 2 : Math.min(depth, 3);
+
+        try {
+            // Fetch root contact
+            Contact rootContact = [
+                SELECT Name, Title, Account.Name
+                FROM Contact
+                WHERE Id = :contactId
+                WITH SECURITY_ENFORCED
+                LIMIT 1
+            ];
+
+            Map<Id, GraphNode> visitedNodes = new Map<Id, GraphNode>();
+            List<GraphLink> links = new List<GraphLink>();
+            Set<String> visitedEdges = new Set<String>();
+
+            // Add root node
+            GraphNode rootNode = new GraphNode();
+            rootNode.id = contactId;
+            rootNode.label = rootContact.Name;
+            rootNode.title = rootContact.Title;
+            rootNode.accountName = rootContact.Account?.Name;
+            rootNode.depth = 0;
+            rootNode.isRoot = true;
+            visitedNodes.put(contactId, rootNode);
+
+            // BFS traversal
+            Set<Id> currentFrontier = new Set<Id>{ contactId };
+
+            for (Integer level = 0; level < maxDepth && !currentFrontier.isEmpty(); level++) {
+                List<Relationship__c> relationships = service.getRelationshipsForContacts(currentFrontier);
+                Set<Id> nextFrontier = new Set<Id>();
+
+                for (Relationship__c rel : relationships) {
+                    Id relatedId = rel.RelatedContact__c;
+
+                    // Deduplicate reciprocal edges using canonical pair key
+                    String edgeKey;
+                    if (rel.ReciprocalRelationship__c != null) {
+                        Id minId = rel.Id < rel.ReciprocalRelationship__c ? rel.Id : rel.ReciprocalRelationship__c;
+                        Id maxId = rel.Id < rel.ReciprocalRelationship__c ? rel.ReciprocalRelationship__c : rel.Id;
+                        edgeKey = String.valueOf(minId) + '-' + String.valueOf(maxId);
+                    } else {
+                        edgeKey = String.valueOf(rel.Id);
+                    }
+
+                    if (!visitedEdges.contains(edgeKey)) {
+                        visitedEdges.add(edgeKey);
+                        GraphLink link = new GraphLink();
+                        link.id = rel.Id;
+                        link.source = rel.Contact__c;
+                        link.target = relatedId;
+                        link.relationshipType = rel.Type__c;
+                        link.status = rel.Status__c;
+                        links.add(link);
+                    }
+
+                    // Add node if not yet visited
+                    if (!visitedNodes.containsKey(relatedId)) {
+                        GraphNode node = new GraphNode();
+                        node.id = relatedId;
+                        node.label = rel.RelatedContact__r.Name;
+                        node.title = rel.RelatedContact__r.Title;
+                        node.accountName = rel.RelatedContact__r.Account?.Name;
+                        node.depth = level + 1;
+                        node.isRoot = false;
+                        visitedNodes.put(relatedId, node);
+                        nextFrontier.add(relatedId);
+                    }
+                }
+
+                currentFrontier = nextFrontier;
+            }
+
+            RelationshipGraphView graphView = new RelationshipGraphView();
+            graphView.nodes = visitedNodes.values();
+            graphView.links = links;
+            return graphView;
+        } catch (Exception ex) {
+            throw new AuraHandledException(ex.getMessage());
+        }
+    }
+
+    public class RelationshipGraphView {
+        @AuraEnabled public List<GraphNode> nodes;
+        @AuraEnabled public List<GraphLink> links;
+    }
+
+    public class GraphNode {
+        @AuraEnabled public Id id;
+        @AuraEnabled public String label;
+        @AuraEnabled public String title;
+        @AuraEnabled public String accountName;
+        @AuraEnabled public Integer depth;
+        @AuraEnabled public Boolean isRoot;
+    }
+
+    public class GraphLink {
+        @AuraEnabled public Id id;
+        @AuraEnabled public Id source;
+        @AuraEnabled public Id target;
+        @AuraEnabled public String relationshipType;
+        @AuraEnabled public String status;
+    }
 
     public class RelationshipsListView {
         @AuraEnabled public String vfPageURL;

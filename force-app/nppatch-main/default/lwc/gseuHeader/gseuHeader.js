@@ -1,9 +1,9 @@
 import { LightningElement } from 'lwc';
 import gsVideoHeaderTitle from '@salesforce/label/c.gsVideoHeaderTitle';
-import CumulusStaticResources from '@salesforce/resourceUrl/CumulusStaticResources';
+import NPPATCH_STATIC_RESOURCES from '@salesforce/resourceUrl/NPPatchStaticResources';
 
 export default class GseuHeader extends LightningElement {
-    backgroundUrl = CumulusStaticResources + '/gsAssets/gseuHeader/GetStarted.svg';
+    backgroundUrl = NPPATCH_STATIC_RESOURCES + '/gsAssets/gseuHeader/GetStarted.svg';
     /**
     * Returns an Image URL to display in UI
     * @return      the image at the specified URL
