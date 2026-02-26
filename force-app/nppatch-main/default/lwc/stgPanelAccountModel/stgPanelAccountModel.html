@@ -1,0 +1,111 @@
+<template>
+    <template if:true={isLoading}>
+        <div class="slds-is-relative slds-p-around_large" style="min-height: 100px;">
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </div>
+    </template>
+
+    <template if:true={_hasError}>
+        <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+            <span class="slds-assistive-text">error</span>
+            <p>{_errorMessage}</p>
+        </div>
+    </template>
+
+    <template if:true={_settings}>
+        <div class="panel-container">
+            <div class="panel-header">
+                <div class="slds-grid slds-grid_vertical-align-center">
+                    <div class="slds-col">
+                        <h2 class="slds-text-heading_small">
+                            <span class="slds-text-color_weak">{labels.sectionLabel}</span>
+                            <span class="slds-text-color_weak"> &bull; </span>
+                            {labels.pageLabel}
+                        </h2>
+                    </div>
+                    <div class="slds-col_bump-left">
+                        <template if:true={canEdit}>
+                            <lightning-button label={labels.edit} onclick={handleEdit} variant="neutral"></lightning-button>
+                        </template>
+                    </div>
+                </div>
+                <p class="section-description">{sectionDescription}</p>
+            </div>
+
+            <div class="panel-body">
+                <div class="setting-row">
+                    <label class="setting-label">{labels.accountProcessor}</label>
+                    <p class="setting-help">{labels.helpAccountModel}</p>
+                    <template if:false={_isEditMode}>
+                        <lightning-combobox label={labels.accountProcessor}
+                            value={_settings.Account_Processor__c}
+                            options={accountModelOptions} disabled
+                            variant="label-hidden" class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                    <template if:true={_isEditMode}>
+                        <lightning-combobox
+                            label={labels.accountProcessor}
+                            value={_workingCopy.Account_Processor__c}
+                            options={accountModelOptions}
+                            onchange={handleAccountModelChange}
+                            variant="label-hidden"
+                            class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                </div>
+
+                <div class="setting-row">
+                    <label class="setting-label">{labels.hhAccountRecordType}</label>
+                    <p class="setting-help">{labels.helpHHAccountRT}</p>
+                    <template if:false={_isEditMode}>
+                        <lightning-combobox label={labels.hhAccountRecordType}
+                            value={_settings.HH_Account_RecordTypeID__c}
+                            options={accountRecordTypeOptionsWithNone} disabled
+                            variant="label-hidden" class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                    <template if:true={_isEditMode}>
+                        <lightning-combobox
+                            label={labels.hhAccountRecordType}
+                            value={_workingCopy.HH_Account_RecordTypeID__c}
+                            options={accountRecordTypeOptionsWithNone}
+                            onchange={handleHHRecordTypeChange}
+                            variant="label-hidden"
+                            class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                </div>
+
+                <div class="setting-row">
+                    <label class="setting-label">{labels.oneToOneRecordType}</label>
+                    <p class="setting-help">{labels.helpOneToOneRT}</p>
+                    <template if:false={_isEditMode}>
+                        <lightning-combobox label={labels.oneToOneRecordType}
+                            value={_settings.One_to_One_RecordTypeID__c}
+                            options={accountRecordTypeOptionsWithNone} disabled
+                            variant="label-hidden" class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                    <template if:true={_isEditMode}>
+                        <lightning-combobox
+                            label={labels.oneToOneRecordType}
+                            value={_workingCopy.One_to_One_RecordTypeID__c}
+                            options={accountRecordTypeOptionsWithNone}
+                            onchange={handleOneToOneRecordTypeChange}
+                            variant="label-hidden"
+                            class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                </div>
+            </div>
+
+            <template if:true={_isEditMode}>
+                <div class="panel-footer">
+                    <lightning-button label={labels.save} onclick={handleSave} variant="brand" disabled={_isSaving} class="slds-m-right_x-small"></lightning-button>
+                    <lightning-button label={labels.cancel} onclick={handleCancel} variant="neutral" disabled={_isSaving}></lightning-button>
+                </div>
+            </template>
+        </div>
+    </template>
+</template>

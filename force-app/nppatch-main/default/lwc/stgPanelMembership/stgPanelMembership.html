@@ -1,0 +1,79 @@
+<template>
+    <template if:true={isLoading}>
+        <div class="slds-is-relative slds-p-around_large" style="min-height: 100px;">
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </div>
+    </template>
+
+    <template if:true={_hasError}>
+        <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+            <span class="slds-assistive-text">error</span>
+            <p>{_errorMessage}</p>
+        </div>
+    </template>
+
+    <template if:true={_settings}>
+        <div class="panel-container">
+            <div class="panel-header">
+                <div class="slds-grid slds-grid_vertical-align-center">
+                    <div class="slds-col">
+                        <h2 class="slds-text-heading_small">
+                            <span class="slds-text-color_weak">{labels.sectionLabel}</span>
+                            <span class="slds-text-color_weak"> &bull; </span>
+                            {labels.pageLabel}
+                        </h2>
+                    </div>
+                    <div class="slds-col_bump-left">
+                        <template if:true={canEdit}>
+                            <lightning-button label={labels.edit} onclick={handleEdit} variant="neutral"></lightning-button>
+                        </template>
+                    </div>
+                </div>
+                <p class="section-description">{sectionDescription}</p>
+            </div>
+
+            <div class="panel-body">
+                <template if:true={showRecordTypeField}>
+                    <div class="setting-row">
+                        <label class="setting-label">{labels.membershipRecordTypes}</label>
+                        <p class="setting-help">{labels.helpMembershipRT}</p>
+                        <template if:false={_isEditMode}>
+                            <span class="setting-value">{membershipRecordTypeDisplay}</span>
+                        </template>
+                        <template if:true={_isEditMode}>
+                            <lightning-dual-listbox label={labels.membershipRecordTypes}
+                                source-label="Available" selected-label="Selected"
+                                options={_recordTypeOptions} value={selectedRecordTypes}
+                                onchange={handleRecordTypeChange} variant="label-hidden">
+                            </lightning-dual-listbox>
+                        </template>
+                    </div>
+                </template>
+
+                <div class="setting-row">
+                    <label class="setting-label">{labels.gracePeriod}</label>
+                    <p class="setting-help">{labels.helpGracePeriod}</p>
+                    <template if:false={_isEditMode}>
+                        <lightning-input type="number" label={labels.gracePeriod}
+                            value={_settings.Membership_Grace_Period__c} disabled
+                            variant="label-hidden" class="grace-period-input">
+                        </lightning-input>
+                    </template>
+                    <template if:true={_isEditMode}>
+                        <lightning-input type="number" label={labels.gracePeriod}
+                            value={gracePeriodValue} onchange={handleGracePeriodChange}
+                            variant="label-hidden" class="grace-period-input">
+                        </lightning-input>
+                    </template>
+                </div>
+            </div>
+
+            <template if:true={_isEditMode}>
+                <div class="panel-footer">
+                    <lightning-button label={labels.save} onclick={handleSave} variant="brand" disabled={_isSaving} class="slds-m-right_x-small"></lightning-button>
+                    <lightning-button label={labels.cancel} onclick={handleCancel} variant="neutral" disabled={_isSaving}></lightning-button>
+                </div>
+            </template>
+        </div>
+    </template>
+</template>
