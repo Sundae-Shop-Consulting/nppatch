@@ -1,0 +1,6 @@
+.panel-container { padding: 1rem; }
+.panel-header { margin-bottom: 1rem; }
+.panel-body { display: flex; flex-direction: column; gap: 1.5rem; }
+.section-description { font-size: 0.8125rem; color: #706e6b; margin-top: 0.25rem; }
+.info-card { background: #f7f9fb; border: 1px solid #e5e5e5; border-radius: 0.25rem; padding: 1rem; }
+.info-text { font-size: 0.875rem; color: #3e3e3c; line-height: 1.5; }

@@ -1,0 +1,20 @@
+<template>
+    <div class="panel-container">
+        <div class="panel-header">
+            <h2 class="slds-text-heading_small">
+                <span class="slds-text-color_weak">System Tools</span>
+                <span class="slds-text-color_weak"> &bull; </span>
+                Advanced Mapping
+            </h2>
+            <p class="section-description">Advanced Mapping controls how fields on Data Import records map to their target Salesforce objects during batch processing. Use this to customize which source fields populate which target fields on Contacts, Accounts, Opportunities, Payments, and other objects.</p>
+        </div>
+        <div class="panel-body">
+            <div class="info-card">
+                <p class="info-text">Advanced mapping configuration is managed on a dedicated page. Use the link below to view and edit object mappings and field mappings for the Data Import process.</p>
+                <div class="slds-m-top_medium">
+                    <lightning-button label="Open Advanced Mapping Configuration" onclick={handleOpenMapping} variant="brand"></lightning-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
