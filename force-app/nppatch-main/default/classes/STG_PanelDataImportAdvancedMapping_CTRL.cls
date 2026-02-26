@@ -36,47 +36,21 @@
 */
 public with sharing class STG_PanelDataImportAdvancedMapping_CTRL extends STG_Panel {
     /*********************************************************************************************************
-    * @description URL of the Advanced Mapping Custom UI aura component container
-    */
-    public static String componentUrl = '/lightning/cmp/' + UTIL_Namespace.StrTokenNSPrefix('BDI_ManageAdvancedMapping');
-
-    /*********************************************************************************************************
     * @description Returns the string Id of the Data Import Advanced Mapping panel
     */
     public override String idPanel() { return 'idPanelDataImportAdvancedMapping'; }
 
     /*******************************************************************************************************
-    * @description Boolean used for the Gift Entry toggle value in the visualforce page
-    */
-    public Boolean isGiftEntryEnabled {
-        get {
-            Gift_Entry_Settings__c giftEntrySettings = GE_GiftEntryController.getGiftEntrySettings();
-            return giftEntrySettings.Enable_Gift_Entry__c;
-        }
-        set;
-    }
-
-    /*******************************************************************************************************
     * @description Action Method to navigate to separate VF page that contains custom Advanced Mapping UI in
-    * Aura and Lightning
+    * Aura and Lightning. Uses the runtime namespace to build the component URL, falling back to 'c' in
+    * non-namespaced orgs.
     *
     * @return PageReference
     */
     public PageReference navigate() {
         String namespace = UTIL_Namespace.getNamespace();
-        String newPrefix;
-
-        //If the namespace being used is not npsp then replace with the current namespace if there is one
-        if (UTIL_Namespace.shouldAlignNamespace) {
-            if (!String.isBlank(namespace)) {
-                newPrefix = namespace;
-            } else {
-                newPrefix = 'c';
-            }
-            componentUrl = componentUrl.replace(UTIL_Namespace.HARDCODED_NAMESPACE + '__', newPrefix + '__');
-        }
-
-        PageReference advancedMapping = new PageReference(componentUrl);
+        String prefix = String.isBlank(namespace) ? 'c' : namespace;
+        PageReference advancedMapping = new PageReference('/lightning/cmp/' + prefix + '__BDI_ManageAdvancedMapping');
         advancedMapping.setRedirect(true);
         return advancedMapping;
     }
@@ -91,41 +65,4 @@ public with sharing class STG_PanelDataImportAdvancedMapping_CTRL extends STG_Pa
         ApexPages.addMessage(new ApexPages.Message(severity, message));
     }
 
-    /*******************************************************************************************************
-    * @description Action Method to enable Gift Entry
-    * @return null
-    */
-    public PageReference enableGiftEntry() {
-        GiftEntryEnablementService giftEntryEnablementService = new GiftEntryEnablementService();
-        if (!giftEntryEnablementService.isEnabled()) {
-            try {
-                giftEntryEnablementService.enable();
-                addPageMessage(ApexPages.Severity.CONFIRM, System.Label.geEnableGiftEntrySuccess);
-            } catch(Exception e) {
-                addPageMessage(ApexPages.Severity.ERROR,
-                        e.getMessage());
-            }
-        }
-        return null;
-    }
-
-    /*******************************************************************************************************
-    * @description Action Method to disable Gift Entry
-    * @return null
-    */
-    public PageReference disableGiftEntry() {
-        Gift_Entry_Settings__c giftEntrySettings =
-                GE_GiftEntryController.getGiftEntrySettings();
-        if (giftEntrySettings.Enable_Gift_Entry__c) {
-                giftEntrySettings.Enable_Gift_Entry__c = false;
-            try {
-                upsert giftEntrySettings;
-                addPageMessage(ApexPages.Severity.INFO, System.Label.geDisableGiftEntryInfo);
-            } catch(DmlException e) {
-                addPageMessage(ApexPages.Severity.ERROR,
-                        e.getDmlMessage(0));
-            }
-        }
-        return null;
-    }
 }

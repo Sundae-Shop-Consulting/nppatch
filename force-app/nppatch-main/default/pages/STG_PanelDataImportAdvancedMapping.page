@@ -22,61 +22,18 @@
 
     <apex:outputPanel styleClass="slds-scope stg-panel-data-import-advanced-mapping" rendered="{!isRunningUserIsAdmin}">
         <apex:form id="form" styleClass="slds-m-around_x-large">
-            <c:STG_PageHeader sectionLabel="{!$Label.stgNavSystem}" pageLabel="{!$Label.geHeaderGiftEntry}" />
+            <c:STG_PageHeader sectionLabel="{!$Label.stgNavSystem}" pageLabel="{!$Label.bdiAdvancedMapping}" />
             <c:UTIL_PageMessages escMsg="false" allowClose="false" id="messages" />
+
+            <p class="slds-text-body_regular slds-m-vertical_medium">
+                Advanced Mapping controls how the NPPatch Data Importer and Gift Entry map fields from Data Import records to Salesforce objects. Use Configure Advanced Mapping to view, edit, or create field mappings.
+            </p>
 
             <div class="slds-m-vertical_medium">
                 <apex:commandButton id="navigateAdvancedMapping"
                                     value="{!$Label.stgBDIGoToSetup}"
                                     styleClass="slds-button slds-button_brand"
                                     action="{!navigate}" />
-            </div>
-
-            <apex:actionFunction
-                    name="enableGiftEntry"
-                    action="{!enableGiftEntry}"
-                    reRender="form"
-                    status="statusLoad" />
-            <apex:actionFunction
-                    name="disableGiftEntry"
-                    action="{!disableGiftEntry}"
-                    reRender="form"
-                    status="statusLoad" />
-
-            <div>
-                <div class="slds-m-horizontal_xxx-small slds-section slds-is-open">
-                    <h3 class="slds-section__title slds-theme_shade">
-                        <span class="slds-section-title_divider"
-                              title="{!$Label.geHeaderGiftEntry}">
-                              {!$Label.geHeaderGiftEntry}
-                        </span>
-                    </h3>
-                    <div aria-hidden="false"
-                         class="slds-section__content">
-
-                         <div class="slds-m-vertical_medium">
-                            <c:UTIL_HtmlOutput
-                                    html="{!$Label.geBodyGiftEntryHelp}"
-                                    hasLink="true"
-                                    styleClass="slds-text-body_regular" />
-                        </div>
-
-                        <label class="slds-checkbox_toggle slds-grid slds-m-vertical_large" style="width: fit-content;">
-                            <span class="slds-form-element__label slds-m-bottom_none">{!$Label.geHeaderGiftEntry}</span>
-                            <apex:inputCheckbox onClick="toggleGiftEntry(); return false;"
-                                                id="enableGiftEntryToggle"
-                                                html-name="checkbox-toggle-2"
-                                                value="{!isGiftEntryEnabled}"
-                                                html-aria-describedby="checkbox-toggle-2"/>
-
-                            <span class="slds-checkbox_faux_container" aria-live="assertive">
-                                <span class="slds-checkbox_faux"></span>
-                                <span class="slds-checkbox_on">Enabled</span>
-                                <span class="slds-checkbox_off">Disabled</span>
-                            </span>
-                        </label>
-                    </div>
-                </div>
             </div>
 
         </apex:form>
@@ -99,13 +56,5 @@
             renderBatchNumberSettingsComponent();
         }
 
-        function toggleGiftEntry() {
-            let giftEntryToggle = document.getElementById('{!$Component.form.enableGiftEntryToggle}');
-            if (giftEntryToggle.checked) {
-                enableGiftEntry();
-            } else {
-                disableGiftEntry();
-            }
-        }
     </script>
 </apex:page>

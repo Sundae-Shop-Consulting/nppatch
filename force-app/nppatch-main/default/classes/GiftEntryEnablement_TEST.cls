@@ -31,13 +31,24 @@
 private class GiftEntryEnablement_TEST {
 
     @IsTest
-    private static void enableShouldUpdateCustomSetting() {
+    private static void isEnabledShouldAlwaysReturnTrue() {
+        GiftEntryEnablementService giftEntryEnablementService = new GiftEntryEnablementService();
+
+        Test.startTest();
+            Boolean result = giftEntryEnablementService.isEnabled();
+        Test.stopTest();
+
+        System.assert(result, 'Gift entry should always be enabled');
+    }
+
+    @IsTest
+    private static void enableShouldBeNoOp() {
         GiftEntryEnablementService giftEntryEnablementService = new GiftEntryEnablementService();
 
         Test.startTest();
             giftEntryEnablementService.enable();
         Test.stopTest();
 
-        System.assert(giftEntryEnablementService.isEnabled(), 'Gift entry should be enabled');
+        System.assert(giftEntryEnablementService.isEnabled(), 'Gift entry should still be enabled after no-op enable()');
     }
 }

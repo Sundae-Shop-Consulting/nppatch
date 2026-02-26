@@ -1294,6 +1294,210 @@ public with sharing class GE_GiftEntryController {
         Boolean gatewayAssignmentEnabled;
     }
 
+    /*******************************************************************************************************
+    * @description runs BDI Dry Run against all Data Import records based on the processing settings of
+    *  a given batch. Migrated from BGE_DataImportBatchEntry_CTRL.
+    * @param batchId: ID of the NPPatch_Data_Import_Batch__c
+    * @param numberOfRowsToReturn: number of rows to return after dry run
+    * @return DataImportModel with updated data import record row and updated totals for the batch
+    */
+    @AuraEnabled
+    public static String runBatchDryRun(Id batchId, Integer numberOfRowsToReturn) {
+        try {
+            Data_Import_Settings__c dataImportSettings = BDI_DataImportService.loadSettings(batchId);
+
+            List<DataImport__c> allRawDataImports = getAllDataImportRecordsForDryRunByBatchId(batchId);
+            List<DataImport__c> rawDataImportsToPrepareForDryRun = new List<DataImport__c>();
+            for (DataImport__c di : allRawDataImports) {
+                if (di.Status__c != BDI_DataImport_API.bdiImported) {
+                    rawDataImportsToPrepareForDryRun.add(di);
+                }
+            }
+
+            if (rawDataImportsToPrepareForDryRun.size() > 0) {
+                List<DataImport__c> dataImportListToRun =
+                    prepareDataImportsForDryRun(rawDataImportsToPrepareForDryRun);
+                BDI_DataImport_API.processDataImportRecords(dataImportSettings, dataImportListToRun, true);
+            }
+
+            DryRunDataImportModel dataImportModel = getDryRunUpdatedTotals(batchId);
+
+            List<DryRunDataImportRow> rows = new List<DryRunDataImportRow>();
+            if (numberOfRowsToReturn > 0) {
+                List<DataImport__c> dataImportsToReturn =
+                    getDryRunDataImportRecordsByBatchId(batchId, numberOfRowsToReturn);
+                for (DataImport__c di : dataImportsToReturn) {
+                    rows.add(new DryRunDataImportRow(di));
+                }
+            }
+            dataImportModel.dataImportRows = rows;
+
+            return JSON.serialize(dataImportModel);
+        } catch (Exception ex){
+            throw new AuraHandledException('ERROR: ' + ex.getMessage());
+        }
+    }
+
+    /*******************************************************************************************************
+    * @description prepare the data import record for dry run by clearing certain fields or retaining them
+    * based on if user has already selected a match, or if they want to let matching run.
+    */
+    private static List<DataImport__c> prepareDataImportsForDryRun(List<DataImport__c> dataImportRecords) {
+        for(DataImport__c dataImportRecord : dataImportRecords) {
+            if (dataImportRecord.DonationImportStatus__c == Label.bdiMatchedByUser
+                    || dataImportRecord.DonationImportStatus__c == Label.bdiMatchedByUserNewOpp
+                    || dataImportRecord.DonationImportStatus__c == Label.bdiMatchedApplyNewPayment) {
+                // User defined match, so we do nothing and retain the values
+            } else {
+                if (dataImportRecord.Status__c != null) {
+                    dataImportRecord.Status__c = null;
+                }
+                if (dataImportRecord.FailureInformation__c != null) {
+                    dataImportRecord.FailureInformation__c = null;
+                }
+                if (dataImportRecord.DonationImported__c != null) {
+                    dataImportRecord.DonationImported__c = null;
+                }
+                if (dataImportRecord.DonationImportStatus__c != null) {
+                    dataImportRecord.DonationImportStatus__c = null;
+                }
+                if (dataImportRecord.PaymentImported__c != null) {
+                    dataImportRecord.PaymentImported__c = null;
+                }
+                if (dataImportRecord.PaymentImportStatus__c != null) {
+                    dataImportRecord.PaymentImportStatus__c = null;
+                }
+            }
+        }
+        update dataImportRecords;
+        return dataImportRecords;
+    }
+
+    /*******************************************************************************************************
+    * @description returns all DataImport__c records for a batch Id, with fields needed for dry run
+    */
+    private static List<DataImport__c> getAllDataImportRecordsForDryRunByBatchId(Id batchId) {
+        String query = BDI_DataImportService.strSoqlForBatchProcess(batchId);
+        return Database.query(query);
+    }
+
+    /*******************************************************************************************************
+    * @description gets updated amount total and row count for the batch
+    */
+    private static DryRunDataImportModel getDryRunUpdatedTotals(Id batchId) {
+        DryRunDataImportModel dataImportModel = new DryRunDataImportModel();
+        dataImportModel.id = batchId;
+        dataImportModel.totalCountOfRows = [SELECT Count() FROM DataImport__c WHERE NPPatch_Data_Import_Batch__c =: batchId];
+        AggregateResult[] aggResult = [SELECT Sum(Donation_Amount__c)amount FROM DataImport__c WHERE NPPatch_Data_Import_Batch__c =: batchId];
+        dataImportModel.totalRowAmount = (Decimal) aggResult[0].get('amount');
+
+        Decimal totalAmount = 0;
+        for (DataImport__c dataImport : [
+            SELECT Donation_Amount__c
+            FROM DataImport__c
+            WHERE NPPatch_Data_Import_Batch__c =: batchId
+        ]) {
+            totalAmount += dataImport.Donation_Amount__c == null ? 0 : dataImport.Donation_Amount__c;
+        }
+        dataImportModel.batchTotalRowAmount = totalAmount;
+
+        return dataImportModel;
+    }
+
+    /*******************************************************************************************************
+    * @description returns a limited list of DataImport__c records from a batch Id using BDI query
+    */
+    private static List<DataImport__c> getDryRunDataImportRecordsByBatchId(Id batchId, Integer numRows) {
+        String query = BDI_DataImportService.strSoqlForBatchProcess(batchId);
+        if (numRows != null && numRows > 0) {
+            query += ' LIMIT ' + numRows;
+        }
+        return Database.query(query);
+    }
+
+    /*******************************************************************************************************
+    * @description Model class for dry run results
+    */
+    public class DryRunDataImportModel {
+        @AuraEnabled public Id id;
+        @AuraEnabled public List<DryRunDataImportRow> dataImportRows;
+        @AuraEnabled public Integer totalCountOfRows;
+        @AuraEnabled public Decimal totalRowAmount;
+        @AuraEnabled public Decimal batchTotalRowAmount;
+    }
+
+    /*******************************************************************************************************
+    * @description Row wrapper for dry run results with derived donor info
+    */
+    public class DryRunDataImportRow {
+        @AuraEnabled public String donorName;
+        @AuraEnabled public String donorLink;
+        @AuraEnabled public String matchedRecordUrl;
+        @AuraEnabled public String matchedRecordLabel;
+        @AuraEnabled public DataImport__c record;
+        @AuraEnabled public List<String> errors;
+
+        public DryRunDataImportRow(DataImport__c record) {
+            getDonorInfo(record);
+            setDryRunRecordInfo(record);
+            this.record = record;
+        }
+
+        private void getDonorInfo(DataImport__c record) {
+            if (record.Donation_Donor__c == 'Account1' && record.Account1Imported__c != null) {
+                this.donorName = record.Account1Imported__r.Name;
+                this.donorLink = '/' + record.Account1Imported__c;
+            }
+            if (record.Donation_Donor__c == 'Contact1' && record.Contact1Imported__c != null) {
+                this.donorName = record.Contact1Imported__r.Name;
+                this.donorLink = '/' + record.Contact1Imported__c;
+            }
+        }
+
+        private void setDryRunRecordInfo(DataImport__c record) {
+            try {
+                String matchedUrl = '';
+                String matchedUrlLabel = '';
+                List<String> errors = new List<String>();
+
+                Boolean donationMatched = (record.DonationImported__c != null);
+                Boolean paymentMatched = (record.PaymentImported__c != null);
+                Boolean importFailure = (record.FailureInformation__c != null);
+
+                if (paymentMatched) {
+                    String importedId = record.PaymentImported__c;
+                    matchedUrlLabel = record.PaymentImported__r.Name;
+                    matchedUrl = URL.getSalesforceBaseUrl().toExternalForm() + '/' + importedId;
+                } else if (donationMatched) {
+                    String importedId = record.DonationImported__c;
+                    matchedUrlLabel = record.DonationImported__r.Name;
+                    matchedUrl = URL.getSalesforceBaseUrl().toExternalForm() + '/' + importedId;
+                }
+
+                if (importFailure) {
+                    if (record.DonationImportStatus__c != null && !donationMatched) {
+                        errors.add(record.DonationImportStatus__c);
+                    }
+                    if (record.PaymentImportStatus__c != null
+                            && !paymentMatched
+                            && record.PaymentImportStatus__c != record.DonationImportStatus__c) {
+                        errors.add(record.PaymentImportStatus__c);
+                    }
+                    if (record.FailureInformation__c != record.PaymentImportStatus__c
+                            && record.FailureInformation__c != record.DonationImportStatus__c) {
+                        errors.add(record.FailureInformation__c);
+                    }
+                }
+
+                this.matchedRecordUrl = matchedUrl;
+                this.matchedRecordLabel = matchedUrlLabel;
+                this.errors = errors;
+            } catch (Exception ex) {
+                throw new AuraHandledException(ex.getMessage());
+            }
+        }
+    }
+
     private class CurrencyMismatchException extends Exception {}
 
     private class BDIException extends Exception {}

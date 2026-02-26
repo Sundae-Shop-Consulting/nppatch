@@ -93,15 +93,7 @@ public with sharing class GE_Template {
      * @return Returns whether or not the feature is enabled.
      */
     private static Boolean giftEntryIsEnabled() {
-            
-        // Get the gift entry custom setting to check for the default template.             
-        Gift_Entry_Settings__c giftEntryCustomSetting = UTIL_CustomSettingsFacade.getGiftEntrySettings();
-
-        if (giftEntryCustomSetting.Enable_Gift_Entry__c) {
-            return true;
-        }
-
-        return false;
+        return true;
     }
 
     /**

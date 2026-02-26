@@ -8,10 +8,6 @@
         <plural>true</plural>
         <value>NPSP Data Import Batches</value>
     </caseValues>
-    <fieldSets>
-        <label></label>
-        <name>BatchGiftEntryTabColumns</name>
-    </fieldSets>
     <layouts>
         <layout>NPPatch Data Import Batch Layout</layout>
         <sections>
