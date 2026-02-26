@@ -22,16 +22,7 @@ Third-Party Components
 
 This project includes the following third-party components:
 
-Arbor.js (v0.92)
-  Copyright (c) Samizdat Drafting Co.
-  Physics code derived from springy.js, Copyright (c) 2010 Dennis Hotson
-  License: MIT
-  Location: force-app/main/default/staticresources/CumulusStaticResources/arbor-v0.92/
-
-Bootstrap Icons
-  License: Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported
-  Location: force-app/main/default/staticresources/CumulusStaticResources/Bootstrap/icons/
-
-Bootstrap Fonts
-  License: Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported
-  Location: force-app/main/default/staticresources/CumulusStaticResources/Bootstrap/fonts/
+D3.js (v7.9.0)
+  Copyright (c) 2010-2023 Mike Bostock
+  License: ISC
+  Location: force-app/nppatch-main/default/staticresources/NPPatchStaticResources/d3/

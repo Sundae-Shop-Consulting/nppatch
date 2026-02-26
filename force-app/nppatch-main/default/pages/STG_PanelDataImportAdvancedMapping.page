@@ -1,6 +1,6 @@
 <apex:page controller="STG_PanelDataImportAdvancedMapping_CTRL" docType="html-5.0" standardStylesheets="false">
     <apex:slds/>
-    <apex:includeScript value="{!URLFOR($Resource.CumulusStaticResources, '/npsp-slds/modal.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.NPPatchStaticResources, '/npsp-slds/modal.js')}" />
 
     <style>
         #page_messages .slds-notify {

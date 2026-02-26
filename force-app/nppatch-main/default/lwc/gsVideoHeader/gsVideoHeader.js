@@ -1,10 +1,10 @@
 import { LightningElement } from 'lwc';
-import CumulusStaticResources from '@salesforce/resourceUrl/CumulusStaticResources';
+import NPPATCH_STATIC_RESOURCES from '@salesforce/resourceUrl/NPPatchStaticResources';
 import gsVideoHeaderTitle from '@salesforce/label/c.gsVideoHeaderTitle';
 import gsVideoLength from '@salesforce/label/c.gsVideoHeaderLength';
 import opensInNewLink from '@salesforce/label/c.opensInNewLink'
 
-const gsAssets = CumulusStaticResources + '/gsAssets';
+const gsAssets = NPPATCH_STATIC_RESOURCES + '/gsAssets';
 
 export default class gsVideoHeader extends LightningElement {
 

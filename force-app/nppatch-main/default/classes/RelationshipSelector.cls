@@ -34,6 +34,25 @@
 */
 public with sharing class RelationshipSelector {
 
+    public List<Relationship__c> getRelationshipsForContacts(Set<Id> contactIds) {
+        UTIL_Query query = new UTIL_Query()
+                .withSelectFields(new Set<String>{
+                        'Contact__c',
+                        'RelatedContact__c',
+                        'toLabel(Type__c)',
+                        'Status__c',
+                        'ReciprocalRelationship__c',
+                        'RelatedContact__r.Name',
+                        'RelatedContact__r.Title',
+                        'RelatedContact__r.Account.Name'
+                })
+                .withFrom(Relationship__c.SObjectType)
+                .withWhere(UTIL_Namespace.StrTokenNSPrefix('Contact__c') + ' IN :contactIds')
+                .withSecurityEnforced()
+                .withLimit(500);
+        return Database.query(query.build());
+    }
+
     public List<Relationship__c> getContactRelations(Id contactId) {
         UTIL_Query query = new UTIL_Query()
                 .withSelectFields(new Set<String>{

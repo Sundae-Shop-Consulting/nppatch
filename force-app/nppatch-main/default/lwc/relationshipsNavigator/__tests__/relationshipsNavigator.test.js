@@ -1,23 +1,19 @@
 import { createElement } from "lwc";
-import { getRecord } from "lightning/uiRecordApi";
 import RelationshipsNavigator from "c/relationshipsNavigator";
+import getContactName from "@salesforce/apex/RelationshipsTreeGridController.getContactName";
 import getInitialView from "@salesforce/apex/RelationshipsTreeGridController.getInitialView";
 
 const mockGetInitialView = require("../../relationshipsTreeGrid/__tests__/data/mockGetInitialView.json");
 const FAKE_CONTACT_ID = "003_FAKE_CONTACT_ID";
 const FAKE_CONTACT_NAME = "FakeFirstName FakeLastName";
-const mockGetRecord = {
-    apiName: "Contact",
-    childRelationships: {},
-    id: FAKE_CONTACT_ID,
-    recordTypeInfo: null,
-    fields: {
-        Name: {
-            displayValue: null,
-            value: FAKE_CONTACT_NAME,
-        },
+
+jest.mock(
+    "@salesforce/apex/RelationshipsTreeGridController.getContactName",
+    () => {
+        return { default: jest.fn() };
     },
-};
+    { virtual: true }
+);
 
 jest.mock(
     "@salesforce/apex/RelationshipsTreeGridController.getInitialView",
@@ -29,6 +25,7 @@ jest.mock(
 
 describe("c-relationships-navigator", () => {
     beforeEach(() => {
+        getContactName.mockResolvedValue(FAKE_CONTACT_NAME);
         getInitialView.mockResolvedValue(mockGetInitialView);
     });
 
@@ -41,11 +38,6 @@ describe("c-relationships-navigator", () => {
         element.recordId = FAKE_CONTACT_ID;
 
         document.body.appendChild(element);
-        await flushPromises();
-
-        getRecord.emit(mockGetRecord, (config) => {
-            return config.recordId === FAKE_CONTACT_ID;
-        });
         await flushPromises();
 
         const cardCmp = element.shadowRoot.querySelector("lightning-card");
@@ -64,19 +56,34 @@ describe("c-relationships-navigator", () => {
         const element = createElement("c-relationships-navigator", { is: RelationshipsNavigator });
         element.recordId = FAKE_CONTACT_ID;
         document.body.appendChild(element);
-        getRecord.emit(mockGetRecord, (config) => config.recordId === FAKE_CONTACT_ID);
         await flushPromises();
 
         const errorMessageCmp = element.shadowRoot.querySelector("c-util-illustration");
         expect(errorMessageCmp).toBeTruthy();
     });
 
-    it("passes isLightningOut value down to tree grid component", async () => {
+    it("does not render tree grid until tabular tab is activated", async () => {
+        const element = createElement("c-relationships-navigator", { is: RelationshipsNavigator });
+        element.recordId = FAKE_CONTACT_ID;
+
+        document.body.appendChild(element);
+        await flushPromises();
+
+        expect(element.shadowRoot.querySelector("c-relationships-tree-grid")).toBeNull();
+    });
+
+    it("passes isLightningOut value down to tree grid component after tab activation", async () => {
         const element = createElement("c-relationships-navigator", { is: RelationshipsNavigator });
         element.recordId = FAKE_CONTACT_ID;
         element.isLightningOut = true;
 
         document.body.appendChild(element);
+        await flushPromises();
+
+        // Simulate tabular tab becoming active
+        const tabularTab = element.shadowRoot.querySelectorAll("lightning-tab")[1];
+        tabularTab.dispatchEvent(new CustomEvent("active"));
+        await flushPromises();
 
         const treeGrid = element.shadowRoot.querySelector("c-relationships-tree-grid");
         expect(treeGrid).toBeTruthy();
