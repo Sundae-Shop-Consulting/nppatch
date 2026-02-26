@@ -1,7 +1,7 @@
 import LightningDatatable from 'lightning/datatable';
 import picklistTypeTemplate from './picklistTypeTemplate.html';
 import { loadStyle } from 'lightning/platformResourceLoader';
-import CUMULUS_STATIC_RESOURCES from '@salesforce/resourceUrl/CumulusStaticResources';
+import NPPATCH_STATIC_RESOURCES from '@salesforce/resourceUrl/NPPatchStaticResources';
 
 export default class customDatatable extends LightningDatatable {
     /***
@@ -21,7 +21,7 @@ export default class customDatatable extends LightningDatatable {
     */
     connectedCallback() {
         Promise.all([
-            loadStyle(this, CUMULUS_STATIC_RESOURCES + '/customDatatable/style.css')
+            loadStyle(this, NPPATCH_STATIC_RESOURCES + '/customDatatable/style.css')
         ]).then(() => {
 
         }).catch(error => {

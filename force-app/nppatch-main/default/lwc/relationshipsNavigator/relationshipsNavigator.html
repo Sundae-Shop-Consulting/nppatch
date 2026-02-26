@@ -9,13 +9,15 @@
                         onaccesserror={handleAccessError}>
                     </c-relationships-tangled-tree>
                 </lightning-tab>
-                <lightning-tab label={labels.tabularView}>
-                    <c-relationships-tree-grid
-                        contact-name={contactName}
-                        record-id={recordId}
-                        is-lightning-out={isLightningOut}
-                        onaccesserror={handleAccessError}>
-                    </c-relationships-tree-grid>
+                <lightning-tab label={labels.tabularView} onactive={handleTabularTabActive}>
+                    <template if:true={_tabularTabReady}>
+                        <c-relationships-tree-grid
+                            contact-name={contactName}
+                            record-id={recordId}
+                            is-lightning-out={isLightningOut}
+                            onaccesserror={handleAccessError}>
+                        </c-relationships-tree-grid>
+                    </template>
                 </lightning-tab>
             </lightning-tabset>
         </lightning-card>

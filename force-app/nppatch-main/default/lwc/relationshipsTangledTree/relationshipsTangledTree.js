@@ -51,17 +51,41 @@ export default class RelationshipsTangledTree extends NavigationMixin(LightningE
     };
 
     async connectedCallback() {
+        this._depthValue = String(this.depth);
+
         try {
-            await libsD3.init(this);
+            // Load D3 and fetch graph data in parallel
+            const [, graphResult] = await Promise.all([
+                libsD3.init(this),
+                getRelationshipGraph({
+                    contactId: this.recordId,
+                    depth: parseInt(this.depth, 10),
+                }),
+            ]);
             this._d3 = libsD3.d3;
+            this._handleGraphResult(graphResult);
         } catch (e) {
+            const message = e.body ? e.body.message : e.message || "Failed to load visualization";
             this.hasError = true;
-            this.errorMessage = "Failed to load D3 library";
+            this.errorMessage = message;
+            this.isLoading = false;
+        }
+    }
+
+    _handleGraphResult(result) {
+        if (!result || !result.nodes || result.nodes.length <= 1) {
+            this.hasNoRelationships = true;
             this.isLoading = false;
             return;
         }
-        this._depthValue = String(this.depth);
-        await this.loadGraph(this.recordId, this.depth);
+
+        this.hasData = true;
+        this.isLoading = false;
+
+        // eslint-disable-next-line @lwc/lwc/no-async-operation
+        requestAnimationFrame(() => {
+            this.renderGraph(result.nodes, result.links);
+        });
     }
 
     // --- Depth menu ---
@@ -104,19 +128,7 @@ export default class RelationshipsTangledTree extends NavigationMixin(LightningE
                 return;
             }
 
-            if (!result || !result.nodes || result.nodes.length <= 1) {
-                this.hasNoRelationships = true;
-                this.isLoading = false;
-                return;
-            }
-
-            this.hasData = true;
-            this.isLoading = false;
-
-            // eslint-disable-next-line @lwc/lwc/no-async-operation
-            await new Promise((resolve) => setTimeout(resolve, 0));
-
-            this.renderGraph(result.nodes, result.links);
+            this._handleGraphResult(result);
         } catch (error) {
             if (requestId !== this._requestId) {
                 return;

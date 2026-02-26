@@ -108,7 +108,7 @@
                     </apex:outputPanel>
                     <apex:outputPanel layout="block" rendered="{!useNPSPicon == true}" styleClass="slds-media__figure" id="npspIcon">
                         <div class="slds-media__figure slds-media__figure_reverse">
-                            <apex:image alt="" value="{!URLFOR($Resource.CumulusStaticResources, '/Images/RGB_nppatch-stacked-color.png')}" styleClass="img-rounded img-responsive" style="height: 75px"/>
+                            <apex:image alt="" value="{!URLFOR($Resource.NPPatchStaticResources, '/Images/RGB_nppatch-stacked-color.png')}" styleClass="img-rounded img-responsive" style="height: 75px"/>
                         </div>
                     </apex:outputPanel>
 

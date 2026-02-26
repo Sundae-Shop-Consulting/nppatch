@@ -62,12 +62,28 @@ describe("c-relationships-navigator", () => {
         expect(errorMessageCmp).toBeTruthy();
     });
 
-    it("passes isLightningOut value down to tree grid component", async () => {
+    it("does not render tree grid until tabular tab is activated", async () => {
+        const element = createElement("c-relationships-navigator", { is: RelationshipsNavigator });
+        element.recordId = FAKE_CONTACT_ID;
+
+        document.body.appendChild(element);
+        await flushPromises();
+
+        expect(element.shadowRoot.querySelector("c-relationships-tree-grid")).toBeNull();
+    });
+
+    it("passes isLightningOut value down to tree grid component after tab activation", async () => {
         const element = createElement("c-relationships-navigator", { is: RelationshipsNavigator });
         element.recordId = FAKE_CONTACT_ID;
         element.isLightningOut = true;
 
         document.body.appendChild(element);
+        await flushPromises();
+
+        // Simulate tabular tab becoming active
+        const tabularTab = element.shadowRoot.querySelectorAll("lightning-tab")[1];
+        tabularTab.dispatchEvent(new CustomEvent("active"));
+        await flushPromises();
 
         const treeGrid = element.shadowRoot.querySelector("c-relationships-tree-grid");
         expect(treeGrid).toBeTruthy();

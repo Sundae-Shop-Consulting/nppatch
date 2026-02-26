@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 import { loadScript } from 'lightning/platformResourceLoader';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'
-import CUMULUS_STATIC_RESOURCES from '@salesforce/resourceUrl/CumulusStaticResources';
+import NPPATCH_STATIC_RESOURCES from '@salesforce/resourceUrl/NPPatchStaticResources';
 
 class LibsMoment {
     isInitialized = false;
@@ -14,7 +14,7 @@ class LibsMoment {
         this.isInitialized = true;
 
         return new Promise((resolve, reject) => {
-            loadScript(context, CUMULUS_STATIC_RESOURCES + '/moment/moment.min.js')
+            loadScript(context, NPPATCH_STATIC_RESOURCES + '/moment/moment.min.js')
                 .then(() => {
                     this.moment = moment;
                     resolve();

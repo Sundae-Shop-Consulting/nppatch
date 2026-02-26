@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 import { loadScript } from 'lightning/platformResourceLoader';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'
-import CUMULUS_STATIC_RESOURCES from '@salesforce/resourceUrl/CumulusStaticResources';
+import NPPATCH_STATIC_RESOURCES from '@salesforce/resourceUrl/NPPatchStaticResources';
 
 class LibsD3 {
     isInitialized = false;
@@ -14,7 +14,7 @@ class LibsD3 {
         this.isInitialized = true;
 
         return new Promise((resolve, reject) => {
-            loadScript(context, CUMULUS_STATIC_RESOURCES + '/d3/d3.min.js')
+            loadScript(context, NPPATCH_STATIC_RESOURCES + '/d3/d3.min.js')
                 .then(() => {
                     this.d3 = d3;
                     resolve();
