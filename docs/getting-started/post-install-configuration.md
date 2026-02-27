@@ -1,144 +1,122 @@
 # Post-Install Configuration
 
-After installing NPPatch, the package initializes a set of default settings automatically. This page describes what those defaults are and which settings you should review and adjust for your organization.
+After installing NPPatch, the package initializes a set of default settings automatically. This page describes those defaults and which settings you'll want to review for your organization.
 
 ## How Settings Work in NPPatch
 
-NPPatch uses Salesforce hierarchy custom settings to store its configuration. These settings can be configured at the org level (applied to everyone), at the profile level (applied to users with a specific profile), or at the individual user level.
+NPPatch stores its configuration in Salesforce hierarchy custom settings. Hierarchy custom settings can be configured at the org level (applies to everyone) or overridden at the profile or individual user level.
 
-The primary interface for managing these settings is the **NPPatch Settings** page, accessible from the App Launcher or the NPPatch Settings tab.
+The primary interface for managing these settings is the **NPPatch Settings** page, accessible from the App Launcher or the NPPatch Settings tab. This UI organizes all configuration options into a structured navigation panel. Changes made here are saved immediately to the underlying custom setting records.
 
-Under the hood, settings are managed through a centralized facade (`UTIL_CustomSettingsFacade`) that provides in-memory caching to minimize database queries. When you change a setting through the UI, it updates the corresponding custom setting record.
+Avoid editing NPPatch custom settings directly through **Setup > Custom Settings**—while technically possible, it bypasses the validation and initialization logic in the settings UI.
+
+## What's Enabled Out of the Box
+
+Several features are fully enabled and ready to use immediately after installation, with no additional configuration steps:
+
+- **Gift Entry** — the full Gift Entry and Batch Gift Entry experience is available from the Gift Entry tab without any enablement step
+- **Customizable Rollups** — the CRLP rollup engine runs by default and ships with 86 pre-configured rollup definitions covering standard donor statistics fields. No "enable" step is required.
+- **Enhanced Recurring Donations** — RD2 is the only recurring donations engine in NPPatch. There is no legacy mode to migrate from.
+- **Advanced Mapping** — the Metadata-based field mapping engine for Gift Entry / Data Import is always active
 
 ## Settings Initialized at Install
 
-The following settings are created with default values when NPPatch is installed. Each section describes the default and when you might want to change it.
+The install script (`STG_InstallScript`) creates default custom setting records for all NPPatch settings objects if they don't already exist. The following sections describe the defaults you're most likely to want to review.
 
 ### Account Model
 
-**Default:** Household Account model enabled.
+**Default:** Household Account model.
 
 NPPatch supports two account models for managing individual constituents:
 
-- **Household Account Model** — each household gets a shared Account record; individual Contacts are associated with their household. This is the standard NPSP configuration and the default.
+- **Household Account Model** — each household gets a shared Account record; individual Contacts are associated with their household. This is the default.
 - **One-to-One Account Model** — each Contact gets their own individual Account record. This is an older model that some organizations still use.
 
-!!! info "Account Model Implications"
-    The account model affects how Contacts are organized, how donations roll up, and how household naming works. Changing this after data has been created requires careful migration planning.
+!!! warning "Account Model is Not Easily Changed"
+    The account model affects how Contacts are organized, how donations roll up, and how household naming works. Changing this setting after data has been created requires careful migration planning. Choose the right model before entering data.
+
+Configure this in **NPPatch Settings > People > Account Model**.
 
 ### Household Naming
 
 **Default:** Automatic household naming enabled.
 
-When enabled, NPPatch automatically generates names for Household Account records based on the Contacts in the household. The naming format can be customized through the Household Naming Settings, which control the formal greeting, informal greeting, and household name format.
+When enabled, NPPatch automatically generates names, formal greetings, and informal greetings for Household Account records based on the Contacts in the household. The naming formats can be customized in **NPPatch Settings > People > Households**.
 
-### Contacts & Organizations
+### Payments
 
-**Default settings include:**
+**Default:** Payment creation enabled.
 
-- Automatic payment creation: **Enabled** — when an Opportunity is created with a Closed Won stage, a Payment record is automatically created
-- Opportunity Contact Roles: **Enabled** — automatic creation of Contact Roles on Opportunities
-- Opportunity naming: configured but may need format customization
+When an Opportunity is created, a corresponding `OppPayment__c` record is automatically created. This enables pledge tracking and payment reconciliation. Configure this in **NPPatch Settings > Donations > Payments**.
 
 ### Recurring Donations
 
-**Default settings include:**
+**Default settings:**
 
-- Maximum donations per recurring donation: **50**
+- Maximum installments generated per RD: **50**
 - Forecast months: **12**
-- Close action for past-due installments: **Mark as Closed Lost**
-- Batch sizes configured for processing
+- Close action for open installments when RD is closed: **Mark as Closed Lost**
+- Batch sizes configured for standard processing
 
-These defaults work well for most organizations. You may want to adjust the maximum donations count for organizations with very long-running recurring gifts, or change the close action behavior based on your organization's accounting practices.
+These defaults work well for most organizations. Adjust them in **NPPatch Settings > Recurring Donations**. You may want to change the close action behavior based on your organization's accounting practices, or adjust the forecast window if your major gift officers need longer visibility.
 
 ### Allocations
 
-**Default:** Allocations **disabled**.
+**Default:** Allocations disabled.
 
-The GAU (General Accounting Unit) Allocations feature allows organizations to split donation amounts across multiple funds or accounts. This is powerful but adds complexity, so it's disabled by default.
+The GAU (General Accounting Unit) Allocations feature allows organizations to split donation amounts across multiple funds or accounts. It's powerful but adds complexity, so it's off by default.
 
-To enable allocations:
-
-1. Open **NPPatch Settings**
-2. Navigate to **Donations > Allocations**
-3. Enable the feature
-4. Configure a default General Accounting Unit if desired
-
-### Customizable Rollups
-
-**Default:** Customizable Rollups **disabled**.
-
-Customizable Rollups (CRLP) replace the legacy rollup mechanism with a more flexible, metadata-driven approach. When disabled, NPPatch falls back to the legacy trigger-based rollups.
-
-Most organizations should enable Customizable Rollups for better performance and flexibility:
-
-1. Open **NPPatch Settings**
-2. Navigate to **Customizable Rollups**
-3. Enable the feature
-4. Review and adjust the default rollup definitions
+To enable: **NPPatch Settings > Donations > Allocations**, then toggle Allocations on and optionally configure a default General Accounting Unit.
 
 ### Error Handling
 
 **Default settings:**
 
-- Error storage: **Enabled** — errors are stored in Error__c records
-- Error notifications: **Enabled** — admin users receive notifications for errors
+- Error storage: **Enabled** — errors are written to `Error__c` records
+- Error notifications: **Enabled** — system administrators receive email notifications for errors
 - Notification recipients: **All System Administrators**
+
+Review the notification recipient setting if you want errors routed to a specific admin or role rather than all system admins. Configure in **NPPatch Settings > System Tools > Error Notifications**.
 
 ### Affiliations
 
-**Default:** Automatic affiliation creation **enabled**.
+**Default:** Automatic affiliation creation enabled.
 
-When a Contact is associated with an Organization Account, an Affiliation record is automatically created to track the relationship.
-
-### Relationships
-
-Relationship settings control the automatic creation and reciprocal tracking of relationships between Contacts. Defaults are configured for standard relationship types (spouse, parent/child, employer/employee, etc.).
+When a Contact is associated with an Organization Account, an `Affiliation__c` record is automatically created to track the relationship. Configure in **NPPatch Settings > Relationships > Affiliations**.
 
 ## Trigger Handler Configuration
 
-NPPatch uses the TDTM (Table-Driven Trigger Management) framework to manage all trigger-based automation. The default configuration includes 40+ trigger handlers covering all standard NPPatch functionality.
+NPPatch uses TDTM (Table-Driven Trigger Management) for all automation. The default configuration includes 40+ trigger handlers covering all standard NPPatch functionality.
 
-You can view and manage trigger handlers through:
+You can view and manage trigger handlers through **NPPatch Settings > System Tools > Trigger Configuration**. Each handler can be individually enabled or disabled without modifying code. This is useful for troubleshooting or temporarily disabling specific automation during data migrations.
 
-1. **NPPatch Settings > System Tools > Trigger Handlers** — the settings UI
-2. **Trigger_Handler__c records** — directly querying or viewing the custom object
-
-Each handler can be individually enabled or disabled without modifying code. This is useful for troubleshooting or for temporarily disabling specific automation during data migrations.
-
-See [Trigger Framework](../architecture/trigger-framework.md) for a complete reference of handlers and their purposes.
+See [Trigger Framework](../architecture/trigger-framework.md) for a full reference.
 
 ## Permission Setup
 
-### The NPPatch_Admin Permission Set
+### The NPPatch Permission Sets
 
-The package includes a pre-built permission set (`NPPatch_Admin`) that grants full access to all NPPatch custom objects and fields. This permission set:
-
-- Grants CRUD access to all NPPatch custom objects
-- Grants read/write access to all custom fields (formula fields are read-only)
-- Grants appropriate access to standard objects used by NPPatch (Account, Contact, Opportunity, Campaign, Lead, Case, Task)
-
-Assign this to admin users and any users who need full access to NPPatch data.
+The package includes permission sets for common roles. Assign the appropriate set to each user based on their responsibilities. At minimum, assign a permissions set with CRUD access to all NPPatch custom objects and fields to your admin users.
 
 ### Creating Additional Permission Sets
 
-For non-admin users, you'll likely want to create more restrictive permission sets. Common patterns:
+For non-admin users, create more restrictive permission sets based on their needs:
 
-- **Fundraiser**: Read/write on Opportunities, Payments, Recurring Donations; read on Accounts and Contacts
-- **Data Entry**: Read/write on DataImport__c and DataImportBatch__c for batch gift entry; read on other objects
-- **Read-Only**: Read access to all NPPatch objects for reporting users
+- **Fundraiser** — read/write on Opportunities, Payments, Recurring Donations; read on Accounts and Contacts
+- **Gift Entry staff** — read/write on DataImport__c and DataImportBatch__c; read on other objects
+- **Read-only** — read access to all NPPatch objects for reporting users
 
 ## Recommended First Steps After Installation
 
-1. **Review Account Model settings** — confirm the household or one-to-one model matches your organization's needs
-2. **Enable Customizable Rollups** — unless you have a specific reason to use legacy rollups
-3. **Review Recurring Donation settings** — adjust max donations and close behavior
-4. **Assign the NPPatch_Admin permission set** to your admin users
-5. **Create a test Contact** — verify that household creation, naming, and basic automation are working
-6. **Create a test Opportunity** — verify that payments are created and rollups calculate correctly
-7. **Review Trigger Handlers** — ensure all expected automation is active
-8. **Set up Error Notifications** — confirm that error emails are routing to the right administrators
+1. **Review Account Model** — confirm the household or one-to-one model matches your organization's needs before entering data
+2. **Assign permission sets** to your admin and staff users
+3. **Create a test Contact** — verify that household creation, naming, and basic automation are working
+4. **Create a test Opportunity** — verify that payments are created and rollups calculate correctly on the Account and Contact
+5. **Review Trigger Handlers** — confirm all expected automation is active in **NPPatch Settings > System Tools > Trigger Configuration**
+6. **Configure Error Notifications** — verify error emails are routing to the right administrators
+7. **Set Recurring Donation defaults** — adjust the close action and forecast window for your organization's practices
+8. **Enable Allocations** if your organization tracks restricted or designated gifts across multiple funds
 
 ---
 
-*This documentation was generated by AI and still needs human review. If you see something that could be improved, please create an issue or email admin@nppatch.com.*
+*If you see something that could be improved, please create an issue or email admin@nppatch.com.*
