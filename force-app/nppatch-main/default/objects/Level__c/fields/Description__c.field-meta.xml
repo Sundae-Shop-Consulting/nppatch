@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Description__c</fullName>
-    <description>Describes what this Level is for, or what it means to achieve this Level.</description>
+    <description>Free-text field for administrators to document the purpose, benefits, or recognition associated with achieving this donor level.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Describes what this Level is for, or what it means to achieve this Level.</inlineHelpText>
+    <inlineHelpText>What this Level represents or what it means for a donor to achieve it.</inlineHelpText>
     <label>Description</label>
     <length>32768</length>
     <trackHistory>false</trackHistory>

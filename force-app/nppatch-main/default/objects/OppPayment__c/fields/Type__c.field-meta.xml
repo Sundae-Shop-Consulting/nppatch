@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Type__c</fullName>
-    <description>Indicates the type of transaction.</description>
+    <description>Categorizes the payment transaction type. Populated by the payment processing integration to distinguish between credits, debits, and other transaction types.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates the type of transaction.</inlineHelpText>
+    <inlineHelpText>The type of payment transaction, such as a credit or debit.</inlineHelpText>
     <label>Type</label>
     <length>40</length>
     <required>false</required>

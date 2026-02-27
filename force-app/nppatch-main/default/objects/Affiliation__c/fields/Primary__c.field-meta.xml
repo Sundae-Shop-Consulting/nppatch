@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Primary__c</fullName>
     <defaultValue>false</defaultValue>
+    <description>When checked, automation copies the Organization to Contact.Primary_Affiliation__c. Only one Affiliation per Contact should be marked Primary.</description>
     <externalId>false</externalId>
-    <inlineHelpText>If checked, the Affiliation&apos;s Organization will be stored on the Contact record.</inlineHelpText>
+    <inlineHelpText>Marks this as the Contact&apos;s primary organizational affiliation. The Organization will be stored on the Contact record.</inlineHelpText>
     <label>Primary</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

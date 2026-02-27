@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact1_Preferred_Phone__c</fullName>
+    <description>Maps to Contact.PreferredPhone__c on the primary Contact during data import processing. Determines which phone number is used as the Contact's primary phone.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Contact1.PreferredPhone__c</inlineHelpText>
+    <inlineHelpText>Select which phone type (Home, Work, Mobile, or Other) should be the primary Contact's preferred phone.</inlineHelpText>
     <label>Contact1 Preferred Phone</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

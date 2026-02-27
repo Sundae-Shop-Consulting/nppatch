@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Relationship_To_Predecessor__c</fullName>
-    <description>This indicates if this object is a parent or child of the predecessor.</description>
+    <description>Defines the relationship direction between this object mapping and its predecessor. Determines how the data import process links the created records: Parent means this record is the parent, Child means this record looks up to the predecessor, No Predecessor means this mapping has no dependency.</description>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
-    <inlineHelpText>This indicates if this object is a parent or child of the predecessor.</inlineHelpText>
+    <inlineHelpText>Select whether this object is the Parent, Child, or has No Predecessor relationship to the predecessor object mapping.</inlineHelpText>
     <label>Relationship To Predecessor</label>
     <required>false</required>
     <type>Picklist</type>

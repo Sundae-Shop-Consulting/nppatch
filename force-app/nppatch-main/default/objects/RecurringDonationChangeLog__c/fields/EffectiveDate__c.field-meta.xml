@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>EffectiveDate__c</fullName>
-    <description>The Effective Date of the Recurring Donation when this change occurred.</description>
+    <description>Captured from the Recurring Donation&apos;s Effective Date field at the time the change was recorded. Represents when the new schedule or values take effect.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Effective Date of the Recurring Donation when this change occurred.</inlineHelpText>
+    <inlineHelpText>The date when this change to the Recurring Donation takes effect.</inlineHelpText>
     <label>Effective Date</label>
     <required>true</required>
     <trackTrending>false</trackTrending>

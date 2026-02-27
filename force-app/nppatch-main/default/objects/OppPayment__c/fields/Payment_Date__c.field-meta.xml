@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Date__c</fullName>
+    <description>The date this payment was received. For paid payments, this reflects the actual receipt date. Can be set manually or by payment processing integrations.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The date this payment was received or processed.</inlineHelpText>
     <label>Payment Date</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

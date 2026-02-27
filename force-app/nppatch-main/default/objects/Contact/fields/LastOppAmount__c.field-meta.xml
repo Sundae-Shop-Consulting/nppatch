@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LastOppAmount__c</fullName>
     <defaultValue>0</defaultValue>
-    <description>Do not update, updated by automatic process.</description>
+    <description>Calculated by Customizable Rollups. Do not edit manually. The Amount of the most recent (by Close Date) won Opportunity where this Contact has the primary Opportunity Contact Role. Uses the Won Opportunities for Hard Credit filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The amount of the most recent won Opportunity by Close Date related to this Contact by primary Opportunity Contact Role.</inlineHelpText>
+    <inlineHelpText>The amount of the most recent won Opportunity (by Close Date) where this Contact is the primary donor.</inlineHelpText>
     <label>Last Gift Amount</label>
     <precision>16</precision>
     <required>false</required>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Email_Sent__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Indicates whether an email notification has been sent regarding this error.</description>
+    <description>Set to true by the error notification handler after an email alert for this error has been sent to the configured recipients.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates whether an email notification has been sent regarding this error.</inlineHelpText>
+    <inlineHelpText>Whether an email notification about this error has already been sent.</inlineHelpText>
     <label>Email Sent</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

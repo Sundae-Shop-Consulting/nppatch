@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Audience_Implementation__c</fullName>
+    <description>The Apex class name that implements the audience-resolution logic, determining which users receive this notification.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Enter the fully qualified Apex class name that determines the notification recipients, such as "MyAudienceResolver." The class must implement the notification audience interface.</inlineHelpText>
     <label>Audience Implementation</label>
     <length>255</length>
     <required>false</required>

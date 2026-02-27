@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Status__c</fullName>
-    <description>The status of the import for this record, for example, Imported or Failed.</description>
+    <description>System field that tracks the overall processing state of this Data Import record. Updated automatically as the record moves through the import lifecycle from Ready to Process through Imported or Failed.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The status of the import for this record, for example, Imported or Failed.</inlineHelpText>
+    <inlineHelpText>Current processing status. Set to Ready to Process for new records. Updated automatically during import processing.</inlineHelpText>
     <label>Status</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

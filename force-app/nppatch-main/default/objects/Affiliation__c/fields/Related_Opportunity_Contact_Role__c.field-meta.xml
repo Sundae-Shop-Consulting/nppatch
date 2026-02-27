@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Related_Opportunity_Contact_Role__c</fullName>
-    <description>When you create an Opportunity for the Organization in this Affiliation, NPPatch assigns this Opportunity Contact Role to the affiliated Contact.</description>
+    <description>NPPatch automation reads this value when an Opportunity is created for the affiliated Organization and creates an Opportunity Contact Role on the affiliated Contact with the selected role.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When you create an Opportunity for the Organization in this Affiliation, NPPatch assigns this Opportunity Contact Role to the affiliated Contact.</inlineHelpText>
+    <inlineHelpText>The Opportunity Contact Role automatically assigned to this Contact when a donation is made to the affiliated Organization. For example, select Soft Credit to give this Contact soft credit for those donations.</inlineHelpText>
     <label>Related Opportunity Contact Role</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

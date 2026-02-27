@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>RecurringDonation__c</fullName>
-    <description>The Recurring Donation related to this Change Log record.</description>
+    <description>Master-Detail relationship linking this Change Log entry to its parent Recurring Donation. Deleting the Recurring Donation also deletes all associated change logs.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Recurring Donation related to this Change Log record.</inlineHelpText>
+    <inlineHelpText>The Recurring Donation this change was recorded for.</inlineHelpText>
     <label>Recurring Donation</label>
     <referenceTo>Recurring_Donation__c</referenceTo>
     <relationshipLabel>Recurring Donation Change Log</relationshipLabel>

@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>AccountHardCreditNonSkew_Incremental__c</fullName>
     <defaultValue>true</defaultValue>
+    <description>When enabled, the Account Hard Credit non-skew rollup batch job only recalculates Accounts that have recently modified Opportunities, rather than recalculating all Accounts. This significantly improves nightly batch job performance in orgs with many Accounts. Enabled by default. Disable only if you need full recalculation every night.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When checked, the Account Hard Credit (Non-Skew) nightly job limits the number of Accounts selected for recalculation by looking for recently updated Opportunities on those Accounts. This helps to improve Customizable Rollup nightly job performance.</inlineHelpText>
+    <inlineHelpText>Only recalculate Accounts with recently modified Opportunities during the nightly hard credit rollup job. Improves batch performance.</inlineHelpText>
     <label>Incremental Account Hard Credit Non-Skew</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

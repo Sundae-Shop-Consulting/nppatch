@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Number_of_Successes__c</fullName>
+    <description>System-managed counter recording how many Recurring Donation records were successfully processed in the most recent batch job. Automatically updated after each batch run. Useful for monitoring batch job health alongside Number of Failures. Do not modify manually.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Number of Recurring Donations successfully updated in the last batch run.</inlineHelpText>
+    <inlineHelpText>System-managed. Recurring Donations successfully processed in the last batch run. Do not edit manually.</inlineHelpText>
     <label>Number of Successes</label>
     <precision>18</precision>
     <required>false</required>

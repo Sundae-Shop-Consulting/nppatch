@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Campaign__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>The Campaign associated with the Recurring Donation when this schedule record was created.</description>
+    <description>Captures the Campaign that was linked to the Recurring Donation at the time this schedule was created. Used to attribute installment Opportunities to the correct campaign.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Campaign associated with the Recurring Donation when this schedule record was created.</inlineHelpText>
+    <inlineHelpText>The Campaign associated with the Recurring Donation when this schedule was created.</inlineHelpText>
     <label>Related Campaign</label>
     <referenceTo>Campaign</referenceTo>
     <relationshipLabel>Recurring Donation Schedules</relationshipLabel>

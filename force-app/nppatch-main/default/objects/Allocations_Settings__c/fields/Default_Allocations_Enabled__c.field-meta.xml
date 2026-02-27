@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Default_Allocations_Enabled__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Enabling Default Allocations creates an Allocation object for each Opportunity. This enables reporting on allocations to a default General Accounting Unit, but uses more data storage.</description>
+    <description>When enabled, NPPatch automatically creates a default Allocation record for each Opportunity, assigning the full amount to the Default General Accounting Unit. Any unallocated remainder (when other Allocations are added) is also assigned to the default GAU. This enables complete allocation reporting but increases data storage usage. Disabled by default.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Enabling Default Allocations creates an Allocation object for each Opportunity. This enables reporting on allocations to a default General Accounting Unit, but uses more data storage.</inlineHelpText>
+    <inlineHelpText>Automatically create a default Allocation for each Opportunity using the Default GAU. Enables complete allocation reporting but uses more storage.</inlineHelpText>
     <label>Default Allocations Enabled</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

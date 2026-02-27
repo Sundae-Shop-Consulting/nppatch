@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>NextYearValue__c</fullName>
-    <description>This Recurring Donation&apos;s total expected amount for the next calendar or fiscal year (read only).</description>
+    <description>Calculated automatically by projecting installment Opportunities for the next calendar or fiscal year based on the current schedule. Updated by the Recurring Donations batch job. Read only.</description>
     <externalId>false</externalId>
-    <inlineHelpText>This Recurring Donation&apos;s total expected amount for the next calendar or fiscal year (read only).</inlineHelpText>
+    <inlineHelpText>The total projected donation value for next year based on the current recurring schedule.</inlineHelpText>
     <label>Next Year Value</label>
     <precision>18</precision>
     <required>false</required>

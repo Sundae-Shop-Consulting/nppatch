@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Organization__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>The organizational donor for this Recurring Donation. Either Contact or Account is required. When set, installment Opportunities are created under this Account.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The organization associated with this recurring donation. Use this field for organizational donors, or use Contact for individual donors.</inlineHelpText>
     <label>Account</label>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Recurring Donations</relationshipLabel>

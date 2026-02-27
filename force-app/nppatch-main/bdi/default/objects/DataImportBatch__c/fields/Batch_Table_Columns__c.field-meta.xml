@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Batch_Table_Columns__c</fullName>
-    <description>List of API names for fields included in the batch gift table. Stored as JSON.</description>
+    <description>System field that stores the JSON configuration of columns displayed in the Gift Entry batch table UI. Defines which Data Import fields appear as columns when viewing gifts in this batch. Do not edit directly.</description>
     <externalId>false</externalId>
-    <inlineHelpText>List of API names for fields included in the batch gift table. Stored as JSON.</inlineHelpText>
+    <inlineHelpText>JSON configuration of columns shown in the batch gift table. Update this through the Gift Entry batch configuration UI.</inlineHelpText>
     <label>Batch Table Columns</label>
     <length>55000</length>
     <trackTrending>false</trackTrending>

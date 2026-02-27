@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CustomizableRollups_UseSkewMode__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>When checked, Customizable Rollups will always use &apos;Skew Mode&apos; to rollup Hard Credit and Soft Credits for this record.</description>
+    <description>Manually set by an admin. When checked, Customizable Rollups will always process this Account using Skew Mode (a batch mode designed for records with very large numbers of related Opportunities). Applies to both Hard Credit and Soft Credit rollups.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When checked, Customizable Rollups will always use &apos;Skew Mode&apos; to rollup Hard Credit and Soft Credits for this record.</inlineHelpText>
+    <inlineHelpText>Check this box to force Customizable Rollups to use Skew Mode for this Account. Use for Accounts with an unusually large number of Opportunities.</inlineHelpText>
     <label>Customizable Rollups: Force Skew Mode</label>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Checkbox</type>

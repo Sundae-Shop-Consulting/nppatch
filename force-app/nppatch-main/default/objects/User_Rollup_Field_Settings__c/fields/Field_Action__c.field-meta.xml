@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Field_Action__c</fullName>
+    <description>The aggregate operation to perform on the Source Field when computing this user-defined rollup. Valid values are: "MIN" (smallest value), "MAX" (largest value), "SUM" (total of all values), "COUNT" (number of records), "AVG" (average), "BEST_YEAR" (year with the highest total), "BEST_YEAR_TOTAL" (total from the best year), "YEARS_DONATED" (count of distinct years), and "LAST_YEAR" (most recent year with a donation). Must be compatible with the Source Field data type.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The rollup action (MIN, MAX, SUM, COUNT) to be performed on the source field</inlineHelpText>
+    <inlineHelpText>The rollup operation (e.g. MIN, MAX, SUM, COUNT) to perform on the source field.</inlineHelpText>
     <label>Field Action</label>
     <length>50</length>
     <required>true</required>

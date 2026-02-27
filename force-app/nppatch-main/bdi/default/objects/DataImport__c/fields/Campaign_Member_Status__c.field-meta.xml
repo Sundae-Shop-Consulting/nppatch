@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Campaign_Member_Status__c</fullName>
+    <description>Specifies the Campaign Member status to set when associating the primary Contact with the Donation Campaign during data import processing.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Enter the Campaign Member status for the primary Contact (e.g., Sent, Responded).</inlineHelpText>
     <label>Campaign Member Status</label>
     <length>40</length>
     <required>false</required>

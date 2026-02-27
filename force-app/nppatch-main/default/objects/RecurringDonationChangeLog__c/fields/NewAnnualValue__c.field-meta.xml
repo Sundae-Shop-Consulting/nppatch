@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>NewAnnualValue__c</fullName>
-    <description>The new annual value for this Recurring Donation, based on the amount and schedule.</description>
+    <description>Calculated annual value after the change, derived from the new amount multiplied by the number of installments per year based on the schedule.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The new annual value for this Recurring Donation, based on the amount and schedule.</inlineHelpText>
+    <inlineHelpText>The projected annual donation value after this change, based on the new amount and schedule.</inlineHelpText>
     <label>New Annual Value</label>
     <precision>18</precision>
     <required>false</required>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>NCOA_Result_Code__c</fullName>
-    <description>The result code form the NCOA vendor</description>
+    <description>Populated by the National Change of Address (NCOA) vendor with a result code indicating the match outcome.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The result code form the NCOA vendor.</inlineHelpText>
+    <inlineHelpText>The result code from the NCOA vendor for this Address.</inlineHelpText>
     <label>NCOA Result Code</label>
     <length>80</length>
     <required>false</required>

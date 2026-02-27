@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Grant_Requirements_Website__c</fullName>
-    <description>A URL that points to the grant requirements on the grantmaker&apos;s website.</description>
+    <description>URL field for Grant Opportunities. Stores a link to the grantmaker&apos;s requirements page for quick reference during application and reporting.</description>
     <externalId>false</externalId>
-    <inlineHelpText>A URL that points to the grant requirements on the grantmaker&apos;s website.</inlineHelpText>
+    <inlineHelpText>Enter the URL for the grantmaker&apos;s requirements or application guidelines page.</inlineHelpText>
     <label>Grant Requirements Website</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

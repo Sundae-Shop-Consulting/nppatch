@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>RelatedContact__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Lookup to the second Contact in this Relationship. Set when the Relationship is created. The reciprocal Relationship record references this Contact as its primary Contact.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The other person in this Relationship. The Type field describes how this person is related to the Contact.</inlineHelpText>
     <label>Related Contact</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Hidden Relationships List</relationshipLabel>

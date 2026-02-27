@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Acknowledgment_Date__c</fullName>
-    <description>The date that you acknowledged this Opportunity.</description>
+    <description>User-entered date field used in thank-you letter and acknowledgment tracking workflows.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The date that you acknowledged this Opportunity.</inlineHelpText>
+    <inlineHelpText>The date you sent an acknowledgment or thank-you letter for this Donation.</inlineHelpText>
     <label>Acknowledgment Date</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

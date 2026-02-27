@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Async_Error_Check_Last_Run__c</fullName>
-    <description>If checked, NPPatch&apos;s error handling framework is disabled.</description>
+    <description>System-managed timestamp recording when the asynchronous error check job last ran. This job monitors for errors in Queueable, Batch, and Future method executions. Automatically updated after each run. Do not modify manually.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Used to keep track of the most recent execution of the Async job error logger</inlineHelpText>
+    <inlineHelpText>System-managed. Timestamp of the last asynchronous error check job execution. Do not edit manually.</inlineHelpText>
     <label>Async Error Check Last Run</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

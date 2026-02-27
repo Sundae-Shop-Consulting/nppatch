@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Field__c</fullName>
-    <description>The Payment field to copy from.</description>
+    <description>The API name of the Payment (npe01__OppPayment__c) field whose value is copied to the corresponding Opportunity field. When a Payment is created or updated, NPPatch reads this field's value and writes it to the mapped Opportunity Field. The field must exist on the Payment object and its data type must be compatible with the target Opportunity field's data type. Used by the automatic Payment-to-Opportunity field mapping feature.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The Payment field whose value is copied to the mapped Opportunity field.</inlineHelpText>
     <label>Payment Field</label>
     <length>255</length>
     <required>true</required>

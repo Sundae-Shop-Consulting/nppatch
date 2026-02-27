@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>The individual donor for this Recurring Donation. Either Contact or Account is required. When set, installment Opportunities are created under this Contact's Account.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The individual donor associated with this recurring donation. Use this field for individual donors, or use Account for organizational donors.</inlineHelpText>
     <label>Contact</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Recurring Donations</relationshipLabel>

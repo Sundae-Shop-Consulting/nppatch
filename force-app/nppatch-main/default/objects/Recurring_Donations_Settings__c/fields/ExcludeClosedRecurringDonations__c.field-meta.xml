@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ExcludeClosedRecurringDonations__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Exclude Closed Recurring Donations from the Recurring Donation Opportunity Evaluation batch job.</description>
+    <description>When enabled, the Recurring Donation Opportunity Evaluation batch job skips Recurring Donations with a Closed status. This improves batch performance in orgs with many closed Recurring Donations by reducing the number of records evaluated. Disabled by default. Enable after verifying that closed Recurring Donations do not need further installment processing.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Exclude Closed Recurring Donations from the Recurring Donation Opportunity Evaluation batch job.</inlineHelpText>
+    <inlineHelpText>Skip Closed Recurring Donations during the nightly Opportunity Evaluation batch job. Improves batch performance.</inlineHelpText>
     <label>Exclude Closed Recurring Donations</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

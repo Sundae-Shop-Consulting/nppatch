@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>MailingPostalCode__c</fullName>
+    <description>Synced to Contact and Account mailing fields when this is the default Address. Can also be updated by address verification.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The ZIP or postal code for this mailing address.</inlineHelpText>
     <label>Mailing Zip/Postal Code</label>
     <length>255</length>
     <required>false</required>

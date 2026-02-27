@@ -2,8 +2,10 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Is_Deleted__c</fullName>
     <defaultValue>false</defaultValue>
+    <description>Indicates whether this rollup definition has been soft-deleted. Soft-deleted records are excluded from rollup processing.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Check to mark this rollup as deleted. The record is retained for reference but excluded from all rollup calculations.</inlineHelpText>
     <label>IsDeleted</label>
     <type>Checkbox</type>
 </CustomField>

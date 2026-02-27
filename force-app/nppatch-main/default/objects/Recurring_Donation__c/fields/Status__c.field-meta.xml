@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Status__c</fullName>
-    <description>Indicates if this Recurring Donation is actively in use, temporarily suspended, or closed.</description>
+    <description>Tracks the lifecycle state of this Recurring Donation. Active: installments are being created on schedule. Lapsed: payments are overdue. Paused: temporarily suspended. Closed: permanently ended. Updated automatically by the Recurring Donations batch job or manually by users.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates if this Recurring Donation is actively in use, temporarily suspended, or closed.</inlineHelpText>
+    <inlineHelpText>The current state of this recurring donation: Active (ongoing), Lapsed (overdue), Paused (temporarily suspended), or Closed (permanently ended).</inlineHelpText>
     <label>Status</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Async_Household_Naming__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>This is a non-exposed setting to toggle household naming code to use an asynchronous version instead of the standard version.</description>
+    <description>Internal setting that switches Household naming logic to run asynchronously (via Queueable) instead of synchronously in the trigger context. Not exposed in the Settings UI. Use this to avoid governor limit issues in orgs with large Households or complex naming formats. Disabled by default.</description>
     <externalId>false</externalId>
-    <inlineHelpText>This is a non-exposed setting to toggle household naming code to use an asynchronous version instead of the standard version.</inlineHelpText>
+    <inlineHelpText>Runs Household naming asynchronously instead of synchronously. Enable if Household naming hits governor limits during Contact updates.</inlineHelpText>
     <label>Async Household Naming</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

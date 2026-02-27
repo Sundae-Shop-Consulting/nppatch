@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Notification_Recipient_Name__c</fullName>
-    <description>The name of the person to notify of this gift.</description>
+    <description>Stores the full name of the person who should receive the tribute notification for this donation.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The name of the person to notify of this gift.</inlineHelpText>
+    <inlineHelpText>Enter the name of the person to notify about this tribute donation.</inlineHelpText>
     <label>Donation Notification Recipient Name</label>
     <length>255</length>
     <required>false</required>

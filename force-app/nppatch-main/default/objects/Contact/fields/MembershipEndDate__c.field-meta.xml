@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>MembershipEndDate__c</fullName>
-    <description>Do not change. Updated by automatic processes.</description>
+    <description>Calculated by Customizable Rollups. Do not edit manually. The Membership End Date of the most recent (by Close Date) won Membership Opportunity where this Contact has the primary Opportunity Contact Role. Uses the Closed Won Memberships filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Membership End Date of the most recent (Close Date) Membership Opportunity (Record Type) related to this Contact by primary Opportunity Contact Role.</inlineHelpText>
+    <inlineHelpText>The end date of this Contact's most recent membership. When this date passes, the membership has expired.</inlineHelpText>
     <label>Membership End Date</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

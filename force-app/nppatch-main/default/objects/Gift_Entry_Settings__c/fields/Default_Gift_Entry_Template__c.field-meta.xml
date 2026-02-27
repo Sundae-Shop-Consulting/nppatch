@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Default_Gift_Entry_Template__c</fullName>
-    <description>This is a starter template used for Gift Entry and can be used to enter single gifts or batches of gifts. This is the default template for entering single gifts.</description>
+    <description>Stores the ID of the Form Template record used as the default template when entering single gifts through Gift Entry. NPPatch ships a starter template; admins can create additional templates in the Gift Entry Template Builder. Changing this value changes which template loads by default in the single-gift entry form. This field is automatically set when a default template is selected in NPPatch Settings.</description>
     <externalId>false</externalId>
-    <inlineHelpText>This is a starter template used for Gift Entry and can be used to enter single gifts or batches of gifts. This is the default template for entering single gifts.</inlineHelpText>
+    <inlineHelpText>The default Form Template used for entering single gifts through Gift Entry.</inlineHelpText>
     <label>Default Gift Entry Template</label>
     <length>255</length>
     <required>false</required>

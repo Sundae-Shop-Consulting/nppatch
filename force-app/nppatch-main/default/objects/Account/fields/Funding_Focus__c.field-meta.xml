@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Funding_Focus__c</fullName>
-    <description>The general program area(s) that this organization funds.</description>
+    <description>Manually entered. Tracks the program areas funded by this organization. Used on Organization (non-Household) Accounts to categorize grantmakers and funders.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The general program area(s) that this organization funds.</inlineHelpText>
+    <inlineHelpText>The program areas this organization funds, such as Education, Health Services, or Environmental.</inlineHelpText>
     <label>Funding Focus</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

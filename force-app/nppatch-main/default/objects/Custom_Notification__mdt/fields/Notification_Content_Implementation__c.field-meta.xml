@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Notification_Content_Implementation__c</fullName>
+    <description>The Apex class name that generates the notification content, including the title and body text.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Enter the fully qualified Apex class name that builds the notification content. The class must implement the notification content interface to provide the title and body.</inlineHelpText>
     <label>Notification Content Implementation</label>
     <length>255</length>
     <required>false</required>

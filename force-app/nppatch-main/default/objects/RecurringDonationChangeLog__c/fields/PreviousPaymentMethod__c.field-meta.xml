@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>PreviousPaymentMethod__c</fullName>
-    <description>The previous Payment Method for the related Recurring Donation.</description>
+    <description>Captured from the Recurring Donation&apos;s Payment Method field before the change was applied.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The previous Payment Method for the related Recurring Donation.</inlineHelpText>
+    <inlineHelpText>The payment method before this change, such as Credit Card, Check, or ACH.</inlineHelpText>
     <label>Previous Payment Method</label>
     <length>255</length>
     <required>false</required>

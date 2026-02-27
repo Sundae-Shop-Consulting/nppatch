@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Reciprocal_Method__c</fullName>
-    <description>Determines method used to generate the reciprocal relationship.  Either List Setting which uses custom settings by gender (see Reciprocal Relationships tab), or Value Inversion, which inverts the type if appropriate (&quot;Parent-Child&quot; to &quot;Child-Parent&quot;)</description>
+    <description>Controls how NPPatch determines the reciprocal Relationship type. "List Setting" uses Reciprocal Relationship custom settings to map types by gender (e.g., Father to Daughter/Son). "Value Inversion" automatically inverts hyphenated types (e.g., "Parent-Child" becomes "Child-Parent"). Use "List Setting" for gender-aware reciprocals or "Value Inversion" for simpler type management.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Determines method used to generate the reciprocal relationship.  Either List Setting which uses custom settings by gender (see Reciprocal Relationships tab), or Value Inversion, which inverts the type if appropriate (&quot;Parent-Child&quot; to &quot;Child-Parent&quot;)</inlineHelpText>
+    <inlineHelpText>How reciprocal types are determined: "List Setting" (gender-aware mappings) or "Value Inversion" (auto-invert hyphenated types).</inlineHelpText>
     <label>Reciprocal Method</label>
     <length>255</length>
     <required>false</required>

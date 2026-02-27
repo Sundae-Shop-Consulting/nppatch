@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Customizable_Rollups_Enabled__c</fullName>
     <defaultValue>false</defaultValue>
+    <description>Enables the Customizable Rollups engine, which replaces the legacy rollup engine with a more flexible, configurable approach using Custom Metadata Type records to define rollup calculations. When enabled, all rollup batch jobs and triggers use the new engine. Disabled by default. Once enabled, configure rollup definitions in NPPatch Settings > Customizable Rollups.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Check this box to enable the new NPPatch Customizable Rollup Engine</inlineHelpText>
+    <inlineHelpText>Enable the Customizable Rollups engine, which uses Custom Metadata Type records for flexible rollup definitions instead of the legacy engine.</inlineHelpText>
     <label>Enable Customizable Rollups</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

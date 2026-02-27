@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Amount__c</fullName>
-    <description>The amount to be soft credited.</description>
+    <description>Synced from the corresponding OpportunityContactRole or entered manually. Used by Customizable Rollups to calculate Contact-level soft credit totals.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The amount to be soft credited.</inlineHelpText>
+    <inlineHelpText>The dollar amount of soft credit this Contact receives for this Opportunity.</inlineHelpText>
     <label>Amount</label>
     <precision>18</precision>
     <required>false</required>

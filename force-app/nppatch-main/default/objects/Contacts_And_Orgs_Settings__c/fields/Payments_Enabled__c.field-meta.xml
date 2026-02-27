@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payments_Enabled__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>If enabled, Salesforce automatically creates Payments for new Opportunities (Donations).</description>
+    <description>Controls whether NPPatch automatically creates a Payment record when a new Opportunity is created. When enabled, a single Payment is created matching the Opportunity amount and close date. Excluded Record Types and Types configured in the payment exclusion settings are skipped. Disabled by default.</description>
     <externalId>false</externalId>
-    <inlineHelpText>If enabled, Salesforce automatically creates Payments for new Opportunities (Donations).</inlineHelpText>
+    <inlineHelpText>Automatically create a Payment record when a new Opportunity is created. Payment exclusion settings still apply.</inlineHelpText>
     <label>Automatic Payment Creation</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

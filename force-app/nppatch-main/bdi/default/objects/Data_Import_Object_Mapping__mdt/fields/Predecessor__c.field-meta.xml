@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Predecessor__c</fullName>
-    <description>The Data Import Object Group record that must exist before this record can be created (either Parent or Child).</description>
+    <description>Defines the processing dependency for this object mapping. Specifies another object mapping that must be processed first, establishing the order in which target records are created during data import. Used to ensure parent records exist before child records are created.</description>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
-    <inlineHelpText>The Data Import Object Group record that must exist before this record can be created (either Parent or Child).</inlineHelpText>
+    <inlineHelpText>Enter the developer name of the object mapping that must be processed before this one (e.g., the Account mapping that must exist before creating an Opportunity).</inlineHelpText>
     <label>Predecessor</label>
     <length>255</length>
     <required>false</required>

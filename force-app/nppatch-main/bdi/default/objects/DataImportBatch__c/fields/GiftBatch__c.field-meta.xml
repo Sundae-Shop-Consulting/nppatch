@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>GiftBatch__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>This flag is set during batch creation to use the gift entry batch feature.</description>
+    <description>System flag that distinguishes Gift Entry batches from standard data import batches. Automatically set to true when a batch is created through the Gift Entry UI. Controls which processing logic and UI components are used for the batch.</description>
     <externalId>false</externalId>
     <inlineHelpText>This batch is intended for use with Batch Gift Entry. Batches are automatically marked as gift batches when they are set up through the Batch Gift Entry tab. Manually changing this field could have unintended consequences.</inlineHelpText>
     <label>Gift Batch</label>

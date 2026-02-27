@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Increment__c</fullName>
-    <description>The type of time period the Custom Installment Period covers.  Weeks, Months, Days</description>
+    <description>The unit of time for this Custom Installment Period definition. Valid values are "Days", "Weeks", and "Months". Combined with the Value (frequency) field to define the installment interval. For example, Increment = "Weeks" with Value = 2 creates a bi-weekly installment schedule. Custom Installment Periods extend the built-in Recurring Donation installment frequencies (Monthly, Quarterly, Yearly, etc.) with organization-specific schedules.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The type of time period the Custom Installment Period covers.</inlineHelpText>
+    <inlineHelpText>Time unit for this installment period: Days, Weeks, or Months. Combined with Frequency to set the interval.</inlineHelpText>
     <label>Time Period Type</label>
     <length>50</length>
     <required>true</required>

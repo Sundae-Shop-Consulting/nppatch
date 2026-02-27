@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Target_Field__c</fullName>
+    <description>The API name of the custom field on the target object (specified in Object Name) where the computed rollup value is stored. This must be a writable field with a data type compatible with the rollup result (e.g., Currency or Number for SUM, Number for COUNT). The field must already exist on the target object; NPPatch does not create it automatically. Example: "Total_Donations__c" on Contact.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The target field for placing the rolled-up value for this user defined rollup</inlineHelpText>
+    <inlineHelpText>The field on the target object where the computed rollup result is stored.</inlineHelpText>
     <label>Target Field</label>
     <length>50</length>
     <required>true</required>

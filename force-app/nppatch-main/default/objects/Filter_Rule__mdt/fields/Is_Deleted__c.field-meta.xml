@@ -2,8 +2,10 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Is_Deleted__c</fullName>
     <defaultValue>false</defaultValue>
+    <description>Indicates whether this filter rule has been soft-deleted. Soft-deleted rules are excluded from filter group evaluation.</description>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Check to mark this filter rule as deleted. The record is retained for reference but excluded from filter group evaluation.</inlineHelpText>
     <label>Deleted</label>
     <type>Checkbox</type>
 </CustomField>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>RecurringDonation__c</fullName>
-    <description>The Recurring Donation this schedule record is associated with.</description>
+    <description>Master-Detail relationship linking this schedule to its parent Recurring Donation. Deleting the Recurring Donation also deletes all associated schedule records.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Recurring Donation this schedule record is associated with.</inlineHelpText>
+    <inlineHelpText>The Recurring Donation this schedule belongs to.</inlineHelpText>
     <label>Recurring Donation</label>
     <referenceTo>Recurring_Donation__c</referenceTo>
     <relationshipLabel>Recurring Donation Schedules</relationshipLabel>

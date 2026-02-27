@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Batch_Number__c</fullName>
-    <description>The unique, auto-numbered identifier for this batch.</description>
+    <description>System-generated unique identifier for this batch, used as an external ID. Provides a human-readable batch reference number distinct from the Salesforce record ID.</description>
     <externalId>true</externalId>
-    <inlineHelpText>The unique, auto-numbered identifier for this batch.</inlineHelpText>
+    <inlineHelpText>Auto-generated unique batch number. Used as an external identifier for this batch.</inlineHelpText>
     <label>Batch Number</label>
     <length>30</length>
     <required>false</required>

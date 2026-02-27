@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Name_Overrun__c</fullName>
-    <description>The string to use when replacing long lists of names.</description>
+    <description>The text string appended to Household names when the number of members exceeds the Contact Overrun Count. Common values include " Family" or " and Friends." For example, with a count of 2 and overrun of " Family," a 4-member household might be named "Smith &amp; Jones Family."</description>
     <externalId>false</externalId>
-    <inlineHelpText>The string to use when replacing long lists of names.</inlineHelpText>
+    <inlineHelpText>Text appended when Household has more members than the Contact Overrun Count. Example: " Family" or " and Friends."</inlineHelpText>
     <label>Name Overrun</label>
     <length>255</length>
     <required>false</required>

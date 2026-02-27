@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact2_Firstname__c</fullName>
+    <description>Maps to Contact.FirstName on the secondary Contact (often spouse/partner) during data import processing. Used with other Contact2 fields for matching and creating the secondary Contact record.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Contact2.Firstname</inlineHelpText>
+    <inlineHelpText>Enter the first name of the secondary Contact (e.g., spouse or partner).</inlineHelpText>
     <label>Contact2 First Name</label>
     <length>40</length>
     <required>false</required>

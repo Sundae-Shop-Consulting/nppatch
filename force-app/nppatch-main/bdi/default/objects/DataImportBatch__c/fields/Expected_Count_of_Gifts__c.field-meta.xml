@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Expected_Count_of_Gifts__c</fullName>
     <defaultValue>0</defaultValue>
-    <description>The number of gifts that are expected to be entered in this Batch.</description>
+    <description>User-entered expected gift count for validation purposes. When Require Expected Totals Match is enabled, the batch cannot be processed until the actual number of Data Import records matches this value.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The number of gifts that are expected to be entered in this Batch.</inlineHelpText>
+    <inlineHelpText>Enter the expected number of gifts for this batch. Used for validation when Require Expected Totals Match is enabled.</inlineHelpText>
     <label>Expected Count of Gifts</label>
     <precision>18</precision>
     <required>false</required>

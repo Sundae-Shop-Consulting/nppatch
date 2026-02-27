@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Soft_Credit_Roles__c</fullName>
-    <description>Opportunity Contact Roles you want to include in Soft Credit rollups. Control or Command click to select multiple roles.</description>
+    <description>Semicolon-separated list of Opportunity Contact Role values that qualify for soft credit rollups. Only Contacts with one of these roles on an Opportunity will have that Opportunity's amount included in their soft credit rollup fields. Requires Enable Soft Credit Rollups to be checked. Common values include "Soft Credit" and "Household Member."</description>
     <externalId>false</externalId>
-    <inlineHelpText>Opportunity Contact Roles you want to include in Soft Credit rollups. Control or Command click to select multiple roles.</inlineHelpText>
+    <inlineHelpText>Contact Roles that qualify for soft credit rollups. Only Contacts with these roles receive soft credit totals. Separate multiple values with semicolons.</inlineHelpText>
     <label>Soft Credit Roles</label>
     <length>255</length>
     <required>false</required>

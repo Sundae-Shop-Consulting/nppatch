@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Template_JSON__c</fullName>
-    <description>The sections and fields on this template, along with their order, requirements, and default values. Stored as JSON. Do not edit directly.</description>
+    <description>Serialized JSON representation of the template layout including sections, fields, ordering, requirements, and default values. Managed by the Gift Entry template builder; manual edits may break the template.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The sections and fields on this template, along with their order, requirements, and default values. Stored as JSON. Do not edit directly.</inlineHelpText>
+    <inlineHelpText>The template structure stored as JSON. Do not edit this field directly; use the template builder instead.</inlineHelpText>
     <label>Template JSON</label>
     <length>131072</length>
     <trackTrending>false</trackTrending>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Advanced_Household_Naming__c</fullName>
     <defaultValue>true</defaultValue>
-    <description>If checked, the system will provide automatic naming for Household Names, Informal and Formal Greetings.</description>
+    <description>Controls whether NPPatch automatically generates Household Account Names, Informal Greetings, and Formal Greetings based on the Household members. Enabled by default. When disabled, these fields must be maintained manually. Naming formats are configured in Household Naming Settings.</description>
     <externalId>false</externalId>
-    <inlineHelpText>If checked, the system will provide automatic naming for Household Names, Informal and Formal Greetings.</inlineHelpText>
+    <inlineHelpText>Automatically generates Household Names, Informal Greetings, and Formal Greetings based on Household members.</inlineHelpText>
     <label>Automatic Household Naming</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

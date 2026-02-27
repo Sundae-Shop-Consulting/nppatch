@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Time_Bound_Operation_Type__c</fullName>
-    <description>Related to the Integer__c field. The value in that field represents the number of Years to sum or the number of days back to sum amounts for.</description>
+    <description>Defines the time window for the rollup calculation. Works with the Integer field to restrict which records are included based on date.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Select "All Time" to include all records, "Years Ago" to limit by calendar or fiscal years, or "Days Back" to limit by a number of days. Set the Integer field to specify the number of years or days.</inlineHelpText>
     <label>Time Frame</label>
     <required>false</required>
     <type>Picklist</type>

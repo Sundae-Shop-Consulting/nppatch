@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Declined_Reason__c</fullName>
+    <description>Maps to OppPayment__c.Declined_Reason__c on the Payment record during data import processing. Stores the reason a payment transaction was declined by the gateway.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Provides detail about why a transaction was declined.</inlineHelpText>
+    <inlineHelpText>Enter the reason the payment transaction was declined.</inlineHelpText>
     <label>Payment Elevate API Declined Reason</label>
     <length>255</length>
     <required>false</required>

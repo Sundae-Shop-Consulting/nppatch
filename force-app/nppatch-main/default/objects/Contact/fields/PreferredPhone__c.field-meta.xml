@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>PreferredPhone__c</fullName>
-    <description>Which phone number should be used for most communications involving this Contact?</description>
+    <description>Controls which phone number is copied to the standard Phone field when a Contact is saved. When set, the TDTM trigger framework copies the value from the corresponding phone field (Home Phone, Work Phone, Mobile, or Other Phone) to the standard Phone field.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Which phone number should be used for most communications involving this Contact?</inlineHelpText>
+    <inlineHelpText>Select which phone number to use as the primary contact phone. The value from the corresponding field (Home, Work, Mobile, or Other) will be copied to the standard Phone field on save.</inlineHelpText>
     <label>Preferred Phone</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

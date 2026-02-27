@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>StatusMappingDeploymentId__c</fullName>
-    <description>Status mapping custom metadata deployment Id</description>
+    <description>System-managed field that stores the Metadata API deployment ID for the most recent Recurring Donation Status-to-State mapping custom metadata deployment. Automatically updated when status mappings are saved through NPPatch Settings. Do not modify manually.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Status mapping custom metadata deployment Id</inlineHelpText>
+    <inlineHelpText>System-managed. Deployment ID for the last Status-to-State mapping deployment. Do not edit manually.</inlineHelpText>
     <label>Status Mapping Deployment Id</label>
     <length>255</length>
     <required>false</required>

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Filter_Group__c</fullName>
+    <description>The Filter Group that determines which detail records are included in this rollup calculation.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Select a Filter Group to restrict which records are included, such as "Won Opportunities." Leave blank to include all records.</inlineHelpText>
     <label>Filter Group</label>
     <referenceTo>Filter_Group__mdt</referenceTo>
     <relationshipLabel>Rollups</relationshipLabel>

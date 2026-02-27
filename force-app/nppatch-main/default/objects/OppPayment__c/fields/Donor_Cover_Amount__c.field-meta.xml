@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donor_Cover_Amount__c</fullName>
-    <description>The amount the donor paid in addition to their donation amount, often to help cover transaction fees or to add a tip to their donation.</description>
+    <description>Stores the additional amount a donor opted to pay above their donation, typically to offset processing fees. Populated by the payment processing integration when donor covering is enabled.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The amount the donor paid in addition to their donation amount, often to help cover transaction fees or to add a tip to their donation.</inlineHelpText>
+    <inlineHelpText>The extra amount the donor chose to pay on top of their donation, usually to help cover transaction processing fees.</inlineHelpText>
     <label>Donor Cover Amount</label>
     <precision>18</precision>
     <required>false</required>

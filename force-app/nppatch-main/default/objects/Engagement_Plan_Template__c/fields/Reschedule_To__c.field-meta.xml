@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Reschedule_To__c</fullName>
-    <description>Should Tasks with Due Dates on a weekend day be scheduled for the Friday before the weekend or the Monday after? This applies only if Skip Weekend is selected.</description>
+    <description>Controls the direction tasks are rescheduled when their due date falls on a weekend. Only applies when Skip Weekends is enabled on this template.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Should Tasks with Due Dates on a weekend day be scheduled for the Friday before the weekend or the Monday after? This applies only if Skip Weekend is selected.</inlineHelpText>
+    <inlineHelpText>When a task due date falls on a weekend, should it move to the preceding Friday or the following Monday? Only used when Skip Weekends is selected.</inlineHelpText>
     <label>Reschedule To</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

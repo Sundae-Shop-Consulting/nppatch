@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Address_Type__c</fullName>
+    <description>Categorizes this Address (Home, Work, Vacation Residence, or Other). Used by seasonal address processing and reporting.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The type of address, such as Home, Work, or Vacation Residence.</inlineHelpText>
     <label>Address Type</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>In_Kind_Type__c</fullName>
-    <description>The type of In-Kind Gift, for example, Goods or Services.</description>
+    <description>User-entered picklist for In-Kind Donations. Categorizes the donation as Goods or Services for reporting and tax receipt purposes.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The type of In-Kind Gift, for example, Goods or Services.</inlineHelpText>
+    <inlineHelpText>Select whether this In-Kind Donation is a gift of goods or a donation of services.</inlineHelpText>
     <label>In-Kind Type</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

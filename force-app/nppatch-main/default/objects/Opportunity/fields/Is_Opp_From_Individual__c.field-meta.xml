@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Is_Opp_From_Individual__c</fullName>
-    <description>Formula: Whether or not the related Account is defined as an individual (SYSTEMIsIndividual__c)</description>
+    <description>Formula field. Returns &quot;true&quot; if the related Account&apos;s SYSTEMIsIndividual__c flag is set, indicating the Opportunity belongs to a Household (individual) Account rather than an Organization.</description>
     <externalId>false</externalId>
     <formula>IF( Account.%%%NAMESPACE%%%SYSTEMIsIndividual__c, 'true', 'false' )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Formula: Whether or not the related Account is defined as an individual (SYSTEMIsIndividual__c)</inlineHelpText>
+    <inlineHelpText>Indicates whether this Donation is from an individual (Household Account) rather than an organization.</inlineHelpText>
     <label>Is Opp From Individual</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

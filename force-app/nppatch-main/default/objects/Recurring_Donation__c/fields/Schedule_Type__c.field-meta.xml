@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Schedule_Type__c</fullName>
-    <description>Tells Salesforce how to compute the amount for each child opportunity, based on what you&apos;ve entered in the Amount field. For Fixed-Length Recurring Donations only.</description>
+    <description>Controls how the Amount field is used to calculate each installment Opportunity amount for Fixed-Length Recurring Donations. Multiply By: Amount is the per-installment amount. Divide By: Amount is the total, divided equally across installments.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Tells Salesforce how to compute the amount for each child opportunity, based on what you&apos;ve entered in the Amount field. For Fixed-Length Recurring Donations only.</inlineHelpText>
+    <inlineHelpText>For Fixed-Length recurring donations: Multiply By means each installment equals the Amount. Divide By means the Amount is the total, split evenly across all planned installments.</inlineHelpText>
     <label>Schedule Type</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

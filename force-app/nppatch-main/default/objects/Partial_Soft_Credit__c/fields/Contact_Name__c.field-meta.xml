@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact_Name__c</fullName>
-    <description>The full name of the Contact who gets this soft credit (read only).</description>
+    <description>Formula field that creates a hyperlink to the Contact record using Contact__c. Displays first and last name. Recalculated automatically.</description>
     <externalId>false</externalId>
     <formula>HYPERLINK(&apos;/&apos; + Contact__c,Contact__r.FirstName + &apos; &apos; + Contact__r.LastName, &apos;_self&apos;)</formula>
-    <inlineHelpText>The full name of the Contact who gets this soft credit (read only).</inlineHelpText>
+    <inlineHelpText>A clickable link to the Contact who receives this soft credit.</inlineHelpText>
     <label>Contact Name</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

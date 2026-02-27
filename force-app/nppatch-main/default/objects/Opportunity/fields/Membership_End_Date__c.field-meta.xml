@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Membership_End_Date__c</fullName>
-    <description>Used for Membership Opportunities (Record Type)</description>
+    <description>User-entered date for Membership Opportunities. Defines when the membership period expires; used in renewal reminders and lapsed-membership reporting.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Date membership period ends.</inlineHelpText>
+    <inlineHelpText>The date when this membership period ends.</inlineHelpText>
     <label>Membership End Date</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

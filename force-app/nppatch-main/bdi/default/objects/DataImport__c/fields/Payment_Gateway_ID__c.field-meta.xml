@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Gateway_ID__c</fullName>
-    <description>The ID of the payment gateway that processed this transaction.</description>
+    <description>Maps to OppPayment__c.Gateway_ID__c on the Payment record during data import processing. Stores the identifier for the payment gateway that processed the transaction.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The ID of the payment gateway that processed this transaction.</inlineHelpText>
+    <inlineHelpText>Enter the ID of the payment gateway that processed this transaction.</inlineHelpText>
     <label>Payment Gateway ID</label>
     <length>40</length>
     <required>false</required>

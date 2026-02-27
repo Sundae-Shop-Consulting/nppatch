@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Custom_Payment_Field__c</fullName>
+    <description>A general-purpose text field available for storing additional payment information specific to your organization's needs.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Custom field for tracking additional payment details not captured by other standard fields.</inlineHelpText>
     <label>Custom Payment Field</label>
     <length>15</length>
     <required>false</required>

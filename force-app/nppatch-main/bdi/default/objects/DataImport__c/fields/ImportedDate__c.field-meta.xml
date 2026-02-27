@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ImportedDate__c</fullName>
-    <description>The date and time that the Data Import record was successfully imported.</description>
+    <description>System field that records the date and time when this Data Import record was successfully processed and its target records were created or updated.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The date and time that the Data Import record was successfully imported.</inlineHelpText>
+    <inlineHelpText>Date and time this record was successfully imported. Automatically populated by the system.</inlineHelpText>
     <label>Imported Date</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

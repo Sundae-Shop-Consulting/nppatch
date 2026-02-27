@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>HouseholdEmail__c</fullName>
-    <description>Set by the original Contact which created this Household. Can be edited in Household, but does not update Contact.</description>
+    <description>Initially populated from the Contact that created this Household. Editing this field does not update the Contact record.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Set by the original Contact which created this Household. Can be edited in Household, but does not update Contact.</inlineHelpText>
+    <inlineHelpText>The email address for this Household. Changes here do not sync back to the related Contact.</inlineHelpText>
     <label>Household Email</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

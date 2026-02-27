@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Fair_Market_Value__c</fullName>
-    <description>The Fair Market Value of an In-Kind gift.</description>
+    <description>User-entered currency field for In-Kind Donations. Records the assessed fair market value of donated goods or services, which may differ from the Opportunity Amount.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Fair Market Value of an In-Kind gift.</inlineHelpText>
+    <inlineHelpText>Enter the estimated fair market value of the donated goods or services.</inlineHelpText>
     <label>Fair Market Value</label>
     <precision>18</precision>
     <required>false</required>

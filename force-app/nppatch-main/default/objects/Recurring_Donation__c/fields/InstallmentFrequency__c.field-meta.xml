@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>InstallmentFrequency__c</fullName>
-    <description>The Installment Frequency along with Installment Period defines the installment schedule of this Recurring Donation. For example, if Installment Period is Monthly and Installment Frequency is 3, the schedule is defined as &quot;every 3 months&quot;.</description>
+    <description>Works with Installment Period to define how often installment Opportunities are created. For example, an Installment Period of Monthly with a Frequency of 3 creates Opportunities every 3 months. Defaults to 1 if not specified.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Installment Frequency along with Installment Period defines the installment schedule of this Recurring Donation. For example, if Installment Period is Monthly and Installment Frequency is 3, the schedule is defined as &quot;every 3 months&quot;.</inlineHelpText>
+    <inlineHelpText>How many installment periods between each donation. For example, a frequency of 3 with a Monthly period means "every 3 months." Leave at 1 for standard schedules.</inlineHelpText>
     <label>Installment Frequency</label>
     <precision>3</precision>
     <required>false</required>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Opportunity__c</fullName>
-    <description>Master-Detail relationship that determines which Opportunity this Deliverable is related to.</description>
+    <description>Master-Detail relationship linking this deliverable to its parent grant Opportunity. Deleting the Opportunity will also delete all related deliverables.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The grant Opportunity this deliverable belongs to.</inlineHelpText>
     <label>Opportunity</label>
     <referenceTo>Opportunity</referenceTo>
     <relationshipLabel>Deliverables</relationshipLabel>

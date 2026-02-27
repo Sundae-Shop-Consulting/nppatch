@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Maximum_Donations__c</fullName>
     <defaultValue>50</defaultValue>
+    <description>Maximum number of installment Opportunities that can be created for a fixed-length (non-open-ended) Recurring Donation. Default is 50. Setting this too high may cause DML errors during bulk Opportunity creation. Only applies to legacy Recurring Donations; Enhanced Recurring Donations use the Opportunity Forecast Months setting instead.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Restricts the total number of donations created for non-open-ended Recurring Donations. Default is 50.  Larger values may result in DML errors.</inlineHelpText>
+    <inlineHelpText>Max installment Opportunities for fixed-length Recurring Donations. Default is 50. High values may cause DML errors. Legacy RDs only.</inlineHelpText>
     <label>Maximum Donations</label>
     <precision>18</precision>
     <required>false</required>

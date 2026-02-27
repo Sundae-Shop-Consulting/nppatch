@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Is_Deleted__c</fullName>
-    <description>When checked, indicates this record was deleted from the Data Import Advanced Mapping user interface and will be ignored during NPPatch Data Import processing.</description>
+    <description>Soft-delete flag for field mapping records. When true, the mapping is excluded from data import processing even though the metadata record still exists. Set automatically when a mapping is removed through the Advanced Mapping UI.</description>
     <defaultValue>false</defaultValue>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
-    <inlineHelpText>When checked, indicates this record was deleted from the Data Import Advanced Mapping user interface and will be ignored during NPPatch Data Import processing.</inlineHelpText>
+    <inlineHelpText>Check this box to deactivate this field mapping. The mapping will be ignored during data import processing.</inlineHelpText>
     <label>Is Deleted</label>
     <type>Checkbox</type>
 </CustomField>

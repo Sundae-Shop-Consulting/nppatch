@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Tribute_Type__c</fullName>
-    <description>Indicates whether the Donation is in honor or in memory of an individual.</description>
+    <description>User-entered picklist that categorizes the tribute as an honor gift or a memorial gift. Used in tribute reporting and notification workflows.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates whether the Donation is in honor or in memory of an individual.</inlineHelpText>
+    <inlineHelpText>Select whether this Donation is made in honor of a living person or in memory of someone who has passed away.</inlineHelpText>
     <label>Tribute Type</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

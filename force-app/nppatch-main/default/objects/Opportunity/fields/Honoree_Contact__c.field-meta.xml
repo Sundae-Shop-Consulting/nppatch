@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Honoree_Contact__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Lookup to the Contact record of the honoree for this Donation.</description>
+    <description>Lookup to Contact. Links a tribute gift to an existing Contact record for the honoree. If populated, NPPatch auto-fills the Honoree Name field.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Lookup to the Contact record of the honoree for this Donation.</inlineHelpText>
+    <inlineHelpText>Select the Contact record for the person being honored or memorialized by this Donation.</inlineHelpText>
     <label>Honoree Contact</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Opportunities (Honoree Contact)</relationshipLabel>

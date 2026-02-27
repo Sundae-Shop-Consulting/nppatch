@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Status__c</fullName>
-    <description>Status of the Relationship.</description>
+    <description>Picklist indicating whether this Relationship is active. Defaults to Current. Changes are mirrored to the reciprocal Relationship record.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Status of the Relationship.</inlineHelpText>
+    <inlineHelpText>Whether this Relationship is currently active (Current) or no longer active (Former).</inlineHelpText>
     <label>Status</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

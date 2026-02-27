@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Ask_Date__c</fullName>
-    <description>The date the donor was asked for this Donation. This may be different from the date you received it.</description>
+    <description>User-entered date for tracking the solicitation timeline. Records when the ask was made, independent of the Close Date when the gift was received.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The date the donor was asked for this Donation. This may be different from the date you received it.</inlineHelpText>
+    <inlineHelpText>Enter the date the donor was solicited for this Donation. This may differ from the Close Date when the gift was received.</inlineHelpText>
     <label>Ask Date</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Class__c</fullName>
-    <description>Verification Service</description>
+    <description>The fully qualified Apex class name that implements the address verification interface. This class handles the callout to the external verification service and processes the response. Automatically set when selecting a verification service in NPPatch Settings. Custom implementations must implement the ADDR_IValidator interface.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Salesforce class responsible for contacting the web service and verifying addresses.</inlineHelpText>
+    <inlineHelpText>Apex class that handles address verification callouts. Set automatically when configuring the verification service.</inlineHelpText>
     <label>Verification Service</label>
     <length>255</length>
     <required>false</required>

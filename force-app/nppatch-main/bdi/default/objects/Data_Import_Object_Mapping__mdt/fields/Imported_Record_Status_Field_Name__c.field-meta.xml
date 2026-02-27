@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Imported_Record_Status_Field_Name__c</fullName>
-    <description>The Field API Name where the success or failure of the import will be recorded for an NPPatch Data Import record.</description>
+    <description>API name of the text field on DataImport__c that stores the import status message for this object. The data import process writes success, failure, or match information to this field after processing each record.</description>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
-    <inlineHelpText>The Field API Name where the success or failure of the import will be recorded for an NPPatch Data Import record.</inlineHelpText>
+    <inlineHelpText>Enter the API name of the Data Import field that will store the import status for this object (e.g., Contact1ImportStatus__c).</inlineHelpText>
     <label>Imported Record Status Field Name</label>
     <length>255</length>
     <required>false</required>

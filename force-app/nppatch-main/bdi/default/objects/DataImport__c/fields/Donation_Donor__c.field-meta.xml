@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Donor__c</fullName>
-    <description>Specifies whether the donation is an individual donation from Contact1, or an organizational donation from Account1.</description>
+    <description>Controls which record is set as the primary donor on the Opportunity. When set to Contact1, the donation is attributed to the primary Contact. When set to Account1, it is attributed to the primary (organization) Account.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Specifies whether the donation is an individual donation from Contact1, or an organizational donation from Account1.</inlineHelpText>
+    <inlineHelpText>Select Contact1 for an individual donation or Account1 for an organizational donation.</inlineHelpText>
     <label>Donation Donor</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

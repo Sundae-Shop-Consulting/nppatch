@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact1_Birthdate__c</fullName>
+    <description>Maps to Contact.Birthdate on the primary Contact during data import processing.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Contact1.Birthdate</inlineHelpText>
+    <inlineHelpText>Enter the birthdate of the primary Contact.</inlineHelpText>
     <label>Contact1 Birthdate</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

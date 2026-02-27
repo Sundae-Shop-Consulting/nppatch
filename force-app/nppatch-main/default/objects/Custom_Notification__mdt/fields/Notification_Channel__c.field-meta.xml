@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Notification_Channel__c</fullName>
+    <description>The delivery channel for the notification, such as custom notification type or other supported channel identifiers.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Enter the notification channel identifier, such as a Custom Notification Type developer name. This determines how the notification is delivered to users.</inlineHelpText>
     <label>Notification Channel</label>
     <length>255</length>
     <required>false</required>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Matching_Gift_Company__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Indicates that this company offers Matching Gifts.</description>
+    <description>Manually entered. Flags this Account as a company that offers a Matching Gift program for employee donations.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates that this company offers Matching Gifts.</inlineHelpText>
+    <inlineHelpText>When checked, this company has a Matching Gift program that matches employee donations.</inlineHelpText>
     <label>Matching Gift Company</label>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Checkbox</type>

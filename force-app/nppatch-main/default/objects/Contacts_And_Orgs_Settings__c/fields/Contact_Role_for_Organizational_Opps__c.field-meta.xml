@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact_Role_for_Organizational_Opps__c</fullName>
-    <description>The default Contact Role automatically assigned to the Opportunity&apos;s Primary Contact when the Opportunity&apos;s Account is NOT a Household, One-to-One, or Individual Account.</description>
+    <description>Specifies the Opportunity Contact Role automatically assigned to the Primary Contact on Opportunities belonging to organizational (non-individual) Accounts. This applies when the Account is not a Household, One-to-One, or Individual Account. Must match an existing Contact Role picklist value. See also Contact Role for Individual Opps for individual Account types.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The default Contact Role automatically assigned to the Opportunity&apos;s Primary Contact when the Opportunity&apos;s Account is NOT a Household, One-to-One, or Individual Account.</inlineHelpText>
+    <inlineHelpText>Contact Role assigned to the Primary Contact on organizational Account Opportunities. Applies when the Account is not Household, One-to-One, or Individual.</inlineHelpText>
     <label>Contact Role for Organizational Opps</label>
     <length>255</length>
     <required>false</required>

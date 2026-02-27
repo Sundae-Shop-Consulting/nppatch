@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>EndDate__c</fullName>
-    <description>The date on which this Recurring Donation was closed.</description>
+    <description>Records when this Recurring Donation was closed. Set automatically when the Status changes to Closed, or can be entered manually. No new installment Opportunities are created after this date.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The date on which this Recurring Donation was closed.</inlineHelpText>
+    <inlineHelpText>The date this recurring donation ended. No further installment Opportunities are created after this date.</inlineHelpText>
     <label>End Date</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

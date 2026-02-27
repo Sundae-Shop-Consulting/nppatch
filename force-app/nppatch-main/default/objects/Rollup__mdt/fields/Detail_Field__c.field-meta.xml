@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Detail_Field__c</fullName>
+    <description>The specific field on the Detail Object whose values are aggregated by this rollup.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Select the field to aggregate, such as Amount on Opportunity. For Count operations, this field is optional.</inlineHelpText>
     <label>Field to Roll Up</label>
     <metadataRelationshipControllingField>Rollup__mdt.Detail_Object__c</metadataRelationshipControllingField>
     <referenceTo>FieldDefinition</referenceTo>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donor_Name__c</fullName>
+    <description>Formula field. Displays the Contact's full name if a Contact is specified, otherwise displays the Account name. Provides a single read-only donor name for reporting and list views.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The name of the donor for this recurring donation, derived from the linked Contact or Account.</inlineHelpText>
     <formula>if(
   LEN(Contact__c)&gt;0,
   Contact__r.FirstName  &amp; " " &amp; Contact__r.LastName,

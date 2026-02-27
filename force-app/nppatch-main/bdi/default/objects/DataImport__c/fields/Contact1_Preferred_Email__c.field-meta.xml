@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact1_Preferred_Email__c</fullName>
+    <description>Maps to Contact.Preferred_Email__c on the primary Contact during data import processing. Determines which email address is used as the Contact's primary email.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Contact1.Preferred_Email__c</inlineHelpText>
+    <inlineHelpText>Select which email type (Personal, Work, or Alternate) should be the primary Contact's preferred email.</inlineHelpText>
     <label>Contact1 Preferred Email</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

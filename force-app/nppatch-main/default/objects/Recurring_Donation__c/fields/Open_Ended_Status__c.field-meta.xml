@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Open_Ended_Status__c</fullName>
+    <description>Legacy field from the original Recurring Donations model. Determines whether the donation is open-ended, fixed-length, or closed. In Enhanced Recurring Donations, use the Recurring Type and Status fields instead.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Choose Open for an Open-Ended Recurring Donation.  Choose None for a Fixed Length Recurring Donation.  Choose Closed to close a Recurring Donation.</inlineHelpText>
+    <inlineHelpText>Open: ongoing donations with no end date. None: fixed-length with a set number of installments. Closed: no longer active. For Enhanced Recurring Donations, use Recurring Type and Status instead.</inlineHelpText>
     <label>Open Ended Status</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

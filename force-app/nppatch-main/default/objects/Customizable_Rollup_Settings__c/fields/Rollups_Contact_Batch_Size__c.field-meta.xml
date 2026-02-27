@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Rollups_Contact_Batch_Size__c</fullName>
     <defaultValue>200</defaultValue>
-    <description>Used by the old and new Rollups engine</description>
+    <description>Number of Contact records processed per batch execution during hard credit rollup calculations. Used by both the legacy and Customizable Rollups engines. Default is 200. Reduce if the batch job fails due to governor limits. Applies to the non-skew mode Contact hard credit rollup job.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Number of records per batch to process when recalculating hard credit donor rollups to the Contact object.</inlineHelpText>
+    <inlineHelpText>Contacts per batch during hard credit rollup calculations. Default is 200. Reduce if the rollup job hits governor limits.</inlineHelpText>
     <label>Contact Hard Credit Batch Size</label>
     <precision>6</precision>
     <required>false</required>

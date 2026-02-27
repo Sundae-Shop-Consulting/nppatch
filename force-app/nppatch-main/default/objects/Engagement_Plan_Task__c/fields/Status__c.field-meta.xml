@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Status__c</fullName>
-    <description>The Status of a Task. Dependent Tasks are set to &quot;Waiting on Parent Task&quot; until their Parent Task is completed.</description>
+    <description>Copied to the generated Task&apos;s Status field. NPPatch sets dependent tasks to &quot;Waiting on someone else&quot; at creation and updates them to &quot;Not Started&quot; when the parent Task is completed.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Status of a Task. Dependent Tasks are set to &quot;Waiting on Parent Task&quot; until their Parent Task is completed.</inlineHelpText>
+    <inlineHelpText>The initial status for the generated Task. Dependent tasks will start as &quot;Waiting on someone else&quot; regardless of this setting until their parent task is completed.</inlineHelpText>
     <label>Status</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

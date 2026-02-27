@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Name_Connector__c</fullName>
-    <description>The string to use to connect pairs in a name.  For example, John &amp; Jane, or John and Jane.</description>
+    <description>The text string used to join names of Household members in generated names and greetings. Common values are " &amp; " (produces "John &amp; Jane") or " and " (produces "John and Jane"). Include spaces around the connector as they are not added automatically.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The string to use to connect pairs in a name.  For example, John &amp; Jane, or John and Jane.</inlineHelpText>
+    <inlineHelpText>Text joining Household member names, such as " &amp; " or " and ". Include surrounding spaces.</inlineHelpText>
     <label>Name Connector</label>
     <length>255</length>
     <required>false</required>

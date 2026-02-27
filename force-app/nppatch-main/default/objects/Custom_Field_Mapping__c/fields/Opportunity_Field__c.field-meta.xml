@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Opportunity_Field__c</fullName>
-    <description>The Opportunity field to receive the value from the Recurring Donation field. Note that these fields must have the same data type.</description>
+    <description>API name of the Opportunity field that receives the mapped value from the Recurring Donation. Must have the same data type as the source Recurring Donation field.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Opportunity field to receive the value from the Recurring Donation field.  Note that these fields must have the same data type.</inlineHelpText>
+    <inlineHelpText>The Opportunity field that receives the copied value. Must match the data type of the Recurring Donation field.</inlineHelpText>
     <label>Opportunity Field</label>
     <length>255</length>
     <required>false</required>

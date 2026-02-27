@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Grant_Contract_Date__c</fullName>
-    <description>The date of the Grant&apos;s inception, according to the document or contract sent by the grantmaking organization.</description>
+    <description>User-entered date for Grant Opportunities. Records the inception date from the grant contract or award letter.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The date of the Grant&apos;s inception, according to the document or contract sent by the grantmaking organization.</inlineHelpText>
+    <inlineHelpText>Enter the date of the grant contract or award letter from the grantmaking organization.</inlineHelpText>
     <label>Grant Contract Date</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

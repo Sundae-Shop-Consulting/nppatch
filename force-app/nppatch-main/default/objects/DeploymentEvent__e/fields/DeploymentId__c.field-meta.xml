@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>DeploymentId__c</fullName>
+    <description>The 18-character Metadata API deployment ID returned by Salesforce when the deployment was initiated. Used to correlate this event with its deployment request.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The Salesforce Metadata API deployment ID associated with this event.</inlineHelpText>
     <isFilteringDisabled>false</isFilteringDisabled>
     <isNameField>false</isNameField>
     <isSortingDisabled>false</isSortingDisabled>

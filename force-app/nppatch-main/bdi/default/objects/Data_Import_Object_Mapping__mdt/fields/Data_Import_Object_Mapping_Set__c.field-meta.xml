@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Data_Import_Object_Mapping_Set__c</fullName>
-    <description>The Data Import Object Group containing this record.</description>
+    <description>Lookup to the parent Data Import Object Mapping Set that groups related object mappings. Associates this object mapping with its top-level mapping configuration set.</description>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
-    <inlineHelpText>The Data Import Object Group containing this record.</inlineHelpText>
+    <inlineHelpText>Select the Object Mapping Set this object mapping belongs to.</inlineHelpText>
     <label>Data Import Object Mapping Set</label>
     <referenceTo>Data_Import_Object_Mapping_Set__mdt</referenceTo>
     <relationshipLabel>Data Import Object Mappings</relationshipLabel>

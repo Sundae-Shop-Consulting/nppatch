@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IsRecurringDonations2Enabled__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>This option enables Enhanced Recurring Donations. IMPORTANT: You must enable Enhanced Recurring Donations in NPPatch Settings. Enabling in Custom Settings may cause data inconsistencies.</description>
+    <description>Enables the Enhanced Recurring Donations engine, which replaces the legacy model with improved installment management, status automation, and flexible scheduling. WARNING: Must be enabled through NPPatch Settings, not directly in Custom Settings, because the migration process requires data conversion steps. Enabling directly in Custom Settings can cause data inconsistencies.</description>
     <externalId>false</externalId>
-    <inlineHelpText>This option enables Enhanced Recurring Donations. IMPORTANT: You must enable Enhanced Recurring Donations in NPPatch Settings. Enabling in Custom Settings may cause data inconsistencies.</inlineHelpText>
+    <inlineHelpText>Enables Enhanced Recurring Donations. IMPORTANT: Enable through NPPatch Settings, not directly here, to avoid data inconsistencies.</inlineHelpText>
     <label>Enhanced Recurring Donations</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

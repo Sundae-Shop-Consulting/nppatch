@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>SYSTEM_AccountType__c</fullName>
-    <description>Hidden system field: do not change.  Updated by automatic processes.</description>
+    <description>Set automatically by NPPatch when Accounts are created. Classifies each Account as Household Account, One-to-One, or Individual Bucket based on the Account Model configured in NPPatch Settings. Do not edit manually.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates which Account Model this account is for: Household Account, One-to-One, or Individual (bucket).</inlineHelpText>
+    <inlineHelpText>The Account Model type for this Account: Household Account, One-to-One, or Individual Bucket. Determines how Contacts are related to this Account.</inlineHelpText>
     <label>_SYSTEM: AccountType</label>
     <length>100</length>
     <required>false</required>

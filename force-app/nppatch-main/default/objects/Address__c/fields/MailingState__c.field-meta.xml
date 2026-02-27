@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>MailingState__c</fullName>
+    <description>Synced to Contact and Account mailing fields when this is the default Address. Can also be updated by address verification.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The state or province for this mailing address.</inlineHelpText>
     <label>Mailing State/Province</label>
     <length>255</length>
     <required>false</required>

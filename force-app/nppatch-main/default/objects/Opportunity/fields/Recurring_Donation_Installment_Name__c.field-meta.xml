@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Recurring_Donation_Installment_Name__c</fullName>
-    <description>The installment name for inclusion in Opportunity naming. Shows the installment number in parentheses for open ended Recurring Donations, or the installment number out of the total for Recurring Donations with a set number of installments.</description>
+    <description>Formula field. Generates a display label for this installment, showing the installment number in parentheses for open-ended Recurring Donations or as &quot;X of Y&quot; for fixed-length schedules. Used in Opportunity naming conventions.</description>
     <externalId>false</externalId>
     <formula>IF(
 ISBLANK(%%%NAMESPACE%%%Recurring_Donation__c),
@@ -13,7 +13,7 @@ ISBLANK(%%%NAMESPACE%%%Recurring_Donation__c),
   )
 )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>The installment name for inclusion in Opportunity naming. Shows the installment number in parentheses for open ended Recurring Donations, or the installment number out of the total for Recurring Donations with a set number of installments.</inlineHelpText>
+    <inlineHelpText>The installment label for this Recurring Donation Opportunity, such as &quot;(3)&quot; for open-ended or &quot;(3 of 12)&quot; for fixed-length schedules.</inlineHelpText>
     <label>Recurring Donation Installment Name</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

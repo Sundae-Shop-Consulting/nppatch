@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Paid__c</fullName>
     <defaultValue>false</defaultValue>
+    <description>Indicates whether this payment has been received. Can be set manually or automatically by payment processing integrations. When checked, the Payment Date is used for financial reporting.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Check this box when the payment has been received. Unpaid payments are considered outstanding scheduled installments.</inlineHelpText>
     <label>Paid</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

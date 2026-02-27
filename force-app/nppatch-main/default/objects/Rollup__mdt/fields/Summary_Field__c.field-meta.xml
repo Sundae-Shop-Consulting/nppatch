@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Summary_Field__c</fullName>
+    <description>The field on the Target Object where the calculated rollup result is stored.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Select the field on the Target Object that will hold the rollup value, such as npo02__TotalOppAmount__c on Account.</inlineHelpText>
     <label>Target Field</label>
     <metadataRelationshipControllingField>Rollup__mdt.Summary_Object__c</metadataRelationshipControllingField>
     <referenceTo>FieldDefinition</referenceTo>

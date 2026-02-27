@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Matching_Behavior__c</fullName>
     <defaultValue>&quot;Do Not Match&quot;</defaultValue>
-    <description>Defines how the Data Importer should handle matching Donations.  Must be one of the values defined in BDI_DataImport_API.</description>
+    <description>Controls how the data import process handles donation matching against existing Opportunities. Options include Do Not Match (always create new), No Match (create if none found), Single Match (update if exactly one found), or Best Match (update the closest match). Values must correspond to constants in BDI_DataImport_API.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Defines how the Data Importer should handle matching Donations. You must choose a value.</inlineHelpText>
+    <inlineHelpText>Select how the data import process handles donation matching. Choose whether to always create new donations, update single matches, or update the best match.</inlineHelpText>
     <label>Donation Matching Behavior</label>
     <length>255</length>
     <required>false</required>

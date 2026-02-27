@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Opportunity__c</fullName>
+    <description>Master-detail relationship linking this Payment to its parent Opportunity. Required on creation and cannot be changed after the record is saved.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The Opportunity this payment is applied to.</inlineHelpText>
     <label>Opportunity</label>
     <referenceTo>Opportunity</referenceTo>
     <relationshipLabel>Payments</relationshipLabel>

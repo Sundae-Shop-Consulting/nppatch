@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>StatusAutomationDaysForClosed__c</fullName>
-    <description>After the specified number of days, NPPatch updates the Recurring Donation Status to the Status Automation Closed Value if donations aren&apos;t being received as expected.</description>
+    <description>Number of days past the expected donation date after which NPPatch automatically changes a Recurring Donation's status to the Closed value if no payment has been received. Leave blank or set to 0 to disable automatic closing. Typically set higher than the Days for Lapsed value to allow a lapsed period before closing. Requires Enhanced Recurring Donations.</description>
     <externalId>false</externalId>
-    <inlineHelpText>After the specified number of days, NPPatch updates the Recurring Donation Status to the Status Automation Closed Value if donations aren&apos;t being received as expected.</inlineHelpText>
+    <inlineHelpText>Days past the expected donation date before a Recurring Donation is automatically closed. Leave blank to disable. Should be higher than Days for Lapsed.</inlineHelpText>
     <label>Status Automation Days for Closed</label>
     <precision>18</precision>
     <required>false</required>

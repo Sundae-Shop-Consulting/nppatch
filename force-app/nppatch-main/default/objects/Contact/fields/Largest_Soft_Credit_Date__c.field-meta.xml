@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Largest_Soft_Credit_Date__c</fullName>
-    <description>The date of this Contact&apos;s largest soft credit.</description>
+    <description>Calculated by Customizable Rollups (soft credit). Do not edit manually. The Close Date of the won Opportunity with the largest Amount where this Contact received a soft credit. Uses the Won Opportunities for Soft Credit filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The date of this Contact&apos;s largest soft credit.</inlineHelpText>
+    <inlineHelpText>The Close Date of the won Opportunity that produced this Contact's largest soft credit.</inlineHelpText>
     <label>Largest Soft Credit Date</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

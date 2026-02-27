@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>API_Response__c</fullName>
-    <description>Contains the raw response or an error message.</description>
+    <description>Populated by the address verification API with the raw response payload or an error message. Updated each time verification runs.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Contains the raw response or an error message.</inlineHelpText>
+    <inlineHelpText>The raw response or error message returned the last time this Address was sent to the verification service.</inlineHelpText>
     <label>API Response</label>
     <length>32768</length>
     <trackFeedHistory>false</trackFeedHistory>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Batch_Size__c</fullName>
     <defaultValue>200</defaultValue>
-    <description>The number of records processed at a time when calculating donor statistics.  The default size is 200.  Reduce to a smaller number if the Opportunity Rollups are failing due to system limits.</description>
+    <description>Controls how many records are processed per batch execution during legacy Opportunity rollup calculations. Default is 200. Reduce this value if rollup batch jobs fail due to Apex heap size or CPU time limits. Only applies to the legacy rollup engine; Customizable Rollups have their own batch size settings.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The number of records processed at a time when calculating donor statistics.  The default size is 200.  Reduce to a smaller number if the Opportunity Rollups are failing due to system limits.</inlineHelpText>
+    <inlineHelpText>Number of records per batch when calculating donor rollup statistics. Default is 200. Reduce if rollup jobs fail due to governor limits.</inlineHelpText>
     <label>Rollup Batch Size</label>
     <precision>18</precision>
     <required>false</required>

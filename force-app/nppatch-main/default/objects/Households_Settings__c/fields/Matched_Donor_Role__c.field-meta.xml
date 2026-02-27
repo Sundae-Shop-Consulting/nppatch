@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Matched_Donor_Role__c</fullName>
-    <description>The Contact Role you want to use for matched donors. We recommend using &quot;Matched Donor.&quot;</description>
+    <description>Specifies the Opportunity Contact Role name assigned to matched donors in gift matching scenarios. Must match an existing Contact Role picklist value. The recommended value is "Matched Donor."</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Contact Role you want to use for matched donors. We recommend using &quot;Matched Donor.&quot;</inlineHelpText>
+    <inlineHelpText>The Opportunity Contact Role assigned to matched donors. Recommended value: &quot;Matched Donor.&quot;</inlineHelpText>
     <label>Matched Donor Role</label>
     <length>255</length>
     <required>false</required>

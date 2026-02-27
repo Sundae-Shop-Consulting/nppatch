@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Recurring_Donation_Effective_Date__c</fullName>
-    <description>The date that new or updated schedule information (Amount, Day of Month, etc.) for this Recurring Donation takes effect. The default is the current date.</description>
+    <description>Maps to Recurring_Donation__c.StartDate__c on the Recurring Donation during data import processing. Determines when new or updated schedule information (Amount, Day of Month, etc.) takes effect. Defaults to the current date.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The date that new or updated schedule information (Amount, Day of Month, etc.) for this Recurring Donation takes effect. The default is the current date.</inlineHelpText>
+    <inlineHelpText>Enter the date when schedule changes take effect for this recurring donation. Defaults to today if left blank.</inlineHelpText>
     <label>Recurring Donation Effective Date</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

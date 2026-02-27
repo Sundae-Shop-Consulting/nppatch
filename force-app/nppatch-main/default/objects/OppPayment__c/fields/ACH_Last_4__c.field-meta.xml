@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ACH_Last_4__c</fullName>
-    <description>The last four digits of the bank account used for this transaction.</description>
+    <description>Stores the last four digits of the bank account number from the payment gateway for ACH transactions. Populated by the payment processing integration.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The last four digits of the bank account used for this transaction.</inlineHelpText>
+    <inlineHelpText>The last four digits of the bank account used for this ACH payment, for verification purposes.</inlineHelpText>
     <label>ACH Last 4</label>
     <length>4</length>
     <required>false</required>

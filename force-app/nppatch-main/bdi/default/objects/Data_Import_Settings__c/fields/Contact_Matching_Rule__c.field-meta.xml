@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact_Matching_Rule__c</fullName>
     <defaultValue>&quot;Firstname,Lastname,Email&quot;</defaultValue>
-    <description>Specifies which rule to follow when trying to match Contacts in Data Import records against existing Contacts.</description>
+    <description>Controls which matching rule the data import process uses to find existing Contact records. Determines the field combination (e.g., Firstname, Lastname, Email) used to identify duplicate Contacts before creating new ones. Default is Firstname,Lastname,Email.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Specifies which rule to follow when trying to match Contacts in Data Import records against existing Contacts.</inlineHelpText>
+    <inlineHelpText>Select the rule used to match imported data against existing Contact records. Default uses Firstname, Lastname, and Email.</inlineHelpText>
     <label>Contact Matching Rule</label>
     <length>255</length>
     <required>false</required>

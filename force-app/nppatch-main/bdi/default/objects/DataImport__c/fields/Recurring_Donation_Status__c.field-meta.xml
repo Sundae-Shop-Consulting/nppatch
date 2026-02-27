@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Recurring_Donation_Status__c</fullName>
-    <description>Indicates if this Recurring Donation is actively in use, temporarily suspended, or closed.</description>
+    <description>Maps to Recurring_Donation__c.Status__c on the Recurring Donation during data import processing. Controls whether the Recurring Donation is active, paused, or closed.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates if this Recurring Donation is actively in use, temporarily suspended, or closed.</inlineHelpText>
+    <inlineHelpText>Enter the status of this recurring donation (e.g., Active, Lapsed, Closed, Paused).</inlineHelpText>
     <label>Recurring Donation Status</label>
     <length>40</length>
     <required>false</required>

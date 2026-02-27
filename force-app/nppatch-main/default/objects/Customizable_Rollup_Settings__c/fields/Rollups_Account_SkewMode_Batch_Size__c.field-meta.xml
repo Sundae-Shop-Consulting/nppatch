@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Rollups_Account_SkewMode_Batch_Size__c</fullName>
     <defaultValue>1000</defaultValue>
-    <description>Only used by the new Customizable Rollups engine</description>
+    <description>Number of Opportunity records processed per batch execution during Account hard credit rollup calculations in Skew Mode. Skew Mode processes Accounts with many related Opportunities (above the Skew Mode Threshold). Default is 1000. Reduce if the skew mode batch job fails due to governor limits.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Number of records per batch to process when recalculating donor rollups to the Account object using Skew Mode.</inlineHelpText>
+    <inlineHelpText>Opportunities per batch during Account Skew Mode rollups. Default is 1000. Skew Mode handles Accounts with many Opportunities.</inlineHelpText>
     <label>Account Skew Mode Batch Size</label>
     <precision>18</precision>
     <required>false</required>

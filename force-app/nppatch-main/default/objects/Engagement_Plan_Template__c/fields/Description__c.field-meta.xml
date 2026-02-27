@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Description__c</fullName>
+    <description>Free-text field for administrators to document the purpose and intended use of this Engagement Plan Template.</description>
     <externalId>false</externalId>
+    <inlineHelpText>A description of what this template is for and when it should be used.</inlineHelpText>
     <label>Description</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

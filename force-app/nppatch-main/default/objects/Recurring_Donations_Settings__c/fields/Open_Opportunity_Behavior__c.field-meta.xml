@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Open_Opportunity_Behavior__c</fullName>
-    <description>Determines the behavior of any remaining open Opportunities when an open-ended Recurring Donation is moved to a closed status.</description>
+    <description>Controls what happens to open installment Opportunities when a Recurring Donation is closed. Valid values include: "Mark_Opportunities_Closed_Lost" (closes all open installments as Closed Lost), "Delete_Open_Opportunities" (deletes open installments), and "No_Action" (leaves open installments unchanged). Applies to Enhanced Recurring Donations.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Determines the behavior of any remaining open Opportunities when an open-ended Recurring Donation is moved to a closed status.</inlineHelpText>
+    <inlineHelpText>What happens to open installment Opportunities when a Recurring Donation is closed: close them as lost, delete them, or take no action.</inlineHelpText>
     <label>Open Opportunity Behavior on RD Close</label>
     <length>50</length>
     <required>false</required>

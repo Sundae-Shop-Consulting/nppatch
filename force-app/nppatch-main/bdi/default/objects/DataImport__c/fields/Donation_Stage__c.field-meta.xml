@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Stage__c</fullName>
-    <description>The Stage to set on the Opportunity.  Will set to Closed Won if left blank.</description>
+    <description>Maps to Opportunity.StageName during data import processing. Defaults to Closed Won if left blank.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Opportunity.StageName</inlineHelpText>
+    <inlineHelpText>Enter the Opportunity stage for this donation. Leave blank to default to Closed Won.</inlineHelpText>
     <label>Donation Stage</label>
     <length>255</length>
     <required>false</required>

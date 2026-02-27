@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact__c</fullName>
-    <description>Related Contact is this Contact&apos;s ______.</description>
+    <description>Master-detail lookup to the primary Contact in this Relationship. Set when the record is created; the reciprocal Relationship record references this Contact via RelatedContact__c.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Related Contact is this Contact&apos;s ______.</inlineHelpText>
+    <inlineHelpText>The Contact whose relationship to the Related Contact is being described. For example, if the Type is &quot;Father,&quot; then the Related Contact is this Contact&apos;s father.</inlineHelpText>
     <label>Contact</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Relationships</relationshipLabel>

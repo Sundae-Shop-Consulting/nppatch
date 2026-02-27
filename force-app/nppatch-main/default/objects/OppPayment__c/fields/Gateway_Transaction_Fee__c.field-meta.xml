@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Gateway_Transaction_Fee__c</fullName>
-    <description>The transaction fee charged by your payment gateway.</description>
+    <description>Stores the processing fee amount charged by the payment gateway for this transaction. Populated by the payment processing integration.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The transaction fee charged by your payment gateway.</inlineHelpText>
+    <inlineHelpText>The fee the payment gateway charged to process this transaction.</inlineHelpText>
     <label>Gateway Transaction Fee</label>
     <precision>18</precision>
     <required>false</required>

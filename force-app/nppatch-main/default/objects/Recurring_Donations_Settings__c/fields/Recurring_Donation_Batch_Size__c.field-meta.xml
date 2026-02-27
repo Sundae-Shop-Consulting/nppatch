@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Recurring_Donation_Batch_Size__c</fullName>
     <defaultValue>50</defaultValue>
-    <description>The number of records to process at a time when running the Recurring Donations batch job. The default size is 50. Reduce to a smaller number if the Recurring Donations batch job is failing due to system limits.</description>
+    <description>Number of Recurring Donation records processed per batch execution during the nightly Recurring Donation evaluation job. Default is 50. Reduce if the batch job fails due to governor limits (CPU time, heap size). The relatively low default accounts for the complex processing each Recurring Donation requires (evaluating installments, creating Opportunities, etc.).</description>
     <externalId>false</externalId>
-    <inlineHelpText>The number of records to process at a time when running the Recurring Donations batch job. The default size is 50. Reduce to a smaller number if the Recurring Donations batch job is failing due to system limits.</inlineHelpText>
+    <inlineHelpText>Recurring Donations per batch during the nightly evaluation job. Default is 50. Reduce if the batch job hits governor limits.</inlineHelpText>
     <label>Recurring Donation Batch Size</label>
     <precision>18</precision>
     <required>false</required>

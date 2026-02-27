@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Always_Anonymous__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Used to set the Household name and other fields using anonymous information.</description>
+    <description>When checked, the Household naming automation uses anonymous placeholder values instead of Contact names for the Household Name, Formal Greeting, and Informal Greeting.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Used to set the Household name and other fields using anonymous information.</inlineHelpText>
+    <inlineHelpText>Check this box to generate the Household name and greeting fields using anonymous information instead of Contact names.</inlineHelpText>
     <label>Always Anonymous</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

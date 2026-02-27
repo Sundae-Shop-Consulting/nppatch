@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Status__c</fullName>
+    <description>The outcome of the deployment, such as Succeeded or Failed. Set by the deployment callback handler when it publishes this platform event.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The result of the deployment (for example, Succeeded or Failed).</inlineHelpText>
     <isFilteringDisabled>false</isFilteringDisabled>
     <isNameField>false</isNameField>
     <isSortingDisabled>false</isSortingDisabled>

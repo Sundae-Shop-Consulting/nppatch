@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Disable_Related_Records_Filter__c</fullName>
     <defaultValue>false</defaultValue>
+    <description>When checked, rollup batch jobs process ALL Account and Contact records regardless of whether they have related Opportunities or Opportunity Contact Roles. By default (unchecked), the rollup engine skips records with no related Opportunities for better performance. Enable this if you need to zero out rollup fields on records that previously had Opportunities but no longer do.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Check this box to prevent hard credit and soft credit rollups on Accounts and Contacts from only processing Account and Contact records that have existing related Opportunity or Opportunity Contact Role records.</inlineHelpText>
+    <inlineHelpText>Process all Accounts and Contacts during rollups, even those without related Opportunities. Enable to reset rollup fields to zero on records with no remaining Opportunities.</inlineHelpText>
     <label>Disable Related Records Filter</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

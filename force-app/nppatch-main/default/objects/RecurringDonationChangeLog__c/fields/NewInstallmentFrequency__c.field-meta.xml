@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>NewInstallmentFrequency__c</fullName>
-    <description>The new Installment Frequency for the related Recurring Donation.</description>
+    <description>Captured from the Recurring Donation&apos;s Installment Frequency field after the change. Works with Installment Period to define the schedule (e.g., every 3 months).</description>
     <externalId>false</externalId>
-    <inlineHelpText>The new Installment Frequency for the related Recurring Donation.</inlineHelpText>
+    <inlineHelpText>The installment frequency after this change (e.g., 1 = every period, 3 = every third period).</inlineHelpText>
     <label>New Installment Frequency</label>
     <precision>3</precision>
     <required>false</required>

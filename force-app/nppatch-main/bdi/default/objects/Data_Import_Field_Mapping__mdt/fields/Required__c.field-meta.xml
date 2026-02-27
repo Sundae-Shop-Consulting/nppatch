@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Required__c</fullName>
-    <description>Indicates if the field on the NPPatch Data Import object must contain a value. When it&apos;s required, Dry Run will fail if that field doesn&apos;t contain a value.</description>
+    <description>Controls whether the source field on the Data Import record must have a value for processing to succeed. When set to Yes, Dry Run validation will flag records missing this field as errors.</description>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
-    <inlineHelpText>Indicates if the field on the NPPatch Data Import object must contain a value. When it&apos;s required, Dry Run will fail if that field doesn&apos;t contain a value.</inlineHelpText>
+    <inlineHelpText>Select Yes if this field must be populated on every Data Import record. Records missing a required field will fail during Dry Run.</inlineHelpText>
     <label>Required?</label>
     <required>false</required>
     <type>Picklist</type>

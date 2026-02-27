@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Last_Batch_Run__c</fullName>
+    <description>System-managed timestamp recording when the Recurring Donation batch job last completed. Automatically updated after each batch run. Useful for monitoring whether scheduled batch jobs are running as expected. Do not modify manually.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The date and time of the last batch update of Recurring Donations.</inlineHelpText>
+    <inlineHelpText>System-managed. Date and time of the last Recurring Donation batch job completion. Do not edit manually.</inlineHelpText>
     <label>Last Batch Run</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

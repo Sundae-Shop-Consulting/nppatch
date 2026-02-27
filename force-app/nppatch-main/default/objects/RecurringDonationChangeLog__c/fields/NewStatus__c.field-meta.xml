@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>NewStatus__c</fullName>
-    <description>The new Status for the related Recurring Donation.</description>
+    <description>Captured from the Recurring Donation&apos;s Status field after the change was applied.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The new Status for the related Recurring Donation.</inlineHelpText>
+    <inlineHelpText>The Recurring Donation status after this change, such as Active, Paused, or Closed.</inlineHelpText>
     <label>New Status</label>
     <length>255</length>
     <required>false</required>

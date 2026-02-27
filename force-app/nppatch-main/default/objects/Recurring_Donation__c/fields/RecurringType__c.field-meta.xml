@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>RecurringType__c</fullName>
-    <description>Select Open for an ongoing Recurring Donation. Select Fixed for a Recurring Donation that has a specific number of installments. For Fixed, you must also populate the Number of Planned Installments field.</description>
+    <description>Determines whether this Recurring Donation runs indefinitely (Open) or has a set number of installments (Fixed). When set to Fixed, the Number of Planned Installments field is required. Defaults to Open.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Select Open for an ongoing Recurring Donation. Select Fixed for a Recurring Donation that has a specific number of installments. For Fixed, you must also populate the Number of Planned Installments field.</inlineHelpText>
+    <inlineHelpText>Open: donations continue indefinitely until manually closed. Fixed: donations stop after the specified number of planned installments is reached.</inlineHelpText>
     <label>Recurring Type</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

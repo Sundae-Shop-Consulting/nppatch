@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Reminder_Time__c</fullName>
-    <description>The time on the Due Date that a reminder appears.</description>
+    <description>Stored as a 4-character time string (e.g. &quot;0800&quot;). Copied to the generated Task&apos;s reminder settings along with the Reminder checkbox value.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The time on the Due Date that a reminder appears.</inlineHelpText>
+    <inlineHelpText>The time of day on the due date when a reminder notification will appear for the assigned user. Only applies when Reminder is checked.</inlineHelpText>
     <label>Reminder Time</label>
     <length>4</length>
     <required>false</required>

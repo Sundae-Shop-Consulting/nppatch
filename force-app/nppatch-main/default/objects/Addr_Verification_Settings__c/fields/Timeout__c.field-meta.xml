@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Timeout__c</fullName>
-    <description>Callout timeout in seconds.</description>
+    <description>Maximum number of seconds to wait for a response from the address verification service before the callout times out. Salesforce enforces a maximum of 120 seconds for HTTP callouts. Increase this value if the verification service is slow to respond; decrease it if you want faster failure detection.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Callout timeout in seconds.</inlineHelpText>
+    <inlineHelpText>Seconds to wait for the address verification service to respond before timing out. Maximum is 120 seconds.</inlineHelpText>
     <label>Timeout</label>
     <precision>18</precision>
     <required>false</required>

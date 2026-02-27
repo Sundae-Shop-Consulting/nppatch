@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Member_Level__c</fullName>
+    <description>Maps to Opportunity.Member_Level__c during data import processing. Used for membership-type Opportunities.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Opportunity.Member_Level__c</inlineHelpText>
+    <inlineHelpText>Enter the membership level for this donation (e.g., Bronze, Silver, Gold).</inlineHelpText>
     <label>Donation Member Level</label>
     <length>255</length>
     <required>false</required>

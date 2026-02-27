@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>NewAmount__c</fullName>
-    <description>The new Amount for the related Recurring Donation.</description>
+    <description>Captured from the Recurring Donation&apos;s Amount field after the change was applied.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The new Amount for the related Recurring Donation.</inlineHelpText>
+    <inlineHelpText>The installment amount after this change was made.</inlineHelpText>
     <label>New Amount</label>
     <precision>18</precision>
     <required>false</required>

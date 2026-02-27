@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Verification_Status__c</fullName>
-    <description>If this Address requires verification, click the Show more actions dropdown arrow in the upper right and then click Verify Address. Consult NPPatch documentation for more information on Address Verification.</description>
+    <description>Populated by the address verification service with the overall verification result. Updated each time verification runs on this Address.</description>
     <externalId>false</externalId>
-    <inlineHelpText>If this Address requires verification, click the Show more actions dropdown arrow in the upper right and then click Verify Address. Consult NPPatch documentation for more information on Address Verification.</inlineHelpText>
+    <inlineHelpText>The current verification status of this Address. To verify, use the Verify Address action from the record page.</inlineHelpText>
     <label>Verification Status</label>
     <length>255</length>
     <required>false</required>

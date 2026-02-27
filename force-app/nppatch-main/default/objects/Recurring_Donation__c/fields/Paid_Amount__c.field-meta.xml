@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Paid_Amount__c</fullName>
-    <description>The total amount paid on this Recurring Donation. Calculated automatically as the total amount of all Closed/Won installment Opportunities (read only).</description>
+    <description>Calculated automatically as the sum of all Closed Won installment Opportunity amounts for this Recurring Donation. Updated by the Recurring Donations batch job. Read only.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The total amount paid on this Recurring Donation. Calculated automatically as the total amount of all Closed/Won installment Opportunities (read only).</inlineHelpText>
+    <inlineHelpText>The total amount received to date across all completed installments for this recurring donation.</inlineHelpText>
     <label>Total Paid Amount</label>
     <precision>18</precision>
     <required>false</required>

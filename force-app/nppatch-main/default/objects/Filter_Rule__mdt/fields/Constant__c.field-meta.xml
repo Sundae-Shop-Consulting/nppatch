@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Constant__c</fullName>
+    <description>The comparison value that the field is evaluated against using the selected operator.</description>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Enter the value to compare against, such as "Closed Won" for a StageName filter. For multi-value operators like In List, separate values with semicolons.</inlineHelpText>
     <label>Value</label>
     <length>255</length>
     <required>false</required>

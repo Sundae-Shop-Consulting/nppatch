@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Seasonal_Addresses_Batch_Size__c</fullName>
     <defaultValue>10</defaultValue>
-    <description>Number of records per batch to process when setting seasonal address as the mailing address.</description>
+    <description>Number of records processed per batch execution when the seasonal address batch job updates mailing addresses. Default is 10. Reduce if the batch job encounters governor limits due to complex address processing or trigger logic. This is intentionally low because seasonal address updates can trigger cascading DML.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Number of records per batch to process when setting seasonal address as the mailing address.</inlineHelpText>
+    <inlineHelpText>Records per batch when updating seasonal addresses. Default is 10. Keep low to avoid governor limits from cascading address updates.</inlineHelpText>
     <label>Seasonal Address Batch Size</label>
     <precision>6</precision>
     <required>false</required>

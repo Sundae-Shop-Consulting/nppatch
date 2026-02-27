@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Gateway_Payment_ID__c</fullName>
-    <description>The unique ID for this transaction from the payment gateway.</description>
+    <description>Stores the unique transaction identifier assigned by the payment gateway. Marked as an External ID to support upsert operations and prevent duplicate payment records.</description>
     <externalId>true</externalId>
-    <inlineHelpText>The unique ID for this transaction from the payment gateway.</inlineHelpText>
+    <inlineHelpText>The unique transaction ID from the payment gateway, used to match this record to the external payment system.</inlineHelpText>
     <label>Gateway Payment ID</label>
     <length>255</length>
     <required>false</required>

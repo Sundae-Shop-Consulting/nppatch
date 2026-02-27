@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IsActive__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>When selected, the auto-number format is active.</description>
+    <description>Controls whether this auto-number configuration is currently generating values. Only one configuration per object/field combination should be active at a time.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When selected, the auto-number format is active.</inlineHelpText>
+    <inlineHelpText>When selected, this auto-number format is in use and will assign values to new records.</inlineHelpText>
     <label>Active</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

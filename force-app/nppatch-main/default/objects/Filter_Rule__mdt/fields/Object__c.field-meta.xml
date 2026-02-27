@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Object__c</fullName>
+    <description>The Salesforce object that this filter rule applies to. Controls which fields are available in the Field picklist.</description>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Select the object this filter applies to, such as Opportunity or Payment. This determines which fields are available for filtering.</inlineHelpText>
     <label>Object</label>
     <referenceTo>EntityDefinition</referenceTo>
     <relationshipLabel>Filter_Rules</relationshipLabel>

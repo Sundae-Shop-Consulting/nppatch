@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Active__c</fullName>
     <defaultValue>true</defaultValue>
-    <description>Determines whether this General Accounting Unit is available for selection on Allocations. Only active General Accounting Units are available for selection.</description>
+    <description>Controls whether this GAU appears in Allocation lookup filters. Defaults to true. Unchecking prevents new Allocations from referencing this GAU but does not affect existing Allocations.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Determines whether this General Accounting Unit is available for selection on Allocations. Only active General Accounting Units are available for selection.</inlineHelpText>
+    <inlineHelpText>Whether this fund is available for new allocations. Uncheck to retire a fund without deleting it or its history.</inlineHelpText>
     <label>Active</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

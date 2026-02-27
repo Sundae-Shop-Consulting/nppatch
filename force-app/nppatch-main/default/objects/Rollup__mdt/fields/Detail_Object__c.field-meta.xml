@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Detail_Object__c</fullName>
+    <description>The source object whose records are queried and aggregated by this rollup, such as Opportunity or Payment.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Select the child object whose records will be rolled up to the Target Object, such as Opportunity, Payment, or Allocation.</inlineHelpText>
     <label>Detail Object</label>
     <referenceTo>EntityDefinition</referenceTo>
     <relationshipLabel>RollupsDetail</relationshipLabel>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>DisableFirstInstallment__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Prevents creation of the first installment Opportunity for a new Recurring Donation, regardless of the Installment Opportunity Auto-Creation setting in NPPatch Settings.</description>
+    <description>When checked on a new Recurring Donation, suppresses the automatic creation of the first installment Opportunity. Overrides the Installment Opportunity Auto-Creation setting in NPPatch Settings for this record only.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Prevents creation of the first installment Opportunity for a new Recurring Donation, regardless of the Installment Opportunity Auto-Creation setting in NPPatch Settings.</inlineHelpText>
+    <inlineHelpText>Check this box to prevent the first installment Opportunity from being created automatically when this Recurring Donation is saved.</inlineHelpText>
     <label>Disable First Installment</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

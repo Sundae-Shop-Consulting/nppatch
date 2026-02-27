@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Origin_Type__c</fullName>
-    <description>The type of system used to initiate the transaction. Available values include Engagement Hub, Giving Page, Payments API, Salesforce.</description>
+    <description>Categorizes the external system type that initiated this transaction. Populated by the payment processing integration. Common values: Engagement Hub, Giving Page, Payments API, Salesforce.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The type of system used to initiate the transaction. Available values include Engagement Hub, Giving Page, Payments API, Salesforce.</inlineHelpText>
+    <inlineHelpText>The category of system where this payment originated, such as Engagement Hub, Giving Page, Payments API, or Salesforce.</inlineHelpText>
     <label>Origin Type</label>
     <length>40</length>
     <required>false</required>

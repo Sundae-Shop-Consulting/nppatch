@@ -2,6 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Auto_Update_Addresses__c</fullName>
     <defaultValue>false</defaultValue>
+    <description>DEPRECATED. Replaced by the equivalent setting on Addr_Verification_Settings__c. Previously controlled whether addresses were automatically updated with verification results.</description>
     <externalId>false</externalId>
     <inlineHelpText>If checked, changed addresses get updated automatically with the response from the service (when there is one verified result).</inlineHelpText>
     <label>Auto-Update Addresses-DEPRECATED</label>
