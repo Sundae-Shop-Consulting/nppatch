@@ -93,7 +93,7 @@ Manages mailing addresses for both contacts and households, supporting seasonal 
 
 **Verification:**
 - Configured via `Addr_Verification_Settings__c`
-- Supports automatic USPS verification
+- Supports address verification via Google or Cicero APIs (requires a user-provided API key)
 - Rejects ambiguous results if configured
 
 ### Relationship__c
@@ -250,33 +250,26 @@ Organization-level soft credit for opportunities.
 
 ### Recurring_Donation__c
 
-Represents a committed series of donations from a donor.
+Represents an ongoing donation commitment from a contact or organization.
 
-**Fields:**
-- `Name` - Auto-generated recurring donation identifier
-- `Contact__c` - Donor contact
-- `Organization__c` - Donor organization
-- `npe03__Amount__c` - Amount per installment
-- `npe03__Installment_Frequency__c` - Monthly, Quarterly, Annual, etc.
-- `npe03__Installment_Period__c` - Frequency label
-- `npe03__Installments__c` - Number of remaining installments
-- `npe03__Total__c` - Total value of commitment
-- `npe03__Open_Ended_Status__c` - Open-ended or closed
-- `Date_Established__c` - Commitment start date
-- `npe03__Recurring_Type__c` - Fixed or open-ended
-
-**v2 Fields (RD2):**
-- `Status__c` - Active/Lapsed/Closed
-- `RecurringType__c` - Donation vs. Membership
-- `InstallmentFrequency__c` - Monthly, Quarterly, etc.
+**Key Fields:**
+- `Name` - Auto-generated identifier
+- `Contact__c` - Donor contact (for individual donors)
+- `Organization__c` - Donor organization (for organizational donors)
+- `Amount__c` - Amount per installment
+- `Installment_Period__c` - How often installments occur (Monthly, Quarterly, Annually, Weekly, etc.)
+- `Installment_Frequency__c` - Number of installments per period
+- `Day_of_Month__c` - For monthly/quarterly schedules, the day each installment falls
 - `StartDate__c` - When donations begin
-- `EndDate__c` - When donations end
-- `LeadDays__c` - Days before installment due
+- `EndDate__c` - Optional end date
+- `Status__c` - Active, Lapsed, Closed, Paused (or custom values via status mapping)
+- `RecurringType__c` - Fixed or Open (variable amount)
+- `Planned_Installments__c` - Total expected installment count; null means open-ended
 
 **Configuration:**
-- Enabled via `Recurring_Donations_Settings__c.IsRecurringDonations2Enabled__c`
-- Open opportunity behavior in `Open_Opportunity_Behavior__c`
-- Batch size in `Recurring_Donation_Batch_Size__c`
+- Open opportunity behavior in `Recurring_Donations_Settings__c.Open_Opportunity_Behavior__c`
+- Batch size in `Recurring_Donations_Settings__c.Recurring_Donation_Batch_Size__c`
+- Status automation in `StatusAutomationDaysForLapsed__c` / `StatusAutomationDaysForClosed__c`
 
 ### RecurringDonationSchedule__c
 
@@ -371,8 +364,8 @@ Batch container for import jobs.
 - `Process_Using_Scheduled_Job__c` - Queue for async processing
 
 **Configuration:**
-- Batch size in `Data_Import_Settings__c.Batch_Size__c`
-- Field mapping method in `Field_Mapping_Method__c`
+- Batch process size in `Batch_Process_Size__c` field on the batch record
+- Field mapping via `Data_Import_Field_Mapping__mdt` and `Data_Import_Object_Mapping__mdt` custom metadata
 
 ## Engagement
 
@@ -506,31 +499,37 @@ Configuration for scheduled job execution.
 
 ## Custom Settings Objects
 
-NPPatch uses 21 hierarchy custom settings for configuration:
+NPPatch uses 21 custom settings for configuration — 13 hierarchy custom settings (supporting org-level defaults with optional user-level overrides) and 8 list custom settings (key-value configuration data). Administrators manage these through the **NPPatch Settings** page, not the standard Custom Settings page in Setup.
+
+### Hierarchy Custom Settings (13)
 
 | Setting | Purpose | Key Fields |
 |---------|---------|-----------|
 | `Contacts_And_Orgs_Settings__c` | Core constituent configuration | Account_Processor, Payments_Enabled, HH_Account_RecordTypeID |
 | `Households_Settings__c` | Household processing | Household_Rules, Enable_Opp_Rollup_Triggers, Advanced_Household_Naming |
-| `Recurring_Donations_Settings__c` | RD v1/v2 configuration | IsRecurringDonations2Enabled, Open_Opportunity_Behavior, Recurring_Donation_Batch_Size |
+| `Recurring_Donations_Settings__c` | Recurring donation behavior | Open_Opportunity_Behavior, Recurring_Donation_Batch_Size, EnableChangeLog |
 | `Relationship_Settings__c` | Relationship management | Reciprocal_Method |
 | `Affiliations_Settings__c` | Affiliation processing | Automatic_Affiliation_Creation_Turned_On |
 | `Error_Settings__c` | Error handling | Store_Errors_On, Error_Notifications_On, Error_Notifications_To |
-| `Batch_Data_Entry_Settings__c` | Batch donation entry | Allow_Blank_Opportunity_Names, Opportunity_Naming |
 | `Addr_Verification_Settings__c` | Address verification | Enable_Automatic_Verification, Reject_Ambiguous_Addresses |
 | `Household_Naming_Settings__c` | Household naming | Household_Name_Format, Formal_Greeting_Format, Informal_Greeting_Format |
 | `Allocations_Settings__c` | Allocation processing | Default_Allocations_Enabled, Payment_Allocations_Enabled |
-| `Data_Import_Settings__c` | Data import configuration | Batch_Size, Contact_Matching_Rule, Donation_Matching_Behavior |
-| `Customizable_Rollup_Settings__c` | CRLP configuration | Customizable_Rollups_Enabled, Rollups_Account_Batch_Size |
+| `Customizable_Rollup_Settings__c` | CRLP rollup engine | Rollups_Account_Batch_Size, Rollups_Limit_on_Attached_Opps_for_Skew |
 | `Levels_Settings__c` | Level assignment | Level_Assignment_Batch_Size |
-| `Gift_Entry_Settings__c` | Modern gift entry | Default_Gift_Entry_Template, Enable_Gateway_Assignment |
-| `Package_Settings__c` | Package metadata | Various internal settings |
-| `Opportunity_Naming_Settings__c` | Opp naming | Naming format patterns |
-| `Payment_Field_Mapping_Settings__c` | Payment field mapping | Field mappings |
-| `User_Rollup_Field_Settings__c` | User-defined rollups | Rollup formulas |
-| `Custom_Installment_Settings__c` | RD custom installments | Custom installment schedules |
-| `Payment_Services_Configuration__c` | Payment gateway configuration | Gateway settings |
-| (Legacy) `Addr_Verification_Settings__c` | Address verification (legacy) | Deprecated |
+| `Gift_Entry_Settings__c` | Gift entry configuration | Default_Gift_Entry_Template |
+| `Package_Settings__c` | Internal package metadata | Protected visibility — not exposed in the settings page |
+
+### List Custom Settings (8)
+
+| Setting | Purpose |
+|---------|---------|
+| `Opportunity_Naming_Settings__c` | Opportunity naming format patterns |
+| `Payment_Field_Mapping_Settings__c` | Maps Opportunity fields to OppPayment__c fields during auto-creation |
+| `User_Rollup_Field_Settings__c` | User-defined rollup field definitions |
+| `Custom_Installment_Settings__c` | Custom installment periods for recurring donations |
+| `Custom_Field_Mapping__c` | Maps Recurring Donation fields to Opportunity fields |
+| `Custom_Column_Header__c` | Gift Entry landing page list view column configuration |
+| `Relationship_Sync_Excluded_Fields__c` | Fields excluded from reciprocal relationship sync |
 
 ## Custom Metadata Types
 
@@ -564,4 +563,4 @@ Custom settings are user-scoped with org-level defaults.
 
 ---
 
-*This documentation was generated by AI and still needs human review. If you see something that could be improved, please create an issue or email admin@nppatch.com.*
+*If you see something that could be improved, please create an issue or email admin@nppatch.com.*

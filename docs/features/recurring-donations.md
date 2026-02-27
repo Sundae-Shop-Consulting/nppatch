@@ -1,85 +1,39 @@
 # Recurring Donations
 
-The Enhanced Recurring Donations (RD2) feature provides comprehensive management of commitments from donors who give repeatedly over time. The system automates opportunity creation, tracks payment schedules, manages recurring donation status, and logs all changes for audit purposes.
+Recurring Donations track ongoing financial commitments from donors who give repeatedly over time. The system automates installment opportunity creation, manages payment schedules, tracks status transitions, and logs all changes for audit purposes.
 
 ## Overview
 
-Recurring donations in NPPatch represent ongoing financial commitments from contacts or accounts. Unlike opportunities that represent single transactions, recurring donations automatically generate installment opportunities at defined intervals, supporting both flexible and structured donation schedules.
+A recurring donation represents an ongoing commitment to donate at a defined frequency. Unlike single opportunities, a recurring donation automatically generates installment opportunities at the configured interval for as long as the commitment is active. Recurring donations can be linked to an individual Contact or an organization Account.
 
 ### Key Concepts
 
-- **Recurring Donation**: A record representing an ongoing commitment to donate
-- **Installment Period**: The frequency at which donations occur (monthly, quarterly, annually, etc.)
-- **Schedule**: The calculated dates and amounts for future donations based on the installment period
-- **Donor Type**: Either Account (organizational) or Contact (individual) relationship
-- **Sustainer Status**: Automatic tracking of active recurring donors for engagement analysis
+- **Recurring Donation** — a record representing an ongoing commitment to give
+- **Installment Period** — the frequency at which donations occur (monthly, quarterly, annually, etc.)
+- **Schedule** — the calculated dates and amounts for future installments based on the configured period and frequency
+- **Donor Type** — either Account (organizational) or Contact (individual)
+- **Sustainer Status** — automatic tracking of active recurring donors for engagement analysis
 
-## Recurring Donation Configuration
+## Recurring Donation Fields
 
-### Installment Periods and Frequency
-
-The system supports multiple installment periods through the `RD2_Constants` class:
-
-| Period | Frequency | Examples |
-|--------|-----------|----------|
-| Monthly | Every month | 12 donations per year |
-| Quarterly | Every 3 months | 4 donations per year |
-| Annually | Every 12 months | 1 donation per year |
-| Weekly | Every 7 days | ~52 donations per year |
-| Every 2 Weeks | Every 14 days | ~26 donations per year |
-
-### Day-of-Month Scheduling
-
-For monthly and quarterly donations, the system supports day-of-month selection:
-
-- **Specific Day** (1-28): Donation created on that day each period
-- **Last Day of Month**: Automatically adjusts for months with fewer days (e.g., February 28/29)
-- **Custom Interval**: Configurable days between installments
-
-### Recurring Donation Fields
-
-Recurring donations track:
+### Core Fields
 
 | Field | Purpose |
 |-------|---------|
+| `Contact__c` / `Organization__c` | The donor—either a Contact or an Account |
 | `Amount__c` | The donation amount per installment |
-| `Day_of_Month__c` | The day each month/quarter donations occur |
-| `Installment_Frequency__c` | How many installments per period (e.g., 1 per month, 2 per month) |
-| `Installment_Period__c` | The period for installments (monthly, quarterly, etc.) |
-| `Status__c` | Current state (Active, Paused, Closed, Lapsed) |
-| `StartDate__c` | When the recurring donation begins |
+| `Installment_Period__c` | How often installments occur (Monthly, Quarterly, Annually, Weekly, etc.) |
+| `Installment_Frequency__c` | Number of installments per period (e.g., 2 for twice a month) |
+| `Day_of_Month__c` | For monthly/quarterly schedules, the day each installment falls on |
+| `StartDate__c` | When the recurring donation becomes active |
 | `EndDate__c` | Optional end date for the commitment |
-| `Planned_Installments__c` | Total expected donation count (null = indefinite) |
-| `Recurring_Type__c` | Fixed (same amount) or Open (variable amount) |
+| `Status__c` | Current state (Active, Paused, Closed, Lapsed, etc.) |
+| `RecurringType__c` | Fixed (same amount each installment) or Open (variable amount) |
+| `Planned_Installments__c` | Total expected installment count; null means open-ended |
 
-## Schedule Management
+### Scheduling Detail
 
-The `RecurringDonationSchedule__c` object stores calculated schedules for easy opportunity lookup and forecasting:
-
-### Schedule Records
-
-For each recurring donation, the system generates schedule records containing:
-
-- **Installment Number**: Sequential count (1, 2, 3, etc.)
-- **Scheduled Opportunity Close Date**: When the opportunity should close
-- **Planned Opportunity Amount**: Expected donation amount
-- **Status**: Scheduled, Paid, Overdue, or Skipped
-
-### Automatic Opportunity Creation
-
-The system automatically creates opportunities on recurring donations through:
-
-1. **Evaluation Logic**: `RD2_OpportunityEvaluation_BATCH` evaluates each recurring donation against its schedule
-2. **Gap Detection**: Identifies missing opportunities between last created and next expected
-3. **Bulk Creation**: Generates opportunities for all due recurring donations in a batch job
-4. **Field Mapping**: Maps recurring donation fields to opportunity fields (amount, close date, stage, etc.)
-
-### Opportunity Naming
-
-Opportunities created from recurring donations follow a naming convention:
-
-- Pattern: `[Donor Name] [Installment #] - [Close Date]`
-- Example: `Acme Corp 5 - 2024-05-31`
+For monthly and quarterly schedules, the `Day_of_Month__c` field controls when each installment falls. Setting this to "Last Day of Month" automatically adjusts for months with fewer days (e.g., February). The system generates a `RecurringDonationSchedule__c` record for each expected installment, providing a forward-looking schedule that drives opportunity creation and forecasting.
 
 ## Status and State Management
 
@@ -87,182 +41,127 @@ Opportunities created from recurring donations follow a naming convention:
 
 The system distinguishes between:
 
-- **Status**: User-visible state (Active, Paused, Closed, Lapsed)
-- **State**: Internal tracking state for evaluation (includes intermediate values)
+- **Status** — the user-visible field on the Recurring_Donation__c record (Active, Lapsed, Closed, Paused, etc.)
+- **State** — an internal value used by the evaluation service to determine whether opportunities should be created for a given recurring donation
 
-### Status Transitions
+The `RecurringDonationStatusMapping__mdt` custom metadata type maps each status picklist value to an internal state. This allows organizations to define which statuses should trigger automatic installment creation, which should pause creation, and which should prevent any further installments.
 
-| From Status | To Status | Trigger |
-|-------------|-----------|---------|
-| Active | Paused | User action or automation |
-| Active | Closed | User sets end date |
-| Paused | Active | User resumes |
-| Active | Lapsed | Auto-detection (e.g., no opportunity created when expected) |
+Status mappings are configured through **NPPatch Settings > Recurring Donations > Status Mapping**.
 
-### Status-to-State Mapping
+### Status Automation
 
-The `RecurringDonationStatusMapping__mdt` custom metadata type maps user-visible statuses to internal states for opportunity creation evaluation. This allows organizations to customize which statuses should:
+NPPatch can automatically update a recurring donation's status when no payment activity is detected for a configurable number of days. This is configured through **NPPatch Settings > Recurring Donations > Status Automation**, which exposes:
 
-- Trigger automatic opportunity creation
-- Prevent further opportunities
-- Allow manual opportunity entry only
+- **Days for Lapsed** — how many days of inactivity before setting the status to the lapsed value
+- **Days for Closed** — how many days of inactivity before setting the status to the closed value
+- **Lapsed Status Value** — which picklist value to use for lapsed
+- **Closed Status Value** — which picklist value to use for closed
 
-## Change Logging
+`RD2_StatusAutomationService` runs these checks as part of the recurring donation batch evaluation process.
 
-The system provides complete audit trails through the `RecurringDonationChangeLog__c` object:
+## Installment Opportunity Creation
 
-### Tracked Changes
+The system creates installment opportunities automatically through `RD2_OpportunityEvaluation_BATCH`, a scheduled batch job that evaluates all active recurring donations and generates opportunities for any upcoming installments that don't yet exist.
 
-Every modification to a recurring donation records:
+The evaluation process:
 
-- **Field Changed**: Which field was modified
-- **Old Value**: Previous value
-- **New Value**: New value
-- **Change Type**: Create, Update, Status Change, Schedule Change
-- **Timestamp**: When the change occurred
+1. Loads the recurring donation's schedule (`RecurringDonationSchedule__c` records)
+2. Identifies installment dates within the configured forecast window (default: 12 months)
+3. Checks whether an opportunity already exists for each date using `RD2_OpportunityMatcher`
+4. Creates new opportunities for any dates that don't have a match, applying the configured stage, record type, and campaign
+5. Closes or deletes open opportunities for recurring donations that have been closed, following the `Open_Opportunity_Behavior__c` setting
 
-### Change Log Viewer UI
+Installment opportunities are named automatically when `EnableAutomaticNaming__c` is enabled in Recurring Donations Settings.
 
-The `rd2ChangeLog` Lightning Web Component displays change history with:
+### First Installment Creation
 
-- Chronological list of all changes
-- Field-level detail (old value to new value)
-- Change reason if provided
-- User who made the change
+The `InstallmentOppFirstCreateMode__c` setting controls whether the first installment is created synchronously (in the same transaction as the RD save) or asynchronously (queued for later processing). For most use cases, synchronous creation provides immediate feedback to the user.
 
-### RD2_ChangeView Class
+## Pausing Recurring Donations
 
-Server-side controller providing:
+The `rd2PauseForm` Lightning component allows users to temporarily pause a recurring donation. During a pause:
 
-- `getChanges(Id recurringDonationId)`: Retrieves change log records
-- Filtering by change type
-- Formatting for display
+- The recurring donation's status is set to the configured paused value
+- The evaluation service skips installment creation for the paused period
+- An optional resume date can be specified, after which the system automatically restores active status
 
-## Recurring Donations Settings
+Pause history is visible on the recurring donation record through the change log.
 
-Configuration through `Recurring_Donations_Settings__c`:
+## Change Log
+
+When `EnableChangeLog__c` is enabled in Recurring Donations Settings, every significant change to a recurring donation is recorded in a `RecurringDonationChangeLog__c` record. The change log captures:
+
+- Which fields changed
+- The previous and new values
+- The type of change (schedule change, status change, amount change, etc.)
+- When the change occurred and who made it
+
+The `rd2ChangeLog` Lightning component displays this history on the recurring donation record page. `RD2_ChangeLogService` handles writing change log records, and `RD2_ChangeLogSelector` retrieves them for display.
+
+## Sustainer Status Tracking
+
+`RD2_SustainerEvaluationService` automatically marks Contacts and Accounts as sustainers based on whether they have active recurring donations. Sustainer status is recalculated when recurring donations are created, updated, or closed, and can be used to segment donors in reports and lists.
+
+## Recurring Donation Settings
+
+All recurring donation settings are accessible through **NPPatch Settings > Recurring Donations**. The key settings are:
 
 | Setting | Purpose |
 |---------|---------|
-| Enhanced Recurring Donations Enabled | Activates RD2 vs. legacy system |
-| Change Log Enabled | Enables automatic change tracking |
-| Auto-Create Opportunities | Enables automatic opportunity generation |
-| Default Installment Period | Default period when creating new RD |
-| Default Day of Month | Default day when creating monthly donations |
-| Default Recurring Type | Fixed vs. Open commitment |
-| Enable Elevate | Enables integration with Elevate payment platform |
+| `Open_Opportunity_Behavior__c` | What to do with open installment opps when an RD is closed |
+| `Maximum_Donations__c` | Maximum number of installments to generate at one time |
+| `Opportunity_Forecast_Months__c` | How many months forward to generate installments |
+| `EnableChangeLog__c` | Whether to record change history on RD records |
+| `EnableAutomaticNaming__c` | Whether to auto-name installment opportunities |
+| `Record_Type__c` | Record type to use for generated installment opportunities |
+| `InstallmentOppStageName__c` | Stage name for auto-created installments |
 
-## Advanced Features
+## Custom Field Mapping
 
-### Commitment Service
-
-The `RD2_CommitmentService` class provides:
-
-- Creating new recurring donations with validation
-- Updating recurring donation fields with change logging
-- Calculating next expected payment date
-- Validating schedules against existing opportunities
-
-### Sustainer Status Tracking
-
-The `RD2_SustainerEvaluationService` class automatically:
-
-- Marks accounts/contacts with active recurring donations as "Sustainer"
-- Updates sustainer status when recurring donations change
-- Supports dashboard and reporting views of sustainer segments
-
-### Custom Field Mapping
-
-The `RD2_CustomFieldMapper` class enables:
-
-- Mapping custom fields from opportunity to recurring donation
-- Custom field sync on schedule updates
-- Custom field validation
-
-## RD2 User Interface Components
-
-### Recurring Donation Entry Form (rd2EntryForm)
-
-Lightning component providing:
-
-- Create/edit recurring donation records
-- Schedule preview showing next N payments
-- Validation of amounts, dates, and frequencies
-- Payment method selection (if Elevate enabled)
-
-### Pause Form (rd2PauseForm)
-
-Component for temporarily pausing recurring donations:
-
-- Select pause start date
-- Auto-resume option with resume date
-- Preserves schedule integrity
-
-### Manage Recurring Donations (rd2ManageRD)
-
-Component for viewing active recurring donations:
-
-- List view with key metrics
-- Quick actions (pause, cancel, edit)
-- Donor timeline
+`RD2_CustomFieldMapper` allows custom fields on the Recurring Donation to be mapped to corresponding fields on generated installment opportunities. This is useful for passing donor segment, fund, or campaign information through to the opportunity automatically.
 
 ## Key Classes
 
-### RD2_AppView
-View model for RD2 UI providing configuration and metadata:
+**`RD2_RecurringDonations_TDTM`** — the trigger handler for `Recurring_Donation__c`; delegates to the evaluation service for schedule generation and opportunity management.
 
-- Installment period options
-- Frequency options with permissions
-- Closed status values for opportunities
-- Multi-currency settings
-- Elevate customer flag
-- Change log enabled flag
+**`RD2_OpportunityEvaluationService`** — core service that determines which installment opportunities need to be created, updated, or closed for a given set of recurring donations.
 
-### RD2_Settings
-Manages access to recurring donations settings with:
+**`RD2_ScheduleService`** — calculates installment dates and amounts based on the recurring donation's period, frequency, and day-of-month configuration.
 
-- Caching of setting values
-- Feature flag checking
-- Default value application
+**`RD2_OpportunityMatcher`** — matches existing opportunities to expected installment dates to avoid duplicate creation.
 
-### RD2_SaveRequest
-Request object for saving recurring donations containing:
+**`RD2_ValidationService`** — validates recurring donation fields before save, enforcing business rules about required fields, valid date ranges, and status transitions.
 
-- Recurring donation data
-- Custom field values
-- Change reason
-- User context
+**`RD2_Settings`** — wrapper around `Recurring_Donations_Settings__c` with typed accessors for all configuration fields.
 
-### RD2_ChangeLogSelector
-Query utility for retrieving change log records:
+**`RD2_EntryFormController`** — Apex controller for the `rd2EntryForm` Lightning component.
 
-- Filter by recurring donation ID
-- Sort by timestamp
-- Pagination support
+**`RD2_ChangeLogService`** / **`RD2_ChangeLogController`** — write and retrieve change log records.
+
+**`RD2_StatusAutomationService`** / **`RD2_StatusAutomationSettings_CTRL`** — automate status transitions based on inactivity thresholds.
+
+**`RD2_SustainerEvaluationService`** — evaluate and update sustainer status on related contacts and accounts.
+
+## User Interface Components
+
+**`rd2EntryForm`** — create and edit recurring donation records; includes schedule preview showing upcoming installments.
+
+**`rd2PauseForm`** — temporarily pause a recurring donation with an optional auto-resume date.
+
+**`rd2ChangeLog`** — display the full change history for a recurring donation.
+
+**`rdScheduleVisualizer`** — visualize upcoming installment dates and amounts.
+
+**`rd2StatusMappingSettings`** / **`rd2StatusAutomationSettings`** — configure status mappings and automation thresholds (accessed through NPPatch Settings).
 
 ## Integration Points
 
-- **Opportunities**: Recurring donations automatically create and manage opportunities
-- **Contacts/Accounts**: Link to individual donors or organizations
-- **Campaigns**: Opportunities can be linked to campaigns for tracking source
-- **Elevate Integration**: Payment processing and reconciliation for online giving
-- **Allocations**: Recurring donations support allocation of donations across funds
-- **Rollups**: Recurring donation values can be rolled up to account/contact
-
-## Use Cases
-
-**Monthly Sustaining Donors**: Create recurring donations for monthly commitments with automatic opportunity creation every month.
-
-**Annual Pledges**: Track multi-year commitments with opportunity creation on anniversary dates.
-
-**Flexible Giving Programs**: Use "Open" recurring donations for variable pledge amounts, calculated each period.
-
-**Pause and Resume**: Temporarily pause seasonal donors with automatic resume dates.
-
-**Audit and Compliance**: Maintain complete change history for recurring donation modifications for nonprofit regulatory requirements.
-
-**Donor Lifecycle Reporting**: Filter sustainer status to identify long-term donors for stewardship programs.
+- **Opportunities** — recurring donations drive automatic installment opportunity creation and management
+- **Contacts/Accounts** — linked as the donor; sustainer status is written back to these records
+- **Campaigns** — installment opportunities can inherit the campaign from the recurring donation
+- **Allocations** — recurring donation installment opportunities support allocation of amounts across funds
+- **Customizable Rollups** — recurring donation values can be rolled up to Account and Contact
 
 ---
 
-*This documentation was generated by AI and still needs human review. If you see something that could be improved, please create an issue or email admin@nppatch.com.*
+*If you see something that could be improved, please create an issue or email admin@nppatch.com.*
