@@ -131,7 +131,6 @@ public with sharing class STG_PanelRelAuto_CTRL extends STG_Panel {
 
         Savepoint sp = Database.setSavepoint();
         try {
-            STG_SettingsManager_CTRL.idPanelCurrent = idPanel();
             if (acIdDelete != null) {
                 Relationship_Auto_Create__c ac = new Relationship_Auto_Create__c(Id = acIdDelete);
                 delete ac;

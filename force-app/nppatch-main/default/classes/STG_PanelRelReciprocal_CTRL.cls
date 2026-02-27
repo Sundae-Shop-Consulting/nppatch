@@ -115,7 +115,6 @@ public with sharing class STG_PanelRelReciprocal_CTRL extends STG_Panel {
 
         Savepoint sp = Database.setSavepoint();
         try {
-            STG_SettingsManager_CTRL.idPanelCurrent = idPanel();
             if (rlIdDelete != null) {
                 Relationship_Lookup__c rl = new Relationship_Lookup__c(Id = rlIdDelete);
                 delete rl;

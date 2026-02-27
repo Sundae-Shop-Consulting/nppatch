@@ -359,7 +359,7 @@ public with sharing class STG_InstallScript_TEST {
 
         Opportunity_Naming_Settings__c settings = UTIL_ListCustomSettingsFacade.getMapOppNamingSettings().values()[0];
 
-        System.assertEquals(STG_PanelOppNaming_CTRL.AttributionOptions.Contact_Donations.name(), settings.Attribution__c,
+        System.assertEquals(OPP_AttributionSettings.AttributionOptions.Contact_Donations.name(), settings.Attribution__c,
             'The Attribution should be updated to the AttributionOptions value');
     }
 

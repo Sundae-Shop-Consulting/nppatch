@@ -1,0 +1,14 @@
+.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    position: relative;
+}
+
+.panel-container { padding: 1rem; }
+.panel-header { margin-bottom: 1rem; }
+.panel-body { display: flex; flex-direction: column; gap: 1.5rem; }
+.section-description { font-size: 0.8125rem; color: #706e6b; margin-top: 0.25rem; }
+.empty-state { display: flex; align-items: center; padding: 1rem; background: #f7f9fb; border-radius: 0.25rem; }
+.empty-message { font-size: 0.875rem; color: #2e844a; margin: 0; }

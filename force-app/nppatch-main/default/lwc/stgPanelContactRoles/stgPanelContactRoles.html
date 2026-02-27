@@ -1,0 +1,262 @@
+<template>
+    <template if:true={isLoading}>
+        <div class="loading-container">
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </div>
+    </template>
+
+    <template if:true={_hasError}>
+        <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+            <span class="slds-assistive-text">error</span>
+            <p>{_errorMessage}</p>
+        </div>
+    </template>
+
+    <template if:true={isReady}>
+        <div class="panel-container">
+            <div class="panel-header">
+                <div class="slds-grid slds-grid_vertical-align-center">
+                    <div class="slds-col">
+                        <h2 class="slds-text-heading_small">
+                            <span class="slds-text-color_weak">{labels.sectionLabel}</span>
+                            <span class="slds-text-color_weak"> &bull; </span>
+                            {labels.pageLabel}
+                        </h2>
+                    </div>
+                    <div class="slds-col_bump-left">
+                        <template if:true={canEdit}>
+                            <lightning-button label={labels.edit} onclick={handleEdit} variant="neutral"></lightning-button>
+                        </template>
+                    </div>
+                </div>
+                <p class="section-description">{sectionDescription}</p>
+            </div>
+
+            <div class="panel-body">
+                <!-- Section 1: Opportunity Contact Roles -->
+                <h3 class="section-subheader">Opportunity Contact Roles</h3>
+
+                <div class="setting-row">
+                    <label class="setting-label">{labels.defaultRole}</label>
+                    <p class="setting-help">{labels.helpOCR}</p>
+                    <template if:false={_isEditMode}>
+                        <lightning-combobox label={labels.defaultRole}
+                            value={_conSettings.Opportunity_Contact_Role_Default_role__c}
+                            options={ocrRoleOptionsWithNone} disabled
+                            variant="label-hidden" class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                    <template if:true={_isEditMode}>
+                        <lightning-combobox label={labels.defaultRole}
+                            value={_workingCopyCon.Opportunity_Contact_Role_Default_role__c}
+                            options={ocrRoleOptionsWithNone}
+                            onchange={handleDefaultRoleChange}
+                            variant="label-hidden" class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                </div>
+
+                <div class="setting-row">
+                    <label class="setting-label">{labels.orgRole}</label>
+                    <p class="setting-help">{labels.helpOrgRole}</p>
+                    <template if:false={_isEditMode}>
+                        <lightning-combobox label={labels.orgRole}
+                            value={_conSettings.Contact_Role_for_Organizational_Opps__c}
+                            options={ocrRoleOptionsWithNone} disabled
+                            variant="label-hidden" class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                    <template if:true={_isEditMode}>
+                        <lightning-combobox label={labels.orgRole}
+                            value={_workingCopyCon.Contact_Role_for_Organizational_Opps__c}
+                            options={ocrRoleOptionsWithNone}
+                            onchange={handleOrgRoleChange}
+                            variant="label-hidden" class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                </div>
+
+                <div class="setting-row">
+                    <label class="setting-label">{labels.honoreeRole}</label>
+                    <p class="setting-help">{labels.helpHonoreeRole}</p>
+                    <template if:false={_isEditMode}>
+                        <lightning-combobox label={labels.honoreeRole}
+                            value={_conSettings.Honoree_Opportunity_Contact_Role__c}
+                            options={ocrRoleOptionsWithNone} disabled
+                            variant="label-hidden" class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                    <template if:true={_isEditMode}>
+                        <lightning-combobox label={labels.honoreeRole}
+                            value={_workingCopyCon.Honoree_Opportunity_Contact_Role__c}
+                            options={ocrRoleOptionsWithNone}
+                            onchange={handleHonoreeRoleChange}
+                            variant="label-hidden" class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                </div>
+
+                <div class="setting-row">
+                    <label class="setting-label">{labels.notifRole}</label>
+                    <p class="setting-help">{labels.helpNotifRole}</p>
+                    <template if:false={_isEditMode}>
+                        <lightning-combobox label={labels.notifRole}
+                            value={_conSettings.Notification_Recipient_Opp_Contact_Role__c}
+                            options={ocrRoleOptionsWithNone} disabled
+                            variant="label-hidden" class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                    <template if:true={_isEditMode}>
+                        <lightning-combobox label={labels.notifRole}
+                            value={_workingCopyCon.Notification_Recipient_Opp_Contact_Role__c}
+                            options={ocrRoleOptionsWithNone}
+                            onchange={handleNotifRoleChange}
+                            variant="label-hidden" class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                </div>
+
+                <!-- Section 2: Household Contact Roles -->
+                <h3 class="section-subheader">Household Contact Roles</h3>
+
+                <div class="setting-row">
+                    <label class="setting-label">{labels.hhRolesOn}</label>
+                    <p class="setting-help">{labels.helpHHOCR}</p>
+                    <template if:false={_isEditMode}>
+                        <lightning-input type="toggle" label={labels.hhRolesOn}
+                            checked={_hhSettings.Household_Contact_Roles_On__c} disabled
+                            variant="label-hidden"
+                            message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                        </lightning-input>
+                    </template>
+                    <template if:true={_isEditMode}>
+                        <lightning-input type="toggle" label={labels.hhRolesOn}
+                            checked={_workingCopyHH.Household_Contact_Roles_On__c}
+                            onchange={handleHHRolesOnChange} variant="label-hidden"
+                            message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                        </lightning-input>
+                    </template>
+                </div>
+
+                <div class="setting-row">
+                    <label class="setting-label">{labels.hhMemberRole}</label>
+                    <template if:false={_isEditMode}>
+                        <lightning-combobox label={labels.hhMemberRole}
+                            value={_hhSettings.Household_Member_Contact_Role__c}
+                            options={ocrRoleOptionsWithNone} disabled
+                            variant="label-hidden" class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                    <template if:true={_isEditMode}>
+                        <lightning-combobox label={labels.hhMemberRole}
+                            value={_workingCopyHH.Household_Member_Contact_Role__c}
+                            options={ocrRoleOptionsWithNone}
+                            onchange={handleHHMemberRoleChange}
+                            variant="label-hidden" class="picklist-input">
+                        </lightning-combobox>
+                    </template>
+                </div>
+
+                <div class="setting-row">
+                    <label class="setting-label">{labels.hhExcludedRT}</label>
+                    <p class="setting-help">{labels.helpHHExcludedRT}</p>
+                    <template if:false={_isEditMode}>
+                        <span class="setting-value">{hhExcludedRTDisplay}</span>
+                    </template>
+                    <template if:true={_isEditMode}>
+                        <lightning-dual-listbox label={labels.hhExcludedRT}
+                            source-label="Available" selected-label="Excluded"
+                            options={_contactRecordTypes} value={selectedHHExcludedRT}
+                            onchange={handleHHExcludedRTChange} variant="label-hidden">
+                        </lightning-dual-listbox>
+                    </template>
+                </div>
+
+                <!-- Section 3: Soft Credit (only when CRLP is disabled) -->
+                <template if:true={showSoftCreditSection}>
+                    <h3 class="section-subheader">Soft Credit</h3>
+
+                    <div class="setting-row">
+                        <label class="setting-label">{labels.alwaysRollupPrimary}</label>
+                        <p class="setting-help">{labels.helpAlwaysRollupPrimary}</p>
+                        <template if:false={_isEditMode}>
+                            <lightning-input type="toggle" label={labels.alwaysRollupPrimary}
+                                checked={_hhSettings.Always_Rollup_to_Primary_Contact__c} disabled
+                                variant="label-hidden"
+                                message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                            </lightning-input>
+                        </template>
+                        <template if:true={_isEditMode}>
+                            <lightning-input type="toggle" label={labels.alwaysRollupPrimary}
+                                checked={_workingCopyHH.Always_Rollup_to_Primary_Contact__c}
+                                onchange={handleAlwaysRollupPrimaryChange} variant="label-hidden"
+                                message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                            </lightning-input>
+                        </template>
+                    </div>
+
+                    <div class="setting-row">
+                        <label class="setting-label">{labels.enableSoftCredit}</label>
+                        <p class="setting-help">{labels.helpSoftCreditRollups}</p>
+                        <template if:false={_isEditMode}>
+                            <lightning-input type="toggle" label={labels.enableSoftCredit}
+                                checked={_hhSettings.Enable_Soft_Credit_Rollups__c} disabled
+                                variant="label-hidden"
+                                message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                            </lightning-input>
+                        </template>
+                        <template if:true={_isEditMode}>
+                            <lightning-input type="toggle" label={labels.enableSoftCredit}
+                                checked={_workingCopyHH.Enable_Soft_Credit_Rollups__c}
+                                onchange={handleEnableSoftCreditChange} variant="label-hidden"
+                                message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                            </lightning-input>
+                        </template>
+                    </div>
+
+                    <div class="setting-row">
+                        <label class="setting-label">{labels.softCreditRoles}</label>
+                        <p class="setting-help">{labels.helpSoftCreditRoles}</p>
+                        <template if:false={_isEditMode}>
+                            <span class="setting-value">{softCreditRolesDisplay}</span>
+                        </template>
+                        <template if:true={_isEditMode}>
+                            <lightning-dual-listbox label={labels.softCreditRoles}
+                                source-label="Available" selected-label="Selected"
+                                options={_ocrRoleOptions} value={selectedSoftCreditRoles}
+                                onchange={handleSoftCreditRolesChange} variant="label-hidden">
+                            </lightning-dual-listbox>
+                        </template>
+                    </div>
+
+                    <div class="setting-row">
+                        <label class="setting-label">{labels.matchedDonorRole}</label>
+                        <p class="setting-help">{labels.helpMatchedDonorRole}</p>
+                        <template if:false={_isEditMode}>
+                            <lightning-combobox label={labels.matchedDonorRole}
+                                value={_hhSettings.Matched_Donor_Role__c}
+                                options={ocrRoleOptionsWithNone} disabled
+                                variant="label-hidden" class="picklist-input">
+                            </lightning-combobox>
+                        </template>
+                        <template if:true={_isEditMode}>
+                            <lightning-combobox label={labels.matchedDonorRole}
+                                value={_workingCopyHH.Matched_Donor_Role__c}
+                                options={ocrRoleOptionsWithNone}
+                                onchange={handleMatchedDonorRoleChange}
+                                variant="label-hidden" class="picklist-input">
+                            </lightning-combobox>
+                        </template>
+                    </div>
+                </template>
+            </div>
+
+            <template if:true={_isEditMode}>
+                <div class="panel-footer">
+                    <lightning-button label={labels.save} onclick={handleSave} variant="brand" disabled={_isSaving} class="slds-m-right_x-small"></lightning-button>
+                    <lightning-button label={labels.cancel} onclick={handleCancel} variant="neutral" disabled={_isSaving}></lightning-button>
+                </div>
+            </template>
+        </div>
+    </template>
+</template>

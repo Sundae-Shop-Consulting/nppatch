@@ -186,7 +186,6 @@ public with sharing virtual class STG_Panel {
     * @return void
     */
     public virtual PageReference saveSettings() {
-        STG_SettingsManager_CTRL.idPanelCurrent = idPanel();
         Savepoint sp = Database.setSavepoint();
         try {
 	        stgService.saveAll();
@@ -205,7 +204,6 @@ public with sharing virtual class STG_Panel {
     * @return null
     */
     public virtual PageReference editSettings() {
-        STG_SettingsManager_CTRL.idPanelCurrent = idPanel();
         isEditMode = true;
         return null;
     }
@@ -215,7 +213,6 @@ public with sharing virtual class STG_Panel {
     * @return null
     */
     public virtual PageReference cancelEdit() {
-        STG_SettingsManager_CTRL.idPanelCurrent = idPanel();
         isEditMode = false;
         return null;
     }

@@ -68,7 +68,6 @@ public without sharing class STG_PanelHealthCheck_CTRL extends STG_Panel {
     * @return PageReference 
     */
     public override PageReference saveSettings() {
-        STG_SettingsManager_CTRL.idPanelCurrent = idPanel();
         Savepoint sp = Database.setSavepoint();
         try {
             Boolean hasUpdatePermission = UTIL_Describe.getObjectDescribe(
@@ -699,7 +698,7 @@ public without sharing class STG_PanelHealthCheck_CTRL extends STG_Panel {
     * @description Verifies that no OCR settings are conflicting.
     */
     public void verifyOppContactRolesSettings() {
-        List<String> invalidOCRSettings = STG_PanelContactRoles_CTRL.getInvalidOCRSettings();
+        List<String> invalidOCRSettings = getInvalidOCRSettings();
         if (invalidOCRSettings.isEmpty()) {
             createDR(Label.healthLabelOCRSettings, statusSuccess, null, Label.healthDetailsOCRSettingsValid);
         } else {
@@ -709,6 +708,72 @@ public without sharing class STG_PanelHealthCheck_CTRL extends STG_Panel {
             }
             createDR(Label.healthLabelOCRSettings, statusError, invalidOCRErrors, Label.healthDetailsOCRSettingsResolution);
         }
+    }
+
+    /*********************************************************************************************************
+    * @description Returns a list of pairs (settingLabel1, settingLabel2) for OCR settings that conflict
+    * with each other. Moved from STG_PanelContactRoles_CTRL.
+    */
+    private static List<String> getInvalidOCRSettings() {
+        List<String> results = new List<String>();
+
+        String defaultRole = STG_Panel.stgService.stgCon.Opportunity_Contact_Role_Default_role__c;
+        String defaultRoleLabel = UTIL_Describe.getFieldLabel('Contacts_And_Orgs_Settings__c', 'Opportunity_Contact_Role_Default_role__c');
+
+        String softCreditRoles = STG_Panel.stgService.stgHH.Soft_Credit_Roles__c;
+        String softCreditRolesLabel = UTIL_Describe.getFieldLabel('Households_Settings__c', 'Soft_Credit_Roles__c');
+        String hhMemberRole = STG_Panel.stgService.stgHH.Household_Member_Contact_Role__c;
+        String hhMemberRoleLabel = UTIL_Describe.getFieldLabel('Households_Settings__c', 'Household_Member_Contact_Role__c');
+        String matchedDonorRole = STG_Panel.stgService.stgHH.Matched_Donor_Role__c;
+        String matchedDonorRoleLabel = UTIL_Describe.getFieldLabel('Households_Settings__c', UTIL_Namespace.StrTokenNSPrefix('Matched_Donor_Role__c'));
+        String honoreeRole = STG_Panel.stgService.stgCon.Honoree_Opportunity_Contact_Role__c;
+        String honoreeRoleLabel = UTIL_Describe.getFieldLabel('Contacts_And_Orgs_Settings__c', UTIL_Namespace.StrTokenNSPrefix('Honoree_Opportunity_Contact_Role__c'));
+        String notificationRole = STG_Panel.stgService.stgCon.Notification_Recipient_Opp_Contact_Role__c;
+        String notificationRoleLabel = UTIL_Describe.getFieldLabel('Contacts_And_Orgs_Settings__c', UTIL_Namespace.StrTokenNSPrefix('Notification_Recipient_Opp_Contact_Role__c'));
+
+        if (!String.isBlank(defaultRole)) {
+            if (!String.isBlank(softCreditRoles)) {
+                for (String softRole : softCreditRoles.split(';')) {
+                    if (softRole.equals(defaultRole)) {
+                        results.add(defaultRoleLabel);
+                        results.add(softCreditRolesLabel);
+                    }
+                }
+            }
+            if (defaultRole == hhMemberRole) {
+                results.add(defaultRoleLabel);
+                results.add(hhMemberRoleLabel);
+            }
+            if (defaultRole == matchedDonorRole) {
+                results.add(defaultRoleLabel);
+                results.add(matchedDonorRoleLabel);
+            }
+            if (defaultRole == honoreeRole) {
+                results.add(defaultRoleLabel);
+                results.add(honoreeRoleLabel);
+            }
+            if (defaultRole == notificationRole) {
+                results.add(defaultRoleLabel);
+                results.add(notificationRoleLabel);
+            }
+        }
+
+        if (String.isBlank(hhMemberRole)) {
+            return results;
+        }
+        if (hhMemberRole == matchedDonorRole) {
+            results.add(hhMemberRoleLabel);
+            results.add(matchedDonorRoleLabel);
+        }
+        if (hhMemberRole == honoreeRole) {
+            results.add(hhMemberRoleLabel);
+            results.add(honoreeRoleLabel);
+        }
+        if (hhMemberRole == notificationRole) {
+            results.add(hhMemberRoleLabel);
+            results.add(notificationRoleLabel);
+        }
+        return results;
     }
 
     /*********************************************************************************************************
