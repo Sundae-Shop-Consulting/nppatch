@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Level_Assignment_Batch_Size__c</fullName>
     <defaultValue>200</defaultValue>
-    <description>Used by the Levels Assignment engine</description>
+    <description>Controls the number of records processed in each batch execution of the Level Assignment job. Default is 200. Lower values reduce the risk of governor limit errors in orgs with complex Level definitions or many Levels, but increase overall job execution time. Higher values process faster but may hit CPU or query limits. Adjust if Level Assignment batch jobs are failing due to governor limits.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Number of records per batch to process when recalculating levels.</inlineHelpText>
+    <inlineHelpText>Number of records per batch when recalculating Levels. Default is 200. Lower if jobs hit governor limits.</inlineHelpText>
     <label>Level Assignment Batch Size</label>
     <precision>6</precision>
     <required>false</required>

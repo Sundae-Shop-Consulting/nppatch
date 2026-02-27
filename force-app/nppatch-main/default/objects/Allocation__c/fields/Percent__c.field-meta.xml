@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Percent__c</fullName>
-    <description>Percent of Opportunity amount allocated to this Allocation&apos;s General Accounting Unit. If you later modify the Opportunity amount, NPPatch will update the allocation amount on the General Accounting Unit.</description>
+    <description>When populated, NPPatch automation recalculates Amount__c whenever the parent Opportunity or Payment amount changes. Total percentages across all Allocations on an Opportunity should not exceed 100%.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Percent of Opportunity amount allocated to this Allocation&apos;s General Accounting Unit. If you later modify the Opportunity amount, NPPatch will update the allocation amount on the General Accounting Unit.</inlineHelpText>
+    <inlineHelpText>The percentage of the Opportunity amount designated to this fund. The dollar amount will update automatically if the Opportunity amount changes.</inlineHelpText>
     <label>Percent</label>
     <precision>9</precision>
     <required>false</required>

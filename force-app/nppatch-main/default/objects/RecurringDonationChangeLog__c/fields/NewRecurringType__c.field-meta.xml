@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>NewRecurringType__c</fullName>
-    <description>The new Recurring Type for the related Recurring Donation.</description>
+    <description>Captured from the Recurring Donation&apos;s Recurring Type field after the change, such as Open or Fixed.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The new Recurring Type for the related Recurring Donation.</inlineHelpText>
+    <inlineHelpText>The recurring type after this change (Open or Fixed).</inlineHelpText>
     <label>New Recurring Type</label>
     <length>255</length>
     <required>false</required>

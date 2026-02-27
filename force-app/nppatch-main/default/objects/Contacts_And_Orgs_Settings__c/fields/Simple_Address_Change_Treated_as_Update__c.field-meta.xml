@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Simple_Address_Change_Treated_as_Update__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>If checked, changes to a single Contact or Account address field update the existing Address, rather than creating a new Address.</description>
+    <description>Controls how NPPatch handles minor address edits (changes to a single address field like Street, City, or Zip). When checked, single-field changes update the existing Address record in place. When unchecked (default), any address change creates a new Address record and marks the previous one as non-default, preserving address history.</description>
     <externalId>false</externalId>
-    <inlineHelpText>If checked, changes to a single Contact or Account address field update the existing Address, rather than creating a new Address.</inlineHelpText>
+    <inlineHelpText>Treat single-field address changes as updates to the existing Address record instead of creating a new Address record.</inlineHelpText>
     <label>Simple Address Change Treated as Update</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

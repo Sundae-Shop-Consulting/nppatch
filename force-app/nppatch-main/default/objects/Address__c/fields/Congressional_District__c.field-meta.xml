@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Congressional_District__c</fullName>
-    <description>The congressional district the Address is in.</description>
+    <description>Populated by an address verification or geocoding service with the U.S. congressional district for this Address.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The congressional district the Address is in.</inlineHelpText>
+    <inlineHelpText>The U.S. congressional district this Address falls within.</inlineHelpText>
     <label>Congressional District</label>
     <length>255</length>
     <required>false</required>

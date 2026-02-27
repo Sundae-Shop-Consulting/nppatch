@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact2_Title__c</fullName>
+    <description>Maps to Contact.Title on the secondary Contact during data import processing.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Contact2.Title</inlineHelpText>
+    <inlineHelpText>Enter the job title of the secondary Contact.</inlineHelpText>
     <label>Contact2 Title</label>
     <length>128</length>
     <required>false</required>

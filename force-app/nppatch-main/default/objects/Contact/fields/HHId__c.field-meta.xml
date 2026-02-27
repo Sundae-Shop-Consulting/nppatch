@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>HHId__c</fullName>
-    <description>Holds the Id of the Household record (either Household Account, or Household object) this Contact is currently associated with (read only).</description>
+    <description>Formula field. Returns the Salesforce ID of this Contact's Household record — either the Household Account ID or the legacy Household object ID, depending on configuration. Read-only.</description>
     <externalId>false</externalId>
     <formula>if(Account.%%%NAMESPACE%%%SYSTEM_AccountType__c==&apos;Household Account&apos;,CASESAFEID(AccountId),CASESAFEID(%%%NAMESPACE%%%Household__c))</formula>
-    <inlineHelpText>Holds the Id of the Household record (either Household Account, or Household object) this Contact is currently associated with (read only).</inlineHelpText>
+    <inlineHelpText>The ID of this Contact's Household record. Used internally by NPPatch automation.</inlineHelpText>
     <label>HHId</label>
     <required>false</required>
     <type>Text</type>

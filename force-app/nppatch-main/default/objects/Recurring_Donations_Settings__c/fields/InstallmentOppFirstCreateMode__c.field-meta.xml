@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>InstallmentOppFirstCreateMode__c</fullName>
-    <description>Specifies the asynchronous processing behavior NPPatch will use to create the first installment Opportunity for Recurring Donations. The default is Synchronous. Other options are Asynchronous and Asynchronous_When_Bulk.</description>
+    <description>Controls whether the first installment Opportunity for a new Recurring Donation is created synchronously (in the same transaction) or asynchronously (via Queueable). Options: "Synchronous" (default), "Asynchronous" (always async), "Asynchronous_When_Bulk" (async only for bulk operations). Use async modes to avoid governor limits when creating many Recurring Donations at once.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Specifies how NPPatch will create the first installment Opportunity for Recurring Donations. The default is Synchronous.</inlineHelpText>
+    <inlineHelpText>How the first installment Opportunity is created: Synchronous (default), Asynchronous, or Asynchronous When Bulk. Use async for bulk operations.</inlineHelpText>
     <label>Installment Opportunity Async Behavior</label>
     <length>255</length>
     <required>false</required>

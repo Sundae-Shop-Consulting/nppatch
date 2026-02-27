@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Field_Mapping_Method__c</fullName>
-    <description>Defines the way fields on the NPPatch Data Import record are mapped to other objects in Salesforce. The options are Help Text or Data Import Field Mapping.</description>
+    <description>Controls which mapping engine the data import process uses to map Data Import fields to target objects. Help Text uses legacy field-level help text values to define mappings. Data Import Field Mapping uses custom metadata records for a more flexible, configurable approach.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Defines the way fields on the NPPatch Data Import record are mapped to other objects in Salesforce. The options are Help Text or Data Import Field Mapping.</inlineHelpText>
+    <inlineHelpText>Select Help Text for legacy help text-based mappings, or Data Import Field Mapping for the newer custom metadata-based mapping approach.</inlineHelpText>
     <label>Field Mapping Method</label>
     <length>40</length>
     <required>false</required>

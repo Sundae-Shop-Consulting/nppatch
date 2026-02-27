@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Opp_Rollup_Scheduled_Job_Id__c</fullName>
-    <description>Id for the currently scheduled Opportunity Rollup Job</description>
+    <description>Stores the Salesforce CronTrigger ID of the currently scheduled Opportunity rollup batch job. This field is automatically populated when the rollup job is scheduled and cleared when it is unscheduled. Do not modify this value manually.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Id for the currently scheduled Opportunity Rollup Job</inlineHelpText>
+    <inlineHelpText>System-managed ID of the scheduled Opportunity rollup batch job. Do not edit manually.</inlineHelpText>
     <label>Opp Rollup Scheduled Job Id</label>
     <length>255</length>
     <required>false</required>

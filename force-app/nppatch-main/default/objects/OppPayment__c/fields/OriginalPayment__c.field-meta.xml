@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>OriginalPayment__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>The original payment transaction associated with this record.</description>
+    <description>Lookup to the original Payment record when this record represents a refund or chargeback. Set automatically when a debit transaction is created against an existing payment.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The original payment transaction associated with this record.</inlineHelpText>
+    <inlineHelpText>The original payment that this refund or chargeback was issued against.</inlineHelpText>
     <label>Original Payment</label>
     <referenceTo>OppPayment__c</referenceTo>
     <relationshipLabel>Refunds</relationshipLabel>

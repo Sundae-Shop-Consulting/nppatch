@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Source_Field_API_Name__c</fullName>
-    <description>The API name of the field on the NPPatch Data Import object.</description>
+    <description>Stores the API name of the source field on the Data Import object (DataImport__c). The data import process reads values from this field and maps them to the corresponding target field on the destination object.</description>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
-    <inlineHelpText>The API name of the field on the NPPatch Data Import object.</inlineHelpText>
+    <inlineHelpText>Enter the API name of the field on the Data Import object that contains the source data (e.g., Contact1_Firstname__c).</inlineHelpText>
     <label>Source Field API Name</label>
     <length>255</length>
     <required>true</required>

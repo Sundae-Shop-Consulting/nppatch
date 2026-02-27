@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Matching_Gift_Amount_Max__c</fullName>
-    <description>The maximum amount the company will match on any single gift.</description>
+    <description>Manually entered. The maximum amount this company will match on a single employee gift.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The maximum amount the company will match on any single gift.</inlineHelpText>
+    <inlineHelpText>The highest gift amount this company will match. Gifts above this amount are only matched up to this limit.</inlineHelpText>
     <label>Matching Gift Amount Max</label>
     <precision>18</precision>
     <required>false</required>

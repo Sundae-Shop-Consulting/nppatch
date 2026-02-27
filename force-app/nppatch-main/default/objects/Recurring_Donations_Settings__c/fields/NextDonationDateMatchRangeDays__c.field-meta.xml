@@ -2,13 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>NextDonationDateMatchRangeDays__c</fullName>
     <defaultValue>3</defaultValue>
-    <description>The number of days before or after the Next Donation Date that NPPatch won&apos;t create a new
-            installment Opportunity if the next open Opportunity&apos;s Close Date is changed. Applies only to
-            Recurring Donations where Installment Period is Monthly or Yearly.</description>
+    <description>Defines the tolerance window (in days) around the Next Donation Date. If an open Opportunity's Close Date is changed but still falls within this range of the Next Donation Date, NPPatch will not create a duplicate installment Opportunity. Default is 3. Only applies to Monthly or Yearly installment periods. Increase this value if users frequently adjust close dates slightly.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The number of days before or after the Next Donation Date that NPPatch won&apos;t create a new
-            installment Opportunity if the next open Opportunity&apos;s Close Date is changed. Applies only to
-            Recurring Donations where Installment Period is Monthly or Yearly.</inlineHelpText>
+    <inlineHelpText>Days before/after the Next Donation Date within which a close date change won't trigger a new installment. Default is 3. Monthly/Yearly periods only.</inlineHelpText>
     <label>Next Donation Date Match Range</label>
     <precision>18</precision>
     <required>false</required>

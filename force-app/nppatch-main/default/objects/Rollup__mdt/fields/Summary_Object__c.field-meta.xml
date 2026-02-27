@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Summary_Object__c</fullName>
+    <description>The parent object that receives the rollup result, such as Account, Contact, or General Accounting Unit.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Select the object where the rollup result will be written, such as Account or Contact.</inlineHelpText>
     <label>Target Object</label>
     <referenceTo>EntityDefinition</referenceTo>
     <relationshipLabel>RollupsSummary</relationshipLabel>

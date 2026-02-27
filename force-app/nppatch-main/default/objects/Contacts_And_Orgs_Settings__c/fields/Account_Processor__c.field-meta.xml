@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Account_Processor__c</fullName>
     <defaultValue>"Household Account"</defaultValue>
-    <description>Setting for the Account model. Should be "Household Account", "One-to-One", or "Individual". "Household Account" is the recommended model.</description>
+    <description>Determines which Account model NPPatch uses to relate Contacts to Accounts. Valid values are "Household Account" (recommended), "One-to-One", or "Individual." The Household Account model groups related Contacts under a shared Account. One-to-One creates a dedicated Account per Contact. Changing this after initial configuration requires data migration.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Setting for the Account model. Should be "Household Account", "One-to-One", or "Individual". "Household Account" is the recommended model.</inlineHelpText>
+    <inlineHelpText>Select the Account model: "Household Account" (recommended), "One-to-One", or "Individual." This determines how Contacts relate to Accounts.</inlineHelpText>
     <label>Account Model</label>
     <length>255</length>
     <required>false</required>

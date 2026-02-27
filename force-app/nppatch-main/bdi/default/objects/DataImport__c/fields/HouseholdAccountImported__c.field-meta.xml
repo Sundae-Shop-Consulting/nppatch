@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>HouseholdAccountImported__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Populated by the data import process. Stores the lookup to the Household Account that was created or matched for the primary Contact during import.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Lookup to the Household Account created or matched during import. Automatically populated by the system.</inlineHelpText>
     <label>Household Account Imported</label>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>NPPatch Data Imports</relationshipLabel>

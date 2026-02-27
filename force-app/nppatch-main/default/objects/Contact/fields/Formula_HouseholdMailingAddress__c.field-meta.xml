@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Formula_HouseholdMailingAddress__c</fullName>
-    <description>Formula: Clone of the Household Mailing address (also a Formula)</description>
+    <description>Formula field. Displays the Household Account's billing address (or legacy Household's mailing address). Read-only; update the Account or Address record to change.</description>
     <externalId>false</externalId>
     <formula>IF(%%%NAMESPACE%%%Organization_Type__c == 'Household Account',
 
@@ -11,7 +11,7 @@ Account.BillingCity &amp; IF(ISBLANK(Account.BillingCity), "", ", ") &amp; Accou
 
 Household__r.Formula_MailingAddress__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Formula: Clone of the Household Mailing address (also a Formula)</inlineHelpText>
+    <inlineHelpText>The mailing address from this Contact's Household Account. Read-only.</inlineHelpText>
     <label>Household Mailing Address</label>
     <required>false</required>
     <type>Text</type>

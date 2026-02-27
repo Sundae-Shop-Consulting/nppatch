@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>OppsClosed2YearsAgo__c</fullName>
     <defaultValue>0</defaultValue>
-    <description>Do not manually update. Updated by automatic processes. See excluded Record Types and FY/CY in Household Settings.</description>
+    <description>Calculated by Customizable Rollups. Do not edit manually. The count of won Opportunities closed two years ago related to this Account. Uses the Won Opportunities for Hard Credit filter group. Fiscal vs. calendar year is configured in Household Settings.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The total number of won Opportunities with amount greater than zero related to this Account, closed within the year or fiscal year preceding last year.</inlineHelpText>
+    <inlineHelpText>The number of gifts two years ago for won Opportunities related to this Account.</inlineHelpText>
     <label>Number of Gifts Two Years Ago</label>
     <precision>18</precision>
     <required>false</required>

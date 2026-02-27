@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Number_of_Failures__c</fullName>
+    <description>System-managed counter recording how many Recurring Donation records failed processing in the most recent batch job. Automatically updated after each batch run. Non-zero values indicate errors that should be investigated in the Error Log. Do not modify manually.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Number of Recurring Donations unsuccessfully updated in the last batch operation.</inlineHelpText>
+    <inlineHelpText>System-managed. Recurring Donations that failed processing in the last batch run. Check Error Log for details. Do not edit manually.</inlineHelpText>
     <label>Number of Failures</label>
     <precision>18</precision>
     <required>false</required>

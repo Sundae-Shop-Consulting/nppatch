@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Enable_Soft_Credit_Rollups__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Rolls up Closed/Won Opportunity totals to Contact records based on assigned Opportunity Contact Roles. Soft credit rollups only happen in nightly batches, but you can run them manually from the Rollup Donations Batch settings.</description>
+    <description>Enables rolling up Closed/Won Opportunity amounts to Contacts based on their Opportunity Contact Roles (soft credits). When enabled, Contacts who are not the Primary Contact but have an OCR on the Opportunity receive rollup totals. Soft credit rollups run in scheduled batch jobs and can also be triggered manually. The specific Contact Roles included are configured in the Soft Credit Roles setting.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Rolls up Closed/Won Opportunity totals to Contact records based on assigned Opportunity Contact Roles. Soft credit rollups only happen in nightly batches, but you can run them manually from the Rollup Donations Batch settings.</inlineHelpText>
+    <inlineHelpText>Roll up Closed/Won Opportunity totals to Contacts based on their Opportunity Contact Roles. Runs in nightly batches or can be triggered manually.</inlineHelpText>
     <label>Enable Soft Credit Rollups</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

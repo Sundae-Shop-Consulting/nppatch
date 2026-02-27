@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Home_Address__c</fullName>
-    <description>Formula: Uses primary address type field to determine Home Address from Mailing or Other address.</description>
+    <description>Formula field. Assembles the Contact's Home address based on Primary and Secondary Address Type fields. Pulls from Mailing or Other address fields accordingly.</description>
     <externalId>false</externalId>
     <formula>IF(
   ISPICKVAL(%%%NAMESPACE%%%Primary_Address_Type__c,"Home"),
@@ -21,7 +21,7 @@ IF(ISPICKVAL(%%%NAMESPACE%%%Secondary_Address_Type__c,"Home"),
 )
 )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Formula: Uses primary address type field to determine Home Address from Mailing or Other address.</inlineHelpText>
+    <inlineHelpText>This Contact's Home address, derived from the Mailing or Other address based on the Primary Address Type.</inlineHelpText>
     <label>Home Address</label>
     <required>false</required>
     <type>Text</type>

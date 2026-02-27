@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>HouseholdPhone__c</fullName>
+    <description>Manually entered. A shared phone number for the household, distinct from individual Contact phone numbers.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The shared phone number for this household.</inlineHelpText>
     <label>Household Phone</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

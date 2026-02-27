@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Organization__c</fullName>
+    <description>Master-detail lookup to the Organization Account. When Primary is checked, this value syncs to Contact.Primary_Affiliation__c.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The Organization Account this Contact is affiliated with.</inlineHelpText>
     <label>Organization</label>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Affiliated Contacts</relationshipLabel>

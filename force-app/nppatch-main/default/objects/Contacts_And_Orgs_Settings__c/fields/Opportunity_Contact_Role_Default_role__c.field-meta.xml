@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Opportunity_Contact_Role_Default_role__c</fullName>
-    <description>The default Contact Role automatically assigned to the Opportunity's Primary Contact when the Opportunity's Account is a Household, One-to-One, or Individual Account.</description>
+    <description>Specifies the Opportunity Contact Role automatically assigned to the Primary Contact on Opportunities belonging to individual Account types (Household, One-to-One, or Individual Accounts). Must match an existing Contact Role picklist value. Common values include "Donor" or "Decision Maker." See also Contact Role for Organizational Opps for non-individual Accounts.</description>
     <encryptionScheme>None</encryptionScheme>
     <externalId>false</externalId>
-    <inlineHelpText>The default Contact Role automatically assigned to the Opportunity's Primary Contact when the Opportunity's Account is a Household, One-to-One, or Individual Account.</inlineHelpText>
+    <inlineHelpText>Contact Role assigned to the Primary Contact on Opportunities for Household, One-to-One, or Individual Accounts.</inlineHelpText>
     <label>Contact Role for Individual Opps</label>
     <length>255</length>
     <required>false</required>

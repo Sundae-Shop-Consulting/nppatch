@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Amount_Field__c</fullName>
+    <description>The field on the Amount Object that contains the numeric value to use in the rollup calculation.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Select the field that holds the amount value for this rollup, such as Amount on Opportunity. Required for Sum, Average, Largest, and Smallest operations.</inlineHelpText>
     <label>Amount Field</label>
     <metadataRelationshipControllingField>Rollup__mdt.Amount_Object__c</metadataRelationshipControllingField>
     <referenceTo>FieldDefinition</referenceTo>

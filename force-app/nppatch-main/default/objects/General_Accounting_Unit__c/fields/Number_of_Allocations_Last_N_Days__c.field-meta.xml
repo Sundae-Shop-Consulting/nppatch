@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Number_of_Allocations_Last_N_Days__c</fullName>
     <defaultValue>0</defaultValue>
-    <description>Total number of allocations of opportunities in a closed and won stage in the last N days. The value of N can be modified in settings.</description>
+    <description>Calculated by Customizable Rollups. Do not edit manually. The N-day window is configured in NPPatch Settings under Donations &gt; GAU Allocations.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Total number of allocations of opportunities in a closed and won stage in the last N days. The value of N can be modified in settings.</inlineHelpText>
+    <inlineHelpText>The count of Allocations from Closed/Won Opportunities in the last N days. The value of N is configured in NPPatch Settings.</inlineHelpText>
     <label>Number of Allocations Last N Days</label>
     <precision>18</precision>
     <required>false</required>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Target_Object_Mapping__c</fullName>
-    <description>The target Object Group for this Field Mapping.</description>
+    <description>Lookup to the Data Import Object Mapping that defines the target object for this field mapping. Links this field-level mapping to its parent object-level mapping configuration.</description>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
-    <inlineHelpText>The target Data Import Object Group for this field mapping.</inlineHelpText>
+    <inlineHelpText>Select the Object Mapping that defines which target object this field maps to.</inlineHelpText>
     <label>Target Object Mapping</label>
     <referenceTo>Data_Import_Object_Mapping__mdt</referenceTo>
     <relationshipLabel>Data Import Field Mappings</relationshipLabel>

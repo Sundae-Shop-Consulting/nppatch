@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>DonationCampaignImportStatus__c</fullName>
+    <description>System field populated during data import processing. Stores the import status for Campaign lookup resolution on the Opportunity.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Shows the import result for the Campaign association. Automatically populated during processing.</inlineHelpText>
     <label>Donation Campaign Import Status</label>
     <length>255</length>
     <required>false</required>

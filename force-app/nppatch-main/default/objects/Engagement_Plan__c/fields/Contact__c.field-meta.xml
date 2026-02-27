@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Optional lookup linking this Engagement Plan to a Contact. Set when the plan is created from a Contact record. Only one target record (Account, Contact, Opportunity, etc.) should be populated.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The Contact this Engagement Plan is tracking activities for.</inlineHelpText>
     <label>Contact</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Engagement Plans</relationshipLabel>

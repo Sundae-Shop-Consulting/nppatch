@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Amount__c</fullName>
+    <description>The currency amount of this payment. For scheduled payments, this is set by the payment scheduler based on the Opportunity amount and number of installments. Can also be entered manually.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The dollar amount of this individual payment.</inlineHelpText>
     <label>Payment Amount</label>
     <precision>14</precision>
     <required>false</required>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Posted_in_Chatter__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Indicates whether the error has been posted in Chatter.</description>
+    <description>Set to true by the error notification handler after a Chatter post about this error has been created. Prevents duplicate posts.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates whether the error has been posted in Chatter.</inlineHelpText>
+    <inlineHelpText>Whether a Chatter notification about this error has already been posted.</inlineHelpText>
     <label>Posted in Chatter</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

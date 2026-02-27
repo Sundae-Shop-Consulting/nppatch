@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Description__c</fullName>
+    <description>Maps to Opportunity.Description during data import processing.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Opportunity.Description</inlineHelpText>
+    <inlineHelpText>Enter a description for this donation.</inlineHelpText>
     <label>Donation Description</label>
     <length>32768</length>
     <trackTrending>false</trackTrending>

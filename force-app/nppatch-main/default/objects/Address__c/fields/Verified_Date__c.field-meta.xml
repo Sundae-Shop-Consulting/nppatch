@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Verified_Date__c</fullName>
-    <description>The date and time the address was verified</description>
+    <description>Automatically stamped each time the address verification service successfully processes this Address.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The most recent date and time the address was verified.</inlineHelpText>
+    <inlineHelpText>The most recent date and time this Address was verified by the external verification service.</inlineHelpText>
     <label>Verified Date</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

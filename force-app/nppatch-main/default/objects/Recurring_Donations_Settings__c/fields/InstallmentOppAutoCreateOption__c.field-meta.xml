@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>InstallmentOppAutoCreateOption__c</fullName>
-    <description>Specifies when NPPatch will create installment Opportunities for Recurring Donations. The default is Always Create Next Installment.</description>
+    <description>Controls when NPPatch creates installment Opportunities for Recurring Donations. Options include: "Always_Create_Next_Installment" (default, creates the next installment as soon as one closes), "Disable_First_Installment" (skips creating the first installment on new RDs), "Disable_All_Installments" (never auto-creates). Applies to Enhanced Recurring Donations.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Specifies when NPPatch will create installment Opportunities for Recurring Donations. The default is Always Create Next Installment.</inlineHelpText>
+    <inlineHelpText>When to auto-create installment Opportunities for Recurring Donations. Default is "Always Create Next Installment."</inlineHelpText>
     <label>Installment Opportunity Auto-Creation</label>
     <length>255</length>
     <required>false</required>

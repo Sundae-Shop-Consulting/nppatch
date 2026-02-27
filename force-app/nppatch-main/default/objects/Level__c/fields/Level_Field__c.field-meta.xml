@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Level_Field__c</fullName>
-    <description>Indicates which field to use on the target object to store the current Level.</description>
+    <description>API name of the lookup or text field on the target object (Account or Contact) where the current Level name is written by the Level assignment process.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates which field to use on the target object to store the current Level.</inlineHelpText>
+    <inlineHelpText>The field on the target object where the current Level is stored, such as a custom Level lookup field.</inlineHelpText>
     <label>Level Field</label>
     <length>255</length>
     <required>true</required>

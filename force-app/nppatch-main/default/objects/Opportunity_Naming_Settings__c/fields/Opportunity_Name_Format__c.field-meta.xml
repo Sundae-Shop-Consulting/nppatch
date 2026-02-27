@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Opportunity_Name_Format__c</fullName>
-    <description>The format to use for Opportunity naming.</description>
+    <description>Defines the naming pattern template for auto-generated Opportunity names. Uses field tokens in the format {!FieldApiName} that are replaced with actual values at runtime. Common tokens include {!Contact.Name}, {!Account.Name}, {!CloseDate}, {!Amount}, and {!RecordType.Name}. For example, "{!Contact.Name} {!Amount} {!CloseDate}" might produce "John Smith $100 2026-01-15". If blank, Opportunity naming automation is not applied for the matching attribution and record types.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The format to use for Opportunity naming.</inlineHelpText>
+    <inlineHelpText>Template for auto-generated Opportunity names using {!FieldApiName} tokens, e.g. "{!Contact.Name} {!Amount} {!CloseDate}".</inlineHelpText>
     <label>Opportunity Name Format</label>
     <length>255</length>
     <required>false</required>

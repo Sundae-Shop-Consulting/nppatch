@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Object__c</fullName>
-    <description>The object this Auto-Relationship is associated with</description>
+    <description>API name of the Salesforce object that this auto-create rule monitors for relationship-triggering field changes.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The object this Auto-Relationship is associated with</inlineHelpText>
+    <inlineHelpText>The object this auto-create rule applies to, such as Contact or CampaignMember.</inlineHelpText>
     <label>Object</label>
     <length>50</length>
     <required>false</required>

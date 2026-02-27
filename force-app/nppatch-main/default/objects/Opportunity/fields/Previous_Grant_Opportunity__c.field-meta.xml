@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Previous_Grant_Opportunity__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>If this Grant is a renewal of a previous Grant, use this field to relate this record to the previous Grant.</description>
+    <description>Lookup to Opportunity. Links a renewal Grant to its predecessor, enabling grant history tracking across multiple award cycles.</description>
     <externalId>false</externalId>
-    <inlineHelpText>If this Grant is a renewal of a previous Grant, use this field to relate this record to the previous Grant.</inlineHelpText>
+    <inlineHelpText>If this Grant is a renewal, select the previous Grant Opportunity to link the two records together.</inlineHelpText>
     <label>Previous Grant/Gift Opportunity</label>
     <referenceTo>Opportunity</referenceTo>
     <relationshipLabel>Related Grants/Gifts</relationshipLabel>

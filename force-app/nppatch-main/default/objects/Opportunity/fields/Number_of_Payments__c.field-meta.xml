@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Number_of_Payments__c</fullName>
-    <description>Calculated based on the Payment object.</description>
+    <description>Rollup summary field. Counts all related Payment records for this Opportunity.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Total number of payments for this Opportunity (Donation)</inlineHelpText>
+    <inlineHelpText>The total number of Payment records associated with this Donation.</inlineHelpText>
     <label>Number of Payments</label>
     <summaryForeignKey>OppPayment__c.Opportunity__c</summaryForeignKey>
     <summaryOperation>count</summaryOperation>

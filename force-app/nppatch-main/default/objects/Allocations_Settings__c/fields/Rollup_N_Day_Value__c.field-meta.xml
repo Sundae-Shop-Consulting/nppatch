@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Rollup_N_Day_Value__c</fullName>
     <defaultValue>365</defaultValue>
-    <description>This value affects the number of days to count for N Days Allocations rollup fields.</description>
+    <description>Defines the number of days used for "N Day" GAU Allocation rollup fields, counting backward from today. For example, 365 means allocation rollups include Opportunities closed within the past 365 days. Default is 365. This is separate from the Households Settings N Day value and applies only to allocation-specific rollups.</description>
     <externalId>false</externalId>
-    <inlineHelpText>This value affects the number of days to count for N Days Allocations rollup fields.</inlineHelpText>
+    <inlineHelpText>Days from today for "N Day" allocation rollup calculations. Default is 365. Separate from the Household rollup N Day value.</inlineHelpText>
     <label>Rollup N Day Value</label>
     <precision>18</precision>
     <required>false</required>

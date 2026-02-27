@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Allow_AutoCreated_Duplicates__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Auto-created Relationships are auto-deduplicated to prevent duplicate Relationship records from being created between two Contacts. Check this box to disable this behavior &amp; allow multiple Relationships of the same Type to be created between two Contacts</description>
+    <description>By default, NPPatch prevents creating duplicate auto-created Relationship records of the same Type between two Contacts. When checked, this deduplication is disabled, allowing multiple Relationships of the same Type between the same pair of Contacts. Disabled by default. Only enable if your business process requires multiple same-type relationships.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Auto-created Relationships are auto-deduplicated to prevent duplicate Relationship records from being created between two Contacts.  Check this box to disable this behavior &amp; allow multiple Relationships of the same Type to be created between two Contacts</inlineHelpText>
+    <inlineHelpText>Allow multiple auto-created Relationships of the same Type between two Contacts. Default behavior prevents duplicates.</inlineHelpText>
     <label>Allow Auto-Created Duplicate Relations</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

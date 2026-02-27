@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ChunkSize_Account_HardCredit__c</fullName>
-    <description>Only used by the new Customizable Rollups engine in LDV Orgs and only when required for LDV orgs</description>
+    <description>For Large Data Volume (LDV) orgs only. Limits the number of Account records queried per chunk during hard credit rollup processing to prevent SOQL query timeouts. Leave blank for standard orgs; the system uses the default batch size. Only set this with guidance from support when rollup jobs timeout due to data volume.</description>
     <externalId>false</externalId>
-    <inlineHelpText>FOR LDV ORGS ONLY WITH SFDO GUIDANCE. To avoid a Query Timeout in the rollup batch job in orgs with many millions of Accounts, this specifies the maximum number of Accounts processed in each batch.</inlineHelpText>
+    <inlineHelpText>LDV orgs only. Maximum Accounts per query chunk during hard credit rollups. Leave blank unless rollup jobs are timing out.</inlineHelpText>
     <label>LDV: Account Hard Credit Chunk Size</label>
     <precision>8</precision>
     <required>false</required>

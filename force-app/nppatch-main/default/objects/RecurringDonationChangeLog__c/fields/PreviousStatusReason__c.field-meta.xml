@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>PreviousStatusReason__c</fullName>
-    <description>The previous Status Reason for the related Recurring Donation.</description>
+    <description>Captured from the Recurring Donation&apos;s Status Reason field before the change was applied.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The previous Status Reason for the related Recurring Donation.</inlineHelpText>
+    <inlineHelpText>The reason for the status before this change, such as a pause reason or closure reason.</inlineHelpText>
     <label>Previous Status Reason</label>
     <length>255</length>
     <required>false</required>

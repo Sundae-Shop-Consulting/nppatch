@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Active__c</fullName>
     <defaultValue>true</defaultValue>
-    <description>Indicates whether this Level is currently in use.</description>
+    <description>Controls whether the Level assignment batch job evaluates this Level when updating donor records. Inactive Levels are skipped during processing.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates whether this Level is currently in use.</inlineHelpText>
+    <inlineHelpText>When selected, this Level is evaluated during the level assignment process. Deselect to stop assigning this Level without deleting it.</inlineHelpText>
     <label>Active</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

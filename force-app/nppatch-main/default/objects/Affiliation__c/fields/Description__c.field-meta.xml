@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Description__c</fullName>
+    <description>Free-text field for notes about this Affiliation. Not used by automation.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Additional details about this Contact&apos;s relationship with the Organization, such as department or job title context.</inlineHelpText>
     <label>Description</label>
     <length>32000</length>
     <trackHistory>false</trackHistory>

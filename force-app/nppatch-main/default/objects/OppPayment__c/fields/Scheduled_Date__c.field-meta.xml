@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Scheduled_Date__c</fullName>
+    <description>The date this payment installment is expected to be received. Set by the payment scheduler when installment records are created automatically from the Opportunity payment schedule.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The date this payment is scheduled to be received. For installment payments, this is set automatically based on the payment schedule.</inlineHelpText>
     <label>Scheduled Date</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

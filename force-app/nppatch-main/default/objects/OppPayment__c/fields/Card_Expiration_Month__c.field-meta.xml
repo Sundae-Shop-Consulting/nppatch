@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Card_Expiration_Month__c</fullName>
-    <description>The expiration month of the card used for this transaction.</description>
+    <description>Stores the two-digit expiration month of the credit or debit card from the payment gateway. Populated by the payment processing integration.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The expiration month of the card used for this transaction.</inlineHelpText>
+    <inlineHelpText>The two-digit expiration month (01-12) of the card used for this payment.</inlineHelpText>
     <label>Card Expiration Month</label>
     <length>2</length>
     <required>false</required>

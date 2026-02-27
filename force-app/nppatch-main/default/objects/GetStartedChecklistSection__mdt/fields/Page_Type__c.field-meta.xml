@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Page_Type__c</fullName>
-    <description>The type of Get Started page (Admin or End User) where this section will appear.</description>
+    <description>Controls which audience-specific Get Started page renders this section. Admin sections appear on the administrator page; End User sections appear on the general user page.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
-    <inlineHelpText>The type of Get Started page (Admin or End User) where this section will appear.</inlineHelpText>
+    <inlineHelpText>Whether this section appears on the Admin or End User version of the Get Started page.</inlineHelpText>
     <label>Page Type</label>
     <required>false</required>
     <type>Picklist</type>

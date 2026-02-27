@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Error_Notifications_On__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Flag that determines whether to send error notifications.</description>
+    <description>When enabled, NPPatch sends Chatter notifications or email alerts when errors occur during batch jobs, trigger execution, or other automated processes. The recipient is configured in the Error Notification Recipients setting. Disabled by default.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Check this if you&apos;d like the system to post notifications for certain type of errors.</inlineHelpText>
+    <inlineHelpText>Send notifications when NPPatch errors occur. Configure recipients in the Error Notification Recipients setting.</inlineHelpText>
     <label>Error Notifications</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

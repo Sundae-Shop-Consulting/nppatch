@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>NewCampaign__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>The new Campaign for the related Recurring Donation.</description>
+    <description>Lookup to the Campaign associated with the Recurring Donation after this change was applied.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The new Campaign for the related Recurring Donation.</inlineHelpText>
+    <inlineHelpText>The Campaign linked to the Recurring Donation after this change.</inlineHelpText>
     <label>New Campaign</label>
     <referenceTo>Campaign</referenceTo>
     <relationshipLabel>Recurring Donation Change Log (New Campaign)</relationshipLabel>

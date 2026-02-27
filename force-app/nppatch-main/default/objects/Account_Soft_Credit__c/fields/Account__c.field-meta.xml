@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Account__c</fullName>
-    <description>The Account that gets this soft credit.</description>
+    <description>Required lookup to the Account receiving soft credit. Set by automation based on the Opportunity&apos;s related Account Contact Roles. Used by Customizable Rollups for Account-level soft credit totals.</description>
     <deleteConstraint>Restrict</deleteConstraint>
     <externalId>false</externalId>
-    <inlineHelpText>The Account that gets this soft credit.</inlineHelpText>
+    <inlineHelpText>The organization that receives soft credit for this donation.</inlineHelpText>
     <label>Account</label>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Account Soft Credits</relationshipLabel>

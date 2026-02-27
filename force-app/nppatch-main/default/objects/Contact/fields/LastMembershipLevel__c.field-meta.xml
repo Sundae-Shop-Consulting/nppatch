@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LastMembershipLevel__c</fullName>
-    <description>Do not update, updated by automatic process.</description>
+    <description>Calculated by Customizable Rollups. Do not edit manually. The Membership Level of the most recent (by Close Date) won Membership Opportunity where this Contact has the primary Opportunity Contact Role. Uses the Closed Won Memberships filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The level of the most recent (by Close Date) won Membership (Record Type) Opportunity related to this Contact by primary Opportunity Contact Role.</inlineHelpText>
+    <inlineHelpText>The membership level from the most recent won Membership Opportunity where this Contact is the primary donor.</inlineHelpText>
     <label>Last Membership Level</label>
     <length>255</length>
     <required>false</required>

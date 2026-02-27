@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>TotalMembershipOppAmount__c</fullName>
     <defaultValue>0</defaultValue>
-    <description>Do not manually update. Updated by automatic processes. See Record Types in Household Settings.</description>
+    <description>Calculated by Customizable Rollups. Do not edit manually. The sum of Amounts for won Membership Opportunities related to this Account. Uses the Closed Won Memberships filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The total amount of won Membership Opportunities (Record Type) related to this Account.</inlineHelpText>
+    <inlineHelpText>The total amount of all won Membership Opportunities related to this Account.</inlineHelpText>
     <label>Total Membership Amount</label>
     <precision>16</precision>
     <required>false</required>

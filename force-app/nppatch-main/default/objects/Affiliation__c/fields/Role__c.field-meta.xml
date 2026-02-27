@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Role__c</fullName>
+    <description>Free-text field describing the Contact&apos;s role at the Organization. Not used by automation; for informational purposes only.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The Contact&apos;s role at this Organization, such as Employee, Board Member, or Volunteer.</inlineHelpText>
     <label>Role</label>
     <length>255</length>
     <required>false</required>

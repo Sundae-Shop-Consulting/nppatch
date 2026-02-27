@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>MailingStreet__c</fullName>
+    <description>Primary street line. Synced to Contact and Account mailing fields when this is the default Address. Can also be updated by address verification.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The primary street line for this mailing address.</inlineHelpText>
     <label>Mailing Street</label>
     <length>255</length>
     <required>false</required>

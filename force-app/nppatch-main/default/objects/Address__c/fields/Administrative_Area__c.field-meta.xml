@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Administrative_Area__c</fullName>
-    <description>Use this to record the township, municipality, or other civic region associated with this Address.</description>
+    <description>Optional free-text field for recording a sub-state civic region. Can be populated manually or by an address verification service.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Use this to record the township, municipality, or other civic region associated with this Address.</inlineHelpText>
+    <inlineHelpText>The township, municipality, or other civic region associated with this Address.</inlineHelpText>
     <label>Administrative Area</label>
     <length>255</length>
     <required>false</required>

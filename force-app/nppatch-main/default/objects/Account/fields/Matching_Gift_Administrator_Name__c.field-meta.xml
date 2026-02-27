@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Matching_Gift_Administrator_Name__c</fullName>
-    <description>The name of the company&apos;s Matching Gift administrator.</description>
+    <description>Manually entered. The name of the person who administers this company&apos;s Matching Gift program.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The name of the company&apos;s Matching Gift administrator.</inlineHelpText>
+    <inlineHelpText>The contact person who manages Matching Gift requests at this company.</inlineHelpText>
     <label>Matching Gift Administrator Name</label>
     <length>255</length>
     <required>false</required>

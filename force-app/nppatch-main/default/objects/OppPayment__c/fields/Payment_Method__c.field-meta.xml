@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Method__c</fullName>
+    <description>Records how this payment was made. Set manually by users or populated automatically by the payment processing integration. Values: Cash, Check, Credit Card, ACH, PayPal.</description>
     <externalId>false</externalId>
+    <inlineHelpText>How this payment was made (e.g., Cash, Check, Credit Card, ACH, PayPal).</inlineHelpText>
     <label>Payment Method</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

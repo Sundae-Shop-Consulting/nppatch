@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CMT_Deployment_ID__c</fullName>
-    <description>ID of Custom Metadata deployment</description>
+    <description>System field that stores the Salesforce deployment ID for the most recent Custom Metadata Type deployment. Used internally to poll for deployment completion status when saving Advanced Mapping changes.</description>
     <externalId>false</externalId>
-    <inlineHelpText>ID of Custom Metadata deployment</inlineHelpText>
+    <inlineHelpText>The Salesforce deployment ID for the last Custom Metadata Type deployment. Automatically populated by the system.</inlineHelpText>
     <label>CMT Deployment ID</label>
     <length>255</length>
     <required>false</required>

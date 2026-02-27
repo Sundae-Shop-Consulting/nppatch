@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Honoree_Information__c</fullName>
-    <description>Contact information, such as email, address, or phone the donor provided for the tribute honoree.</description>
+    <description>Free-text field for storing contact details about the tribute honoree that the donor provided. Not linked to a Contact record.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Contact information, such as email, address, or phone the donor provided for the tribute honoree.</inlineHelpText>
+    <inlineHelpText>Enter any contact information the donor provided for the honoree, such as email, address, or phone number.</inlineHelpText>
     <label>Honoree Information</label>
     <length>32768</length>
     <trackFeedHistory>false</trackFeedHistory>

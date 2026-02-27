@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Campaign_Member_Non_Responded_Status__c</fullName>
-    <description>The automatic Status of a Campaign Member for Open or Closed/Lost opportunities that have a Primary Contact and a Primary Campaign Source associated with them. If left blank, Salesforce uses the first non-Responded status.</description>
+    <description>Campaign Member Status value assigned when an Opportunity with a Primary Campaign Source is Open or Closed/Lost. Used by Automatic Campaign Member Management. If blank, NPPatch defaults to the first non-Responded status in the Campaign Member Status picklist. Must match an existing Campaign Member Status value.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The default status you want NPPatch to use on Campaign Members for Open or Closed/Lost Opportunities that have a Primary Contact and a Primary Campaign Source associated with them. If you leave this blank, NPPatch uses the first non-Responded status.</inlineHelpText>
+    <inlineHelpText>Status for Campaign Members created from Open or Closed/Lost Opportunities. Leave blank to use the first non-Responded status.</inlineHelpText>
     <label>Campaign Member Non Responded Status</label>
     <length>255</length>
     <required>false</required>

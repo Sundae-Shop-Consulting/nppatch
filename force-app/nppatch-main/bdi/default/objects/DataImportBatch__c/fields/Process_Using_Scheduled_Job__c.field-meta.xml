@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Process_Using_Scheduled_Job__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>When checked, the NPPatch Data Import Batch will be automatically processed based on the schedule for the associated job.</description>
+    <description>Controls whether this batch is processed automatically by the scheduled Data Import job. When enabled, the batch is picked up during the next scheduled job execution rather than requiring manual processing.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When checked, the batch will be automatically processed based on the schedule for the associated job.</inlineHelpText>
+    <inlineHelpText>Check to have this batch processed automatically by the scheduled Data Import job instead of processing it manually.</inlineHelpText>
     <label>Process Using Scheduled Job</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

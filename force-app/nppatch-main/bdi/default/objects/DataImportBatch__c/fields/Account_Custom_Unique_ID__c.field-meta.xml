@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Account_Custom_Unique_ID__c</fullName>
-    <description>An optional Unique Id field to use for Organization Account matching</description>
+    <description>Overrides the org-level Account Custom Unique ID setting for this batch. Stores the API name of a custom unique identifier field on Account used for matching during data import processing.</description>
     <externalId>false</externalId>
-    <inlineHelpText>An optional Unique Id field to use for Organization Account matching</inlineHelpText>
+    <inlineHelpText>Enter the API name of a unique ID field on Account to use for matching Organization Accounts in this batch. Leave blank to use the org-level default.</inlineHelpText>
     <label>Account Custom Unique ID</label>
     <length>255</length>
     <required>false</required>

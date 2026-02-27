@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Household_Member_Contact_Role__c</fullName>
-    <description>The Contact Role you want to use for Household Members.</description>
+    <description>Specifies the Opportunity Contact Role name assigned to Household members when the Household Contact Roles On setting is enabled. When an Opportunity is created for a Contact, all other members of the same Household receive an OCR with this role. Must match an existing Contact Role picklist value.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Contact Role you want to use for Household Members.</inlineHelpText>
+    <inlineHelpText>The Opportunity Contact Role to assign to Household members when automatic Household Contact Roles are enabled.</inlineHelpText>
     <label>Household Member Contact Role</label>
     <length>255</length>
     <required>false</required>

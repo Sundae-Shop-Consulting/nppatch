@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>RequireTotalMatch__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>When checked, the total number of gifts and total amount must match the expected totals entered for the batch.</description>
+    <description>Controls whether batch processing is blocked until the actual gift count and total amount match the expected values. Used for data integrity validation to ensure all expected gifts have been entered before processing.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When checked, the total number of gifts and total amount must match the expected totals entered for the batch.</inlineHelpText>
+    <inlineHelpText>Check to require that the actual gift count and total amount match the expected values before the batch can be processed.</inlineHelpText>
     <label>Require Expected Totals Match</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact_Overrun_Count__c</fullName>
-    <description>Specifies the number of Contacts to explicitly list in a name.  After that amount, the Name Overrun will be used.</description>
+    <description>Maximum number of Household member names to list individually before truncating with the Name Overrun string. For example, if set to 2 and there are 4 members, the name might be "Smith &amp; Jones Family" instead of listing all four. Works with the Name Overrun setting.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Specifies the number of Contacts to explicitly list in a name.  After that amount, the Name Overrun will be used.</inlineHelpText>
+    <inlineHelpText>Max Household members to name individually before using the Name Overrun string (e.g., "and Family").</inlineHelpText>
     <label>Contact Overrun Count</label>
     <precision>2</precision>
     <required>false</required>

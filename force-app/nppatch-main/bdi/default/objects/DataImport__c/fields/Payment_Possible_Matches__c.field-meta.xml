@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Possible_Matches__c</fullName>
-    <description>A comma-separated list of Ids for the first 10 possible Payment matches for a Donation.</description>
+    <description>System field populated during data import processing. Stores a comma-separated list of Salesforce IDs for up to 10 possible Payment record matches found during donation matching.</description>
     <externalId>false</externalId>
-    <inlineHelpText>A comma-separated list of Ids for the first 10 possible Payment matches for a Donation.</inlineHelpText>
+    <inlineHelpText>Shows possible Payment matches found during import. Automatically populated during processing.</inlineHelpText>
     <label>Payment Possible Matches</label>
     <length>255</length>
     <required>false</required>

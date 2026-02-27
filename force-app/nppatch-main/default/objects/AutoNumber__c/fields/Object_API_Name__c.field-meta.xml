@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Object_API_Name__c</fullName>
-    <description>The API name of the object for the auto-number.</description>
+    <description>API name of the Salesforce object whose records will receive auto-number values from this configuration.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The API name of the object for the auto-number.</inlineHelpText>
+    <inlineHelpText>The object that this auto-number applies to, such as Opportunity or npe03__Recurring_Donation__c.</inlineHelpText>
     <label>Object API Name</label>
     <length>40</length>
     <required>true</required>

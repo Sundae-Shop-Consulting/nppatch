@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact_Custom_Unique_ID__c</fullName>
-    <description>An optional Unique Id field to use for Contact matching</description>
+    <description>Stores the API name of a custom unique identifier field on the Contact object used for matching during data import. When populated, the data import process uses this field instead of standard name/email matching to find existing Contacts.</description>
     <externalId>false</externalId>
-    <inlineHelpText>An optional Unique Id field to use for Contact matching</inlineHelpText>
+    <inlineHelpText>Enter the API name of a unique ID field on Contact to use for matching (e.g., External_ID__c). Leave blank to use standard name and email matching.</inlineHelpText>
     <label>Contact Custom Unique ID</label>
     <length>255</length>
     <required>false</required>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Grantmaker__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Indicates that this organization is a grantmaking organization.</description>
+    <description>Manually entered. Flags this Account as a grantmaking organization. Used on Organization (non-Household) Accounts to identify funders.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates that this organization is a grantmaking organization.</inlineHelpText>
+    <inlineHelpText>When checked, this organization is a grantmaker that provides funding to other organizations.</inlineHelpText>
     <label>Grantmaker</label>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Checkbox</type>

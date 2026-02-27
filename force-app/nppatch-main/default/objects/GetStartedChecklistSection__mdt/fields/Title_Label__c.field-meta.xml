@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Title_Label__c</fullName>
-    <description>The API Name for the Title label of a section item on the Get Started page. Must match an imported label in the gsLabelMapper LWC.</description>
+    <description>References a Custom Label API name for the section heading text. The label must be imported in the gsLabelMapper LWC component.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
-    <inlineHelpText>The API Name for the Title label of a section item on the Get Started page. Must match an imported label in the gsLabelMapper LWC.</inlineHelpText>
+    <inlineHelpText>The Custom Label API name for the heading displayed at the top of this section.</inlineHelpText>
     <label>Title Label Name</label>
     <length>255</length>
     <required>true</required>

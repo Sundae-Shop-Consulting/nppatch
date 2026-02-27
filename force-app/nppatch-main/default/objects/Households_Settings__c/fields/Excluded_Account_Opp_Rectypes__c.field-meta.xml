@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Excluded_Account_Opp_Rectypes__c</fullName>
-    <description>Names of Opportunity Record Types to exclude from statistics when rolling up Account Opportunities.</description>
+    <description>Semicolon-separated list of Opportunity Record Type names to exclude from Account-level rollup calculations. Opportunities matching these Record Types will not count toward Account donation totals, averages, or other rollup fields. Leave blank to include all Record Types.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Names of Opportunity Record Types to exclude from statistics when rolling up Account Opportunities.</inlineHelpText>
+    <inlineHelpText>Opportunity Record Types to exclude when rolling up donation statistics to Accounts. Enter Record Type names separated by semicolons.</inlineHelpText>
     <label>Opp RecTypes Excluded for Account Rollup</label>
     <length>255</length>
     <required>false</required>

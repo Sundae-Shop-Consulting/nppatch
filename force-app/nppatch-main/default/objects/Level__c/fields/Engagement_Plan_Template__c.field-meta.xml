@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Engagement_Plan_Template__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>The Engagement Plan Template to apply to the Target Object when this Level is achieved.</description>
+    <description>When a donor achieves this Level, the referenced Engagement Plan Template is automatically applied to the target record, creating the template&apos;s tasks.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Engagement Plan Template to apply to the Target Object when this Level is achieved.</inlineHelpText>
+    <inlineHelpText>The Engagement Plan Template to apply when a donor reaches this Level. Leave blank if no engagement plan is needed.</inlineHelpText>
     <label>Engagement Plan Template</label>
     <referenceTo>Engagement_Plan_Template__c</referenceTo>
     <relationshipLabel>Levels</relationshipLabel>

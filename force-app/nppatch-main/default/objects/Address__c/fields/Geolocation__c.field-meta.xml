@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Geolocation__c</fullName>
-    <description>The Address expressed as latitude and longitude.</description>
+    <description>Populated by an address verification or geocoding service with latitude and longitude coordinates for this Address.</description>
     <displayLocationInDecimal>true</displayLocationInDecimal>
     <externalId>false</externalId>
-    <inlineHelpText>The Address expressed as latitude and longitude.</inlineHelpText>
+    <inlineHelpText>The latitude and longitude coordinates of this Address.</inlineHelpText>
     <label>Geolocation</label>
     <required>false</required>
     <scale>6</scale>

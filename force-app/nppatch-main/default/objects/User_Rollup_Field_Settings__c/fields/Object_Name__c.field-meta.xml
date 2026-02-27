@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Object_Name__c</fullName>
+    <description>The target Salesforce object whose field will receive the rolled-up value for this user-defined rollup. Valid values include "Contact", "Account", and other objects that support rollup summary fields from Opportunities or Payments. This determines where the Target Field resides. Must be specified as the object's API name.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The object this user rollup is mapped to</inlineHelpText>
+    <inlineHelpText>The object (e.g. Contact, Account) where the rolled-up value is stored.</inlineHelpText>
     <label>Object Name</label>
     <length>50</length>
     <required>true</required>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>InstallmentOppStageName__c</fullName>
-    <description>The Opportunity Stage that NPPatch applies to each new installment Opportunity when you create a Recurring Donation.</description>
+    <description>The Opportunity Stage picklist value assigned to new installment Opportunities created by Recurring Donations. Must match an existing Opportunity Stage value, typically an open/active stage like "Pledged" or "Prospecting." If blank, NPPatch uses the first available open stage. Applies to both legacy and Enhanced Recurring Donations.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Opportunity Stage that NPPatch applies to each new installment Opportunity when you create a Recurring Donation.</inlineHelpText>
+    <inlineHelpText>Opportunity Stage for new installment Opportunities. Must match an existing Stage value. If blank, uses the first open stage.</inlineHelpText>
     <label>Stage Name for Installment Opportunities</label>
     <length>50</length>
     <required>false</required>

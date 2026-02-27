@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Acknowledgment_Status__c</fullName>
-    <description>Status of Acknowledgment of this payment.</description>
+    <description>Tracks the acknowledgment workflow status for this payment. Updated manually or through an acknowledgment process. Values: To Be Acknowledged, Acknowledged, Do Not Acknowledge.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Status of Acknowledgment of this payment.</inlineHelpText>
+    <inlineHelpText>Whether this payment needs a donor acknowledgment: To Be Acknowledged (pending), Acknowledged (completed), or Do Not Acknowledge (excluded).</inlineHelpText>
     <label>Payment Acknowledgment Status</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

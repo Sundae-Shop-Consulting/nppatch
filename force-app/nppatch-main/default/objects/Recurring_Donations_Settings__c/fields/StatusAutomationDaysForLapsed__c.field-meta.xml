@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>StatusAutomationDaysForLapsed__c</fullName>
-    <description>After the specified number of days, NPPatch updates the Recurring Donation Status to the Status Automation Lapsed Value if donations aren&apos;t being received as expected.</description>
+    <description>Number of days past the expected donation date after which NPPatch automatically changes a Recurring Donation's status to the Lapsed value if no payment has been received. Leave blank or set to 0 to disable automatic lapsing. Typically set lower than the Days for Closed value. Requires Enhanced Recurring Donations.</description>
     <externalId>false</externalId>
-    <inlineHelpText>After the specified number of days, NPPatch updates the Recurring Donation Status to the Status Automation Lapsed Value if donations aren&apos;t being received as expected.</inlineHelpText>
+    <inlineHelpText>Days past the expected donation date before a Recurring Donation is marked as lapsed. Leave blank to disable. Should be lower than Days for Closed.</inlineHelpText>
     <label>Status Automation Days for Lapsed</label>
     <precision>18</precision>
     <required>false</required>

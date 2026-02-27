@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Matching_Gift__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Lookup to the Opportunity record for the Matching Gift for this Donation.</description>
+    <description>Lookup to Opportunity. Links this Donation to the corresponding matching gift Opportunity record. Used to associate a donor&apos;s gift with the employer&apos;s match.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Lookup to the Opportunity record for the Matching Gift for this Donation.</inlineHelpText>
+    <inlineHelpText>Select the Opportunity record that represents the matching gift for this Donation.</inlineHelpText>
     <label>Matching Gift</label>
     <referenceTo>Opportunity</referenceTo>
     <relationshipLabel>Matched Gifts</relationshipLabel>

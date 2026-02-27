@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Opportunity_Forecast_Months__c</fullName>
     <defaultValue>12</defaultValue>
-    <description>Number of months worth of open Opportunities to be created when using an open-ended Recurring Donation.  Determined by the Last Payment Date field.</description>
+    <description>Number of months into the future for which NPPatch creates installment Opportunities on open-ended Recurring Donations. Default is 12. WARNING: Reducing this value causes existing future Opportunities beyond the new window to be deleted. Increasing it triggers a batch process to create additional Opportunities. Changes take effect on the next batch run or Recurring Donation edit.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Number of months from today worth of open Opportunities to be created when using open-ended Recurring Donations. WARNING: Reducing this value will result in extra Opportunities being deleted.  Increasing it will launch a batch process to add Opportunities</inlineHelpText>
+    <inlineHelpText>Months of future installment Opportunities to create for open-ended Recurring Donations. Default is 12. Reducing this value deletes excess future Opportunities.</inlineHelpText>
     <label>Opportunity Forecast Months</label>
     <precision>18</precision>
     <required>false</required>

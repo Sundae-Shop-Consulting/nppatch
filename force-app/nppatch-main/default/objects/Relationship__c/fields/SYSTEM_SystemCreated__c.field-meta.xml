@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>SYSTEM_SystemCreated__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>System field that indicates if this Relationship was created automatically as the reciprocal to another Relationships.</description>
+    <description>Set to true by NPPatch automation when this record is the auto-created reciprocal of a user-created Relationship. Used internally to prevent infinite reciprocal creation loops. Do not edit manually.</description>
     <externalId>false</externalId>
-    <inlineHelpText>System field that indicates if this Relationship was created automatically as the reciprocal to another Relationships.</inlineHelpText>
+    <inlineHelpText>Indicates this Relationship was automatically created as the reciprocal side of another Relationship rather than entered by a user.</inlineHelpText>
     <label>_SYSTEM: SystemCreated</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

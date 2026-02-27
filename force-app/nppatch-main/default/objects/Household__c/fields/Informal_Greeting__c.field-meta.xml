@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Informal_Greeting__c</fullName>
-    <description>Do not update, updated by automatic process.</description>
+    <description>Automatically generated from related Contact names using the Household naming settings. Can be overridden by selecting Informal_Greeting__c in the SYSTEM_CUSTOM_NAMING field.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Uses fields of non-excluded, ordered related Contacts.  Generated automatically.</inlineHelpText>
+    <inlineHelpText>A casual salutation for this Household (e.g., "John and Jane"), built from the first names of non-excluded Contacts.</inlineHelpText>
     <label>Informal Greeting</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

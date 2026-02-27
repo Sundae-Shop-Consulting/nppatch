@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Installments__c</fullName>
     <defaultValue>1</defaultValue>
-    <description>Number of installments (donations) you expect to receive. For Fixed-Length Recurring Donations only.</description>
+    <description>Defines the total number of installment Opportunities to create for Fixed-Length Recurring Donations. Not used for Open recurring donations. Defaults to 1.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Number of installments (donations) you expect to receive. For Fixed-Length Recurring Donations only.</inlineHelpText>
+    <inlineHelpText>The total number of donation installments expected for this recurring donation. Only applies to Fixed-Length recurring donations.</inlineHelpText>
     <label>Number of Planned Installments</label>
     <precision>18</precision>
     <required>false</required>

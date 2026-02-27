@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Disable_Error_Handling__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>If checked, NPPatch&apos;s error handling framework is disabled.</description>
+    <description>When checked, disables NPPatch's error handling framework entirely. Errors will not be caught, logged to the Error object, or surfaced through notifications. Only enable this for debugging purposes or if the error handling framework itself is causing issues. Disabled by default.</description>
     <externalId>false</externalId>
-    <inlineHelpText>If checked, NPPatch&apos;s error handling framework is disabled.</inlineHelpText>
+    <inlineHelpText>Disable NPPatch's error handling framework. Errors will not be logged or reported. Only use for troubleshooting.</inlineHelpText>
     <label>Disable Error Handling</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

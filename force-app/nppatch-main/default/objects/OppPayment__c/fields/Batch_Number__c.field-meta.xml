@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Batch_Number__c</fullName>
-    <description>The batch that set this Payment as paid. This field is automatically populated based on your Batch Number Settings in NPPatch Settings.</description>
+    <description>Automatically populated when a Payment is marked as Paid through a batch process. The value is determined by the Batch Number Settings configured in NPPatch Settings.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The batch that set this Payment as paid. This field is automatically populated based on your Batch Number Settings in NPPatch Settings.</inlineHelpText>
+    <inlineHelpText>The batch identifier associated with this payment, used to group payments processed together.</inlineHelpText>
     <label>Batch Number</label>
     <length>30</length>
     <required>false</required>

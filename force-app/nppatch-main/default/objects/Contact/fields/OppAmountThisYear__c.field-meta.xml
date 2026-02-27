@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>OppAmountThisYear__c</fullName>
     <defaultValue>0</defaultValue>
-    <description>See Household Settings for excluded Record Types and FY/CY. Do not update, updated by automatic process.</description>
+    <description>Calculated by Customizable Rollups. Do not edit manually. Sums the Amount of won Opportunities closed this year where this Contact has the primary Opportunity Contact Role. Uses the Won Opportunities for Hard Credit filter group. Fiscal vs. calendar year is configured in Household Settings.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The total amount of won Opportunities related to this Contact by primary Opportunity Contact Role, closed this year.</inlineHelpText>
+    <inlineHelpText>The total gift amount from won Opportunities closed this year where this Contact is the primary donor.</inlineHelpText>
     <label>Total Gifts This Year</label>
     <precision>16</precision>
     <required>false</required>

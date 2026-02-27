@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Attribution__c</fullName>
-    <description>Whether this setting applies to individual opportunities, organizational opportunities, or both.</description>
+    <description>Controls which Opportunity attribution type this naming rule applies to. Valid values are "Individual" (Opportunities attributed to Contacts via the Household or One-to-One account model), "Organizational" (Opportunities attributed to Organization Accounts), or "Both". Determines the scope of Opportunities affected by this naming format. Each naming rule should target a specific attribution to allow different naming conventions for individual vs. organizational gifts.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Whether this setting applies to individual opportunities, organizational opportunities, or both.</inlineHelpText>
+    <inlineHelpText>Whether this naming rule applies to individual Opportunities, organizational Opportunities, or both.</inlineHelpText>
     <label>Attribution</label>
     <length>255</length>
     <required>false</required>

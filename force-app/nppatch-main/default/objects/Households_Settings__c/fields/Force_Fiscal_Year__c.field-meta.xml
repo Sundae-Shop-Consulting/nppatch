@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Force_Fiscal_Year__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>The NPPatch automatically checks for the presence of custom fiscal years, and disabled FY settings if they're found to avoid errors. This setting overrides that safety-check for users who have accidentally enabled custom fiscal years.</description>
+    <description>Overrides the automatic safety check that disables fiscal year rollup settings when custom fiscal years are detected. Enable this only if custom fiscal years were accidentally enabled in Setup and you want NPPatch to continue using the Use Fiscal Year for Rollups setting. Disabled by default.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The NPPatch automatically checks for the presence of custom fiscal years, and disabled FY settings if they're found to avoid errors. This setting overrides that safety-check for users who have accidentally enabled custom fiscal years.</inlineHelpText>
+    <inlineHelpText>Override the safety check that disables fiscal year rollups when custom fiscal years are detected. Only enable if custom fiscal years were activated accidentally.</inlineHelpText>
     <label>Force Fiscal Year</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

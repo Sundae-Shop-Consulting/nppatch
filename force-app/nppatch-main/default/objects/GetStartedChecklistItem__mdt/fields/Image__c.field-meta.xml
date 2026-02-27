@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Image__c</fullName>
-    <description>The filename of the image in the CumulusResources Static Resource (in the gsAssets/step folder) to render.</description>
+    <description>Filename of the image asset stored in the NPPatchStaticResources static resource under the gsAssets/step folder. Used as the visual for this checklist item.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
-    <inlineHelpText>The filename of the image in the CumulusResources Static Resource (in the gsAssets/step folder) to render.</inlineHelpText>
+    <inlineHelpText>The image filename (in the gsAssets/step folder of the static resource) to display for this item.</inlineHelpText>
     <label>Image</label>
     <length>255</length>
     <required>false</required>

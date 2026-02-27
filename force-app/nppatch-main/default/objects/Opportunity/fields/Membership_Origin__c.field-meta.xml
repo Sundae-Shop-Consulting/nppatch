@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Membership_Origin__c</fullName>
-    <description>Used for Membership Opportunities (Record Type)</description>
+    <description>User-entered picklist for Membership Opportunities. Categorizes how the member was acquired, enabling reporting on new vs. renewed vs. reacquired memberships.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Is this a renewal, a new membership, or a membership with someone who lapsed and has returned.</inlineHelpText>
+    <inlineHelpText>Select whether this is a new membership, a renewal of an existing membership, or a reacquired membership from a lapsed member.</inlineHelpText>
     <label>Membership Origin</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

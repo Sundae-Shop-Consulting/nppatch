@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>TotalOppAmount__c</fullName>
     <defaultValue>0</defaultValue>
-    <description>See Household Settings for excluded Record Types and FY/CY.  Do not update, updated by automatic process.</description>
+    <description>Rollup field. Automatically calculated by the Household rollup process. Excluded Record Types and fiscal year settings are configured in Household Settings. Do not edit manually.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The sum of won Opportunity Amounts related to this Household by Contact and primary Opportunity Contact Role.</inlineHelpText>
+    <inlineHelpText>The lifetime total of all won Opportunity amounts for this Household, through Contacts with a primary Opportunity Contact Role.</inlineHelpText>
     <label>Total Gifts</label>
     <precision>16</precision>
     <required>false</required>

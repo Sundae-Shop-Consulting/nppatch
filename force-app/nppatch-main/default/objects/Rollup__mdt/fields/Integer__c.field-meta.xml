@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Integer__c</fullName>
-    <description>Integer value to indicate how many years ago or days back to roll-up for</description>
+    <description>The numeric value used with the Time Frame field to define the rollup window. Represents years or days depending on the Time Frame selection.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Enter the number of years or days for the rollup time window. For example, enter 5 with "Years Ago" to roll up the last 5 years, or 365 with "Days Back" to roll up the last year.</inlineHelpText>
     <label>Integer</label>
     <precision>18</precision>
     <required>false</required>

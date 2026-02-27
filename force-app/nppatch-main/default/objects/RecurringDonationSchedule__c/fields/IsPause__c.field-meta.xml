@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IsPause__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Set when the schedule record represents Recurring Donation pause date range</description>
+    <description>When true, this schedule record represents a pause period rather than an active donation schedule. The Start Date and End Date define the pause window.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Set when the schedule record represents Recurring Donation pause date range</inlineHelpText>
+    <inlineHelpText>Indicates this schedule record defines a pause period when no installments are created.</inlineHelpText>
     <label>Is Pause</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

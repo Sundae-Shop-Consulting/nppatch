@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Enable_Debug__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Turn this on to enable debug statements in managed package code.</description>
+    <description>When enabled, NPPatch outputs additional debug log statements during execution. This increases the verbosity of Apex debug logs for troubleshooting but may impact performance and log readability. Disabled by default. Disable after troubleshooting to reduce log noise.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Turn this on to enable debug statements in managed package code.</inlineHelpText>
+    <inlineHelpText>Enable verbose debug logging in NPPatch code. Useful for troubleshooting. Disable when not actively debugging.</inlineHelpText>
     <label>Enable Debug</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

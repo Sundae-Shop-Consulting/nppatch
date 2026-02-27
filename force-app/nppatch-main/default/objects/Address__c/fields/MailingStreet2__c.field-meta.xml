@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>MailingStreet2__c</fullName>
+    <description>Secondary street line (apartment, suite, unit, etc.). Synced to Contact and Account mailing fields when this is the default Address.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The second line of the street address, such as an apartment or suite number.</inlineHelpText>
     <label>Mailing Street2</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

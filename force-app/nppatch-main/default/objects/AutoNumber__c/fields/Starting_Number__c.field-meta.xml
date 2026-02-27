@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Starting_Number__c</fullName>
-    <description>The first number in the auto-numbered sequence.</description>
+    <description>The initial number used when this auto-number configuration first begins generating values. Subsequent records increment from this value.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The first number in the auto-numbered sequence.</inlineHelpText>
+    <inlineHelpText>The first number in the sequence. For example, entering 1 means the first auto-number generated will be 1.</inlineHelpText>
     <label>Starting Number</label>
     <precision>10</precision>
     <required>false</required>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Membership_Grace_Period__c</fullName>
     <defaultValue>30</defaultValue>
-    <description>The length of the grace period (in days) after a membership expires (last end date) before the status moves from 'Grace Period' to 'Expired'.  Defaults to 30 days.</description>
+    <description>Number of days after a membership Opportunity's end date during which the membership status remains "Grace Period" before transitioning to "Expired." Default is 30 days. Affects membership rollup calculations on Contacts and Accounts. Set to 0 to transition immediately to Expired status.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The length of the grace period (in days) after a membership expires (last end date) before the status moves from 'Grace Period' to 'Expired'.  Defaults to 30 days.</inlineHelpText>
+    <inlineHelpText>Days after a membership expires before status changes from "Grace Period" to "Expired." Default is 30.</inlineHelpText>
     <label>Membership Grace Period</label>
     <precision>18</precision>
     <required>false</required>

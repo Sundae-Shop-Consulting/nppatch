@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Priority__c</fullName>
-    <description>The priority of this Task.</description>
+    <description>Copied to the generated Task&apos;s Priority field when the Engagement Plan is created.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The priority of this Task.</inlineHelpText>
+    <inlineHelpText>The priority level (High, Medium, or Low) assigned to the generated Task.</inlineHelpText>
     <label>Priority</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

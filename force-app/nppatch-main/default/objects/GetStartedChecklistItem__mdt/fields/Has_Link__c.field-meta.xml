@@ -2,10 +2,10 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Has_Link__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Indicates if the item has a link to display.</description>
+    <description>Controls whether the Link Label and Link URL fields are rendered for this item. When false, link fields are ignored even if populated.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
-    <inlineHelpText>Indicates if the item has a link to display.</inlineHelpText>
+    <inlineHelpText>When selected, a clickable link is shown on this checklist item using the Link Label and Link URL values.</inlineHelpText>
     <label>Has Link</label>
     <type>Checkbox</type>
 </CustomField>

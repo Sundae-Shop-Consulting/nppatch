@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Last_Time_Run__c</fullName>
-    <description>Last time the job was run.</description>
+    <description>Automatically updated with the date and time each time the scheduled job completes execution. Used for monitoring and troubleshooting.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Last time the job was run.</inlineHelpText>
+    <inlineHelpText>The most recent date and time this scheduled job was executed.</inlineHelpText>
     <label>Last Time Run</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

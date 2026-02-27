@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Completed_Tasks__c</fullName>
     <defaultValue>0</defaultValue>
+    <description>Incremented by NPPatch automation each time an associated Task is marked Completed. Used by the Status formula field to calculate plan progress.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The number of Tasks in this Engagement Plan that have been completed.</inlineHelpText>
     <label>Completed Tasks</label>
     <precision>18</precision>
     <required>false</required>

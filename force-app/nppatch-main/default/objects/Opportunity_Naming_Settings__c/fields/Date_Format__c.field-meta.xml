@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Date_Format__c</fullName>
-    <description>The format for dates included in this opportunity name.</description>
+    <description>Specifies the Java SimpleDateFormat pattern used to format date values when they appear in auto-generated Opportunity names. For example, "yyyy-MM-dd" produces "2026-01-15", "MM/dd/yyyy" produces "01/15/2026", and "MMMM yyyy" produces "January 2026". If blank, the Salesforce user locale default date format is used. Applies to any {!CloseDate} or other date field tokens in the Opportunity Name Format.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The format for dates included in this opportunity name.</inlineHelpText>
+    <inlineHelpText>Date format pattern (e.g., yyyy-MM-dd) for date fields in auto-generated Opportunity names. Blank uses the locale default.</inlineHelpText>
     <label>Date Format</label>
     <length>255</length>
     <required>false</required>

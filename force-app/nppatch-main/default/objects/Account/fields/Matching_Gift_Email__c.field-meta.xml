@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Matching_Gift_Email__c</fullName>
-    <description>Email of the company&apos;s Matching Gift administrator.</description>
+    <description>Manually entered. The email address for the person who administers this company&apos;s Matching Gift program.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Email of the company&apos;s Matching Gift administrator.</inlineHelpText>
+    <inlineHelpText>The email address to contact for Matching Gift requests at this company.</inlineHelpText>
     <label>Matching Gift Email</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Notification_Recipient_Email__c</fullName>
-    <description>The email address for the person receiving the honor/memorial notification.</description>
+    <description>Stores the email address for the tribute notification recipient. Entered manually; not auto-populated from the Notification Recipient Contact.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The email address for the person receiving the honor/memorial notification.</inlineHelpText>
+    <inlineHelpText>Enter the email address of the person who should receive the tribute notification.</inlineHelpText>
     <label>Notification Recipient Email</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

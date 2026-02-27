@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Batch_Size__c</fullName>
     <defaultValue>50</defaultValue>
-    <description>The number of NPPatch Data Import records to process in each batch.</description>
+    <description>Controls the number of Data Import records processed per batch execution. Smaller values reduce the risk of governor limit errors but increase total processing time. Default is 50.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The number of NPPatch Data Import records to process in each batch.</inlineHelpText>
+    <inlineHelpText>Enter the number of Data Import records to process in each batch. Reduce this value if you encounter governor limit errors during processing.</inlineHelpText>
     <label>Batch Process Size</label>
     <precision>3</precision>
     <required>false</required>

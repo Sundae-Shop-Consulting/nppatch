@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Rollups_IncrementalLastNDays_ValOverride__c</fullName>
-    <description/>
+    <description>Advanced override for incremental rollups. Specifies the number of days to look back when filtering Opportunities for incremental recalculation during nightly batch jobs. If blank, the system calculates this value automatically based on the rollup schedule frequency. Set this only if you need to force a specific lookback window.</description>
     <externalId>false</externalId>
-    <inlineHelpText>For Incremental Rollups Override Use Only. This value overrides the calculated number of days used to filter related Opportunities to determine which Accounts, Contacts, GAUs or RDs are recalculated during a nightly scheduled job.</inlineHelpText>
+    <inlineHelpText>Advanced: Override the number of days used for incremental rollup filtering. Leave blank to use the automatically calculated value.</inlineHelpText>
     <label>Incremental: Last N Days Value Override</label>
     <precision>6</precision>
     <required>false</required>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>WorkPhone__c</fullName>
-    <description>See 'Preferred Phone' field.</description>
+    <description>The Contact's work phone number. If Preferred Phone is set to Work, this value is copied to the standard Phone field on save.</description>
     <externalId>false</externalId>
-    <inlineHelpText>See 'Preferred Phone' field.</inlineHelpText>
+    <inlineHelpText>This Contact's work phone number. If selected as the Preferred Phone, this value is used as the standard Phone.</inlineHelpText>
     <label>Work Phone</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

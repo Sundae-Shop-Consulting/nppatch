@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Amount__c</fullName>
-    <description>The amount for each installment Opportunity.</description>
+    <description>The donation amount used to create installment Opportunities. For Open recurring donations, this is the per-installment amount. For Fixed with Multiply By schedule, this is also the per-installment amount. For Fixed with Divide By schedule, this is the total amount divided across installments.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The amount for each installment Opportunity.</inlineHelpText>
+    <inlineHelpText>The amount for each donation installment. How this value is applied depends on the Recurring Type and Schedule Type settings.</inlineHelpText>
     <label>Amount</label>
     <precision>18</precision>
     <required>false</required>

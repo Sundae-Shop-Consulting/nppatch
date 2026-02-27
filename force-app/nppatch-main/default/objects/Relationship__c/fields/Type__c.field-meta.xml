@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Type__c</fullName>
-    <description>Field that describes how the Related Contact is connected to the Contact.</description>
+    <description>Drives the reciprocal Type on the mirror Relationship record via Relationship Lookup mappings in NPPatch Settings. For example, setting Father here creates a Child reciprocal.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Field that describes how the Related Contact is connected to the Contact.</inlineHelpText>
+    <inlineHelpText>How the Related Contact is related to the Contact, e.g. Father, Spouse, Friend. The reciprocal Relationship will automatically get the opposite type.</inlineHelpText>
     <label>Type</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

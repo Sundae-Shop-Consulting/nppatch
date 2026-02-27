@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Date_Established__c</fullName>
     <defaultValue>Today()</defaultValue>
-    <description>The initial inception date for this Recurring Donation. The default is the current date.</description>
+    <description>Records when this Recurring Donation was first created. Defaults to today's date on record creation. This date is informational and does not affect the installment schedule.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The initial inception date for this Recurring Donation. The default is the current date.</inlineHelpText>
+    <inlineHelpText>The date this recurring donation was originally established. Defaults to the date the record was created.</inlineHelpText>
     <label>Date Established</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

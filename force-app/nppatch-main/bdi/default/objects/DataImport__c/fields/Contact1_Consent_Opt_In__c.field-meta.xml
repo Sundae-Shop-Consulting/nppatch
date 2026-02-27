@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact1_Consent_Opt_In__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Determines if a Contact consented to opt in.</description>
+    <description>Tracks whether the primary Contact has provided opt-in consent during the data import process. When checked, indicates the Contact agreed to the terms described in the Consent Message field.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Determines if a Contact consented to opt in.</inlineHelpText>
+    <inlineHelpText>Check if the primary Contact has consented to opt in to communications.</inlineHelpText>
     <label>Contact1 Consent Opt-In</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

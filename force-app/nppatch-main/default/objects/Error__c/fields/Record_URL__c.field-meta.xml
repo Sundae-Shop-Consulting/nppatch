@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Record_URL__c</fullName>
-    <description>A link to the record which caused the error, if available.</description>
+    <description>Constructed URL linking to the Salesforce record associated with the error. Populated automatically from the Related Record ID when available.</description>
     <externalId>false</externalId>
-    <inlineHelpText>A link to the record which caused the error, if available.</inlineHelpText>
+    <inlineHelpText>A clickable link to the record that caused this error, if available.</inlineHelpText>
     <label>Record URL</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

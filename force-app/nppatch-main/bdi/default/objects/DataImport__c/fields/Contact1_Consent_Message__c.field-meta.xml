@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact1_Consent_Message__c</fullName>
-    <description>Provides details on what the Contact opted in to.</description>
+    <description>Stores the consent message text associated with the primary Contact's opt-in. Used to record what the Contact agreed to when providing consent during data import.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Provides details on what the Contact opted in to.</inlineHelpText>
+    <inlineHelpText>Enter the message describing what the primary Contact consented to (e.g., email communications, newsletter).</inlineHelpText>
     <label>Contact1 Consent Message</label>
     <length>2000</length>
     <trackTrending>false</trackTrending>

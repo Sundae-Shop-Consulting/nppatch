@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Context_Type__c</fullName>
-    <description>Context that generated the error, if known.</description>
+    <description>Populated by the error handler with the Apex class name, trigger, or process that was running when the error occurred.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Context that generated the error, if known.</inlineHelpText>
+    <inlineHelpText>The process or operation that was running when this error occurred, such as a trigger name or batch job.</inlineHelpText>
     <label>Context Type</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

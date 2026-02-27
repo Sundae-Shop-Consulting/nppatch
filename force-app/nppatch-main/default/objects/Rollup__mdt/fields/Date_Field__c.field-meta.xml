@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Date_Field__c</fullName>
+    <description>The date or datetime field on the Date Object used to filter records by time frame or determine First/Last values.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Select the date field used for time-bound filtering, such as CloseDate on Opportunity. Required for Years Ago, Days Back, First, Last, Best Year, and Donor Streak operations.</inlineHelpText>
     <label>Date Field</label>
     <metadataRelationshipControllingField>Rollup__mdt.Date_Object__c</metadataRelationshipControllingField>
     <referenceTo>FieldDefinition</referenceTo>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact1_Lastname__c</fullName>
+    <description>Maps to Contact.LastName on the primary Contact during data import processing. Used with other Contact1 fields for matching and creating the primary Contact record.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Contact1.Lastname</inlineHelpText>
+    <inlineHelpText>Enter the last name of the primary Contact for this data import record.</inlineHelpText>
     <label>Contact1 Last Name</label>
     <length>80</length>
     <required>false</required>

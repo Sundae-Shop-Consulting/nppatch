@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Recurring_Donation__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>The Recurring Donation this Allocation is attributed to. NPPatch automatically allocates all new Opportunities associated with the Recurring Donation in the same way.</description>
+    <description>When set, NPPatch uses this Allocation as a template: each new installment Opportunity created by the Recurring Donation automatically inherits the same GAU allocation split.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Recurring Donation this Allocation is attributed to. NPPatch automatically allocates all new Opportunities associated with the Recurring Donation in the same way.</inlineHelpText>
+    <inlineHelpText>Link a Recurring Donation to create a default allocation template. Each new installment Opportunity will be automatically allocated to the same General Accounting Unit.</inlineHelpText>
     <label>Recurring Donation</label>
     <referenceTo>Recurring_Donation__c</referenceTo>
     <relationshipLabel>GAU Allocations</relationshipLabel>

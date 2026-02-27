@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Status__c</fullName>
-    <description>API name of the Recurring Donation Status that is mapped to a State.</description>
+    <description>The API name of the Recurring Donation Status picklist value that this mapping record associates with a State. Must exactly match a value in the Recurring Donation Status picklist.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
-    <inlineHelpText>API name of the Recurring Donation Status that is mapped to a State.</inlineHelpText>
+    <inlineHelpText>The Recurring Donation Status value (API name) that this record maps to a State.</inlineHelpText>
     <label>Recurring Donation Status</label>
     <length>255</length>
     <required>false</required>

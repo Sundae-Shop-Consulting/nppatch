@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Campaign_Name__c</fullName>
+    <description>Name of the Campaign to associate with the donated Opportunity. Used to look up and link the Campaign record during data import processing.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Enter the name of the Campaign to associate with this donation.</inlineHelpText>
     <label>Campaign Name</label>
     <length>255</length>
     <required>false</required>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Target_Field_API_Name__c</fullName>
-    <description>The API name of the field on the target object.</description>
+    <description>Stores the API name of the destination field on the target Salesforce object. During data import processing, the value from the source Data Import field is written to this field on the target record.</description>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
-    <inlineHelpText>The API name of the field on the target object.</inlineHelpText>
+    <inlineHelpText>Enter the API name of the field on the target object where the imported value will be saved (e.g., FirstName).</inlineHelpText>
     <label>Target Field API Name</label>
     <length>255</length>
     <required>true</required>

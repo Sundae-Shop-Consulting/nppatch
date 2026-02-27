@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Do_Not_Automatically_Create_Payment__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>If payments are active, and if this is checked, a new payment will not be automatically created for this Opportunity.</description>
+    <description>Automation toggle. When checked, suppresses automatic Payment record creation by NPPatch triggers on this Opportunity. Only applies when Automatic Payment Creation is enabled in NPPatch Settings.</description>
     <externalId>false</externalId>
-    <inlineHelpText>If payments are active, and if checked, a new payment will not be automatically created for this Opportunity.</inlineHelpText>
+    <inlineHelpText>Check this box to prevent NPPatch from automatically creating a Payment record when this Opportunity is saved. Use when you plan to create Payments manually.</inlineHelpText>
     <label>Do Not Automatically Create Payment</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackTrending>false</trackTrending>

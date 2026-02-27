@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Matching_Behavior__c</fullName>
     <defaultValue>&quot;Do Not Match&quot;</defaultValue>
-    <description>Defines how the Data Importer should handle matching Donations. You must choose a value.</description>
+    <description>Overrides the org-level Donation Matching Behavior for this batch. Controls whether the import process creates new Opportunities, matches existing ones, or applies best-match logic when processing donations.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Defines how NPPatch should handle matching Donations.</inlineHelpText>
+    <inlineHelpText>Select how donations in this batch are matched to existing Opportunities. Options range from always creating new records to finding the best match.</inlineHelpText>
     <label>Donation Matching Behavior</label>
     <required>true</required>
     <trackHistory>false</trackHistory>

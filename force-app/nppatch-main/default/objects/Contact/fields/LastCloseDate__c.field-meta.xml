@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LastCloseDate__c</fullName>
-    <description>System field: do not change. Updated by automatic processes. Do not edit.</description>
+    <description>Calculated by Customizable Rollups. Do not edit manually. The most recent Close Date among all won Opportunities where this Contact has the primary Opportunity Contact Role. Uses the Won Opportunities for Hard Credit filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The close date of the most recent won Opportunity related to this Contact by primary Opportunity Contact Role.</inlineHelpText>
+    <inlineHelpText>The Close Date of the most recent won Opportunity where this Contact is the primary donor.</inlineHelpText>
     <label>Last Gift Date</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

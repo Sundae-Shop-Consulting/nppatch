@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Operator__c</fullName>
+    <description>The comparison operator used to evaluate the field against the specified value.</description>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Select the comparison operator, such as Equals, Not Equals, Contains, or In List. The operator determines how the field value is compared to the filter value.</inlineHelpText>
     <label>Operator</label>
     <required>true</required>
     <type>Picklist</type>

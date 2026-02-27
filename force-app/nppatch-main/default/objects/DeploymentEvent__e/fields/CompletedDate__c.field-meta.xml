@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CompletedDate__c</fullName>
+    <description>Timestamp when the Metadata API deployment finished. Populated by the deployment callback handler after the deployment completes or fails.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The date and time the deployment completed.</inlineHelpText>
     <isFilteringDisabled>false</isFilteringDisabled>
     <isNameField>false</isNameField>
     <isSortingDisabled>false</isSortingDisabled>

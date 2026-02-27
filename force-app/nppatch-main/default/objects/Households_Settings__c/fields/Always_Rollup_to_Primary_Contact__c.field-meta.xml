@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Always_Rollup_to_Primary_Contact__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>When selected, Salesforce will ALWAYS roll up donor data to the Opportunity's Primary Contact, and corresponding Household Account or record, even if the Opportunity is not from an individual. If left unselected, only the organization will receive credit.</description>
+    <description>Controls whether Opportunity rollup totals are always attributed to the Primary Contact and their Household Account, even for organizational donations. When disabled (default), organizational Opportunities only credit the organization Account. Enabling this ensures the Primary Contact always receives donor statistics credit alongside the organization.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When selected, Salesforce will ALWAYS roll up donor data to the Opportunity's Primary Contact, and corresponding Household Account or record, even if the Opportunity is not from an individual. If left unselected, only the organization will receive credit.</inlineHelpText>
+    <inlineHelpText>Always roll up donor statistics to the Primary Contact and their Household, even for organizational Opportunities. When unchecked, only the organization receives credit.</inlineHelpText>
     <label>Always Rollup to Primary Contact Role</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

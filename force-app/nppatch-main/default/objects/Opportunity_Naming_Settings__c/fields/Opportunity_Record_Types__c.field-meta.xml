@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Opportunity_Record_Types__c</fullName>
-    <description>Specifies the opportunity record type that this naming scheme is for.</description>
+    <description>Specifies which Opportunity Record Type(s) this naming rule applies to, stored as a semicolon-separated list of Record Type Developer Names. Only Opportunities with a matching Record Type will use this naming format. If blank, the naming rule applies to all Record Types not covered by a more specific rule. Multiple naming rules can target different Record Types to produce different name formats for different gift types (e.g., donations vs. grants).</description>
     <externalId>false</externalId>
-    <inlineHelpText>Specifies the opportunity record type that this naming scheme is for.</inlineHelpText>
+    <inlineHelpText>The Opportunity Record Type(s) this naming rule applies to. Leave blank to apply to all Record Types.</inlineHelpText>
     <label>Opportunity Record Types</label>
     <length>255</length>
     <required>false</required>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Rollups_AcctContactSoftCredit_Batch_Size__c</fullName>
     <defaultValue>200</defaultValue>
-    <description>Only used by the new Customizable Rollups engine</description>
+    <description>Number of records processed per batch execution during the Contact-to-Account soft credit rollup calculations using the Customizable Rollups engine. This rollup aggregates Contact-level soft credits up to their parent Account. Default is 200. Reduce if the batch job fails due to governor limits.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Number of records per batch to process when recalculating soft credit donor rollups to the Account object.</inlineHelpText>
+    <inlineHelpText>Records per batch when rolling up Contact soft credits to Accounts. Default is 200. Reduce if the rollup job hits governor limits.</inlineHelpText>
     <label>Contact Soft Credit to Acct Batch Size</label>
     <precision>6</precision>
     <required>false</required>

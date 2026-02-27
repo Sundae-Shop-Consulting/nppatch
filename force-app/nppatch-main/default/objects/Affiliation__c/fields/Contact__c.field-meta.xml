@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact__c</fullName>
+    <description>Master-detail lookup to the Contact in this Affiliation. Set automatically when the Affiliation record is created.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The person affiliated with this Organization.</inlineHelpText>
     <label>Contact</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Organization Affiliations</relationshipLabel>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Matching_Gift_Account__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Lookup to the Account record of the company that will match this Donation.</description>
+    <description>Lookup to Account. Identifies the company Account that will provide or has provided a matching gift for this Donation.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Lookup to the Account record of the company that will match this Donation.</inlineHelpText>
+    <inlineHelpText>Select the Account record for the company that will match this Donation.</inlineHelpText>
     <label>Matching Gift Account</label>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Matched Gifts</relationshipLabel>

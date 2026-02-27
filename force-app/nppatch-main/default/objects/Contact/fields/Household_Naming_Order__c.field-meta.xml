@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Household_Naming_Order__c</fullName>
+    <description>Controls the order in which this Contact's name appears in auto-generated Household names and greetings. Lower numbers appear first. Used by the Household Naming Service.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Determines the order in which Contact names are used to generate Household name.</inlineHelpText>
+    <inlineHelpText>Enter a number to control the order of this Contact's name in the Household Name and Greetings. Lower numbers appear first.</inlineHelpText>
     <label>Household Naming Order</label>
     <precision>18</precision>
     <required>false</required>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Possible_Matches__c</fullName>
-    <description>A comma-separated list of Ids for the first 10 possible Opportunity matches for a donation.</description>
+    <description>System field populated during donation matching. Stores a comma-separated list of Salesforce IDs for up to 10 possible Opportunity matches found during Dry Run or processing.</description>
     <externalId>false</externalId>
-    <inlineHelpText>A comma-separated list of Ids for the first 10 possible Opportunity matches for a donation.</inlineHelpText>
+    <inlineHelpText>IDs of possible matching Opportunities found during processing. Automatically populated by the system.</inlineHelpText>
     <label>Donation Possible Matches</label>
     <length>255</length>
     <required>false</required>

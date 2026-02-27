@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Type__c</fullName>
+    <description>Maps to Opportunity.Type during data import processing.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Opportunity.Type</inlineHelpText>
+    <inlineHelpText>Enter the type for this donation (e.g., New, Renewal, Upgrade).</inlineHelpText>
     <label>Donation Type</label>
     <length>255</length>
     <required>false</required>

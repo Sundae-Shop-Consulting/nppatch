@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Seasonal_Start_Month__c</fullName>
-    <description>The month of the year when this Address replaces the Default Address.</description>
+    <description>Used with Seasonal Start Day, Seasonal End Day, and Seasonal End Month to define the seasonal window. NPPatch automation swaps this Address in during this month.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The month of the year when this Address replaces the Default Address.</inlineHelpText>
+    <inlineHelpText>The month when this seasonal Address begins being used as the active mailing address.</inlineHelpText>
     <label>Seasonal Start Month</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

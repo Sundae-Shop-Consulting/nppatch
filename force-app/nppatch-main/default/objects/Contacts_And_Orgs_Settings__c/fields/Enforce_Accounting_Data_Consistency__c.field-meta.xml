@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Enforce_Accounting_Data_Consistency__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Enables rules and automation that enforce consistency in accounting data.</description>
+    <description>When enabled, NPPatch enforces data integrity rules on Payments and Opportunities. This includes ensuring Payment amounts match the Opportunity Amount, preventing deletion of Payments on closed Opportunities, and validating that required accounting fields are populated. Disabled by default. Enabling this may surface existing data inconsistencies as validation errors.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Enables multiple rules and automations on payments and opportunities to ensure that accounting data is complete and consistent.</inlineHelpText>
+    <inlineHelpText>Enforce consistency rules on Payments and Opportunities, such as requiring Payment amounts to match the Opportunity Amount.</inlineHelpText>
     <label>Enforce Accounting Data Consistency</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

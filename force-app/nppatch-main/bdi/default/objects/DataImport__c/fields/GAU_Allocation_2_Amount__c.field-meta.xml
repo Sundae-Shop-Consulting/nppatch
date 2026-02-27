@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>GAU_Allocation_2_Amount__c</fullName>
-    <description>The monetary amount attributed to the Opportunity&apos;s second GAU Allocation. You must use Data Import Advanced Mapping to map to this field.</description>
+    <description>Maps to Allocation__c.Amount__c on the second GAU Allocation during data import processing. Requires Data Import Advanced Mapping to be enabled.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The monetary amount attributed to the Opportunity&apos;s second GAU Allocation. You must use Data Import Advanced Mapping to map to this field.</inlineHelpText>
+    <inlineHelpText>Enter the monetary amount for the second GAU Allocation on the Opportunity. Requires Advanced Mapping.</inlineHelpText>
     <label>GAU Allocation 2: Amount</label>
     <precision>18</precision>
     <required>false</required>

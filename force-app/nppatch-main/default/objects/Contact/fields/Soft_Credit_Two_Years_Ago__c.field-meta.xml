@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Soft_Credit_Two_Years_Ago__c</fullName>
+    <description>Calculated by Customizable Rollups (soft credit). Do not edit manually. Sums the Amount of won Opportunities closed two years ago where this Contact received a soft credit. Uses the Won Opportunities for Soft Credit filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The sum of soft credit Opportunity amounts two years ago determined by Opportunity Contact Role and filtered by Roles in Household Settings.</inlineHelpText>
+    <inlineHelpText>The total soft credit amount from won Opportunities closed two years ago where this Contact is credited as a related donor.</inlineHelpText>
     <label>Soft Credit Two Years Ago</label>
     <precision>18</precision>
     <required>false</required>

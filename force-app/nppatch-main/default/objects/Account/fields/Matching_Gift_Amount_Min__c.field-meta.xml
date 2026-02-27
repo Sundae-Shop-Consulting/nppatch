@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Matching_Gift_Amount_Min__c</fullName>
-    <description>The smallest amount the company will match on any single gift.</description>
+    <description>Manually entered. The minimum gift amount required for this company to provide a match.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The smallest amount the company will match on any single gift.</inlineHelpText>
+    <inlineHelpText>The lowest gift amount eligible for a match from this company. Gifts below this amount are not matched.</inlineHelpText>
     <label>Matching Gift Amount Min</label>
     <precision>18</precision>
     <required>false</required>
