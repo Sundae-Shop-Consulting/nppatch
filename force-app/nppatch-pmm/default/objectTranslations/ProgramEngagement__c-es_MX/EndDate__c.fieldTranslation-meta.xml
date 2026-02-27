@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>EndDate__c</name>
+    <help>Si la etapa Participación en programa es Completado o Retirado, la Fecha de finalización toma como valor predeterminado la fecha de hoy si se deja en blanco.</help>
+    <label>Fecha de finalización</label>
+</CustomFieldTranslation>

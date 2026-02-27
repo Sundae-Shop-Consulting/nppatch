@@ -1,0 +1,26 @@
+/*
+ *
+ *  * Copyright (c) 2020, salesforce.com, inc.
+ *  * All rights reserved.
+ *  * SPDX-License-Identifier: BSD-3-Clause
+ *  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ *
+ */
+
+.small-box,
+.shaded-box {
+    padding: var(--lwc-varSpacingXxxSmall, 0.125rem);
+}
+.shaded-box {
+    background-image: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.025) 25%,
+        transparent 0,
+        transparent 50%,
+        rgba(0, 0, 0, 0.025) 0,
+        rgba(0, 0, 0, 0.025) 75%,
+        transparent 0,
+        transparent
+    );
+    background-size: 64px 64px;
+}

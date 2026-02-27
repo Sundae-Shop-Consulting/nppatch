@@ -1,0 +1,130 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  - /*
+  -  * Copyright (c) 2020, salesforce.com, inc.
+  -  * All rights reserved.
+  -  * SPDX-License-Identifier: BSD-3-Clause
+  -  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+  -  */
+  -->
+
+<template>
+    <c-section title={labels.reviewSessions} focus-heading if:true={isLoaded}></c-section>
+    <lightning-layout
+        multiple-rows="true"
+        horizontal-align="center"
+        pull-to-boundary="medium"
+        if:true={isLoaded}
+    >
+        <lightning-layout-item
+            size="10"
+            class="slds-var-m-top_large"
+            if:true={limitReached}
+        >
+            <c-scoped-notification title={limitMessage} theme="warning">
+            </c-scoped-notification>
+        </lightning-layout-item>
+        <lightning-layout-item
+            size="10"
+            class="slds-var-m-top_large"
+            if:true={editingExistingSchedule}
+        >
+            <c-scoped-notification
+                if:true={editingExistingSchedule}
+                title={labels.onlyShowingFutureSessionsMessage}
+            ></c-scoped-notification>
+        </lightning-layout-item>
+        <lightning-layout-item size="10" class="slds-var-m-bottom_small">
+            <lightning-layout horizontal-align="spread">
+                <lightning-layout-item>
+                    <div
+                        style="font-weight: bold;"
+                        class="slds-var-m-top_large slds-var-m-right_x-large"
+                    >
+                        {totalServiceSessions}
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <div class="slds-var-m-top_medium slds-var-m-left_x-large">
+                        <lightning-button
+                            variant="neutral"
+                            label={labels.addSession}
+                            onclick={handleAddSession}
+                            disabled={limitReached}
+                        ></lightning-button>
+                    </div>
+                    <c-modal header={labels.addSession} is-nested="true">
+                        <div style="height: 400px;">
+                            <template if:true={addSessionError}>
+                                <c-scoped-notification
+                                    theme="error"
+                                    title={addSessionError}
+                                ></c-scoped-notification>
+                            </template>
+                            <lightning-record-edit-form object-api-name={objectName}>
+                                <lightning-input-field
+                                    field-name={sessionStartFieldName}
+                                    value={addSessionStart}
+                                    onchange={handleStartChange}
+                                    required
+                                ></lightning-input-field>
+                                <lightning-input-field
+                                    field-name={sessionEndFieldName}
+                                    value={addSessionEnd}
+                                    onchange={handleEndChange}
+                                    required
+                                ></lightning-input-field>
+                            </lightning-record-edit-form>
+                        </div>
+
+                        <div slot="footer">
+                            <lightning-layout>
+                                <lightning-layout-item>
+                                    <lightning-button
+                                        label={labels.cancel}
+                                        variant="neutral"
+                                        onclick={closeModal}
+                                    ></lightning-button>
+                                </lightning-layout-item>
+                                <lightning-layout-item alignment-bump="left">
+                                    <lightning-button
+                                        label={labels.saveNew}
+                                        variant="neutral"
+                                        onclick={handleSaveNewSession}
+                                        disabled={saveNewLimitReached}
+                                    ></lightning-button>
+                                    <lightning-button
+                                        label={labels.save}
+                                        variant="brand"
+                                        onclick={handleSaveSession}
+                                        class="slds-var-p-left_medium"
+                                    ></lightning-button>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </div>
+                    </c-modal>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout-item>
+        <lightning-layout-item if:true={emptyMessage} size="10">
+            <c-scoped-notification title={emptyMessage}></c-scoped-notification>
+        </lightning-layout-item>
+        <lightning-layout-item
+            size="10"
+            class="slds-box slds-p-around_none"
+            if:true={hasServiceSessions}
+        >
+            <lightning-datatable
+                key-field="Id"
+                columns={columns}
+                data={serviceSessions}
+                column-widths-mode="auto"
+                resize-column-disabled
+                hide-checkbox-column
+                show-row-number-column
+                onrowaction={handleDelete}
+            >
+            </lightning-datatable>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>
