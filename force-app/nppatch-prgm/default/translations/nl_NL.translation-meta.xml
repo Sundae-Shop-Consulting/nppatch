@@ -577,10 +577,6 @@
         <label>Geslaagd</label>
     </customLabels>
     <customLabels>
-        <name>TelemetryException</name>
-        <label>Er zijn geen telemetriegegevens verzameld.</label>
-    </customLabels>
-    <customLabels>
         <name>This_Week</name>
         <label>Deze week</label>
     </customLabels>

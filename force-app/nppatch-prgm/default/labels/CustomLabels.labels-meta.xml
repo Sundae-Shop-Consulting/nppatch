@@ -985,14 +985,6 @@
         <value>Success</value>
     </labels>
     <labels>
-        <fullName>TelemetryException</fullName>
-        <categories>Exception</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Error capturing metrics.</shortDescription>
-        <value>We couldn't collect telemetry metrics.</value>
-    </labels>
-    <labels>
         <fullName>This_Week</fullName>
         <language>en_US</language>
         <protected>true</protected>
