@@ -10,7 +10,7 @@ NPPatch follows the Apex Enterprise Patterns (fflib) layered architecture, decom
 
 ```
 ┌─────────────────────────────────────────────┐
-│  User Interface Layer (LWC, Aura, VF)       │
+│  User Interface Layer (LWC, Aura)            │
 ├─────────────────────────────────────────────┤
 │  Controller / Adapter Layer (_CTRL, adapters) │
 ├─────────────────────────────────────────────┤
@@ -70,9 +70,8 @@ NPPatch organizes code into functional modules, each with a two-letter or three-
 | **ADDR** | Address Handling | Address creation, verification, and seasonal address management |
 | **AFFL** | Affiliations | Affiliation record creation, primary affiliation tracking |
 | **ALLO** | Allocations | Opportunity allocation management and campaign allocations |
-| **BDE** | Batch Data Entry | Batch donation entry user interface and validation |
 | **BDI** | Batch Data Import | Data import batch processing, field mapping, matching |
-| **BGE** | Batch Gift Entry | Gift entry batch creation and processing |
+| **BGE** | Batch Gift Entry | Form template management for the Gift Entry feature |
 | **CAM** | Campaign | Campaign management and rollup calculations |
 | **CAO** | Constants | Cross-cutting constants used throughout the system |
 | **CMT** | Custom Metadata | CMT-based configuration and metadata driven patterns |
@@ -82,19 +81,17 @@ NPPatch organizes code into functional modules, each with a two-letter or three-
 | **EP** | Engagement Plans | Engagement plan scheduling and task creation |
 | **ERR** | Error Handling | Exception handling, error logging, notifications |
 | **GAU** | General Accounting Units | Fund/cost center allocation and tracking |
-| **GE** | Gift Entry | Modern gift entry interface and processing |
+| **GE** | Gift Entry | Gift entry interface and processing |
 | **GS** | Get Started | Installation and post-install configuration |
 | **HH** | Household | Household creation, naming, and rollup processing |
-| **LD** | Levels | Level assignment and batch processing |
-| **LVL** | Levels | Level configuration and evaluation |
+| **LD** | Leads | Lead conversion override and processing |
+| **LVL** | Levels | Level configuration, evaluation, and batch assignment |
 | **MTCH** | Matching | Record matching for de-duplication and merging |
 | **OPP** | Opportunity | Opportunity management and related automation |
 | **PMT** | Payments | Payment creation, routing, and reconciliation |
 | **PSC** | Partial Soft Credit | Partial soft credit allocation and tracking |
-| **RD** | Recurring Donations (v1) | Legacy recurring donation processing |
-| **RD2** | Recurring Donations (v2) | Next-generation recurring donation engine |
+| **RD2** | Recurring Donations | Recurring donation engine—schedules, installments, change log |
 | **REL** | Relationships | Relationship record management and reciprocals |
-| **RLLP** | Rollup | Rollup field synchronization and updates |
 | **STG** | Settings | Settings pages and configuration UI |
 | **TEST** | Testing | Test utilities and mock implementations |
 | **UTIL** | Utilities | Cross-cutting utility functions |
@@ -104,25 +101,22 @@ NPPatch organizes code into functional modules, each with a two-letter or three-
 
 ```
 force-app/
-├── infrastructure/
-│   ├── apex-common/        # fflib base classes and foundation
-│   ├── apex-extensions/    # fflib extensions specific to nppatch
-│   └── apex-mocks/         # fflib mocking framework for testing
-├── main/
-│   ├── default/
-│   │   ├── classes/        # All Apex code, organized by module prefix
-│   │   ├── objects/        # Custom objects and standard object extensions
-│   │   ├── triggers/       # Visualforce pages and components (legacy)
-│   │   └── lwc/            # Lightning Web Components
-│   ├── service/            # Service layer classes (_SVC)
-│   ├── selector/           # Selector layer classes (_SEL)
-│   ├── domain/             # Domain layer classes (_DOM)
-│   └── adapter/            # Adapter/Controller layer
-└── tdtm/
-    ├── triggers/           # TDTM trigger handlers (one per object)
-    ├── classes/            # TDTM framework classes
-    ├── objects/            # Trigger_Handler__c and related objects
-    └── triggerHandlers/    # Individual trigger handler implementations
+├── nppatch-common/         # Shared infrastructure (fflib, utilities)
+└── nppatch-main/
+    ├── Application.cls     # Central fflib application factory
+    ├── adapter/            # Adapter/Controller layer
+    ├── bdi/                # Batch Data Import classes
+    ├── default/
+    │   ├── classes/        # All Apex code, organized by module prefix
+    │   ├── objects/        # Custom objects and standard object extensions
+    │   ├── lwc/            # Lightning Web Components (~120)
+    │   ├── aura/           # Aura components (~46)
+    │   └── pages/          # Visualforce pages (payment wizard, utility pages)
+    ├── domain/             # Domain layer classes (_DOM)
+    ├── selector/           # Selector layer classes (_SEL)
+    ├── service/            # Service layer classes (_SVC)
+    ├── tdtm/               # TDTM trigger framework and handlers
+    └── test/               # Test utilities and factories
 ```
 
 ## Naming Conventions
@@ -137,53 +131,31 @@ Class names follow a consistent pattern that encodes both the functional area an
 
 | Suffix | Layer | Purpose | Example |
 |--------|-------|---------|---------|
-| `_SVC` | Service | Orchestrates business logic, called by UI and batch | `OPP_OpportunityCloneService_SVC` |
-| `_SEL` | Selector | Encapsulates SOQL queries | `OPP_OpportunitySelector_SEL` |
-| `_DOM` | Domain | Contains object-specific business rules | `OPP_OpportunitiesDomain_DOM` |
-| `_CTRL` | Controller | Handles UI interactions, maps to service layer | `GE_GiftEntry_CTRL` |
-| `_TDTM` | Trigger Handler | Implements trigger logic via TDTM framework | `OPP_OpportunityAfterUpdate_TDTM` |
-| `_BATCH` | Batch Job | Implements `Database.Batchable<SObject>` | `RD2_RecurringDonationBatch_BATCH` |
-| `_SCHED` | Scheduled Job | Implements `Schedulable` interface | `HH_HouseholdNaming_SCHED` |
-| `_TEST` | Test Class | Unit tests for production code | `OPP_OpportunityCloneService_TEST` |
+| `_SVC` | Service | Orchestrates business logic, called by UI and batch | `RD2_CommitmentService` |
+| `_SEL` | Selector | Encapsulates SOQL queries | `CRLP_Rollup_SEL` |
+| `_DOM` | Domain | Contains object-specific business rules | `CRLP_Operation` |
+| `_CTRL` | Controller | Handles UI interactions, maps to service layer | `GE_GiftEntryController` |
+| `_TDTM` | Trigger Handler | Implements trigger logic via TDTM framework | `RD2_RecurringDonations_TDTM` |
+| `_BATCH` | Batch Job | Implements `Database.Batchable<SObject>` | `RD2_OpportunityEvaluation_BATCH` |
+| `_SCHED` | Scheduled Job | Implements `Schedulable` interface | `ADDR_Seasonal_SCHED` |
+| `_TEST` | Test Class | Unit tests for production code | `RD2_ScheduleService_TEST` |
 | (none) | Utility | Stateless utility functions | `UTIL_Namespace`, `CAO_Constants` |
-
-### Examples
-
-- `OPP_OpportunityBeforeInsert_TDTM` - Trigger handler for Opportunity before insert
-- `RD2_RecurringDonationSchedule_SVC` - Service for recurring donation scheduling
-- `CRLP_RollupCalculation_SEL` - Selector for rollup field queries
-- `HH_HouseholdProcessing_DOM` - Domain logic for household operations
 
 ## Infrastructure Layer (fflib)
 
 The package includes a complete implementation of the Apex Enterprise Patterns framework:
 
-### fflib_Application
+### Application Factory
 
-The central application factory that instantiates instances of Service, Selector, UnitOfWork, and Domain classes. This supports:
+`Application.cls` is the central factory that instantiates instances of Service, Selector, UnitOfWork, and Domain classes. This supports:
 
 - **Lazy loading** of instances
 - **Dependency injection** for testing (via mock injection)
 - **Type-safe factories** for each architectural layer
 
-```apex
-// Service layer usage
-OPP_OpportunitySvc_SVC svc = (OPP_OpportunitySvc_SVC) fflib_Application.Service.newInstance(OPP_IOpportunitySvc_SVC.class);
-svc.processOpportunities(opportunities);
-
-// Selector layer usage
-OPP_OpportunitySel_SEL sel = (OPP_OpportunitySel_SEL) fflib_Application.Selector.newInstance(OPP_IOpportunitySel_SEL.class);
-List<Opportunity> opps = sel.selectById(opportunityIds);
-
-// Unit of Work usage
-fflib_ISObjectUnitOfWork uow = fflib_Application.UnitOfWork.newInstance();
-uow.registerNew(newRecord);
-uow.commitWork();
-```
-
 ### Unit of Work Pattern
 
-The `fflib_SObjectUnitOfWork` manages DML operations in a transaction-aware manner:
+The `UnitOfWork` class manages DML operations in a transaction-aware manner:
 
 - **Collects changes** without immediately persisting
 - **Maintains foreign key order** to prevent constraint violations
@@ -213,9 +185,8 @@ Hierarchy custom settings support both organization-level and user-level overrid
 ```apex
 // Retrieve settings with user override fallback
 Contacts_And_Orgs_Settings__c settings = UTIL_CustomSettingsFacade.getContactsSettings();
-
-// If not exists at user level, falls back to org default
-// If not exists anywhere, creates empty instance with defaults
+// Falls back to org default if no user-level setting exists
+// Creates a new instance with defaults if neither exists
 ```
 
 **Key Features:**
@@ -224,23 +195,22 @@ Contacts_And_Orgs_Settings__c settings = UTIL_CustomSettingsFacade.getContactsSe
 - Lazy initialization on first access
 - Automatic defaults configuration via `configXxxSettings()` methods
 
+Admins configure these settings through the **NPPatch Settings** UI (accessible from the app launcher or the NPPatch Settings tab), not through the standard Custom Settings UI in Setup.
+
 ### Custom Metadata Types (Read-Only Configuration)
 
 Custom metadata types store configuration that should not change frequently:
 
-- **Data_Import_Object_Mapping__mdt** - Field mapping configurations
-- **Data_Import_Field_Mapping__mdt** - Individual field mappings
-- **Rollup__mdt** - Customizable rollup definitions
-- **Filter_Rule__mdt** - Reusable filter conditions
-- **Opportunity_Stage_To_State_Mapping__mdt** - Recurring donation state mappings
-- **GetStartedChecklistItem__mdt** - Post-install checklist
-- And 6+ others
+- `Data_Import_Object_Mapping__mdt` — field mapping configurations
+- `Data_Import_Field_Mapping__mdt` — individual field mappings
+- `Rollup__mdt` — customizable rollup definitions (86 records deploy with the package)
+- `Filter_Rule__mdt` — reusable filter conditions (12 records deploy with the package)
+- `Filter_Group__mdt` — groups of filter rules (8 records deploy with the package)
+- `Opportunity_Stage_To_State_Mapping__mdt` — recurring donation state mappings
+- `RecurringDonationStatusMapping__mdt` — RD status conversion
+- `GetStartedChecklistItem__mdt` — post-install checklist
 
-Custom metadata is:
-- Deployed alongside code
-- Cached globally (not per-user)
-- Queryable like regular custom objects
-- Version-controlled in source
+Custom metadata is deployed alongside code, cached globally, queryable like regular custom objects, and version-controlled in source. Rollup definitions ship pre-populated with the package, so a fresh install has working rollups immediately.
 
 ## Error Handling
 
@@ -256,13 +226,6 @@ The `ERR_Handler` class logs exceptions to the `Error__c` object with:
 
 ### Exception Types
 
-```apex
-public class fflib_Application {
-    public class ApplicationException extends Exception { }
-    public class DeveloperException extends Exception { }
-}
-```
-
 Business exceptions are handled gracefully:
 - Caught by TDTM framework
 - User-facing error messages added to records via `addError()`
@@ -274,17 +237,16 @@ Error handling can be configured via `Error_Settings__c`:
 - Enable/disable error logging
 - Configure email notifications
 - Toggle debug logging
-- Enable override feature pilots
 
 ## Performance Optimization
 
 ### Batch Processing
 
 Large operations use batch apex for:
-- Recurring donation processing (RD2_RecurringDonationBatch)
-- Household naming and rollups
-- Allocation calculations
-- Rollup field updates
+- Recurring donation processing (`RD2_OpportunityEvaluation_BATCH`)
+- Household naming and rollups (`HH_HouseholdNaming_BATCH`)
+- Allocation calculations (`ALLO_MakeDefaultAllocations_BATCH`)
+- Rollup field updates (`CRLP_Account_BATCH`, `CRLP_Contact_BATCH`, etc.)
 
 ### Asynchronous Execution
 
@@ -317,23 +279,7 @@ The Unit of Work pattern batches DML to reduce governor limit consumption:
 
 ### fflib Mocking
 
-The package includes `fflib_ApexMocks` for unit testing:
-
-```apex
-// Create mock implementations
-fflib_ApexMocks mocks = new fflib_ApexMocks();
-OPP_IOpportunitySel_SEL mockSelector = (OPP_IOpportunitySel_SEL) mocks.mock(OPP_IOpportunitySel_SEL.class);
-
-// Configure mock behavior
-mocks.startStubbing();
-mocks.when(mockSelector.selectById(opportunityIds)).thenReturn(mockOpportunities);
-mocks.stopStubbing();
-
-// Inject mock
-fflib_Application.Selector.setMock(mockSelector);
-
-// Execute and verify
-```
+The package includes `fflib_ApexMocks` for unit testing with mock implementations at each architectural layer.
 
 ### TDTM Handler Testing
 
@@ -341,44 +287,28 @@ Trigger handlers are tested directly without triggers:
 
 ```apex
 // Test handler in isolation
-OPP_OpportunityBeforeInsert_TDTM handler = new OPP_OpportunityBeforeInsert_TDTM();
+CRLP_Rollup_TDTM handler = new CRLP_Rollup_TDTM();
 TDTM_Runnable.DmlWrapper result = handler.run(
     newOpportunities,
-    null,  // oldList
-    TDTM_Runnable.Action.BeforeInsert,
+    null,
+    TDTM_Runnable.Action.AfterInsert,
     Schema.Opportunity.sObjectType
 );
-
 // Assert DML and side effects
 ```
 
-## Deployment Architecture
-
-### Package Structure
-
-NPPatch is deployed as a managed package with:
-- Core functionality in the managed namespace
-- Extensibility points for customer customizations
-- Configuration-first approach minimizing custom code needs
-
-### Namespace Isolation
-
-When installed as a managed package:
-- Prefix namespace references: `nppatch__CustomField__c`
-- Utility functions handle namespace transparency: `UTIL_Namespace.StrTokenNSPrefix()`
-- Tests run in both managed and unmanaged contexts
-
 ## Key Architectural Decisions
 
-1. **fflib over custom patterns** - Proven enterprise patterns reduce bugs and maintenance
-2. **TDTM over inline triggers** - Configuration-driven automation enables easy customization
-3. **Hierarchy settings with defaults** - Balances flexibility with simplicity
-4. **Custom metadata for complex config** - Version-controllable, complex domain models
-5. **Service-first development** - Same business logic works everywhere (UI, API, batch)
-6. **Comprehensive error handling** - All errors logged and reported, never silent failures
-7. **Async-capable triggers** - Large operations don't block users
-8. **Testable by design** - No shared state, dependency injection, mocks throughout
+1. **fflib over custom patterns** — Proven enterprise patterns reduce bugs and maintenance
+2. **TDTM over inline triggers** — Configuration-driven automation enables easy customization
+3. **Hierarchy settings with defaults** — Balances flexibility with simplicity
+4. **Custom metadata for complex config** — Version-controllable, complex domain models; rollup definitions ship with the package
+5. **Service-first development** — Same business logic works everywhere (UI, API, batch)
+6. **Comprehensive error handling** — All errors logged and reported, never silent failures
+7. **Async-capable triggers** — Large operations don't block users
+8. **Testable by design** — No shared state, dependency injection, mocks throughout
+9. **Single code path per feature** — Legacy fallback engines (RLLP rollups, RD1, BGE) have been removed; each feature has one implementation
 
 ---
 
-*This documentation was generated by AI and still needs human review. If you see something that could be improved, please create an issue or email admin@nppatch.com.*
+*If you see something that could be improved, please create an issue or email admin@nppatch.com.*
