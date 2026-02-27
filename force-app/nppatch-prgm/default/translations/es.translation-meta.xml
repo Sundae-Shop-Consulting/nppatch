@@ -577,10 +577,6 @@
         <label>Operación correcta</label>
     </customLabels>
     <customLabels>
-        <name>TelemetryException</name>
-        <label>No pudimos recopilar mediciones de telemetría.</label>
-    </customLabels>
-    <customLabels>
         <name>This_Week</name>
         <label>Esta semana</label>
     </customLabels>

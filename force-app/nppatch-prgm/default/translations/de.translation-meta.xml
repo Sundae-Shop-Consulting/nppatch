@@ -577,10 +577,6 @@
         <label>Erfolg</label>
     </customLabels>
     <customLabels>
-        <name>TelemetryException</name>
-        <label>Wir konnten keine Telemetrie-Metriken erfassen.</label>
-    </customLabels>
-    <customLabels>
         <name>This_Week</name>
         <label>Diese Woche</label>
     </customLabels>

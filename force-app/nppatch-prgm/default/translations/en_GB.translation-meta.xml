@@ -577,10 +577,6 @@
         <label>Success</label>
     </customLabels>
     <customLabels>
-        <name>TelemetryException</name>
-        <label>We couldn't collect telemetry metrics.</label>
-    </customLabels>
-    <customLabels>
         <name>This_Week</name>
         <label>This Week</label>
     </customLabels>

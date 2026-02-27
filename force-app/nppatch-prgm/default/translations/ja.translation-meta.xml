@@ -577,10 +577,6 @@
         <label>成功</label>
     </customLabels>
     <customLabels>
-        <name>TelemetryException</name>
-        <label>テレメトリ総計値を収集できませんでした。</label>
-    </customLabels>
-    <customLabels>
         <name>This_Week</name>
         <label>今週</label>
     </customLabels>

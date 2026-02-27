@@ -577,10 +577,6 @@
         <label>Réussi</label>
     </customLabels>
     <customLabels>
-        <name>TelemetryException</name>
-        <label>Nous n’avons pas pu collecter de métriques de télémétrie.</label>
-    </customLabels>
-    <customLabels>
         <name>This_Week</name>
         <label>Semaine en cours</label>
     </customLabels>
