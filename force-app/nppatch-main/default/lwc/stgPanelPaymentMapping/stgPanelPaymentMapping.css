@@ -1,3 +1,11 @@
+.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    position: relative;
+}
+
 .panel-container { padding: 1rem; }
 .panel-header { margin-bottom: 1rem; }
 .panel-body { display: flex; flex-direction: column; gap: 1.5rem; }

@@ -206,7 +206,7 @@ public inherited sharing class OPP_OpportunityNaming implements OPP_INaming {
                 }
             }
 
-            STG_PanelOppNaming_CTRL.AttributionSettings attributionSettings = new STG_PanelOppNaming_CTRL.AttributionSettings()
+            OPP_AttributionSettings attributionSettings = new OPP_AttributionSettings()
                 .withSelected(ons.Attribution__c);
 
             if (oppRecTypeIds.isEmpty()) {

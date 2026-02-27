@@ -1,8 +1,10 @@
 import { LightningElement } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
+import runInitialization from "@salesforce/apex/NppatchSettingsController.runInitialization";
 
 export default class StgPanelHealthCheck extends LightningElement {
     _isRunning = false;
+    _runningMessage = "";
     _hasResults = false;
     _results = [];
     _passCount = 0;
@@ -11,10 +13,10 @@ export default class StgPanelHealthCheck extends LightningElement {
 
     async handleRunHealthCheck() {
         this._isRunning = true;
+        this._runningMessage = "Running health check...";
         this._hasResults = false;
         try {
             // TODO: Wire up actual health check Apex method
-            // For now, show a placeholder message
             await new Promise(resolve => setTimeout(resolve, 1500));
             this._results = [
                 {
@@ -35,6 +37,27 @@ export default class StgPanelHealthCheck extends LightningElement {
             this.dispatchEvent(new ShowToastEvent({
                 title: "Error",
                 message: error?.body?.message || "An error occurred running the health check.",
+                variant: "error",
+            }));
+        } finally {
+            this._isRunning = false;
+        }
+    }
+
+    async handleReinitialize() {
+        this._isRunning = true;
+        this._runningMessage = "Reinitializing TDTM defaults and scheduled jobs...";
+        try {
+            await runInitialization();
+            this.dispatchEvent(new ShowToastEvent({
+                title: "Success",
+                message: "TDTM defaults and scheduled jobs have been reinitialized.",
+                variant: "success",
+            }));
+        } catch (error) {
+            this.dispatchEvent(new ShowToastEvent({
+                title: "Error",
+                message: error?.body?.message || "An error occurred during reinitialization.",
                 variant: "error",
             }));
         } finally {

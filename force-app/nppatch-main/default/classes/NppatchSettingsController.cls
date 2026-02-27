@@ -113,6 +113,65 @@ public with sharing class NppatchSettingsController {
         return STG_Panel.runningUserIsAdmin();
     }
 
+    // ─── Initialization ──────────────────────────────────────────────────
+
+    /**
+     * @description Ensures org-level Custom Settings records exist with defaults
+     * for only the specified objects. Called before cacheable @wire getSettings
+     * calls, since the facade methods perform DML to create missing records.
+     * @param settingsObjectNames List of Custom Settings API names to ensure
+     */
+    @AuraEnabled
+    public static void ensureSettingsExist(List<String> settingsObjectNames) {
+        for (String settingsObjectName : settingsObjectNames) {
+            switch on settingsObjectName {
+                when 'Contacts_And_Orgs_Settings__c' {
+                    UTIL_CustomSettingsFacade.getOrgContactsSettings();
+                }
+                when 'Households_Settings__c' {
+                    UTIL_CustomSettingsFacade.getOrgHouseholdsSettings();
+                }
+                when 'Household_Naming_Settings__c' {
+                    UTIL_CustomSettingsFacade.getOrgHouseholdNamingSettings();
+                }
+                when 'Affiliations_Settings__c' {
+                    UTIL_CustomSettingsFacade.getOrgAffiliationsSettings();
+                }
+                when 'Relationship_Settings__c' {
+                    UTIL_CustomSettingsFacade.getOrgRelationshipSettings();
+                }
+                when 'Allocations_Settings__c' {
+                    UTIL_CustomSettingsFacade.getOrgAllocationsSettings();
+                }
+                when 'Customizable_Rollup_Settings__c' {
+                    UTIL_CustomSettingsFacade.getOrgCustomizableRollupSettings();
+                }
+                when 'Error_Settings__c' {
+                    UTIL_CustomSettingsFacade.getOrgErrorSettings();
+                }
+                when 'Recurring_Donations_Settings__c' {
+                    UTIL_CustomSettingsFacade.getOrgRecurringDonationsSettings();
+                }
+                when 'Levels_Settings__c' {
+                    UTIL_CustomSettingsFacade.getOrgLevelsSettings();
+                }
+            }
+        }
+    }
+
+    /**
+     * @description Runs TDTM initialization, aborts stale scheduled jobs, and
+     * re-schedules default jobs. Previously triggered on every VF settings page
+     * load; now available as an explicit admin action.
+     */
+    @AuraEnabled
+    public static void runInitialization() {
+        STG_Panel.throwAuraExceptionIfRunningUserNotAdmin();
+        new STG_InstallScript().runNewOrgScript();
+        UTIL_MasterSchedulableHelper.abortOldScheduledJobs();
+        UTIL_MasterSchedulableHelper.setScheduledJobs();
+    }
+
     // ─── Batch Execution ────────────────────────────────────────────────
 
     /**

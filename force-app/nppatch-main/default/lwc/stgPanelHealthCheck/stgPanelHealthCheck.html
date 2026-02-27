@@ -12,6 +12,7 @@
             <div class="action-row">
                 <template if:false={_isRunning}>
                     <lightning-button label="Run Health Check" onclick={handleRunHealthCheck} variant="brand"></lightning-button>
+                    <lightning-button label="Reinitialize TDTM &amp; Scheduled Jobs" onclick={handleReinitialize} variant="neutral" class="slds-m-left_small"></lightning-button>
                 </template>
                 <template if:true={_isRunning}>
                     <div class="slds-grid slds-grid_vertical-align-center slds-gutters_x-small">
@@ -19,7 +20,7 @@
                             <lightning-spinner alternative-text="Running" size="small" class="inline-spinner"></lightning-spinner>
                         </div>
                         <div class="slds-col">
-                            <p class="running-message">Running health check...</p>
+                            <p class="running-message">{_runningMessage}</p>
                         </div>
                     </div>
                 </template>

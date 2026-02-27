@@ -1,9 +1,29 @@
 import { LightningElement, wire } from "lwc";
 import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
+import ensureSettingsExist from "@salesforce/apex/NppatchSettingsController.ensureSettingsExist";
 
 import stgNPPatchSettingsTitle from "@salesforce/label/c.stgNPPatchSettingsTitle";
 import insufficientPermissions from "@salesforce/label/c.commonInsufficientPermissions";
 import accessDeniedMessage from "@salesforce/label/c.addrCopyConAddBtnFls";
+
+// Maps panel names to the Custom Settings objects they require.
+// Panels not listed here don't use getSettings and need no ensure call.
+const PANEL_SETTINGS = {
+    accountModel: ["Contacts_And_Orgs_Settings__c"],
+    addressVerification: ["Contacts_And_Orgs_Settings__c"],
+    affiliations: ["Affiliations_Settings__c"],
+    allocations: ["Allocations_Settings__c"],
+    campaignMembers: ["Contacts_And_Orgs_Settings__c"],
+    contactRoles: ["Contacts_And_Orgs_Settings__c", "Households_Settings__c", "Customizable_Rollup_Settings__c"],
+    donorStatistics: ["Households_Settings__c"],
+    errorNotif: ["Error_Settings__c"],
+    households: ["Household_Naming_Settings__c", "Households_Settings__c"],
+    leads: ["Contacts_And_Orgs_Settings__c"],
+    membership: ["Households_Settings__c"],
+    payments: ["Contacts_And_Orgs_Settings__c"],
+    relationships: ["Relationship_Settings__c"],
+    schedule: ["Customizable_Rollup_Settings__c", "Recurring_Donations_Settings__c", "Levels_Settings__c", "Households_Settings__c", "Error_Settings__c"],
+};
 
 // TODO Phase 2: Replace hardcoded nav labels with @salesforce/label imports
 const NAV_GROUPS = [
@@ -76,7 +96,10 @@ const NAV_GROUPS = [
 export default class NppatchSettings extends LightningElement {
     _isLoading = true;
     _isAccessDenied = false;
-    _activePanel = "membership";
+    _settingsReady = false;
+    _adminChecked = false;
+    _activePanel = "accountModel";
+    _ensuredSettings = new Set();
 
     labels = {
         title: stgNPPatchSettingsTitle,
@@ -86,21 +109,65 @@ export default class NppatchSettings extends LightningElement {
 
     navGroups = NAV_GROUPS;
 
+    connectedCallback() {
+        this._ensureSettingsForPanel(this._activePanel);
+    }
+
     @wire(isAdmin)
     wiredIsAdmin({ data, error }) {
         if (data !== undefined) {
-            this._isLoading = false;
+            this._adminChecked = true;
             if (!data) {
                 this._isAccessDenied = true;
             }
+            this._checkReady();
         } else if (error) {
-            this._isLoading = false;
+            this._adminChecked = true;
             this._isAccessDenied = true;
+            this._checkReady();
         }
     }
 
-    handleNavSelect(event) {
-        this._activePanel = event.detail.name;
+    _checkReady() {
+        if (this._settingsReady && this._adminChecked) {
+            this._isLoading = false;
+            this._preloadRemainingSettings();
+        }
+    }
+
+    _preloadRemainingSettings() {
+        const allSettings = new Set(Object.values(PANEL_SETTINGS).flat());
+        const remaining = [...allSettings].filter((s) => !this._ensuredSettings.has(s));
+        if (remaining.length > 0) {
+            ensureSettingsExist({ settingsObjectNames: remaining })
+                .then(() => remaining.forEach((s) => this._ensuredSettings.add(s)))
+                .catch(() => {});
+        }
+    }
+
+    async _ensureSettingsForPanel(panelName) {
+        const needed = (PANEL_SETTINGS[panelName] || [])
+            .filter((s) => !this._ensuredSettings.has(s));
+
+        if (needed.length > 0) {
+            try {
+                await ensureSettingsExist({ settingsObjectNames: needed });
+                needed.forEach((s) => this._ensuredSettings.add(s));
+            } catch (_e) {
+                // Settings may already exist; proceed anyway
+            }
+        }
+
+        if (!this._settingsReady) {
+            this._settingsReady = true;
+            this._checkReady();
+        }
+    }
+
+    async handleNavSelect(event) {
+        const panelName = event.detail.name;
+        await this._ensureSettingsForPanel(panelName);
+        this._activePanel = panelName;
     }
 
     get isReady() {
