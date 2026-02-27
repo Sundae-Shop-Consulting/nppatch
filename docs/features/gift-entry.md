@@ -1,317 +1,163 @@
 # Gift Entry & Data Import
 
-The Gift Entry and Data Import system provides flexible mechanisms for capturing and processing donations into Salesforce. The system supports both single-gift entry through an intuitive form interface and bulk batch processing of multiple gifts, with configurable field mapping and data validation.
+Gift Entry provides a flexible, template-driven interface for capturing and processing donations. It supports both single-gift entry through a guided form and bulk batch processing of multiple gifts, with configurable field mapping, matching logic, and data validation. Gift Entry is always enabled in NPPatch and requires no configuration to activate.
 
 ## Overview
 
-Gift Entry consists of two complementary approaches:
+The Gift Entry system has two complementary modes:
 
-1. **Single Gift Entry (GE)**: Form-based UI for entering one gift at a time with real-time validation
-2. **Batch Gift Entry (BGE)**: Bulk processing of multiple gifts in a batch with template-driven mapping
-3. **Data Import (BDI)**: Underlying engine that maps external data to Salesforce objects
+- **Single Gift Entry** — a form-based experience for entering one gift at a time with real-time validation and immediate record creation
+- **Batch Gift Entry** — bulk processing of multiple gifts grouped in a `DataImportBatch__c` record, with a spreadsheet-style review step before final processing
 
-The `GE_GiftEntryController` orchestrates the Gift Entry experience, while `BDI_DataImportService` and `BDI_MappingService` handle the data import logic.
+Both modes share the same underlying data import engine (`BDI_DataImportService`) and field mapping configuration.
 
 ## Gift Entry UI
 
-### Single Gift Form
+### Gift Entry Form
 
-The `ge_GiftEntryForm` Lightning component provides:
+The `geGiftEntryFormApp` LWC orchestrates the single-gift entry experience. It delegates rendering to `geFormRenderer`, which builds the form dynamically from the active `Form_Template__c` configuration. Key sub-components include:
 
-- **Donor Selection**: Find or create contact/account
-- **Gift Amount**: Enter donation amount
-- **Gift Date**: Specify when the gift was received
-- **Payment Method**: Select how the gift was paid (cash, check, credit card, etc.)
-- **Custom Fields**: Additional fields based on organization configuration
-- **Real-Time Validation**: Error checking as user enters data
+- **`geFormField`** — renders individual form fields
+- **`geFormSection`** — groups fields into labeled sections
+- **`geFormWidget`** — handles special field types (allocations, soft credits, payment tokenization)
+- **`geDonationMatching`** — finds existing opportunities or payments to match against an incoming gift
+- **`geGatewaySelectWidget`** — optional payment gateway selector when `Enable_Gateway_Assignment__c` is enabled in Gift Entry Settings
 
-### Gift Entry Controller Methods
+### Batch Gift Entry
 
-`GE_GiftEntryController` exposes key endpoints:
+The `geGiftBatch` LWC manages the batch entry workflow:
 
-| Method | Purpose |
-|--------|---------|
-| `addGiftTo(dataImportBatchId, inboundGift)` | Adds a single gift to batch |
-| `getGiftBatchView(dataImportBatchId)` | Retrieves batch with all gifts |
-| `getGiftView(dataImportId)` | Retrieves individual gift details |
-| `getTemplateView(templateId)` | Loads gift entry form template |
-| `saveGiftEntry(dataImportId, giftData)` | Saves gift and creates opportunity |
+1. A batch (`DataImportBatch__c`) is created or selected
+2. Gifts are entered through the same form interface and saved as `DataImport__c` staging records
+3. Users review the gift list via `geBatchGiftEntryTable`
+4. A dry run (`GE_GiftEntryController.runBatchDryRun`) can be executed to preview which records will succeed or fail before committing
+5. The batch is processed, converting staging records to Opportunities, Payments, and related records
 
-### Currency and Validation
+### Batch Creation Wizard
 
-The gift entry system:
+`geBatchWizard` guides users through creating a new gift batch, including setting the batch name, expected total, and selecting which form template to use.
 
-- Validates multi-currency settings on the batch
-- Enforces currency consistency within a batch
-- Supports multi-currency donations if enabled
-
-## Batch Gift Entry
-
-### DataImportBatch__c
-
-Batches group multiple gifts for cohesive processing:
-
-| Field | Purpose |
-|-------|---------|
-| `Name__c` | Descriptive batch name |
-| `Status__c` | Draft, Processing, Completed, Failed |
-| `Batch_Description__c` | User notes about batch |
-| `Date_Expected__c` | When batch was received/expected |
-| `Active_Fields__c` | JSON of enabled field mappings |
-| `Batch_Process_Size__c` | Number of records to process per batch job |
-
-### DataImport__c
-
-Individual gift records within a batch:
-
-| Field | Purpose |
-|-------|---------|
-| `NPPatch_Data_Import_Batch__c` | Reference to parent batch |
-| `Status__c` | Draft, Imported, Failed, Dry Run |
-| `Contact_Firstname__c` | Donor first name |
-| `Contact_Lastname__c` | Donor last name |
-| `Contact_Email__c` | Donor email |
-| `Contact_Phone__c` | Donor phone |
-| `Donation_Amount__c` | Gift amount |
-| `Donation_Date__c` | Gift date |
-| `Donation_Record_Type_Name__c` | Opportunity record type |
-| `Payment_Amount__c` | Payment amount (if different from donation) |
-| `Payment_Method__c` | How gift was received |
-
-### Batch Processing
-
-The `BDI_DataImportBatch_TDTM` trigger handler:
-
-1. Validates batch before processing
-2. Queues batch for async processing via batch job
-3. Prevents modification of batch while processing
-
-## Template Builder
-
-The template builder enables organizations to create custom gift entry forms:
+## Form Templates
 
 ### Form_Template__c
 
-Configuration for gift entry forms:
+Form templates define the layout, fields, and validation behavior of the gift entry form. Each template is stored as a JSON configuration blob in `Template_JSON__c` alongside human-readable metadata:
 
 | Field | Purpose |
 |-------|---------|
 | `Name` | Template display name |
 | `Description__c` | Usage notes |
-| `Template_JSON__c` | Configuration (sections, fields, validation) |
-| `Is_Default__c` | Whether this is default for new entries |
+| `Template_JSON__c` | Full template configuration (sections, fields, widgets, validation) |
+| `Batch_Gift_Entry_Version__c` | Template version, used by the entry form to detect schema changes |
 
-### Template Features
+Templates are created and edited through the **Template Builder**, accessed via the Gift Entry tab. The template builder is implemented by a set of `geTemplateBuilder*` components backed by `geTemplateBuilderService`.
 
-- **Sections**: Group related fields (donor info, gift details, payment info)
-- **Field Selection**: Choose which fields appear on form
-- **Field Ordering**: Define field display sequence
-- **Required Fields**: Mark fields that must be completed
-- **Field Labels**: Customize field labels for form
-- **Help Text**: Add field-level guidance
-
-### GE_Template Class
-
-Server-side template service providing:
-
-- Template loading and caching
-- Template validation
-- Field availability checking
-- Permission evaluation for fields
+`GE_Template` is the server-side class that loads, validates, and parses template configurations. `BGE_FormTemplate_TDTM` is a trigger handler that prevents deletion of Form_Template__c records while they are associated with active gift batches.
 
 ## Data Import Engine
 
-### BDI_DataImportService
+### DataImport__c
 
-Core service for importing DataImport records into opportunities and payments:
+The `DataImport__c` object is the staging table for gift entry. Each record represents a single gift to be imported and holds:
 
-```apex
-BDI_DataImportService service = new BDI_DataImportService();
-service.importRecords(dataImportRecordIds);
-```
+- Donor identification fields (contact name, email, account name)
+- Donation fields (amount, date, stage, campaign, record type)
+- Payment fields (payment method, amount)
+- Lookup fields populated after matching (matched Contact, matched Opportunity, etc.)
+- Status and error fields showing the result of import processing
 
-The service:
+### DataImportBatch__c
 
-1. **Validation**: Checks required fields and data types
-2. **Mapping**: Transforms DataImport fields to Opportunity/Payment fields
-3. **Matching**: Finds existing contacts/accounts or creates new ones
-4. **DML**: Inserts/updates opportunities and related records
-5. **Error Handling**: Logs errors to Error__c for user review
-
-### BDI_MappingService
-
-Advanced field mapping configuration through custom metadata:
-
-#### Mapping Configuration
-
-`BDI_Mapping__mdt` custom metadata type defines:
-
-- **Data Import Field**: Source field on DataImport__c
-- **Salesforce Object**: Target object (Opportunity, Contact, Account)
-- **Salesforce Field**: Target field on object
-- **Data Type**: How to transform the value (String, Decimal, Date, etc.)
-- **Transform Logic**: Optional Apex class for complex transformations
-
-#### Predefined Mappings
-
-Standard mappings for common scenarios:
-
-| DataImport Field | Target | Purpose |
-|------------------|--------|---------|
-| `Contact_Firstname__c` | Contact.FirstName | Donor first name |
-| `Contact_Lastname__c` | Contact.LastName | Donor last name |
-| `Contact_Email__c` | Contact.Email | Donor email |
-| `Donation_Amount__c` | Opportunity.Amount | Gift amount |
-| `Donation_Date__c` | Opportunity.CloseDate | Opportunity close date |
-
-#### Advanced Mapping
-
-`BDI_MappingServiceAdvanced` extends mapping with:
-
-- Custom object mappings (GAU allocations)
-- Dependent field logic
-- Conditional transformations
-- Multi-field aggregations
-
-### Donation Matching
-
-`BDI_DonationSelector` and matching logic identifies existing donations to avoid duplicates:
-
-- **Donor Matching**: Find or create contact/account based on name/email
-- **Duplicate Prevention**: Check for existing opportunities with same amount/date
-- **Soft Matching**: Fuzzy matching on names for data quality
-- **Account Creation**: Auto-create accounts from organization data
-
-## Field Mapping via Custom Metadata
-
-### BDI_Mapping__mdt
-
-Organizations can configure custom field mappings:
-
-**Example: Adding a custom campaign source field**
-
-```
-Mapping: CustomCampaignSource__c → Opportunity.CampaignId
-Data Type: Lookup
-Transform: Campaign name to ID lookup
-```
-
-**Example: Custom mapping with formula**
-
-```
-Mapping: DonorType__c → Account.SYSTEM_AccountType__c
-Data Type: String
-Transform: Map "Individual" → "Individual Account", "Organization" → "Organization Account"
-```
-
-### Mapping Validation
-
-Before import, the system validates:
-
-- Required fields are populated
-- Data types match target fields
-- Lookup references exist
-- Custom object access is available
-
-## Allocations in Gift Entry
-
-### GAU Allocation Support
-
-When allocations are enabled, gift entry supports:
-
-- **Primary Allocation**: Associate gift with one General Accounting Unit (fund)
-- **Multi-Allocation**: Split gift across multiple GAUs with percentages
-- **Default Allocations**: Auto-apply predefined allocation splits
-
-The `BDI_CustObjMappingGAUAllocation` class handles:
-
-- Mapping DataImport allocation fields to Allocation__c records
-- Validating allocation percentages sum to 100%
-- Creating allocations during import
-
-## Dry Run Processing
-
-Before final import, users can execute dry runs:
-
-1. **Dry Run Validation**: All validation runs without creating records
-2. **Error Preview**: Shows which records would fail
-3. **Record Preview**: Displays what would be created
-4. **Confirmed Import**: User reviews and confirms before actual import
-
-## Data Quality and Error Handling
-
-### Error Logging
-
-Import errors are logged to `Error__c`:
+Batches group multiple `DataImport__c` records for cohesive processing:
 
 | Field | Purpose |
 |-------|---------|
-| `Record_ID__c` | ID of problematic DataImport record |
-| `Error_Type__c` | Validation, mapping, DML error, etc. |
-| `Full_Message__c` | Complete error details |
-| `Stack_Trace__c` | Apex stack trace for debugging |
+| `Name` | Descriptive batch name |
+| `Batch_Status__c` | Open, Processing, Completed, Failed |
+| `Batch_Description__c` | User notes |
+| `Active_Fields__c` | JSON of enabled field mappings for this batch's template |
+| `Batch_Process_Size__c` | Number of staging records processed per batch job chunk |
 
-### Validation Errors
+### BDI_DataImportService
 
-Common validation failures:
+`BDI_DataImportService` is the core engine that processes `DataImport__c` records into Salesforce records. Its steps are:
 
-- Required fields missing
-- Invalid email formats
-- Amount as non-numeric
-- Unknown payment methods
-- Closed date in past
+1. **Contact/Account matching** — find or create the donor based on the configured matching rule
+2. **Donation matching** — find an existing Opportunity to update, or prepare to create a new one
+3. **Field mapping** — translate `DataImport__c` fields to their target object fields using Advanced Mapping
+4. **DML** — insert or update Opportunities, Payments, Allocations, and other related records
+5. **Status update** — write the import result (Imported, Failed, Dry Run) and any error messages back to the `DataImport__c` record
 
-### DML Errors
+### Advanced Mapping (BDI_MappingServiceAdvanced)
 
-During record creation:
+NPPatch uses Advanced Mapping exclusively. Field mappings are stored in `Data_Import_Field_Mapping__mdt` and `Data_Import_Object_Mapping__mdt` Custom Metadata records, configured through **NPPatch Settings > System Tools > Advanced Mapping**.
 
-- Duplicate rule violations
-- Field validation rule failures
-- Foreign key violations
-- Permission errors
+This replaces the older Help Text mapping approach. All new installations use Advanced Mapping by default.
 
-## GE_SettingsService
+## Donation Matching
 
-Configuration and permissions management:
+`GE_GiftEntryController` and the `geDonationMatching` component handle the UI-side of matching, allowing users to review and select from candidate matches. On the backend, `BDI_DonationMatcher` runs the matching logic:
 
-- Gift Entry enablement check
-- User permission validation
-- Setting retrieval (batch size, default record type, etc.)
-- Feature flag checking
+- **Contact matching** — uses the configured `Contact_Matching_Rule__c` fields (name, email, etc.) to find an existing contact
+- **Donation matching** — looks for existing Opportunities with a matching amount and close date within the configured date range
+- **Manual override** — users can accept or reject suggested matches through the gift entry form
 
-## Gift Entry Permissions
+## Dry Run
 
-The system requires:
+Before finalizing a batch, users can run a dry run via the **Dry Run** button in the batch entry UI. This executes the full import logic without committing any DML, showing which records would succeed and which would fail along with the specific error messages. The dry run is powered by `GE_GiftEntryController.runBatchDryRun`.
 
-- Read/Write on Contact
-- Read/Write on Opportunity (or custom donation object)
-- Read/Write on DataImport__c
-- Read/Write on OppPayment__c (if payments enabled)
-- Read on Account (for matching)
+## Allocations in Gift Entry
+
+When Allocations are enabled, the gift entry form includes an allocation widget (`geFormWidgetAllocation`, `geFormWidgetRowAllocation`) that allows donors' gifts to be split across multiple General Accounting Units. Allocation percentages are validated to sum to 100% before the gift can be processed.
+
+## Soft Credits in Gift Entry
+
+The `geFormWidgetSoftCredit` and `geFormWidgetSoftCreditRow` components allow soft credit contact roles to be assigned during gift entry, attributing partial credit to secondary contacts.
+
+## Gift Entry Settings
+
+Settings are accessed through **NPPatch Settings > System Tools > Advanced Mapping** (for field mapping configuration) and through `Gift_Entry_Settings__c`:
+
+| Setting | Purpose |
+|---------|---------|
+| `Default_Gift_Entry_Template__c` | Default form template used when no template is specified |
+| `Enable_Gateway_Assignment__c` | Show payment gateway selector on the gift entry form |
+
+## Key Apex Classes
+
+**`GE_GiftEntryController`** — main Apex controller for the gift entry LWC; handles template loading, gift saving, batch processing, dry run execution, and lookup operations.
+
+**`GiftBatchService`** / **`GiftService`** — service layer for batch and individual gift operations.
+
+**`GiftBatch`** / **`Gift`** — domain objects representing a gift batch and an individual gift in processing.
+
+**`GiftBatchSelector`** / **`GiftSelector`** — selectors for querying `DataImportBatch__c` and `DataImport__c` records.
+
+**`GiftEntryProcessorQueue`** — queueable Apex that processes gifts asynchronously; `GiftEntryProcessorQueueFinalizer` handles post-processing cleanup.
+
+**`GE_Template`** — server-side template loader and validator.
+
+**`GE_LookupController`** — handles type-ahead lookup searches in the gift entry form.
+
+**`GE_PaymentServices`** — handles payment gateway interactions if a gateway is configured.
+
+**`GE_SettingsService`** — provides settings and permission checks to the gift entry UI.
+
+**`BGE_FormTemplate_TDTM`** — trigger handler on Form_Template__c that prevents deletion of templates in use by active batches.
+
+## Error Handling
+
+Import errors are stored as messages on the `DataImport__c.FailureInformation__c` field, making them immediately visible to the user in the batch entry table. Errors that occur during asynchronous batch processing are also logged to `Error__c`.
 
 ## Integration Points
 
-- **Contacts & Accounts**: Finds or creates donors during import
-- **Opportunities**: Creates donation opportunities
-- **Payments**: Optionally creates payment records for split payment scenarios
-- **Allocations**: Distributes gift amounts across funds/GAUs
-- **Campaigns**: Links opportunities to campaigns
-- **Custom Objects**: Supports mapping to custom donation objects
-
-## Use Cases
-
-**Event Gift Collection**: Import gifts collected at fundraising events using batch processing with event-specific template.
-
-**Grant Processor Workflow**: Data import with pre-configured field mappings for specific grant donor formats.
-
-**Online Giving Integration**: Automated import of gifts from donor portal or third-party platform via API.
-
-**Offline Gift Processing**: Staff enters gifts via form with real-time validation and auto-saves to batch.
-
-**Duplicate Prevention**: Data import matching logic prevents recording same gift multiple times.
-
-**Multi-Fund Giving**: Gift entry template includes allocation fields for donors splitting gifts across multiple funds.
+- **Contacts & Accounts** — found or created during import based on matching rules
+- **Opportunities** — created or updated as the primary donation record
+- **OppPayment__c** — optionally created when payment fields are populated
+- **Allocations** — distributed across GAUs when the allocation widget is used
+- **Campaigns** — linked to opportunities during import
+- **Recurring Donations** — the gift entry form can create or update a recurring donation alongside a one-time gift (via `geModalRecurringDonation`)
 
 ---
 
-*This documentation was generated by AI and still needs human review. If you see something that could be improved, please create an issue or email admin@nppatch.com.*
+*If you see something that could be improved, please create an issue or email admin@nppatch.com.*
