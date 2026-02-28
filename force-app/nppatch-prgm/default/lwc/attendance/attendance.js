@@ -60,7 +60,7 @@ import SORT_BY_LABEL from "@salesforce/label/c.Sort_By";
 import NO_PERMISSIONS_MESSAGE_LABEL from "@salesforce/label/c.No_Permission_Message";
 import BAD_TAB_HEADER from "@salesforce/label/c.Incorrect_Tab";
 import ATTENDANCE_TAB_MESSAGE from "@salesforce/label/c.Attendance_Tab_Message";
-import pmmFolder from "@salesforce/resourceUrl/pmm";
+import prgmFolder from "@salesforce/resourceUrl/prgm";
 
 const COMPLETE_STATUS = "Complete";
 const COMPLETE_BUCKET = "ServiceSessionStatusComplete";
@@ -236,7 +236,7 @@ export default class Attendance extends NavigationMixin(LightningElement) {
     }
 
     connectedCallback() {
-        loadStyle(this, pmmFolder + "/attendancePrintOverride.css");
+        loadStyle(this, prgmFolder + "/attendancePrintOverride.css");
     }
 
     get omittedServiceParticipantStatuses() {

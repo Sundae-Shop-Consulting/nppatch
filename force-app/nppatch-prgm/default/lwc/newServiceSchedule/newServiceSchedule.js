@@ -12,7 +12,7 @@ import { format, formatTime } from "c/util";
 import { getRecord } from "lightning/uiRecordApi";
 import { loadStyle } from "lightning/platformResourceLoader";
 import getDayNum from "@salesforce/apex/ServiceScheduleCreatorController.getDayNum";
-import pmmFolder from "@salesforce/resourceUrl/pmm";
+import prgmFolder from "@salesforce/resourceUrl/prgm";
 import TIME_ZONE from "@salesforce/i18n/timeZone";
 import LOCALE from "@salesforce/i18n/locale";
 
@@ -297,7 +297,7 @@ export default class NewServiceSchedule extends LightningElement {
 
     connectedCallback() {
         this.syncDefaultServiceQuantity();
-        loadStyle(this, pmmFolder + "/hideHelpIcons.css");
+        loadStyle(this, prgmFolder + "/hideHelpIcons.css");
     }
 
     syncDefaultServiceQuantity() {

@@ -12,7 +12,7 @@ public with sharing class FieldSetController {
     private static FieldSetService fieldSetService = new FieldSetService();
 
     /**
-     * @description Gets a custom pmm fieldset for a given object in a data structure LWC can use
+     * @description Gets a custom program management fieldset for a given object in a data structure LWC can use
      * @param       String objectName
      * @param       String fieldSetName
      * @return      List<Map<String, Object>> list of fields, each with apiName, label, etc keys

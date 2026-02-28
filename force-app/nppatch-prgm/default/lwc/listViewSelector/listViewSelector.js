@@ -12,7 +12,7 @@ import { getListUi } from "lightning/uiListApi";
 import { loadStyle } from "lightning/platformResourceLoader";
 
 import userId from "@salesforce/user/Id";
-import pmmFolder from "@salesforce/resourceUrl/pmm";
+import prgmFolder from "@salesforce/resourceUrl/prgm";
 
 import LIST_VIEWS_LABEL from "@salesforce/label/c.List_Views";
 import PIN_LIST_VIEW_LABEL from "@salesforce/label/c.Pin_List_View";
@@ -41,7 +41,7 @@ export default class ListViewSelector extends LightningElement {
     };
 
     connectedCallback() {
-        loadStyle(this, pmmFolder + "/listViewSelectorOverrides.css");
+        loadStyle(this, prgmFolder + "/listViewSelectorOverrides.css");
     }
 
     @wire(getListUi, { objectApiName: "$objectApiName" })

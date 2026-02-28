@@ -3,7 +3,7 @@
     <columns>
         <field>CUST_NAME</field>
     </columns>
-    <description>How many Active Program Engagements are there? (Used on PMM Home Page.)</description>
+    <description>How many Active Program Engagements are there? (Used on Program Management Home Page.)</description>
     <filter>
         <criteriaItems>
             <column>ProgramEngagement__c.Stage__c</column>
