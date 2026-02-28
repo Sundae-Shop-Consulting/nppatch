@@ -50,7 +50,7 @@ public class CMT_MetadataAPI {
      */
     public static void upsertCustomMetadata(CRLP_RollupCMT.MetadataObject mdObject, String recordName, String recordLabel, Map<String,Object> fldValues) {
 
-        String mdTypeName = UTIL_Namespace.StrTokenNSPrefix(mdObject.Name() + '__mdt');
+        String mdTypeName = UTIL_Namespace.prefixNamespace(mdObject.Name() + '__mdt');
 
         // Setup custom metadata to be created or updated in the subscriber org.
         Metadata.CustomMetadata customMd = new Metadata.CustomMetadata();

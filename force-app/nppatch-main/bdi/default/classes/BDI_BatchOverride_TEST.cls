@@ -53,7 +53,7 @@ public with sharing class BDI_BatchOverride_TEST {
             Name = 'testBatch',
             Batch_Process_Size__c = 100,
             Donation_Matching_Behavior__c = BDI_DataImport_API.DoNotMatch,
-            Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c'),
+            Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c'),
             Contact_Matching_Rule__c = 'Firstname',
             Donation_Date_Range__c = 0
         );

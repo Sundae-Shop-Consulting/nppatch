@@ -188,8 +188,8 @@ public without sharing class LVL_LevelAssign_BATCH implements Database.Batchable
     private Engagement_Plan__c engagementPlanFromLevel(Level__c level, Id target) {
         Engagement_Plan__c plan = new Engagement_Plan__c(Engagement_Plan_Template__c = level.Engagement_Plan_Template__c);
 
-        String engagementPlanPrefixed = UTIL_Namespace.StrTokenNSPrefix('Engagement_Plan__c');
-        String targetFieldPrefixedAndSuffixed = UTIL_Namespace.StrTokenNSPrefix(level.Target__c + '__c');
+        String engagementPlanPrefixed = UTIL_Namespace.prefixNamespace('Engagement_Plan__c');
+        String targetFieldPrefixedAndSuffixed = UTIL_Namespace.prefixNamespace(level.Target__c + '__c');
         String targetFieldSuffixed = level.Target__c + '__c';
 
         if (UTIL_Describe.isValidField(engagementPlanPrefixed, targetFieldPrefixedAndSuffixed)) {

@@ -86,7 +86,7 @@ public class UTIL_Namespace {
     * @param str Token name.
     * @return Token name, with namespace prefix and double underscore if in a managed package.
     ********************************************************************************************************/
-    public static string StrTokenNSPrefix(string str) {
+    public static string prefixNamespace(string str) {
         if (getNamespace() == '') return str;
         return getNamespace() + '__' + str;
     }

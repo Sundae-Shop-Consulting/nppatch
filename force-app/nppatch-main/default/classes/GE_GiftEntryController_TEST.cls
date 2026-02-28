@@ -560,8 +560,8 @@ public with sharing class GE_GiftEntryController_TEST {
         batch.Name = name;
         batch.Batch_Process_Size__c = 200;
         batch.Contact_Matching_Rule__c = 'Firstname,Lastname,Email';
-        batch.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') +
-                ';' + UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        batch.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') +
+                ';' + UTIL_Namespace.prefixNamespace('Donation_Date__c');
         batch.Donation_Matching_Behavior__c = BDI_DataImport_API.BestMatchOrCreate;
         batch.Process_Using_Scheduled_Job__c = autoProcess;
         return batch;

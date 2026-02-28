@@ -142,7 +142,7 @@ public with sharing class ProgramSelector_TEST {
     private static List<Bucket__mdt> createBuckets() {
         BucketedField__mdt bucketedField = (BucketedField__mdt) new TestUtil.BucketedFieldBuilder()
             .withDeveloperName('ProgramCohortStatuses')
-            .withQualifiedApiName(Util.prefixNamespace('ProgramCohortStatuses'))
+            .withQualifiedApiName(UTIL_Namespace.prefixNamespace('ProgramCohortStatuses'))
             .withField('Status__c')
             .withObject('ProgramCohort__c')
             .build();
@@ -151,7 +151,7 @@ public with sharing class ProgramSelector_TEST {
         activeCohortValues.add(
             (BucketedValue__mdt) new TestUtil.BucketedValueBuilder()
                 .withDeveloperName('ProgramCohortStatusActive')
-                .withQualifiedApiName(Util.prefixNamespace('ProgramCohortStatusActive'))
+                .withQualifiedApiName(UTIL_Namespace.prefixNamespace('ProgramCohortStatusActive'))
                 .withBucket('programCohortActiveBucket')
                 .withValue('Active')
                 .withMockId()
@@ -162,7 +162,7 @@ public with sharing class ProgramSelector_TEST {
             .withBucketedField(bucketedField)
             .withBucketedValues(activeCohortValues)
             .withDeveloperName('ProgramCohortStatusActive')
-            .withQualifiedApiName(Util.prefixNamespace('ProgramCohortStatusActive'))
+            .withQualifiedApiName(UTIL_Namespace.prefixNamespace('ProgramCohortStatusActive'))
             .withMockId()
             .build();
 

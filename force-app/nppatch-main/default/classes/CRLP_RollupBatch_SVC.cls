@@ -69,9 +69,9 @@ public class CRLP_RollupBatch_SVC {
             ) {
 
             if (jobMode == CRLP_RollupProcessingOptions.BatchJobMode.NonSkewMode) {
-                queryFilter = '(' + parentRelationshipField + UTIL_Namespace.StrTokenNSPrefix('CustomizableRollups_UseSkewMode__c') + ' = false)';
+                queryFilter = '(' + parentRelationshipField + UTIL_Namespace.prefixNamespace('CustomizableRollups_UseSkewMode__c') + ' = false)';
             } else {
-                queryFilter = '(' + parentRelationshipField + UTIL_Namespace.StrTokenNSPrefix('CustomizableRollups_UseSkewMode__c') + ' = true)';
+                queryFilter = '(' + parentRelationshipField + UTIL_Namespace.prefixNamespace('CustomizableRollups_UseSkewMode__c') + ' = true)';
             }
 
         } else if (jobType == CRLP_RollupProcessingOptions.RollupType.RecurringDonations) {

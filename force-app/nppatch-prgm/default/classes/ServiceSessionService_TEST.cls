@@ -155,7 +155,7 @@ public with sharing class ServiceSessionService_TEST {
     private static List<Bucket__mdt> createStatusBuckets() {
         BucketedField__mdt bucketedField = (BucketedField__mdt) new TestUtil.BucketedFieldBuilder()
             .withDeveloperName('ServiceSessionStatuses')
-            .withQualifiedApiName(Util.prefixNamespace('ServiceSessionStatuses'))
+            .withQualifiedApiName(UTIL_Namespace.prefixNamespace('ServiceSessionStatuses'))
             .withField('Status__c')
             .withObject('ServiceSession__c')
             .withMockId()
@@ -165,7 +165,7 @@ public with sharing class ServiceSessionService_TEST {
         completeValues.add(
             (BucketedValue__mdt) new TestUtil.BucketedValueBuilder()
                 .withDeveloperName('Complete')
-                .withQualifiedApiName(Util.prefixNamespace('Complete'))
+                .withQualifiedApiName(UTIL_Namespace.prefixNamespace('Complete'))
                 .withBucket('Complete')
                 .withValue('Complete')
                 .withMockId()
@@ -176,7 +176,7 @@ public with sharing class ServiceSessionService_TEST {
         pendingValues.add(
             (BucketedValue__mdt) new TestUtil.BucketedValueBuilder()
                 .withDeveloperName('Pending')
-                .withQualifiedApiName(Util.prefixNamespace('Pending'))
+                .withQualifiedApiName(UTIL_Namespace.prefixNamespace('Pending'))
                 .withBucket('Pending')
                 .withValue('Pending')
                 .withMockId()
@@ -187,7 +187,7 @@ public with sharing class ServiceSessionService_TEST {
             .withBucketedField(bucketedField)
             .withBucketedValues(completeValues)
             .withDeveloperName('Complete')
-            .withQualifiedApiName(Util.prefixNamespace('Complete'))
+            .withQualifiedApiName(UTIL_Namespace.prefixNamespace('Complete'))
             .withMockId()
             .build();
 
@@ -195,7 +195,7 @@ public with sharing class ServiceSessionService_TEST {
             .withBucketedField(bucketedField)
             .withBucketedValues(pendingValues)
             .withDeveloperName('Pending')
-            .withQualifiedApiName(Util.prefixNamespace('Pending'))
+            .withQualifiedApiName(UTIL_Namespace.prefixNamespace('Pending'))
             .withMockId()
             .build();
 

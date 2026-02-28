@@ -119,7 +119,7 @@ public class UTIL_Describe {
         String lookupName = objectName;
         if (!gd.containsKey(objectName)) {
             // Try with namespace prefix if not found
-            String namespacedName = UTIL_Namespace.StrTokenNSPrefix(objectName);
+            String namespacedName = UTIL_Namespace.prefixNamespace(objectName);
             if (gd.containsKey(namespacedName)) {
                 lookupName = namespacedName;
             }
@@ -152,7 +152,7 @@ public class UTIL_Describe {
             // Try with namespace prefix if not found
             String lookupFieldName = fieldName;
             if (!fieldTokens.get(objectName).containsKey(fieldName)) {
-                String namespacedFieldName = UTIL_Namespace.StrTokenNSPrefix(fieldName);
+                String namespacedFieldName = UTIL_Namespace.prefixNamespace(fieldName);
                 if (fieldTokens.get(objectName).containsKey(namespacedFieldName)) {
                     lookupFieldName = namespacedFieldName;
                 }
@@ -771,16 +771,16 @@ public class UTIL_Describe {
     public static void checkFieldFLS(String objectName, String fieldName) {
 
         DescribeFieldResult dfr = getFieldDescribe(
-            UTIL_Namespace.StrTokenNSPrefix(objectName),
-            fieldName.endsWith('__c')?UTIL_Namespace.StrTokenNSPrefix(fieldName):fieldName
+            UTIL_Namespace.prefixNamespace(objectName),
+            fieldName.endsWith('__c')?UTIL_Namespace.prefixNamespace(fieldName):fieldName
         );
         if (dfr == null || !dfr.isAccessible() || !dfr.isUpdateable()) {
             throw (new PermsException(
                     String.format(
                             Label.flsError,
                             new String[]{
-                                    UTIL_Namespace.StrTokenNSPrefix(objectName) + '.' +
-                                            UTIL_Namespace.StrTokenNSPrefix(fieldName)
+                                    UTIL_Namespace.prefixNamespace(objectName) + '.' +
+                                            UTIL_Namespace.prefixNamespace(fieldName)
                             }
                     )
             ));

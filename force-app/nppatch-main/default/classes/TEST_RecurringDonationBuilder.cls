@@ -166,7 +166,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withAccount(Id accountId) {
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Organization__c'), accountId);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Organization__c'), accountId);
         return this;
     }
 
@@ -176,7 +176,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withContact(Id contactId) {
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Contact__c'), contactId);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Contact__c'), contactId);
         return this;
     }
 
@@ -186,7 +186,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withCampaign(Id campaignId) {
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation_Campaign__c'), campaignId);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Recurring_Donation_Campaign__c'), campaignId);
         return this;
     }
 
@@ -196,7 +196,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withAmount(Decimal amount) {
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Amount__c'), amount);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Amount__c'), amount);
         return this;
     }
 
@@ -208,7 +208,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     public TEST_RecurringDonationBuilder withPaymentMethod(String payMethod) {
         if (!shouldSetField(Mode.Enhanced)) { return this; }
 
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('PaymentMethod__c'), payMethod);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('PaymentMethod__c'), payMethod);
         return this;
     }
 
@@ -239,7 +239,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withDateEstablished(Date dt) {
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Date_Established__c'), dt);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Date_Established__c'), dt);
         return this;
     }
 
@@ -267,7 +267,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withEndDate(Date dt) {
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('EndDate__c'), dt);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('EndDate__c'), dt);
         return this;
     }
 
@@ -279,7 +279,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     public TEST_RecurringDonationBuilder withNextPaymentDate(Date dt) {
         if (!shouldSetField(Mode.Legacy)) { return this; }
 
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Next_Payment_Date__c'), dt);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Next_Payment_Date__c'), dt);
         return this;
     }
 
@@ -291,7 +291,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     public TEST_RecurringDonationBuilder withAlwaysUseLastDayOfMonth(Boolean shouldUse) {
         if (!shouldSetField(Mode.Legacy)) { return this; }
 
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Always_Use_Last_Day_Of_Month__c'), shouldUse);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Always_Use_Last_Day_Of_Month__c'), shouldUse);
         return this;
     }
 
@@ -301,7 +301,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withDayOfMonth(String dayOfMonth) {
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Day_Of_Month__c'), dayOfMonth);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Day_Of_Month__c'), dayOfMonth);
         return this;
     }
 
@@ -313,12 +313,12 @@ public without sharing class TEST_RecurringDonationBuilder {
     public TEST_RecurringDonationBuilder withStartDate(Date startDate) {
         if (!shouldSetField(Mode.Enhanced)) { return this; }
 
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('StartDate__c'), startDate);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('StartDate__c'), startDate);
         return this;
     }
 
     public TEST_RecurringDonationBuilder withLastPaymentDate(Date paymentDate) {
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Last_Payment_Date__c'), paymentDate);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Last_Payment_Date__c'), paymentDate);
         return this;
     }
 
@@ -328,7 +328,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withPlannedInstallments(Integer numberOfInstallments) {
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Installments__c'), numberOfInstallments);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Installments__c'), numberOfInstallments);
         return this;
     }
 
@@ -340,7 +340,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     public TEST_RecurringDonationBuilder withInstallmentFrequency(Integer frequency) {
         if (!shouldSetField(Mode.Enhanced)) { return this; }
 
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('InstallmentFrequency__c'), frequency);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('InstallmentFrequency__c'), frequency);
         return this;
     }
 
@@ -350,7 +350,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withPaidInstallments(Integer installment) {
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Total_Paid_Installments__c'), installment);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Total_Paid_Installments__c'), installment);
         return this;
     }
 
@@ -394,7 +394,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withInstallmentPeriod(String installmentPeriod) {
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Installment_Period__c'), installmentPeriod);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Installment_Period__c'), installmentPeriod);
         return this;
     }
 
@@ -414,7 +414,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     public TEST_RecurringDonationBuilder withScheduleType(String scheduleType) {
         if (!shouldSetField(Mode.Legacy)) { return this; }
 
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Schedule_Type__c'), scheduleType);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Schedule_Type__c'), scheduleType);
         return this;
     }
 
@@ -450,7 +450,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     public TEST_RecurringDonationBuilder withOpenEndedStatus(String status) {
         if (!shouldSetField(Mode.Legacy)) { return this; }
 
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Open_Ended_Status__c'), status);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Open_Ended_Status__c'), status);
         return this;
     }
 
@@ -494,7 +494,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     public TEST_RecurringDonationBuilder withStatus(String status) {
         if (!shouldSetField(Mode.Enhanced)) { return this; }
 
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Status__c'), status);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Status__c'), status);
         return this;
     }
 
@@ -505,7 +505,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     public TEST_RecurringDonationBuilder withClosedReason(String closedReason) {
         if (!shouldSetField(Mode.Enhanced)) { return this; }
 
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('ClosedReason__c'), closedReason);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('ClosedReason__c'), closedReason);
         return this;
     }
 
@@ -535,7 +535,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     public TEST_RecurringDonationBuilder withRecurringType(String recurringType) {
         if (!shouldSetField(Mode.Enhanced)) { return this; }
 
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('RecurringType__c'), recurringType);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('RecurringType__c'), recurringType);
         return this;
     }
 
@@ -546,7 +546,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     * @return TEST_RecurringDonationBuilder Builder instance
     */
     public TEST_RecurringDonationBuilder withNextDonationDate(Date dt) {
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('Next_Payment_Date__c'), dt);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('Next_Payment_Date__c'), dt);
         return this;
     }
 
@@ -567,7 +567,7 @@ public without sharing class TEST_RecurringDonationBuilder {
     */
     public TEST_RecurringDonationBuilder withFirstInstallmentDisabled() {
         if (!shouldSetField(Mode.Enhanced)) { return this; }
-        valuesByFieldName.put(UTIL_Namespace.StrTokenNSPrefix('DisableFirstInstallment__c'), true);
+        valuesByFieldName.put(UTIL_Namespace.prefixNamespace('DisableFirstInstallment__c'), true);
         return this;
     }
 
@@ -745,9 +745,9 @@ public without sharing class TEST_RecurringDonationBuilder {
             LastName = UTIL_UnitTestData_TEST.getUniqueString()
         );
 
-        rd = addForeignKey(rd, UTIL_Namespace.StrTokenNSPrefix('Contact__r'), contact);
-        rd = addRelatedList(rd, UTIL_Namespace.StrTokenNSPrefix('Donations__r'), opps);
-        rd = addRelatedList(rd, UTIL_Namespace.StrTokenNSPrefix('RecurringDonationSchedules__r'), schedules);
+        rd = addForeignKey(rd, UTIL_Namespace.prefixNamespace('Contact__r'), contact);
+        rd = addRelatedList(rd, UTIL_Namespace.prefixNamespace('Donations__r'), opps);
+        rd = addRelatedList(rd, UTIL_Namespace.prefixNamespace('RecurringDonationSchedules__r'), schedules);
 
         return rd;
     }

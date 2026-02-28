@@ -44,7 +44,7 @@ private class UTIL_Query_TEST {
     **********************************************************************************************************/
     @IsTest
     private static void shouldNotContainDuplicateSelectFields() {
-        String hhField = UTIL_Namespace.StrTokenNSPrefix('Household__r') + '.' + UTIL_Namespace.StrTokenNSPrefix('Number_of_HOUSEHOLD_Members__c');
+        String hhField = UTIL_Namespace.prefixNamespace('Household__r') + '.' + UTIL_Namespace.prefixNamespace('Number_of_HOUSEHOLD_Members__c');
         String[] selectFields = new String[]{
             'Id', 'accountId', 'ACCOUNTid',
             hhField,

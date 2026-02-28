@@ -8,15 +8,6 @@
  */
 
 public with sharing class Util {
-    private static String namespace {
-        get {
-            if (namespace == null) {
-                namespace = getNamespace();
-            }
-            return namespace;
-        }
-        set;
-    }
 
     public static AuraHandledException getAuraHandledException(Exception ex) {
         String message =
@@ -61,13 +52,4 @@ public with sharing class Util {
         return Math.mod(Date.newInstance(1900, 1, 7).daysBetween(val), 7) + 1;
     }
 
-    public static String getNamespace() {
-        String className = Util.class.getName();
-
-        return className.contains('.') ? className.substringBefore('.') : '';
-    }
-
-    public static String prefixNamespace(String value) {
-        return String.isBlank(namespace) ? value : namespace + '__' + value;
-    }
 }

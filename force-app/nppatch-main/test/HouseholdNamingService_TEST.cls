@@ -88,8 +88,8 @@ public class HouseholdNamingService_TEST {
         UTIL_Debug.debug('ID IS=================='+ hhid);
 
         HH_HouseholdNaming_BATCH batch = new HH_HouseholdNaming_BATCH(
-        'select Id, LastName, ' + UTIL_Namespace.StrTokenNSPrefix('HHId__c') + ' from Contact where ' +
-            UTIL_Namespace.StrTokenNSPrefix('HHId__c') + ' = \'' + hhid + '\' limit 200', true
+        'select Id, LastName, ' + UTIL_Namespace.prefixNamespace('HHId__c') + ' from Contact where ' +
+            UTIL_Namespace.prefixNamespace('HHId__c') + ' = \'' + hhid + '\' limit 200', true
         );
 
         Test.StartTest();
@@ -536,9 +536,9 @@ public class HouseholdNamingService_TEST {
             System.assert(soql.contains(fieldName), fieldName + ' should be in the SOQL: ' + soql);
         }
         for (String fieldName : new String[] {
-            UTIL_Namespace.StrTokenNSPrefix('HHId__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Naming_Exclusions__c'), // mandatory custom fields
-            UTIL_Namespace.StrTokenNSPrefix('WorkEmail__c') // HH Naming field
+            UTIL_Namespace.prefixNamespace('HHId__c'),
+            UTIL_Namespace.prefixNamespace('Naming_Exclusions__c'), // mandatory custom fields
+            UTIL_Namespace.prefixNamespace('WorkEmail__c') // HH Naming field
         }) {
             System.assert(soql.contains(fieldName), fieldName + ' should be in the SOQL: ' + soql);
         }
@@ -578,8 +578,8 @@ public class HouseholdNamingService_TEST {
             System.assert(soql.contains(fieldName), fieldName + ' should be in the SOQL: ' + soql);
         }
         for (String fieldName : new String[] {
-            UTIL_Namespace.StrTokenNSPrefix('HHId__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Naming_Exclusions__c') // mandatory custom fields
+            UTIL_Namespace.prefixNamespace('HHId__c'),
+            UTIL_Namespace.prefixNamespace('Naming_Exclusions__c') // mandatory custom fields
         }) {
             System.assert(soql.contains(fieldName), fieldName + ' should be in the SOQL: ' + soql);
         }
@@ -590,7 +590,7 @@ public class HouseholdNamingService_TEST {
         }) {
             System.assert(!soql.contains(fieldName), fieldName + ' should not be in the SOQL: ' + soql);
         }
-        System.assert(!soql.contains(UTIL_Namespace.StrTokenNSPrefix('WorkEmail__c')),
+        System.assert(!soql.contains(UTIL_Namespace.prefixNamespace('WorkEmail__c')),
             'WorkEmail__c should not be in the SOQL: ' + soql);
 
         //verify the soql is valid and will not raise exceptions

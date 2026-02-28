@@ -146,15 +146,15 @@ public with sharing class BDI_GAUAllocationsUtil {
                 && utilPerm.canRead(OppPayment__c.getSObjectType(),paymentFields)) {
 
                 String queryString = ' SELECT Id, ' +
-                UTIL_Namespace.StrTokenNSPrefix('General_Accounting_Unit__c') + ', ' +
-                UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ',' +
-                UTIL_Namespace.StrTokenNSPrefix('Payment__c') + ',' +
-                UTIL_Namespace.StrTokenNSPrefix('Payment__r') + '.' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' '+
-                'FROM ' + UTIL_Namespace.StrTokenNSPrefix('Allocation__c') + ' ' +
-                'WHERE (' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' IN: opptIds';
+                UTIL_Namespace.prefixNamespace('General_Accounting_Unit__c') + ', ' +
+                UTIL_Namespace.prefixNamespace('Opportunity__c') + ',' +
+                UTIL_Namespace.prefixNamespace('Payment__c') + ',' +
+                UTIL_Namespace.prefixNamespace('Payment__r') + '.' + UTIL_Namespace.prefixNamespace('Opportunity__c') + ' '+
+                'FROM ' + UTIL_Namespace.prefixNamespace('Allocation__c') + ' ' +
+                'WHERE (' + UTIL_Namespace.prefixNamespace('Opportunity__c') + ' IN: opptIds';
 
                 if (alloSettings.Payment_Allocations_Enabled__c) {
-                    queryString += ' OR ' + UTIL_Namespace.StrTokenNSPrefix('Payment__r') + '.' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' IN: opptIds)';
+                    queryString += ' OR ' + UTIL_Namespace.prefixNamespace('Payment__r') + '.' + UTIL_Namespace.prefixNamespace('Opportunity__c') + ' IN: opptIds)';
                 } else {
                     queryString += ')';
                 }

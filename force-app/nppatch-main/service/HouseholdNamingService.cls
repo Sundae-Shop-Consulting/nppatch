@@ -195,7 +195,7 @@ public without sharing class HouseholdNamingService {
     }
 
     private void refreshNumberOfHouseholdMembers(SObject household, List<Contact> members) {
-        household.put(UTIL_Namespace.StrTokenNSPrefix('Number_of_Household_Members__c'),
+        household.put(UTIL_Namespace.prefixNamespace('Number_of_Household_Members__c'),
                 members != null ? members.size() : 0);
     }
 
@@ -373,8 +373,8 @@ public without sharing class HouseholdNamingService {
     */
     public static void refreshAllHouseholdNaming(Boolean isActivation) {
         // the household batch expects a list of Contact's with just Id, LastName, HHId__c available.
-        String strSoql = 'SELECT Id, LastName, ' + UTIL_Namespace.StrTokenNSPrefix('HHId__c') + ' FROM Contact WHERE ' +
-                UTIL_Namespace.StrTokenNSPrefix('HHId__c') + ' != NULL ';
+        String strSoql = 'SELECT Id, LastName, ' + UTIL_Namespace.prefixNamespace('HHId__c') + ' FROM Contact WHERE ' +
+                UTIL_Namespace.prefixNamespace('HHId__c') + ' != NULL ';
         HH_HouseholdNaming_BATCH batch = new HH_HouseholdNaming_BATCH(strSoql, isActivation);
         Id batchProcessId = database.executeBatch(batch, getBatchSize());
     }

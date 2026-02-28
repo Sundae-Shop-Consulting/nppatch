@@ -42,8 +42,8 @@ public with sharing class HH_Container_LCTRL {
     private static final String accountObject = Schema.SObjectType.Account.getName();
     private static final String contactObject = Schema.SObjectType.Contact.getName();
     private static final String addressObject = Schema.SObjectType.Address__c.getName();
-    private static final String undeliverableField = UTIL_Namespace.StrTokenNSPrefix('Undeliverable__c');
-    private static final String undeliverableAddressField = UTIL_Namespace.StrTokenNSPrefix('Undeliverable_Address__c');
+    private static final String undeliverableField = UTIL_Namespace.prefixNamespace('Undeliverable__c');
+    private static final String undeliverableAddressField = UTIL_Namespace.prefixNamespace('Undeliverable_Address__c');
 
     private static Boolean canReadContactUndeliverable = 
         UTIL_Permissions.canRead(contactObject, undeliverableAddressField, false);
@@ -111,7 +111,7 @@ public with sharing class HH_Container_LCTRL {
                 .withWhere('Id = :householdId');
             SObject hh = Database.query(query.build());
             if (isHousehold) {
-                originalHouseholdCustomNameSetting = (String) hh.get(UTIL_Namespace.StrTokenNSPrefix('SYSTEM_CUSTOM_NAMING__c'));
+                originalHouseholdCustomNameSetting = (String) hh.get(UTIL_Namespace.prefixNamespace('SYSTEM_CUSTOM_NAMING__c'));
             }
             return hh;
 
@@ -138,10 +138,10 @@ public with sharing class HH_Container_LCTRL {
     private static Set<String> getHouseholdFieldsToEdit(Boolean isHousehold, String soqlFromObject) {
         Set<String> householdFieldsToEdit = new Set<String>{
             'Name',
-            UTIL_Namespace.StrTokenNSPrefix('SYSTEM_CUSTOM_NAMING__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Formal_Greeting__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Informal_Greeting__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Number_of_Household_Members__c')};
+            UTIL_Namespace.prefixNamespace('SYSTEM_CUSTOM_NAMING__c'),
+            UTIL_Namespace.prefixNamespace('Formal_Greeting__c'),
+            UTIL_Namespace.prefixNamespace('Informal_Greeting__c'),
+            UTIL_Namespace.prefixNamespace('Number_of_Household_Members__c')};
 
         if (isHousehold) {
             householdFieldsToEdit.addAll(new Set<String>{
@@ -152,11 +152,11 @@ public with sharing class HH_Container_LCTRL {
             }
         } else {
             householdFieldsToEdit.addAll(new Set<String>{
-                UTIL_Namespace.StrTokenNSPrefix('MailingStreet__c'),
-                UTIL_Namespace.StrTokenNSPrefix('MailingCity__c'),
-                UTIL_Namespace.StrTokenNSPrefix('MailingState__c'),
-                UTIL_Namespace.StrTokenNSPrefix('MailingPostalCode__c'),
-                UTIL_Namespace.StrTokenNSPrefix('MailingCountry__c')});
+                UTIL_Namespace.prefixNamespace('MailingStreet__c'),
+                UTIL_Namespace.prefixNamespace('MailingCity__c'),
+                UTIL_Namespace.prefixNamespace('MailingState__c'),
+                UTIL_Namespace.prefixNamespace('MailingPostalCode__c'),
+                UTIL_Namespace.prefixNamespace('MailingCountry__c')});
         }
         // check field level security and construct our soql
         checkFieldPermissions(householdFieldsToEdit, soqlFromObject);
@@ -236,11 +236,11 @@ public with sharing class HH_Container_LCTRL {
         // since we want to support both HH Accounts and Objects, but we expect customers might
         // only grant permissions on the model they are currently using, but we may have data in both models.
         // the find autocomplete lookup also uses this code, so it needs to see both types of households.
-        selectFields.add(UTIL_Namespace.StrTokenNSPrefix('Household__c'));
-        selectFields.add('Account.' + UTIL_Namespace.StrTokenNSPrefix('Number_of_Household_Members__c'));
-        selectFields.add(UTIL_Namespace.StrTokenNSPrefix('Household__r') + '.' + UTIL_Namespace.StrTokenNSPrefix('Number_of_Household_Members__c'));
+        selectFields.add(UTIL_Namespace.prefixNamespace('Household__c'));
+        selectFields.add('Account.' + UTIL_Namespace.prefixNamespace('Number_of_Household_Members__c'));
+        selectFields.add(UTIL_Namespace.prefixNamespace('Household__r') + '.' + UTIL_Namespace.prefixNamespace('Number_of_Household_Members__c'));
         selectFields.add('Account.Name');
-        selectFields.add(UTIL_Namespace.StrTokenNSPrefix('Household__r') + '.Name');
+        selectFields.add(UTIL_Namespace.prefixNamespace('Household__r') + '.Name');
 
         return new UTIL_Query()
             .withSelectFields(selectFields)
@@ -257,20 +257,20 @@ public with sharing class HH_Container_LCTRL {
         try {
             Set<String> contactFields = new Set<String>{
                 'Id',
-                UTIL_Namespace.StrTokenNSPrefix('Household_Naming_Order__c'),
+                UTIL_Namespace.prefixNamespace('Household_Naming_Order__c'),
                 'FirstName',
                 'LastName',
                 'Salutation',
                 'Name',
-                UTIL_Namespace.StrTokenNSPrefix('Naming_Exclusions__c'),
+                UTIL_Namespace.prefixNamespace('Naming_Exclusions__c'),
                 'AccountId',
-                UTIL_Namespace.StrTokenNSPrefix('HHId__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Exclude_from_Household_Name__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Exclude_from_Household_Formal_Greeting__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Exclude_from_Household_Informal_Greeting__c'),
-                UTIL_Namespace.StrTokenNSPrefix('is_Address_Override__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Current_Address__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Primary_Address_Type__c'),
+                UTIL_Namespace.prefixNamespace('HHId__c'),
+                UTIL_Namespace.prefixNamespace('Exclude_from_Household_Name__c'),
+                UTIL_Namespace.prefixNamespace('Exclude_from_Household_Formal_Greeting__c'),
+                UTIL_Namespace.prefixNamespace('Exclude_from_Household_Informal_Greeting__c'),
+                UTIL_Namespace.prefixNamespace('is_Address_Override__c'),
+                UTIL_Namespace.prefixNamespace('Current_Address__c'),
+                UTIL_Namespace.prefixNamespace('Primary_Address_Type__c'),
                 'MailingStreet', 
                 'MailingCity', 
                 'MailingState', 
@@ -308,11 +308,11 @@ public with sharing class HH_Container_LCTRL {
             'FirstName',
             'LastName',
             'Salutation',
-            UTIL_Namespace.StrTokenNSPrefix('Household_Naming_Order__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Naming_Exclusions__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Exclude_from_Household_Name__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Exclude_from_Household_Formal_Greeting__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Exclude_from_Household_Informal_Greeting__c'),
+            UTIL_Namespace.prefixNamespace('Household_Naming_Order__c'),
+            UTIL_Namespace.prefixNamespace('Naming_Exclusions__c'),
+            UTIL_Namespace.prefixNamespace('Exclude_from_Household_Name__c'),
+            UTIL_Namespace.prefixNamespace('Exclude_from_Household_Formal_Greeting__c'),
+            UTIL_Namespace.prefixNamespace('Exclude_from_Household_Informal_Greeting__c'),
             'MailingStreet', 
             'MailingCity', 
             'MailingState',
@@ -700,11 +700,11 @@ public with sharing class HH_Container_LCTRL {
                 address.Undeliverable__c = (Boolean)household.get(undeliverableAddressField);
             }
         } else {
-            address.MailingStreet__c = (String)household.get(UTIL_Namespace.StrTokenNSPrefix('MailingStreet__c'));
-            address.MailingCity__c = (String)household.get(UTIL_Namespace.StrTokenNSPrefix('MailingCity__c'));
-            address.MailingState__c = (String)household.get(UTIL_Namespace.StrTokenNSPrefix('MailingState__c'));
-            address.MailingPostalCode__c = (String)household.get(UTIL_Namespace.StrTokenNSPrefix('MailingPostalCode__c'));
-            address.MailingCountry__c = (String)household.get(UTIL_Namespace.StrTokenNSPrefix('MailingCountry__c'));
+            address.MailingStreet__c = (String)household.get(UTIL_Namespace.prefixNamespace('MailingStreet__c'));
+            address.MailingCity__c = (String)household.get(UTIL_Namespace.prefixNamespace('MailingCity__c'));
+            address.MailingState__c = (String)household.get(UTIL_Namespace.prefixNamespace('MailingState__c'));
+            address.MailingPostalCode__c = (String)household.get(UTIL_Namespace.prefixNamespace('MailingPostalCode__c'));
+            address.MailingCountry__c = (String)household.get(UTIL_Namespace.prefixNamespace('MailingCountry__c'));
         }
         return address;
     }
@@ -792,19 +792,19 @@ public with sharing class HH_Container_LCTRL {
                 String strComma = '';
                 
                 for (String strF : setFields) {
-                    String nsField = UTIL_Namespace.StrTokenNSPrefix(strF);
+                    String nsField = UTIL_Namespace.prefixNamespace(strF);
                     // check field level security
                     DescribeFieldResult dfr = UTIL_Describe.getFieldDescribe(addressObject, nsField);
                     if (dfr == null || !dfr.isAccessible()) {
                         throw (new permsException(String.format(Label.flsError, new string[]{
-                                UTIL_Namespace.StrTokenNSPrefix('Address__c') + '.' + nsField
+                                UTIL_Namespace.prefixNamespace('Address__c') + '.' + nsField
                         })));
                     }
 
                     strSoql += strComma + nsField;
                     strComma = ',';
                 }
-                strSoql += ' from ' + UTIL_Namespace.StrTokenNSPrefix('Address__c') + ' where ' + UTIL_Namespace.StrTokenNSPrefix('Household_Account__c') + ' = :householdId';
+                strSoql += ' from ' + UTIL_Namespace.prefixNamespace('Address__c') + ' where ' + UTIL_Namespace.prefixNamespace('Household_Account__c') + ' = :householdId';
                 List<Address__c> listAddrHH = Database.query(strSoql);
                 for (Address__c addrT : listAddrHH) {
                     // init other values we don't want to query for that the key might use.

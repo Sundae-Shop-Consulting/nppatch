@@ -884,7 +884,7 @@ public with sharing class ServiceService_TEST {
     private static List<Bucket__mdt> createBuckets() {
         BucketedField__mdt bucketedField = (BucketedField__mdt) new TestUtil.BucketedFieldBuilder()
             .withDeveloperName('ServiceStatuses')
-            .withQualifiedApiName(Util.prefixNamespace('ServiceStatuses'))
+            .withQualifiedApiName(UTIL_Namespace.prefixNamespace('ServiceStatuses'))
             .withField('Status__c')
             .withObject('Service__c')
             .withMockId()
@@ -894,7 +894,7 @@ public with sharing class ServiceService_TEST {
         activeValues.add(
             (BucketedValue__mdt) new TestUtil.BucketedValueBuilder()
                 .withDeveloperName('ServiceStatusActive')
-                .withQualifiedApiName(Util.prefixNamespace('ServiceStatusActive'))
+                .withQualifiedApiName(UTIL_Namespace.prefixNamespace('ServiceStatusActive'))
                 .withBucket('ServiceStatusActive')
                 .withValue('Active')
                 .withMockId()
@@ -905,7 +905,7 @@ public with sharing class ServiceService_TEST {
             .withBucketedField(bucketedField)
             .withBucketedValues(activeValues)
             .withDeveloperName('ServiceStatusActive')
-            .withQualifiedApiName(Util.prefixNamespace('ServiceStatusActive'))
+            .withQualifiedApiName(UTIL_Namespace.prefixNamespace('ServiceStatusActive'))
             .withMockId()
             .build();
 

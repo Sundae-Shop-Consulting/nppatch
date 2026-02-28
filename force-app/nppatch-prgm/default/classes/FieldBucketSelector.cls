@@ -34,7 +34,7 @@ public with sharing class FieldBucketSelector {
             FROM Bucket__mdt
             WHERE
                 DeveloperName IN :bucketNames
-                AND NamespacePrefix = :Util.getNamespace()
+                AND NamespacePrefix = :UTIL_Namespace.getNamespace()
                 AND BucketedField__r.Object__r.QualifiedApiName = :sObjectApiName
             ORDER BY QualifiedApiName
         ];

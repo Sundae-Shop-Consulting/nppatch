@@ -242,7 +242,7 @@ private class CON_ContactMerge_TEST2 {
         System.assertNotEquals(null, hh1Id);
         System.assertNotEquals(null, hh2Id);
 
-        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('CON_ContactMerge')));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.prefixNamespace('CON_ContactMerge')));
 
         CON_ContactMerge_CTRL controller = new CON_ContactMerge_CTRL(new ApexPages.Standardsetcontroller(new list<Contact>()));
         controller.showContactSearchPage();
@@ -290,7 +290,7 @@ private class CON_ContactMerge_TEST2 {
         Contact con2 = UTIL_UnitTestData_TEST.getContact();
         insert new Contact[]{con, con2};
                 
-        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('CON_ContactMerge')));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.prefixNamespace('CON_ContactMerge')));
         
         //create standard set controller with 2 records
         ApexPages.Standardsetcontroller ssc =new ApexPages.Standardsetcontroller(new list<Contact>{con,con2});
@@ -868,7 +868,7 @@ private class CON_ContactMerge_TEST2 {
 
             //Select the primary affiliation of the one that is not the one we selected as master
             for (CON_ContactMerge_CTRL.FieldRow row : controller.fieldRows) {
-                if (row.fieldName == UTIL_Namespace.StrTokenNSPrefix('Primary_Affiliation__c')) {
+                if (row.fieldName == UTIL_Namespace.prefixNamespace('Primary_Affiliation__c')) {
                     row.selectedValue = String.valueOf(con2.id);
                     break;
                 }
@@ -891,7 +891,7 @@ private class CON_ContactMerge_TEST2 {
 
     /*** Helper methods ***/
     private static CON_ContactMerge_CTRL getController() {
-        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('CON_ContactMerge')));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.prefixNamespace('CON_ContactMerge')));
         CON_ContactMerge_CTRL controller = new CON_ContactMerge_CTRL(new ApexPages.StandardSetController(new List<Contact>()));
         return controller;
     }
@@ -1029,7 +1029,7 @@ private class CON_ContactMerge_TEST2 {
         **
         **/
     private static CON_ContactMerge_CTRL setupPageController(List<Contact> contactsToMerge, String searchText) {
-        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('CON_ContactMerge')));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.prefixNamespace('CON_ContactMerge')));
 
         CON_ContactMerge_CTRL controller = new CON_ContactMerge_CTRL(new ApexPages.Standardsetcontroller(new list<Contact>()));
         controller.showContactSearchPage();

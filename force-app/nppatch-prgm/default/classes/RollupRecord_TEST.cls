@@ -530,7 +530,7 @@ public with sharing class RollupRecord_TEST {
                 ConsecutiveAbsences__c = 1,
                 LastServiceDate__c = dateToday
             ),
-            Util.prefixNamespace('ServiceDeliveries__r')
+            UTIL_Namespace.prefixNamespace('ServiceDeliveries__r')
         );
 
         System.assertEquals(
@@ -565,7 +565,7 @@ public with sharing class RollupRecord_TEST {
                 ConsecutiveAbsences__c = 1,
                 LastServiceDate__c = dateToday
             ),
-            Util.prefixNamespace('ServiceDeliveries__r')
+            UTIL_Namespace.prefixNamespace('ServiceDeliveries__r')
         );
 
         System.assertEquals(
@@ -622,7 +622,7 @@ public with sharing class RollupRecord_TEST {
                 ConsecutiveAbsences__c = 0,
                 LastServiceDate__c = System.today()
             ),
-            Util.prefixNamespace('ServiceDeliveries__r')
+            UTIL_Namespace.prefixNamespace('ServiceDeliveries__r')
         );
         rollupRecord.addDelivery(
             (ServiceDelivery) createDeliveryStub(true, false, false, System.today())
@@ -667,7 +667,7 @@ public with sharing class RollupRecord_TEST {
                 ConsecutiveAbsences__c = 1,
                 LastServiceDate__c = System.today()
             ),
-            Util.prefixNamespace('ServiceDeliveries__r')
+            UTIL_Namespace.prefixNamespace('ServiceDeliveries__r')
         );
         rollupRecord.addDelivery(
             (ServiceDelivery) createDeliveryStub(false, true, false, System.today())
@@ -714,7 +714,7 @@ public with sharing class RollupRecord_TEST {
                 ConsecutiveAbsences__c = 0,
                 LastServiceDate__c = yesterday
             ),
-            Util.prefixNamespace('ServiceDeliveries__r')
+            UTIL_Namespace.prefixNamespace('ServiceDeliveries__r')
         );
         rollupRecord.addDelivery(
             (ServiceDelivery) createDeliveryStub(false, true, true, dateToday).create()
@@ -747,7 +747,7 @@ public with sharing class RollupRecord_TEST {
                 ConsecutiveAbsences__c = 1,
                 LastServiceDate__c = System.today()
             ),
-            Util.prefixNamespace('ServiceDeliveries__r')
+            UTIL_Namespace.prefixNamespace('ServiceDeliveries__r')
         );
         rollupRecord.addOriginalDelivery(
             (ServiceDelivery) createDeliveryStub(false, true, true, System.today())
