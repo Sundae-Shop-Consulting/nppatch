@@ -113,20 +113,20 @@ private class DonationSelector_TEST {
             'CloseDate, ' +
             'IsClosed, ' +
             'Amount, ' +
-            UTIL_Namespace.StrTokenNSPrefix('Number_of_Payments__c') + ', ' +
+            UTIL_Namespace.prefixNamespace('Number_of_Payments__c') + ', ' +
                 '(SELECT Id, ' +
                     'Name, ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c') + ', ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.Name, ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.' + UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c') + ', ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ', ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c') + ', ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' ' +
-                'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
-                'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false ' +
-                'AND ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ' = false), ' +
+                    UTIL_Namespace.prefixNamespace('Scheduled_Date__c') + ', ' +
+                    UTIL_Namespace.prefixNamespace('Opportunity__r') + '.Name, ' +
+                    UTIL_Namespace.prefixNamespace('Opportunity__r') + '.' + UTIL_Namespace.prefixNamespace('Primary_Contact__c') + ', ' +
+                    UTIL_Namespace.prefixNamespace('Opportunity__c') + ', ' +
+                    UTIL_Namespace.prefixNamespace('Payment_Amount__c') + ', ' +
+                    UTIL_Namespace.prefixNamespace('Payment_Date__c') + ', ' +
+                    UTIL_Namespace.prefixNamespace('Paid__c') + ', ' +
+                    UTIL_Namespace.prefixNamespace('Written_Off__c') + ' ' +
+                'FROM ' + UTIL_Namespace.prefixNamespace('OppPayment__r') + ' ' +
+                'WHERE ' + UTIL_Namespace.prefixNamespace('Written_Off__c') + ' = false ' +
+                'AND ' + UTIL_Namespace.prefixNamespace('Paid__c') + ' = false), ' +
                 '(SELECT Id, ' +
                     'Role, ' +
                     'ContactId ' +

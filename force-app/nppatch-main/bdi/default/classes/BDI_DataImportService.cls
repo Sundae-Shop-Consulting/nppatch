@@ -223,8 +223,8 @@ global with sharing class BDI_DataImportService {
     */
     public static void validateSettings(Data_Import_Settings__c dataImportSettings) {
 
-        String dataImportSettingsObject = UTIL_Namespace.StrTokenNSPrefix('Data_Import_Settings__c');
-        String strDataImportObj = UTIL_Namespace.StrTokenNSPrefix('DataImport__c');
+        String dataImportSettingsObject = UTIL_Namespace.prefixNamespace('Data_Import_Settings__c');
+        String strDataImportObj = UTIL_Namespace.prefixNamespace('DataImport__c');
 
         // validate matching rules
         if (dataImportSettings.Donation_Matching_Behavior__c != null &&
@@ -238,7 +238,7 @@ global with sharing class BDI_DataImportService {
         if (dataImportSettings.Batch_Size__c == null || dataImportSettings.Batch_Size__c < 0) {
             throw(new BDIException(String.format(Label.bdiPositiveNumber,
                 new List<String>{
-                    UTIL_Describe.getFieldLabelSafe(dataImportSettingsObject, UTIL_Namespace.StrTokenNSPrefix('Batch_Size__c'))
+                    UTIL_Describe.getFieldLabelSafe(dataImportSettingsObject, UTIL_Namespace.prefixNamespace('Batch_Size__c'))
                 }
             )));
         }
@@ -248,7 +248,7 @@ global with sharing class BDI_DataImportService {
             throw(new BDIException(String.format(Label.bdiPositiveNumber,
                 new List<String>{
                     UTIL_Describe.getFieldLabelSafe(
-                        dataImportSettingsObject, UTIL_Namespace.StrTokenNSPrefix('Donation_Date_Range__c')
+                        dataImportSettingsObject, UTIL_Namespace.prefixNamespace('Donation_Date_Range__c')
                     )
                 }
             )));
@@ -1159,7 +1159,7 @@ global with sharing class BDI_DataImportService {
         // handle standard fields
         if (!customField.endsWith('__c')) {
             if (Test.isRunningTest()) {
-                return UTIL_Namespace.StrTokenNSPrefix(objectReference + '_' + customField + '__c');
+                return UTIL_Namespace.prefixNamespace(objectReference + '_' + customField + '__c');
             } else {
                 return objectReference + '_' + customField + '__c';
             }
@@ -1171,7 +1171,7 @@ global with sharing class BDI_DataImportService {
             // is it our namespace, in which case this is probably unmanaged npsp code,
             // so any manual testing will need the namespace in the DI custom field.
             if (customField.left(i).equalsIgnoreCase(UTIL_Namespace.getNamespace())) {
-                return UTIL_Namespace.StrTokenNSPrefix(objectReference + '_' + customField.subString(i + 2));
+                return UTIL_Namespace.prefixNamespace(objectReference + '_' + customField.subString(i + 2));
             } else {
                 // skip namespace
                 return objectReference + '_' + customField.subString(i + 2);
@@ -1753,7 +1753,7 @@ global with sharing class BDI_DataImportService {
         }
 
         Map<String, String> mapDIFieldToAddrField =
-            mapDataImportFields('Address', UTIL_Namespace.StrTokenNSPrefix('Address__c'), listStrDataImportFields);
+            mapDataImportFields('Address', UTIL_Namespace.prefixNamespace('Address__c'), listStrDataImportFields);
         List<Address__c> addressesToInsert = new List<Address__c>();
         List<DataImport__c> dataImportsToInsert = new List<DataImport__c>();
         Map<String, Address__c> mapHHAddrKeyToAddrNew = new Map<String, Address__c>();

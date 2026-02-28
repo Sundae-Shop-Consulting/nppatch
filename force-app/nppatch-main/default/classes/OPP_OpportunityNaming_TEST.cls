@@ -187,12 +187,12 @@ public with sharing class OPP_OpportunityNaming_TEST
             Name = 'foo',
             Opportunity_Record_Types__c = '',
             Opportunity_Name_Format__c = '{!Account.Name} {!Amount} {!Type} {!RecordType.Name}',
-            Attribution__c = STG_PanelOppNaming_CTRL.AttributionOptions.Organization_Donations.name()
+            Attribution__c = OPP_AttributionSettings.AttributionOptions.Organization_Donations.name()
         ));
         onsList.add(new Opportunity_Naming_Settings__c(
             Name = 'foo2',
             Opportunity_Name_Format__c = '{!Contact.Name} {!Contact.HasOptedOutOfFax} {!Type} {!RecordType.Name}',
-            Attribution__c = STG_PanelOppNaming_CTRL.AttributionOptions.Contact_Donations.name()
+            Attribution__c = OPP_AttributionSettings.AttributionOptions.Contact_Donations.name()
         ));
 
         if (hasActiveRecType()) {
@@ -241,8 +241,7 @@ public with sharing class OPP_OpportunityNaming_TEST
         }
 
         Test.startTest();
-        STG_PanelOppNamingBatch_CTRL ctrl = new STG_PanelOppNamingBatch_CTRL();
-        ctrl.runBatch();
+        Database.executeBatch(new OPP_OpportunityNaming_BATCH(), 200);
 
         Test.stopTest();
 
@@ -317,7 +316,7 @@ public with sharing class OPP_OpportunityNaming_TEST
     */
     @isTest
     private static void shouldGenerateOppNameWhenNonEnglishUserCreatesAnOpp() {
-        String optionName = STG_PanelOppNaming_CTRL.AttributionOptions.Both.name();
+        String optionName = OPP_AttributionSettings.AttributionOptions.Both.name();
         setUpOppNamingSettings(new Map<String, Object>{ 'Attribution__c' => optionName });
 
         Contact contact = getContact();
@@ -341,7 +340,7 @@ public with sharing class OPP_OpportunityNaming_TEST
     */
     @isTest
     private static void shouldGenerateOppNameWhenNonEnglishUserClicksRefreshName() {
-        String optionName = STG_PanelOppNaming_CTRL.AttributionOptions.Contact_Donations.name();
+        String optionName = OPP_AttributionSettings.AttributionOptions.Contact_Donations.name();
         setUpOppNamingSettings(new Map<String, Object>{ 'Attribution__c' => optionName });
 
         Contact contact = getContact();
@@ -389,12 +388,11 @@ public with sharing class OPP_OpportunityNaming_TEST
             System.assertEquals(originalOppName, oppGateway.getRecord(opp.Id).Name,
                 'The name should not be generated since naming is not configured in settings');
 
-            String optionName = STG_PanelOppNaming_CTRL.AttributionOptions.Contact_Donations.name();
+            String optionName = OPP_AttributionSettings.AttributionOptions.Contact_Donations.name();
             setUpOppNamingSettings(new Map<String, Object>{ 'Attribution__c' => optionName });
 
             Test.startTest();
-            STG_PanelOppNamingBatch_CTRL ctrl = new STG_PanelOppNamingBatch_CTRL();
-            ctrl.runBatch();
+            Database.executeBatch(new OPP_OpportunityNaming_BATCH(), 200);
             Test.stopTest();
         }
 
@@ -411,20 +409,20 @@ public with sharing class OPP_OpportunityNaming_TEST
     */
     @isTest
     private static void attributionSettingsShouldReturnSelectedOptionAndLabel() {
-        STG_PanelOppNaming_CTRL.AttributionOptions option = STG_PanelOppNaming_CTRL.AttributionOptions.Both;
+        OPP_AttributionSettings.AttributionOptions option = OPP_AttributionSettings.AttributionOptions.Both;
         String label = System.Label.oppNamingBoth;
 
         assertSelectedAttribution(System.Label.oppNamingBoth, option, label);
         assertSelectedAttribution(option.name(), option, label);
 
-        option = STG_PanelOppNaming_CTRL.AttributionOptions.Contact_Donations;
+        option = OPP_AttributionSettings.AttributionOptions.Contact_Donations;
         label = System.Label.oppNamingIndividual;
 
         assertSelectedAttribution(System.Label.oppNamingIndividual, option, label);
         assertSelectedAttribution(option.name(), option, label);
         assertSelectedAttribution('Contact Donations', option, label);
 
-        option = STG_PanelOppNaming_CTRL.AttributionOptions.Organization_Donations;
+        option = OPP_AttributionSettings.AttributionOptions.Organization_Donations;
         label = System.Label.oppNamingOrganizational;
 
         assertSelectedAttribution(System.Label.oppNamingOrganizational, option, label);
@@ -438,7 +436,7 @@ public with sharing class OPP_OpportunityNaming_TEST
     */
     @isTest
     private static void attributionSettingsShouldReturnBlankLabelWhenAttributionIsNull() {
-        STG_PanelOppNaming_CTRL.AttributionSettings attributionSettings = new STG_PanelOppNaming_CTRL.AttributionSettings()
+        OPP_AttributionSettings attributionSettings = new OPP_AttributionSettings()
             .withSelected(null);
 
         System.assertEquals(null, attributionSettings.selectedOption,
@@ -457,7 +455,7 @@ public with sharing class OPP_OpportunityNaming_TEST
     @isTest
     private static void attributionSettingsShouldReturnValueAsIsWhenAttributionIsNotAnOption() {
         String attribution = 'foo';
-        STG_PanelOppNaming_CTRL.AttributionSettings attributionSettings = new STG_PanelOppNaming_CTRL.AttributionSettings()
+        OPP_AttributionSettings attributionSettings = new OPP_AttributionSettings()
             .withSelected(attribution);
 
         System.assertEquals(attribution, attributionSettings.selectedOption,
@@ -477,8 +475,8 @@ public with sharing class OPP_OpportunityNaming_TEST
     * @param label Expected Attribution label
     * @return void
     */
-    private static void assertSelectedAttribution(String attribution, STG_PanelOppNaming_CTRL.AttributionOptions option, String label) {
-        STG_PanelOppNaming_CTRL.AttributionSettings attributionSettings = new STG_PanelOppNaming_CTRL.AttributionSettings()
+    private static void assertSelectedAttribution(String attribution, OPP_AttributionSettings.AttributionOptions option, String label) {
+        OPP_AttributionSettings attributionSettings = new OPP_AttributionSettings()
             .withSelected(attribution);
 
         System.assertEquals(option.name(), attributionSettings.selectedOption,
@@ -491,27 +489,12 @@ public with sharing class OPP_OpportunityNaming_TEST
     }
 
     /***
-    * @description Verifies attribution options are returned as SelectOptions
-    */
-    @isTest
-    private static void attributionSettingsShouldReturnSelectOptions() {
-        List<STG_PanelOppNaming_CTRL.AttributionOptions> options = STG_PanelOppNaming_CTRL.AttributionOptions.values();
-
-        List<SelectOption> selectOptions = STG_PanelOppNaming_CTRL.listSOOpportunityAttribution;
-
-        System.assertEquals(options.size(), selectOptions.size(), 'Panel should return options');
-        for (Integer i = 0; i < options.size(); i++) {
-            System.assertEquals(options[i].name(), selectOptions[i].getValue(), 'Options should match');
-        }
-    }
-
-    /***
     * @description Verifies isBoth() returns true when settings Attribution value is Both
     */
     @isTest
     private static void attributionSettingsShouldReturnTrueWhenOptionIsBoth() {
-        STG_PanelOppNaming_CTRL.AttributionSettings attributionSettings = new STG_PanelOppNaming_CTRL.AttributionSettings()
-            .withSelected(STG_PanelOppNaming_CTRL.AttributionOptions.Both.name());
+        OPP_AttributionSettings attributionSettings = new OPP_AttributionSettings()
+            .withSelected(OPP_AttributionSettings.AttributionOptions.Both.name());
 
         System.assertEquals(true, attributionSettings.isBoth(),
             'The selected Attribution option should be Both'
@@ -529,8 +512,8 @@ public with sharing class OPP_OpportunityNaming_TEST
     */
     @isTest
     private static void attributionSettingsShouldReturnFalseWhenOptionIsNotBoth() {
-        STG_PanelOppNaming_CTRL.AttributionSettings attributionSettings = new STG_PanelOppNaming_CTRL.AttributionSettings()
-            .withSelected(STG_PanelOppNaming_CTRL.AttributionOptions.Contact_Donations.name());
+        OPP_AttributionSettings attributionSettings = new OPP_AttributionSettings()
+            .withSelected(OPP_AttributionSettings.AttributionOptions.Contact_Donations.name());
 
         System.assertEquals(false, attributionSettings.isBoth(),
             'The selected Attribution option should not be Both'

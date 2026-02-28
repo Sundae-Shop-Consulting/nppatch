@@ -765,9 +765,9 @@ private class BDI_AdditionalObjectService_TEST {
                             Data_Import_Object_Mapping_Set__c = predecessorObjMapping.Data_Import_Object_Mapping_Set,
                             Object_API_Name__c = 'Contact',
                             Predecessor__c = predecessorObjMapping.DeveloperName,
-                            Imported_Record_Field_Name__c = UTIL_Namespace.StrTokenNSPrefix('Contact1_Title__c'),
-                            Imported_Record_Status_Field_Name__c = UTIL_Namespace.StrTokenNSPrefix('Contact1ImportStatus__c'),
-                            Relationship_Field__c = UTIL_Namespace.StrTokenNSPrefix('Honoree_Contact__c'),
+                            Imported_Record_Field_Name__c = UTIL_Namespace.prefixNamespace('Contact1_Title__c'),
+                            Imported_Record_Status_Field_Name__c = UTIL_Namespace.prefixNamespace('Contact1ImportStatus__c'),
+                            Relationship_Field__c = UTIL_Namespace.prefixNamespace('Honoree_Contact__c'),
                             Relationship_To_Predecessor__c = 'Parent');
 
         BDI_ObjectMapping testObjMapping = new BDI_ObjectMapping(diom);
@@ -1290,9 +1290,9 @@ private class BDI_AdditionalObjectService_TEST {
                         Data_Import_Object_Mapping_Set__c = predecessorObjMapping.Data_Import_Object_Mapping_Set,
                         Object_API_Name__c = 'Contact',
                         Predecessor__c = predecessorObjMapping.DeveloperName,
-                        Imported_Record_Field_Name__c = UTIL_Namespace.StrTokenNSPrefix('Contact1_Title__c'),
-                        Imported_Record_Status_Field_Name__c = UTIL_Namespace.StrTokenNSPrefix('Contact1ImportStatus__c'),
-                        Relationship_Field__c = UTIL_Namespace.StrTokenNSPrefix('Honoree_Contact__c'),
+                        Imported_Record_Field_Name__c = UTIL_Namespace.prefixNamespace('Contact1_Title__c'),
+                        Imported_Record_Status_Field_Name__c = UTIL_Namespace.prefixNamespace('Contact1ImportStatus__c'),
+                        Relationship_Field__c = UTIL_Namespace.prefixNamespace('Honoree_Contact__c'),
                         Relationship_To_Predecessor__c = 'Parent');
 
         BDI_ObjectMapping testObjMapping = new BDI_ObjectMapping(diom);

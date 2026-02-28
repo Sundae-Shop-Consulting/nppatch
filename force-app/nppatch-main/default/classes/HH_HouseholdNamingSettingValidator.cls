@@ -123,8 +123,8 @@ public with sharing class HH_HouseholdNamingSettingValidator {
         HH_INaming hhNaming, Notification notification
     ) {
         String fieldLabel = UTIL_Describe.getFieldLabel(
-            UTIL_Namespace.StrTokenNSPrefix('Household_Naming_Settings__c'), 
-            UTIL_Namespace.StrTokenNSPrefix(fieldName)
+            UTIL_Namespace.prefixNamespace('Household_Naming_Settings__c'), 
+            UTIL_Namespace.prefixNamespace(fieldName)
         );
         
         try {

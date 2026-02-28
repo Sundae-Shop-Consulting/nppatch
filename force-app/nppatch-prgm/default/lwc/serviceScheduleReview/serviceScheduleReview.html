@@ -1,0 +1,184 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  - /*
+  -  * Copyright (c) 2020, salesforce.com, inc.
+  -  * All rights reserved.
+  -  * SPDX-License-Identifier: BSD-3-Clause
+  -  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+  -  */
+  -->
+
+<template>
+    <c-section title={reviewLabel} focus-heading if:true={isLoaded}></c-section>
+    <lightning-layout
+        multiple-rows="true"
+        class="slds-var-p-around_small"
+        if:true={isLoaded}
+        horizontal-align="center"
+    >
+        <!-- Column 1 -->
+        <lightning-layout-item
+            size="5"
+            small-device-size="12"
+            medium-device-size="5"
+            large-device-size="5"
+        >
+            <c-output-field
+                label={serviceScheduleModel.scheduleRequiredFields.name.label}
+            >
+                {serviceScheduleModel.serviceSchedule.Name}
+            </c-output-field>
+            <c-output-field label={labels.dateAndTime}>
+                <!-- date range -->
+                <div>
+                    <lightning-icon
+                        icon-name="utility:event"
+                        alternative-text=""
+                        size="x-small"
+                        class="slds-var-p-right_x-small"
+                    >
+                    </lightning-icon>
+                    <lightning-formatted-date-time
+                        value={firstSessionStartDateTime}
+                    ></lightning-formatted-date-time>
+                    <!-- spacing and en-dash between dates -->
+                    <template if:true={showEndDate}
+                        >&nbsp;&ndash;&nbsp;
+                        <lightning-formatted-date-time
+                            value={lastSessionEndDateTime}
+                        ></lightning-formatted-date-time>
+                    </template>
+                </div>
+                <!-- times -->
+                <div>
+                    <lightning-icon
+                        icon-name="utility:clock"
+                        alternative-text=""
+                        size="x-small"
+                        class="slds-var-p-right_x-small"
+                    >
+                    </lightning-icon>
+                    <lightning-formatted-date-time
+                        value={firstSessionStartDateTime}
+                        hour="2-digit"
+                        minute="2-digit"
+                        hour12="true"
+                        time-zone={timeZone}
+                        time-zone-name="short"
+                    ></lightning-formatted-date-time>
+                    <!-- spacing and en-dash between times -->
+                    &nbsp;&ndash;&nbsp;
+                    <lightning-formatted-date-time
+                        value={lastSessionEndDateTime}
+                        hour="2-digit"
+                        minute="2-digit"
+                        hour12="true"
+                        time-zone={timeZone}
+                        time-zone-name="short"
+                    ></lightning-formatted-date-time>
+                </div>
+            </c-output-field>
+        </lightning-layout-item>
+
+        <!-- Column 2 -->
+        <lightning-layout-item
+            size="5"
+            small-device-size="12"
+            medium-device-size="5"
+            large-device-size="5"
+            if:true={isLoaded}
+        >
+            <template
+                for:each={serviceScheduleModel.scheduleInformationFields}
+                for:item="field"
+            >
+                <c-output-field key={field.apiName} label={field.label}>
+                    <template if:true={field.value}>
+                        <lightning-icon
+                            if:true={field.icon}
+                            icon-name={field.icon}
+                            alternative-text=""
+                            size="x-small"
+                            class="slds-var-p-right_x-small"
+                        >
+                        </lightning-icon>
+                        <lightning-formatted-time
+                            if:true={field.isTime}
+                            value={field.value}
+                        ></lightning-formatted-time>
+                        <template if:false={field.isTime}> {field.value} </template>
+                    </template>
+                </c-output-field>
+            </template>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="10">
+            <lightning-accordion
+                active-section-name={activeSections}
+                allow-multiple-sections-open
+                if:true={isLoaded}
+            >
+                <!--{labels.participants}-->
+                <div class="slds-box slds-var-m-around_small">
+                    <lightning-accordion-section
+                        name="participants"
+                        label={serviceParticipantsLabel}
+                    >
+                        <c-scoped-notification
+                            if:false={hasServiceParticipants}
+                            title={serviceScheduleModel.labels.serviceParticipant.noContactsSelected}
+                        >
+                        </c-scoped-notification>
+                        <div
+                            class="slds-box slds-p-around_none"
+                            if:true={hasServiceParticipants}
+                        >
+                            <lightning-datatable
+                                key-field="Id"
+                                columns={participantColumns}
+                                data={serviceScheduleModel.selectedEngagements}
+                                column-widths-mode="auto"
+                                resize-column-disabled
+                                hide-checkbox-column
+                                show-row-number-column
+                            >
+                            </lightning-datatable>
+                        </div>
+                    </lightning-accordion-section>
+                </div>
+                <div class="slds-box slds-var-m-left_small slds-var-m-right_small">
+                    <!--{labels.sessions}-->
+                    <lightning-accordion-section
+                        name="sessions"
+                        label={serviceSessionsLabel}
+                    >
+                        <c-scoped-notification
+                            if:false={hasServiceSessions}
+                            title={serviceScheduleModel.labels.serviceSession.noSessionsAdded}
+                        >
+                        </c-scoped-notification>
+                        <c-scoped-notification
+                            if:true={editingExistingSchedule}
+                            title={labels.onlyShowingFutureSessionsMessage}
+                        ></c-scoped-notification>
+                        <div
+                            class="slds-box slds-p-around_none"
+                            if:true={hasServiceSessions}
+                        >
+                            <lightning-datatable
+                                key-field="Id"
+                                columns={sessionDataTableColumns}
+                                data={serviceSessions}
+                                column-widths-mode="auto"
+                                resize-column-disabled
+                                hide-checkbox-column
+                                show-row-number-column
+                            >
+                            </lightning-datatable>
+                        </div>
+                    </lightning-accordion-section>
+                </div>
+            </lightning-accordion>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

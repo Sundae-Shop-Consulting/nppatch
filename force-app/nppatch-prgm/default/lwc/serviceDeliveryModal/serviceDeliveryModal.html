@@ -1,0 +1,18 @@
+<!--
+  - /*
+  -  * Copyright (c) 2020, salesforce.com, inc.
+  -  * All rights reserved.
+  -  * SPDX-License-Identifier: BSD-3-Clause
+  -  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+  -  */
+  -->
+
+<template>
+    <c-modal header={labels.serviceDeliveries} hide-body-padding="true">
+        <c-bulk-service-delivery-u-i
+            default-values={defaultValues}
+            ondone={hideModal}
+            hide-footer="true"
+        ></c-bulk-service-delivery-u-i>
+    </c-modal>
+</template>

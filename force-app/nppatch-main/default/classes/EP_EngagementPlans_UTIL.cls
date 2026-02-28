@@ -46,7 +46,7 @@ public with sharing class EP_EngagementPlans_UTIL {
 
     /** @description Engagement Plan field describe map.*/
     private static Map<String, Schema.DescribeFieldResult> fieldDescribeMap = UTIL_Describe.getAllFieldsDescribe(
-        UTIL_Namespace.StrTokenNSPrefix('Engagement_Plan__c')
+        UTIL_Namespace.prefixNamespace('Engagement_Plan__c')
     );
     
     /** @description A map of Engagement Plan lookup field names to the relationship name and OwnerId for all custom relationship fields,
@@ -58,7 +58,7 @@ public with sharing class EP_EngagementPlans_UTIL {
                 for (String fieldName : fieldDescribeMap.keySet()) {
                     Schema.DescribeFieldResult fieldDescribe = fieldDescribeMap.get(fieldName);
                     if (fieldDescribe.getRelationshipName() != null && fieldDescribe.isCustom()) {
-                        if (fieldName != UTIL_Namespace.StrTokenNSPrefix('Engagement_Plan_Template__c')) {
+                        if (fieldName != UTIL_Namespace.prefixNamespace('Engagement_Plan_Template__c')) {
                             //toLowerCase() is necessary here as custom fields were being returned twice, like CustomField__c and customfield__c
                             lookupFieldsToRelationship.put(fieldName.toLowerCase(), fieldDescribe.getRelationshipName()+'.' + String.join(getOwnerIdPath(fieldDescribe.getReferenceTo()[0]),'.'));
                         }

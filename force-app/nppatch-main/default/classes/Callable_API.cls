@@ -44,17 +44,6 @@ global with sharing class Callable_API implements System.Callable {
 
 
     @TestVisible
-    private GiftEntryEnablementService giftEntryEnablementService {
-        get {
-            if (giftEntryEnablementService == null) {
-                giftEntryEnablementService = new GiftEntryEnablementService();
-            }
-            return giftEntryEnablementService;
-        }
-        set;
-    }
-
-    @TestVisible
     PMT_RefundService refundService {
         get {
             if (refundService == null) {
@@ -180,12 +169,7 @@ global with sharing class Callable_API implements System.Callable {
                 return null;
 
             } when 'settings.enablegiftentry' {
-                if (giftEntryEnablementService.isEnabled()) {
-                    return null;
-                }
-
-                giftEntryEnablementService.enable();
-
+                // Gift Entry is always enabled; no-op for backward compatibility
                 return null;
             }
             when else {

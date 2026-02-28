@@ -279,7 +279,7 @@ private class ERR_Handler_TEST {
      */
     @IsTest
     private static void shouldCreateErrorBySendErrorNotification() {
-        Test.setCurrentPage(Page.STG_SettingsManager);
+        Test.setCurrentPage(new PageReference('/'));
 
         Test.startTest();
         ERR_Handler.sendErrorNotification(testException, ERROR_CONTEXT);
@@ -299,7 +299,7 @@ private class ERR_Handler_TEST {
      */
     @IsTest
     private static void shouldProcessErrorOnlyButNotDisplayItOnPage() {
-        Test.setCurrentPage(Page.STG_SettingsManager);
+        Test.setCurrentPage(new PageReference('/'));
 
         List<Error__c> errors = new List<Error__c>{
             ERR_Handler.createError(testException, ERROR_CONTEXT)
@@ -324,7 +324,7 @@ private class ERR_Handler_TEST {
      */
     @IsTest
     private static void shouldProcessErrorResultButNotDisplayItOnPage() {
-        Test.setCurrentPage(Page.STG_SettingsManager);
+        Test.setCurrentPage(new PageReference('/'));
 
         ERR_Handler.Errors errorResult = new ERR_Handler.Errors();
         errorResult.errorsExist = true;
@@ -350,7 +350,7 @@ private class ERR_Handler_TEST {
      */
     @IsTest
     private static void shouldProcessErrorAndDisplayItOnPage() {
-        Test.setCurrentPage(Page.STG_SettingsManager);
+        Test.setCurrentPage(new PageReference('/'));
 
         List<Error__c> errors = new List<Error__c>{
             ERR_Handler.createError(testException, ERROR_CONTEXT)

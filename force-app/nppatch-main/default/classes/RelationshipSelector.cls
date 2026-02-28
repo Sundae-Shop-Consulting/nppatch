@@ -34,6 +34,25 @@
 */
 public with sharing class RelationshipSelector {
 
+    public List<Relationship__c> getRelationshipsForContacts(Set<Id> contactIds) {
+        UTIL_Query query = new UTIL_Query()
+                .withSelectFields(new Set<String>{
+                        'Contact__c',
+                        'RelatedContact__c',
+                        'toLabel(Type__c)',
+                        'Status__c',
+                        'ReciprocalRelationship__c',
+                        'RelatedContact__r.Name',
+                        'RelatedContact__r.Title',
+                        'RelatedContact__r.Account.Name'
+                })
+                .withFrom(Relationship__c.SObjectType)
+                .withWhere(UTIL_Namespace.prefixNamespace('Contact__c') + ' IN :contactIds')
+                .withSecurityEnforced()
+                .withLimit(500);
+        return Database.query(query.build());
+    }
+
     public List<Relationship__c> getContactRelations(Id contactId) {
         UTIL_Query query = new UTIL_Query()
                 .withSelectFields(new Set<String>{
@@ -45,8 +64,8 @@ public with sharing class RelationshipSelector {
                         'RelatedContact__r.Title'
                 })
                 .withFrom(Relationship__c.SObjectType)
-                .withWhere(UTIL_Namespace.StrTokenNSPrefix('Contact__c') + ' = :contactId')
-                .withOrderBy(Contact.Name, UTIL_Namespace.StrTokenNSPrefix('RelatedContact__r') + '.Name')
+                .withWhere(UTIL_Namespace.prefixNamespace('Contact__c') + ' = :contactId')
+                .withOrderBy(Contact.Name, UTIL_Namespace.prefixNamespace('RelatedContact__r') + '.Name')
                 .withSecurityEnforced();
         return Database.query(query.build());
     }

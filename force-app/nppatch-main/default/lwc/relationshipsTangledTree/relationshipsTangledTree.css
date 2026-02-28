@@ -1,0 +1,24 @@
+.toolbar {
+    display: flex;
+    align-items: center;
+}
+
+.depth-combo {
+    max-width: 120px;
+}
+
+.svg-container {
+    min-height: 400px;
+    overflow: auto;
+    position: relative;
+}
+
+.detail-panel {
+    position: absolute;
+    top: 60px;
+    right: 12px;
+    width: 320px;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+    border-radius: 4px;
+}

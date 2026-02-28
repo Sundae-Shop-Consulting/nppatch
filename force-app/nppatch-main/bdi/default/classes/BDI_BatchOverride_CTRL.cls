@@ -57,18 +57,18 @@ public with sharing class BDI_BatchOverride_CTRL {
         List<String> listFields = new List<String>{
                 'Id',
                 'Name',
-                UTIL_Namespace.StrTokenNSPrefix('Account_Custom_Unique_ID__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Batch_Description__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Batch_Process_Size__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Contact_Custom_Unique_ID__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Contact_Matching_Rule__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Date_Range__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Matching_Behavior__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Matching_Implementing_Class__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Matching_Rule__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Process_Using_Scheduled_Job__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Run_Opportunity_Rollups_while_Processing__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Post_Process_Implementing_Class__c')
+                UTIL_Namespace.prefixNamespace('Account_Custom_Unique_ID__c'),
+                UTIL_Namespace.prefixNamespace('Batch_Description__c'),
+                UTIL_Namespace.prefixNamespace('Batch_Process_Size__c'),
+                UTIL_Namespace.prefixNamespace('Contact_Custom_Unique_ID__c'),
+                UTIL_Namespace.prefixNamespace('Contact_Matching_Rule__c'),
+                UTIL_Namespace.prefixNamespace('Donation_Date_Range__c'),
+                UTIL_Namespace.prefixNamespace('Donation_Matching_Behavior__c'),
+                UTIL_Namespace.prefixNamespace('Donation_Matching_Implementing_Class__c'),
+                UTIL_Namespace.prefixNamespace('Donation_Matching_Rule__c'),
+                UTIL_Namespace.prefixNamespace('Process_Using_Scheduled_Job__c'),
+                UTIL_Namespace.prefixNamespace('Run_Opportunity_Rollups_while_Processing__c'),
+                UTIL_Namespace.prefixNamespace('Post_Process_Implementing_Class__c')
         };
         if (!Test.isRunningTest()) controller.addFields(listFields); //written as one line for test coverage
 
@@ -76,8 +76,8 @@ public with sharing class BDI_BatchOverride_CTRL {
 
         // for some reason, New override doesn't get default values set
         if (diBatch.Donation_Matching_Rule__c == null) {
-            diBatch.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+            diBatch.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                UTIL_Namespace.prefixNamespace('Donation_Date__c');
         }
 
         // our multiselect list of donation related fields holds keys in lowercase

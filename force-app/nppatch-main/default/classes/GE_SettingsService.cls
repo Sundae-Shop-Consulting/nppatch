@@ -50,10 +50,7 @@ public with sharing class GE_SettingsService {
     }
 
     public Boolean isRecurringGiftsEnabled() {
-        GiftEntryEnablementService giftEntryEnablementService = new GiftEntryEnablementService();
-
-        return giftEntryEnablementService.isEnabled()
-            && canAccessRecurringDonationFields();
+        return canAccessRecurringDonationFields();
     }
 
     public Boolean canMakeGiftsRecurring() {

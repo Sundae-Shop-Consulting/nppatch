@@ -206,7 +206,7 @@ public inherited sharing class ALLO_AllocationsRetrievalService {
                 paymentSubQueryString = '(' + new UTIL_Query()
                                                 .withSelectFields(oppPaymentFields)
                                                 .withMultiCurrencyField()
-                                                .withFrom(UTIL_Namespace.StrTokenNSPrefix('OppPayment__r'))
+                                                .withFrom(UTIL_Namespace.prefixNamespace('OppPayment__r'))
                                                 .build() +
                                         ')';
             }

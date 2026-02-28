@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>Account__c</name>
+    <help>Wählen Sie den Haushalt-Account aus, wenn Mitglieder des Haushalt-Accounts des Kontakts von der Programmteilnahme profitieren. Beispielsweise bei Mahlzeiten von einer Tafel. Lassen Sie das Feld leer, wenn nur der Kontakt profitiert.</help>
+    <relationshipLabel>Programmteilnahme</relationshipLabel>
+    <label>Haushalt-Account</label>
+</CustomFieldTranslation>

@@ -100,7 +100,7 @@ public with sharing class BDI_SettingsUI_CTRL {
                 setFields.addAll(donationImportHandler.dataImportFieldToPaymentField.keySet());
 
                 for (String diField : setFields) {
-                    String strLabel = UTIL_Describe.getFieldLabel(UTIL_Namespace.StrTokenNSPrefix('DataImport__c'), diField); 
+                    String strLabel = UTIL_Describe.getFieldLabel(UTIL_Namespace.prefixNamespace('DataImport__c'), diField); 
                     listSODonationFields.add(new SelectOption(diField, strLabel));
                 }
 

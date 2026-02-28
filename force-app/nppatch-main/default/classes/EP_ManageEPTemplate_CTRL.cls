@@ -539,9 +539,9 @@ public with sharing class EP_ManageEPTemplate_CTRL {
         Component.Apex.OutputPanel result = new Component.Apex.OutputPanel(styleClass='slds-form-element ' + outterCss, layout='block');
 
         String escapedFieldName = UTIL_Describe.getFieldLabel(
-            UTIL_Namespace.StrTokenNSPrefix('Engagement_Plan_Task__c'),
+            UTIL_Namespace.prefixNamespace('Engagement_Plan_Task__c'),
             //don't namespace prefix standard fields like Name
-            fieldName.endsWith('__c')?UTIL_Namespace.StrTokenNSPrefix(fieldName):fieldName).escapeHtml4();
+            fieldName.endsWith('__c')?UTIL_Namespace.prefixNamespace(fieldName):fieldName).escapeHtml4();
 
         // uses escape = false but the labels are escaped
         Component.Apex.OutputLabel fieldLabel = new Component.Apex.OutputLabel(

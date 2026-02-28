@@ -220,7 +220,7 @@ global without sharing class STG_InstallScript implements InstallHandler {
     */
     private static void updateOpportunityNamingSettings() {
         List <Opportunity_Naming_Settings__c> oppSettings = new List <Opportunity_Naming_Settings__c>();
-        STG_PanelOppNaming_CTRL.AttributionSettings attributionSettings = new STG_PanelOppNaming_CTRL.AttributionSettings();
+        OPP_AttributionSettings attributionSettings = new OPP_AttributionSettings();
 
         for (Opportunity_Naming_Settings__c ons : UTIL_ListCustomSettingsFacade.getMapOppNamingSettings().values()) {
             ons.Attribution__c = attributionSettings.withSelected(ons.Attribution__c).selectedOption;
@@ -282,7 +282,7 @@ global without sharing class STG_InstallScript implements InstallHandler {
     private void populateNamespacePrefix() {
         Package_Settings__c pkgSettings = Package_Settings__c.getOrgDefaults();
         if (pkgSettings.Id == null) {
-            pkgSettings.Namespace_Prefix__c = UTIL_Namespace.StrTokenNSPrefix('');
+            pkgSettings.Namespace_Prefix__c = UTIL_Namespace.prefixNamespace('');
             insert pkgSettings;
         }
     }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>Role__c</name>
+    <help>Beziehung eines Kontakts zur Programmteilnahme. Die Werte werden von Ihrem Administrator festgelegt.</help>
+    <label>Rolle</label>
+    <picklistValues>
+        <masterLabel>Client</masterLabel>
+        <translation>Kunde</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Volunteer</masterLabel>
+        <translation>Freiwilliger</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Service Provider</masterLabel>
+        <translation>Leistungsanbieter</translation>
+    </picklistValues>
+</CustomFieldTranslation>

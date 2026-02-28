@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>EndDate__c</name>
+    <help>Lorsque l’étape d’engagement dans le programme indique Terminé ou Retiré, la date de fin prend par défaut la date d’aujourd’hui si elle est laissée vide.</help>
+    <label>Date de fin</label>
+</CustomFieldTranslation>

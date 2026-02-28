@@ -1,5 +1,5 @@
 import { LightningElement, track, wire } from 'lwc';
-import Resources from '@salesforce/resourceUrl/CumulusStaticResources'
+import NPPATCH_STATIC_RESOURCES from '@salesforce/resourceUrl/NPPatchStaticResources'
 import getApplicationStatus from '@salesforce/apex/GS_ApplicationStatusController.getApplicationStatus'
 import gsNoApplicationSubmitted from '@salesforce/label/c.gsNoApplicationSubmitted'
 import gsLearnMore from '@salesforce/label/c.gsLearnMore'
@@ -22,8 +22,8 @@ export default class GsApplicationStatus extends LightningElement {
     @track isLoading = false;
     @track img = "";
     @track isActiveInstance = true;
-    applyForFreeLicensesImg = Resources + '/gsResources/Accept_Tasks_Apply_Card.png';
-    checkForStatusImg = Resources + '/gsResources/gift_illustration_2.svg';
+    applyForFreeLicensesImg = NPPATCH_STATIC_RESOURCES + '/gsResources/Accept_Tasks_Apply_Card.png';
+    checkForStatusImg = NPPATCH_STATIC_RESOURCES + '/gsResources/gift_illustration_2.svg';
 
     labels = {
         gsNoApplicationSubmitted,
@@ -119,6 +119,7 @@ export default class GsApplicationStatus extends LightningElement {
      */
     onClickCloseModal() {
         this.template.querySelector("c-modal").hide();
+        this.handleModalClose();
     }
 
     /**

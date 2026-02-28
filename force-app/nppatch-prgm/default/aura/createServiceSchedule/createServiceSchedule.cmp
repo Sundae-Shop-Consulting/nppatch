@@ -1,0 +1,33 @@
+<!--
+  - /*
+  -  * Copyright (c) 2020, salesforce.com, inc.
+  -  * All rights reserved.
+  -  * SPDX-License-Identifier: BSD-3-Clause
+  -  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+  -  */
+  -->
+
+<aura:component
+    implements="flexipage:availableForRecordHome, force:hasRecordId, lightning:actionOverride, lightning:hasPageReference"
+    access="global"
+>
+    <aura:attribute name="serviceId" type="String" access="private" />
+    <aura:attribute name="recordTypeId" type="String" access="private" />
+    <aura:attribute name="isCommunity" type="Boolean" access="private" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.pageReference}" action="{!c.refresh}" />
+
+    <aura:html tag="style">
+        lightning-timepicker, lightning-datepicker { width: 100% }
+        .slds-accordion__list-item { border-top: none; }
+        .slds-table_header-fixed_container { overflow-x: hidden; } .cuf-content { padding:
+        0 0rem !important; } .slds-p-around--medium { padding: 0rem !important; }
+    </aura:html>
+    <c:serviceScheduleCreatorWrapper
+        serviceId="{!v.serviceId}"
+        recordTypeId="{!v.recordTypeId}"
+        isCommunity="{!v.isCommunity}"
+        onclose="{!c.refresh}"
+    />
+</aura:component>

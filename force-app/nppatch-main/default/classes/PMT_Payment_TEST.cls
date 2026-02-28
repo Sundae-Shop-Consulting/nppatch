@@ -638,11 +638,11 @@ private class PMT_Payment_TEST {
      */
     private static OppPayment__c getPaymentRecordByPaymentId(Id paymentId) {
 
-        String soql = 'SELECT Id, ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c') + ' ';
+        String soql = 'SELECT Id, ' + UTIL_Namespace.prefixNamespace('Payment_Amount__c') + ', ' + UTIL_Namespace.prefixNamespace('Paid__c') + ', ' + UTIL_Namespace.prefixNamespace('Written_Off__c') + ', ' + UTIL_Namespace.prefixNamespace('Payment_Date__c') + ', ' + UTIL_Namespace.prefixNamespace('Scheduled_Date__c') + ' ';
         if (UserInfo.isMultiCurrencyOrganization()) {
             soql += ', CurrencyIsoCode ';
         }
-        soql += ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' WHERE Id = \'' + paymentId + '\' LIMIT 1';
+        soql += ' FROM ' + UTIL_Namespace.prefixNamespace('OppPayment__c') + ' WHERE Id = \'' + paymentId + '\' LIMIT 1';
         return (OppPayment__c)Database.query(soql);
     }
 
@@ -929,11 +929,11 @@ private class PMT_Payment_TEST {
      */
     private static OppPayment__c getPaymentRecord(Id oppId) {
 
-        String soql = 'SELECT Id, ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ' ';
+        String soql = 'SELECT Id, ' + UTIL_Namespace.prefixNamespace('Payment_Amount__c') + ' ';
         if (UserInfo.isMultiCurrencyOrganization()) {
             soql += ', CurrencyIsoCode ';
         }
-        soql += ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' = \'' + oppId + '\' LIMIT 1';
+        soql += ' FROM ' + UTIL_Namespace.prefixNamespace('OppPayment__c') + ' WHERE ' + UTIL_Namespace.prefixNamespace('Opportunity__c') + ' = \'' + oppId + '\' LIMIT 1';
         return (OppPayment__c)Database.query(soql);
     }
 }
