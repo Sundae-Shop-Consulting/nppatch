@@ -428,7 +428,7 @@ public with sharing class ALLO_ManageAllocations_CTRL {
     }
 
     private Boolean isAllocationDeletable() {
-        return UTIL_Describe.getObjectDescribe(UTIL_Namespace.StrTokenNSPrefix('Allocation__c')).isDeletable();
+        return UTIL_Describe.getObjectDescribe(UTIL_Namespace.prefixNamespace('Allocation__c')).isDeletable();
     }
 
     private void addDelExceptionMessage() {
@@ -437,7 +437,7 @@ public with sharing class ALLO_ManageAllocations_CTRL {
                     ApexPages.Severity.WARNING,
                     String.format(
                         System.Label.commonAccessErrorMessage,
-                        new String[]{UTIL_Describe.getObjectLabel(UTIL_Namespace.StrTokenNSPrefix('Allocation__c'))})));
+                        new String[]{UTIL_Describe.getObjectLabel(UTIL_Namespace.prefixNamespace('Allocation__c'))})));
     
     }
 

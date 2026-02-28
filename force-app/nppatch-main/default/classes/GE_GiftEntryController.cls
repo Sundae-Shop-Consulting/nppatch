@@ -468,14 +468,14 @@ public with sharing class GE_GiftEntryController {
         // Could eventually be used to display unpaid payments on the donation matching modal
         String paymentSOQL = 'SELECT Id, ' +
                 'Name, ' +
-                UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c') + ', ' +
-                UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.Name, ' +
-                UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ', ' +
-                UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ' ' +
-                'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' ' +
-                'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.' + relationshipField + ' = :donorId ' +
-                'AND ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false ' +
-                'AND ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ' = false ' +
+                UTIL_Namespace.prefixNamespace('Scheduled_Date__c') + ', ' +
+                UTIL_Namespace.prefixNamespace('Opportunity__r') + '.Name, ' +
+                UTIL_Namespace.prefixNamespace('Opportunity__c') + ', ' +
+                UTIL_Namespace.prefixNamespace('Payment_Amount__c') + ' ' +
+                'FROM ' + UTIL_Namespace.prefixNamespace('OppPayment__c') + ' ' +
+                'WHERE ' + UTIL_Namespace.prefixNamespace('Opportunity__r') + '.' + relationshipField + ' = :donorId ' +
+                'AND ' + UTIL_Namespace.prefixNamespace('Written_Off__c') + ' = false ' +
+                'AND ' + UTIL_Namespace.prefixNamespace('Paid__c') + ' = false ' +
                 'WITH SECURITY_ENFORCED';
 
         try {
@@ -492,19 +492,19 @@ public with sharing class GE_GiftEntryController {
                     'CloseDate, ' +
                     'IsClosed, ' +
                     'Amount, ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Number_of_Payments__c') + ', ' +
+                    UTIL_Namespace.prefixNamespace('Number_of_Payments__c') + ', ' +
                     '(SELECT Id, ' +
                     'Name, ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c') + ', ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.Name, ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ', ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ',' +
-                    UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c') + ',' +
-                    UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' ' +
-                    'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
-                    'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false ' +
-                    'AND ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ' = false)' +
+                    UTIL_Namespace.prefixNamespace('Scheduled_Date__c') + ', ' +
+                    UTIL_Namespace.prefixNamespace('Opportunity__r') + '.Name, ' +
+                    UTIL_Namespace.prefixNamespace('Opportunity__c') + ', ' +
+                    UTIL_Namespace.prefixNamespace('Payment_Amount__c') + ',' +
+                    UTIL_Namespace.prefixNamespace('Payment_Date__c') + ',' +
+                    UTIL_Namespace.prefixNamespace('Paid__c') + ', ' +
+                    UTIL_Namespace.prefixNamespace('Written_Off__c') + ' ' +
+                    'FROM ' + UTIL_Namespace.prefixNamespace('OppPayment__r') + ' ' +
+                    'WHERE ' + UTIL_Namespace.prefixNamespace('Written_Off__c') + ' = false ' +
+                    'AND ' + UTIL_Namespace.prefixNamespace('Paid__c') + ' = false)' +
                     'FROM Opportunity ' +
                     'WHERE ' + relationshipField + ' = :donorId ' +
                     'AND IsClosed = false ' +
@@ -1187,17 +1187,17 @@ public with sharing class GE_GiftEntryController {
         if (listName == TEMPLATES) {
             defaultFields = new List<String> {
                     'Name',
-                    UTIL_Namespace.StrTokenNSPrefix('Description__c'),
+                    UTIL_Namespace.prefixNamespace('Description__c'),
                     'CreatedById',
                     'LastModifiedDate'
             };
         } else if (listName == BATCHES) {
             defaultFields = new List<String> {
                     'Name',
-                    UTIL_Namespace.StrTokenNSPrefix('Batch_Description__c'),
-                    UTIL_Namespace.StrTokenNSPrefix('Form_Template__c'),
-                    UTIL_Namespace.StrTokenNSPrefix('Expected_Count_of_Gifts__c'),
-                    UTIL_Namespace.StrTokenNSPrefix('Expected_Total_Batch_Amount__c'),
+                    UTIL_Namespace.prefixNamespace('Batch_Description__c'),
+                    UTIL_Namespace.prefixNamespace('Form_Template__c'),
+                    UTIL_Namespace.prefixNamespace('Expected_Count_of_Gifts__c'),
+                    UTIL_Namespace.prefixNamespace('Expected_Total_Batch_Amount__c'),
                     'CreatedById',
                     'LastModifiedDate'
             };
@@ -1242,7 +1242,7 @@ public with sharing class GE_GiftEntryController {
 
     @AuraEnabled
     public static Data_Import_Settings__c getDataImportSettings() {
-        if (!UTIL_Permissions.canRead(UTIL_Namespace.StrTokenNSPrefix('Data_Import_Settings__c'), false)) {
+        if (!UTIL_Permissions.canRead(UTIL_Namespace.prefixNamespace('Data_Import_Settings__c'), false)) {
             return null;
         }
 

@@ -99,7 +99,7 @@ public inherited sharing class RD2_ApiService {
         fields.add('LastModifiedDate');
 
         return '(SELECT ' + String.join(new List<String>(fields), ', ') +
-            ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('RecurringDonationSchedules__r') +
+            ' FROM ' + UTIL_Namespace.prefixNamespace('RecurringDonationSchedules__r') +
             ' ORDER By StartDate__c' +
             ')';
     }

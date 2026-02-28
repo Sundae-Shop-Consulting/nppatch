@@ -613,9 +613,9 @@ public with sharing class BDI_ContactService {
 
                 strSoql += strAnd + '(' +
                     'Email IN :setEmail OR ' +
-                    UTIL_Namespace.StrTokenNSPrefix('AlternateEmail__c') + ' IN :setEmail OR ' +
-                    UTIL_Namespace.StrTokenNSPrefix('HomeEmail__c') + ' IN :setEmail OR ' +
-                    UTIL_Namespace.StrTokenNSPrefix('WorkEmail__c') + ' IN :setEmail) ';
+                    UTIL_Namespace.prefixNamespace('AlternateEmail__c') + ' IN :setEmail OR ' +
+                    UTIL_Namespace.prefixNamespace('HomeEmail__c') + ' IN :setEmail OR ' +
+                    UTIL_Namespace.prefixNamespace('WorkEmail__c') + ' IN :setEmail) ';
                 strAnd = ' AND ';
             }
 
@@ -627,8 +627,8 @@ public with sharing class BDI_ContactService {
                     'HomePhone IN :setPhone OR ' +
                     'MobilePhone IN :setPhone OR ' +
                     'OtherPhone IN :setPhone OR ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Formula_HouseholdPhone__c') + ' IN :setPhone OR ' +
-                    UTIL_Namespace.StrTokenNSPrefix('WorkPhone__c') + ' IN :setPhone)';
+                    UTIL_Namespace.prefixNamespace('Formula_HouseholdPhone__c') + ' IN :setPhone OR ' +
+                    UTIL_Namespace.prefixNamespace('WorkPhone__c') + ' IN :setPhone)';
             }
 
             strSoql += String.isBlank(strAnd) ? '' : ')';
@@ -648,15 +648,15 @@ public with sharing class BDI_ContactService {
     private String getSoqlSelectForContact() {
         Set<String> setContactFields = new Set<String> {
             'Id', 'Firstname', 'Lastname', 'AccountId',
-            'Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEM_AccountType__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Primary_Affiliation__c'),
+            'Account.' + UTIL_Namespace.prefixNamespace('SYSTEM_AccountType__c'),
+            UTIL_Namespace.prefixNamespace('Primary_Affiliation__c'),
             'Email',
-            UTIL_Namespace.StrTokenNSPrefix('AlternateEmail__c'),
-            UTIL_Namespace.StrTokenNSPrefix('HomeEmail__c'),
-            UTIL_Namespace.StrTokenNSPrefix('WorkEmail__c'),
+            UTIL_Namespace.prefixNamespace('AlternateEmail__c'),
+            UTIL_Namespace.prefixNamespace('HomeEmail__c'),
+            UTIL_Namespace.prefixNamespace('WorkEmail__c'),
             'Phone', 'HomePhone', 'MobilePhone', 'OtherPhone',
-            UTIL_Namespace.StrTokenNSPrefix('Formula_HouseholdPhone__c'),
-            UTIL_Namespace.StrTokenNSPrefix('WorkPhone__c') };
+            UTIL_Namespace.prefixNamespace('Formula_HouseholdPhone__c'),
+            UTIL_Namespace.prefixNamespace('WorkPhone__c') };
 
         setContactFields.addAll(mapDIFieldToC1Field.values());
         setContactFields.addAll(mapDIFieldToC2Field.values());
@@ -675,7 +675,7 @@ public with sharing class BDI_ContactService {
     * @return String the Contact's full name or null
     */
     private String getContactNameFromDi(DataImport__c di, Integer iCon) {
-        String strCx = UTIL_Namespace.StrTokenNSPrefix('Contact' + String.valueOf(iCon));
+        String strCx = UTIL_Namespace.prefixNamespace('Contact' + String.valueOf(iCon));
         String firstname = (String)di.get(strCx + '_Firstname__c');
         String lastname = (String)di.get(strCx + '_Lastname__c');
 
@@ -1025,8 +1025,8 @@ public with sharing class BDI_ContactService {
         }
 
         // for c2's that we know their household, we want to add a "looser" key to match by as well.
-        if (strCx == 'Contact2' && di.HouseholdAccountImported__c != null && di.get(UTIL_Namespace.StrTokenNSPrefix('Contact2_Firstname__c')) != null) {
-            listDiKey.add(String.valueOf(di.get(UTIL_Namespace.StrTokenNSPrefix('Contact2_Firstname__c'))).toLowerCase() + '|' + di.HouseholdAccountImported__c);
+        if (strCx == 'Contact2' && di.HouseholdAccountImported__c != null && di.get(UTIL_Namespace.prefixNamespace('Contact2_Firstname__c')) != null) {
+            listDiKey.add(String.valueOf(di.get(UTIL_Namespace.prefixNamespace('Contact2_Firstname__c'))).toLowerCase() + '|' + di.HouseholdAccountImported__c);
         }
         pl.stop();
         return listDiKey;
@@ -1132,7 +1132,7 @@ public with sharing class BDI_ContactService {
     */
     private String strPreferredEmail(DataImport__c di, integer iCon) {
         String strPreferred = null;
-        String strCx = UTIL_Namespace.StrTokenNSPrefix('Contact' + String.valueOf(iCon));
+        String strCx = UTIL_Namespace.prefixNamespace('Contact' + String.valueOf(iCon));
 
         if ((strPreferred = (String)di.get(strCx + '_Preferred_Email__c')) != null) {
             return strPreferred;
@@ -1163,7 +1163,7 @@ public with sharing class BDI_ContactService {
     */
     private String strPreferredPhone(DataImport__c di, integer iCon) {
         String strPreferred = null;
-        String strCx = UTIL_Namespace.StrTokenNSPrefix('Contact' + String.valueOf(iCon));
+        String strCx = UTIL_Namespace.prefixNamespace('Contact' + String.valueOf(iCon));
 
         if ((strPreferred = (String)di.get(strCx + '_Preferred_Phone__c')) != null) {
             return strPreferred;

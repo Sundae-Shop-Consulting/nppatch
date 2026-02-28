@@ -60,8 +60,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             0, BDI_DataImport_API.ExactMatchOrCreate, label.bdiMatched, label.bdiMatched, false, 0);
     }
 
@@ -83,8 +83,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
 
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             0, BDI_DataImport_API.ExactMatchOrCreate, label.bdiMatched, label.bdiMatched, false, 1);
     }
 
@@ -106,8 +106,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
 
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             -1, BDI_DataImport_API.RequireExactMatch, label.bdiErrorPaymentMultiMatch, label.bdiErrorPaymentMultiMatch, true, 1);
     }
 
@@ -129,8 +129,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
 
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             0, BDI_DataImport_API.RequireBestMatch, label.bdiMatchedBest, label.bdiMatchedBest, true, 1);
     }
 
@@ -151,8 +151,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             4, BDI_DataImport_API.ExactMatchOrCreate, label.bdiMatched, label.bdiMatched, false, 0);
     }
 
@@ -178,9 +178,9 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Record_Type_Name__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Record_Type_Name__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             3, BDI_DataImport_API.ExactMatchOrCreate, label.bdiMatched, label.bdiMatched, false, 0);
     }
 
@@ -202,8 +202,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             -1, BDI_DataImport_API.ExactMatchOrCreate, label.bdiErrorDonationMultiMatch, label.bdiErrorDonationMultiMatch, true, 0);
     }
 
@@ -225,8 +225,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             -1, BDI_DataImport_API.ExactMatchOrCreate, label.bdiCreated, label.bdiCreated, false, 0);
     }
 
@@ -247,8 +247,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             -2, BDI_DataImport_API.BestMatchOrCreate, label.bdiMatchedBest, label.bdiMatchedBest, true, 0);
     }
 
@@ -270,8 +270,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             -1, BDI_DataImport_API.BestMatchOrCreate, label.bdiCreated, label.bdiCreated, false, 0);
     }
 
@@ -292,8 +292,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             -1, BDI_DataImport_API.DoNotMatch, label.bdiCreated, label.bdiCreated, false, 0);
     }
 
@@ -315,8 +315,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             -1, BDI_DataImport_API.RequireNoMatch, label.bdiErrorDonationRequireNoMatch, label.bdiErrorDonationRequireNoMatch, true, 0);
     }
 
@@ -337,8 +337,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             -1, BDI_DataImport_API.RequireNoMatch, label.bdiCreated, label.bdiCreated, false, 0);
     }
 
@@ -360,8 +360,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             -1, BDI_DataImport_API.RequireExactMatch, label.bdiErrorDonationNoMatch, label.bdiErrorDonationNoMatch, false, 0);
     }
 
@@ -383,8 +383,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             -1, BDI_DataImport_API.RequireExactMatch, label.bdiErrorPaymentMultiMatch, label.bdiErrorPaymentMultiMatch, true, 0);
     }
 
@@ -406,8 +406,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             -1, BDI_DataImport_API.RequireExactMatch, label.bdiMatched, label.bdiMatched, false, 0);
     }
 
@@ -429,8 +429,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             2, BDI_DataImport_API.RequireBestMatch, label.bdiMatchedBest, label.bdiMatchedBest, true, 0);
     }
 
@@ -452,8 +452,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             -1, BDI_DataImport_API.RequireBestMatch, label.bdiErrorDonationNoMatch, label.bdiErrorDonationNoMatch, false, 0);
     }
 
@@ -476,7 +476,7 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Type__c='MyUniqueID');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Type__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Type__c'),
             2, BDI_DataImport_API.RequireExactMatch, label.bdiMatched, label.bdiMatched, false, 0);
     }
 
@@ -498,7 +498,7 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c'),
             4, BDI_DataImport_API.RequireExactMatch, label.bdiMatched, label.bdiMatched, false, 0);
     }
 
@@ -520,8 +520,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             7, BDI_DataImport_API.RequireExactMatch, label.bdiMatched, label.bdiMatched, false, 0);
     }
 
@@ -543,8 +543,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             9, BDI_DataImport_API.RequireExactMatch, label.bdiMatched, label.bdiMatched, false, 0);
     }
 
@@ -568,8 +568,8 @@ public with sharing class BDI_Donations_TEST3 {
             );
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Payment_Check_Reference_Number__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Payment_Check_Reference_Number__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             9, BDI_DataImport_API.RequireExactMatch, label.bdiMatched, label.bdiMatched, false, 0);
     }
 
@@ -594,9 +594,9 @@ public with sharing class BDI_Donations_TEST3 {
             );
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Payment_Check_Reference_Number__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' + 
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Payment_Check_Reference_Number__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' + 
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             -1, BDI_DataImport_API.RequireExactMatch, label.bdiErrorDonationNoMatch, label.bdiErrorDonationNoMatch, false, 0);
     }
 
@@ -621,8 +621,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             8, BDI_DataImport_API.RequireExactMatch, label.bdiMatched, label.bdiMatched, false, 0);
             
         DataImport__c di = [select Status__c, DonationImported__c, DonationImportStatus__c, 
@@ -662,8 +662,8 @@ public with sharing class BDI_Donations_TEST3 {
             );
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Payment_Check_Reference_Number__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Payment_Check_Reference_Number__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             -1, BDI_DataImport_API.RequireExactMatch, label.bdiErrorPaymentMultiMatch, label.bdiErrorPaymentMultiMatch, true, 0);
     }
 
@@ -686,8 +686,8 @@ public with sharing class BDI_Donations_TEST3 {
             );
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             10, BDI_DataImport_API.RequireExactMatch, label.bdiMatched, label.bdiMatched, false, 0);
     }
 
@@ -717,8 +717,8 @@ public with sharing class BDI_Donations_TEST3 {
         );
             
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             11, BDI_DataImport_API.RequireExactMatch, label.bdiMatched, label.bdiMatched, false, 0);
     }
 
@@ -743,8 +743,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
 
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             12, BDI_DataImport_API.RequireExactMatch, label.bdiMatched, label.bdiMatched, false, 0);
 
         DataImport__c di = [select Status__c, DonationImported__c, DonationImportStatus__c,
@@ -784,8 +784,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
 
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             12, BDI_DataImport_API.RequireBestMatch, label.bdiMatched, label.bdiMatchedBest, true, 1);
 
         DataImport__c di = [select Status__c, DonationImported__c, DonationImportStatus__c,
@@ -826,8 +826,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
 
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             12, BDI_DataImport_API.RequireBestMatch, label.bdiMatched, label.bdiMatchedBest, true, 2);
 
         DataImport__c di = [select Status__c, DonationImported__c, DonationImportStatus__c,
@@ -865,8 +865,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
 
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             -1, BDI_DataImport_API.RequireExactMatch, label.bdiErrorPaymentMultiMatch, label.bdiErrorPaymentMultiMatch, true, 2);
     }
 
@@ -890,8 +890,8 @@ public with sharing class BDI_Donations_TEST3 {
             Donation_Donor__c='contact1');
 
         donationMatchRules(
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c'),
+            UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                UTIL_Namespace.prefixNamespace('Donation_Date__c'),
             15, BDI_DataImport_API.RequireBestMatch, label.bdiMatched, label.bdiMatched, false, 0);
 
         DataImport__c di = [select Status__c, DonationImported__c, DonationImportStatus__c,

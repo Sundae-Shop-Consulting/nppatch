@@ -87,7 +87,7 @@ public inherited sharing class TEST_ContactBuilder {
             rd.Contact__c = con.Id;
         }
 
-        con = addRelatedList(con, UTIL_Namespace.StrTokenNSPrefix('RecurringDonations__r'), rds);
+        con = addRelatedList(con, UTIL_Namespace.prefixNamespace('RecurringDonations__r'), rds);
         return con;
     }
 

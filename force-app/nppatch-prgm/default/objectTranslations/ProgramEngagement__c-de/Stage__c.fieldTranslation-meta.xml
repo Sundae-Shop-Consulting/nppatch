@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>Stage__c</name>
+    <help>Diese Werte der Auswahlliste beschreiben die Teilnahmephase eines Kontakts an einem Programm und werden in einem Pfad angezeigt. Die Werte werden von Ihrem Administrator festgelegt.</help>
+    <label>Phase</label>
+    <picklistValues>
+        <masterLabel>Applied</masterLabel>
+        <translation>Beworben</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Application Denied</masterLabel>
+        <translation>Bewerbung abgelehnt</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Waitlisted</masterLabel>
+        <translation>In Warteliste aufgenommen</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Enrolled</masterLabel>
+        <translation>Eingeschrieben</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Active</masterLabel>
+        <translation>Aktiv</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Completed</masterLabel>
+        <translation>Abgeschlossen</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Withdrawn</masterLabel>
+        <translation>Zurückgezogen</translation>
+    </picklistValues>
+</CustomFieldTranslation>

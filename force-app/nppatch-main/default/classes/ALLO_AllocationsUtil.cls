@@ -41,7 +41,7 @@ public inherited sharing class ALLO_AllocationsUtil {
     @testVisible private static String allocationObjectLabel {
         get {
             if (allocationObjectLabel == null) {
-                allocationObjectLabel = UTIL_Describe.getObjectLabel(UTIL_Namespace.StrTokenNSPrefix('Allocation__c'));
+                allocationObjectLabel = UTIL_Describe.getObjectLabel(UTIL_Namespace.prefixNamespace('Allocation__c'));
             }
             return allocationObjectLabel;
         }
@@ -113,7 +113,7 @@ public inherited sharing class ALLO_AllocationsUtil {
                 return (Id) sObj.Id;
             }
             if (sObj instanceOf OppPayment__c) {
-                return (Id) sObj.get(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c'));
+                return (Id) sObj.get(UTIL_Namespace.prefixNamespace('Opportunity__c'));
             }
         }
 
@@ -131,7 +131,7 @@ public inherited sharing class ALLO_AllocationsUtil {
                 return (Decimal) sObj.get('Amount');
             }
             if (sObj instanceOf OppPayment__c) {
-                return (Decimal) sObj.get(UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c'));
+                return (Decimal) sObj.get(UTIL_Namespace.prefixNamespace('Payment_Amount__c'));
             }
         }
 

@@ -541,7 +541,7 @@ public class PMT_PaymentCreator {
      */
     private static String buildOppsQuery() {
         String soqlStatement = '';
-        soqlStatement += 'SELECT Id, CloseDate, Amount, isClosed, isWon, ' + UTIL_Namespace.StrTokenNSPrefix('Do_Not_Automatically_Create_Payment__c') + ', Type, ';
+        soqlStatement += 'SELECT Id, CloseDate, Amount, isClosed, isWon, ' + UTIL_Namespace.prefixNamespace('Do_Not_Automatically_Create_Payment__c') + ', Type, ';
         if (OppRecordTypeId != null) {
             soqlStatement += 'RecordTypeId, ';
         }
@@ -554,8 +554,8 @@ public class PMT_PaymentCreator {
         if (OppCurrencyField!=null) {
             soqlStatement += 'CurrencyIsoCode, ';
         }
-        soqlStatement += UTIL_Namespace.StrTokenNSPrefix('payments_made__c') + ', ';
-        string soqlSub = '(SELECT id, ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ', ';
+        soqlStatement += UTIL_Namespace.prefixNamespace('payments_made__c') + ', ';
+        string soqlSub = '(SELECT id, ' + UTIL_Namespace.prefixNamespace('Paid__c') + ', ' + UTIL_Namespace.prefixNamespace('Payment_Amount__c') + ', ' + UTIL_Namespace.prefixNamespace('Payment_Date__c') + ', ' + UTIL_Namespace.prefixNamespace('Written_Off__c') + ', ';
         for (string s : paymentMappings.keyset()) {
             Payment_Field_Mapping_Settings__c pfms = paymentMappings.get(s);
             if (!soqlSub.contains(pfms.Payment_Field__c)) {
@@ -563,9 +563,9 @@ public class PMT_PaymentCreator {
             }
         }
         soqlStatement += soqlSub;
-        soqlStatement += UTIL_Namespace.StrTokenNSPrefix('scheduled_date__c') + ' ';
-        soqlStatement += 'FROM Opportunity.' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
-                'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false) ' +
+        soqlStatement += UTIL_Namespace.prefixNamespace('scheduled_date__c') + ' ';
+        soqlStatement += 'FROM Opportunity.' + UTIL_Namespace.prefixNamespace('OppPayment__r') + ' ' +
+                'WHERE ' + UTIL_Namespace.prefixNamespace('Written_Off__c') + ' = false) ' +
                 'FROM Opportunity ';
 
         return soqlStatement;

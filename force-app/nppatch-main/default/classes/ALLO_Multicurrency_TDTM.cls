@@ -93,8 +93,8 @@ public class ALLO_Multicurrency_TDTM extends TDTM_Runnable {
         //can't put mapIdToISO.keySet() in dynamic soql query, so creating new set to hold the IDs
         set<id> parentIds = mapIdToISO.keySet();
 
-        string alloQuery = 'SELECT Id, ' + UTIL_Namespace.StrTokenNSPrefix('Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Payment__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Campaign__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c') + ', CurrencyIsoCode FROM ' + UTIL_Namespace.StrTokenNSPrefix('Allocation__c') + ' '+
-            'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Payment__c') + ' IN :parentIds OR ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' IN :parentIds OR ' + UTIL_Namespace.StrTokenNSPrefix('Campaign__c') + ' IN :parentIds OR ' + UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c') + ' IN :parentIds';
+        string alloQuery = 'SELECT Id, ' + UTIL_Namespace.prefixNamespace('Amount__c') + ', ' + UTIL_Namespace.prefixNamespace('Payment__c') + ', ' + UTIL_Namespace.prefixNamespace('Opportunity__c') + ', ' + UTIL_Namespace.prefixNamespace('Campaign__c') + ', ' + UTIL_Namespace.prefixNamespace('Recurring_Donation__c') + ', CurrencyIsoCode FROM ' + UTIL_Namespace.prefixNamespace('Allocation__c') + ' '+
+            'WHERE ' + UTIL_Namespace.prefixNamespace('Payment__c') + ' IN :parentIds OR ' + UTIL_Namespace.prefixNamespace('Opportunity__c') + ' IN :parentIds OR ' + UTIL_Namespace.prefixNamespace('Campaign__c') + ' IN :parentIds OR ' + UTIL_Namespace.prefixNamespace('Recurring_Donation__c') + ' IN :parentIds';
         
         //query all allocations associated with the parents, update their ISO code and their amount if needed 
         for (Allocation__c allo : database.query(alloQuery)) {

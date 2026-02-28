@@ -47,7 +47,7 @@ public with sharing class RelationshipSelector {
                         'RelatedContact__r.Account.Name'
                 })
                 .withFrom(Relationship__c.SObjectType)
-                .withWhere(UTIL_Namespace.StrTokenNSPrefix('Contact__c') + ' IN :contactIds')
+                .withWhere(UTIL_Namespace.prefixNamespace('Contact__c') + ' IN :contactIds')
                 .withSecurityEnforced()
                 .withLimit(500);
         return Database.query(query.build());
@@ -64,8 +64,8 @@ public with sharing class RelationshipSelector {
                         'RelatedContact__r.Title'
                 })
                 .withFrom(Relationship__c.SObjectType)
-                .withWhere(UTIL_Namespace.StrTokenNSPrefix('Contact__c') + ' = :contactId')
-                .withOrderBy(Contact.Name, UTIL_Namespace.StrTokenNSPrefix('RelatedContact__r') + '.Name')
+                .withWhere(UTIL_Namespace.prefixNamespace('Contact__c') + ' = :contactId')
+                .withOrderBy(Contact.Name, UTIL_Namespace.prefixNamespace('RelatedContact__r') + '.Name')
                 .withSecurityEnforced();
         return Database.query(query.build());
     }

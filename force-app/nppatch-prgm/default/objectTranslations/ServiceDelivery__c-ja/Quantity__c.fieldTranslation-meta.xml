@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>Quantity__c</name>
+    <help>サービス提供の数量をサービスの測定単位で表す小数第 2 位までの数値項目。たとえば、測定単位が時間の場合、30 分の指導の数量は .50 になります。</help>
+    <label>数量</label>
+</CustomFieldTranslation>

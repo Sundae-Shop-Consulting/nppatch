@@ -91,7 +91,7 @@ public class ALLO_AllocationsUtil_TEST {
      */
     @isTest
     private static void confirmGetLabelForReturnsTheCorrectLabelDependingOnTheObject() {
-        System.assertEquals(UTIL_Describe.getObjectLabel(UTIL_Namespace.StrTokenNSPrefix('Allocation__c')), ALLO_AllocationsUtil.getLabelFor(new Allocation__c()), 'Allocation Label');
+        System.assertEquals(UTIL_Describe.getObjectLabel(UTIL_Namespace.prefixNamespace('Allocation__c')), ALLO_AllocationsUtil.getLabelFor(new Allocation__c()), 'Allocation Label');
         System.assertEquals(UTIL_Describe.getObjectLabel('Opportunity'), ALLO_AllocationsUtil.getLabelFor(new Opportunity()), 'Opportunity Label');
         System.assertEquals(UTIL_Describe.getObjectLabel('OppPayment__c'), ALLO_AllocationsUtil.getLabelFor(new OppPayment__c()), 'Payment Label');
     }

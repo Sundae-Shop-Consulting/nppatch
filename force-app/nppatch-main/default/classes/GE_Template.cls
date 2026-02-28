@@ -122,7 +122,7 @@ public with sharing class GE_Template {
         List<BatchHeaderField> batchHeaderFieldList = aTemplate.batchHeaderFields;
         for (BatchHeaderField batchHeaderField : batchHeaderFieldList) {
             if (batchHeaderField.apiName.endsWith('__c')) {
-                batchHeaderField.apiName = UTIL_Namespace.StrTokenNSPrefix(batchHeaderField.apiName);
+                batchHeaderField.apiName = UTIL_Namespace.prefixNamespace(batchHeaderField.apiName);
             }
         }
     }
@@ -167,15 +167,15 @@ public with sharing class GE_Template {
                             String fullDevName = element.dataImportFieldMappingDevNames.get(i);
 
                             if (fullDevName.endsWith('__c')) {
-                                fullDevName = UTIL_Namespace.StrTokenNSPrefix(fullDevName);
+                                fullDevName = UTIL_Namespace.prefixNamespace(fullDevName);
                                 // Align field api name with environment namespace if needed
                                 element.fieldApiName =
                                         element.fieldApiName != null ?
-                                                UTIL_Namespace.StrTokenNSPrefix(element.fieldApiName) :
+                                                UTIL_Namespace.prefixNamespace(element.fieldApiName) :
                                                 element.fieldApiName;
                                 // Align object api name with environment namespace if needed
                                 element.objectApiName = element.objectApiName != null ?
-                                        UTIL_Namespace.StrTokenNSPrefix(element.objectApiName) :
+                                        UTIL_Namespace.prefixNamespace(element.objectApiName) :
                                         element.objectApiName;
                             }
 

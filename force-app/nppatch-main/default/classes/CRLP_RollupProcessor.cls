@@ -542,7 +542,7 @@ public inherited sharing class CRLP_RollupProcessor {
      */
     private void initForceSkewModeValues(SObject parent) {
         if (this.qualifiedSkewField == null) {
-            this.qualifiedSkewField = UTIL_Namespace.StrTokenNSPrefix('CustomizableRollups_UseSkewMode__c');
+            this.qualifiedSkewField = UTIL_Namespace.prefixNamespace('CustomizableRollups_UseSkewMode__c');
             this.summaryObjectType = parent.getSObjectType();
         }
     }
@@ -573,8 +573,8 @@ public inherited sharing class CRLP_RollupProcessor {
     private Boolean isRollupFieldAtThreshold(SObject summaryObject) {
         Integer maxRelatedOppsForNonLDVMode = CRLP_Rollup_SVC.getMaxRelatedOppsForNonSkewMode();
 
-        if ((Decimal) summaryObject.get(UTIL_Namespace.StrTokenNSPrefix('NumberOfClosedOpps__c')) >= maxRelatedOppsForNonLDVMode ||
-            (Decimal) summaryObject.get(UTIL_Namespace.StrTokenNSPrefix('NumberOfMembershipOpps__c')) >= maxRelatedOppsForNonLDVMode) {
+        if ((Decimal) summaryObject.get(UTIL_Namespace.prefixNamespace('NumberOfClosedOpps__c')) >= maxRelatedOppsForNonLDVMode ||
+            (Decimal) summaryObject.get(UTIL_Namespace.prefixNamespace('NumberOfMembershipOpps__c')) >= maxRelatedOppsForNonLDVMode) {
             return true;
 
         } else if (this.summaryObjectType == Contact.SObjectType &&

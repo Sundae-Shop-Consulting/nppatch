@@ -493,8 +493,8 @@ public with sharing class BDI_DryRun_TEST {
 
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.BestMatchOrCreate;
 
         //run batch data import
@@ -558,8 +558,8 @@ public with sharing class BDI_DryRun_TEST {
 
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.BestMatchOrCreate;
 
         //run batch data import
@@ -625,8 +625,8 @@ public with sharing class BDI_DryRun_TEST {
 
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.BestMatchOrCreate;
 
         //run batch data import
@@ -695,8 +695,8 @@ public with sharing class BDI_DryRun_TEST {
 
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.BestMatchOrCreate;
 
         //run batch data import
@@ -763,8 +763,8 @@ public with sharing class BDI_DryRun_TEST {
 
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.BestMatchOrCreate;
         diSettings.Donation_Date_Range__c = 5;
 
@@ -824,8 +824,8 @@ public with sharing class BDI_DryRun_TEST {
 
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.BestMatchOrCreate;
 
         //run batch data import
@@ -1029,8 +1029,8 @@ public with sharing class BDI_DryRun_TEST {
 
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.BestMatchOrCreate;
 
         //run batch data import

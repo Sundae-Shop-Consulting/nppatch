@@ -136,7 +136,7 @@ public with sharing class PMT_RefundService_TEST {
 
         insert allocations;
 
-        String soql = 'SELECT ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', CurrencyIsoCode, ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('oppPayment__c') + ' LIMIT 1';
+        String soql = 'SELECT ' + UTIL_Namespace.prefixNamespace('Paid__c') + ', CurrencyIsoCode, ' + UTIL_Namespace.prefixNamespace('Payment_Amount__c') + ', ' + UTIL_Namespace.prefixNamespace('Opportunity__c') + ' FROM ' + UTIL_Namespace.prefixNamespace('oppPayment__c') + ' LIMIT 1';
         oppPayment__c originalPayment = database.query(soql);
 
         originalPayment.Paid__c = true;
@@ -152,7 +152,7 @@ public with sharing class PMT_RefundService_TEST {
         insert refund;
         Test.stopTest();
 
-        soql = 'SELECT ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', CurrencyIsoCode, ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('DebitType__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('OriginalPayment__c') + ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('oppPayment__c') + ' WHERE Id = \'' + refund.Id + '\' LIMIT 1';
+        soql = 'SELECT ' + UTIL_Namespace.prefixNamespace('Paid__c') + ', CurrencyIsoCode, ' + UTIL_Namespace.prefixNamespace('Payment_Amount__c') + ', ' + UTIL_Namespace.prefixNamespace('DebitType__c') + ', ' + UTIL_Namespace.prefixNamespace('OriginalPayment__c') + ' FROM ' + UTIL_Namespace.prefixNamespace('oppPayment__c') + ' WHERE Id = \'' + refund.Id + '\' LIMIT 1';
         oppPayment__c refundRecord = database.query(soql);
 
         soql = 'SELECT Amount, CurrencyIsoCode FROM Opportunity LIMIT 1';

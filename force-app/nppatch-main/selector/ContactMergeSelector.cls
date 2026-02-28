@@ -55,7 +55,7 @@ public with sharing class ContactMergeSelector {
         get {
             if (listStrContactField == null) {
                 listStrContactField = UTIL_Describe.listStrFromFieldSet
-                        ('Contact', UTIL_Namespace.StrTokenNSPrefix('ContactMergeFoundFS'));
+                        ('Contact', UTIL_Namespace.prefixNamespace('ContactMergeFoundFS'));
                 Set<String> setStr = new Set<String>(listStrContactField);
                 // now add additional fields we know we need
                 setStr.add('Id');
@@ -167,14 +167,14 @@ public with sharing class ContactMergeSelector {
 
     private List<String> getContactSelectionFields() {
         List<String> selectFields = new List<String>{
-                'Id', UTIL_Namespace.StrTokenNSPrefix('Private__c'), 'AccountId',
-                'Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEMIsIndividual__c'),
-                'Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEM_AccountType__c'),
-                'Account.' + UTIL_Namespace.StrTokenNSPrefix('One2OneContact__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Organization_Type__c'), 'Account.Name',
+                'Id', UTIL_Namespace.prefixNamespace('Private__c'), 'AccountId',
+                'Account.' + UTIL_Namespace.prefixNamespace('SYSTEMIsIndividual__c'),
+                'Account.' + UTIL_Namespace.prefixNamespace('SYSTEM_AccountType__c'),
+                'Account.' + UTIL_Namespace.prefixNamespace('One2OneContact__c'),
+                UTIL_Namespace.prefixNamespace('Organization_Type__c'), 'Account.Name',
                 'FirstName', 'LastName', 'OwnerId', 'Salutation',
-                UTIL_Namespace.StrTokenNSPrefix('Naming_Exclusions__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Household_Naming_Order__c'),
+                UTIL_Namespace.prefixNamespace('Naming_Exclusions__c'),
+                UTIL_Namespace.prefixNamespace('Household_Naming_Order__c'),
                 'MailingStreet', 'MailingCity', 'MailingState', 'MailingPostalCode',
                 'MailingCountry', 'MailingLatitude', 'MailingLongitude',
                 'OtherStreet', 'OtherCity', 'OtherState', 'OtherPostalCode',

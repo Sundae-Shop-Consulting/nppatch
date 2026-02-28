@@ -84,7 +84,7 @@ public inherited sharing class CRLP_Query_SEL {
         Set<String> queryFields = new Set<String>{'Id'};
         if (resultObject == Account.SObjectType || resultObject == Contact.SObjectType) {
             // Add field specifying skew mode
-            queryFields.add(UTIL_Namespace.StrTokenNSPrefix('CustomizableRollups_UseSkewMode__c'));
+            queryFields.add(UTIL_Namespace.prefixNamespace('CustomizableRollups_UseSkewMode__c'));
         }
         for (DescribeFieldResult dfr : allFieldsToQuery) {
             queryFields.add(dfr.getName());
@@ -398,10 +398,10 @@ public inherited sharing class CRLP_Query_SEL {
     private static Map<SObjectType, String> getOpportunityChildRelationships() {
 
         return new Map<SObjectType, String>{
-            Partial_Soft_Credit__c.SObjectType => UTIL_Namespace.StrTokenNSPrefix('Partial_Soft_Credits__r'),
-            Allocation__c.SObjectType => UTIL_Namespace.StrTokenNSPrefix('Allocations__r'),
+            Partial_Soft_Credit__c.SObjectType => UTIL_Namespace.prefixNamespace('Partial_Soft_Credits__r'),
+            Allocation__c.SObjectType => UTIL_Namespace.prefixNamespace('Allocations__r'),
             OpportunityContactRole.SObjectType => 'OpportunityContactRoles',
-            OppPayment__c.SObjectType => UTIL_Namespace.StrTokenNSPrefix('OppPayment__r')
+            OppPayment__c.SObjectType => UTIL_Namespace.prefixNamespace('OppPayment__r')
         };
     }
 }

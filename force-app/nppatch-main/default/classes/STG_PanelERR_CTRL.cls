@@ -178,8 +178,8 @@ public with sharing class STG_PanelERR_CTRL extends STG_Panel {
 
         Error_Settings__c es = UTIL_CustomSettingsFacade.getErrorSettings();
         String errorNotifRecipient = es.Error_Notifications_To__c;
-        String strSetting = UTIL_Describe.getFieldLabel(UTIL_Namespace.StrTokenNSPrefix('Error_Settings__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Error_Notifications_To__c'));
+        String strSetting = UTIL_Describe.getFieldLabel(UTIL_Namespace.prefixNamespace('Error_Settings__c'),
+                UTIL_Namespace.prefixNamespace('Error_Notifications_To__c'));
 
         if (es.Error_Notifications_On__c && errorNotifRecipient != null) {
             if (errorNotifRecipient != ERR_Notifier.ERROR_NOTIFICATION_RECIPIENT_ALL_SYS_ADMINS) {

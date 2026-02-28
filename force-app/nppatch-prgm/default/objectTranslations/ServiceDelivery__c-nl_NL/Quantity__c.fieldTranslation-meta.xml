@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>Quantity__c</name>
+    <help>Een 2-decimaal numeriek veld voor hoeveelheid van een levering van een dienst uitgedrukt in de meeteenheid voor de dienst. Bijvoorbeeld, 30 minuten lesgeven, waarbij de meeteenheid uur is, de hoeveelheid is ,50.</help>
+    <label>Hoeveelheid</label>
+</CustomFieldTranslation>

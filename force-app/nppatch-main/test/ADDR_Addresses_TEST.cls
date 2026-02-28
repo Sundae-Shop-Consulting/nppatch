@@ -2627,11 +2627,11 @@ public with sharing class ADDR_Addresses_TEST {
     private static String buildContactSoql() {
         List<String> selectFields = new List<String>{
             'Id', 'AccountId',
-            UTIL_Namespace.StrTokenNSPrefix('is_Address_Override__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Current_Address__c'),
+            UTIL_Namespace.prefixNamespace('is_Address_Override__c'),
+            UTIL_Namespace.prefixNamespace('Current_Address__c'),
             'MailingStreet', 'MailingCity', 'MailingState', 'MailingCountry', 'MailingPostalCode',
             'MailingLatitude', 'MailingLongitude',
-            UTIL_Namespace.StrTokenNSPrefix('Primary_Address_Type__c')};
+            UTIL_Namespace.prefixNamespace('Primary_Address_Type__c')};
 
         if (orgConfig.isStateCountryPicklistsEnabled()) {
 
