@@ -122,11 +122,13 @@ public with sharing class PermissionValidator {
     }
 
     public Set<DescribeFieldResult> getAccessibleFields(Set<DescribeFieldResult> fields) {
+        Set<DescribeFieldResult> inaccessible = new Set<DescribeFieldResult>();
         for (DescribeFieldResult field : fields) {
             if (!hasFieldReadAccess(field)) {
-                fields.remove(field);
+                inaccessible.add(field);
             }
         }
+        fields.removeAll(inaccessible);
 
         return fields;
     }
