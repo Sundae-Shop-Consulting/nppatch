@@ -29,7 +29,7 @@ import SESSION_START_FIELD from "@salesforce/schema/ServiceSession__c.SessionSta
 
 import getFieldByFieldPath from "@salesforce/apex/FieldSetController.getFieldByFieldPath";
 
-import pmmFolder from "@salesforce/resourceUrl/pmm";
+import prgmFolder from "@salesforce/resourceUrl/prgm";
 
 const THIS_WEEK = "THIS_WEEK";
 const FIELD_SET_NAME = "RecentSessionsView";
@@ -167,8 +167,8 @@ export default class RecentSessions extends LightningElement {
     }
 
     connectedCallback() {
-        loadStyle(this, pmmFolder + "/recentSessionsOverrides.css");
-        loadStyle(this, pmmFolder + "/listViewSelectorOverrides.css");
+        loadStyle(this, prgmFolder + "/recentSessionsOverrides.css");
+        loadStyle(this, prgmFolder + "/listViewSelectorOverrides.css");
         this.handleComponentSize();
     }
 

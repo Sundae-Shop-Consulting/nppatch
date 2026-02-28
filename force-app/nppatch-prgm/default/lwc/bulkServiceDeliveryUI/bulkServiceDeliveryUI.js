@@ -41,7 +41,7 @@ import SERVICEDELIVERY_OBJECT from "@salesforce/schema/ServiceDelivery__c";
 import getFieldSets from "@salesforce/apex/ServiceDeliveryController.getServiceDeliveryFieldSets";
 import upsertRows from "@salesforce/apex/ServiceDeliveryController.upsertServiceDeliveries";
 
-import pmmFolder from "@salesforce/resourceUrl/pmm";
+import prgmFolder from "@salesforce/resourceUrl/prgm";
 export default class BulkServiceDeliveryUI extends NavigationMixin(LightningElement) {
     @api hideFooter = false; // no longer used; can't remove because public - mar 2021: respurposed to detect modal
     @track serviceDeliveries = [{ index: 0 }];
@@ -123,8 +123,8 @@ export default class BulkServiceDeliveryUI extends NavigationMixin(LightningElem
     }
 
     connectedCallback() {
-        loadStyle(this, pmmFolder + "/bsdtOverrides.css");
-        loadStyle(this, pmmFolder + "/hideHelpIcons.css");
+        loadStyle(this, prgmFolder + "/bsdtOverrides.css");
+        loadStyle(this, prgmFolder + "/hideHelpIcons.css");
 
         this.serviceDeliveryPage = {
             type: "standard__objectPage",
