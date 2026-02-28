@@ -24,6 +24,7 @@ tasks:
 
   update_admin_profile:
     options:
+      package_xml: lib/admin_profile.xml
       record_types:
         - record_type: Account.HH_Account
         - record_type: Account.Organization

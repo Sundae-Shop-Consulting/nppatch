@@ -1,7 +1,10 @@
 -- ==========================================================================
--- NPPatch Sample Dataset
+-- NPPatch Sample Dataset: Meadowlark Youth Literacy
 -- ==========================================================================
--- Demonstrates common nonprofit scenarios:
+-- A fictional youth literacy nonprofit in Portland, Oregon.
+-- Demonstrates both fundraising (NPSP) and program management (PMM):
+--
+-- FUNDRAISING:
 --   - Household and organization accounts
 --   - Individual donations, recurring gifts, major gifts
 --   - Foundation grants with deadlines
@@ -13,6 +16,19 @@
 --   - Engagement plan templates and tasks
 --   - Campaign hierarchy
 --
+-- PROGRAM MANAGEMENT:
+--   - Literacy programs (tutoring, storytime, writing, family nights)
+--   - Program cohorts (spring 2026 semester)
+--   - Program engagements (clients, volunteers, service providers)
+--   - Services with schedules and sessions
+--   - Service participants and attendance tracking (service deliveries)
+--
+-- CROSSOVER (contacts who bridge fundraising and programs):
+--   - Carlos Martinez: donor AND volunteer tutor
+--   - Patricia Johnson: donor AND family literacy night volunteer
+--   - James Johnson: donor AND family literacy night participant
+--   - Elena Reyes: program parent AND connected to donor network
+--
 -- Load with:
 --   cci task run load_dataset --mapping datasets/sample/mapping.yml --sql_path datasets/sample/sample_data.sql
 --
@@ -23,6 +39,7 @@
 --   - Do_Not_Automatically_Create_Payment__c is set true on all Opportunities
 --     since payments are loaded explicitly.
 --   - RecordTypeId values are developer names; CCI resolves them to IDs.
+--   - Dates are set relative to early 2026.
 -- ==========================================================================
 
 
@@ -43,11 +60,11 @@ CREATE TABLE "Campaign" (
     PRIMARY KEY (id)
 );
 
-INSERT INTO "Campaign" VALUES('Campaign-1','Annual Fund 2026','true','In Progress','Direct Mail','2026-01-01','2026-12-31','Annual operating fund supporting all programs and services','150000',NULL);
-INSERT INTO "Campaign" VALUES('Campaign-2','Spring Gala 2026','true','Planned','Event','2026-04-15','2026-04-15','Annual fundraising gala dinner and auction','75000',NULL);
+INSERT INTO "Campaign" VALUES('Campaign-1','Annual Fund 2026','true','In Progress','Direct Mail','2026-01-01','2026-12-31','Annual operating fund supporting all Meadowlark literacy programs and services','150000',NULL);
+INSERT INTO "Campaign" VALUES('Campaign-2','Spring Gala 2026','true','Planned','Event','2026-04-15','2026-04-15','Annual fundraising gala: dinner, silent auction, and student reading showcase','75000',NULL);
 INSERT INTO "Campaign" VALUES('Campaign-3','Year-End Appeal 2025','false','Completed','Email','2025-11-01','2025-12-31','Year-end giving campaign targeting lapsed and current donors','50000',NULL);
-INSERT INTO "Campaign" VALUES('Campaign-4','Capital Campaign 2025-2027','true','In Progress','Other','2025-01-01','2027-12-31','Multi-year capital campaign for facility improvements','500000',NULL);
-INSERT INTO "Campaign" VALUES('Campaign-5','Building Renovation','true','In Progress','Other','2025-03-01','2026-06-30','Main building renovation project','300000','Campaign-4');
+INSERT INTO "Campaign" VALUES('Campaign-4','Capital Campaign 2025-2027','true','In Progress','Other','2025-01-01','2027-12-31','Multi-year capital campaign for literacy center renovation','500000',NULL);
+INSERT INTO "Campaign" VALUES('Campaign-5','Reading Center Renovation','true','In Progress','Other','2025-03-01','2026-06-30','Literacy center renovation: new reading rooms, tutoring labs, and community space','300000','Campaign-4');
 
 
 -- ============================================================
@@ -62,9 +79,9 @@ CREATE TABLE "General_Accounting_Unit__c" (
 );
 
 INSERT INTO "General_Accounting_Unit__c" VALUES('GAU-1','General Fund','true','Unrestricted operating fund for day-to-day expenses');
-INSERT INTO "General_Accounting_Unit__c" VALUES('GAU-2','Programs','true','Restricted fund for program delivery and services');
-INSERT INTO "General_Accounting_Unit__c" VALUES('GAU-3','Capital Campaign Fund','true','Restricted fund for capital improvements and construction');
-INSERT INTO "General_Accounting_Unit__c" VALUES('GAU-4','Scholarship Fund','true','Restricted fund for student scholarships and educational support');
+INSERT INTO "General_Accounting_Unit__c" VALUES('GAU-2','Literacy Programs','true','Restricted fund for program delivery: tutoring, book clubs, and literacy camps');
+INSERT INTO "General_Accounting_Unit__c" VALUES('GAU-3','Capital Campaign Fund','true','Restricted fund for literacy center renovation and construction');
+INSERT INTO "General_Accounting_Unit__c" VALUES('GAU-4','Scholarship & Book Fund','true','Restricted fund for student book stipends and reading materials');
 
 
 -- ============================================================
@@ -104,12 +121,52 @@ CREATE TABLE "Engagement_Plan_Task__c" (
 -- New Donor Welcome tasks
 INSERT INTO "Engagement_Plan_Task__c" VALUES('EPTask-1','Welcome Phone Call','1','High','Not Started','Call','false','Personal thank-you call within 24 hours of first gift','EPT-1',NULL);
 INSERT INTO "Engagement_Plan_Task__c" VALUES('EPTask-2','Send Thank-You Letter','3','Medium','Not Started','Other','true','Mail personalized thank-you letter with tax receipt','EPT-1',NULL);
-INSERT INTO "Engagement_Plan_Task__c" VALUES('EPTask-3','Send Impact Report','30','Low','Not Started','Email','true','Share quarterly impact report showing how gifts make a difference','EPT-1','EPTask-2');
+INSERT INTO "Engagement_Plan_Task__c" VALUES('EPTask-3','Send Impact Report','30','Low','Not Started','Email','true','Share quarterly impact report showing how gifts support literacy programs','EPT-1','EPTask-2');
 
 -- Major Gift Cultivation tasks
-INSERT INTO "Engagement_Plan_Task__c" VALUES('EPTask-4','Initial Discovery Meeting','1','High','Not Started','Meeting','false','Meet to understand donor interests, capacity, and connection to mission','EPT-2',NULL);
+INSERT INTO "Engagement_Plan_Task__c" VALUES('EPTask-4','Initial Discovery Meeting','1','High','Not Started','Meeting','false','Meet to understand donor interests, capacity, and connection to literacy mission','EPT-2',NULL);
 INSERT INTO "Engagement_Plan_Task__c" VALUES('EPTask-5','Follow-Up Call','14','Medium','Not Started','Call','false','Follow up on discovery meeting and answer questions','EPT-2','EPTask-4');
 INSERT INTO "Engagement_Plan_Task__c" VALUES('EPTask-6','Present Gift Proposal','30','High','Not Started','Meeting','false','Present formal gift proposal aligned with donor interests','EPT-2','EPTask-5');
+
+
+-- ============================================================
+-- Programs (PMM)
+-- ============================================================
+CREATE TABLE "Program__c" (
+    id VARCHAR(255) NOT NULL,
+    "Name" VARCHAR(255),
+    "Description__c" VARCHAR(255),
+    "ShortSummary__c" VARCHAR(255),
+    "StartDate__c" VARCHAR(255),
+    "EndDate__c" VARCHAR(255),
+    "ProgramIssueArea__c" VARCHAR(255),
+    "Status__c" VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+INSERT INTO "Program__c" VALUES('Prog-1','Read to Lead','After-school reading tutoring pairing trained volunteers and tutors with students in grades 3-5 for one-on-one and small group reading sessions.','Core literacy tutoring for grades 3-5','2024-09-02',NULL,'Education','Active');
+INSERT INTO "Program__c" VALUES('Prog-2','Emerging Readers','Early literacy program for Pre-K through grade 2 featuring interactive storytime circles, phonics play, and parent engagement activities.','Early literacy for Pre-K through grade 2','2024-09-02',NULL,'Education','Active');
+INSERT INTO "Program__c" VALUES('Prog-3','Teen Writers Workshop','Creative writing program for middle school students (grades 6-8) combining book discussions, journaling, and peer writing workshops.','Creative writing for grades 6-8','2025-09-02',NULL,'Education','Active');
+INSERT INTO "Program__c" VALUES('Prog-4','Family Literacy Nights','Monthly community events bringing families together for shared reading, book giveaways, and literacy activities for children ages 3-12.','Monthly family engagement events','2024-01-15',NULL,'Education','Active');
+
+
+-- ============================================================
+-- Program Cohorts (PMM)
+-- ============================================================
+CREATE TABLE "ProgramCohort__c" (
+    id VARCHAR(255) NOT NULL,
+    "Name" VARCHAR(255),
+    "Description__c" VARCHAR(255),
+    "StartDate__c" VARCHAR(255),
+    "EndDate__c" VARCHAR(255),
+    "Status__c" VARCHAR(255),
+    "Program__c" VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+INSERT INTO "ProgramCohort__c" VALUES('Cohort-1','Read to Lead - Spring 2026','Spring semester cohort with 8 students','2026-01-13','2026-05-29','Active','Prog-1');
+INSERT INTO "ProgramCohort__c" VALUES('Cohort-2','Emerging Readers - Spring 2026','Spring semester storytime group','2026-01-13','2026-05-29','Active','Prog-2');
+INSERT INTO "ProgramCohort__c" VALUES('Cohort-3','Teen Writers - Spring 2026','Spring semester writing cohort','2026-01-13','2026-05-29','Active','Prog-3');
 
 
 -- ============================================================
@@ -152,18 +209,25 @@ CREATE TABLE "Account" (
     PRIMARY KEY (id)
 );
 
--- Household Accounts
+-- Household Accounts (donors and supporters)
 INSERT INTO "Account" VALUES('Account-1','Martinez Household','HH_Account','false','false',NULL,NULL);
 INSERT INTO "Account" VALUES('Account-2','Chen Household','HH_Account','false','false',NULL,NULL);
 INSERT INTO "Account" VALUES('Account-3','Johnson Household','HH_Account','false','false',NULL,NULL);
 INSERT INTO "Account" VALUES('Account-4','Williams Household','HH_Account','false','false',NULL,NULL);
 INSERT INTO "Account" VALUES('Account-5','Patel Household','HH_Account','false','false',NULL,NULL);
 
+-- Household Accounts (program participants and staff)
+INSERT INTO "Account" VALUES('Account-10','Reyes Household','HH_Account','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-11','Thompson Household','HH_Account','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-12','Rivera Household','HH_Account','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-13','Watanabe Household','HH_Account','false','false',NULL,NULL);
+
 -- Organization Accounts
 INSERT INTO "Account" VALUES('Account-6','Acme Corporation','Organization','false','true','100',NULL);
 INSERT INTO "Account" VALUES('Account-7','Patel Family Foundation','Organization','true','false',NULL,NULL);
-INSERT INTO "Account" VALUES('Account-8','Community Food Bank','Organization','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-8','Riverside Elementary School','Organization','false','false',NULL,NULL);
 INSERT INTO "Account" VALUES('Account-9','State University','Organization','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-14','Portland Public Library','Organization','false','false',NULL,NULL);
 
 
 -- ============================================================
@@ -182,11 +246,18 @@ CREATE TABLE "Address__c" (
     PRIMARY KEY (id)
 );
 
+-- Donor households
 INSERT INTO "Address__c" VALUES('Addr-1','Home','true','742 Evergreen Terrace','Portland','Oregon','97201','United States','Account-1');
 INSERT INTO "Address__c" VALUES('Addr-2','Home','true','1200 NW Marshall St','Portland','Oregon','97209','United States','Account-2');
 INSERT INTO "Address__c" VALUES('Addr-3','Home','true','456 Oak Avenue','Seattle','Washington','98101','United States','Account-3');
 INSERT INTO "Address__c" VALUES('Addr-4','Home','true','789 Birch Lane','Portland','Oregon','97214','United States','Account-4');
 INSERT INTO "Address__c" VALUES('Addr-5','Home','true','321 Willow Drive','Eugene','Oregon','97401','United States','Account-5');
+
+-- Program participant and staff households
+INSERT INTO "Address__c" VALUES('Addr-6','Home','true','1534 NE Prescott St','Portland','Oregon','97211','United States','Account-10');
+INSERT INTO "Address__c" VALUES('Addr-7','Home','true','2801 SE Division St','Portland','Oregon','97202','United States','Account-11');
+INSERT INTO "Address__c" VALUES('Addr-8','Home','true','4420 N Interstate Ave','Portland','Oregon','97217','United States','Account-12');
+INSERT INTO "Address__c" VALUES('Addr-9','Home','true','6225 SE Foster Rd','Portland','Oregon','97206','United States','Account-13');
 
 
 -- ============================================================
@@ -209,22 +280,41 @@ CREATE TABLE "Contact" (
     PRIMARY KEY (id)
 );
 
--- Martinez Household
+-- === Donors and Supporters ===
+
+-- Martinez Household (Board Chair, major donor, volunteer tutor)
 INSERT INTO "Contact" VALUES('Contact-1','Maria','Martinez','maria.martinez@email.com','maria@martinezlaw.com','503-555-0101','Work','Personal','Home','Account-1','Addr-1',NULL,NULL);
 INSERT INTO "Contact" VALUES('Contact-2','Carlos','Martinez','carlos.martinez@email.com',NULL,NULL,'Home','Personal','Home','Account-1','Addr-1',NULL,NULL);
 
--- Chen Household (Sarah is a board member at State University)
+-- Chen Household (Education professor, board member, donor)
 INSERT INTO "Contact" VALUES('Contact-3','Sarah','Chen','sarah.chen@email.com','schen@stateuniv.edu','503-555-0201','Work','Work','Home','Account-2','Addr-2','Account-9',NULL);
 
--- Johnson Household (Patricia works at Community Food Bank)
+-- Johnson Household (Monthly donors, Patricia volunteers, James attends family nights)
 INSERT INTO "Contact" VALUES('Contact-4','James','Johnson','james.johnson@email.com',NULL,'206-555-0301','Home','Personal','Home','Account-3','Addr-3',NULL,NULL);
-INSERT INTO "Contact" VALUES('Contact-5','Patricia','Johnson','patricia.johnson@email.com','pjohnson@communityfoodbank.org','206-555-0302','Work','Work','Home','Account-3','Addr-3','Account-8',NULL);
+INSERT INTO "Contact" VALUES('Contact-5','Patricia','Johnson','patricia.johnson@email.com','pjohnson@riversideelem.edu','206-555-0302','Work','Work','Home','Account-3','Addr-3','Account-8',NULL);
 
--- Williams Household (Robert works at Acme Corporation - matching gift employer)
+-- Williams Household (Corporate donor, Acme matching gifts)
 INSERT INTO "Contact" VALUES('Contact-6','Robert','Williams','robert.williams@email.com','rwilliams@acmecorp.com','503-555-0401','Work','Work','Home','Account-4','Addr-4','Account-6',NULL);
 
--- Patel Household (Aisha is Program Director at Patel Family Foundation)
+-- Patel Household (Foundation grant manager)
 INSERT INTO "Contact" VALUES('Contact-7','Aisha','Patel','aisha.patel@email.com','apatel@patelfoundation.org','541-555-0501','Work','Work','Home','Account-5','Addr-5','Account-7',NULL);
+
+-- === Program Staff and Participants ===
+
+-- Lead Tutor (staff)
+INSERT INTO "Contact" VALUES('Contact-8','Kenji','Watanabe','kenji.watanabe@email.com','kwatanabe@meadowlarkliteracy.org','503-555-0601','Work','Work','Home','Account-13','Addr-9','Account-14',NULL);
+
+-- Parent of youth participant (also connected to volunteer network)
+INSERT INTO "Contact" VALUES('Contact-9','Elena','Reyes','elena.reyes@email.com',NULL,NULL,'Home','Personal','Home','Account-10','Addr-6',NULL,NULL);
+
+-- Youth participant - Read to Lead (Elena's daughter)
+INSERT INTO "Contact" VALUES('Contact-10','Sofia','Reyes',NULL,NULL,NULL,NULL,NULL,'Home','Account-10','Addr-6',NULL,'Contact-9');
+
+-- Teen participant - Writers Workshop
+INSERT INTO "Contact" VALUES('Contact-11','Destiny','Thompson','destiny.thompson@email.com',NULL,NULL,'Home','Personal','Home','Account-11','Addr-7',NULL,NULL);
+
+-- Youth participant - Read to Lead and Emerging Readers
+INSERT INTO "Contact" VALUES('Contact-12','Marcus','Rivera',NULL,NULL,NULL,NULL,NULL,'Home','Account-12','Addr-8',NULL,NULL);
 
 
 -- ============================================================
@@ -245,7 +335,211 @@ CREATE TABLE "Affiliation__c" (
 INSERT INTO "Affiliation__c" VALUES('Aff-1','Board Member','Current','true','2023-01-15','Board of Directors since 2023','Contact-3','Account-9');
 INSERT INTO "Affiliation__c" VALUES('Aff-2','Program Director','Current','true','2020-06-01','Director of Grants Program','Contact-7','Account-7');
 INSERT INTO "Affiliation__c" VALUES('Aff-3','Senior Engineer','Current','true','2019-03-15','Engineering department','Contact-6','Account-6');
-INSERT INTO "Affiliation__c" VALUES('Aff-4','Volunteer','Current','false','2024-09-01','Weekend volunteer at food bank','Contact-5','Account-8');
+INSERT INTO "Affiliation__c" VALUES('Aff-4','Volunteer Reading Coach','Current','false','2024-09-01','Weekly reading volunteer at partner school','Contact-5','Account-8');
+INSERT INTO "Affiliation__c" VALUES('Aff-5','Part-time Tutor','Current','true','2023-06-01','Adult and youth literacy tutor','Contact-8','Account-14');
+INSERT INTO "Affiliation__c" VALUES('Aff-6','Volunteer Tutor','Current','false','2025-09-15','After-school reading program volunteer','Contact-2','Account-8');
+
+
+-- ============================================================
+-- Program Engagements (PMM)
+-- ============================================================
+CREATE TABLE "ProgramEngagement__c" (
+    id VARCHAR(255) NOT NULL,
+    "Name" VARCHAR(255),
+    "ApplicationDate__c" VARCHAR(255),
+    "AutoName_Override__c" VARCHAR(255),
+    "StartDate__c" VARCHAR(255),
+    "EndDate__c" VARCHAR(255),
+    "Role__c" VARCHAR(255),
+    "Stage__c" VARCHAR(255),
+    "Account__c" VARCHAR(255),
+    "Contact__c" VARCHAR(255),
+    "Program__c" VARCHAR(255),
+    "ProgramCohort__c" VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+-- Clients (program participants)
+INSERT INTO "ProgramEngagement__c" VALUES('PE-1','Sofia Reyes - Read to Lead','2025-12-15','true','2026-01-13',NULL,'Client','Active','Account-10','Contact-10','Prog-1','Cohort-1');
+INSERT INTO "ProgramEngagement__c" VALUES('PE-2','Marcus Rivera - Read to Lead','2025-12-18','true','2026-01-13',NULL,'Client','Active','Account-12','Contact-12','Prog-1','Cohort-1');
+INSERT INTO "ProgramEngagement__c" VALUES('PE-3','Marcus Rivera - Emerging Readers','2025-12-18','true','2026-01-13',NULL,'Client','Active','Account-12','Contact-12','Prog-2','Cohort-2');
+INSERT INTO "ProgramEngagement__c" VALUES('PE-4','Destiny Thompson - Teen Writers Workshop','2025-12-20','true','2026-01-13',NULL,'Client','Active','Account-11','Contact-11','Prog-3','Cohort-3');
+INSERT INTO "ProgramEngagement__c" VALUES('PE-5','Elena Reyes - Family Literacy Nights','2025-10-01','true','2025-10-15',NULL,'Client','Active','Account-10','Contact-9','Prog-4',NULL);
+INSERT INTO "ProgramEngagement__c" VALUES('PE-9','James Johnson - Family Literacy Nights','2025-09-15','true','2025-10-15',NULL,'Client','Active','Account-3','Contact-4','Prog-4',NULL);
+
+-- Volunteers
+INSERT INTO "ProgramEngagement__c" VALUES('PE-6','Carlos Martinez - Read to Lead','2025-11-15','true','2026-01-13',NULL,'Volunteer','Active','Account-1','Contact-2','Prog-1','Cohort-1');
+INSERT INTO "ProgramEngagement__c" VALUES('PE-8','Patricia Johnson - Family Literacy Nights','2024-11-01','true','2025-01-15',NULL,'Volunteer','Active','Account-3','Contact-5','Prog-4',NULL);
+
+-- Service Providers (staff)
+INSERT INTO "ProgramEngagement__c" VALUES('PE-7','Kenji Watanabe - Read to Lead','2025-08-15','true','2026-01-13',NULL,'Service Provider','Active','Account-13','Contact-8','Prog-1','Cohort-1');
+
+
+-- ============================================================
+-- Services (PMM)
+-- ============================================================
+CREATE TABLE "Service__c" (
+    id VARCHAR(255) NOT NULL,
+    "Name" VARCHAR(255),
+    "Description__c" VARCHAR(255),
+    "Status__c" VARCHAR(255),
+    "UnitOfMeasurement__c" VARCHAR(255),
+    "Program__c" VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+INSERT INTO "Service__c" VALUES('Svc-1','One-on-One Tutoring','Individual reading tutoring sessions focused on phonics, comprehension, and fluency','Active','Hours','Prog-1');
+INSERT INTO "Service__c" VALUES('Svc-2','Small Group Reading','Small group reading circles (3-5 students) for collaborative reading practice','Active','Hours','Prog-1');
+INSERT INTO "Service__c" VALUES('Svc-3','Storytime Circle','Interactive read-aloud sessions with vocabulary building and comprehension activities','Active','Sessions','Prog-2');
+INSERT INTO "Service__c" VALUES('Svc-4','Creative Writing Session','Guided writing workshops including journaling, creative fiction, and peer review','Active','Sessions','Prog-3');
+INSERT INTO "Service__c" VALUES('Svc-5','Family Reading Night Event','Community events with read-alouds, book giveaways, and literacy activity stations','Active','Attendees','Prog-4');
+
+
+-- ============================================================
+-- Service Schedules (PMM)
+-- ============================================================
+-- Column order matches mapping: Name, AllDay, CreateServiceSessionRecords,
+--   DaysOfWeek, DefaultServiceQuantity, FirstSessionEnd, FirstSessionStart,
+--   Frequency, Interval, NumberOfServiceSessions, ParticipantCapacity,
+--   ServiceScheduleEndDate, ServiceScheduleEnds,
+--   PrimaryServiceProvider, OtherServiceProvider, Service
+-- DaysOfWeek: 1=Sun 2=Mon 3=Tue 4=Wed 5=Thu 6=Fri 7=Sat
+CREATE TABLE "ServiceSchedule__c" (
+    id VARCHAR(255) NOT NULL,
+    "Name" VARCHAR(255),
+    "AllDay__c" VARCHAR(255),
+    "CreateServiceSessionRecords__c" VARCHAR(255),
+    "DaysOfWeek__c" VARCHAR(255),
+    "DefaultServiceQuantity__c" VARCHAR(255),
+    "FirstSessionEnd__c" VARCHAR(255),
+    "FirstSessionStart__c" VARCHAR(255),
+    "Frequency__c" VARCHAR(255),
+    "Interval__c" VARCHAR(255),
+    "NumberOfServiceSessions__c" VARCHAR(255),
+    "ParticipantCapacity__c" VARCHAR(255),
+    "ServiceScheduleEndDate__c" VARCHAR(255),
+    "ServiceScheduleEnds__c" VARCHAR(255),
+    "PrimaryServiceProvider__c" VARCHAR(255),
+    "OtherServiceProvider__c" VARCHAR(255),
+    "Service__c" VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+-- Tuesday Tutoring: Kenji primary, Carlos assists
+INSERT INTO "ServiceSchedule__c" VALUES('SS-1','Tuesday Tutoring','false','false','3','1.5','2026-01-13T17:30:00.000+0000','2026-01-13T16:00:00.000+0000','Weekly','1','20','10','2026-05-29','On','Contact-8','Contact-2','Svc-1');
+-- Thursday Small Groups: Kenji primary
+INSERT INTO "ServiceSchedule__c" VALUES('SS-2','Thursday Small Groups','false','false','5','1.0','2026-01-15T17:00:00.000+0000','2026-01-15T16:00:00.000+0000','Weekly','1','20','15','2026-05-29','On','Contact-8',NULL,'Svc-2');
+-- Wednesday Storytime: no fixed provider
+INSERT INTO "ServiceSchedule__c" VALUES('SS-3','Wednesday Storytime','false','false','4','1.0','2026-01-14T19:00:00.000+0000','2026-01-14T18:00:00.000+0000','Weekly','1','20','12','2026-05-29','On',NULL,NULL,'Svc-3');
+
+
+-- ============================================================
+-- Service Sessions (PMM)
+-- ============================================================
+CREATE TABLE "ServiceSession__c" (
+    id VARCHAR(255) NOT NULL,
+    "Name" VARCHAR(255),
+    "SessionStart__c" VARCHAR(255),
+    "SessionEnd__c" VARCHAR(255),
+    "Status__c" VARCHAR(255),
+    "PrimaryServiceProvider__c" VARCHAR(255),
+    "OtherServiceProvider__c" VARCHAR(255),
+    "ServiceSchedule__c" VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+-- Tuesday Tutoring sessions (Jan-Feb 2026)
+INSERT INTO "ServiceSession__c" VALUES('Ses-1','1/13/2026: Tuesday Tutoring','2026-01-13T16:00:00.000+0000','2026-01-13T17:30:00.000+0000','Complete','Contact-8',NULL,'SS-1');
+INSERT INTO "ServiceSession__c" VALUES('Ses-2','1/20/2026: Tuesday Tutoring','2026-01-20T16:00:00.000+0000','2026-01-20T17:30:00.000+0000','Complete','Contact-8',NULL,'SS-1');
+INSERT INTO "ServiceSession__c" VALUES('Ses-3','1/27/2026: Tuesday Tutoring','2026-01-27T16:00:00.000+0000','2026-01-27T17:30:00.000+0000','Complete','Contact-8','Contact-2','SS-1');
+INSERT INTO "ServiceSession__c" VALUES('Ses-4','2/3/2026: Tuesday Tutoring','2026-02-03T16:00:00.000+0000','2026-02-03T17:30:00.000+0000','Complete','Contact-2',NULL,'SS-1');
+
+-- Thursday Small Groups sessions (Jan-Feb 2026)
+INSERT INTO "ServiceSession__c" VALUES('Ses-5','1/15/2026: Thursday Small Groups','2026-01-15T16:00:00.000+0000','2026-01-15T17:00:00.000+0000','Complete','Contact-8',NULL,'SS-2');
+INSERT INTO "ServiceSession__c" VALUES('Ses-6','1/22/2026: Thursday Small Groups','2026-01-22T16:00:00.000+0000','2026-01-22T17:00:00.000+0000','Complete','Contact-8',NULL,'SS-2');
+INSERT INTO "ServiceSession__c" VALUES('Ses-7','1/29/2026: Thursday Small Groups','2026-01-29T16:00:00.000+0000','2026-01-29T17:00:00.000+0000','Complete','Contact-8',NULL,'SS-2');
+INSERT INTO "ServiceSession__c" VALUES('Ses-8','2/5/2026: Thursday Small Groups','2026-02-05T16:00:00.000+0000','2026-02-05T17:00:00.000+0000','Complete','Contact-8',NULL,'SS-2');
+
+-- Wednesday Storytime sessions (Jan-Feb 2026)
+INSERT INTO "ServiceSession__c" VALUES('Ses-9','1/14/2026: Wednesday Storytime','2026-01-14T18:00:00.000+0000','2026-01-14T19:00:00.000+0000','Complete',NULL,NULL,'SS-3');
+INSERT INTO "ServiceSession__c" VALUES('Ses-10','1/21/2026: Wednesday Storytime','2026-01-21T18:00:00.000+0000','2026-01-21T19:00:00.000+0000','Complete',NULL,NULL,'SS-3');
+INSERT INTO "ServiceSession__c" VALUES('Ses-11','1/28/2026: Wednesday Storytime','2026-01-28T18:00:00.000+0000','2026-01-28T19:00:00.000+0000','Complete',NULL,NULL,'SS-3');
+INSERT INTO "ServiceSession__c" VALUES('Ses-12','2/4/2026: Wednesday Storytime','2026-02-04T18:00:00.000+0000','2026-02-04T19:00:00.000+0000','Complete',NULL,NULL,'SS-3');
+
+
+-- ============================================================
+-- Service Participants (PMM)
+-- ============================================================
+CREATE TABLE "ServiceParticipant__c" (
+    id VARCHAR(255) NOT NULL,
+    "Name" VARCHAR(255),
+    "SignUpDate__c" VARCHAR(255),
+    "Status__c" VARCHAR(255),
+    "Contact__c" VARCHAR(255),
+    "ProgramEngagement__c" VARCHAR(255),
+    "Service__c" VARCHAR(255),
+    "ServiceSchedule__c" VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+INSERT INTO "ServiceParticipant__c" VALUES('SP-1','Sofia Reyes - One-on-One Tutoring','2025-12-20','Enrolled','Contact-10','PE-1','Svc-1','SS-1');
+INSERT INTO "ServiceParticipant__c" VALUES('SP-2','Marcus Rivera - One-on-One Tutoring','2025-12-22','Enrolled','Contact-12','PE-2','Svc-1','SS-1');
+INSERT INTO "ServiceParticipant__c" VALUES('SP-3','Sofia Reyes - Small Group Reading','2025-12-20','Enrolled','Contact-10','PE-1','Svc-2','SS-2');
+INSERT INTO "ServiceParticipant__c" VALUES('SP-4','Marcus Rivera - Small Group Reading','2025-12-22','Enrolled','Contact-12','PE-2','Svc-2','SS-2');
+INSERT INTO "ServiceParticipant__c" VALUES('SP-5','Marcus Rivera - Storytime Circle','2025-12-22','Enrolled','Contact-12','PE-3','Svc-3','SS-3');
+
+
+-- ============================================================
+-- Service Deliveries (PMM) — Attendance Tracking
+-- ============================================================
+-- Column order: Name, AutonameOverride, DeliveryDate, Quantity,
+--   AttendanceStatus, Service, Account, Contact, ProgramEngagement,
+--   Service_Provider, ServiceSession
+CREATE TABLE "ServiceDelivery__c" (
+    id VARCHAR(255) NOT NULL,
+    "Name" VARCHAR(255),
+    "AutonameOverride__c" VARCHAR(255),
+    "DeliveryDate__c" VARCHAR(255),
+    "Quantity__c" VARCHAR(255),
+    "AttendanceStatus__c" VARCHAR(255),
+    "Service__c" VARCHAR(255),
+    "Account__c" VARCHAR(255),
+    "Contact__c" VARCHAR(255),
+    "ProgramEngagement__c" VARCHAR(255),
+    "Service_Provider__c" VARCHAR(255),
+    "ServiceSession__c" VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+-- === Tutoring — Sofia Reyes ===
+INSERT INTO "ServiceDelivery__c" VALUES('SD-1','Sofia Reyes 2026-01-13: One-on-One Tutoring','true','2026-01-13','1.5','Present','Svc-1','Account-10','Contact-10','PE-1','Contact-8','Ses-1');
+INSERT INTO "ServiceDelivery__c" VALUES('SD-2','Sofia Reyes 2026-01-20: One-on-One Tutoring','true','2026-01-20','1.5','Present','Svc-1','Account-10','Contact-10','PE-1','Contact-8','Ses-2');
+INSERT INTO "ServiceDelivery__c" VALUES('SD-3','Sofia Reyes 2026-01-27: One-on-One Tutoring','true','2026-01-27','0','Unexcused Absence','Svc-1','Account-10','Contact-10','PE-1','Contact-8','Ses-3');
+INSERT INTO "ServiceDelivery__c" VALUES('SD-4','Sofia Reyes 2026-02-03: One-on-One Tutoring','true','2026-02-03','1.5','Present','Svc-1','Account-10','Contact-10','PE-1','Contact-2','Ses-4');
+
+-- === Tutoring — Marcus Rivera ===
+INSERT INTO "ServiceDelivery__c" VALUES('SD-5','Marcus Rivera 2026-01-13: One-on-One Tutoring','true','2026-01-13','1.5','Present','Svc-1','Account-12','Contact-12','PE-2','Contact-8','Ses-1');
+INSERT INTO "ServiceDelivery__c" VALUES('SD-6','Marcus Rivera 2026-01-20: One-on-One Tutoring','true','2026-01-20','1.5','Present','Svc-1','Account-12','Contact-12','PE-2','Contact-8','Ses-2');
+INSERT INTO "ServiceDelivery__c" VALUES('SD-7','Marcus Rivera 2026-01-27: One-on-One Tutoring','true','2026-01-27','1.5','Present','Svc-1','Account-12','Contact-12','PE-2','Contact-2','Ses-3');
+INSERT INTO "ServiceDelivery__c" VALUES('SD-8','Marcus Rivera 2026-02-03: One-on-One Tutoring','true','2026-02-03','1.5','Present','Svc-1','Account-12','Contact-12','PE-2','Contact-2','Ses-4');
+
+-- === Small Group Reading — Sofia Reyes ===
+INSERT INTO "ServiceDelivery__c" VALUES('SD-9','Sofia Reyes 2026-01-15: Small Group Reading','true','2026-01-15','1.0','Present','Svc-2','Account-10','Contact-10','PE-1','Contact-8','Ses-5');
+INSERT INTO "ServiceDelivery__c" VALUES('SD-10','Sofia Reyes 2026-01-22: Small Group Reading','true','2026-01-22','1.0','Present','Svc-2','Account-10','Contact-10','PE-1','Contact-8','Ses-6');
+INSERT INTO "ServiceDelivery__c" VALUES('SD-11','Sofia Reyes 2026-01-29: Small Group Reading','true','2026-01-29','1.0','Present','Svc-2','Account-10','Contact-10','PE-1','Contact-8','Ses-7');
+INSERT INTO "ServiceDelivery__c" VALUES('SD-12','Sofia Reyes 2026-02-05: Small Group Reading','true','2026-02-05','1.0','Present','Svc-2','Account-10','Contact-10','PE-1','Contact-8','Ses-8');
+
+-- === Small Group Reading — Marcus Rivera ===
+INSERT INTO "ServiceDelivery__c" VALUES('SD-13','Marcus Rivera 2026-01-15: Small Group Reading','true','2026-01-15','1.0','Present','Svc-2','Account-12','Contact-12','PE-2','Contact-8','Ses-5');
+INSERT INTO "ServiceDelivery__c" VALUES('SD-14','Marcus Rivera 2026-01-22: Small Group Reading','true','2026-01-22','0','Unexcused Absence','Svc-2','Account-12','Contact-12','PE-2','Contact-8','Ses-6');
+INSERT INTO "ServiceDelivery__c" VALUES('SD-15','Marcus Rivera 2026-01-29: Small Group Reading','true','2026-01-29','1.0','Present','Svc-2','Account-12','Contact-12','PE-2','Contact-8','Ses-7');
+INSERT INTO "ServiceDelivery__c" VALUES('SD-16','Marcus Rivera 2026-02-05: Small Group Reading','true','2026-02-05','1.0','Present','Svc-2','Account-12','Contact-12','PE-2','Contact-8','Ses-8');
+
+-- === Storytime Circle — Marcus Rivera ===
+INSERT INTO "ServiceDelivery__c" VALUES('SD-17','Marcus Rivera 2026-01-14: Storytime Circle','true','2026-01-14','1.0','Present','Svc-3','Account-12','Contact-12','PE-3',NULL,'Ses-9');
+INSERT INTO "ServiceDelivery__c" VALUES('SD-18','Marcus Rivera 2026-01-21: Storytime Circle','true','2026-01-21','1.0','Present','Svc-3','Account-12','Contact-12','PE-3',NULL,'Ses-10');
+INSERT INTO "ServiceDelivery__c" VALUES('SD-19','Marcus Rivera 2026-01-28: Storytime Circle','true','2026-01-28','0','Unexcused Absence','Svc-3','Account-12','Contact-12','PE-3',NULL,'Ses-11');
+INSERT INTO "ServiceDelivery__c" VALUES('SD-20','Marcus Rivera 2026-02-04: Storytime Circle','true','2026-02-04','1.0','Present','Svc-3','Account-12','Contact-12','PE-3',NULL,'Ses-12');
 
 
 -- ============================================================
@@ -293,6 +587,7 @@ CREATE TABLE "Relationship__c" (
 INSERT INTO "Relationship__c" VALUES('Rel-1','Spouse','Current',NULL,'Contact-1','Contact-2',NULL);
 INSERT INTO "Relationship__c" VALUES('Rel-2','Spouse','Current',NULL,'Contact-4','Contact-5',NULL);
 INSERT INTO "Relationship__c" VALUES('Rel-3','Friend','Current','Met through board service','Contact-3','Contact-1',NULL);
+INSERT INTO "Relationship__c" VALUES('Rel-4','Friend','Current','Connected through Riverside Elementary volunteer program','Contact-9','Contact-5',NULL);
 
 
 -- ============================================================
@@ -372,8 +667,8 @@ INSERT INTO "Opportunity" VALUES('Opp-17','Martinez Monthly Gift - February 2026
 
 -- === Foundation Grant ===
 
--- Patel Family Foundation: $50,000 youth education grant
-INSERT INTO "Opportunity" VALUES('Opp-9','Patel Foundation - Youth Education Grant','50000','Closed Won','2026-01-15','Grant','Acknowledged','true',NULL,NULL,'2026-01-01','2026-12-31','Youth Education and Workforce Development',NULL,NULL,NULL,'false',NULL,NULL,NULL,NULL,NULL,NULL,'Account-7',NULL,'Contact-7',NULL,NULL,NULL,NULL);
+-- Patel Family Foundation: $50,000 youth literacy grant
+INSERT INTO "Opportunity" VALUES('Opp-9','Patel Foundation - Youth Literacy Grant','50000','Closed Won','2026-01-15','Grant','Acknowledged','true',NULL,NULL,'2026-01-01','2026-12-31','Youth Literacy and Reading Intervention',NULL,NULL,NULL,'false',NULL,NULL,NULL,NULL,NULL,NULL,'Account-7',NULL,'Contact-7',NULL,NULL,NULL,NULL);
 
 -- === Membership ===
 
@@ -392,8 +687,8 @@ INSERT INTO "Opportunity" VALUES('Opp-12','Acme Corporation Matching Gift','1000
 
 -- === In-Kind Gift ===
 
--- Acme Corporation: 20 refurbished laptops
-INSERT INTO "Opportunity" VALUES('Opp-13','Acme Corporation - Office Equipment Donation','5000','Closed Won','2026-02-10','InKindGift','Acknowledged','true','5000',NULL,NULL,NULL,NULL,NULL,'20 refurbished laptops for program participants','Goods',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Account-6','Campaign-1',NULL,NULL,NULL,NULL,NULL);
+-- Acme Corporation: Children''s books for program lending library
+INSERT INTO "Opportunity" VALUES('Opp-13','Acme Corporation - Book Collection Donation','5000','Closed Won','2026-02-10','InKindGift','Acknowledged','true','5000',NULL,NULL,NULL,NULL,NULL,'500 new and gently-used children''s books for program lending library','Goods',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Account-6','Campaign-1',NULL,NULL,NULL,NULL,NULL);
 
 -- === Memorial/Tribute Gift ===
 
@@ -456,11 +751,11 @@ CREATE TABLE "Allocation__c" (
     PRIMARY KEY (id)
 );
 
--- Split allocation: Carlos Martinez annual fund gift → General Fund 60% / Programs 40%
+-- Split allocation: Carlos Martinez annual fund gift -> General Fund 60% / Literacy Programs 40%
 INSERT INTO "Allocation__c" VALUES('Alloc-1','300','60','GAU-1','Opp-7');
 INSERT INTO "Allocation__c" VALUES('Alloc-2','200','40','GAU-2','Opp-7');
 
--- Grant fully allocated: Programs 60% / Scholarship 40%
+-- Grant fully allocated: Literacy Programs 60% / Scholarship & Book Fund 40%
 INSERT INTO "Allocation__c" VALUES('Alloc-3','30000','60','GAU-2','Opp-9');
 INSERT INTO "Allocation__c" VALUES('Alloc-4','20000','40','GAU-4','Opp-9');
 
@@ -517,6 +812,6 @@ CREATE TABLE "Grant_Deadline__c" (
     PRIMARY KEY (id)
 );
 
-INSERT INTO "Grant_Deadline__c" VALUES('GD-1','Mid-Year Progress Report','Report','2026-06-30','Submit progress report on youth education outcomes including enrollment numbers and assessment results','Opp-9');
-INSERT INTO "Grant_Deadline__c" VALUES('GD-2','Final Report and Financial Summary','Report','2026-12-31','Submit final report with program outcomes, financial summary, and photos for foundation annual report','Opp-9');
-INSERT INTO "Grant_Deadline__c" VALUES('GD-3','Q3 Site Visit','Other','2026-09-15','Foundation staff will conduct on-site visit to observe program delivery','Opp-9');
+INSERT INTO "Grant_Deadline__c" VALUES('GD-1','Mid-Year Progress Report','Interim Report','2026-06-30','Submit progress report on literacy program outcomes including enrollment numbers and reading level assessments','Opp-9');
+INSERT INTO "Grant_Deadline__c" VALUES('GD-2','Final Report and Financial Summary','Final Report','2026-12-31','Submit final report with program outcomes, financial summary, and student reading progress stories for foundation annual report','Opp-9');
+INSERT INTO "Grant_Deadline__c" VALUES('GD-3','Grant Renewal Application','Application','2026-09-15','Submit renewal application for next fiscal year literacy program funding','Opp-9');

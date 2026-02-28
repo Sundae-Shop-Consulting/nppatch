@@ -1,10 +1,16 @@
-# NPPatch Sample Dataset Mapping
+# NPPatch Sample Dataset Mapping — Meadowlark Youth Literacy
 # Load with: cci task run load_dataset --mapping datasets/sample/mapping.yml --sql_path datasets/sample/sample_data.sql
 #
 # This mapping includes only the fields populated by the sample dataset.
 # For a full field mapping, see datasets/mapping.yml (auto-generated).
 #
 # Load order: parent objects first, then children that reference them.
+# Fundraising (NPSP) and Program Management (PMM) objects are interleaved
+# so that shared lookups (Account, Contact) resolve correctly.
+
+# ==========================================================================
+# Fundraising Objects (NPSP)
+# ==========================================================================
 
 Insert Campaign:
   sf_object: Campaign
@@ -57,6 +63,38 @@ Insert Engagement_Plan_Task__c:
       table:
       - Engagement_Plan_Task__c
       after: Insert Engagement_Plan_Task__c
+
+# ==========================================================================
+# Program Management Objects (PMM) — no Contact/Account dependencies
+# ==========================================================================
+
+Insert Program__c:
+  sf_object: Program__c
+  fields:
+  - Name
+  - Description__c
+  - ShortSummary__c
+  - StartDate__c
+  - EndDate__c
+  - ProgramIssueArea__c
+  - Status__c
+
+Insert ProgramCohort__c:
+  sf_object: ProgramCohort__c
+  fields:
+  - Name
+  - Description__c
+  - StartDate__c
+  - EndDate__c
+  - Status__c
+  lookups:
+    Program__c:
+      table:
+      - Program__c
+
+# ==========================================================================
+# Shared Objects (Account, Contact, Affiliation)
+# ==========================================================================
 
 Insert Account:
   sf_object: Account
@@ -128,6 +166,143 @@ Insert Affiliation__c:
     Organization__c:
       table:
       - Account
+
+# ==========================================================================
+# Program Management Objects (PMM) — require Contact/Account
+# ==========================================================================
+
+Insert ProgramEngagement__c:
+  sf_object: ProgramEngagement__c
+  fields:
+  - Name
+  - ApplicationDate__c
+  - AutoName_Override__c
+  - StartDate__c
+  - EndDate__c
+  - Role__c
+  - Stage__c
+  lookups:
+    Account__c:
+      table:
+      - Account
+    Contact__c:
+      table:
+      - Contact
+    Program__c:
+      table:
+      - Program__c
+    ProgramCohort__c:
+      table:
+      - ProgramCohort__c
+
+Insert Service__c:
+  sf_object: Service__c
+  fields:
+  - Name
+  - Description__c
+  - Status__c
+  - UnitOfMeasurement__c
+  lookups:
+    Program__c:
+      table:
+      - Program__c
+
+Insert ServiceSchedule__c:
+  sf_object: ServiceSchedule__c
+  fields:
+  - Name
+  - AllDay__c
+  - CreateServiceSessionRecords__c
+  - DaysOfWeek__c
+  - DefaultServiceQuantity__c
+  - FirstSessionEnd__c
+  - FirstSessionStart__c
+  - Frequency__c
+  - Interval__c
+  - NumberOfServiceSessions__c
+  - ParticipantCapacity__c
+  - ServiceScheduleEndDate__c
+  - ServiceScheduleEnds__c
+  lookups:
+    PrimaryServiceProvider__c:
+      table:
+      - Contact
+    OtherServiceProvider__c:
+      table:
+      - Contact
+    Service__c:
+      table:
+      - Service__c
+
+Insert ServiceSession__c:
+  sf_object: ServiceSession__c
+  fields:
+  - Name
+  - SessionStart__c
+  - SessionEnd__c
+  - Status__c
+  lookups:
+    PrimaryServiceProvider__c:
+      table:
+      - Contact
+    OtherServiceProvider__c:
+      table:
+      - Contact
+    ServiceSchedule__c:
+      table:
+      - ServiceSchedule__c
+
+Insert ServiceParticipant__c:
+  sf_object: ServiceParticipant__c
+  fields:
+  - Name
+  - SignUpDate__c
+  - Status__c
+  lookups:
+    Contact__c:
+      table:
+      - Contact
+    ProgramEngagement__c:
+      table:
+      - ProgramEngagement__c
+    Service__c:
+      table:
+      - Service__c
+    ServiceSchedule__c:
+      table:
+      - ServiceSchedule__c
+
+Insert ServiceDelivery__c:
+  sf_object: ServiceDelivery__c
+  fields:
+  - Name
+  - AutonameOverride__c
+  - DeliveryDate__c
+  - Quantity__c
+  - AttendanceStatus__c
+  lookups:
+    Service__c:
+      table:
+      - Service__c
+    Account__c:
+      table:
+      - Account
+    Contact__c:
+      table:
+      - Contact
+    ProgramEngagement__c:
+      table:
+      - ProgramEngagement__c
+    Service_Provider__c:
+      table:
+      - Contact
+    ServiceSession__c:
+      table:
+      - ServiceSession__c
+
+# ==========================================================================
+# Fundraising Objects (NPSP) — require Contact/Account
+# ==========================================================================
 
 Insert Recurring_Donation__c:
   sf_object: Recurring_Donation__c
