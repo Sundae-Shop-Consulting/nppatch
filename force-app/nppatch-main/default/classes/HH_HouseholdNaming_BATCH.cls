@@ -124,18 +124,18 @@ public class HH_HouseholdNaming_BATCH implements Database.Batchable<SObject> {
         
             for (SObject h : listHH) {
                 boolean needsupdate = false;
-                string strSystemCustomNaming = string.valueOf(h.get(UTIL_Namespace.StrTokenNSPrefix('SYSTEM_CUSTOM_NAMING__c')));
+                string strSystemCustomNaming = string.valueOf(h.get(UTIL_Namespace.prefixNamespace('SYSTEM_CUSTOM_NAMING__c')));
 
                 if (strSystemCustomNaming != null)
                     strSystemCustomNaming += ';';
                 else
                     strSystemCustomNaming = '';
 
-                if (h.get(UTIL_Namespace.StrTokenNSPrefix('Formal_Greeting__c')) != null && !strSystemCustomNaming.contains('Formal_Greeting__c')) {
+                if (h.get(UTIL_Namespace.prefixNamespace('Formal_Greeting__c')) != null && !strSystemCustomNaming.contains('Formal_Greeting__c')) {
                     strSystemCustomNaming += 'Formal_Greeting__c' + ';';
                     needsupdate = true;
                 }
-                if (h.get(UTIL_Namespace.StrTokenNSPrefix('Informal_Greeting__c')) != null && !strSystemCustomNaming.contains('Informal_Greeting__c')) {
+                if (h.get(UTIL_Namespace.prefixNamespace('Informal_Greeting__c')) != null && !strSystemCustomNaming.contains('Informal_Greeting__c')) {
                     strSystemCustomNaming += 'Informal_Greeting__c' + ';';
                     needsupdate = true;
                 }    
@@ -160,7 +160,7 @@ public class HH_HouseholdNaming_BATCH implements Database.Batchable<SObject> {
                 }
                 
                 if (needsupdate) {
-                    h.put(UTIL_Namespace.StrTokenNSPrefix('SYSTEM_CUSTOM_NAMING__c'), strSystemCustomNaming);
+                    h.put(UTIL_Namespace.prefixNamespace('SYSTEM_CUSTOM_NAMING__c'), strSystemCustomNaming);
                     updatelist.add(h);
                 }                
             }

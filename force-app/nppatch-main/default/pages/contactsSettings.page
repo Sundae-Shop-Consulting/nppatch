@@ -1,1 +1,1 @@
-<apex:page action="{! urlFor('/apex/%%%NAMESPACE%%%STG_SettingsManager') }" />
+<apex:page action="{! urlFor('/lightning/n/NPPatch_Settings') }" />

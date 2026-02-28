@@ -1,0 +1,25 @@
+.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 160px);
+    position: relative;
+}
+
+.nav-sidebar {
+    max-height: calc(100vh - 160px);
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+.panel-card {
+    background: white;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e5e5;
+    min-height: 400px;
+}
+
+.placeholder-icon {
+    display: block;
+    margin-bottom: 1rem;
+}

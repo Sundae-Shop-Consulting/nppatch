@@ -202,7 +202,7 @@ public inherited sharing class RD2_QueryService {
     public String getScheduleSubQuery() {
         Set<String> fields = new RD2_ScheduleService.ScheduleQueryHandler().getFields();
 
-        return '(SELECT ' + String.join(new List<String>(fields), ', ') + ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('RecurringDonationSchedules__r') + ')';
+        return '(SELECT ' + String.join(new List<String>(fields), ', ') + ' FROM ' + UTIL_Namespace.prefixNamespace('RecurringDonationSchedules__r') + ')';
     }
 
     /**
@@ -215,11 +215,11 @@ public inherited sharing class RD2_QueryService {
         //and Opps with Close Date >= current date regardless if closed or open
         //and all Opps with Close Date in this current year
         Set<String> oppSubqueryFields = new Set<String>{
-            'Id', 'Name', 'AccountId', UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c'),
+            'Id', 'Name', 'AccountId', UTIL_Namespace.prefixNamespace('Primary_Contact__c'),
+            UTIL_Namespace.prefixNamespace('Recurring_Donation__c'),
             'Amount', 'CloseDate',
             'StageName', 'IsClosed', 'IsWon',
-            'CampaignId', UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation_Installment_Number__c')
+            'CampaignId', UTIL_Namespace.prefixNamespace('Recurring_Donation_Installment_Number__c')
         };
 
         if (isMultiCurrencyEnabled) {
@@ -230,12 +230,12 @@ public inherited sharing class RD2_QueryService {
 
         String oppSubquery = new UTIL_Query()
             .withSelectFields(oppSubqueryFields)
-            .withFrom(UTIL_Namespace.StrTokenNSPrefix('Donations__r'))
+            .withFrom(UTIL_Namespace.prefixNamespace('Donations__r'))
             .withWhere(
                 'IsClosed = false ' +
                     'OR CloseDate >= :startDate '
             )
-            .withOrderBy(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c') + ', CloseDate ASC')
+            .withOrderBy(UTIL_Namespace.prefixNamespace('Recurring_Donation__c') + ', CloseDate ASC')
             .build();
 
         return '(' + oppSubquery + ')';
@@ -272,7 +272,7 @@ public inherited sharing class RD2_QueryService {
 
     private String getSObjectWithRecurringDonationsQuery(String sObjectType) {
         Set<String> selectedField = new Set<String>{
-            UTIL_Namespace.StrTokenNSPrefix('Sustainer__c'),
+            UTIL_Namespace.prefixNamespace('Sustainer__c'),
             getRecurringDonationSubQuery(sObjectType)
         };
 
@@ -285,7 +285,7 @@ public inherited sharing class RD2_QueryService {
     }
 
     private String getRecurringDonationSubQuery(String sObjectType) {
-        String lookupReference = UTIL_Namespace.StrTokenNSPrefix('RecurringDonations__r');
+        String lookupReference = UTIL_Namespace.prefixNamespace('RecurringDonations__r');
         return '(SELECT Id FROM ' + lookupReference + ' WHERE Status__c IN: statusValues LIMIT 1)';
     }
 }

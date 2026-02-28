@@ -115,7 +115,7 @@ public with sharing class DonationSelector {
         };
 
         String paymentsSubqueryString = new UTIL_Query()
-            .withFrom(UTIL_Namespace.StrTokenNSPrefix('OppPayment__r'))
+            .withFrom(UTIL_Namespace.prefixNamespace('OppPayment__r'))
             .withSelectFields(paymentFields)
             .withWhere(whereClause)
             .build();

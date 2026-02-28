@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>Role__c</name>
+    <help>Een relatie van een contact met de programmabetrokkenheid. Waarden worden bepaald door uw beheerder.</help>
+    <label>Rol</label>
+    <picklistValues>
+        <masterLabel>Client</masterLabel>
+        <translation>Cliënt</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Volunteer</masterLabel>
+        <translation>Vrijwilliger</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Service Provider</masterLabel>
+        <translation>Serviceaanbieder</translation>
+    </picklistValues>
+</CustomFieldTranslation>

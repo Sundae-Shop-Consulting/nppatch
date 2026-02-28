@@ -37,7 +37,7 @@
 */
 public class BDI_Donations {
 
-    public static final String[] campaignImportedFields = new String[]{UTIL_Namespace.StrTokenNSPrefix('DonationCampaignImported__c'),
+    public static final String[] campaignImportedFields = new String[]{UTIL_Namespace.prefixNamespace('DonationCampaignImported__c'),
                                                                         'DonationCampaignImported__c'};
 
     /*******************************************************************************************************
@@ -593,9 +593,9 @@ public class BDI_Donations {
             }
         }
 
-        String donationRecordTypeName = UTIL_Namespace.StrTokenNSPrefix('Donation_Record_Type_Name__c');
-        String donationStage = UTIL_Namespace.StrTokenNSPrefix('Donation_Stage__c');
-        String donationAmount = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c');
+        String donationRecordTypeName = UTIL_Namespace.prefixNamespace('Donation_Record_Type_Name__c');
+        String donationStage = UTIL_Namespace.prefixNamespace('Donation_Stage__c');
+        String donationAmount = UTIL_Namespace.prefixNamespace('Donation_Amount__c');
 
         // now copy over all the data to the Opp
         for (String dataImportField : dataImportFieldToOpportunityField.keySet()) {
@@ -747,19 +747,19 @@ public class BDI_Donations {
         // the set of Payment fields for our soql
         Set<String> setPmtFields = new Set<String>();
         setPmtFields.add('Id');
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c'));
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c'));
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c'));
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c'));
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Paid__c'));
+        setPmtFields.add(UTIL_Namespace.prefixNamespace('Opportunity__c'));
+        setPmtFields.add(UTIL_Namespace.prefixNamespace('Payment_Amount__c'));
+        setPmtFields.add(UTIL_Namespace.prefixNamespace('Payment_Date__c'));
+        setPmtFields.add(UTIL_Namespace.prefixNamespace('Scheduled_Date__c'));
+        setPmtFields.add(UTIL_Namespace.prefixNamespace('Paid__c'));
 
         // need to include any Pmt fields we may update, so we can compare against them
         setPmtFields.addAll(dataImportFieldToPaymentField.values());
 
         String soql = 'SELECT ' + String.join(new List<String>(setPmtFields), ',');
-        soql += ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' WHERE ' +
-                UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false ' +
-                'AND ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' in :' + eligibleOpportunitiesVariableName;
+        soql += ' FROM ' + UTIL_Namespace.prefixNamespace('OppPayment__c') + ' WHERE ' +
+                UTIL_Namespace.prefixNamespace('Written_Off__c') + ' = false ' +
+                'AND ' + UTIL_Namespace.prefixNamespace('Opportunity__c') + ' in :' + eligibleOpportunitiesVariableName;
 
         return soql;
     }

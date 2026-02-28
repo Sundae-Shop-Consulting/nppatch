@@ -121,7 +121,7 @@ public virtual with sharing class UTIL_PerfLogger {
         get {
             if (!hasTriedSchemaPerfLog) {
                 // first we try in our namespace, and then without a namespace
-                sObjectTypePerfLog = Schema.getGlobalDescribe().get(UTIL_Namespace.StrTokenNSPrefix('PerfLog__c'));
+                sObjectTypePerfLog = Schema.getGlobalDescribe().get(UTIL_Namespace.prefixNamespace('PerfLog__c'));
                 if (sObjectTypePerfLog == null) {
                     sObjectTypePerfLog = Schema.getGlobalDescribe().get('PerfLog__c');
                 }
@@ -175,10 +175,10 @@ public virtual with sharing class UTIL_PerfLogger {
         */
         public void initPerfLog(String component, String label, String logType, Integer countRecords) {
             if (plSObject != null) {
-                plSObject.put(UTIL_Namespace.StrTokenNSPrefix('Component__c'), component);
-                plSObject.put(UTIL_Namespace.StrTokenNSPrefix('label__c'), label);
-                plSObject.put(UTIL_Namespace.StrTokenNSPrefix('Log_Type__c'), logType);
-                plSObject.put(UTIL_Namespace.StrTokenNSPrefix('Number_of_Records__c'), countRecords);
+                plSObject.put(UTIL_Namespace.prefixNamespace('Component__c'), component);
+                plSObject.put(UTIL_Namespace.prefixNamespace('label__c'), label);
+                plSObject.put(UTIL_Namespace.prefixNamespace('Log_Type__c'), logType);
+                plSObject.put(UTIL_Namespace.prefixNamespace('Number_of_Records__c'), countRecords);
             }
         }
 
@@ -218,9 +218,9 @@ public virtual with sharing class UTIL_PerfLogger {
                 stop();
             }
             if (plSObject != null) {
-                plSObject.put(UTIL_Namespace.StrTokenNSPrefix('Duration__c'), (Double)duration);
-                plSObject.put(UTIL_Namespace.StrTokenNSPrefix('Number_of_Calls__c'), countCalls);
-                plSObject.put(UTIL_Namespace.StrTokenNSPrefix('Parent_Duration__c'), (Double)durationParent);
+                plSObject.put(UTIL_Namespace.prefixNamespace('Duration__c'), (Double)duration);
+                plSObject.put(UTIL_Namespace.prefixNamespace('Number_of_Calls__c'), countCalls);
+                plSObject.put(UTIL_Namespace.prefixNamespace('Parent_Duration__c'), (Double)durationParent);
             }
             return plSObject;
         }

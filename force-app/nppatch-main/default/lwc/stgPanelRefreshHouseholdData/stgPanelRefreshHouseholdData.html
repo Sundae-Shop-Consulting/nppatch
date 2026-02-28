@@ -1,0 +1,48 @@
+<template>
+    <template if:true={isLoading}>
+        <div class="loading-container">
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </div>
+    </template>
+    <template if:true={_hasError}>
+        <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+            <span class="slds-assistive-text">error</span>
+            <p>{_errorMessage}</p>
+        </div>
+    </template>
+    <template if:false={isLoading}>
+        <div class="panel-container">
+            <div class="panel-header">
+                <div class="slds-grid slds-grid_vertical-align-center">
+                    <div class="slds-col">
+                        <h2 class="slds-text-heading_small">
+                            <span class="slds-text-color_weak">{labels.sectionLabel}</span>
+                            <span class="slds-text-color_weak"> &bull; </span>
+                            {labels.pageLabel}
+                        </h2>
+                    </div>
+                </div>
+                <p class="section-description">{labels.description}</p>
+            </div>
+            <div class="panel-body">
+                <div class="action-row">
+                    <template if:false={_isRunning}>
+                        <lightning-button label={labels.runBatch} onclick={handleRunBatch}
+                            variant="brand" disabled={_isRunning}>
+                        </lightning-button>
+                    </template>
+                    <template if:true={_isRunning}>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-gutters_x-small">
+                            <div class="slds-col">
+                                <lightning-spinner alternative-text="Running" size="small" class="inline-spinner"></lightning-spinner>
+                            </div>
+                            <div class="slds-col">
+                                <p class="running-message">{labels.runningMessage}</p>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </template>
+</template>

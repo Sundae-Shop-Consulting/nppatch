@@ -6,8 +6,7 @@ import addGiftTo from '@salesforce/apex/GE_GiftEntryController.addGiftTo';
 import hasActiveRunningJob from '@salesforce/apex/GE_GiftEntryController.hasActiveRunningJob';
 import isGiftBatchAccessible from '@salesforce/apex/GE_GiftEntryController.isGiftBatchAccessible';
 
-// Methods below still need to be replaced/updated to go through service x domain. These were only moved.
-import runBatchDryRun from '@salesforce/apex/BGE_DataImportBatchEntry_CTRL.runBatchDryRun';
+import runBatchDryRun from '@salesforce/apex/GE_GiftEntryController.runBatchDryRun';
 
 import Gift from 'c/geGift';
 

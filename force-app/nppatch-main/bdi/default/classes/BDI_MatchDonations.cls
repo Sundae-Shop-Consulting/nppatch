@@ -70,8 +70,8 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
                     BDI_DataImportService.listStrDataImportFields);
                 // special case Donation fields we defaultly map to Opp fields, but we will use with Payments too!
                 // note that these two work for matching rules.  
-                mapDIFieldToPmtField.put(UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c').toLowercase(), UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c'));
-                mapDIFieldToPmtField.put(UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c').toLowercase(), UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c'));
+                mapDIFieldToPmtField.put(UTIL_Namespace.prefixNamespace('Donation_Amount__c').toLowercase(), UTIL_Namespace.prefixNamespace('Payment_Amount__c'));
+                mapDIFieldToPmtField.put(UTIL_Namespace.prefixNamespace('Donation_Date__c').toLowercase(), UTIL_Namespace.prefixNamespace('Scheduled_Date__c'));
             }
             return mapDIFieldToPmtField;
         }
@@ -322,7 +322,7 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
             for (String dataImportField : listMatchFields) {
                 Object dataImportFieldValue = di.get(dataImportField);
                 String opportunityField = mapDIFieldToOppField.get(dataImportField);
-                String donationDate = UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c').toLowercase();
+                String donationDate = UTIL_Namespace.prefixNamespace('Donation_Date__c').toLowercase();
 
                 // special case date matching
                 if (dataImportField == donationDate && opportunityField != null) {
@@ -337,7 +337,7 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
                 }
 
                 // handle mapping a specified record type name to the Id we must compare with
-                if (dataImportField == UTIL_Namespace.StrTokenNSPrefix('Donation_Record_Type_Name__c').toLowercase()) {
+                if (dataImportField == UTIL_Namespace.prefixNamespace('Donation_Record_Type_Name__c').toLowercase()) {
                     dataImportFieldValue = UTIL_RecordTypes.getRecordTypeId(Opportunity.sObjectType,
                                                                             String.valueOf(dataImportFieldValue));
                 }
@@ -377,7 +377,7 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
             for (String dataImportField : listMatchFields) {
                 Object dataImportFieldValue = di.get(dataImportField);
                 String paymentField = mapDIFieldToPmtField.get(dataImportField);
-                String donationDate = UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c').toLowercase();
+                String donationDate = UTIL_Namespace.prefixNamespace('Donation_Date__c').toLowercase();
 
                 // special case date matching
                 if (dataImportField == donationDate && paymentField != null) {
@@ -416,8 +416,8 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
                     listMatchFields = strRules.toLowercase().replace(' ', '').split(';');
                 } else {
                     listMatchFields = new list<String> {
-                        UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c').toLowercase(),
-                        UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c').toLowercase()
+                        UTIL_Namespace.prefixNamespace('Donation_Amount__c').toLowercase(),
+                        UTIL_Namespace.prefixNamespace('Donation_Date__c').toLowercase()
                     };
                 }
             }
@@ -465,10 +465,10 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
         setOppFields.add('Name');
         setOppFields.add('Amount');
         setOppFields.add('AccountId');
-        setOppFields.add(UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c'));
+        setOppFields.add(UTIL_Namespace.prefixNamespace('Primary_Contact__c'));
         setOppFields.add('CloseDate');
-        setOppFields.add(UTIL_Namespace.StrTokenNSPrefix('Number_of_Payments__c'));
-        setOppFields.add('Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEMIsIndividual__c'));
+        setOppFields.add(UTIL_Namespace.prefixNamespace('Number_of_Payments__c'));
+        setOppFields.add('Account.' + UTIL_Namespace.prefixNamespace('SYSTEMIsIndividual__c'));
 
         // need to include any Opp fields we may update, so we can compare against them
         setOppFields.addAll(mapDIFieldToOppField.values());
@@ -477,12 +477,12 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
         Set<String> setPmtFields = new Set<String>();
         setPmtFields.add('id');
         setPmtFields.add('name');
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Paid__c').toLowerCase());
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c').toLowerCase());
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c').toLowerCase());
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Payment_Date__c').toLowerCase());
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Scheduled_Date__c').toLowerCase());
-        setPmtFields.add(UTIL_Namespace.StrTokenNSPrefix('Written_Off__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.prefixNamespace('Paid__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.prefixNamespace('Opportunity__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.prefixNamespace('Payment_Amount__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.prefixNamespace('Payment_Date__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.prefixNamespace('Scheduled_Date__c').toLowerCase());
+        setPmtFields.add(UTIL_Namespace.prefixNamespace('Written_Off__c').toLowerCase());
 
         // need to include any Pmt fields we may update, so we can compare against them
         // Lowercase to deduplicate with fields added above
@@ -519,9 +519,9 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
 
         // add Payment subquery
         strSoql += ', (SELECT ' + String.join(new List<String>(setPmtFields), ',');
-        strSoql += ' FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__r') + ' ' +
-            'WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ' = false ' +
-            'AND ' + UTIL_Namespace.StrTokenNSPrefix('Written_Off__c') + ' = false)';
+        strSoql += ' FROM ' + UTIL_Namespace.prefixNamespace('OppPayment__r') + ' ' +
+            'WHERE ' + UTIL_Namespace.prefixNamespace('Paid__c') + ' = false ' +
+            'AND ' + UTIL_Namespace.prefixNamespace('Written_Off__c') + ' = false)';
 
         strSoql += ' FROM Opportunity';
         strSoql += ' WHERE IsClosed = false AND (';
@@ -540,7 +540,7 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
             if (cFilter > 0) {
                 strSoql += ' OR ';
             }
-            strSoql += ' ' + UTIL_Namespace.StrTokenNSPrefix('Primary_Contact__c') + ' IN :setConId ';
+            strSoql += ' ' + UTIL_Namespace.prefixNamespace('Primary_Contact__c') + ' IN :setConId ';
             cFilter++;
         }
         strSoql += ')';

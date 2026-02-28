@@ -1,3 +1,17 @@
 .modal-hidden {
     display: none;
 }
+
+.slds-modal__container.fixed-width {
+    max-width: 80rem;
+    width: 80%;
+    overflow: auto;
+}
+
+.slds-modal__close {
+    right: 0rem;
+}
+
+.nested-modal {
+    width: 50%;
+}

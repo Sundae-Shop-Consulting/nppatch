@@ -1,0 +1,159 @@
+<template>
+    <template if:true={isLoading}>
+        <div class="loading-container">
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </div>
+    </template>
+
+    <template if:true={_hasError}>
+        <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+            <span class="slds-assistive-text">error</span>
+            <p>{_errorMessage}</p>
+        </div>
+    </template>
+
+    <template if:true={_settings}>
+        <div class="panel-container">
+            <div class="panel-header">
+                <div class="slds-grid slds-grid_vertical-align-center">
+                    <div class="slds-col">
+                        <h2 class="slds-text-heading_small">
+                            <span class="slds-text-color_weak">{labels.sectionLabel}</span>
+                            <span class="slds-text-color_weak"> &bull; </span>
+                            {labels.pageLabel}
+                        </h2>
+                    </div>
+                    <div class="slds-col_bump-left">
+                        <template if:true={canEdit}>
+                            <lightning-button label={labels.edit} onclick={handleEdit} variant="neutral"></lightning-button>
+                        </template>
+                    </div>
+                </div>
+                <p class="section-description">{sectionDescription}</p>
+            </div>
+
+            <div class="panel-body">
+                <div class="setting-row">
+                    <label class="setting-label">{labels.defaultAllocEnabled}</label>
+                    <p class="setting-help">{labels.helpDefaultAllocEnabled}</p>
+                    <template if:false={_isEditMode}>
+                        <lightning-input type="toggle" label={labels.defaultAllocEnabled}
+                            checked={_settings.Default_Allocations_Enabled__c} disabled
+                            variant="label-hidden"
+                            message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                        </lightning-input>
+                    </template>
+                    <template if:true={_isEditMode}>
+                        <lightning-input type="toggle" label={labels.defaultAllocEnabled}
+                            checked={_workingCopy.Default_Allocations_Enabled__c}
+                            onchange={handleDefaultAllocEnabledChange} variant="label-hidden"
+                            message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                        </lightning-input>
+                    </template>
+                </div>
+
+                <div class="setting-row">
+                    <label class="setting-label">{labels.defaultGAU}</label>
+                    <p class="setting-help">{labels.helpDefaultGAU}</p>
+                    <template if:false={_isEditMode}>
+                        <lightning-input type="text" label={labels.defaultGAU}
+                            value={_settings.Default__c} disabled
+                            variant="label-hidden" class="text-input">
+                        </lightning-input>
+                    </template>
+                    <template if:true={_isEditMode}>
+                        <lightning-input type="text" label={labels.defaultGAU}
+                            value={_workingCopy.Default__c}
+                            onchange={handleDefaultGAUChange} variant="label-hidden"
+                            class="text-input">
+                        </lightning-input>
+                    </template>
+                </div>
+
+                <template if:true={showRollupSection}>
+                    <h3 class="section-subheader">Allocation Rollup Settings</h3>
+
+                    <div class="setting-row">
+                        <label class="setting-label">{labels.exclOppRecTypes}</label>
+                        <p class="setting-help">{labels.helpExclOppRecTypes}</p>
+                        <template if:false={_isEditMode}>
+                            <span class="setting-value">{exclOppRecTypesDisplay}</span>
+                        </template>
+                        <template if:true={_isEditMode}>
+                            <lightning-dual-listbox
+                                label={labels.exclOppRecTypes}
+                                source-label="Available" selected-label="Excluded"
+                                options={_oppRecordTypes}
+                                value={selectedExclOppRecTypes}
+                                onchange={handleExclOppRecTypesChange}
+                                variant="label-hidden">
+                            </lightning-dual-listbox>
+                        </template>
+                    </div>
+
+                    <div class="setting-row">
+                        <label class="setting-label">{labels.exclOppTypes}</label>
+                        <p class="setting-help">{labels.helpExclOppTypes}</p>
+                        <template if:false={_isEditMode}>
+                            <span class="setting-value">{exclOppTypesDisplay}</span>
+                        </template>
+                        <template if:true={_isEditMode}>
+                            <lightning-dual-listbox
+                                label={labels.exclOppTypes}
+                                source-label="Available" selected-label="Excluded"
+                                options={_oppTypes}
+                                value={selectedExclOppTypes}
+                                onchange={handleExclOppTypesChange}
+                                variant="label-hidden">
+                            </lightning-dual-listbox>
+                        </template>
+                    </div>
+
+                    <div class="setting-row">
+                        <label class="setting-label">{labels.nDayValue}</label>
+                        <p class="setting-help">{labels.helpNDayValue}</p>
+                        <template if:false={_isEditMode}>
+                            <lightning-input type="number" label={labels.nDayValue}
+                                value={_settings.Rollup_N_Day_Value__c} disabled
+                                variant="label-hidden" class="number-input">
+                            </lightning-input>
+                        </template>
+                        <template if:true={_isEditMode}>
+                            <lightning-input type="number" label={labels.nDayValue}
+                                value={_workingCopy.Rollup_N_Day_Value__c}
+                                onchange={handleNDayChange} variant="label-hidden"
+                                class="number-input">
+                            </lightning-input>
+                        </template>
+                    </div>
+
+                    <div class="setting-row">
+                        <label class="setting-label">{labels.fiscalYear}</label>
+                        <p class="setting-help">{labels.helpFiscalYear}</p>
+                        <template if:false={_isEditMode}>
+                            <lightning-input type="toggle" label={labels.fiscalYear}
+                                checked={_settings.Use_Fiscal_Year_for_Rollups__c} disabled
+                                variant="label-hidden"
+                                message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                            </lightning-input>
+                        </template>
+                        <template if:true={_isEditMode}>
+                            <lightning-input type="toggle" label={labels.fiscalYear}
+                                checked={_workingCopy.Use_Fiscal_Year_for_Rollups__c}
+                                onchange={handleFiscalYearChange} variant="label-hidden"
+                                message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                            </lightning-input>
+                        </template>
+                    </div>
+                </template>
+            </div>
+
+            <template if:true={_isEditMode}>
+                <div class="panel-footer">
+                    <lightning-button label={labels.save} onclick={handleSave} variant="brand" disabled={_isSaving} class="slds-m-right_x-small"></lightning-button>
+                    <lightning-button label={labels.cancel} onclick={handleCancel} variant="neutral" disabled={_isSaving}></lightning-button>
+                </div>
+            </template>
+        </div>
+    </template>
+</template>

@@ -2736,188 +2736,12 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
         <label>Exibir</label>
     </customLabels>
     <customLabels>
-        <name>bgeBatchSelectedFields</name>
-        <label>Campos selecionados</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchAvailableFields</name>
-        <label>Campos disponíveis</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchBatchProcessSizeHelp</name>
-        <label>O número de registros a serem processados por vez em cada lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationDateRangeHelp</name>
-        <label>Digite o n.º de dias a contar da Data de doação a serem levados em conta na procura de uma Oport. ou um Pagamento corresp.. O NPPatch escolherá a Oport. ou o Pagamento corresp. cuja data se enquadre no número de dias e esteja mais próxima da Data de doação.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingBehaviorHelp</name>
-        <label>Define como o NPPatch deve lidar com Doações correspondentes.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingClassHelp</name>
-        <label>O nome do desenvolvedor de uma classe do Apex que implementa a interface BDI_IMatching para Doações. Deixe em branco para que o NPPatch faça a correspondência.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonationMatchingRuleHelp</name>
-        <label>Você pode corresponder com um dos campos Oportunidade ou Pagamento escolhidos para inclusão neste lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchDonorLookupInfo</name>
-        <label>Selecione os campos a serem usados para inserir doações neste lote. O Tipo de doador e uma pesquisa de Conta ou Contato sempre aparecerão. Você só verá campos aos quais tenha acesso.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchErrorRequiredFields</name>
-        <label>Os campos a seguir são necessários porque outros campos de seu objeto estão selecionados. Selecione-os antes de prosseguir:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchInfoWizard</name>
-        <label>Digitar informações do lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchOverviewWizard</name>
-        <label>Digitar informações do lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchPostProcessClassHelp</name>
-        <label>O nome do desenvolvedor de uma classe do Apex que implementa a interface BDI_IPostProcess para registros em lote do NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchProcessUsingScheduledJobHelp</name>
-        <label>Quando marcado, o lote será processado automaticamente com base no agendamento do trabalho associado.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchRunOpportunityRollupsWhileProcessingHelp</name>
-        <label>Quando marcado, o NPPatch calcula as totalizações dos doadores quando as doações são processadas. Se não for marcado, as totalizações de doadores serão calculadas durante o trabalho agendado noturno padrão. Observe que a marcação desta caixa de seleção pode retardar o processamento do lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchOverview</name>
-        <label>Informações do lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSelectFields</name>
-        <label>Selecionar campos</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSetBatchOptions</name>
-        <label>Definir opções de lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeBatchSetFieldOptions</name>
-        <label>Definir opções de campo</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeCopyBatchSetupButton</name>
-        <label>Copiar configuração do lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeCopyBatchSetupBatchNameAppend</name>
-        <label>COPIAR</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeDryRunComplete</name>
-        <label>Teste simulado em lote concluído</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeDonationSelectorHelp</name>
-        <label>Esta tela exibe Pagamentos não realizados e Oportunidades abertas que não têm pagamentos não realizados.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchFieldOptionsWarning</name>
-        <label>AVISO: há registros salvos neste lote. As alterações que você fizer não afetarão os registros existentes.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchFieldSelectionWarning</name>
-        <label>AVISO: há registros salvos neste lote. As alterações que você fizer não afetarão os registros existentes. Se você remover campos, esses campos não aparecerão mais na tela de entrada de doações, mas os dados não serão excluídos desses campos nos registros existentes. Portanto, recomendamos que você não remova campos.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeEditBatchOptionsWarning</name>
-        <label>AVISO: há registros salvos neste lote. As alterações que você fizer não afetarão os registros existentes. Não tentaremos corresponder os registros existentes usando configurações atualizadas de regras de correspondência de doações, a menos que esses registros sejam editados.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFLSError</name>
-        <label>Você não tem as permissões de campo necessárias. Entre em contato com o administrador do sistema para saber como obter as permissões necessárias.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormMatchingModalText</name>
-        <label>Selecione o registro que deseja atualizar.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNewDonationHelptext</name>
-        <label>Você está atualmente criando uma oportunidade.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNewPaymentHelptext</name>
-        <label>Você está atualmente aplicando um novo Pagamento à Oportunidade:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormNoneLink</name>
-        <label>Como alternativa, crie uma Oportunidade.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedOpportunityApplyNewPayment</name>
-        <label>Aplicando novo Pagamento</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedOpportunity</name>
-        <label>Atualizando esta Oportunidade</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormSelectedPayment</name>
-        <label>Pagamento selecionado</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateDonation</name>
-        <label>Atualizar sua seleção de doações</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateHelptext</name>
-        <label>No momento, você está atualizando:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdateOpportunity</name>
-        <label>Atualizar esta Oportunidade</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeFormUpdatePayment</name>
-        <label>Atualizar este Pagamento</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridAllGifts</name>
-        <label>Todas as doações</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridDonorType</name>
-        <label>Tipo de doador</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorFromDryRun</name>
-        <label>Há erros em uma ou mais entradas. Você precisa resolver todos os erros antes de processar o lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorConflictingGifts</name>
-        <label>Há doações conflitantes neste lote. Você precisará resolver os conflitos antes de poder processar o lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridErrorRequiredTotalsExpected</name>
-        <label>A contagem ou o total de doações não corresponde aos valores esperados para este lote. Os valores precisam corresponder antes de você poder processar o lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridGiftCountHeader</name>
-        <label>Doações inseridas</label>
-    </customLabels>
-    <customLabels>
         <name>bgeGridGiftDeleted</name>
         <label>Doações excluídas com sucesso.</label>
     </customLabels>
     <customLabels>
         <name>bgeGridGiftSaved</name>
         <label>Uma nova doação foi adicionada ao lote.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridGiftUpdated</name>
-        <label>Doações atualizadas com sucesso.</label>
     </customLabels>
     <customLabels>
         <name>bgeGridNoGiftsHeader</name>
@@ -2928,36 +2752,8 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
         <label>Insira uma nova doação e ela aparecerá aqui.</label>
     </customLabels>
     <customLabels>
-        <name>bgeGridTotalAmount</name>
-        <label>Valor total:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridTotalCount</name>
-        <label>Contagem total:</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeGridWarningRequiredTotalsExpected</name>
-        <label>Exigir correspondência de totais esperados está selecionado, mas os campos Contagem esperada de doações e Valor em lote total esperado estão em branco. Edite os detalhes do lote e desmarque Exigir correspondência de totais esperados ou adicione valores nos campos relacionados.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeBatchDryRun</name>
         <label>Teste simulado em lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeMatchingAlert</name>
-        <label>Este doador tem doações pendentes.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeMatchingSelect</name>
-        <label>Revisar doações</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNewBatch</name>
-        <label>Novo lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNewGift</name>
-        <label>Nova doação</label>
     </customLabels>
     <customLabels>
         <name>bgeProcessBatch</name>
@@ -2972,47 +2768,8 @@ Para verificar as configurações de Alocação de GAU, acesse Doações | Aloca
         <label>Não é possível editar esta doação conectada ao Elevate até você digitar novamente as informações de pagamento. Selecione Editar as informações de pagamento.</label>
     </customLabels>
     <customLabels>
-        <name>bgeRetirementWarningBody</name>
-        <label>Em 13 de julho de 2021, a Entrada de doações em lote será aposentada e não funcionará mais no NPPatch. Se você tiver algum lote em andamento no momento, ainda poderá acessar esses registros, mas não poderá processá-los usando a Entrada de doações em lote. Para garantir uma transição suave, ative e use a Entrada de doações mais recente antes de 13 de julho.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeRetirementWarningHeader</name>
-        <label>Desativação da Entrada de doações em lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNotSupportedHeader</name>
-        <label>Entrada de doações em lote não suportada</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeNotSupportedBody</name>
-        <label>A partir de 13 de julho de 2021, a Entrada de doações em lote não é mais suportada e foi substituída pela Entrada de doações. 
-            Se você tiver algum lote em andamento, ainda poderá acessar esses registros, mas não poderá processá-los usando a Entrada de doações em lote.
-            Entre em contato com o suporte se precisar acessar lotes em andamento.
-            Talvez seja melhor explorar a Entrada de doações como uma alternativa à Entrada de doações em lote.</label>
-    </customLabels>
-    <customLabels>
         <name>bgeTabHeader</name>
         <label>Entrada de doações em lote</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeHeader</name>
-        <label>Mapeamento de campo alterado</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeTitle</name>
-        <label>O lote inclui campos não mapeados</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeUnmappedFieldsNoticeMessageAdvancedMapping</name>
-        <label>Os seguintes campos estão incluídos neste Lote, mas seus Mapeamentos de campo foram excluídos: {0}. Para corrigir isso, acesse o Mapeamento avançado em Configurações do NPPatch e mapeie os campos novamente.</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeWizardShowAdvancedOptions</name>
-        <label>Mostrar opções avançadas</label>
-    </customLabels>
-    <customLabels>
-        <name>bgeWizardHideAdvancedOptions</name>
-        <label>Ocultar opções avançadas</label>
     </customLabels>
     <customLabels>
         <name>btnContinue</name>
@@ -8272,10 +8029,6 @@ Nota: a guia Configurações do NPPatch está visível no aplicativo Pacote de s
             <name>Contacts</name>
         </sections>
     </reportTypes>
-    <customTabs>
-        <name>Batch_Gift_Entry</name>
-        <label>Entrada de doações em lote</label>
-    </customTabs>
     <customTabs>
         <name>Contact_Merge</name>
         <label>Mesclagem de contato</label>

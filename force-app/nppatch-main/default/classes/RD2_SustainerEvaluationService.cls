@@ -34,7 +34,7 @@
 * @description Evaluate Sustainer
 */
 public inherited sharing class RD2_SustainerEvaluationService {
-    private static final String SUSTAINER_FIELD = UTIL_Namespace.StrTokenNSPrefix('Sustainer__c');
+    private static final String SUSTAINER_FIELD = UTIL_Namespace.prefixNamespace('Sustainer__c');
 
     @TestVisible
     private static RD2_QueryService queryService {
@@ -147,7 +147,7 @@ public inherited sharing class RD2_SustainerEvaluationService {
 
     private List<SObject> evaluateCurrentSustainerTypeAndReturnNotMatchingRecords(SustainerType state, List<SObject> sustainerCandidates) {
         List<SObject> needFurtherEvaluation = new List<SObject>();
-        String lookupReference = UTIL_Namespace.StrTokenNSPrefix('RecurringDonations__r');
+        String lookupReference = UTIL_Namespace.prefixNamespace('RecurringDonations__r');
         
         for (Integer i = 0; i < sustainerCandidates.size(); i++) {
             SObject candidate = sustainerCandidates[i];

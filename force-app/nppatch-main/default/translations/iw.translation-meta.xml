@@ -2455,180 +2455,8 @@
         <name>bgeActionView</name>
     </customLabels>
     <customLabels>
-        <label><!-- bgeBatchAvailableFields --></label>
-        <name>bgeBatchAvailableFields</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Used as field help text since help text is not upgradeable. --></label>
-        <name>bgeBatchBatchProcessSizeHelp</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Used as field help text since help text is not upgradeable. --></label>
-        <name>bgeBatchDonationDateRangeHelp</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Used as field help text since help text is not upgradeable. --></label>
-        <name>bgeBatchDonationMatchingBehaviorHelp</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Used as field help text since help text is not upgradeable. --></label>
-        <name>bgeBatchDonationMatchingClassHelp</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Used as field help text since help text is not upgradeable. --></label>
-        <name>bgeBatchDonationMatchingRuleHelp</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Explanation text for hidden lookup fields. --></label>
-        <name>bgeBatchDonorLookupInfo</name>
-    </customLabels>
-    <customLabels>
         <label><!-- Text for batch dry run in BGE. --></label>
         <name>bgeBatchDryRun</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Error shown when required fields are missing. --></label>
-        <name>bgeBatchErrorRequiredFields</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Header for Batch Info in Wizard prompting user entry --></label>
-        <name>bgeBatchInfoWizard</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Header for Batch Info in View Mode --></label>
-        <name>bgeBatchOverview</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Header for Batch Info in Wizard --></label>
-        <name>bgeBatchOverviewWizard</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Used as field help text since help text is not upgradeable. --></label>
-        <name>bgeBatchPostProcessClassHelp</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Used as field help text since help text is not upgradeable. --></label>
-        <name>bgeBatchProcessUsingScheduledJobHelp</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Used as field help text since help text is not upgradeable. --></label>
-        <name>bgeBatchRunOpportunityRollupsWhileProcessingHelp</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Header and text for Field Selection --></label>
-        <name>bgeBatchSelectFields</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- bgeBatchActiveFields --></label>
-        <name>bgeBatchSelectedFields</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Header for Batch Options --></label>
-        <name>bgeBatchSetBatchOptions</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Header for Batch Field Options --></label>
-        <name>bgeBatchSetFieldOptions</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Button text for copying existing Batch setup to a new Batch. --></label>
-        <name>bgeCopyBatchSetupBatchNameAppend</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Button text for copying existing Batch setup to a new Batch. --></label>
-        <name>bgeCopyBatchSetupButton</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Help text to appear in Donation Selector modal in BGE. --></label>
-        <name>bgeDonationSelectorHelp</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Success message when batch dry run completes in BGE. --></label>
-        <name>bgeDryRunComplete</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Warning message for Field Options step of BGE Config Wizard --></label>
-        <name>bgeEditBatchFieldOptionsWarning</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Warning message for Select Fields step of BGE Config Wizard --></label>
-        <name>bgeEditBatchFieldSelectionWarning</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Warning message for Batch Options step of BGE Config Wizard --></label>
-        <name>bgeEditBatchOptionsWarning</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Label that appears when user does not pass FLS check in BGE --></label>
-        <name>bgeFLSError</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Header text to prompt user to select a donation to update --></label>
-        <name>bgeFormMatchingModalText</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Help text to indicate user is creating a new opportunity --></label>
-        <name>bgeFormNewDonationHelptext</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Help text to indicate user is applying a new payment to an opportunity --></label>
-        <name>bgeFormNewPaymentHelptext</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Link to create a new opportunity --></label>
-        <name>bgeFormNoneLink</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Denotes donation selected in the BGE UI entry form. --></label>
-        <name>bgeFormSelectedOpportunity</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Denotes donation selected in the BGE UI entry form will receive a new payment. --></label>
-        <name>bgeFormSelectedOpportunityApplyNewPayment</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Denotes donation selected in the BGE UI entry form. --></label>
-        <name>bgeFormSelectedPayment</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Link text to change selected donation --></label>
-        <name>bgeFormUpdateDonation</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Help text to indicate that user has selected a donation --></label>
-        <name>bgeFormUpdateHelptext</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Button text to select an opportunity to update in BGE --></label>
-        <name>bgeFormUpdateOpportunity</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Button text to select a payment to update in BGE --></label>
-        <name>bgeFormUpdatePayment</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Label for Gift Entry Grid --></label>
-        <name>bgeGridAllGifts</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Label for Donor Type picklist --></label>
-        <name>bgeGridDonorType</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Message preventing user from processing batch if there are conflicting gifts. --></label>
-        <name>bgeGridErrorConflictingGifts</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Message preventing user from processing batch if there are errors. --></label>
-        <name>bgeGridErrorFromDryRun</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Message preventing user from processing batch if totals don&apos;t match expected --></label>
-        <name>bgeGridErrorRequiredTotalsExpected</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Label to give context to the progress bar. --></label>
-        <name>bgeGridGiftCountHeader</name>
     </customLabels>
     <customLabels>
         <label><!-- Success message when gift is deleted. --></label>
@@ -2639,52 +2467,12 @@
         <name>bgeGridGiftSaved</name>
     </customLabels>
     <customLabels>
-        <label><!-- Success message when gift is updated. --></label>
-        <name>bgeGridGiftUpdated</name>
-    </customLabels>
-    <customLabels>
         <label><!-- Body message when no gifts are associated with batch. --></label>
         <name>bgeGridNoGiftsBody</name>
     </customLabels>
     <customLabels>
         <label><!-- Header message when no gifts are associated with batch. --></label>
         <name>bgeGridNoGiftsHeader</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Total amount matching expected amount. --></label>
-        <name>bgeGridTotalAmount</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Total count versus expected count. --></label>
-        <name>bgeGridTotalCount</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Message warning user if totals don&apos;t match expected --></label>
-        <name>bgeGridWarningRequiredTotalsExpected</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Alerts user that there are matched donations --></label>
-        <name>bgeMatchingAlert</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Label for Select Open Donation text and modal header --></label>
-        <name>bgeMatchingSelect</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Button to create a new batch. --></label>
-        <name>bgeNewBatch</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Label for Gift Entry Form --></label>
-        <name>bgeNewGift</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Batch Gift Entry --></label>
-        <name>bgeNotSupportedBody</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Batch Gift Entry --></label>
-        <name>bgeNotSupportedHeader</name>
     </customLabels>
     <customLabels>
         <label><!-- Button to process a batch. --></label>
@@ -2695,36 +2483,8 @@
         <name>bgeProcessBatchAndPayments</name>
     </customLabels>
     <customLabels>
-        <label><!-- Explanation of Batch Gift Entry retirement &amp; recommendations --></label>
-        <name>bgeRetirementWarningBody</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Header for warning about Batch Gift Entry retiring --></label>
-        <name>bgeRetirementWarningHeader</name>
-    </customLabels>
-    <customLabels>
         <label><!-- Header used for Batch Gift Entry tab --></label>
         <name>bgeTabHeader</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Header used for the Batch Gift Entry tab unmapped fields notice. --></label>
-        <name>bgeUnmappedFieldsNoticeHeader</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Message for Batch Gift Entry unmapped fields when Advanced Mapping enabled. --></label>
-        <name>bgeUnmappedFieldsNoticeMessageAdvancedMapping</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Title used for the Batch Gift Entry tab unmapped fields notice. --></label>
-        <name>bgeUnmappedFieldsNoticeTitle</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Label for link to hide advanced options in the Wizard --></label>
-        <name>bgeWizardHideAdvancedOptions</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Label for link to show advanced options in the Wizard --></label>
-        <name>bgeWizardShowAdvancedOptions</name>
     </customLabels>
     <customLabels>
         <label><!-- button label to Continue an action --></label>

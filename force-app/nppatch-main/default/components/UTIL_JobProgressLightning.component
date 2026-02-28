@@ -1,6 +1,6 @@
 <apex:component controller="UTIL_JobProgress_CTRL" selfClosing="true">
-    <apex:includeScript value="{!URLFOR($Resource.CumulusStaticResources, 'transparency/transparency.min.js')}"/>
-    <apex:includeScript value="{!URLFOR($Resource.CumulusStaticResources, 'moment/moment.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.NPPatchStaticResources, 'transparency/transparency.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.NPPatchStaticResources, 'moment/moment.min.js')}"/>
 
     <apex:attribute name="cNumberOfJobs" type="Integer" assignTo="{!numberOfJobs}" default="20" description="The number of batch jobs to display in the table."/>
     <apex:attribute name="strBatchComponentLabel" type="String" assignTo="{!batchComponentLabel}" default="Batch Apex Jobs" description="The label of the progress bar section."/>

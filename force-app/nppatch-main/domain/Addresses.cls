@@ -1036,7 +1036,7 @@ public inherited sharing class Addresses extends fflib_SObjects2 {
                 Address__c addr = mapAddressesByAcctId.get(objId);
                 addr.addError(error.Full_Message__c);
                 UTIL_Debug.debug(LoggingLevel.WARN, '**** Address: ' + addr + ' message: ' + error.Full_Message__c);
-            } else if (UTIL_Describe.isObjectIdThisType(objId, UTIL_Namespace.StrTokenNSPrefix('Address__c'))) {
+            } else if (UTIL_Describe.isObjectIdThisType(objId, UTIL_Namespace.prefixNamespace('Address__c'))) {
                 Address__c addr = mapAddressesById.get(objId);
                 addr.addError(error.Full_Message__c);
                 UTIL_Debug.debug(LoggingLevel.WARN, '**** Address: ' + addr + ' message: ' + error.Full_Message__c);

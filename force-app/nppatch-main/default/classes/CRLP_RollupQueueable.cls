@@ -119,7 +119,7 @@ public class CRLP_RollupQueueable implements System.Queueable {
         Set<Id> parentIds = new Set<Id>(summaryRecordIds);
 
         String soql = CRLP_Query_SEL.buildObjectQueryForRollup(objType) + ' WHERE Id IN :parentIds';
-        String numClosedOpps = UTIL_Namespace.StrTokenNSPrefix('NumberOfClosedOpps__c');
+        String numClosedOpps = UTIL_Namespace.prefixNamespace('NumberOfClosedOpps__c');
         if ((objType == Account.SObjectType || objType == Contact.SObjectType)
                 && !soql.contains(numClosedOpps)) {
             soql = soql.replace('SELECT ','SELECT ' + numClosedOpps + ',');
@@ -139,8 +139,8 @@ public class CRLP_RollupQueueable implements System.Queueable {
                 maxOppsToAllow = maxOppsToAllow / 2;
             }
             for (Integer n = 0; n < summaryRecords.size(); n++) {
-                if (summaryRecords[n].get(UTIL_Namespace.StrTokenNSPrefix('NumberOfClosedOpps__c')) != null &&
-                        (Double) summaryRecords[n].get(UTIL_Namespace.StrTokenNSPrefix('NumberOfClosedOpps__c')) > maxOppsToAllow) {
+                if (summaryRecords[n].get(UTIL_Namespace.prefixNamespace('NumberOfClosedOpps__c')) != null &&
+                        (Double) summaryRecords[n].get(UTIL_Namespace.prefixNamespace('NumberOfClosedOpps__c')) > maxOppsToAllow) {
                     summaryRecords.remove(n);
                     n--;
                 }
@@ -164,7 +164,7 @@ public class CRLP_RollupQueueable implements System.Queueable {
 
             Map<Id, List<SObject>> paymentsByOpp = new Map<Id, List<SObject>>();
             if (includeChildPayments && (objType == Account.SObjectType || objType == Contact.SObjectType)) {
-                paymentsByOpp = CRLP_RollupProcessor_SVC.splitChildRecordsInMapByParentId(detailRecords, UTIL_Namespace.StrTokenNSPrefix('OppPayment__r'));
+                paymentsByOpp = CRLP_RollupProcessor_SVC.splitChildRecordsInMapByParentId(detailRecords, UTIL_Namespace.prefixNamespace('OppPayment__r'));
             }
 
             // Need to pass in the Rollup Type, Rollup Defnitions if they're available along

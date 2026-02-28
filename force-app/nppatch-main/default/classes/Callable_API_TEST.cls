@@ -130,34 +130,14 @@ private with sharing class Callable_API_TEST {
     }
 
     @IsTest
-    private static void shouldCallEnableGiftEntryOnAction() {
+    private static void shouldReturnNullForEnableGiftEntryAction() {
         Callable_API callableApi = new Callable_API();
-        GiftEntryEnablementServiceMock giftEntryEnablementServiceMock = new GiftEntryEnablementServiceMock();
-
-        callableApi.giftEntryEnablementService = stubFor(giftEntryEnablementServiceMock);
 
         Test.startTest();
-            callableApi.call(GIFT_ENTRY_ACTION, null);
+            Object result = callableApi.call(GIFT_ENTRY_ACTION, null);
         Test.stopTest();
 
-        System.assert(giftEntryEnablementServiceMock.enableGiftEntryCalled, 'The enable gift entry service method ' +
-            'should be called.');
-    }
-
-    @IsTest
-    private static void shouldNotCallEnableGiftEntryIfAlreadyEnabled() {
-        GiftEntryEnablementServiceMock giftEntryEnablementServiceMock = new GiftEntryEnablementServiceMock();
-        giftEntryEnablementServiceMock.setEnabled();
-
-        Callable_API callableApi = new Callable_API();
-        callableApi.giftEntryEnablementService = stubFor(giftEntryEnablementServiceMock);
-
-        Test.startTest();
-            callableApi.call(ADVANCED_MAPPING_ACTION, null);
-        Test.stopTest();
-
-        System.assert(!giftEntryEnablementServiceMock.enableGiftEntryCalled, 'The enable gift entry service ' +
-                'method should not be called.');
+        System.assertEquals(null, result, 'Gift Entry is always on; action should return null.');
     }
 
     @isTest
@@ -233,37 +213,4 @@ private with sharing class Callable_API_TEST {
             'Partial Refund Amount should be deducted from the opportunity amount');
     }
 
-    private static GiftEntryEnablementService stubFor(GiftEntryEnablementServiceMock giftEntryEnablementServiceMock) {
-        return (GiftEntryEnablementService) Test.createStub(
-                GiftEntryEnablementService.class, giftEntryEnablementServiceMock);
-    }
-
-
-    private class GiftEntryEnablementServiceMock implements StubProvider {
-        Boolean enableGiftEntryCalled = false;
-        Boolean isEnabled = false;
-
-        public void setEnabled() {
-            isEnabled = true;
-        }
-
-        public Object handleMethodCall(
-                Object stubbedObject,
-                String stubbedMethodName,
-                Type returnType,
-                List<Type> listOfParamTypes,
-                List<String> listOfParamNames,
-                List<Object> listOfArgs) {
-
-            switch on (stubbedMethodName) {
-                when 'enable' {
-                    enableGiftEntryCalled = true;
-                }
-                when 'isEnabled' {
-                    return isEnabled;
-                }
-            }
-            return null;
-        }
-    }
 }

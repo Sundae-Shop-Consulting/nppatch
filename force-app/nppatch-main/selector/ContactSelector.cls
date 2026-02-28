@@ -67,7 +67,7 @@ public inherited sharing class ContactSelector {
         //return them in the order of household and then household naming order
         //we use dynamic soql so we can include all contact fields, since custom naming may refer to any field.
         String strSoql = getQueryForContactNamingFields();
-        String strHHId = UTIL_Namespace.StrTokenNSPrefix('HHId__c');
+        String strHHId = UTIL_Namespace.prefixNamespace('HHId__c');
         strSoql += ' WHERE AccountId IN :queryHHIds OR Household__c IN :queryHHIds ' +
                 ' ORDER BY ' + strHHId + ', Household_Naming_Order__c ASC NULLS LAST, Primary_Contact__c DESC, CreatedDate ';
         return strSoql;
@@ -83,9 +83,9 @@ public inherited sharing class ContactSelector {
         if (queryForContactNamingFields == null) {
             //we use dynamic soql so we can include all contact fields, since custom naming may refer to any field.
             String[] selectFields = new String[]{
-                    'Id', UTIL_Namespace.StrTokenNSPrefix('HHId__c'),
-                    UTIL_Namespace.StrTokenNSPrefix('Naming_Exclusions__c'),
-                    UTIL_Namespace.StrTokenNSPrefix('Deceased__c')
+                    'Id', UTIL_Namespace.prefixNamespace('HHId__c'),
+                    UTIL_Namespace.prefixNamespace('Naming_Exclusions__c'),
+                    UTIL_Namespace.prefixNamespace('Deceased__c')
             };
             selectFields.addAll(
                     new HouseholdNamingService()
@@ -121,7 +121,7 @@ public inherited sharing class ContactSelector {
         return new UTIL_Query()
                 .withSelectFields(selectFields)
                 .withFrom(String.valueOf(Contact.SObjectType))
-                .withWhere('Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEM_AccountType__c') + ' = :householdAccountType')
+                .withWhere('Account.' + UTIL_Namespace.prefixNamespace('SYSTEM_AccountType__c') + ' = :householdAccountType')
                 .withWhere('AccountId != Null')
                 .withWhere('AccountId IN :householdAccountIds')
                 .build();
@@ -129,13 +129,13 @@ public inherited sharing class ContactSelector {
 
     private static List<String> contactAddressFields() {
         List<String> selectFields = new List<String>{
-                'Id', UTIL_Namespace.StrTokenNSPrefix('is_Address_Override__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Current_Address__c'), 'AccountId',
+                'Id', UTIL_Namespace.prefixNamespace('is_Address_Override__c'),
+                UTIL_Namespace.prefixNamespace('Current_Address__c'), 'AccountId',
                 'MailingStreet', 'MailingCity', 'MailingState',
                 'MailingPostalCode', 'MailingCountry', 'MailingLatitude',
                 'MailingLongitude',
-                UTIL_Namespace.StrTokenNSPrefix('Primary_Address_Type__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Undeliverable_Address__c'),
+                UTIL_Namespace.prefixNamespace('Primary_Address_Type__c'),
+                UTIL_Namespace.prefixNamespace('Undeliverable_Address__c'),
                 'LastName'
         };
 
@@ -181,15 +181,15 @@ public inherited sharing class ContactSelector {
 
     private List<String> getContactSelectionFields() {
         List<String> selectFields = new List<String>{
-                'Id', UTIL_Namespace.StrTokenNSPrefix('Private__c'), 'AccountId',
-                'Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEMIsIndividual__c'),
-                'Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEM_AccountType__c'),
-                'Account.' + UTIL_Namespace.StrTokenNSPrefix('One2OneContact__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Organization_Type__c'), 'Account.Name',
-                UTIL_Namespace.StrTokenNSPrefix('Deceased__c'),
+                'Id', UTIL_Namespace.prefixNamespace('Private__c'), 'AccountId',
+                'Account.' + UTIL_Namespace.prefixNamespace('SYSTEMIsIndividual__c'),
+                'Account.' + UTIL_Namespace.prefixNamespace('SYSTEM_AccountType__c'),
+                'Account.' + UTIL_Namespace.prefixNamespace('One2OneContact__c'),
+                UTIL_Namespace.prefixNamespace('Organization_Type__c'), 'Account.Name',
+                UTIL_Namespace.prefixNamespace('Deceased__c'),
                 'FirstName', 'LastName', 'OwnerId', 'Salutation',
-                UTIL_Namespace.StrTokenNSPrefix('Naming_Exclusions__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Household_Naming_Order__c'),
+                UTIL_Namespace.prefixNamespace('Naming_Exclusions__c'),
+                UTIL_Namespace.prefixNamespace('Household_Naming_Order__c'),
                 'MailingStreet', 'MailingCity', 'MailingState', 'MailingPostalCode',
                 'MailingCountry', 'MailingLatitude', 'MailingLongitude',
                 'OtherStreet', 'OtherCity', 'OtherState', 'OtherPostalCode',

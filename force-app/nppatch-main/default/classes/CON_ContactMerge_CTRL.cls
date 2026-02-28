@@ -243,7 +243,7 @@ public with sharing class CON_ContactMerge_CTRL {
         get {
             if (drsFieldNames == null) {
                 drsFieldNames = UTIL_Describe.listStrFromFieldSet
-                    ('DuplicateRecordSet', UTIL_Namespace.StrTokenNSPrefix('ContactMergeDRS'));
+                    ('DuplicateRecordSet', UTIL_Namespace.prefixNamespace('ContactMergeDRS'));
                 Set<String> setStr = new Set<String>(drsfieldNames);
                 // now add additional fields we know we need
                 setStr.add('Id');
@@ -587,7 +587,7 @@ public with sharing class CON_ContactMerge_CTRL {
             // Only select the NPSP namespaced field and ignore the same field without namespace
             if (!String.isBlank(UTIL_Namespace.getNamespace()) && 
                 !fieldName.startsWith(UTIL_Namespace.getNamespace()+'__') &&
-                contactFields.containsKey(UTIL_Namespace.StrTokenNSPrefix(fieldName))) {
+                contactFields.containsKey(UTIL_Namespace.prefixNamespace(fieldName))) {
 
                 continue;
             }
@@ -893,8 +893,8 @@ public with sharing class CON_ContactMerge_CTRL {
     */
     private Boolean isNPSPHiddenField(String strField) {
         List<String> listStrField = new List<String>{
-            UTIL_Namespace.StrTokenNSPrefix('SystemIsIndividual__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Current_Address__c')
+            UTIL_Namespace.prefixNamespace('SystemIsIndividual__c'),
+            UTIL_Namespace.prefixNamespace('Current_Address__c')
         };
 
         for (String strF : listStrField) {

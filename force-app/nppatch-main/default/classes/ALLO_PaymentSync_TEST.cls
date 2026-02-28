@@ -1072,7 +1072,7 @@ private with sharing  class ALLO_PaymentSync_TEST {
     * @return List<Allocation__c> A list of all Allocations
     **********************************************************************************************************/
     private static List<Allocation__c> getAllocationsOrderByAmount() {
-        return Database.query(getAllocationsQuery().build() + ' ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' NULLS LAST, ' + UTIL_Namespace.StrTokenNSPrefix('Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('General_Accounting_Unit__c'));
+        return Database.query(getAllocationsQuery().build() + ' ORDER BY ' + UTIL_Namespace.prefixNamespace('Opportunity__c') + ' NULLS LAST, ' + UTIL_Namespace.prefixNamespace('Amount__c') + ', ' + UTIL_Namespace.prefixNamespace('General_Accounting_Unit__c'));
     }
 
     /*********************************************************************************************************
@@ -1083,14 +1083,14 @@ private with sharing  class ALLO_PaymentSync_TEST {
         return new UTIL_Query()
             .withSelectFields(new String[]{
                 'Name',
-                UTIL_Namespace.StrTokenNSPrefix('Opportunity__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Payment__c'),
-                UTIL_Namespace.StrTokenNSPrefix('General_Accounting_Unit__c'),
-                UTIL_Namespace.StrTokenNSPrefix('General_Accounting_Unit__r') + '.Name',
-                UTIL_Namespace.StrTokenNSPrefix('Amount__c'),
-                UTIL_Namespace.StrTokenNSPrefix('Percent__c')
+                UTIL_Namespace.prefixNamespace('Opportunity__c'),
+                UTIL_Namespace.prefixNamespace('Payment__c'),
+                UTIL_Namespace.prefixNamespace('General_Accounting_Unit__c'),
+                UTIL_Namespace.prefixNamespace('General_Accounting_Unit__r') + '.Name',
+                UTIL_Namespace.prefixNamespace('Amount__c'),
+                UTIL_Namespace.prefixNamespace('Percent__c')
             })
-            .withFrom(UTIL_Namespace.StrTokenNSPrefix('Allocation__c'));
+            .withFrom(UTIL_Namespace.prefixNamespace('Allocation__c'));
     }
 
 }

@@ -1,0 +1,224 @@
+<!--
+  - /*
+  -  * Copyright (c) 2020, salesforce.com, inc.
+  -  * All rights reserved.
+  -  * SPDX-License-Identifier: BSD-3-Clause
+  -  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+  -  */
+  -->
+
+<template>
+    <div class="style-target"></div>
+    <div class="slds-var-p-top_small hideHelpText">
+        <lightning-record-edit-form
+            record-id={recordId}
+            object-api-name={serviceDeliveryObject}
+        >
+            <lightning-layout class="slds-grid_vertical-align-center">
+                <lightning-layout-item size="10">
+                    <lightning-layout multiple-rows="true">
+                        <lightning-layout-item size="12">
+                            <lightning-layout multiple-rows="true">
+                                <template for:each={fieldSet} for:item="field">
+                                    <lightning-layout-item
+                                        key={field.apiName}
+                                        padding="horizontal-small"
+                                        size="12"
+                                        small-device-size="6"
+                                        medium-device-size="4"
+                                        large-device-size={field.size}
+                                        class="slds-var-m-bottom_medium"
+                                    >
+                                        <div class="sd-input" data-field={field.apiName}>
+                                            <template if:true={field.isCombobox}>
+                                                <div
+                                                    class="slds-form-element__label slds-truncate"
+                                                    title={field.label}
+                                                >
+                                                    {field.label}
+                                                </div>
+                                                <lightning-combobox
+                                                    aria-label={field.label}
+                                                    name={field.apiName}
+                                                    data-name={field.apiName}
+                                                    onchange={handleComboChange}
+                                                    placeholder={field.placeholder}
+                                                    options={field.options}
+                                                    disabled={field.disabled}
+                                                    value={field.value}
+                                                    variant="label-hidden"
+                                                    required={field.isRequired}
+                                                    if:true={field.isAccessible}
+                                                >
+                                                </lightning-combobox>
+                                            </template>
+                                            <template if:false={field.isCombobox}>
+                                                <template if:true={field.isQuantityField}>
+                                                    <div
+                                                        class="slds-form-element__label slds-truncate"
+                                                        title={unitOfMeasureValue}
+                                                    >
+                                                        {unitOfMeasureValue}
+                                                    </div>
+                                                    <lightning-input-field
+                                                        aria-label={field.label}
+                                                        data-name={field.apiName}
+                                                        field-name={field.apiName}
+                                                        onchange={handleInputChange}
+                                                        disabled={field.disabled}
+                                                        value={field.value}
+                                                        variant="label-hidden"
+                                                        required={field.isRequired}
+                                                        class="hideHelpText"
+                                                        if:true={field.isAccessible}
+                                                    ></lightning-input-field>
+                                                </template>
+                                                <template
+                                                    if:false={field.isQuantityField}
+                                                >
+                                                    <div
+                                                        class="slds-form-element__label slds-truncate"
+                                                        title={field.label}
+                                                    >
+                                                        {field.label}
+                                                    </div>
+                                                    <lightning-input-field
+                                                        aria-label={field.label}
+                                                        data-name={field.apiName}
+                                                        field-name={field.apiName}
+                                                        onchange={handleInputChange}
+                                                        disabled={field.disabled}
+                                                        value={field.value}
+                                                        variant="label-hidden"
+                                                        required={field.isRequired}
+                                                        if:true={field.isAccessible}
+                                                    ></lightning-input-field>
+                                                </template>
+                                            </template>
+                                            <div
+                                                class="slds-text-color_error"
+                                                if:false={field.isAccessible}
+                                                aria-live={labels.fieldAccessError}
+                                            >
+                                                {labels.fieldAccessError}
+                                            </div>
+                                        </div>
+                                    </lightning-layout-item>
+                                </template>
+                            </lightning-layout>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12">
+                            <lightning-layout>
+                                <template if:true={isError}>
+                                    <lightning-layout-item
+                                        size="12"
+                                        padding="around-small"
+                                    >
+                                        <div
+                                            class="slds-text-color_error"
+                                            key={error}
+                                            aria-live={errorMessage}
+                                        >
+                                            {errorMessage}
+                                        </div>
+                                    </lightning-layout-item>
+                                </template>
+                            </lightning-layout>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-layout-item>
+                <lightning-layout-item size="2" class="slds-var-p-left_small">
+                    <lightning-layout>
+                        <lightning-layout-item size="8" class="slds-var-p-top_xx-small">
+                            <template if:true={isSaving}>
+                                <div
+                                    class="slds-is-relative slds-var-p-top_large slds-text-align_right slds-var-m-left_x-large"
+                                    role="alert"
+                                >
+                                    <lightning-spinner
+                                        alternative-text={labels.saving}
+                                        size="small"
+                                    ></lightning-spinner>
+                                </div>
+                            </template>
+                            <template if:true={showSavedIcon}>
+                                <lightning-icon
+                                    tabindex="0"
+                                    icon-name="utility:success"
+                                    alternative-text={labels.saved}
+                                    size="x-small"
+                                    variant="success"
+                                    title={labels.saved}
+                                ></lightning-icon>
+                                <span class="slds-var-p-left_small">{labels.saved}</span>
+                            </template>
+                            <template if:true={showModifiedIcon}>
+                                <lightning-icon
+                                    tabindex="0"
+                                    icon-name="utility:warning"
+                                    alternative-text={labels.edited}
+                                    size="x-small"
+                                    variant="warning"
+                                    title={labels.edited}
+                                ></lightning-icon>
+                                <span class="slds-var-p-left_small">{labels.edited}</span>
+                            </template>
+                            <template if:true={isError}>
+                                <lightning-icon
+                                    tabindex="0"
+                                    icon-name="utility:error"
+                                    alternative-text={labels.error}
+                                    size="x-small"
+                                    variant="error"
+                                    title={errorMessage}
+                                ></lightning-icon>
+                                <span class="slds-var-p-left_small">{labels.error}</span>
+                            </template>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-text-align_right" size="4">
+                            <lightning-button-icon
+                                icon-name="utility:delete"
+                                alternative-text={labels.deleteLabel}
+                                class="slds-var-m-horizontal_x-small"
+                                onclick={handleShowModal}
+                                disabled={isDeleteDisabled}
+                            >
+                            </lightning-button-icon>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <lightning-button
+                class="slds-var-p-left_medium sd-submit slds-hide"
+                variant="neutral"
+                type="submit"
+                name="save"
+            >
+            </lightning-button>
+        </lightning-record-edit-form>
+    </div>
+    <c-modal header={labels.confirmDelete}
+        >{labels.confirmDeleteMessage}
+        <div slot="footer">
+            <lightning-button
+                label={labels.cancel}
+                variant="neutral"
+                onclick={handleCloseModal}
+            ></lightning-button>
+            <lightning-button
+                label={labels.deleteLabel}
+                variant="brand"
+                onclick={handleDelete}
+                class="slds-var-p-left_medium"
+            ></lightning-button>
+        </div>
+    </c-modal>
+    <template if:true={contactId}>
+        <c-new-program-engagement
+            contact-id={contactId}
+            onsave={handleSaveNewPE}
+            oncancel={handleCancelNewPE}
+        ></c-new-program-engagement>
+    </template>
+</template>

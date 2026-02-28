@@ -625,8 +625,8 @@ public class UTIL_UnitTestData_TEST {
             batch.Name = 'Test Batch'+i;
             batch.Batch_Process_Size__c = batchProcessSize;
             batch.Contact_Matching_Rule__c = 'Firstname,Lastname,Email';
-            batch.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                    UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+            batch.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                    UTIL_Namespace.prefixNamespace('Donation_Date__c');
             batch.Donation_Matching_Behavior__c = BDI_DataImport_API.BestMatchOrCreate;
             batch.Process_Using_Scheduled_Job__c = true;
             batch.GiftBatch__c = true;

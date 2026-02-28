@@ -218,12 +218,12 @@ private class HH_Container_TEST {
             'Id', 'Household_Naming_Order__c',
             'FirstName', 'LastName', 'Salutation',
             'Name', 'Naming_Exclusions__c', 'AccountId',
-            UTIL_Namespace.StrTokenNSPrefix('HHId__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Exclude_from_Household_Name__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Exclude_from_Household_Formal_Greeting__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Exclude_from_Household_Informal_Greeting__c'),
-            UTIL_Namespace.StrTokenNSPrefix('is_Address_Override__c'),
-            UTIL_Namespace.StrTokenNSPrefix('Current_Address__c'),
+            UTIL_Namespace.prefixNamespace('HHId__c'),
+            UTIL_Namespace.prefixNamespace('Exclude_from_Household_Name__c'),
+            UTIL_Namespace.prefixNamespace('Exclude_from_Household_Formal_Greeting__c'),
+            UTIL_Namespace.prefixNamespace('Exclude_from_Household_Informal_Greeting__c'),
+            UTIL_Namespace.prefixNamespace('is_Address_Override__c'),
+            UTIL_Namespace.prefixNamespace('Current_Address__c'),
             'Primary_Address_Type__c','MailingStreet', 'MailingCity',
             'MailingState', 'MailingPostalCode', 'MailingCountry',
             'MailingLatitude', 'MailingLongitude', 'CreatedDate'
@@ -720,7 +720,7 @@ private class HH_Container_TEST {
 
         System.runAs(adminUser) {
             initTestData();
-            String undeliverableField = UTIL_Namespace.StrTokenNSPrefix('Undeliverable__c');
+            String undeliverableField = UTIL_Namespace.prefixNamespace('Undeliverable__c');
             Map<String, String> fieldLabels = HH_Container_LCTRL.getFieldLabels();
             System.assert(!String.isBlank(fieldLabels.get(undeliverableField)), 'The Label should not be blank');
 
@@ -1005,7 +1005,7 @@ private class HH_Container_TEST {
             'Contact should be deletable');
         System.assertEquals(true, HH_Container_LCTRL.isDeletable('Account'), 
             'Account should be deletable');
-        System.assertEquals(true, HH_Container_LCTRL.isDeletable(UTIL_Namespace.StrTokenNSPrefix('Address__c')), 
+        System.assertEquals(true, HH_Container_LCTRL.isDeletable(UTIL_Namespace.prefixNamespace('Address__c')), 
             'Address__c should be deletable');
         
         // Test with non-deletable objects (if any exist in the org)

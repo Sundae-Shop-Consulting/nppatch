@@ -236,7 +236,6 @@ public with sharing class STG_PanelPaymentMapping_CTRL extends STG_Panel {
             return null;
         }
 
-        STG_SettingsManager_CTRL.idPanelCurrent = idPanel();
         if (pfmIdDelete != null) {
            Payment_Field_Mapping_Settings__c pfm = new Payment_Field_Mapping_Settings__c(Id = pfmIdDelete);
            delete pfm;
