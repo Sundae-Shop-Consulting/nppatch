@@ -52,8 +52,8 @@ private with sharing class LVL_LevelEdit_TEST {
         LVL_LevelEdit_CTRL ctrl = new LVL_LevelEdit_CTRL(stdCtrl);
         ctrl.lvl.Name = 'test level';
         ctrl.lvl.Target__c = 'Contact';
-        ctrl.lvl.Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c');
-        ctrl.lvl.Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c');
+        ctrl.lvl.Source_Field__c = UTIL_Namespace.prefixNamespace('TotalOppAmount__c');
+        ctrl.lvl.Level_Field__c = UTIL_Namespace.prefixNamespace('LastMembershipLevel__c');
         ctrl.lvl.Minimum_Amount__c = 100;
         ctrl.lvl.Maximum_Amount__c = 200;
         
@@ -76,8 +76,8 @@ private with sharing class LVL_LevelEdit_TEST {
         LVL_LevelEdit_CTRL ctrl = new LVL_LevelEdit_CTRL(stdCtrl);
         ctrl.lvl.Name = 'test level1';
         ctrl.lvl.Target__c = 'Contact';
-        ctrl.lvl.Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c');
-        ctrl.lvl.Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c');
+        ctrl.lvl.Source_Field__c = UTIL_Namespace.prefixNamespace('TotalOppAmount__c');
+        ctrl.lvl.Level_Field__c = UTIL_Namespace.prefixNamespace('LastMembershipLevel__c');
         ctrl.lvl.Minimum_Amount__c = 100;
         ctrl.lvl.Maximum_Amount__c = 200;
         
@@ -106,8 +106,8 @@ private with sharing class LVL_LevelEdit_TEST {
         LVL_LevelEdit_CTRL ctrl = new LVL_LevelEdit_CTRL(stdCtrl);
         ctrl.lvl.Name = 'test level';
         ctrl.lvl.Target__c = 'Contact';
-        ctrl.lvl.Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c');
-        ctrl.lvl.Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c');
+        ctrl.lvl.Source_Field__c = UTIL_Namespace.prefixNamespace('TotalOppAmount__c');
+        ctrl.lvl.Level_Field__c = UTIL_Namespace.prefixNamespace('LastMembershipLevel__c');
         
         Test.startTest();
         system.assertNotEquals(0, ctrl.listSOSourceFields.size());
@@ -133,8 +133,8 @@ private with sharing class LVL_LevelEdit_TEST {
         Level__c lvl = new Level__c(
             Name = 'test level',
             Target__c = 'Contact',
-            Source_Field__c = UTIL_Namespace.StrTokenNSPrefix('TotalOppAmount__c'),
-            Level_Field__c = UTIL_Namespace.StrTokenNSPrefix('LastMembershipLevel__c'),
+            Source_Field__c = UTIL_Namespace.prefixNamespace('TotalOppAmount__c'),
+            Level_Field__c = UTIL_Namespace.prefixNamespace('LastMembershipLevel__c'),
             Minimum_Amount__c = 100,
             Maximum_Amount__c = 200
         );

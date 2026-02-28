@@ -116,15 +116,15 @@ public with sharing class OPP_StageMappingCMT {
     ********************************************************************************************************/
     public static Metadata.CustomMetadata createCustomMetadata(String oppStage, String oppState) {        
         Metadata.CustomMetadata customMd = new Metadata.CustomMetadata();
-        String mdTypeName = UTIL_Namespace.StrTokenNSPrefix(OPP_STAGE_TO_STATE_METADATA_NAME);
+        String mdTypeName = UTIL_Namespace.prefixNamespace(OPP_STAGE_TO_STATE_METADATA_NAME);
 
         customMd.fullName =  mdTypeName + '.' + oppState + '_' + datetime.now().getTime();
         customMd.label = oppState + '_' + datetime.now().getTime();
         customMd.protected_x = false;
 
         Map<String, Object> fieldMapping = new Map<String, Object>();
-        fieldMapping.put(UTIL_Namespace.StrTokenNSPrefix(OPP_STAGE_FIELD), oppStage);
-        fieldMapping.put(UTIL_Namespace.StrTokenNSPrefix(OPP_STATE_FIELD), oppState);
+        fieldMapping.put(UTIL_Namespace.prefixNamespace(OPP_STAGE_FIELD), oppStage);
+        fieldMapping.put(UTIL_Namespace.prefixNamespace(OPP_STATE_FIELD), oppState);
 
         Metadata.CustomMetadata md = new Metadata.CustomMetadata();
         md = CMT_MetadataAPI.addFieldsToMetadataObject(customMd, fieldMapping);

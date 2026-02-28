@@ -126,7 +126,7 @@ public class CRLP_ResetRollupFieldsQueueable implements System.Queueable {
     private List<SObject> clearSkewModeFlag(List<SObject> updatedRecords) {
         if ((this.summaryObjectType == Account.SObjectType || this.summaryObjectType == Contact.SObjectType)) {
             for (SObject updatedRecord : updatedRecords) {
-                updatedRecord.put(UTIL_Namespace.StrTokenNSPrefix('CustomizableRollups_UseSkewMode__c'), false);
+                updatedRecord.put(UTIL_Namespace.prefixNamespace('CustomizableRollups_UseSkewMode__c'), false);
             }
         }
         return updatedRecords;

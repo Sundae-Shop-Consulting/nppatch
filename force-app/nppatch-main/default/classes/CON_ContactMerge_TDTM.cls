@@ -344,7 +344,7 @@ public class CON_ContactMerge_TDTM extends TDTM_Runnable {
             String query = CRLP_Query_SEL.buildObjectQueryForRollup(Contact.SObjectType);
 
             query = query.replace('FROM Contact', '');
-            query += ', AccountId, Account.' + UTIL_Namespace.StrTokenNSPrefix('SYSTEM_AccountType__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Primary_Affiliation__c') + ' FROM Contact WHERE Id IN :contactIds';
+            query += ', AccountId, Account.' + UTIL_Namespace.prefixNamespace('SYSTEM_AccountType__c') + ', ' + UTIL_Namespace.prefixNamespace('Primary_Affiliation__c') + ' FROM Contact WHERE Id IN :contactIds';
             return Database.query(query);
         }
 

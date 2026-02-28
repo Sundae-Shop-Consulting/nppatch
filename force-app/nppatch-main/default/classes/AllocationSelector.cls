@@ -38,7 +38,7 @@ public with sharing class AllocationSelector {
         String soql = new UTIL_Query()
             .withFrom(Allocation__c.SObjectType)
             .withSelectFields(getStandardAllocationFields())
-            .withWhere(UTIL_Namespace.StrTokenNSPrefix('Opportunity__c') + ' IN: oppIds')
+            .withWhere(UTIL_Namespace.prefixNamespace('Opportunity__c') + ' IN: oppIds')
             .build();
 
         return Database.query(soql);
@@ -49,7 +49,7 @@ public with sharing class AllocationSelector {
             String.valueOf(Allocation__c.Percent__c),
             String.valueOf(Allocation__c.Amount__c),
             String.valueOf(Allocation__c.Opportunity__c),
-            UTIL_Namespace.StrTokenNSPrefix('Allocation__c.Opportunity__r.Amount'),
+            UTIL_Namespace.prefixNamespace('Allocation__c.Opportunity__r.Amount'),
             String.valueOf(Allocation__c.General_Accounting_Unit__c)
         };
     }

@@ -6,14 +6,19 @@ import toggleInstructionsWhenClosed from "@salesforce/label/c.accordionSection_T
 
 export default class AccordionSection extends LightningElement {
     @api preventToggle = false;
-    @api title
+    @api title;
     @api shadeOnOpen;
+    @api openCurrentSection = false;
 
     @track isOpen = false;
 
     connectedCallback() {
         if (this.shadeOnOpen !== undefined) {
             document.documentElement.style.setProperty("--bgColor", this.shadeOnOpen);
+        }
+
+        if (this.openCurrentSection) {
+            this.open();
         }
     }
 

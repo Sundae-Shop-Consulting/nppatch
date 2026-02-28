@@ -119,6 +119,7 @@ export default class GsApplicationStatus extends LightningElement {
      */
     onClickCloseModal() {
         this.template.querySelector("c-modal").hide();
+        this.handleModalClose();
     }
 
     /**

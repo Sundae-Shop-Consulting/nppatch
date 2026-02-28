@@ -1,0 +1,42 @@
+/*
+ *
+ *  * Copyright (c) 2020, salesforce.com, inc.
+ *  * All rights reserved.
+ *  * SPDX-License-Identifier: BSD-3-Clause
+ *  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ *
+ */
+
+.bsdt .slds-card__body {
+    min-height: 350px;
+}
+
+.bsdt .slds-card__footer {
+    background-color: rgb(240, 240, 240);
+    height: 75px;
+}
+
+.bsdt .sd-input .slds-form-element__help {
+    position: absolute;
+}
+.bsdt label.slds-form-element__label {
+    white-space: nowrap;
+    word-break: keep-all;
+}
+
+.bsdt lightning-input.slds-form-element {
+    overflow: visible;
+    white-space: nowrap;
+}
+
+.bsdt .bsdt-shadow {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.bsdt .small-box {
+    padding: var(--lwc-varSpacingXxxSmall, 0.125rem);
+}
+
+c-modal .bsdt .small-box {
+    padding: var(--lwc-spacingMedium, 1rem);
+}

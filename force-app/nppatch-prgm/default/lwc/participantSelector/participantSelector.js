@@ -1,0 +1,593 @@
+/*
+ *
+ *  * Copyright (c) 2020, salesforce.com, inc.
+ *  * All rights reserved.
+ *  * SPDX-License-Identifier: BSD-3-Clause
+ *  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ *
+ */
+
+import { LightningElement, track, api, wire } from "lwc";
+import { format, formatTime } from "c/util";
+import { refreshApex } from "@salesforce/apex";
+
+import getSelectParticipantModel from "@salesforce/apex/ServiceScheduleCreatorController.getSelectParticipantModel";
+import getActiveStages from "@salesforce/apex/ServiceScheduleCreatorController.getActiveStages";
+import getProgramEngagementById from "@salesforce/apex/ServiceScheduleCreatorController.getProgramEngagementById";
+
+import PROGRAM_ENGAGEMENT_CONTACT_FIELD from "@salesforce/schema/ProgramEngagement__c.Contact__c";
+
+import addRecord from "@salesforce/label/c.Add_Record";
+import loading from "@salesforce/label/c.Loading";
+import selectContacts from "@salesforce/label/c.BSDT_Select_Contacts";
+import selectedContacts from "@salesforce/label/c.BSDT_Selected_Contacts";
+import capacityWarning from "@salesforce/label/c.Participant_Capacity_Warning";
+import selectedRecords from "@salesforce/label/c.Selected_Records";
+import searchThisList from "@salesforce/label/c.Search_this_list";
+import none from "@salesforce/label/c.None";
+import noRecordsFound from "@salesforce/label/c.No_Records_Found";
+import noRecordsSelected from "@salesforce/label/c.No_Records_Selected";
+import filterByRecord from "@salesforce/label/c.Filter_By_Record";
+import noContactsSelected from "@salesforce/label/c.No_Service_Participants_Created_Warning";
+import add from "@salesforce/label/c.Add";
+import addAll from "@salesforce/label/c.Add_All";
+import cancel from "@salesforce/label/c.Cancel";
+import save from "@salesforce/label/c.Save";
+import saveAndNew from "@salesforce/label/c.Save_New";
+import cantFind from "@salesforce/label/c.Cant_Find_Participant";
+import newLabel from "@salesforce/label/c.New";
+import actionLabel from "@salesforce/label/c.Action";
+import removeLabel from "@salesforce/label/c.Remove";
+import tooManyResults from "@salesforce/label/c.Too_Many_Participants";
+import { handleError } from "c/util";
+
+const TIME = "TIME";
+const SEARCH_DELAY = 1000;
+
+export default class ParticipantSelector extends LightningElement {
+    @api serviceId;
+    @api serviceSchedule;
+    @api existingContactIds = [];
+    @api selectedEngagements = [];
+    @api columns;
+    @api previouslySelectedEngagements;
+    selectorColumns;
+
+    @track availableEngagementRows;
+    @track filteredEngagements;
+    @track allEngagements;
+    @track cohorts;
+    @track availableEngagementsForSelection = [];
+
+    searchValue = "";
+    wiredSearchValue = "";
+    cohortId = "";
+    selectedStage = "";
+    programName;
+    programId;
+    addToServiceButtonLabel;
+    selectedColumns;
+    fields;
+    fieldByFieldPath;
+    objectLabels;
+    isLoaded = false;
+    rendered = false;
+    offsetRows = 50;
+    offset = this.offsetRows;
+    showSpinner = false;
+    show1kMessage = false;
+    stageOptions;
+
+    _searchTimeout;
+
+    labels = {
+        selectContacts,
+        selectedContacts,
+        capacityWarning,
+        selectedRecords,
+        searchThisList,
+        none,
+        noRecordsFound,
+        noRecordsSelected,
+        noContactsSelected,
+        add,
+        addAll,
+        save,
+        saveAndNew,
+        cancel,
+        cantFind,
+        newLabel,
+        actionLabel,
+        removeLabel,
+        loading,
+        tooManyResults,
+    };
+
+    @api
+    get newParticipantsProgramEngagements() {
+        let result = [];
+        this.selectedEngagements.forEach(row => {
+            let contactId = row[PROGRAM_ENGAGEMENT_CONTACT_FIELD.fieldApiName];
+            if (
+                !this.existingContactIds ||
+                !this.existingContactIds.includes(contactId)
+            ) {
+                result.push(row);
+            }
+        });
+        return result;
+    }
+
+    get controlSize() {
+        if (this.stageOptions && this.stageOptions.length > 2) {
+            return 5;
+        }
+        return 6;
+    }
+
+    get showStageInput() {
+        if (this.stageOptions && this.stageOptions.length > 2) {
+            return true;
+        }
+        return false;
+    }
+
+    get showCapacityWarning() {
+        return (
+            this.capacity !== undefined &&
+            this.participantCount &&
+            this.capacity < this.participantCount
+        );
+    }
+
+    get noRecordsFound() {
+        return this.filteredEngagements && this.filteredEngagements.length === 0;
+    }
+
+    get noRecordsSelected() {
+        return this.selectedEngagements && this.selectedEngagements.length === 0;
+    }
+
+    get participantCount() {
+        return this.selectedEngagements ? this.selectedEngagements.length : 0;
+    }
+
+    get capacity() {
+        return this.serviceSchedule
+            ? this.serviceSchedule[this.fields.capacity.apiName]
+            : undefined;
+    }
+
+    get selectedHeader() {
+        if (this.serviceSchedule) {
+            return this.scheduleHeader;
+        }
+
+        return this.labels.selectedContacts;
+    }
+
+    get title() {
+        if (this.serviceSchedule) {
+            return this.labels.addServiceParticipants;
+        }
+
+        return this.labels.selectContacts;
+    }
+
+    get scheduleHeader() {
+        let name = this.serviceSchedule[this.fields.name.apiName];
+
+        if (this.capacity === undefined) {
+            return name;
+        }
+
+        return `${name} (${this.participantCount}/${this.capacity})`;
+    }
+
+    @wire(getActiveStages, {})
+    setupStages(result) {
+        if (result.data) {
+            this.loadStageOptions(result.data);
+        }
+    }
+
+    @wire(getSelectParticipantModel, {
+        serviceId: "$serviceId",
+        searchText: "$wiredSearchValue",
+        stage: "$selectedStage",
+        cohortId: "$cohortId",
+    })
+    dataSetup(result) {
+        this.wiredData = result;
+        if (!(result.data || result.error)) {
+            return;
+        }
+
+        if (result.data) {
+            this.loadTable(result.data);
+            this.loadTableRows(result.data);
+            this.loadPreviousSelections();
+            this.dispatchLoaded();
+        } else if (result.error) {
+            this.allEngagements = undefined;
+            this.cohorts = undefined;
+        }
+    }
+
+    loadTable(data) {
+        // Static data that should not change when new program engagements are added
+        if (this.isLoaded) {
+            return;
+        }
+
+        this.fields = data.fields;
+        this.fieldByFieldPath = data.fieldByFieldPath;
+        this.objectLabels = data.objectLabels;
+        this.programName = data.program ? data.program.Name : "";
+        this.programId = data.program ? data.program.Id : "";
+        this.formatLabels();
+        this.setDataTableColumns();
+        this.setSelectedColumns();
+        this.loadProgramCohorts(data);
+    }
+
+    formatLabels() {
+        this.labels.addServiceParticipants = format(addRecord, [
+            this.objectLabels.serviceParticipant.objectPluralLabel,
+        ]);
+        this.labels.filterByCohort = format(filterByRecord, [
+            this.objectLabels.programCohort.objectLabel,
+        ]);
+        this.labels.filterByStage = format(filterByRecord, [
+            this.fields.engagementStage.label,
+        ]);
+    }
+
+    loadTableRows(data) {
+        let selectedIds = this.selectedEngagements.map(engagement => engagement.Id);
+        this.allEngagements = data.programEngagements.slice(0);
+        this.show1kMessage = this.allEngagements.length >= 1000 ? true : false;
+
+        this.availableEngagementRows = this.allEngagements
+            .filter(engagement => !selectedIds.includes(engagement.Id))
+            .map(engagement => {
+                // Flatten relationship fields
+                let programEngagement = { ...engagement };
+                return this.flattenProgramEngagement(programEngagement);
+            });
+        this.sortData(this.availableEngagementRows);
+    }
+
+    flattenProgramEngagement(programEngagement) {
+        for (const [field, value] of Object.entries(programEngagement)) {
+            let isTimeField =
+                this.fieldByFieldPath[field] &&
+                this.fieldByFieldPath[field].type === TIME;
+            if (isTimeField) {
+                programEngagement[field] = formatTime(value);
+            }
+            if (typeof value === "object") {
+                for (const [parentField, parentValue] of Object.entries(value)) {
+                    programEngagement[field + parentField] = parentValue;
+                }
+            }
+        }
+        return programEngagement;
+    }
+
+    dispatchLoaded() {
+        if (this.isLoaded) {
+            return;
+        }
+
+        this.isLoaded = true;
+        this.dispatchEvent(new CustomEvent("loaded", { detail: this.isLoaded }));
+    }
+
+    get enableInfiniteLoading() {
+        return this.offset < this.filteredEngagements.length;
+    }
+
+    handleNewParticipantClick() {
+        const newParticipant = this.template.querySelector("c-new-program-engagement");
+        newParticipant.showModal();
+    }
+
+    handleNewParticipantSuccess(event) {
+        this.processNewParticipant(event.detail);
+    }
+
+    async processNewParticipant(peId) {
+        await refreshApex(this.wiredData);
+        let row = this.availableEngagementRows.find(element => element.Id === peId);
+        if (row) {
+            this.handleSelectById(peId);
+        } else {
+            this.loadNewProgramEngagement(peId);
+        }
+    }
+
+    loadNewProgramEngagement(peId) {
+        getProgramEngagementById({ peId })
+            .then(result => {
+                let thisPE = this.flattenProgramEngagement(result);
+                this.availableEngagementRows.push(thisPE);
+                this.handleSelectById(peId);
+            })
+            .catch(error => {
+                handleError(error);
+            });
+    }
+
+    handleLoadMore() {
+        this.offset += this.offsetRows;
+        this.availableEngagementsForSelection = this.filteredEngagements.slice(
+            0,
+            Math.min(this.offset, this.filteredEngagements.length)
+        );
+    }
+
+    sortData(engagements) {
+        if (!(this.columns && this.columns.length && engagements && engagements.length)) {
+            return;
+        }
+
+        let firstColumn = this.columns[0].fieldName;
+        engagements.sort((a, b) => {
+            return a[firstColumn] > b[firstColumn] ? 1 : -1;
+        });
+    }
+
+    loadPreviousSelections() {
+        if (this.previouslySelectedEngagements === undefined) {
+            // Filters are applied when handleSelectParticipants is called
+            this.applyFilters();
+            return;
+        }
+
+        this.previouslySelectedEngagements = [...this.previouslySelectedEngagements];
+        this.availableEngagementRows.forEach(row => {
+            if (
+                this.existingContactIds &&
+                this.existingContactIds.includes(
+                    row[PROGRAM_ENGAGEMENT_CONTACT_FIELD.fieldApiName]
+                )
+            ) {
+                row.disableDeselect = true;
+                this.previouslySelectedEngagements.push(row);
+            }
+        });
+        this.handleSelectParticipants();
+    }
+
+    loadStageOptions(data) {
+        this.stageOptions = Object.entries(data).map(([key, value]) => {
+            let newObj = {};
+            newObj.label = value;
+            newObj.value = key;
+            return newObj;
+        });
+        this.stageOptions.unshift({ label: this.labels.none, value: "" });
+    }
+
+    loadProgramCohorts(data) {
+        this.cohorts = data.programCohorts.slice(0);
+        this.searchOptions = this.cohorts.map(element => {
+            let newObj = {};
+            newObj.label = element.Name;
+            newObj.value = element.Id;
+            return newObj;
+        });
+        this.searchOptions.unshift({ label: this.labels.none, value: "" });
+    }
+
+    setDataTableColumns() {
+        this.columns = [];
+
+        for (const [key, value] of Object.entries(this.fieldByFieldPath)) {
+            if (value.hidden) {
+                continue;
+            }
+
+            let column = {
+                label: value.label,
+                fieldName: key.replace(".", ""),
+                hideDefaultActions: true,
+            };
+            this.columns.push(column);
+
+            this.selectorColumns = [...this.columns];
+
+            this.selectorColumns.push({
+                label: this.labels.actionLabel,
+                type: "button",
+                hideDefaultActions: true,
+                typeAttributes: {
+                    name: "add",
+                    label: this.labels.add,
+                    title: this.labels.add,
+                    variant: "neutral",
+                    iconPosition: "left",
+                },
+            });
+        }
+    }
+
+    setSelectedColumns() {
+        let min = Math.min(this.columns.length, 2);
+
+        this.selectedColumns = this.columns.slice(0, min);
+        this.selectedColumns.push({
+            label: this.labels.actionLabel,
+            type: "button-icon",
+            hideDefaultActions: true,
+            typeAttributes: {
+                iconName: "utility:clear",
+                variant: "bare",
+                iconPosition: "left",
+                disabled: { fieldName: "disableDeselect" },
+                alternativeText: this.labels.removeLabel,
+            },
+        });
+    }
+
+    handleStageChange(event) {
+        if (this.selectedStage !== event.detail.value) {
+            this.displaySpinner();
+            this.selectedStage = event.detail.value;
+        }
+    }
+
+    handleCohortChange(event) {
+        if (this.cohortId !== event.detail.value) {
+            this.displaySpinner();
+            this.cohortId = event.detail.value;
+        }
+    }
+
+    handleSelectAll() {
+        this.handleSelect([...this.filteredEngagements]);
+    }
+
+    handleSelectParticipant(event) {
+        this.handleSelect([event.detail.row]);
+    }
+
+    handleSelectParticipants() {
+        this.handleSelect(this.previouslySelectedEngagements);
+    }
+
+    handleSelectById(programEngagementId) {
+        let row = this.availableEngagementRows.find(
+            element => element.Id === programEngagementId
+        );
+
+        if (row) {
+            this.handleSelect([row]);
+        }
+    }
+
+    handleSelect(programEngagements) {
+        programEngagements.forEach(row => {
+            let index = this.availableEngagementRows.findIndex(
+                element => element.Id === row.Id
+            );
+            if (index >= 0) {
+                this.availableEngagementRows.splice(index, 1);
+            }
+            let selectedRow = this.selectedEngagements.find(
+                engagement => engagement.Id === row.Id
+            );
+            if (!selectedRow) {
+                this.selectedEngagements.push(row);
+            }
+        });
+
+        // force the screen to rerender the selected engagements
+        this.selectedEngagements = [...this.selectedEngagements];
+        this.applyFilters();
+        this.sortData(this.selectedEngagements);
+        this.dispatchSelectEvent();
+    }
+
+    handleDeselectParticipant(event) {
+        if (event) {
+            //filter availableEngagementRows to remove program engagement that we deselected so there are no duplicates
+            this.availableEngagementRows = this.availableEngagementRows.filter(
+                row => row.Id !== event.detail.row.Id
+            );
+
+            let tempSelectedEngagements = [...this.selectedEngagements];
+
+            let index = tempSelectedEngagements.findIndex(
+                element => element.Id === event.detail.row.Id
+            );
+
+            tempSelectedEngagements.splice(index, 1);
+
+            this.selectedEngagements = tempSelectedEngagements;
+
+            //Verify the deselected row is in the current dataset before displaying
+            if (this.allEngagements.some(row => row.Id === event.detail.row.Id)) {
+                this.availableEngagementRows = [
+                    ...this.availableEngagementRows,
+                    event.detail.row,
+                ];
+            }
+            this.sortData(this.availableEngagementRows);
+
+            //filter previouslySelectedEngagements to remove program engagement that we deselected so it does not add the deselected value back
+            //after we create a new program engagement
+            if (this.previouslySelectedEngagements !== undefined) {
+                this.previouslySelectedEngagements = this.previouslySelectedEngagements.filter(
+                    element => element.Id !== event.detail.row.Id
+                );
+            }
+
+            // if filters exist apply the filters
+            this.applyFilters();
+            this.dispatchSelectEvent();
+        }
+    }
+
+    handleInputChange(event) {
+        if (event.target && event.target.value) {
+            this.searchValue = event.target.value;
+            if (this.searchValue.length !== 1) {
+                this.debounceSearch();
+            }
+        } else {
+            this.searchValue = "";
+            this.debounceSearch();
+        }
+    }
+
+    debounceSearch() {
+        this.resetTimeout();
+        // eslint-disable-next-line @lwc/lwc/no-async-operation
+        this._searchTimeout = setTimeout(this.startFilter.bind(this), SEARCH_DELAY);
+    }
+
+    resetTimeout() {
+        if (this._searchTimeout) {
+            clearTimeout(this._searchTimeout);
+        }
+    }
+
+    startFilter() {
+        this.displaySpinner();
+        // eslint-disable-next-line @lwc/lwc/no-async-operation
+        setTimeout(this.updateSearchValue.bind(this));
+    }
+
+    updateSearchValue() {
+        this.wiredSearchValue = this.searchValue;
+    }
+
+    applyFilters() {
+        this.filteredEngagements = this.availableEngagementRows;
+        this.availableEngagementsForSelection = this.filteredEngagements.slice(
+            0,
+            Math.min(this.filteredEngagements.length, this.offset)
+        );
+        this.hideSpinner();
+    }
+
+    displaySpinner() {
+        this.showSpinner = true;
+    }
+
+    hideSpinner() {
+        this.showSpinner = false;
+    }
+
+    dispatchSelectEvent() {
+        this.dispatchEvent(
+            new CustomEvent("select", {
+                detail: {
+                    totalSelected: this.selectedEngagements.length,
+                },
+            })
+        );
+    }
+}

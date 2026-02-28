@@ -45,7 +45,7 @@ public with sharing class NppatchSettingsController {
         Schema.SObjectType sot = Schema.getGlobalDescribe().get(sObjectApiName);
         if (sot == null) {
             sot = Schema.getGlobalDescribe().get(
-                UTIL_Namespace.StrTokenNSPrefix(sObjectApiName)
+                UTIL_Namespace.prefixNamespace(sObjectApiName)
             );
         }
         if (sot == null) {
@@ -69,7 +69,7 @@ public with sharing class NppatchSettingsController {
         Schema.SObjectType sot = Schema.getGlobalDescribe().get(sObjectApiName);
         if (sot == null) {
             sot = Schema.getGlobalDescribe().get(
-                UTIL_Namespace.StrTokenNSPrefix(sObjectApiName)
+                UTIL_Namespace.prefixNamespace(sObjectApiName)
             );
         }
         if (sot == null) {
@@ -82,7 +82,7 @@ public with sharing class NppatchSettingsController {
         Schema.SObjectField field = sot.getDescribe().fields.getMap().get(fieldApiName);
         if (field == null) {
             field = sot.getDescribe().fields.getMap().get(
-                UTIL_Namespace.StrTokenNSPrefix(fieldApiName)
+                UTIL_Namespace.prefixNamespace(fieldApiName)
             );
         }
         if (field == null) {
@@ -288,7 +288,7 @@ public with sharing class NppatchSettingsController {
         Schema.SObjectType sot = Schema.getGlobalDescribe().get(settingsObjectName);
         if (sot == null) {
             sot = Schema.getGlobalDescribe().get(
-                UTIL_Namespace.StrTokenNSPrefix(settingsObjectName)
+                UTIL_Namespace.prefixNamespace(settingsObjectName)
             );
         }
         SObject record = sot.newSObject();
@@ -373,7 +373,7 @@ public with sharing class NppatchSettingsController {
         Schema.SObjectType sot = Schema.getGlobalDescribe().get(sObjectApiName);
         if (sot == null) {
             sot = Schema.getGlobalDescribe().get(
-                UTIL_Namespace.StrTokenNSPrefix(sObjectApiName)
+                UTIL_Namespace.prefixNamespace(sObjectApiName)
             );
         }
         if (sot == null) {

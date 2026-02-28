@@ -66,16 +66,16 @@ public with sharing class LVL_LevelEdit_CTRL {
     * @return nothing
     */ 
     public LVL_LevelEdit_CTRL(ApexPages.StandardController controller) {
-        List<String> fieldSetList = UTIL_Describe.listStrFromFieldSet(UTIL_Namespace.StrTokenNSPrefix('Level__c'),
-                UTIL_Namespace.StrTokenNSPrefix('LevelEdit'));
-        fieldSetList.add(UTIL_Namespace.StrTokenNSPrefix('Active__c'));
-        fieldSetList.add(UTIL_Namespace.StrTokenNSPrefix('Engagement_Plan_Template__c'));
+        List<String> fieldSetList = UTIL_Describe.listStrFromFieldSet(UTIL_Namespace.prefixNamespace('Level__c'),
+                UTIL_Namespace.prefixNamespace('LevelEdit'));
+        fieldSetList.add(UTIL_Namespace.prefixNamespace('Active__c'));
+        fieldSetList.add(UTIL_Namespace.prefixNamespace('Engagement_Plan_Template__c'));
         if (!Test.isRunningTest()) controller.addFields(fieldSetList);
         lvl = (Level__c)controller.getRecord();
 
         // Keep track of which fields in the Field Set are required so we can create custom error messages
-        requiredFieldSetFields = UTIL_Describe.listStrFromFieldSet(UTIL_Namespace.StrTokenNSPrefix('Level__c'),
-            UTIL_Namespace.StrTokenNSPrefix('LevelEdit'), true);
+        requiredFieldSetFields = UTIL_Describe.listStrFromFieldSet(UTIL_Namespace.prefixNamespace('Level__c'),
+            UTIL_Namespace.prefixNamespace('LevelEdit'), true);
 
         //if clone param is set, this is the clone button override
         Map<String,String> params = ApexPages.currentPage().getParameters();
@@ -128,7 +128,7 @@ public with sharing class LVL_LevelEdit_CTRL {
                 if (lvl.Target__c != null) {
                     listSOLevelFields.add(new SelectOption('', Label.stgLabelNone));
                     Map<String, Schema.DescribeFieldResult> mapDFR = UTIL_Describe.getAllFieldsDescribe(lvl.Target__c);
-                    Schema.sObjectType soTypeLevel = UTIL_Describe.getObjectDescribe(UTIL_Namespace.StrTokenNSPrefix('Level__c')).getSObjectType(); 
+                    Schema.sObjectType soTypeLevel = UTIL_Describe.getObjectDescribe(UTIL_Namespace.prefixNamespace('Level__c')).getSObjectType(); 
                     
                     for (Schema.DescribeFieldResult f : mapDFR.values()) {                   
                         if (f.isAccessible() && f.getType() == Schema.Displaytype.Reference) {

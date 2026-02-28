@@ -304,8 +304,8 @@ public with sharing class BDI_Donations_TEST {
           
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         // make sure we support matching by Id even when no match specified.
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.RequireNoMatch;
         diSettings.Run_Opportunity_Rollups_while_Processing__c = true;
@@ -381,8 +381,8 @@ public with sharing class BDI_Donations_TEST {
           
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         // make sure we support matching by Id even when no match specified.
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.RequireNoMatch;
         diSettings.Run_Opportunity_Rollups_while_Processing__c = true;
@@ -422,8 +422,8 @@ public with sharing class BDI_Donations_TEST {
         if (ADV_PackageInfo_SVC.useAdv()) return;  
         
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.ExactMatchOrCreate;
         diSettings.Run_Opportunity_Rollups_while_Processing__c = false;    
             
@@ -491,8 +491,8 @@ public with sharing class BDI_Donations_TEST {
 
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.ExactMatchOrCreate;
         diSettings.Run_Opportunity_Rollups_while_Processing__c = true;
           
@@ -554,8 +554,8 @@ public with sharing class BDI_Donations_TEST {
         DataImportBatch__c batch = new DataImportBatch__c(name='testBatch');
         batch.Donation_Matching_Behavior__c = BDI_DataImport_API.ExactMatchOrCreate;
         batch.Run_Opportunity_Rollups_while_Processing__c = true;
-        batch.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        batch.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                UTIL_Namespace.prefixNamespace('Donation_Date__c');
         insert batch;
 
         List<OppPayment__c> payments = [
@@ -733,8 +733,8 @@ public with sharing class BDI_Donations_TEST {
         DataImportBatch__c batch = new DataImportBatch__c(name='testBatch');
         batch.Donation_Matching_Behavior__c = BDI_DataImport_API.ExactMatchOrCreate;
         batch.Run_Opportunity_Rollups_while_Processing__c = true;
-        batch.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        batch.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                UTIL_Namespace.prefixNamespace('Donation_Date__c');
         insert batch;
 
         List<OppPayment__c> payments = [
@@ -957,8 +957,8 @@ public with sharing class BDI_Donations_TEST {
 
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c') + ';' +
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c') + ';' +
             'CurrencyIsoCode';
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.ExactMatchOrCreate;
 
@@ -986,10 +986,10 @@ public with sharing class BDI_Donations_TEST {
 
         List<OppPayment__c> resultPayments =
             Database.query(
-              'SELECT Id, CurrencyIsoCode, ' + UTIL_Namespace.StrTokenNSPrefix('Check_Reference_Number__c') + ', ' +
-                  UTIL_Namespace.StrTokenNSPrefix('Paid__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Method__c') + ' ' +
-              'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' ' +
-              'ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.Id'
+              'SELECT Id, CurrencyIsoCode, ' + UTIL_Namespace.prefixNamespace('Check_Reference_Number__c') + ', ' +
+                  UTIL_Namespace.prefixNamespace('Paid__c') + ', ' + UTIL_Namespace.prefixNamespace('Payment_Amount__c') + ', ' + UTIL_Namespace.prefixNamespace('Payment_Method__c') + ' ' +
+              'FROM ' + UTIL_Namespace.prefixNamespace('OppPayment__c') + ' ' +
+              'ORDER BY ' + UTIL_Namespace.prefixNamespace('Opportunity__r') + '.Id'
             );
 
         System.assertEquals(1, resultPayments.size());
@@ -1068,8 +1068,8 @@ public with sharing class BDI_Donations_TEST {
 
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c') + ';' +
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c') + ';' +
             'CurrencyIsoCode';
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.ExactMatchOrCreate;
 
@@ -1091,10 +1091,10 @@ public with sharing class BDI_Donations_TEST {
 
         List<OppPayment__c> resultPayments =
             Database.query(
-                'SELECT Id, CurrencyIsoCode, ' + UTIL_Namespace.StrTokenNSPrefix('Check_Reference_Number__c') + ', ' +
-                    UTIL_Namespace.StrTokenNSPrefix('Payment_Amount__c') + ', ' + UTIL_Namespace.StrTokenNSPrefix('Payment_Method__c') + ' ' +
-                    'FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c') + ' ' +
-                    'ORDER BY ' + UTIL_Namespace.StrTokenNSPrefix('Opportunity__r') + '.Id'
+                'SELECT Id, CurrencyIsoCode, ' + UTIL_Namespace.prefixNamespace('Check_Reference_Number__c') + ', ' +
+                    UTIL_Namespace.prefixNamespace('Payment_Amount__c') + ', ' + UTIL_Namespace.prefixNamespace('Payment_Method__c') + ' ' +
+                    'FROM ' + UTIL_Namespace.prefixNamespace('OppPayment__c') + ' ' +
+                    'ORDER BY ' + UTIL_Namespace.prefixNamespace('Opportunity__r') + '.Id'
             );
         System.assertEquals(2, resultPayments.size());
 
@@ -1131,8 +1131,8 @@ public with sharing class BDI_Donations_TEST {
 
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.ExactMatchOrCreate;
         diSettings.Run_Opportunity_Rollups_while_Processing__c = true;
 
@@ -1204,8 +1204,8 @@ public with sharing class BDI_Donations_TEST {
 
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.ExactMatchOrCreate;
         diSettings.Donation_Date_Range__c = 3;
         diSettings.Run_Opportunity_Rollups_while_Processing__c = true;
@@ -1267,8 +1267,8 @@ public with sharing class BDI_Donations_TEST {
         DataImportBatch__c batch = new DataImportBatch__c(name='testBatch');
         batch.Donation_Matching_Behavior__c = BDI_DataImport_API.ExactMatchOrCreate;
         batch.Run_Opportunity_Rollups_while_Processing__c = true;
-        batch.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        batch.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                UTIL_Namespace.prefixNamespace('Donation_Date__c');
         insert batch;
 
         List<DataImport__c> dataImports = new List<DataImport__c>();
@@ -1375,8 +1375,8 @@ public with sharing class BDI_Donations_TEST {
           
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         // make sure we support matching by Id even when no match specified.
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.RequireNoMatch;
         diSettings.Run_Opportunity_Rollups_while_Processing__c = true;
@@ -1465,8 +1465,8 @@ public with sharing class BDI_Donations_TEST {
           
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         // make sure we support matching by Id even when no match specified.
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.RequireNoMatch;
         diSettings.Run_Opportunity_Rollups_while_Processing__c = true;
@@ -1556,8 +1556,8 @@ public with sharing class BDI_Donations_TEST {
           
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.ExactMatchOrCreate;
         diSettings.Run_Opportunity_Rollups_while_Processing__c = true;
 
@@ -1626,8 +1626,8 @@ public with sharing class BDI_Donations_TEST {
         String testCurrencyCode = testCurrency.IsoCode;
 
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.ExactMatchOrCreate;
         diSettings.Run_Opportunity_Rollups_while_Processing__c = false;
 
@@ -1657,7 +1657,7 @@ public with sharing class BDI_Donations_TEST {
         System.assertEquals(testCurrencyCode, (String)opps[0].get('CurrencyIsoCode'));
 
         List<OppPayment__c> payments = Database.query(
-            'SELECT Id, CurrencyIsoCode FROM ' + UTIL_Namespace.StrTokenNSPrefix('OppPayment__c')
+            'SELECT Id, CurrencyIsoCode FROM ' + UTIL_Namespace.prefixNamespace('OppPayment__c')
         );
         System.assertEquals(1, payments.size());
         System.assertEquals(testCurrencyCode, (String)payments[0].get('CurrencyIsoCode'));
@@ -1861,8 +1861,8 @@ public with sharing class BDI_Donations_TEST {
             
         // set the specified settings
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c = matchBehavior;
           
         //run batch data import
@@ -1938,8 +1938,8 @@ public with sharing class BDI_Donations_TEST {
         Data_Import_Settings__c diSettings =
                 UTIL_CustomSettingsFacade.getDataImportSettings();
         diSettings.Donation_Matching_Rule__c =
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                        UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+                UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                        UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c =
                 BDI_DataImport_API.ExactMatchOrCreate;
         diSettings.Donation_Date_Range__c = 1;

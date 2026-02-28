@@ -635,8 +635,8 @@ public without sharing class UTIL_CustomSettingsFacade {
             dis.Donation_Matching_Behavior__c = BDI_DataImport_API.DoNotMatch;
         }
         if (dis.Donation_Matching_Rule__c == null) {
-            dis.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-                UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+            dis.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+                UTIL_Namespace.prefixNamespace('Donation_Date__c');
         }
         if (dis.Donation_Date_Range__c == null) {
             dis.Donation_Date_Range__c = 0;

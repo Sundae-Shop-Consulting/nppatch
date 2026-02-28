@@ -49,7 +49,7 @@ private with sharing class BDI_DataImportService_TEST {
     @isTest
     private static void testUniqueIdHandling() {
         System.assertEquals(
-            UTIL_Namespace.StrTokenNSPrefix('Contact1_Website__c'),
+            UTIL_Namespace.prefixNamespace('Contact1_Website__c'),
             BDI_DataImportService.strDICustomIDField('Contact1', 'Website')
         );
 
@@ -63,8 +63,8 @@ private with sharing class BDI_DataImportService_TEST {
         System.assertEquals('Contact1_Baz__c', BDI_DataImportService.strDICustomIDField('Contact1', 'randomNS__Baz__c'));
 
         System.assertEquals(
-            UTIL_Namespace.StrTokenNSPrefix('Contact1_Buz__c'),
-            BDI_DataImportService.strDICustomIDField('Contact1', UTIL_Namespace.StrTokenNSPrefix('Buz__c'))
+            UTIL_Namespace.prefixNamespace('Contact1_Buz__c'),
+            BDI_DataImportService.strDICustomIDField('Contact1', UTIL_Namespace.prefixNamespace('Buz__c'))
         );
     }
 
@@ -402,8 +402,8 @@ private with sharing class BDI_DataImportService_TEST {
     private static Data_Import_Settings__c getDataImportSettings() {
         Data_Import_Settings__c diSettings = UTIL_CustomSettingsFacade.getDataImportSettings();
 
-        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.StrTokenNSPrefix('Donation_Amount__c') + ';' +
-            UTIL_Namespace.StrTokenNSPrefix('Donation_Date__c');
+        diSettings.Donation_Matching_Rule__c = UTIL_Namespace.prefixNamespace('Donation_Amount__c') + ';' +
+            UTIL_Namespace.prefixNamespace('Donation_Date__c');
         diSettings.Donation_Matching_Behavior__c = BDI_DataImport_API.ExactMatchOrCreate;
 
         return diSettings;

@@ -97,7 +97,7 @@ public class CRLP_RollupCMT {
         public Metadata.CustomMetadata getMetadataRecord() {
             Metadata.CustomMetadata md = new Metadata.CustomMetadata();
 
-            String mdTypeName = UTIL_Namespace.StrTokenNSPrefix(CRLP_RollupCMT.MetadataObject.Filter_Group.Name() + '__mdt');
+            String mdTypeName = UTIL_Namespace.prefixNamespace(CRLP_RollupCMT.MetadataObject.Filter_Group.Name() + '__mdt');
 
             if (this.recordName == null) {
                 this.recordName = generateRecordName(this.label, true);
@@ -290,7 +290,7 @@ public class CRLP_RollupCMT {
         public Metadata.CustomMetadata getMetadataRecord() {
             Metadata.CustomMetadata md = new Metadata.CustomMetadata();
 
-            String mdTypeName = UTIL_Namespace.StrTokenNSPrefix(CRLP_RollupCMT.MetadataObject.Filter_Rule.Name() + '__mdt');
+            String mdTypeName = UTIL_Namespace.prefixNamespace(CRLP_RollupCMT.MetadataObject.Filter_Rule.Name() + '__mdt');
 
             if (this.label == null) {
                 String prefix = abbreviateForSpace(this.filterGroupRecordName, true).replace('NPSP','').replace('_', '');
@@ -439,7 +439,7 @@ public class CRLP_RollupCMT {
         public Metadata.CustomMetadata getMetadataRecord() {
             Metadata.CustomMetadata md = new Metadata.CustomMetadata();
 
-            String mdTypeName = UTIL_Namespace.StrTokenNSPrefix(CRLP_RollupCMT.MetadataObject.Rollup.Name() + '__mdt');
+            String mdTypeName = UTIL_Namespace.prefixNamespace(CRLP_RollupCMT.MetadataObject.Rollup.Name() + '__mdt');
 
             if (this.label.length() > 40) {
                 this.label = abbreviateForSpace(this.label, false).left(40);
@@ -683,7 +683,7 @@ public class CRLP_RollupCMT {
                 replace('Partial Soft Credit', 'PSC').
                 replace('Partial_Soft_Credit', 'PSC').
                 replace('ClosedWon', 'Won').
-                replace(UTIL_Namespace.StrTokenNSPrefix(''), '').replace('__c', '').
+                replace(UTIL_Namespace.prefixNamespace(''), '').replace('__c', '').
                 replace(' of ', '');
 
         if (forDeveloperName) {

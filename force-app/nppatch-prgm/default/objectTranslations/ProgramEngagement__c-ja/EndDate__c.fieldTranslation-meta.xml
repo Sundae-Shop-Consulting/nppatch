@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>EndDate__c</name>
+    <help>プログラムエンゲージメントフェーズが [完了] または [取り下げ済み] の場合、これが空白のままになっていると、終了日はデフォルトで今日になります。</help>
+    <label>終了日</label>
+</CustomFieldTranslation>

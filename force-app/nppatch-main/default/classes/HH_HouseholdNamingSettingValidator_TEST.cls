@@ -275,8 +275,8 @@ private class HH_HouseholdNamingSettingValidator_TEST {
     **********************************************************************************************************/
     private static void assertErrorContainsInvalidFieldMessage(String fieldName, HH_HouseholdNamingSettingValidator.Notification n) {
         String fieldLabel = UTIL_Describe.getFieldLabel(
-            UTIL_Namespace.StrTokenNSPrefix('Household_Naming_Settings__c'), 
-            UTIL_Namespace.StrTokenNSPrefix(fieldName)
+            UTIL_Namespace.prefixNamespace('Household_Naming_Settings__c'), 
+            UTIL_Namespace.prefixNamespace(fieldName)
         );
 
         System.assert(!n.isSuccess());

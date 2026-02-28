@@ -282,7 +282,7 @@ global without sharing class STG_InstallScript implements InstallHandler {
     private void populateNamespacePrefix() {
         Package_Settings__c pkgSettings = Package_Settings__c.getOrgDefaults();
         if (pkgSettings.Id == null) {
-            pkgSettings.Namespace_Prefix__c = UTIL_Namespace.StrTokenNSPrefix('');
+            pkgSettings.Namespace_Prefix__c = UTIL_Namespace.prefixNamespace('');
             insert pkgSettings;
         }
     }

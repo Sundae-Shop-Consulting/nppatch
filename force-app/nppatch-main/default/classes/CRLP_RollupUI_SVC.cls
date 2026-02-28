@@ -643,7 +643,7 @@ public with sharing class CRLP_RollupUI_SVC {
                 'labelBooleanTrue' => System.Label.labelBooleanTrue,
                 'labelBooleanFalse' => System.Label.labelBooleanFalse,
                 'name' => Label.stgLabelName,
-                'namespacePrefix' => UTIL_Namespace.StrTokenNSPrefix(''),
+                'namespacePrefix' => UTIL_Namespace.prefixNamespace(''),
                 'na' => Label.stgNotApplicable,
                 'next' => Label.labelListViewNext,
                 'noFields' => Label.stgLabelPaymentMapNoValidFields,
@@ -973,7 +973,7 @@ public with sharing class CRLP_RollupUI_SVC {
         Map<String,Set<String>> bannedFieldsByObject = new Map<String,Set<String>>();
 
         // BAN ALL NPSP FIELDS ON RD EXCEPT THE FOUR CORE ROLLUP FIELDS
-        bannedFieldsByObject.put(UTIL_Namespace.StrTokenNSPrefix('Recurring_Donation__c'),new Set<String>{
+        bannedFieldsByObject.put(UTIL_Namespace.prefixNamespace('Recurring_Donation__c'),new Set<String>{
                 UTIL_Namespace.StrAllNSPrefix('Amount__c')
                 ,UTIL_Namespace.StrAllNSPrefix('Recurring_Donation_Campaign__c')
                 ,UTIL_Namespace.StrAllNSPrefix('Contact__c')

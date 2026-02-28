@@ -100,7 +100,7 @@ public with sharing class HH_NameSpec implements HH_INaming {
         set<string> namespacedFields = new set<string>();
         for (String fieldName : setStrField) {
             if (fieldName.endsWithIgnoreCase('__c')) {
-                namespacedFields.add(UTIL_Namespace.StrTokenNSPrefix(fieldName));
+                namespacedFields.add(UTIL_Namespace.prefixNamespace(fieldName));
             } else {
                 namespacedFields.add(fieldName);
             }
@@ -349,7 +349,7 @@ public with sharing class HH_NameSpec implements HH_INaming {
             string fieldName = splitField[splitField.size()-1].trim();
             // Add namespace prefix for custom fields in 2GP context
             if (fieldName.endsWithIgnoreCase('__c')) {
-                fieldName = UTIL_Namespace.StrTokenNSPrefix(fieldName);
+                fieldName = UTIL_Namespace.prefixNamespace(fieldName);
             }
             splitField.remove(splitField.size()-1);
 

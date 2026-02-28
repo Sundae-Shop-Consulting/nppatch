@@ -551,7 +551,7 @@ public without sharing class STG_PanelHealthCheck_CTRL extends STG_Panel {
         checkRecordTypeId(Account.sObjectType, STG_Panel.stgService.stgCon.One_to_One_RecordTypeID__c,
             'Contacts_And_Orgs_Settings__c', 'One_to_One_RecordTypeID__c', Label.stgNavPeople, Label.stgNavAccountModel);
         checkMultiRecordTypeIds(Opportunity.sObjectType, STG_Panel.stgService.stgCon.Opp_RecTypes_Excluded_for_Payments__c,
-            'Contacts_And_Orgs_Settings__c', UTIL_Namespace.StrTokenNSPrefix('Opp_RecTypes_Excluded_for_Payments__c'), Label.stgNavDonations, Label.stgNavPayments);
+            'Contacts_And_Orgs_Settings__c', UTIL_Namespace.prefixNamespace('Opp_RecTypes_Excluded_for_Payments__c'), Label.stgNavDonations, Label.stgNavPayments);
 
         checkRecordTypeId(Opportunity.sObjectType, STG_Panel.stgService.stgRD.Record_Type__c,
             'Recurring_Donations_Settings__c', 'Record_Type__c', Label.stgNavRecurringDonations, Label.stgNavRecurringDonations);
@@ -562,7 +562,7 @@ public without sharing class STG_PanelHealthCheck_CTRL extends STG_Panel {
             'Households_Settings__c', 'Household_OCR_Excluded_Recordtypes__c', Label.stgNavDonations, Label.stgNavContactRoles);
         if (! STG_Panel.stgService.stgCRLP.Customizable_Rollups_Enabled__c) {
             checkMultiRecordTypeIds(Opportunity.sObjectType, STG_Panel.stgService.stgAllo.Excluded_Opp_RecTypes__c,
-                    UTIL_Namespace.StrTokenNSPrefix('Allocations_Settings__c'), UTIL_Namespace.StrTokenNSPrefix('Excluded_Opp_RecTypes__c'), Label.stgNavDonations, Label.stgNavAllocations);
+                    UTIL_Namespace.prefixNamespace('Allocations_Settings__c'), UTIL_Namespace.prefixNamespace('Excluded_Opp_RecTypes__c'), Label.stgNavDonations, Label.stgNavAllocations);
             checkMultiRecordTypeIds(Opportunity.sObjectType, STG_Panel.stgService.stgHH.Excluded_Account_Opp_Rectypes__c,
                     'Households_Settings__c', 'Excluded_Account_Opp_Rectypes__c', Label.stgNavDonations, Label.stgNavDonorStatistics);
             checkMultiRecordTypeIds(Opportunity.sObjectType, STG_Panel.stgService.stgHH.Excluded_Contact_Opp_Rectypes__c,
@@ -725,11 +725,11 @@ public without sharing class STG_PanelHealthCheck_CTRL extends STG_Panel {
         String hhMemberRole = STG_Panel.stgService.stgHH.Household_Member_Contact_Role__c;
         String hhMemberRoleLabel = UTIL_Describe.getFieldLabel('Households_Settings__c', 'Household_Member_Contact_Role__c');
         String matchedDonorRole = STG_Panel.stgService.stgHH.Matched_Donor_Role__c;
-        String matchedDonorRoleLabel = UTIL_Describe.getFieldLabel('Households_Settings__c', UTIL_Namespace.StrTokenNSPrefix('Matched_Donor_Role__c'));
+        String matchedDonorRoleLabel = UTIL_Describe.getFieldLabel('Households_Settings__c', UTIL_Namespace.prefixNamespace('Matched_Donor_Role__c'));
         String honoreeRole = STG_Panel.stgService.stgCon.Honoree_Opportunity_Contact_Role__c;
-        String honoreeRoleLabel = UTIL_Describe.getFieldLabel('Contacts_And_Orgs_Settings__c', UTIL_Namespace.StrTokenNSPrefix('Honoree_Opportunity_Contact_Role__c'));
+        String honoreeRoleLabel = UTIL_Describe.getFieldLabel('Contacts_And_Orgs_Settings__c', UTIL_Namespace.prefixNamespace('Honoree_Opportunity_Contact_Role__c'));
         String notificationRole = STG_Panel.stgService.stgCon.Notification_Recipient_Opp_Contact_Role__c;
-        String notificationRoleLabel = UTIL_Describe.getFieldLabel('Contacts_And_Orgs_Settings__c', UTIL_Namespace.StrTokenNSPrefix('Notification_Recipient_Opp_Contact_Role__c'));
+        String notificationRoleLabel = UTIL_Describe.getFieldLabel('Contacts_And_Orgs_Settings__c', UTIL_Namespace.prefixNamespace('Notification_Recipient_Opp_Contact_Role__c'));
 
         if (!String.isBlank(defaultRole)) {
             if (!String.isBlank(softCreditRoles)) {
@@ -865,9 +865,9 @@ public without sharing class STG_PanelHealthCheck_CTRL extends STG_Panel {
         try {
             Set<String> setOppTypeNoPayment = PMT_PaymentCreator.setOppTypeNoPayment;
             Set<Id> setOppRecordTypeIdNoPayment = PMT_PaymentCreator.setOppRecordTypeIdNoPayment;
-            String soql = 'SELECT count() FROM Opportunity WHERE ' + UTIL_Namespace.StrTokenNSPrefix('Number_of_Payments__c') + ' = 0 AND Amount > 0 ' +
+            String soql = 'SELECT count() FROM Opportunity WHERE ' + UTIL_Namespace.prefixNamespace('Number_of_Payments__c') + ' = 0 AND Amount > 0 ' +
                 ' AND (isWon = true OR isClosed = false) ' +
-                ' AND ' + UTIL_Namespace.StrTokenNSPrefix('Do_Not_Automatically_Create_Payment__c') + ' = false ' +
+                ' AND ' + UTIL_Namespace.prefixNamespace('Do_Not_Automatically_Create_Payment__c') + ' = false ' +
                 ' AND  Type NOT IN :setOppTypeNoPayment ';
 
             SObjectField oppRecordTypeId = Schema.sObjectType.Opportunity.fields.getMap().get('RecordTypeId');

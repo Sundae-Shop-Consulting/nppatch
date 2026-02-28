@@ -717,8 +717,8 @@ public with sharing class RD2_ScheduleService_TEST {
         rd.Day_of_Month__c = dayOfMonth;
 
         TDTM_Runnable.DMLWrapper changes = service.getUpdatedSchedules(rd, schedules);
-        System.assertEquals(startDate.addDays(-1), changes.objectsToUpdate[0].get(UTIL_Namespace.StrTokenNSPrefix('EndDate__c')), 'Existing schedule End Date should invalidate the schedule');
-        System.assertEquals(dayOfMonth, changes.objectsToInsert[0].get(UTIL_Namespace.StrTokenNSPrefix('DayOfMonth__c')), 'New schedule Day of month should be match');
+        System.assertEquals(startDate.addDays(-1), changes.objectsToUpdate[0].get(UTIL_Namespace.prefixNamespace('EndDate__c')), 'Existing schedule End Date should invalidate the schedule');
+        System.assertEquals(dayOfMonth, changes.objectsToInsert[0].get(UTIL_Namespace.prefixNamespace('DayOfMonth__c')), 'New schedule Day of month should be match');
     }
 
     /***
@@ -734,7 +734,7 @@ public with sharing class RD2_ScheduleService_TEST {
         rd.Status__c = RD2_Constants.STATUS_CLOSED;
 
         TDTM_Runnable.DMLWrapper changes = service.getUpdatedSchedules(rd, schedules);
-        System.assertEquals(Date.today().addDays(-1), changes.objectsToUpdate[0].get(UTIL_Namespace.StrTokenNSPrefix('EndDate__c')), 'Existing schedule End Date should be set to yesterday.');
+        System.assertEquals(Date.today().addDays(-1), changes.objectsToUpdate[0].get(UTIL_Namespace.prefixNamespace('EndDate__c')), 'Existing schedule End Date should be set to yesterday.');
         System.assertEquals(0, changes.objectsToInsert.size(), 'There should be no schedules to insert.');
     }
 
@@ -757,9 +757,9 @@ public with sharing class RD2_ScheduleService_TEST {
         rd.Installment_Period__c = RD2_Constants.INSTALLMENT_PERIOD_WEEKLY;
 
         TDTM_Runnable.DMLWrapper changes = service.getUpdatedSchedules(rd, schedules);
-        System.assertEquals(startDate.addDays(-1), changes.objectsToUpdate[0].get(UTIL_Namespace.StrTokenNSPrefix('EndDate__c')), 'First schedule End Date should be updated');
-        System.assertEquals(startDate.addDays(-1), changes.objectsToUpdate[1].get(UTIL_Namespace.StrTokenNSPrefix('EndDate__c')), 'Second schedule End Date should be updated');
-        System.assertEquals(RD2_Constants.INSTALLMENT_PERIOD_WEEKLY, changes.objectsToInsert[0].get(UTIL_Namespace.StrTokenNSPrefix('InstallmentPeriod__c')), 'New schedule Installment Period should match');
+        System.assertEquals(startDate.addDays(-1), changes.objectsToUpdate[0].get(UTIL_Namespace.prefixNamespace('EndDate__c')), 'First schedule End Date should be updated');
+        System.assertEquals(startDate.addDays(-1), changes.objectsToUpdate[1].get(UTIL_Namespace.prefixNamespace('EndDate__c')), 'Second schedule End Date should be updated');
+        System.assertEquals(RD2_Constants.INSTALLMENT_PERIOD_WEEKLY, changes.objectsToInsert[0].get(UTIL_Namespace.prefixNamespace('InstallmentPeriod__c')), 'New schedule Installment Period should match');
     }
 
     /***
@@ -1778,9 +1778,9 @@ public with sharing class RD2_ScheduleService_TEST {
 
         System.assertEquals(1, changes.objectsToUpdate.size(), 'One Schedule should be set for update');
         System.assertEquals(1, changes.objectsToInsert.size(), 'One Schedule should be set for insert');
-        System.assertNotEquals(true, changes.objectsToUpdate[0].get(UTIL_Namespace.StrTokenNSPrefix('IsPause__c')), 'Pause Schedule should not be updated');
-        System.assertNotEquals(true, changes.objectsToInsert[0].get(UTIL_Namespace.StrTokenNSPrefix('IsPause__c')), 'Pause Schedule should not be inserted');
-        System.assertEquals(RD2_Constants.INSTALLMENT_PERIOD_WEEKLY, changes.objectsToInsert[0].get(UTIL_Namespace.StrTokenNSPrefix('InstallmentPeriod__c')),
+        System.assertNotEquals(true, changes.objectsToUpdate[0].get(UTIL_Namespace.prefixNamespace('IsPause__c')), 'Pause Schedule should not be updated');
+        System.assertNotEquals(true, changes.objectsToInsert[0].get(UTIL_Namespace.prefixNamespace('IsPause__c')), 'Pause Schedule should not be inserted');
+        System.assertEquals(RD2_Constants.INSTALLMENT_PERIOD_WEEKLY, changes.objectsToInsert[0].get(UTIL_Namespace.prefixNamespace('InstallmentPeriod__c')),
             'New schedule Installment Period should match');
     }
 
@@ -1812,7 +1812,7 @@ public with sharing class RD2_ScheduleService_TEST {
         System.assertEquals(0, changes.objectsToInsert.size(), 'No Schedule should be set for insert');
 
         for (SObject schedule : changes.objectsToUpdate) {
-            System.assertEquals(yesterday, schedule.get(UTIL_Namespace.StrTokenNSPrefix('EndDate__c')), 'All Schedules should end: ' + schedule);
+            System.assertEquals(yesterday, schedule.get(UTIL_Namespace.prefixNamespace('EndDate__c')), 'All Schedules should end: ' + schedule);
         }
     }
 
@@ -1842,7 +1842,7 @@ public with sharing class RD2_ScheduleService_TEST {
         System.assertEquals(1, changes.objectsToUpdate.size(), 'Pause Schedule should be excluded from the update');
         System.assertEquals(0, changes.objectsToInsert.size(), 'No Schedule should be set for insert');
 
-        System.assertNotEquals(true, changes.objectsToUpdate[0].get(UTIL_Namespace.StrTokenNSPrefix('IsPause__c')), 'Pause Schedule should not be updated');
+        System.assertNotEquals(true, changes.objectsToUpdate[0].get(UTIL_Namespace.prefixNamespace('IsPause__c')), 'Pause Schedule should not be updated');
     }
 
     /***

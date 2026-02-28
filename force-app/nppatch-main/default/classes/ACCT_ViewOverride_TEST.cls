@@ -45,7 +45,7 @@ private class ACCT_ViewOverride_TEST {
 
         UTIL_CustomSettingsFacade.getContactsSettingsForTests(new Contacts_and_Orgs_Settings__c (Account_Processor__c = CAO_Constants.ONE_TO_ONE_PROCESSOR));
         
-        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('ACCT_ViewOverride')));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.prefixNamespace('ACCT_ViewOverride')));
         
         String newContactMailingStreet = '123 Elm St';
         Contact con = new Contact(
@@ -81,7 +81,7 @@ private class ACCT_ViewOverride_TEST {
         // Assign admin permission set to ensure FLS access for WITH SECURITY_ENFORCED queries
         UTIL_TestPermissions.assignAdminPermissionSet();
 
-        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.StrTokenNSPrefix('ACCT_ViewOverride')));
+        Test.setCurrentPageReference(new PageReference('Page.' + UTIL_Namespace.prefixNamespace('ACCT_ViewOverride')));
         
         Account newAccount = new Account();
         
