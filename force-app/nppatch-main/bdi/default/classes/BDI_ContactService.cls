@@ -122,11 +122,11 @@ public with sharing class BDI_ContactService {
         get {
             if (mapDIHomeAddrToContact == null ) {
                 mapDIHomeAddrToContact = new Map<String,String> {
-                UTIL_Namespace.alignSchemaNSWithEnvironment('%%%NAMESPACE%%%Home_Street__c') => 'MailingStreet',
-                UTIL_Namespace.alignSchemaNSWithEnvironment('%%%NAMESPACE%%%Home_City__c') => 'MailingCity',
-                UTIL_Namespace.alignSchemaNSWithEnvironment('%%%NAMESPACE%%%Home_Zip_Postal_Code__c') => 'MailingPostalCode',
-                UTIL_Namespace.alignSchemaNSWithEnvironment('%%%NAMESPACE%%%Home_State_Province__c') => 'MailingState',
-                UTIL_Namespace.alignSchemaNSWithEnvironment('%%%NAMESPACE%%%Home_Country__c') => 'MailingCountry'};
+                UTIL_Namespace.prefixNamespace('Home_Street__c') => 'MailingStreet',
+                UTIL_Namespace.prefixNamespace('Home_City__c') => 'MailingCity',
+                UTIL_Namespace.prefixNamespace('Home_Zip_Postal_Code__c') => 'MailingPostalCode',
+                UTIL_Namespace.prefixNamespace('Home_State_Province__c') => 'MailingState',
+                UTIL_Namespace.prefixNamespace('Home_Country__c') => 'MailingCountry'};
             }
 
             return mapDIHomeAddrToContact;
@@ -195,31 +195,31 @@ public with sharing class BDI_ContactService {
     /*******************************************************************************************************
     * @description looks to see if any of the dikey fields for the Contact are specified.
     * @param di the Data Import record
-    * @param strCx specifies which contact's fields to look at; either Contact1 or Contact2
+    * @param contactRef specifies which contact's fields to look at; either Contact1 or Contact2
     * @return Boolean true if any of the contact's dikey fields are not empty
     */
-    private boolean isContactSpecified(DataImport__c di, String strCx) {
-        return di.get(strCx + 'Imported__c') != null ||
-            di.get(strCx + '_Firstname__c') != null ||
-            di.get(strCx + '_Lastname__c') != null ||
-            di.get(strCx + '_Personal_Email__c') != null ||
-            di.get(strCx + '_Work_Email__c') != null ||
-            di.get(strCx + '_Alternate_Email__c') != null ||
-            di.get(strCx + '_Home_Phone__c') != null ||
-            di.get(strCx + '_Mobile_Phone__c') != null ||
-            di.get(strCx + '_Other_Phone__c') != null ||
-            di.get(strCx + '_Work_Phone__c') != null;
+    private boolean isContactSpecified(DataImport__c di, String contactRef) {
+        return di.get(contactRef + 'Imported__c') != null ||
+            di.get(contactRef + '_Firstname__c') != null ||
+            di.get(contactRef + '_Lastname__c') != null ||
+            di.get(contactRef + '_Personal_Email__c') != null ||
+            di.get(contactRef + '_Work_Email__c') != null ||
+            di.get(contactRef + '_Alternate_Email__c') != null ||
+            di.get(contactRef + '_Home_Phone__c') != null ||
+            di.get(contactRef + '_Mobile_Phone__c') != null ||
+            di.get(contactRef + '_Other_Phone__c') != null ||
+            di.get(contactRef + '_Work_Phone__c') != null;
     }
 
     /*******************************************************************************************************
     * @description for each DI, updates the appropriate contact with values from the DI and then saves
     * the Contacts to the database.
-    * @param strCx specifies which contact to update and save; either Contact1 or Contact2
+    * @param contactRef specifies which contact to update and save; either Contact1 or Contact2
     * @return Set<Id> the set of DI Id's that were updated
     */
-    private Set<Id> updateAndSaveContacts(String strCx) {
+    private Set<Id> updateAndSaveContacts(String contactRef) {
         Set<Id> setDIIdUpdated = new Set<Id>();
-        Integer iCx = strCx == 'Contact1' ? 1 : 2;
+        Integer iCx = contactRef == 'Contact1' ? 1 : 2;
 
         // handle multiple di's referring to the same existing contact
         Set<String> setDIKeyUpsert = new Set<String>();
@@ -243,9 +243,9 @@ public with sharing class BDI_ContactService {
             }
 
             // copy over all fields with data
-            Map<String, String> mapDIFieldToConField = (strCx == 'Contact1') ? mapDIFieldToC1Field : mapDIFieldToC2Field;
-            for (String strDIField : mapDIFieldToConField.keySet()) {
-                if (BDI_DataImportService.copyDIFieldToDestinationRecord(di, strDIField, con, mapDIFieldToConField)) {
+            Map<String, String> mapDIFieldToConField = (contactRef == 'Contact1') ? mapDIFieldToC1Field : mapDIFieldToC2Field;
+            for (String diField : mapDIFieldToConField.keySet()) {
+                if (BDI_DataImportService.copyDIFieldToDestinationRecord(di, diField, con, mapDIFieldToConField)) {
                     isModified = true;
                 }
             }
@@ -273,7 +273,7 @@ public with sharing class BDI_ContactService {
             for (integer i = 0; i < listUR.size(); i++) {
                 Database.UpsertResult ur = listUR[i];
                 if (!ur.isSuccess()) {
-                    bdi.LogBDIError(listDIUpsert[i], ur.getErrors()[0].getMessage(), strCx + 'ImportStatus__c');
+                    bdi.LogBDIError(listDIUpsert[i], ur.getErrors()[0].getMessage(), contactRef + 'ImportStatus__c');
                 } else {
                     setDIIdUpdated.add(listDIUpsert[i].Id);
                 }
@@ -283,18 +283,18 @@ public with sharing class BDI_ContactService {
         // update each DI with its new contact ID
         Set<Id> setConId = new Set<Id>();
         for (DataImport__c di : bdi.listDI) {
-            Id conId = (Id)di.get(strCx + 'Imported__c');
+            Id conId = (Id)di.get(contactRef + 'Imported__c');
             if (conId == null) {
                 Contact con = ContactFromDi(di, iCx);
                 if (con != null) {
-                    di.put(strCx + 'Imported__c', con.Id);
+                    di.put(contactRef + 'Imported__c', con.Id);
                     conId = con.Id;
                 }
             }
             setConId.add(conId);
         }
 
-        if (strCx == 'Contact1') {
+        if (contactRef == 'Contact1') {
             refreshContact1HouseholdAccounts(setConId);
         }
 
@@ -347,11 +347,11 @@ public with sharing class BDI_ContactService {
 
     /*******************************************************************************************************
     * @description for each DI, finds its matching Contact, or creates a new Contact, and updates our map.
-    * @param strCx Contact1 or Contact2
+    * @param contactRef Contact1 or Contact2
     * @return void
     */
-    private void associateDIsWithMatchedOrNewContacts(String strCx) {
-        Integer iCx = strCx == 'Contact1' ? 1 : 2;
+    private void associateDIsWithMatchedOrNewContacts(String contactRef) {
+        Integer iCx = contactRef == 'Contact1' ? 1 : 2;
         Boolean modelIsOneToOne = CAO_Constants.isOneToOne();
 
         for (DataImport__c di : bdi.listDI) {
@@ -359,12 +359,12 @@ public with sharing class BDI_ContactService {
             // skip di's that already have an error
             if (di.Status__c == BDI_DataImport_API.bdiFailed)
                 continue;
-            List<String> listDiKey = listDIKeyCx(di, strCx);
+            List<String> listDiKey = listDIKeyCx(di, contactRef);
 
             Contact con = ContactFromDiKeys(listDiKey);
 
-            Boolean bothContactsSpecified = (strCx == 'Contact1' && isContactSpecified(di, 'Contact2')) || 
-                (strCx == 'Contact2' && isContactSpecified(di, 'Contact1'));
+            Boolean bothContactsSpecified = (contactRef == 'Contact1' && isContactSpecified(di, 'Contact2')) || 
+                (contactRef == 'Contact2' && isContactSpecified(di, 'Contact1'));
 
             if (con != null) {
                 Boolean usingAdv = ADV_PackageInfo_SVC.useAdv();
@@ -380,20 +380,20 @@ public with sharing class BDI_ContactService {
                     String accountError = usingAdv 
                         ? label.bdiErrorNonHHAccountContactWithAdv
                         : label.bdiErrorNonHHAccountContact;
-                    bdi.LogBDIError(di, accountError, strCx + 'ImportStatus__c');
+                    bdi.LogBDIError(di, accountError, contactRef + 'ImportStatus__c');
                     continue;
                 }
                 // Both Contacts are specified, and at least one of them is one-to-one
                 else if(usingAdvAccountOneToOne && bothContactsSpecified){
-                    bdi.LogBDIError(di, label.bdiErrorOneToOneMultiContact, strCx + 'ImportStatus__c');
+                    bdi.LogBDIError(di, label.bdiErrorOneToOneMultiContact, contactRef + 'ImportStatus__c');
                     continue;
                 }
 
-                di.put(strCx + 'Imported__c', con.id);
+                di.put(contactRef + 'Imported__c', con.id);
 
                 // Determine correct import status based on the type of matching and whether it matched on an existing
                 // record and update it on the Data Import record.
-                di.put(strCx + 'ImportStatus__c', determineImportStatus(di, con, iCx));
+                di.put(contactRef + 'ImportStatus__c', determineImportStatus(di, con, iCx));
 
                 if (con.AccountId != null && di.HouseholdAccountImported__c == null) {
                         di.HouseholdAccountImported__c = con.AccountId;
@@ -401,17 +401,17 @@ public with sharing class BDI_ContactService {
             } else if (listDiKey.size() > 0) {
                 // The Account model is 1x1, both Contacts are specified, and at least one of the Contacts is new
                 if (modelIsOneToOne && bothContactsSpecified) {
-                    bdi.LogBDIError(di, label.bdiErrorOneToOneMultiContact, strCx + 'ImportStatus__c');
+                    bdi.LogBDIError(di, label.bdiErrorOneToOneMultiContact, contactRef + 'ImportStatus__c');
                     continue;
                 }
 
                 con = new Contact();
-                di.put(strCx + 'ImportStatus__c', bdi.statusCreatedNew());
-                di.put(strCx + '_Preferred_Email__c', strPreferredEmail(di, iCx));
-                di.put(strCx + '_Preferred_Phone__c', strPreferredPhone(di, iCx));
+                di.put(contactRef + 'ImportStatus__c', bdi.statusCreatedNew());
+                di.put(contactRef + '_Preferred_Email__c', preferredEmail(di, iCx));
+                di.put(contactRef + '_Preferred_Phone__c', preferredPhone(di, iCx));
 
                 // if no lastname specified for c2, we need to get it from c1 (which may only be implicit via Contact1_Imported)
-                if (strCx == 'Contact2' && di.Contact2_Lastname__c == null) {
+                if (contactRef == 'Contact2' && di.Contact2_Lastname__c == null) {
                     Contact con1 = ContactFromDi(di, 1);
                     di.Contact2_Lastname__c = con1.Lastname;
                 }
@@ -441,9 +441,9 @@ public with sharing class BDI_ContactService {
             }
         }
 
-        String strSoql = getSoqlSelectForContact();
-        strSoql += ' WHERE AccountId IN :setHHId';
-        List<Contact> listHHContacts = database.query(strSoql);
+        String soql = getSoqlSelectForContact();
+        soql += ' WHERE AccountId IN :setHHId';
+        List<Contact> listHHContacts = database.query(soql);
         for (Contact con : listHHContacts) {
             String firstName = con.FirstName;
             if (!String.isBlank(firstName)) {
@@ -483,8 +483,8 @@ public with sharing class BDI_ContactService {
         Set<Double> setCustomIDNumber = new Set<Double>();
         Set<Id> setSFId = new Set<Id>();
         Set<Id> setHHId = new Set<Id>();
-        String c1CustomIDField = BDI_DataImportService.strDIContactCustomIDField('Contact1', bdi.diSettings);
-        String c2CustomIDField = BDI_DataImportService.strDIContactCustomIDField('Contact2', bdi.diSettings);
+        String c1CustomIDField = BDI_DataImportService.diContactCustomIDField('Contact1', bdi.diSettings);
+        String c2CustomIDField = BDI_DataImportService.diContactCustomIDField('Contact2', bdi.diSettings);
         
 
         // since the npsp email fields and phone fields are not indexed, we optimize our query to just
@@ -554,13 +554,13 @@ public with sharing class BDI_ContactService {
             }
         }
 
-        String strSoql = getSoqlSelectForContact();
-        strSoql += ' WHERE (Id IN :setSFId) ';
+        String soql = getSoqlSelectForContact();
+        soql += ' WHERE (Id IN :setSFId) ';
         
         if (isCustomIDInContactMatchRules && isCustomIdInContactDatatypeString) {
-            strSoql += ' OR (' + bdi.diSettings.Contact_Custom_Unique_ID__c + ' IN :setCustomIDString) ';
+            soql += ' OR (' + bdi.diSettings.Contact_Custom_Unique_ID__c + ' IN :setCustomIDString) ';
         } else if (isCustomIDInContactMatchRules && !isCustomIdInContactDatatypeString) {
-            strSoql += ' OR (' + bdi.diSettings.Contact_Custom_Unique_ID__c + ' IN :setCustomIDNumber) ';
+            soql += ' OR (' + bdi.diSettings.Contact_Custom_Unique_ID__c + ' IN :setCustomIDNumber) ';
         }
 
         UTIL_Finder finderByName = new UTIL_Finder(Contact.SObjectType)
@@ -569,26 +569,26 @@ public with sharing class BDI_ContactService {
         if (filterOnlyByName) {
 
             if (finderByName.isSoql()) {
-                strSoql += ' OR (Name IN :setName) ';
+                soql += ' OR (Name IN :setName) ';
             } else if (!setName.isEmpty()) {
                 setSFId.addAll(new Map<Id, SObject>(finderByName.find()).keySet());
             }
 
         } else {
             String soqlConnector = ' OR (';
-            String strAnd = '';
+            String andClause = '';
 
             if (finderByName.isSoql()) {
 
                 if (isFirstnameInContactMatchRules) {
-                    strAnd = soqlConnector;
-                    strSoql += strAnd + 'Firstname IN :setFName ';
-                    strAnd = ' AND ';
+                    andClause = soqlConnector;
+                    soql += andClause + 'Firstname IN :setFName ';
+                    andClause = ' AND ';
                 }
                 if (isLastnameInContactMatchRules) {
-                    strAnd = String.isBlank(strAnd) ? soqlConnector : strAnd;
-                    strSoql += strAnd + 'Lastname IN :setLName ';
-                    strAnd = ' AND ';
+                    andClause = String.isBlank(andClause) ? soqlConnector : andClause;
+                    soql += andClause + 'Lastname IN :setLName ';
+                    andClause = ' AND ';
                 }
 
             } else {
@@ -609,20 +609,20 @@ public with sharing class BDI_ContactService {
             }
 
             if (isEmailInContactMatchRules) {
-                strAnd = String.isBlank(strAnd) ? soqlConnector : strAnd;
+                andClause = String.isBlank(andClause) ? soqlConnector : andClause;
 
-                strSoql += strAnd + '(' +
+                soql += andClause + '(' +
                     'Email IN :setEmail OR ' +
                     UTIL_Namespace.prefixNamespace('AlternateEmail__c') + ' IN :setEmail OR ' +
                     UTIL_Namespace.prefixNamespace('HomeEmail__c') + ' IN :setEmail OR ' +
                     UTIL_Namespace.prefixNamespace('WorkEmail__c') + ' IN :setEmail) ';
-                strAnd = ' AND ';
+                andClause = ' AND ';
             }
 
             if (isPhoneInContactMatchRules) {
-                strAnd = String.isBlank(strAnd) ? soqlConnector : strAnd;
+                andClause = String.isBlank(andClause) ? soqlConnector : andClause;
 
-                strSoql += strAnd + '(' +
+                soql += andClause + '(' +
                     'Phone IN :setPhone OR ' +
                     'HomePhone IN :setPhone OR ' +
                     'MobilePhone IN :setPhone OR ' +
@@ -631,11 +631,11 @@ public with sharing class BDI_ContactService {
                     UTIL_Namespace.prefixNamespace('WorkPhone__c') + ' IN :setPhone)';
             }
 
-            strSoql += String.isBlank(strAnd) ? '' : ')';
+            soql += String.isBlank(andClause) ? '' : ')';
         }
 
         BDI_PerfLogger.PerfLog pl = BDI_DataImportService.perfLogger.newPerfLog('SOQL existing Contacts', BDI_PerfLogger.QUERY);
-        List<Contact> listCon = database.query(strSoql);
+        List<Contact> listCon = database.query(soql);
         pl.stop();
 
         return listCon;
@@ -675,14 +675,14 @@ public with sharing class BDI_ContactService {
     * @return String the Contact's full name or null
     */
     private String getContactNameFromDi(DataImport__c di, Integer iCon) {
-        String strCx = UTIL_Namespace.prefixNamespace('Contact' + String.valueOf(iCon));
-        String firstname = (String)di.get(strCx + '_Firstname__c');
-        String lastname = (String)di.get(strCx + '_Lastname__c');
+        String contactRef = UTIL_Namespace.prefixNamespace('Contact' + String.valueOf(iCon));
+        String firstname = (String)di.get(contactRef + '_Firstname__c');
+        String lastname = (String)di.get(contactRef + '_Lastname__c');
 
         // note that we don't try to support middlename and suffix due to known
         // salesforce won't fix issue: https://success.salesforce.com/issues_view?id=a1p30000000eQRxAAM
-        // String middlename = getMiddleName(di, strCx);
-        // String suffix = getNameSuffix(di, strCx);
+        // String middlename = getMiddleName(di, contactRef);
+        // String suffix = getNameSuffix(di, contactRef);
 
         String fullname = '';
         if (firstname != null) {
@@ -782,12 +782,12 @@ public with sharing class BDI_ContactService {
         }
 
         // we need the Contact CustomId key to always be checked second when matching
-        String strUniqueId = '';
-        if (isCustomIDInContactMatchRules && (strUniqueId = bdi.strNull(con.get(bdi.diSettings.Contact_Custom_Unique_ID__c))) != '') {
+        String uniqueId = '';
+        if (isCustomIDInContactMatchRules && (uniqueId = bdi.valueOrEmptyString(con.get(bdi.diSettings.Contact_Custom_Unique_ID__c))) != '') {
             if (!isCustomIdInContactDatatypeString) {
-                strUniqueId = String.valueOf(double.valueOf(strUniqueId));
+                uniqueId = String.valueOf(double.valueOf(uniqueId));
             }
-            listDiKey.add(strUniqueId);
+            listDiKey.add(uniqueId);
         }
 
         List<String> listFName = new List<String>();
@@ -865,7 +865,7 @@ public with sharing class BDI_ContactService {
             listPhone.add('');
 
         Set<String> setDiKey = new Set<String>();
-        addDiKeyPermutations(setDiKey, listFName, listLName, ListEmail, listPhone, strUniqueId);
+        addDiKeyPermutations(setDiKey, listFName, listLName, ListEmail, listPhone, uniqueId);
         listDiKey.addAll(setDiKey);
         return listDiKey;
     }
@@ -878,16 +878,16 @@ public with sharing class BDI_ContactService {
     * @param listLName a list of lastnames for the contact
     * @param listEmail a list of Emails for the contact
     * @param listPhone a list of Phones for the contact
-    * @param strUniqueId an option UniqueId value for the contact
+    * @param uniqueId an option UniqueId value for the contact
     * @return void
     */
     private void addDiKeyPermutations(Set<String> setDiKey, List<String> listFname, List<String> listLName,
-        List<String> listEmail, List<String> listPhone, String strUniqueId) {
-        for (String strFName : listFName) {
-            for (String strLName : listLName) {
-                for (String strEmail : listEmail) {
-                    for (String strPhone : listPhone) {
-                        setDiKey.add(strFName + '|' + strLName + '|' + strEmail + '|' + strPhone + '|' + strUniqueId);
+        List<String> listEmail, List<String> listPhone, String uniqueId) {
+        for (String fName : listFName) {
+            for (String lName : listLName) {
+                for (String email : listEmail) {
+                    for (String phone : listPhone) {
+                        setDiKey.add(fName + '|' + lName + '|' + email + '|' + phone + '|' + uniqueId);
                     }
                 }
             }
@@ -898,27 +898,27 @@ public with sharing class BDI_ContactService {
     /*******************************************************************************************************
     * @description return the dikeys for specified contact in the given di.
     * @param di the Data Import record
-    * @param strCx specifies which contact, eg Contact1 or Contact2
+    * @param contactRef specifies which contact, eg Contact1 or Contact2
     * @return List<String> the diKeys for the contact
     */
-    private List<String> listDiKeyCx(DataImport__c di, String strCx) {
+    private List<String> listDiKeyCx(DataImport__c di, String contactRef) {
         BDI_PerfLogger.PerfLog pl = BDI_DataImportService.perfLogger.newPerfLog('listDiKeyCx');
 
         List<String> listDiKey = new List<String>();
 
         // we need the Contact Lookup key to always be checked first when matching
-        String strUniqueId = '';
-        if ((strUniqueId = bdi.strNull(di.get(strCx + 'Imported__c'))) != '') {
-            listDiKey.add(strUniqueId);
-            strUniqueId = '';
+        String uniqueId = '';
+        if ((uniqueId = bdi.valueOrEmptyString(di.get(contactRef + 'Imported__c'))) != '') {
+            listDiKey.add(uniqueId);
+            uniqueId = '';
         }
 
         // we need the Contact CustomId key to always be checked second when matching
-        if (isCustomIDInContactMatchRules && (strUniqueId = bdi.strNull(di.get(BDI_DataImportService.strDIContactCustomIDField(strCx, bdi.diSettings)))) != '') {
+        if (isCustomIDInContactMatchRules && (uniqueId = bdi.valueOrEmptyString(di.get(BDI_DataImportService.diContactCustomIDField(contactRef, bdi.diSettings)))) != '') {
             if (!isCustomIdInContactDatatypeString) {
-                strUniqueId = String.valueOf(double.valueOf(strUniqueId));
+                uniqueId = String.valueOf(double.valueOf(uniqueId));
             }
-            listDiKey.add(strUniqueId);
+            listDiKey.add(uniqueId);
         }
 
         List<String> listFName = new List<String>();
@@ -927,8 +927,8 @@ public with sharing class BDI_ContactService {
         List<String> listPhone = new List<String>();
         Boolean addedToken = false;
 
-        if (di.get(strCx + '_Firstname__c') != null) {
-            listFName.add(String.valueOf(di.get(strCx + '_Firstname__c')).toLowerCase());
+        if (di.get(contactRef + '_Firstname__c') != null) {
+            listFName.add(String.valueOf(di.get(contactRef + '_Firstname__c')).toLowerCase());
             addedToken = true;
         }
 
@@ -941,8 +941,8 @@ public with sharing class BDI_ContactService {
         }
 
         addedToken = false;
-        if (di.get(strCx + '_Lastname__c') != null) {
-            listLName.add(String.valueOf(di.get(strCx + '_Lastname__c')).toLowerCase());
+        if (di.get(contactRef + '_Lastname__c') != null) {
+            listLName.add(String.valueOf(di.get(contactRef + '_Lastname__c')).toLowerCase());
             addedToken = true;
         }
         if ((!isLastnameInContactMatchRules && !isDuplicateManagement) || !addedToken) {
@@ -950,16 +950,16 @@ public with sharing class BDI_ContactService {
         }
 
         addedToken = false;
-        if (di.get(strCx + '_Personal_Email__c') != null) {
-            listEmail.add(String.valueOf(di.get(strCx + '_Personal_Email__c')).toLowerCase());
+        if (di.get(contactRef + '_Personal_Email__c') != null) {
+            listEmail.add(String.valueOf(di.get(contactRef + '_Personal_Email__c')).toLowerCase());
             addedToken = true;
         }
-        if (di.get(strCx + '_Work_Email__c') != null) {
-            listEmail.add(String.valueOf(di.get(strCx + '_Work_Email__c')).toLowerCase());
+        if (di.get(contactRef + '_Work_Email__c') != null) {
+            listEmail.add(String.valueOf(di.get(contactRef + '_Work_Email__c')).toLowerCase());
             addedToken = true;
         }
-        if (di.get(strCx + '_Alternate_Email__c') != null) {
-            listEmail.add(String.valueOf(di.get(strCx + '_Alternate_Email__c')).toLowerCase());
+        if (di.get(contactRef + '_Alternate_Email__c') != null) {
+            listEmail.add(String.valueOf(di.get(contactRef + '_Alternate_Email__c')).toLowerCase());
             addedToken = true;
         }
         if ((!isEmailInContactMatchRules && !isDuplicateManagement) || !addedToken) {
@@ -967,20 +967,20 @@ public with sharing class BDI_ContactService {
         }
 
         addedToken = false;
-        if (di.get(strCx + '_Home_Phone__c') != null) {
-            listPhone.add(String.valueOf(di.get(strCx + '_Home_Phone__c')));
+        if (di.get(contactRef + '_Home_Phone__c') != null) {
+            listPhone.add(String.valueOf(di.get(contactRef + '_Home_Phone__c')));
             addedToken = true;
         }
-        if (di.get(strCx + '_Mobile_Phone__c') != null) {
-            listPhone.add(String.valueOf(di.get(strCx + '_Mobile_Phone__c')));
+        if (di.get(contactRef + '_Mobile_Phone__c') != null) {
+            listPhone.add(String.valueOf(di.get(contactRef + '_Mobile_Phone__c')));
             addedToken = true;
         }
-        if (di.get(strCx + '_Other_Phone__c') != null) {
-            listPhone.add(String.valueOf(di.get(strCx + '_Other_Phone__c')));
+        if (di.get(contactRef + '_Other_Phone__c') != null) {
+            listPhone.add(String.valueOf(di.get(contactRef + '_Other_Phone__c')));
             addedToken = true;
         }
-        if (di.get(strCx + '_Work_Phone__c') != null) {
-            listPhone.add(String.valueOf(di.get(strCx + '_Work_Phone__c')));
+        if (di.get(contactRef + '_Work_Phone__c') != null) {
+            listPhone.add(String.valueOf(di.get(contactRef + '_Work_Phone__c')));
             addedToken = true;
         }
         if ((!isPhoneInContactMatchRules && !isDuplicateManagement) || !addedToken) {
@@ -988,36 +988,36 @@ public with sharing class BDI_ContactService {
         }
 
         Set<String> setDiKey = new Set<String>();
-        addDiKeyPermutations(setDiKey, listFName, listLName, ListEmail, listPhone, strUniqueId);
+        addDiKeyPermutations(setDiKey, listFName, listLName, ListEmail, listPhone, uniqueId);
         listDiKey.addAll(setDiKey);
 
         // if we didn't create any dikey's for this di due to it not matching all constraints,
         // we have to still add a single key that this di can use to find the new contact to be created.
         if (listDiKey.size() == 0) {
-            String diKey =  bdi.strNull(di.get(strCx + '_Firstname__c')) + '|' + bdi.strNull(di.get(strCx + '_Lastname__c')) + '|';
+            String diKey =  bdi.valueOrEmptyString(di.get(contactRef + '_Firstname__c')) + '|' + bdi.valueOrEmptyString(di.get(contactRef + '_Lastname__c')) + '|';
             // email
-            if (di.get(strCx + '_Personal_Email__c') != null) {
-                diKey += String.valueOf(di.get(strCx + '_Personal_Email__c'));
-            } else if (di.get(strCx + '_Work_Email__c') != null) {
-                diKey += String.valueOf(di.get(strCx + '_Work_Email__c'));
-            } else if (di.get(strCx + '_Alternate_Email__c') != null) {
-                diKey += String.valueOf(di.get(strCx + '_Alternate_Email__c'));
+            if (di.get(contactRef + '_Personal_Email__c') != null) {
+                diKey += String.valueOf(di.get(contactRef + '_Personal_Email__c'));
+            } else if (di.get(contactRef + '_Work_Email__c') != null) {
+                diKey += String.valueOf(di.get(contactRef + '_Work_Email__c'));
+            } else if (di.get(contactRef + '_Alternate_Email__c') != null) {
+                diKey += String.valueOf(di.get(contactRef + '_Alternate_Email__c'));
             }
             diKey += '|';
             diKey = diKey.toLowerCase();
 
             // phone
-            if (di.get(strCx + '_Home_Phone__c') != null) {
-                diKey += String.valueOf(di.get(strCx + '_Home_Phone__c'));
-            } else if (di.get(strCx + '_Mobile_Phone__c') != null) {
-                diKey += String.valueOf(di.get(strCx + '_Mobile_Phone__c'));
-            } else if (di.get(strCx + '_Other_Phone__c') != null) {
-                diKey += String.valueOf(di.get(strCx + '_Other_Phone__c'));
-            } else if (di.get(strCx + '_Work_Phone__c') != null) {
-                diKey += String.valueOf(di.get(strCx + '_Work_Phone__c'));
+            if (di.get(contactRef + '_Home_Phone__c') != null) {
+                diKey += String.valueOf(di.get(contactRef + '_Home_Phone__c'));
+            } else if (di.get(contactRef + '_Mobile_Phone__c') != null) {
+                diKey += String.valueOf(di.get(contactRef + '_Mobile_Phone__c'));
+            } else if (di.get(contactRef + '_Other_Phone__c') != null) {
+                diKey += String.valueOf(di.get(contactRef + '_Other_Phone__c'));
+            } else if (di.get(contactRef + '_Work_Phone__c') != null) {
+                diKey += String.valueOf(di.get(contactRef + '_Work_Phone__c'));
             }
 
-            diKey += '|' + strUniqueId;
+            diKey += '|' + uniqueId;
 
             if (diKey != '||||') {
                 listDiKey.add(diKey);
@@ -1025,7 +1025,7 @@ public with sharing class BDI_ContactService {
         }
 
         // for c2's that we know their household, we want to add a "looser" key to match by as well.
-        if (strCx == 'Contact2' && di.HouseholdAccountImported__c != null && di.get(UTIL_Namespace.prefixNamespace('Contact2_Firstname__c')) != null) {
+        if (contactRef == 'Contact2' && di.HouseholdAccountImported__c != null && di.get(UTIL_Namespace.prefixNamespace('Contact2_Firstname__c')) != null) {
             listDiKey.add(String.valueOf(di.get(UTIL_Namespace.prefixNamespace('Contact2_Firstname__c'))).toLowerCase() + '|' + di.HouseholdAccountImported__c);
         }
         pl.stop();
@@ -1049,8 +1049,8 @@ public with sharing class BDI_ContactService {
         Map<String, String> mapDIFieldToConField = (iCon == 1) ? mapDIFieldToC1Field : mapDIFieldToC2Field;
 
         // Loop through the field mappings and create the contact
-        for (String strDIField : mapDIFieldToConField.keySet()) {
-            if (BDI_DataImportService.copyDIFieldToDestinationRecord(di, strDIField, tempCont, mapDIFieldToConField)) {
+        for (String diField : mapDIFieldToConField.keySet()) {
+            if (BDI_DataImportService.copyDIFieldToDestinationRecord(di, diField, tempCont, mapDIFieldToConField)) {
                 isModified = true;
             }
         }
@@ -1130,29 +1130,29 @@ public with sharing class BDI_ContactService {
     * @param iCon 1 or 2, for specifying Contact1 or Contact2
     * @return String the type of Preferred Email (Personal, Work, Alternate). null if ambiguous.
     */
-    private String strPreferredEmail(DataImport__c di, integer iCon) {
-        String strPreferred = null;
-        String strCx = UTIL_Namespace.prefixNamespace('Contact' + String.valueOf(iCon));
+    private String preferredEmail(DataImport__c di, integer iCon) {
+        String preferred = null;
+        String contactRef = UTIL_Namespace.prefixNamespace('Contact' + String.valueOf(iCon));
 
-        if ((strPreferred = (String)di.get(strCx + '_Preferred_Email__c')) != null) {
-            return strPreferred;
+        if ((preferred = (String)di.get(contactRef + '_Preferred_Email__c')) != null) {
+            return preferred;
         }
-        if (di.get(strCx + '_Personal_Email__c') != null) {
-            strPreferred = 'Personal';
+        if (di.get(contactRef + '_Personal_Email__c') != null) {
+            preferred = 'Personal';
         }
-        if (di.get(strCx + '_Work_Email__c') != null) {
-            if (strPreferred != null) {
+        if (di.get(contactRef + '_Work_Email__c') != null) {
+            if (preferred != null) {
                 return null;
             }
-            strPreferred = 'Work';
+            preferred = 'Work';
         }
-        if (di.get(strCx + '_Alternate_Email__c') != null) {
-            if (strPreferred != null) {
+        if (di.get(contactRef + '_Alternate_Email__c') != null) {
+            if (preferred != null) {
                 return null;
             }
-            strPreferred = 'Alternate';
+            preferred = 'Alternate';
         }
-        return strPreferred;
+        return preferred;
     }
 
     /*******************************************************************************************************
@@ -1161,35 +1161,35 @@ public with sharing class BDI_ContactService {
     * @param iCon 1 or 2, for specifying Contact1 or Contact2
     * @return String the type of Preferred Phone (Personal, Work, Alternate). null if ambiguous.
     */
-    private String strPreferredPhone(DataImport__c di, integer iCon) {
-        String strPreferred = null;
-        String strCx = UTIL_Namespace.prefixNamespace('Contact' + String.valueOf(iCon));
+    private String preferredPhone(DataImport__c di, integer iCon) {
+        String preferred = null;
+        String contactRef = UTIL_Namespace.prefixNamespace('Contact' + String.valueOf(iCon));
 
-        if ((strPreferred = (String)di.get(strCx + '_Preferred_Phone__c')) != null) {
-            return strPreferred;
+        if ((preferred = (String)di.get(contactRef + '_Preferred_Phone__c')) != null) {
+            return preferred;
         }
-        if (di.get(strCx + '_Home_Phone__c') != null) {
-            strPreferred = 'Home';
+        if (di.get(contactRef + '_Home_Phone__c') != null) {
+            preferred = 'Home';
         }
-        if (di.get(strCx + '_Work_Phone__c') != null) {
-            if (strPreferred != null) {
+        if (di.get(contactRef + '_Work_Phone__c') != null) {
+            if (preferred != null) {
                 return null;
             }
-            strPreferred = 'Work';
+            preferred = 'Work';
         }
-        if (di.get(strCx + '_Mobile_Phone__c') != null) {
-            if (strPreferred != null) {
+        if (di.get(contactRef + '_Mobile_Phone__c') != null) {
+            if (preferred != null) {
                 return null;
             }
-            strPreferred = 'Mobile';
+            preferred = 'Mobile';
         }
-        if (di.get(strCx + '_Other_Phone__c') != null) {
-            if (strPreferred != null) {
+        if (di.get(contactRef + '_Other_Phone__c') != null) {
+            if (preferred != null) {
                 return null;
             }
-            strPreferred = 'Other';
+            preferred = 'Other';
         }
-        return strPreferred;
+        return preferred;
     }
 
     /*******************************************************************************************************
