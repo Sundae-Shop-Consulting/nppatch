@@ -1281,10 +1281,10 @@ private class BDI_AdditionalObjectService_TEST {
         BDI_ObjectMapping predecessorObjMapping = bdiMsAdv.objectMappingByDevName.get('Opportunity');
         BDI_FieldMapping[] opptFieldMappings = bdiMsAdv.fieldMappingsByObjMappingDevName.get('Opportunity'); 
 
-        String additionalObjJSONFieldName = 
-            UTIL_Namespace.alignSchemaNSWithEnvironment('%%%NAMESPACE%%%Additional_Object_JSON__c');
+        String additionalObjJSONFieldName =
+            UTIL_Namespace.prefixNamespace('Additional_Object_JSON__c');
 
-        Data_Import_Object_Mapping__mdt diom = 
+        Data_Import_Object_Mapping__mdt diom =
             new Data_Import_Object_Mapping__mdt(DeveloperName = 'TestTestHonoree324',
                         MasterLabel = 'Honoree',
                         Data_Import_Object_Mapping_Set__c = predecessorObjMapping.Data_Import_Object_Mapping_Set,
@@ -1508,8 +1508,8 @@ private class BDI_AdditionalObjectService_TEST {
             BDI_MappingServiceAdvanced.DEFAULT_DATA_IMPORT_FIELD_MAPPING_SET_NAME;
         UTIL_CustomSettingsFacade.setDataImportSettings(dis);
 
-        String additionalObjJSONFieldName = 
-            UTIL_Namespace.alignSchemaNSWithEnvironment('%%%NAMESPACE%%%Additional_Object_JSON__c');
+        String additionalObjJSONFieldName =
+            UTIL_Namespace.prefixNamespace('Additional_Object_JSON__c');
         String templateName = 'GAU_Allocation_1';
         String templateNameOCR = 'Opportunity_Contact_Role_1';
 

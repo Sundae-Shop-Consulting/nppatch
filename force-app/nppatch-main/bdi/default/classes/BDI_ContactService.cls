@@ -122,11 +122,11 @@ public with sharing class BDI_ContactService {
         get {
             if (mapDIHomeAddrToContact == null ) {
                 mapDIHomeAddrToContact = new Map<String,String> {
-                UTIL_Namespace.alignSchemaNSWithEnvironment('%%%NAMESPACE%%%Home_Street__c') => 'MailingStreet',
-                UTIL_Namespace.alignSchemaNSWithEnvironment('%%%NAMESPACE%%%Home_City__c') => 'MailingCity',
-                UTIL_Namespace.alignSchemaNSWithEnvironment('%%%NAMESPACE%%%Home_Zip_Postal_Code__c') => 'MailingPostalCode',
-                UTIL_Namespace.alignSchemaNSWithEnvironment('%%%NAMESPACE%%%Home_State_Province__c') => 'MailingState',
-                UTIL_Namespace.alignSchemaNSWithEnvironment('%%%NAMESPACE%%%Home_Country__c') => 'MailingCountry'};
+                UTIL_Namespace.prefixNamespace('Home_Street__c') => 'MailingStreet',
+                UTIL_Namespace.prefixNamespace('Home_City__c') => 'MailingCity',
+                UTIL_Namespace.prefixNamespace('Home_Zip_Postal_Code__c') => 'MailingPostalCode',
+                UTIL_Namespace.prefixNamespace('Home_State_Province__c') => 'MailingState',
+                UTIL_Namespace.prefixNamespace('Home_Country__c') => 'MailingCountry'};
             }
 
             return mapDIHomeAddrToContact;
