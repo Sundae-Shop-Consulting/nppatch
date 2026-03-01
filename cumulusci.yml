@@ -22,6 +22,16 @@ tasks:
       path: robot/nppatch/tests
       output: robot/nppatch/doc/nppatch_tests.html
 
+  update_admin_profile:
+    options:
+      package_xml: lib/admin_profile.xml
+      record_types:
+        - record_type: Account.HH_Account
+        - record_type: Account.Organization
+          default: true
+        - record_type: Opportunity.NPPatch_Default
+          default: true
+
   run_tests:
     options:
       required_org_code_coverage_percent: 75
@@ -44,6 +54,23 @@ tasks:
     description: Display package installation command and URL
     class_path: tasks.package_info.LogPackageInstallInfo
     group: Utilities
+
+  list_org_objects:
+    description: List API names and labels of every object in the org
+    group: Utilities
+    class_path: tasks.list_org_objects.ListOrgObjects
+
+  generate_object_reference:
+    description: Generate a structured YAML data dictionary for selected objects
+    group: Utilities
+    class_path: tasks.object_reference.GenerateObjectReference
+  
+  generate_nppatch_object_reference:
+    description: Generate a text data dictionary for all nppatch-related objects.
+    class_path: tasks.object_reference.GenerateObjectReference
+    options:
+      objects: "AutoNumber__c,Campaign,Engagement_Plan_Template__c,Form_Template__c,Fund__c,General_Accounting_Unit__c,Household__c,Engagement_Plan_Task__c,Level__c,Account,Address__c,Contact,Affiliation__c,Case,Recurring_Donation__c,Relationship__c,Opportunity,RecurringDonationSchedule__c,Account_Soft_Credit__c,Engagement_Plan__c,Grant_Deadline__c,OppPayment__c,Partial_Soft_Credit__c,Allocation__c,DataImport__c"
+      output_path: datasets/nppatch_object_reference.yml
 
   default_settings:
     description: Configure the default Settings including Membership RecordType
@@ -315,6 +342,17 @@ flows:
         task: default_settings
       6:
         task: reorder_app_menu
+
+  demo_org:
+    steps:
+      1: 
+        flow: dev_org
+      2: 
+        task: load_dataset
+        options:
+          mapping: datasets/sample/mapping.yml
+          sql_path: datasets/sample/sample_data.sql
+          drop_missing_schema: True
 
   # =========================================
   # CI Feature 2GP: Override to add test org
