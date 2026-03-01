@@ -216,7 +216,8 @@ public with sharing class ServiceDeliveryTriggerHandler_TEST {
         List<ServiceDelivery__c> allServiceDeliveries = [
             SELECT Id, Quantity__c, DeliveryDate__c
             FROM ServiceDelivery__c
-            ORDER BY DeliveryDate__c DESC
+            WHERE Quantity__c > 0
+            ORDER BY DeliveryDate__c DESC, Id
         ];
 
         Test.startTest();

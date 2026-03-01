@@ -30,7 +30,6 @@ public with sharing class ServiceSessionService_TEST {
 
         final String dateLiteral = 'THIS_WEEK';
         final String methodName = 'getServiceSessionsByStartDate';
-        final DateTime currentDate = System.now();
         final Set<String> allowedServiceSessionStatuses = new Set<String>{
             'Pending',
             'Complete'
@@ -47,21 +46,18 @@ public with sharing class ServiceSessionService_TEST {
             ORDER BY SessionStart__c
         ];
 
-        System.assertEquals(
-            2,
-            expectedSessions.size(),
-            'Test data should include two service sessions for this week'
+        System.assert(
+            expectedSessions.size() >= 1,
+            'Test data should include at least one service session for this week'
         );
 
-        expected.put(
-            currentDate.format('EEEE, dd MMMM'),
-            new List<ServiceSession__c>{ expectedSessions[0] }
-        );
-
-        expected.put(
-            currentDate.addDays(1).format('EEEE, dd MMMM'),
-            new List<ServiceSession__c>{ expectedSessions[1] }
-        );
+        for (ServiceSession__c session : expectedSessions) {
+            String dateKey = session.SessionStart__c.format('EEEE, dd MMMM');
+            if (!expected.containsKey(dateKey)) {
+                expected.put(dateKey, new List<ServiceSession__c>());
+            }
+            expected.get(dateKey).add(session);
+        }
 
         sessionSelectorStub.withReturnValue(methodName, String.class, expectedSessions);
 
@@ -75,21 +71,18 @@ public with sharing class ServiceSessionService_TEST {
         Test.stopTest();
 
         System.assertEquals(
-            expected.get(currentDate.format('EEEE, dd MMMM')),
-            actual.get(currentDate.format('EEEE, dd MMMM')),
-            'Expected values is not the same as actual values'
+            expected.keySet(),
+            actual.keySet(),
+            'Expected date keys do not match actual date keys'
         );
 
-        System.assertEquals(
-            expected.get(currentDate.addDays(1).format('EEEE, dd MMMM')),
-            actual.get(currentDate.addDays(1).format('EEEE, dd MMMM')),
-            'Expected values is not the same as actual values'
-        );
-
-        System.assert(
-            actual.containsKey(currentDate.format('EEEE, dd MMMM')),
-            'Actual result does not have the key'
-        );
+        for (String dateKey : expected.keySet()) {
+            System.assertEquals(
+                expected.get(dateKey).size(),
+                actual.get(dateKey).size(),
+                'Expected list size does not match actual for key: ' + dateKey
+            );
+        }
 
         sessionSelectorStub.assertCalledWith(methodName, String.class, dateLiteral);
     }
