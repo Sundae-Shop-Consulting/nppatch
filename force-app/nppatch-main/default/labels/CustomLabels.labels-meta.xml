@@ -1712,62 +1712,6 @@
         <value>Next Installment Date: </value>
     </labels>
     <labels>
-        <fullName>RD2_ElevateCancelInProgress</fullName>
-        <categories>Recurring-Donations</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Indicates Elevate recurring commitment cancel is in progress</shortDescription>
-        <value>Recurring Payment Cancel in Progress</value>
-    </labels>
-    <labels>
-        <fullName>RD2_ElevateDisableButtonLabel</fullName>
-        <categories>Recurring Donation</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Label indicating user can hide the credit card and not use Elevate</shortDescription>
-        <value>Don&apos;t enter payment information.</value>
-    </labels>
-    <labels>
-        <fullName>RD2_ElevateDisabledHeader</fullName>
-        <categories>Recurring Donation</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Header indicating the org is not connected to Elevate</shortDescription>
-        <value>Elevate is not enabled for your Salesforce org</value>
-    </labels>
-    <labels>
-        <fullName>RD2_ElevateDisabledMessage</fullName>
-        <categories>Recurring Donation</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Text indicating the Recurring Donation will not be committed to Elevate</shortDescription>
-        <value>You aren&apos;t entering payment information to be processed by Elevate.</value>
-    </labels>
-    <labels>
-        <fullName>RD2_ElevateEnableButtonLabel</fullName>
-        <categories>Recurring Donation</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Link text to toggle and enable commitment creation in Elevate</shortDescription>
-        <value>Alternatively, enter payment details now.</value>
-    </labels>
-    <labels>
-        <fullName>RD2_ElevateInformationHeader</fullName>
-        <categories>Recurring Donation</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Elevate information widget header</shortDescription>
-        <value>Elevate Information</value>
-    </labels>
-    <labels>
-        <fullName>RD2_ElevateInformationStatusSuccess</fullName>
-        <categories>Recurring Donation</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Status description displayed when no error is active</shortDescription>
-        <value>No Errors</value>
-    </labels>
-    <labels>
         <fullName>RD2_ViewMoreDetails</fullName>
         <categories>Recurring Donation</categories>
         <language>en_US</language>
@@ -1792,44 +1736,12 @@
         <value>This functionality is currently not supported for Recurring Donations generated from Elevate Payment Services.</value>
     </labels>
     <labels>
-        <fullName>RD2_ElevatePendingStatus</fullName>
-        <categories>Recurring-Donations, Error</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Status Reason to indicates Elevate Service is in progress.</shortDescription>
-        <value>Pending Elevate Process</value>
-    </labels>
-    <labels>
-        <fullName>RD2_ElevatePermissionRequired</fullName>
-        <categories>Recurring-Donations, Error</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Error when user does not have a permission to change an RD originated in Elevate</shortDescription>
-        <value>Manage this Recurring Donation in Elevate.</value>
-    </labels>
-    <labels>
-        <fullName>RD2_ElevateRDAmountMustBeValid</fullName>
-        <categories>Recurring-Donations</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Checks if an Elevate Recurring Donation&apos;s amount is valid or not</shortDescription>
-        <value>Please enter a valid Amount. The Amount cannot be less than 1.</value>
-    </labels>
-    <labels>
         <fullName>RD2_ElevateRDCannotBePaused</fullName>
         <categories>Recurring-Donations, Error</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Elevate RD cannot be paused</shortDescription>
         <value>You can&apos;t pause Elevate connected Recurring Donations.</value>
-    </labels>
-    <labels>
-        <fullName>RD2_ElevateRDClosedStatusCannotBeChanged</fullName>
-        <categories>Recurring-Donations, Error</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Error when an attempt is made to change the Status of a Closed Elevate RD</shortDescription>
-        <value>You can&apos;t edit the Status for an Elevate connected Recurring Donation when Status is Closed.</value>
     </labels>
     <labels>
         <fullName>RD2_ElevateRDCannotBeFixedLength</fullName>
@@ -1870,14 +1782,6 @@
         <protected>true</protected>
         <shortDescription>Checks if Elevate Recurring Donation&apos;s Campaign update is valid or not</shortDescription>
         <value>You can&apos;t remove the Campaign on an active Elevate-connected Recurring Donation. To remove the Campaign, close the Recurring Donation and create a new one.</value>
-    </labels>
-    <labels>
-        <fullName>RD2_ElevateRecordCreateFailed</fullName>
-        <categories>Recurring Donation</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Text indicating the Recurring Donation could not be created in Elevate</shortDescription>
-        <value>An Elevate recurring payment could not be created. Contact your system administrator for assistance.</value>
     </labels>
     <labels>
         <fullName>RD2_ElevateRDCancellingTitle</fullName>
@@ -2552,28 +2456,12 @@
         <value>You must enable Enhanced Recurring Donations before you can run the Enhanced Recurring Donations batch job.</value>
     </labels>
     <labels>
-        <fullName>RD2_ErrorRDIdIsMissingForCommitment</fullName>
-        <categories>Recurring-Donations, Error</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Recurring Donation Id must be specified</shortDescription>
-        <value>There was an error creating the Recurring Donation record. No Recurring payment request was sent to Elevate. Contact your system administrator for assistance.</value>
-    </labels>
-    <labels>
         <fullName>RD2_InstallmentFrequencyMustBeValid</fullName>
         <categories>Recurring-Donations, Error</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Displayed when Installment Frequency on a Recurring Donation is not valid</shortDescription>
         <value>Installment Frequency is required. Enter a value between 1 and 20.</value>
-    </labels>
-    <labels>
-        <categories>Recurring-Donations, Error</categories>
-        <fullName>RD2_ElevateInstallmentPeriodMustBeValid</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Validation message for installment period on Elevate Recurring Donations</shortDescription>
-        <value>{0} is not a supported Installment Period for Elevate connected Recurring Donations.</value>
     </labels>
     <labels>
         <fullName>RD2_InstallmentPeriodMustBeValid</fullName>
@@ -3145,22 +3033,6 @@
         <protected>true</protected>
         <shortDescription>Recurring Donation Name Suffix</shortDescription>
         <value>Recurring</value>
-    </labels>
-    <labels>
-        <fullName>RD_achElevatePayment</fullName>
-        <categories>Recurring Donations</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Used to show the Payment Method using Elevate RD and ACH payment.</shortDescription>
-        <value>{0}, *{1}</value>
-    </labels>
-    <labels>
-        <fullName>RD_creditCardElevatePayment</fullName>
-        <categories>Recurring Donations</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Used to show the Payment Method using Elevate RD and Credit Card payment.</shortDescription>
-        <value>{0}, *{1} Exp.{2}/{3}</value>
     </labels>
     <labels>
         <fullName>RD_firstDonation</fullName>
@@ -5661,14 +5533,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <value>Amount</value>
     </labels>
     <labels>
-        <fullName>gePaymentProcessedWarning</fullName>
-        <categories>Gift Entry</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Warning about editing fields when transaction already processed</shortDescription>
-        <value>{0} successfully processed the payment. Changing the donor, date, amount, or payment method will result in inconsistent records for the same transaction in {0} and NPPatch.</value>
-    </labels>
-    <labels>
         <fullName>stgHelpCustomizableRollupsEnable1</fullName>
         <categories>Settings</categories>
         <language>en_US</language>
@@ -5733,14 +5597,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <protected>true</protected>
         <shortDescription>Batches</shortDescription>
         <value>Batches</value>
-    </labels>
-    <labels>
-        <fullName>commonCardholderName</fullName>
-        <categories>Gift Entry, Recurring Donations</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Label for the cardholder name during credit card entry</shortDescription>
-        <value>Cardholder Name</value>
     </labels>
     <labels>
         <fullName>commonCardLast4</fullName>
@@ -5877,14 +5733,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <protected>true</protected>
         <shortDescription>Text to edit payment information</shortDescription>
         <value>Edit payment information.</value>
-    </labels>
-    <labels>
-        <fullName>commonElevateFailedOnboarding</fullName>
-        <categories>Gift Entry</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Failure message if a customer fails to get onboarded</shortDescription>
-        <value>An error has occurred with onboarding this elevate customer</value>
     </labels>
     <labels>
         <fullName>commonError</fullName>
@@ -6453,20 +6301,6 @@ To check your GAU Allocation settings, go to Donations | GAU Allocations.</value
         <protected>true</protected>
         <shortDescription>conMergeSeeDupConDRS</shortDescription>
         <value>See Duplicate Contacts</value>
-    </labels>
-    <labels>
-        <fullName>elevateAdNotificationFor234Body</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Elevate Advert Notification Body</shortDescription>
-        <value>With Elevate connected to NPPatch, donations from your online forms automatically flow into NPPatch. Elevate also processes payments and updates donor records in NPPatch.</value>
-    </labels>
-    <labels>
-        <fullName>elevateAdNotificationFor234Title</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Elevate Advert Notification Title</shortDescription>
-        <value>Streamline donation processing with Salesforce.org Elevate and NPPatch</value>
     </labels>
     <labels>
         <fullName>engagementPlanCantEdit</fullName>
@@ -9415,22 +9249,6 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <value>The request timed out. Please try again or contact your Salesforce administrator.</value>
     </labels>
     <labels>
-        <fullName>gePS_IntegrationTestInvalidAPIKey</fullName>
-        <categories>Gift Entry</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Failure messge if an invalid apiKey was provided</shortDescription>
-        <value>An invalid api key has been provided for this elevate customer</value>
-    </labels>
-    <labels>
-        <fullName>gePS_IntegrationTestInvalidConfigParams</fullName>
-        <categories>Gift Entry</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Failure message if invalid configuration params was provided for onboarding</shortDescription>
-        <value>Invalid configuration parameters were provided</value>
-    </labels>
-    <labels>
         <fullName>geRD2FirstInstallmentPaid</fullName>
         <categories>Gift Entry, Recurring Donations</categories>
         <language>en_US</language>
@@ -11700,14 +11518,6 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <value>Organization Donations</value>
     </labels>
     <labels>
-        <fullName>pmtElevatePermissionRequired</fullName>
-        <categories>Payment, Error</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Error when user does not have permission to change Elevate Payment.</shortDescription>
-        <value>Manage this payment in Elevate.</value>
-    </labels>
-    <labels>
         <fullName>pmtModifyCurrency</fullName>
         <categories>Payment, Error</categories>
         <language>en_US</language>
@@ -12212,14 +12022,6 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <value>Always Use Default Gateway</value>
     </labels>
     <labels>
-        <fullName>psGatewaySelectionLabel</fullName>
-        <categories>Payment Gateway Management</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Label for Gateway selection in settings.</shortDescription>
-        <value>NPPatch uses the gateway that was added to Elevate most recently unless you override it. To set a default Elevate payment gateway, select it here.</value>
-    </labels>
-    <labels>
         <fullName>psGatewaysNotFound</fullName>
         <categories>Payment Gateway Management</categories>
         <language>en_US</language>
@@ -12290,54 +12092,6 @@ If preferred, you can disable Gift Entry and instead use older Batch Gift Entry 
         <protected>true</protected>
         <shortDescription>Label to show Elevate Gateways and Payment Methods.</shortDescription>
         <value>Show Elevate Gateways and Payment Methods</value>
-    </labels>
-    <labels>
-        <fullName>psEnableGatewayAssignment</fullName>
-        <categories>Payment Gateway Management</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Label to show Gateway Assignment is enabled.</shortDescription>
-        <value>Enable Gateway Assignment</value>
-    </labels>
-    <labels>
-        <fullName>psEnableGatewayAssignmentHeader</fullName>
-        <categories>Payment Gateway Management</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Label for Gateway Assignment Header.</shortDescription>
-        <value>Enable Gateway Assignment</value>
-    </labels>
-    <labels>
-        <fullName>psEnableGatewayAssignmentHelp</fullName>
-        <categories>Payment Gateway Management</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Label for Gateway Assignment Help Message.</shortDescription>
-        <value>Enabling gateway assignment allows you to select the payment gateway and respective payment methods when modifying Gift Entry Templates.</value>
-    </labels>
-    <labels>
-        <fullName>psGatewayManagementHelp</fullName>
-        <categories>Payment Gateway Management</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Label for Gateway Management Help Message.</shortDescription>
-        <value>These settings manage the payment gateways for Elevate transactions.</value>
-    </labels>
-    <labels>
-        <fullName>psGatewayIDHeader</fullName>
-        <categories>Payment Gateway Management</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Label for Gateway ID Header.</shortDescription>
-        <value>Gateway ID</value>
-    </labels>
-    <labels>
-        <fullName>psGatewayIDHelp</fullName>
-        <categories>Payment Gateway Management</categories>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Label for Gateway ID Help Message.</shortDescription>
-        <value>NPPatch uses the gateway that was added to Elevate most recently unless you override it. To change the gateway NPPatch usess, click Edit, enter the gateway ID, and save your work. Find the gateway ID in the Elevate Admin Console | Gateway Management.</value>
     </labels>
     <labels>
         <fullName>psShowPaymentMethods</fullName>

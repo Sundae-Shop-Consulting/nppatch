@@ -885,34 +885,6 @@
         <label>Datum van volgende termijn:</label>
     </customLabels>
     <customLabels>
-        <name>RD2_ElevateCancelInProgress</name>
-        <label>Terugkerende betaling wordt geannuleerd</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateDisableButtonLabel</name>
-        <label>Voer geen betalingsgegevens in.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateDisabledHeader</name>
-        <label>Elevate is niet ingeschakeld voor uw Salesforce-organisatie</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateDisabledMessage</name>
-        <label>U voert geen betalingsgegevens in die door Elevate moeten worden verwerkt.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateEnableButtonLabel</name>
-        <label>U kunt ook nu betalingsgegevens invoeren.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateInformationHeader</name>
-        <label>Elevate-informatie </label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateInformationStatusSuccess</name>
-        <label>Geen fouten</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_ViewMoreDetails</name>
         <label>Meer details weergeven</label>
     </customLabels>
@@ -925,24 +897,8 @@
         <label>Deze functionaliteit wordt momenteel niet ondersteund voor terugkerende donaties afkomstig uit de Elevate-betaalservices.</label>
     </customLabels>
     <customLabels>
-        <name>RD2_ElevatePendingStatus</name>
-        <label>Elevate-proces in behandeling</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevatePermissionRequired</name>
-        <label>Beheer deze terugkerende donatie in Elevate.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateRDAmountMustBeValid</name>
-        <label>Geef een geldig bedrag op. Het bedrag mag niet lager zijn dan 1.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_ElevateRDCannotBePaused</name>
         <label>U kunt terugkerende donaties die zijn gekoppeld aan Elevate niet pauzeren.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateRDClosedStatusCannotBeChanged</name>
-        <label>De status voor een terugkerende donatie in Elevate kan niet worden bewerkt wanneer Status is gesloten.</label>
     </customLabels>
     <customLabels>
         <name>RD2_ElevateRDCannotBeFixedLength</name>
@@ -963,10 +919,6 @@
     <customLabels>
         <name>RD2_ElevateRDCampaignCannotUpdateToNull</name>
         <label>U kunt de campagne niet verwijderen uit een aan Elevate gekoppelde terugkerende donatie. Als u de campagne wilt verwijderen, sluit u de terugkerende donatie en maakt u een nieuwe.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateRecordCreateFailed</name>
-        <label>Er kan geen terugkerende betaling in Elevate worden gemaakt. Vraag de systeembeheerder om hulp.</label>
     </customLabels>
     <customLabels>
         <name>RD2_ElevateRDCancellingTitle</name>
@@ -1313,16 +1265,8 @@
         <label>U moet Uitgebreide terugkerende donaties inschakelen voordat u de batchtaak Uitgebreide terugkerende donaties kunt uitvoeren.</label>
     </customLabels>
     <customLabels>
-        <name>RD2_ErrorRDIdIsMissingForCommitment</name>
-        <label>Er is een fout opgetreden bij het maken van de terugkerende-donatierecord. Er is geen aanvraag voor een terugkerende betaling verzonden naar Elevate. Vraag de systeembeheerder om hulp.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_InstallmentFrequencyMustBeValid</name>
         <label>Frequentie van termijn is verplicht. Geef een waarde op tussen 1 en 20.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateInstallmentPeriodMustBeValid</name>
-        <label>{0} is geen ondersteunde termijnperiode voor aan Elevate gekoppelde terugkerende donaties.</label>
     </customLabels>
     <customLabels>
         <name>RD2_InstallmentPeriodMustBeValid</name>
@@ -1610,14 +1554,6 @@
     <customLabels>
         <name>RecurringDonationNameSuffix</name>
         <label>Terugkerend</label>
-    </customLabels>
-    <customLabels>
-        <name>RD_achElevatePayment</name>
-        <label>{0}, *{1}</label>
-    </customLabels>
-    <customLabels>
-        <name>RD_creditCardElevatePayment</name>
-        <label>{0}, *{1} Verv.{2}/{3}</label>
     </customLabels>
     <customLabels>
         <name>RD_firstDonation</name>
@@ -2902,10 +2838,6 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
         <label>Bedrag</label>
     </customLabels>
     <customLabels>
-        <name>gePaymentProcessedWarning</name>
-        <label>{0} heeft de betaling verwerkt. Als u de donateur, de datum, het bedrag of de betalingswijze wijzigt, krijgt u inconsistente records voor dezelfde transactie in {0} en NPPatch.</label>
-    </customLabels>
-    <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
         <label>U vindt hier alle documentatie over aanpasbare totaliseringen.</label>
     </customLabels>
@@ -2936,10 +2868,6 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     <customLabels>
         <name>commonBatches</name>
         <label>Batches</label>
-    </customLabels>
-    <customLabels>
-        <name>commonCardholderName</name>
-        <label>Naam kaarthouder</label>
     </customLabels>
     <customLabels>
         <name>commonCardLast4</name>
@@ -3008,10 +2936,6 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     <customLabels>
         <name>commonEditPaymentInformation</name>
         <label>Bewerk de betalingsgegevens.</label>
-    </customLabels>
-    <customLabels>
-        <name>commonElevateFailedOnboarding</name>
-        <label>Er is een fout opgetreden bij het onboarden van deze Elevate-klant</label>
     </customLabels>
     <customLabels>
         <name>commonError</name>
@@ -3296,14 +3220,6 @@ Om uw instellingen voor GAU-toewijzingen te controleren, gaat u naar Donaties | 
     <customLabels>
         <name>conMergeSeeDupConDRS</name>
         <label>Dubbele contactpersonen bekijken</label>
-    </customLabels>
-    <customLabels>
-        <name>elevateAdNotificationFor234Body</name>
-        <label>Wanneer Elevate is gekoppeld aan NPPatch, worden donaties uit uw online formulieren automatisch aan NPPatch geleverd. Daarnaast worden in Elevate betalingen verwerkt en donateurrecords bijgewerkt in NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>elevateAdNotificationFor234Title</name>
-        <label>Stroomlijn uw donatieproces met Elevate en NPPatch van Salesforce.org</label>
     </customLabels>
     <customLabels>
         <name>engagementPlanCantEdit</name>
@@ -4783,14 +4699,6 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
         <label>Er is een time-out opgetreden voor de aanvraag. Probeer het opnieuw of neem contact op met de Salesforce-beheerder.</label>
     </customLabels>
     <customLabels>
-        <name>gePS_IntegrationTestInvalidAPIKey</name>
-        <label>Er is een ongeldige API-sleutel opgegeven voor deze Elevate-klant</label>
-    </customLabels>
-    <customLabels>
-        <name>gePS_IntegrationTestInvalidConfigParams</name>
-        <label>Er zijn ongeldige configuratieparameters opgegeven</label>
-    </customLabels>
-    <customLabels>
         <name>geRD2FirstInstallmentPaid</name>
         <label>Eerste termijn betaald</label>
     </customLabels>
@@ -5931,10 +5839,6 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
         <label>Organisatiedonaties</label>
     </customLabels>
     <customLabels>
-        <name>pmtElevatePermissionRequired</name>
-        <label>Beheer deze betaling in Elevate.</label>
-    </customLabels>
-    <customLabels>
         <name>pmtModifyCurrency</name>
         <label>U kunt Betalingsvaluta niet rechtstreeks wijzigen. Werk de valuta van de bovenliggende Opportunity bij en NPPatch werkt de valuta van alle gerelateerde Betalingsrecords automatisch bij.</label>
     </customLabels>
@@ -6187,10 +6091,6 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
         <label>Altijd standaard gateway gebruiken</label>
     </customLabels>
     <customLabels>
-        <name>psGatewaySelectionLabel</name>
-        <label>NPPatch gebruikt de gateway die het meest recent is toegevoegd aan Elevate, tenzij u deze overschrijft. Als u een standaard Elevate-betalingsgateaway wilt instellen, moet u deze hier selecteren.</label>
-    </customLabels>
-    <customLabels>
         <name>psGatewaysNotFound</name>
         <label>Er zijn geen betalingsgateways gevonden. Controleer uw Elevate-account.</label>
     </customLabels>
@@ -6225,30 +6125,6 @@ Indien dit de voorkeur heeft, kunt u Invoer van giften uitschakelen en in plaats
     <customLabels>
         <name>psShowGatewaysAndMethods</name>
         <label>Elevate-gateways en betalingsmethoden tonen</label>
-    </customLabels>
-    <customLabels>
-        <name>psEnableGatewayAssignment</name>
-        <label>Gatewaytoewijzing inschakelen</label>
-    </customLabels>
-    <customLabels>
-        <name>psEnableGatewayAssignmentHeader</name>
-        <label>Gatewaytoewijzing inschakelen</label>
-    </customLabels>
-    <customLabels>
-        <name>psEnableGatewayAssignmentHelp</name>
-        <label>Als u gatewaytoewijzing inschakelt, kunt u de betalingsgateway en bijbehorende betalingsmethoden selecteren wanneer u sjablonen voor Opgave van gift aanpast.</label>
-    </customLabels>
-    <customLabels>
-        <name>psGatewayManagementHelp</name>
-        <label>Deze instellingen beheren de betalingsgateaway voor Elevate-transacties.</label>
-    </customLabels>
-    <customLabels>
-        <name>psGatewayIDHeader</name>
-        <label>Gateway-ID</label>
-    </customLabels>
-    <customLabels>
-        <name>psGatewayIDHelp</name>
-        <label>NPPatch gebruikt de gateway die het meest recent is toegevoegd aan Elevate, tenzij u deze overschrijft. Om de gateway die NPPatch gebruikt te wijzigen, voert u de gateway-ID in en slaat u uw werk op. Zoek de gateway-ID in de Elevate-beheedersconsole | Gatewaybeheer.</label>
     </customLabels>
     <customLabels>
         <name>psShowPaymentMethods</name>

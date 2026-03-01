@@ -885,34 +885,6 @@
         <label>Date du prochain versement :</label>
     </customLabels>
     <customLabels>
-        <name>RD2_ElevateCancelInProgress</name>
-        <label>Annulation du paiement récurrent en cours</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateDisableButtonLabel</name>
-        <label>Ne saisissez pas d&apos;informations de paiement.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateDisabledHeader</name>
-        <label>Elevate n&apos;est pas activé pour votre organisation Salesforce</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateDisabledMessage</name>
-        <label>Vous ne saisissez pas d&apos;informations de paiement pour le traitement Elevate.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateEnableButtonLabel</name>
-        <label>Alternativement, saisissez les informations de paiement maintenant.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateInformationHeader</name>
-        <label>Information Elevate</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateInformationStatusSuccess</name>
-        <label>Aucune erreur</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_ViewMoreDetails</name>
         <label>Afficher plus de détails</label>
     </customLabels>
@@ -925,24 +897,8 @@
         <label>Actuellement, cette fonctionnalité n&apos;est pas prise en charge pour des Dons récurrents générés à partir des Services de paiement Elevate.</label>
     </customLabels>
     <customLabels>
-        <name>RD2_ElevatePendingStatus</name>
-        <label>Processus Elevate en attente</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevatePermissionRequired</name>
-        <label>Gérez ce don récurrent dans Elevate.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateRDAmountMustBeValid</name>
-        <label>Veuillez saisir un montant valide. Le montant ne peut pas être inférieur à 1.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_ElevateRDCannotBePaused</name>
         <label>Vous ne pouvez pas suspendre les dons récurrents connectés Elevate.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateRDClosedStatusCannotBeChanged</name>
-        <label>Nous ne pouvons pas mettre à jour le Statut d&apos;un don récurrent connecté Elevate lorsqu&apos;il est Fermé.</label>
     </customLabels>
     <customLabels>
         <name>RD2_ElevateRDCannotBeFixedLength</name>
@@ -963,10 +919,6 @@
     <customLabels>
         <name>RD2_ElevateRDCampaignCannotUpdateToNull</name>
         <label>Vous ne pouvez pas supprimer la campagne sur un don récurrent actif connecté Elevate. Pour supprimer la campagne, fermez le don récurrent et créez-en un autre.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateRecordCreateFailed</name>
-        <label>Le paiement récurrent Elevate n&apos;a pas pu être créé. Contactez votre administrateur système pour obtenir une aide.</label>
     </customLabels>
     <customLabels>
         <name>RD2_ElevateRDCancellingTitle</name>
@@ -1313,16 +1265,8 @@
         <label>Vous devez activer les Dons récurrents avancés avant d&apos;exécuter la tâche par lots des Dons récurrents avancés.</label>
     </customLabels>
     <customLabels>
-        <name>RD2_ErrorRDIdIsMissingForCommitment</name>
-        <label>Une erreur a été rencontrée lors de la création de l&apos;enregistrement Don récurrent. Aucune demande de paiement récurrente n&apos;a été envoyée à Elevate. Contactez votre administrateur système pour obtenir une aide.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_InstallmentFrequencyMustBeValid</name>
         <label>La Fréquence de versement est requise. Saisissez une valeur de 1 à 20.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateInstallmentPeriodMustBeValid</name>
-        <label>{0} n’est pas une période de versement prise en charge pour les dons récurrents connectés Elevate.</label>
     </customLabels>
     <customLabels>
         <name>RD2_InstallmentPeriodMustBeValid</name>
@@ -1610,14 +1554,6 @@
     <customLabels>
         <name>RecurringDonationNameSuffix</name>
         <label>Récurrent</label>
-    </customLabels>
-    <customLabels>
-        <name>RD_achElevatePayment</name>
-        <label>{0}, *{1}</label>
-    </customLabels>
-    <customLabels>
-        <name>RD_creditCardElevatePayment</name>
-        <label>{0}, *{1} Exp. {2}/{3}</label>
     </customLabels>
     <customLabels>
         <name>RD_firstDonation</name>
@@ -2903,10 +2839,6 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
         <label>Montant</label>
     </customLabels>
     <customLabels>
-        <name>gePaymentProcessedWarning</name>
-        <label>{0} a traité le paiement. La modification du donateur, de la date, du montant ou du mode de paiement entraînera des incohérences dans les enregistrements pour la même transaction dans {0} et NPPatch.</label>
-    </customLabels>
-    <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
         <label>Vous trouverez la documentation complète relative aux cumuls personnalisables ici.</label>
     </customLabels>
@@ -2937,10 +2869,6 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
     <customLabels>
         <name>commonBatches</name>
         <label>Lots</label>
-    </customLabels>
-    <customLabels>
-        <name>commonCardholderName</name>
-        <label>Nom du titulaire de la carte</label>
     </customLabels>
     <customLabels>
         <name>commonCardLast4</name>
@@ -3009,10 +2937,6 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
     <customLabels>
         <name>commonEditPaymentInformation</name>
         <label>Modifiez les informations de paiement.</label>
-    </customLabels>
-    <customLabels>
-        <name>commonElevateFailedOnboarding</name>
-        <label>Une erreur s&apos;est produite lors de l’intégration de ce client Elevate</label>
     </customLabels>
     <customLabels>
         <name>commonError</name>
@@ -3297,14 +3221,6 @@ Pour vérifier vos paramètres d’affectations UCG, accédez à Dons | Affectat
     <customLabels>
         <name>conMergeSeeDupConDRS</name>
         <label>Voir tous les Contacts en double</label>
-    </customLabels>
-    <customLabels>
-        <name>elevateAdNotificationFor234Body</name>
-        <label>Lorsqu’Elevate est connecté à NPPatch, les dons provenant de vos formulaires en ligne sont automatiquement transférés vers NPPatch. Elevate traite également les paiements et met à jour les enregistrements des donateurs dans NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>elevateAdNotificationFor234Title</name>
-        <label>Simplifiez le traitement des dons avec Salesforce.org Elevate et NPPatch</label>
     </customLabels>
     <customLabels>
         <name>engagementPlanCantEdit</name>
@@ -4785,14 +4701,6 @@ Si vous préférez, vous pouvez désactiver la Saisie de dons et utiliser à la 
         <label>La demande a expiré. Réessayez ou contactez votre administrateur Salesforce.</label>
     </customLabels>
     <customLabels>
-        <name>gePS_IntegrationTestInvalidAPIKey</name>
-        <label>Une clé d’API non valide a été fournie pour ce client Elevate</label>
-    </customLabels>
-    <customLabels>
-        <name>gePS_IntegrationTestInvalidConfigParams</name>
-        <label>Des paramètres de configuration non valide ont été fournis</label>
-    </customLabels>
-    <customLabels>
         <name>geRD2FirstInstallmentPaid</name>
         <label>Premier versement payé</label>
     </customLabels>
@@ -5933,10 +5841,6 @@ Si vous préférez, vous pouvez désactiver la Saisie de dons et utiliser à la 
         <label>Dons d’une organisation</label>
     </customLabels>
     <customLabels>
-        <name>pmtElevatePermissionRequired</name>
-        <label>Gérez ce paiement dans Elevate.</label>
-    </customLabels>
-    <customLabels>
         <name>pmtModifyCurrency</name>
         <label>Vous ne pouvez pas modifier directement les devises de paiement. Mettez à jour la devise de l’opportunité parente et NPPatch mettra automatiquement à jour la devise de tous les enregistrements de paiement associés.</label>
     </customLabels>
@@ -6189,10 +6093,6 @@ Si vous préférez, vous pouvez désactiver la Saisie de dons et utiliser à la 
         <label>Toujours utiliser la passerelle par défaut</label>
     </customLabels>
     <customLabels>
-        <name>psGatewaySelectionLabel</name>
-        <label>NPPatch utilise la passerelle qui a été ajoutée à Elevate le plus récemment, sauf si vous la remplacez. Pour définir une passerelle de paiement Elevate par défaut, sélectionnez-la ici.</label>
-    </customLabels>
-    <customLabels>
         <name>psGatewaysNotFound</name>
         <label>Aucune passerelle de paiement n’a été trouvée. Consultez votre compte Elevate.</label>
     </customLabels>
@@ -6227,30 +6127,6 @@ Si vous préférez, vous pouvez désactiver la Saisie de dons et utiliser à la 
     <customLabels>
         <name>psShowGatewaysAndMethods</name>
         <label>Afficher les passerelles et les modes de paiement Elevate</label>
-    </customLabels>
-    <customLabels>
-        <name>psEnableGatewayAssignment</name>
-        <label>Activer l’attribution de passerelle</label>
-    </customLabels>
-    <customLabels>
-        <name>psEnableGatewayAssignmentHeader</name>
-        <label>Activer l’attribution de passerelle</label>
-    </customLabels>
-    <customLabels>
-        <name>psEnableGatewayAssignmentHelp</name>
-        <label>L’activation de l’attribution de la passerelle vous permet de sélectionner la passerelle de paiement et les modes de paiement respectifs lors de la modification des modèles de saisie de dons.</label>
-    </customLabels>
-    <customLabels>
-        <name>psGatewayManagementHelp</name>
-        <label>Ces paramètres gèrent les passerelles de paiement pour les transactions Elevate.</label>
-    </customLabels>
-    <customLabels>
-        <name>psGatewayIDHeader</name>
-        <label>ID de passerelle</label>
-    </customLabels>
-    <customLabels>
-        <name>psGatewayIDHelp</name>
-        <label>NPPatch utilise la passerelle qui a été ajoutée à Elevate le plus récemment, sauf si vous la remplacez. Pour modifier la passerelle utilisée par NPPatch, cliquez sur Modifier, saisissez l’ID de la passerelle et enregistrez votre travail. Recherchez l’ID de la passerelle dans la console d’administration Elevate | Gestion de la passerelle.</label>
     </customLabels>
     <customLabels>
         <name>psShowPaymentMethods</name>

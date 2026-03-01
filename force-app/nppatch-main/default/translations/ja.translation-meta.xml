@@ -885,34 +885,6 @@
         <label>次回支払日:</label>
     </customLabels>
     <customLabels>
-        <name>RD2_ElevateCancelInProgress</name>
-        <label>継続支払のキャンセル処理中</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateDisableButtonLabel</name>
-        <label>支払情報を入力しない。</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateDisabledHeader</name>
-        <label>Salesforce 組織で Elevate が有効になっていません。</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateDisabledMessage</name>
-        <label>Elevate で処理される支払情報が入力されていません。</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateEnableButtonLabel</name>
-        <label>または、今すぐ支払の詳細を入力する。</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateInformationHeader</name>
-        <label>Elevate 情報</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateInformationStatusSuccess</name>
-        <label>エラーはありません</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_ViewMoreDetails</name>
         <label>詳細をさらに表示</label>
     </customLabels>
@@ -925,24 +897,8 @@
         <label>Elevate 支払サービスから生成された継続支援については、この機能は現時点ではサポートされていません。</label>
     </customLabels>
     <customLabels>
-        <name>RD2_ElevatePendingStatus</name>
-        <label>Elevate 処理待機中</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevatePermissionRequired</name>
-        <label>この継続支援は Elevate で管理します。</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateRDAmountMustBeValid</name>
-        <label>有効な金額を入力してください。金額は 1 未満にできません。</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_ElevateRDCannotBePaused</name>
         <label>Elevate に接続された継続支援を一時停止することはできません。</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateRDClosedStatusCannotBeChanged</name>
-        <label>[状況] が [完了] の場合、Elevate に接続された継続支援の状況は編集できません。</label>
     </customLabels>
     <customLabels>
         <name>RD2_ElevateRDCannotBeFixedLength</name>
@@ -963,10 +919,6 @@
     <customLabels>
         <name>RD2_ElevateRDCampaignCannotUpdateToNull</name>
         <label>Elevate に接続された有効な継続支援でキャンペーンを削除することはできません。キャンペーンを削除するには、継続支援を完了して新しい継続支援を作成してください。</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateRecordCreateFailed</name>
-        <label>Elevate 継続支払を作成できませんでした。システム管理者にお問い合わせください。</label>
     </customLabels>
     <customLabels>
         <name>RD2_ElevateRDCancellingTitle</name>
@@ -1313,16 +1265,8 @@
         <label>拡張継続支援データバッチジョブを実行する前に拡張継続支援を有効にする必要があります。</label>
     </customLabels>
     <customLabels>
-        <name>RD2_ErrorRDIdIsMissingForCommitment</name>
-        <label>継続支援レコードの作成中にエラーが発生しました。Elevate に継続支払要求は送信されませんでした。システム管理者にお問い合わせください。</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_InstallmentFrequencyMustBeValid</name>
         <label>[頻度] は必須です。1 ～ 20 の値を入力してください。</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateInstallmentPeriodMustBeValid</name>
-        <label>{0} は [Elevate に接続された継続支援] でサポートされていない間隔です。</label>
     </customLabels>
     <customLabels>
         <name>RD2_InstallmentPeriodMustBeValid</name>
@@ -1610,14 +1554,6 @@
     <customLabels>
         <name>RecurringDonationNameSuffix</name>
         <label>継続</label>
-    </customLabels>
-    <customLabels>
-        <name>RD_achElevatePayment</name>
-        <label>{0}、*{1}</label>
-    </customLabels>
-    <customLabels>
-        <name>RD_creditCardElevatePayment</name>
-        <label>{0}、*{1} 有効期限 {2}/{3}</label>
     </customLabels>
     <customLabels>
         <name>RD_firstDonation</name>
@@ -2893,10 +2829,6 @@
         <label>金額</label>
     </customLabels>
     <customLabels>
-        <name>gePaymentProcessedWarning</name>
-        <label>{0} が支払を正常に処理しました。支援者、日付、金額、または支払方法を変更すると、{0} と NPPatch で同じトランザクションのレコードで整合性が失われます。</label>
-    </customLabels>
-    <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
         <label>カスタマイズ可能な積み上げ集計のドキュメントの詳細はこちら。</label>
     </customLabels>
@@ -2927,10 +2859,6 @@
     <customLabels>
         <name>commonBatches</name>
         <label>バッチ</label>
-    </customLabels>
-    <customLabels>
-        <name>commonCardholderName</name>
-        <label>カード所有者名</label>
     </customLabels>
     <customLabels>
         <name>commonCardLast4</name>
@@ -2999,10 +2927,6 @@
     <customLabels>
         <name>commonEditPaymentInformation</name>
         <label>支払情報を編集してください。</label>
-    </customLabels>
-    <customLabels>
-        <name>commonElevateFailedOnboarding</name>
-        <label>この Elevate ユーザのオンボーディングでエラーが発生しました。</label>
     </customLabels>
     <customLabels>
         <name>commonError</name>
@@ -3287,14 +3211,6 @@
     <customLabels>
         <name>conMergeSeeDupConDRS</name>
         <label>重複する取引先責任者を表示</label>
-    </customLabels>
-    <customLabels>
-        <name>elevateAdNotificationFor234Body</name>
-        <label>Elevate が NPPatch に接続されていると、オンラインフォームからの支援が自動的に NPPatch に取り込まれます。Elevate では支払も処理され、NPPatch の支援レコードも更新されます。</label>
-    </customLabels>
-    <customLabels>
-        <name>elevateAdNotificationFor234Title</name>
-        <label>Salesforce.org Elevate と NPPatch を使用した支援処理の合理化</label>
     </customLabels>
     <customLabels>
         <name>engagementPlanCantEdit</name>
@@ -4775,14 +4691,6 @@
         <label>要求がタイムアウトしました。もう一度試すか、Salesforce システム管理者にお問い合わせください。</label>
     </customLabels>
     <customLabels>
-        <name>gePS_IntegrationTestInvalidAPIKey</name>
-        <label>この Elevate ユーザの無効な API キーが提供されました</label>
-    </customLabels>
-    <customLabels>
-        <name>gePS_IntegrationTestInvalidConfigParams</name>
-        <label>無効な設定パラメータが提供されました</label>
-    </customLabels>
-    <customLabels>
         <name>geRD2FirstInstallmentPaid</name>
         <label>初回の割賦が支払われました</label>
     </customLabels>
@@ -5923,10 +5831,6 @@
         <label>団体支援</label>
     </customLabels>
     <customLabels>
-        <name>pmtElevatePermissionRequired</name>
-        <label>この支払は Elevate で管理します。</label>
-    </customLabels>
-    <customLabels>
         <name>pmtModifyCurrency</name>
         <label>支払通貨は直接変更できません。親商談の通貨を更新すると、自動的に更新されます。</label>
     </customLabels>
@@ -6179,10 +6083,6 @@
         <label>デフォルトゲートウェイを常に使用</label>
     </customLabels>
     <customLabels>
-        <name>psGatewaySelectionLabel</name>
-        <label>NPPatch では、上書きしない限り、最近 Elevate に追加されたゲートウェイが使用されます。デフォルトの Elevate 支払ゲートウェイを設定するには、ここで選択します。</label>
-    </customLabels>
-    <customLabels>
         <name>psGatewaysNotFound</name>
         <label>支払ゲートウェイが見つかりません。Elevate アカウントを確認してください。</label>
     </customLabels>
@@ -6217,30 +6117,6 @@
     <customLabels>
         <name>psShowGatewaysAndMethods</name>
         <label>Elevate ゲートウェイと支払方法を表示</label>
-    </customLabels>
-    <customLabels>
-        <name>psEnableGatewayAssignment</name>
-        <label>ゲートウェイの割り当てを有効化</label>
-    </customLabels>
-    <customLabels>
-        <name>psEnableGatewayAssignmentHeader</name>
-        <label>ゲートウェイの割り当てを有効化</label>
-    </customLabels>
-    <customLabels>
-        <name>psEnableGatewayAssignmentHelp</name>
-        <label>ゲートウェイの割り当てを有効にすると、支援エントリテンプレートの変更時に支払ゲートウェイとそれぞれの支払方法を選択できるようになります。</label>
-    </customLabels>
-    <customLabels>
-        <name>psGatewayManagementHelp</name>
-        <label>これらの設定では、Elevate 取引の支払ゲートウェイを管理します。</label>
-    </customLabels>
-    <customLabels>
-        <name>psGatewayIDHeader</name>
-        <label>ゲートウェイ ID</label>
-    </customLabels>
-    <customLabels>
-        <name>psGatewayIDHelp</name>
-        <label>NPPatch では、上書きしない限り、最近 Elevate に追加されたゲートウェイが使用されます。NPPatch で使用されるゲートウェイを変更するには、[編集] をクリックし、ゲートウェイ ID を入力して、作業内容を保存します。[Elevate 管理コンソール] | [ゲートウェイ管理] でゲートウェイ ID を見つけます。</label>
     </customLabels>
     <customLabels>
         <name>psShowPaymentMethods</name>

@@ -869,38 +869,6 @@
         <name>RD2_DisabledRD2Error</name>
     </customLabels>
     <customLabels>
-        <label><!-- Indicates Elevate recurring commitment cancel is in progress --></label>
-        <name>RD2_ElevateCancelInProgress</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Label indicating user can hide the credit card and not use Elevate --></label>
-        <name>RD2_ElevateDisableButtonLabel</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Header indicating the org is not connected to Elevate --></label>
-        <name>RD2_ElevateDisabledHeader</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Text indicating the Recurring Donation will not be committed to Elevate --></label>
-        <name>RD2_ElevateDisabledMessage</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Link text to toggle and enable commitment creation in Elevate --></label>
-        <name>RD2_ElevateEnableButtonLabel</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Elevate information widget header --></label>
-        <name>RD2_ElevateInformationHeader</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Status description displayed when no error is active --></label>
-        <name>RD2_ElevateInformationStatusSuccess</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Validation message for installment period on Elevate Recurring Donations --></label>
-        <name>RD2_ElevateInstallmentPeriodMustBeValid</name>
-    </customLabels>
-    <customLabels>
         <label><!-- Error when the functionality is not supported for Elevate Recurring Donation. --></label>
         <name>RD2_ElevateNotSupported</name>
     </customLabels>
@@ -909,20 +877,8 @@
         <name>RD2_ElevatePaymentMethodChangeError</name>
     </customLabels>
     <customLabels>
-        <label><!-- Status Reason to indicates Elevate Service is in progress. --></label>
-        <name>RD2_ElevatePendingStatus</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Checks if an Elevate Recurring Donation&apos;s amount is valid or not --></label>
-        <name>RD2_ElevateRDAmountMustBeValid</name>
-    </customLabels>
-    <customLabels>
         <label><!-- Checks if Elevate Recurring Donation&apos;s Campaign update is valid or not --></label>
         <name>RD2_ElevateRDCampaignCannotUpdateToNull</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Error when an attempt is made to change the Status of a Closed Elevate RD --></label>
-        <name>RD2_ElevateRDClosedStatusCannotBeChanged</name>
     </customLabels>
     <customLabels>
         <label><!-- Checks if Elevate Recurring Donation&apos;s Day of Month Changed --></label>
@@ -931,10 +887,6 @@
     <customLabels>
         <label><!-- Checks if Elevate Recurring Donation&apos;s Effective Date is valid or not --></label>
         <name>RD2_ElevateRDEffectiveDateMustBeValid</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Text indicating the Recurring Donation could not be created in Elevate --></label>
-        <name>RD2_ElevateRecordCreateFailed</name>
     </customLabels>
     <customLabels>
         <label><!-- Enablement page header displayed due to missing prerequisites --></label>
@@ -1219,10 +1171,6 @@
     <customLabels>
         <label><!-- The RD2 Batch job can only be executed when Enhanced RD is enabled --></label>
         <name>RD2_ErrorEnhancedRDBatchJobCannotBeRun</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Recurring Donation Id must be specified --></label>
-        <name>RD2_ErrorRDIdIsMissingForCommitment</name>
     </customLabels>
     <customLabels>
         <label><!-- Displayed when Installment Frequency on a Recurring Donation is not valid --></label>
@@ -2563,10 +2511,6 @@
         <name>commonCardType</name>
     </customLabels>
     <customLabels>
-        <label><!-- Label for the cardholder name during credit card entry --></label>
-        <name>commonCardholderName</name>
-    </customLabels>
-    <customLabels>
         <label><!-- Clone --></label>
         <name>commonClone</name>
     </customLabels>
@@ -2609,10 +2553,6 @@
     <customLabels>
         <label><!-- Text to edit elevate payment information --></label>
         <name>commonEditPaymentInformation</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Failure message if a customer fails to get onboarded --></label>
-        <name>commonElevateFailedOnboarding</name>
     </customLabels>
     <customLabels>
         <label><!-- Error --></label>
@@ -3561,14 +3501,6 @@
     <customLabels>
         <label><!-- Label for the Template Name field --></label>
         <name>geLabelTemplateInfoNameField</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Failure messge if an invalid apiKey was provided --></label>
-        <name>gePS_IntegrationTestInvalidAPIKey</name>
-    </customLabels>
-    <customLabels>
-        <label><!-- Failure message if invalid configuration params was provided for onboarding --></label>
-        <name>gePS_IntegrationTestInvalidConfigParams</name>
     </customLabels>
     <customLabels>
         <label><!-- Header text for payment authorization warning --></label>

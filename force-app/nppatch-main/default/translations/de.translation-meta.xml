@@ -885,34 +885,6 @@
         <label>Datum der nächsten Rate:</label>
     </customLabels>
     <customLabels>
-        <name>RD2_ElevateCancelInProgress</name>
-        <label>Der Abbruch der wiederkehrenden Spenden wird verarbeitet</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateDisableButtonLabel</name>
-        <label>Keine Zahlungsinformationen eingeben.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateDisabledHeader</name>
-        <label>Elevate ist für Ihre Salesforce-Organisation nicht aktiviert</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateDisabledMessage</name>
-        <label>Sie geben keine Zahlungsinformationen für die Verarbeitung durch Elevate ein.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateEnableButtonLabel</name>
-        <label>Geben Sie alternativ die Zahlungsdetails jetzt ein.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateInformationHeader</name>
-        <label>Elevate-Informationen</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateInformationStatusSuccess</name>
-        <label>Keine Fehler</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_ViewMoreDetails</name>
         <label>Mehr Details anzeigen</label>
     </customLabels>
@@ -925,24 +897,8 @@
         <label>Diese Funktionalität wird aktuell für wiederkehrende Spenden, die von Elevate-Zahlungsservices erstellt wurden, nicht unterstützt.</label>
     </customLabels>
     <customLabels>
-        <name>RD2_ElevatePendingStatus</name>
-        <label>Ausstehender Elevate-Prozess</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevatePermissionRequired</name>
-        <label>Diese wiederkehrende Spende in Elevate verwalten.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateRDAmountMustBeValid</name>
-        <label>Bitte geben Sie einen gültigen Betrag ein. Der Betrag kann nicht kleiner als 1 sein.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_ElevateRDCannotBePaused</name>
         <label>Mit Elevate verbundene wiederkehrende Spenden können nicht aufgeschoben werden.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateRDClosedStatusCannotBeChanged</name>
-        <label>Sie können den Status einer mit Elevate verbundenen wiederkehrenden Spende nicht bearbeiten, wenn der Status &quot;Geschlossen&quot; ist.</label>
     </customLabels>
     <customLabels>
         <name>RD2_ElevateRDCannotBeFixedLength</name>
@@ -963,10 +919,6 @@
     <customLabels>
         <name>RD2_ElevateRDCampaignCannotUpdateToNull</name>
         <label>Sie können die Kampagne für eine aktive, Elevate zugeordnete wiederkehrende Spende nicht ändern. Zum Entfernen der Kampagne schließen Sie die wiederkehrende Spende, und erstellen Sie eine neue.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateRecordCreateFailed</name>
-        <label>Eine wiederkehrende Elevate-Zahlung konnte nicht erstellt werden. Bitten Sie Ihren Systemadministrator um Unterstützung.</label>
     </customLabels>
     <customLabels>
         <name>RD2_ElevateRDCancellingTitle</name>
@@ -1313,16 +1265,8 @@
         <label>Sie müssen Erweiterte wiederkehrende Spenden aktivieren, bevor Sie den Batch-Auftrag Erweiterte wiederkehrende Spenden ausführen können.</label>
     </customLabels>
     <customLabels>
-        <name>RD2_ErrorRDIdIsMissingForCommitment</name>
-        <label>Fehler beim Erstellen des Datensatzes für die wiederkehrende Spende. Es wurde keine Anforderung einer wiederkehrenden Zahlung an Elevate gesendet. Bitten Sie Ihren Systemadministrator um Hilfe.</label>
-    </customLabels>
-    <customLabels>
         <name>RD2_InstallmentFrequencyMustBeValid</name>
         <label>Die Häufigkeit der Ratenzahlungen ist ein erforderlicher Wert. Geben Sie einen Wert zwischen 1 und 20 ein.</label>
-    </customLabels>
-    <customLabels>
-        <name>RD2_ElevateInstallmentPeriodMustBeValid</name>
-        <label>{0} ist keine unterstützte Ratenlaufzeit für mit Elevate verbundene wiederkehrende Spenden.</label>
     </customLabels>
     <customLabels>
         <name>RD2_InstallmentPeriodMustBeValid</name>
@@ -1610,14 +1554,6 @@
     <customLabels>
         <name>RecurringDonationNameSuffix</name>
         <label>Wiederkehrend</label>
-    </customLabels>
-    <customLabels>
-        <name>RD_achElevatePayment</name>
-        <label>{0}, *{1}</label>
-    </customLabels>
-    <customLabels>
-        <name>RD_creditCardElevatePayment</name>
-        <label>{0}, *{1} Exp.{2}/{3}</label>
     </customLabels>
     <customLabels>
         <name>RD_firstDonation</name>
@@ -2902,10 +2838,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
         <label>Betrag</label>
     </customLabels>
     <customLabels>
-        <name>gePaymentProcessedWarning</name>
-        <label>{0} hat die Zahlung erfolgreich verarbeitet. Das Ändern von Spender, Datum, Betrag oder Zahlungsmethode führt zu inkonsistenten Datensätzen für die gleiche Transaktion in {0} und NPPatch.</label>
-    </customLabels>
-    <customLabels>
         <name>stgHelpCustomizableRollupsEnable1</name>
         <label>Die vollständige Dokumentation zu anpassbaren Rollups finden Sie hier.</label>
     </customLabels>
@@ -2936,10 +2868,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     <customLabels>
         <name>commonBatches</name>
         <label>Batches</label>
-    </customLabels>
-    <customLabels>
-        <name>commonCardholderName</name>
-        <label>Name des Karteninhabers</label>
     </customLabels>
     <customLabels>
         <name>commonCardLast4</name>
@@ -3008,10 +2936,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     <customLabels>
         <name>commonEditPaymentInformation</name>
         <label>Zahlungsinformationen bearbeiten.</label>
-    </customLabels>
-    <customLabels>
-        <name>commonElevateFailedOnboarding</name>
-        <label>Beim Onboarding dieses Elevate-Kunden ist ein Fehler aufgetreten</label>
     </customLabels>
     <customLabels>
         <name>commonError</name>
@@ -3296,14 +3220,6 @@ Zum Überprüfen Ihrer Zuweisungseinstellungen zum Verwendungszweck gehen Sie zu
     <customLabels>
         <name>conMergeSeeDupConDRS</name>
         <label>Doppelte Kontakte anzeigen</label>
-    </customLabels>
-    <customLabels>
-        <name>elevateAdNotificationFor234Body</name>
-        <label>Wenn Elevate mit NPPatch verbunden ist, fließen Spenden aus Ihren Online-Formularen automatisch in NPPatch. Elevate verarbeitet außerdem Zahlungen und aktualisiert die Spenderdaten in NPPatch.</label>
-    </customLabels>
-    <customLabels>
-        <name>elevateAdNotificationFor234Title</name>
-        <label>Optimieren der Verarbeitung von Spenden mit Salesforce.org Elevate und NPPatch</label>
     </customLabels>
     <customLabels>
         <name>engagementPlanCantEdit</name>
@@ -4784,14 +4700,6 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
         <label>Zeitlimitüberschreitung bei der Anforderung. Versuchen Sie es noch einmal, oder wenden Sie sich an Ihren Salesforce-Administrator.</label>
     </customLabels>
     <customLabels>
-        <name>gePS_IntegrationTestInvalidAPIKey</name>
-        <label>Für diesen Elevate-Kunden wurde ein ungültiger API-Schlüssel angegeben</label>
-    </customLabels>
-    <customLabels>
-        <name>gePS_IntegrationTestInvalidConfigParams</name>
-        <label>Es wurden ungültige Konfigurationsparameter angegeben</label>
-    </customLabels>
-    <customLabels>
         <name>geRD2FirstInstallmentPaid</name>
         <label>Erste Ratenzahlung</label>
     </customLabels>
@@ -5932,10 +5840,6 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
         <label>Organisationsspenden</label>
     </customLabels>
     <customLabels>
-        <name>pmtElevatePermissionRequired</name>
-        <label>Diese Zahlung in Elevate verwalten.</label>
-    </customLabels>
-    <customLabels>
         <name>pmtModifyCurrency</name>
         <label>Sie können Währungen bei Zahlungen nicht direkt ändern. Wenn Sie die Währung der übergeordneten Opportunity aktualisieren, aktualisiert NPPatch automatisch die Währung aller verwandten Zahlungsdatensätze.</label>
     </customLabels>
@@ -6188,10 +6092,6 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
         <label>Immer Standard-Gateway verwenden</label>
     </customLabels>
     <customLabels>
-        <name>psGatewaySelectionLabel</name>
-        <label>NPPatch verwendet das Gateway, das zuletzt zu Elevate hinzugefügt wurde, es sei denn, Sie setzen es außer Kraft. Zum Festlegen eines Standard-Zahlungs-Gateways für Elevate wählen Sie es hier aus.</label>
-    </customLabels>
-    <customLabels>
         <name>psGatewaysNotFound</name>
         <label>Es wurden keine Zahlungs-Gateways gefunden. Überprüfen Sie Ihren Elevate-Account.</label>
     </customLabels>
@@ -6226,30 +6126,6 @@ Wenn Sie es vorziehen, können Sie &quot;Spendeneintrag&quot; deaktivieren und s
     <customLabels>
         <name>psShowGatewaysAndMethods</name>
         <label>Elevate-Gateways und Zahlungsmethoden anzeigen</label>
-    </customLabels>
-    <customLabels>
-        <name>psEnableGatewayAssignment</name>
-        <label>Gateway-Zuweisung aktivieren</label>
-    </customLabels>
-    <customLabels>
-        <name>psEnableGatewayAssignmentHeader</name>
-        <label>Gateway-Zuweisung aktivieren</label>
-    </customLabels>
-    <customLabels>
-        <name>psEnableGatewayAssignmentHelp</name>
-        <label>Durch die Aktivierung der Gateway-Zuweisung können Sie beim Ändern von Spendeneintrags-Vorlagen das Zahlungs-Gateway und die entsprechenden Zahlungsmethoden auswählen.</label>
-    </customLabels>
-    <customLabels>
-        <name>psGatewayManagementHelp</name>
-        <label>Mit diesen Einstellungen werden die Zahlungs-Gateways für Elevate-Transaktionen verwaltet.</label>
-    </customLabels>
-    <customLabels>
-        <name>psGatewayIDHeader</name>
-        <label>Gateway-ID</label>
-    </customLabels>
-    <customLabels>
-        <name>psGatewayIDHelp</name>
-        <label>NPPatch verwendet das Gateway, das Elevate zuletzt hinzugefügt wurde, es sei denn, Sie setzen es außer Kraft. Zum Ändern des Gateways, das von NPPatch verwendet wird, klicken Sie auf &quot;Bearbeiten&quot;, geben Sie die Gateway-ID ein, und speichern Sie Ihre Arbeit. Suchen Sie die Gateway-ID in der Elevate-Verwaltungskonsole | Gateway-Management.</label>
     </customLabels>
     <customLabels>
         <name>psShowPaymentMethods</name>
