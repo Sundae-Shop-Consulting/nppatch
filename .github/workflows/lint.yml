@@ -1,0 +1,71 @@
+name: Lint
+
+on:
+    pull_request:
+        branches:
+            - main
+            - feature/**
+    push:
+        branches:
+            - feature/**
+
+jobs:
+    eslint:
+        name: "ESLint (JavaScript)"
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "20"
+                  cache: "npm"
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Run ESLint
+              run: npm run lint
+
+    prettier:
+        name: "Prettier (JS/HTML/CSS/Apex)"
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "20"
+                  cache: "npm"
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Run Prettier check
+              run: npm run prettier
+
+    pmd:
+        name: "PMD (Apex)"
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Run PMD
+              uses: pmd/pmd-github-action@v2
+              with:
+                  version: "7.0.0"
+                  sourcePath: "force-app"
+                  rulesets: "config/pmd-ruleset.xml"
+                  analyzeModifiedFilesOnly: false
+
+            - name: Upload PMD report
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: pmd-report
+                  path: pmd-report.sarif
