@@ -343,6 +343,17 @@ flows:
       6:
         task: reorder_app_menu
 
+  demo_org:
+    steps:
+      1: 
+        flow: dev_org
+      2: 
+        task: load_dataset
+        options:
+          mapping: datasets/sample/mapping.yml
+          sql_path: datasets/sample/sample_data.sql
+          drop_missing_schema: True
+
   # =========================================
   # CI Feature 2GP: Override to add test org
   # configuration after package installation
