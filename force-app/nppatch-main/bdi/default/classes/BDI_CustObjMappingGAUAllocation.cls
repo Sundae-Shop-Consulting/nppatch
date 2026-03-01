@@ -38,7 +38,7 @@
 
 public with sharing class BDI_CustObjMappingGAUAllocation extends BDI_ObjectMappingLogic {
 
-    public override BDI_ObjectWrapper[] populateObjects(BDI_ObjectWrapper[] objWraps) {
+    public override BDI_ObjectWrapper[] populateObjects(BDI_ObjectWrapper[] wrappers) {
 
         String PAYMENT_FIELDNAME = SObjectType.Allocation__c.fields.Payment__c.Name;
         String OPPORTUNITY_FIELDNAME = SObjectType.Allocation__c.fields.Opportunity__c.Name;
@@ -46,30 +46,30 @@ public with sharing class BDI_CustObjMappingGAUAllocation extends BDI_ObjectMapp
 
         String sourceObjName = SObjectType.DataImport__c.getName();
 
-        for (BDI_ObjectWrapper objWrap : objWraps) {
+        for (BDI_ObjectWrapper wrapper : wrappers) {
 
-            objWrap.sObj = UTIL_Describe.getPrototypeObject(objWrap.objMapping.Object_API_Name);
+            wrapper.sObj = UTIL_Describe.getPrototypeObject(wrapper.objectMapping.Object_API_Name);
 
-            if (objWrap.existingSObjectId != null) {
-                objWrap.sObj.put('Id', objWrap.existingSObjectId);
+            if (wrapper.existingSObjectId != null) {
+                wrapper.sObj.put('Id', wrapper.existingSObjectId);
             }
 
             Object opportunityIdValue;
             Object recurringDonationIdValue;
 
-            for (BDI_FieldMapping fieldMapping : objWrap.fieldMappings) {
+            for (BDI_FieldMapping fieldMapping : wrapper.fieldMappings) {
                 String sourceFieldName = fieldMapping.Source_Field_API_Name;
                 String targetFieldName = fieldMapping.Target_Field_API_Name;
 
-                Object value = objWrap.getSourceFieldValue(sourceFieldName);
+                Object value = wrapper.getSourceFieldValue(sourceFieldName);
 
                 Schema.DescribeFieldResult sourceFieldDescribe = UTIL_Describe.getFieldDescribe(sourceObjName, sourceFieldName);
-                Schema.DescribeFieldResult targetFieldDescribe = UTIL_Describe.getFieldDescribe(objWrap.objMapping.Object_API_Name, targetFieldName);
+                Schema.DescribeFieldResult targetFieldDescribe = UTIL_Describe.getFieldDescribe(wrapper.objectMapping.Object_API_Name, targetFieldName);
 
                 //Confirm that it is real field, and that it is accessible to the running user.
                 if (targetFieldDescribe != null && targetFieldDescribe.isAccessible()) {
                     //Confirm that either the sObj Id is null (ie new record) or that the field is updatable if it is not new.
-                    if (objWrap.sObj.Id == null || targetFieldDescribe.isUpdateable()) {
+                    if (wrapper.sObj.Id == null || targetFieldDescribe.isUpdateable()) {
                         // If the target field mapping is one of the key parent objects, then extract the values for later logic
                         if (fieldMapping.Target_Field_API_Name == PAYMENT_FIELDNAME) {
                             // Skip payment lookup since we will not directly link a GAU Allocation to Payment
@@ -79,7 +79,7 @@ public with sharing class BDI_CustObjMappingGAUAllocation extends BDI_ObjectMapp
                         } else if (fieldMapping.Target_Field_API_Name == RECURRING_DONATION_FIELDNAME) {
                             recurringDonationIdValue = value;
                         } else {
-                            castAndCopyField(objWrap, sourceFieldName, sourceFieldDescribe, targetFieldName, targetFieldDescribe);
+                            castAndCopyField(wrapper, sourceFieldName, sourceFieldDescribe, targetFieldName, targetFieldDescribe);
                         }
                     }
                 }
@@ -87,13 +87,13 @@ public with sharing class BDI_CustObjMappingGAUAllocation extends BDI_ObjectMapp
 
             // If the payment is specified and payment allocations are enabled, always use that first.
             if ( recurringDonationIdValue != null
-                    && objWrap.dataImport.RecurringDonationImportStatus__c == Label.bdiCreated ) {
-                objWrap.sObj.put(RECURRING_DONATION_FIELDNAME,recurringDonationIdValue);
+                    && wrapper.dataImport.RecurringDonationImportStatus__c == Label.bdiCreated ) {
+                wrapper.sObj.put(RECURRING_DONATION_FIELDNAME,recurringDonationIdValue);
             } else if ( opportunityIdValue != null ) {
-                objWrap.sObj.put(OPPORTUNITY_FIELDNAME,opportunityIdValue);
+                wrapper.sObj.put(OPPORTUNITY_FIELDNAME,opportunityIdValue);
             }
 
         }
-        return objWraps;
+        return wrappers;
     }
 }

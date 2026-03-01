@@ -50,21 +50,21 @@ private with sharing class BDI_DataImportService_TEST {
     private static void testUniqueIdHandling() {
         System.assertEquals(
             UTIL_Namespace.prefixNamespace('Contact1_Website__c'),
-            BDI_DataImportService.strDICustomIDField('Contact1', 'Website')
+            BDI_DataImportService.diCustomIDField('Contact1', 'Website')
         );
 
-        System.assertEquals('Contact1_Foo__c', BDI_DataImportService.strDICustomIDField('Contact1', 'Foo__c'));
+        System.assertEquals('Contact1_Foo__c', BDI_DataImportService.diCustomIDField('Contact1', 'Foo__c'));
 
         String expectedCustomIdField = UTIL_Namespace.getNamespace().equalsIgnoreCase(UTIL_Namespace.HARDCODED_NAMESPACE)
             ? '%%%NAMESPACE%%%Contact1_Bar__c'
             : 'Contact1_Bar__c';
-        System.assertEquals(expectedCustomIdField, BDI_DataImportService.strDICustomIDField('Contact1', '%%%NAMESPACE%%%Bar__c'));
+        System.assertEquals(expectedCustomIdField, BDI_DataImportService.diCustomIDField('Contact1', '%%%NAMESPACE%%%Bar__c'));
 
-        System.assertEquals('Contact1_Baz__c', BDI_DataImportService.strDICustomIDField('Contact1', 'randomNS__Baz__c'));
+        System.assertEquals('Contact1_Baz__c', BDI_DataImportService.diCustomIDField('Contact1', 'randomNS__Baz__c'));
 
         System.assertEquals(
             UTIL_Namespace.prefixNamespace('Contact1_Buz__c'),
-            BDI_DataImportService.strDICustomIDField('Contact1', UTIL_Namespace.prefixNamespace('Buz__c'))
+            BDI_DataImportService.diCustomIDField('Contact1', UTIL_Namespace.prefixNamespace('Buz__c'))
         );
     }
 

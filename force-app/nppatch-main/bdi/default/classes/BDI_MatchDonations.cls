@@ -491,8 +491,8 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
         }
 
         // now query for all Open Opportunities from these Contacts or Accounts
-        String strSoql = buildMatchQuery(setOppFields, setPmtFields, setOppId, setAccId, setConId);
-        List<Opportunity> listOpp = Database.query(strSoql);
+        String soql = buildMatchQuery(setOppFields, setPmtFields, setOppId, setAccId, setConId);
+        List<Opportunity> listOpp = Database.query(soql);
         perfLog.stop();
         return listOpp;           
     }
@@ -515,36 +515,36 @@ public with sharing class BDI_MatchDonations implements BDI_IMatchDonations {
         Set<Id> setAccId,
         Set<Id> setConId) {
         Integer cFilter = 0;
-        String strSoql = 'SELECT ' + String.join(new List<String>(setOppFields), ',');
+        String soql = 'SELECT ' + String.join(new List<String>(setOppFields), ',');
 
         // add Payment subquery
-        strSoql += ', (SELECT ' + String.join(new List<String>(setPmtFields), ',');
-        strSoql += ' FROM ' + UTIL_Namespace.prefixNamespace('OppPayment__r') + ' ' +
+        soql += ', (SELECT ' + String.join(new List<String>(setPmtFields), ',');
+        soql += ' FROM ' + UTIL_Namespace.prefixNamespace('OppPayment__r') + ' ' +
             'WHERE ' + UTIL_Namespace.prefixNamespace('Paid__c') + ' = false ' +
             'AND ' + UTIL_Namespace.prefixNamespace('Written_Off__c') + ' = false)';
 
-        strSoql += ' FROM Opportunity';
-        strSoql += ' WHERE IsClosed = false AND (';
+        soql += ' FROM Opportunity';
+        soql += ' WHERE IsClosed = false AND (';
         if (setOppId.size() > 0) {
-            strSoql += ' Id IN :setOppId ';
+            soql += ' Id IN :setOppId ';
             cFilter++;
         }
         if (setAccId.size() > 0) {
             if (cFilter > 0) {
-                strSoql += ' or ';
+                soql += ' or ';
             }
-            strSoql += ' AccountId IN :setAccId ';
+            soql += ' AccountId IN :setAccId ';
             cFilter++;
         }
         if (setConId.size() > 0) {
             if (cFilter > 0) {
-                strSoql += ' OR ';
+                soql += ' OR ';
             }
-            strSoql += ' ' + UTIL_Namespace.prefixNamespace('Primary_Contact__c') + ' IN :setConId ';
+            soql += ' ' + UTIL_Namespace.prefixNamespace('Primary_Contact__c') + ' IN :setConId ';
             cFilter++;
         }
-        strSoql += ')';
-        return strSoql;
+        soql += ')';
+        return soql;
     }
 
     /*******************************************************************************************************

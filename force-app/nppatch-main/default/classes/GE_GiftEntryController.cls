@@ -1377,7 +1377,7 @@ public with sharing class GE_GiftEntryController {
     * @description returns all DataImport__c records for a batch Id, with fields needed for dry run
     */
     private static List<DataImport__c> getAllDataImportRecordsForDryRunByBatchId(Id batchId) {
-        String query = BDI_DataImportService.strSoqlForBatchProcess(batchId);
+        String query = BDI_DataImportService.soqlForBatchProcess(batchId);
         return Database.query(query);
     }
 
@@ -1408,7 +1408,7 @@ public with sharing class GE_GiftEntryController {
     * @description returns a limited list of DataImport__c records from a batch Id using BDI query
     */
     private static List<DataImport__c> getDryRunDataImportRecordsByBatchId(Id batchId, Integer numRows) {
-        String query = BDI_DataImportService.strSoqlForBatchProcess(batchId);
+        String query = BDI_DataImportService.soqlForBatchProcess(batchId);
         if (numRows != null && numRows > 0) {
             query += ' LIMIT ' + numRows;
         }

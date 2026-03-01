@@ -530,7 +530,7 @@ private class BDI_AdditionalObjectService_TEST {
                                     BDI_MappingServiceAdvanced.DEFAULT_DATA_IMPORT_FIELD_MAPPING_SET_NAME;
         UTIL_CustomSettingsFacade.setDataImportSettings(dis);
 
-        DataImport__c[] diRecords = Database.query(BDI_DataImportService.strSoqlForBatchProcess(null));
+        DataImport__c[] diRecords = Database.query(BDI_DataImportService.soqlForBatchProcess(null));
 
         BDI_DataImportService bdiDIS = new BDI_DataImportService(false, BDI_DataImportService.getDefaultMappingService());
         bdiDIS.process(null, dis, diRecords);
@@ -747,7 +747,7 @@ private class BDI_AdditionalObjectService_TEST {
             BDI_MappingServiceAdvanced.DEFAULT_DATA_IMPORT_FIELD_MAPPING_SET_NAME;
         UTIL_CustomSettingsFacade.setDataImportSettings(dis);
 
-        DataImport__c[] diRecords = Database.query(BDI_DataImportService.strSoqlForBatchProcess(null));
+        DataImport__c[] diRecords = Database.query(BDI_DataImportService.soqlForBatchProcess(null));
 
         BDI_DataImportService bdiDIS = new BDI_DataImportService(false, 
                                                                 BDI_DataImportService.getDefaultMappingService());
@@ -1270,7 +1270,7 @@ private class BDI_AdditionalObjectService_TEST {
             BDI_MappingServiceAdvanced.DEFAULT_DATA_IMPORT_FIELD_MAPPING_SET_NAME;
         UTIL_CustomSettingsFacade.setDataImportSettings(dis);
         
-        DataImport__c[] diRecords = Database.query(BDI_DataImportService.strSoqlForBatchProcess(null));
+        DataImport__c[] diRecords = Database.query(BDI_DataImportService.soqlForBatchProcess(null));
 
         BDI_DataImportService bdiDIS = 
             new BDI_DataImportService(false, BDI_DataImportService.getDefaultMappingService());
@@ -1521,7 +1521,7 @@ private class BDI_AdditionalObjectService_TEST {
         BDI_FieldMapping[] gauAllocFieldMappings = bdiMSA.fieldMappingsByObjMappingDevName.get(templateName);
         BDI_FieldMapping[] ocrFieldMappings = bdiMSA.fieldMappingsByObjMappingDevName.get(templateNameOCR);
 
-        DataImport__c[] diRecords = Database.query(BDI_DataImportService.strSoqlForBatchProcess(null));
+        DataImport__c[] diRecords = Database.query(BDI_DataImportService.soqlForBatchProcess(null));
         DataImport__c testDataImportA;
         DataImport__c testDataImportB;
 

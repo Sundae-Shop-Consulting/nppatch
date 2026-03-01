@@ -47,7 +47,7 @@ public class BDI_DataImport_BATCH implements Database.Batchable<sObject> {
     /*******************************************************************************************************
     * @description the soql string of DataImport records for the entire batch to run against
     */
-    private String strSoql;
+    private String soql;
 
     /*******************************************************************************************************
     * @description the Data Import Settings to use for this batch
@@ -130,10 +130,10 @@ public class BDI_DataImport_BATCH implements Database.Batchable<sObject> {
         BDI_DataImportService.validateSettings(diSettings);
 
         if (dataImportIds != null && dataImportIds.size() > 0) {
-            strSoql = BDI_DataImportService.strSoqlForDataImportProcess(dataImportIds);
+            soql = BDI_DataImportService.soqlForDataImportProcess(dataImportIds);
         } else {
             // get the appropriate soql for the DI records
-            strSoql = BDI_DataImportService.strSoqlForBatchProcess(batchId);
+            soql = BDI_DataImportService.soqlForBatchProcess(batchId);
         }
     }
 
@@ -142,7 +142,7 @@ public class BDI_DataImport_BATCH implements Database.Batchable<sObject> {
     * @return QueryLocator the BDI records to process
     */
     public Database.QueryLocator start(Database.BatchableContext bc) {
-        return Database.getQueryLocator(strSoql);
+        return Database.getQueryLocator(soql);
     }
 
     /*******************************************************************************************************
