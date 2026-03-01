@@ -3,7 +3,7 @@
     <fullName>Matching_Gift_Request_Deadline__c</fullName>
     <description>Manually entered. The deadline or time limit for submitting Matching Gift requests to this company (e.g., &apos;Within 12 months of gift date&apos;).</description>
     <externalId>false</externalId>
-    <inlineHelpText>The deadline for submitting Matching Gift requests to this company.</inlineHelpText>
+    <inlineHelpText>How this company sets a deadline for Matching Gift requests (e.g., &apos;60 days from gift date&apos;).</inlineHelpText>
     <label>Matching Gift Request Deadline</label>
     <length>255</length>
     <required>false</required>

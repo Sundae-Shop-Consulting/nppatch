@@ -4,7 +4,7 @@
     <defaultValue>0</defaultValue>
     <description>Calculated by Customizable Rollups. Do not edit manually. The sum of Amounts for won Opportunities closed two years ago related to this Account. Uses the Won Opportunities for Hard Credit filter group. Fiscal vs. calendar year is configured in Household Settings.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The total gift amount two years ago for won Opportunities related to this Account.</inlineHelpText>
+    <inlineHelpText>The total amount of won Opportunities related to this Account, closed within the year or fiscal year preceding last year (see Household Settings).</inlineHelpText>
     <label>Total Gifts Two Years Ago</label>
     <precision>16</precision>
     <required>false</required>

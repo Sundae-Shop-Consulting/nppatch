@@ -4,7 +4,7 @@
     <defaultValue>0</defaultValue>
     <description>Calculated by Customizable Rollups. Do not edit manually. The average Amount for won Opportunities related to this Account. Uses the Won Opportunities for Hard Credit filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The average gift amount for won Opportunities related to this Account.</inlineHelpText>
+    <inlineHelpText>The average amount for won Opportunities related to this Account.</inlineHelpText>
     <label>Average Gift</label>
     <precision>16</precision>
     <required>false</required>
