@@ -199,10 +199,10 @@ public with sharing class BDI_DataImport_CTRL {
 
         try {
             if (!userCanEditSettings) {
-                String strObj = isTrueBatch ?
+                String objectName = isTrueBatch ?
                     DataImportBatch__c.SobjectType.class.getName() :
                     Data_Import_Settings__c.SObjectType.class.getName();
-                throw(new BDIException(String.format(Label.flsError, new list<String>{strObj})));
+                throw(new BDIException(String.format(Label.flsError, new list<String>{objectName})));
             }
 
             // first validate the settings

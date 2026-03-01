@@ -100,8 +100,8 @@ public with sharing class BDI_SettingsUI_CTRL {
                 setFields.addAll(donationImportHandler.dataImportFieldToPaymentField.keySet());
 
                 for (String diField : setFields) {
-                    String strLabel = UTIL_Describe.getFieldLabel(UTIL_Namespace.prefixNamespace('DataImport__c'), diField); 
-                    listSODonationFields.add(new SelectOption(diField, strLabel));
+                    String label = UTIL_Describe.getFieldLabel(UTIL_Namespace.prefixNamespace('DataImport__c'), diField); 
+                    listSODonationFields.add(new SelectOption(diField, label));
                 }
 
                 listSODonationFields.sort();
@@ -139,15 +139,15 @@ public with sharing class BDI_SettingsUI_CTRL {
 
     /*********************************************************************************************************
     * @description creates a list of SelectOptions of potential Unique ID fields from the specified object
-    * @param strObject the object to query fields on
+    * @param objectName the object to query fields on
     * @return list<SelectOption>
     */
-    private list<SelectOption> listSOForObject(String strObject) {
+    private list<SelectOption> listSOForObject(String objectName) {
         list<SelectOption> listSO = new list<SelectOption>();
         // add a default option
         listSO.add(new SelectOption('', Label.stgLabelNone));
 
-        Map<String, Schema.DescribeFieldResult> mapNameToDfr = UTIL_Describe.getAllFieldsDescribe(strObject);
+        Map<String, Schema.DescribeFieldResult> mapNameToDfr = UTIL_Describe.getAllFieldsDescribe(objectName);
         for (Schema.DescribeFieldResult dfr : mapNameToDfr.values()) {
             // only allow unique fields and externalId fields
             if (dfr.isUnique() || dfr.isExternalId()) {

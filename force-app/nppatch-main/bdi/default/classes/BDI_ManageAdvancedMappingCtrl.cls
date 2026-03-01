@@ -121,9 +121,9 @@ public class BDI_ManageAdvancedMappingCtrl {
     @TestVisible
     private static BDI_ObjectMapping[] getObjectMappings(){
 
-        BDI_ObjectMapping[] objMappings = bdiMsAdv.objectMappingByDevName.values();
+        BDI_ObjectMapping[] objectMappings = bdiMsAdv.objectMappingByDevName.values();
 
-        for (BDI_ObjectMapping objectMapping : objMappings) {
+        for (BDI_ObjectMapping objectMapping : objectMappings) {
             BDI_FieldMapping [] fieldMappings =
                 bdiMsAdv.fieldMappingsByObjMappingDevName.get(objectMapping.DeveloperName);
             if (fieldMappings == null) {
@@ -136,14 +136,14 @@ public class BDI_ManageAdvancedMappingCtrl {
                    }
                }
             }
-            BDI_ObjectMapping predecessorObjMapping =
+            BDI_ObjectMapping predecessorMapping =
                 bdiMsAdv.objectMappingByDevName.get(objectMapping.Predecessor);
             //Assign the label name field for the predecessor using the constructed map by dev name.
-            if (predecessorObjMapping != null) {
-                objectMapping.Predecessor_Label_Name = predecessorObjMapping.MasterLabel;
+            if (predecessorMapping != null) {
+                objectMapping.Predecessor_Label_Name = predecessorMapping.MasterLabel;
             }
         }
-        return objMappings;
+        return objectMappings;
     }
 
     /*******************************************************************************************************
@@ -374,7 +374,7 @@ public class BDI_ManageAdvancedMappingCtrl {
     public static String createDataImportObjectMapping(String objectMappingString) {
 
         try {
-            DataImportObjectMappingWrapper objMappingWrapper = 
+            DataImportObjectMappingWrapper objectMappingWrapper = 
                 (DataImportObjectMappingWrapper)JSON.deserialize(objectMappingString, DataImportObjectMappingWrapper.class);
 
             String diObjMappingSetFieldName = SObjectType.Data_Import_Object_Mapping__mdt.fields.Data_Import_Object_Mapping_Set__c.Name;
@@ -383,36 +383,36 @@ public class BDI_ManageAdvancedMappingCtrl {
             //that is what is required for the custom metadata creation.  This can't be done with the normal constructor
             //since it requires that the field be an Id
             String tempObjMappingString = 
-                '{ "'+ diObjMappingSetFieldName+'" : "' + objMappingWrapper.Data_Import_Object_Mapping_Set + '"}';
+                '{ "'+ diObjMappingSetFieldName+'" : "' + objectMappingWrapper.Data_Import_Object_Mapping_Set + '"}';
 
-            Data_Import_Object_Mapping__mdt objMapping = 
+            Data_Import_Object_Mapping__mdt objectMapping = 
                 (Data_Import_Object_Mapping__mdt)JSON.deserialize(tempObjMappingString, Data_Import_Object_Mapping__mdt.class);  
 
-            objMapping.MasterLabel = objMappingWrapper.MasterLabel;
-            objMapping.DeveloperName = objMappingWrapper.DeveloperName;
-            objMapping.Object_API_Name__c = objMappingWrapper.Object_API_Name;
-            objMapping.Custom_Mapping_Logic_Class__c = objMappingWrapper.Custom_Mapping_Logic_Class;
-            objMapping.Imported_Record_Field_Name__c = objMappingWrapper.Imported_Record_Field_Name;
-            objMapping.Imported_Record_Status_Field_Name__c = objMappingWrapper.Imported_Record_Status_Field_Name;
-            objMapping.Is_Deleted__c = objMappingWrapper.Is_Deleted;
-            objMapping.Predecessor__c = objMappingWrapper.Predecessor;
-            objMapping.Relationship_Field__c = objMappingWrapper.Relationship_Field;
-            objMapping.Relationship_To_Predecessor__c = objMappingWrapper.Relationship_To_Predecessor;
+            objectMapping.MasterLabel = objectMappingWrapper.MasterLabel;
+            objectMapping.DeveloperName = objectMappingWrapper.DeveloperName;
+            objectMapping.Object_API_Name__c = objectMappingWrapper.Object_API_Name;
+            objectMapping.Custom_Mapping_Logic_Class__c = objectMappingWrapper.Custom_Mapping_Logic_Class;
+            objectMapping.Imported_Record_Field_Name__c = objectMappingWrapper.Imported_Record_Field_Name;
+            objectMapping.Imported_Record_Status_Field_Name__c = objectMappingWrapper.Imported_Record_Status_Field_Name;
+            objectMapping.Is_Deleted__c = objectMappingWrapper.Is_Deleted;
+            objectMapping.Predecessor__c = objectMappingWrapper.Predecessor;
+            objectMapping.Relationship_Field__c = objectMappingWrapper.Relationship_Field;
+            objectMapping.Relationship_To_Predecessor__c = objectMappingWrapper.Relationship_To_Predecessor;
 
             if (Test.isRunningTest()) {
-                return JSON.serialize(objMapping);
+                return JSON.serialize(objectMapping);
             }
 
             String deploymentId;
 
-            if (objMapping.Is_Deleted__c == true) {
+            if (objectMapping.Is_Deleted__c == true) {
                 sObject[] mappingsToDelete = new sObject[]{};
-                mappingsToDelete.addAll(flagFieldMappingsAsDeleted(objMappingWrapper.DeveloperName));
-                mappingsToDelete.add(objMapping);
+                mappingsToDelete.addAll(flagFieldMappingsAsDeleted(objectMappingWrapper.DeveloperName));
+                mappingsToDelete.add(objectMapping);
 
                 deploymentId = enqueueMetadataRecords(mappingsToDelete);
             } else {
-                deploymentId = enqueueMetadataRecords(objMapping);
+                deploymentId = enqueueMetadataRecords(objectMapping);
             }
 
             return deploymentId;
@@ -822,9 +822,9 @@ public class BDI_ManageAdvancedMappingCtrl {
         Set<String> mappedFieldNamesSet = new Set<String>();
 
         if (bdiMsAdv.fieldMappingsByObjMappingDevName != null) {
-            for (String objMappingDevName : bdiMsAdv.fieldMappingsByObjMappingDevName.keySet()) {
+            for (String objectMappingDevName : bdiMsAdv.fieldMappingsByObjMappingDevName.keySet()) {
                 BDI_FieldMapping[] fieldMappings =
-                    bdiMsAdv.fieldMappingsByObjMappingDevName.get(objMappingDevName);
+                    bdiMsAdv.fieldMappingsByObjMappingDevName.get(objectMappingDevName);
 
                 if (fieldMappings != null) {
                     for (BDI_FieldMapping fieldMapping : fieldMappings) {

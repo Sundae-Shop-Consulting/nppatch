@@ -38,66 +38,66 @@
 
 public with sharing virtual class BDI_ObjectMappingLogic {
 
-    public virtual BDI_ObjectWrapper[] populateObjects(BDI_ObjectWrapper[] objWraps) {
-        if (objWraps == null) {
-            return objWraps;
+    public virtual BDI_ObjectWrapper[] populateObjects(BDI_ObjectWrapper[] wrappers) {
+        if (wrappers == null) {
+            return wrappers;
         }
         
         String sourceObjName = SObjectType.DataImport__c.getName();
         
-        for (BDI_ObjectWrapper objWrap : objWraps) {
+        for (BDI_ObjectWrapper wrapper : wrappers) {
 
-            objWrap.sObj = UTIL_Describe.getPrototypeObject(objWrap.objMapping.Object_API_Name);
+            wrapper.sObj = UTIL_Describe.getPrototypeObject(wrapper.objectMapping.Object_API_Name);
 
             // If the object already has an existing SObject Id, then set it in the sObj
-            if (objWrap.existingSObjectId != null) {
-                objWrap.sObj.put('Id', objWrap.existingSObjectId);
+            if (wrapper.existingSObjectId != null) {
+                wrapper.sObj.put('Id', wrapper.existingSObjectId);
             }
 
-            updateChildToPredecessorRelationship(objWrap);
+            updateChildToPredecessorRelationship(wrapper);
             
-            for (BDI_FieldMapping fieldMapping : objWrap.fieldMappings) {
+            for (BDI_FieldMapping fieldMapping : wrapper.fieldMappings) {
                 String sourceFieldName = fieldMapping.Source_Field_API_Name;
                 String targetFieldName = fieldMapping.Target_Field_API_Name;
                 
                 Schema.DescribeFieldResult sourceFieldDescribe = UTIL_Describe.getFieldDescribe(sourceObjName, sourceFieldName);
-                Schema.DescribeFieldResult targetFieldDescribe = UTIL_Describe.getFieldDescribe(objWrap.objMapping.Object_API_Name, targetFieldName);
+                Schema.DescribeFieldResult targetFieldDescribe = UTIL_Describe.getFieldDescribe(wrapper.objectMapping.Object_API_Name, targetFieldName);
 
                 //Confirm that it is real field, and that it is accessible to the running user.
                 if (targetFieldDescribe != null && targetFieldDescribe.isAccessible()) {
 
                     //Confirm that either the sObj Id is null (ie new record) or that the field is updatable if it is not new.
-                    if (objWrap.sObj.Id == null || targetFieldDescribe.isUpdateable()) {
+                    if (wrapper.sObj.Id == null || targetFieldDescribe.isUpdateable()) {
 
-                        castAndCopyField(objWrap, sourceFieldName, sourceFieldDescribe, targetFieldName, targetFieldDescribe);
+                        castAndCopyField(wrapper, sourceFieldName, sourceFieldDescribe, targetFieldName, targetFieldDescribe);
                     }
                 }
 
             } 
         }
-        return objWraps;
+        return wrappers;
     }
 
     // When the relationship to the predecessor is "Child" then this will put the Id 
     // of the predecessor into the defined relationship field on a new SObject.
-    public static void updateChildToPredecessorRelationship(BDI_ObjectWrapper objWrap) {
+    public static void updateChildToPredecessorRelationship(BDI_ObjectWrapper wrapper) {
         // If the object we are working on is a child to its predecessor then set the relationship field 
-        if (objWrap.sObj.Id == null && objWrap.objMapping.Relationship_To_Predecessor == 'Child') {
+        if (wrapper.sObj.Id == null && wrapper.objectMapping.Relationship_To_Predecessor == 'Child') {
 
-            objWrap.sObj.put(objWrap.objMapping.Relationship_Field,objWrap.dataImport.get(objWrap.predecessorObjMapping.Imported_Record_Field_Name));
+            wrapper.sObj.put(wrapper.objectMapping.Relationship_Field,wrapper.dataImport.get(wrapper.predecessorMapping.Imported_Record_Field_Name));
         }
     }
 
 
     // Copies the value from the source field to the target field and handles casting type
     // when needed.
-    public static void castAndCopyField(BDI_ObjectWrapper objWrap, 
+    public static void castAndCopyField(BDI_ObjectWrapper wrapper, 
                                         String sourceFieldName,
                                         Schema.DescribeFieldResult sourceFieldDescribe,
                                         String targetFieldName, 
                                         Schema.DescribeFieldResult targetFieldDescribe) {
 
-        Object value = objWrap.getSourceFieldValue(sourceFieldName);
+        Object value = wrapper.getSourceFieldValue(sourceFieldName);
 
         //only copy values that are not null to avoid overwriting data when updating existing SObjects.
         if (value != null) {
@@ -119,7 +119,7 @@ public with sharing virtual class BDI_ObjectMappingLogic {
                 value = Integer.valueOf(value);
             }
 
-            objWrap.sObj.put(targetFieldName,value);
+            wrapper.sObj.put(targetFieldName,value);
         }
     }
 }
