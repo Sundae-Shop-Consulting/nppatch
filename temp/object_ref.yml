@@ -1,0 +1,4397 @@
+objects:
+- name: Campaign
+  fields:
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+  - name: ParentId
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Campaign
+      relationship_name: Parent
+  - name: Type
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Conference
+      - Webinar
+      - Trade Show
+      - Public Relations
+      - Partners
+      total_values: 12
+  - name: Status
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Planned
+      - In Progress
+      - Completed
+      - Aborted
+      total_values: 4
+  - name: StartDate
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: EndDate
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ExpectedRevenue
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: BudgetedCost
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ActualCost
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ExpectedResponse
+    type: percent
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumberSent
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: IsActive
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Description
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: CampaignMemberRecordTypeId
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - RecordType
+      relationship_name: CampaignMemberRecordType
+- name: General_Accounting_Unit__c
+  fields:
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Active__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Average_Allocation__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Description__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: First_Allocation_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Largest_Allocation__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Last_Allocation_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Number_of_Allocations_Last_N_Days__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Number_of_Allocations_Last_Year__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Number_of_Allocations_This_Year__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Number_of_Allocations_Two_Years_Ago__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Smallest_Allocation__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Total_Allocations_Last_N_Days__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Total_Allocations_Last_Year__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Total_Allocations_This_Year__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Total_Allocations_Two_Years_Ago__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Total_Allocations__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Total_Number_of_Allocations__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+- name: Engagement_Plan_Template__c
+  fields:
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Automatically_Update_Child_Task_Due_Date__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Default_Assignee__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Owner of Object for Engagement Plan
+      - User Creating Engagement Plan
+      total_values: 2
+  - name: Description__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Reschedule_To__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Monday
+      - Friday
+      total_values: 2
+  - name: Skip_Weekends__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Total_Engagement_Plans__c
+    type: double
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Total_Tasks__c
+    type: double
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+- name: Engagement_Plan_Task__c
+  fields:
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Engagement_Plan_Template__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - Engagement_Plan_Template__c
+      relationship_name: Engagement_Plan_Template__r
+  - name: Assigned_To__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - User
+      relationship_name: Assigned_To__r
+  - name: Comments__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Days_After__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Parent_Task__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Engagement_Plan_Task__c
+      relationship_name: Parent_Task__r
+  - name: Priority__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - High
+      - Medium
+      - Low
+      total_values: 3
+  - name: Reminder_Time__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Reminder__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Send_Email__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Status__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Not Started
+      - In Progress
+      - Completed
+      - Waiting on someone else
+      - Deferred
+      total_values: 5
+  - name: Type__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Call
+      - Meeting
+      - Other
+      - Email
+      total_values: 4
+- name: Program__c
+  fields:
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Description__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: EndDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ProgramIssueArea__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Housing
+      - Employment
+      - Education
+      - Legal
+      - Counseling
+      total_values: 7
+  - name: ShortSummary__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: StartDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Status__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    picklist:
+      initial_values:
+      - Planned
+      - Active
+      - Completed
+      - Canceled
+      total_values: 4
+  - name: TargetPopulation__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+- name: ProgramCohort__c
+  fields:
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Description__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: EndDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Program__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - Program__c
+      relationship_name: Program__r
+  - name: StartDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Status__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    picklist:
+      initial_values:
+      - Planned
+      - Active
+      - Completed
+      - Canceled
+      total_values: 4
+- name: Account
+  fields:
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+  - name: Type
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Prospect
+      - Customer - Direct
+      - Customer - Channel
+      - Channel Partner / Reseller
+      - Installation Partner
+      total_values: 7
+  - name: RecordTypeId
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - RecordType
+      relationship_name: RecordType
+  - name: ParentId
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Account
+      relationship_name: Parent
+  - name: BillingStreet
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: BillingCity
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: BillingPostalCode
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: BillingLatitude
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: BillingLongitude
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: BillingGeocodeAccuracy
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Address
+      - NearAddress
+      - Block
+      - Street
+      - ExtendedZip
+      total_values: 11
+  - name: ShippingStreet
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ShippingCity
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ShippingPostalCode
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ShippingLatitude
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ShippingLongitude
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ShippingGeocodeAccuracy
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Address
+      - NearAddress
+      - Block
+      - Street
+      - ExtendedZip
+      total_values: 11
+  - name: Phone
+    type: phone
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Fax
+    type: phone
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: AccountNumber
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Website
+    type: url
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Sic
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Industry
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Agriculture
+      - Apparel
+      - Banking
+      - Biotechnology
+      - Chemicals
+      total_values: 32
+  - name: AnnualRevenue
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumberOfEmployees
+    type: int
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Ownership
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Public
+      - Private
+      - Subsidiary
+      - Other
+      total_values: 4
+  - name: TickerSymbol
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Description
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Rating
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Hot
+      - Warm
+      - Cold
+      total_values: 3
+  - name: Site
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Jigsaw
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: CleanStatus
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Matched
+      - Different
+      - Acknowledged
+      - NotFound
+      - Inactive
+      total_values: 8
+  - name: AccountSource
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Web
+      - Phone Inquiry
+      - Partner Referral
+      - Purchased List
+      - Other
+      total_values: 5
+  - name: DunsNumber
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Tradestyle
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NaicsCode
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NaicsDesc
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: YearStarted
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: SicDesc
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: DandbCompanyId
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - DandBCompany
+      relationship_name: DandbCompany
+  - name: OperatingHoursId
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - OperatingHours
+      relationship_name: OperatingHours
+  - name: All_Members_Deceased__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: AverageAmount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Best_Gift_Year_Total__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Best_Gift_Year__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: CustomizableRollups_UseSkewMode__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: FirstCloseDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Formal_Greeting__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Funding_Focus__c
+    type: multipicklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Grantmaker__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: HouseholdPhone__c
+    type: phone
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Informal_Greeting__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LargestAmount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LastCloseDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LastMembershipAmount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LastMembershipDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LastMembershipLevel__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LastMembershipOrigin__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LastOppAmount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Level__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Level__c
+      relationship_name: Level__r
+  - name: Matching_Gift_Administrator_Name__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Matching_Gift_Amount_Max__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Matching_Gift_Amount_Min__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Matching_Gift_Annual_Employee_Max__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Matching_Gift_Comments__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Matching_Gift_Company__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Matching_Gift_Email__c
+    type: email
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Matching_Gift_Info_Updated__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Matching_Gift_Percent__c
+    type: percent
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Matching_Gift_Phone__c
+    type: phone
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Matching_Gift_Request_Deadline__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MembershipEndDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MembershipJoinDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumberOfClosedOpps__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumberOfMembershipOpps__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Number_of_Household_Members__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: One2OneContact__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: One2OneContact__r
+  - name: OppAmount2YearsAgo__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OppAmountLastNDays__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OppAmountLastYear__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OppAmountThisYear__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OppsClosed2YearsAgo__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OppsClosedLastNDays__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OppsClosedLastYear__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OppsClosedThisYear__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: SYSTEMIsIndividual__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: SYSTEM_AccountType__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: SYSTEM_CUSTOM_NAMING__c
+    type: multipicklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: SmallestAmount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Sustainer__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Active
+      - Lapsed
+      - Former
+      total_values: 3
+  - name: TotalMembershipOppAmount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: TotalOppAmount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Undeliverable_Address__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Membership_Span__c
+    type: double
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Membership_Status__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+- name: Address__c
+  fields:
+  - name: Household_Account__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - Account
+      relationship_name: Household_Account__r
+  - name: API_Response__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Address_Type__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Home
+      - Work
+      - Vacation Residence
+      - Other
+      total_values: 4
+  - name: Administrative_Area__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Ambiguous__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Congressional_District__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: County_Name__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Default_Address__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Exclude_from_Updates__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Geolocation__Latitude__s
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Geolocation__Longitude__s
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Latest_End_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Latest_Start_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MailingCity__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MailingCountry__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MailingPostalCode__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MailingState__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MailingStreet2__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MailingStreet__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NCOA_Evaluation_Date__c
+    type: datetime
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NCOA_Result_Code__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Pre_Verification_Address__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Seasonal_End_Day__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      total_values: 31
+  - name: Seasonal_End_Month__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      total_values: 12
+  - name: Seasonal_Start_Day__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      total_values: 31
+  - name: Seasonal_Start_Month__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      total_values: 12
+  - name: State_Lower_District__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: State_Upper_District__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Undeliverable__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Verification_Status__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Verified_Date__c
+    type: datetime
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Verified__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Formula_MailingAddress__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Formula_MailingStreetAddress__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+- name: Contact
+  fields:
+  - name: AccountId
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Account
+      relationship_name: Account
+  - name: LastName
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+  - name: FirstName
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Salutation
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Mr.
+      - Ms.
+      - Mrs.
+      - Dr.
+      - Prof.
+      total_values: 6
+  - name: OtherStreet
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OtherCity
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OtherPostalCode
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OtherLatitude
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OtherLongitude
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OtherGeocodeAccuracy
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Address
+      - NearAddress
+      - Block
+      - Street
+      - ExtendedZip
+      total_values: 11
+  - name: MailingStreet
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MailingCity
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MailingPostalCode
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MailingLatitude
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MailingLongitude
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MailingGeocodeAccuracy
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Address
+      - NearAddress
+      - Block
+      - Street
+      - ExtendedZip
+      total_values: 11
+  - name: Phone
+    type: phone
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Fax
+    type: phone
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MobilePhone
+    type: phone
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: HomePhone
+    type: phone
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OtherPhone
+    type: phone
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: AssistantPhone
+    type: phone
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ReportsToId
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: ReportsTo
+  - name: Email
+    type: email
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Title
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Department
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: AssistantName
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LeadSource
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Web
+      - Phone Inquiry
+      - Partner Referral
+      - Purchased List
+      - Other
+      total_values: 5
+  - name: Birthdate
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Description
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: HasOptedOutOfEmail
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: HasOptedOutOfFax
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: DoNotCall
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: EmailBouncedReason
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: EmailBouncedDate
+    type: datetime
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Jigsaw
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: CleanStatus
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Matched
+      - Different
+      - Acknowledged
+      - NotFound
+      - Inactive
+      total_values: 8
+  - name: IndividualId
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Individual
+      relationship_name: Individual
+  - name: Pronouns
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - He/Him
+      - She/Her
+      - They/Them
+      - He/They
+      - She/They
+      total_values: 6
+  - name: GenderIdentity
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Male
+      - Female
+      - Nonbinary
+      - Not Listed
+      total_values: 4
+  - name: ContactSource
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Auto Create
+      - Email Message
+      - Meeting Digest
+      - Seller Home
+      total_values: 4
+  - name: BuyerAttributes
+    type: multipicklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: AlternateEmail__c
+    type: email
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: AverageAmount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Best_Gift_Year_Total__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Best_Gift_Year__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ConsecutiveAbsences__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Current_Address__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Address__c
+      relationship_name: Current_Address__r
+  - name: CustomizableRollups_UseSkewMode__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Deceased__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Do_Not_Contact__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Exclude_from_Household_Formal_Greeting__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Exclude_from_Household_Informal_Greeting__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Exclude_from_Household_Name__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: FirstCloseDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: First_Soft_Credit_Amount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: First_Soft_Credit_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: HomeEmail__c
+    type: email
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Household_Naming_Order__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Household__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Household__c
+      relationship_name: Household__r
+  - name: IsClient__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LargestAmount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Largest_Soft_Credit_Amount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Largest_Soft_Credit_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LastCloseDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LastMembershipAmount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LastMembershipDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LastMembershipLevel__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LastMembershipOrigin__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LastOppAmount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LastServiceDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Last_Soft_Credit_Amount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Last_Soft_Credit_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MembershipEndDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MembershipJoinDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Naming_Exclusions__c
+    type: multipicklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumAbsentServiceDeliveries__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumPresentServiceDeliveries__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumberOfClosedOpps__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumberOfMembershipOpps__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Number_of_Soft_Credits_Last_N_Days__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Number_of_Soft_Credits_Last_Year__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Number_of_Soft_Credits_This_Year__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Number_of_Soft_Credits_Two_Years_Ago__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Number_of_Soft_Credits__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OppAmount2YearsAgo__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OppAmountLastNDays__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OppAmountLastYear__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OppAmountThisYear__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OppsClosed2YearsAgo__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OppsClosedLastNDays__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OppsClosedLastYear__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OppsClosedThisYear__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: PreferredPhone__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Home
+      - Work
+      - Mobile
+      - Other
+      total_values: 4
+  - name: Preferred_Email__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Personal
+      - Work
+      - Alternate
+      total_values: 3
+  - name: Primary_Address_Type__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Home
+      - Work
+      - Other
+      total_values: 3
+  - name: Primary_Affiliation__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Account
+      relationship_name: Primary_Affiliation__r
+  - name: Private__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Secondary_Address_Type__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Home
+      - Work
+      - Other
+      total_values: 3
+  - name: SmallestAmount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Soft_Credit_Last_N_Days__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Soft_Credit_Last_Year__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Soft_Credit_This_Year__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Soft_Credit_Total__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Soft_Credit_Two_Years_Ago__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Sustainer__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Active
+      - Lapsed
+      - Former
+      total_values: 3
+  - name: TotalMembershipOppAmount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: TotalOppAmount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Undeliverable_Address__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: WorkEmail__c
+    type: email
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: WorkPhone__c
+    type: phone
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: is_Address_Override__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Address_Verification_Status__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: AttendanceRate__c
+    type: percent
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: AttendanceSummary__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Formula_HouseholdMailingAddress__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Formula_HouseholdPhone__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: HHId__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Home_Address__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: LastCloseDateHH__c
+    type: date
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: OppAmountLastYearHH__c
+    type: currency
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: OppAmountThisYearHH__c
+    type: currency
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Organization_Type__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Other_Address__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Primary_Contact__c
+    type: boolean
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Total_Household_Gifts__c
+    type: currency
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Type_of_Account__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Work_Address__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+- name: Affiliation__c
+  fields:
+  - name: Organization__c
+    type: reference
+    access: create_only
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - Account
+      relationship_name: Organization__r
+  - name: Contact__c
+    type: reference
+    access: create_only
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: Contact__r
+  - name: Description__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: EndDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Primary__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Related_Opportunity_Contact_Role__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Soft Credit
+      - Solicitor
+      total_values: 2
+  - name: Role__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: StartDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Status__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Current
+      - Former
+      total_values: 2
+- name: ProgramEngagement__c
+  fields:
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Account__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Account
+      relationship_name: Account__r
+  - name: ApplicationDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: AutoName_Override__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ConsecutiveAbsences__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Contact__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: Contact__r
+  - name: CurrentUserOwner__c
+    type: boolean
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: EndDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LastServiceDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumAbsentServiceDeliveries__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumPresentServiceDeliveries__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ProgramCohort__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - ProgramCohort__c
+      relationship_name: ProgramCohort__r
+  - name: Program__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - Program__c
+      relationship_name: Program__r
+  - name: Role__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Client
+      - Volunteer
+      - Service Provider
+      total_values: 3
+  - name: Stage__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Applied
+      - Application Denied
+      - Waitlisted
+      - Enrolled
+      - Active
+      total_values: 7
+  - name: StartDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: AttendanceRate__c
+    type: percent
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: AttendanceSummary__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+- name: Service__c
+  fields:
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: AttendanceFieldSet__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Attendance_Service_Deliveries
+      total_values: 1
+  - name: Description__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumAbsentServiceDeliveries__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumPresentServiceDeliveries__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Program__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - Program__c
+      relationship_name: Program__r
+  - name: ServiceDeliveryFieldSet__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Bulk_Service_Deliveries
+      total_values: 1
+  - name: Status__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Planned
+      - Active
+      - Completed
+      - Canceled
+      total_values: 4
+  - name: UnitOfMeasurement__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: AttendanceRate__c
+    type: percent
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: AttendanceSummary__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+- name: ServiceSchedule__c
+  fields:
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: AllDay__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: CreateServiceSessionRecords__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: DaysOfWeek__c
+    type: multipicklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: DefaultServiceQuantity__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: FirstSessionEnd__c
+    type: datetime
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: FirstSessionStart__c
+    type: datetime
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Frequency__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Daily
+      - Weekly
+      - Monthly
+      - One Time
+      total_values: 4
+  - name: Interval__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: MonthlyRecurrenceOption__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - LastDayOfMonth
+      - 1MO
+      - 2MO
+      - 3MO
+      - 4MO
+      total_values: 36
+  - name: NumAbsentServiceDeliveries__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumPresentServiceDeliveries__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumberOfServiceSessions__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OtherServiceProvider__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: OtherServiceProvider__r
+  - name: ParticipantCapacity__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ParticipantsEnrolled__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: PrimaryServiceProvider__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: PrimaryServiceProvider__r
+  - name: ServiceScheduleEndDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ServiceScheduleEnds__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - 'On'
+      - After
+      total_values: 2
+  - name: Service__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Service__c
+      relationship_name: Service__r
+  - name: AttendanceRate__c
+    type: percent
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: AttendanceSummary__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+- name: ServiceSession__c
+  fields:
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumAbsentServiceDeliveries__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NumPresentServiceDeliveries__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OmittedContactIds__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OtherServiceProvider__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: OtherServiceProvider__r
+  - name: PrimaryServiceProvider__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: PrimaryServiceProvider__r
+  - name: ServiceSchedule__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - ServiceSchedule__c
+      relationship_name: ServiceSchedule__r
+  - name: SessionEnd__c
+    type: datetime
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: SessionStart__c
+    type: datetime
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Status__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Pending
+      - Complete
+      - Canceled
+      total_values: 3
+  - name: AttendanceRate__c
+    type: percent
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: AttendanceSummary__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: ServiceLink__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+- name: ServiceParticipant__c
+  fields:
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Contact__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: Contact__r
+  - name: ProgramEngagement__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - ProgramEngagement__c
+      relationship_name: ProgramEngagement__r
+  - name: ServiceSchedule__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - ServiceSchedule__c
+      relationship_name: ServiceSchedule__r
+  - name: Service__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Service__c
+      relationship_name: Service__r
+  - name: SignUpDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Status__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Waitlisted
+      - Enrolled
+      - Withdrawn
+      total_values: 3
+- name: ServiceDelivery__c
+  fields:
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Account__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Account
+      relationship_name: Account__r
+  - name: AttendanceStatus__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Present
+      - Unexcused Absence
+      - Excused Absence
+      total_values: 3
+  - name: AutonameOverride__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Contact__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: Contact__r
+  - name: DeliveryDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ProgramEngagement__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - ProgramEngagement__c
+      relationship_name: ProgramEngagement__r
+  - name: Quantity__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ServiceSession__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - ServiceSession__c
+      relationship_name: ServiceSession__r
+  - name: Service_Provider__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: Service_Provider__r
+  - name: Service__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - Service__c
+      relationship_name: Service__r
+  - name: HouseholdBenefit__c
+    type: boolean
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: ServiceSchedule__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: UnitOfMeasurement__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+- name: Recurring_Donation__c
+  fields:
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ACH_Last_4__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Always_Use_Last_Day_Of_Month__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Amount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: CardExpirationMonth__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: CardExpirationYear__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: CardLast4__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ChangeType__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Upgrade
+      - Downgrade
+      total_values: 2
+  - name: ClosedReason__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Card Expired
+      - Commitment Completed
+      - Deceased Donor
+      - Financial Difficulty
+      - No Longer Interested
+      total_values: 6
+  - name: Contact__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: Contact__r
+  - name: CurrentYearValue__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Date_Established__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Day_of_Month__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      total_values: 32
+  - name: DisableFirstInstallment__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: EndDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: InstallmentFrequency__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Installment_Period__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Monthly
+      - Yearly
+      - Weekly
+      - 1st and 15th
+      total_values: 4
+  - name: Installments__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Last_Payment_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: NextYearValue__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Next_Payment_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Open_Ended_Status__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Open
+      - Closed
+      - None
+      total_values: 3
+  - name: Organization__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Account
+      relationship_name: Organization__r
+  - name: Paid_Amount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: PaymentMethod__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Credit Card
+      - Check
+      - ACH
+      total_values: 3
+  - name: RecurringType__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Open
+      - Fixed
+      total_values: 2
+  - name: Recurring_Donation_Campaign__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Campaign
+      relationship_name: Recurring_Donation_Campaign__r
+  - name: Schedule_Type__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Multiply By
+      - Divide By
+      total_values: 2
+  - name: StartDate__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Status__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Active
+      - Lapsed
+      - Closed
+      - Paused
+      total_values: 4
+  - name: Total_Paid_Installments__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Donor_Name__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Installment_Amount__c
+    type: currency
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Total__c
+    type: currency
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+- name: Relationship__c
+  fields:
+  - name: Contact__c
+    type: reference
+    access: create_only
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: Contact__r
+  - name: Description__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: ReciprocalRelationship__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Relationship__c
+      relationship_name: ReciprocalRelationship__r
+  - name: RelatedContact__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: RelatedContact__r
+  - name: Related_Opportunity_Contact_Role__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Soft Credit
+      - Solicitor
+      - Tribute
+      total_values: 3
+  - name: SYSTEM_SystemCreated__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Status__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Current
+      - Former
+      total_values: 2
+  - name: Type__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Friend
+      - Family
+      - Coworker
+      - Father
+      - Mother
+      total_values: 23
+  - name: Relationship_Explanation__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+- name: Opportunity
+  fields:
+  - name: AccountId
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Account
+      relationship_name: Account
+  - name: RecordTypeId
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - RecordType
+      relationship_name: RecordType
+  - name: IsPrivate
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+  - name: Description
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: StageName
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    picklist:
+      initial_values:
+      - Prospecting
+      - Qualification
+      - Needs Analysis
+      - Value Proposition
+      - Id. Decision Makers
+      total_values: 11
+  - name: Amount
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Probability
+    type: percent
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: TotalOpportunityQuantity
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: CloseDate
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+  - name: Type
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Existing Customer - Upgrade
+      - Existing Customer - Replacement
+      - Existing Customer - Downgrade
+      - New Customer
+      total_values: 4
+  - name: NextStep
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: LeadSource
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Web
+      - Phone Inquiry
+      - Partner Referral
+      - Purchased List
+      - Other
+      total_values: 5
+  - name: ForecastCategoryName
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Omitted
+      - Pipeline
+      - Best Case
+      - Commit
+      - Closed
+      total_values: 5
+  - name: CampaignId
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Campaign
+      relationship_name: Campaign
+  - name: Pricebook2Id
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Pricebook2
+      relationship_name: Pricebook2
+  - name: ContactId
+    type: reference
+    access: create_only
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+  - name: ContractId
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contract
+      relationship_name: Contract
+  - name: Acknowledgment_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Acknowledgment_Status__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - To Be Acknowledged
+      - Acknowledged
+      - Do Not Acknowledge
+      - Email Acknowledgment Now
+      - Email Acknowledgment Not Sent
+      total_values: 5
+  - name: Ask_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Batch_Number__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Closed_Lost_Reason__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Contact_Id_for_Role__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: DisableContactRoleAutomation__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Do_Not_Automatically_Create_Payment__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Fair_Market_Value__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Gift_Strategy__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - New Donor
+      - Renewal
+      - Upgrade
+      total_values: 3
+  - name: Grant_Contract_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Grant_Contract_Number__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Grant_Period_End_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Grant_Period_Start_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Grant_Program_Area_s__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Grant_Requirements_Website__c
+    type: url
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Honoree_Contact__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: Honoree_Contact__r
+  - name: Honoree_Information__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Honoree_Name__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: In_Kind_Description__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: In_Kind_Donor_Declared_Value__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: In_Kind_Type__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Goods
+      - Services
+      total_values: 2
+  - name: Is_Grant_Renewal__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Matching_Gift_Account__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Account
+      relationship_name: Matching_Gift_Account__r
+  - name: Matching_Gift_Employer__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Matching_Gift_Status__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Potential
+      - Submitted
+      - Received
+      total_values: 3
+  - name: Matching_Gift__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Opportunity
+      relationship_name: Matching_Gift__r
+  - name: Member_Level__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Gold
+      - Silver
+      - Bronze
+      total_values: 3
+  - name: Membership_End_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Membership_Origin__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - New
+      - Renewal
+      - Reacquire
+      total_values: 3
+  - name: Membership_Start_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Notification_Message__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Notification_Preference__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Email
+      - Postal Mail
+      - Phone
+      - Do Not Notify
+      total_values: 4
+  - name: Notification_Recipient_Contact__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: Notification_Recipient_Contact__r
+  - name: Notification_Recipient_Email__c
+    type: email
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Notification_Recipient_Information__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Notification_Recipient_Name__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Previous_Grant_Opportunity__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Opportunity
+      relationship_name: Previous_Grant_Opportunity__r
+  - name: Primary_Contact_Campaign_Member_Status__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Primary_Contact__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: Primary_Contact__r
+  - name: Qualified_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Recurring_Donation_Installment_Number__c
+    type: double
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Recurring_Donation__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Recurring_Donation__c
+      relationship_name: Recurring_Donation__r
+  - name: Requested_Amount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Tribute_Notification_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Tribute_Notification_Status__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - To Be Notified
+      - Notified
+      total_values: 2
+  - name: Tribute_Type__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Honor
+      - Memorial
+      total_values: 2
+  - name: Amount_Written_Off__c
+    type: currency
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Next_Grant_Deadline_Due_Date__c
+    type: date
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Number_of_Payments__c
+    type: double
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Payments_Made__c
+    type: currency
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Amount_Outstanding__c
+    type: currency
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: CombinedRollupFieldset__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Is_Opp_From_Individual__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+  - name: Recurring_Donation_Installment_Name__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+- name: OppPayment__c
+  fields:
+  - name: Opportunity__c
+    type: reference
+    access: create_only
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - Opportunity
+      relationship_name: Opportunity__r
+  - name: ACH_Code__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - PPD
+      - CCD
+      - WEB
+      - TEL
+      - BOC
+      total_values: 6
+  - name: ACH_Last_4__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Authorized_Date__c
+    type: datetime
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Authorized_UTC_Timestamp__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Batch_Number__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Card_Expiration_Month__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Card_Expiration_Year__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Card_Last_4__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Card_Network__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Check_Reference_Number__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Custom_Payment_Field__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: DebitType__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Refund
+      - Partial Refund
+      - Chargeback
+      total_values: 3
+  - name: Donor_Cover_Amount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Gateway_ID__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Gateway_Payment_ID__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Gateway_Transaction_Fee__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Origin_ID__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Origin_Name__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Origin_Type__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: OriginalPayment__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - OppPayment__c
+      relationship_name: OriginalPayment__r
+  - name: Paid__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Payment_Acknowledged_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Payment_Acknowledgment_Status__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - To Be Acknowledged
+      - Acknowledged
+      - Do Not Acknowledge
+      total_values: 3
+  - name: Payment_Amount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Payment_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Payment_Method__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Cash
+      - Check
+      - Credit Card
+      - ACH
+      - PayPal
+      total_values: 5
+  - name: Scheduled_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Type__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Written_Off__c
+    type: boolean
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+- name: Allocation__c
+  fields:
+  - name: Amount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Campaign__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Campaign
+      relationship_name: Campaign__r
+  - name: General_Accounting_Unit__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - General_Accounting_Unit__c
+      relationship_name: General_Accounting_Unit__r
+  - name: Opportunity__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Opportunity
+      relationship_name: Opportunity__r
+  - name: Payment__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - OppPayment__c
+      relationship_name: Payment__r
+  - name: Percent__c
+    type: percent
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Recurring_Donation__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    reference:
+      reference_to:
+      - Recurring_Donation__c
+      relationship_name: Recurring_Donation__r
+- name: Account_Soft_Credit__c
+  fields:
+  - name: Opportunity__c
+    type: reference
+    access: create_only
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - Opportunity
+      relationship_name: Opportunity__r
+  - name: Account__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - Account
+      relationship_name: Account__r
+  - name: Amount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Role__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - Donation Source
+      - Influencer
+      - Match
+      total_values: 3
+- name: Partial_Soft_Credit__c
+  fields:
+  - name: Contact__c
+    type: reference
+    access: create_only
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - Contact
+      relationship_name: Contact__r
+  - name: Opportunity__c
+    type: reference
+    access: create_only
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - Opportunity
+      relationship_name: Opportunity__r
+  - name: Amount__c
+    type: currency
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Contact_Role_ID__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Role_Name__c
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Contact_Name__c
+    type: string
+    access: read_only
+    is_formula: true
+    is_auto_number: false
+    is_required: false
+- name: Grant_Deadline__c
+  fields:
+  - name: Name
+    type: string
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Opportunity__c
+    type: reference
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: true
+    reference:
+      reference_to:
+      - Opportunity
+      relationship_name: Opportunity__r
+  - name: Grant_Deadline_Due_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Grant_Deliverable_Close_Date__c
+    type: date
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Grant_Deliverable_Requirements__c
+    type: textarea
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+  - name: Type__c
+    type: picklist
+    access: read_write
+    is_formula: false
+    is_auto_number: false
+    is_required: false
+    picklist:
+      initial_values:
+      - LOI
+      - Application
+      - Interim Report
+      - Final Report
+      total_values: 4
+errors: []
