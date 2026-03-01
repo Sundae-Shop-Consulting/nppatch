@@ -1,17 +1,11 @@
-import { LightningElement, wire } from "lwc";
+import { LightningElement, wire, api } from "lwc";
 import getSettings from "@salesforce/apex/NppatchSettingsController.getSettings";
-import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
 
 export default class StgPanelAddrVerification extends LightningElement {
     _settings;
     _hasError = false;
     _errorMessage = "";
-    _canEdit = false;
-
-    @wire(isAdmin)
-    wiredIsAdmin({ data }) {
-        if (data !== undefined) this._canEdit = data;
-    }
+    @api isAdmin = false;
 
     @wire(getSettings, { settingsObjectName: "Contacts_And_Orgs_Settings__c" })
     wiredSettings(result) {

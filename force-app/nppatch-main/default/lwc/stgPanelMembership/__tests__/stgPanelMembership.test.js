@@ -3,7 +3,6 @@ import StgPanelMembership from "c/stgPanelMembership";
 import getSettings from "@salesforce/apex/NppatchSettingsController.getSettings";
 import saveSettings from "@salesforce/apex/NppatchSettingsController.saveSettings";
 import getRecordTypeOptions from "@salesforce/apex/NppatchSettingsController.getRecordTypeOptions";
-import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
 
 jest.mock(
     "@salesforce/apex/NppatchSettingsController.getSettings",
@@ -23,14 +22,6 @@ jest.mock(
 
 jest.mock(
     "@salesforce/apex/NppatchSettingsController.getRecordTypeOptions",
-    () => {
-        return { default: jest.fn() };
-    },
-    { virtual: true }
-);
-
-jest.mock(
-    "@salesforce/apex/NppatchSettingsController.isAdmin",
     () => {
         return { default: jest.fn() };
     },
@@ -77,7 +68,6 @@ describe("c-stg-panel-membership", () => {
         });
         getRecordTypeOptions.mockResolvedValue(MOCK_RECORD_TYPE_OPTIONS);
         saveSettings.mockResolvedValue(undefined);
-        isAdmin.mockResolvedValue(true);
     });
 
     afterEach(() => {
@@ -107,6 +97,7 @@ describe("c-stg-panel-membership", () => {
 
     it("shows Edit button for admin users", async () => {
         const element = createElement("c-stg-panel-membership", { is: StgPanelMembership });
+        element.isAdmin = true;
         document.body.appendChild(element);
         await flushPromises();
 
@@ -116,9 +107,8 @@ describe("c-stg-panel-membership", () => {
     });
 
     it("hides Edit button for non-admin users", async () => {
-        isAdmin.mockResolvedValue(false);
-
         const element = createElement("c-stg-panel-membership", { is: StgPanelMembership });
+        element.isAdmin = false;
         document.body.appendChild(element);
         await flushPromises();
 
@@ -128,6 +118,7 @@ describe("c-stg-panel-membership", () => {
 
     it("enters edit mode when Edit button is clicked", async () => {
         const element = createElement("c-stg-panel-membership", { is: StgPanelMembership });
+        element.isAdmin = true;
         document.body.appendChild(element);
         await flushPromises();
 
@@ -141,6 +132,7 @@ describe("c-stg-panel-membership", () => {
 
     it("calls saveSettings on Save click", async () => {
         const element = createElement("c-stg-panel-membership", { is: StgPanelMembership });
+        element.isAdmin = true;
         document.body.appendChild(element);
         await flushPromises();
 
@@ -164,6 +156,7 @@ describe("c-stg-panel-membership", () => {
 
     it("reverts changes on Cancel click", async () => {
         const element = createElement("c-stg-panel-membership", { is: StgPanelMembership });
+        element.isAdmin = true;
         document.body.appendChild(element);
         await flushPromises();
 

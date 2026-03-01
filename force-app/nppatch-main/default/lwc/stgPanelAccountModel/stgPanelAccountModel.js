@@ -1,11 +1,9 @@
-import { LightningElement, wire, track } from "lwc";
+import { LightningElement, wire, track, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
 import getSettings from "@salesforce/apex/NppatchSettingsController.getSettings";
 import saveSettings from "@salesforce/apex/NppatchSettingsController.saveSettings";
 import getRecordTypeOptions from "@salesforce/apex/NppatchSettingsController.getRecordTypeOptions";
-import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
-
 import stgNavPeople from "@salesforce/label/c.stgNavPeople";
 import stgNavAccountModel from "@salesforce/label/c.stgNavAccountModel";
 import stgHelpAccountModel from "@salesforce/label/c.stgHelpAccountModel";
@@ -25,7 +23,7 @@ const ACCOUNT_MODEL_OPTIONS = [
 ];
 
 export default class StgPanelAccountModel extends LightningElement {
-    _isAdmin = false;
+    @api isAdmin = false;
     _isEditMode = false;
     _isSaving = false;
     _settings;
@@ -68,13 +66,6 @@ export default class StgPanelAccountModel extends LightningElement {
         }
     }
 
-    @wire(isAdmin)
-    wiredIsAdmin({ data }) {
-        if (data !== undefined) {
-            this._isAdmin = data;
-        }
-    }
-
     @wire(getRecordTypeOptions, { sObjectApiName: "Account" })
     wiredRecordTypes({ data, error }) {
         if (data) {
@@ -88,7 +79,7 @@ export default class StgPanelAccountModel extends LightningElement {
     }
 
     get canEdit() {
-        return this._isAdmin && !this._isEditMode;
+        return this.isAdmin && !this._isEditMode;
     }
 
     get isLoading() {

@@ -1,13 +1,12 @@
-import { LightningElement, wire } from "lwc";
+import { LightningElement, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import runBatch from "@salesforce/apex/NppatchSettingsController.runBatch";
-import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
 
 export default class StgPanelLvlAssignBatch extends LightningElement {
     _isRunning = false;
     _hasError = false;
     _errorMessage = "";
-    _canEdit = false;
+    @api isAdmin = false;
 
     labels = {
         sectionLabel: "Bulk Data Processes",
@@ -17,13 +16,6 @@ export default class StgPanelLvlAssignBatch extends LightningElement {
         runBatch: "Run Level Assignment",
         runningMessage: "Batch job is running...",
     };
-
-    @wire(isAdmin)
-    wiredIsAdmin({ data }) {
-        if (data !== undefined) {
-            this._canEdit = data;
-        }
-    }
 
     get isLoading() {
         return false;

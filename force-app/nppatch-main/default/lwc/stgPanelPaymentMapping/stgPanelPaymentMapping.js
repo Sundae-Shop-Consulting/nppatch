@@ -1,10 +1,9 @@
-import { LightningElement, wire, track } from "lwc";
+import { LightningElement, wire, track, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
 import getListSettings from "@salesforce/apex/NppatchSettingsController.getListSettings";
 import createListSetting from "@salesforce/apex/NppatchSettingsController.createListSetting";
 import deleteListSetting from "@salesforce/apex/NppatchSettingsController.deleteListSetting";
-import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
 
 const SETTINGS_OBJECT = "Payment_Field_Mapping_Settings__c";
 
@@ -23,7 +22,7 @@ const ACTION_COLUMN = {
 export default class StgPanelPaymentMapping extends LightningElement {
     _settings;
     _wiredResult;
-    _canEdit = false;
+    @api isAdmin = false;
     _isCreating = false;
     _isSaving = false;
     _hasError = false;
@@ -37,13 +36,6 @@ export default class StgPanelPaymentMapping extends LightningElement {
             "Payment Field Mappings automatically copy values from Opportunity fields to Payment fields when Payments are created. " +
             "For example, you can map the Opportunity\u2019s custom \u2018Fund\u2019 field to a \u2018Fund\u2019 field on the Payment record.",
     };
-
-    @wire(isAdmin)
-    wiredIsAdmin({ data }) {
-        if (data !== undefined) {
-            this._canEdit = data;
-        }
-    }
 
     @wire(getListSettings, { settingsObjectName: SETTINGS_OBJECT })
     wiredSettings(result) {
@@ -66,11 +58,11 @@ export default class StgPanelPaymentMapping extends LightningElement {
     }
 
     get canEdit() {
-        return this._canEdit;
+        return this.isAdmin;
     }
 
     get columns() {
-        if (this._canEdit) {
+        if (this.isAdmin) {
             return [...DATA_COLUMNS, ACTION_COLUMN];
         }
         return DATA_COLUMNS;

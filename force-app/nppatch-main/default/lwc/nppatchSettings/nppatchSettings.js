@@ -96,8 +96,8 @@ const NAV_GROUPS = [
 export default class NppatchSettings extends LightningElement {
     _isLoading = true;
     _isAccessDenied = false;
-    _settingsReady = false;
     _adminChecked = false;
+    _isAdminResult = false;
     _activePanel = "accountModel";
     _ensuredSettings = new Set();
 
@@ -110,6 +110,7 @@ export default class NppatchSettings extends LightningElement {
     navGroups = NAV_GROUPS;
 
     connectedCallback() {
+        // Fire-and-forget: ensure settings exist in background
         this._ensureSettingsForPanel(this._activePanel);
     }
 
@@ -117,6 +118,7 @@ export default class NppatchSettings extends LightningElement {
     wiredIsAdmin({ data, error }) {
         if (data !== undefined) {
             this._adminChecked = true;
+            this._isAdminResult = data;
             if (!data) {
                 this._isAccessDenied = true;
             }
@@ -129,7 +131,7 @@ export default class NppatchSettings extends LightningElement {
     }
 
     _checkReady() {
-        if (this._settingsReady && this._adminChecked) {
+        if (this._adminChecked) {
             this._isLoading = false;
             this._preloadRemainingSettings();
         }
@@ -157,16 +159,11 @@ export default class NppatchSettings extends LightningElement {
                 // Settings may already exist; proceed anyway
             }
         }
-
-        if (!this._settingsReady) {
-            this._settingsReady = true;
-            this._checkReady();
-        }
     }
 
     async handleNavSelect(event) {
         const panelName = event.detail.name;
-        await this._ensureSettingsForPanel(panelName);
+        this._ensureSettingsForPanel(panelName);
         this._activePanel = panelName;
     }
 

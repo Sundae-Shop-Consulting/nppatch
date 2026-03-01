@@ -1,10 +1,9 @@
-import { LightningElement, wire, track } from "lwc";
+import { LightningElement, wire, track, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
 import getTriggerHandlers from "@salesforce/apex/NppatchSettingsController.getTriggerHandlers";
 import createTriggerHandler from "@salesforce/apex/NppatchSettingsController.createTriggerHandler";
 import deleteTriggerHandler from "@salesforce/apex/NppatchSettingsController.deleteTriggerHandler";
-import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
 
 const DATA_COLUMNS = [
     { label: "Object", fieldName: "Object__c", type: "text" },
@@ -26,7 +25,7 @@ const ACTION_COLUMN = {
 export default class StgPanelTDTM extends LightningElement {
     _settings;
     _wiredResult;
-    _canEdit = false;
+    @api isAdmin = false;
     _isCreating = false;
     _isSaving = false;
     _hasError = false;
@@ -49,13 +48,6 @@ export default class StgPanelTDTM extends LightningElement {
             "individual handlers. Use caution when modifying these settings \u2014 disabling core handlers may break NPPatch functionality.",
     };
 
-    @wire(isAdmin)
-    wiredIsAdmin({ data }) {
-        if (data !== undefined) {
-            this._canEdit = data;
-        }
-    }
-
     @wire(getTriggerHandlers)
     wiredSettings(result) {
         this._wiredResult = result;
@@ -77,11 +69,11 @@ export default class StgPanelTDTM extends LightningElement {
     }
 
     get canEdit() {
-        return this._canEdit;
+        return this.isAdmin;
     }
 
     get columns() {
-        if (this._canEdit) {
+        if (this.isAdmin) {
             return [...DATA_COLUMNS, ACTION_COLUMN];
         }
         return DATA_COLUMNS;

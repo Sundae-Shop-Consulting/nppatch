@@ -1,12 +1,10 @@
-import { LightningElement, wire, track } from "lwc";
+import { LightningElement, wire, track, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
 import getSettings from "@salesforce/apex/NppatchSettingsController.getSettings";
 import saveSettings from "@salesforce/apex/NppatchSettingsController.saveSettings";
 import getRecordTypeOptions from "@salesforce/apex/NppatchSettingsController.getRecordTypeOptions";
 import getPicklistOptions from "@salesforce/apex/NppatchSettingsController.getPicklistOptions";
-import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
-
 import stgNavDonations from "@salesforce/label/c.stgNavDonations";
 import stgNavContactRoles from "@salesforce/label/c.stgNavContactRoles";
 import stgHelpOCR from "@salesforce/label/c.stgHelpOCR";
@@ -21,7 +19,7 @@ const CON_SETTINGS_OBJECT = "Contacts_And_Orgs_Settings__c";
 const HH_SETTINGS_OBJECT = "Households_Settings__c";
 
 export default class StgPanelContactRoles extends LightningElement {
-    _isAdmin = false;
+    @api isAdmin = false;
     _isEditMode = false;
     _isSaving = false;
     _conSettings;
@@ -101,13 +99,6 @@ export default class StgPanelContactRoles extends LightningElement {
         }
     }
 
-    @wire(isAdmin)
-    wiredIsAdmin({ data }) {
-        if (data !== undefined) {
-            this._isAdmin = data;
-        }
-    }
-
     @wire(getPicklistOptions, { sObjectApiName: "OpportunityContactRole", fieldApiName: "Role" })
     wiredOCRRoles({ data, error }) {
         if (data) {
@@ -129,7 +120,7 @@ export default class StgPanelContactRoles extends LightningElement {
     // --- Computed properties ---
 
     get canEdit() {
-        return this._isAdmin && !this._isEditMode;
+        return this.isAdmin && !this._isEditMode;
     }
 
     get isLoading() {

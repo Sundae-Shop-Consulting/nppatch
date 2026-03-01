@@ -1,12 +1,10 @@
-import { LightningElement, wire, track } from "lwc";
+import { LightningElement, wire, track, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
 import getSettings from "@salesforce/apex/NppatchSettingsController.getSettings";
 import saveSettings from "@salesforce/apex/NppatchSettingsController.saveSettings";
-import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
-
 export default class StgPanelSchedule extends LightningElement {
-    _isAdmin = false;
+    @api isAdmin = false;
     _isEditMode = false;
     _isSaving = false;
     _hasError = false;
@@ -133,15 +131,8 @@ export default class StgPanelSchedule extends LightningElement {
         }
     }
 
-    @wire(isAdmin)
-    wiredIsAdmin({ data }) {
-        if (data !== undefined) {
-            this._isAdmin = data;
-        }
-    }
-
     get canEdit() {
-        return this._isAdmin && !this._isEditMode;
+        return this.isAdmin && !this._isEditMode;
     }
 
     get isLoading() {

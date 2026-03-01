@@ -1,11 +1,9 @@
-import { LightningElement, wire, track } from "lwc";
+import { LightningElement, wire, track, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
 import getSettings from "@salesforce/apex/NppatchSettingsController.getSettings";
 import saveSettings from "@salesforce/apex/NppatchSettingsController.saveSettings";
 import getRecordTypeOptions from "@salesforce/apex/NppatchSettingsController.getRecordTypeOptions";
-import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
-
 import stgNavDonations from "@salesforce/label/c.stgNavDonations";
 import stgNavMembership from "@salesforce/label/c.stgNavMembership";
 import stgHelpMembershipRT from "@salesforce/label/c.stgHelpMembershipRT";
@@ -16,7 +14,7 @@ import stgBtnCancel from "@salesforce/label/c.stgBtnCancel";
 import stgLabelNone from "@salesforce/label/c.stgLabelNone";
 
 export default class StgPanelMembership extends LightningElement {
-    _isAdmin = false;
+    @api isAdmin = false;
     _isEditMode = false;
     _isSaving = false;
     _settings;
@@ -62,13 +60,6 @@ export default class StgPanelMembership extends LightningElement {
         }
     }
 
-    @wire(isAdmin)
-    wiredIsAdmin({ data }) {
-        if (data !== undefined) {
-            this._isAdmin = data;
-        }
-    }
-
     @wire(getRecordTypeOptions, { sObjectApiName: "Opportunity" })
     wiredRecordTypeOptions({ data, error }) {
         if (data) {
@@ -84,7 +75,7 @@ export default class StgPanelMembership extends LightningElement {
     // --- Computed properties ---
 
     get canEdit() {
-        return this._isAdmin && !this._isEditMode;
+        return this.isAdmin && !this._isEditMode;
     }
 
     get sectionDescription() {

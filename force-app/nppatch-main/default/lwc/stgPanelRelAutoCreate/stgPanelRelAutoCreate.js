@@ -1,11 +1,9 @@
-import { LightningElement, wire, track } from "lwc";
+import { LightningElement, wire, track, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
 import getListSettings from "@salesforce/apex/NppatchSettingsController.getListSettings";
 import createListSetting from "@salesforce/apex/NppatchSettingsController.createListSetting";
 import deleteListSetting from "@salesforce/apex/NppatchSettingsController.deleteListSetting";
-import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
-
 const SETTINGS_OBJECT = "Relationship_Auto_Create__c";
 
 const OBJECT_OPTIONS = [
@@ -34,7 +32,7 @@ const COLUMNS_READ_ONLY = [
 ];
 
 export default class StgPanelRelAutoCreate extends LightningElement {
-    _isAdmin = false;
+    @api isAdmin = false;
     _isCreating = false;
     _isSaving = false;
     @track _records = [];
@@ -68,13 +66,6 @@ export default class StgPanelRelAutoCreate extends LightningElement {
         }
     }
 
-    @wire(isAdmin)
-    wiredIsAdmin({ data }) {
-        if (data !== undefined) {
-            this._isAdmin = data;
-        }
-    }
-
     get isLoading() {
         return !this._wiredListResult?.data && !this._hasError;
     }
@@ -88,7 +79,7 @@ export default class StgPanelRelAutoCreate extends LightningElement {
     }
 
     get columns() {
-        return this._isAdmin ? COLUMNS_ADMIN : COLUMNS_READ_ONLY;
+        return this.isAdmin ? COLUMNS_ADMIN : COLUMNS_READ_ONLY;
     }
 
     get showCampaignTypes() {

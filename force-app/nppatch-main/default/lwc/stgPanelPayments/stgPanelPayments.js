@@ -1,12 +1,10 @@
-import { LightningElement, wire, track } from "lwc";
+import { LightningElement, wire, track, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
 import getSettings from "@salesforce/apex/NppatchSettingsController.getSettings";
 import saveSettings from "@salesforce/apex/NppatchSettingsController.saveSettings";
 import getRecordTypeOptions from "@salesforce/apex/NppatchSettingsController.getRecordTypeOptions";
 import getPicklistOptions from "@salesforce/apex/NppatchSettingsController.getPicklistOptions";
-import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
-
 import stgNavDonations from "@salesforce/label/c.stgNavDonations";
 import stgNavPayments from "@salesforce/label/c.stgNavPayments";
 import stgHelpPaymentsEnabled from "@salesforce/label/c.stgHelpPaymentsEnabled";
@@ -21,7 +19,7 @@ import stgLabelNone from "@salesforce/label/c.stgLabelNone";
 const SETTINGS_OBJECT = "Contacts_And_Orgs_Settings__c";
 
 export default class StgPanelPayments extends LightningElement {
-    _isAdmin = false;
+    @api isAdmin = false;
     _isEditMode = false;
     _isSaving = false;
     _settings;
@@ -65,13 +63,6 @@ export default class StgPanelPayments extends LightningElement {
         }
     }
 
-    @wire(isAdmin)
-    wiredIsAdmin({ data }) {
-        if (data !== undefined) {
-            this._isAdmin = data;
-        }
-    }
-
     @wire(getRecordTypeOptions, { sObjectApiName: "Opportunity" })
     wiredOppRecordTypes({ data, error }) {
         if (data) {
@@ -91,7 +82,7 @@ export default class StgPanelPayments extends LightningElement {
     }
 
     get canEdit() {
-        return this._isAdmin && !this._isEditMode;
+        return this.isAdmin && !this._isEditMode;
     }
 
     get isLoading() {

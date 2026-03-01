@@ -1,11 +1,9 @@
-import { LightningElement, wire, track } from "lwc";
+import { LightningElement, wire, track, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
 import getSettings from "@salesforce/apex/NppatchSettingsController.getSettings";
 import saveSettings from "@salesforce/apex/NppatchSettingsController.saveSettings";
 import getRecordTypeOptions from "@salesforce/apex/NppatchSettingsController.getRecordTypeOptions";
-import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
-
 const OTHER_VALUE = "Other";
 
 const NAME_FORMAT_OPTIONS = [
@@ -35,7 +33,7 @@ const INFORMAL_GREETING_OPTIONS = [
 ];
 
 export default class StgPanelHouseholds extends LightningElement {
-    _isAdmin = false;
+    @api isAdmin = false;
     _isEditMode = false;
     _isSaving = false;
     _settingsNaming;
@@ -134,13 +132,6 @@ export default class StgPanelHouseholds extends LightningElement {
         }
     }
 
-    @wire(isAdmin)
-    wiredIsAdmin({ data }) {
-        if (data !== undefined) {
-            this._isAdmin = data;
-        }
-    }
-
     @wire(getRecordTypeOptions, { sObjectApiName: "Contact" })
     wiredContactRecordTypes({ data, error }) {
         if (data) {
@@ -164,7 +155,7 @@ export default class StgPanelHouseholds extends LightningElement {
     }
 
     get canEdit() {
-        return this._isAdmin && !this._isEditMode;
+        return this.isAdmin && !this._isEditMode;
     }
 
     // --- Household Rules options ---

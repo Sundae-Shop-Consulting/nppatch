@@ -1,9 +1,18 @@
 import { createElement } from "lwc";
 import NppatchSettings from "c/nppatchSettings";
 import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
+import ensureSettingsExist from "@salesforce/apex/NppatchSettingsController.ensureSettingsExist";
 
 jest.mock(
     "@salesforce/apex/NppatchSettingsController.isAdmin",
+    () => {
+        return { default: jest.fn() };
+    },
+    { virtual: true }
+);
+
+jest.mock(
+    "@salesforce/apex/NppatchSettingsController.ensureSettingsExist",
     () => {
         return { default: jest.fn() };
     },
@@ -17,6 +26,7 @@ jest.mock("@salesforce/label/c.addrCopyConAddBtnFls", () => ({ default: "Access 
 describe("c-nppatch-settings", () => {
     beforeEach(() => {
         isAdmin.mockResolvedValue(true);
+        ensureSettingsExist.mockResolvedValue(undefined);
     });
 
     afterEach(() => {

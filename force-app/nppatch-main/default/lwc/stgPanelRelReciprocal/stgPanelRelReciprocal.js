@@ -1,10 +1,9 @@
-import { LightningElement, wire, track } from "lwc";
+import { LightningElement, wire, track, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
 import getListSettings from "@salesforce/apex/NppatchSettingsController.getListSettings";
 import createListSetting from "@salesforce/apex/NppatchSettingsController.createListSetting";
 import deleteListSetting from "@salesforce/apex/NppatchSettingsController.deleteListSetting";
-import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
 
 const DATA_COLUMNS = [
     { label: "Name", fieldName: "Name", type: "text" },
@@ -23,7 +22,7 @@ const ACTION_COLUMN = {
 export default class StgPanelRelReciprocal extends LightningElement {
     _settings;
     _wiredResult;
-    _canEdit = false;
+    @api isAdmin = false;
     _isCreating = false;
     _isSaving = false;
     _hasError = false;
@@ -38,13 +37,6 @@ export default class StgPanelRelReciprocal extends LightningElement {
             "For example, when you mark someone as a \u2018Father,\u2019 a \u2018Son\u2019 or \u2018Daughter\u2019 relationship is created on the other Contact. " +
             "These rules define how each relationship type maps to its reciprocal based on the Contact\u2019s gender.",
     };
-
-    @wire(isAdmin)
-    wiredIsAdmin({ data }) {
-        if (data !== undefined) {
-            this._canEdit = data;
-        }
-    }
 
     @wire(getListSettings, { settingsObjectName: "Relationship_Lookup__c" })
     wiredSettings(result) {
@@ -67,11 +59,11 @@ export default class StgPanelRelReciprocal extends LightningElement {
     }
 
     get canEdit() {
-        return this._canEdit;
+        return this.isAdmin;
     }
 
     get columns() {
-        if (this._canEdit) {
+        if (this.isAdmin) {
             return [...DATA_COLUMNS, ACTION_COLUMN];
         }
         return DATA_COLUMNS;
