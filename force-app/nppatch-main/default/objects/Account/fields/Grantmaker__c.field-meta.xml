@@ -4,7 +4,7 @@
     <defaultValue>false</defaultValue>
     <description>Manually entered. Flags this Account as a grantmaking organization. Used on Organization (non-Household) Accounts to identify funders.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When checked, this organization is a grantmaker that provides funding to other organizations.</inlineHelpText>
+    <inlineHelpText>Check this box to indicate that this organization is a grantmaker that provides funding to other organizations.</inlineHelpText>
     <label>Grantmaker</label>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Checkbox</type>
