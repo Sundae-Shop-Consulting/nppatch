@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Membership_Origin__c</fullName>
+    <description>Maps to Opportunity.Membership_Origin__c during data import processing. Used for membership-type Opportunities.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Opportunity.Membership_Origin__c</inlineHelpText>
+    <inlineHelpText>Enter the membership origin for this donation (e.g., Online, Direct Mail).</inlineHelpText>
     <label>Donation Membership Origin</label>
     <length>255</length>
     <required>false</required>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Account2_Country__c</fullName>
+    <description>Maps to Account.BillingCountry on the secondary (organization) Account during data import processing.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Account2.BillingCountry</inlineHelpText>
+    <inlineHelpText>Enter the billing country for the secondary (organization) Account.</inlineHelpText>
     <label>Account2 Country</label>
     <length>255</length>
     <required>false</required>

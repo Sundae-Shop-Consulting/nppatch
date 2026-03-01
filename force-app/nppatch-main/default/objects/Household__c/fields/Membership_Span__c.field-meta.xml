@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Membership_Span__c</fullName>
-    <description>Formula: The number of years for which this Household has had a Member.</description>
+    <description>Formula field. Calculates the difference in years between Membership End Date and Membership Join Date.</description>
     <externalId>false</externalId>
     <formula>year(MembershipEndDate__c ) - year(MembershipJoinDate__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Formula: The number of years for which this Household has had a Member.</inlineHelpText>
+    <inlineHelpText>The number of years this Household has held an active membership.</inlineHelpText>
     <label>Membership Span</label>
     <precision>18</precision>
     <required>false</required>

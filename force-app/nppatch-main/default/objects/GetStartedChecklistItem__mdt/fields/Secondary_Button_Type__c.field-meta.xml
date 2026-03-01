@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Secondary_Button_Type__c</fullName>
-    <description>The type of action related to the Secondary Button. Indicates if the button is disabled, opens a new Salesforce tab, or opens an external page</description>
+    <description>Controls the navigation behavior of the secondary button. Disabled renders a non-clickable button; SFDC New Tab opens a Salesforce page; External Page opens a URL in a new browser tab.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
-    <inlineHelpText>The type of action related to the Secondary Button. Indicates if the button is disabled, opens a new Salesforce tab, or opens an external page</inlineHelpText>
+    <inlineHelpText>The action the secondary button performs: Disabled (no action), SFDC New Tab (Salesforce page), or External Page (external URL).</inlineHelpText>
     <label>Secondary Button Type</label>
     <required>true</required>
     <type>Picklist</type>

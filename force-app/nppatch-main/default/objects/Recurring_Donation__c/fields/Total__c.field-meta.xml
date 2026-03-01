@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Total__c</fullName>
+    <description>Formula field. For Fixed-Length Recurring Donations, calculates the total expected amount across all installments based on Schedule Type. Returns 0 for Open-Ended Recurring Donations since they have no defined end.</description>
     <externalId>false</externalId>
     <formula>IF(TEXT( Open_Ended_Status__c) =  $Label.RecurringDonationOpenStatus, 0,
 CASE(
@@ -10,7 +11,7 @@ CASE(
 ,0
 ))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>For Non-Open Ended Recurring Donations, the total amount of all Opportunities.</inlineHelpText>
+    <inlineHelpText>The total expected amount for all installments combined. Only applicable to Fixed-Length recurring donations; shows 0 for Open-Ended donations.</inlineHelpText>
     <label>Total</label>
     <precision>18</precision>
     <required>false</required>

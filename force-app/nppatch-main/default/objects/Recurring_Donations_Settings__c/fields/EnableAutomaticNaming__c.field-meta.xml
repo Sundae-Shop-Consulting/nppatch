@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>EnableAutomaticNaming__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>If enabled, Salesforce automatically populates the Recurring Donation Name.</description>
+    <description>When enabled, NPPatch automatically generates the Recurring Donation Name field based on the Recurring Donation Name Format setting. The name updates when relevant fields change (e.g., Donor Name, Amount, Frequency). Disabled by default. When disabled, users must enter the name manually.</description>
     <externalId>false</externalId>
-    <inlineHelpText>If enabled, Salesforce automatically populates the Recurring Donation Name.</inlineHelpText>
+    <inlineHelpText>Automatically generate Recurring Donation names using the configured name format. When disabled, users enter the name manually.</inlineHelpText>
     <label>Automatic Recurring Donation Naming</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Is_Grant_Renewal__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Indicates whether the Grant is a renewal of a previous Grant.</description>
+    <description>User-entered checkbox for Grant Opportunities. When checked, indicates this grant renews a previous grant. Use with the Previous Grant/Gift Opportunity lookup.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates whether the Grant is a renewal of a previous Grant.</inlineHelpText>
+    <inlineHelpText>Check this box if this Grant renews a previous Grant. Use the Previous Grant/Gift Opportunity field to link to the original.</inlineHelpText>
     <label>Is Grant Renewal</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackTrending>false</trackTrending>

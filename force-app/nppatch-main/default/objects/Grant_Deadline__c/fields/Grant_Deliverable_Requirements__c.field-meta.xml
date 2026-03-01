@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Grant_Deliverable_Requirements__c</fullName>
-    <description>Description of what is required for this Deliverable.</description>
+    <description>Free-text field documenting the specific requirements, formatting guidelines, or submission instructions for this grant deliverable.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Description of what is required for this Deliverable.</inlineHelpText>
+    <inlineHelpText>What needs to be included or completed for this deliverable.</inlineHelpText>
     <label>Requirements</label>
     <length>32768</length>
     <trackHistory>false</trackHistory>

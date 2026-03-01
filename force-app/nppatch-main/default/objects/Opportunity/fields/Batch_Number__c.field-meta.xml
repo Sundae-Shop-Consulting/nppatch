@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Batch_Number__c</fullName>
-    <description>The batch that created this Opportunity. This field is automatically populated based on your Batch Number Settings in NPPatch Settings.</description>
+    <description>System field. Automatically populated with a batch identifier when Opportunities are created through batch data entry, based on Batch Number Settings in NPPatch Settings.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The batch that created this Opportunity. This field is automatically populated based on your Batch Number Settings in NPPatch Settings.</inlineHelpText>
+    <inlineHelpText>The batch identifier assigned when this Opportunity was created through batch data entry. This value is set automatically.</inlineHelpText>
     <label>Batch Number</label>
     <length>30</length>
     <required>false</required>

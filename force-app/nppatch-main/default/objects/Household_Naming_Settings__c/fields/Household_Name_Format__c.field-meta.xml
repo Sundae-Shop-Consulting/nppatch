@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Household_Name_Format__c</fullName>
-    <description>The format to use for the Household Name.</description>
+    <description>Defines the naming pattern for the Household Account Name field. Uses merge field tokens like {!LastName} {!FirstName}. Example format: "The {!LastName} Household" produces "The Smith Household." Only applies when Automatic Household Naming is enabled. Contacts sharing a last name are combined automatically.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The format to use for the Household Name.</inlineHelpText>
+    <inlineHelpText>Naming pattern for Household Account Names. Uses tokens like {!LastName}. Example: "The {!LastName} Household."</inlineHelpText>
     <label>Household Name Format</label>
     <length>255</length>
     <required>false</required>

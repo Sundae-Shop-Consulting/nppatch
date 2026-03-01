@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Batch_Description__c</fullName>
+    <description>Free-text field for administrators to describe the purpose or contents of this data import batch. Displayed on the batch detail page and in list views for organizational reference.</description>
     <externalId>false</externalId>
-    <inlineHelpText>An optional description about this batch.</inlineHelpText>
+    <inlineHelpText>Enter a description of this batch to help identify its purpose or contents.</inlineHelpText>
     <label>Batch Description</label>
     <length>32768</length>
     <trackHistory>false</trackHistory>

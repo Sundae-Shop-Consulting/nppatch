@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Type__c</fullName>
+    <description>Categorizes the grant deliverable by its stage in the grant lifecycle: LOI (Letter of Intent), Application, Interim Report, or Final Report.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The kind of deliverable, such as LOI, Application, Interim Report, or Final Report.</inlineHelpText>
     <label>Type</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

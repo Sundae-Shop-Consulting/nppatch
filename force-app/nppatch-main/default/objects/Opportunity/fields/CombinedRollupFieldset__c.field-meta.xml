@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CombinedRollupFieldset__c</fullName>
-    <description>Hidden system field, do not add to layouts.</description>
+    <description>Formula field. System-only. Concatenates CloseDate, Amount, Member Level, Membership Origin, and Id into a single text value used internally by rollup calculations to identify the most recent Opportunity. Do not add to page layouts.</description>
     <externalId>false</externalId>
     <formula>TEXT(CloseDate) + ';|;'+ TEXT(Amount) + ';|;'+ TEXT(%%%NAMESPACE%%%Member_Level__c) + ';|;'+ TEXT(%%%NAMESPACE%%%Membership_Origin__c) + ';|;' +  Id</formula>
-    <inlineHelpText>Formula: Concatenated fields used during rollups to locate the most recent opportunity.</inlineHelpText>
+    <inlineHelpText>System field used internally by NPPatch rollup calculations. Not intended for display on page layouts.</inlineHelpText>
     <label>Combined Rollup Fieldset</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Enable_Gift_Entry__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Enables the Gift Entry tool. This feature requires Advanced Mapping.</description>
+    <description>When enabled, activates the Gift Entry feature, which provides a guided form-based interface for entering single gifts and gift batches. Disabled by default. Requires Advanced Mapping to be enabled first (in BDI Settings). Enabling Gift Entry makes the Gift Entry tab and related components available to users with appropriate permissions.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Enables the Gift Entry tool. This feature requires Advanced Mapping.</inlineHelpText>
+    <inlineHelpText>Activate the Gift Entry feature for form-based gift and batch entry. Requires Advanced Mapping.</inlineHelpText>
     <label>Enable Gift Entry</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

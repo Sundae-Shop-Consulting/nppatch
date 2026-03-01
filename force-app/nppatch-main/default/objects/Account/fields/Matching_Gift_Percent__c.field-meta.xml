@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Matching_Gift_Percent__c</fullName>
-    <description>The portion of a gift the company will match.</description>
+    <description>Manually entered. The percentage of an employee&apos;s gift that this company will match (e.g., 100% for a 1:1 match, 50% for a 1:2 match).</description>
     <externalId>false</externalId>
-    <inlineHelpText>The portion of a gift the company will match.</inlineHelpText>
+    <inlineHelpText>The percentage of each employee gift that this company will match (e.g., 100% means dollar-for-dollar).</inlineHelpText>
     <label>Matching Gift Percent</label>
     <precision>5</precision>
     <required>false</required>

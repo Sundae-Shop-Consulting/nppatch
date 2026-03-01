@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Description__c</fullName>
-    <description>Additional information about this Relationship</description>
+    <description>Free-text field for notes about this Relationship. Not used by automation.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Additional information about this Relationship</inlineHelpText>
+    <inlineHelpText>Optional notes or context about this Relationship, such as how the two Contacts met or the nature of their connection.</inlineHelpText>
     <label>Description</label>
     <length>32000</length>
     <trackHistory>false</trackHistory>

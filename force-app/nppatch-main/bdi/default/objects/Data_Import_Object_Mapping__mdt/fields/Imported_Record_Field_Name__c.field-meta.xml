@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Imported_Record_Field_Name__c</fullName>
-    <description>The Field API Name on the NPPatch Data Import object where the ID for the imported record will be placed when the import is successful. This is also where the code will verify if this record was imported or matched.</description>
+    <description>API name of the lookup field on DataImport__c that stores the ID of the successfully created or matched target record. The data import process writes the record ID here on success and checks this field to determine if the record was previously imported.</description>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
-    <inlineHelpText>The Field API Name on the NPPatch Data Import object where the ID for the imported record will be placed when the import is successful. This is also where the code will verify if this record was imported or matched.</inlineHelpText>
+    <inlineHelpText>Enter the API name of the Data Import lookup field that will hold the imported record ID (e.g., Contact1Imported__c).</inlineHelpText>
     <label>Imported Record Field Name</label>
     <length>255</length>
     <required>false</required>

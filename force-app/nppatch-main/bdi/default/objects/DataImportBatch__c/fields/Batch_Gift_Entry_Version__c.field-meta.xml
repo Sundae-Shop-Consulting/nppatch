@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Batch_Gift_Entry_Version__c</fullName>
-    <description>The version of the Batch Gift Entry feature used to create this Batch.</description>
+    <description>System field that tracks which version of the Batch Gift Entry feature was used to create this batch. Used internally to ensure backward compatibility when the Gift Entry UI is updated.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The version of the Batch Gift Entry feature used to create this Batch.</inlineHelpText>
+    <inlineHelpText>The Gift Entry version that created this batch. Automatically set by the system.</inlineHelpText>
     <label>Batch Gift Entry Version</label>
     <precision>4</precision>
     <required>false</required>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Type__c</fullName>
-    <description>The type of Task.</description>
+    <description>Copied to the generated Task&apos;s Type field when the Engagement Plan is created.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The type of Task.</inlineHelpText>
+    <inlineHelpText>The activity type (Call, Meeting, Email, or Other) for the generated Task.</inlineHelpText>
     <label>Type</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

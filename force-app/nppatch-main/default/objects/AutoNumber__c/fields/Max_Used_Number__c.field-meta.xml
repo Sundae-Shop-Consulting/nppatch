@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Max_Used_Number__c</fullName>
+    <description>Tracks the highest number already assigned by this auto-number configuration. Updated automatically each time a new record is created.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The highest auto-number used for this format.</inlineHelpText>
+    <inlineHelpText>The highest auto-number already assigned. The next record will receive this value plus one.</inlineHelpText>
     <label>Max Used Number</label>
     <precision>10</precision>
     <required>false</required>

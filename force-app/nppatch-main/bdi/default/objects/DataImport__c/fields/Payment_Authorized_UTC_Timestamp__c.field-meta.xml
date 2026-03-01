@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Authorized_UTC_Timestamp__c</fullName>
-    <description>The exact date and time (down to the millisecond) from the payment gateway that this transaction was successfully authorized.</description>
+    <description>Maps to OppPayment__c.Authorized_UTC_Timestamp__c on the Payment record during data import processing. Stores the precise UTC timestamp from the payment gateway when the transaction was authorized.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The exact date and time (down to the millisecond) from the payment gateway that this transaction was successfully authorized.</inlineHelpText>
+    <inlineHelpText>Enter the exact UTC timestamp (to the millisecond) when the payment was authorized by the gateway.</inlineHelpText>
     <label>Payment Authorized UTC Timestamp</label>
     <length>30</length>
     <required>false</required>

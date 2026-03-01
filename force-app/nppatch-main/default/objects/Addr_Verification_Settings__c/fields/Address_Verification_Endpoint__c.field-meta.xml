@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Address_Verification_Endpoint__c</fullName>
-    <description>Address Verification URL</description>
+    <description>The API endpoint URL for the address verification service. This is set automatically when configuring the verification service in NPPatch Settings. Do not modify unless directed by support or using a custom verification service implementation.</description>
     <externalId>false</externalId>
-    <inlineHelpText>URL used for address verification.</inlineHelpText>
+    <inlineHelpText>API endpoint URL for address verification. Automatically configured when setting up the verification service.</inlineHelpText>
     <label>Address Verification URL</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

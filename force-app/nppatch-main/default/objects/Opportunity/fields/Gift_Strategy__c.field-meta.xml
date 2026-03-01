@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Gift_Strategy__c</fullName>
-    <description>Categorizes the type of ask for this Opportunity, for example, New Donor.</description>
+    <description>User-entered restricted picklist for categorizing the fundraising approach. Enables reporting on acquisition vs. retention strategies.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Categorizes the type of ask for this Opportunity, for example, New Donor.</inlineHelpText>
+    <inlineHelpText>Select the fundraising strategy for this Donation, such as New Donor, Renewal, or Upgrade.</inlineHelpText>
     <label>Gift Strategy</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>AlternateEmail__c</fullName>
-    <description>Alternate Email is an optional fourth email: Not personal, preferred, or work email.</description>
+    <description>The Contact's alternate email address. If Preferred Email is set to Alternate, this value is copied to the standard Email field on save.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Alternate Email is an optional fourth email: Not personal, preferred, or work email.</inlineHelpText>
+    <inlineHelpText>An additional email address for this Contact. If selected as the Preferred Email, this value is used as the standard Email.</inlineHelpText>
     <label>Alternate Email</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

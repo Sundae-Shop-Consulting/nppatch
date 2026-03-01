@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Default_Opp_on_Convert__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Specifies whether to create an Opportunity during Lead conversion.</description>
+    <description>Controls whether NPPatch automatically creates an Opportunity when a Lead is converted. When unchecked (default), no Opportunity is created during conversion. When checked, the "Do not create an opportunity upon conversion" checkbox on the Lead Convert page defaults to unchecked.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Specifies whether to create an Opportunity during Lead conversion.</inlineHelpText>
+    <inlineHelpText>When checked, an Opportunity is created by default during Lead conversion.</inlineHelpText>
     <label>Create Opportunity on Lead Convert</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

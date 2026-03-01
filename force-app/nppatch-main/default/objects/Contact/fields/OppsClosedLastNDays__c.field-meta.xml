@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>OppsClosedLastNDays__c</fullName>
     <defaultValue>0</defaultValue>
-    <description>See Household Settings for excluded Record Types. Do not update, updated by automatic process.</description>
+    <description>Calculated by Customizable Rollups. Do not edit manually. Counts won Opportunities closed in the last N days where this Contact has the primary Opportunity Contact Role. The value of N is configured in NPPatch Settings | Donations | Donor Statistics. Uses the Won Opportunities for Hard Credit filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The total number of won Opportunities with amount greater than zero related to this Contact by primary Opportunity Contact Role, closed in the last number of days defined in Household Settings.</inlineHelpText>
+    <inlineHelpText>The number of won Opportunities closed in the last N days where this Contact is the primary donor. N is set in NPPatch Settings.</inlineHelpText>
     <label>Number of Gifts Last N Days</label>
     <precision>18</precision>
     <required>false</required>

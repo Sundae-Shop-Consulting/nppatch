@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Matching_Rule__c</fullName>
     <defaultValue>&quot;%%%NAMESPACE%%%Donation_Amount__c;%%%NAMESPACE%%%Donation_Date&quot;</defaultValue>
-    <description>Specifies which fields to match by when trying to match Donations in Data Import records against existing Opportunities and Payments.</description>
+    <description>Semicolon-delimited list of Data Import field API names used to match imported donations against existing Opportunities and Payments. The data import process compares these fields to find potential matches. Default uses Donation Amount and Donation Date.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Specifies which fields to match by when trying to match Donations in Data Import records against existing Opportunities and Payments. Control or Command click to select more than one field.</inlineHelpText>
+    <inlineHelpText>Select the fields used to match imported donations against existing Opportunities and Payments. Hold Ctrl/Cmd to select multiple fields.</inlineHelpText>
     <label>Donation Matching Rule</label>
     <length>255</length>
     <required>false</required>

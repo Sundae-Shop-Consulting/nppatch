@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Authorization_Token__c</fullName>
-    <description>Authorization token for a transaction.</description>
+    <description>Maps to OppPayment__c.Authorization_Token__c on the Payment record during data import processing. Stores the authorization token from the payment gateway.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Authorization token for a transaction.</inlineHelpText>
+    <inlineHelpText>Enter the authorization token for this payment transaction.</inlineHelpText>
     <label>Payment Authorization Token</label>
     <length>255</length>
     <required>false</required>

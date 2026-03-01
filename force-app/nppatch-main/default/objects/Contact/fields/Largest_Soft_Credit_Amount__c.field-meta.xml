@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Largest_Soft_Credit_Amount__c</fullName>
-    <description>The amount of this Contact&apos;s largest soft credit.</description>
+    <description>Calculated by Customizable Rollups (soft credit). Do not edit manually. The largest Amount among all won Opportunities where this Contact received a soft credit. Uses the Won Opportunities for Soft Credit filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The amount of this Contact&apos;s largest soft credit.</inlineHelpText>
+    <inlineHelpText>The largest single soft credit amount from any won Opportunity where this Contact is a related donor.</inlineHelpText>
     <label>Largest Soft Credit Amount</label>
     <precision>18</precision>
     <required>false</required>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Tribute_Notification_Status__c</fullName>
-    <description>Indicates whether a notification&apos;s been sent for this tribute gift.</description>
+    <description>User-entered picklist for tracking the notification lifecycle for tribute gifts. Used in reports to find tributes needing notifications.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select whether the notification recipient has been notified about this tribute gift.</inlineHelpText>
     <label>Tribute Notification Status</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

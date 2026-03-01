@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Origin_ID__c</fullName>
-    <description>The ID for the system where the transaction was initiated.</description>
+    <description>Stores the unique identifier from the external system that initiated this payment transaction. Populated by the payment processing integration.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The ID for the system where the transaction was initiated.</inlineHelpText>
+    <inlineHelpText>The unique identifier from the external system where this payment was originally created.</inlineHelpText>
     <label>Origin ID</label>
     <length>255</length>
     <required>false</required>

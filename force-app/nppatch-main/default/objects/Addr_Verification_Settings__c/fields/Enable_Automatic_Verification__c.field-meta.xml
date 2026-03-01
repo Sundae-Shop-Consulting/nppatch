@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Enable_Automatic_Verification__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Enable Automatic Verification</description>
+    <description>When enabled, NPPatch automatically verifies new and updated Address records against the configured verification service. Verification results are stored on the Address record. Requires a verification service to be configured (URL and Auth Token). Disabled by default.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Enables automatic address verification for new addresses.</inlineHelpText>
+    <inlineHelpText>Automatically verify new and updated addresses against the configured verification service.</inlineHelpText>
     <label>Enable Automatic Verification</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

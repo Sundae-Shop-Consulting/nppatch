@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>First_Soft_Credit_Amount__c</fullName>
-    <description>The amount of this Contact&apos;s earliest soft credit.</description>
+    <description>Calculated by Customizable Rollups (soft credit). Do not edit manually. The Amount of the earliest (by Close Date) won Opportunity where this Contact received a soft credit. Uses the Won Opportunities for Soft Credit filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The amount of this Contact&apos;s earliest soft credit.</inlineHelpText>
+    <inlineHelpText>The amount of the earliest won Opportunity where this Contact received a soft credit.</inlineHelpText>
     <label>First Soft Credit Amount</label>
     <precision>18</precision>
     <required>false</required>

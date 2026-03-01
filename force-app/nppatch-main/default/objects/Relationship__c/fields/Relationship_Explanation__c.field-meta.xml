@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Relationship_Explanation__c</fullName>
-    <description>Text formula that constructs a sentence explaining the relationship between the two Contacts</description>
+    <description>Formula field that concatenates the Related Contact name, a connector label, the Contact name, and the Type into a human-readable sentence. Recalculated automatically.</description>
     <externalId>false</externalId>
     <formula>TEXT(RelatedContact__r.Salutation) + " " + RelatedContact__r.FirstName + " " + RelatedContact__r.LastName
 + "  "  +  $Label.Relationship_Explanation_Connector + " " +
 TEXT(Contact__r.Salutation) + " " + Contact__r.FirstName + " " + Contact__r.LastName + "&apos;s " + TEXT(Type__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Text formula that constructs a sentence explaining the relationship between the two Contacts</inlineHelpText>
+    <inlineHelpText>A read-only sentence describing the relationship, e.g. &quot;Jane Smith is John Smith&apos;s Spouse.&quot;</inlineHelpText>
     <label>Relationship Explanation</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

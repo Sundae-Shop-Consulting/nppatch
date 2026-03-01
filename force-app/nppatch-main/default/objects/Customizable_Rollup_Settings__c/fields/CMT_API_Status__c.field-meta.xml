@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CMT_API_Status__c</fullName>
-    <description>Result of the last CustomMetadataType deployment</description>
+    <description>System-managed field that stores the JSON result of the most recent Custom Metadata Type (CMT) deployment for Customizable Rollup definitions. Contains the deployment job ID and status response. Do not modify manually. This field is automatically updated when rollup definitions are saved through the Settings UI.</description>
     <externalId>false</externalId>
-    <inlineHelpText>JSON for the CMT deployment result
-{ &quot;jobId&quot;: &quot;repsonse&quot; }</inlineHelpText>
+    <inlineHelpText>System-managed. Stores the result of the last Custom Metadata Type deployment for rollup definitions. Do not edit manually.</inlineHelpText>
     <label>CMT API Deployment Result</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

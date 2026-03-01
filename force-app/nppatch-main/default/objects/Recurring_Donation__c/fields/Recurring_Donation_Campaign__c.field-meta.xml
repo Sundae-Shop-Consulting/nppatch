@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Recurring_Donation_Campaign__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Associates this Recurring Donation with a Campaign for attribution and reporting. The Campaign is copied to each installment Opportunity when created.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The Campaign this recurring donation is associated with. This value is applied to each installment Opportunity.</inlineHelpText>
     <label>Campaign</label>
     <referenceTo>Campaign</referenceTo>
     <relationshipLabel>Recurring Donations</relationshipLabel>

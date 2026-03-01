@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>InstallmentAmount__c</fullName>
-    <description>The amount for each installment Opportunity.</description>
+    <description>The currency amount assigned to each installment Opportunity created from this schedule. Captured from the Recurring Donation&apos;s Amount when the schedule is created.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The amount for each installment Opportunity.</inlineHelpText>
+    <inlineHelpText>The donation amount for each installment in this schedule.</inlineHelpText>
     <label>Amount</label>
     <precision>18</precision>
     <required>false</required>

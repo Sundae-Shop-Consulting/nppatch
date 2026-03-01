@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Add_Campaign_to_All_Opportunites__c</fullName>
     <defaultValue>false</defaultValue>
+    <description>When enabled, all installment Opportunities created by a Recurring Donation inherit the Campaign from the Recurring Donation record. When disabled (default), only the first installment Opportunity receives the Campaign. Enable this if you want Campaign attribution on every installment for reporting purposes.</description>
     <externalId>false</externalId>
-    <inlineHelpText>If selected, all Opportunities for Recurring Donations will use the Campaign on the Recurring Donation. Otherwise, only the first Opportunity will have the Campaign.</inlineHelpText>
+    <inlineHelpText>Apply the Recurring Donation's Campaign to all installment Opportunities. When unchecked, only the first installment gets the Campaign.</inlineHelpText>
     <label>Add Campaign to All Opportunities</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

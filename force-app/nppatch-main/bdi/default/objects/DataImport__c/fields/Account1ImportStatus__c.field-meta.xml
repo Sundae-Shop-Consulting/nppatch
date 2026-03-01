@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Account1ImportStatus__c</fullName>
+    <description>System field populated during data import processing. Stores the import status message for the primary Account, indicating whether it was created, matched, or encountered an error.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Shows the import result for the primary Account. Automatically populated during processing.</inlineHelpText>
     <label>Account1 Import Status</label>
     <length>255</length>
     <required>false</required>

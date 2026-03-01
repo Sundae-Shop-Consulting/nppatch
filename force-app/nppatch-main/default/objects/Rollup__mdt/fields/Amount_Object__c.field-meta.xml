@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Amount_Object__c</fullName>
+    <description>The object that contains the amount field used in the rollup calculation. Often the same as the Detail Object.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Select the object that contains the amount field, such as Opportunity or Payment. Leave blank for Count operations that do not require an amount.</inlineHelpText>
     <label>Amount Object</label>
     <referenceTo>EntityDefinition</referenceTo>
     <relationshipLabel>RollupAmount</relationshipLabel>

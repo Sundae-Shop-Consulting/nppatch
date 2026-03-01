@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>FailureInformation__c</fullName>
-    <description>Description of what caused the Data Import record to fail to be imported.</description>
+    <description>System field that stores detailed error messages when the Data Import record fails during processing. Contains the exception message and stack trace information to help diagnose import failures.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Description of what caused the Data Import record to fail to be imported.</inlineHelpText>
+    <inlineHelpText>Detailed error information if this record failed during import. Automatically populated by the system.</inlineHelpText>
     <label>Failure Information</label>
     <length>32768</length>
     <trackTrending>false</trackTrending>

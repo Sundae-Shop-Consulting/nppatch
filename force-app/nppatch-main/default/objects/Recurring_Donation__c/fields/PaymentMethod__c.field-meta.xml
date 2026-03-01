@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>PaymentMethod__c</fullName>
-    <description>The form of payment for this Recurring Donation. NPPatch automatically copies the selected value to each related Payment record.</description>
+    <description>Records the payment method for this recurring donation. NPPatch automatically copies this value to the Payment Method field on each installment Payment record when they are created.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The form of payment for this Recurring Donation. NPPatch automatically copies the selected value to each related Payment record.</inlineHelpText>
+    <inlineHelpText>How donations are collected for this recurring donation (e.g., Credit Card, Check, ACH). Automatically applied to new installment payments.</inlineHelpText>
     <label>Payment Method</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

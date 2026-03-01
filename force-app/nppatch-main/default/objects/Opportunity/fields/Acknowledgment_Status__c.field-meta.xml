@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Acknowledgment_Status__c</fullName>
-    <description>The acknowledgement status of this Opportunity. </description>
+    <description>User-entered picklist for tracking the acknowledgment lifecycle. Used by reports and filters to identify Donations needing thank-you letters.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The acknowledgement status of this Opportunity.</inlineHelpText>
+    <inlineHelpText>Select the current acknowledgment status for this Donation, such as whether a thank-you letter still needs to be sent.</inlineHelpText>
     <label>Acknowledgment Status</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

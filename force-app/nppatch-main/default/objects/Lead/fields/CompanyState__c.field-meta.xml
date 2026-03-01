@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CompanyState__c</fullName>
+    <description>The state/province portion of the Lead&apos;s company address. Used during Lead conversion to populate organization Account address fields.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The state or province of this Lead&apos;s company or organization.</inlineHelpText>
     <label>Company State/Province</label>
     <length>255</length>
     <required>false</required>

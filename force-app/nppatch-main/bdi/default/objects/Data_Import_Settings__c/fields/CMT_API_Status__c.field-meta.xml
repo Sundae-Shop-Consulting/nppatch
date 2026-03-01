@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CMT_API_Status__c</fullName>
-    <description>Result of the last CustomMetadataType deployment</description>
+    <description>System field that stores the JSON result of the most recent Custom Metadata Type deployment initiated through the Advanced Mapping UI. Used internally to track deployment status and display results to administrators.</description>
     <externalId>false</externalId>
-    <inlineHelpText>JSON for the CMT deployment result
-{ &quot;jobId&quot;: &quot;repsonse&quot; }</inlineHelpText>
+    <inlineHelpText>Displays the result of the last Custom Metadata Type deployment as JSON. This field is automatically populated by the system.</inlineHelpText>
     <label>CMT API Deployment Result</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

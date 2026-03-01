@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Date_Object__c</fullName>
+    <description>The object that contains the date field used for time-bound rollup calculations. Often the same as the Detail Object.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Select the object that contains the date field, such as Opportunity or Payment. Leave blank for All Time rollups that do not require a date.</inlineHelpText>
     <label>Date Object</label>
     <referenceTo>EntityDefinition</referenceTo>
     <relationshipLabel>RollupsDate</relationshipLabel>

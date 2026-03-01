@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Matching_Gift_Info_Updated__c</fullName>
-    <description>The date you last updated the Matching Gift information.</description>
+    <description>Manually entered. Tracks when this Account&apos;s Matching Gift program details were last verified or updated.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The date you last updated the Matching Gift information.</inlineHelpText>
+    <inlineHelpText>The date this company&apos;s Matching Gift information was last reviewed or updated.</inlineHelpText>
     <label>Matching Gift Info Updated</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

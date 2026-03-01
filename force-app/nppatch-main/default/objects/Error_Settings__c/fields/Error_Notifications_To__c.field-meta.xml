@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Error_Notifications_To__c</fullName>
-    <description>Who should receive error notifications.</description>
+    <description>Specifies who receives error notifications. Can be set to "All Sys Admins" to notify all users with the System Administrator profile, or to a specific User ID to notify a single user. Only applies when Error Notifications is enabled.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Select the type of user to send notifications to.</inlineHelpText>
+    <inlineHelpText>Who receives error notifications: "All Sys Admins" or a specific User ID. Only applies when Error Notifications is enabled.</inlineHelpText>
     <label>Error Notification Recipients</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

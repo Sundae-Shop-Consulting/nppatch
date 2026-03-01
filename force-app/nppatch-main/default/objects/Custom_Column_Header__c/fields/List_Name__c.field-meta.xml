@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>List_Name__c</fullName>
-    <description>The list view (e.g. Batches or Templates) that displays this field.</description>
+    <description>Identifies which Gift Entry list view this column header belongs to. Determines where the column appears in the UI.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The list view (e.g. Batches or Templates) that displays this field.</inlineHelpText>
+    <inlineHelpText>The list view that displays this column, such as "Batches" or "Templates".</inlineHelpText>
     <label>List Name</label>
     <length>255</length>
     <required>true</required>

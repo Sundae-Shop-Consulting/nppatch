@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact__c</fullName>
-    <description>Lookup to the Contact who gets this soft credit.</description>
+    <description>Master-detail lookup to the Contact receiving soft credit. Set by automation when the Partial Soft Credit is created from an OpportunityContactRole.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Lookup to the Contact who gets this soft credit.</inlineHelpText>
+    <inlineHelpText>The Contact who receives soft credit for this Opportunity.</inlineHelpText>
     <label>Contact</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Partial Soft Credits</relationshipLabel>

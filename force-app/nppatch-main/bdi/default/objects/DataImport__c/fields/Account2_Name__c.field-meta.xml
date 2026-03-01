@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Account2_Name__c</fullName>
+    <description>Maps to Account.Name on the secondary (organization) Account during data import processing. Used with other Account2 fields to create or match the organization Account record.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Account2.Name</inlineHelpText>
+    <inlineHelpText>Enter the name of the secondary Account (typically the organization affiliation) for this data import record.</inlineHelpText>
     <label>Account2 Name</label>
     <length>255</length>
     <required>false</required>

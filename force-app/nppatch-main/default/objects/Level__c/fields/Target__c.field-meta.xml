@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Target__c</fullName>
-    <description>The object that this Level applies to.</description>
+    <description>Specifies which standard object (Account or Contact) this Level definition evaluates and updates during the Level assignment process.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The object that this Level applies to.</inlineHelpText>
+    <inlineHelpText>The object type this Level applies to: Account or Contact.</inlineHelpText>
     <label>Target</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

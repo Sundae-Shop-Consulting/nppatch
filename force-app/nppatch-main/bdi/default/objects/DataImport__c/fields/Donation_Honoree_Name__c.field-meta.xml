@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Honoree_Name__c</fullName>
-    <description>The honoree name as provided by the donor.</description>
+    <description>Stores the name of the person being honored or memorialized by this donation. Used with Tribute Type to create tribute records associated with the Opportunity.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The honoree name as provided by the donor.</inlineHelpText>
+    <inlineHelpText>Enter the name of the person being honored or memorialized by this donation.</inlineHelpText>
     <label>Donation Honoree Name</label>
     <length>255</length>
     <required>false</required>

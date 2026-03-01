@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Latest_End_Date__c</fullName>
-    <description>The most recent ending date that this Address was used. Generally used with Latest Start Date to track a date range for an Address that&apos;s no longer in use.</description>
+    <description>Stores the date this Address was last retired. Used with Latest Start Date to track when an Address was in active use.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The most recent ending date that this Address was used. Generally used with Latest Start Date to track a date range for an Address that&apos;s no longer in use.</inlineHelpText>
+    <inlineHelpText>The most recent date this Address stopped being used. Used with Latest Start Date to track a date range for a previously active Address.</inlineHelpText>
     <label>Latest End Date</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

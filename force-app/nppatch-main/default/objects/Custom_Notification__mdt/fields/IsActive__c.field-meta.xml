@@ -2,8 +2,10 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IsActive__c</fullName>
     <defaultValue>true</defaultValue>
+    <description>Controls whether this notification configuration is active and will be sent when triggered.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Check to enable this notification. Uncheck to disable it without deleting the configuration.</inlineHelpText>
     <label>IsActive</label>
     <type>Checkbox</type>
 </CustomField>

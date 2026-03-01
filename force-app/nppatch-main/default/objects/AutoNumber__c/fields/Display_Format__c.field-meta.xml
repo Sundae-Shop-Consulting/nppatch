@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Display_Format__c</fullName>
-    <description>The format for the auto-numbered field including number of digits and, if desired, a prefix.</description>
+    <description>Pattern used to generate auto-number values. Use {0} as the number placeholder and include a prefix if desired, e.g., "DON-{0000}".</description>
     <externalId>false</externalId>
-    <inlineHelpText>The format for the auto-numbered field including number of digits and, if desired, a prefix.</inlineHelpText>
+    <inlineHelpText>The display format including number of digits and optional prefix, such as "DON-{0000}".</inlineHelpText>
     <label>Display Format</label>
     <length>30</length>
     <required>true</required>

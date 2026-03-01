@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>NumberOfMembershipOpps__c</fullName>
     <defaultValue>0</defaultValue>
-    <description>Do not manually update. Updated by automatic processes. See Record Types in Household Settings.</description>
+    <description>Calculated by Customizable Rollups. Do not edit manually. The total count of won Membership Opportunities related to this Account. Uses the Closed Won Memberships filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The total number of won Membership Opportunities (Record Type) related to this Account.</inlineHelpText>
+    <inlineHelpText>The total number of won Membership Opportunities related to this Account.</inlineHelpText>
     <label>Number of Memberships</label>
     <precision>18</precision>
     <required>false</required>

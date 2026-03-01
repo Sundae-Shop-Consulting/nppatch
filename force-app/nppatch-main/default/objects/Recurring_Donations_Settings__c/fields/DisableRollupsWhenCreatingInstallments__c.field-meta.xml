@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>DisableRollupsWhenCreatingInstallments__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>When selected, and if Customizable Rollups are enabled, then immediate rollup calculations are disabled when new Installment Opportunities are created for a Recurring Donation.</description>
+    <description>When enabled, suppresses real-time Customizable Rollup calculations when new installment Opportunities are created for Recurring Donations. This improves performance during bulk installment creation by deferring rollup calculations to the nightly batch job. Only applies when Customizable Rollups are enabled. Disabled by default.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When selected, and if Customizable Rollups are enabled, then immediate rollup calculations are disabled when new Installment Opportunities are created for a Recurring Donation.</inlineHelpText>
+    <inlineHelpText>Skip real-time rollup calculations when creating installment Opportunities. Rollups will be calculated in the nightly batch instead. Only applies with Customizable Rollups.</inlineHelpText>
     <label>Disable CRLP When Creating Installments</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

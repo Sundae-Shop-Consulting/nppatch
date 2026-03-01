@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Donor_Cover_Amount__c</fullName>
-    <description>The amount the donor paid in addition to their donation amount, often to help cover transaction fees or to add a tip to their donation.</description>
+    <description>Maps to OppPayment__c.Donor_Cover_Amount__c on the Payment record during data import processing. Stores the additional amount the donor contributed beyond their donation to cover transaction fees.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The amount the donor paid in addition to their donation amount, often to help cover transaction fees or to add a tip to their donation.</inlineHelpText>
+    <inlineHelpText>Enter the additional amount the donor paid to cover transaction fees or as a tip on their donation.</inlineHelpText>
     <label>Payment Donor Cover Amount</label>
     <precision>18</precision>
     <required>false</required>

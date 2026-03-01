@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Number_of_Soft_Credits_Two_Years_Ago__c</fullName>
-    <description>The number of soft credits attributed to this Contact two calendar years ago.</description>
+    <description>Calculated by Customizable Rollups (soft credit). Do not edit manually. Counts won Opportunities closed two years ago where this Contact received a soft credit. Uses the Won Opportunities for Soft Credit filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The number of soft credits attributed to this Contact two calendar years ago.</inlineHelpText>
+    <inlineHelpText>The number of soft credits this Contact received from won Opportunities closed two years ago.</inlineHelpText>
     <label>Number of Soft Credits Two Years Ago</label>
     <precision>18</precision>
     <required>false</required>

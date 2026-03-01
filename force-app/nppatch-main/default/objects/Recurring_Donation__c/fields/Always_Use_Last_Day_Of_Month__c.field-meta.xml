@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Always_Use_Last_Day_Of_Month__c</fullName>
     <defaultValue>false</defaultValue>
+    <description>When checked, overrides Day of Month and schedules all future installment Opportunities on the last day of each month. Only applies when Installment Period is Monthly, Quarterly, or a custom period using months.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Sets future monthly, custom monthly, or quarterly donation installments to the last day of the month, regardless of Next Donation Date. Installment period must be Monthly or Quarterly, or a custom installment period using months.</inlineHelpText>
+    <inlineHelpText>Check this box to schedule all future installments on the last day of each month. This overrides the Day of Month value. Only applies to monthly or quarterly installment periods.</inlineHelpText>
     <label>Always use last day of month</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

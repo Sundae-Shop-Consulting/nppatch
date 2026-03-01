@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Redirect_URL__c</fullName>
-    <description>Redirect url for notification</description>
+    <description>The URL that users are taken to when they click on the notification. Can be a relative or absolute Salesforce URL.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Enter the URL users navigate to when clicking the notification, such as "/lightning/o/Account/list" for the Accounts list view. Leave blank for no redirect.</inlineHelpText>
     <label>Redirect URL</label>
     <length>255</length>
     <required>false</required>

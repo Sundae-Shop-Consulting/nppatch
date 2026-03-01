@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Acknowledged_Date__c</fullName>
-    <description>Used to track date opportunity was acknowledged</description>
+    <description>Stores the date this payment was formally acknowledged to the donor. Typically updated manually or through an acknowledgment workflow when thank-you letters or receipts are sent.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Date of acknowledgment</inlineHelpText>
+    <inlineHelpText>The date this payment was acknowledged to the donor, such as when a thank-you letter or tax receipt was sent.</inlineHelpText>
     <label>Payment Acknowledged Date</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

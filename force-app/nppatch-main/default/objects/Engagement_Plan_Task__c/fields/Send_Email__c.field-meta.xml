@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Send_Email__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Determines if an email is sent to the user in the Task&apos;s Assigned To field when the Task becomes active. Dependent Tasks are active when their Parent Task is completed.</description>
+    <description>Controls email notification on the generated Task. For top-level tasks, the email sends at plan creation. For dependent tasks, the email sends when the parent Task is completed and this Task becomes active.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Determines if an email is sent to the user in the Task&apos;s Assigned To field when the Task becomes active. Dependent Tasks are active when their Parent Task is completed.</inlineHelpText>
+    <inlineHelpText>When checked, the assigned user receives an email when this Task becomes active. Dependent tasks become active when their parent task is completed.</inlineHelpText>
     <label>Send Email</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

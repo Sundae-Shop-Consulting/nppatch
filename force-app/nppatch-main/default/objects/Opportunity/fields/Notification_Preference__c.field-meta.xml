@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Notification_Preference__c</fullName>
-    <description>Indicates how the notification recipient should be notified, for example, by email or phone.</description>
+    <description>User-entered picklist that records the donor&apos;s preferred method for sending the tribute notification. Used in notification workflows and reporting.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates how the notification recipient should be notified, for example, by email or phone.</inlineHelpText>
+    <inlineHelpText>Select how the notification recipient should be contacted about this tribute gift (e.g., Email, Postal Mail, Phone).</inlineHelpText>
     <label>Notification Preference</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

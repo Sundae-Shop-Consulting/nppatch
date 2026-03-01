@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Notification_Recipient_Info__c</fullName>
-    <description>Contact information, such as address or phone the donor provided for the notification recipient.</description>
+    <description>Stores additional contact details for the tribute notification recipient, such as mailing address or phone number.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Contact information, such as address or phone the donor provided for the notification recipient.</inlineHelpText>
+    <inlineHelpText>Enter contact information (e.g., address, phone) for the tribute notification recipient.</inlineHelpText>
     <label>Donation Notification Recipient Info</label>
     <length>32768</length>
     <trackTrending>false</trackTrending>

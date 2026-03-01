@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>MailingState__c</fullName>
-    <description>Do not update, updated by automatic process.</description>
+    <description>Initially populated from the Contact that created this Household. Editing this field does not update Contact records unless the Copy Household Address to Contacts action is used.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Set by the original Contact which created this Household. Can be updated in Household Edit page but does not update Contact unless "Copy Household Address to Contacts" button is pushed.</inlineHelpText>
+    <inlineHelpText>The mailing state or province for this Household.</inlineHelpText>
     <label>Mailing State/Province</label>
     <length>255</length>
     <required>false</required>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>AverageAmount__c</fullName>
     <defaultValue>0</defaultValue>
-    <description>See excluded Opportunity Record types, excluded Opportunity types in Household setting for 'always roll up to primary' (exclude non individual Accounts).  Do not update.  Updated by automatic process.</description>
+    <description>Calculated by Customizable Rollups. Do not edit manually. Averages the Amount of all won Opportunities where this Contact has the primary Opportunity Contact Role. Uses the Won Opportunities for Hard Credit filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The average amount of all won Opportunities related to this Contact by a primary Opportunity Contact Role.</inlineHelpText>
+    <inlineHelpText>The average gift amount across all won Opportunities where this Contact is the primary donor.</inlineHelpText>
     <label>Average Gift</label>
     <precision>16</precision>
     <required>false</required>

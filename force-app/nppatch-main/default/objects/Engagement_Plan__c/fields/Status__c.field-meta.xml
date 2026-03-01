@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Status__c</fullName>
+    <description>Formula field comparing Completed_Tasks__c to Total_EP_Tasks__c. Returns Not Started, In Progress, or Completed. Recalculated automatically when tasks are completed.</description>
     <externalId>false</externalId>
     <formula>IF( Completed_Tasks__c == Total_EP_Tasks__c, $Label.statusCompleted, IF (Completed_Tasks__c &gt; 0, $Label.statusInProgress, $Label.statusNotStarted))</formula>
+    <inlineHelpText>The overall progress of this Engagement Plan: Not Started, In Progress, or Completed.</inlineHelpText>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Status</label>
     <required>false</required>

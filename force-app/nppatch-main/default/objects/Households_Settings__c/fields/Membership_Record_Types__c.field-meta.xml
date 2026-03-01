@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Membership_Record_Types__c</fullName>
     <defaultValue>"Membership"</defaultValue>
-    <description>Names of Opportunity Record Types, such as Membership, that you want to roll up separately from other Opportunity Record Types.</description>
+    <description>Semicolon-separated list of Opportunity Record Type names that should be rolled up into membership-specific fields (e.g., Total Membership Amount) rather than general donation rollup fields. Default value is "Membership." Opportunities with these Record Types populate the membership rollup fields on Contact and Account.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Names of Opportunity Record Types, such as Membership, that you want to roll up separately from other Opportunity Record Types.</inlineHelpText>
+    <inlineHelpText>Opportunity Record Types to roll up separately as memberships (e.g., into Total Membership Amount). Default: "Membership."</inlineHelpText>
     <label>Membership Record Type Names</label>
     <length>255</length>
     <required>false</required>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Reject_Ambiguous_Addresses__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Reject Ambiguous Addresses</description>
+    <description>When enabled, addresses that return multiple possible matches from the verification service are marked as invalid rather than accepting the first suggestion. Useful for ensuring address accuracy at the cost of requiring manual review when addresses are ambiguous. When disabled (default), the first suggested match is accepted as valid.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Marks ambiguous addresses as invalid, when the API returns more than one address. If left unselected, Salesforce will accept the first suggested address as the valid address.</inlineHelpText>
+    <inlineHelpText>Mark ambiguous addresses as invalid when the verification service returns multiple matches. When unchecked, the first match is accepted.</inlineHelpText>
     <label>Reject Ambiguous Addresses</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

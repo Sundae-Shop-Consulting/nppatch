@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Household_Account__c</fullName>
-    <description>Lookup to the Account associated with this Address.</description>
+    <description>Master-detail relationship linking this Address to its parent Account. Required; deleting the Account cascades to delete this Address.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Lookup to the Account associated with this Address.</inlineHelpText>
+    <inlineHelpText>The Household Account this Address belongs to.</inlineHelpText>
     <label>Account</label>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Addresses</relationshipLabel>

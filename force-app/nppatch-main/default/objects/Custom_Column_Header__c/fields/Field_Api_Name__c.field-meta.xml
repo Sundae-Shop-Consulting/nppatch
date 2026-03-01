@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Field_Api_Name__c</fullName>
-    <description>The API name of the field displayed in the list view.</description>
+    <description>Stores the API name of the field to render as a column in the associated list view. Must be a valid field on the list's object.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The API name of the field displayed in the list view.</inlineHelpText>
+    <inlineHelpText>The API name of the field shown in this column, such as Name or Amount.</inlineHelpText>
     <label>Field API Name</label>
     <length>255</length>
     <required>true</required>

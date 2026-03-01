@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Full_Message__c</fullName>
-    <description>Full text of the error message</description>
+    <description>Contains the complete error message text from the exception, including any field-level or validation rule details. Populated automatically by the error handler.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Full text of the error message</inlineHelpText>
+    <inlineHelpText>The complete error message text describing what went wrong.</inlineHelpText>
     <label>Full Message</label>
     <length>32768</length>
     <trackTrending>false</trackTrending>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Gender_Field__c</fullName>
-    <description>The custom field used to define the gender of a Contact for determining reciprocal relationships</description>
+    <description>The API name of the Contact field used to determine gender for reciprocal relationship type assignment. For example, a "Father" relationship might create a reciprocal "Daughter" or "Son" based on the related Contact's gender field value. Only used when the Reciprocal Method is set to "List Setting." Leave blank if gender-based reciprocals are not needed.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The custom field used to define the gender of a Contact for determining reciprocal relationships</inlineHelpText>
+    <inlineHelpText>Contact field API name used for gender-based reciprocal relationship types. Only applies with the "List Setting" reciprocal method.</inlineHelpText>
     <label>Gender Field</label>
     <length>255</length>
     <required>false</required>

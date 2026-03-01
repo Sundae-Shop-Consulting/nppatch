@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Amount__c</fullName>
-    <description>The amount of the Opportunity allocated to this General Accounting Unit. Leave blank for percent-based Allocations.</description>
+    <description>When Percent__c is populated, NPPatch automation calculates this value from the Opportunity or Payment amount. When entered directly, Percent__c is left blank. Rolled up to the parent GAU&apos;s Total_Allocations__c.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The amount of the Opportunity allocated to this General Accounting Unit. Leave blank for percent-based Allocations.</inlineHelpText>
+    <inlineHelpText>The currency amount designated to this General Accounting Unit. Enter either an Amount or a Percent, not both. Percent-based amounts are recalculated automatically when the Opportunity amount changes.</inlineHelpText>
     <label>Amount</label>
     <precision>18</precision>
     <required>false</required>

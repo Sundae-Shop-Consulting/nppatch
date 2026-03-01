@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Undeliverable_Address__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Indicates the address is undeliverable.</description>
+    <description>Marks this Contact's mailing address as undeliverable. Can be set manually or by address verification.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Check this box if mail sent to this Contact's mailing address has been returned as undeliverable.</inlineHelpText>
     <label>Undeliverable Mailing Address</label>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Checkbox</type>

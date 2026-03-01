@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Opportunity_Contact_Role_2_Role__c</fullName>
-    <description>The role that the Opportunity Contact Role should be created with.  For example enter &apos;Soft Credit&apos; to create a soft credit opportunity contact role.</description>
+    <description>Maps to OpportunityContactRole.Role on the second Opportunity Contact Role during data import processing. Used to assign a specific role such as Soft Credit.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The role that the Opportunity Contact Role should be created with.  For example enter &apos;Soft Credit&apos; to create a soft credit opportunity contact role.</inlineHelpText>
+    <inlineHelpText>Enter the role for the second Opportunity Contact Role (e.g., &apos;Soft Credit&apos;).</inlineHelpText>
     <label>Opportunity Contact Role 2: Role</label>
     <length>255</length>
     <required>false</required>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Default__c</fullName>
-    <description>Holds the ID of the default General Accounting Unit for creation of default allocations or for the allocation of non allocated amounts.</description>
+    <description>Stores the 18-character ID of the General Accounting Unit (GAU) record used as the default for allocation creation. When Default Allocations are enabled, any unallocated Opportunity amount is assigned to this GAU. This field is set automatically when selecting a default GAU in NPPatch Settings. Must reference an active GAU record.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Holds the ID of the default General Accounting Unit for creation of default allocations or for the allocation of non allocated amounts.</inlineHelpText>
+    <inlineHelpText>ID of the default General Accounting Unit. Unallocated Opportunity amounts are assigned to this GAU when Default Allocations are enabled.</inlineHelpText>
     <label>Default General Accounting Unit</label>
     <length>255</length>
     <required>false</required>

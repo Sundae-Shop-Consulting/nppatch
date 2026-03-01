@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Comments__c</fullName>
-    <description>Use this to enter additional information about the Task.</description>
+    <description>Free-text field copied to the generated Task&apos;s Description when the Engagement Plan is created. Not used by automation beyond initial Task creation.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Use this to enter additional information about the Task.</inlineHelpText>
+    <inlineHelpText>Instructions or notes for the person completing this Task. This text will appear in the generated Task&apos;s Description.</inlineHelpText>
     <label>Comments</label>
     <length>32000</length>
     <trackTrending>false</trackTrending>

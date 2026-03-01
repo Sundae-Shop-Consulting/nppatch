@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Household_ID__c</fullName>
+    <description>Legacy numeric identifier for this Household. Not used by NPPatch automation; retained for backward compatibility with migrated data.</description>
     <externalId>false</externalId>
+    <inlineHelpText>A numeric identifier for this Household, typically carried over from a legacy system.</inlineHelpText>
     <label>Household ID</label>
     <precision>7</precision>
     <required>false</required>

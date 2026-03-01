@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Organizational_Account_Addresses_Enabled__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Enables Address management for Organizational Accounts when selected.</description>
+    <description>When enabled, NPPatch manages Address records for organizational (non-Household) Accounts, including creating Address records when Account billing addresses change and syncing address updates to the Account. Disabled by default. Enable this if you want the same address management features available on Household Accounts to apply to organizational Accounts.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When selected, enables Address management for non-Household Accounts such as Organizational Accounts.</inlineHelpText>
+    <inlineHelpText>Enable Address record management for organizational (non-Household) Accounts. Allows tracking multiple addresses and address history.</inlineHelpText>
     <label>Organizational Account Addresses Enabled</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

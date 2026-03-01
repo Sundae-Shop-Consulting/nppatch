@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Matching_Gift_Phone__c</fullName>
-    <description>The phone number of the company&apos;s Matching Gift administrator.</description>
+    <description>Manually entered. The phone number for the person who administers this company&apos;s Matching Gift program.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The phone number of the company&apos;s Matching Gift administrator.</inlineHelpText>
+    <inlineHelpText>The phone number to contact for Matching Gift requests at this company.</inlineHelpText>
     <label>Matching Gift Phone</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

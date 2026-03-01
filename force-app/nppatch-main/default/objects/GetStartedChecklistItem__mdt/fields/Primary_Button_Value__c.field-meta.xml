@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Primary_Button_Value__c</fullName>
-    <description>The action of the Primary Button.
-For an External Page button, the external URL.
-For an SFDC New Tab button, the format is &quot;{pageReference}:{objectOrPageApiName}:{action}&quot;. See the Lightning NavigationMixin Documentation for examples and all specs.</description>
+    <description>The navigation target for the primary button. For External Page type, enter a full URL. For SFDC New Tab type, use the format "{pageReference}:{objectOrPageApiName}:{action}" per the Lightning NavigationMixin API.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
-    <inlineHelpText>The action of the Primary Button.
-For an External Page button, the external URL.
-For an SFDC New Tab button, the format is &quot;{pageReference}:{objectOrPageApiName}:{action}&quot;. See the Lightning NavigationMixin Documentation for examples and all specs.</inlineHelpText>
+    <inlineHelpText>For External Page: the URL to open. For SFDC New Tab: a NavigationMixin value like "standard__objectPage:Account:list".</inlineHelpText>
     <label>Primary Button Value</label>
     <length>255</length>
     <required>false</required>

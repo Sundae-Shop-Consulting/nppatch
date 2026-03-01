@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Amount__c</fullName>
-    <description>The amount to be soft credited.</description>
+    <description>Defaults to the Opportunity amount. Can be adjusted to reflect partial Account-level soft credit. Used by Customizable Rollups for Account-level totals.</description>
     <defaultValue>0</defaultValue>
     <externalId>false</externalId>
-    <inlineHelpText>The amount to be soft credited.</inlineHelpText>
+    <inlineHelpText>The dollar amount of soft credit this Account receives for this Opportunity.</inlineHelpText>
     <label>Amount</label>
     <precision>18</precision>
     <required>false</required>

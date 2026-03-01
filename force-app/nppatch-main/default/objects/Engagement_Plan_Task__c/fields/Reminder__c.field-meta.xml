@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Reminder__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Sets a reminder for the Task.</description>
+    <description>When checked, the generated Task will have its reminder enabled. Use Reminder_Time__c to specify the notification time.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Sets a reminder for the Task.</inlineHelpText>
+    <inlineHelpText>Check this to enable a reminder notification on the generated Task&apos;s due date.</inlineHelpText>
     <label>Reminder</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

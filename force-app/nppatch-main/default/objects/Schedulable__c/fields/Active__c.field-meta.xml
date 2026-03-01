@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Active__c</fullName>
     <defaultValue>true</defaultValue>
-    <description>Determines if the job will be active or not.</description>
+    <description>Controls whether the NPPatch scheduler includes this job when scheduling Apex classes. Inactive jobs are not scheduled even if a frequency is set.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Determines if the job will be active or not.</inlineHelpText>
+    <inlineHelpText>When selected, this scheduled job is active and will run at the specified frequency.</inlineHelpText>
     <label>Active</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

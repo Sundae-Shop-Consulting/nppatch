@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Operation__c</fullName>
+    <description>The aggregation type applied to the detail records. Determines how values are combined into the rollup result.</description>
     <externalId>false</externalId>
     <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Select the rollup operation: Count, Sum, Average, Largest, Smallest, First, Last, Years Donated, Donor Streak, Best Year, or Best Year Total.</inlineHelpText>
     <label>Operation</label>
     <required>false</required>
     <type>Picklist</type>

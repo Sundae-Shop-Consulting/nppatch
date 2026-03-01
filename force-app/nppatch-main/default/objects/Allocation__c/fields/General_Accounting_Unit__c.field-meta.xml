@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>General_Accounting_Unit__c</fullName>
     <deleteConstraint>Restrict</deleteConstraint>
-    <description>The General Accounting Unit this Allocation is attributed to. Only General Accounting Units marked as active are available for new Allocations.</description>
+    <description>Required lookup to the target GAU. A lookup filter restricts selection to active GAUs (with a workaround for Payment-level allocations). Allocation amounts roll up to this GAU&apos;s summary fields.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The General Accounting Unit this Allocation is attributed to. Only General Accounting Units marked as active are available for new Allocations.</inlineHelpText>
+    <inlineHelpText>The fund or designation this money is allocated to. Only active General Accounting Units can be selected.</inlineHelpText>
     <label>General Accounting Unit</label>
     <lookupFilter>
         <active>true</active>

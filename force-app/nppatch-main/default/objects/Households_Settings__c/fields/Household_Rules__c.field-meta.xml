@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Household_Rules__c</fullName>
-    <description>Specifies which Contacts will have Households objects automatically created for them.  Note that this is only used for Contacts using the One-to-One or Individual Account Model.  This is ignored for Contacts with the Household Account Model.</description>
+    <description>Determines the rules for automatic Household object creation. Valid values include "All New Contacts," "All Individual Contacts," and "No Contacts." Only applies to the legacy One-to-One and Individual Account models; this setting is ignored when using the Household Account model, which manages Household membership through Account relationships.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Specifies which Contacts will have Households objects automatically created for them.  Note that this is only used for Contacts using the One-to-One or Individual Account Model.  This is ignored for Contacts with the Household Account Model.</inlineHelpText>
+    <inlineHelpText>Controls which Contacts get automatic Household objects. Only applies to One-to-One or Individual Account models; ignored for Household Account model.</inlineHelpText>
     <label>Household Object Rules</label>
     <length>255</length>
     <required>false</required>

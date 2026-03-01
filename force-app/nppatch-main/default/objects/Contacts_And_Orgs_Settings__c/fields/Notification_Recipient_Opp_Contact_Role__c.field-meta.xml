@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Notification_Recipient_Opp_Contact_Role__c</fullName>
-    <description>Populating this setting will automatically create a Contact Role for Opportunities with a notification recipient Contact. Leaving this field blank will disable automatic Contact Role creation for the notification recipient.</description>
+    <description>Specifies the Opportunity Contact Role to assign to the Notification Recipient Contact on an Opportunity. When populated, NPPatch automatically creates an OCR with this role for the Contact in the Notification Recipient field. Leave blank to disable automatic notification recipient Contact Role creation. Must match an existing Contact Role picklist value.</description>
     <externalId>false</externalId>
-    <inlineHelpText>If you populate this setting, NPPatch automatically creates a Contact Role record for Opportunities with a notification recipient Contact.</inlineHelpText>
+    <inlineHelpText>Contact Role for Notification Recipient Contacts on Opportunities. Leave blank to disable automatic Contact Role creation.</inlineHelpText>
     <label>Notification Recipient Opp Contact Role</label>
     <length>255</length>
     <required>false</required>

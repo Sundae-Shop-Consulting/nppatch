@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Datetime__c</fullName>
     <defaultValue>now()</defaultValue>
-    <description>Date &amp; time the error occurred</description>
+    <description>Automatically set to the current date and time when the error record is created. Defaults to now().</description>
     <externalId>false</externalId>
-    <inlineHelpText>Date &amp; time the error occurred</inlineHelpText>
+    <inlineHelpText>The date and time when this error occurred.</inlineHelpText>
     <label>Datetime</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

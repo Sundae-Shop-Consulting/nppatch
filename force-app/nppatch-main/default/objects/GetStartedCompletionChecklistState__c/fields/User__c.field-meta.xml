@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>User__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Lookup to the User who completed this checklist item. Each record tracks one item completion for one user.</description>
     <externalId>false</externalId>
+    <inlineHelpText>The user who marked this Get Started checklist item as complete.</inlineHelpText>
     <label>User</label>
     <referenceTo>User</referenceTo>
     <relationshipName>GetStartedCompletedChecklistStates</relationshipName>

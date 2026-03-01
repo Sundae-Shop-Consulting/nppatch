@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Records_Successfully_Processed__c</fullName>
-    <description>Shows the number of records that were successfully processed on the date listed in the Last Processed On field.</description>
+    <description>System field that stores the count of Data Import records that were successfully processed during the most recent batch processing execution. Updated automatically after each processing run.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Shows the number of records that were successfully processed on the date listed in the Last Processed On field.</inlineHelpText>
+    <inlineHelpText>Number of records successfully processed during the last processing run.</inlineHelpText>
     <label>Records Successfully Processed</label>
     <precision>8</precision>
     <required>false</required>

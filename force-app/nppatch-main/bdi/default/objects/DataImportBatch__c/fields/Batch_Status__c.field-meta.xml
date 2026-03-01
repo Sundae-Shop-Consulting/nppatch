@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Batch_Status__c</fullName>
-    <description>The Batch Status is based on the Import Status of the NPPatch Data Import records within the batch. If one record fails to import, the status for the batch is &quot;Failed - Needs Review.&quot;</description>
+    <description>System field that reflects the overall processing status of the batch based on its child Data Import records. Set to Open before processing, Completed when all records succeed, or Failed - Needs Review if any records encounter errors.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Batch Status is based on the Import Status of the NPPatch Data Import records within the batch. If one record fails to import, the status for the batch is &quot;Failed - Needs Review.&quot;</inlineHelpText>
+    <inlineHelpText>Current processing status of this batch. Open = not yet processed, Completed = all records processed successfully, Failed - Needs Review = one or more records had errors.</inlineHelpText>
     <label>Batch Status</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

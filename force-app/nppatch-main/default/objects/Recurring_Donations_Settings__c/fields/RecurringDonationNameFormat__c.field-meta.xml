@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>RecurringDonationNameFormat__c</fullName>
-    <description>The format to use for Recurring Donation naming.</description>
+    <description>Defines the naming pattern for automatically generated Recurring Donation names. Supports merge field tokens like {!DonorName}, {!Amount}, {!RecurringType}. Only takes effect when Automatic Recurring Donation Naming is enabled. If blank, the system uses a default format of "{DonorName} {Amount} - Recurring."</description>
     <externalId>false</externalId>
-    <inlineHelpText>The format to use for Recurring Donation naming.</inlineHelpText>
+    <inlineHelpText>Name format pattern for auto-generated Recurring Donation names. Only applies when Automatic Recurring Donation Naming is enabled.</inlineHelpText>
     <label>Recurring Donation Name Format</label>
     <length>255</length>
     <required>false</required>

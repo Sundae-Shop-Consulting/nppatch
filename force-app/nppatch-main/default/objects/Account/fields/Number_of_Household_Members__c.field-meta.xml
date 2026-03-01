@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Number_of_Household_Members__c</fullName>
-    <description>The number of Contacts who are members of this Household.</description>
+    <description>Automatically maintained by NPPatch. Counts the number of Contacts related to this Household Account. Updated when Contacts are added to or removed from the household.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The number of Contacts who are members of this Household.</inlineHelpText>
+    <inlineHelpText>The total number of Contacts in this household.</inlineHelpText>
     <label>Number of Household Members</label>
     <precision>10</precision>
     <required>false</required>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Active_Fields__c</fullName>
-    <description>Represents the data model of active fields for a NPPatch_DataImportBatch__c record. Not intended for direct customer use and should not be edited directly.</description>
+    <description>System field that stores the JSON data model of active fields configured for this batch. Populated automatically by the Gift Entry UI when configuring batch fields. Do not edit directly.</description>
     <externalId>false</externalId>
+    <inlineHelpText>JSON representation of the active fields configured for this batch. Managed automatically by the Gift Entry UI.</inlineHelpText>
     <label>Active Fields</label>
     <length>32768</length>
     <trackHistory>false</trackHistory>

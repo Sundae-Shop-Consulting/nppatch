@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Rollups_GAU_Batch_Size__c</fullName>
     <defaultValue>1000</defaultValue>
-    <description>Only used by the new Customizable Rollups engine</description>
+    <description>Number of General Accounting Unit (GAU) records processed per batch execution during GAU allocation rollup calculations using the Customizable Rollups engine. Default is 1000. Reduce if the batch job fails due to governor limits. GAU rollups aggregate Allocation amounts from Opportunities to their assigned GAU records.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Number of records per batch to process when recalculating donor rollups to the General Accounting Unit object.</inlineHelpText>
+    <inlineHelpText>GAU records per batch during allocation rollup calculations. Default is 1000. Reduce if the rollup job hits governor limits.</inlineHelpText>
     <label>GAU Batch Size</label>
     <precision>6</precision>
     <required>false</required>

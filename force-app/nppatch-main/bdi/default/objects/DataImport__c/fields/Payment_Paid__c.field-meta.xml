@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Paid__c</fullName>
-    <description>Indicates if this payment is paid or not.</description>
+    <description>Maps to OppPayment__c.Paid__c on the Payment record during data import processing. Controls whether the Payment is marked as paid upon creation.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates if this payment is paid or not.</inlineHelpText>
+    <inlineHelpText>Select True if this payment has been received, or False if it is still outstanding.</inlineHelpText>
     <label>Payment Paid</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

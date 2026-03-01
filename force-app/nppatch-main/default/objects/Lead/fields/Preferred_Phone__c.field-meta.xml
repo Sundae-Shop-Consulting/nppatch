@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Preferred_Phone__c</fullName>
+    <description>Controls which phone number is considered the primary phone for this Lead during conversion and communications. On Lead conversion, this preference carries forward to the Contact record.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select which phone number to treat as this Lead&apos;s primary phone.</inlineHelpText>
     <label>Preferred Phone</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

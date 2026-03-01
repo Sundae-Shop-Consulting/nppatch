@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Campaign__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>The Campaign associated with this Allocation. Use this field if you want new Opportunities associated with this Campaign to be allocated in the same way.</description>
+    <description>When set, NPPatch uses this Allocation as a template: new Opportunities associated with this Campaign automatically inherit the same GAU allocation split.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Campaign associated with this Allocation. Use this field if you want new Opportunities associated with this Campaign to be allocated in the same way.</inlineHelpText>
+    <inlineHelpText>Link a Campaign to create a default allocation template. New Opportunities associated with this Campaign will be automatically allocated to the same General Accounting Unit.</inlineHelpText>
     <label>Campaign</label>
     <referenceTo>Campaign</referenceTo>
     <relationshipLabel>GAU Allocations</relationshipLabel>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LargestAmount__c</fullName>
     <defaultValue>0</defaultValue>
-    <description>Do not manually update. Updated by automatic processes. See excluded Record Types in Household Settings.</description>
+    <description>Calculated by Customizable Rollups. Do not edit manually. The largest Amount for won Opportunities related to this Account. Uses the Won Opportunities for Hard Credit filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The largest amount of a won Opportunity related to this Account.</inlineHelpText>
+    <inlineHelpText>The largest gift amount for won Opportunities related to this Account.</inlineHelpText>
     <label>Largest Gift</label>
     <precision>16</precision>
     <required>false</required>

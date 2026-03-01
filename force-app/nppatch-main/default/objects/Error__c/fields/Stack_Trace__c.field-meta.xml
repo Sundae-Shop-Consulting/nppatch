@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Stack_Trace__c</fullName>
-    <description>Stack trace for the thrown error, if available at runtime.</description>
+    <description>The Apex stack trace captured at the point the exception was thrown. Populated automatically by the error handler when a stack trace is available.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Stack trace for the thrown error, if available at runtime.</inlineHelpText>
+    <inlineHelpText>The call stack showing where the error originated, useful for debugging.</inlineHelpText>
     <label>Stack Trace</label>
     <length>32768</length>
     <trackTrending>false</trackTrending>

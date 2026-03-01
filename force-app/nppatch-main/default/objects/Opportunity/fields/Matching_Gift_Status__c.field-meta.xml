@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Matching_Gift_Status__c</fullName>
-    <description>The status of the Matching Gift for this Donation, for example, Submitted or Received.</description>
+    <description>User-entered picklist for tracking the matching gift lifecycle from identification through receipt. Used in matching gift reports and dashboards.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The status of the Matching Gift for this Donation, for example, Submitted or Received.</inlineHelpText>
+    <inlineHelpText>Select the current status of the matching gift request, such as Potential, Submitted, or Received.</inlineHelpText>
     <label>Matching Gift Status</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

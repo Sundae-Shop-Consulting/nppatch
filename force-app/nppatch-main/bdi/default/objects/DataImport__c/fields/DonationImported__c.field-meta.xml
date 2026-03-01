@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>DonationImported__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Populated by the data import process. Stores the lookup to the Opportunity record that was created or matched during import.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Lookup to the Opportunity created or matched during import. Automatically populated by the system.</inlineHelpText>
     <label>Donation Imported</label>
     <referenceTo>Opportunity</referenceTo>
     <relationshipLabel>NPPatch Data Imports (Opportunity1 Imported)</relationshipLabel>

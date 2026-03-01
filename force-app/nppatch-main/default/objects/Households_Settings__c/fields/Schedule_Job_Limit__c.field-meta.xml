@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Schedule_Job_Limit__c</fullName>
     <defaultValue>25</defaultValue>
-    <description>The number of active scheduled Apex Jobs to look at when scheduling new jobs.</description>
+    <description>Maximum number of existing scheduled Apex jobs that NPPatch checks before scheduling new batch jobs. If the org already has this many scheduled jobs, NPPatch will not schedule additional ones. Default is 25. Increase this value if your org legitimately has many scheduled jobs and NPPatch jobs fail to schedule.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The number of active scheduled Apex Jobs to look at when scheduling new jobs.</inlineHelpText>
+    <inlineHelpText>Maximum number of scheduled Apex jobs NPPatch checks before scheduling new jobs. Default is 25.</inlineHelpText>
     <label>Schedule Job Limit</label>
     <precision>18</precision>
     <required>false</required>

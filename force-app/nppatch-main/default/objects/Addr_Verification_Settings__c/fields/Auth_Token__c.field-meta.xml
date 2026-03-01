@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Auth_Token__c</fullName>
-    <description>Auth Token</description>
+    <description>Stores the authentication token or API key required to authenticate with the address verification service. This value is provided by your verification service provider and entered during service configuration in NPPatch Settings.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Authentication Token.</inlineHelpText>
+    <inlineHelpText>Authentication token or API key for the address verification service. Provided by your verification service.</inlineHelpText>
     <label>Auth Token</label>
     <length>255</length>
     <required>false</required>

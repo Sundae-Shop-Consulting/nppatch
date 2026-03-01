@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Rollups_Skew_Dispatcher_Batch_Size__c</fullName>
     <defaultValue>300</defaultValue>
-    <description>Only used by the new Customizable Rollups engine</description>
+    <description>Number of parent records (Accounts, Contacts, or GAUs) selected per batch execution by the Skew Mode dispatcher job. The dispatcher identifies records that exceed the Skew Mode Threshold and queues them for individual rollup processing. Default is 300. Reduce if the dispatcher job hits governor limits.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Number of Account, Contact, or GAU records per batch to select for Skew Mode processing.</inlineHelpText>
+    <inlineHelpText>Parent records per batch selected by the Skew Mode dispatcher. Default is 300. Reduce if the dispatcher job hits governor limits.</inlineHelpText>
     <label>Skew Mode Dispatcher Batch Size</label>
     <precision>18</precision>
     <required>false</required>

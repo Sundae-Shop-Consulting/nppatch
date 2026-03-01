@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>PreviousInstallmentPeriod__c</fullName>
-    <description>The previous Installment Period for the related Recurring Donation.</description>
+    <description>Captured from the Recurring Donation&apos;s Installment Period field before the change was applied.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The previous Installment Period for the related Recurring Donation.</inlineHelpText>
+    <inlineHelpText>The installment period before this change, such as Monthly, Yearly, or Weekly.</inlineHelpText>
     <label>Previous Installment Period</label>
     <length>255</length>
     <required>false</required>

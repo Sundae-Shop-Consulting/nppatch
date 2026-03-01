@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Origin_Name__c</fullName>
-    <description>The name of the system where the transaction was initiated.</description>
+    <description>Maps to OppPayment__c.Origin_Name__c on the Payment record during data import processing. Stores the name of the originating system where the transaction was initiated.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The name of the system where the transaction was initiated.</inlineHelpText>
+    <inlineHelpText>Enter the name of the system where this payment transaction was initiated.</inlineHelpText>
     <label>Payment Origin Name</label>
     <length>255</length>
     <required>false</required>

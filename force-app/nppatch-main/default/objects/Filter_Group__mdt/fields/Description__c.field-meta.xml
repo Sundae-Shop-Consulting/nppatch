@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Description__c</fullName>
+    <description>A free-text explanation of the filter group's purpose, displayed in the Customizable Rollups settings UI.</description>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Enter a brief description of this filter group, such as "Won Opportunities for Hard Credit" or "Closed/Won Opps over $100."</inlineHelpText>
     <label>Description</label>
     <required>false</required>
     <type>TextArea</type>

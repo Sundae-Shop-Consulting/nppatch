@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>OppAmount2YearsAgo__c</fullName>
     <defaultValue>0</defaultValue>
-    <description>Do not manually update. Updated by automatic processes. See excluded Record Types and FY/CY in Household Settings.</description>
+    <description>Calculated by Customizable Rollups. Do not edit manually. The sum of Amounts for won Opportunities closed two years ago related to this Account. Uses the Won Opportunities for Hard Credit filter group. Fiscal vs. calendar year is configured in Household Settings.</description>
     <externalId>false</externalId>
     <inlineHelpText>The total amount of won Opportunities related to this Account, closed within the year or fiscal year preceding last year (see Household Settings).</inlineHelpText>
     <label>Total Gifts Two Years Ago</label>

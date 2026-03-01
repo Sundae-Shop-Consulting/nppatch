@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>DisableContactRoleAutomation__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>When selected, this field disables several aspects of NPPatch Opportunity Contact Role automation, potentially resulting in incorrect or duplicate data. Refer to the product documentation for more details.</description>
+    <description>Automation toggle. When checked, suppresses automatic Opportunity Contact Role creation and updates by NPPatch triggers on this Opportunity. Use with caution as it may cause incomplete or duplicate Contact Role data.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When selected, this field disables several aspects of NPPatch Opportunity Contact Role automation, potentially resulting in incorrect or duplicate data. Refer to the product documentation for more details.</inlineHelpText>
+    <inlineHelpText>Check this box to prevent NPPatch from automatically creating or updating Contact Roles on this Opportunity. Use only when you need to manage Contact Roles manually.</inlineHelpText>
     <label>Disable Contact Role Automation</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackTrending>false</trackTrending>

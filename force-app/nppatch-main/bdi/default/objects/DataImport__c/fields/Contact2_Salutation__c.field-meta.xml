@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact2_Salutation__c</fullName>
+    <description>Maps to Contact.Salutation on the secondary Contact during data import processing.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Contact2.Salutation</inlineHelpText>
+    <inlineHelpText>Enter the salutation (e.g., Mr., Ms., Dr.) for the secondary Contact.</inlineHelpText>
     <label>Contact2 Salutation</label>
     <length>20</length>
     <required>false</required>

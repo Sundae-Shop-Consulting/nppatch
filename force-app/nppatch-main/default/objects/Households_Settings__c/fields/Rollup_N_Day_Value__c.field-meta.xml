@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Rollup_N_Day_Value__c</fullName>
     <defaultValue>365</defaultValue>
-    <description>Provide a value for 'N day' rollups, where 'N' is the number of days from today into the past.  This value defaults to rollup over the past 365 days.</description>
+    <description>Defines the number of days used for "N Day" rollup fields, counting backward from today. For example, a value of 365 means rollup fields like "Total Donations Last N Days" will include Opportunities closed within the past 365 days. Default is 365. Changing this value affects all N Day rollup fields across Contacts and Accounts.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Provide a value for 'N day' rollups, where 'N' is the number of days from today into the past.  This value defaults to rollup over the past 365 days.</inlineHelpText>
+    <inlineHelpText>Number of days from today used for "N Day" rollup calculations. Default is 365 (one year).</inlineHelpText>
     <label>Rollup N Day Value</label>
     <precision>18</precision>
     <required>false</required>

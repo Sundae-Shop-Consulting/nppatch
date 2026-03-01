@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ContactHardCreditNonSkew_Incremental__c</fullName>
     <defaultValue>true</defaultValue>
+    <description>When enabled, the Contact Hard Credit non-skew rollup batch job only recalculates Contacts that have recently modified Opportunities, rather than recalculating all Contacts. This significantly improves nightly batch job performance in orgs with many Contacts. Enabled by default. Disable only if you need full recalculation every night.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When checked, the Contact Hard Credit (Non-Skew) nightly job limits the number of Contacts selected for recalculation by looking for those Contacts recently updated Opportunities. This helps to improve Customizable Rollup nightly job performance.</inlineHelpText>
+    <inlineHelpText>Only recalculate Contacts with recently modified Opportunities during the nightly hard credit rollup job. Improves batch performance.</inlineHelpText>
     <label>Incremental Contact Hard Credit Non-Skew</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

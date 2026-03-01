@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Rollups_IncrementalLastNDays_FldOverride__c</fullName>
-    <description/>
+    <description>Advanced override for incremental rollups. Specifies the Opportunity field API name used to filter which records need recalculation during nightly batch jobs. Defaults to SystemModStamp if blank. Change this only if you need a different date field (e.g., CloseDate or a custom field) to drive incremental recalculation logic.</description>
     <externalId>false</externalId>
-    <inlineHelpText>For Incremental Rollups Override Use Only. This value overrides the field used to filter related Opportunities to determine which Accounts, Contacts, GAUs or RDs are recalculated during a nightly scheduled job. Defaults to SystemModStamp.</inlineHelpText>
+    <inlineHelpText>Advanced: Override the Opportunity field used for incremental rollup filtering. Defaults to SystemModStamp. Only change with guidance from support.</inlineHelpText>
     <label>Incremental: Last N Days Field Override</label>
     <length>43</length>
     <required>false</required>

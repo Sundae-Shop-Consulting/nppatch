@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact1_Home_Phone__c</fullName>
+    <description>Maps to Contact.HomePhone on the primary Contact during data import processing.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Contact1.HomePhone</inlineHelpText>
+    <inlineHelpText>Enter the home phone number of the primary Contact.</inlineHelpText>
     <label>Contact1 Home Phone</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

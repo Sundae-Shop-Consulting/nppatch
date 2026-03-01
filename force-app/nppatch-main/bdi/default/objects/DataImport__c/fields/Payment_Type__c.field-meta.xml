@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Type__c</fullName>
-    <description>Indicates the type of transaction.</description>
+    <description>Maps to OppPayment__c.Type__c on the Payment record during data import processing. Stores the transaction type classification.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates the type of transaction.</inlineHelpText>
+    <inlineHelpText>Enter the type of payment transaction.</inlineHelpText>
     <label>Payment Type</label>
     <length>40</length>
     <required>false</required>

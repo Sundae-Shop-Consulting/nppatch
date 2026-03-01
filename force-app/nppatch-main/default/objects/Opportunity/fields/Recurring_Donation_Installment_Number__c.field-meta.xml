@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Recurring_Donation_Installment_Number__c</fullName>
-    <description>The installment number of this Opportunity&apos;s Recurring Donation schedule.</description>
+    <description>System-populated number field. Set automatically when NPPatch creates installment Opportunities, indicating this Opportunity&apos;s position in the Recurring Donation schedule.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The installment number of this Opportunity&apos;s Recurring Donation schedule.</inlineHelpText>
+    <inlineHelpText>Which installment this Opportunity represents in the Recurring Donation schedule (e.g., 1, 2, 3).</inlineHelpText>
     <label>Recurring Donation Installment Number</label>
     <precision>18</precision>
     <required>false</required>

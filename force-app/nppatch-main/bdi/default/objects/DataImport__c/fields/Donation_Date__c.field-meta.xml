@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Date__c</fullName>
+    <description>Maps to Opportunity.CloseDate during data import processing. Also used as a key field in donation matching to find existing Opportunities within the configured date range.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Opportunity.CloseDate</inlineHelpText>
+    <inlineHelpText>Enter the date of the donation. Used for Opportunity Close Date and donation matching.</inlineHelpText>
     <label>Donation Date</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

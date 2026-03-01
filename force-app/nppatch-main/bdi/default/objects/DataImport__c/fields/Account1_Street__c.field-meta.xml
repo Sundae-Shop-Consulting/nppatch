@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Account1_Street__c</fullName>
+    <description>Maps to Account.BillingStreet on the primary Account during data import processing.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Account1.BillingStreet</inlineHelpText>
+    <inlineHelpText>Enter the billing street address for the primary Account.</inlineHelpText>
     <label>Account1 Street</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

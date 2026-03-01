@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Relationship_Type__c</fullName>
-    <description>The Relationship type to be created between the base object and the lookup object.  The lookup object will receive the reciprocal Relationship, if one is available.</description>
+    <description>The Type value assigned to the auto-created Relationship record. The reciprocal Relationship on the related Contact receives the corresponding reciprocal type from the Relationship Lookup table, if one exists.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The Relationship type to be created between the base object and the lookup object.  The lookup object will receive the reciprocal Relationship, if one is available.</inlineHelpText>
+    <inlineHelpText>The relationship type label (e.g., "Friend", "Employer") assigned when the relationship is created. The reciprocal contact receives the matching type.</inlineHelpText>
     <label>Relationship Type</label>
     <length>255</length>
     <required>false</required>

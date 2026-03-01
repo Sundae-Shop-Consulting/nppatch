@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Amount_Outstanding__c</fullName>
-    <description>Formula: The Amount of this Opportunity minus the Payment Writeoff Amount and Payment Amount Received.</description>
+    <description>Formula field. Calculates Amount minus Payment Amount Received and Payment Writeoff Amount. Used to track unpaid balances across Opportunities.</description>
     <externalId>false</externalId>
     <formula>Amount - NULLVALUE(%%%NAMESPACE%%%Payments_Made__c, 0) - NULLVALUE(%%%NAMESPACE%%%Amount_Written_Off__c, 0)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Formula: The Amount of this Opportunity minus the Payment Writeoff Amount and Payment Amount Received.</inlineHelpText>
+    <inlineHelpText>The remaining balance still owed on this Donation after subtracting payments received and amounts written off.</inlineHelpText>
     <label>Remaining Balance</label>
     <precision>18</precision>
     <required>false</required>

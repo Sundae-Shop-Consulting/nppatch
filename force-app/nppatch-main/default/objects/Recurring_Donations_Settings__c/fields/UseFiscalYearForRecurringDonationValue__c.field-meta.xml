@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>UseFiscalYearForRecurringDonationValue__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>When checked, this option enables fiscal year for Recurring Donation value totals. To set the fiscal year start month, go to Setup | Company Settings | Fiscal Year. NOTE: Use Standard Fiscal Year only. Do not enable Custom Fiscal Year.</description>
+    <description>When enabled, Recurring Donation value calculations (Current Year Value, Next Year Value) use the org's fiscal year instead of the calendar year. Configure in Setup > Company Settings > Fiscal Year. Only Standard Fiscal Years are supported; Custom Fiscal Years are not supported and may cause calculation errors.</description>
     <externalId>false</externalId>
-    <inlineHelpText>When checked, this option enables fiscal year for Recurring Donation value totals. To set the fiscal year start month, go to Setup | Company Settings | Fiscal Year. NOTE: Use Standard Fiscal Year only. Do not enable Custom Fiscal Year.</inlineHelpText>
+    <inlineHelpText>Use fiscal year instead of calendar year for Recurring Donation value calculations. Standard Fiscal Years only; Custom Fiscal Years are not supported.</inlineHelpText>
     <label>Use Fiscal Year for Recurring Donations</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

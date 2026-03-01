@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Donation_Notification_Message__c</fullName>
-    <description>A personalized message for the notification recipient.</description>
+    <description>Stores the personalized message to include in the tribute notification sent to the notification recipient.</description>
     <externalId>false</externalId>
-    <inlineHelpText>A personalized message for the notification recipient.</inlineHelpText>
+    <inlineHelpText>Enter a personalized message to include in the tribute notification.</inlineHelpText>
     <label>Donation Notification Message</label>
     <length>32768</length>
     <trackTrending>false</trackTrending>

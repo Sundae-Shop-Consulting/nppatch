@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>DisableRecordDataHealthChecks__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Indicates whether record data related health checks are disabled</description>
+    <description>When enabled, the NPPatch Health Check skips data-level checks (which query actual records) and only validates configuration settings. Enable this in large data volume orgs where the Health Check times out or fails due to query limits during record scanning. Disabled by default.</description>
     <externalId>false</externalId>
-    <inlineHelpText>If selected, Health Check only checks your NPPatch configuration settings for problems. Select this option if your organization has a large volume of records and Health Check is having problems completing.</inlineHelpText>
+    <inlineHelpText>Skip record data checks during Health Check. Only configuration settings will be validated. Enable if Health Check times out in large orgs.</inlineHelpText>
     <label>Disable Record Data Health Checks</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

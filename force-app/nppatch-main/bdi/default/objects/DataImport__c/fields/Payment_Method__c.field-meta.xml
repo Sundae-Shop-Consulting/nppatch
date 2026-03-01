@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Payment_Method__c</fullName>
+    <description>Maps to OppPayment__c.Payment_Method__c on the Payment record during data import processing. Stores the method of payment such as Check, Credit Card, or Cash.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Payment.Payment_Method__c</inlineHelpText>
+    <inlineHelpText>Enter the payment method (e.g., Check, Credit Card, Cash).</inlineHelpText>
     <label>Payment Method</label>
     <length>255</length>
     <required>false</required>

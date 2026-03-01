@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ChangeType__c</fullName>
-    <description>The type of change (Upgrade, Downgrade, etc.) this Change Log record represents.</description>
+    <description>Automatically set based on whether the new annual value is higher (Upgrade) or lower (Downgrade) than the previous annual value.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The type of change (Upgrade, Downgrade, etc.) this Change Log record represents.</inlineHelpText>
+    <inlineHelpText>Whether this change represents an Upgrade or Downgrade in the Recurring Donation&apos;s value.</inlineHelpText>
     <label>Change Type</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

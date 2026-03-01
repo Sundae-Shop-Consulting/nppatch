@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Minimum_Amount__c</fullName>
-    <description>The minimum amount needed for NPPatch to assign this Level. If this field is empty, then NPPatch will assign this Level to any amount less than this Level&apos;s Maximum Amount.</description>
+    <description>Lower bound (inclusive) for the Level range. A donor&apos;s source field value must be greater than or equal to this amount. If blank, only the Maximum Amount is used for matching.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The minimum amount needed for NPPatch to assign this Level. If this field is empty, then NPPatch will assign this Level to any amount less than this Level&apos;s Maximum Amount.</inlineHelpText>
+    <inlineHelpText>The source value must be at least this amount for the Level to apply. Leave blank for an open-ended lower range (any amount below the maximum).</inlineHelpText>
     <label>Minimum Amount (&gt;=)</label>
     <precision>18</precision>
     <required>false</required>

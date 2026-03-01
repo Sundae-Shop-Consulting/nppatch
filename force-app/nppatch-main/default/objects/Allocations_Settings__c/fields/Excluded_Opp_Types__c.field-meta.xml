@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Excluded_Opp_Types__c</fullName>
-    <description>Excluded Opportunity Types from Allocations rollups.</description>
+    <description>Semicolon-separated list of Opportunity Type picklist values to exclude from GAU Allocation rollup calculations. Opportunities with these Types will not have their Allocations included in the GAU rollup totals. Leave blank to include all Types in allocation rollups.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Excluded Opportunity Types from Allocations rollups.</inlineHelpText>
+    <inlineHelpText>Opportunity Types to exclude from GAU Allocation rollups. Enter Type values separated by semicolons.</inlineHelpText>
     <label>Excluded Opp Types</label>
     <length>255</length>
     <required>false</required>

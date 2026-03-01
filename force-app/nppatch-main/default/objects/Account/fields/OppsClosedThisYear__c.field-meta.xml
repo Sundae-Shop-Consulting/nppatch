@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>OppsClosedThisYear__c</fullName>
     <defaultValue>0</defaultValue>
-    <description>Do not manually update. Updated by automatic processes. See excluded Record Types and FY/CY in Household Settings.</description>
+    <description>Calculated by Customizable Rollups. Do not edit manually. The count of won Opportunities closed in the current year related to this Account. Uses the Won Opportunities for Hard Credit filter group. Fiscal vs. calendar year is configured in Household Settings.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The total number of won Opportunities with amount greater than zero related to this Account, closed in the current year or fiscal year (see Household Settings).</inlineHelpText>
+    <inlineHelpText>The number of gifts this year for won Opportunities related to this Account.</inlineHelpText>
     <label>Number of Gifts This Year</label>
     <precision>18</precision>
     <required>false</required>

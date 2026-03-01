@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Source_Field__c</fullName>
-    <description>The target object&apos;s field (developer name) that defines the amount and timeframe to base this Level on.</description>
+    <description>API name of the numeric field on the target object whose value is compared against the Minimum and Maximum Amount to determine whether this Level applies.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The target object&apos;s field (developer name) that defines the amount and timeframe to base this Level on.</inlineHelpText>
+    <inlineHelpText>The field on the target object (such as a total donations amount) used to evaluate whether the donor qualifies for this Level.</inlineHelpText>
     <label>Source Field</label>
     <length>255</length>
     <required>true</required>

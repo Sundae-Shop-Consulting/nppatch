@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Number_of_Soft_Credits__c</fullName>
-    <description>The total number of soft credits attributed to this Contact.</description>
+    <description>Calculated by Customizable Rollups (soft credit). Do not edit manually. Counts all won Opportunities where this Contact received a soft credit. Uses the Won Opportunities for Soft Credit filter group.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The total number of soft credits attributed to this Contact.</inlineHelpText>
+    <inlineHelpText>The total number of won Opportunities where this Contact is credited as a related donor.</inlineHelpText>
     <label>Number of Soft Credits</label>
     <precision>18</precision>
     <required>false</required>
