@@ -1,31 +1,25 @@
-import {LightningElement, api, track} from 'lwc';
-import {
-    isNumeric,
-    isNotEmpty,
-    isEmpty,
-    apiNameFor
-} from 'c/utilCommon';
-import GeFormService from 'c/geFormService';
-import GeLabelService from 'c/geLabelService';
-import { fireEvent } from 'c/pubsubNoPageRef';
+import { LightningElement, api, track } from "lwc";
+import { isNumeric, isNotEmpty, isEmpty, apiNameFor } from "c/utilCommon";
+import GeFormService from "c/geFormService";
+import GeLabelService from "c/geLabelService";
+import { fireEvent } from "c/pubsubNoPageRef";
 
-import DI_DONATION_AMOUNT_FIELD from '@salesforce/schema/DataImport__c.Donation_Amount__c';
+import DI_DONATION_AMOUNT_FIELD from "@salesforce/schema/DataImport__c.Donation_Amount__c";
 
-import ALLOCATION_OBJECT from '@salesforce/schema/Allocation__c';
-import DATA_IMPORT_ADDITIONAL_JSON_FIELD from '@salesforce/schema/DataImport__c.Additional_Object_JSON__c'
-import GENERAL_ACCOUNTING_UNIT_FIELD from '@salesforce/schema/Allocation__c.General_Accounting_Unit__c';
-import AMOUNT_FIELD from '@salesforce/schema/Allocation__c.Amount__c';
-import PERCENT_FIELD from '@salesforce/schema/Allocation__c.Percent__c';
+import ALLOCATION_OBJECT from "@salesforce/schema/Allocation__c";
+import DATA_IMPORT_ADDITIONAL_JSON_FIELD from "@salesforce/schema/DataImport__c.Additional_Object_JSON__c";
+import GENERAL_ACCOUNTING_UNIT_FIELD from "@salesforce/schema/Allocation__c.General_Accounting_Unit__c";
+import AMOUNT_FIELD from "@salesforce/schema/Allocation__c.Amount__c";
+import PERCENT_FIELD from "@salesforce/schema/Allocation__c.Percent__c";
 
-import ALLOC_DEFAULT_FIELD from '@salesforce/schema/Allocations_Settings__c.Default__c';
-import ALLOC_DEFAULT_ALLOCATIONS_ENABLED_FIELD from '@salesforce/schema/Allocations_Settings__c.Default_Allocations_Enabled__c';
+import ALLOC_DEFAULT_FIELD from "@salesforce/schema/Allocations_Settings__c.Default__c";
+import ALLOC_DEFAULT_ALLOCATIONS_ENABLED_FIELD from "@salesforce/schema/Allocations_Settings__c.Default_Allocations_Enabled__c";
 
 const GENERAL_ACCOUNT_UNIT = GENERAL_ACCOUNTING_UNIT_FIELD.fieldApiName;
 const ALLOC_SETTINGS_DEFAULT = ALLOC_DEFAULT_FIELD.fieldApiName;
 const ALLOC_SETTINGS_DEFAULT_ALLOCATIONS_ENABLED = ALLOC_DEFAULT_ALLOCATIONS_ENABLED_FIELD.fieldApiName;
 
 export default class GeFormWidgetAllocation extends LightningElement {
-
     CUSTOM_LABELS = GeLabelService.CUSTOM_LABELS;
 
     _widgetDataFromState = {};
@@ -71,22 +65,21 @@ export default class GeFormWidgetAllocation extends LightningElement {
         }
 
         const widgetData = JSON.parse(additionalObjectJson);
-        const rowList = [];
-        Object.values(widgetData).forEach(objectDevNameValues => {
-            objectDevNameValues.filter(
-                objectDevNameValue => objectDevNameValue.attributes.type === apiNameFor(ALLOCATION_OBJECT)
-            )
-            .forEach(objectDevNameValue => {
-                const row = {}
-                Object.entries(objectDevNameValue)
-                    .filter(([key, value]) => key !== 'attributes')
-                    .forEach(([key, value]) => {
-                        row[key] = value
-                    })
-                rowList.push(row);
-            })
+        const parsedRowList = [];
+        Object.values(widgetData).forEach((objectDevNameValues) => {
+            objectDevNameValues
+                .filter((objectDevNameValue) => objectDevNameValue.attributes.type === apiNameFor(ALLOCATION_OBJECT))
+                .forEach((objectDevNameValue) => {
+                    const row = {};
+                    Object.entries(objectDevNameValue)
+                        .filter(([key]) => key !== "attributes")
+                        .forEach(([key, value]) => {
+                            row[key] = value;
+                        });
+                    parsedRowList.push(row);
+                });
         });
-        this.addRows(rowList);
+        this.addRows(parsedRowList);
         this.validate();
     }
 
@@ -102,13 +95,12 @@ export default class GeFormWidgetAllocation extends LightningElement {
         this._totalAmount = value;
 
         this.validate();
-
     }
     get remainingAmount() {
         if (isNumeric(this.totalAmount) && isNumeric(this.allocatedAmount)) {
             const remainingCents = Math.round(this.totalAmount * 100) - Math.round(this.allocatedAmount * 100);
             // avoid floating point errors by subtracting whole numbers
-            return (remainingCents / 100);
+            return remainingCents / 100;
         }
         return 0;
     }
@@ -118,8 +110,10 @@ export default class GeFormWidgetAllocation extends LightningElement {
     }
 
     get showRemainingAmount() {
-        return this.hasAllocations() &&
-            ((this.hasDefaultGAU === false && this.remainingAmount > 0) || this.remainingAmount < 0);
+        return (
+            this.hasAllocations() &&
+            ((this.hasDefaultGAU === false && this.remainingAmount > 0) || this.remainingAmount < 0)
+        );
     }
 
     get isOverAllocated() {
@@ -127,12 +121,12 @@ export default class GeFormWidgetAllocation extends LightningElement {
     }
 
     get isUnderAllocated() {
-        return !this.hasDefaultGAU && (this.allocatedAmount < this.totalAmount);
+        return !this.hasDefaultGAU && this.allocatedAmount < this.totalAmount;
     }
 
     get allocatedAmount() {
         return this.rowList
-            .filter(row => {
+            .filter((row) => {
                 const defaultGAUId = this.allocationSettings[ALLOC_SETTINGS_DEFAULT];
                 if (this.hasDefaultGAU && isNotEmpty(defaultGAUId)) {
                     return row.record[GENERAL_ACCOUNT_UNIT] !== defaultGAUId;
@@ -161,14 +155,14 @@ export default class GeFormWidgetAllocation extends LightningElement {
     }
 
     addRows(rowRecords) {
-        rowRecords.forEach(rowRecord => {
+        rowRecords.forEach((rowRecord) => {
             this.addRow(false, rowRecord);
         });
     }
 
     addRow(isDefaultGAU, rowRecord) {
-        const element = {};
-        element.key = this.rowList.length;
+        const rowElement = {};
+        rowElement.key = this.rowList.length;
         const record = { ...rowRecord };
         let row = {};
         if (isDefaultGAU === true) {
@@ -181,7 +175,7 @@ export default class GeFormWidgetAllocation extends LightningElement {
         row = {
             ...row,
             record,
-            element
+            element: rowElement,
         };
         this.rowList.push(row);
     }
@@ -190,10 +184,10 @@ export default class GeFormWidgetAllocation extends LightningElement {
         this.rowList.splice(event.detail.rowIndex, 1);
 
         this.fireFormWidgetChange({
-            [apiNameFor(DATA_IMPORT_ADDITIONAL_JSON_FIELD)]: JSON.stringify(this.convertRowListToSObjectJSON())
+            [apiNameFor(DATA_IMPORT_ADDITIONAL_JSON_FIELD)]: JSON.stringify(this.convertRowListToSObjectJSON()),
         });
 
-        const addButton = this.template.querySelector('lightning-button');
+        const addButton = this.template.querySelector("lightning-button");
         if (addButton) {
             addButton.focus();
         }
@@ -209,65 +203,63 @@ export default class GeFormWidgetAllocation extends LightningElement {
     handleRowValueChange = (event) => {
         const detail = event.detail;
         const record = this.rowList[detail.rowIndex].record;
-        this.rowList[detail.rowIndex].record = {...record, ...detail.changedFieldAndValue};
+        this.rowList[detail.rowIndex].record = { ...record, ...detail.changedFieldAndValue };
 
         this.fireFormWidgetChange({
-            [apiNameFor(DATA_IMPORT_ADDITIONAL_JSON_FIELD)]: JSON.stringify(this.convertRowListToSObjectJSON())
+            [apiNameFor(DATA_IMPORT_ADDITIONAL_JSON_FIELD)]: JSON.stringify(this.convertRowListToSObjectJSON()),
         });
-    }
+    };
 
     fireFormWidgetChange(detail) {
-        fireEvent({}, 'formwidgetchange', { detail });
+        fireEvent({}, "formwidgetchange", { detail });
     }
 
     convertRowListToSObjectJSON() {
         const widgetRowValues = [];
 
-        this.rowList.forEach(row => {
+        this.rowList.forEach((row) => {
             // no need to send back default GAU, automatically allocated by the trigger
             if (row.isDefaultGAU) {
                 return;
             }
             widgetRowValues.push({
                 attributes: { type: ALLOCATION_OBJECT.objectApiName },
-                ...row.record
+                ...row.record,
             });
         });
 
         return {
-            [this.element.dataImportObjectMappingDevName]: widgetRowValues
+            [this.element.dataImportObjectMappingDevName]: widgetRowValues,
         };
     }
 
     validate() {
-        const message = GeLabelService.format(
-            this.CUSTOM_LABELS.geErrorAmountDoesNotMatch,
-            [this.donationAmountCustomLabel]);
+        const message = GeLabelService.format(this.CUSTOM_LABELS.geErrorAmountDoesNotMatch, [
+            this.donationAmountCustomLabel,
+        ]);
 
         if (this.isUnderAllocated) {
             // if no default GAU and under-allocated, display warning
             this.alertBanner = {
                 message,
-                level: 'warning'
+                level: "warning",
             };
             return false;
         } else if (this.isOverAllocated) {
             // if over-allocated, display error
             this.alertBanner = {
                 message,
-                level: 'error'
+                level: "error",
             };
             return false;
-        } 
-            // if valid, return true and wipe error message
-            this.alertBanner = {};
-            return true;
-        
+        }
+        // if valid, return true and wipe error message
+        this.alertBanner = {};
+        return true;
     }
 
     get hasDefaultGAU() {
-        return this.allocationSettings
-            && this.allocationSettings[ALLOC_SETTINGS_DEFAULT_ALLOCATIONS_ENABLED] === true;
+        return this.allocationSettings && this.allocationSettings[ALLOC_SETTINGS_DEFAULT_ALLOCATIONS_ENABLED] === true;
     }
 
     get hasAlert() {
@@ -276,25 +268,26 @@ export default class GeFormWidgetAllocation extends LightningElement {
 
     get alertIcon() {
         if (isNotEmpty(this.alertBanner.level)) {
-            const warningIcon = 'utility:warning';
-            const errorIcon = 'utility:error';
-            switch(this.alertBanner.level) {
-                case 'error':
+            const warningIcon = "utility:warning";
+            const errorIcon = "utility:error";
+            switch (this.alertBanner.level) {
+                case "error":
                     return errorIcon;
-                case 'warning':
+                case "warning":
                     return warningIcon;
                 default:
                     return errorIcon;
             }
         }
+        return undefined;
     }
 
     get alertClass() {
         if (isNotEmpty(this.alertBanner.level)) {
-            const errorClass = 'error';
-            const warningClass = 'warning';
+            const errorClass = "error";
+            const warningClass = "warning";
 
-            switch(this.alertBanner.level) {
+            switch (this.alertBanner.level) {
                 case errorClass:
                     return errorClass;
                 case warningClass:
@@ -303,11 +296,13 @@ export default class GeFormWidgetAllocation extends LightningElement {
                     return errorClass;
             }
         }
+        return undefined;
     }
 
     get footerClass() {
-        return this.rowList.length > 0 ? 'slds-p-top--medium slds-m-top--medium slds-border--top'
-            : 'slds-p-top--medium slds-m-top--medium';
+        return this.rowList.length > 0
+            ? "slds-p-top--medium slds-m-top--medium slds-border--top"
+            : "slds-p-top--medium slds-m-top--medium";
     }
 
     get donationAmountCustomLabel() {

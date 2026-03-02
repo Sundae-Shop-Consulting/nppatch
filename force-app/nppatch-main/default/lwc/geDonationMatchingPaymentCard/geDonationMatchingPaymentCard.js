@@ -1,16 +1,16 @@
-import { LightningElement, api, track, wire } from 'lwc';
-import { getObjectInfo } from 'lightning/uiObjectInfoApi';
-import { getRecord } from 'lightning/uiRecordApi';
-import { handleError } from 'c/utilTemplateBuilder';
-import { deepClone } from 'c/utilCommon';
-import geLabelService from 'c/geLabelService';
+import { LightningElement, api, track, wire } from "lwc";
+import { getObjectInfo } from "lightning/uiObjectInfoApi";
+import { getRecord } from "lightning/uiRecordApi";
+import { handleError } from "c/utilTemplateBuilder";
+import { deepClone } from "c/utilCommon";
+import geLabelService from "c/geLabelService";
 
-import PAYMENT_OBJECT from '@salesforce/schema/OppPayment__c';
-import PAYMENT_AMOUNT_FIELD from '@salesforce/schema/OppPayment__c.Payment_Amount__c';
-import PAYMENT_SCHEDULED_DATE_FIELD from '@salesforce/schema/OppPayment__c.Scheduled_Date__c';
-import PAYMENT_PAID_FIELD from '@salesforce/schema/OppPayment__c.Paid__c';
-import PAYMENT_NAME_FIELD from '@salesforce/schema/OppPayment__c.Name';
-const ELEVATE_PAYMENT_STATUS_FIELD = { fieldApiName: 'Elevate_Payment_API_Status__c', objectApiName: 'OppPayment__c' };
+import PAYMENT_OBJECT from "@salesforce/schema/OppPayment__c";
+import PAYMENT_AMOUNT_FIELD from "@salesforce/schema/OppPayment__c.Payment_Amount__c";
+import PAYMENT_SCHEDULED_DATE_FIELD from "@salesforce/schema/OppPayment__c.Scheduled_Date__c";
+import PAYMENT_PAID_FIELD from "@salesforce/schema/OppPayment__c.Paid__c";
+import PAYMENT_NAME_FIELD from "@salesforce/schema/OppPayment__c.Name";
+const ELEVATE_PAYMENT_STATUS_FIELD = { fieldApiName: "Elevate_Payment_API_Status__c", objectApiName: "OppPayment__c" };
 
 const FIELDS = [
     PAYMENT_AMOUNT_FIELD,
@@ -18,10 +18,9 @@ const FIELDS = [
     PAYMENT_PAID_FIELD,
     PAYMENT_NAME_FIELD,
     ELEVATE_PAYMENT_STATUS_FIELD,
-]
+];
 
 export default class geDonationMatchingPaymentCard extends LightningElement {
-
     // Expose custom labels to template
     CUSTOM_LABELS = geLabelService.CUSTOM_LABELS;
 
@@ -46,7 +45,7 @@ export default class geDonationMatchingPaymentCard extends LightningElement {
         return this.payment.Id;
     }
 
-    @wire(getRecord, { recordId: '$paymentId', fields: FIELDS })
+    @wire(getRecord, { recordId: "$paymentId", fields: FIELDS })
     wiredPayment(response) {
         if (response.data) {
             this.wiredPaymentRecord = response.data;
@@ -63,25 +62,20 @@ export default class geDonationMatchingPaymentCard extends LightningElement {
 
     get paymentComputedName() {
         if (this.wiredPaymentRecord) {
-            return geLabelService.format(this.CUSTOM_LABELS.geHeaderMatchingPayment,
-                [
-                    this.paymentAmountDetails.value,
-                    this.paymentScheduledDateDetails.value
-                ]);
+            return geLabelService.format(this.CUSTOM_LABELS.geHeaderMatchingPayment, [
+                this.paymentAmountDetails.value,
+                this.paymentScheduledDateDetails.value,
+            ]);
         }
-        return '';
+        return "";
     }
 
     get isSelectedDonation() {
-        return this.selectedDonationId &&
-            this.payment &&
-            this.payment.Id === this.selectedDonationId ?
-            true :
-            false;
+        return this.selectedDonationId && this.payment && this.payment.Id === this.selectedDonationId ? true : false;
     }
 
     get computedCardCssClass() {
-        return this.isSelectedDonation ? 'slds-card_extension_active' : '';
+        return this.isSelectedDonation ? "slds-card_extension_active" : "";
     }
 
     get paymentObjectApiName() {
@@ -105,9 +99,9 @@ export default class geDonationMatchingPaymentCard extends LightningElement {
     }
 
     get paymentPaidComputedValue() {
-        return this.payment[PAYMENT_PAID_FIELD.fieldApiName] === true ?
-            this.CUSTOM_LABELS.commonYes :
-            this.CUSTOM_LABELS.commonNo;
+        return this.payment[PAYMENT_PAID_FIELD.fieldApiName] === true
+            ? this.CUSTOM_LABELS.commonYes
+            : this.CUSTOM_LABELS.commonNo;
     }
 
     getFieldDetails(fieldInfo, wiredPaymentRecord) {
@@ -118,7 +112,7 @@ export default class geDonationMatchingPaymentCard extends LightningElement {
             const value =
                 wiredPaymentRecord.fields[fieldApiName].displayValue ||
                 wiredPaymentRecord.fields[fieldApiName].value ||
-                '';
+                "";
 
             return {
                 label: fieldDescribes[fieldApiName].label,
@@ -130,12 +124,12 @@ export default class geDonationMatchingPaymentCard extends LightningElement {
     }
 
     /*******************************************************************************
-    * @description Method dispatches an event to notify geDonationMatching that an
-    * payment donation has been selected.
-    */
+     * @description Method dispatches an event to notify geDonationMatching that an
+     * payment donation has been selected.
+     */
     handleUpdatePayment() {
         const detail = { objectApiName: PAYMENT_OBJECT.objectApiName, fields: deepClone(this.payment) };
-        this.dispatchEvent(new CustomEvent('updatepayment', { detail }));
+        this.dispatchEvent(new CustomEvent("updatepayment", { detail }));
     }
 
     // ================================================================================

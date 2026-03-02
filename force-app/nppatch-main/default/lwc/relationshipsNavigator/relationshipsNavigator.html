@@ -1,32 +1,36 @@
 <template>
-    <template if:false={error}>
-        <lightning-card icon-name="standard:contact" class="relation-card slds-card_boundary" title={contactName}>
+    <template if:false="{error}">
+        <lightning-card icon-name="standard:contact" class="relation-card slds-card_boundary" title="{contactName}">
             <lightning-tabset>
-                <lightning-tab label={labels.graphicalView}>
+                <lightning-tab label="{labels.graphicalView}">
                     <c-relationships-tangled-tree
-                        record-id={recordId}
-                        is-lightning-out={isLightningOut}
-                        onaccesserror={handleAccessError}>
+                        record-id="{recordId}"
+                        is-lightning-out="{isLightningOut}"
+                        onaccesserror="{handleAccessError}"
+                    >
                     </c-relationships-tangled-tree>
                 </lightning-tab>
-                <lightning-tab label={labels.tabularView} onactive={handleTabularTabActive}>
-                    <template if:true={_tabularTabReady}>
+                <lightning-tab label="{labels.tabularView}" onactive="{handleTabularTabActive}">
+                    <template if:true="{_tabularTabReady}">
                         <c-relationships-tree-grid
-                            contact-name={contactName}
-                            record-id={recordId}
-                            is-lightning-out={isLightningOut}
-                            onaccesserror={handleAccessError}>
+                            contact-name="{contactName}"
+                            record-id="{recordId}"
+                            is-lightning-out="{isLightningOut}"
+                            onaccesserror="{handleAccessError}"
+                        >
                         </c-relationships-tree-grid>
                     </template>
                 </lightning-tab>
             </lightning-tabset>
         </lightning-card>
     </template>
-    <template if:true={error}>
-        <c-util-illustration heading={labels.insufficientPermissions}
-                             message={labels.accessDeniedMessage}
-                             size="small"
-                             variant="no-access">
+    <template if:true="{error}">
+        <c-util-illustration
+            heading="{labels.insufficientPermissions}"
+            message="{labels.accessDeniedMessage}"
+            size="small"
+            variant="no-access"
+        >
         </c-util-illustration>
     </template>
 </template>

@@ -172,7 +172,10 @@ export default class rd2EntryFormDonorSection extends LightningElement {
                 inlineHelpText: field.inlineHelpText,
                 dataType: field.dataType,
             };
-        } catch (error) {}
+        } catch (error) {
+            // intentionally empty
+        }
+        return undefined;
     }
 
     /**

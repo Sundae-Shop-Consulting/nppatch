@@ -6,7 +6,7 @@ import { getPicklistValues } from "lightning/uiObjectInfoApi";
 import handleUpdatePaymentCommitment from "@salesforce/apex/RD2_EntryFormController.handleUpdatePaymentCommitment";
 import { mockGetIframeReply } from "c/psElevateTokenHandler";
 import { ACCOUNT_HOLDER_TYPES } from "c/geConstants";
-import { ACCOUNT_DONOR_TYPE, CONTACT_DONOR_TYPE } from "c/rd2Service";
+import { CONTACT_DONOR_TYPE } from "c/rd2Service";
 
 jest.mock(
     "@salesforce/apex/RD2_EntryFormController.handleUpdatePaymentCommitment",
@@ -445,7 +445,7 @@ const setupUpdateCommitmentResponse = (responseBody) => {
 };
 
 const setupIframeReply = () => {
-    mockGetIframeReply.mockImplementation((iframe, message, targetOrigin) => {
+    mockGetIframeReply.mockImplementation((_iframe, message) => {
         const type = "post__npsp";
         const token = "a_dummy_token";
         // if message action is "createToken", reply with dummy token immediately
@@ -458,5 +458,6 @@ const setupIframeReply = () => {
         if (message.action === "setPaymentMethod") {
             return { type };
         }
+        return undefined;
     });
 };

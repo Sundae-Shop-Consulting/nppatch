@@ -1,18 +1,18 @@
 <template>
-    <template if:true={isLoading}>
+    <template if:true="{isLoading}">
         <div class="loading-container">
             <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
         </div>
     </template>
 
-    <template if:true={_hasError}>
+    <template if:true="{_hasError}">
         <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
             <span class="slds-assistive-text">error</span>
             <p>{_errorMessage}</p>
         </div>
     </template>
 
-    <template if:true={hasSettings}>
+    <template if:true="{hasSettings}">
         <div class="panel-container">
             <div class="panel-header">
                 <div class="slds-grid slds-grid_vertical-align-center">
@@ -24,8 +24,16 @@
                         </h2>
                     </div>
                     <div class="slds-col_bump-left">
-                        <template if:true={canEdit}>
-                            <lightning-button label={labels.edit} onclick={handleEdit} variant="neutral"></lightning-button>
+                        <template if:true="{canEdit}">
+                            <lightning-button
+                                label="{labels.edit}"
+                                onclick="
+                                    {
+                                        handleEdit;
+                                    }
+                                "
+                                variant="neutral"
+                            ></lightning-button>
                         </template>
                     </div>
                 </div>
@@ -40,16 +48,30 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.advancedNaming}</label>
                     <p class="setting-help">{labels.helpAdvancedNaming}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-input type="toggle" checked={_settingsNaming.Advanced_Household_Naming__c} disabled
+                    <template if:false="{_isEditMode}">
+                        <lightning-input
+                            type="toggle"
+                            checked="{_settingsNaming.Advanced_Household_Naming__c}"
+                            disabled
                             variant="label-hidden"
-                            message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                            message-toggle-active="Enabled"
+                            message-toggle-inactive="Disabled"
+                        >
                         </lightning-input>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-input type="toggle" checked={_workingCopyNaming.Advanced_Household_Naming__c}
-                            onchange={handleAdvancedNamingChange} variant="label-hidden"
-                            message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                    <template if:true="{_isEditMode}">
+                        <lightning-input
+                            type="toggle"
+                            checked="{_workingCopyNaming.Advanced_Household_Naming__c}"
+                            onchange="
+                                {
+                                    handleAdvancedNamingChange;
+                                }
+                            "
+                            variant="label-hidden"
+                            message-toggle-active="Enabled"
+                            message-toggle-inactive="Disabled"
+                        >
                         </lightning-input>
                     </template>
                 </div>
@@ -58,24 +80,52 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.nameFormat}</label>
                     <p class="setting-help">{labels.helpNameFormat}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-combobox value={nameFormatComboValue} options={nameFormatOptions}
-                            disabled variant="label-hidden" class="picklist-input">
+                    <template if:false="{_isEditMode}">
+                        <lightning-combobox
+                            value="{nameFormatComboValue}"
+                            options="{nameFormatOptions}"
+                            disabled
+                            variant="label-hidden"
+                            class="picklist-input"
+                        >
                         </lightning-combobox>
-                        <template if:true={isNameFormatOtherReadOnly}>
-                            <lightning-input type="text" value={_settingsNaming.Household_Name_Format__c}
-                                disabled variant="label-hidden" class="text-input">
+                        <template if:true="{isNameFormatOtherReadOnly}">
+                            <lightning-input
+                                type="text"
+                                value="{_settingsNaming.Household_Name_Format__c}"
+                                disabled
+                                variant="label-hidden"
+                                class="text-input"
+                            >
                             </lightning-input>
                         </template>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-combobox value={nameFormatComboValueEdit} options={nameFormatOptions}
-                            onchange={handleNameFormatChange} variant="label-hidden" class="picklist-input">
+                    <template if:true="{_isEditMode}">
+                        <lightning-combobox
+                            value="{nameFormatComboValueEdit}"
+                            options="{nameFormatOptions}"
+                            onchange="
+                                {
+                                    handleNameFormatChange;
+                                }
+                            "
+                            variant="label-hidden"
+                            class="picklist-input"
+                        >
                         </lightning-combobox>
-                        <template if:true={isNameFormatOtherEdit}>
-                            <lightning-input type="text" label={labels.customNameFormat}
-                                value={_workingCopyNaming.Household_Name_Format__c}
-                                onchange={handleCustomNameFormatChange} variant="label-hidden" class="text-input">
+                        <template if:true="{isNameFormatOtherEdit}">
+                            <lightning-input
+                                type="text"
+                                label="{labels.customNameFormat}"
+                                value="{_workingCopyNaming.Household_Name_Format__c}"
+                                onchange="
+                                    {
+                                        handleCustomNameFormatChange;
+                                    }
+                                "
+                                variant="label-hidden"
+                                class="text-input"
+                            >
                             </lightning-input>
                         </template>
                     </template>
@@ -85,24 +135,52 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.formalGreeting}</label>
                     <p class="setting-help">{labels.helpFormalGreeting}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-combobox value={formalGreetingComboValue} options={formalGreetingOptions}
-                            disabled variant="label-hidden" class="picklist-input">
+                    <template if:false="{_isEditMode}">
+                        <lightning-combobox
+                            value="{formalGreetingComboValue}"
+                            options="{formalGreetingOptions}"
+                            disabled
+                            variant="label-hidden"
+                            class="picklist-input"
+                        >
                         </lightning-combobox>
-                        <template if:true={isFormalGreetingOtherReadOnly}>
-                            <lightning-input type="text" value={_settingsNaming.Formal_Greeting_Format__c}
-                                disabled variant="label-hidden" class="text-input">
+                        <template if:true="{isFormalGreetingOtherReadOnly}">
+                            <lightning-input
+                                type="text"
+                                value="{_settingsNaming.Formal_Greeting_Format__c}"
+                                disabled
+                                variant="label-hidden"
+                                class="text-input"
+                            >
                             </lightning-input>
                         </template>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-combobox value={formalGreetingComboValueEdit} options={formalGreetingOptions}
-                            onchange={handleFormalGreetingChange} variant="label-hidden" class="picklist-input">
+                    <template if:true="{_isEditMode}">
+                        <lightning-combobox
+                            value="{formalGreetingComboValueEdit}"
+                            options="{formalGreetingOptions}"
+                            onchange="
+                                {
+                                    handleFormalGreetingChange;
+                                }
+                            "
+                            variant="label-hidden"
+                            class="picklist-input"
+                        >
                         </lightning-combobox>
-                        <template if:true={isFormalGreetingOtherEdit}>
-                            <lightning-input type="text" label={labels.customFormalGreeting}
-                                value={_workingCopyNaming.Formal_Greeting_Format__c}
-                                onchange={handleCustomFormalGreetingChange} variant="label-hidden" class="text-input">
+                        <template if:true="{isFormalGreetingOtherEdit}">
+                            <lightning-input
+                                type="text"
+                                label="{labels.customFormalGreeting}"
+                                value="{_workingCopyNaming.Formal_Greeting_Format__c}"
+                                onchange="
+                                    {
+                                        handleCustomFormalGreetingChange;
+                                    }
+                                "
+                                variant="label-hidden"
+                                class="text-input"
+                            >
                             </lightning-input>
                         </template>
                     </template>
@@ -112,24 +190,52 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.informalGreeting}</label>
                     <p class="setting-help">{labels.helpInformalGreeting}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-combobox value={informalGreetingComboValue} options={informalGreetingOptions}
-                            disabled variant="label-hidden" class="picklist-input">
+                    <template if:false="{_isEditMode}">
+                        <lightning-combobox
+                            value="{informalGreetingComboValue}"
+                            options="{informalGreetingOptions}"
+                            disabled
+                            variant="label-hidden"
+                            class="picklist-input"
+                        >
                         </lightning-combobox>
-                        <template if:true={isInformalGreetingOtherReadOnly}>
-                            <lightning-input type="text" value={_settingsNaming.Informal_Greeting_Format__c}
-                                disabled variant="label-hidden" class="text-input">
+                        <template if:true="{isInformalGreetingOtherReadOnly}">
+                            <lightning-input
+                                type="text"
+                                value="{_settingsNaming.Informal_Greeting_Format__c}"
+                                disabled
+                                variant="label-hidden"
+                                class="text-input"
+                            >
                             </lightning-input>
                         </template>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-combobox value={informalGreetingComboValueEdit} options={informalGreetingOptions}
-                            onchange={handleInformalGreetingChange} variant="label-hidden" class="picklist-input">
+                    <template if:true="{_isEditMode}">
+                        <lightning-combobox
+                            value="{informalGreetingComboValueEdit}"
+                            options="{informalGreetingOptions}"
+                            onchange="
+                                {
+                                    handleInformalGreetingChange;
+                                }
+                            "
+                            variant="label-hidden"
+                            class="picklist-input"
+                        >
                         </lightning-combobox>
-                        <template if:true={isInformalGreetingOtherEdit}>
-                            <lightning-input type="text" label={labels.customInformalGreeting}
-                                value={_workingCopyNaming.Informal_Greeting_Format__c}
-                                onchange={handleCustomInformalGreetingChange} variant="label-hidden" class="text-input">
+                        <template if:true="{isInformalGreetingOtherEdit}">
+                            <lightning-input
+                                type="text"
+                                label="{labels.customInformalGreeting}"
+                                value="{_workingCopyNaming.Informal_Greeting_Format__c}"
+                                onchange="
+                                    {
+                                        handleCustomInformalGreetingChange;
+                                    }
+                                "
+                                variant="label-hidden"
+                                class="text-input"
+                            >
                             </lightning-input>
                         </template>
                     </template>
@@ -139,14 +245,28 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.nameConnector}</label>
                     <p class="setting-help">{labels.helpNameConnector}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-input type="text" value={_settingsNaming.Name_Connector__c}
-                            disabled variant="label-hidden" class="text-input">
+                    <template if:false="{_isEditMode}">
+                        <lightning-input
+                            type="text"
+                            value="{_settingsNaming.Name_Connector__c}"
+                            disabled
+                            variant="label-hidden"
+                            class="text-input"
+                        >
                         </lightning-input>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-input type="text" value={_workingCopyNaming.Name_Connector__c}
-                            onchange={handleNameConnectorChange} variant="label-hidden" class="text-input">
+                    <template if:true="{_isEditMode}">
+                        <lightning-input
+                            type="text"
+                            value="{_workingCopyNaming.Name_Connector__c}"
+                            onchange="
+                                {
+                                    handleNameConnectorChange;
+                                }
+                            "
+                            variant="label-hidden"
+                            class="text-input"
+                        >
                         </lightning-input>
                     </template>
                 </div>
@@ -155,14 +275,28 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.nameOverrun}</label>
                     <p class="setting-help">{labels.helpNameOverrun}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-input type="text" value={_settingsNaming.Name_Overrun__c}
-                            disabled variant="label-hidden" class="text-input">
+                    <template if:false="{_isEditMode}">
+                        <lightning-input
+                            type="text"
+                            value="{_settingsNaming.Name_Overrun__c}"
+                            disabled
+                            variant="label-hidden"
+                            class="text-input"
+                        >
                         </lightning-input>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-input type="text" value={_workingCopyNaming.Name_Overrun__c}
-                            onchange={handleNameOverrunChange} variant="label-hidden" class="text-input">
+                    <template if:true="{_isEditMode}">
+                        <lightning-input
+                            type="text"
+                            value="{_workingCopyNaming.Name_Overrun__c}"
+                            onchange="
+                                {
+                                    handleNameOverrunChange;
+                                }
+                            "
+                            variant="label-hidden"
+                            class="text-input"
+                        >
                         </lightning-input>
                     </template>
                 </div>
@@ -171,14 +305,28 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.contactOverrunCount}</label>
                     <p class="setting-help">{labels.helpContactOverrunCount}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-input type="number" value={_settingsNaming.Contact_Overrun_Count__c}
-                            disabled variant="label-hidden" class="number-input">
+                    <template if:false="{_isEditMode}">
+                        <lightning-input
+                            type="number"
+                            value="{_settingsNaming.Contact_Overrun_Count__c}"
+                            disabled
+                            variant="label-hidden"
+                            class="number-input"
+                        >
                         </lightning-input>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-input type="number" value={_workingCopyNaming.Contact_Overrun_Count__c}
-                            onchange={handleContactOverrunCountChange} variant="label-hidden" class="number-input">
+                    <template if:true="{_isEditMode}">
+                        <lightning-input
+                            type="number"
+                            value="{_workingCopyNaming.Contact_Overrun_Count__c}"
+                            onchange="
+                                {
+                                    handleContactOverrunCountChange;
+                                }
+                            "
+                            variant="label-hidden"
+                            class="number-input"
+                        >
                         </lightning-input>
                     </template>
                 </div>
@@ -187,14 +335,28 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.implementingClass}</label>
                     <p class="setting-help">{labels.helpImplementingClass}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-input type="text" value={_settingsNaming.Implementing_Class__c}
-                            disabled variant="label-hidden" class="text-input">
+                    <template if:false="{_isEditMode}">
+                        <lightning-input
+                            type="text"
+                            value="{_settingsNaming.Implementing_Class__c}"
+                            disabled
+                            variant="label-hidden"
+                            class="text-input"
+                        >
                         </lightning-input>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-input type="text" value={_workingCopyNaming.Implementing_Class__c}
-                            onchange={handleImplementingClassChange} variant="label-hidden" class="text-input">
+                    <template if:true="{_isEditMode}">
+                        <lightning-input
+                            type="text"
+                            value="{_workingCopyNaming.Implementing_Class__c}"
+                            onchange="
+                                {
+                                    handleImplementingClassChange;
+                                }
+                            "
+                            variant="label-hidden"
+                            class="text-input"
+                        >
                         </lightning-input>
                     </template>
                 </div>
@@ -206,14 +368,28 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.householdRules}</label>
                     <p class="setting-help">{labels.helpHouseholdRules}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-combobox value={_settingsHH.Household_Rules__c} options={householdRulesOptions}
-                            disabled variant="label-hidden" class="picklist-input">
+                    <template if:false="{_isEditMode}">
+                        <lightning-combobox
+                            value="{_settingsHH.Household_Rules__c}"
+                            options="{householdRulesOptions}"
+                            disabled
+                            variant="label-hidden"
+                            class="picklist-input"
+                        >
                         </lightning-combobox>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-combobox value={_workingCopyHH.Household_Rules__c} options={householdRulesOptions}
-                            onchange={handleHouseholdRulesChange} variant="label-hidden" class="picklist-input">
+                    <template if:true="{_isEditMode}">
+                        <lightning-combobox
+                            value="{_workingCopyHH.Household_Rules__c}"
+                            options="{householdRulesOptions}"
+                            onchange="
+                                {
+                                    handleHouseholdRulesChange;
+                                }
+                            "
+                            variant="label-hidden"
+                            class="picklist-input"
+                        >
                         </lightning-combobox>
                     </template>
                 </div>
@@ -222,14 +398,23 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.excludedRecordTypes}</label>
                     <p class="setting-help">{labels.helpExcludedRecordTypes}</p>
-                    <template if:false={_isEditMode}>
+                    <template if:false="{_isEditMode}">
                         <span class="setting-value">{excludedRecordTypesDisplay}</span>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-dual-listbox label={labels.excludedRecordTypes}
-                            source-label="Available" selected-label="Excluded"
-                            options={_contactRecordTypeOptions} value={selectedExcludedRecordTypes}
-                            onchange={handleExcludedRecordTypesChange} variant="label-hidden">
+                    <template if:true="{_isEditMode}">
+                        <lightning-dual-listbox
+                            label="{labels.excludedRecordTypes}"
+                            source-label="Available"
+                            selected-label="Excluded"
+                            options="{_contactRecordTypeOptions}"
+                            value="{selectedExcludedRecordTypes}"
+                            onchange="
+                                {
+                                    handleExcludedRecordTypesChange;
+                                }
+                            "
+                            variant="label-hidden"
+                        >
                         </lightning-dual-listbox>
                     </template>
                 </div>
@@ -241,23 +426,56 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.mailingListReport}</label>
                     <p class="setting-help">{labels.helpMailingListReport}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-input type="text" value={_settingsHH.Household_Mailing_List_ID__c}
-                            disabled variant="label-hidden" class="text-input">
+                    <template if:false="{_isEditMode}">
+                        <lightning-input
+                            type="text"
+                            value="{_settingsHH.Household_Mailing_List_ID__c}"
+                            disabled
+                            variant="label-hidden"
+                            class="text-input"
+                        >
                         </lightning-input>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-input type="text" value={_workingCopyHH.Household_Mailing_List_ID__c}
-                            onchange={handleMailingListReportChange} variant="label-hidden" class="text-input">
+                    <template if:true="{_isEditMode}">
+                        <lightning-input
+                            type="text"
+                            value="{_workingCopyHH.Household_Mailing_List_ID__c}"
+                            onchange="
+                                {
+                                    handleMailingListReportChange;
+                                }
+                            "
+                            variant="label-hidden"
+                            class="text-input"
+                        >
                         </lightning-input>
                     </template>
                 </div>
             </div>
 
-            <template if:true={_isEditMode}>
+            <template if:true="{_isEditMode}">
                 <div class="panel-footer">
-                    <lightning-button label={labels.save} onclick={handleSave} variant="brand" disabled={_isSaving} class="slds-m-right_x-small"></lightning-button>
-                    <lightning-button label={labels.cancel} onclick={handleCancel} variant="neutral" disabled={_isSaving}></lightning-button>
+                    <lightning-button
+                        label="{labels.save}"
+                        onclick="
+                            {
+                                handleSave;
+                            }
+                        "
+                        variant="brand"
+                        disabled="{_isSaving}"
+                        class="slds-m-right_x-small"
+                    ></lightning-button>
+                    <lightning-button
+                        label="{labels.cancel}"
+                        onclick="
+                            {
+                                handleCancel;
+                            }
+                        "
+                        variant="neutral"
+                        disabled="{_isSaving}"
+                    ></lightning-button>
                 </div>
             </template>
         </div>

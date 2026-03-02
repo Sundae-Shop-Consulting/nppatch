@@ -240,16 +240,10 @@ const format = (string, replacements) => {
     if (replacements) {
         const t = typeof replacements;
         let key;
-        const args =
-            "string" === t || "number" === t
-                ? Array.prototype.slice.call(replacements)
-                : replacements;
+        const args = "string" === t || "number" === t ? Array.prototype.slice.call(replacements) : replacements;
         for (key in args) {
             if (Object.prototype.hasOwnProperty.call(args, key)) {
-                formattedString = formattedString.replace(
-                    new RegExp("\\{" + key + "\\}", "gi"),
-                    args[key]
-                );
+                formattedString = formattedString.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
             }
         }
     }
@@ -290,7 +284,7 @@ const debouncify = (anyFunction, wait) => {
 const createUUID = () => {
     let currentTime = new Date().getTime();
     const uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (char) {
-        const randomNumber = (currentTime + Math.random() * 16) % 16 | 0;
+        const randomNumber = ((currentTime + Math.random() * 16) % 16) | 0;
         currentTime = Math.floor(currentTime / 16);
         return (char === "x" ? randomNumber : (randomNumber & 0x3) | 0x8).toString(16);
     });
@@ -298,10 +292,7 @@ const createUUID = () => {
 };
 
 const prefixNamespace = (value) => {
-    const namespace = ISCLIENT_FIELD.fieldApiName.substring(
-        0,
-        ISCLIENT_FIELD.fieldApiName.indexOf("IsClient__c")
-    );
+    const namespace = ISCLIENT_FIELD.fieldApiName.substring(0, ISCLIENT_FIELD.fieldApiName.indexOf("IsClient__c"));
 
     return namespace + value;
 };

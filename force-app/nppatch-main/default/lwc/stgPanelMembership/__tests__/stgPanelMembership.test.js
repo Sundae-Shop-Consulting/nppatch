@@ -41,7 +41,9 @@ jest.mock(
 jest.mock("@salesforce/label/c.stgNavDonations", () => ({ default: "Donations" }), { virtual: true });
 jest.mock("@salesforce/label/c.stgNavMembership", () => ({ default: "Membership" }), { virtual: true });
 jest.mock("@salesforce/label/c.stgHelpMembershipRT", () => ({ default: "Help text for RT" }), { virtual: true });
-jest.mock("@salesforce/label/c.stgHelpMembershipGracePeriod", () => ({ default: "Help text for grace period" }), { virtual: true });
+jest.mock("@salesforce/label/c.stgHelpMembershipGracePeriod", () => ({ default: "Help text for grace period" }), {
+    virtual: true,
+});
 jest.mock("@salesforce/label/c.stgBtnEdit", () => ({ default: "Edit" }), { virtual: true });
 jest.mock("@salesforce/label/c.stgBtnSave", () => ({ default: "Save" }), { virtual: true });
 jest.mock("@salesforce/label/c.stgBtnCancel", () => ({ default: "Cancel" }), { virtual: true });
@@ -99,9 +101,7 @@ describe("c-stg-panel-membership", () => {
         await flushPromises();
 
         const valueElements = element.shadowRoot.querySelectorAll(".setting-value");
-        const hasGracePeriod = Array.from(valueElements).some(
-            (el) => el.textContent === "30"
-        );
+        const hasGracePeriod = Array.from(valueElements).some((el) => el.textContent === "30");
         expect(hasGracePeriod).toBe(true);
     });
 

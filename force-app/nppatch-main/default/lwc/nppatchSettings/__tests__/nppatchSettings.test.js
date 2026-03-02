@@ -11,7 +11,9 @@ jest.mock(
 );
 
 jest.mock("@salesforce/label/c.stgNPPatchSettingsTitle", () => ({ default: "NPPatch Settings" }), { virtual: true });
-jest.mock("@salesforce/label/c.commonInsufficientPermissions", () => ({ default: "Insufficient Permissions" }), { virtual: true });
+jest.mock("@salesforce/label/c.commonInsufficientPermissions", () => ({ default: "Insufficient Permissions" }), {
+    virtual: true,
+});
 jest.mock("@salesforce/label/c.addrCopyConAddBtnFls", () => ({ default: "Access denied" }), { virtual: true });
 
 describe("c-nppatch-settings", () => {
@@ -28,9 +30,7 @@ describe("c-nppatch-settings", () => {
         document.body.appendChild(element);
         await flushPromises();
 
-        const sections = element.shadowRoot.querySelectorAll(
-            "lightning-vertical-navigation-section"
-        );
+        const sections = element.shadowRoot.querySelectorAll("lightning-vertical-navigation-section");
         expect(sections.length).toBe(6);
     });
 

@@ -62,12 +62,8 @@ export default class StgPanelOppNaming extends LightningElement {
         if (result.data) {
             this._records = result.data.map((r) => ({
                 ...r,
-                recordTypesDisplay: r.Opportunity_Record_Types__c
-                    ? r.Opportunity_Record_Types__c
-                    : "all record types",
-                nameFormatDisplay: r.Opportunity_Name_Format__c
-                    ? r.Opportunity_Name_Format__c
-                    : "do not rename",
+                recordTypesDisplay: r.Opportunity_Record_Types__c ? r.Opportunity_Record_Types__c : "all record types",
+                nameFormatDisplay: r.Opportunity_Name_Format__c ? r.Opportunity_Name_Format__c : "do not rename",
             }));
             this._hasError = false;
         } else if (result.error) {
@@ -202,8 +198,12 @@ export default class StgPanelOppNaming extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) {return error.body.message;}
-        if (error?.message) {return error.message;}
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

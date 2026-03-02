@@ -16,7 +16,7 @@ import savingCommitmentMessage from "@salesforce/label/c.RD2_EntryFormSaveCommit
 import savingRDMessage from "@salesforce/label/c.RD2_EntryFormSaveRecurringDonationMessage";
 import FIELD_NAME from "@salesforce/schema/Recurring_Donation__c.Name";
 import FIELD_PAYMENT_METHOD from "@salesforce/schema/Recurring_Donation__c.PaymentMethod__c";
-const FIELD_COMMITMENT_ID = { fieldApiName: 'CommitmentId__c', objectApiName: 'Recurring_Donation__c' };
+const FIELD_COMMITMENT_ID = { fieldApiName: "CommitmentId__c", objectApiName: "Recurring_Donation__c" };
 import FIELD_CONTACT_ID from "@salesforce/schema/Recurring_Donation__c.Contact__c";
 import FIELD_ORGANIZATION_ID from "@salesforce/schema/Recurring_Donation__c.Organization__c";
 
@@ -181,7 +181,9 @@ export default class rd2EditPaymentInformationModal extends LightningElement {
     handleSaveError(error) {
         try {
             this.error = constructErrorMessage(error);
-        } catch (error) {}
+        } catch (e) {
+            // intentionally empty
+        }
 
         this.setSaveButtonDisabled(false);
     }
@@ -190,7 +192,7 @@ export default class rd2EditPaymentInformationModal extends LightningElement {
      * @description log the error
      */
     handleLogError() {
-        logError({ recordId: this.rdRecord.id, errorMessage: this.error.detail }).catch((error) => {});
+        logError({ recordId: this.rdRecord.id, errorMessage: this.error.detail }).catch(() => {});
     }
 
     /**

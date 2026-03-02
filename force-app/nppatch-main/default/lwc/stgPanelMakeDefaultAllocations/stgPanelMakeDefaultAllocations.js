@@ -15,8 +15,7 @@ export default class StgPanelMakeDefaultAllocations extends LightningElement {
         description:
             "Creates default GAU Allocation records for existing Opportunities that don't already have one. This is useful after enabling Default Allocations to backfill historical data.",
         runBatch: "Create Default Allocations",
-        runningMessage:
-            "Batch job submitted. Check the Apex Jobs page for progress.",
+        runningMessage: "Batch job submitted. Check the Apex Jobs page for progress.",
     };
 
     @wire(isAdmin)
@@ -44,8 +43,7 @@ export default class StgPanelMakeDefaultAllocations extends LightningElement {
             );
         } catch (error) {
             this._hasError = true;
-            this._errorMessage =
-                error?.body?.message || "An error occurred.";
+            this._errorMessage = error?.body?.message || "An error occurred.";
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: "Error",

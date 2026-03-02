@@ -115,10 +115,7 @@ export default class StgPanelPayments extends LightningElement {
     }
 
     get excludedOppTypesDisplay() {
-        return this._resolveMultiSelectDisplay(
-            this._settings?.Opp_Types_Excluded_for_Payments__c,
-            this._oppTypes
-        );
+        return this._resolveMultiSelectDisplay(this._settings?.Opp_Types_Excluded_for_Payments__c, this._oppTypes);
     }
 
     get selectedExcludedRecTypes() {
@@ -130,15 +127,21 @@ export default class StgPanelPayments extends LightningElement {
     }
 
     _resolveMultiSelectDisplay(rawValue, options) {
-        if (!rawValue) {return this.labels.none;}
+        if (!rawValue) {
+            return this.labels.none;
+        }
         const ids = rawValue.split(";").filter(Boolean);
-        if (!ids.length) {return this.labels.none;}
+        if (!ids.length) {
+            return this.labels.none;
+        }
         const map = new Map(options.map((o) => [o.value, o.label]));
         return ids.map((id) => map.get(id) || id).join(", ");
     }
 
     _parseMultiSelect(rawValue) {
-        if (!rawValue) {return [];}
+        if (!rawValue) {
+            return [];
+        }
         return rawValue.split(";").filter(Boolean);
     }
 
@@ -157,18 +160,15 @@ export default class StgPanelPayments extends LightningElement {
     }
 
     handleMaxPaymentsChange(event) {
-        this._workingCopy.Max_Payments__c =
-            event.detail.value !== "" ? Number(event.detail.value) : null;
+        this._workingCopy.Max_Payments__c = event.detail.value !== "" ? Number(event.detail.value) : null;
     }
 
     handleExcludedRecTypesChange(event) {
-        this._workingCopy.Opp_RecTypes_Excluded_for_Payments__c =
-            event.detail.value.join(";");
+        this._workingCopy.Opp_RecTypes_Excluded_for_Payments__c = event.detail.value.join(";");
     }
 
     handleExcludedOppTypesChange(event) {
-        this._workingCopy.Opp_Types_Excluded_for_Payments__c =
-            event.detail.value.join(";");
+        this._workingCopy.Opp_Types_Excluded_for_Payments__c = event.detail.value.join(";");
     }
 
     async handleSave() {
@@ -181,8 +181,7 @@ export default class StgPanelPayments extends LightningElement {
                     Max_Payments__c: this._workingCopy.Max_Payments__c,
                     Opp_RecTypes_Excluded_for_Payments__c:
                         this._workingCopy.Opp_RecTypes_Excluded_for_Payments__c || null,
-                    Opp_Types_Excluded_for_Payments__c:
-                        this._workingCopy.Opp_Types_Excluded_for_Payments__c || null,
+                    Opp_Types_Excluded_for_Payments__c: this._workingCopy.Opp_Types_Excluded_for_Payments__c || null,
                 },
             });
             await refreshApex(this._wiredSettingsResult);
@@ -201,8 +200,12 @@ export default class StgPanelPayments extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) {return error.body.message;}
-        if (error?.message) {return error.message;}
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

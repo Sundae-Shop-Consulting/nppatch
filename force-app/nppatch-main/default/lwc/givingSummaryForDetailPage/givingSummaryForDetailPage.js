@@ -2,12 +2,20 @@ import { api, LightningElement } from "lwc";
 import getContactIdByUserId from "@salesforce/apex/DonationHistoryController.getContactIdByUserId";
 
 export default class GivingSummaryForDetailPage extends LightningElement {
-    @api recordId;
+    _recordId;
+
+    @api
+    get recordId() {
+        return this._recordId;
+    }
+    set recordId(value) {
+        this._recordId = value;
+    }
 
     connectedCallback() {
         if (!this.recordId) {
-            getContactIdByUserId().then((recordId) => {
-                this.recordId = recordId;
+            getContactIdByUserId().then((contactId) => {
+                this._recordId = contactId;
             });
         }
     }

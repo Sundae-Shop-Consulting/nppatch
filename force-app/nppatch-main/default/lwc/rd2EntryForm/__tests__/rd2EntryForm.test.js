@@ -456,7 +456,7 @@ describe("c-rd2-entry-form", () => {
 
         it("when Bank Payment is enabled, displays ACH option for Payment Methods field", async () => {
             getInitialView.mockResolvedValue({
-                isBankPaymentAllowed: true
+                isBankPaymentAllowed: true,
             });
 
             const element = createRd2EntryForm();
@@ -475,7 +475,7 @@ describe("c-rd2-entry-form", () => {
 
         it("when Bank Payment is not enabled, do not displays ACH option for Payment Methods field", async () => {
             getInitialView.mockResolvedValue({
-                isBankPaymentAllowed: false
+                isBankPaymentAllowed: false,
             });
 
             const element = createRd2EntryForm();
@@ -1057,7 +1057,7 @@ const generateMockFrom = (recordMock) => {
 };
 
 const setupIframeReply = () => {
-    mockGetIframeReply.mockImplementation((iframe, message, targetOrigin) => {
+    mockGetIframeReply.mockImplementation((_iframe, message) => {
         const type = "post__npsp";
         const token = "a_dummy_token";
         // if message action is "createToken", reply with dummy token immediately
@@ -1070,6 +1070,7 @@ const setupIframeReply = () => {
         if (message.action === "setPaymentMethod") {
             return { type };
         }
+        return undefined;
     });
 };
 

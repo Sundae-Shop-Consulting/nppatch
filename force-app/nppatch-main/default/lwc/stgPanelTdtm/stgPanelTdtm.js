@@ -128,7 +128,7 @@ export default class StgPanelTDTM extends LightningElement {
     }
 
     async handleSaveNew() {
-        if (!this._newRecord.Object__c || !this._newRecord.Class__c || this._newRecord.Load_Order__c == null) {
+        if (!this._newRecord.Object__c || !this._newRecord.Class__c || this._newRecord.Load_Order__c === null) {
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: "Error",
@@ -188,8 +188,12 @@ export default class StgPanelTDTM extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) {return error.body.message;}
-        if (error?.message) {return error.message;}
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

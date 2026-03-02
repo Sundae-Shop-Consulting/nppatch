@@ -1,5 +1,5 @@
-const DISABLE_TOKENIZE_WIDGET_EVENT_NAME = 'disableGeFormWidgetTokenizeCard';
-const LABEL_NEW_LINE = '/0x0A/';
+const DISABLE_TOKENIZE_WIDGET_EVENT_NAME = "disableGeFormWidgetTokenizeCard";
+const LABEL_NEW_LINE = "/0x0A/";
 
 // http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
 const HTTP_CODES = Object.freeze({
@@ -10,51 +10,51 @@ const HTTP_CODES = Object.freeze({
 });
 
 const ACCOUNT_HOLDER_TYPES = Object.freeze({
-    INDIVIDUAL: 'INDIVIDUAL',
-    BUSINESS: 'BUSINESS'
+    INDIVIDUAL: "INDIVIDUAL",
+    BUSINESS: "BUSINESS",
 });
 const ACCOUNT_HOLDER_BANK_TYPES = Object.freeze({
-    CHECKING: 'CHECKING',
-    SAVINGS: 'SAVINGS'
+    CHECKING: "CHECKING",
+    SAVINGS: "SAVINGS",
 });
-const COMMITMENT_INACTIVE_STATUS = 'INACTIVE';
-const BATCH_COMMITMENT_CREATED_STATUS_REASON = 'BATCH_COMMITMENT_CREATED';
-const ACH_CODE = 'WEB';
-const ACH_CONSENT_TYPE = 'OFFLINE';
-const PAYMENT_METHOD_CREDIT_CARD = 'Credit Card';
-const PAYMENT_METHOD_ACH = 'ACH';
-const PAYMENT_UNKNOWN_ERROR_STATUS = 'UNKNOWN ERROR';
-const FAILED = 'Failed';
+const COMMITMENT_INACTIVE_STATUS = "INACTIVE";
+const BATCH_COMMITMENT_CREATED_STATUS_REASON = "BATCH_COMMITMENT_CREATED";
+const ACH_CODE = "WEB";
+const ACH_CONSENT_TYPE = "OFFLINE";
+const PAYMENT_METHOD_CREDIT_CARD = "Credit Card";
+const PAYMENT_METHOD_ACH = "ACH";
+const PAYMENT_UNKNOWN_ERROR_STATUS = "UNKNOWN ERROR";
+const FAILED = "Failed";
 const GIFT_STATUSES = {
-    READY_TO_PROCESS: 'Ready to Process',
-    IMPORTED: 'Imported',
-    DRY_RUN_VALIDATED: 'Dry Run - Validated',
-    DRY_RUN_ERROR: 'Dry Run - Error',
-    FAILED: 'Failed',
-    PROCESSING: 'Processing'
+    READY_TO_PROCESS: "Ready to Process",
+    IMPORTED: "Imported",
+    DRY_RUN_VALIDATED: "Dry Run - Validated",
+    DRY_RUN_ERROR: "Dry Run - Error",
+    FAILED: "Failed",
+    PROCESSING: "Processing",
 };
 const PAYMENT_STATUSES = {
-    AUTHORIZED: 'AUTHORIZED',
-    PENDING: 'PENDING',
-    UNKNOWN_ERROR: 'UNKNOWN ERROR'
+    AUTHORIZED: "AUTHORIZED",
+    PENDING: "PENDING",
+    UNKNOWN_ERROR: "UNKNOWN ERROR",
 };
 
-const TOKENIZE_CREDIT_CARD_EVENT_ACTION = 'createToken';
-const TOKENIZE_ACH_EVENT_ACTION = 'createAchToken';
+const TOKENIZE_CREDIT_CARD_EVENT_ACTION = "createToken";
+const TOKENIZE_ACH_EVENT_ACTION = "createAchToken";
 
 const PAYMENT_METHODS = Object.freeze({
-    ACH: 'ACH',
-    CREDIT_CARD: 'CARD'
+    ACH: "ACH",
+    CREDIT_CARD: "CARD",
 });
 
-const CLICKED_UP = 'clicked-up';
-const CLICKED_DOWN = 'clicked-down';
-const DOWN = 'down';
-const UP = 'up';
+const CLICKED_UP = "clicked-up";
+const CLICKED_DOWN = "clicked-down";
+const DOWN = "down";
+const UP = "up";
 
-const DEFAULT_NAME_ON_CARD = 'Not Provided';
+const DEFAULT_NAME_ON_CARD = "Not Provided";
 
-const RECURRING_TYPE_FIXED = 'Fixed';
+const RECURRING_TYPE_FIXED = "Fixed";
 
 export {
     COMMITMENT_INACTIVE_STATUS,
@@ -80,5 +80,5 @@ export {
     DOWN,
     UP,
     DEFAULT_NAME_ON_CARD,
-    RECURRING_TYPE_FIXED
+    RECURRING_TYPE_FIXED,
 };

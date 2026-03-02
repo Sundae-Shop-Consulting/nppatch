@@ -17,13 +17,14 @@ export default class StgPanelHealthCheck extends LightningElement {
         this._hasResults = false;
         try {
             // TODO: Wire up actual health check Apex method
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            await new Promise((resolve) => setTimeout(resolve, 1500));
             this._results = [
                 {
                     id: "placeholder",
                     status: "info",
                     setting: "Health Check",
-                    description: "The Health Check API is being migrated. For now, please run health checks from the classic NPPatch Settings page.",
+                    description:
+                        "The Health Check API is being migrated. For now, please run health checks from the classic NPPatch Settings page.",
                     solution: null,
                     iconName: "utility:info",
                     rowClass: "result-row result-info",
@@ -34,11 +35,13 @@ export default class StgPanelHealthCheck extends LightningElement {
             this._warnCount = 0;
             this._hasResults = true;
         } catch (error) {
-            this.dispatchEvent(new ShowToastEvent({
-                title: "Error",
-                message: error?.body?.message || "An error occurred running the health check.",
-                variant: "error",
-            }));
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: "Error",
+                    message: error?.body?.message || "An error occurred running the health check.",
+                    variant: "error",
+                })
+            );
         } finally {
             this._isRunning = false;
         }
@@ -49,17 +52,21 @@ export default class StgPanelHealthCheck extends LightningElement {
         this._runningMessage = "Reinitializing TDTM defaults and scheduled jobs...";
         try {
             await runInitialization();
-            this.dispatchEvent(new ShowToastEvent({
-                title: "Success",
-                message: "TDTM defaults and scheduled jobs have been reinitialized.",
-                variant: "success",
-            }));
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: "Success",
+                    message: "TDTM defaults and scheduled jobs have been reinitialized.",
+                    variant: "success",
+                })
+            );
         } catch (error) {
-            this.dispatchEvent(new ShowToastEvent({
-                title: "Error",
-                message: error?.body?.message || "An error occurred during reinitialization.",
-                variant: "error",
-            }));
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: "Error",
+                    message: error?.body?.message || "An error occurred during reinitialization.",
+                    variant: "error",
+                })
+            );
         } finally {
             this._isRunning = false;
         }

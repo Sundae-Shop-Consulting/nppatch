@@ -10,7 +10,9 @@ export default class StgPanelAddrVerification extends LightningElement {
 
     @wire(isAdmin)
     wiredIsAdmin({ data }) {
-        if (data !== undefined) {this._canEdit = data;}
+        if (data !== undefined) {
+            this._canEdit = data;
+        }
     }
 
     @wire(getSettings, { settingsObjectName: "Contacts_And_Orgs_Settings__c" })

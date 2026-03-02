@@ -1,12 +1,11 @@
-import { LightningElement, api } from 'lwc';
-import { apiNameFor } from 'c/utilCommon';
-import GeLabelService from 'c/geLabelService';
+import { LightningElement, api } from "lwc";
+import { apiNameFor } from "c/utilCommon";
+import GeLabelService from "c/geLabelService";
 
-import OCR_ROLE_FIELD from '@salesforce/schema/OpportunityContactRole.Role';
-import OCR_CONTACT_FIELD from '@salesforce/schema/OpportunityContactRole.ContactId';
+import OCR_ROLE_FIELD from "@salesforce/schema/OpportunityContactRole.Role";
+import OCR_CONTACT_FIELD from "@salesforce/schema/OpportunityContactRole.ContactId";
 
 export default class geTemplateBuilderWidget extends LightningElement {
-
     CUSTOM_LABELS = GeLabelService.CUSTOM_LABELS;
 
     @api title;
@@ -18,15 +17,15 @@ export default class geTemplateBuilderWidget extends LightningElement {
     }
 
     get isAllocations() {
-        return this.developerName === 'geFormWidgetAllocation';
+        return this.developerName === "geFormWidgetAllocation";
     }
 
     get isSoftCredit() {
-        return this.developerName === 'geFormWidgetSoftCredit';
+        return this.developerName === "geFormWidgetSoftCredit";
     }
 
     get isTokenizeCard() {
-        return this.developerName === 'geFormWidgetTokenizeCard';
+        return this.developerName === "geFormWidgetTokenizeCard";
     }
 
     get ocrRoleFieldApiName() {

@@ -6,10 +6,33 @@
     position: relative;
 }
 
-.panel-container { padding: 1rem; }
-.panel-header { margin-bottom: 1rem; }
-.panel-body { display: flex; flex-direction: column; gap: 1.5rem; }
-.section-description { font-size: 0.8125rem; color: #706e6b; margin-top: 0.25rem; }
-.action-row { display: flex; align-items: center; gap: 0.75rem; }
-.running-message { font-size: 0.8125rem; color: #706e6b; }
-.inline-spinner { position: relative; height: 1.5rem; width: 1.5rem; }
+.panel-container {
+    padding: 1rem;
+}
+.panel-header {
+    margin-bottom: 1rem;
+}
+.panel-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.section-description {
+    font-size: 0.8125rem;
+    color: #706e6b;
+    margin-top: 0.25rem;
+}
+.action-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.running-message {
+    font-size: 0.8125rem;
+    color: #706e6b;
+}
+.inline-spinner {
+    position: relative;
+    height: 1.5rem;
+    width: 1.5rem;
+}

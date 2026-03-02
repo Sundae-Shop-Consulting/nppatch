@@ -1,16 +1,15 @@
-import { LightningElement, api, track } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-import { getCurrentNamespace, showToast } from 'c/utilCommon';
+import { LightningElement, api, track } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
+import { getCurrentNamespace, showToast } from "c/utilCommon";
 
-import lblPotentialDuplicatesFoundNone from '@salesforce/label/c.potentialDuplicatesFoundNone';
-import lblPotentialDuplicatesFoundOne from '@salesforce/label/c.potentialDuplicatesFoundOne';
-import lblPotentialDuplicatesFoundMultiple from '@salesforce/label/c.potentialDuplicatesFoundMultiple';
-import lblViewDuplicates from '@salesforce/label/c.viewDuplicates';
+import lblPotentialDuplicatesFoundNone from "@salesforce/label/c.potentialDuplicatesFoundNone";
+import lblPotentialDuplicatesFoundOne from "@salesforce/label/c.potentialDuplicatesFoundOne";
+import lblPotentialDuplicatesFoundMultiple from "@salesforce/label/c.potentialDuplicatesFoundMultiple";
+import lblViewDuplicates from "@salesforce/label/c.viewDuplicates";
 
-import getDuplicates from '@salesforce/apex/PotentialDuplicates.getDuplicates';
+import getDuplicates from "@salesforce/apex/PotentialDuplicates.getDuplicates";
 
 export default class PotentialDuplicates extends NavigationMixin(LightningElement) {
-
     @api recordId;
     @api displayCard;
     @api displayToast;
@@ -25,11 +24,11 @@ export default class PotentialDuplicates extends NavigationMixin(LightningElemen
     connectedCallback() {
         if (this.recordId) {
             getDuplicates({ recordId: this.recordId })
-                .then(response => {
+                .then((response) => {
                     this.handleDuplicates(response);
                     this.error = null;
                 })
-                .catch(error => {
+                .catch((error) => {
                     this.error = this.handleError(error);
                 });
         }
@@ -38,8 +37,8 @@ export default class PotentialDuplicates extends NavigationMixin(LightningElemen
     handleDuplicates(response) {
         this.duplicateCount = 0;
         if (response && response.setOfMatches) {
-            this.duplicateIdsParam = this.recordId + ',' + response.setOfMatches;
-            this.duplicateCount = response.setOfMatches.split(',').length;
+            this.duplicateIdsParam = this.recordId + "," + response.setOfMatches;
+            this.duplicateCount = response.setOfMatches.split(",").length;
         }
         this.generateDuplicatesURL();
         this.updateTitle();
@@ -57,10 +56,12 @@ export default class PotentialDuplicates extends NavigationMixin(LightningElemen
 
     handleToast() {
         if (this.displayToast && this.duplicateCount > 0) {
-            const messageData = [{
-                "url": this.viewDuplicatesURL,
-                "label": this.lblViewDuplicatesLink,
-            }];
+            const messageData = [
+                {
+                    url: this.viewDuplicatesURL,
+                    label: this.lblViewDuplicatesLink,
+                },
+            ];
             showToast("", this.lblTitle + " {0}", "info", "sticky", messageData);
         }
     }
@@ -80,12 +81,11 @@ export default class PotentialDuplicates extends NavigationMixin(LightningElemen
 
     generateDuplicatesURL() {
         if (this.duplicateCount > 0) {
-            const contactMerge = 'CON_ContactMerge';
+            const contactMerge = "CON_ContactMerge";
             const namespace = getCurrentNamespace();
             const contactMergePage = namespace ? `${namespace}__${contactMerge}` : contactMerge;
             this.viewDuplicatesURL = "/apex/" + contactMergePage + "?searchIds=" + this.duplicateIdsParam;
-        }
-        else {
+        } else {
             this.viewDuplicatesURL = "";
         }
     }
@@ -94,9 +94,9 @@ export default class PotentialDuplicates extends NavigationMixin(LightningElemen
         this[NavigationMixin.GenerateUrl]({
             type: "standard__webPage",
             attributes: {
-                url: this.viewDuplicatesURL
-            }
-        }).then(generatedUrl => {
+                url: this.viewDuplicatesURL,
+            },
+        }).then((generatedUrl) => {
             window.location.assign(generatedUrl);
         });
     }

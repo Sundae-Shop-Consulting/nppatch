@@ -1,16 +1,16 @@
 <template>
-    <template if:true={isLoading}>
+    <template if:true="{isLoading}">
         <div class="loading-container">
             <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
         </div>
     </template>
-    <template if:true={_hasError}>
+    <template if:true="{_hasError}">
         <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
             <span class="slds-assistive-text">error</span>
             <p>{_errorMessage}</p>
         </div>
     </template>
-    <template if:true={_settings}>
+    <template if:true="{_settings}">
         <div class="panel-container">
             <div class="panel-header">
                 <div class="slds-grid slds-grid_vertical-align-center">
@@ -22,12 +22,25 @@
                         </h2>
                     </div>
                 </div>
-                <p class="section-description">Address Verification uses an external service to validate and standardize mailing addresses on Contact and Account records. When enabled, addresses are verified as they are entered, helping ensure accurate data for mailings and reporting. Configuration of the verification service and API credentials is managed here.</p>
+                <p class="section-description">
+                    Address Verification uses an external service to validate and standardize mailing addresses on
+                    Contact and Account records. When enabled, addresses are verified as they are entered, helping
+                    ensure accurate data for mailings and reporting. Configuration of the verification service and API
+                    credentials is managed here.
+                </p>
             </div>
             <div class="panel-body">
                 <div class="info-card">
-                    <lightning-icon icon-name="utility:info" size="x-small" class="slds-m-right_x-small"></lightning-icon>
-                    <p class="info-text">Address Verification settings are complex and involve external service configuration. For now, please configure these settings from the classic NPPatch Settings page. Full LWC support is coming in a future update.</p>
+                    <lightning-icon
+                        icon-name="utility:info"
+                        size="x-small"
+                        class="slds-m-right_x-small"
+                    ></lightning-icon>
+                    <p class="info-text">
+                        Address Verification settings are complex and involve external service configuration. For now,
+                        please configure these settings from the classic NPPatch Settings page. Full LWC support is
+                        coming in a future update.
+                    </p>
                 </div>
 
                 <h3 class="section-subheader">Current Configuration</h3>
@@ -35,29 +48,48 @@
                 <div class="setting-row">
                     <label class="setting-label">Verification Service</label>
                     <p class="setting-help">The external address verification service provider.</p>
-                    <lightning-input type="text" label="Verification Service"
-                        value={_settings.Class__c} disabled
-                        variant="label-hidden" class="text-input">
+                    <lightning-input
+                        type="text"
+                        label="Verification Service"
+                        value="{_settings.Class__c}"
+                        disabled
+                        variant="label-hidden"
+                        class="text-input"
+                    >
                     </lightning-input>
                 </div>
 
                 <div class="setting-row">
                     <label class="setting-label">Enable Address Verification</label>
-                    <p class="setting-help">When enabled, addresses are automatically verified when records are saved.</p>
-                    <lightning-input type="toggle" label="Enable Address Verification"
-                        checked={_settings.Enable_Automatic_Verification__c} disabled
+                    <p class="setting-help">
+                        When enabled, addresses are automatically verified when records are saved.
+                    </p>
+                    <lightning-input
+                        type="toggle"
+                        label="Enable Address Verification"
+                        checked="{_settings.Enable_Automatic_Verification__c}"
+                        disabled
                         variant="label-hidden"
-                        message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                        message-toggle-active="Enabled"
+                        message-toggle-inactive="Disabled"
+                    >
                     </lightning-input>
                 </div>
 
                 <div class="setting-row">
                     <label class="setting-label">Reject Ambiguous Addresses</label>
-                    <p class="setting-help">When enabled, addresses that cannot be definitively verified are rejected.</p>
-                    <lightning-input type="toggle" label="Reject Ambiguous Addresses"
-                        checked={_settings.Reject_Ambiguous_Addresses__c} disabled
+                    <p class="setting-help">
+                        When enabled, addresses that cannot be definitively verified are rejected.
+                    </p>
+                    <lightning-input
+                        type="toggle"
+                        label="Reject Ambiguous Addresses"
+                        checked="{_settings.Reject_Ambiguous_Addresses__c}"
+                        disabled
                         variant="label-hidden"
-                        message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                        message-toggle-active="Enabled"
+                        message-toggle-inactive="Disabled"
+                    >
                     </lightning-input>
                 </div>
             </div>

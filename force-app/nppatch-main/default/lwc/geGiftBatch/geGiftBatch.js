@@ -1,27 +1,27 @@
-import getGiftBatchViewWithLimitsAndOffsets from '@salesforce/apex/GE_GiftEntryController.getGiftBatchViewWithLimitsAndOffsets';
-import getGiftBatchTotalsBy from '@salesforce/apex/GE_GiftEntryController.getGiftBatchTotalsBy';
-import updateGiftBatchWith from '@salesforce/apex/GE_GiftEntryController.updateGiftBatchWith';
-import deleteGiftFromGiftBatch from '@salesforce/apex/GE_GiftEntryController.deleteGiftFromGiftBatch';
-import addGiftTo from '@salesforce/apex/GE_GiftEntryController.addGiftTo';
-import hasActiveRunningJob from '@salesforce/apex/GE_GiftEntryController.hasActiveRunningJob';
-import isGiftBatchAccessible from '@salesforce/apex/GE_GiftEntryController.isGiftBatchAccessible';
+import getGiftBatchViewWithLimitsAndOffsets from "@salesforce/apex/GE_GiftEntryController.getGiftBatchViewWithLimitsAndOffsets";
+import getGiftBatchTotalsBy from "@salesforce/apex/GE_GiftEntryController.getGiftBatchTotalsBy";
+import updateGiftBatchWith from "@salesforce/apex/GE_GiftEntryController.updateGiftBatchWith";
+import deleteGiftFromGiftBatch from "@salesforce/apex/GE_GiftEntryController.deleteGiftFromGiftBatch";
+import addGiftTo from "@salesforce/apex/GE_GiftEntryController.addGiftTo";
+import hasActiveRunningJob from "@salesforce/apex/GE_GiftEntryController.hasActiveRunningJob";
+import isGiftBatchAccessible from "@salesforce/apex/GE_GiftEntryController.isGiftBatchAccessible";
 
-import runBatchDryRun from '@salesforce/apex/GE_GiftEntryController.runBatchDryRun';
+import runBatchDryRun from "@salesforce/apex/GE_GiftEntryController.runBatchDryRun";
 
-import Gift from 'c/geGift';
+import Gift from "c/geGift";
 
 const DEFAULT_MEMBER_GIFTS_QUERY_LIMIT = 25;
 
 class GiftBatch {
     _accessible = true;
     _id;
-    _name = '';
+    _name = "";
     _totalDonationsAmount = 0;
     _requireTotalMatch = false;
     _expectedCountOfGifts = 0.0;
-    _expectedTotalBatchAmount = 0.00;
-    _batchTableColumns = '';
-    _currencyIsoCode = '';
+    _expectedTotalBatchAmount = 0.0;
+    _batchTableColumns = "";
+    _currencyIsoCode = "";
     _lastModifiedDate;
     _gifts = [];
     _isProcessing = false;
@@ -34,7 +34,7 @@ class GiftBatch {
         totalGiftsCount: 0,
         hasValuesGreaterThanZero: false,
         hasPaymentsWithExpiredAuthorizations: false,
-        isProcessingGifts: false
+        isProcessingGifts: false,
     };
 
     async init(dataImportBatchId) {
@@ -46,7 +46,7 @@ class GiftBatch {
             const viewModel = await getGiftBatchViewWithLimitsAndOffsets({
                 dataImportBatchId: this._id,
                 giftsLimit: DEFAULT_MEMBER_GIFTS_QUERY_LIMIT,
-                giftsOffset: 0
+                giftsOffset: 0,
             });
             this._setPropertiesFrom(viewModel);
         }
@@ -60,16 +60,16 @@ class GiftBatch {
             this._name = viewModel.name;
             this._totalDonationsAmount = viewModel.totalDonationsAmount;
             this._requireTotalMatch = viewModel.requireTotalMatch;
-            this._expectedCountOfGifts = viewModel.expectedCountOfGifts
-            this._expectedTotalBatchAmount = viewModel.expectedTotalBatchAmount
-            this._batchTableColumns = viewModel.batchTableColumns
-            this._currencyIsoCode = viewModel.currencyIsoCode
+            this._expectedCountOfGifts = viewModel.expectedCountOfGifts;
+            this._expectedTotalBatchAmount = viewModel.expectedTotalBatchAmount;
+            this._batchTableColumns = viewModel.batchTableColumns;
+            this._currencyIsoCode = viewModel.currencyIsoCode;
             this._lastModifiedDate = viewModel.lastModifiedDate;
             this._totals = viewModel.totals;
             if (!appendGifts) {
                 this._gifts = [];
             }
-            viewModel.gifts.forEach(giftView => {
+            viewModel.gifts.forEach((giftView) => {
                 this._gifts.push(new Gift(giftView));
             });
         }
@@ -85,7 +85,7 @@ class GiftBatch {
         const newViewModel = await getGiftBatchViewWithLimitsAndOffsets({
             dataImportBatchId: this._id,
             giftsLimit: DEFAULT_MEMBER_GIFTS_QUERY_LIMIT,
-            giftsOffset: giftsOffset
+            giftsOffset: giftsOffset,
         });
         this._setPropertiesFrom(newViewModel, true);
         return this.state();
@@ -99,29 +99,29 @@ class GiftBatch {
 
     async dryRun() {
         await runBatchDryRun({ batchId: this._id, numberOfRowsToReturn: 0 });
-        return await this.latestState();
+        return this.latestState();
     }
 
     async addMember(gift) {
         await addGiftTo({ dataImportBatchId: this._id, inboundGift: gift.forSave() });
-        return await this.latestState(this._gifts.length + 1);
+        return this.latestState(this._gifts.length + 1);
     }
 
     async updateMember(gift) {
         await addGiftTo({ dataImportBatchId: this._id, inboundGift: gift.forSave() });
-        return await this.latestState(this._gifts.length + 1);
+        return this.latestState(this._gifts.length + 1);
     }
 
     async remove(gift) {
         await deleteGiftFromGiftBatch({ batchId: this._id, dataImportId: gift.Id });
-        return await this.latestState(this._gifts.length - 1);
+        return this.latestState(this._gifts.length - 1);
     }
 
     async latestState(length) {
         const newViewModel = await getGiftBatchViewWithLimitsAndOffsets({
             dataImportBatchId: this._id,
             giftsLimit: length || DEFAULT_MEMBER_GIFTS_QUERY_LIMIT,
-            giftsOffset: 0
+            giftsOffset: 0,
         });
         this._setPropertiesFrom(newViewModel);
         return this.state();
@@ -140,7 +140,7 @@ class GiftBatch {
     }
 
     findGiftBy(giftId) {
-        return this._gifts.find(gift => gift.id() === giftId);
+        return this._gifts.find((gift) => gift.id() === giftId);
     }
 
     id() {
@@ -212,8 +212,8 @@ class GiftBatch {
             hasValuesGreaterThanZero: this.hasValuesGreaterThanZero(),
             hasPaymentsWithExpiredAuthorizations: this.hasPaymentsWithExpiredAuthorizations(),
             isProcessingGifts: this.isProcessingGifts(),
-            isAccessible: this.isAccessible()
-        }
+            isAccessible: this.isAccessible(),
+        };
     }
 }
 

@@ -134,19 +134,23 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
         };
     }
 
+    // eslint-disable-next-line no-shadow
     async getInitialView(contactId) {
         try {
             return await getInitialView({ contactId });
         } catch (ex) {
             this.dispatchEvent(new CustomEvent("accesserror", { detail: ex.body.message }));
+            return undefined;
         }
     }
 
+    // eslint-disable-next-line no-shadow
     async getRelationships(contactId) {
         try {
             return await getRelationships({ contactId });
         } catch (ex) {
             this.dispatchEvent(new CustomEvent("accesserror", { detail: ex.body.message }));
+            return undefined;
         }
     }
 
@@ -196,9 +200,8 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
         if (relationship.relationshipId === row.relationshipId) {
             if (children.length > 0) {
                 return this.attachChildrenToRow(children, relationship);
-            } 
-                delete relationship._children;
-            
+            }
+            delete relationship._children;
         }
 
         return relationship;
@@ -270,6 +273,7 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
             case ACTION_DEFS.NEW_RELATIONSHIP.name:
                 this.newRelationship(row.contactId);
                 break;
+            // no default
         }
     }
 
@@ -281,5 +285,6 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
         if (this.contactName && this.labels.relationshipsPlural) {
             return `${this.labels.relationshipsPlural} - ${this.contactName}`;
         }
+        return undefined;
     }
 }

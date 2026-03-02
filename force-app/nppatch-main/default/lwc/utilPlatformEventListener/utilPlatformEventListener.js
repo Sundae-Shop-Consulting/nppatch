@@ -1,27 +1,26 @@
-import {LightningElement, track, api} from 'lwc';
-import { subscribe, unsubscribe, onError, setDebugFlag, isEmpEnabled } from 'lightning/empApi';
-import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import { fireEvent } from 'c/pubsubNoPageRef';
-import getNamespaceWrapper from '@salesforce/apex/BDI_ManageAdvancedMappingCtrl.getNamespaceWrapper';
+import { LightningElement, api } from "lwc";
+import { subscribe, setDebugFlag } from "lightning/empApi";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
+import { fireEvent } from "c/pubsubNoPageRef";
+import getNamespaceWrapper from "@salesforce/apex/BDI_ManageAdvancedMappingCtrl.getNamespaceWrapper";
 
-import stgUnknownError from '@salesforce/label/c.stgUnknownError';
+import stgUnknownError from "@salesforce/label/c.stgUnknownError";
 
 const channelNameContexts = {
-    IS_FULL_NAME: 'isFullName',
-    IN_NAMESPACE_CONTEXT_IS_NAMESPACED: 'inNamespaceContextIsNamespaced',
-    IN_NAMESPACE_CONTEXT_NOT_NAMESPACED: 'inNamespaceContextNotNamespaced',
-    NOT_IN_NAMESPACE_CONTEXT: 'notInNamespaceContext',
-    UNDEFINED: 'undefined',
-    DEFAULT: 'default'
-}
+    IS_FULL_NAME: "isFullName",
+    IN_NAMESPACE_CONTEXT_IS_NAMESPACED: "inNamespaceContextIsNamespaced",
+    IN_NAMESPACE_CONTEXT_NOT_NAMESPACED: "inNamespaceContextNotNamespaced",
+    NOT_IN_NAMESPACE_CONTEXT: "notInNamespaceContext",
+    UNDEFINED: "undefined",
+    DEFAULT: "default",
+};
 
 export default class PlatformEventListener extends LightningElement {
-
     /*******************************************************************************
-    * @description Public property for the default channel name or platform event
-    * name to subscribe to. Parent component can set the value to a channel name or
-    * platform event name.
-    */
+     * @description Public property for the default channel name or platform event
+     * name to subscribe to. Parent component can set the value to a channel name or
+     * platform event name.
+     */
     @api channelName;
 
     _fullChannelName;
@@ -32,26 +31,27 @@ export default class PlatformEventListener extends LightningElement {
     @api isConsoleLogEnabled = false;
     @api isDebugFlagEnabled = false;
 
-    @api _deploymentIds = new Set();
+    _deploymentIds = new Set();
     _deploymentResponses = new Map();
 
     connectedCallback() {
         this.init();
     }
 
-    init = async() => {
+    init = async () => {
         this.nsWrapper = await getNamespaceWrapper();
 
         this.handleChannelName();
         this.handleSubscribe();
         setDebugFlag(this.isDebugFlagEnabled);
-    }
+    };
 
     classifyChannelName() {
-        const isFullName = this.channelName && this.channelName.includes('/event/');
+        const isFullName = this.channelName && this.channelName.includes("/event/");
 
-        const isNamespaceContext = this.nsWrapper.currentNamespace && this.nsWrapper.currentNamespace !== '';
-        const isChannelNamespaced = this.channelName && this.channelName.includes(`${this.nsWrapper.currentNamespace}__`);
+        const isNamespaceContext = this.nsWrapper.currentNamespace && this.nsWrapper.currentNamespace !== "";
+        const isChannelNamespaced =
+            this.channelName && this.channelName.includes(`${this.nsWrapper.currentNamespace}__`);
 
         if (isFullName) {
             return channelNameContexts.IS_FULL_NAME;
@@ -60,7 +60,7 @@ export default class PlatformEventListener extends LightningElement {
         } else if (isNamespaceContext && !isChannelNamespaced) {
             return channelNameContexts.IN_NAMESPACE_CONTEXT_NOT_NAMESPACED;
         } else if (this.channelName && !isNamespaceContext) {
-            return channelNameContexts.NOT_IN_NAMESPACE_CONTEXT
+            return channelNameContexts.NOT_IN_NAMESPACE_CONTEXT;
         } else if (!this.channelName) {
             return channelNameContexts.UNDEFINED;
         }
@@ -90,8 +90,8 @@ export default class PlatformEventListener extends LightningElement {
 
             case channelNameContexts.UNDEFINED:
                 this.handleError({
-                    name: 'Error',
-                    message: `Invalid or missing channel '${this.channelName}'`
+                    name: "Error",
+                    message: `Invalid or missing channel '${this.channelName}'`,
                 });
                 break;
 
@@ -102,8 +102,10 @@ export default class PlatformEventListener extends LightningElement {
         }
     }
 
-    getNamespacePrefixString(){
-        return this.nsWrapper.currentNamespace && this.nsWrapper.currentNamespace !== '' ? this.nsWrapper.currentNamespace + '__' : '';
+    getNamespacePrefixString() {
+        return this.nsWrapper.currentNamespace && this.nsWrapper.currentNamespace !== ""
+            ? this.nsWrapper.currentNamespace + "__"
+            : "";
     }
 
     @api
@@ -115,30 +117,27 @@ export default class PlatformEventListener extends LightningElement {
         }
     }
 
-    showToast(response){
+    showToast(response) {
         const nsPrefix = this.getNamespacePrefixString();
 
-        const status = response.data.payload[nsPrefix + 'Status__c'];
-        const deploymentId = response.data.payload[nsPrefix + 'DeploymentId__c'];
+        const status = response.data.payload[nsPrefix + "Status__c"];
+        const deploymentId = response.data.payload[nsPrefix + "DeploymentId__c"];
 
         const evt = new ShowToastEvent({
-            title: 'Deployment completed with Status: ' + status,
-            message: 'Deployment Id: ' + deploymentId,
-            variant: 'success',
+            title: "Deployment completed with Status: " + status,
+            message: "Deployment Id: " + deploymentId,
+            variant: "success",
         });
         this.dispatchEvent(evt);
     }
 
+    // eslint-disable-next-line no-unused-vars
     log(response) {
-        const nsPrefix = this.getNamespacePrefixString();
-        
-        const status = response.data.payload[nsPrefix + 'Status__c'];
-        const deploymentId = response.data.payload[nsPrefix + 'DeploymentId__c'];
+        // intentionally empty - reserved for debug logging
     }
 
     isMonitored(deploymentId) {
-        return this._deploymentIds
-            && this._deploymentIds.has(deploymentId);
+        return this._deploymentIds && this._deploymentIds.has(deploymentId);
     }
 
     handleSubscribe() {
@@ -150,7 +149,7 @@ export default class PlatformEventListener extends LightningElement {
         };
 
         // Invoke subscribe method of empApi. Pass reference to messageCallback
-        subscribe(this._fullChannelName, -1, messageCallback).then(response => {
+        subscribe(this._fullChannelName, -1, messageCallback).then((response) => {
             // Response contains the subscription information on successful subscribe call
             this.subscription = response;
         });
@@ -158,11 +157,11 @@ export default class PlatformEventListener extends LightningElement {
 
     handleEventReceived(response) {
         const nsPrefix = this.getNamespacePrefixString();
-        const deploymentId = response.data.payload[nsPrefix + 'DeploymentId__c'];
+        const deploymentId = response.data.payload[nsPrefix + "DeploymentId__c"];
 
         if (this.isMonitored(deploymentId)) {
             if (this.isShowToastEnabled) {
-                fireEvent(this.pageRef, 'deploymentResponse', { response: response });
+                fireEvent(this.pageRef, "deploymentResponse", { response: response });
             }
             if (this.isConsoleLogEnabled) {
                 this.log(response);
@@ -173,45 +172,45 @@ export default class PlatformEventListener extends LightningElement {
         this._deploymentResponses.set(deploymentId, response);
     }
 
-    static onError(error) {
+    static handleEmpApiError(error) {
         this.handleError(error);
         // Error contains the server-side error
     }
 
     /*******************************************************************************
-    * @description Creates and dispatches a ShowToastEvent
-    *
-    * @param {string} title: Title of the toast, dispalyed as a heading.
-    * @param {string} message: Message of the toast. It can contain placeholders in
-    * the form of {0} ... {N}. The placeholders are replaced with the links from
-    * messageData param
-    * @param {string} mode: Mode of the toast
-    * @param {array} messageData: List of values that replace the {index} placeholders
-    * in the message param
-    */
+     * @description Creates and dispatches a ShowToastEvent
+     *
+     * @param {string} title: Title of the toast, dispalyed as a heading.
+     * @param {string} message: Message of the toast. It can contain placeholders in
+     * the form of {0} ... {N}. The placeholders are replaced with the links from
+     * messageData param
+     * @param {string} mode: Mode of the toast
+     * @param {array} messageData: List of values that replace the {index} placeholders
+     * in the message param
+     */
     errorToast(title, message, variant, mode, messageData) {
         const event = new ShowToastEvent({
             title: title,
             message: message,
             variant: variant,
             mode: mode,
-            messageData: messageData
+            messageData: messageData,
         });
         this.dispatchEvent(event);
     }
 
     /*******************************************************************************
-    * @description Creates and dispatches an error toast
-    *
-    * @param {object} error: Event holding error details
-    */
+     * @description Creates and dispatches an error toast
+     *
+     * @param {object} error: Event holding error details
+     */
     handleError(error) {
         if (error && error.status && error.body) {
-            this.errorToast(`${error.status} ${error.statusText}`, error.body.message, 'error', 'sticky');
+            this.errorToast(`${error.status} ${error.statusText}`, error.body.message, "error", "sticky");
         } else if (error && error.name && error.message) {
-            this.errorToast(`${error.name}`, error.message, 'error', 'sticky');
+            this.errorToast(`${error.name}`, error.message, "error", "sticky");
         } else {
-            this.errorToast(stgUnknownError, '', 'error', 'sticky');
+            this.errorToast(stgUnknownError, "", "error", "sticky");
         }
     }
 }

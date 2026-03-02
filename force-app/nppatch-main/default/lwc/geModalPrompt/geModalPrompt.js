@@ -1,26 +1,33 @@
-import { LightningElement, api } from 'lwc';
-import { isEmpty } from 'c/utilCommon';
+import { LightningElement, api } from "lwc";
+import { isEmpty } from "c/utilCommon";
 
 export default class geModalPrompt extends LightningElement {
-
-    @api variant = '';
+    @api variant = "";
     @api title;
     @api message;
     @api buttons = [];
 
     get titleSectionComputedClass() {
+        const allowedVariants = [
+            "warning",
+            "shade",
+            "inverse",
+            "alt-inverse",
+            "success",
+            "info",
+            "error",
+            "offline",
+            "default",
+        ];
 
-        const allowedVariants = ['warning', 'shade', 'inverse', 'alt-inverse', 
-            'success', 'info', 'error', 'offline', 'default'];
-
-        const baseClass = ['slds-box', 'slds-box_extension'];
+        const baseClass = ["slds-box", "slds-box_extension"];
 
         if (isEmpty(this.variant) || !allowedVariants.includes(this.variant)) {
-            baseClass.push('slds-theme_default');
-            return baseClass.join(' ');
+            baseClass.push("slds-theme_default");
+            return baseClass.join(" ");
         }
 
-        baseClass.push('slds-theme_'+ this.variant);
-        return baseClass.join(' ');
+        baseClass.push("slds-theme_" + this.variant);
+        return baseClass.join(" ");
     }
 }

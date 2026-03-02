@@ -4,14 +4,12 @@ const validityCheck = (formField) => {
     const fieldIsValid = formField.checkFieldValidity();
 
     if (formField.element !== null && formField.element.required) {
-        return isNotEmpty(formField.value)
-            && formField.value !== formField.CUSTOM_LABELS.commonLabelNone
-            && fieldIsValid;
+        return (
+            isNotEmpty(formField.value) && formField.value !== formField.CUSTOM_LABELS.commonLabelNone && fieldIsValid
+        );
     }
 
     return fieldIsValid;
-}
+};
 
-export {
-    validityCheck
-}
+export { validityCheck };

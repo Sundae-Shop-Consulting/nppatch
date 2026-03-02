@@ -15,11 +15,11 @@ import changeAmountOrFrequency from "@salesforce/label/c.changeAmountOrFrequency
 import stopRecurringDonation from "@salesforce/label/c.stopRecurringDonation";
 import RD2_Actions from "@salesforce/label/c.RD2_Actions";
 import retrieveTableView from "@salesforce/apex/RD2_ETableController.retrieveTableView";
-import TIME_ZONE from '@salesforce/i18n/timeZone';
-import CURRENCY from '@salesforce/i18n/currency';
+import TIME_ZONE from "@salesforce/i18n/timeZone";
+import CURRENCY from "@salesforce/i18n/currency";
 
 import RECURRING_DONATION from "@salesforce/schema/Recurring_Donation__c";
-const FIELD_COMMITMENT_ID = { fieldApiName: 'CommitmentId__c', objectApiName: 'Recurring_Donation__c' };
+const FIELD_COMMITMENT_ID = { fieldApiName: "CommitmentId__c", objectApiName: "Recurring_Donation__c" };
 import FIELD_PAYMENT_METHOD from "@salesforce/schema/Recurring_Donation__c.PaymentMethod__c";
 import FIELD_DAY_OF_MONTH from "@salesforce/schema/Recurring_Donation__c.Day_of_Month__c";
 import FIELD_INSTALLMENTS from "@salesforce/schema/Recurring_Donation__c.Installments__c";
@@ -63,8 +63,8 @@ export default class RecurringDonationTable extends LightningElement {
     allowACHPaymentMethod;
 
     @track tdClasses = "hide-td";
-    @track tdClassesNotHidden= "";
-    @track actionClasses = "dv-dynamic-width"
+    @track tdClassesNotHidden = "";
+    @track actionClasses = "dv-dynamic-width";
 
     formFactor = FORM_FACTOR;
 
@@ -97,7 +97,7 @@ export default class RecurringDonationTable extends LightningElement {
     currency = CURRENCY;
 
     @wire(getObjectInfo, { objectApiName: RECURRING_DONATION })
-    oppInfo({ data, error }) {
+    oppInfo({ data }) {
         if (data) {
             this.paymentMethodLabel = data.fields[FIELD_PAYMENT_METHOD.fieldApiName].label;
             this.dayOfMonthFieldLabel = data.fields[FIELD_DAY_OF_MONTH.fieldApiName].label;
@@ -108,36 +108,36 @@ export default class RecurringDonationTable extends LightningElement {
     }
 
     connectedCallback() {
-      if(!this.isMobile){
-        this.tdClasses = "td-dynamic-width";
-        this.tdClassesNotHidden = "td-dynamic-width";
-        this.actionClasses = "lastColumn dv-dynamic-width";
-      }
-      this.template.addEventListener('keydown', (event) => {
-        const cells   = this.template.querySelectorAll("[tabindex='-1']");
-        let active  = Array.prototype.indexOf.call(cells, event.target);
-        const columns = this.template.querySelectorAll('tr th').length;
-        if (event.keyCode === 37) {
-            active = (active > 0) ? active - 1 : active;
+        if (!this.isMobile) {
+            this.tdClasses = "td-dynamic-width";
+            this.tdClassesNotHidden = "td-dynamic-width";
+            this.actionClasses = "lastColumn dv-dynamic-width";
         }
-        if (event.keyCode === 38) {
-            active = (active - columns >= 0) ? active - columns : active;
-        }
-        if (event.keyCode === 39) {
-            active = (active < cells.length - 1) ? active + 1 : active;
-        }
-        if (event.keyCode === 40) {
-            active = (active + columns <= cells.length - 1) ? active + columns : active;
-        }
-        const activeTDs = this.template.querySelectorAll('.slds-has-focus');
-        for (let i = 0; i < activeTDs.length; i++) {
-            activeTDs[i].classList.remove('slds-has-focus');
-        }
-        cells[active].classList.add('slds-has-focus');
-        cells[active].focus();
-      });
+        this.template.addEventListener("keydown", (event) => {
+            const cells = this.template.querySelectorAll("[tabindex='-1']");
+            let active = Array.prototype.indexOf.call(cells, event.target);
+            const columns = this.template.querySelectorAll("tr th").length;
+            if (event.keyCode === 37) {
+                active = active > 0 ? active - 1 : active;
+            }
+            if (event.keyCode === 38) {
+                active = active - columns >= 0 ? active - columns : active;
+            }
+            if (event.keyCode === 39) {
+                active = active < cells.length - 1 ? active + 1 : active;
+            }
+            if (event.keyCode === 40) {
+                active = active + columns <= cells.length - 1 ? active + columns : active;
+            }
+            const activeTDs = this.template.querySelectorAll(".slds-has-focus");
+            for (let i = 0; i < activeTDs.length; i++) {
+                activeTDs[i].classList.remove("slds-has-focus");
+            }
+            cells[active].classList.add("slds-has-focus");
+            cells[active].focus();
+        });
     }
-  
+
     /**
      * @description Returns whether we are running in mobile or desktop
      * @returns True if it is mobile
@@ -186,7 +186,7 @@ export default class RecurringDonationTable extends LightningElement {
         return DESKTOP_CLASSES_HEAD;
     }
 
-    handlemouseup(e) {
+    handlemouseup() {
         this._tableThColumn = undefined;
         this._tableThInnerDiv = undefined;
         this._pageX = undefined;
@@ -196,7 +196,7 @@ export default class RecurringDonationTable extends LightningElement {
     handlemousedown(e) {
         this._tableThColumn = e.target.parentElement;
         this._tableThInnerDiv = e.target.parentElement;
-        
+
         while (this._tableThColumn.tagName !== "TH") {
             this._tableThColumn = this._tableThColumn.parentNode;
         }
@@ -213,7 +213,7 @@ export default class RecurringDonationTable extends LightningElement {
     handlemousemove(e) {
         if (this._tableThColumn && this._tableThColumn.tagName === "TH") {
             this._diffX = (e.pageX ? e.pageX : e.changedTouches[0].pageX) - this._pageX;
-            if((this._tableThWidth + this._diffX) > 50){
+            if (this._tableThWidth + this._diffX > 50) {
                 this._tableThColumn.style.width = this._tableThWidth + this._diffX + "px";
                 this._tableThInnerDiv.style.width = this._tableThColumn.style.width;
                 const tableThs = this.template.querySelectorAll("th");
@@ -221,7 +221,7 @@ export default class RecurringDonationTable extends LightningElement {
                 tableBodyRows.forEach((row) => {
                     const rowTds = row.querySelectorAll(".dv-dynamic-width");
                     rowTds.forEach((td, ind) => {
-                            rowTds[ind].style.width = tableThs[ind].style.width
+                        rowTds[ind].style.width = tableThs[ind].style.width;
                     });
                 });
             }
@@ -305,27 +305,41 @@ export default class RecurringDonationTable extends LightningElement {
     }
 
     getRecurringDonationFields() {
-        retrieveTableView({elevateFilter:this.donationTypeFilter}).then((data) => {
-            if (data) {
-                this.data = data.map((el) => {
+        retrieveTableView({ elevateFilter: this.donationTypeFilter }).then((responseData) => {
+            if (responseData) {
+                this.data = responseData.map((el) => {
                     const isElevate = el.recurringDonation[FIELD_COMMITMENT_ID.fieldApiName] ? true : false;
-                    const actions = this.actions
-                        .filter((elo) => (elo.name !== "updatePaymentMethod" && !isElevate) || (isElevate))
-                        .map((action) => { return { ...action }; });
+                    const rowActions = this.actions
+                        .filter((elo) => (elo.name !== "updatePaymentMethod" && !isElevate) || isElevate)
+                        .map((action) => {
+                            return { ...action };
+                        });
                     const nexDonationFormatFirstElement = "";
                     const nexDonationFormatSecondElement = "";
-                    
-                    actions.map((action) => {
+
+                    rowActions.forEach((action) => {
                         action.disabled = false;
-                        if(el.status === CLOSED_STATUS || (action.name !== 'stopRecurringDonation' && (this.currency !== "USD" && isElevate))) {
+                        if (
+                            el.status === CLOSED_STATUS ||
+                            (action.name !== "stopRecurringDonation" && this.currency !== "USD" && isElevate)
+                        ) {
                             action.disabled = true;
                         }
-                        
-                        return action;
                     });
-                    el.recurringDonation.Next_Payment_Date__c = new Date(el.recurringDonation.Next_Payment_Date__c).toLocaleDateString(undefined, { timeZone: this.timeZone });
-                    const lastModifiedDate = new Date(el.recurringDonation.LastModifiedDate).toLocaleDateString(undefined, { timeZone: this.timeZone });
-                    return { actions, ...el, nexDonationFormatFirstElement, nexDonationFormatSecondElement, lastModifiedDate };
+                    el.recurringDonation.Next_Payment_Date__c = new Date(
+                        el.recurringDonation.Next_Payment_Date__c
+                    ).toLocaleDateString(undefined, { timeZone: this.timeZone });
+                    const lastModifiedDate = new Date(el.recurringDonation.LastModifiedDate).toLocaleDateString(
+                        undefined,
+                        { timeZone: this.timeZone }
+                    );
+                    return {
+                        actions: rowActions,
+                        ...el,
+                        nexDonationFormatFirstElement,
+                        nexDonationFormatSecondElement,
+                        lastModifiedDate,
+                    };
                 });
             }
         });

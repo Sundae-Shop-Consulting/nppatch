@@ -2,7 +2,7 @@
     <lightning-layout>
         <lightning-layout-item size="12" class="slds-p-left_small slds-p-vertical_small">
             <lightning-layout>
-                <template if:true={isAllocations}>
+                <template if:true="{isAllocations}">
                     <lightning-layout-item size="12">
                         <label class="slds-text-body_regular widget-label slds-p-bottom_xx-small">{uiTitle}</label>
                         <p class="slds-text-body_regular widget-text">{CUSTOM_LABELS.commonGeneralAccountUnit}</p>
@@ -10,14 +10,14 @@
                         <p class="slds-text-body_regular widget-text">{CUSTOM_LABELS.commonPercent}</p>
                     </lightning-layout-item>
                 </template>
-                <template if:true={isSoftCredit}>
+                <template if:true="{isSoftCredit}">
                     <lightning-layout-item size="12">
                         <label class="slds-text-body_regular widget-label slds-p-bottom_xx-small">{uiTitle}</label>
                         <p class="slds-text-body_regular widget-text">{ocrContactFieldApiName}</p>
                         <p class="slds-text-body_regular widget-text">{ocrRoleFieldApiName}</p>
                     </lightning-layout-item>
                 </template>
-                <template if:true={isTokenizeCard}>
+                <template if:true="{isTokenizeCard}">
                     <lightning-layout-item size="12">
                         <label class="slds-text-body_regular widget-label slds-p-bottom_xx-small">{uiTitle}</label>
                         <p class="slds-text-body_regular widget-text">{CUSTOM_LABELS.commonCreditNumber}</p>
@@ -25,8 +25,7 @@
                         <p class="slds-text-body_regular widget-text">{CUSTOM_LABELS.commonCVC}</p>
                         <p class="slds-text-body_regular widget-text">{CUSTOM_LABELS.commonRoutingNumber}</p>
                         <p class="slds-text-body_regular widget-text">{CUSTOM_LABELS.commonAccountNumber}</p>
-                        <c-ge-gateway-select-widget data-id='widgetComponent'>
-                        </c-ge-gateway-select-widget>
+                        <c-ge-gateway-select-widget data-id="widgetComponent"> </c-ge-gateway-select-widget>
                     </lightning-layout-item>
                 </template>
             </lightning-layout>

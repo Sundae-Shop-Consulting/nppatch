@@ -19,9 +19,9 @@ import getInitialView from "@salesforce/apex/RD2_EntryFormController.getInitialV
 import saveRecurringDonation from "@salesforce/apex/RD2_EntryFormController.saveRecurringDonation";
 
 import FIELD_ID from "@salesforce/schema/Recurring_Donation__c.Id";
-const FIELD_ACH_LAST4 = { fieldApiName: 'ACH_Last_4__c', objectApiName: 'Recurring_Donation__c' };
+const FIELD_ACH_LAST4 = { fieldApiName: "ACH_Last_4__c", objectApiName: "Recurring_Donation__c" };
 import FIELD_INSTALLMENT_FREQUENCY from "@salesforce/schema/Recurring_Donation__c.InstallmentFrequency__c";
-const FIELD_COMMITMENT_ID = { fieldApiName: 'CommitmentId__c', objectApiName: 'Recurring_Donation__c' };
+const FIELD_COMMITMENT_ID = { fieldApiName: "CommitmentId__c", objectApiName: "Recurring_Donation__c" };
 import FIELD_CARD_LAST4 from "@salesforce/schema/Recurring_Donation__c.CardLast4__c";
 import FIELD_CARD_EXPIRY_MONTH from "@salesforce/schema/Recurring_Donation__c.CardExpirationMonth__c";
 import FIELD_CARD_EXPIRY_YEAR from "@salesforce/schema/Recurring_Donation__c.CardExpirationYear__c";
@@ -33,6 +33,81 @@ import validatingACHMessage from "@salesforce/label/c.RD2_EntryFormSaveACHMessag
 import { PAYMENT_METHOD_ACH, PAYMENT_METHOD_CREDIT_CARD } from "c/geConstants";
 
 const ELEVATE_PAYMENT_METHODS = [PAYMENT_METHOD_ACH, PAYMENT_METHOD_CREDIT_CARD];
+
+class RecurringDonation {
+    record;
+
+    constructor(record = {}) {
+        this.record = record;
+    }
+
+    withCommitmentResponseBody(responseBody) {
+        this.record[FIELD_COMMITMENT_ID.fieldApiName] = responseBody.id;
+
+        const { cardData, achData } = responseBody;
+
+        if (cardData) {
+            this.withCardData(cardData);
+        } else if (achData) {
+            this.withAchData(achData);
+        }
+
+        return this;
+    }
+
+    withContactId(contactId) {
+        this.record[FIELD_CONTACT_ID.fieldApiName] = contactId;
+        return this;
+    }
+
+    withOrganizationId(organizationId) {
+        this.record[FIELD_ORGANIZATION_ID.fieldApiName] = organizationId;
+        return this;
+    }
+
+    withCommitmentId(commitmentId) {
+        this.record[FIELD_COMMITMENT_ID.fieldApiName] = commitmentId;
+        return this;
+    }
+
+    withId(id) {
+        this.record[FIELD_ID.fieldApiName] = id;
+        return this;
+    }
+
+    withInstallmentFrequency(installmentFrequency) {
+        this.record[FIELD_INSTALLMENT_FREQUENCY.fieldApiName] = installmentFrequency;
+        return this;
+    }
+
+    withInputFieldValues(inputFieldValues) {
+        this.record = { ...this.record, ...inputFieldValues };
+        return this;
+    }
+
+    withPaymentMethod(paymentMethod) {
+        this.record[FIELD_PAYMENT_METHOD.fieldApiName] = paymentMethod;
+        return this;
+    }
+
+    withCardData(cardData) {
+        this.record[FIELD_CARD_LAST4.fieldApiName] = cardData.last4;
+        this.record[FIELD_CARD_EXPIRY_MONTH.fieldApiName] = cardData.expirationMonth;
+        this.record[FIELD_CARD_EXPIRY_YEAR.fieldApiName] = cardData.expirationYear;
+        this.record[FIELD_ACH_LAST4.fieldApiName] = null;
+    }
+
+    withAchData(achData) {
+        this.record[FIELD_CARD_LAST4.fieldApiName] = null;
+        this.record[FIELD_CARD_EXPIRY_MONTH.fieldApiName] = null;
+        this.record[FIELD_CARD_EXPIRY_YEAR.fieldApiName] = null;
+        this.record[FIELD_ACH_LAST4.fieldApiName] = achData.last4;
+    }
+
+    asJSON() {
+        return JSON.stringify(this.record);
+    }
+}
 
 class Rd2Service {
     dispatch(state, action) {
@@ -78,13 +153,16 @@ class Rd2Service {
             // replacing \" with an empty string, otherwise the message content
             // will be misformatted.
             if (JSON.stringify(response.body).includes("'errors'")) {
-                response.body = response.body.replace(/\"/g, "").replace(/\'/g, '"');
+                response.body = response.body.replace(/"/g, "").replace(/'/g, '"');
             }
 
             //parse the error response
             try {
                 response.body = JSON.parse(response.body);
-            } catch (error) {}
+                // eslint-disable-next-line no-unused-vars
+            } catch (error) {
+                // intentionally empty
+            }
         }
 
         const errors = this.getErrors(response);
@@ -126,6 +204,7 @@ class Rd2Service {
         } else if (this.isACH(paymentMethod)) {
             return validatingACHMessage;
         }
+        return undefined;
     }
 
     getPlannedInstallments(rd2State) {
@@ -223,6 +302,7 @@ class Rd2Service {
         return recurringType === RECURRING_TYPE_OPEN;
     }
 
+    // eslint-disable-next-line no-shadow
     isElevateCustomer({ isElevateCustomer }) {
         return isElevateCustomer;
     }
@@ -317,81 +397,6 @@ class Rd2Service {
         const campaignChanged = this.isCampaignChanged(rd2State);
 
         return amountChanged || frequencyChanged || installmentPeriodChanged || campaignChanged;
-    }
-}
-
-class RecurringDonation {
-    record;
-
-    constructor(record = {}) {
-        this.record = record;
-    }
-
-    withCommitmentResponseBody(responseBody) {
-        this.record[FIELD_COMMITMENT_ID.fieldApiName] = responseBody.id;
-
-        const { cardData, achData } = responseBody;
-
-        if (cardData) {
-            this.withCardData(cardData);
-        } else if (achData) {
-            this.withAchData(achData);
-        }
-
-        return this;
-    }
-
-    withContactId(contactId) {
-        this.record[FIELD_CONTACT_ID.fieldApiName] = contactId;
-        return this;
-    }
-
-    withOrganizationId(organizationId) {
-        this.record[FIELD_ORGANIZATION_ID.fieldApiName] = organizationId;
-        return this;
-    }
-
-    withCommitmentId(commitmentId) {
-        this.record[FIELD_COMMITMENT_ID.fieldApiName] = commitmentId;
-        return this;
-    }
-
-    withId(id) {
-        this.record[FIELD_ID.fieldApiName] = id;
-        return this;
-    }
-
-    withInstallmentFrequency(installmentFrequency) {
-        this.record[FIELD_INSTALLMENT_FREQUENCY.fieldApiName] = installmentFrequency;
-        return this;
-    }
-
-    withInputFieldValues(inputFieldValues) {
-        this.record = { ...this.record, ...inputFieldValues };
-        return this;
-    }
-
-    withPaymentMethod(paymentMethod) {
-        this.record[FIELD_PAYMENT_METHOD.fieldApiName] = paymentMethod;
-        return this;
-    }
-
-    withCardData(cardData) {
-        this.record[FIELD_CARD_LAST4.fieldApiName] = cardData.last4;
-        this.record[FIELD_CARD_EXPIRY_MONTH.fieldApiName] = cardData.expirationMonth;
-        this.record[FIELD_CARD_EXPIRY_YEAR.fieldApiName] = cardData.expirationYear;
-        this.record[FIELD_ACH_LAST4.fieldApiName] = null;
-    }
-
-    withAchData(achData) {
-        this.record[FIELD_CARD_LAST4.fieldApiName] = null;
-        this.record[FIELD_CARD_EXPIRY_MONTH.fieldApiName] = null;
-        this.record[FIELD_CARD_EXPIRY_YEAR.fieldApiName] = null;
-        this.record[FIELD_ACH_LAST4.fieldApiName] = achData.last4;
-    }
-
-    asJSON() {
-        return JSON.stringify(this.record);
     }
 }
 

@@ -1,133 +1,177 @@
 <template>
-    <template if:true={hasError}>
+    <template if:true="{hasError}">
         <div class="slds-notify slds-notify_alert slds-alert_error slds-m-bottom_medium" role="alert">
             <span class="slds-assistive-text">error</span>
             <p>{errorMessage}</p>
         </div>
     </template>
 
-    <template if:true={isLoading}>
-        <div class="slds-is-relative slds-p-around_large" style="min-height: 100px;">
+    <template if:true="{isLoading}">
+        <div class="slds-is-relative slds-p-around_large" style="min-height: 100px">
             <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
         </div>
     </template>
 
-    <template if:true={isRd2Disabled}>
+    <template if:true="{isRd2Disabled}">
         <div class="slds-m-around_medium">
-            <c-util-illustration title={labels.commonError} size="small" message={labels.rd2DisabledError} variant="no-access"></c-util-illustration>
+            <c-util-illustration
+                title="{labels.commonError}"
+                size="small"
+                message="{labels.rd2DisabledError}"
+                variant="no-access"
+            ></c-util-illustration>
         </div>
     </template>
 
-    <template if:true={isReady}>
+    <template if:true="{isReady}">
         <div class="panel-body">
             <div class="setting-row">
                 <label class="setting-label">{labels.daysForLapsed}</label>
-                <p class="setting-help"><lightning-formatted-rich-text value={labels.lapsedDefinition}></lightning-formatted-rich-text></p>
-                <template if:false={isEdit}>
+                <p class="setting-help">
+                    <lightning-formatted-rich-text value="{labels.lapsedDefinition}"></lightning-formatted-rich-text>
+                </p>
+                <template if:false="{isEdit}">
                     <div class="setting-value" data-id="daysForLapsed">{numberOfDaysForLapsed}</div>
                 </template>
-                <template if:true={isEdit}>
+                <template if:true="{isEdit}">
                     <lightning-input
                         type="number"
                         name="daysForLapsed"
                         min="0"
-                        max={maximumDaysForLapsed}
-                        label={labels.daysForLapsed}
-                        value={inputDaysForLapsed}
-                        onchange={handleDaysForLapsedChanged}
-                        message-when-range-overflow={labels.daysForLapsedTooLarge}
+                        max="{maximumDaysForLapsed}"
+                        label="{labels.daysForLapsed}"
+                        value="{inputDaysForLapsed}"
+                        onchange="
+                            {
+                                handleDaysForLapsedChanged;
+                            }
+                        "
+                        message-when-range-overflow="{labels.daysForLapsedTooLarge}"
                         data-id="lapsedDaysInput"
                         variant="label-hidden"
-                        class="number-input">
+                        class="number-input"
+                    >
                     </lightning-input>
                 </template>
             </div>
 
             <div class="setting-row">
                 <label class="setting-label">{labels.setLapsedStatus}</label>
-                <template if:false={isEdit}>
+                <template if:false="{isEdit}">
                     <div class="setting-value" data-id="lapsedStatus">{lapsedStatus}</div>
                 </template>
-                <template if:true={isEdit}>
+                <template if:true="{isEdit}">
                     <lightning-combobox
                         name="lapsedStatus"
-                        label={labels.setLapsedStatus}
-                        options={lapsedStatusOption}
-                        value={inputLapsedStatus}
-                        onchange={handleLapsedStatusChanged}
+                        label="{labels.setLapsedStatus}"
+                        options="{lapsedStatusOption}"
+                        value="{inputLapsedStatus}"
+                        onchange="
+                            {
+                                handleLapsedStatusChanged;
+                            }
+                        "
                         variant="label-hidden"
-                        class="picklist-input">
+                        class="picklist-input"
+                    >
                     </lightning-combobox>
                 </template>
             </div>
 
             <div class="setting-row">
                 <label class="setting-label">{labels.daysForClosed}</label>
-                <p class="setting-help"><lightning-formatted-rich-text value={labels.closedDefinition}></lightning-formatted-rich-text></p>
-                <template if:false={isEdit}>
+                <p class="setting-help">
+                    <lightning-formatted-rich-text value="{labels.closedDefinition}"></lightning-formatted-rich-text>
+                </p>
+                <template if:false="{isEdit}">
                     <div class="setting-value" data-id="daysForClosed">{numberOfDaysForClosed}</div>
                 </template>
-                <template if:true={isEdit}>
+                <template if:true="{isEdit}">
                     <lightning-input
                         type="number"
                         name="daysForClosed"
-                        min={minimumDaysForClosed}
-                        max={maximumDaysForClosed}
-                        label={labels.daysForClosed}
-                        value={inputDaysForClosed}
-                        onchange={handleDaysForClosedChanged}
-                        message-when-range-underflow={minimumDaysForClosedErrorMessage}
+                        min="{minimumDaysForClosed}"
+                        max="{maximumDaysForClosed}"
+                        label="{labels.daysForClosed}"
+                        value="{inputDaysForClosed}"
+                        onchange="
+                            {
+                                handleDaysForClosedChanged;
+                            }
+                        "
+                        message-when-range-underflow="{minimumDaysForClosedErrorMessage}"
                         data-id="closedDaysInput"
                         variant="label-hidden"
-                        class="number-input">
+                        class="number-input"
+                    >
                     </lightning-input>
                 </template>
             </div>
 
             <div class="setting-row">
                 <label class="setting-label">{labels.setClosedStatus}</label>
-                <template if:false={isEdit}>
+                <template if:false="{isEdit}">
                     <div class="setting-value" data-id="closedStatus">{closedStatus}</div>
                 </template>
-                <template if:true={isEdit}>
+                <template if:true="{isEdit}">
                     <lightning-combobox
                         name="closedStatus"
-                        label={labels.setClosedStatus}
-                        options={closedStatusOption}
-                        value={inputClosedStatus}
-                        onchange={handleClosedStatusChanged}
+                        label="{labels.setClosedStatus}"
+                        options="{closedStatusOption}"
+                        value="{inputClosedStatus}"
+                        onchange="
+                            {
+                                handleClosedStatusChanged;
+                            }
+                        "
                         variant="label-hidden"
-                        class="picklist-input">
+                        class="picklist-input"
+                    >
                     </lightning-combobox>
                 </template>
             </div>
         </div>
 
         <div class="panel-footer">
-            <template if:false={isEdit}>
+            <template if:false="{isEdit}">
                 <lightning-button
-                    label={labels.editButtonLabel}
-                    title={labels.editButtonLabel}
-                    onclick={handleEdit}
+                    label="{labels.editButtonLabel}"
+                    title="{labels.editButtonLabel}"
+                    onclick="
+                        {
+                            handleEdit;
+                        }
+                    "
                     data-id="editButton"
-                    variant="neutral">
+                    variant="neutral"
+                >
                 </lightning-button>
             </template>
-            <template if:true={isEdit}>
+            <template if:true="{isEdit}">
                 <lightning-button
                     variant="brand"
-                    label={labels.saveButtonLabel}
-                    title={labels.saveButtonLabel}
-                    onclick={handleSave}
-                    disabled={isSaveDisabled}
+                    label="{labels.saveButtonLabel}"
+                    title="{labels.saveButtonLabel}"
+                    onclick="
+                        {
+                            handleSave;
+                        }
+                    "
+                    disabled="{isSaveDisabled}"
                     class="slds-m-right_x-small"
-                    data-id="saveButton">
+                    data-id="saveButton"
+                >
                 </lightning-button>
                 <lightning-button
-                    label={labels.cancelButtonLabel}
-                    title={labels.cancelButtonLabel}
-                    onclick={handleCancel}
-                    data-id="cancelButton">
+                    label="{labels.cancelButtonLabel}"
+                    title="{labels.cancelButtonLabel}"
+                    onclick="
+                        {
+                            handleCancel;
+                        }
+                    "
+                    data-id="cancelButton"
+                >
                 </lightning-button>
             </template>
         </div>

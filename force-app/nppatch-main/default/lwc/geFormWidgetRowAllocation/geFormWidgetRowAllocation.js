@@ -1,20 +1,15 @@
-import {LightningElement, api} from 'lwc';
-import GeLabelService from 'c/geLabelService';
-import {
-    apiNameFor,
-    isEmpty,
-    isNumeric,
-    asyncInterval
-} from 'c/utilCommon';
+import { LightningElement, api } from "lwc";
+import GeLabelService from "c/geLabelService";
+import { apiNameFor, isEmpty, isNumeric, asyncInterval } from "c/utilCommon";
 
-import DI_DONATION_AMOUNT_FIELD from '@salesforce/schema/DataImport__c.Donation_Amount__c';
+import DI_DONATION_AMOUNT_FIELD from "@salesforce/schema/DataImport__c.Donation_Amount__c";
 
-import ALLOCATION_OBJECT from '@salesforce/schema/Allocation__c';
-import AMOUNT_FIELD from '@salesforce/schema/Allocation__c.Amount__c';
-import PERCENT_FIELD from '@salesforce/schema/Allocation__c.Percent__c';
-import GAU_FIELD from '@salesforce/schema/Allocation__c.General_Accounting_Unit__c';
+import ALLOCATION_OBJECT from "@salesforce/schema/Allocation__c";
+import AMOUNT_FIELD from "@salesforce/schema/Allocation__c.Amount__c";
+import PERCENT_FIELD from "@salesforce/schema/Allocation__c.Percent__c";
+import GAU_FIELD from "@salesforce/schema/Allocation__c.General_Accounting_Unit__c";
 
-const DATA_FIELD_NAME_SELECTOR = 'data-fieldname';
+const DATA_FIELD_NAME_SELECTOR = "data-fieldname";
 
 export default class GeFormWidgetRowAllocation extends LightningElement {
     @api rowIndex;
@@ -26,8 +21,7 @@ export default class GeFormWidgetRowAllocation extends LightningElement {
 
     async connectedCallback() {
         const shouldPlaceFocusOnGauLookup =
-            !this._hasFocusedOnGauLookupOnFirstRender
-            && !this.row?.record[apiNameFor(GAU_FIELD)];
+            !this._hasFocusedOnGauLookupOnFirstRender && !this.row?.record[apiNameFor(GAU_FIELD)];
 
         if (shouldPlaceFocusOnGauLookup) {
             await asyncInterval(this.focusOnGauLookup, 50);
@@ -35,16 +29,18 @@ export default class GeFormWidgetRowAllocation extends LightningElement {
     }
 
     focusOnGauLookup = async () => {
-        const gauLookup = this.template.querySelector(`lightning-input-field[data-fieldname='${this.gauFieldApiName}']`);
+        const gauLookup = this.template.querySelector(
+            `lightning-input-field[data-fieldname='${this.gauFieldApiName}']`
+        );
         gauLookup.focus();
 
         const activeElement = this.template.activeElement;
-        if (activeElement && activeElement.getAttribute('data-fieldname') === this.gauFieldApiName) {
+        if (activeElement && activeElement.getAttribute("data-fieldname") === this.gauFieldApiName) {
             this._hasFocusedOnGauLookupOnFirstRender = true;
             return true;
         }
         return false;
-    }
+    };
 
     _remainingAmount;
     @api
@@ -60,10 +56,10 @@ export default class GeFormWidgetRowAllocation extends LightningElement {
 
         if (this.row.isDefaultGAU) {
             this.handleFieldValueChange({
-               detail: {
+                detail: {
                     fieldApiName: this.allocationAmountFieldApiName,
-                    value: this.remainingAmount
-               }
+                    value: this.remainingAmount,
+                },
             });
         }
     }
@@ -71,7 +67,7 @@ export default class GeFormWidgetRowAllocation extends LightningElement {
     _totalAmountFromState;
     _widgetDataFromState;
     @api
-    get widgetDataFromState(){
+    get widgetDataFromState() {
         return this._widgetDataFromState;
     }
     set widgetDataFromState(value) {
@@ -85,12 +81,12 @@ export default class GeFormWidgetRowAllocation extends LightningElement {
 
     reallocateAmountByPercent() {
         const percentValue = this.row.record[this.allocationPercentageFieldApiName];
-        if(isNumeric(percentValue) && percentValue >= 0) {
+        if (isNumeric(percentValue) && percentValue >= 0) {
             this.handleFieldValueChange({
                 detail: {
                     fieldApiName: this.allocationAmountFieldApiName,
-                    value: this.calculateAmountFromPercent(percentValue)
-                }
+                    value: this.calculateAmountFromPercent(percentValue),
+                },
             });
         }
     }
@@ -102,41 +98,44 @@ export default class GeFormWidgetRowAllocation extends LightningElement {
         if (event.target && event.target.hasAttribute(DATA_FIELD_NAME_SELECTOR)) {
             changedField = {
                 fieldApiName: event.target.getAttribute(DATA_FIELD_NAME_SELECTOR),
-                value: event.target.value
-            }
-        // Handle when the function is called from other functions
+                value: event.target.value,
+            };
+            // Handle when the function is called from other functions
         } else {
             changedField = event.detail;
         }
 
         if (changedField.fieldApiName === this.allocationPercentageFieldApiName) {
-            dependentFieldChanges = {...
-                {[this.allocationAmountFieldApiName]: this.calculateAmountFromPercent(changedField.value)}
+            dependentFieldChanges = {
+                ...{ [this.allocationAmountFieldApiName]: this.calculateAmountFromPercent(changedField.value) },
             };
         }
 
-        this.dispatchEvent(new CustomEvent('rowvaluechange', {
-            detail: {
-                rowIndex: this.rowIndex,
-                changedFieldAndValue: {
-                    [changedField.fieldApiName] : changedField.value,
-                    ...dependentFieldChanges
-                }
-            }
-        }));
-    }
+        this.dispatchEvent(
+            new CustomEvent("rowvaluechange", {
+                detail: {
+                    rowIndex: this.rowIndex,
+                    changedFieldAndValue: {
+                        [changedField.fieldApiName]: changedField.value,
+                        ...dependentFieldChanges,
+                    },
+                },
+            })
+        );
+    };
 
     calculateAmountFromPercent(percentValue) {
         const percentDecimal = parseFloat(percentValue) / 100;
         // convert to cents instead of dollars, avoids floating point problems
         const totalInCents = this._totalAmountFromState * 100;
 
-        return Math.round(totalInCents * percentDecimal) / 100
+        return Math.round(totalInCents * percentDecimal) / 100;
     }
 
     remove() {
+        // eslint-disable-next-line no-shadow
         const { rowIndex, row } = this;
-        this.dispatchEvent(new CustomEvent('remove', { detail: { rowIndex, row } }));
+        this.dispatchEvent(new CustomEvent("remove", { detail: { rowIndex, row } }));
     }
 
     get isRemovable() {
@@ -180,25 +179,30 @@ export default class GeFormWidgetRowAllocation extends LightningElement {
     }
 
     get shouldDisablePercent() {
-        if (this.row.disabled 
-            || (isEmpty(this.row.record[apiNameFor(PERCENT_FIELD)])
-                && Number.parseFloat(this.row.record[apiNameFor(AMOUNT_FIELD)]) > 0)) {
+        if (
+            this.row.disabled ||
+            (isEmpty(this.row.record[apiNameFor(PERCENT_FIELD)]) &&
+                Number.parseFloat(this.row.record[apiNameFor(AMOUNT_FIELD)]) > 0)
+        ) {
             return true;
         }
+        return false;
     }
 
     get shouldDisableAmount() {
-        if (this.row.disabled 
-            || (!isEmpty(this.row.record[apiNameFor(PERCENT_FIELD)])
-                && Number.parseFloat(this.row.record[apiNameFor(PERCENT_FIELD)]) > 0)) {
-
+        if (
+            this.row.disabled ||
+            (!isEmpty(this.row.record[apiNameFor(PERCENT_FIELD)]) &&
+                Number.parseFloat(this.row.record[apiNameFor(PERCENT_FIELD)]) > 0)
+        ) {
             return true;
         }
+        return false;
     }
 
     get shouldDisableGAULookup() {
         return this.row.disabled;
-    }    
+    }
 
     get qaLocatorDeleteRow() {
         return `button ${this.CUSTOM_LABELS.commonDelete} ${this.rowIndex}`;

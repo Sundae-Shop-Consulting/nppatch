@@ -90,12 +90,10 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
             this.setFields(this.rdObjectInfo.fields);
             this.buildFieldDescribes();
             this.isLoading = !this.isEverythingLoaded();
-            
 
-            this.cssHideExperienceSite = this.isExperienceSite ? 'slds-hide' : '';
-            this.cssHideOnlyPaymentModal = this.isPaymentModal ? 'slds-hide' : '';
-            this.cssHideOnlyAmountFrequencyModal = this.isAmountFrequencyModal ? 'slds-hide' : '';
-
+            this.cssHideExperienceSite = this.isExperienceSite ? "slds-hide" : "";
+            this.cssHideOnlyPaymentModal = this.isPaymentModal ? "slds-hide" : "";
+            this.cssHideOnlyAmountFrequencyModal = this.isAmountFrequencyModal ? "slds-hide" : "";
         } else if (response.error) {
             this.hasError = true;
             this.dispatchEvent(new CustomEvent("errorevent", { detail: { value: response.error } }));
@@ -110,20 +108,22 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
      * @description Applies CSS styles to rendered elements only for Experience Sites.
      */
     applyCSSOnlyOnEperienceSite() {
-        this.cssHideExperienceSite = this.isExperienceSite ? 'slds-hide' : '';
-        this.cssHideOnlyPaymentModal = this.isPaymentModal ? 'slds-hide' : '';
-        this.cssHideOnlyAmountFrequencyModal = this.isAmountFrequencyModal ? 'slds-hide' : '';
-        
-        
-        if(this.isExperienceSite && this.firstRendered) {
-            if(this.rd2State.dayOfMonth) {
+        this.cssHideExperienceSite = this.isExperienceSite ? "slds-hide" : "";
+        this.cssHideOnlyPaymentModal = this.isPaymentModal ? "slds-hide" : "";
+        this.cssHideOnlyAmountFrequencyModal = this.isAmountFrequencyModal ? "slds-hide" : "";
+
+        if (this.isExperienceSite && this.firstRendered) {
+            if (this.rd2State.dayOfMonth) {
                 this.isMonthlyDonation = !this.isElevateDonation ? true : false;
             } else {
                 this.isMonthlyDonation = false;
                 const dd = String(new Date().getDate()).padStart(2, "0");
                 this.rd2State.dayOfMonth = dd === 31 ? LAST_DAY_OF_MONTH : dd;
             }
-            this.cssLastDay = !this.isMonthlyDonation || this.isPaymentModal ? 'slds-hide' : 'slds-p-right_small slds-p-left_small slds-size_12-of-12 slds-large-size_4-of-12 fixExperienceDayOfMonth';
+            this.cssLastDay =
+                !this.isMonthlyDonation || this.isPaymentModal
+                    ? "slds-hide"
+                    : "slds-p-right_small slds-p-left_small slds-size_12-of-12 slds-large-size_4-of-12 fixExperienceDayOfMonth";
         }
         this.firstRendered = false;
     }
@@ -147,8 +147,8 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
      * getRecord method can accept into its 'fields' parameter.
      */
     buildFieldDescribes() {
-        const { fields, apiName } = this.rdObjectInfo;
-        return Object.keys(fields).map((fieldApiName) => {
+        const { fields: rdFields, apiName } = this.rdObjectInfo;
+        return Object.keys(rdFields).map((fieldApiName) => {
             return {
                 fieldApiName: fieldApiName,
                 objectApiName: apiName,
@@ -183,7 +183,10 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
                 inlineHelpText: field.inlineHelpText,
                 dataType: field.dataType,
             };
-        } catch (error) {}
+        } catch (_e) {
+            // Field info doesn't exist or isn't accessible; return undefined
+        }
+        return undefined;
     }
 
     /**
@@ -294,13 +297,19 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
      * @param event
      */
     toggleLastDayFieldOnExperienceSite(event) {
-        if(this.isExperienceSite) {
-            if((event.target.value === MONTHLY && this.isElevateDonation && this.isInitiallyMonthlyDonation)||!(event.target.value === MONTHLY)) {
+        if (this.isExperienceSite) {
+            if (
+                (event.target.value === MONTHLY && this.isElevateDonation && this.isInitiallyMonthlyDonation) ||
+                !(event.target.value === MONTHLY)
+            ) {
                 this.isMonthlyDonation = false;
             } else {
                 this.isMonthlyDonation = true;
             }
-            this.cssLastDay = !this.isMonthlyDonation || this.isPaymentModal ? 'slds-hide' : 'slds-p-right_small slds-p-left_small slds-size_12-of-12 slds-large-size_4-of-12 fixExperienceDayOfMonth';
+            this.cssLastDay =
+                !this.isMonthlyDonation || this.isPaymentModal
+                    ? "slds-hide"
+                    : "slds-p-right_small slds-p-left_small slds-size_12-of-12 slds-large-size_4-of-12 fixExperienceDayOfMonth";
         }
     }
 
@@ -325,15 +334,14 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
     }
 
     get _scheduleRowColumnSize() {
-        if(this.isAmountFrequencyModal) {
+        if (this.isAmountFrequencyModal) {
             return 4;
         } else if (this.rd2State.periodType === PERIOD.MONTHLY) {
             return 6;
         } else if (this.rd2State.recurringPeriod === PERIOD.MONTHLY) {
             return 3;
-        } 
-            return 4;
-        
+        }
+        return 4;
     }
 
     get _isAdvancedMode() {
@@ -451,6 +459,7 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
                         data[this.fields.period.apiName] = input.value;
                     }
                     break;
+                // no default
             }
         });
 
@@ -474,7 +483,6 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
         this.isLoading = true;
     }
 
-
     /** Deprecated API properties */
     @api recordId;
 
@@ -489,5 +497,4 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
 
     @api
     forceRefresh() {}
-    
 }

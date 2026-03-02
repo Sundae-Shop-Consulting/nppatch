@@ -139,7 +139,11 @@ export default class StgPanelErrorNotif extends LightningElement {
             this._isEditMode = false;
             this._workingCopy = {};
             this.dispatchEvent(
-                new ShowToastEvent({ title: "Success", message: "Error notification settings saved.", variant: "success" })
+                new ShowToastEvent({
+                    title: "Success",
+                    message: "Error notification settings saved.",
+                    variant: "success",
+                })
             );
         } catch (error) {
             this.dispatchEvent(
@@ -151,8 +155,12 @@ export default class StgPanelErrorNotif extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) {return error.body.message;}
-        if (error?.message) {return error.message;}
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

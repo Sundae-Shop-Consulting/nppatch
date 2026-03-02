@@ -1,18 +1,19 @@
 <template>
-    <template if:true={_isLoading}>
+    <template if:true="{_isLoading}">
         <div class="loading-container">
             <lightning-spinner alternative-text="Loading"></lightning-spinner>
         </div>
     </template>
-    <template if:true={_isAccessDenied}>
+    <template if:true="{_isAccessDenied}">
         <c-util-illustration
-            heading={labels.insufficientPermissions}
-            message={labels.accessDeniedMessage}
+            heading="{labels.insufficientPermissions}"
+            message="{labels.accessDeniedMessage}"
             size="small"
-            variant="no-access">
+            variant="no-access"
+        >
         </c-util-illustration>
     </template>
-    <template if:true={isReady}>
+    <template if:true="{isReady}">
         <div class="slds-page-header slds-m-bottom_small">
             <div class="slds-page-header__row">
                 <div class="slds-page-header__col-title">
@@ -30,17 +31,21 @@
         <div class="slds-grid slds-gutters_direct slds-p-horizontal_medium">
             <div class="slds-col slds-size_3-of-12 nav-sidebar">
                 <lightning-vertical-navigation
-                    selected-item={_activePanel}
-                    onselect={handleNavSelect}>
-                    <template for:each={navGroups} for:item="group">
-                        <lightning-vertical-navigation-section
-                            key={group.label}
-                            label={group.label}>
-                            <template for:each={group.items} for:item="item">
+                    selected-item="{_activePanel}"
+                    onselect="
+                        {
+                            handleNavSelect;
+                        }
+                    "
+                >
+                    <template for:each="{navGroups}" for:item="group">
+                        <lightning-vertical-navigation-section key="{group.label}" label="{group.label}">
+                            <template for:each="{group.items}" for:item="item">
                                 <lightning-vertical-navigation-item
-                                    key={item.name}
-                                    label={item.label}
-                                    name={item.name}>
+                                    key="{item.name}"
+                                    label="{item.label}"
+                                    name="{item.name}"
+                                >
                                 </lightning-vertical-navigation-item>
                             </template>
                         </lightning-vertical-navigation-section>
@@ -49,106 +54,106 @@
             </div>
             <div class="slds-col slds-size_9-of-12">
                 <div class="panel-card">
-                    <template if:true={isAccountModelPanel}>
+                    <template if:true="{isAccountModelPanel}">
                         <c-stg-panel-account-model></c-stg-panel-account-model>
                     </template>
-                    <template if:true={isLeadsPanel}>
+                    <template if:true="{isLeadsPanel}">
                         <c-stg-panel-leads></c-stg-panel-leads>
                     </template>
-                    <template if:true={isAffiliationsPanel}>
+                    <template if:true="{isAffiliationsPanel}">
                         <c-stg-panel-affiliations></c-stg-panel-affiliations>
                     </template>
-                    <template if:true={isMembershipPanel}>
+                    <template if:true="{isMembershipPanel}">
                         <c-stg-panel-membership></c-stg-panel-membership>
                     </template>
-                    <template if:true={isPaymentsPanel}>
+                    <template if:true="{isPaymentsPanel}">
                         <c-stg-panel-payments></c-stg-panel-payments>
                     </template>
-                    <template if:true={isDonorStatisticsPanel}>
+                    <template if:true="{isDonorStatisticsPanel}">
                         <c-stg-panel-donor-statistics></c-stg-panel-donor-statistics>
                     </template>
-                    <template if:true={isCampaignMembersPanel}>
+                    <template if:true="{isCampaignMembersPanel}">
                         <c-stg-panel-campaign-members></c-stg-panel-campaign-members>
                     </template>
-                    <template if:true={isContactRolesPanel}>
+                    <template if:true="{isContactRolesPanel}">
                         <c-stg-panel-contact-roles></c-stg-panel-contact-roles>
                     </template>
-                    <template if:true={isAllocationsPanel}>
+                    <template if:true="{isAllocationsPanel}">
                         <c-stg-panel-allocations></c-stg-panel-allocations>
                     </template>
-                    <template if:true={isErrorNotifPanel}>
+                    <template if:true="{isErrorNotifPanel}">
                         <c-stg-panel-error-notif></c-stg-panel-error-notif>
                     </template>
-                    <template if:true={isRelationshipsPanel}>
+                    <template if:true="{isRelationshipsPanel}">
                         <c-stg-panel-relationships></c-stg-panel-relationships>
                     </template>
-                    <template if:true={isHouseholdsPanel}>
+                    <template if:true="{isHouseholdsPanel}">
                         <c-stg-panel-households></c-stg-panel-households>
                     </template>
-                    <template if:true={isSchedulePanel}>
+                    <template if:true="{isSchedulePanel}">
                         <c-stg-panel-schedule></c-stg-panel-schedule>
                     </template>
-                    <template if:true={isOppBatchPanel}>
+                    <template if:true="{isOppBatchPanel}">
                         <c-stg-panel-opp-batch></c-stg-panel-opp-batch>
                     </template>
-                    <template if:true={isAlloBatchPanel}>
+                    <template if:true="{isAlloBatchPanel}">
                         <c-stg-panel-allo-batch></c-stg-panel-allo-batch>
                     </template>
-                    <template if:true={isMakeDefaultAllocationsPanel}>
+                    <template if:true="{isMakeDefaultAllocationsPanel}">
                         <c-stg-panel-make-default-allocations></c-stg-panel-make-default-allocations>
                     </template>
-                    <template if:true={isCreatePaymentsPanel}>
+                    <template if:true="{isCreatePaymentsPanel}">
                         <c-stg-panel-create-payments></c-stg-panel-create-payments>
                     </template>
-                    <template if:true={isRefreshHouseholdDataPanel}>
+                    <template if:true="{isRefreshHouseholdDataPanel}">
                         <c-stg-panel-refresh-household-data></c-stg-panel-refresh-household-data>
                     </template>
-                    <template if:true={isOppNamingBatchPanel}>
+                    <template if:true="{isOppNamingBatchPanel}">
                         <c-stg-panel-opp-naming-batch></c-stg-panel-opp-naming-batch>
                     </template>
-                    <template if:true={isUpdatePrimaryContactPanel}>
+                    <template if:true="{isUpdatePrimaryContactPanel}">
                         <c-stg-panel-update-primary-contact></c-stg-panel-update-primary-contact>
                     </template>
-                    <template if:true={isLvlAssignBatchPanel}>
+                    <template if:true="{isLvlAssignBatchPanel}">
                         <c-stg-panel-lvl-assign-batch></c-stg-panel-lvl-assign-batch>
                     </template>
-                    <template if:true={isPrimaryContactRoleMergePanel}>
+                    <template if:true="{isPrimaryContactRoleMergePanel}">
                         <c-stg-panel-primary-contact-role-merge></c-stg-panel-primary-contact-role-merge>
                     </template>
-                    <template if:true={isRelReciprocalPanel}>
+                    <template if:true="{isRelReciprocalPanel}">
                         <c-stg-panel-rel-reciprocal></c-stg-panel-rel-reciprocal>
                     </template>
-                    <template if:true={isRelAutoCreatePanel}>
+                    <template if:true="{isRelAutoCreatePanel}">
                         <c-stg-panel-rel-auto-create></c-stg-panel-rel-auto-create>
                     </template>
-                    <template if:true={isOppNamingPanel}>
+                    <template if:true="{isOppNamingPanel}">
                         <c-stg-panel-opp-naming></c-stg-panel-opp-naming>
                     </template>
-                    <template if:true={isPaymentMappingPanel}>
+                    <template if:true="{isPaymentMappingPanel}">
                         <c-stg-panel-payment-mapping></c-stg-panel-payment-mapping>
                     </template>
-                    <template if:true={isTdtmPanel}>
+                    <template if:true="{isTdtmPanel}">
                         <c-stg-panel-tdtm></c-stg-panel-tdtm>
                     </template>
-                    <template if:true={isAddressVerificationPanel}>
+                    <template if:true="{isAddressVerificationPanel}">
                         <c-stg-panel-addr-verification></c-stg-panel-addr-verification>
                     </template>
-                    <template if:true={isCustomizableRollupsPanel}>
+                    <template if:true="{isCustomizableRollupsPanel}">
                         <c-stg-panel-customizable-rollups></c-stg-panel-customizable-rollups>
                     </template>
-                    <template if:true={isRd2StatusMappingPanel}>
+                    <template if:true="{isRd2StatusMappingPanel}">
                         <c-stg-panel-rd2-status-mapping></c-stg-panel-rd2-status-mapping>
                     </template>
-                    <template if:true={isRd2StatusAutomationPanel}>
+                    <template if:true="{isRd2StatusAutomationPanel}">
                         <c-stg-panel-rd2-status-automation></c-stg-panel-rd2-status-automation>
                     </template>
-                    <template if:true={isHealthCheckPanel}>
+                    <template if:true="{isHealthCheckPanel}">
                         <c-stg-panel-health-check></c-stg-panel-health-check>
                     </template>
-                    <template if:true={isErrorLogPanel}>
+                    <template if:true="{isErrorLogPanel}">
                         <c-stg-panel-error-log></c-stg-panel-error-log>
                     </template>
-                    <template if:true={isAdvancedMappingPanel}>
+                    <template if:true="{isAdvancedMappingPanel}">
                         <c-stg-panel-advanced-mapping></c-stg-panel-advanced-mapping>
                     </template>
                 </div>

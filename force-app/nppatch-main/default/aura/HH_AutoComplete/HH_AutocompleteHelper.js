@@ -1,9 +1,9 @@
 ({
-    fireNewContactEvent: function(component) {
-        var con = {'sobjectType': 'Contact'};
-        var autocomplete = component.find('autocomplete');
-        var name = autocomplete.get('v.displayValue');
-        var list = name.split(' ');
+    fireNewContactEvent: function (component) {
+        var con = { sobjectType: "Contact" };
+        var autocomplete = component.find("autocomplete");
+        var name = autocomplete.get("v.displayValue");
+        var list = name.split(" ");
         if (list.length === 0) {
             con.LastName = name;
         } else if (list.length === 1) {
@@ -12,11 +12,11 @@
             con.FirstName = list[0];
             con.LastName = list[1];
             for (var i = 2; i < list.length; i++) {
-                con.LastName += ' ' + list[i];
+                con.LastName += " " + list[i];
             }
         }
-        var evt = component.get('e.ContactNewEvent');
-        evt.setParams({ "contact" : con });
+        var evt = component.get("e.ContactNewEvent");
+        evt.setParams({ contact: con });
         evt.fire();
-    }
-})
+    },
+});

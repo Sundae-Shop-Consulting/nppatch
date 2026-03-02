@@ -1,18 +1,18 @@
 <template>
-    <template if:true={isLoading}>
+    <template if:true="{isLoading}">
         <div class="loading-container">
             <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
         </div>
     </template>
 
-    <template if:true={_hasError}>
+    <template if:true="{_hasError}">
         <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
             <span class="slds-assistive-text">error</span>
             <p>{_errorMessage}</p>
         </div>
     </template>
 
-    <template if:true={_settings}>
+    <template if:true="{_settings}">
         <div class="panel-container">
             <div class="panel-header">
                 <div class="slds-grid slds-grid_vertical-align-center">
@@ -24,8 +24,16 @@
                         </h2>
                     </div>
                     <div class="slds-col_bump-left">
-                        <template if:true={canEdit}>
-                            <lightning-button label={labels.edit} onclick={handleEdit} variant="neutral"></lightning-button>
+                        <template if:true="{canEdit}">
+                            <lightning-button
+                                label="{labels.edit}"
+                                onclick="
+                                    {
+                                        handleEdit;
+                                    }
+                                "
+                                variant="neutral"
+                            ></lightning-button>
                         </template>
                     </div>
                 </div>
@@ -36,18 +44,32 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.paymentsEnabled}</label>
                     <p class="setting-help">{labels.helpPaymentsEnabled}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-input type="toggle" label={labels.paymentsEnabled}
-                            checked={_settings.Payments_Enabled__c} disabled
+                    <template if:false="{_isEditMode}">
+                        <lightning-input
+                            type="toggle"
+                            label="{labels.paymentsEnabled}"
+                            checked="{_settings.Payments_Enabled__c}"
+                            disabled
                             variant="label-hidden"
-                            message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                            message-toggle-active="Enabled"
+                            message-toggle-inactive="Disabled"
+                        >
                         </lightning-input>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-input type="toggle" label={labels.paymentsEnabled}
-                            checked={_workingCopy.Payments_Enabled__c}
-                            onchange={handlePaymentsEnabledChange} variant="label-hidden"
-                            message-toggle-active="Enabled" message-toggle-inactive="Disabled">
+                    <template if:true="{_isEditMode}">
+                        <lightning-input
+                            type="toggle"
+                            label="{labels.paymentsEnabled}"
+                            checked="{_workingCopy.Payments_Enabled__c}"
+                            onchange="
+                                {
+                                    handlePaymentsEnabledChange;
+                                }
+                            "
+                            variant="label-hidden"
+                            message-toggle-active="Enabled"
+                            message-toggle-inactive="Disabled"
+                        >
                         </lightning-input>
                     </template>
                 </div>
@@ -55,17 +77,30 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.maxPayments}</label>
                     <p class="setting-help">{labels.helpMaxPayments}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-input type="number" label={labels.maxPayments}
-                            value={_settings.Max_Payments__c} disabled
-                            variant="label-hidden" class="number-input">
+                    <template if:false="{_isEditMode}">
+                        <lightning-input
+                            type="number"
+                            label="{labels.maxPayments}"
+                            value="{_settings.Max_Payments__c}"
+                            disabled
+                            variant="label-hidden"
+                            class="number-input"
+                        >
                         </lightning-input>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-input type="number" label={labels.maxPayments}
-                            value={_workingCopy.Max_Payments__c}
-                            onchange={handleMaxPaymentsChange} variant="label-hidden"
-                            class="number-input">
+                    <template if:true="{_isEditMode}">
+                        <lightning-input
+                            type="number"
+                            label="{labels.maxPayments}"
+                            value="{_workingCopy.Max_Payments__c}"
+                            onchange="
+                                {
+                                    handleMaxPaymentsChange;
+                                }
+                            "
+                            variant="label-hidden"
+                            class="number-input"
+                        >
                         </lightning-input>
                     </template>
                 </div>
@@ -73,17 +108,23 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.excludedRecordTypes}</label>
                     <p class="setting-help">{labels.helpExcludedRecTypes}</p>
-                    <template if:false={_isEditMode}>
+                    <template if:false="{_isEditMode}">
                         <span class="setting-value">{excludedRecTypesDisplay}</span>
                     </template>
-                    <template if:true={_isEditMode}>
+                    <template if:true="{_isEditMode}">
                         <lightning-dual-listbox
-                            label={labels.excludedRecordTypes}
-                            source-label="Available" selected-label="Excluded"
-                            options={_oppRecordTypes}
-                            value={selectedExcludedRecTypes}
-                            onchange={handleExcludedRecTypesChange}
-                            variant="label-hidden">
+                            label="{labels.excludedRecordTypes}"
+                            source-label="Available"
+                            selected-label="Excluded"
+                            options="{_oppRecordTypes}"
+                            value="{selectedExcludedRecTypes}"
+                            onchange="
+                                {
+                                    handleExcludedRecTypesChange;
+                                }
+                            "
+                            variant="label-hidden"
+                        >
                         </lightning-dual-listbox>
                     </template>
                 </div>
@@ -91,26 +132,51 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.excludedOppTypes}</label>
                     <p class="setting-help">{labels.helpExcludedTypes}</p>
-                    <template if:false={_isEditMode}>
+                    <template if:false="{_isEditMode}">
                         <span class="setting-value">{excludedOppTypesDisplay}</span>
                     </template>
-                    <template if:true={_isEditMode}>
+                    <template if:true="{_isEditMode}">
                         <lightning-dual-listbox
-                            label={labels.excludedOppTypes}
-                            source-label="Available" selected-label="Excluded"
-                            options={_oppTypes}
-                            value={selectedExcludedOppTypes}
-                            onchange={handleExcludedOppTypesChange}
-                            variant="label-hidden">
+                            label="{labels.excludedOppTypes}"
+                            source-label="Available"
+                            selected-label="Excluded"
+                            options="{_oppTypes}"
+                            value="{selectedExcludedOppTypes}"
+                            onchange="
+                                {
+                                    handleExcludedOppTypesChange;
+                                }
+                            "
+                            variant="label-hidden"
+                        >
                         </lightning-dual-listbox>
                     </template>
                 </div>
             </div>
 
-            <template if:true={_isEditMode}>
+            <template if:true="{_isEditMode}">
                 <div class="panel-footer">
-                    <lightning-button label={labels.save} onclick={handleSave} variant="brand" disabled={_isSaving} class="slds-m-right_x-small"></lightning-button>
-                    <lightning-button label={labels.cancel} onclick={handleCancel} variant="neutral" disabled={_isSaving}></lightning-button>
+                    <lightning-button
+                        label="{labels.save}"
+                        onclick="
+                            {
+                                handleSave;
+                            }
+                        "
+                        variant="brand"
+                        disabled="{_isSaving}"
+                        class="slds-m-right_x-small"
+                    ></lightning-button>
+                    <lightning-button
+                        label="{labels.cancel}"
+                        onclick="
+                            {
+                                handleCancel;
+                            }
+                        "
+                        variant="neutral"
+                        disabled="{_isSaving}"
+                    ></lightning-button>
                 </div>
             </template>
         </div>

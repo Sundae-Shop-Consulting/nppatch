@@ -105,12 +105,9 @@ export default class StgPanelCampaignMembers extends LightningElement {
             await saveSettings({
                 settingsObjectName: SETTINGS_OBJECT,
                 fieldValues: {
-                    Automatic_Campaign_Member_Management__c:
-                        this._workingCopy.Automatic_Campaign_Member_Management__c,
-                    Campaign_Member_Responded_Status__c:
-                        this._workingCopy.Campaign_Member_Responded_Status__c,
-                    Campaign_Member_Non_Responded_Status__c:
-                        this._workingCopy.Campaign_Member_Non_Responded_Status__c,
+                    Automatic_Campaign_Member_Management__c: this._workingCopy.Automatic_Campaign_Member_Management__c,
+                    Campaign_Member_Responded_Status__c: this._workingCopy.Campaign_Member_Responded_Status__c,
+                    Campaign_Member_Non_Responded_Status__c: this._workingCopy.Campaign_Member_Non_Responded_Status__c,
                 },
             });
             await refreshApex(this._wiredSettingsResult);
@@ -129,8 +126,12 @@ export default class StgPanelCampaignMembers extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) {return error.body.message;}
-        if (error?.message) {return error.message;}
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

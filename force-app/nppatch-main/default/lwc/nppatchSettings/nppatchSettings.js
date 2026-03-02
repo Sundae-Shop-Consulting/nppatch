@@ -22,7 +22,13 @@ const PANEL_SETTINGS = {
     membership: ["Households_Settings__c"],
     payments: ["Contacts_And_Orgs_Settings__c"],
     relationships: ["Relationship_Settings__c"],
-    schedule: ["Customizable_Rollup_Settings__c", "Recurring_Donations_Settings__c", "Levels_Settings__c", "Households_Settings__c", "Error_Settings__c"],
+    schedule: [
+        "Customizable_Rollup_Settings__c",
+        "Recurring_Donations_Settings__c",
+        "Levels_Settings__c",
+        "Households_Settings__c",
+        "Error_Settings__c",
+    ],
 };
 
 // TODO Phase 2: Replace hardcoded nav labels with @salesforce/label imports
@@ -146,8 +152,7 @@ export default class NppatchSettings extends LightningElement {
     }
 
     async _ensureSettingsForPanel(panelName) {
-        const needed = (PANEL_SETTINGS[panelName] || [])
-            .filter((s) => !this._ensuredSettings.has(s));
+        const needed = (PANEL_SETTINGS[panelName] || []).filter((s) => !this._ensuredSettings.has(s));
 
         if (needed.length > 0) {
             try {
@@ -174,40 +179,108 @@ export default class NppatchSettings extends LightningElement {
         return !this._isLoading && !this._isAccessDenied;
     }
 
-    get isAccountModelPanel() { return this._activePanel === "accountModel"; }
-    get isLeadsPanel() { return this._activePanel === "leads"; }
-    get isAffiliationsPanel() { return this._activePanel === "affiliations"; }
-    get isMembershipPanel() { return this._activePanel === "membership"; }
-    get isPaymentsPanel() { return this._activePanel === "payments"; }
-    get isDonorStatisticsPanel() { return this._activePanel === "donorStatistics"; }
-    get isCampaignMembersPanel() { return this._activePanel === "campaignMembers"; }
-    get isContactRolesPanel() { return this._activePanel === "contactRoles"; }
-    get isAllocationsPanel() { return this._activePanel === "allocations"; }
-    get isErrorNotifPanel() { return this._activePanel === "errorNotif"; }
-    get isRelationshipsPanel() { return this._activePanel === "relationships"; }
-    get isHouseholdsPanel() { return this._activePanel === "households"; }
-    get isSchedulePanel() { return this._activePanel === "schedule"; }
-    get isOppBatchPanel() { return this._activePanel === "oppBatch"; }
-    get isAlloBatchPanel() { return this._activePanel === "alloBatch"; }
-    get isMakeDefaultAllocationsPanel() { return this._activePanel === "makeDefaultAllocations"; }
-    get isCreatePaymentsPanel() { return this._activePanel === "createPayments"; }
-    get isRefreshHouseholdDataPanel() { return this._activePanel === "refreshHouseholdData"; }
-    get isOppNamingBatchPanel() { return this._activePanel === "oppNamingBatch"; }
-    get isUpdatePrimaryContactPanel() { return this._activePanel === "updatePrimaryContact"; }
-    get isLvlAssignBatchPanel() { return this._activePanel === "lvlAssignBatch"; }
-    get isPrimaryContactRoleMergePanel() { return this._activePanel === "primaryContactRoleMerge"; }
-    get isRelReciprocalPanel() { return this._activePanel === "relReciprocal"; }
-    get isRelAutoCreatePanel() { return this._activePanel === "relAutoCreate"; }
-    get isOppNamingPanel() { return this._activePanel === "oppNaming"; }
-    get isPaymentMappingPanel() { return this._activePanel === "paymentMapping"; }
-    get isTdtmPanel() { return this._activePanel === "tdtm"; }
-    get isAddressVerificationPanel() { return this._activePanel === "addressVerification"; }
-    get isCustomizableRollupsPanel() { return this._activePanel === "customizableRollups"; }
-    get isRd2StatusMappingPanel() { return this._activePanel === "rd2StatusMapping"; }
-    get isRd2StatusAutomationPanel() { return this._activePanel === "rd2StatusAutomation"; }
-    get isHealthCheckPanel() { return this._activePanel === "healthCheck"; }
-    get isErrorLogPanel() { return this._activePanel === "errorLog"; }
-    get isAdvancedMappingPanel() { return this._activePanel === "advancedMapping"; }
+    get isAccountModelPanel() {
+        return this._activePanel === "accountModel";
+    }
+    get isLeadsPanel() {
+        return this._activePanel === "leads";
+    }
+    get isAffiliationsPanel() {
+        return this._activePanel === "affiliations";
+    }
+    get isMembershipPanel() {
+        return this._activePanel === "membership";
+    }
+    get isPaymentsPanel() {
+        return this._activePanel === "payments";
+    }
+    get isDonorStatisticsPanel() {
+        return this._activePanel === "donorStatistics";
+    }
+    get isCampaignMembersPanel() {
+        return this._activePanel === "campaignMembers";
+    }
+    get isContactRolesPanel() {
+        return this._activePanel === "contactRoles";
+    }
+    get isAllocationsPanel() {
+        return this._activePanel === "allocations";
+    }
+    get isErrorNotifPanel() {
+        return this._activePanel === "errorNotif";
+    }
+    get isRelationshipsPanel() {
+        return this._activePanel === "relationships";
+    }
+    get isHouseholdsPanel() {
+        return this._activePanel === "households";
+    }
+    get isSchedulePanel() {
+        return this._activePanel === "schedule";
+    }
+    get isOppBatchPanel() {
+        return this._activePanel === "oppBatch";
+    }
+    get isAlloBatchPanel() {
+        return this._activePanel === "alloBatch";
+    }
+    get isMakeDefaultAllocationsPanel() {
+        return this._activePanel === "makeDefaultAllocations";
+    }
+    get isCreatePaymentsPanel() {
+        return this._activePanel === "createPayments";
+    }
+    get isRefreshHouseholdDataPanel() {
+        return this._activePanel === "refreshHouseholdData";
+    }
+    get isOppNamingBatchPanel() {
+        return this._activePanel === "oppNamingBatch";
+    }
+    get isUpdatePrimaryContactPanel() {
+        return this._activePanel === "updatePrimaryContact";
+    }
+    get isLvlAssignBatchPanel() {
+        return this._activePanel === "lvlAssignBatch";
+    }
+    get isPrimaryContactRoleMergePanel() {
+        return this._activePanel === "primaryContactRoleMerge";
+    }
+    get isRelReciprocalPanel() {
+        return this._activePanel === "relReciprocal";
+    }
+    get isRelAutoCreatePanel() {
+        return this._activePanel === "relAutoCreate";
+    }
+    get isOppNamingPanel() {
+        return this._activePanel === "oppNaming";
+    }
+    get isPaymentMappingPanel() {
+        return this._activePanel === "paymentMapping";
+    }
+    get isTdtmPanel() {
+        return this._activePanel === "tdtm";
+    }
+    get isAddressVerificationPanel() {
+        return this._activePanel === "addressVerification";
+    }
+    get isCustomizableRollupsPanel() {
+        return this._activePanel === "customizableRollups";
+    }
+    get isRd2StatusMappingPanel() {
+        return this._activePanel === "rd2StatusMapping";
+    }
+    get isRd2StatusAutomationPanel() {
+        return this._activePanel === "rd2StatusAutomation";
+    }
+    get isHealthCheckPanel() {
+        return this._activePanel === "healthCheck";
+    }
+    get isErrorLogPanel() {
+        return this._activePanel === "errorLog";
+    }
+    get isAdvancedMappingPanel() {
+        return this._activePanel === "advancedMapping";
+    }
 
     get showPlaceholder() {
         return false; // All panels are now implemented

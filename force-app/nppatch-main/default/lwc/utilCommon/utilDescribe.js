@@ -1,4 +1,4 @@
-import { nonePicklistOption, createPicklistOption } from './utilCommon';
+import { nonePicklistOption, createPicklistOption } from "./utilCommon";
 
 export default class UtilDescribe {
     _objectDescribeInfo;
@@ -8,15 +8,18 @@ export default class UtilDescribe {
     }
 
     getFieldDescribe(fieldApiName) {
-        if(this._objectDescribeInfo) {
+        if (this._objectDescribeInfo) {
             return this._objectDescribeInfo.fields[fieldApiName];
         }
+        return undefined;
     }
 
     get accessibleRecordTypes() {
-        if (!this._objectDescribeInfo) {return [];}
+        if (!this._objectDescribeInfo) {
+            return [];
+        }
         const allRecordTypes = Object.values(this._objectDescribeInfo.recordTypeInfos);
-        return allRecordTypes.filter(recordType => recordType.available && !recordType.master);
+        return allRecordTypes.filter((recordType) => recordType.available && !recordType.master);
     }
 
     defaultRecordTypeId() {
@@ -24,10 +27,12 @@ export default class UtilDescribe {
     }
 
     recordTypeNameFor(recordTypeId) {
-        return this._objectDescribeInfo &&
-            Object.values(this._objectDescribeInfo.recordTypeInfos)
-                .find(rtInfo => rtInfo.recordTypeId === recordTypeId)
-                .name;
+        return (
+            this._objectDescribeInfo &&
+            Object.values(this._objectDescribeInfo.recordTypeInfos).find(
+                (rtInfo) => rtInfo.recordTypeId === recordTypeId
+            ).name
+        );
     }
 
     recordTypeIdFor(recordTypeName) {
@@ -35,22 +40,22 @@ export default class UtilDescribe {
             return null;
         }
 
-        const rtInfo = this._objectDescribeInfo &&
-            Object.values(this._objectDescribeInfo.recordTypeInfos)
-                .find(rtInfo => rtInfo.name === recordTypeName);
+        const rtInfo =
+            this._objectDescribeInfo &&
+            Object.values(this._objectDescribeInfo.recordTypeInfos).find(
+                (recordTypeInfo) => recordTypeInfo.name === recordTypeName
+            );
 
         return rtInfo && rtInfo.recordTypeId;
     }
 
     getPicklistOptionsForRecordTypeIds() {
-        if (!this.accessibleRecordTypes ||
-            this.accessibleRecordTypes.length <= 0) {
+        if (!this.accessibleRecordTypes || this.accessibleRecordTypes.length <= 0) {
             return [nonePicklistOption()];
         }
 
-        return this.accessibleRecordTypes.map(recordType => {
-            return createPicklistOption(recordType.name,
-                recordType.recordTypeId);
+        return this.accessibleRecordTypes.map((recordType) => {
+            return createPicklistOption(recordType.name, recordType.recordTypeId);
         });
     }
 }

@@ -110,9 +110,7 @@ export default class StgPanelMembership extends LightningElement {
         if (!selectedIds.length) {
             return this.labels.none;
         }
-        const optionsMap = new Map(
-            this._recordTypeOptions.map((opt) => [opt.value, opt.label])
-        );
+        const optionsMap = new Map(this._recordTypeOptions.map((opt) => [opt.value, opt.label]));
         const names = selectedIds.map((id) => optionsMap.get(id) || id);
         return names.join(", ");
     }
@@ -126,7 +124,9 @@ export default class StgPanelMembership extends LightningElement {
 
     get selectedRecordTypes() {
         const raw = this._workingCopy?.Membership_Record_Types__c;
-        if (!raw) {return [];}
+        if (!raw) {
+            return [];
+        }
         return raw.split(";").filter(Boolean);
     }
 
@@ -147,23 +147,19 @@ export default class StgPanelMembership extends LightningElement {
     }
 
     handleRecordTypeChange(event) {
-        this._workingCopy.Membership_Record_Types__c =
-            event.detail.value.join(";");
+        this._workingCopy.Membership_Record_Types__c = event.detail.value.join(";");
     }
 
     handleGracePeriodChange(event) {
-        this._workingCopy.Membership_Grace_Period__c =
-            event.detail.value !== "" ? Number(event.detail.value) : null;
+        this._workingCopy.Membership_Grace_Period__c = event.detail.value !== "" ? Number(event.detail.value) : null;
     }
 
     async handleSave() {
         this._isSaving = true;
         try {
             const fieldValues = {
-                Membership_Record_Types__c:
-                    this._workingCopy.Membership_Record_Types__c || null,
-                Membership_Grace_Period__c:
-                    this._workingCopy.Membership_Grace_Period__c,
+                Membership_Record_Types__c: this._workingCopy.Membership_Record_Types__c || null,
+                Membership_Grace_Period__c: this._workingCopy.Membership_Grace_Period__c,
             };
             await saveSettings({
                 settingsObjectName: "Households_Settings__c",
@@ -193,8 +189,12 @@ export default class StgPanelMembership extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) {return error.body.message;}
-        if (error?.message) {return error.message;}
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

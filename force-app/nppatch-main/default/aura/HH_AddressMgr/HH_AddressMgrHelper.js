@@ -4,17 +4,17 @@
      * the new default, and fires the HH_AddressChangedEvent, so the container can update the contacts and
      * hh with the new default address.
      */
-    setDefaultAddress : function(component) {
+    setDefaultAddress: function (component) {
         var addr;
-        var listAddr = component.get('v.listAddr');
+        var listAddr = component.get("v.listAddr");
         var iAddrSelected;
 
         // figure out if changing default address or creating a new one
-        if (component.find('address_accordion').get('v.activeSectionName') === 'existing-address-section') {
-            iAddrSelected = component.get('v.iAddrSelected');
+        if (component.find("address_accordion").get("v.activeSectionName") === "existing-address-section") {
+            iAddrSelected = component.get("v.iAddrSelected");
             addr = listAddr[iAddrSelected];
         } else {
-            addr = component.get('v.addrNew');
+            addr = component.get("v.addrNew");
             listAddr.push(addr);
         }
 
@@ -25,13 +25,13 @@
 
         // update our hh default address and list of addresses
         addr.Default_Address__c = true;
-        component.set('v.listAddr', listAddr);
+        component.set("v.listAddr", listAddr);
         // this will get set in onChangeListAddr()
         //component.set('v.addrDefault', addr);
 
         // now notify other components the change occurred
         var event = $A.get("e.c:HH_AddressChangedEvent");
-        event.setParams({ "addrDefault" : addr });
+        event.setParams({ addrDefault: addr });
         event.fire();
-    }
-})
+    },
+});

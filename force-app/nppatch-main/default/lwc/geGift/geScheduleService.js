@@ -1,37 +1,34 @@
 // Import fields from Recurring Donation SObject
-import RECURRING_TYPE from '@salesforce/schema/Recurring_Donation__c.RecurringType__c';
-import DAY_OF_MONTH from '@salesforce/schema/Recurring_Donation__c.Day_of_Month__c';
-import INSTALLMENT_FREQUENCY from '@salesforce/schema/Recurring_Donation__c.InstallmentFrequency__c';
-import INSTALLMENT_PERIOD from '@salesforce/schema/Recurring_Donation__c.Installment_Period__c';
-import PLANNED_INSTALLMENTS from '@salesforce/schema/Recurring_Donation__c.Installments__c';
-import EFFECTIVE_DATE from '@salesforce/schema/Recurring_Donation__c.StartDate__c';
+import RECURRING_TYPE from "@salesforce/schema/Recurring_Donation__c.RecurringType__c";
+import DAY_OF_MONTH from "@salesforce/schema/Recurring_Donation__c.Day_of_Month__c";
+import INSTALLMENT_FREQUENCY from "@salesforce/schema/Recurring_Donation__c.InstallmentFrequency__c";
+import INSTALLMENT_PERIOD from "@salesforce/schema/Recurring_Donation__c.Installment_Period__c";
+import PLANNED_INSTALLMENTS from "@salesforce/schema/Recurring_Donation__c.Installments__c";
+import EFFECTIVE_DATE from "@salesforce/schema/Recurring_Donation__c.StartDate__c";
 
 // Import Recurring Donation related fields from Data Import SObject
-import DONATION_AMOUNT from '@salesforce/schema/DataImport__c.Donation_Amount__c';
-import DONATION_DATE from '@salesforce/schema/DataImport__c.Donation_Date__c';
-import RECURRING_DONATION_RECURRING_TYPE from '@salesforce/schema/DataImport__c.Recurring_Donation_Recurring_Type__c';
-import RECURRING_DONATION_DAY_OF_MONTH from '@salesforce/schema/DataImport__c.Recurring_Donation_Day_of_Month__c';
-import RECURRING_DONATION_INSTALLMENT_FREQUENCY from '@salesforce/schema/DataImport__c.Recurring_Donation_Installment_Frequency__c';
-import RECURRING_DONATION_INSTALLMENT_PERIOD from '@salesforce/schema/DataImport__c.Recurring_Donation_Installment_Period__c';
-import RECURRING_DONATION_PLANNED_INSTALLMENTS from '@salesforce/schema/DataImport__c.Recurring_Donation_Planned_Installments__c';
-import RECURRING_DONATION_EFFECTIVE_DATE from '@salesforce/schema/DataImport__c.Recurring_Donation_Effective_Date__c';
-import RECURRING_DONATION_RECURRING_AMOUNT from '@salesforce/schema/DataImport__c.Recurring_Donation_Amount__c';
-import RECURRING_DONATION_DATE_ESTABLISHED from '@salesforce/schema/DataImport__c.Recurring_Donation_Date_Established__c';
-import RECURRING_DONATION_IMPORT_STATUS from '@salesforce/schema/DataImport__c.RecurringDonationImportStatus__c';
-import RECURRING_DONATION_PAYMENT_METHOD
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_Payment_Method__c';
-const RECURRING_DONATION_ACH_LAST_4 = { fieldApiName: 'Recurring_Donation_ACH_Last_4__c', objectApiName: 'DataImport__c' };
-import RECURRING_DONATION_END_DATE
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_End_Date__c';
-import RECURRING_DONATION_NAME
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_Name__c';
-import RECURRING_DONATION_STATUS
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_Status__c';
-import RECURRING_DONATION_STATUS_REASON
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_Status_Reason__c';
-import RECURRING_DONATION_IMPORTED
-    from '@salesforce/schema/DataImport__c.RecurringDonationImported__c';
-import PAYMENT_METHOD from '@salesforce/schema/DataImport__c.Payment_Method__c';
+import DONATION_AMOUNT from "@salesforce/schema/DataImport__c.Donation_Amount__c";
+import DONATION_DATE from "@salesforce/schema/DataImport__c.Donation_Date__c";
+import RECURRING_DONATION_RECURRING_TYPE from "@salesforce/schema/DataImport__c.Recurring_Donation_Recurring_Type__c";
+import RECURRING_DONATION_DAY_OF_MONTH from "@salesforce/schema/DataImport__c.Recurring_Donation_Day_of_Month__c";
+import RECURRING_DONATION_INSTALLMENT_FREQUENCY from "@salesforce/schema/DataImport__c.Recurring_Donation_Installment_Frequency__c";
+import RECURRING_DONATION_INSTALLMENT_PERIOD from "@salesforce/schema/DataImport__c.Recurring_Donation_Installment_Period__c";
+import RECURRING_DONATION_PLANNED_INSTALLMENTS from "@salesforce/schema/DataImport__c.Recurring_Donation_Planned_Installments__c";
+import RECURRING_DONATION_EFFECTIVE_DATE from "@salesforce/schema/DataImport__c.Recurring_Donation_Effective_Date__c";
+import RECURRING_DONATION_RECURRING_AMOUNT from "@salesforce/schema/DataImport__c.Recurring_Donation_Amount__c";
+import RECURRING_DONATION_DATE_ESTABLISHED from "@salesforce/schema/DataImport__c.Recurring_Donation_Date_Established__c";
+import RECURRING_DONATION_IMPORT_STATUS from "@salesforce/schema/DataImport__c.RecurringDonationImportStatus__c";
+import RECURRING_DONATION_PAYMENT_METHOD from "@salesforce/schema/DataImport__c.Recurring_Donation_Payment_Method__c";
+const RECURRING_DONATION_ACH_LAST_4 = {
+    fieldApiName: "Recurring_Donation_ACH_Last_4__c",
+    objectApiName: "DataImport__c",
+};
+import RECURRING_DONATION_END_DATE from "@salesforce/schema/DataImport__c.Recurring_Donation_End_Date__c";
+import RECURRING_DONATION_NAME from "@salesforce/schema/DataImport__c.Recurring_Donation_Name__c";
+import RECURRING_DONATION_STATUS from "@salesforce/schema/DataImport__c.Recurring_Donation_Status__c";
+import RECURRING_DONATION_STATUS_REASON from "@salesforce/schema/DataImport__c.Recurring_Donation_Status_Reason__c";
+import RECURRING_DONATION_IMPORTED from "@salesforce/schema/DataImport__c.RecurringDonationImported__c";
+import PAYMENT_METHOD from "@salesforce/schema/DataImport__c.Payment_Method__c";
 
 class GiftScheduleService {
     addScheduleTo(fields, scheduleData) {
@@ -46,7 +43,7 @@ class GiftScheduleService {
             [RECURRING_DONATION_RECURRING_AMOUNT.fieldApiName]: fields[DONATION_AMOUNT.fieldApiName],
             [RECURRING_DONATION_DATE_ESTABLISHED.fieldApiName]: fields[DONATION_DATE.fieldApiName],
             [RECURRING_DONATION_PAYMENT_METHOD.fieldApiName]: fields[PAYMENT_METHOD.fieldApiName],
-        }
+        };
     }
 
     removeScheduleFromFields(fields) {
@@ -67,8 +64,8 @@ class GiftScheduleService {
             [RECURRING_DONATION_NAME.fieldApiName]: null,
             [RECURRING_DONATION_STATUS.fieldApiName]: null,
             [RECURRING_DONATION_STATUS_REASON.fieldApiName]: null,
-            [RECURRING_DONATION_IMPORTED.fieldApiName]: null
-        }
+            [RECURRING_DONATION_IMPORTED.fieldApiName]: null,
+        };
     }
 
     retrieveScheduleFromFields(fields) {
@@ -83,10 +80,11 @@ class GiftScheduleService {
                 [INSTALLMENT_FREQUENCY.fieldApiName]: fields[RECURRING_DONATION_INSTALLMENT_FREQUENCY.fieldApiName],
                 [INSTALLMENT_PERIOD.fieldApiName]: fields[RECURRING_DONATION_INSTALLMENT_PERIOD.fieldApiName],
                 [PLANNED_INSTALLMENTS.fieldApiName]: fields[RECURRING_DONATION_PLANNED_INSTALLMENTS.fieldApiName],
-                [EFFECTIVE_DATE.fieldApiName]: fields[RECURRING_DONATION_EFFECTIVE_DATE.fieldApiName]
+                [EFFECTIVE_DATE.fieldApiName]: fields[RECURRING_DONATION_EFFECTIVE_DATE.fieldApiName],
             };
             return schedule;
         }
+        return undefined;
     }
 }
 

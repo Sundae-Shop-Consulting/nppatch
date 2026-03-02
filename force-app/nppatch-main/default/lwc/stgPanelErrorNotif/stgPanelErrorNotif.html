@@ -1,18 +1,18 @@
 <template>
-    <template if:true={isLoading}>
+    <template if:true="{isLoading}">
         <div class="loading-container">
             <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
         </div>
     </template>
 
-    <template if:true={_hasError}>
+    <template if:true="{_hasError}">
         <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
             <span class="slds-assistive-text">error</span>
             <p>{_errorMessage}</p>
         </div>
     </template>
 
-    <template if:true={_settings}>
+    <template if:true="{_settings}">
         <div class="panel-container">
             <div class="panel-header">
                 <div class="slds-grid slds-grid_vertical-align-center">
@@ -24,8 +24,16 @@
                         </h2>
                     </div>
                     <div class="slds-col_bump-left">
-                        <template if:true={canEdit}>
-                            <lightning-button label={labels.edit} onclick={handleEdit} variant="neutral"></lightning-button>
+                        <template if:true="{canEdit}">
+                            <lightning-button
+                                label="{labels.edit}"
+                                onclick="
+                                    {
+                                        handleEdit;
+                                    }
+                                "
+                                variant="neutral"
+                            ></lightning-button>
                         </template>
                     </div>
                 </div>
@@ -36,21 +44,32 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.storeErrors}</label>
                     <p class="setting-help">{labels.helpStoreErrors}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-input type="toggle" label={labels.storeErrors}
-                            checked={_settings.Store_Errors_On__c} disabled
+                    <template if:false="{_isEditMode}">
+                        <lightning-input
+                            type="toggle"
+                            label="{labels.storeErrors}"
+                            checked="{_settings.Store_Errors_On__c}"
+                            disabled
                             variant="label-hidden"
                             message-toggle-active="Enabled"
-                            message-toggle-inactive="Disabled">
+                            message-toggle-inactive="Disabled"
+                        >
                         </lightning-input>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-input type="toggle" label={labels.storeErrors}
-                            checked={storeErrorsValue}
-                            onchange={handleStoreErrorsChange}
+                    <template if:true="{_isEditMode}">
+                        <lightning-input
+                            type="toggle"
+                            label="{labels.storeErrors}"
+                            checked="{storeErrorsValue}"
+                            onchange="
+                                {
+                                    handleStoreErrorsChange;
+                                }
+                            "
                             variant="label-hidden"
                             message-toggle-active="Enabled"
-                            message-toggle-inactive="Disabled">
+                            message-toggle-inactive="Disabled"
+                        >
                         </lightning-input>
                     </template>
                 </div>
@@ -58,22 +77,33 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.errorNotifications}</label>
                     <p class="setting-help">{labels.helpErrorNotifications}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-input type="toggle" label={labels.errorNotifications}
-                            checked={_settings.Error_Notifications_On__c} disabled
+                    <template if:false="{_isEditMode}">
+                        <lightning-input
+                            type="toggle"
+                            label="{labels.errorNotifications}"
+                            checked="{_settings.Error_Notifications_On__c}"
+                            disabled
                             variant="label-hidden"
                             message-toggle-active="Enabled"
-                            message-toggle-inactive="Disabled">
+                            message-toggle-inactive="Disabled"
+                        >
                         </lightning-input>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-input type="toggle" label={labels.errorNotifications}
-                            checked={errorNotificationsValue}
-                            onchange={handleErrorNotificationsChange}
-                            disabled={isNotifToggleDisabled}
+                    <template if:true="{_isEditMode}">
+                        <lightning-input
+                            type="toggle"
+                            label="{labels.errorNotifications}"
+                            checked="{errorNotificationsValue}"
+                            onchange="
+                                {
+                                    handleErrorNotificationsChange;
+                                }
+                            "
+                            disabled="{isNotifToggleDisabled}"
                             variant="label-hidden"
                             message-toggle-active="Enabled"
-                            message-toggle-inactive="Disabled">
+                            message-toggle-inactive="Disabled"
+                        >
                         </lightning-input>
                     </template>
                 </div>
@@ -81,17 +111,30 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.notifyTo}</label>
                     <p class="setting-help">{labels.helpNotifyTo}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-input type="text" label={labels.notifyTo}
-                            value={_settings.Error_Notifications_To__c} disabled
-                            variant="label-hidden" class="text-input">
+                    <template if:false="{_isEditMode}">
+                        <lightning-input
+                            type="text"
+                            label="{labels.notifyTo}"
+                            value="{_settings.Error_Notifications_To__c}"
+                            disabled
+                            variant="label-hidden"
+                            class="text-input"
+                        >
                         </lightning-input>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-input type="text" label={labels.notifyTo}
-                            value={notifyToValue}
-                            onchange={handleNotifyToChange}
-                            variant="label-hidden" class="text-input">
+                    <template if:true="{_isEditMode}">
+                        <lightning-input
+                            type="text"
+                            label="{labels.notifyTo}"
+                            value="{notifyToValue}"
+                            onchange="
+                                {
+                                    handleNotifyToChange;
+                                }
+                            "
+                            variant="label-hidden"
+                            class="text-input"
+                        >
                         </lightning-input>
                     </template>
                 </div>
@@ -99,30 +142,60 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.respectDupeRules}</label>
                     <p class="setting-help">{labels.helpRespectDupeRules}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-input type="toggle" label={labels.respectDupeRules}
-                            checked={_settings.Respect_Duplicate_Rule_Settings__c} disabled
+                    <template if:false="{_isEditMode}">
+                        <lightning-input
+                            type="toggle"
+                            label="{labels.respectDupeRules}"
+                            checked="{_settings.Respect_Duplicate_Rule_Settings__c}"
+                            disabled
                             variant="label-hidden"
                             message-toggle-active="Enabled"
-                            message-toggle-inactive="Disabled">
+                            message-toggle-inactive="Disabled"
+                        >
                         </lightning-input>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-input type="toggle" label={labels.respectDupeRules}
-                            checked={respectDupeRulesValue}
-                            onchange={handleRespectDupeRulesChange}
+                    <template if:true="{_isEditMode}">
+                        <lightning-input
+                            type="toggle"
+                            label="{labels.respectDupeRules}"
+                            checked="{respectDupeRulesValue}"
+                            onchange="
+                                {
+                                    handleRespectDupeRulesChange;
+                                }
+                            "
                             variant="label-hidden"
                             message-toggle-active="Enabled"
-                            message-toggle-inactive="Disabled">
+                            message-toggle-inactive="Disabled"
+                        >
                         </lightning-input>
                     </template>
                 </div>
             </div>
 
-            <template if:true={_isEditMode}>
+            <template if:true="{_isEditMode}">
                 <div class="panel-footer">
-                    <lightning-button label={labels.save} onclick={handleSave} variant="brand" disabled={_isSaving} class="slds-m-right_x-small"></lightning-button>
-                    <lightning-button label={labels.cancel} onclick={handleCancel} variant="neutral" disabled={_isSaving}></lightning-button>
+                    <lightning-button
+                        label="{labels.save}"
+                        onclick="
+                            {
+                                handleSave;
+                            }
+                        "
+                        variant="brand"
+                        disabled="{_isSaving}"
+                        class="slds-m-right_x-small"
+                    ></lightning-button>
+                    <lightning-button
+                        label="{labels.cancel}"
+                        onclick="
+                            {
+                                handleCancel;
+                            }
+                        "
+                        variant="neutral"
+                        disabled="{_isSaving}"
+                    ></lightning-button>
                 </div>
             </template>
         </div>

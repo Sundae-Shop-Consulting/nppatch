@@ -1,6 +1,6 @@
-import { LightningElement, api } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-import stgLabelFieldValueNone from '@salesforce/label/c.stgLabelFieldValueNone';
+import { LightningElement, api } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
+import stgLabelFieldValueNone from "@salesforce/label/c.stgLabelFieldValueNone";
 
 export default class Rd2ChangeEntryValue extends NavigationMixin(LightningElement) {
     @api value;
@@ -12,35 +12,35 @@ export default class Rd2ChangeEntryValue extends NavigationMixin(LightningElemen
 
     navigateToRecord() {
         this[NavigationMixin.Navigate]({
-            type: 'standard__recordPage',
+            type: "standard__recordPage",
             attributes: {
                 recordId: this.recordIdValue,
-                actionName: 'view'
-            }
+                actionName: "view",
+            },
         });
     }
 
     get isMoney() {
-        return this.displayType === 'MONEY';
+        return this.displayType === "MONEY";
     }
 
     get isText() {
-        return this.displayType === 'TEXT';
+        return this.displayType === "TEXT";
     }
 
     get isNumber() {
-        return this.displayType === 'NUMERIC';
+        return this.displayType === "NUMERIC";
     }
 
     get isEmptyLookup() {
-        return this.displayType === 'LOOKUP' && (this.value === null || this.value === undefined);
+        return this.displayType === "LOOKUP" && (this.value === null || this.value === undefined);
     }
 
     get isPopulatedLookup() {
-        return this.displayType === 'LOOKUP' && this.value !== null && this.value !== undefined;
+        return this.displayType === "LOOKUP" && this.value !== null && this.value !== undefined;
     }
 
     get isMultiCurrency() {
-        return this.currencyCode != null;
+        return this.currencyCode !== null;
     }
 }

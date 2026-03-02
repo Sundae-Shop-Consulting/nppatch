@@ -140,15 +140,21 @@ export default class StgPanelAllocations extends LightningElement {
     }
 
     _resolveMultiSelectDisplay(rawValue, options) {
-        if (!rawValue) {return this.labels.none;}
+        if (!rawValue) {
+            return this.labels.none;
+        }
         const ids = rawValue.split(";").filter(Boolean);
-        if (!ids.length) {return this.labels.none;}
+        if (!ids.length) {
+            return this.labels.none;
+        }
         const map = new Map(options.map((o) => [o.value, o.label]));
         return ids.map((id) => map.get(id) || id).join(", ");
     }
 
     _parseMultiSelect(rawValue) {
-        if (!rawValue) {return [];}
+        if (!rawValue) {
+            return [];
+        }
         return rawValue.split(";").filter(Boolean);
     }
 
@@ -179,8 +185,7 @@ export default class StgPanelAllocations extends LightningElement {
     }
 
     handleNDayChange(event) {
-        this._workingCopy.Rollup_N_Day_Value__c =
-            event.detail.value !== "" ? Number(event.detail.value) : null;
+        this._workingCopy.Rollup_N_Day_Value__c = event.detail.value !== "" ? Number(event.detail.value) : null;
     }
 
     handleFiscalYearChange(event) {
@@ -195,13 +200,10 @@ export default class StgPanelAllocations extends LightningElement {
                 Default__c: this._workingCopy.Default__c,
             };
             if (!this._crlpEnabled) {
-                fieldValues.Excluded_Opp_RecTypes__c =
-                    this._workingCopy.Excluded_Opp_RecTypes__c || null;
-                fieldValues.Excluded_Opp_Types__c =
-                    this._workingCopy.Excluded_Opp_Types__c || null;
+                fieldValues.Excluded_Opp_RecTypes__c = this._workingCopy.Excluded_Opp_RecTypes__c || null;
+                fieldValues.Excluded_Opp_Types__c = this._workingCopy.Excluded_Opp_Types__c || null;
                 fieldValues.Rollup_N_Day_Value__c = this._workingCopy.Rollup_N_Day_Value__c;
-                fieldValues.Use_Fiscal_Year_for_Rollups__c =
-                    this._workingCopy.Use_Fiscal_Year_for_Rollups__c;
+                fieldValues.Use_Fiscal_Year_for_Rollups__c = this._workingCopy.Use_Fiscal_Year_for_Rollups__c;
             }
             await saveSettings({ settingsObjectName: SETTINGS_OBJECT, fieldValues });
             await refreshApex(this._wiredSettingsResult);
@@ -220,8 +222,12 @@ export default class StgPanelAllocations extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) {return error.body.message;}
-        if (error?.message) {return error.message;}
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

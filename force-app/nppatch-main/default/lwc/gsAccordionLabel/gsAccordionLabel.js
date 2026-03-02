@@ -1,37 +1,36 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api } from "lwc";
 
 export default class GsAccordionLabel extends LightningElement {
+    /**
+     * @description Number display on Icon
+     * @type      String
+     */
+    @api number;
 
     /**
-    * @description Number display on Icon
-    * @type      String
-    */
-    @api number
-    
-    /**
-    * @description Accordion title
-    * @type      String
-    */
-    @api title
-    
+     * @description Accordion title
+     * @type      String
+     */
+    @api title;
+
     /**
      * @description Total items rendered in the section
      * @type int
      */
-    @api totalElements
+    @api totalElements;
 
     /**
      * @description Quatity of checked element in the section
      * @type int
      */
-    @api checkedElements
+    @api checkedElements;
 
     /**
-    * @description Display event on click title
-    * @type      void
-    * @see       Event
-    */
+     * @description Display event on click title
+     * @type      void
+     * @see       Event
+     */
     onClickTitle() {
-        this.dispatchEvent(new CustomEvent('clicktitle'));
+        this.dispatchEvent(new CustomEvent("clicktitle"));
     }
 }

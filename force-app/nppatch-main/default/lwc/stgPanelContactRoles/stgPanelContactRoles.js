@@ -40,15 +40,19 @@ export default class StgPanelContactRoles extends LightningElement {
         sectionLabel: stgNavDonations,
         pageLabel: stgNavContactRoles,
         helpOCR: stgHelpOCR,
-        helpOrgRole: "The default Contact Role assigned to the organizational Contact when an Opportunity is attributed to an Organization Account.",
+        helpOrgRole:
+            "The default Contact Role assigned to the organizational Contact when an Opportunity is attributed to an Organization Account.",
         helpHonoreeRole: "The Contact Role assigned to the Honoree Contact on tribute Opportunities.",
         helpNotifRole: "The Contact Role assigned to the Notification Recipient Contact on tribute Opportunities.",
-        helpHHOCR: "When enabled, automatically creates Opportunity Contact Roles for all Household members on household-attributed Opportunities.",
+        helpHHOCR:
+            "When enabled, automatically creates Opportunity Contact Roles for all Household members on household-attributed Opportunities.",
         helpHHExcludedRT: "Contact Record Types excluded from automatic Household Opportunity Contact Role creation.",
-        helpSoftCreditRollups: "When enabled, rollup fields on Contacts include soft credit Opportunities based on their Contact Roles.",
+        helpSoftCreditRollups:
+            "When enabled, rollup fields on Contacts include soft credit Opportunities based on their Contact Roles.",
         helpSoftCreditRoles: stgHelpSoftCreditRoles,
         helpMatchedDonorRole: stgHelpMatchedDonorRole,
-        helpAlwaysRollupPrimary: "When enabled, the primary Contact on an Opportunity always receives hard credit rollups, even when the Opportunity is attributed to an Organization Account.",
+        helpAlwaysRollupPrimary:
+            "When enabled, the primary Contact on an Opportunity always receives hard credit rollups, even when the Opportunity is attributed to an Organization Account.",
         edit: stgBtnEdit,
         save: stgBtnSave,
         cancel: stgBtnCancel,
@@ -198,10 +202,7 @@ export default class StgPanelContactRoles extends LightningElement {
     }
 
     get softCreditRolesDisplay() {
-        return this._resolveMultiSelectDisplay(
-            this._hhSettings?.Soft_Credit_Roles__c,
-            this._ocrRoleOptions
-        );
+        return this._resolveMultiSelectDisplay(this._hhSettings?.Soft_Credit_Roles__c, this._ocrRoleOptions);
     }
 
     get selectedSoftCreditRoles() {
@@ -215,15 +216,21 @@ export default class StgPanelContactRoles extends LightningElement {
     // --- Utility ---
 
     _resolveMultiSelectDisplay(rawValue, options) {
-        if (!rawValue) {return this.labels.none;}
+        if (!rawValue) {
+            return this.labels.none;
+        }
         const ids = rawValue.split(";").filter(Boolean);
-        if (!ids.length) {return this.labels.none;}
+        if (!ids.length) {
+            return this.labels.none;
+        }
         const map = new Map(options.map((o) => [o.value, o.label]));
         return ids.map((id) => map.get(id) || id).join(", ");
     }
 
     _parseMultiSelect(rawValue) {
-        if (!rawValue) {return [];}
+        if (!rawValue) {
+            return [];
+        }
         return rawValue.split(";").filter(Boolean);
     }
 
@@ -308,20 +315,14 @@ export default class StgPanelContactRoles extends LightningElement {
 
             // Save Households_Settings__c fields
             const hhFieldValues = {
-                Household_Contact_Roles_On__c:
-                    this._workingCopyHH.Household_Contact_Roles_On__c,
-                Household_Member_Contact_Role__c:
-                    this._workingCopyHH.Household_Member_Contact_Role__c || null,
+                Household_Contact_Roles_On__c: this._workingCopyHH.Household_Contact_Roles_On__c,
+                Household_Member_Contact_Role__c: this._workingCopyHH.Household_Member_Contact_Role__c || null,
                 Household_OCR_Excluded_Recordtypes__c:
                     this._workingCopyHH.Household_OCR_Excluded_Recordtypes__c || null,
-                Always_Rollup_to_Primary_Contact__c:
-                    this._workingCopyHH.Always_Rollup_to_Primary_Contact__c,
-                Enable_Soft_Credit_Rollups__c:
-                    this._workingCopyHH.Enable_Soft_Credit_Rollups__c,
-                Soft_Credit_Roles__c:
-                    this._workingCopyHH.Soft_Credit_Roles__c || null,
-                Matched_Donor_Role__c:
-                    this._workingCopyHH.Matched_Donor_Role__c || null,
+                Always_Rollup_to_Primary_Contact__c: this._workingCopyHH.Always_Rollup_to_Primary_Contact__c,
+                Enable_Soft_Credit_Rollups__c: this._workingCopyHH.Enable_Soft_Credit_Rollups__c,
+                Soft_Credit_Roles__c: this._workingCopyHH.Soft_Credit_Roles__c || null,
+                Matched_Donor_Role__c: this._workingCopyHH.Matched_Donor_Role__c || null,
             };
             await saveSettings({
                 settingsObjectName: HH_SETTINGS_OBJECT,
@@ -346,8 +347,12 @@ export default class StgPanelContactRoles extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) {return error.body.message;}
-        if (error?.message) {return error.message;}
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

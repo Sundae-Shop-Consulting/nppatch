@@ -5,9 +5,14 @@ import { ShowToastEvent } from "lightning/platformShowToastEvent";
 // import getErrorLog from "@salesforce/apex/NppatchSettingsController.getErrorLog";
 
 const COLUMNS = [
-    { label: "Date/Time", fieldName: "CreatedDate", type: "date",
+    {
+        label: "Date/Time",
+        fieldName: "CreatedDate",
+        type: "date",
         typeAttributes: { year: "numeric", month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit" },
-        sortable: true, initialWidth: 180 },
+        sortable: true,
+        initialWidth: 180,
+    },
     { label: "Context", fieldName: "Context_Type__c", type: "text", sortable: true, initialWidth: 200 },
     { label: "Object Type", fieldName: "Object_Type__c", type: "text", sortable: true, initialWidth: 150 },
     { label: "Error Type", fieldName: "Error_Type__c", type: "text", sortable: true, initialWidth: 150 },
@@ -40,11 +45,14 @@ export default class StgPanelErrorLog extends LightningElement {
 
     handleRefresh() {
         // TODO: Refresh errors
-        this.dispatchEvent(new ShowToastEvent({
-            title: "Info",
-            message: "Error Log API is being migrated. For now, view errors from the classic NPPatch Settings page.",
-            variant: "info",
-        }));
+        this.dispatchEvent(
+            new ShowToastEvent({
+                title: "Info",
+                message:
+                    "Error Log API is being migrated. For now, view errors from the classic NPPatch Settings page.",
+                variant: "info",
+            })
+        );
     }
 
     handleSort(event) {

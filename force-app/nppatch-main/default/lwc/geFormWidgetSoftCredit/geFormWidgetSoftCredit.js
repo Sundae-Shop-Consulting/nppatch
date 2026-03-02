@@ -1,32 +1,31 @@
-import { LightningElement, api, track } from 'lwc';
-import GeLabelService from 'c/geLabelService';
-import geSoftCreditsWarning from '@salesforce/label/c.geSoftCreditsWarning';
+import { LightningElement, api, track } from "lwc";
+import GeLabelService from "c/geLabelService";
+import geSoftCreditsWarning from "@salesforce/label/c.geSoftCreditsWarning";
 
-import { fireEvent } from 'c/pubsubNoPageRef';
-import { isEmptyObject } from 'c/utilCommon';
+import { fireEvent } from "c/pubsubNoPageRef";
+import { isEmptyObject } from "c/utilCommon";
 
 const NET_NEW_SOFT_CREDITS_LIMIT = 250;
 
 export default class GeFormWidgetSoftCredit extends LightningElement {
-
     CUSTOM_LABELS = {
         ...GeLabelService.CUSTOM_LABELS,
-        geSoftCreditsWarning
-    }
+        geSoftCreditsWarning,
+    };
 
     @api giftInView;
     @track alertBanner = {};
 
     handleAddRow() {
-        fireEvent(this, 'softcreditwidgetchange', { action: 'addSoftCredit' });
+        fireEvent(this, "softcreditwidgetchange", { action: "addSoftCredit" });
     }
 
     handleRemove(event) {
-        fireEvent(this, 'softcreditwidgetchange', {
-            action: 'removeSoftCredit',
+        fireEvent(this, "softcreditwidgetchange", {
+            action: "removeSoftCredit",
             detail: {
-                key: event.detail.rowIndex
-            }
+                key: event.detail.rowIndex,
+            },
         });
     }
 

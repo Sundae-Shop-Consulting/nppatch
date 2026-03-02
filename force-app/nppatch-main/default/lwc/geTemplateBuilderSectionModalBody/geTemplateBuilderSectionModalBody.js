@@ -1,30 +1,28 @@
-import { api, LightningElement } from 'lwc'
-import { mutable } from 'c/utilCommon'
-import { fireEvent } from 'c/pubsubNoPageRef'
-import GeLabelService from 'c/geLabelService'
+import { api, LightningElement } from "lwc";
+import { mutable } from "c/utilCommon";
+import { fireEvent } from "c/pubsubNoPageRef";
+import GeLabelService from "c/geLabelService";
 
 const DISPLAY_MODES = {
-    expanded : 'expanded',
-    collapsed : 'collapsed'
-}
+    expanded: "expanded",
+    collapsed: "collapsed",
+};
 
 export default class GeTemplateBuilderSectionModalBody extends LightningElement {
-
     // Expose custom labels to template
     CUSTOM_LABELS = GeLabelService.CUSTOM_LABELS;
 
     @api modalData;
     _selectedDisplayMode;
 
-    connectedCallback () {
+    connectedCallback() {
         if (this.sectionBeingEdited) {
             this._selectedDisplayMode = this.defaultDisplayMode;
         }
     }
 
-    get defaultDisplayMode () {
-        return this.modalData.section ?
-          this.modalData.section.defaultDisplayMode : DISPLAY_MODES.expanded;
+    get defaultDisplayMode() {
+        return this.modalData.section ? this.modalData.section.defaultDisplayMode : DISPLAY_MODES.expanded;
     }
 
     get sectionBeingEdited() {
@@ -33,14 +31,14 @@ export default class GeTemplateBuilderSectionModalBody extends LightningElement 
 
     get hasRequiredFields() {
         const section = this.modalData.section;
-        return section && section.elements && section.elements.length > 0 ?
-            section.elements.some(element => element.required === true)
+        return section && section.elements && section.elements.length > 0
+            ? section.elements.some((element) => element.required === true)
             : false;
     }
 
     /*******************************************************************************
-    * Start getters for data-qa-locator attributes
-    */
+     * Start getters for data-qa-locator attributes
+     */
 
     get qaLocatorSectionName() {
         return `input ${this.CUSTOM_LABELS.geHeaderFormFieldsModalSectionSettings} ${this.CUSTOM_LABELS.geLabelSectionName}`;
@@ -59,30 +57,31 @@ export default class GeTemplateBuilderSectionModalBody extends LightningElement 
     }
 
     get qaLocatorDisplayOption() {
-      //TODO: Add qa locator for display options
+        //TODO: Add qa locator for display options
+        return undefined;
     }
 
     /*******************************************************************************
-    * End getters for data-qa-locator attributes
-    */
+     * End getters for data-qa-locator attributes
+     */
 
     /*******************************************************************************
-    * @description Fires an event to utilDedicatedListener to notify parent aura
-    * component GE_ModalProxy that the given section needs to be removed.
-    */
+     * @description Fires an event to utilDedicatedListener to notify parent aura
+     * component GE_ModalProxy that the given section needs to be removed.
+     */
     handleDelete() {
         const detail = {
             receiverComponent: this.modalData.receiverComponent,
-            action: 'delete',
-            section: this.modalData.section
+            action: "delete",
+            section: this.modalData.section,
         };
-        fireEvent(this.pageRef, 'geTemplateBuilderSectionModalBodyEvent', detail);
+        fireEvent(this.pageRef, "geTemplateBuilderSectionModalBodyEvent", detail);
     }
 
     /*******************************************************************************
-    * @description Fires an event to utilDedicatedListener to notify parent aura
-    * component GE_ModalProxy that the modal needs to be updated.
-    */
+     * @description Fires an event to utilDedicatedListener to notify parent aura
+     * component GE_ModalProxy that the modal needs to be updated.
+     */
     handleSave() {
         const section = mutable(this.modalData.section);
 
@@ -90,27 +89,25 @@ export default class GeTemplateBuilderSectionModalBody extends LightningElement 
         section.defaultDisplayMode = this._selectedDisplayMode;
         const detail = {
             receiverComponent: this.modalData.receiverComponent,
-            action: 'save',
-            section: section
+            action: "save",
+            section: section,
         };
-        fireEvent(this.pageRef, 'geTemplateBuilderSectionModalBodyEvent', detail);
+        fireEvent(this.pageRef, "geTemplateBuilderSectionModalBodyEvent", detail);
     }
 
     /*******************************************************************************
-    * @description Fires an event to utilDedicatedListener to notify parent aura
-    * component GE_ModalProxy that the modal needs to be closed.
-    */
+     * @description Fires an event to utilDedicatedListener to notify parent aura
+     * component GE_ModalProxy that the modal needs to be closed.
+     */
     handleCancel() {
-        const detail = { action: 'cancel' };
-        fireEvent(this.pageRef, 'geTemplateBuilderSectionModalBodyEvent', detail);
+        const detail = { action: "cancel" };
+        fireEvent(this.pageRef, "geTemplateBuilderSectionModalBodyEvent", detail);
     }
 
     get displayOptions() {
         return [
-            { label: this.CUSTOM_LABELS.geButtonFormFieldsDisplayOptionExpanded,
-                value: DISPLAY_MODES.expanded },
-            { label: this.CUSTOM_LABELS.geButtonFormFieldsDisplayOptionCollapsed,
-                value: DISPLAY_MODES.collapsed },
+            { label: this.CUSTOM_LABELS.geButtonFormFieldsDisplayOptionExpanded, value: DISPLAY_MODES.expanded },
+            { label: this.CUSTOM_LABELS.geButtonFormFieldsDisplayOptionCollapsed, value: DISPLAY_MODES.collapsed },
         ];
     }
 
@@ -118,7 +115,7 @@ export default class GeTemplateBuilderSectionModalBody extends LightningElement 
      * @description Sets the selected section display option
      * @param event
      */
-    handleDisplayOptionChange (event) {
+    handleDisplayOptionChange(event) {
         this._selectedDisplayMode = event.detail.value;
     }
 }

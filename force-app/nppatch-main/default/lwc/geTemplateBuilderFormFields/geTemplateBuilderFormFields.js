@@ -1,90 +1,86 @@
-import { LightningElement, track, api, wire } from 'lwc';
-import {
-    BATCH_CURRENCY_ISO_CODE,
-    dispatch,
-    handleError,
-} from 'c/utilTemplateBuilder';
-import { CLICKED_DOWN, CLICKED_UP } from 'c/geConstants';
-import { updateFocusFor } from './geTemplateBuilderFormFieldsA11yHelpers';
-import { mutable, findIndexByProperty, isEmpty } from 'c/utilCommon';
-import TemplateBuilderService from 'c/geTemplateBuilderService';
-import GeLabelService from 'c/geLabelService';
-import { getObjectInfo } from 'lightning/uiObjectInfoApi';
-import { EXCLUDED_FIELD_MAPPINGS_BY_SOURCE_API_NAME } from './excludedFields';
+import { LightningElement, track, api, wire } from "lwc";
+import { BATCH_CURRENCY_ISO_CODE, dispatch, handleError } from "c/utilTemplateBuilder";
+import { CLICKED_DOWN, CLICKED_UP } from "c/geConstants";
+import { updateFocusFor } from "./geTemplateBuilderFormFieldsA11yHelpers";
+import { mutable, findIndexByProperty, isEmpty } from "c/utilCommon";
+import TemplateBuilderService from "c/geTemplateBuilderService";
+import GeLabelService from "c/geLabelService";
+import { getObjectInfo } from "lightning/uiObjectInfoApi";
+import { EXCLUDED_FIELD_MAPPINGS_BY_SOURCE_API_NAME } from "./excludedFields";
 
 // Import schema for default form field element objects
-import DATA_IMPORT_INFO from '@salesforce/schema/DataImport__c';
+import DATA_IMPORT_INFO from "@salesforce/schema/DataImport__c";
 
 // Import schema for DataImport__c fields
-import ACCOUNT1_IMPORTED_FIELD from '@salesforce/schema/DataImport__c.Account1Imported__c';
-import ACCOUNT1_NAME_FIELD from '@salesforce/schema/DataImport__c.Account1_Name__c';
-import CONTACT1_IMPORTED_FIELD from '@salesforce/schema/DataImport__c.Contact1Imported__c';
-import CONTACT1_LASTNAME_FIELD from '@salesforce/schema/DataImport__c.Contact1_Lastname__c';
+import ACCOUNT1_IMPORTED_FIELD from "@salesforce/schema/DataImport__c.Account1Imported__c";
+import ACCOUNT1_NAME_FIELD from "@salesforce/schema/DataImport__c.Account1_Name__c";
+import CONTACT1_IMPORTED_FIELD from "@salesforce/schema/DataImport__c.Contact1Imported__c";
+import CONTACT1_LASTNAME_FIELD from "@salesforce/schema/DataImport__c.Contact1_Lastname__c";
 
-const FIELD = 'field';
-const BOOLEAN_TYPE = 'BOOLEAN';
-const DONATION_DONOR_LABEL = 'Donation Donor';
-const COMMA_CHARACTER = ', ';
-const PERIOD_CHARACTER = '.';
-let REQUIRED_FORM_FIELDS_MESSAGE = '';
+const FIELD = "field";
+const BOOLEAN_TYPE = "BOOLEAN";
+const DONATION_DONOR_LABEL = "Donation Donor";
+const COMMA_CHARACTER = ", ";
+const PERIOD_CHARACTER = ".";
+let REQUIRED_FORM_FIELDS_MESSAGE = "";
 
 // Required form fields for template save validation
 const REQUIRED_FORM_FIELDS = [
     ACCOUNT1_IMPORTED_FIELD.fieldApiName,
     ACCOUNT1_NAME_FIELD.fieldApiName,
     CONTACT1_IMPORTED_FIELD.fieldApiName,
-    CONTACT1_LASTNAME_FIELD.fieldApiName
+    CONTACT1_LASTNAME_FIELD.fieldApiName,
 ];
 
-const FIELD_BUNDLES_SECTION_ID = 'fieldBundles';
-const FORM_FIELDS_SECTION_ID = 'formFields';
-const ADVANCED_FIELDS_SECTION_ID = 'advancedFormFields';
+const FIELD_BUNDLES_SECTION_ID = "fieldBundles";
+const FORM_FIELDS_SECTION_ID = "formFields";
+const ADVANCED_FIELDS_SECTION_ID = "advancedFormFields";
 
 // List of object mappings to exclude from Template Builder
-const EXCLUDED_OBJECT_MAPPINGS = [
-    'Opportunity_Contact_Role_1',
-    'Opportunity_Contact_Role_2'
-];
+const EXCLUDED_OBJECT_MAPPINGS = ["Opportunity_Contact_Role_1", "Opportunity_Contact_Role_2"];
 
-const FIELD_BUNDLE_MASTER_NAMES = [
-    'Data Import',
-    'Field Bundles'
-];
+const FIELD_BUNDLE_MASTER_NAMES = ["Data Import", "Field Bundles"];
 
 const ADVANCED_MAPPING_MASTER_NAMES = [
-    'Account 2',
-    'Contact 2',
-    'GAU Allocation 1',
-    'GAU Allocation 2',
-    'Household',
-    'Opportunity Contact Role 1',
-    'Opportunity Contact Role 2'
+    "Account 2",
+    "Contact 2",
+    "GAU Allocation 1",
+    "GAU Allocation 2",
+    "Household",
+    "Opportunity Contact Role 1",
+    "Opportunity Contact Role 2",
 ];
 
 const OBJECT_MAPPING_HELP_TEXT = {
-    'Account 1': 'geHelpTextAccount1Mapping',
-    'Account 2': 'geHelpTextAccount2Mapping',
-    'Address': 'geHelpTextAddressMapping',
-    'Contact 1': 'geHelpTextContact1Mapping',
-    'Contact 2': 'geHelpTextContact2Mapping',
-    'GAU Allocation 1': 'geHelpTextAllocation1Mapping',
-    'GAU Allocation 2': 'geHelpTextAllocation2Mapping',
-    'Allocations': 'geHelpTextAllocationBundle',
-    'Household': 'geHelpTextHouseholdMapping'
+    "Account 1": "geHelpTextAccount1Mapping",
+    "Account 2": "geHelpTextAccount2Mapping",
+    Address: "geHelpTextAddressMapping",
+    "Contact 1": "geHelpTextContact1Mapping",
+    "Contact 2": "geHelpTextContact2Mapping",
+    "GAU Allocation 1": "geHelpTextAllocation1Mapping",
+    "GAU Allocation 2": "geHelpTextAllocation2Mapping",
+    Allocations: "geHelpTextAllocationBundle",
+    Household: "geHelpTextHouseholdMapping",
 };
 
 const FIELD_MAPPING_HELP_TEXT = {
-    'Allocations': 'geHelpTextAllocationBundle',
-    [DONATION_DONOR_LABEL]: 'geHelpTextDonationDonor'
+    Allocations: "geHelpTextAllocationBundle",
+    [DONATION_DONOR_LABEL]: "geHelpTextDonationDonor",
 };
 
 export default class geTemplateBuilderFormFields extends LightningElement {
-
-
     @api previousSaveAttempted;
     @api selectedFieldMappingSet;
     @api formSections;
-    @api activeFormSectionId;
+    _activeFormSectionId;
+    @api
+    get activeFormSectionId() {
+        return this._activeFormSectionId;
+    }
+    set activeFormSectionId(value) {
+        this._activeFormSectionId = value;
+    }
+
     @api sectionIdsByFieldMappingDeveloperNames;
 
     @track objectMappings;
@@ -102,10 +98,9 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     LOCATORS = {
         FIELD_BUNDLES_SECTION_ID,
         FORM_FIELDS_SECTION_ID,
-        ADVANCED_FIELDS_SECTION_ID
+        ADVANCED_FIELDS_SECTION_ID,
     };
     sourceObjectFieldsDescribe;
-
 
     @wire(getObjectInfo, { objectApiName: DATA_IMPORT_INFO })
     dataImportObjectInfo({ data, error }) {
@@ -123,16 +118,16 @@ export default class geTemplateBuilderFormFields extends LightningElement {
         let isValid;
         const objectMappingsWithMissingRequiredFields = new Set();
         const missingRequiredFieldMappings = [];
-        const elements = this.template.querySelectorAll('lightning-input');
+        const elements = this.template.querySelectorAll("lightning-input");
         let countOfConditionallyRequiredFormFields = 0;
 
-        elements.forEach(el => {
-            if (REQUIRED_FORM_FIELDS.includes(el.getAttribute('data-source-api-name')) && el.checked) {
+        elements.forEach((el) => {
+            if (REQUIRED_FORM_FIELDS.includes(el.getAttribute("data-source-api-name")) && el.checked) {
                 countOfConditionallyRequiredFormFields++;
             }
             if (el.required && !el.checked) {
-                objectMappingsWithMissingRequiredFields.add(el.getAttribute('data-object-mapping'));
-                const objectMappingLabel = el.getAttribute('data-object-mapping-label');
+                objectMappingsWithMissingRequiredFields.add(el.getAttribute("data-object-mapping"));
+                const objectMappingLabel = el.getAttribute("data-object-mapping-label");
                 missingRequiredFieldMappings.push(`${objectMappingLabel}: ${el.label}`);
             }
 
@@ -141,33 +136,37 @@ export default class geTemplateBuilderFormFields extends LightningElement {
         if (countOfConditionallyRequiredFormFields === 0) {
             const requiredGroupFieldsMessage = GeLabelService.format(
                 this.CUSTOM_LABELS.geErrorPageLevelMissingRequiredGroupFields,
-                [REQUIRED_FORM_FIELDS_MESSAGE]);
+                [REQUIRED_FORM_FIELDS_MESSAGE]
+            );
             missingRequiredFieldMappings.push(`${requiredGroupFieldsMessage}`);
         }
 
         if (missingRequiredFieldMappings.length > 0) {
-            const lightningAccordion = this.template.querySelector('lightning-accordion');
+            const lightningAccordion = this.template.querySelector("lightning-accordion");
             lightningAccordion.activeSectionName = [...objectMappingsWithMissingRequiredFields];
 
             this.pageLevelError = {
-                hasErrors : true,
-                title : this.CUSTOM_LABELS.commonError,
+                hasErrors: true,
+                title: this.CUSTOM_LABELS.commonError,
                 message: this.CUSTOM_LABELS.geErrorPageLevelMissingRequiredFields,
                 errors: [...missingRequiredFieldMappings],
-                variant: 'error'
-            }
+                variant: "error",
+            };
 
             isValid = false;
         } else {
             isValid = true;
 
             this.pageLevelError = {
-                hasErrors : false,
-                errors: []
-            }
+                hasErrors: false,
+                errors: [],
+            };
         }
 
-        dispatch(this, 'updatevalidity', { property: 'hasSelectFieldsTabError', hasError: this.pageLevelError.hasErrors });
+        dispatch(this, "updatevalidity", {
+            property: "hasSelectFieldsTabError",
+            hasError: this.pageLevelError.hasErrors,
+        });
         return isValid;
     }
 
@@ -195,7 +194,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     }
 
     toggleModal(event) {
-        dispatch(this, 'togglemodal', event.detail);
+        dispatch(this, "togglemodal", event.detail);
     }
 
     toggleExpandableSection(sectionId) {
@@ -206,12 +205,12 @@ export default class geTemplateBuilderFormFields extends LightningElement {
 
     expandSubSections(sectionId, objectMappings) {
         const lightningAccordion = this.template.querySelector(`[data-section-id=${sectionId}] lightning-accordion`);
-        lightningAccordion.activeSectionName = objectMappings.map(mapping => mapping.DeveloperName);
+        lightningAccordion.activeSectionName = objectMappings.map((mapping) => mapping.DeveloperName);
     }
 
     collapseSubSections(sectionId) {
         const lightningAccordion = this.template.querySelector(`[data-section-id=${sectionId}] lightning-accordion`);
-        lightningAccordion.activeSectionName = '';
+        lightningAccordion.activeSectionName = "";
     }
 
     isSectionCollapsed(sectionId) {
@@ -224,37 +223,35 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     }
 
     /*******************************************************************************
-    * @description Intermediary async method for pulling the object and field mappings
-    * stored in the TemplateBuilderService component and build an iterable list for
-    * the UI.
-    */
+     * @description Intermediary async method for pulling the object and field mappings
+     * stored in the TemplateBuilderService component and build an iterable list for
+     * the UI.
+     */
     buildObjectMappingsList = async () => {
-        const objectMappings = [];
+        const mappingsList = [];
 
         const fieldMappingsByObjMappingDevName = TemplateBuilderService.fieldMappingsByObjMappingDevName;
         for (const objMappingDevName in fieldMappingsByObjMappingDevName) {
-
             if (Object.prototype.hasOwnProperty.call(fieldMappingsByObjMappingDevName, objMappingDevName)) {
-
                 const isAllowed = this.checkIfObjectMappingIsAllowed(objMappingDevName);
                 if (isAllowed) {
                     this.objectMappingNames = [...this.objectMappingNames, objMappingDevName];
 
                     const objectMapping = {
                         ...TemplateBuilderService.objectMappingByDevName[objMappingDevName],
-                        Field_Mappings: this.getObjectMappingFieldMappings(objMappingDevName)
+                        Field_Mappings: this.getObjectMappingFieldMappings(objMappingDevName),
                     };
 
                     if (this.shouldMappingBeExcluded(objectMapping.Field_Mappings)) {
                         continue;
                     }
 
-                    objectMappings.push(objectMapping)
+                    mappingsList.push(objectMapping);
                 }
             }
         }
 
-        return objectMappings;
+        return mappingsList;
     };
 
     shouldMappingBeExcluded(objectFieldMappings) {
@@ -262,34 +259,35 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     }
 
     /*******************************************************************************
-    * @description Check if the provided object mapping developer name is allowed
-    * to be used in Template Builder.
-    *
-    * @param {string} objMappingDevName: Data_Import_Object_Mapping__mdt developer name
-    *
-    * @return {boolean}: True if the Object Mapping is allowed to be used in Template
-    * Builder
-    */
+     * @description Check if the provided object mapping developer name is allowed
+     * to be used in Template Builder.
+     *
+     * @param {string} objMappingDevName: Data_Import_Object_Mapping__mdt developer name
+     *
+     * @return {boolean}: True if the Object Mapping is allowed to be used in Template
+     * Builder
+     */
     checkIfObjectMappingIsAllowed(objectMappingDeveloperName) {
         return !EXCLUDED_OBJECT_MAPPINGS.includes(
-            objectMappingDeveloperName.substring(0, objectMappingDeveloperName.length - 10));
+            objectMappingDeveloperName.substring(0, objectMappingDeveloperName.length - 10)
+        );
     }
 
     /*******************************************************************************
-    * @description Collects, sorts, and returns the provided Object Mapping's Field
-    * Mappings. Field Mappings that are in the EXCLUDED_FIELD_MAPPINGS_BY_SOURCE_API_NAME
-    * array are removed from the returned array.
-    *
-    * @param {string} objMappingDevName: Data_Import_Object_Mapping__mdt developer name
-    *
-    * @return {array}: An array of the Object Mapping's Field Mappings
-    */
+     * @description Collects, sorts, and returns the provided Object Mapping's Field
+     * Mappings. Field Mappings that are in the EXCLUDED_FIELD_MAPPINGS_BY_SOURCE_API_NAME
+     * array are removed from the returned array.
+     *
+     * @param {string} objMappingDevName: Data_Import_Object_Mapping__mdt developer name
+     *
+     * @return {array}: An array of the Object Mapping's Field Mappings
+     */
     getObjectMappingFieldMappings(objectMappingDeveloperName) {
         const allowedFieldMappings = [];
 
         const fieldMappings = TemplateBuilderService.fieldMappingsByObjMappingDevName[objectMappingDeveloperName];
 
-        fieldMappings.forEach(fieldMapping => {
+        fieldMappings.forEach((fieldMapping) => {
             const isAllowed = this.checkIfFieldMappingIsAllowed(fieldMapping);
 
             if (isAllowed) {
@@ -302,18 +300,17 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     }
 
     /*******************************************************************************
-    * @description Check if the provided field mapping is allowed to be used in the
-    * Template Builder.
-    *
-    * @param {object} fieldMapping: An instance of Data_Import_Field_Mapping__mdt
-    */
+     * @description Check if the provided field mapping is allowed to be used in the
+     * Template Builder.
+     *
+     * @param {object} fieldMapping: An instance of Data_Import_Field_Mapping__mdt
+     */
     checkIfFieldMappingIsAllowed(fieldMapping) {
         if (this.isCurrencyIsoCodeFieldMapping(fieldMapping)) {
             return false;
         }
-        const formFieldName = fieldMapping.Element_Type === FIELD ?
-            fieldMapping.Source_Field_API_Name :
-            fieldMapping.DeveloperName;
+        const formFieldName =
+            fieldMapping.Element_Type === FIELD ? fieldMapping.Source_Field_API_Name : fieldMapping.DeveloperName;
 
         return !EXCLUDED_FIELD_MAPPINGS_BY_SOURCE_API_NAME.includes(formFieldName);
     }
@@ -323,10 +320,10 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     }
 
     /*******************************************************************************
-    * @description Set the form field requiredness based on various criterias.
-    *
-    * @param {object} fieldMapping: An instance of Data_Import_Field_Mapping__mdt
-    */
+     * @description Set the form field requiredness based on various criterias.
+     *
+     * @param {object} fieldMapping: An instance of Data_Import_Field_Mapping__mdt
+     */
     setFieldMappingRequiredness = (fieldMapping) => {
         if (fieldMapping.Target_Field_Label === DONATION_DONOR_LABEL) {
             //Forcing the requiredness of the Donation Donor field mapping
@@ -337,48 +334,48 @@ export default class geTemplateBuilderFormFields extends LightningElement {
             // force checkboxes to not be required on the template builder
             fieldMapping.Is_Required = false;
         }
-    }
+    };
 
     /*******************************************************************************
-    * @description Sorts the field mappings within their respective object mappings
-    * alphabetically and by their requiredness.
-    */
+     * @description Sorts the field mappings within their respective object mappings
+     * alphabetically and by their requiredness.
+     */
     handleSortFieldMappings() {
-        const objectMappings = mutable(this.objectMappings);
-        for (let i = 0; i < objectMappings.length; i++) {
-            const objectMapping = objectMappings[i];
+        const sortedMappings = mutable(this.objectMappings);
+        for (let i = 0; i < sortedMappings.length; i++) {
+            const objectMapping = sortedMappings[i];
 
             if (objectMapping.Field_Mappings) {
                 objectMapping.Field_Mappings.sort(function (a, b) {
                     const requiredCompare = b.Is_Required - a.Is_Required;
-                    const labelCompare = !isEmpty(a.Target_Field_Label) ?
-                        a.Target_Field_Label.localeCompare(b.Target_Field_Label) :
-                        null;
+                    const labelCompare = !isEmpty(a.Target_Field_Label)
+                        ? a.Target_Field_Label.localeCompare(b.Target_Field_Label)
+                        : null;
 
                     return requiredCompare || labelCompare;
                 });
             }
         }
 
-        this.objectMappings = objectMappings;
+        this.objectMappings = sortedMappings;
     }
 
     /*******************************************************************************
-    * @description Removes a section and unchecks checkboxes for all the gift fields
-    * contained in this section
-    *
-    * @param {object} event: Onclick event object from lightning-button-icon
-    */
+     * @description Removes a section and unchecks checkboxes for all the gift fields
+     * contained in this section
+     *
+     * @param {object} event: Onclick event object from lightning-button-icon
+     */
     @api
     handleDeleteFormSection(event) {
         const formSectionId = event.detail;
         let isRequiredFormElement = false;
 
-        const formSections = mutable(this.formSections);
-        const formSection = formSections.find(fs => fs.id === formSectionId);
+        const mutableSections = mutable(this.formSections);
+        const formSection = mutableSections.find((fs) => fs.id === formSectionId);
 
         if (formSection.id === this.activeFormSectionId) {
-            this.activeFormSectionId = undefined;
+            this._activeFormSectionId = undefined;
         }
 
         if (formSection.elements && formSection.elements.length > 0) {
@@ -388,20 +385,19 @@ export default class geTemplateBuilderFormFields extends LightningElement {
                     isRequiredFormElement = true;
                 }
 
-                const inputName = formFields[i].componentName ?
-                    formFields[i].componentName :
-                    formFields[i].dataImportFieldMappingDevNames[0];
+                const inputName = formFields[i].componentName
+                    ? formFields[i].componentName
+                    : formFields[i].dataImportFieldMappingDevNames[0];
 
-                const checkbox =
-                    this.template.querySelector(`lightning-input[data-field-mapping="${inputName}"]`);
+                const checkbox = this.template.querySelector(`lightning-input[data-field-mapping="${inputName}"]`);
                 checkbox.checked = false;
             }
         }
 
-        const formSectionIndex = findIndexByProperty(formSections, 'id', formSection.id);
-        formSections.splice(formSectionIndex, 1);
+        const formSectionIndex = findIndexByProperty(mutableSections, "id", formSection.id);
+        mutableSections.splice(formSectionIndex, 1);
 
-        if (formSections.length === 1) {
+        if (mutableSections.length === 1) {
             this.handleChangeActiveSection({ detail: this.formSections[0].id });
         }
 
@@ -409,48 +405,53 @@ export default class geTemplateBuilderFormFields extends LightningElement {
             this.validate();
         }
 
-        dispatch(this, 'refreshformsections', formSections);
+        dispatch(this, "refreshformsections", mutableSections);
     }
 
     /*******************************************************************************
-    * @description Receives event from the child component and dispatches an event to
-    * notify parent component geTemplateBuilder that the active section has changed.
-    *
-    * @param {object} event: Event object containing the section id from the
-    * child component geTemplateBuilderFormSection.
-    */
+     * @description Receives event from the child component and dispatches an event to
+     * notify parent component geTemplateBuilder that the active section has changed.
+     *
+     * @param {object} event: Event object containing the section id from the
+     * child component geTemplateBuilderFormSection.
+     */
     handleChangeActiveSection(event) {
-        dispatch(this, 'changeactivesection', event.detail);
+        dispatch(this, "changeactivesection", event.detail);
     }
 
     /*******************************************************************************
-    * @description Handles onchange event of the gift fields checkboxes. Adds/removes
-    * gift fields from sections by dispatching an event to the parent component.
-    *
-    * @param {object} event: Onchange event object from lightning-input checkbox
-    */
+     * @description Handles onchange event of the gift fields checkboxes. Adds/removes
+     * gift fields from sections by dispatching an event to the parent component.
+     *
+     * @param {object} event: Onchange event object from lightning-input checkbox
+     */
     handleToggleFieldMapping(event) {
         const fieldMappingDeveloperName = event.target.value;
         const fieldMapping = TemplateBuilderService.fieldMappingByDevName[fieldMappingDeveloperName];
         const objectMapping =
             TemplateBuilderService.objectMappingByDevName[fieldMapping.Target_Object_Mapping_Dev_Name];
 
-        fieldMapping.Is_Required = fieldMapping.Source_Field_Data_Type === BOOLEAN_TYPE ? false :
-            (fieldMapping.Target_Field_Label === DONATION_DONOR_LABEL ? true : fieldMapping.Is_Required);
+        fieldMapping.Is_Required =
+            fieldMapping.Source_Field_Data_Type === BOOLEAN_TYPE
+                ? false
+                : fieldMapping.Target_Field_Label === DONATION_DONOR_LABEL
+                  ? true
+                  : fieldMapping.Is_Required;
 
-        if (fieldMapping.Is_Required ||
+        if (
+            fieldMapping.Is_Required ||
             REQUIRED_FORM_FIELDS.includes(fieldMapping.Source_Field_API_Name) ||
-            fieldMapping.isDescribable === false) {
-
+            fieldMapping.isDescribable === false
+        ) {
             this.validate();
         }
 
-        dispatch(this, 'togglefieldmapping', {
+        dispatch(this, "togglefieldmapping", {
             clickEvent: event,
             fieldMappingDeveloperName: fieldMappingDeveloperName,
             fieldMapping: fieldMapping,
-            objectMapping: objectMapping
-        });   
+            objectMapping: objectMapping,
+        });
     }
 
     /*******************************************************************************
@@ -465,64 +466,64 @@ export default class geTemplateBuilderFormFields extends LightningElement {
                 hasErrors: true,
                 title: this.CUSTOM_LABELS.commonFieldsNotFound,
                 message: this.CUSTOM_LABELS.geFieldsNotFoundMessage,
-                type: 'fieldMetadata',
-                variant: 'warning'
-            }
+                type: "fieldMetadata",
+                variant: "warning",
+            };
         } else {
-            if (this.pageLevelError.type === 'fieldMetadata') {
+            if (this.pageLevelError.type === "fieldMetadata") {
                 this.pageLevelError = {};
             }
         }
     }
 
     /*******************************************************************************
-    * @description Handles adding a new section. Dispatches an event to notify parent
-    * component geTemplateBuilder that a new section needs to be added.
-    *
-    * @return {string} label: Label for the new section.
-    */
+     * @description Handles adding a new section. Dispatches an event to notify parent
+     * component geTemplateBuilder that a new section needs to be added.
+     *
+     * @return {string} label: Label for the new section.
+     */
     addSection(label) {
-        dispatch(this, 'addformsection', { label: label });
+        dispatch(this, "addformsection", { label: label });
 
         setTimeout(() => {
             const selector = `c-ge-template-builder-form-section[data-section-id="${this.activeFormSectionId}"]`;
             const activeFormSectionDom = this.template.querySelector(selector);
             activeFormSectionDom.focus();
 
-            const button = this.template.querySelector('button');
+            const button = this.template.querySelector("button");
             button.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
         }, 0);
     }
 
     /*******************************************************************************
-    * @description Receives event from child component and dispatches event to
-    * parent to move the given FormField up within its parent FormSection.
-    *
-    * @param {object} event: Event object from child component.
-    * component chain: geTemplateBuilderFormField -> geTemplateBuilderFormSection -> here
-    */
+     * @description Receives event from child component and dispatches event to
+     * parent to move the given FormField up within its parent FormSection.
+     *
+     * @param {object} event: Event object from child component.
+     * component chain: geTemplateBuilderFormField -> geTemplateBuilderFormSection -> here
+     */
     handleFormElementUp(event) {
-        dispatch(this, 'formelementup', event.detail);
+        dispatch(this, "formelementup", event.detail);
     }
 
     /*******************************************************************************
-    * @description Receives event from child component and dispatches event to
-    * parent to move the given FormField down within its parent FormSection.
-    *
-    * @param {object} event: Event object from child component.
-    * component chain: geTemplateBuilderFormField -> geTemplateBuilderFormSection -> here
-    */
+     * @description Receives event from child component and dispatches event to
+     * parent to move the given FormField down within its parent FormSection.
+     *
+     * @param {object} event: Event object from child component.
+     * component chain: geTemplateBuilderFormField -> geTemplateBuilderFormSection -> here
+     */
     handleFormElementDown(event) {
-        dispatch(this, 'formelementdown', event.detail);
+        dispatch(this, "formelementdown", event.detail);
     }
 
     /*******************************************************************************
-    * @description Receives event from child component and dispatches event to
-    * parent to remove the FormField from its parent FormSection.
-    *
-    * @param {object} event: Event object from child component.
-    * component chain: geTemplateBuilderFormField -> geTemplateBuilderFormSection -> here
-    */
+     * @description Receives event from child component and dispatches event to
+     * parent to remove the FormField from its parent FormSection.
+     *
+     * @param {object} event: Event object from child component.
+     * component chain: geTemplateBuilderFormField -> geTemplateBuilderFormSection -> here
+     */
     handleDeleteFormElement(event) {
         const element = this.template.querySelector(`lightning-input[data-field-mapping="${event.detail.fieldName}"]`);
         if (element) {
@@ -531,30 +532,30 @@ export default class geTemplateBuilderFormFields extends LightningElement {
 
         this.validate();
 
-        dispatch(this, 'deleteformelement', event.detail);
+        dispatch(this, "deleteformelement", event.detail);
     }
 
     /*******************************************************************************
-    * @description Receives event from child component and dispatches event to
-    * parent to update the details of the given FormField.
-    *
-    * @param {object} event: Event object from child component.
-    * component chain: geTemplateBuilderFormField -> geTemplateBuilderFormSection -> here
-    */
+     * @description Receives event from child component and dispatches event to
+     * parent to update the details of the given FormField.
+     *
+     * @param {object} event: Event object from child component.
+     * component chain: geTemplateBuilderFormField -> geTemplateBuilderFormSection -> here
+     */
     handleUpdateFormElement(event) {
-        dispatch(this, 'updateformelement', event.detail);
+        dispatch(this, "updateformelement", event.detail);
     }
 
     /*******************************************************************************
-    * @description Receives event from child component and dispatches event to
-    * parent to move the given FormSection up.
-    *
-    * @param {object} event: Event object from child component.
-    * component chain: geTemplateBuilderFormSection -> here
-    */
+     * @description Receives event from child component and dispatches event to
+     * parent to move the given FormSection up.
+     *
+     * @param {object} event: Event object from child component.
+     * component chain: geTemplateBuilderFormSection -> here
+     */
     handleFormSectionUp(event) {
         const sectionId = event.detail;
-        dispatch(this, 'formsectionup', sectionId);
+        dispatch(this, "formsectionup", sectionId);
 
         setTimeout(() => {
             const formSectionIndex = this.findFormSectionIndex(sectionId);
@@ -564,15 +565,15 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     }
 
     /*******************************************************************************
-    * @description Receives event from child component and dispatches event to
-    * parent to move the given FormSection down.
-    *
-    * @param {object} event: Event object from child component.
-    * component chain: geTemplateBuilderFormSection -> here
-    */
+     * @description Receives event from child component and dispatches event to
+     * parent to move the given FormSection down.
+     *
+     * @param {object} event: Event object from child component.
+     * component chain: geTemplateBuilderFormSection -> here
+     */
     handleFormSectionDown(event) {
         const sectionId = event.detail;
-        dispatch(this, 'formsectiondown', sectionId);
+        dispatch(this, "formsectiondown", sectionId);
 
         setTimeout(() => {
             const formSectionIndex = this.findFormSectionIndex(sectionId);
@@ -582,19 +583,20 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     }
 
     findFormSection(sectionId) {
-        return this.formSections.find(section => section.id === sectionId);
+        return this.formSections.find((section) => section.id === sectionId);
     }
 
     findFormSectionIndex(sectionId) {
-        return this.formSections.findIndex(section => section.id === sectionId);
+        return this.formSections.findIndex((section) => section.id === sectionId);
     }
 
     /*******************************************************************************
-    * @description Method toggles the checkboxes for any existing/selected gift
-    * fields. Used when retrieving an existing form template.
-    *
-    * @param {list} objectMappings: List of object mappings containing field mapping details
-    */
+     * @description Method toggles the checkboxes for any existing/selected gift
+     * fields. Used when retrieving an existing form template.
+     *
+     * @param {list} objectMappings: List of object mappings containing field mapping details
+     */
+    // eslint-disable-next-line no-shadow
     toggleCheckboxForSelectedFieldMappings(objectMappings) {
         const selectedFieldMappings = Object.keys(this.sectionIdsByFieldMappingDeveloperNames);
 
@@ -616,12 +618,12 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     }
 
     /*******************************************************************************
-    * @description Handles onsectiontoggle event handler of lightning-accordion.
-    * Sets the isAllSectionsExpanded property.
-    *
-    * @param {object} event: Event object from lightning-accordion onsectiontoggle
-    * event handler.
-    */
+     * @description Handles onsectiontoggle event handler of lightning-accordion.
+     * Sets the isAllSectionsExpanded property.
+     *
+     * @param {object} event: Event object from lightning-accordion onsectiontoggle
+     * event handler.
+     */
     handleSectionToggle(event) {
         const openSections = event.detail.openSections;
 
@@ -636,9 +638,9 @@ export default class geTemplateBuilderFormFields extends LightningElement {
      * Expand/collapse the header and all sub-sections for advanced form fields
      * @param event
      */
-    handleToggleAdvancedSection(event) {
+    handleToggleAdvancedSection() {
         const collapsed = this.toggleExpandableSection(this.LOCATORS.ADVANCED_FIELDS_SECTION_ID);
-        if(collapsed) {
+        if (collapsed) {
             this.collapseSubSections(this.LOCATORS.ADVANCED_FIELDS_SECTION_ID);
         } else {
             this.expandSubSections(this.LOCATORS.ADVANCED_FIELDS_SECTION_ID, this.advancedObjectMappings);
@@ -649,7 +651,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
      * Expand/collapse the bundles section, no sub-sections currently present for this section
      * @param event
      */
-    handleToggleBundlesSection(event) {
+    handleToggleBundlesSection() {
         this.toggleExpandableSection(this.LOCATORS.FIELD_BUNDLES_SECTION_ID);
     }
 
@@ -657,9 +659,9 @@ export default class geTemplateBuilderFormFields extends LightningElement {
      * Expand/collapse the header and all sub-section for basic form fields
      * @param event
      */
-    handleToggleBasicSection(event) {
+    handleToggleBasicSection() {
         const collapsed = this.toggleExpandableSection(this.LOCATORS.FORM_FIELDS_SECTION_ID);
-        if(collapsed) {
+        if (collapsed) {
             this.collapseSubSections(this.LOCATORS.FORM_FIELDS_SECTION_ID);
         } else {
             this.expandSubSections(this.LOCATORS.FORM_FIELDS_SECTION_ID, this.basicObjectMappings);
@@ -667,23 +669,21 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     }
 
     /*******************************************************************************
-    * @description Method takes in a lightning-input element and sets validity.
-    *
-    * @param {object} element: Lightning-input element to set and report validity
-    * of.
-    */
+     * @description Method takes in a lightning-input element and sets validity.
+     *
+     * @param {object} element: Lightning-input element to set and report validity
+     * of.
+     */
     validateGiftField(element) {
         const customValidity =
-            (element.required && element.checked === false) ?
-                this.CUSTOM_LABELS.geErrorRequiredField
-                : '';
+            element.required && element.checked === false ? this.CUSTOM_LABELS.geErrorRequiredField : "";
         element.setCustomValidity(customValidity);
         element.reportValidity();
     }
 
     /*******************************************************************************
-    * @description Method shows additional text content under the left column body.
-    */
+     * @description Method shows additional text content under the left column body.
+     */
     handleBodyReadMore() {
         this.isReadMoreActive = true;
     }
@@ -694,7 +694,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
      * @param {object} objectData: Returned Object Schema
      */
     buildRequiredFieldsMessage(objectData) {
-        REQUIRED_FORM_FIELDS_MESSAGE = ''; // Clear out required fields placeholder
+        REQUIRED_FORM_FIELDS_MESSAGE = ""; // Clear out required fields placeholder
         for (let i = 0; i < REQUIRED_FORM_FIELDS.length; i++) {
             let character;
             if (i < REQUIRED_FORM_FIELDS.length - 1) {
@@ -716,7 +716,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     mapHelpText = (mapping) => {
         const labelName = OBJECT_MAPPING_HELP_TEXT[mapping.MasterLabel];
         const Field_Mappings = mapping.Field_Mappings.map(this.mapFieldHelpText);
-        if(labelName) {
+        if (labelName) {
             const helpText = this.CUSTOM_LABELS[labelName];
             return { ...mapping, Field_Mappings, helpText };
         }
@@ -730,7 +730,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
      */
     mapFieldHelpText = (fieldMapping) => {
         const labelName = FIELD_MAPPING_HELP_TEXT[fieldMapping.MasterLabel];
-        if(labelName) {
+        if (labelName) {
             const helpText = this.CUSTOM_LABELS[labelName];
             return { ...fieldMapping, helpText };
         }
@@ -745,9 +745,11 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     get basicObjectMappings() {
         if (this.objectMappings) {
             return this.objectMappings
-                .filter(mapping =>
-                    !ADVANCED_MAPPING_MASTER_NAMES.includes(mapping.MasterLabel) &&
-                    !FIELD_BUNDLE_MASTER_NAMES.includes(mapping.MasterLabel))
+                .filter(
+                    (mapping) =>
+                        !ADVANCED_MAPPING_MASTER_NAMES.includes(mapping.MasterLabel) &&
+                        !FIELD_BUNDLE_MASTER_NAMES.includes(mapping.MasterLabel)
+                )
                 .map(this.mapHelpText);
         }
         return [];
@@ -760,7 +762,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     get advancedObjectMappings() {
         if (this.objectMappings) {
             return this.objectMappings
-                .filter(mapping => ADVANCED_MAPPING_MASTER_NAMES.includes(mapping.MasterLabel))
+                .filter((mapping) => ADVANCED_MAPPING_MASTER_NAMES.includes(mapping.MasterLabel))
                 .map(this.mapHelpText);
         }
         return [];
@@ -772,7 +774,6 @@ export default class geTemplateBuilderFormFields extends LightningElement {
 
     get basicSectionCollapsed() {
         return this.isSectionCollapsed(this.LOCATORS.FORM_FIELDS_SECTION_ID);
-
     }
 
     get bundlesSectionCollapsed() {
@@ -785,15 +786,15 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     get fieldBundleMappings() {
         if (this.objectMappings) {
             return this.objectMappings
-                .filter(mapping => FIELD_BUNDLE_MASTER_NAMES.includes(mapping.MasterLabel))
+                .filter((mapping) => FIELD_BUNDLE_MASTER_NAMES.includes(mapping.MasterLabel))
                 .map(this.mapHelpText);
         }
         return [];
     }
 
     /*******************************************************************************
-    * Start getters for data-qa-locator attributes
-    */
+     * Start getters for data-qa-locator attributes
+     */
 
     get qaLocatorSectionFieldBundles() {
         return `section ${this.CUSTOM_LABELS.geHeaderFieldBundles}`;
@@ -836,7 +837,6 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     }
 
     /*******************************************************************************
-    * End getters for data-qa-locator attributes
-    */
-
+     * End getters for data-qa-locator attributes
+     */
 }

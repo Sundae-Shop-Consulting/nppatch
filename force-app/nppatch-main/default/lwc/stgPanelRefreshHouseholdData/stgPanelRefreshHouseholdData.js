@@ -15,8 +15,7 @@ export default class StgPanelRefreshHouseholdData extends LightningElement {
         description:
             "Recalculates all Household Account names, formal greetings, and informal greetings based on the current naming format settings. Run this after changing household naming formats to apply the new format to all existing Households.",
         runBatch: "Refresh Household Names",
-        runningMessage:
-            "Batch job submitted. Check the Apex Jobs page for progress.",
+        runningMessage: "Batch job submitted. Check the Apex Jobs page for progress.",
     };
 
     @wire(isAdmin)
@@ -44,8 +43,7 @@ export default class StgPanelRefreshHouseholdData extends LightningElement {
             );
         } catch (error) {
             this._hasError = true;
-            this._errorMessage =
-                error?.body?.message || "An error occurred.";
+            this._errorMessage = error?.body?.message || "An error occurred.";
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: "Error",

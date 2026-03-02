@@ -1,16 +1,15 @@
-import { LightningElement, api, wire } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-import { getRecord } from 'lightning/uiRecordApi';
-import { handleError } from 'c/utilTemplateBuilder';
-import { registerListener, unregisterListener } from 'c/pubsubNoPageRef';
-import geLabelService from 'c/geLabelService';
-import getOpenDonationsView from '@salesforce/apex/GE_GiftEntryController.getOpenDonationsView';
-import OPPORTUNITY from '@salesforce/schema/Opportunity';
-import PAYMENT from '@salesforce/schema/OppPayment__c';
-import { isEmptyObject } from 'c/utilCommon';
+import { LightningElement, api, wire } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
+import { getRecord } from "lightning/uiRecordApi";
+import { handleError } from "c/utilTemplateBuilder";
+import { registerListener, unregisterListener } from "c/pubsubNoPageRef";
+import geLabelService from "c/geLabelService";
+import getOpenDonationsView from "@salesforce/apex/GE_GiftEntryController.getOpenDonationsView";
+import OPPORTUNITY from "@salesforce/schema/Opportunity";
+import PAYMENT from "@salesforce/schema/OppPayment__c";
+import { isEmptyObject } from "c/utilCommon";
 
 export default class geReviewDonations extends NavigationMixin(LightningElement) {
-
     CUSTOM_LABELS = geLabelService.CUSTOM_LABELS;
 
     @api donorId;
@@ -21,29 +20,37 @@ export default class geReviewDonations extends NavigationMixin(LightningElement)
     _donationType;
     _selectedDonation;
     _opportunities = [];
-    _dedicatedListenerEventName = 'geModalCloseEvent';
+    _dedicatedListenerEventName = "geModalCloseEvent";
 
     connectedCallback() {
-        registerListener('resetReviewDonationsEvent', this.handleResetReviewDonationsComponent, this);
+        registerListener("resetReviewDonationsEvent", this.handleResetReviewDonationsComponent, this);
     }
 
     disconnectedCallback() {
-        unregisterListener('resetReviewDonationsEvent', this.handleResetReviewDonationsComponent, this);
+        unregisterListener("resetReviewDonationsEvent", this.handleResetReviewDonationsComponent, this);
     }
 
-    @wire(getRecord, { recordId: '$donorId', optionalFields: ['Account.Name', 'Contact.Name'] })
+    @wire(getRecord, { recordId: "$donorId", optionalFields: ["Account.Name", "Contact.Name"] })
     wiredGetRecord({ error, data }) {
-        if (error) {return handleError(error);}
+        if (error) {
+            handleError(error);
+            return;
+        }
         if (data) {
             this._donor = data;
             this._donorType = this._donor.apiName;
         }
     }
 
-    @wire(getOpenDonationsView, { donorId: '$donorId' })
+    @wire(getOpenDonationsView, { donorId: "$donorId" })
     wiredGetOpenDonations({ error, data }) {
-        if (error) {return handleError(error);}
-        if (data) {return this.opportunities = data.donations;}
+        if (error) {
+            handleError(error);
+            return;
+        }
+        if (data) {
+            this.opportunities = data.donations;
+        }
     }
 
     @api
@@ -76,7 +83,9 @@ export default class geReviewDonations extends NavigationMixin(LightningElement)
     }
 
     get hasPendingDonations() {
-        if (!this.donorId) {return false;}
+        if (!this.donorId) {
+            return false;
+        }
         return this.opportunities && this.opportunities.length > 0;
     }
 
@@ -85,19 +94,25 @@ export default class geReviewDonations extends NavigationMixin(LightningElement)
     }
 
     get isUpdatingOpportunity() {
-        return this._donationType === OPPORTUNITY.objectApiName &&
-            !this._selectedDonation.hasOwnProperty('applyPayment') &&
-            !this._selectedDonation.hasOwnProperty('new');
+        return (
+            this._donationType === OPPORTUNITY.objectApiName &&
+            !Object.prototype.hasOwnProperty.call(this._selectedDonation, "applyPayment") &&
+            !Object.prototype.hasOwnProperty.call(this._selectedDonation, "new")
+        );
     }
 
     get isApplyingNewPayment() {
-        return this._donationType === OPPORTUNITY.objectApiName &&
-            this._selectedDonation.hasOwnProperty('applyPayment');
+        return (
+            this._donationType === OPPORTUNITY.objectApiName &&
+            Object.prototype.hasOwnProperty.call(this._selectedDonation, "applyPayment")
+        );
     }
 
     get isCreatingNewOpportunity() {
-        return this._donationType === OPPORTUNITY.objectApiName &&
-            this._selectedDonation.hasOwnProperty('new');
+        return (
+            this._donationType === OPPORTUNITY.objectApiName &&
+            Object.prototype.hasOwnProperty.call(this._selectedDonation, "new")
+        );
     }
 
     get hasSelectedDonation() {
@@ -123,9 +138,7 @@ export default class geReviewDonations extends NavigationMixin(LightningElement)
     }
 
     get showDonorLink() {
-        return this.isApplyingNewPayment ||
-            this.isUpdatingOpportunity ||
-            this.isUpdatingPayment;
+        return this.isApplyingNewPayment || this.isUpdatingOpportunity || this.isUpdatingPayment;
     }
 
     get giftInViewHasSchedule() {
@@ -133,65 +146,65 @@ export default class geReviewDonations extends NavigationMixin(LightningElement)
     }
 
     /*******************************************************************************
-    * @description Method constructs and dispatches an object (modalConfig) as part
-    * of an event to the parent component. This object (modalConfig) is then used to
-    * configure the modal created by the aura overlay library in the parent aura
-    * component.
-    * 
-    * modalConfig has two main properties, componentProperties and
-    * modalProperties. componentProperties holds all the data for public (@api decorated)
-    * properties in the lightning web component that's to be created within the modal
-    * body. modalProperties holds all the data for the actual modal created by the 
-    * overlay library.
-    */
+     * @description Method constructs and dispatches an object (modalConfig) as part
+     * of an event to the parent component. This object (modalConfig) is then used to
+     * configure the modal created by the aura overlay library in the parent aura
+     * component.
+     *
+     * modalConfig has two main properties, componentProperties and
+     * modalProperties. componentProperties holds all the data for public (@api decorated)
+     * properties in the lightning web component that's to be created within the modal
+     * body. modalProperties holds all the data for the actual modal created by the
+     * overlay library.
+     */
     openReviewDonationsModal() {
-        const donorRecordName = this._donor ? this._donor.fields.Name.value : '';
-        const modalHeader = geLabelService.format(
-            this.CUSTOM_LABELS.geHeaderMatchingReviewDonations,
-            [donorRecordName]);
+        const donorRecordName = this._donor ? this._donor.fields.Name.value : "";
+        const modalHeader = geLabelService.format(this.CUSTOM_LABELS.geHeaderMatchingReviewDonations, [
+            donorRecordName,
+        ]);
         const modalConfig = {
             componentProperties: {
                 opportunities: this.opportunities,
                 dedicatedListenerEventName: this._dedicatedListenerEventName,
-                selectedDonationId: this.hasSelectedDonation ? this.selectedDonation.Id : undefined
+                selectedDonationId: this.hasSelectedDonation ? this.selectedDonation.Id : undefined,
             },
             modalProperties: {
-                cssClass: 'slds-modal_large',
+                cssClass: "slds-modal_large",
                 header: modalHeader,
-                componentName: 'geDonationMatching',
-                showCloseButton: true
-            }
+                componentName: "geDonationMatching",
+                showCloseButton: true,
+            },
         };
 
-        this.dispatchEvent(new CustomEvent('togglemodal', { detail: modalConfig }));
+        this.dispatchEvent(new CustomEvent("togglemodal", { detail: modalConfig }));
     }
 
     /*******************************************************************************
-    * @description Method generates a record detail page url based on the currently
-    * selected donor (Account or Contact) and either opens a new tab or a new window
-    * depending on the user's browser settings.
-    */
+     * @description Method generates a record detail page url based on the currently
+     * selected donor (Account or Contact) and either opens a new tab or a new window
+     * depending on the user's browser settings.
+     */
     navigateToRecord() {
         this[NavigationMixin.GenerateUrl]({
-            type: 'standard__recordPage',
+            type: "standard__recordPage",
             attributes: {
                 recordId: this.selectedDonation.Id,
-                actionName: 'view',
+                actionName: "view",
             },
         })
-            .then(url => {
-                window.open(url, '_blank');
+            .then((url) => {
+                window.open(url, "_blank");
             })
-            .catch(error => {
+            .catch((error) => {
                 handleError(error);
             });
     }
 
     /*******************************************************************************
-    * @description Resets properties for the currently selected donation and type.
-    */
+     * @description Resets properties for the currently selected donation and type.
+     */
     handleResetReviewDonationsComponent() {
-        this.selectedDonation = null;
+        this._selectedDonation = null;
         this._donationType = null;
         if (!this.donorId) {
             this.opportunities = [];

@@ -161,15 +161,21 @@ export default class StgPanelDonorStatistics extends LightningElement {
     }
 
     _resolveMultiSelectDisplay(rawValue, options) {
-        if (!rawValue) {return this.labels.none;}
+        if (!rawValue) {
+            return this.labels.none;
+        }
         const ids = rawValue.split(";").filter(Boolean);
-        if (!ids.length) {return this.labels.none;}
+        if (!ids.length) {
+            return this.labels.none;
+        }
         const map = new Map(options.map((o) => [o.value, o.label]));
         return ids.map((id) => map.get(id) || id).join(", ");
     }
 
     _parseMultiSelect(rawValue) {
-        if (!rawValue) {return [];}
+        if (!rawValue) {
+            return [];
+        }
         return rawValue.split(";").filter(Boolean);
     }
 
@@ -184,8 +190,7 @@ export default class StgPanelDonorStatistics extends LightningElement {
     }
 
     handleNDayChange(event) {
-        this._workingCopy.Rollup_N_Day_Value__c =
-            event.detail.value !== "" ? Number(event.detail.value) : null;
+        this._workingCopy.Rollup_N_Day_Value__c = event.detail.value !== "" ? Number(event.detail.value) : null;
     }
 
     handleFiscalYearChange(event) {
@@ -218,19 +223,21 @@ export default class StgPanelDonorStatistics extends LightningElement {
             if (!this._crlpEnabled) {
                 fieldValues.Excluded_Account_Opp_Rectypes__c =
                     this._workingCopy.Excluded_Account_Opp_Rectypes__c || null;
-                fieldValues.Excluded_Account_Opp_Types__c =
-                    this._workingCopy.Excluded_Account_Opp_Types__c || null;
+                fieldValues.Excluded_Account_Opp_Types__c = this._workingCopy.Excluded_Account_Opp_Types__c || null;
                 fieldValues.Excluded_Contact_Opp_Rectypes__c =
                     this._workingCopy.Excluded_Contact_Opp_Rectypes__c || null;
-                fieldValues.Excluded_Contact_Opp_Types__c =
-                    this._workingCopy.Excluded_Contact_Opp_Types__c || null;
+                fieldValues.Excluded_Contact_Opp_Types__c = this._workingCopy.Excluded_Contact_Opp_Types__c || null;
             }
             await saveSettings({ settingsObjectName: SETTINGS_OBJECT, fieldValues });
             await refreshApex(this._wiredSettingsResult);
             this._isEditMode = false;
             this._workingCopy = {};
             this.dispatchEvent(
-                new ShowToastEvent({ title: "Success", message: "Donor statistics settings saved.", variant: "success" })
+                new ShowToastEvent({
+                    title: "Success",
+                    message: "Donor statistics settings saved.",
+                    variant: "success",
+                })
             );
         } catch (error) {
             this.dispatchEvent(
@@ -242,8 +249,12 @@ export default class StgPanelDonorStatistics extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) {return error.body.message;}
-        if (error?.message) {return error.message;}
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

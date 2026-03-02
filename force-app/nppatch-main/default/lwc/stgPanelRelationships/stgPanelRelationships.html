@@ -1,18 +1,18 @@
 <template>
-    <template if:true={isLoading}>
+    <template if:true="{isLoading}">
         <div class="loading-container">
             <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
         </div>
     </template>
 
-    <template if:true={_hasError}>
+    <template if:true="{_hasError}">
         <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
             <span class="slds-assistive-text">error</span>
             <p>{_errorMessage}</p>
         </div>
     </template>
 
-    <template if:true={_settings}>
+    <template if:true="{_settings}">
         <div class="panel-container">
             <div class="panel-header">
                 <div class="slds-grid slds-grid_vertical-align-center">
@@ -24,8 +24,16 @@
                         </h2>
                     </div>
                     <div class="slds-col_bump-left">
-                        <template if:true={canEdit}>
-                            <lightning-button label={labels.edit} onclick={handleEdit} variant="neutral"></lightning-button>
+                        <template if:true="{canEdit}">
+                            <lightning-button
+                                label="{labels.edit}"
+                                onclick="
+                                    {
+                                        handleEdit;
+                                    }
+                                "
+                                variant="neutral"
+                            ></lightning-button>
                         </template>
                     </div>
                 </div>
@@ -36,21 +44,30 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.reciprocalMethod}</label>
                     <p class="setting-help">{labels.helpReciprocalMethod}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-combobox label={labels.reciprocalMethod}
-                            value={_settings.Reciprocal_Method__c}
-                            options={reciprocalMethodOptions} disabled
-                            variant="label-hidden" class="picklist-input">
+                    <template if:false="{_isEditMode}">
+                        <lightning-combobox
+                            label="{labels.reciprocalMethod}"
+                            value="{_settings.Reciprocal_Method__c}"
+                            options="{reciprocalMethodOptions}"
+                            disabled
+                            variant="label-hidden"
+                            class="picklist-input"
+                        >
                         </lightning-combobox>
                     </template>
-                    <template if:true={_isEditMode}>
+                    <template if:true="{_isEditMode}">
                         <lightning-combobox
-                            label={labels.reciprocalMethod}
-                            value={_workingCopy.Reciprocal_Method__c}
-                            options={reciprocalMethodOptions}
-                            onchange={handleReciprocalMethodChange}
+                            label="{labels.reciprocalMethod}"
+                            value="{_workingCopy.Reciprocal_Method__c}"
+                            options="{reciprocalMethodOptions}"
+                            onchange="
+                                {
+                                    handleReciprocalMethodChange;
+                                }
+                            "
                             variant="label-hidden"
-                            class="picklist-input">
+                            class="picklist-input"
+                        >
                         </lightning-combobox>
                     </template>
                 </div>
@@ -58,19 +75,30 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.genderField}</label>
                     <p class="setting-help">{labels.helpGenderField}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-input type="text" label={labels.genderField}
-                            value={genderFieldDisplay} disabled
-                            variant="label-hidden" class="text-input">
+                    <template if:false="{_isEditMode}">
+                        <lightning-input
+                            type="text"
+                            label="{labels.genderField}"
+                            value="{genderFieldDisplay}"
+                            disabled
+                            variant="label-hidden"
+                            class="text-input"
+                        >
                         </lightning-input>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-input type="text"
-                            label={labels.genderField}
-                            value={genderFieldValue}
-                            onchange={handleGenderFieldChange}
+                    <template if:true="{_isEditMode}">
+                        <lightning-input
+                            type="text"
+                            label="{labels.genderField}"
+                            value="{genderFieldValue}"
+                            onchange="
+                                {
+                                    handleGenderFieldChange;
+                                }
+                            "
                             variant="label-hidden"
-                            class="text-input">
+                            class="text-input"
+                        >
                         </lightning-input>
                     </template>
                 </div>
@@ -78,30 +106,60 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.allowDuplicates}</label>
                     <p class="setting-help">{labels.helpAllowDuplicates}</p>
-                    <template if:false={_isEditMode}>
-                        <lightning-input type="toggle" label={labels.allowDuplicates}
-                            checked={_settings.Allow_AutoCreated_Duplicates__c} disabled
+                    <template if:false="{_isEditMode}">
+                        <lightning-input
+                            type="toggle"
+                            label="{labels.allowDuplicates}"
+                            checked="{_settings.Allow_AutoCreated_Duplicates__c}"
+                            disabled
                             variant="label-hidden"
                             message-toggle-active="Enabled"
-                            message-toggle-inactive="Disabled">
+                            message-toggle-inactive="Disabled"
+                        >
                         </lightning-input>
                     </template>
-                    <template if:true={_isEditMode}>
-                        <lightning-input type="toggle" label={labels.allowDuplicates}
-                            checked={allowDuplicatesValue}
-                            onchange={handleAllowDuplicatesChange}
+                    <template if:true="{_isEditMode}">
+                        <lightning-input
+                            type="toggle"
+                            label="{labels.allowDuplicates}"
+                            checked="{allowDuplicatesValue}"
+                            onchange="
+                                {
+                                    handleAllowDuplicatesChange;
+                                }
+                            "
                             variant="label-hidden"
                             message-toggle-active="Enabled"
-                            message-toggle-inactive="Disabled">
+                            message-toggle-inactive="Disabled"
+                        >
                         </lightning-input>
                     </template>
                 </div>
             </div>
 
-            <template if:true={_isEditMode}>
+            <template if:true="{_isEditMode}">
                 <div class="panel-footer">
-                    <lightning-button label={labels.save} onclick={handleSave} variant="brand" disabled={_isSaving} class="slds-m-right_x-small"></lightning-button>
-                    <lightning-button label={labels.cancel} onclick={handleCancel} variant="neutral" disabled={_isSaving}></lightning-button>
+                    <lightning-button
+                        label="{labels.save}"
+                        onclick="
+                            {
+                                handleSave;
+                            }
+                        "
+                        variant="brand"
+                        disabled="{_isSaving}"
+                        class="slds-m-right_x-small"
+                    ></lightning-button>
+                    <lightning-button
+                        label="{labels.cancel}"
+                        onclick="
+                            {
+                                handleCancel;
+                            }
+                        "
+                        variant="neutral"
+                        disabled="{_isSaving}"
+                    ></lightning-button>
                 </div>
             </template>
         </div>

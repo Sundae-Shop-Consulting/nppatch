@@ -1,7 +1,7 @@
-import { LightningElement, api } from 'lwc';
-import { isEmpty } from 'c/utilCommon';
+import { LightningElement, api } from "lwc";
+import { isEmpty } from "c/utilCommon";
 
-const defaultClass = 'slds-notify_alert slds-theme_';
+const defaultClass = "slds-notify_alert slds-theme_";
 
 export default class AlertBanner extends LightningElement {
     /**
@@ -20,9 +20,9 @@ export default class AlertBanner extends LightningElement {
     _isVisible = true;
 
     get alertTheme() {
-        const warningThemeDefault = 'warning';
+        const warningThemeDefault = "warning";
 
-        if(isEmpty(this.theme)) {
+        if (isEmpty(this.theme)) {
             return defaultClass.concat(warningThemeDefault);
         }
 
@@ -37,9 +37,9 @@ export default class AlertBanner extends LightningElement {
     }
 
     get alertVariant() {
-        const variantInverseDefault = 'inverse';
+        const variantInverseDefault = "inverse";
 
-        if(isEmpty(this.variant)) {
+        if (isEmpty(this.variant)) {
             return variantInverseDefault;
         }
 
@@ -47,9 +47,9 @@ export default class AlertBanner extends LightningElement {
     }
 
     get alertIcon() {
-        const iconDefault = 'utility:warning';
+        const iconDefault = "utility:warning";
 
-        if(isEmpty(this.icon)) {
+        if (isEmpty(this.icon)) {
             return iconDefault;
         }
 
@@ -57,9 +57,9 @@ export default class AlertBanner extends LightningElement {
     }
 
     get alertSize() {
-        const sizeDefault = 'x-small';
+        const sizeDefault = "x-small";
 
-        if(isEmpty(this.size)) {
+        if (isEmpty(this.size)) {
             return sizeDefault;
         }
 
@@ -67,9 +67,9 @@ export default class AlertBanner extends LightningElement {
     }
 
     get alertAssistText() {
-        const assistDefault = 'An error has occurred';
+        const assistDefault = "An error has occurred";
 
-        if(isEmpty(this.assistText)) {
+        if (isEmpty(this.assistText)) {
             return assistDefault;
         }
 
@@ -77,9 +77,9 @@ export default class AlertBanner extends LightningElement {
     }
 
     get alertMessage() {
-        const messageDefault = 'An error has occurred.';
+        const messageDefault = "An error has occurred.";
 
-        if(isEmpty(this.message)) {
+        if (isEmpty(this.message)) {
             return messageDefault;
         }
 
