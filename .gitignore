@@ -38,6 +38,10 @@ node_modules/
 # Personal notes
 TODO.md
 
+# Temp working files
+temp/
+test_results*
+
 # MacOS system files
 .DS_Store
 

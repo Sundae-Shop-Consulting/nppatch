@@ -847,6 +847,38 @@ private class HH_Container_TEST {
             'The winning household Account should be mark as Active Sustainer when there is an Active RD attached to it.');
     }
 
+    /*********************************************************************************************************
+    * @description Tests getInitialData() consolidates all init calls into one
+    */
+    @IsTest
+    static void testGetInitialData() {
+        if (shouldSkipIn2GP()) { return; }
+        initTestData();
+
+        Test.startTest();
+
+        HH_Container_LCTRL.ManageHouseholdData data = HH_Container_LCTRL.getInitialData(hhA.Id);
+
+        System.assertNotEquals(null, data.household, 'Household should be returned');
+        System.assertNotEquals(null, data.contacts, 'Contacts should be returned');
+        System.assertEquals(1, data.contacts.size(), 'Should have 1 contact');
+        System.assertNotEquals(null, data.addresses, 'Addresses should be returned');
+        System.assertNotEquals(null, data.salutations, 'Salutations should be returned');
+        System.assert(data.salutations.size() > 0, 'Should have salutation options');
+        System.assertNotEquals(null, data.fieldLabels, 'Field labels should be returned');
+        System.assertNotEquals(null, data.allowHouseholdMerge, 'Merge permission should be returned');
+        System.assertNotEquals(null, data.fieldSetFields, 'Fieldset fields should be returned');
+        System.assert(data.fieldSetFields.size() > 0, 'Should have fieldset fields');
+
+        // Verify fieldset field metadata
+        HH_Container_LCTRL.FieldSetFieldInfo firstField = data.fieldSetFields[0];
+        System.assertNotEquals(null, firstField.fieldPath, 'Field path should be set');
+        System.assertNotEquals(null, firstField.label, 'Field label should be set');
+        System.assertNotEquals(null, firstField.type, 'Field type should be set');
+
+        Test.stopTest();
+    }
+
     // Helpers
     ////////////
 

@@ -921,4 +921,91 @@ public with sharing class HH_Container_LCTRL {
         public String value { get; set; }
     }
 
+    /*******************************************************************************************************
+    * @description Inner class holding all data needed for the Manage Household page initial load.
+    * Consolidates 6 separate server calls into a single round trip.
+    */
+    public class ManageHouseholdData {
+        @AuraEnabled public SObject household;
+        @AuraEnabled public List<Contact> contacts;
+        @AuraEnabled public List<Address__c> addresses;
+        @AuraEnabled public List<SelectOption> salutations;
+        @AuraEnabled public Boolean allowHouseholdMerge;
+        @AuraEnabled public Map<String, String> fieldLabels;
+        @AuraEnabled public List<FieldSetFieldInfo> fieldSetFields;
+    }
+
+    /*******************************************************************************************************
+    * @description Inner class representing a single field from a FieldSet, providing metadata
+    * so the LWC can render the field dynamically.
+    */
+    public class FieldSetFieldInfo {
+        @AuraEnabled public String fieldPath;
+        @AuraEnabled public String label;
+        @AuraEnabled public Boolean isRequired;
+        @AuraEnabled public String type;
+    }
+
+    /*******************************************************************************************************
+    * @description Returns all data needed for the Manage Household page in a single server call.
+    * Consolidates getHousehold, getContacts, getAddresses, getSalutations, isDeletable,
+    * getFieldLabels, and getFieldsetFields into one round trip.
+    * @param householdId The Household's Id
+    * @return ManageHouseholdData All initial page data
+    */
+    @AuraEnabled(cacheable=true)
+    public static ManageHouseholdData getInitialData(Id householdId) {
+        try {
+            ManageHouseholdData data = new ManageHouseholdData();
+
+            data.household = getHousehold(householdId);
+            data.contacts = getContacts(householdId);
+            data.addresses = getAddresses(householdId, null);
+            data.salutations = getSalutations();
+            data.fieldLabels = getFieldLabels();
+
+            // Check delete permissions for merge capability
+            Boolean isHousehold = UTIL_Describe.isObjectIdThisType(householdId, 'Account');
+            String strSObject = isHousehold ? 'Account' : 'Household__c';
+            Schema.DescribeSObjectResult dresult = UTIL_Describe.getObjectDescribe(strSObject);
+            data.allowHouseholdMerge = dresult.isDeletable();
+
+            // Get fieldset metadata
+            data.fieldSetFields = getFieldSetFields(isHousehold);
+
+            return data;
+        } catch (AuraHandledException aex) {
+            throw aex;
+        } catch (Exception ex) {
+            throw new AuraHandledException(ex.getMessage());
+        }
+    }
+
+    /*******************************************************************************************************
+    * @description Returns metadata for the Manage_Household_Custom fieldset fields so the LWC
+    * can render them dynamically using lightning-record-edit-form + lightning-input-field.
+    * @param isHousehold Whether the household is an Account (true) or Household__c (false)
+    * @return List<FieldSetFieldInfo> The fieldset field metadata
+    */
+    @TestVisible
+    private static List<FieldSetFieldInfo> getFieldSetFields(Boolean isHousehold) {
+        List<Schema.FieldSetMember> fieldSetMembers;
+        if (isHousehold) {
+            fieldSetMembers = Schema.SObjectType.Account.FieldSets.Manage_Household_Custom.getFields();
+        } else {
+            fieldSetMembers = Schema.SObjectType.Household__c.FieldSets.Manage_Household_Custom.getFields();
+        }
+
+        List<FieldSetFieldInfo> fields = new List<FieldSetFieldInfo>();
+        for (Schema.FieldSetMember fsm : fieldSetMembers) {
+            FieldSetFieldInfo info = new FieldSetFieldInfo();
+            info.fieldPath = fsm.getFieldPath();
+            info.label = fsm.getLabel();
+            info.isRequired = fsm.getDBRequired() || fsm.getRequired();
+            info.type = String.valueOf(fsm.getType());
+            fields.add(info);
+        }
+        return fields;
+    }
+
 }

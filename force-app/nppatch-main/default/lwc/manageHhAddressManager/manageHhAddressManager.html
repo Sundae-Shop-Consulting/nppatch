@@ -1,0 +1,109 @@
+<template>
+    <div class="slds-grid slds-grid_vertical-align-center">
+        <div class="slds-col slds-grow">
+            <template lwc:if={hasDefaultAddress}>
+                <div class="slds-text-body_small">
+                    <lightning-formatted-text value={formattedDefaultAddress}></lightning-formatted-text>
+                    <template lwc:if={defaultAddressIsUndeliverable}>
+                        <lightning-input
+                            type="checkbox"
+                            label={addressUndeliverableLabel}
+                            checked
+                            disabled
+                            class="slds-m-top_xx-small"
+                        ></lightning-input>
+                    </template>
+                </div>
+            </template>
+        </div>
+        <div class="slds-col slds-no-flex slds-m-left_medium">
+            <lightning-button
+                label={changeAddressLabel}
+                onclick={openChangeAddress}
+            ></lightning-button>
+        </div>
+    </div>
+
+    <!-- Change Address Modal -->
+    <template lwc:if={showChangeAddressPopup}>
+        <c-modal header={changeAddressLabel} default-visible ondialogclose={cancelChangeAddress}>
+            <lightning-accordion allow-multiple-sections-open="false" active-section-name="existing-address-section">
+                <lightning-accordion-section name="existing-address-section" label={selectExistingLabel}>
+                    <ul class="slds-list_vertical slds-has-dividers_around-space slds-has-list-interactions">
+                        <template for:each={addresses} for:item="addr" for:index="idx">
+                            <li key={addr._key}
+                                class={addr.selectedClass}
+                                data-index={idx}
+                                onclick={handleSelectAddress}
+                                role="checkbox"
+                                aria-checked={addr.isSelected}
+                                tabindex="0">
+                                <div class="slds-tile slds-tile_board">
+                                    <div class="slds-tile__detail">
+                                        <div class="slds-text-body_small">
+                                            <lightning-formatted-text value={addr.formattedAddress}></lightning-formatted-text>
+                                            <template lwc:if={addr.isUndeliverable}>
+                                                <lightning-input
+                                                    type="checkbox"
+                                                    label={addressUndeliverableLabel}
+                                                    checked
+                                                    disabled
+                                                ></lightning-input>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </lightning-accordion-section>
+                <lightning-accordion-section name="new-address-section" label={enterNewLabel}>
+                    <div class="slds-form_stacked">
+                        <lightning-textarea
+                            value={newAddress.MailingStreet__c}
+                            label={streetLabel}
+                            onchange={handleNewAddressChange}
+                            data-field="MailingStreet__c"
+                        ></lightning-textarea>
+                        <lightning-input
+                            value={newAddress.MailingCity__c}
+                            label={cityLabel}
+                            onchange={handleNewAddressChange}
+                            data-field="MailingCity__c"
+                        ></lightning-input>
+                        <lightning-input
+                            value={newAddress.MailingState__c}
+                            label={stateLabel}
+                            onchange={handleNewAddressChange}
+                            data-field="MailingState__c"
+                        ></lightning-input>
+                        <lightning-input
+                            value={newAddress.MailingPostalCode__c}
+                            label={postalCodeLabel}
+                            onchange={handleNewAddressChange}
+                            data-field="MailingPostalCode__c"
+                        ></lightning-input>
+                        <lightning-input
+                            value={newAddress.MailingCountry__c}
+                            label={countryLabel}
+                            onchange={handleNewAddressChange}
+                            data-field="MailingCountry__c"
+                        ></lightning-input>
+                    </div>
+                </lightning-accordion-section>
+            </lightning-accordion>
+            <div slot="footer">
+                <lightning-button
+                    label={cancelLabel}
+                    onclick={cancelChangeAddress}
+                    class="slds-m-right_x-small"
+                ></lightning-button>
+                <lightning-button
+                    label={setAddressLabel}
+                    variant="brand"
+                    onclick={saveChangeAddress}
+                ></lightning-button>
+            </div>
+        </c-modal>
+    </template>
+</template>

@@ -1,0 +1,4 @@
+<aura:component>
+    <aura:attribute name="hhId" type="String" access="public" />
+    <c:manageHousehold householdId="{!v.hhId}" />
+</aura:component>

@@ -1,0 +1,9 @@
+:host {
+    display: block;
+}
+
+.checkbox-align {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 0.25rem;
+}

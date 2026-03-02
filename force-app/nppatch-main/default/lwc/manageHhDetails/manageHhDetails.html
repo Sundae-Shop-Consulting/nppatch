@@ -1,0 +1,58 @@
+<template>
+    <div class="slds-form">
+        <div class="slds-grid slds-gutters_small slds-m-bottom_small">
+            <div class="slds-col slds-size_8-of-12">
+                <lightning-input
+                    value={householdName}
+                    required
+                    label={householdNameLabel}
+                    onchange={handleNameChange}
+                ></lightning-input>
+            </div>
+            <div class="slds-col slds-size_4-of-12 checkbox-align">
+                <lightning-input
+                    type="checkbox"
+                    label={autoNameLabel}
+                    checked={isAutoName}
+                    onchange={handleAutoNameChange}
+                ></lightning-input>
+            </div>
+        </div>
+
+        <div class="slds-grid slds-gutters_small slds-m-bottom_small">
+            <div class="slds-col slds-size_8-of-12">
+                <lightning-input
+                    value={formalGreeting}
+                    label={formalGreetingLabel}
+                    onchange={handleFormalGreetingChange}
+                ></lightning-input>
+            </div>
+            <div class="slds-col slds-size_4-of-12 checkbox-align">
+                <lightning-input
+                    type="checkbox"
+                    label={autoFormalLabel}
+                    checked={isAutoFormalGreeting}
+                    onchange={handleAutoFormalChange}
+                ></lightning-input>
+            </div>
+        </div>
+
+        <div class="slds-grid slds-gutters_small">
+            <div class="slds-col slds-size_8-of-12">
+                <lightning-input
+                    value={informalGreeting}
+                    label={informalGreetingLabel}
+                    onchange={handleInformalGreetingChange}
+                ></lightning-input>
+            </div>
+            <div class="slds-col slds-size_4-of-12 checkbox-align">
+                <lightning-input
+                    type="checkbox"
+                    label={autoInformalLabel}
+                    checked={isAutoInformalGreeting}
+                    onchange={handleAutoInformalChange}
+                ></lightning-input>
+            </div>
+        </div>
+    </div>
+</template>

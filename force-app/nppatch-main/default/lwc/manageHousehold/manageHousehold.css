@@ -1,0 +1,11 @@
+:host {
+    display: block;
+}
+
+.slds-page-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--slds-g-color-neutral-base-100, white);
+    border-bottom: 1px solid var(--slds-g-color-border-base-1, #e5e5e5);
+}

@@ -1,0 +1,7 @@
+:host {
+    display: block;
+}
+
+.slds-box {
+    border-color: var(--slds-g-color-border-base-1, #e5e5e5);
+}

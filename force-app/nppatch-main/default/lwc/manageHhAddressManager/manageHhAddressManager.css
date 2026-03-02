@@ -1,0 +1,8 @@
+:host {
+    display: block;
+}
+
+.selected {
+    background-color: var(--slds-c-accordion-section-content-color-background, #f3f2f2);
+    border-left: 3px solid var(--slds-g-color-brand-base-50, #0070d2);
+}
