@@ -1,23 +1,24 @@
-.THIS .slds-checkbox, .THIS .rollupOutputCheckbox{
+.THIS .slds-checkbox,
+.THIS .rollupOutputCheckbox {
     padding-top: 2em;
 }
 /*margin is for view mode indentation*/
-.THIS .slds-form-element__label{
-    margin-left: .5rem;
+.THIS .slds-form-element__label {
+    margin-left: 0.5rem;
     font-size: var(--slds-g-font-size-base, 13px);
 }
-.THIS .slds-form-element__icon{
-    margin-left: .2rem;
+.THIS .slds-form-element__icon {
+    margin-left: 0.2rem;
 }
-.THIS .slds-input[readonly]{
-    padding-left: .5rem;
+.THIS .slds-input[readonly] {
+    padding-left: 0.5rem;
 }
 /*formatting for edit mode checkboxes*/
-.THIS .rollupInputCheckbox{
+.THIS .rollupInputCheckbox {
     display: inline-flex;
 }
 /*lightning input checkbox reset margin from checkbox*/
-.THIS .rollupInputCheckbox + .slds-form-element__label{
+.THIS .rollupInputCheckbox + .slds-form-element__label {
     margin-left: 0rem;
 }
 /*removes the extra required asterisk for tooltip workaround*/
@@ -26,7 +27,7 @@
     visibility: hidden;
 }
 /*elongates rollup fields*/
-.THIS .rollupField > .slds-form-element__control{
+.THIS .rollupField > .slds-form-element__control {
     display: inline;
 }
 /*stops save button from jumping by fixing the size of the error height*/
