@@ -43,7 +43,7 @@ const getNumberAsCurrencyByCode = (amount, currencyCode) => {
 * @param number: Number to convert into lowest common denominator
 */
 const getCurrencyLowestCommonDenominator = (number) => {
-    let multiplier = isNull(currencyMultiplier.get(CURRENCY)) ? DEFAULT_MULTIPLIER : currencyMultiplier.get(CURRENCY);
+    const multiplier = isNull(currencyMultiplier.get(CURRENCY)) ? DEFAULT_MULTIPLIER : currencyMultiplier.get(CURRENCY);
     return parseInt(parseFloat(number) * multiplier, 10);
 }
 

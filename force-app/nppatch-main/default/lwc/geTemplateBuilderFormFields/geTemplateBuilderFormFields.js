@@ -121,8 +121,8 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     @api
     validate() {
         let isValid;
-        let objectMappingsWithMissingRequiredFields = new Set();
-        let missingRequiredFieldMappings = [];
+        const objectMappingsWithMissingRequiredFields = new Set();
+        const missingRequiredFieldMappings = [];
         const elements = this.template.querySelectorAll('lightning-input');
         let countOfConditionallyRequiredFormFields = 0;
 
@@ -132,14 +132,14 @@ export default class geTemplateBuilderFormFields extends LightningElement {
             }
             if (el.required && !el.checked) {
                 objectMappingsWithMissingRequiredFields.add(el.getAttribute('data-object-mapping'));
-                let objectMappingLabel = el.getAttribute('data-object-mapping-label');
+                const objectMappingLabel = el.getAttribute('data-object-mapping-label');
                 missingRequiredFieldMappings.push(`${objectMappingLabel}: ${el.label}`);
             }
 
             this.validateGiftField(el);
         });
         if (countOfConditionallyRequiredFormFields === 0) {
-            let requiredGroupFieldsMessage = GeLabelService.format(
+            const requiredGroupFieldsMessage = GeLabelService.format(
                 this.CUSTOM_LABELS.geErrorPageLevelMissingRequiredGroupFields,
                 [REQUIRED_FORM_FIELDS_MESSAGE]);
             missingRequiredFieldMappings.push(`${requiredGroupFieldsMessage}`);
@@ -229,7 +229,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     * the UI.
     */
     buildObjectMappingsList = async () => {
-        let objectMappings = [];
+        const objectMappings = [];
 
         const fieldMappingsByObjMappingDevName = TemplateBuilderService.fieldMappingsByObjMappingDevName;
         for (const objMappingDevName in fieldMappingsByObjMappingDevName) {
@@ -240,7 +240,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
                 if (isAllowed) {
                     this.objectMappingNames = [...this.objectMappingNames, objMappingDevName];
 
-                    let objectMapping = {
+                    const objectMapping = {
                         ...TemplateBuilderService.objectMappingByDevName[objMappingDevName],
                         Field_Mappings: this.getObjectMappingFieldMappings(objMappingDevName)
                     };
@@ -285,7 +285,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     * @return {array}: An array of the Object Mapping's Field Mappings
     */
     getObjectMappingFieldMappings(objectMappingDeveloperName) {
-        let allowedFieldMappings = [];
+        const allowedFieldMappings = [];
 
         const fieldMappings = TemplateBuilderService.fieldMappingsByObjMappingDevName[objectMappingDeveloperName];
 
@@ -344,9 +344,9 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     * alphabetically and by their requiredness.
     */
     handleSortFieldMappings() {
-        let objectMappings = mutable(this.objectMappings);
+        const objectMappings = mutable(this.objectMappings);
         for (let i = 0; i < objectMappings.length; i++) {
-            let objectMapping = objectMappings[i];
+            const objectMapping = objectMappings[i];
 
             if (objectMapping.Field_Mappings) {
                 objectMapping.Field_Mappings.sort(function (a, b) {
@@ -374,8 +374,8 @@ export default class geTemplateBuilderFormFields extends LightningElement {
         const formSectionId = event.detail;
         let isRequiredFormElement = false;
 
-        let formSections = mutable(this.formSections);
-        let formSection = formSections.find(fs => fs.id === formSectionId);
+        const formSections = mutable(this.formSections);
+        const formSection = formSections.find(fs => fs.id === formSectionId);
 
         if (formSection.id === this.activeFormSectionId) {
             this.activeFormSectionId = undefined;
@@ -392,7 +392,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
                     formFields[i].componentName :
                     formFields[i].dataImportFieldMappingDevNames[0];
 
-                let checkbox =
+                const checkbox =
                     this.template.querySelector(`lightning-input[data-field-mapping="${inputName}"]`);
                 checkbox.checked = false;
             }
@@ -600,10 +600,10 @@ export default class geTemplateBuilderFormFields extends LightningElement {
 
         if (selectedFieldMappings && selectedFieldMappings.length > 0) {
             for (let i = 0; i < objectMappings.length; i++) {
-                let fieldMappings = objectMappings[i].Field_Mappings;
+                const fieldMappings = objectMappings[i].Field_Mappings;
 
                 for (let ii = 0; ii < fieldMappings.length; ii++) {
-                    let fieldMapping = fieldMappings[ii];
+                    const fieldMapping = fieldMappings[ii];
 
                     if (selectedFieldMappings.includes(fieldMapping.DeveloperName)) {
                         fieldMapping.checked = true;
@@ -673,7 +673,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     * of.
     */
     validateGiftField(element) {
-        let customValidity =
+        const customValidity =
             (element.required && element.checked === false) ?
                 this.CUSTOM_LABELS.geErrorRequiredField
                 : '';

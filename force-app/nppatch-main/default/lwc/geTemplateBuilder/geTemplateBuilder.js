@@ -155,7 +155,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
 
     @wire(getObjectInfo, { objectApiName: DATA_IMPORT_BATCH_OBJECT })
     wiredBatchDataImportObject({ error, data }) {
-        if (error) return handleError(error);
+        if (error) {return handleError(error);}
         if (data) {
             this.diBatchInfo = data;
             this._dataImportBatchPermissionErrors =
@@ -168,7 +168,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     // This wired method will only run after wiredBatchDataImportObject assigns the dataImportObjectName property
     @wire(getObjectInfo, { objectApiName: '$dataImportObjectName' })
     wiredDataImportObject({ error, data }) {
-        if (error) return handleError(error);
+        if (error) {return handleError(error);}
         if (data) {
             this._dataImportObject = data;
             if (this.connected) {
@@ -202,7 +202,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     }
 
     get disableBatchTableColumnsSubtab() {
-        if (!this._dataImportBatchPermissionErrors) return false;
+        if (!this._dataImportBatchPermissionErrors) {return false;}
 
         this._batchTableLabelAccessErrorLabel =
             this._dataImportBatchPermissionErrors
@@ -213,7 +213,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     }
 
     get batchTableColumnsAccessErrorMessage() {
-        if (!this.disableBatchTableColumnsSubtab) return '';
+        if (!this.disableBatchTableColumnsSubtab) {return '';}
 
         return GeLabelService.format(
             this.CUSTOM_LABELS.geErrorFLSBody,
@@ -285,18 +285,18 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     }
 
     checkFieldPermissions(objectSchema, fieldApiNames) {
-        if (!objectSchema && !objectSchema.fields) return;
+        if (!objectSchema && !objectSchema.fields) {return;}
 
         this._noReadAccessFields = [];
         this._noEditAccessFields = [];
 
         fieldApiNames.forEach(fieldApiName => {
             const field = objectSchema.fields[fieldApiName];
-            if (!field) return this._noReadAccessFields.push(`${objectSchema.label}: ${fieldApiName}`);
+            if (!field) {return this._noReadAccessFields.push(`${objectSchema.label}: ${fieldApiName}`);}
 
             if (field) {
                 const canEdit = field.updateable;
-                if (!canEdit) return this._noEditAccessFields.push(`${objectSchema.label}: ${fieldApiName}`);
+                if (!canEdit) {return this._noEditAccessFields.push(`${objectSchema.label}: ${fieldApiName}`);}
             }
         });
 
@@ -318,7 +318,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
         }
 
         if (this.formTemplateRecordId) {
-            let formTemplate = await retrieveFormTemplateById({
+            const formTemplate = await retrieveFormTemplateById({
                 templateId: this.formTemplateRecordId
             });
 
@@ -345,12 +345,12 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     * @description Builds a map of form fields by their source field api names.
     */
     buildFormFieldsBySourceApiNameMap() {
-        let elements = {};
+        const elements = {};
         this.formSections.map(section => {
             section.elements.map(element => {
                 const fieldMapping =
                     TemplateBuilderService.fieldMappingByDevName[element.dataImportFieldMappingDevNames[0]];
-                if (!fieldMapping) return;
+                if (!fieldMapping) {return;}
 
                 elements[fieldMapping.Source_Field_API_Name] = element;
             });
@@ -398,7 +398,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
                 fieldApiName !== STATUS_FIELD.fieldApiName &&
                 fieldApiName !== FAILURE_INFORMATION_FIELD.fieldApiName;
 
-            if (shouldBeExcludedInEditMode) return;
+            if (shouldBeExcludedInEditMode) {return;}
 
             const label = hasFieldMappingInForm ?
                 this.formFieldsBySourceApiName[fieldApiName].customLabel :
@@ -422,10 +422,10 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     * Batch Settings tab.
     */
     buildBatchTableColumnOptions() {
-        if (!this.formSections || this.formSections.length === 0) return;
+        if (!this.formSections || this.formSections.length === 0) {return;}
 
         this.getFormFieldsFromSections(this.formSections).forEach(formField => {
-            if (formField.elementType === 'widget') return;
+            if (formField.elementType === 'widget') {return;}
 
             const fieldMapping =
                 TemplateBuilderService.fieldMappingByDevName[formField.dataImportFieldMappingDevNames[0]];
@@ -492,7 +492,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
         this.batchFields = mutable(this.diBatchInfo.fields);
 
         Object.getOwnPropertyNames(this.batchFields).forEach((key) => {
-            let field = this.batchFields[key];
+            const field = this.batchFields[key];
             const isFieldExcluded = EXCLUDED_BATCH_HEADER_FIELDS.includes(field.apiName);
             const isNewAndNotCreatable = this.mode === NEW && !field.createable;
             const isEditAndNotAccessible = this.mode === EDIT && !field.createable && !field.updateable;
@@ -595,8 +595,8 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     @api
     notify(modalData) {
         if (modalData.action === SAVE) {
-            let formSections = mutable(this.formSections);
-            let formSection = formSections.find((fs) => { return fs.id === modalData.section.id });
+            const formSections = mutable(this.formSections);
+            const formSection = formSections.find((fs) => { return fs.id === modalData.section.id });
             formSection.defaultDisplayMode = modalData.section.defaultDisplayMode;
             formSection.label = modalData.section.label;
             this.formSections = formSections;
@@ -653,9 +653,9 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     */
     handleAddBatchHeaderField(event) {
         const fieldName = event.detail;
-        let batchField = this.batchFields[fieldName];
+        const batchField = this.batchFields[fieldName];
 
-        let field = {
+        const field = {
             label: batchField.label,
             apiName: batchField.apiName,
             required: batchField.required,
@@ -677,7 +677,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     * component chain: geTemplateBuilderFormField -> geTemplateBuilderbatchHeader -> here
     */
     handleUpdateBatchHeaderField(event) {
-        let batchHeaderField = this.batchHeaderFields.find((bf) => {
+        const batchHeaderField = this.batchHeaderFields.find((bf) => {
             return bf.apiName === event.detail.fieldName
         });
 
@@ -695,7 +695,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     * component chain: geTemplateBuilderFormField -> geTemplateBuilderbatchHeader -> here
     */
     handleBatchHeaderFieldUp(event) {
-        let index = findIndexByProperty(this.batchHeaderFields, API_NAME, event.detail);
+        const index = findIndexByProperty(this.batchHeaderFields, API_NAME, event.detail);
         if (index > 0) {
             this.batchHeaderFields = shiftToIndex(this.batchHeaderFields, index, index - 1);
         }
@@ -710,7 +710,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     * component chain: geTemplateBuilderFormField -> geTemplateBuilderbatchHeader -> here
     */
     handleBatchHeaderFieldDown(event) {
-        let index = findIndexByProperty(this.batchHeaderFields, API_NAME, event.detail);
+        const index = findIndexByProperty(this.batchHeaderFields, API_NAME, event.detail);
         if (index < this.batchHeaderFields.length - 1) {
             this.batchHeaderFields = shiftToIndex(this.batchHeaderFields, index, index + 1);
         }
@@ -760,10 +760,10 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     */
     buildDefaultFormFields() {
         if (this.formSections && this.formSections.length === 0) {
-            let sectionId = this.handleAddFormSection({
+            const sectionId = this.handleAddFormSection({
                 detail: { label: this.CUSTOM_LABELS.geHeaderFormFieldsDefaultSectionName }
             });
-            let fieldMappingBySourceFieldAndTargetObject = this.getFieldMappingBySourceFieldAndTargetObject();
+            const fieldMappingBySourceFieldAndTargetObject = this.getFieldMappingBySourceFieldAndTargetObject();
 
             Object.keys(DEFAULT_FORM_FIELDS).forEach(sourceFieldApiName => {
                 if (DEFAULT_FORM_FIELDS[sourceFieldApiName]) {
@@ -774,7 +774,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
                         const objectMapping = TemplateBuilderService
                             .objectMappingByDevName[fieldMapping.Target_Object_Mapping_Dev_Name];
 
-                        let formField = this.constructFormField(objectMapping, fieldMapping, sectionId);
+                        const formField = this.constructFormField(objectMapping, fieldMapping, sectionId);
 
                         this.handleAddFieldToSection(sectionId, formField);
                         this.catalogSelectedField(fieldMapping.DeveloperName, sectionId);
@@ -806,7 +806,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     * Object api names i.e. %%%NAMESPACE%%%Account1_Street__c.Account.
     */
     getFieldMappingBySourceFieldAndTargetObject() {
-        let map = {};
+        const map = {};
         Object.keys(TemplateBuilderService.fieldMappingByDevName).forEach(key => {
             const fieldMapping = TemplateBuilderService.fieldMappingByDevName[key];
             if (fieldMapping.Source_Field_API_Name && fieldMapping.Target_Object_API_Name) {
@@ -826,7 +826,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     * @param {object} event: Event received from child component.
     */
     handleToggleFieldMapping(event) {
-        let { clickEvent, fieldMappingDeveloperName, fieldMapping, objectMapping } = event.detail;
+        const { clickEvent, fieldMappingDeveloperName, fieldMapping, objectMapping } = event.detail;
         let sectionId = this.activeFormSectionId;
         const isAddField = clickEvent.target.checked;
 
@@ -936,11 +936,11 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     * @param {object} event: An object that contains the label for the form section.
     */
     handleAddFormSection(event) {
-        let label = (event && event.detail && typeof event.detail.label === 'string') ?
+        const label = (event && event.detail && typeof event.detail.label === 'string') ?
             event.detail.label :
             this.CUSTOM_LABELS.geHeaderNewSection;
 
-        let newSection = {
+        const newSection = {
             id: generateId(),
             displayType: 'accordion',
             defaultDisplayMode: 'expanded',
@@ -964,7 +964,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     * component chain: geTemplateBuilderFormSection -> geTemplateBuilderSelectFields -> here
     */
     handleFormSectionUp(event) {
-        let index = findIndexByProperty(this.formSections, ID, event.detail);
+        const index = findIndexByProperty(this.formSections, ID, event.detail);
         if (index > 0) {
             this.formSections = shiftToIndex(this.formSections, index, index - 1);
         }
@@ -979,7 +979,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     * component chain: geTemplateBuilderFormSection -> geTemplateBuilderSelectFields -> here
     */
     handleFormSectionDown(event) {
-        let index = findIndexByProperty(this.formSections, ID, event.detail);
+        const index = findIndexByProperty(this.formSections, ID, event.detail);
         if (index < this.formSections.length - 1) {
             this.formSections = shiftToIndex(this.formSections, index, index + 1);
         }
@@ -993,8 +993,8 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     * component chain: geTemplateBuilderSelectFields -> here
     */
     handleAddFieldToSection(sectionId, field) {
-        let formSections = mutable(this.formSections);
-        let formSection = formSections.find(fs => fs.id === sectionId);
+        const formSections = mutable(this.formSections);
+        const formSection = formSections.find(fs => fs.id === sectionId);
 
         if (formSection) {
             field.sectionId = sectionId;
@@ -1064,8 +1064,8 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     handleRemoveFieldFromSection(fieldMappingDeveloperName) {
         const sectionId = this.sectionIdsByFieldMappingDeveloperNames[fieldMappingDeveloperName];
 
-        let formSections = mutable(this.formSections);
-        let section = formSections.find(fs => fs.id === sectionId);
+        const formSections = mutable(this.formSections);
+        const section = formSections.find(fs => fs.id === sectionId);
         const field = section.elements.find(element => {
             const name = element.componentName ? element.componentName : element.dataImportFieldMappingDevNames[0];
             return name === fieldMappingDeveloperName;
@@ -1102,7 +1102,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     */
     removeOptionFromBatchTableColumn(fieldMappingDeveloperName) {
         const fieldMapping = TemplateBuilderService.fieldMappingByDevName[fieldMappingDeveloperName];
-        if (!fieldMapping) return;
+        if (!fieldMapping) {return;}
 
         removeFromArray(this.selectedBatchTableColumnOptions, fieldMapping.Source_Field_API_Name);
         removeByProperty(this.availableBatchTableColumnOptions, VALUE, fieldMapping.Source_Field_API_Name);
@@ -1118,7 +1118,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     updateOptionFromBatchTableColumn(formField) {
         const fieldMapping =
             TemplateBuilderService.fieldMappingByDevName[formField.dataImportFieldMappingDevNames[0]];
-        if (!fieldMapping) return;
+        if (!fieldMapping) {return;}
 
         const index = findIndexByProperty(
             this.availableBatchTableColumnOptions,
@@ -1142,7 +1142,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
         const { sectionId, fieldName } = event.detail;
 
         let section = this.formSections.find((fs) => { return fs.id === sectionId });
-        let index = section.elements.findIndex((element) => {
+        const index = section.elements.findIndex((element) => {
             const name = element.componentName ? element.componentName : element.dataImportFieldMappingDevNames[0];
             return name === fieldName;
         });
@@ -1164,7 +1164,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
         const { sectionId, fieldName } = event.detail;
 
         let section = this.formSections.find((fs) => { return fs.id === sectionId });
-        let index = section.elements.findIndex((element) => {
+        const index = section.elements.findIndex((element) => {
             const name = element.componentName ? element.componentName : element.dataImportFieldMappingDevNames[0];
             return name === fieldName;
         });
@@ -1186,8 +1186,8 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     handleDeleteFormElement(event) {
         const { sectionId, id } = event.detail;
 
-        let section = this.formSections.find((fs) => { return fs.id === sectionId });
-        let index = section.elements.findIndex((element) => {
+        const section = this.formSections.find((fs) => { return fs.id === sectionId });
+        const index = section.elements.findIndex((element) => {
             return element.id === id;
         });
 
@@ -1209,8 +1209,8 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     handleUpdateFormElement(event) {
         const { sectionId, fieldName, property, value } = event.detail;
 
-        let section = this.formSections.find((fs) => { return fs.id === sectionId });
-        let element = section.elements.find((e) => {
+        const section = this.formSections.find((fs) => { return fs.id === sectionId });
+        const element = section.elements.find((e) => {
             const name = e.componentName ? e.componentName : e.dataImportFieldMappingDevNames[0];
             return name === fieldName
         });
@@ -1236,7 +1236,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     * throws a toast to notify users which tabs to check.
     */
     checkTabsValidity = async () => {
-        let tabsWithErrors = new Set();
+        const tabsWithErrors = new Set();
 
         await this.validateTemplateInfoTab(tabsWithErrors);
         this.validateSelectFieldsTab(tabsWithErrors);
@@ -1316,7 +1316,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
             this.batchHeaderFields);
 
         if (this.missingRequiredBatchFields && this.missingRequiredBatchFields.length > 0) {
-            for (let field of this.missingRequiredBatchFields) {
+            for (const field of this.missingRequiredBatchFields) {
                 this.handleAddBatchHeaderField({ detail: field.apiName });
             }
 
@@ -1423,9 +1423,9 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
         // field's custom label is defaulted to just "Opportunity: Record Type"
         if (fieldMapping.Source_Field_API_Name == DONATION_RECORD_TYPE_NAME.fieldApiName) {
             return `${objectMapping.MasterLabel}: Record Type`;
-        } else {
+        } 
             return `${objectMapping.MasterLabel}: ${fieldMapping.Target_Field_Label}`;
-        }
+        
     }
 
 }

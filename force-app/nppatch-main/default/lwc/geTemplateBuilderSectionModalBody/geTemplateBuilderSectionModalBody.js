@@ -84,7 +84,7 @@ export default class GeTemplateBuilderSectionModalBody extends LightningElement 
     * component GE_ModalProxy that the modal needs to be updated.
     */
     handleSave() {
-        let section = mutable(this.modalData.section);
+        const section = mutable(this.modalData.section);
 
         section.label = this.template.querySelector('lightning-input[data-name="customLabel"]').value;
         section.defaultDisplayMode = this._selectedDisplayMode;

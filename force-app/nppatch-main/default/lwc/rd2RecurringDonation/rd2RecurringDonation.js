@@ -114,9 +114,9 @@ export default class RecurringDonationTable extends LightningElement {
         this.actionClasses = "lastColumn dv-dynamic-width";
       }
       this.template.addEventListener('keydown', (event) => {
-        let cells   = this.template.querySelectorAll("[tabindex='-1']");
+        const cells   = this.template.querySelectorAll("[tabindex='-1']");
         let active  = Array.prototype.indexOf.call(cells, event.target);
-        let columns = this.template.querySelectorAll('tr th').length;
+        const columns = this.template.querySelectorAll('tr th').length;
         if (event.keyCode === 37) {
             active = (active > 0) ? active - 1 : active;
         }
@@ -129,7 +129,7 @@ export default class RecurringDonationTable extends LightningElement {
         if (event.keyCode === 40) {
             active = (active + columns <= cells.length - 1) ? active + columns : active;
         }
-        let activeTDs = this.template.querySelectorAll('.slds-has-focus');
+        const activeTDs = this.template.querySelectorAll('.slds-has-focus');
         for (let i = 0; i < activeTDs.length; i++) {
             activeTDs[i].classList.remove('slds-has-focus');
         }
@@ -216,10 +216,10 @@ export default class RecurringDonationTable extends LightningElement {
             if((this._tableThWidth + this._diffX) > 50){
                 this._tableThColumn.style.width = this._tableThWidth + this._diffX + "px";
                 this._tableThInnerDiv.style.width = this._tableThColumn.style.width;
-                let tableThs = this.template.querySelectorAll("th");
-                let tableBodyRows = this.template.querySelectorAll("table tbody tr");
+                const tableThs = this.template.querySelectorAll("th");
+                const tableBodyRows = this.template.querySelectorAll("table tbody tr");
                 tableBodyRows.forEach((row) => {
-                    let rowTds = row.querySelectorAll(".dv-dynamic-width");
+                    const rowTds = row.querySelectorAll(".dv-dynamic-width");
                     rowTds.forEach((td, ind) => {
                             rowTds[ind].style.width = tableThs[ind].style.width
                     });
@@ -242,10 +242,10 @@ export default class RecurringDonationTable extends LightningElement {
     }
 
     toggleView(event) {
-        let tableTd = this.template.querySelectorAll(
+        const tableTd = this.template.querySelectorAll(
             "td[data-id=" + JSON.stringify(event.target.getAttribute("data-viewid")) + "]"
         );
-        let viewMoreOrLess = this.template.querySelector(
+        const viewMoreOrLess = this.template.querySelector(
             "td[data-viewid=" + JSON.stringify(event.target.getAttribute("data-viewid")) + "]"
         );
         if (viewMoreOrLess.getAttribute("data-label") === this.labels.RD2_ViewMoreDetails) {
@@ -308,12 +308,12 @@ export default class RecurringDonationTable extends LightningElement {
         retrieveTableView({elevateFilter:this.donationTypeFilter}).then((data) => {
             if (data) {
                 this.data = data.map((el) => {
-                    let isElevate = el.recurringDonation[FIELD_COMMITMENT_ID.fieldApiName] ? true : false;
-                    let actions = this.actions
+                    const isElevate = el.recurringDonation[FIELD_COMMITMENT_ID.fieldApiName] ? true : false;
+                    const actions = this.actions
                         .filter((elo) => (elo.name !== "updatePaymentMethod" && !isElevate) || (isElevate))
                         .map((action) => { return { ...action }; });
-                    let nexDonationFormatFirstElement = "";
-                    let nexDonationFormatSecondElement = "";
+                    const nexDonationFormatFirstElement = "";
+                    const nexDonationFormatSecondElement = "";
                     
                     actions.map((action) => {
                         action.disabled = false;
@@ -324,7 +324,7 @@ export default class RecurringDonationTable extends LightningElement {
                         return action;
                     });
                     el.recurringDonation.Next_Payment_Date__c = new Date(el.recurringDonation.Next_Payment_Date__c).toLocaleDateString(undefined, { timeZone: this.timeZone });
-                    let lastModifiedDate = new Date(el.recurringDonation.LastModifiedDate).toLocaleDateString(undefined, { timeZone: this.timeZone });
+                    const lastModifiedDate = new Date(el.recurringDonation.LastModifiedDate).toLocaleDateString(undefined, { timeZone: this.timeZone });
                     return { actions, ...el, nexDonationFormatFirstElement, nexDonationFormatSecondElement, lastModifiedDate };
                 });
             }

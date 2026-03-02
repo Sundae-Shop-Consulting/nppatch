@@ -28,10 +28,10 @@ export default class ProgressRing extends LightningElement {
     */
     set valueNow(value) {
         this._valueNow = value === undefined || value === null ? 0 : value;
-        let max = 100;
+        const max = 100;
 
-        let arcX = Math.cos(2 * Math.PI * this._valueNow / max);
-        let arcY = Math.sin(2 * Math.PI * this._valueNow / max) * -1;
+        const arcX = Math.cos(2 * Math.PI * this._valueNow / max);
+        const arcY = Math.sin(2 * Math.PI * this._valueNow / max) * -1;
         let isLong = this._valueNow === max ? 1 : Math.floor(this._valueNow / 50);
         isLong = isLong > 1 ? 1 : isLong;
 

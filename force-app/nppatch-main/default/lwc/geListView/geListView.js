@@ -136,7 +136,7 @@ export default class geListView extends LightningElement {
     get sortedByLabel() {
         const columnEntry = this.columnEntriesByName[this.sortedBy];
         if (columnEntry) {
-            let sortLabel = GeLabelService.format(this.CUSTOM_LABELS.geTextListViewSortedBy, [columnEntry.label]);
+            const sortLabel = GeLabelService.format(this.CUSTOM_LABELS.geTextListViewSortedBy, [columnEntry.label]);
             return this.sortedBy ? sortLabel : undefined;
         }
         return undefined;
@@ -145,7 +145,7 @@ export default class geListView extends LightningElement {
     get lastUpdatedOn() {
         const isMomentLoaded = LibsMoment && LibsMoment.moment;
         if (isMomentLoaded && this.hasRecords) {
-            let records = deepClone(this.records);
+            const records = deepClone(this.records);
             records.sort((a, b) => {
                 return new Date(b.LastModifiedDate) - new Date(a.LastModifiedDate);
             });
@@ -217,7 +217,7 @@ export default class geListView extends LightningElement {
     handleImperativeRefresh = async () => {
         this.isLoading = true;
 
-        let columns = this.buildNameFieldColumns(this.selectedColumnHeaders);
+        const columns = this.buildNameFieldColumns(this.selectedColumnHeaders);
         this.setDatatableColumns(columns);
 
         this.setDatatableActions();
@@ -252,12 +252,12 @@ export default class geListView extends LightningElement {
         // Set 'Available Fields' options for the column headers
         this.options = this.buildFieldsToDisplayOptions(this.objectInfo.fields);
         // Get column header data
-        let columnHeaderData = await this.getColumnHeaderData(this.listName)
+        const columnHeaderData = await this.getColumnHeaderData(this.listName)
             .catch(error => {
                 handleError(error);
             });
 
-        let flsErrors = columnHeaderData.permissionErrorData;
+        const flsErrors = columnHeaderData.permissionErrorData;
 
         if (isNotEmpty(flsErrors)) {
             // Inform geHome about the FLS error
@@ -273,7 +273,7 @@ export default class geListView extends LightningElement {
         this.selectedColumnHeaders = this.setSelectedColumnHeaders(columnHeaderData);
 
         // Build the columns for the datatable using the currently selected column headers
-        let columns = this.buildNameFieldColumns(this.selectedColumnHeaders);
+        const columns = this.buildNameFieldColumns(this.selectedColumnHeaders);
         this.setDatatableColumns(columns);
 
         // Set the datatable actions
@@ -287,9 +287,9 @@ export default class geListView extends LightningElement {
 
         this.isLoading = false;
 
-        let style = document.createElement('style');
+        const style = document.createElement('style');
         style.innerText = '.slds-table_header-fixed_container{border: 1px solid red;}';
-        let dt = this.template.querySelector('lightning-datatable');
+        const dt = this.template.querySelector('lightning-datatable');
         if(dt) {
             dt.appendChild(style);
         }
@@ -394,11 +394,11 @@ export default class geListView extends LightningElement {
     * @param {list} fields: List of fields from the object describe info.
     */
     buildFieldsToDisplayOptions(fields) {
-        let options = [];
+        const options = [];
 
         Object.keys(fields).forEach(key => {
-            let fieldDescribe = this.objectInfo.fields[key];
-            let label = fieldDescribe.label;
+            const fieldDescribe = this.objectInfo.fields[key];
+            const label = fieldDescribe.label;
 
             if (!EXCLUDED_COLUMN_HEADERS.includes(fieldDescribe.apiName)) {
                 options.push({
@@ -420,7 +420,7 @@ export default class geListView extends LightningElement {
      */
     buildNameFieldColumns(fieldApiNames) {
         this.columnEntriesByName = {};
-        let _columns = [];
+        const _columns = [];
 
         for (let fieldApiName of fieldApiNames) {
             const fieldDescribe = this.objectInfo.fields[fieldApiName];
@@ -446,7 +446,7 @@ export default class geListView extends LightningElement {
     }
 
     buildBaseColumnEntry (fieldDescribe) {
-        let referenceField = this.getComputedReferenceFieldApiName(fieldDescribe);
+        const referenceField = this.getComputedReferenceFieldApiName(fieldDescribe);
         return {
             fieldApiName: isNotEmpty(referenceField) ?
                 referenceField : fieldDescribe.apiName,
@@ -475,7 +475,7 @@ export default class geListView extends LightningElement {
     * @param {array} columnEntries: List of json columns
     */
      setDatatableColumns(columnEntries) {
-        let _columnEntriesByName = {};
+        const _columnEntriesByName = {};
 
         columnEntries.forEach(column => {
             _columnEntriesByName[column.fieldName] = column;
@@ -637,20 +637,20 @@ export default class geListView extends LightningElement {
      setDatatableRecordsForImperativeCall(dataRecords) {
         this.records = [];
 
-        let records = deepClone(dataRecords);
+        const records = deepClone(dataRecords);
         records.forEach(record => {
             Object.keys(record).forEach(key => {
-                let fieldDescribe = this.objectInfo.fields[key];
+                const fieldDescribe = this.objectInfo.fields[key];
 
                 if (isNotEmpty(fieldDescribe)
                     && (fieldDescribe.nameField ||
                         fieldDescribe.reference)) {
-                    let _objectApiName = fieldDescribe.nameField ? this.objectInfo.apiName :
+                    const _objectApiName = fieldDescribe.nameField ? this.objectInfo.apiName :
                         fieldDescribe.referenceToInfos[0].apiName;
 
-                    let recordUrl = this.getRecordUrl(_objectApiName);
-                    let recordId = fieldDescribe.nameField ? record.Id : record[key];
-                    let urlName = fieldDescribe.nameField ? key : fieldDescribe.relationshipName;
+                    const recordUrl = this.getRecordUrl(_objectApiName);
+                    const recordId = fieldDescribe.nameField ? record.Id : record[key];
+                    const urlName = fieldDescribe.nameField ? key : fieldDescribe.relationshipName;
 
                     record[urlName + '_' + URL] = format(recordUrl, [recordId]);
                 }

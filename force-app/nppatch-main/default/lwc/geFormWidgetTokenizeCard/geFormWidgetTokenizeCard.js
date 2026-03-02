@@ -110,7 +110,7 @@ export default class geFormWidgetTokenizeCard extends LightningElement {
 
     renderedCallback() {
         //Listens for a message from the Visualforce iframe.
-        let component = this;
+        const component = this;
         tokenHandler.registerPostMessageListener(component);
 
         registerListener(DISABLE_TOKENIZE_WIDGET_EVENT_NAME, this.handleCriticalError, this);
@@ -324,7 +324,7 @@ export default class geFormWidgetTokenizeCard extends LightningElement {
     }
 
     isNewRow(widgetState) {
-        if (isEmpty(this._widgetDataFromState)) return false;
+        if (isEmpty(this._widgetDataFromState)) {return false;}
         return this._widgetDataFromState[apiNameFor(DATA_IMPORT_ID)] !== widgetState[apiNameFor(DATA_IMPORT_ID)];
     }
 
@@ -333,7 +333,7 @@ export default class geFormWidgetTokenizeCard extends LightningElement {
     }
 
     updateDisplayState() {
-        if (!Settings.isElevateCustomer()) return;
+        if (!Settings.isElevateCustomer()) {return;}
         if (this.isInBatchGiftEntry()) {
             this.updateDisplayStateWhenInBatchGiftEntry();
         } else {
@@ -513,8 +513,8 @@ export default class geFormWidgetTokenizeCard extends LightningElement {
     }
 
     setReadOnlyData(data) {
-        let cardExpirationMonth = this.cardExpirationMonthFrom(data);
-        let cardExpirationYear = this.cardExpirationYearFrom(data);
+        const cardExpirationMonth = this.cardExpirationMonthFrom(data);
+        const cardExpirationYear = this.cardExpirationYearFrom(data);
         this._cardLast4 = this.cardLast4From(data);
         this._achLast4 = this.achLast4From(data);
 
@@ -531,25 +531,25 @@ export default class geFormWidgetTokenizeCard extends LightningElement {
     }
 
     achLast4From(data) {
-        let achPaymentLast4 = getFieldValue(data, ACH_PAYMENT_LAST_4);
+        const achPaymentLast4 = getFieldValue(data, ACH_PAYMENT_LAST_4);
         return achPaymentLast4 ? achPaymentLast4 :
             getFieldValue(data, DATA_IMPORT_RECURRING_DONATION_ACH_LAST_4)
     }
 
     cardLast4From(data) {
-        let paymentCardLast4 = getFieldValue(data, PAYMENT_LAST_4);
+        const paymentCardLast4 = getFieldValue(data, PAYMENT_LAST_4);
         return paymentCardLast4 ? paymentCardLast4 :
             getFieldValue(data, DATA_IMPORT_RECURRING_DONATION_CARD_LAST_4)
     }
 
     cardExpirationYearFrom(data) {
-        let paymentCardExpirationYear = getFieldValue(data, PAYMENT_EXPIRATION_YEAR);
+        const paymentCardExpirationYear = getFieldValue(data, PAYMENT_EXPIRATION_YEAR);
         return paymentCardExpirationYear ? paymentCardExpirationYear :
             getFieldValue(data, DATA_IMPORT_RECURRING_DONATION_CARD_EXPIRATION_YEAR)
     }
 
     cardExpirationMonthFrom(data) {
-        let paymentCardExpirationMonth = getFieldValue(data, PAYMENT_EXPIRATION_MONTH);
+        const paymentCardExpirationMonth = getFieldValue(data, PAYMENT_EXPIRATION_MONTH);
         return paymentCardExpirationMonth ? paymentCardExpirationMonth :
             getFieldValue(data, DATA_IMPORT_RECURRING_DONATION_CARD_EXPIRATION_MONTH)
     }
@@ -622,7 +622,7 @@ export default class geFormWidgetTokenizeCard extends LightningElement {
     }
 
     requestMount() {
-        let gatewayOverride = GeGatewaySettings.getDecryptedGatewayId();
+        const gatewayOverride = GeGatewaySettings.getDecryptedGatewayId();
         tokenHandler.mount(
             this.iframe(),
             this._currentPaymentMethod,
@@ -658,9 +658,9 @@ export default class geFormWidgetTokenizeCard extends LightningElement {
             //The cardholder name is always empty for the purchase Payments Services card tokenization iframe
             //even though when it is accessible by the Gift Entry form for the Donor Type = Contact.
             return this.creditCardTokenizeParameters();
-        } else {
+        } 
             return this.ACHTokenizeParameters();
-        }
+        
     }
 
     ACHTokenizeParameters() {
@@ -678,7 +678,7 @@ export default class geFormWidgetTokenizeCard extends LightningElement {
     }
 
     creditCardTokenizeParameters() {
-        let creditCardParams = {
+        const creditCardParams = {
             nameOnCard: DEFAULT_NAME_ON_CARD
         }
         return JSON.stringify(creditCardParams);
@@ -756,13 +756,13 @@ export default class geFormWidgetTokenizeCard extends LightningElement {
             errorValue = message.error;
         }
 
-        let labelReplacements = [this.CUSTOM_LABELS.commonPaymentServices, errorValue];
+        const labelReplacements = [this.CUSTOM_LABELS.commonPaymentServices, errorValue];
 
         // This event can be used to extend handling payment errors at the form level by adding additional detail
         // objects.
         // We use the hex value for line feed (new line) 0x0A
-        let formattedErrorResponse = format(this.CUSTOM_LABELS.gePaymentProcessError, labelReplacements);
-        let splitErrorResponse = formattedErrorResponse.split(LABEL_NEW_LINE);
+        const formattedErrorResponse = format(this.CUSTOM_LABELS.gePaymentProcessError, labelReplacements);
+        const splitErrorResponse = formattedErrorResponse.split(LABEL_NEW_LINE);
         return {
             error: {
                 message: splitErrorResponse,

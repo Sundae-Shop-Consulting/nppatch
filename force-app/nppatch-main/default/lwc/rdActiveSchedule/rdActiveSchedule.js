@@ -61,10 +61,10 @@ export default class RdActiveSchedule extends LightningElement {
      */
     handleRecords(response) {
         if (response && response.dataTable) {
-            let filteredRows = [];
+            const filteredRows = [];
 
             response.dataTable.records.forEach(record => {
-                let schedule = {};
+                const schedule = {};
                 schedule.field = [];
 
                 response.dataTable.columns.forEach(column => {
@@ -72,7 +72,7 @@ export default class RdActiveSchedule extends LightningElement {
                         schedule.title = record[column.fieldName] === true ? currentSchedule : futureSchedule;
 
                     } else {
-                        let field = {};
+                        const field = {};
                         field.column = column;
                         field.column.isCurrency = column.type === 'currency';
                         field.column.isDate = column.type === 'date-local' || column.type === 'date';
@@ -104,9 +104,9 @@ export default class RdActiveSchedule extends LightningElement {
             return error.body.message;
         } else if (error && error.name && error.message) {
             return error.message;
-        } else {
+        } 
             return "";
-        }
+        
     }
 
     get qaLocatorHeader() {

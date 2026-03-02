@@ -224,7 +224,7 @@ export default class GeGiftEntryFormApp extends NavigationMixin(LightningElement
         this._isBatchProcessing = this.giftBatchState.isProcessingGifts;
         this.shouldLoadSpinner = this._isBatchProcessing
         this.isLoading = false;
-        if (!this._isBatchProcessing) return;
+        if (!this._isBatchProcessing) {return;}
         await this.startPolling();
     }
 
@@ -283,7 +283,7 @@ export default class GeGiftEntryFormApp extends NavigationMixin(LightningElement
                 const mostRecentGift = this.giftBatch.mostRecentGift();
                 if (mostRecentGift.failureInformation()) {
                     event.detail.error(mostRecentGift.failureInformation());
-                    return;
+                    
                 } else {
                     event.detail.success();
                     this.handleClearGiftInView();
@@ -574,7 +574,7 @@ export default class GeGiftEntryFormApp extends NavigationMixin(LightningElement
                 await this.deleteFromElevateBatch(gift);
                 isRemovedFromElevate = true;
             } catch (exception) {
-                let errorMsg = GeLabelService.format(
+                const errorMsg = GeLabelService.format(
                     this.CUSTOM_LABELS.geErrorElevateDelete, 
                     [this.CUSTOM_LABELS.commonPaymentServices]
                 );
@@ -591,7 +591,7 @@ export default class GeGiftEntryFormApp extends NavigationMixin(LightningElement
         } catch (exception) {
             if (isRemovedFromElevate) {
                 this.logFailureAfterElevateDelete(exception, giftAsDataImport);
-                let errorMsg = GeLabelService.format(
+                const errorMsg = GeLabelService.format(
                     this.CUSTOM_LABELS.geErrorRecordFailAfterElevateDelete, 
                     [this.CUSTOM_LABELS.commonPaymentServices]
                 );

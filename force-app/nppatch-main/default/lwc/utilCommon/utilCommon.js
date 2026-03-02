@@ -52,7 +52,7 @@ const findIndexByProperty = (array, property, value) => {
  */
 const getQueryParameters = () => {
     let params = {};
-    let search = location.search.substring(1);
+    const search = location.search.substring(1);
 
     if (search) {
         const url = `{"${search.replace(/&/g, '","').replace(/=/g, '":"')}"}`;
@@ -127,8 +127,8 @@ const isEmpty = (value) => {
  * @returns {boolean}   TRUE when the given object is empty.
  */
 const isEmptyObject = (object) => {
-    for (let key in object) {
-        if (object.hasOwnProperty(key)) return false;
+    for (const key in object) {
+        if (object.hasOwnProperty(key)) {return false;}
     }
     return true;
 }
@@ -210,7 +210,7 @@ const format = (string, replacements) => {
  */
 const removeByProperty = (array, property, value) => {
     const index = array.findIndex(element => element[property] === value);
-    if (index === -1) return;
+    if (index === -1) {return;}
     array.splice(index, 1);
 };
 
@@ -222,7 +222,7 @@ const removeByProperty = (array, property, value) => {
  */
 const removeFromArray = (array, value) => {
     const index = array.findIndex(item => item === value);
-    if (index === -1) return;
+    if (index === -1) {return;}
     array.splice(index, 1);
 }
 
@@ -243,7 +243,7 @@ const deepClone = (src) => {
 
     if (isObject(src)) {
         clone = {};
-        for (let property in src) {
+        for (const property in src) {
             if (src.hasOwnProperty(property)) {
                 // if the value is a nested object, recursively copy all it's properties
                 clone[property] = isObject(src[property]) ? deepClone(src[property]) : src[property];
@@ -253,7 +253,7 @@ const deepClone = (src) => {
 
     if (Array.isArray(src)) {
         clone = [];
-        for (let item of src) {
+        for (const item of src) {
             clone.push(deepClone(item));
         }
     }
@@ -276,7 +276,7 @@ const sort = (objects, attribute, direction = "desc", isNullsLast) => {
         objects = deepClone(objects);
         let aBeforeB, bBeforeA;
         {
-            let sortDirectionMultiplier = direction.toLowerCase() === "desc" ? -1 : 1;
+            const sortDirectionMultiplier = direction.toLowerCase() === "desc" ? -1 : 1;
 
             aBeforeB = -1 * sortDirectionMultiplier;
             bBeforeA = 1 * sortDirectionMultiplier;
@@ -324,8 +324,8 @@ const sort = (objects, attribute, direction = "desc", isNullsLast) => {
 * e.g. hasNestedProperty(someObject, 'firstLevel', 'secondLevel', 'thirdLevel')
 */
 const hasNestedProperty = (object, property, ...remainingProperties) => {
-    if (object === undefined || object === null) return false
-    if (remainingProperties.length === 0 && object.hasOwnProperty(property)) return true
+    if (object === undefined || object === null) {return false}
+    if (remainingProperties.length === 0 && object.hasOwnProperty(property)) {return true}
     return hasNestedProperty(object[property], ...remainingProperties)
 }
 
@@ -356,9 +356,9 @@ const getNestedProperty = (object, ...args) => {
 * the object.
 */
 const getLikeMatchByKey = (objectToSearch, keyToFind, returnKey = false) => {
-    for (let key in objectToSearch) {
+    for (const key in objectToSearch) {
         if (key.toLowerCase().indexOf(keyToFind.toLowerCase()) !== -1)
-            return returnKey ? key : objectToSearch[key];
+            {return returnKey ? key : objectToSearch[key];}
     }
     return null;
 }
@@ -374,10 +374,10 @@ const getLikeMatchByKey = (objectToSearch, keyToFind, returnKey = false) => {
 */
 const arraysMatch = (arr1, arr2) => {
     if (arr1 && arr2) {
-        if (arr1.length !== arr2.length) return false;
+        if (arr1.length !== arr2.length) {return false;}
 
-        for (var i = 0; i < arr1.length; i++) {
-            if (arr1[i] !== arr2[i]) return false;
+        for (let i = 0; i < arr1.length; i++) {
+            if (arr1[i] !== arr2[i]) {return false;}
         }
 
         return true;
@@ -427,7 +427,7 @@ const getSubsetObject = (sourceObj, propertyNames) => {
  *              Null if the object or field does not have a namespace.
  */
 const getNamespace = (apiName) => {
-    if (!apiName) return null;
+    if (!apiName) {return null;}
 
     const apiNameParts = apiName.split('__');
     return apiNameParts.length === 3 ? apiNameParts[0] : null;
@@ -582,9 +582,9 @@ const apiNameFor = (objectOrFieldReference) => {
         return objectOrFieldReference.fieldApiName;
     } else if (objectOrFieldReference.hasOwnProperty('objectApiName')) {
         return objectOrFieldReference.objectApiName;
-    } else {
+    } 
         return null;
-    }
+    
 }
 
 const isString = (val) => {

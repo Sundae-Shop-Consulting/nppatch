@@ -33,7 +33,7 @@ export default class geReviewDonations extends NavigationMixin(LightningElement)
 
     @wire(getRecord, { recordId: '$donorId', optionalFields: ['Account.Name', 'Contact.Name'] })
     wiredGetRecord({ error, data }) {
-        if (error) return handleError(error);
+        if (error) {return handleError(error);}
         if (data) {
             this._donor = data;
             this._donorType = this._donor.apiName;
@@ -42,8 +42,8 @@ export default class geReviewDonations extends NavigationMixin(LightningElement)
 
     @wire(getOpenDonationsView, { donorId: '$donorId' })
     wiredGetOpenDonations({ error, data }) {
-        if (error) return handleError(error);
-        if (data) return this.opportunities = data.donations;
+        if (error) {return handleError(error);}
+        if (data) {return this.opportunities = data.donations;}
     }
 
     @api
@@ -76,7 +76,7 @@ export default class geReviewDonations extends NavigationMixin(LightningElement)
     }
 
     get hasPendingDonations() {
-        if (!this.donorId) return false;
+        if (!this.donorId) {return false;}
         return this.opportunities && this.opportunities.length > 0;
     }
 

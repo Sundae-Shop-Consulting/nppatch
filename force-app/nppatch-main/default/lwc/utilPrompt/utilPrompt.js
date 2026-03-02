@@ -66,9 +66,9 @@ export default class utilPrompt extends LightningElement {
     get modalClass () {
        if (isEmpty(this.position)) {
           return MODAL_CONTAINER_CLASS;
-       } else {
+       } 
          return MODAL_CONTAINER_CLASS + this.modalPosition;
-       }
+       
     }
 
     handleConfirmButtonClick (event) {

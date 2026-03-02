@@ -194,7 +194,7 @@ export default class StgPanelHouseholds extends LightningElement {
     // --- Name Format: combobox + Other logic ---
 
     _isOtherValue(value, predefinedOptions) {
-        if (!value) return false;
+        if (!value) {return false;}
         return !predefinedOptions.some(
             (opt) => opt.value === value && opt.value !== OTHER_VALUE
         );
@@ -203,7 +203,7 @@ export default class StgPanelHouseholds extends LightningElement {
     // Read-only mode
     get nameFormatComboValue() {
         const val = this._settingsNaming?.Household_Name_Format__c;
-        if (this._isOtherValue(val, NAME_FORMAT_OPTIONS)) return OTHER_VALUE;
+        if (this._isOtherValue(val, NAME_FORMAT_OPTIONS)) {return OTHER_VALUE;}
         return val || "";
     }
 
@@ -214,14 +214,14 @@ export default class StgPanelHouseholds extends LightningElement {
 
     // Edit mode
     get nameFormatComboValueEdit() {
-        if (this._nameFormatIsOther) return OTHER_VALUE;
+        if (this._nameFormatIsOther) {return OTHER_VALUE;}
         const val = this._workingCopyNaming?.Household_Name_Format__c;
-        if (this._isOtherValue(val, NAME_FORMAT_OPTIONS)) return OTHER_VALUE;
+        if (this._isOtherValue(val, NAME_FORMAT_OPTIONS)) {return OTHER_VALUE;}
         return val || "";
     }
 
     get isNameFormatOtherEdit() {
-        if (this._nameFormatIsOther) return true;
+        if (this._nameFormatIsOther) {return true;}
         const val = this._workingCopyNaming?.Household_Name_Format__c;
         return this._isOtherValue(val, NAME_FORMAT_OPTIONS);
     }
@@ -230,7 +230,7 @@ export default class StgPanelHouseholds extends LightningElement {
 
     get formalGreetingComboValue() {
         const val = this._settingsNaming?.Formal_Greeting_Format__c;
-        if (this._isOtherValue(val, FORMAL_GREETING_OPTIONS)) return OTHER_VALUE;
+        if (this._isOtherValue(val, FORMAL_GREETING_OPTIONS)) {return OTHER_VALUE;}
         return val || "";
     }
 
@@ -240,14 +240,14 @@ export default class StgPanelHouseholds extends LightningElement {
     }
 
     get formalGreetingComboValueEdit() {
-        if (this._formalGreetingIsOther) return OTHER_VALUE;
+        if (this._formalGreetingIsOther) {return OTHER_VALUE;}
         const val = this._workingCopyNaming?.Formal_Greeting_Format__c;
-        if (this._isOtherValue(val, FORMAL_GREETING_OPTIONS)) return OTHER_VALUE;
+        if (this._isOtherValue(val, FORMAL_GREETING_OPTIONS)) {return OTHER_VALUE;}
         return val || "";
     }
 
     get isFormalGreetingOtherEdit() {
-        if (this._formalGreetingIsOther) return true;
+        if (this._formalGreetingIsOther) {return true;}
         const val = this._workingCopyNaming?.Formal_Greeting_Format__c;
         return this._isOtherValue(val, FORMAL_GREETING_OPTIONS);
     }
@@ -256,7 +256,7 @@ export default class StgPanelHouseholds extends LightningElement {
 
     get informalGreetingComboValue() {
         const val = this._settingsNaming?.Informal_Greeting_Format__c;
-        if (this._isOtherValue(val, INFORMAL_GREETING_OPTIONS)) return OTHER_VALUE;
+        if (this._isOtherValue(val, INFORMAL_GREETING_OPTIONS)) {return OTHER_VALUE;}
         return val || "";
     }
 
@@ -266,14 +266,14 @@ export default class StgPanelHouseholds extends LightningElement {
     }
 
     get informalGreetingComboValueEdit() {
-        if (this._informalGreetingIsOther) return OTHER_VALUE;
+        if (this._informalGreetingIsOther) {return OTHER_VALUE;}
         const val = this._workingCopyNaming?.Informal_Greeting_Format__c;
-        if (this._isOtherValue(val, INFORMAL_GREETING_OPTIONS)) return OTHER_VALUE;
+        if (this._isOtherValue(val, INFORMAL_GREETING_OPTIONS)) {return OTHER_VALUE;}
         return val || "";
     }
 
     get isInformalGreetingOtherEdit() {
-        if (this._informalGreetingIsOther) return true;
+        if (this._informalGreetingIsOther) {return true;}
         const val = this._workingCopyNaming?.Informal_Greeting_Format__c;
         return this._isOtherValue(val, INFORMAL_GREETING_OPTIONS);
     }
@@ -282,9 +282,9 @@ export default class StgPanelHouseholds extends LightningElement {
 
     get excludedRecordTypesDisplay() {
         const raw = this._settingsHH?.Household_Creation_Excluded_Recordtypes__c;
-        if (!raw) return this.labels.none;
+        if (!raw) {return this.labels.none;}
         const ids = raw.split(";").filter(Boolean);
-        if (!ids.length) return this.labels.none;
+        if (!ids.length) {return this.labels.none;}
         const map = new Map(
             this._contactRecordTypeOptions.map((o) => [o.value, o.label])
         );
@@ -294,7 +294,7 @@ export default class StgPanelHouseholds extends LightningElement {
     get selectedExcludedRecordTypes() {
         const raw =
             this._workingCopyHH?.Household_Creation_Excluded_Recordtypes__c;
-        if (!raw) return [];
+        if (!raw) {return [];}
         return raw.split(";").filter(Boolean);
     }
 
@@ -490,8 +490,8 @@ export default class StgPanelHouseholds extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) return error.body.message;
-        if (error?.message) return error.message;
+        if (error?.body?.message) {return error.body.message;}
+        if (error?.message) {return error.message;}
         return "An unexpected error occurred.";
     }
 }

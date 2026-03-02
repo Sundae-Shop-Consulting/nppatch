@@ -10,7 +10,7 @@ import { isEmptyObject, isNotEmpty } from 'c/utilCommon';
  * the fields on the passed in object.
  */
 export function flatten(obj) {
-    let flatObj = {};
+    const flatObj = {};
     for (const [key, value] of Object.entries(obj)) {
         if (value !== null && value !== undefined && value.hasOwnProperty('value')) {
             flatObj[key] = value.value;
@@ -42,9 +42,9 @@ export function convertBDIToWidgetJson(additionalObjectJson) {
         return additionalObjectJson;
     }
 
-    let targetFieldsByObjectDevName = {};
+    const targetFieldsByObjectDevName = {};
     Object.values(additionalObjects.dynamicSourceByObjMappingDevName).forEach(dynamicSourceValue => {
-        let fieldMappingsForObjectDevName = GeFormService.fieldMappingsForObjectMappingDevName(
+        const fieldMappingsForObjectDevName = GeFormService.fieldMappingsForObjectMappingDevName(
             dynamicSourceValue.objectMappingTemplateDevName)
             .filter(fieldMapping => {
                 return Object.keys(dynamicSourceValue.sourceObj)
@@ -52,7 +52,7 @@ export function convertBDIToWidgetJson(additionalObjectJson) {
                     .includes(fieldMapping.Source_Field_API_Name);
             });
 
-        let targetFieldApiNameBySourceFieldApiName = {};
+        const targetFieldApiNameBySourceFieldApiName = {};
 
         fieldMappingsForObjectDevName.forEach(fieldMapping => {
             targetFieldApiNameBySourceFieldApiName[fieldMapping.Source_Field_API_Name] =
@@ -73,7 +73,7 @@ export function convertBDIToWidgetJson(additionalObjectJson) {
 }
 
 function createSimplifiedObjectForObjectDevName(targetFieldApiNameBySourceFieldApiName, dynamicSourceValue) {
-    let simplifiedObjectForObjectDevName = {
+    const simplifiedObjectForObjectDevName = {
         attributes: {
             type: GeFormService.getObjectMapping(dynamicSourceValue.objectMappingTemplateDevName).Object_API_Name
         }

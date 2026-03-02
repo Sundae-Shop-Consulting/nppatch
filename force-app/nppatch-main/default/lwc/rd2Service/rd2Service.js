@@ -87,7 +87,7 @@ class Rd2Service {
             } catch (error) {}
         }
 
-        let errors = this.getErrors(response);
+        const errors = this.getErrors(response);
 
         return format("{0}", [errors]);
     }
@@ -136,7 +136,7 @@ class Rd2Service {
     }
 
     getCustomFieldValues({ customFieldSets }) {
-        let fieldValues = {};
+        const fieldValues = {};
         for (const field of customFieldSets) {
             fieldValues[field.apiName] = field.value;
         }

@@ -57,7 +57,7 @@ export default class PotentialDuplicates extends NavigationMixin(LightningElemen
 
     handleToast() {
         if (this.displayToast && this.duplicateCount > 0) {
-            let messageData = [{
+            const messageData = [{
                 "url": this.viewDuplicatesURL,
                 "label": this.lblViewDuplicatesLink,
             }];

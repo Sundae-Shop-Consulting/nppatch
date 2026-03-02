@@ -48,10 +48,10 @@ export default class PlatformEventListener extends LightningElement {
     }
 
     classifyChannelName() {
-        let isFullName = this.channelName && this.channelName.includes('/event/');
+        const isFullName = this.channelName && this.channelName.includes('/event/');
 
-        let isNamespaceContext = this.nsWrapper.currentNamespace && this.nsWrapper.currentNamespace !== '';
-        let isChannelNamespaced = this.channelName && this.channelName.includes(`${this.nsWrapper.currentNamespace}__`);
+        const isNamespaceContext = this.nsWrapper.currentNamespace && this.nsWrapper.currentNamespace !== '';
+        const isChannelNamespaced = this.channelName && this.channelName.includes(`${this.nsWrapper.currentNamespace}__`);
 
         if (isFullName) {
             return channelNameContexts.IS_FULL_NAME;
@@ -69,7 +69,7 @@ export default class PlatformEventListener extends LightningElement {
     }
 
     handleChannelName() {
-        let category = this.classifyChannelName();
+        const category = this.classifyChannelName();
 
         switch (category) {
             case channelNameContexts.IS_FULL_NAME:
@@ -96,7 +96,7 @@ export default class PlatformEventListener extends LightningElement {
                 break;
 
             default: {
-                let namespace = this.getNamespacePrefixString();
+                const namespace = this.getNamespacePrefixString();
                 this._fullChannelName = `/event/${namespace}DeploymentEvent__e`;
             }
         }
@@ -116,7 +116,7 @@ export default class PlatformEventListener extends LightningElement {
     }
 
     showToast(response){
-        let nsPrefix = this.getNamespacePrefixString();
+        const nsPrefix = this.getNamespacePrefixString();
 
         const status = response.data.payload[nsPrefix + 'Status__c'];
         const deploymentId = response.data.payload[nsPrefix + 'DeploymentId__c'];
@@ -130,7 +130,7 @@ export default class PlatformEventListener extends LightningElement {
     }
 
     log(response) {
-        let nsPrefix = this.getNamespacePrefixString();
+        const nsPrefix = this.getNamespacePrefixString();
         
         const status = response.data.payload[nsPrefix + 'Status__c'];
         const deploymentId = response.data.payload[nsPrefix + 'DeploymentId__c'];
@@ -142,7 +142,7 @@ export default class PlatformEventListener extends LightningElement {
     }
 
     handleSubscribe() {
-        let x = this;
+        const x = this;
 
         // Callback invoked whenever a new event message is received
         const messageCallback = function (response) {
@@ -157,7 +157,7 @@ export default class PlatformEventListener extends LightningElement {
     }
 
     handleEventReceived(response) {
-        let nsPrefix = this.getNamespacePrefixString();
+        const nsPrefix = this.getNamespacePrefixString();
         const deploymentId = response.data.payload[nsPrefix + 'DeploymentId__c'];
 
         if (this.isMonitored(deploymentId)) {

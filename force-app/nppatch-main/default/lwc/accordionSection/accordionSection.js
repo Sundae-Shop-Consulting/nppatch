@@ -31,7 +31,7 @@ export default class AccordionSection extends LightningElement {
     }
 
     get classes() {
-        let classes = ["slds-accordion__section"];
+        const classes = ["slds-accordion__section"];
 
         if (this.isOpen) {
             classes.push("slds-is-open");

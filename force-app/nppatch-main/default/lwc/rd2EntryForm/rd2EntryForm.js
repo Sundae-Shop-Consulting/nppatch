@@ -317,7 +317,7 @@ export default class rd2EntryForm extends LightningElement {
     @wire(getObjectInfo, { objectApiName: RECURRING_DONATION_OBJECT.objectApiName })
     wiredRecurringDonationObjectInfo(response) {
         if (response.data) {
-            let rdObjectInfo = response.data;
+            const rdObjectInfo = response.data;
             this.setFields(rdObjectInfo.fields);
             this.fieldInfos = buildFieldDescribes(rdObjectInfo.fields, rdObjectInfo.apiName);
 
@@ -1005,7 +1005,7 @@ export default class rd2EntryForm extends LightningElement {
      * @return Object containing field API names and their values
      */
     returnValues() {
-        let data = {};
+        const data = {};
         const inputFields = this.template.querySelectorAll("lightning-input-field");
 
         inputFields.forEach((field) => {

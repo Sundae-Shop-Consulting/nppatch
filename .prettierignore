@@ -1,0 +1,8 @@
+# Static resources contain non-standard CSS
+force-app/nppatch-main/default/staticresources/
+
+# BDI LWC files contain %%%NAMESPACE%%% tokens that break parsing
+force-app/nppatch-main/bdi/
+
+# PMM files — pre-existing formatting issues
+force-app/nppatch-prgm/

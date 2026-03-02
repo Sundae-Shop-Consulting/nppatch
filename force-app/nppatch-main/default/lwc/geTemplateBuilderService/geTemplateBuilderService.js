@@ -71,7 +71,7 @@ class GeTemplateBuilderService {
     alignSchemaNSWithEnvironment = (name, namespace) => {
         if (namespace) {
             const namespacePrefix = `${namespace}__`;
-            let newName = name.replace('%%%NAMESPACE%%%', '');
+            const newName = name.replace('%%%NAMESPACE%%%', '');
 
             return newName.includes(namespacePrefix) ? newName : `${namespacePrefix}${newName}`;
         }

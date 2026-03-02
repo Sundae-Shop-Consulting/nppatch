@@ -198,7 +198,7 @@ export default class Rd2PauseForm extends LightningElement {
      */
     handleColumns(response) {
         if (response && response.dataTable) {
-            let tempColumns = response.dataTable.columns;
+            const tempColumns = response.dataTable.columns;
             this.columns = [];
 
             for (let i = 0; i < tempColumns.length; i++) {
@@ -431,10 +431,10 @@ export default class Rd2PauseForm extends LightningElement {
     * @description Constructs pause data to be sent to the Apex method when user clicks [Save]
     */
     constructPauseData() {
-        let pauseData = {};
+        const pauseData = {};
         pauseData.rdId = this.recordId;
 
-        let installmentById = this.installments.reduce(function (map, installment) {
+        const installmentById = this.installments.reduce(function (map, installment) {
             map[installment.installmentNumber] = installment.donationDate;
             return map;
         }, {});

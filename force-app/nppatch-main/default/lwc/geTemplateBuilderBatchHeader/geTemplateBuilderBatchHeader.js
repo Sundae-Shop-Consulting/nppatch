@@ -41,7 +41,7 @@ export default class geTemplateBuilderBatchHeader extends LightningElement {
     }
 
     get hasMissingBatchTableColumns() {
-        if (this.disableBatchTableColumnsSubtab) return false;
+        if (this.disableBatchTableColumnsSubtab) {return false;}
 
         const isMissingBatchTableColumns =
             isEmpty(this.selectedBatchTableColumnOptions) ||
@@ -177,7 +177,7 @@ export default class geTemplateBuilderBatchHeader extends LightningElement {
     * @param {string} fieldName: DataImport__c field api name
     */
     addField(fieldName) {
-        let batchFields = mutable(this.batchFields);
+        const batchFields = mutable(this.batchFields);
 
         dispatch(this, EVENT_BATCH_HEADER_FIELD_ADD, fieldName);
 
@@ -244,7 +244,7 @@ export default class geTemplateBuilderBatchHeader extends LightningElement {
     */
     toggleCheckboxForSelectedBatchFields() {
         if (this.selectedBatchFields && this.selectedBatchFields.length > 0) {
-            let _batchFields = mutable(this.batchFields);
+            const _batchFields = mutable(this.batchFields);
 
             for (let i = 0; i < this.selectedBatchFields.length; i++) {
                 const selectedBatchField = this.selectedBatchFields[i];

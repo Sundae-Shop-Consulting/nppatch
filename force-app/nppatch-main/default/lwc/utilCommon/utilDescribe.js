@@ -14,7 +14,7 @@ export default class UtilDescribe {
     }
 
     get accessibleRecordTypes() {
-        if (!this._objectDescribeInfo) return [];
+        if (!this._objectDescribeInfo) {return [];}
         const allRecordTypes = Object.values(this._objectDescribeInfo.recordTypeInfos);
         return allRecordTypes.filter(recordType => recordType.available && !recordType.master);
     }

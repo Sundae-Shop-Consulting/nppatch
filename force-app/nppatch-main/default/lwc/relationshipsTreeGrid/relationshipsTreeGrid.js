@@ -118,7 +118,7 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
     }
 
     buildActionsColumn(relationshipsListView) {
-        let rowActions = [ACTION_DEFS.VIEW_RECORD];
+        const rowActions = [ACTION_DEFS.VIEW_RECORD];
 
         if (relationshipsListView.showCreateRelationshipButton) {
             rowActions.push(ACTION_DEFS.NEW_RELATIONSHIP);
@@ -196,9 +196,9 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
         if (relationship.relationshipId === row.relationshipId) {
             if (children.length > 0) {
                 return this.attachChildrenToRow(children, relationship);
-            } else {
+            } 
                 delete relationship._children;
-            }
+            
         }
 
         return relationship;

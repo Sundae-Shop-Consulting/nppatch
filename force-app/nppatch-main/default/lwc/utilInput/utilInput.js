@@ -294,7 +294,7 @@ export default class utilInput extends LightningElement {
             isValid = this.isValid();
         }
 
-        let detail = {
+        const detail = {
             objectApiName: this.objectApiName,
             fieldApiName: this.fieldApiName,
             value: this.fieldValue,
@@ -314,7 +314,7 @@ export default class utilInput extends LightningElement {
     @api
     isValid() {
         // We need to check for invalid values, regardless if the field is required
-        let fieldIsValid = this.checkFieldValidity();
+        const fieldIsValid = this.checkFieldValidity();
         if (this.fieldDescribe !== null && this.isRequired) {
             return isNotEmpty(this.fieldValue) && fieldIsValid;
         }

@@ -87,7 +87,7 @@ export default class StopRecurringDonationModal extends LightningElement {
       }
       
       handleCancelDonation(){
-        let record = Object.assign({}, this.currentRecord.recurringDonation);
+        const record = Object.assign({}, this.currentRecord.recurringDonation);
         record.Status__c = STATUS_CLOSED;
         upsertDonation({ recurringDonation: record })
           .then(() => {

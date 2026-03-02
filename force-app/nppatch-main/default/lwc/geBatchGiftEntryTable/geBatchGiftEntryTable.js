@@ -163,7 +163,7 @@ export default class GeBatchGiftEntryTable extends LightningElement {
 
     tableRowErrors;
     assignDataImportErrorsToTableRows(dataImportRows) {
-        let errors = {rows: {}};
+        const errors = {rows: {}};
         this.getDataImportRowsWithErrors(dataImportRows).forEach(row => {
             Object.assign(errors.rows,  {
                 [row.Id] : {
@@ -193,7 +193,7 @@ export default class GeBatchGiftEntryTable extends LightningElement {
     }
 
     getTableRowErrorMessages(dataImportRow) {
-        let errorMessages = [];
+        const errorMessages = [];
         this.getErrorPropertiesToDisplayInRow().forEach(errorProperty => {
             if (dataImportRow.hasOwnProperty(errorProperty)) {
                 errorMessages.push(dataImportRow[errorProperty]);
@@ -223,12 +223,12 @@ export default class GeBatchGiftEntryTable extends LightningElement {
     }
 
     get userDefinedColumns() {
-        let userDefinedColumns = [];
+        const userDefinedColumns = [];
         this.userDefinedBatchTableColumnNames.forEach(columnName => {
             if (this._columnsBySourceFieldApiName[`${columnName}${URL_SUFFIX}`]) {
                 userDefinedColumns.push(this._columnsBySourceFieldApiName[`${columnName}${URL_SUFFIX}`]);
             } else if (isUndefined(this._columnsBySourceFieldApiName[columnName])) {
-                return;
+                
             } else {
                 userDefinedColumns.push(this._columnsBySourceFieldApiName[columnName]);
             }
@@ -459,7 +459,7 @@ export default class GeBatchGiftEntryTable extends LightningElement {
                 ? fieldMapping.Source_Field_API_Name.slice(0, -2)
                 : fieldMapping.Source_Field_API_Name;
 
-        let column = {
+        const column = {
             label: element.customLabel,
             fieldName: isReferenceField ?
                 `${columnFieldName}${URL_SUFFIX}` :

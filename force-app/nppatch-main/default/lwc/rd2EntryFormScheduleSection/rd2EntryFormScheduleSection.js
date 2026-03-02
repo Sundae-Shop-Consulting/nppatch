@@ -120,7 +120,7 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
                 this.isMonthlyDonation = !this.isElevateDonation ? true : false;
             } else {
                 this.isMonthlyDonation = false;
-                let dd = String(new Date().getDate()).padStart(2, "0");
+                const dd = String(new Date().getDate()).padStart(2, "0");
                 this.rd2State.dayOfMonth = dd === 31 ? LAST_DAY_OF_MONTH : dd;
             }
             this.cssLastDay = !this.isMonthlyDonation || this.isPaymentModal ? 'slds-hide' : 'slds-p-right_small slds-p-left_small slds-size_12-of-12 slds-large-size_4-of-12 fixExperienceDayOfMonth';
@@ -331,9 +331,9 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
             return 6;
         } else if (this.rd2State.recurringPeriod === PERIOD.MONTHLY) {
             return 3;
-        } else {
+        } 
             return 4;
-        }
+        
     }
 
     get _isAdvancedMode() {
@@ -428,7 +428,7 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
      */
     @api
     returnValues() {
-        let data = {};
+        const data = {};
 
         // Standard Input Fields
         this.template.querySelectorAll("lightning-input-field").forEach((field) => {

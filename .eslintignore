@@ -1,0 +1,11 @@
+# BDI LWC files contain %%%NAMESPACE%%% tokens that break parsing
+force-app/nppatch-main/bdi/
+
+# PMM files — not yet linted
+force-app/nppatch-prgm/
+
+# Static resources contain legacy jQuery/VF JavaScript
+force-app/nppatch-main/default/staticresources/
+
+# Aura components — legacy framework patterns (var, $A) not worth linting
+force-app/**/aura/

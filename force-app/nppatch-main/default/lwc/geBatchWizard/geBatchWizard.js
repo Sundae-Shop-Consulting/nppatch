@@ -237,7 +237,7 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
                     this.builderTemplateComboboxOptions(this.templates);
 
                     this.dataImportBatchRecord = response.data;
-                    let templateId = this
+                    const templateId = this
                         .dataImportBatchRecord
                         .fields[DATA_IMPORT_BATCH_FORM_TEMPLATE_INFO.fieldApiName]
                         .value;
@@ -264,11 +264,11 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
             this._allowFirstInstallmentDisabled = true;
         }
 
-        let batchLevelDefaults =
+        const batchLevelDefaults =
             JSON.parse(this.dataImportBatchRecord.fields[DATA_IMPORT_BATCH_DEFAULTS_INFO.fieldApiName].value);
 
-        this.allowFirstInstallment = batchLevelDefaults['AllowFirstInstallment__f'] ? 
-            batchLevelDefaults['AllowFirstInstallment__f'].value : 
+        this.allowFirstInstallment = batchLevelDefaults.AllowFirstInstallment__f ? 
+            batchLevelDefaults.AllowFirstInstallment__f.value : 
             false;
 
         this.formSections.forEach(section => {
@@ -304,7 +304,7 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
 
     setValuesForSelectedBatchHeaderFields(allFields) {
         this.selectedBatchHeaderFields.map(batchHeaderField => {
-            let queriedField = allFields[batchHeaderField.apiName];
+            const queriedField = allFields[batchHeaderField.apiName];
             if (queriedField) {
                 batchHeaderField.value = queriedField.value;
             }
@@ -389,7 +389,7 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
     validateBatchHeaderFields() {
         this.resetValidations();
 
-        let inputComponents = this.template.querySelectorAll('c-util-input[data-id="batchHeaderField"]');
+        const inputComponents = this.template.querySelectorAll('c-util-input[data-id="batchHeaderField"]');
         for (let i = 0; i < inputComponents.length; i++) {
             if (!inputComponents[i].isValid()) {
                 this.hasInvalidBatchFields = true;
@@ -440,17 +440,17 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
     buildUpdateRecord() {
         const dataImportBatchObjectInfo = this.dataImportBatchCreateDefaults.
             data.objectInfos[this.dataImportBatchName];
-        let updateRecord = generateRecordInputForUpdate(
+        const updateRecord = generateRecordInputForUpdate(
             this.dataImportBatchRecord, dataImportBatchObjectInfo);
         updateRecord.apiName = this.dataImportBatchRecord.apiName;
         return this.setFieldValues(updateRecord);
     }
 
     setFieldValues(dataImportBatch) {
-        let utilInputs = this.template.querySelectorAll('c-util-input');
-        let batchDefaults = {};
+        const utilInputs = this.template.querySelectorAll('c-util-input');
+        const batchDefaults = {};
         for (let i = 0; i < utilInputs.length; i++) {
-            let formElement = utilInputs[i].reportValue();
+            const formElement = utilInputs[i].reportValue();
 
             if (dataImportBatch.apiName === formElement.objectApiName) {
                 dataImportBatch.fields[formElement.fieldApiName] = formElement.value;
@@ -574,7 +574,7 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
 
     get gatewayNameMessage() {
         if (this.gatewaySettings?.gatewayAssignmentEnabled && this.selectedTemplateId) {
-            let gatewayName = this.gatewayName ? this.gatewayName : this.gatewaySettings?.defaultGatewayName;
+            const gatewayName = this.gatewayName ? this.gatewayName : this.gatewaySettings?.defaultGatewayName;
             return psPaymentGateway + ' ' + gatewayName;
         }
         return '';

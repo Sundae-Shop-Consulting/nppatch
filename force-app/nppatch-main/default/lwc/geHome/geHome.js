@@ -106,7 +106,7 @@ export default class geHome extends NavigationMixin(LightningElement) {
     *
     */
     goToView(viewName, formTemplateId, isClone) {
-        let state = {};
+        const state = {};
         if (viewName !== undefined) {
             state.c__view = viewName;
         }

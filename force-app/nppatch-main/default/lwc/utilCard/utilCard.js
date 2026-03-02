@@ -30,7 +30,7 @@ export default class utilCard extends LightningElement {
         let baseClass = ['slds-card', 'slds-card_boundary'];
 
         if (this.cssClass) {
-            let cssClass = this.cssClass.split(' ');
+            const cssClass = this.cssClass.split(' ');
             baseClass = [...baseClass, ...cssClass];
         }
 

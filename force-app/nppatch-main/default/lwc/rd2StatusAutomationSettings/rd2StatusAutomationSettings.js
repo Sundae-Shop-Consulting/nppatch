@@ -162,7 +162,7 @@ export default class Rd2StatusAutomationSettings extends LightningElement {
     }
 
     validateNumberOfDays() {
-        let that = this;
+        const that = this;
         setTimeout(() => {
             that.isSaveDisabled = !(that.lapsedDaysInputField().reportValidity()
                 && that.closedDaysInputField().reportValidity());

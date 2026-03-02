@@ -234,7 +234,7 @@ const findMissingRequiredFieldMappings = (TemplateBuilderService, formSections) 
             return undefined;
         });
 
-    let selectedFieldMappingDevNames =
+    const selectedFieldMappingDevNames =
         formSections
             .flatMap(section => section.elements)
             .map(element => {
@@ -308,7 +308,7 @@ const dispatch = (context, name, detail, bubbles = false, composed = false) => {
 * @param {object} error: Event holding error details
 */
 const handleError = (error) => {
-    let message = buildErrorMessage(error);
+    const message = buildErrorMessage(error);
 
     showToast(commonError, message, 'error', 'sticky');
 };
@@ -376,16 +376,16 @@ const generateId = () => {
 * @param apiName: the sObject api name
 */
 const getRecordFieldNames = (formTemplate, fieldMappings, apiName) => {
-    let fieldNames = [`${apiName}.Id`];
+    const fieldNames = [`${apiName}.Id`];
 
     for (const section of formTemplate.layout.sections) {
         for (const element of section.elements) {
             if (element.elementType === 'field') {
                 for (const fieldMappingDevName of element.dataImportFieldMappingDevNames) {
                     if (isNotEmpty(fieldMappings[fieldMappingDevName])) {
-                        let objectName = fieldMappings[fieldMappingDevName].Target_Object_API_Name;
+                        const objectName = fieldMappings[fieldMappingDevName].Target_Object_API_Name;
                         if (objectName === apiName) {
-                            let fieldName = fieldMappings[fieldMappingDevName].Target_Field_API_Name;
+                            const fieldName = fieldMappings[fieldMappingDevName].Target_Field_API_Name;
                             fieldNames.push(`${objectName}.${fieldName}`);
                         }
                     }
@@ -402,14 +402,14 @@ const getRecordFieldNames = (formTemplate, fieldMappings, apiName) => {
 * @param formTemplate: the form template
 */
 const checkPermissionErrors = (formTemplate) => {
-    let templateStr = JSON.stringify(formTemplate);
-    let template = JSON.parse(templateStr);
+    const templateStr = JSON.stringify(formTemplate);
+    const template = JSON.parse(templateStr);
     if (!template.permissionErrors) {
         return null;
     }
 
-    let permissionErrors = new Array(template.permissionErrors);
-    let errorObject = {};
+    const permissionErrors = new Array(template.permissionErrors);
+    const errorObject = {};
 
     const FLS_ERROR_TYPE = 'FLS';
     const CRUD_ERROR_TYPE = 'CRUD';
@@ -445,7 +445,7 @@ const setRecordValuesOnTemplate = (templateSections, fieldMappings, record) => {
 
     // create a copy of the sections
     // so we can add the record value to the elements
-    let sections = deepClone(templateSections);
+    const sections = deepClone(templateSections);
 
     sections.forEach(section => {
         const elements = section.elements;
@@ -460,7 +460,7 @@ const setRecordValuesOnTemplate = (templateSections, fieldMappings, record) => {
                     // set the field values for contact and account
                     if (objectName === record.apiName) {
                         // field name from the mappings
-                        let fieldName = fieldMapping.Target_Field_API_Name;
+                        const fieldName = fieldMapping.Target_Field_API_Name;
 
                         // get the record value and store it in the element
                         element.recordValue = record.fields[fieldName].value;

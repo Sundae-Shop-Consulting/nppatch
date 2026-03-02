@@ -112,7 +112,7 @@ export default class StgPanelAccountModel extends LightningElement {
     }
 
     _findRecordTypeLabel(recordTypeId) {
-        if (!recordTypeId) return this.labels.none;
+        if (!recordTypeId) {return this.labels.none;}
         const match = this._accountRecordTypes.find((rt) => rt.value === recordTypeId);
         return match ? match.label : recordTypeId;
     }
@@ -166,8 +166,8 @@ export default class StgPanelAccountModel extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) return error.body.message;
-        if (error?.message) return error.message;
+        if (error?.body?.message) {return error.body.message;}
+        if (error?.message) {return error.message;}
         return "An unexpected error occurred.";
     }
 }

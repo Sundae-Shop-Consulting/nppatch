@@ -126,7 +126,7 @@ export default class StgPanelMembership extends LightningElement {
 
     get selectedRecordTypes() {
         const raw = this._workingCopy?.Membership_Record_Types__c;
-        if (!raw) return [];
+        if (!raw) {return [];}
         return raw.split(";").filter(Boolean);
     }
 
@@ -193,8 +193,8 @@ export default class StgPanelMembership extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) return error.body.message;
-        if (error?.message) return error.message;
+        if (error?.body?.message) {return error.body.message;}
+        if (error?.message) {return error.message;}
         return "An unexpected error occurred.";
     }
 }

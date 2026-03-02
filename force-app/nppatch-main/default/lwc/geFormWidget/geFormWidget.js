@@ -91,7 +91,7 @@ export default class GeFormWidget extends LightningElement {
 
     hasElevateValuesChanged(formState) {
         const paymentMethodApiName = apiNameFor(DATA_IMPORT_PAYMENT_METHOD);
-        if (!paymentMethodApiName) return false;
+        if (!paymentMethodApiName) {return false;}
         const hasChanged = this._elevateFields.find(field => {
             return formState[field] !== this.formState[field];
         })
@@ -147,7 +147,7 @@ export default class GeFormWidget extends LightningElement {
     get paymentToken() {
         const thisWidget = this.widgetComponent;
         if (this.isValid) {
-            let tokenPayload = thisWidget.paymentToken;
+            const tokenPayload = thisWidget.paymentToken;
             if (!this.giftInViewHasSchedule) {
                 tokenPayload[DATA_IMPORT_PAYMENT_STATUS] = this.paymentTransactionStatusValues.PENDING;
             }

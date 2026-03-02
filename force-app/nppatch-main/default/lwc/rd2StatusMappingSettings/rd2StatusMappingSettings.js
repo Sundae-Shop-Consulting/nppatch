@@ -130,7 +130,7 @@ export default class rd2StatusMappingSettings extends LightningElement {
     */
     handleStateChange(event) {
         event.stopPropagation();
-        let data = event.detail.data;
+        const data = event.detail.data;
 
         if (this.records) {
             this.records
@@ -213,7 +213,7 @@ export default class rd2StatusMappingSettings extends LightningElement {
         this.isLoading = true;
 
         try {
-            let jsonRecords = JSON.stringify(this.records);
+            const jsonRecords = JSON.stringify(this.records);
 
             saveMapping({ jsonMapping: jsonRecords })
                 .then((deploymentId) => {
@@ -243,7 +243,7 @@ export default class rd2StatusMappingSettings extends LightningElement {
     * @description Starts polling for the deployment job progress until the deployment completes
     */
     handleDeploymentProgress(deploymentId) {
-        var self = this;
+        const self = this;
 
         this.deploymentTimer = setTimeout(function () {
             self.handleDeploymentResult(deploymentId);
@@ -305,10 +305,10 @@ export default class rd2StatusMappingSettings extends LightningElement {
             this._deploymentIds.add(response.deploymentId);
         }
 
-        var hasErrorMessage = !isNull(this.message)
+        const hasErrorMessage = !isNull(this.message)
             && this.message.variant === toastVariant.ERROR;
 
-        var shouldRefreshRecords = !hasErrorMessage
+        const shouldRefreshRecords = !hasErrorMessage
             && (response.hasResult === false || response.isInProgress === false);
 
         if (shouldRefreshRecords) {

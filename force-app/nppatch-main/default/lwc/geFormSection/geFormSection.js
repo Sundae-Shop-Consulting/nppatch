@@ -52,7 +52,7 @@ export default class GeFormSection extends LightningElement {
     @api
     getInvalidFields() {
         const fields = this.template.querySelectorAll('c-ge-form-field');
-        let invalidFields = [];
+        const invalidFields = [];
 
         fields.forEach(f => {
             if(!f.isValid()) {
@@ -66,7 +66,7 @@ export default class GeFormSection extends LightningElement {
     @api
     getAllFieldsByAPIName() {
         const fields = this.template.querySelectorAll('c-ge-form-field');
-        let fieldMappedByAPIName = {};
+        const fieldMappedByAPIName = {};
 
         fields.forEach(f => {
             fieldMappedByAPIName[f.sourceFieldAPIName] = f;
@@ -94,7 +94,7 @@ export default class GeFormSection extends LightningElement {
 
     @api
     get paymentToken() {
-        let widgetValues = [];
+        const widgetValues = [];
         const widgets = this.template.querySelectorAll('c-ge-form-widget');
         if (widgets !== null && typeof widgets !== 'undefined') {
             widgets.forEach(widget => {

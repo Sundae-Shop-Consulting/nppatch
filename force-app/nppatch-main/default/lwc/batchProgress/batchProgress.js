@@ -88,7 +88,7 @@ export default class BatchProgress extends LightningElement {
     * @description Starts polling for the batch job progress details until the batch job stops
     */
     refreshBatchJob() {
-        var self = this;
+        const self = this;
 
         setTimeout(function () {
             self.handleLoadBatchJob();

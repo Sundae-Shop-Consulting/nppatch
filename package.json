@@ -9,11 +9,13 @@
         "prettier:fix": "prettier --write force-app/**/*.{js,html,css}"
     },
     "devDependencies": {
-        "@lwc/eslint-plugin-lwc": "^1.7.0",
+        "@lwc/eslint-plugin-lwc": "^2.0.0",
         "@salesforce/eslint-config-lwc": "^3.5.0",
         "@salesforce/eslint-plugin-aura": "^2.1.0",
         "@salesforce/eslint-plugin-lightning": "^1.0.0",
         "eslint": "^8.57.0",
+        "eslint-plugin-import": "^2.32.0",
+        "eslint-plugin-jest": "^28.0.0",
         "prettier": "^3.2.5",
         "prettier-plugin-apex": "^2.1.4"
     }

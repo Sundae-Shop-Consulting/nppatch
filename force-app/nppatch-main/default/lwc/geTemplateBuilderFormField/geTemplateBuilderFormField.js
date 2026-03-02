@@ -104,25 +104,25 @@ export default class geTemplateBuilderFormField extends LightningElement {
     get cssClassCard() {
         if (this.field.elementType === WIDGET) {
             return 'slds-card slds-card_extension slds-card_extension-widget slds-m-vertical_small';
-        } else {
+        } 
             return 'slds-card slds-card_extension slds-m-vertical_small';
-        }
+        
     }
 
     get cssClassActionsContainer() {
         if (this.field.elementType === WIDGET) {
             return 'slds-size_1-of-12 vertical-align-center'
-        } else {
+        } 
             return 'slds-size_1-of-12 slds-p-bottom_small';
-        }
+        
     }
 
     get cssClassRenderedWidget() {
         if (this.isWidget) {
             return 'slds-size_10-of-12 slds-p-right_small';
-        } else {
+        } 
             return 'slds-size_5-of-12 slds-p-right_small';
-        }
+        
     }
 
     get name() {
@@ -250,9 +250,9 @@ export default class geTemplateBuilderFormField extends LightningElement {
     get labelGeAssistiveRequiredCheckboxDescription() {
         if (this.isRequired) {
             return GeLabelService.format(this.CUSTOM_LABELS.geAssistiveDescriptionFieldRequired, [this.field.label]);
-        } else {
+        } 
             return GeLabelService.format(this.CUSTOM_LABELS.geAssistiveDescriptionFieldOptional, [this.field.label]);
-        }
+        
     }
 
     /*******************************************************************************
@@ -300,7 +300,7 @@ export default class geTemplateBuilderFormField extends LightningElement {
     */
     handleOnChangeRequiredField(event) {
         this.stopPropagation(event);
-        let detail = {
+        const detail = {
             fieldName: this.name,
             property: 'required',
             value: event.target.checked
@@ -317,7 +317,7 @@ export default class geTemplateBuilderFormField extends LightningElement {
     * onblur event handler 
     */
     handleOnChange(event) {
-        let detail = {
+        const detail = {
             fieldName: this.name,
             property: 'defaultValue',
             value: event.detail.value
@@ -333,7 +333,7 @@ export default class geTemplateBuilderFormField extends LightningElement {
     * @param {object} event: Event object from lightning-input onblur event handler 
     */
     handleOnBlurCustomLabel(event) {
-        let detail = {
+        const detail = {
             fieldName: this.name,
             property: 'customLabel',
             value: event.target.value
@@ -349,7 +349,7 @@ export default class geTemplateBuilderFormField extends LightningElement {
     */
     handleDeleteFormElement(event) {
         this.stopPropagation(event);
-        let detail = { id: this.field.id, fieldName: this.name };
+        const detail = { id: this.field.id, fieldName: this.name };
         dispatch(this, 'deleteformelement', detail);
 
         this.dispatchEvent(new CustomEvent(FIELD_METADATA_VALIDATION, {detail: {showError: false}}));

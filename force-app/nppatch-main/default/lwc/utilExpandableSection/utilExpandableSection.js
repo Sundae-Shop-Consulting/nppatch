@@ -37,7 +37,7 @@ export default class utilExpandableSection extends LightningElement {
         } else {
             // Apply provided css class to body if section is expanded
             if (this.bodyClass) {
-                let bodyClass = this.bodyClass.split(' ');
+                const bodyClass = this.bodyClass.split(' ');
                 classItems = [...classItems, ...bodyClass];
             }
         }

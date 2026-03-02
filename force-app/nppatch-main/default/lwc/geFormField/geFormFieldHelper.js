@@ -1,7 +1,7 @@
 import { isNotEmpty } from "c/utilCommon";
 
 const validityCheck = (formField) => {
-    let fieldIsValid = formField.checkFieldValidity();
+    const fieldIsValid = formField.checkFieldValidity();
 
     if (formField.element !== null && formField.element.required) {
         return isNotEmpty(formField.value)

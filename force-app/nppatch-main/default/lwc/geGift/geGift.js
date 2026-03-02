@@ -151,7 +151,7 @@ class Gift {
     }
 
     asDataImport() {
-        let dataImportRecord = { ...this._fields };
+        const dataImportRecord = { ...this._fields };
         delete dataImportRecord[undefined];
         for (const key of Object.keys(dataImportRecord)) {
             if (key.includes('__r'

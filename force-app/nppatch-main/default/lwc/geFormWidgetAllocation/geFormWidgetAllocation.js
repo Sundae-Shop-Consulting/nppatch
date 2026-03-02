@@ -60,7 +60,7 @@ export default class GeFormWidgetAllocation extends LightningElement {
     };
 
     loadWidgetDataFromState() {
-        let totalDonationAmount = Number.parseFloat(this.widgetDataFromState[apiNameFor(DI_DONATION_AMOUNT_FIELD)]);
+        const totalDonationAmount = Number.parseFloat(this.widgetDataFromState[apiNameFor(DI_DONATION_AMOUNT_FIELD)]);
         this.totalAmount = totalDonationAmount === 0 ? null : totalDonationAmount;
 
         this.reset();
@@ -71,13 +71,13 @@ export default class GeFormWidgetAllocation extends LightningElement {
         }
 
         const widgetData = JSON.parse(additionalObjectJson);
-        let rowList = [];
+        const rowList = [];
         Object.values(widgetData).forEach(objectDevNameValues => {
             objectDevNameValues.filter(
                 objectDevNameValue => objectDevNameValue.attributes.type === apiNameFor(ALLOCATION_OBJECT)
             )
             .forEach(objectDevNameValue => {
-                let row = {}
+                const row = {}
                 Object.entries(objectDevNameValue)
                     .filter(([key, value]) => key !== 'attributes')
                     .forEach(([key, value]) => {
@@ -167,7 +167,7 @@ export default class GeFormWidgetAllocation extends LightningElement {
     }
 
     addRow(isDefaultGAU, rowRecord) {
-        let element = {};
+        const element = {};
         element.key = this.rowList.length;
         const record = { ...rowRecord };
         let row = {};
@@ -221,7 +221,7 @@ export default class GeFormWidgetAllocation extends LightningElement {
     }
 
     convertRowListToSObjectJSON() {
-        let widgetRowValues = [];
+        const widgetRowValues = [];
 
         this.rowList.forEach(row => {
             // no need to send back default GAU, automatically allocated by the trigger
@@ -258,11 +258,11 @@ export default class GeFormWidgetAllocation extends LightningElement {
                 level: 'error'
             };
             return false;
-        } else {
+        } 
             // if valid, return true and wipe error message
             this.alertBanner = {};
             return true;
-        }
+        
     }
 
     get hasDefaultGAU() {

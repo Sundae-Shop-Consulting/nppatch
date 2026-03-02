@@ -346,9 +346,9 @@ export default class GeFormField extends LightningElement {
         const rowIndex = this.getAttribute('data-qa-row');
         if (rowIndex) {
             return `${this.fieldLabel} ${rowIndex}`;
-        } else {
+        } 
             return this.fieldLabel;
-        }
+        
     }
 
     get qaLocatorInputPrefix() {
@@ -531,7 +531,7 @@ export default class GeFormField extends LightningElement {
     }
 
     isValueInOptions(value, options) {
-        if (!options || options.length === 0) return false;
+        if (!options || options.length === 0) {return false;}
         return options.some(option => {
             return option.value === value;
         });

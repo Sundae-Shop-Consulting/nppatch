@@ -77,7 +77,7 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
 
                     if (this.hasData) {
                         this.data.forEach(function (log) {
-                            log[ERROR_LOG_URL_FIELD] = '/' + log['Id'];
+                            log[ERROR_LOG_URL_FIELD] = '/' + log.Id;
                         });
                     }
 

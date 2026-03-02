@@ -27,11 +27,11 @@ const debug = (...args) => {
         }
     }
 
-    let debugs = [];
+    const debugs = [];
     if (title) {
         debugs.push("======  " + title + "  =====");
     }
-    for (let name in valuesByName) {
+    for (const name in valuesByName) {
         if (Object.prototype.hasOwnProperty.call(valuesByName, name)) {
             debugs.push(`${name}: ${JSON.stringify(valuesByName[name], null, 2)}`);
         }
@@ -86,7 +86,7 @@ const sortObjectsByAttribute = (objects, attribute, direction = "desc", isNullsL
     if (objects && attribute) {
         let aBeforeB, bBeforeA;
         {
-            let sortDirectionMultiplier = direction.toLowerCase() === "desc" ? -1 : 1;
+            const sortDirectionMultiplier = direction.toLowerCase() === "desc" ? -1 : 1;
 
             aBeforeB = -1 * sortDirectionMultiplier;
             bBeforeA = 1 * sortDirectionMultiplier;
@@ -238,9 +238,9 @@ const handleError = (error, fireShowToast = true, showToastMode, returnAsArray) 
 const format = (string, replacements) => {
     let formattedString = isNull(string) ? "" : string;
     if (replacements) {
-        let t = typeof replacements;
+        const t = typeof replacements;
         let key;
-        let args =
+        const args =
             "string" === t || "number" === t
                 ? Array.prototype.slice.call(replacements)
                 : replacements;
@@ -263,7 +263,7 @@ const getChildObjectByName = (object, property) => {
         if (Object.prototype.hasOwnProperty.call(object, property)) {
             return object[property];
         }
-        let namespacedProperty = "nppatch__" + property;
+        const namespacedProperty = "nppatch__" + property;
         if (Object.prototype.hasOwnProperty.call(object, namespacedProperty)) {
             return object[namespacedProperty];
         }
@@ -289,8 +289,8 @@ const debouncify = (anyFunction, wait) => {
 //This below function can be used to create unique ids when trying to add new rows to a datatable
 const createUUID = () => {
     let currentTime = new Date().getTime();
-    let uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (char) {
-        let randomNumber = (currentTime + Math.random() * 16) % 16 | 0;
+    const uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (char) {
+        const randomNumber = (currentTime + Math.random() * 16) % 16 | 0;
         currentTime = Math.floor(currentTime / 16);
         return (char === "x" ? randomNumber : (randomNumber & 0x3) | 0x8).toString(16);
     });
@@ -298,7 +298,7 @@ const createUUID = () => {
 };
 
 const prefixNamespace = (value) => {
-    let namespace = ISCLIENT_FIELD.fieldApiName.substring(
+    const namespace = ISCLIENT_FIELD.fieldApiName.substring(
         0,
         ISCLIENT_FIELD.fieldApiName.indexOf("IsClient__c")
     );
@@ -307,9 +307,9 @@ const prefixNamespace = (value) => {
 };
 
 const formatTime = (value) => {
-    let ms = value % 1000;
+    const ms = value % 1000;
     value = (value - ms) / 1000;
-    let secs = value % 60;
+    const secs = value % 60;
     value = (value - secs) / 60;
     let mins = value % 60;
     let hrs = (value - mins) / 60;

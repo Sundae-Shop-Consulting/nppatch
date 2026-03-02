@@ -215,15 +215,15 @@ export default class StgPanelContactRoles extends LightningElement {
     // --- Utility ---
 
     _resolveMultiSelectDisplay(rawValue, options) {
-        if (!rawValue) return this.labels.none;
+        if (!rawValue) {return this.labels.none;}
         const ids = rawValue.split(";").filter(Boolean);
-        if (!ids.length) return this.labels.none;
+        if (!ids.length) {return this.labels.none;}
         const map = new Map(options.map((o) => [o.value, o.label]));
         return ids.map((id) => map.get(id) || id).join(", ");
     }
 
     _parseMultiSelect(rawValue) {
-        if (!rawValue) return [];
+        if (!rawValue) {return [];}
         return rawValue.split(";").filter(Boolean);
     }
 
@@ -346,8 +346,8 @@ export default class StgPanelContactRoles extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) return error.body.message;
-        if (error?.message) return error.message;
+        if (error?.body?.message) {return error.body.message;}
+        if (error?.message) {return error.message;}
         return "An unexpected error occurred.";
     }
 }

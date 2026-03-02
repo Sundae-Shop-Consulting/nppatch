@@ -158,7 +158,7 @@ export default class GeGatewaySelectWidget extends LightningElement {
             this._elevateGatewaysByUniqueKey.set(gateway.id, gateway);
             this.gatewayOptions.push({label: gateway.gatewayName, value: gateway.id});
         }
-        this.gatewayOptions = this.gatewayOptions.sort((a, b) => a.label >= b.label ? 1 : -1);
+        this.gatewayOptions = this.gatewayOptions.sort((a, b) => (a.label >= b.label ? 1 : -1));
 
         if (!this.onGatewayManagementPage()) {
             this.addDefaultGatewayOption();
@@ -225,7 +225,7 @@ export default class GeGatewaySelectWidget extends LightningElement {
     }
 
     async selectSavedGateway(elevateSettings) {
-        let savedGatewayId = await decryptGatewayId({encryptedGatewayId: elevateSettings.uniqueKey});
+        const savedGatewayId = await decryptGatewayId({encryptedGatewayId: elevateSettings.uniqueKey});
 
         if (this.isValidSavedGatewayId(savedGatewayId)) {
             this.selectedGateway = savedGatewayId;
@@ -241,7 +241,7 @@ export default class GeGatewaySelectWidget extends LightningElement {
     }
 
     handleInitialPaymentMethodSelections(elevateSettings) {
-        if (!!elevateSettings) {
+        if (elevateSettings) {
             this.isACHEnabled = elevateSettings.isACHEnabled;
             this.isCreditCardEnabled = elevateSettings.isCreditCardEnabled;
         }
@@ -260,7 +260,7 @@ export default class GeGatewaySelectWidget extends LightningElement {
         else if (this._elevateGateways.errors.includes('timed out')) {
             formattedErrorMessage = this.CUSTOM_LABELS.psElevateConnectionTimeout;
         }
-        else if (!!error) {
+        else if (error) {
             formattedErrorMessage = error;
         }
         else {

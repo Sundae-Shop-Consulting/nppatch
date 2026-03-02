@@ -58,7 +58,7 @@ export default class utilSearchableCombobox extends LightningElement {
     }
 
     handleSearchkeyChange(searchKey) {
-        let results = [];
+        const results = [];
 
         if (!this.searchableOptions) {
             this.searchableOptions = this.options;
@@ -66,7 +66,7 @@ export default class utilSearchableCombobox extends LightningElement {
 
         for(let i = 0; i < this.searchableOptions.length; i++) {
             if (this.searchableOptions[i].label.toLowerCase().indexOf(searchKey.toLowerCase()) != -1) {
-                let result = {
+                const result = {
                     id: i,
                     label: this.searchableOptions[i].label,
                     value: this.searchableOptions[i].value
@@ -80,7 +80,7 @@ export default class utilSearchableCombobox extends LightningElement {
     }
 
     selectSearchResult(event) {
-        let result = {
+        const result = {
             detail: {
                 label: event.target.dataset.fieldLabel,
                 value: event.target.dataset.fieldValue

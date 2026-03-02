@@ -52,7 +52,7 @@ class SoftCredits {
     }
 
     update(softCreditWithChange) {
-        if (!softCreditWithChange) return;
+        if (!softCreditWithChange) {return;}
 
         this._unprocessedSoftCredits.forEach(function(softCredit, index, allSoftCredits) {
             if (softCredit.key === softCreditWithChange.key) {
@@ -62,7 +62,7 @@ class SoftCredits {
     }
 
     _indexSoftCredits(softCredits) {
-        if (!softCredits) return;
+        if (!softCredits) {return;}
 
         softCredits.forEach(softCredit => {
             if (softCredit.Id) {
@@ -79,7 +79,7 @@ class SoftCredits {
     }
 
     _reIndexSoftCredits(softCredits) {
-        if (!softCredits) return;
+        if (!softCredits) {return;}
 
         this._unprocessedSoftCredits = [];
         this._indexSoftCredits(softCredits);

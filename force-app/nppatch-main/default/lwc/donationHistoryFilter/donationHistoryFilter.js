@@ -38,7 +38,7 @@ export default class DonationHistoryFilter extends LightningElement {
      * @returns List of options the years with Lifetime element
      */
     generateOptionsFromYearsList(yearList) {
-        let toReturn = [{label: this.labels.lifetime, value: LIFETIME_VALUE}];
+        const toReturn = [{label: this.labels.lifetime, value: LIFETIME_VALUE}];
         yearList.forEach( (year) => {
             toReturn.push({label: '' + year, value: '' + year});
         });
@@ -51,7 +51,7 @@ export default class DonationHistoryFilter extends LightningElement {
      * @returns Returns all the years between the first year of the array and the last year
      */
     generateYearList(yearList) {
-        let toReturn = [];
+        const toReturn = [];
         for (let i = yearList[0]; i >= yearList[yearList.length - 1]; i--) {
             toReturn.push(i);
         }
