@@ -104,7 +104,7 @@ const isPrimative = (value) => {
 
 /**
  * Check if a value is undefined.
- * @param value         Value to check
+ * @param {*} value         Value to check
  * @returns {boolean}   TRUE when value is undefined.
  */
 const isUndefined = (value) => {
@@ -114,7 +114,7 @@ const isUndefined = (value) => {
 
 /**
  * Check if a primitive is undefined, null or blank string.
- * @param value         Value to check.
+ * @param {*} value         Value to check.
  * @returns {boolean}   TRUE when the given value is undefined, null or blank string.
  */
 const isEmpty = (value) => {
@@ -123,7 +123,7 @@ const isEmpty = (value) => {
 
 /**
  * Check if an object is empty
- * @param object         Object to check.
+ * @param {*} object         Object to check.
  * @returns {boolean}   TRUE when the given object is empty.
  */
 const isEmptyObject = (object) => {
@@ -135,7 +135,7 @@ const isEmptyObject = (object) => {
 
 /**
  * Inverse of isEmpty
- * @param value         Value to check.
+ * @param {*} value         Value to check.
  * @returns {boolean}   TRUE when the given value is not undefined, null or blank string.
  */
 const isNotEmpty = (value) => {
@@ -422,7 +422,7 @@ const getSubsetObject = (sourceObj, propertyNames) => {
 /**
  * @description Parses the api name string of a custom
  *              object or field and returns its namespace.
- * @param apiName
+ * @param {*} apiName
  * @returns {String} The namespace of the passed-in object or field.
  *              Null if the object or field does not have a namespace.
  */
@@ -534,8 +534,8 @@ const showToast = (title, message, variant, mode, messageData) => {
 
 /*******************************************************************************
  * @description Strips namespace prefix from object and field api names
- * @param apiName
- * @param namespacePrefix
+ * @param {*} apiName
+ * @param {*} namespacePrefix
  * @returns {*|string}
  */
 const stripNamespace = (apiName, namespacePrefix) => {
@@ -551,7 +551,7 @@ const stripNamespace = (apiName, namespacePrefix) => {
  * Useful when referencing the related record field on objects
  * in the lightning/uiRecordApi Record format:
  * https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_responses_record.htm
- * @param customFieldApiNameOrFieldReference
+ * @param {*} customFieldApiNameOrFieldReference
  * The ApiName of the relationship field for which the related record
  * field name is desired, or the field reference object.
  * https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_responses_field_value.htm#ui_api_responses_field_value
@@ -565,9 +565,9 @@ const relatedRecordFieldNameFor = (customFieldApiNameOrFieldReference) => {
 
 /**
  * @description Replaces the last instance of a string pattern with another pattern.
- * @param subject The original string.
- * @param toRemove The pattern for which the last instance should be removed.
- * @param replacement The pattern used to replace the last instance of toRemove.
+ * @param {*} subject The original string.
+ * @param {*} toRemove The pattern for which the last instance should be removed.
+ * @param {*} replacement The pattern used to replace the last instance of toRemove.
  * @returns {*|void|string} A new string with the last instance replaced.
  */
 const replaceLastInstanceOfWith = (subject, toRemove, replacement) => {

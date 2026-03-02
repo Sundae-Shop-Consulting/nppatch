@@ -357,10 +357,10 @@ export default class GeBatchGiftEntryTable extends LightningElement {
      *              properties to the object intended for use with url-type columns in
      *              lightning-datatables. One to be used as the url value and another
      *              to be used as its label.
-     * @param objectInfo objectInfo of the record object in context.
-     * @param urlSuffix value to be appended to the field name to comprise first new
+     * @param {*} objectInfo objectInfo of the record object in context.
+     * @param {*} urlSuffix value to be appended to the field name to comprise first new
      *        property name.
-     * @param urlLabelSuffix value to be appended to the field name to comprise second new
+     * @param {*} urlLabelSuffix value to be appended to the field name to comprise second new
      *        property name.
      * @returns {object}
      */

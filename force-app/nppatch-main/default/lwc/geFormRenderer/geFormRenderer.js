@@ -830,7 +830,7 @@ export default class GeFormRenderer extends LightningElement{
      * @description Add an error message to the overall page level error messages
      * array.
      *
-     * @param errorObject
+     * @param {*} errorObject
      */
     addPageLevelErrorMessage(errorObject) {
         errorObject.index = errorObject.index ? errorObject.index : 0;
@@ -1220,8 +1220,8 @@ export default class GeFormRenderer extends LightningElement{
 
     /**
      * validates donation donor type on sectionsList
-     * @param dataImportHelper
-     * @param sectionsList, list of sections
+     * @param {*} dataImportHelper
+     * @param {*} sectionsList, list of sections
      * @returns {boolean|*} - true if form invalid, false otherwise
      */
     isDonorTypeInvalid(dataImportHelper, sectionsList) {
@@ -1259,8 +1259,8 @@ export default class GeFormRenderer extends LightningElement{
 
     /**
      * Set donation donor error message using custom label depending on field presence
-     * @param dataImportHelper, Object - helper obj
-     * @param fieldWrapper, Array of fields with Values and Labels
+     * @param {*} dataImportHelper, Object - helper obj
+     * @param {*} fieldWrapper, Array of fields with Values and Labels
      * @returns {String}, formatted error message for donation donor validation
      */
     getDonationDonorErrorLabel(dataImportHelper) {
@@ -1305,9 +1305,9 @@ export default class GeFormRenderer extends LightningElement{
 
     /**
      * highlight geForm fields on lSections using sError as message
-     * @param dataImportHelper, Object - helper obj
-     * @param lSections, Array of geFormSection
-     * @param sError, String to set on setCustomValidity
+     * @param {*} dataImportHelper, Object - helper obj
+     * @param {*} lSections, Array of geFormSection
+     * @param {*} sError, String to set on setCustomValidity
      */
     highlightValidationErrorFields(dataImportHelper, lSections, sError) {
         const accountFields = [DONATION_DONOR_FIELDS.account1ImportedField, DONATION_DONOR_FIELDS.account1NameField];
@@ -1329,7 +1329,7 @@ export default class GeFormRenderer extends LightningElement{
 
     /**
      * helper object to minimize length of if statements and improve code legibility
-     * @param fieldWrapper, Array of fields with Values and Labels
+     * @param {*} fieldWrapper, Array of fields with Values and Labels
      * @returns Object, helper object to minimize length of if statements and improve code legibility
      */
     getDataImportHelper() {
@@ -1484,7 +1484,7 @@ export default class GeFormRenderer extends LightningElement{
 
     /**
      * Handle payment errors at the form level
-     * @param event The paymentError event object
+     * @param {*} event The paymentError event object
      */
     handleAsyncWidgetError(event) {
         let errorMessage = this.CUSTOM_LABELS.commonUnknownError;
@@ -1530,7 +1530,7 @@ export default class GeFormRenderer extends LightningElement{
 
     /**
      * @description Set variable that informs the form renderer when the widget is in a disabled state
-     * @param event
+     * @param {*} event
      */
     handleDisableElevateWidgetState (event) {
         this._isElevateWidgetInDisabledState = event.isElevateWidgetDisabled;
@@ -1647,7 +1647,7 @@ export default class GeFormRenderer extends LightningElement{
     /**
      * @description Function that prepares (sets batch defaults, remove credit card widget)
      * the gift entry form in Batch Mode
-     * @param templateSections
+     * @param {*} templateSections
      * @returns {sections}
      */
     prepareFormForBatchMode (templateSections) {
@@ -1683,8 +1683,8 @@ export default class GeFormRenderer extends LightningElement{
      * @description Retrieves a records mapped target field values and
      *              loads them into the appropriate source fields in use
      *              on the Gift Entry form.
-     * @param lookupFieldApiName Api name of the lookup field.
-     * @param selectedRecordId Id of the selected record.
+     * @param {*} lookupFieldApiName Api name of the lookup field.
+     * @param {*} selectedRecordId Id of the selected record.
      */
     loadSelectedRecordFieldValues(lookupFieldApiName, selectedRecordId) {
         let selectedRecordFields =
@@ -1914,8 +1914,8 @@ export default class GeFormRenderer extends LightningElement{
      *              Prevents one lookup from overwriting the reactive selectedRecordId
      *              and selectedRecordFields properties before getRecord has returned
      *              with data.
-     * @param selectedRecordId Id of record to be retrieved.
-     * @param selectedRecordFields Fields list to be retrieved.
+     * @param {*} selectedRecordId Id of record to be retrieved.
+     * @param {*} selectedRecordFields Fields list to be retrieved.
      */
     queueSelectedRecordForRetrieval(selectedRecordId, selectedRecordFields) {
         if (this.getSelectedRecordStatus === 'ready') {
@@ -2027,7 +2027,7 @@ export default class GeFormRenderer extends LightningElement{
     /*******************************************************************************
      * @description Updates the formState object that holds the current value
      * of all fields on the form.
-     * @param fields An object with key-value pairs.
+     * @param {*} fields An object with key-value pairs.
      */
     updateFormState(fields) {
         fields = this.removeFieldsNotUpdatableInFormState(fields);
@@ -2397,7 +2397,7 @@ export default class GeFormRenderer extends LightningElement{
     /**
      * @description Pass in a DataImport field's api to get that field's current
      * value from the formState object.
-     * @param fieldApiNameOrFieldReference: field name or an imported field reference object
+     * @param {*} fieldApiNameOrFieldReference: field name or an imported field reference object
      * @returns {*} Current value stored in formState for the passed-in field.
      */
     getFieldValueFromFormState(fieldApiNameOrFieldReference) {
@@ -2611,7 +2611,7 @@ export default class GeFormRenderer extends LightningElement{
      * @description Saves a Data Import record, makes an elevate payment if needed,
      * and processes the Data Import through BDI.
      *
-     * @param dataImportFromFormState
+     * @param {*} dataImportFromFormState
      */
     submitSingleGift = async () => {
         const gift = this.saveableFormState();

@@ -100,9 +100,9 @@ export default class geHome extends NavigationMixin(LightningElement) {
     /*******************************************************************************
     * @description Method navigates to the provided View Name
     *
-    * @param viewName: String of View Name to navigate to
-    * @param formTemplateId: String of Template Id to Edit
-    * @param isClone: Boolean set to true if template should be cloned
+    * @param {*} viewName: String of View Name to navigate to
+    * @param {*} formTemplateId: String of Template Id to Edit
+    * @param {*} isClone: Boolean set to true if template should be cloned
     *
     */
     goToView(viewName, formTemplateId, isClone) {

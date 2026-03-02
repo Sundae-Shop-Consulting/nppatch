@@ -468,7 +468,7 @@ export default class Rd2PauseForm extends LightningElement {
 
     /***
     * @description Handle error
-    * @param error: Error Event
+    * @param {*} error: Error Event
     */
     handleError(error) {
         this.isLoading = false;
@@ -481,7 +481,7 @@ export default class Rd2PauseForm extends LightningElement {
 
     /***
     * @description Handle component display when an error occurs
-    * @param error: Error Event
+    * @param {*} error: Error Event
     */
     handleErrorDisplay() {
         const errorDetail = this.error.detail;

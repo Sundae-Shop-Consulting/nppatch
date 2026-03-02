@@ -34,7 +34,7 @@ export default class gsChecklistSetup extends LightningElement {
 
     /**
     * @description This method getLabelValue all text info in the checklist section and his items
-    * @param ChecklistSection
+    * @param {*} ChecklistSection
     * @return ChecklistSection (getLabelValue)
     */
     getLabelValueSection = (section) => {
@@ -47,7 +47,7 @@ export default class gsChecklistSetup extends LightningElement {
 
     /**
     * @description This method getLabelValue all text info in checklist items
-    * @param ChecklistItem
+    * @param {*} ChecklistItem
     * @return ChecklistItem (getLabelValue)
     */
     getLabelValueItem = (item) => {

@@ -94,7 +94,7 @@ class GeFormService {
 
     /**
      * Get the type of lightning-input that should be used for a given field type.
-     * @param dataType  Data type of the field
+     * @param {*} dataType  Data type of the field
      * @returns {String}
      */
     getInputTypeFromDataType(dataType) {
@@ -103,7 +103,7 @@ class GeFormService {
 
     /**
      * Get the formatter for a lightning-input that should be used for a given field type
-     * @param dataType  Data type of the field
+     * @param {*} dataType  Data type of the field
      * @returns {String | undefined}
      */
     getNumberFormatterByDescribeType(dataType) {
@@ -112,7 +112,7 @@ class GeFormService {
 
     /**
      * Get a field info object by dev name from the render wrapper object
-     * @param fieldDevName  Dev name of the object to retrieve
+     * @param {*} fieldDevName  Dev name of the object to retrieve
      * @returns {BDI_FieldMapping}
      */
     getFieldMappingWrapper(fieldDevName) {
@@ -121,7 +121,7 @@ class GeFormService {
 
     /**
      * Get a field info object by dev name from the render wrapper object
-     * @param fieldDevName  Dev name of the object to retrieve
+     * @param {*} fieldDevName  Dev name of the object to retrieve
      * @returns {BDI_FieldMapping}
      */
     getFieldMappingWrapperFromTarget(targetFieldName) {
@@ -130,7 +130,7 @@ class GeFormService {
 
     /**
      * Get a object info object by dev name
-     * @param objectMappingDevName
+     * @param {*} objectMappingDevName
      * @returns {BDI_ObjectMapping}
      */
     getObjectMapping(objectMappingDevName) {
