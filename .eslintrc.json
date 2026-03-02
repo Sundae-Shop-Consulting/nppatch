@@ -20,5 +20,10 @@
     "env": {
         "browser": true,
         "es2021": true
+    },
+    "settings": {
+        "jest": {
+            "version": 29
+        }
     }
 }
