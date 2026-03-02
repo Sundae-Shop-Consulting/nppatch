@@ -72,7 +72,7 @@ describe('c-form-widget-soft-credit', () => {
         });
 
         it('renders the add button', async () => {
-            let element = createSoftCreditWidget();
+            const element = createSoftCreditWidget();
             element.giftInView = {
                 fields: {},
                 softCredits: `[]`,
@@ -87,7 +87,7 @@ describe('c-form-widget-soft-credit', () => {
         });
 
         it('does not render the add button', async () => {
-            let element = createSoftCreditWidget();
+            const element = createSoftCreditWidget();
             element.giftInView = {
                 fields: {},
                 softCredits: createDummySoftCredits(250),
@@ -102,7 +102,7 @@ describe('c-form-widget-soft-credit', () => {
         });
 
         it('renders a warning message when the gift in view has a schedule', async () => {
-            let element = createSoftCreditWidget();
+            const element = createSoftCreditWidget();
             element.giftInView = {
                 fields: {},
                 softCredits: createDummySoftCredits(250),
@@ -120,7 +120,7 @@ describe('c-form-widget-soft-credit', () => {
         });
 
         it('does not render a warning message when the gift is standard', async () => {
-            let element = createSoftCreditWidget();
+            const element = createSoftCreditWidget();
             element.giftInView = {
                 fields: {},
                 softCredits: createDummySoftCredits(250),
@@ -140,7 +140,7 @@ describe('c-form-widget-soft-credit', () => {
     }
 
     const createDummySoftCredits = (softCreditsCount) => {
-        let dummySoftCredits = [];
+        const dummySoftCredits = [];
         for (let i = 0; i < softCreditsCount; i++) {
             dummySoftCredits.push({key: i});
         }

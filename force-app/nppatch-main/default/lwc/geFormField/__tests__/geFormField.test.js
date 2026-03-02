@@ -89,7 +89,7 @@ describe('c-ge-form-field', () => {
 
         return Promise.resolve().then(() => {
             jest.runOnlyPendingTimers();
-            expect(picklistChangeHandler).toBeCalled();
+            expect(picklistChangeHandler).toHaveBeenCalled();
             expect(picklistChangeHandler.mock.calls[0][0].detail.value)
                 .toStrictEqual('newPicklistValue');
         });
@@ -181,7 +181,7 @@ describe('c-ge-form-field', () => {
 
                 jest.runOnlyPendingTimers();
 
-                expect(picklistChangeHandler).toBeCalled();
+                expect(picklistChangeHandler).toHaveBeenCalled();
                 expect(picklistChangeHandler.mock.calls[0][0].detail.value)
                     .toStrictEqual('Picklist_Option_1');
 
@@ -194,7 +194,7 @@ describe('c-ge-form-field', () => {
 
                 jest.runOnlyPendingTimers();
 
-                expect(picklistChangeHandler).toBeCalled();
+                expect(picklistChangeHandler).toHaveBeenCalled();
                 expect(picklistChangeHandler.mock.calls[1][0].detail.value)
                     .toStrictEqual('Picklist_Option_2');
 

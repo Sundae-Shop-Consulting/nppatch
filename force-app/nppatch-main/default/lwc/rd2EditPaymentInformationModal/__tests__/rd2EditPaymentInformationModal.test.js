@@ -111,7 +111,7 @@ describe("c-rd2-edit-payment-information-modal", () => {
                     dispatchClickEvent(closeButton);
                 })
                 .then(async () => {
-                    expect(closeEventHandler).toBeCalled();
+                    expect(closeEventHandler).toHaveBeenCalled();
                 });
         });
     });
@@ -139,7 +139,7 @@ describe("c-rd2-edit-payment-information-modal", () => {
                     dispatchClickEvent(getSaveButton(component));
                 })
                 .then(async () => {
-                    expect(closeEventHandler).toBeCalled();
+                    expect(closeEventHandler).toHaveBeenCalled();
                     const errorContainer = component.shadowRoot.querySelector("c-util-page-level-message");
                     expect(errorContainer).toBeNull();
                 });
@@ -167,7 +167,7 @@ describe("c-rd2-edit-payment-information-modal", () => {
                     dispatchClickEvent(getSaveButton(component));
                 })
                 .then(async () => {
-                    expect(closeEventHandler).not.toBeCalled();
+                    expect(closeEventHandler).not.toHaveBeenCalled();
                 });
         });
 
@@ -186,7 +186,7 @@ describe("c-rd2-edit-payment-information-modal", () => {
                     dispatchClickEvent(getSaveButton(component));
                 })
                 .then(async () => {
-                    expect(closeEventHandler).not.toBeCalled();
+                    expect(closeEventHandler).not.toHaveBeenCalled();
                     const errorContainer = component.shadowRoot.querySelector("c-util-page-level-message");
                     expect(errorContainer).not.toBeNull();
                 });

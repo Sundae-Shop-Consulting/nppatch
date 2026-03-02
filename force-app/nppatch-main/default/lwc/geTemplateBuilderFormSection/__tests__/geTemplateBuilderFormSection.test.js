@@ -62,7 +62,7 @@ describe('c-ge-template-builder-form-section', () => {
         });
 
         it('places focus on the down icon button of the top-most form field', async () => {
-            let element = createFormSection();
+            const element = createFormSection();
             element.formSection = dummyFormSectionData;
             document.body.appendChild(element);
 

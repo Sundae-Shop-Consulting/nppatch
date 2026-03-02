@@ -229,7 +229,7 @@ describe('ge-gift', () => {
     });
 
     it('should have schedule fields removed', async () => {
-        let fields = {};
+        const fields = {};
         RD_DATAIMPORT_FIELDS.forEach((fieldName) => {
             fields[fieldName] = 'TEST_FIELD_VALUE'
         });

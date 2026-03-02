@@ -162,7 +162,7 @@ describe('c-err-record-log', () => {
                 expect(datatable.columns[0].fieldName).toBe("logURL");
                 expect(datatable.columns[0].type).toBe("url");
                 expect(datatable.columns[0].label).toBe(
-                    mockGetObjectInfo.fields["Name"].label
+                    mockGetObjectInfo.fields.Name.label
                 );
 
                 expect(datatable.data.length).toBe(numberOfRows);
@@ -186,7 +186,7 @@ describe('c-err-record-log', () => {
                     datatable.dispatchEvent(
                         new CustomEvent("sort", {
                             detail: {
-                                fieldName: mockGetObjectInfo.fields["Datetime__c"].apiName,
+                                fieldName: mockGetObjectInfo.fields.Datetime__c.apiName,
                                 sortDirection: "asc",
                             },
                         })
@@ -213,7 +213,7 @@ describe('c-err-record-log', () => {
         beforeEach(() => {
             component.recordId = RECORD_ID;
 
-            let mockGetDataNoAccess = JSON.parse(JSON.stringify(mockGetData));
+            const mockGetDataNoAccess = JSON.parse(JSON.stringify(mockGetData));
             mockGetDataNoAccess.hasAccess = false;
 
             getData.mockResolvedValue(mockGetDataNoAccess);

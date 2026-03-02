@@ -24,7 +24,7 @@ const DATA_IMPORT_PAYMENT_STATUS = 'Payment_Status__c';
 import RD2_ElevateRDCannotBeFixedLength from '@salesforce/label/c.RD2_ElevateRDCannotBeFixedLength';
 
 const createWidgetElement = () => {
-    let element = createElement(
+    const element = createElement(
         'c-ge-form-widget-tokenize-card',
         {is: GeFormWidgetTokenizeCard}
     );

@@ -47,6 +47,6 @@ import getYearsWithDonation from '@salesforce/apex/DonationHistoryController.get
                       value: "2020"
                   }
               }));
-      expect(handler).toBeCalled();
+      expect(handler).toHaveBeenCalled();
     });
   });

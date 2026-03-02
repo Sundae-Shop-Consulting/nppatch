@@ -276,7 +276,7 @@ describe('c-ge-form-renderer', () => {
 
             element.batchId = DUMMY_BATCH_ID;
 
-            dataImportBatchRecord.fields['Allow_Recurring_Donations__c'].value = 'false';
+            dataImportBatchRecord.fields.Allow_Recurring_Donations__c.value = 'false';
 
             await flushPromises();
 

@@ -58,7 +58,7 @@ function createAllocationRowElement(row) {
     element.row = {
         record: {}
     }
-    if (row) element.row = row;
+    if (row) {element.row = row;}
     return element;
 }
 
