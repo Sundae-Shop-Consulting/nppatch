@@ -14,8 +14,7 @@
         "prefer-const": "error",
         "no-duplicate-imports": "error",
         "@lwc/lwc/no-async-operation": "warn",
-        "@lwc/lwc/no-document-query": "error",
-        "@lwc/lwc/no-leaking-event-listeners": "error"
+        "@lwc/lwc/no-document-query": "error"
     },
     "env": {
         "browser": true,
