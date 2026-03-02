@@ -375,9 +375,9 @@ const generateId = () => {
 /*******************************************************************************
  * @description returns a list of target field names for the fields in the template
  * in the format objectName.fieldName
- * @param formTemplate: the form template
- * @param fieldMappings: the field mappings dev names
- * @param apiName: the sObject api name
+ * @param {*} formTemplate: the form template
+ * @param {*} fieldMappings: the field mappings dev names
+ * @param {*} apiName: the sObject api name
  */
 const getRecordFieldNames = (formTemplate, fieldMappings, apiName) => {
     const fieldNames = [`${apiName}.Id`];
@@ -402,7 +402,7 @@ const getRecordFieldNames = (formTemplate, fieldMappings, apiName) => {
 
 /*******************************************************************************
  * @description this function will determine if a CRUD or FLS permission error page should display if a from   * template is returned with CRUD or FLS errors.
- * @param formTemplate: the form template
+ * @param {*} formTemplate: the form template
  */
 const checkPermissionErrors = (formTemplate) => {
     const templateStr = JSON.stringify(formTemplate);
@@ -436,9 +436,9 @@ const checkPermissionErrors = (formTemplate) => {
  * @description returns a copy of the form template that has record values on the element
  * stored in the recordValue attribute
  * in the format objectName.fieldName
- * @param formTemplate: the form template
- * @param fieldMappings: the field mappings dev names
- * @param record: the contact or account record
+ * @param {*} formTemplate: the form template
+ * @param {*} fieldMappings: the field mappings dev names
+ * @param {*} record: the contact or account record
  */
 const setRecordValuesOnTemplate = (templateSections, fieldMappings, record) => {
     // check if we have a contact or account record
@@ -509,7 +509,7 @@ const getPageAccess = async () => {
 /*******************************************************************************
  * @description Method adds a unique key to every item in a given collection.
  *
- * @param list: Some collection
+ * @param {*} list: Some collection
  */
 const addKeyToCollectionItems = (list) => {
     return list.map((item) => {

@@ -464,7 +464,7 @@ export default class rd2EntryForm extends LightningElement {
 
     /***
      * @description Checks if form re-rendering is required due to payment method change
-     * @param event Contains new payment method value
+     * @param {*} event Contains new payment method value
      */
     handlePaymentChange(event) {
         //reset the widget and the form related to the payment method
@@ -495,7 +495,7 @@ export default class rd2EntryForm extends LightningElement {
     /***
      * @description Handle schedule form fields:
      * - Recurring Type change might hide or display the credit card widget.
-     * @param event
+     * @param {*} event
      */
     handleRecurringTypeChange(event) {
         this.perform({
@@ -551,7 +551,7 @@ export default class rd2EntryForm extends LightningElement {
 
     /***
      * @description Currency change might hide or display the credit card widget
-     * @param event
+     * @param {*} event
      */
     handleCurrencyChange(event) {
         this.perform({
@@ -798,7 +798,7 @@ export default class rd2EntryForm extends LightningElement {
 
     /**
      * @description Handle a child-to-parent component error event
-     * @param event (error construct)
+     * @param {*} event (error construct)
      */
     handleChildComponentError(event) {
         const error = event.detail && event.detail.value ? event.detail.value : event.detail;

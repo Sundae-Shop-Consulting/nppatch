@@ -14,28 +14,20 @@
         </div>
         <div class="panel-body">
             <div class="action-row">
-                <template if:false="{_isRunning}">
+                <template if:false={_isRunning}>
                     <lightning-button
                         label="Run Health Check"
-                        onclick="
-                            {
-                                handleRunHealthCheck;
-                            }
-                        "
+                        onclick={handleRunHealthCheck}
                         variant="brand"
                     ></lightning-button>
                     <lightning-button
                         label="Reinitialize TDTM &amp; Scheduled Jobs"
-                        onclick="
-                            {
-                                handleReinitialize;
-                            }
-                        "
+                        onclick={handleReinitialize}
                         variant="neutral"
                         class="slds-m-left_small"
                     ></lightning-button>
                 </template>
-                <template if:true="{_isRunning}">
+                <template if:true={_isRunning}>
                     <div class="slds-grid slds-grid_vertical-align-center slds-gutters_x-small">
                         <div class="slds-col">
                             <lightning-spinner
@@ -51,7 +43,7 @@
                 </template>
             </div>
 
-            <template if:true="{_hasResults}">
+            <template if:true={_hasResults}>
                 <div class="results-summary">
                     <div class="summary-badges">
                         <span class="badge badge-pass">{_passCount} Passed</span>
@@ -60,18 +52,18 @@
                     </div>
                 </div>
 
-                <template for:each="{_results}" for:item="result">
-                    <div key="{result.id}" class="{result.rowClass}">
+                <template for:each={_results} for:item="result">
+                    <div key={result.id} class={result.rowClass}>
                         <div class="result-header">
                             <lightning-icon
-                                icon-name="{result.iconName}"
+                                icon-name={result.iconName}
                                 size="x-small"
                                 class="result-icon"
                             ></lightning-icon>
                             <span class="result-setting">{result.setting}</span>
                         </div>
                         <p class="result-description">{result.description}</p>
-                        <template if:true="{result.solution}">
+                        <template if:true={result.solution}>
                             <p class="result-solution"><strong>Solution:</strong> {result.solution}</p>
                         </template>
                     </div>

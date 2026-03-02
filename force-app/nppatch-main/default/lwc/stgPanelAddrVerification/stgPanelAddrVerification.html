@@ -1,16 +1,16 @@
 <template>
-    <template if:true="{isLoading}">
+    <template if:true={isLoading}>
         <div class="loading-container">
             <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
         </div>
     </template>
-    <template if:true="{_hasError}">
+    <template if:true={_hasError}>
         <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
             <span class="slds-assistive-text">error</span>
             <p>{_errorMessage}</p>
         </div>
     </template>
-    <template if:true="{_settings}">
+    <template if:true={_settings}>
         <div class="panel-container">
             <div class="panel-header">
                 <div class="slds-grid slds-grid_vertical-align-center">
@@ -51,7 +51,7 @@
                     <lightning-input
                         type="text"
                         label="Verification Service"
-                        value="{_settings.Class__c}"
+                        value={_settings.Class__c}
                         disabled
                         variant="label-hidden"
                         class="text-input"
@@ -67,7 +67,7 @@
                     <lightning-input
                         type="toggle"
                         label="Enable Address Verification"
-                        checked="{_settings.Enable_Automatic_Verification__c}"
+                        checked={_settings.Enable_Automatic_Verification__c}
                         disabled
                         variant="label-hidden"
                         message-toggle-active="Enabled"
@@ -84,7 +84,7 @@
                     <lightning-input
                         type="toggle"
                         label="Reject Ambiguous Addresses"
-                        checked="{_settings.Reject_Ambiguous_Addresses__c}"
+                        checked={_settings.Reject_Ambiguous_Addresses__c}
                         disabled
                         variant="label-hidden"
                         message-toggle-active="Enabled"

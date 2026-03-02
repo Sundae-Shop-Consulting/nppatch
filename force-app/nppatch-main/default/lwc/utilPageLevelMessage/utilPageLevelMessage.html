@@ -2,14 +2,14 @@
     <div class="pageLevelErrors" tabindex="-1">
         <div class="desktop forcePageError" aria-live="assertive">
             <div class="slds-notify_container slds-notify_container_extension slds-is-relative slds-m-bottom_xx-small">
-                <div class="{notificationClass}" role="status">
+                <div class={notificationClass} role="status">
                     <span class="slds-assistive-text"> {assistiveText} </span>
-                    <template if:true="{hasIconName}">
+                    <template if:true={hasIconName}>
                         <span
                             class="slds-icon_container slds-m-right_small slds-no-flex slds-align-top"
-                            title="{iconDescription}"
+                            title={iconDescription}
                         >
-                            <lightning-icon icon-name="{iconName}" size="{iconSize}" variant="{iconVariant}">
+                            <lightning-icon icon-name={iconName} size={iconSize} variant={iconVariant}>
                             </lightning-icon>
                         </span>
                     </template>
@@ -18,8 +18,8 @@
                     </div>
                 </div>
             </div>
-            <template if:true="{subtitleText}">
-                <div class="{subtitleClass}">{subtitleText}</div>
+            <template if:true={subtitleText}>
+                <div class={subtitleClass}>{subtitleText}</div>
             </template>
             <slot name="body"></slot>
         </div>

@@ -7,10 +7,10 @@
         </h2>
     </header>
 
-    <div class="slds-p-horizontal_small" if:true="{error.detail}">
+    <div class="slds-p-horizontal_small" if:true={error.detail}>
         <c-util-page-level-message
-            title="{error.header}"
-            subtitle="{error.detail}"
+            title={error.header}
+            subtitle={error.detail}
             variant="error"
             icon-name="utility:error"
             icon-size="x-small"
@@ -23,11 +23,11 @@
     </div>
 
     <div class="slds-modal__content">
-        <template if:true="{isLoading}">
+        <template if:true={isLoading}>
             <div class="slds-grid slds-grid_align-center">
                 <div class="slds-is-relative slds-size_1-of-1">
                     <lightning-spinner
-                        alternative-text="{labels.loadingMessage}"
+                        alternative-text={labels.loadingMessage}
                         variant="brand"
                         data-id="spinner"
                         data-qa-locator="spinner"
@@ -38,11 +38,11 @@
             </div>
         </template>
 
-        <template if:false="{isLoading}">
-            <template if:true="{permissions.isBlocked}">
+        <template if:false={isLoading}>
+            <template if:true={permissions.isBlocked}>
                 <div class="slds-p-around_medium">
                     <lightning-formatted-rich-text
-                        value="{permissions.blockedReason}"
+                        value={permissions.blockedReason}
                         data-id="blockedReason"
                         data-qa-locator="richtext Blocked Reason"
                     >
@@ -50,12 +50,12 @@
                 </div>
             </template>
 
-            <template if:false="{permissions.isBlocked}">
-                <template if:true="{permissions.hasAccess}">
+            <template if:false={permissions.isBlocked}>
+                <template if:true={permissions.hasAccess}>
                     <lightning-layout multiple-rows="true">
                         <lightning-layout-item padding="horizontal-large" class="slds-p-top_medium" size="12">
                             <lightning-formatted-rich-text
-                                value="{labels.description}"
+                                value={labels.description}
                                 data-id="description"
                                 data-qa-locator="richtext Description"
                             >
@@ -67,15 +67,11 @@
                                 data-id="pausedReason"
                                 name="pausedReason"
                                 data-qa-locator="combobox Paused Reason"
-                                label="{pausedReason.label}"
-                                value="{pausedReason.value}"
-                                placeholder="{pausedReason.placeholder}"
-                                options="{pausedReason.options}"
-                                onchange="
-                                    {
-                                        handlePausedReasonChange;
-                                    }
-                                "
+                                label={pausedReason.label}
+                                value={pausedReason.value}
+                                placeholder={pausedReason.placeholder}
+                                options={pausedReason.options}
+                                onchange={handlePausedReasonChange}
                                 required
                             >
                             </lightning-combobox>
@@ -84,16 +80,16 @@
 
                     <div
                         class="installments slds-p-left_medium slds-p-top_large slds-p-right_medium"
-                        if:true="{installments}"
+                        if:true={installments}
                     >
                         <lightning-datatable
                             key-field="installmentNumber"
-                            data="{installments}"
-                            columns="{columns}"
-                            is-loading="{isLoading}"
-                            max-row-selection="{maxRowSelection}"
-                            onrowselection="{handleRowSelection}"
-                            selected-rows="{selectedIds}"
+                            data={installments}
+                            columns={columns}
+                            is-loading={isLoading}
+                            max-row-selection={maxRowSelection}
+                            onrowselection={handleRowSelection}
+                            selected-rows={selectedIds}
                             resize-column-disabled
                             data-id="installments"
                             data-qa-locator="datatable Installments"
@@ -103,10 +99,10 @@
 
                     <lightning-layout multiple-rows="true">
                         <lightning-layout-item padding="horizontal-large" class="slds-p-top_large" size="12">
-                            <template if:true="{selectedRowsSummary}">
+                            <template if:true={selectedRowsSummary}>
                                 <em
                                     ><lightning-formatted-rich-text
-                                        value="{selectedRowsSummary}"
+                                        value={selectedRowsSummary}
                                         data-id="rowSummary"
                                         data-qa-locator="richtext Row Summary"
                                     >
@@ -116,10 +112,10 @@
                         </lightning-layout-item>
 
                         <lightning-layout-item padding="horizontal-large" class="slds-p-top_small" size="12">
-                            <template if:true="{firstDonationDateMessage}">
+                            <template if:true={firstDonationDateMessage}>
                                 <b
                                     ><lightning-formatted-rich-text
-                                        value="{firstDonationDateMessage}"
+                                        value={firstDonationDateMessage}
                                         data-id="firstDonationDateMessage"
                                         data-qa-locator="richtext First Donation Date Message"
                                     >
@@ -135,50 +131,38 @@
         </template>
     </div>
 
-    <div if:false="{isLoading}">
+    <div if:false={isLoading}>
         <footer class="slds-modal__footer slds-clearfix">
             <div class="slds-x-small-buttons_horizontal slds-float_right">
-                <template if:true="{isSaveDisplayed}">
+                <template if:true={isSaveDisplayed}>
                     <lightning-button
-                        label="{labels.cancelButton}"
-                        title="{labels.cancelButton}"
+                        label={labels.cancelButton}
+                        title={labels.cancelButton}
                         variant="neutral"
                         class="slds-m-right_small"
-                        onclick="
-                            {
-                                handleCancel;
-                            }
-                        "
+                        onclick={handleCancel}
                         data-id="cancelButton"
                         data-qa-locator="button Cancel"
                     >
                     </lightning-button>
                     <lightning-button
-                        label="{labels.saveButton}"
-                        title="{labels.saveButton}"
+                        label={labels.saveButton}
+                        title={labels.saveButton}
                         variant="brand"
-                        onclick="
-                            {
-                                handleSave;
-                            }
-                        "
-                        disabled="{isSaveDisabled}"
+                        onclick={handleSave}
+                        disabled={isSaveDisabled}
                         data-id="saveButton"
                         data-qa-locator="button Save"
                     >
                     </lightning-button>
                 </template>
 
-                <template if:false="{isSaveDisplayed}">
+                <template if:false={isSaveDisplayed}>
                     <lightning-button
-                        label="{labels.okButton}"
-                        title="{labels.okButton}"
+                        label={labels.okButton}
+                        title={labels.okButton}
                         variant="brand"
-                        onclick="
-                            {
-                                handleCancel;
-                            }
-                        "
+                        onclick={handleCancel}
                         data-id="okButton"
                         data-qa-locator="button OK"
                     >

@@ -1,5 +1,5 @@
 <template>
-    <section class="{classes}">
+    <section class={classes}>
         <!-- HEADER -->
         <div>
             <lightning-layout vertical-align="start" multiple-rows="true">
@@ -9,19 +9,15 @@
                     class="slds-align_absolute-center slds-m-vertical_x-small"
                 >
                     <button
-                        aria-label="{title}"
-                        onclick="
-                            {
-                                handleToggle;
-                            }
-                        "
+                        aria-label={title}
+                        onclick={handleToggle}
                         aria-controls="accordion-details"
-                        aria-expanded="{isOpen}"
+                        aria-expanded={isOpen}
                         class="slds-align-middle slds-text-link_reset slds-button"
                     >
                         <lightning-icon
-                            icon-name="{toggleIcon}"
-                            alternative-text="{toggleInstructions}"
+                            icon-name={toggleIcon}
+                            alternative-text={toggleInstructions}
                             size="x-small"
                         ></lightning-icon>
                     </button>
@@ -29,11 +25,7 @@
 
                 <!--CLICKABLE SECTION-->
                 <lightning-layout-item
-                    onclick="
-                        {
-                            handleToggle;
-                        }
-                    "
+                    onclick={handleToggle}
                     flexibility="auto"
                     class="slds-grid_vertical-align-center clickable-header"
                 >

@@ -1,16 +1,16 @@
 <template>
-    <template if:true="{isLoading}">
+    <template if:true={isLoading}>
         <div class="loading-container">
             <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
         </div>
     </template>
-    <template if:true="{_hasError}">
+    <template if:true={_hasError}>
         <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
             <span class="slds-assistive-text">error</span>
             <p>{_errorMessage}</p>
         </div>
     </template>
-    <template if:false="{isLoading}">
+    <template if:false={isLoading}>
         <div class="panel-container">
             <div class="panel-header">
                 <div class="slds-grid slds-grid_vertical-align-center">
@@ -24,11 +24,7 @@
                     <div class="slds-col_bump-left">
                         <lightning-button
                             label="Refresh"
-                            onclick="
-                                {
-                                    handleRefresh;
-                                }
-                            "
+                            onclick={handleRefresh}
                             variant="neutral"
                             icon-name="utility:refresh"
                         ></lightning-button>
@@ -41,20 +37,20 @@
                 </p>
             </div>
             <div class="panel-body">
-                <template if:true="{hasRecords}">
+                <template if:true={hasRecords}>
                     <lightning-datatable
                         key-field="Id"
-                        data="{_errors}"
-                        columns="{columns}"
+                        data={_errors}
+                        columns={columns}
                         hide-checkbox-column
-                        sorted-by="{_sortedBy}"
-                        sorted-direction="{_sortedDirection}"
-                        onsort="{handleSort}"
+                        sorted-by={_sortedBy}
+                        sorted-direction={_sortedDirection}
+                        onsort={handleSort}
                         max-row-selection="0"
                     >
                     </lightning-datatable>
                 </template>
-                <template if:false="{hasRecords}">
+                <template if:false={hasRecords}>
                     <div class="empty-state">
                         <lightning-icon
                             icon-name="utility:success"

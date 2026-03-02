@@ -1,5 +1,5 @@
 <template>
-    <template if:true="{openStopRecurringDonation}">
+    <template if:true={openStopRecurringDonation}>
         <section
             role="dialog"
             tabindex="-1"
@@ -11,14 +11,10 @@
                 <lightning-button-icon
                     tabindex="0"
                     class="slds-modal__close"
-                    title="{labels.commonCancelAndClose}"
+                    title={labels.commonCancelAndClose}
                     icon-name="utility:close"
                     icon-class="slds-button_icon-inverse"
-                    onclick="
-                        {
-                            closeModal;
-                        }
-                    "
+                    onclick={closeModal}
                     data-id="closeButton"
                 >
                 </lightning-button-icon>
@@ -36,23 +32,12 @@
                     <button
                         class="slds-button slds-button_neutral"
                         data-id="cancelButton"
-                        aria-label="{labels.commonCancelAndClose}"
-                        onclick="
-                            {
-                                closeModal;
-                            }
-                        "
+                        aria-label={labels.commonCancelAndClose}
+                        onclick={closeModal}
                     >
                         {labels.commonClose}
                     </button>
-                    <button
-                        class="slds-button slds-button_brand"
-                        onclick="
-                            {
-                                handleCancelDonation;
-                            }
-                        "
-                    >
+                    <button class="slds-button slds-button_brand" onclick={handleCancelDonation}>
                         {labels.stopRecurringDonation}
                     </button>
                 </div>

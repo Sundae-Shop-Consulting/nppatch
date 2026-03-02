@@ -1,18 +1,18 @@
 <template>
-    <template if:true="{isLoading}">
+    <template if:true={isLoading}>
         <div class="loading-container">
             <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
         </div>
     </template>
 
-    <template if:true="{_hasError}">
+    <template if:true={_hasError}>
         <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
             <span class="slds-assistive-text">error</span>
             <p>{_errorMessage}</p>
         </div>
     </template>
 
-    <template if:true="{isReady}">
+    <template if:true={isReady}>
         <div class="panel-container">
             <div class="panel-header">
                 <div class="slds-grid slds-grid_vertical-align-center">
@@ -24,15 +24,11 @@
                         </h2>
                     </div>
                     <div class="slds-col_bump-left">
-                        <template if:true="{_isAdmin}">
-                            <template if:false="{_isCreating}">
+                        <template if:true={_isAdmin}>
+                            <template if:false={_isCreating}>
                                 <lightning-button
                                     label="New"
-                                    onclick="
-                                        {
-                                            handleNewClick;
-                                        }
-                                    "
+                                    onclick={handleNewClick}
                                     variant="neutral"
                                     icon-name="utility:add"
                                 ></lightning-button>
@@ -44,19 +40,15 @@
             </div>
 
             <div class="panel-body">
-                <template if:true="{_isCreating}">
+                <template if:true={_isCreating}>
                     <div class="create-form">
                         <h3 class="section-subheader">New Auto-Create Relationship</h3>
                         <div class="form-grid">
                             <lightning-combobox
                                 label="Object"
-                                value="{_newObject}"
-                                options="{objectOptions}"
-                                onchange="
-                                    {
-                                        handleObjectChange;
-                                    }
-                                "
+                                value={_newObject}
+                                options={objectOptions}
+                                onchange={handleObjectChange}
                                 placeholder="Select object..."
                                 required
                                 class="picklist-input"
@@ -64,36 +56,24 @@
                             <lightning-input
                                 type="text"
                                 label="Field"
-                                value="{_newField}"
-                                onchange="
-                                    {
-                                        handleFieldChange;
-                                    }
-                                "
+                                value={_newField}
+                                onchange={handleFieldChange}
                                 required
                                 class="text-input"
                             ></lightning-input>
                             <lightning-input
                                 type="text"
                                 label="Relationship Type"
-                                value="{_newRelationshipType}"
-                                onchange="
-                                    {
-                                        handleRelationshipTypeChange;
-                                    }
-                                "
+                                value={_newRelationshipType}
+                                onchange={handleRelationshipTypeChange}
                                 class="text-input"
                             ></lightning-input>
-                            <template if:true="{showCampaignTypes}">
+                            <template if:true={showCampaignTypes}>
                                 <lightning-input
                                     type="text"
                                     label="Campaign Types"
-                                    value="{_newCampaignTypes}"
-                                    onchange="
-                                        {
-                                            handleCampaignTypesChange;
-                                        }
-                                    "
+                                    value={_newCampaignTypes}
+                                    onchange={handleCampaignTypesChange}
                                     class="text-input"
                                 ></lightning-input>
                             </template>
@@ -101,39 +81,31 @@
                         <div class="form-actions">
                             <lightning-button
                                 label="Save"
-                                onclick="
-                                    {
-                                        handleSaveCreate;
-                                    }
-                                "
+                                onclick={handleSaveCreate}
                                 variant="brand"
-                                disabled="{isSaveDisabled}"
+                                disabled={isSaveDisabled}
                             ></lightning-button>
                             <lightning-button
                                 label="Cancel"
-                                onclick="
-                                    {
-                                        handleCancelCreate;
-                                    }
-                                "
+                                onclick={handleCancelCreate}
                                 variant="neutral"
-                                disabled="{_isSaving}"
+                                disabled={_isSaving}
                             ></lightning-button>
                         </div>
                     </div>
                 </template>
 
-                <template if:true="{hasRecords}">
+                <template if:true={hasRecords}>
                     <lightning-datatable
                         key-field="Id"
-                        data="{_records}"
-                        columns="{columns}"
-                        onrowaction="{handleRowAction}"
+                        data={_records}
+                        columns={columns}
+                        onrowaction={handleRowAction}
                         hide-checkbox-column
                     ></lightning-datatable>
                 </template>
 
-                <template if:false="{hasRecords}">
+                <template if:false={hasRecords}>
                     <p class="empty-message">No auto-create relationship settings defined.</p>
                 </template>
             </div>

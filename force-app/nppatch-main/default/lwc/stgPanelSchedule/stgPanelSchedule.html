@@ -1,18 +1,18 @@
 <template>
-    <template if:true="{isLoading}">
+    <template if:true={isLoading}>
         <div class="loading-container">
             <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
         </div>
     </template>
 
-    <template if:true="{_hasError}">
+    <template if:true={_hasError}>
         <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
             <span class="slds-assistive-text">error</span>
             <p>{_errorMessage}</p>
         </div>
     </template>
 
-    <template if:true="{isReady}">
+    <template if:true={isReady}>
         <div class="panel-container">
             <div class="panel-header">
                 <div class="slds-grid slds-grid_vertical-align-center">
@@ -24,14 +24,10 @@
                         </h2>
                     </div>
                     <div class="slds-col_bump-left">
-                        <template if:true="{canEdit}">
+                        <template if:true={canEdit}>
                             <lightning-button
-                                label="{labels.edit}"
-                                onclick="
-                                    {
-                                        handleEdit;
-                                    }
-                                "
+                                label={labels.edit}
+                                onclick={handleEdit}
                                 variant="neutral"
                             ></lightning-button>
                         </template>
@@ -48,27 +44,23 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.contactBatchSize}</label>
                     <p class="setting-help">{labels.helpContactBatchSize}</p>
-                    <template if:false="{_isEditMode}">
+                    <template if:false={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.contactBatchSize}"
-                            value="{_settingsCRLP.Rollups_Contact_Batch_Size__c}"
+                            label={labels.contactBatchSize}
+                            value={_settingsCRLP.Rollups_Contact_Batch_Size__c}
                             disabled
                             variant="label-hidden"
                             class="number-input"
                         >
                         </lightning-input>
                     </template>
-                    <template if:true="{_isEditMode}">
+                    <template if:true={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.contactBatchSize}"
-                            value="{_workingCopyCRLP.Rollups_Contact_Batch_Size__c}"
-                            onchange="
-                                {
-                                    handleContactBatchSizeChange;
-                                }
-                            "
+                            label={labels.contactBatchSize}
+                            value={_workingCopyCRLP.Rollups_Contact_Batch_Size__c}
+                            onchange={handleContactBatchSizeChange}
                             variant="label-hidden"
                             class="number-input"
                         >
@@ -80,27 +72,23 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.accountBatchSize}</label>
                     <p class="setting-help">{labels.helpAccountBatchSize}</p>
-                    <template if:false="{_isEditMode}">
+                    <template if:false={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.accountBatchSize}"
-                            value="{_settingsCRLP.Rollups_Account_Batch_Size__c}"
+                            label={labels.accountBatchSize}
+                            value={_settingsCRLP.Rollups_Account_Batch_Size__c}
                             disabled
                             variant="label-hidden"
                             class="number-input"
                         >
                         </lightning-input>
                     </template>
-                    <template if:true="{_isEditMode}">
+                    <template if:true={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.accountBatchSize}"
-                            value="{_workingCopyCRLP.Rollups_Account_Batch_Size__c}"
-                            onchange="
-                                {
-                                    handleAccountBatchSizeChange;
-                                }
-                            "
+                            label={labels.accountBatchSize}
+                            value={_workingCopyCRLP.Rollups_Account_Batch_Size__c}
+                            onchange={handleAccountBatchSizeChange}
                             variant="label-hidden"
                             class="number-input"
                         >
@@ -112,27 +100,23 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.contactSoftCreditBatchSize}</label>
                     <p class="setting-help">{labels.helpContactSoftCreditBatchSize}</p>
-                    <template if:false="{_isEditMode}">
+                    <template if:false={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.contactSoftCreditBatchSize}"
-                            value="{_settingsCRLP.Rollups_Contact_Soft_Credit_Batch_Size__c}"
+                            label={labels.contactSoftCreditBatchSize}
+                            value={_settingsCRLP.Rollups_Contact_Soft_Credit_Batch_Size__c}
                             disabled
                             variant="label-hidden"
                             class="number-input"
                         >
                         </lightning-input>
                     </template>
-                    <template if:true="{_isEditMode}">
+                    <template if:true={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.contactSoftCreditBatchSize}"
-                            value="{_workingCopyCRLP.Rollups_Contact_Soft_Credit_Batch_Size__c}"
-                            onchange="
-                                {
-                                    handleContactSoftCreditBatchSizeChange;
-                                }
-                            "
+                            label={labels.contactSoftCreditBatchSize}
+                            value={_workingCopyCRLP.Rollups_Contact_Soft_Credit_Batch_Size__c}
+                            onchange={handleContactSoftCreditBatchSizeChange}
                             variant="label-hidden"
                             class="number-input"
                         >
@@ -144,27 +128,23 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.acctContactSoftCreditBatchSize}</label>
                     <p class="setting-help">{labels.helpAcctContactSoftCreditBatchSize}</p>
-                    <template if:false="{_isEditMode}">
+                    <template if:false={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.acctContactSoftCreditBatchSize}"
-                            value="{_settingsCRLP.Rollups_AcctContactSoftCredit_Batch_Size__c}"
+                            label={labels.acctContactSoftCreditBatchSize}
+                            value={_settingsCRLP.Rollups_AcctContactSoftCredit_Batch_Size__c}
                             disabled
                             variant="label-hidden"
                             class="number-input"
                         >
                         </lightning-input>
                     </template>
-                    <template if:true="{_isEditMode}">
+                    <template if:true={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.acctContactSoftCreditBatchSize}"
-                            value="{_workingCopyCRLP.Rollups_AcctContactSoftCredit_Batch_Size__c}"
-                            onchange="
-                                {
-                                    handleAcctContactSoftCreditBatchSizeChange;
-                                }
-                            "
+                            label={labels.acctContactSoftCreditBatchSize}
+                            value={_workingCopyCRLP.Rollups_AcctContactSoftCredit_Batch_Size__c}
+                            onchange={handleAcctContactSoftCreditBatchSizeChange}
                             variant="label-hidden"
                             class="number-input"
                         >
@@ -176,27 +156,23 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.accountSoftCreditBatchSize}</label>
                     <p class="setting-help">{labels.helpAccountSoftCreditBatchSize}</p>
-                    <template if:false="{_isEditMode}">
+                    <template if:false={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.accountSoftCreditBatchSize}"
-                            value="{_settingsCRLP.Rollups_Account_Soft_Credit_Batch_Size__c}"
+                            label={labels.accountSoftCreditBatchSize}
+                            value={_settingsCRLP.Rollups_Account_Soft_Credit_Batch_Size__c}
                             disabled
                             variant="label-hidden"
                             class="number-input"
                         >
                         </lightning-input>
                     </template>
-                    <template if:true="{_isEditMode}">
+                    <template if:true={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.accountSoftCreditBatchSize}"
-                            value="{_workingCopyCRLP.Rollups_Account_Soft_Credit_Batch_Size__c}"
-                            onchange="
-                                {
-                                    handleAccountSoftCreditBatchSizeChange;
-                                }
-                            "
+                            label={labels.accountSoftCreditBatchSize}
+                            value={_workingCopyCRLP.Rollups_Account_Soft_Credit_Batch_Size__c}
+                            onchange={handleAccountSoftCreditBatchSizeChange}
                             variant="label-hidden"
                             class="number-input"
                         >
@@ -208,27 +184,23 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.gauBatchSize}</label>
                     <p class="setting-help">{labels.helpGauBatchSize}</p>
-                    <template if:false="{_isEditMode}">
+                    <template if:false={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.gauBatchSize}"
-                            value="{_settingsCRLP.Rollups_GAU_Batch_Size__c}"
+                            label={labels.gauBatchSize}
+                            value={_settingsCRLP.Rollups_GAU_Batch_Size__c}
                             disabled
                             variant="label-hidden"
                             class="number-input"
                         >
                         </lightning-input>
                     </template>
-                    <template if:true="{_isEditMode}">
+                    <template if:true={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.gauBatchSize}"
-                            value="{_workingCopyCRLP.Rollups_GAU_Batch_Size__c}"
-                            onchange="
-                                {
-                                    handleGauBatchSizeChange;
-                                }
-                            "
+                            label={labels.gauBatchSize}
+                            value={_workingCopyCRLP.Rollups_GAU_Batch_Size__c}
+                            onchange={handleGauBatchSizeChange}
                             variant="label-hidden"
                             class="number-input"
                         >
@@ -240,27 +212,23 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.rdBatchSize}</label>
                     <p class="setting-help">{labels.helpRdBatchSize}</p>
-                    <template if:false="{_isEditMode}">
+                    <template if:false={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.rdBatchSize}"
-                            value="{_settingsRD.Recurring_Donation_Batch_Size__c}"
+                            label={labels.rdBatchSize}
+                            value={_settingsRD.Recurring_Donation_Batch_Size__c}
                             disabled
                             variant="label-hidden"
                             class="number-input"
                         >
                         </lightning-input>
                     </template>
-                    <template if:true="{_isEditMode}">
+                    <template if:true={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.rdBatchSize}"
-                            value="{_workingCopyRD.Recurring_Donation_Batch_Size__c}"
-                            onchange="
-                                {
-                                    handleRdBatchSizeChange;
-                                }
-                            "
+                            label={labels.rdBatchSize}
+                            value={_workingCopyRD.Recurring_Donation_Batch_Size__c}
+                            onchange={handleRdBatchSizeChange}
                             variant="label-hidden"
                             class="number-input"
                         >
@@ -272,27 +240,23 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.levelBatchSize}</label>
                     <p class="setting-help">{labels.helpLevelBatchSize}</p>
-                    <template if:false="{_isEditMode}">
+                    <template if:false={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.levelBatchSize}"
-                            value="{_settingsLvl.Level_Assignment_Batch_Size__c}"
+                            label={labels.levelBatchSize}
+                            value={_settingsLvl.Level_Assignment_Batch_Size__c}
                             disabled
                             variant="label-hidden"
                             class="number-input"
                         >
                         </lightning-input>
                     </template>
-                    <template if:true="{_isEditMode}">
+                    <template if:true={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.levelBatchSize}"
-                            value="{_workingCopyLvl.Level_Assignment_Batch_Size__c}"
-                            onchange="
-                                {
-                                    handleLevelBatchSizeChange;
-                                }
-                            "
+                            label={labels.levelBatchSize}
+                            value={_workingCopyLvl.Level_Assignment_Batch_Size__c}
+                            onchange={handleLevelBatchSizeChange}
                             variant="label-hidden"
                             class="number-input"
                         >
@@ -304,27 +268,23 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.seasonalAddressBatchSize}</label>
                     <p class="setting-help">{labels.helpSeasonalAddressBatchSize}</p>
-                    <template if:false="{_isEditMode}">
+                    <template if:false={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.seasonalAddressBatchSize}"
-                            value="{_settingsHH.Seasonal_Addresses_Batch_Size__c}"
+                            label={labels.seasonalAddressBatchSize}
+                            value={_settingsHH.Seasonal_Addresses_Batch_Size__c}
                             disabled
                             variant="label-hidden"
                             class="number-input"
                         >
                         </lightning-input>
                     </template>
-                    <template if:true="{_isEditMode}">
+                    <template if:true={_isEditMode}>
                         <lightning-input
                             type="number"
-                            label="{labels.seasonalAddressBatchSize}"
-                            value="{_workingCopyHH.Seasonal_Addresses_Batch_Size__c}"
-                            onchange="
-                                {
-                                    handleSeasonalAddressBatchSizeChange;
-                                }
-                            "
+                            label={labels.seasonalAddressBatchSize}
+                            value={_workingCopyHH.Seasonal_Addresses_Batch_Size__c}
+                            onchange={handleSeasonalAddressBatchSizeChange}
                             variant="label-hidden"
                             class="number-input"
                         >
@@ -333,34 +293,30 @@
                 </div>
 
                 <!-- Section 2: Skew Mode Settings (conditional) -->
-                <template if:true="{showSkewModeSection}">
+                <template if:true={showSkewModeSection}>
                     <h3 class="section-subheader">{labels.skewModeSection}</h3>
 
                     <!-- Skew Mode Threshold -->
                     <div class="setting-row">
                         <label class="setting-label">{labels.skewThreshold}</label>
                         <p class="setting-help">{labels.helpSkewThreshold}</p>
-                        <template if:false="{_isEditMode}">
+                        <template if:false={_isEditMode}>
                             <lightning-input
                                 type="number"
-                                label="{labels.skewThreshold}"
-                                value="{_settingsCRLP.Rollups_Limit_on_Attached_Opps_for_Skew__c}"
+                                label={labels.skewThreshold}
+                                value={_settingsCRLP.Rollups_Limit_on_Attached_Opps_for_Skew__c}
                                 disabled
                                 variant="label-hidden"
                                 class="number-input"
                             >
                             </lightning-input>
                         </template>
-                        <template if:true="{_isEditMode}">
+                        <template if:true={_isEditMode}>
                             <lightning-input
                                 type="number"
-                                label="{labels.skewThreshold}"
-                                value="{_workingCopyCRLP.Rollups_Limit_on_Attached_Opps_for_Skew__c}"
-                                onchange="
-                                    {
-                                        handleSkewThresholdChange;
-                                    }
-                                "
+                                label={labels.skewThreshold}
+                                value={_workingCopyCRLP.Rollups_Limit_on_Attached_Opps_for_Skew__c}
+                                onchange={handleSkewThresholdChange}
                                 variant="label-hidden"
                                 class="number-input"
                             >
@@ -372,27 +328,23 @@
                     <div class="setting-row">
                         <label class="setting-label">{labels.contactSkewBatchSize}</label>
                         <p class="setting-help">{labels.helpContactSkewBatchSize}</p>
-                        <template if:false="{_isEditMode}">
+                        <template if:false={_isEditMode}>
                             <lightning-input
                                 type="number"
-                                label="{labels.contactSkewBatchSize}"
-                                value="{_settingsCRLP.Rollups_Contact_SkewMode_Batch_Size__c}"
+                                label={labels.contactSkewBatchSize}
+                                value={_settingsCRLP.Rollups_Contact_SkewMode_Batch_Size__c}
                                 disabled
                                 variant="label-hidden"
                                 class="number-input"
                             >
                             </lightning-input>
                         </template>
-                        <template if:true="{_isEditMode}">
+                        <template if:true={_isEditMode}>
                             <lightning-input
                                 type="number"
-                                label="{labels.contactSkewBatchSize}"
-                                value="{_workingCopyCRLP.Rollups_Contact_SkewMode_Batch_Size__c}"
-                                onchange="
-                                    {
-                                        handleContactSkewBatchSizeChange;
-                                    }
-                                "
+                                label={labels.contactSkewBatchSize}
+                                value={_workingCopyCRLP.Rollups_Contact_SkewMode_Batch_Size__c}
+                                onchange={handleContactSkewBatchSizeChange}
                                 variant="label-hidden"
                                 class="number-input"
                             >
@@ -404,27 +356,23 @@
                     <div class="setting-row">
                         <label class="setting-label">{labels.accountSkewBatchSize}</label>
                         <p class="setting-help">{labels.helpAccountSkewBatchSize}</p>
-                        <template if:false="{_isEditMode}">
+                        <template if:false={_isEditMode}>
                             <lightning-input
                                 type="number"
-                                label="{labels.accountSkewBatchSize}"
-                                value="{_settingsCRLP.Rollups_Account_SkewMode_Batch_Size__c}"
+                                label={labels.accountSkewBatchSize}
+                                value={_settingsCRLP.Rollups_Account_SkewMode_Batch_Size__c}
                                 disabled
                                 variant="label-hidden"
                                 class="number-input"
                             >
                             </lightning-input>
                         </template>
-                        <template if:true="{_isEditMode}">
+                        <template if:true={_isEditMode}>
                             <lightning-input
                                 type="number"
-                                label="{labels.accountSkewBatchSize}"
-                                value="{_workingCopyCRLP.Rollups_Account_SkewMode_Batch_Size__c}"
-                                onchange="
-                                    {
-                                        handleAccountSkewBatchSizeChange;
-                                    }
-                                "
+                                label={labels.accountSkewBatchSize}
+                                value={_workingCopyCRLP.Rollups_Account_SkewMode_Batch_Size__c}
+                                onchange={handleAccountSkewBatchSizeChange}
                                 variant="label-hidden"
                                 class="number-input"
                             >
@@ -436,27 +384,23 @@
                     <div class="setting-row">
                         <label class="setting-label">{labels.skewDispatcherBatchSize}</label>
                         <p class="setting-help">{labels.helpSkewDispatcherBatchSize}</p>
-                        <template if:false="{_isEditMode}">
+                        <template if:false={_isEditMode}>
                             <lightning-input
                                 type="number"
-                                label="{labels.skewDispatcherBatchSize}"
-                                value="{_settingsCRLP.Rollups_Skew_Dispatcher_Batch_Size__c}"
+                                label={labels.skewDispatcherBatchSize}
+                                value={_settingsCRLP.Rollups_Skew_Dispatcher_Batch_Size__c}
                                 disabled
                                 variant="label-hidden"
                                 class="number-input"
                             >
                             </lightning-input>
                         </template>
-                        <template if:true="{_isEditMode}">
+                        <template if:true={_isEditMode}>
                             <lightning-input
                                 type="number"
-                                label="{labels.skewDispatcherBatchSize}"
-                                value="{_workingCopyCRLP.Rollups_Skew_Dispatcher_Batch_Size__c}"
-                                onchange="
-                                    {
-                                        handleSkewDispatcherBatchSizeChange;
-                                    }
-                                "
+                                label={labels.skewDispatcherBatchSize}
+                                value={_workingCopyCRLP.Rollups_Skew_Dispatcher_Batch_Size__c}
+                                onchange={handleSkewDispatcherBatchSizeChange}
                                 variant="label-hidden"
                                 class="number-input"
                             >
@@ -472,11 +416,11 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.useDatedConversionRates}</label>
                     <p class="setting-help">{labels.helpUseDatedConversionRates}</p>
-                    <template if:false="{_isEditMode}">
+                    <template if:false={_isEditMode}>
                         <lightning-input
                             type="toggle"
-                            label="{labels.useDatedConversionRates}"
-                            checked="{_settingsHH.Use_Dated_Conversion_Rates__c}"
+                            label={labels.useDatedConversionRates}
+                            checked={_settingsHH.Use_Dated_Conversion_Rates__c}
                             disabled
                             variant="label-hidden"
                             message-toggle-active="Enabled"
@@ -484,16 +428,12 @@
                         >
                         </lightning-input>
                     </template>
-                    <template if:true="{_isEditMode}">
+                    <template if:true={_isEditMode}>
                         <lightning-input
                             type="toggle"
-                            label="{labels.useDatedConversionRates}"
-                            checked="{_workingCopyHH.Use_Dated_Conversion_Rates__c}"
-                            onchange="
-                                {
-                                    handleUseDatedConversionRatesChange;
-                                }
-                            "
+                            label={labels.useDatedConversionRates}
+                            checked={_workingCopyHH.Use_Dated_Conversion_Rates__c}
+                            onchange={handleUseDatedConversionRatesChange}
                             variant="label-hidden"
                             message-toggle-active="Enabled"
                             message-toggle-inactive="Disabled"
@@ -506,11 +446,11 @@
                 <div class="setting-row">
                     <label class="setting-label">{labels.dontAutoSchedule}</label>
                     <p class="setting-help">{labels.helpDontAutoSchedule}</p>
-                    <template if:false="{_isEditMode}">
+                    <template if:false={_isEditMode}>
                         <lightning-input
                             type="toggle"
-                            label="{labels.dontAutoSchedule}"
-                            checked="{_settingsErr.Don_t_Auto_Schedule_Default_NPPatch_Jobs__c}"
+                            label={labels.dontAutoSchedule}
+                            checked={_settingsErr.Don_t_Auto_Schedule_Default_NPPatch_Jobs__c}
                             disabled
                             variant="label-hidden"
                             message-toggle-active="Enabled"
@@ -518,16 +458,12 @@
                         >
                         </lightning-input>
                     </template>
-                    <template if:true="{_isEditMode}">
+                    <template if:true={_isEditMode}>
                         <lightning-input
                             type="toggle"
-                            label="{labels.dontAutoSchedule}"
-                            checked="{_workingCopyErr.Don_t_Auto_Schedule_Default_NPPatch_Jobs__c}"
-                            onchange="
-                                {
-                                    handleDontAutoScheduleChange;
-                                }
-                            "
+                            label={labels.dontAutoSchedule}
+                            checked={_workingCopyErr.Don_t_Auto_Schedule_Default_NPPatch_Jobs__c}
+                            onchange={handleDontAutoScheduleChange}
                             variant="label-hidden"
                             message-toggle-active="Enabled"
                             message-toggle-inactive="Disabled"
@@ -537,28 +473,20 @@
                 </div>
             </div>
 
-            <template if:true="{_isEditMode}">
+            <template if:true={_isEditMode}>
                 <div class="panel-footer">
                     <lightning-button
-                        label="{labels.save}"
-                        onclick="
-                            {
-                                handleSave;
-                            }
-                        "
+                        label={labels.save}
+                        onclick={handleSave}
                         variant="brand"
-                        disabled="{_isSaving}"
+                        disabled={_isSaving}
                         class="slds-m-right_x-small"
                     ></lightning-button>
                     <lightning-button
-                        label="{labels.cancel}"
-                        onclick="
-                            {
-                                handleCancel;
-                            }
-                        "
+                        label={labels.cancel}
+                        onclick={handleCancel}
                         variant="neutral"
-                        disabled="{_isSaving}"
+                        disabled={_isSaving}
                     ></lightning-button>
                 </div>
             </template>

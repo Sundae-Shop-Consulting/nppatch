@@ -130,8 +130,8 @@ export default class GsApplicationStatus extends LightningElement {
 
     /**
      * For accesibillity, if the user click on space, it calls the click method of the caller
-     * @param target the component that fired the event
-     * @param code key code
+     * @param {*} target the component that fired the event
+     * @param {*} code key code
      */
     handleKeypress({ target, code }) {
         if (code === "Space") {

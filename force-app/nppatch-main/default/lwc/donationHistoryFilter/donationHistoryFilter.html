@@ -8,15 +8,11 @@
             class="slds-p-bottom_small"
         >
             <lightning-combobox
-                label="{labels.donationHistoryFilterSelectAYear}"
+                label={labels.donationHistoryFilterSelectAYear}
                 class="dropbox"
-                options="{options}"
-                value="{value}"
-                onchange="
-                    {
-                        handleChange;
-                    }
-                "
+                options={options}
+                value={value}
+                onchange={handleChange}
             ></lightning-combobox>
         </lightning-layout-item>
     </lightning-layout>

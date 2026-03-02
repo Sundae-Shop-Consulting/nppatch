@@ -151,7 +151,7 @@ export default class rd2EditPaymentInformationModal extends LightningElement {
 
     /**
      * @description Use updateRecord to update Recurring Donation
-     * @param fields all recurringDonation field values
+     * @param {*} fields all recurringDonation field values
      */
     updateRecurringDonation(fields) {
         const recordInput = { fields };
@@ -204,7 +204,7 @@ export default class rd2EditPaymentInformationModal extends LightningElement {
 
     /***
      * @description Handle component display when an error occurs
-     * @param isDisabled: Indicates if the Save button should be disabled
+     * @param {*} isDisabled: Indicates if the Save button should be disabled
      */
     setSaveButtonDisabled(isDisabled) {
         const disableBtn = !!(isDisabled && isDisabled === true);

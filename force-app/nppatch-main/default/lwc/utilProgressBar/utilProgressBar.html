@@ -7,34 +7,34 @@
         <lightning-layout-item size="6" flexibility="auto">
             <div class="slds-text-title slds-float_right">
                 <strong>
-                    <template if:true="{isCurrency}">
+                    <template if:true={isCurrency}>
                         <lightning-formatted-number
-                            value="{actualValue}"
+                            value={actualValue}
                             format-style="currency"
-                            currency-code="{currencyCode}"
+                            currency-code={currencyCode}
                         >
                         </lightning-formatted-number>
                     </template>
-                    <template if:false="{isCurrency}"> {actualValue} </template>
-                    <template if:true="{expectedValue}">
+                    <template if:false={isCurrency}> {actualValue} </template>
+                    <template if:true={expectedValue}>
                         <span> / </span>
-                        <template if:true="{isCurrency}">
+                        <template if:true={isCurrency}>
                             <lightning-formatted-number
-                                value="{expectedValue}"
+                                value={expectedValue}
                                 format-style="currency"
-                                currency-code="{currencyCode}"
+                                currency-code={currencyCode}
                             >
                             </lightning-formatted-number>
                         </template>
-                        <template if:false="{isCurrency}"> {expectedValue} </template>
+                        <template if:false={isCurrency}> {expectedValue} </template>
                     </template>
                 </strong>
             </div>
         </lightning-layout-item>
 
-        <template if:true="{expectedValue}">
+        <template if:true={expectedValue}>
             <lightning-layout-item size="12" flexibility="auto" class="slds-p-top_xx-small slds-p-bottom_small">
-                <lightning-progress-bar value="{progress}" size="large"> </lightning-progress-bar>
+                <lightning-progress-bar value={progress} size="large"> </lightning-progress-bar>
             </lightning-layout-item>
         </template>
     </lightning-layout>

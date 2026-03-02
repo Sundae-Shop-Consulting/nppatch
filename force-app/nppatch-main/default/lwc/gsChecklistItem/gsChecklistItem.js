@@ -117,7 +117,7 @@ export default class GsChecklistItem extends NavigationMixin(LightningElement) {
     }
     /**
      * @description exec button action
-     * @param string button type
+     * @param {*} string button type
      */
     buttonAction(button) {
         switch (button.type) {
@@ -134,7 +134,7 @@ export default class GsChecklistItem extends NavigationMixin(LightningElement) {
     }
     /**
      * @description use NavigationMixin.GenerateUrl Api to navigate in SFDC org
-     * @param string button value
+     * @param {*} string button value
      */
     sfdcLinkAction(value) {
         const values = value.split(":");
@@ -148,7 +148,7 @@ export default class GsChecklistItem extends NavigationMixin(LightningElement) {
 
     /**
      * @description get attribute to navigate in sfdc pages
-     * @param string[] value arguments
+     * @param {*} string[] value arguments
      * @returns object
      */
     getSfdcLinkAttr(values) {
@@ -169,7 +169,7 @@ export default class GsChecklistItem extends NavigationMixin(LightningElement) {
 
     /**
      * @description Substitute 'c__' to package namespace
-     * @param string api name
+     * @param {*} string api name
      * @returns String
      */
     subNamespace(apiName) {
@@ -179,7 +179,7 @@ export default class GsChecklistItem extends NavigationMixin(LightningElement) {
     /**
      * Event when the user check or uncheck the checkbox in the item.
      * It calls the backend to update the status and call events to notify the front end to update the progress ring.
-     * @param event the event object.
+     * @param {*} event the event object.
      */
     onChange(event) {
         const checked = event.detail.checked;

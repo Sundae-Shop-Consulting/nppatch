@@ -1,18 +1,18 @@
 <template>
-    <template if:true="{isLoading}">
+    <template if:true={isLoading}>
         <div class="loading-container">
             <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
         </div>
     </template>
 
-    <template if:true="{_hasError}">
+    <template if:true={_hasError}>
         <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
             <span class="slds-assistive-text">error</span>
             <p>{_errorMessage}</p>
         </div>
     </template>
 
-    <template if:true="{_settings}">
+    <template if:true={_settings}>
         <div class="panel-container">
             <div class="panel-header">
                 <div class="slds-grid slds-grid_vertical-align-center">
@@ -28,91 +28,63 @@
             </div>
 
             <div class="panel-body">
-                <template if:true="{canEdit}">
+                <template if:true={canEdit}>
                     <div class="action-bar">
                         <lightning-button
                             label="New"
-                            onclick="
-                                {
-                                    handleNew;
-                                }
-                            "
+                            onclick={handleNew}
                             variant="neutral"
-                            disabled="{_isCreating}"
+                            disabled={_isCreating}
                         ></lightning-button>
                     </div>
                 </template>
 
-                <template if:true="{_isCreating}">
+                <template if:true={_isCreating}>
                     <div class="create-form">
                         <h3 class="section-subheader">New Trigger Handler</h3>
                         <div class="form-grid">
                             <lightning-input
                                 label="Object"
-                                value="{_newRecord.Object__c}"
-                                onchange="
-                                    {
-                                        handleNewObjectChange;
-                                    }
-                                "
+                                value={_newRecord.Object__c}
+                                onchange={handleNewObjectChange}
                                 class="text-input"
                                 required
                             ></lightning-input>
                             <lightning-input
                                 label="Class"
-                                value="{_newRecord.Class__c}"
-                                onchange="
-                                    {
-                                        handleNewClassChange;
-                                    }
-                                "
+                                value={_newRecord.Class__c}
+                                onchange={handleNewClassChange}
                                 class="text-input"
                                 required
                             ></lightning-input>
                             <lightning-input
                                 label="Load Order"
                                 type="number"
-                                value="{_newRecord.Load_Order__c}"
-                                onchange="
-                                    {
-                                        handleNewLoadOrderChange;
-                                    }
-                                "
+                                value={_newRecord.Load_Order__c}
+                                onchange={handleNewLoadOrderChange}
                                 class="number-input"
                                 required
                             ></lightning-input>
                             <lightning-input
                                 label="Trigger Action"
-                                value="{_newRecord.Trigger_Action__c}"
-                                onchange="
-                                    {
-                                        handleNewTriggerActionChange;
-                                    }
-                                "
+                                value={_newRecord.Trigger_Action__c}
+                                onchange={handleNewTriggerActionChange}
                                 class="text-input"
                                 placeholder="BeforeInsert;AfterInsert"
                             ></lightning-input>
                             <lightning-input
                                 label="Active"
                                 type="toggle"
-                                checked="{_newRecord.Active__c}"
-                                onchange="
-                                    {
-                                        handleNewActiveChange;
-                                    }
-                                "
+                                checked={_newRecord.Active__c}
+                                onchange={handleNewActiveChange}
                                 message-toggle-active="Yes"
                                 message-toggle-inactive="No"
                             ></lightning-input>
                             <lightning-input
                                 label="Asynchronous"
                                 type="toggle"
-                                checked="{_newRecord.Asynchronous__c}"
-                                onchange="
-                                    {
-                                        handleNewAsynchronousChange;
-                                    }
-                                "
+                                checked={_newRecord.Asynchronous__c}
+                                onchange={handleNewAsynchronousChange}
                                 message-toggle-active="Yes"
                                 message-toggle-inactive="No"
                             ></lightning-input>
@@ -120,39 +92,31 @@
                         <div class="form-actions">
                             <lightning-button
                                 label="Save"
-                                onclick="
-                                    {
-                                        handleSaveNew;
-                                    }
-                                "
+                                onclick={handleSaveNew}
                                 variant="brand"
-                                disabled="{_isSaving}"
+                                disabled={_isSaving}
                             ></lightning-button>
                             <lightning-button
                                 label="Cancel"
-                                onclick="
-                                    {
-                                        handleCancelNew;
-                                    }
-                                "
+                                onclick={handleCancelNew}
                                 variant="neutral"
-                                disabled="{_isSaving}"
+                                disabled={_isSaving}
                             ></lightning-button>
                         </div>
                     </div>
                 </template>
 
-                <template if:true="{hasRecords}">
+                <template if:true={hasRecords}>
                     <lightning-datatable
                         key-field="Id"
-                        data="{_settings}"
-                        columns="{columns}"
+                        data={_settings}
+                        columns={columns}
                         hide-checkbox-column
-                        onrowaction="{handleRowAction}"
+                        onrowaction={handleRowAction}
                     >
                     </lightning-datatable>
                 </template>
-                <template if:false="{hasRecords}">
+                <template if:false={hasRecords}>
                     <p class="empty-message">No trigger handlers defined.</p>
                 </template>
             </div>

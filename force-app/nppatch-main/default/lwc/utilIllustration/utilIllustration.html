@@ -1,6 +1,6 @@
 <template>
-    <div class="{fullClass}">
-        <template if:true="{isBase}">
+    <div class={fullClass}>
+        <template if:true={isBase}>
             <svg class="slds-illustration__svg" viewBox="0 0 466 297" aria-hidden="true">
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g transform="translate(-69.000000, -68.000000)">
@@ -462,7 +462,7 @@
                 </g>
             </svg>
         </template>
-        <template if:true="{isLakeMountain}">
+        <template if:true={isLakeMountain}>
             <svg class="slds-illustration__svg" viewBox="0 0 505 319" aria-hidden="true">
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g transform="translate(-48.000000, -60.000000)">
@@ -730,7 +730,7 @@
                 </g>
             </svg>
         </template>
-        <template if:true="{isGoingCamping}">
+        <template if:true={isGoingCamping}>
             <svg class="slds-illustration__svg" viewBox="0 0 483 218" aria-hidden="true">
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g transform="translate(-64.000000, -98.000000)">
@@ -1082,7 +1082,7 @@
                 </g>
             </svg>
         </template>
-        <template if:true="{isNoAccess}">
+        <template if:true={isNoAccess}>
             <svg class="slds-illustration__svg" viewBox="0 0 454 212" aria-hidden="true">
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g transform="translate(-70.000000, -95.000000)">
@@ -1464,7 +1464,7 @@
                 </g>
             </svg>
         </template>
-        <template if:true="{isPageNotAvailable}">
+        <template if:true={isPageNotAvailable}>
             <svg
                 class="slds-illustration__svg"
                 viewBox="0 0 470 229"
@@ -1828,9 +1828,9 @@
         </template>
 
         <div class="slds-text-longform">
-            <h2 if:true="{hasHeading}" class="slds-text-heading_medium">{heading}</h2>
-            <h3 if:true="{hasTitle}" class="slds-text-heading_medium">{title}</h3>
-            <template if:true="{shouldWrapText}">
+            <h2 if:true={hasHeading} class="slds-text-heading_medium">{heading}</h2>
+            <h3 if:true={hasTitle} class="slds-text-heading_medium">{title}</h3>
+            <template if:true={shouldWrapText}>
                 <lightning-layout>
                     <lightning-layout-item
                         size="12"
@@ -1840,16 +1840,16 @@
                         class="slds-align_absolute-center"
                     >
                         <lightning-formatted-rich-text
-                            if:true="{hasMessage}"
+                            if:true={hasMessage}
                             class="slds-align_absolute-center"
-                            value="{message}"
+                            value={message}
                         >
                         </lightning-formatted-rich-text>
                     </lightning-layout-item>
                 </lightning-layout>
             </template>
-            <template if:false="{shouldWrapText}">
-                <p if:true="{hasMessage}" class="slds-text-body_regular">{message}</p>
+            <template if:false={shouldWrapText}>
+                <p if:true={hasMessage} class="slds-text-body_regular">{message}</p>
             </template>
             <slot name="body"></slot>
         </div>

@@ -113,7 +113,7 @@ export default class GeTemplateBuilderSectionModalBody extends LightningElement 
 
     /**
      * @description Sets the selected section display option
-     * @param event
+     * @param {*} event
      */
     handleDisplayOptionChange(event) {
         this._selectedDisplayMode = event.detail.value;

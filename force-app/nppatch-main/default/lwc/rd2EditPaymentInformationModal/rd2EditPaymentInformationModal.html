@@ -7,31 +7,19 @@
             aria-modal="true"
             aria-describedby="modal-content-id-1"
             class="slds-modal slds-fade-in-open slds-modal_small"
-            onkeyup="
-                {
-                    handleKeyUp;
-                }
-            "
+            onkeyup={handleKeyUp}
         >
             <div class="slds-modal__container">
                 <header class="slds-modal__header slds-clearfix">
                     <lightning-button-icon
                         class="slds-modal__close"
-                        title="{labels.closeButtonLabel}"
+                        title={labels.closeButtonLabel}
                         icon-name="utility:close"
                         icon-class="slds-button_icon-inverse"
-                        onclick="
-                            {
-                                handleClose;
-                            }
-                        "
-                        onkeydown="
-                            {
-                                handleClosedButtonTrapFocus;
-                            }
-                        "
+                        onclick={handleClose}
+                        onkeydown={handleClosedButtonTrapFocus}
                         data-id="closeButton"
-                        disabled="{isSaveButtonDisabled}"
+                        disabled={isSaveButtonDisabled}
                     >
                     </lightning-button-icon>
                     <h2
@@ -46,12 +34,12 @@
                     class="slds-modal__content slds-p-top_none slds-p-horizontal_medium slds-p-bottom_medium"
                     id="modal-content-id-1"
                 >
-                    <template if:true="{isSaving}">
+                    <template if:true={isSaving}>
                         <div class="slds-grid slds-grid_align-center">
                             <div class="slds-is-relative slds-size_1-of-1">
                                 <lightning-spinner
-                                    alternative-text="{labels.spinnerAltText}"
-                                    data-text="{loadingText}"
+                                    alternative-text={labels.spinnerAltText}
+                                    data-text={loadingText}
                                     class="loading-spinner"
                                 >
                                 </lightning-spinner>
@@ -60,9 +48,9 @@
                         </div>
                     </template>
                     <div class="error-container">
-                        <template if:true="{error.detail}">
+                        <template if:true={error.detail}>
                             <c-util-page-level-message
-                                title="{error.header}"
+                                title={error.header}
                                 variant="error"
                                 icon-name="utility:error"
                                 icon-size="x-small"
@@ -74,21 +62,17 @@
                                     slot="body"
                                     class="slds-p-horizontal_medium slds-p-vertical_xx-small slds-text-color_error"
                                 >
-                                    <lightning-formatted-text value="{error.detail}"></lightning-formatted-text>
+                                    <lightning-formatted-text value={error.detail}></lightning-formatted-text>
                                 </p>
                             </c-util-page-level-message>
                         </template>
                     </div>
-                    <div class="{paymentEditForm}">
+                    <div class={paymentEditForm}>
                         <lightning-radio-group
                             label="Payment Method"
-                            options="{paymentMethodOptions}"
-                            onchange="
-                                {
-                                    handlePaymentMethodChange;
-                                }
-                            "
-                            value="{paymentMethod}"
+                            options={paymentMethodOptions}
+                            onchange={handlePaymentMethodChange}
+                            value={paymentMethod}
                             data-id="paymentMethod"
                         >
                         </lightning-radio-group>
@@ -98,34 +82,22 @@
                 <footer class="slds-modal__footer slds-clearfix">
                     <div class="slds-float_right">
                         <lightning-button
-                            label="{labels.cancelButtonLabel}"
-                            title="{labels.cancelButtonLabel}"
+                            label={labels.cancelButtonLabel}
+                            title={labels.cancelButtonLabel}
                             variant="neutral"
                             class="slds-m-right_small"
-                            onclick="
-                                {
-                                    handleClose;
-                                }
-                            "
-                            disabled="{isSaveButtonDisabled}"
+                            onclick={handleClose}
+                            disabled={isSaveButtonDisabled}
                             data-id="cancelButton"
                         >
                         </lightning-button>
                         <lightning-button
-                            label="{labels.saveButtonLabel}"
-                            title="{labels.saveButtonLabel}"
-                            disabled="{isSaveButtonDisabled}"
+                            label={labels.saveButtonLabel}
+                            title={labels.saveButtonLabel}
+                            disabled={isSaveButtonDisabled}
                             variant="brand"
-                            onclick="
-                                {
-                                    handleProcessCommitment;
-                                }
-                            "
-                            onkeydown="
-                                {
-                                    handleSaveButtonTrapFocus;
-                                }
-                            "
+                            onclick={handleProcessCommitment}
+                            onkeydown={handleSaveButtonTrapFocus}
                             data-id="submitButton"
                         >
                         </lightning-button>

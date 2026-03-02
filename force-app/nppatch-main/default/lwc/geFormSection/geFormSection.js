@@ -28,8 +28,8 @@ export default class GeFormSection extends LightningElement {
 
     /**
      * Sets custom validity on fields inside fieldsArray
-     * @param fieldsArray
-     * @param errorMessage
+     * @param {*} fieldsArray
+     * @param {*} errorMessage
      */
     @api
     setCustomValidityOnFields(fieldsArray, errorMessage) {

@@ -263,7 +263,7 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
 
     /**
      * @description Automatically Show/Hide the NumberOfPlannedInstallments field based on the Recurring Type value
-     * @param event
+     * @param {*} event
      */
     handleRecurringTypeChange(event) {
         const recurringType = event.target.value;
@@ -274,7 +274,7 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
     /**
      * @description When the custom Recurring Period picklist is updated change what other fields are visible on the
      * page: Monthly - just day of month; Advanced: Show the full period picklist and other fields.
-     * @param event
+     * @param {*} event
      */
     handleRecurringPeriodChange(event) {
         const recurringPeriod = event.target.value;
@@ -284,7 +284,7 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
     /**
      * @description When the Recurring Period picklist is Advanced, this picklist is visible and allows the User to select
      * any of the supported (and active) installment periods. If Monthly is selected, enable the DayOfMonth field visibility.
-     * @param event
+     * @param {*} event
      */
     handleAdvancedPeriodChange(event) {
         this.toggleLastDayFieldOnExperienceSite(event);
@@ -294,7 +294,7 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
 
     /**
      * @description On Experience Sites, based on the Recurrent Donation data it will show/hide Last Date field.
-     * @param event
+     * @param {*} event
      */
     toggleLastDayFieldOnExperienceSite(event) {
         if (this.isExperienceSite) {
@@ -315,7 +315,7 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
 
     /**
      * @description When the frequency changes, we need to check if the Annual Value changed
-     * @param event
+     * @param {*} event
      */
     handleRecurringFrequencyChange(event) {
         this.dispatchEvent(new CustomEvent("frequencychange", { detail: event.target.value }));
@@ -323,7 +323,7 @@ export default class rd2EntryFormScheduleSection extends LightningElement {
 
     /**
      * @description When the installments change, we need to check if the Annual Value changed
-     * @param event
+     * @param {*} event
      */
     handlePlannedInstallmentsChange(event) {
         this.dispatchEvent(new CustomEvent("installmentschange", { detail: event.target.value }));

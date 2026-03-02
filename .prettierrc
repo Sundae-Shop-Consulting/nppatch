@@ -7,6 +7,12 @@
     "plugins": ["prettier-plugin-apex"],
     "overrides": [
         {
+            "files": "*.html",
+            "options": {
+                "parser": "lwc"
+            }
+        },
+        {
             "files": "*.apex",
             "options": {
                 "parser": "apex"

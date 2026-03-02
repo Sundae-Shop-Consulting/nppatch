@@ -1,6 +1,6 @@
 <template>
-    <template if:false="{giftInViewHasSchedule}">
-        <template if:true="{hasPendingDonations}">
+    <template if:false={giftInViewHasSchedule}>
+        <template if:true={hasPendingDonations}>
             <lightning-layout vertical-align="center" multiple-rows="true">
                 <lightning-layout-item
                     size="12"
@@ -11,44 +11,32 @@
                     </div>
                     <div class="slds-media__body">
                         {reviewDonationsMessage}
-                        <template if:true="{showDonorLink}">
+                        <template if:true={showDonorLink}>
                             <a
                                 class="slds-m-left_xx-small"
-                                onclick="
-                                    {
-                                        navigateToRecord;
-                                    }
-                                "
-                                data-qa-locator="{qaLocatorSelectedDonation}"
+                                onclick={navigateToRecord}
+                                data-qa-locator={qaLocatorSelectedDonation}
                             >
                                 {selectedDonation.Name}
                             </a>
                         </template>
-                        <template if:false="{hasSelectedDonation}">
+                        <template if:false={hasSelectedDonation}>
                             <span>
                                 <a
                                     class="slds-m-left_xx-small"
-                                    onclick="
-                                        {
-                                            openReviewDonationsModal;
-                                        }
-                                    "
-                                    data-qa-locator="{qaLocatorReviewDonations}"
+                                    onclick={openReviewDonationsModal}
+                                    data-qa-locator={qaLocatorReviewDonations}
                                 >
                                     {CUSTOM_LABELS.geButtonMatchingReviewDonations}
                                 </a>
                             </span>
                         </template>
-                        <template if:true="{hasSelectedDonation}">
+                        <template if:true={hasSelectedDonation}>
                             <div class="slds-p-top_small">
                                 <a
                                     class=""
-                                    onclick="
-                                        {
-                                            openReviewDonationsModal;
-                                        }
-                                    "
-                                    data-qa-locator="{qaLocatorDifferentSelection}"
+                                    onclick={openReviewDonationsModal}
+                                    data-qa-locator={qaLocatorDifferentSelection}
                                 >
                                     {CUSTOM_LABELS.geButtonMatchingUpdateDonationSelection}
                                 </a>

@@ -1,9 +1,9 @@
 <template>
-    <div class="slds-card slds-card_extension" if:false="{isAccessible}">
+    <div class="slds-card slds-card_extension" if:false={isAccessible}>
         <div class="slds-p-top_x-large">
             <c-util-illustration
-                title="{CUSTOM_LABELS.geErrorPageLevelAdvancedMappingHeader}"
-                message="{CUSTOM_LABELS.geErrorPageLevelAdvancedMappingBody}"
+                title={CUSTOM_LABELS.geErrorPageLevelAdvancedMappingHeader}
+                message={CUSTOM_LABELS.geErrorPageLevelAdvancedMappingBody}
                 size="large"
                 variant="lake-mountain"
             >
@@ -11,13 +11,13 @@
         </div>
     </div>
 
-    <template if:true="{isAccessible}">
+    <template if:true={isAccessible}>
         <lightning-layout multiple-rows="true" class="ge-form-container">
-            <template if:true="{isSingleGiftEntry}">
+            <template if:true={isSingleGiftEntry}>
                 <lightning-layout-item size="12">
                     <c-util-page-header
-                        pretext="{CUSTOM_LABELS.geHeaderSingleGiftEntry}"
-                        title="{title}"
+                        pretext={CUSTOM_LABELS.geHeaderSingleGiftEntry}
+                        title={title}
                         icon-name="standard:contract"
                         icon-size="medium"
                     >
@@ -25,11 +25,11 @@
                 </lightning-layout-item>
             </template>
 
-            <template if:true="{hasPurchaseCallTimedout}">
+            <template if:true={hasPurchaseCallTimedout}>
                 <lightning-layout-item size="12" class="slds-card slds-p-around_small">
                     <div class="illustration-container fade-in">
                         <c-util-illustration
-                            title="{CUSTOM_LABELS.commonCriticalError}"
+                            title={CUSTOM_LABELS.commonCriticalError}
                             size="large"
                             variant="going-camping"
                         >
@@ -50,27 +50,27 @@
                 </lightning-layout-item>
             </template>
 
-            <template if:false="{hasPurchaseCallTimedout}">
-                <template if:false="{isPermissionError}">
+            <template if:false={hasPurchaseCallTimedout}>
+                <template if:false={isPermissionError}>
                     <lightning-layout-item size="12">
                         <c-ge-review-donations
-                            ontogglemodal="{toggleModal}"
-                            onchangeselecteddonation="{handleChangeSelectedDonation}"
-                            donor-id="{donorId}"
-                            selected-donation="{selectedDonationCopyForReviewDonationsModal}"
-                            gift-in-view="{giftInView}"
+                            ontogglemodal={toggleModal}
+                            onchangeselecteddonation={handleChangeSelectedDonation}
+                            donor-id={donorId}
+                            selected-donation={selectedDonationCopyForReviewDonationsModal}
+                            gift-in-view={giftInView}
                         >
                         </c-ge-review-donations>
                     </lightning-layout-item>
                 </template>
 
-                <template if:true="{hasSchedule}">
+                <template if:true={hasSchedule}>
                     <lightning-layout-item size="12">
                         <c-ge-recurring-gift-info
                             data-id="recurringGiftInfo"
-                            gift-in-view="{giftInView}"
-                            oneditschedule="{handleEditSchedule}"
-                            onremoveschedule="{handleRemoveSchedule}"
+                            gift-in-view={giftInView}
+                            oneditschedule={handleEditSchedule}
+                            onremoveschedule={handleRemoveSchedule}
                         >
                             >
                         </c-ge-recurring-gift-info>
@@ -78,30 +78,23 @@
                 </template>
 
                 <lightning-layout-item size="12" class="slds-card slds-p-around_small">
-                    <div if:true="{showSpinner}" class="spinner-container">
-                        <lightning-spinner
-                            alternative-text="{CUSTOM_LABELS.messageLoading}"
-                            variant="brand"
-                            size="large"
-                        >
+                    <div if:true={showSpinner} class="spinner-container">
+                        <lightning-spinner alternative-text={CUSTOM_LABELS.messageLoading} variant="brand" size="large">
                         </lightning-spinner>
                         <p class="loading-text slds-text-heading_medium">{loadingText}</p>
                     </div>
-                    <template if:true="{hasPageLevelError}">
-                        <c-util-page-level-message variant="error" title="{CUSTOM_LABELS.commonError}">
+                    <template if:true={hasPageLevelError}>
+                        <c-util-page-level-message variant="error" title={CUSTOM_LABELS.commonError}>
                             <ul slot="body" class="slds-list_dotted slds-text-color_error">
-                                <template for:each="{pageLevelErrorMessageList}" for:item="errorMessageWrapper">
-                                    <li key="{errorMessageWrapper.index}">
+                                <template for:each={pageLevelErrorMessageList} for:item="errorMessageWrapper">
+                                    <li key={errorMessageWrapper.index}>
                                         <p>{errorMessageWrapper.errorMessage}</p>
                                         <ul
-                                            if:true="{errorMessageWrapper.multilineMessages}"
+                                            if:true={errorMessageWrapper.multilineMessages}
                                             class="slds-list_dotted slds-text-color_error"
                                         >
-                                            <template
-                                                for:each="{errorMessageWrapper.multilineMessages}"
-                                                for:item="error"
-                                            >
-                                                <li key="{error.index}">{error.message}</li>
+                                            <template for:each={errorMessageWrapper.multilineMessages} for:item="error">
+                                                <li key={error.index}>{error.message}</li>
                                             </template>
                                         </ul>
                                     </li>
@@ -109,31 +102,31 @@
                             </ul>
                         </c-util-page-level-message>
                     </template>
-                    <template if:true="{isPermissionError}">
+                    <template if:true={isPermissionError}>
                         <div class="illustration-container">
                             <c-util-illustration
-                                title="{permissionErrorTitle}"
-                                message="{permissionErrorMessage}"
+                                title={permissionErrorTitle}
+                                message={permissionErrorMessage}
                                 size="large"
                                 variant="lake-mountain"
                             >
                             </c-util-illustration>
                         </div>
                     </template>
-                    <template if:true="{isSingleGiftEntry}">
-                        <template if:false="{isPermissionError}" for:each="{sections}" for:item="section">
+                    <template if:true={isSingleGiftEntry}>
+                        <template if:false={isPermissionError} for:each={sections} for:item="section">
                             <c-ge-form-section
-                                key="{section.id}"
-                                section="{section}"
-                                onregisterpaymentwidget="{handleRegisterPaymentWidget}"
-                                widget-config="{widgetConfig}"
-                                form-state="{formState}"
-                                gift-in-view="{giftInView}"
+                                key={section.id}
+                                section={section}
+                                onregisterpaymentwidget={handleRegisterPaymentWidget}
+                                widget-config={widgetConfig}
+                                form-state={formState}
+                                gift-in-view={giftInView}
                             >
                             </c-ge-form-section>
                         </template>
-                        <lightning-layout multiple-rows="true" horizontal-align="center" if:false="{isPermissionError}">
-                            <lightning-layout-item size="12" if:true="{isWidgetEnabled}">
+                        <lightning-layout multiple-rows="true" horizontal-align="center" if:false={isPermissionError}>
+                            <lightning-layout-item size="12" if:true={isWidgetEnabled}>
                                 <p class="slds-align_absolute-center slds-p-top_small">
                                     {CUSTOM_LABELS.geTextPaymentsSaveNotice}
                                 </p>
@@ -141,38 +134,30 @@
                             <lightning-layout-item size="12">
                                 <div class="slds-align_absolute-center slds-p-vertical_small">
                                     <lightning-button
-                                        label="{cancelButtonText}"
-                                        title="{cancelButtonText}"
-                                        onclick="
-                                            {
-                                                handleCancel;
-                                            }
-                                        "
+                                        label={cancelButtonText}
+                                        title={cancelButtonText}
+                                        onclick={handleCancel}
                                         class="slds-m-left_x-small"
-                                        data-qa-locator="{qaLocatorCancelButton}"
+                                        data-qa-locator={qaLocatorCancelButton}
                                     >
                                     </lightning-button>
                                     <lightning-button
                                         variant="brand"
-                                        label="{saveActionLabel}"
-                                        title="{saveActionLabel}"
-                                        onclick="
-                                            {
-                                                handleSave;
-                                            }
-                                        "
+                                        label={saveActionLabel}
+                                        title={saveActionLabel}
+                                        onclick={handleSave}
                                         class="slds-m-left_x-small"
-                                        data-qa-locator="{qaLocatorSaveButton}"
+                                        data-qa-locator={qaLocatorSaveButton}
                                     >
                                     </lightning-button>
                                 </div>
                             </lightning-layout-item>
                         </lightning-layout>
                     </template>
-                    <template if:false="{isSingleGiftEntry}">
+                    <template if:false={isSingleGiftEntry}>
                         <lightning-layout>
                             <lightning-layout-item size="10">
-                                <template if:true="{shouldShowElevateTransactionWarning}">
+                                <template if:true={shouldShowElevateTransactionWarning}>
                                     <div class="slds-notify_alert payment-warn" role="alert">
                                         <span class="slds-assistive-text">{CUSTOM_LABELS.commonWarning}</span>
                                         <span class="slds-icon_container slds-m-right_x-small">
@@ -186,18 +171,14 @@
                                 </template>
                             </lightning-layout-item>
                             <lightning-layout-item class="slds-text-align_right" size="2">
-                                <template if:false="{hasSchedule}">
+                                <template if:false={hasSchedule}>
                                     <lightning-button
-                                        if:true="{isRecurringGiftsEnabled}"
+                                        if:true={isRecurringGiftsEnabled}
                                         icon-name="utility:refresh"
-                                        label="{CUSTOM_LABELS.geMakeRecurring}"
+                                        label={CUSTOM_LABELS.geMakeRecurring}
                                         data-id="recurringButton"
-                                        onclick="
-                                            {
-                                                handleMakeGiftRecurring;
-                                            }
-                                        "
-                                        disabled="{isMakeRecurringButtonDisabled}"
+                                        onclick={handleMakeGiftRecurring}
+                                        disabled={isMakeRecurringButtonDisabled}
                                     >
                                     </lightning-button>
                                 </template>
@@ -205,27 +186,27 @@
                         </lightning-layout>
                         <c-util-expandable-section
                             class="slds-card slds-card_extension slds-m-bottom_large"
-                            id="{expandableContainerId}"
-                            is-collapsed="{isFormCollapsed}"
-                            alternative-text="{altTextLabel}"
-                            label="{CUSTOM_LABELS.geHeaderFormFieldsDefaultSectionName}"
+                            id={expandableContainerId}
+                            is-collapsed={isFormCollapsed}
+                            alternative-text={altTextLabel}
+                            label={CUSTOM_LABELS.geHeaderFormFieldsDefaultSectionName}
                             body-class="slds-m-left_medium"
-                            onsectioncollapse="{handleCollapse}"
-                            should-inform-parent="{_shouldInformParent}"
+                            onsectioncollapse={handleCollapse}
+                            should-inform-parent={_shouldInformParent}
                         >
-                            <template if:false="{isPermissionError}" for:each="{sections}" for:item="section">
+                            <template if:false={isPermissionError} for:each={sections} for:item="section">
                                 <c-ge-form-section
-                                    key="{section.id}"
-                                    section="{section}"
-                                    onregisterpaymentwidget="{handleRegisterPaymentWidget}"
-                                    widget-config="{widgetConfig}"
-                                    form-state="{formState}"
-                                    gift-in-view="{giftInView}"
+                                    key={section.id}
+                                    section={section}
+                                    onregisterpaymentwidget={handleRegisterPaymentWidget}
+                                    widget-config={widgetConfig}
+                                    form-state={formState}
+                                    gift-in-view={giftInView}
                                 >
                                 </c-ge-form-section>
                             </template>
 
-                            <template if:true="{showMismatchedCurrencyWarning}">
+                            <template if:true={showMismatchedCurrencyWarning}>
                                 <div class="slds-notify_alert payment-warn" role="alert">
                                     <span class="slds-assistive-text">{CUSTOM_LABELS.commonWarning}</span>
                                     <span class="slds-icon_container slds-m-right_x-small">
@@ -239,9 +220,9 @@
                             <lightning-layout
                                 multiple-rows="true"
                                 horizontal-align="center"
-                                if:false="{isPermissionError}"
+                                if:false={isPermissionError}
                             >
-                                <lightning-layout-item size="12" if:true="{isWidgetEnabled}">
+                                <lightning-layout-item size="12" if:true={isWidgetEnabled}>
                                     <p class="slds-align_absolute-center slds-p-top_small">
                                         {CUSTOM_LABELS.geTextPaymentsSaveNotice}
                                     </p>
@@ -249,29 +230,21 @@
                                 <lightning-layout-item size="12">
                                     <div class="slds-align_absolute-center slds-p-vertical_small">
                                         <lightning-button
-                                            label="{cancelButtonText}"
-                                            title="{cancelButtonText}"
-                                            onclick="
-                                                {
-                                                    handleCancel;
-                                                }
-                                            "
+                                            label={cancelButtonText}
+                                            title={cancelButtonText}
+                                            onclick={handleCancel}
                                             class="slds-m-left_x-small"
-                                            data-qa-locator="{qaLocatorCancelButton}"
+                                            data-qa-locator={qaLocatorCancelButton}
                                         >
                                         </lightning-button>
                                         <lightning-button
                                             variant="brand"
-                                            label="{saveActionLabel}"
-                                            title="{saveActionLabel}"
-                                            onclick="
-                                                {
-                                                    handleSave;
-                                                }
-                                            "
+                                            label={saveActionLabel}
+                                            title={saveActionLabel}
+                                            onclick={handleSave}
                                             class="slds-m-left_x-small"
-                                            disabled="{isUpdateActionDisabled}"
-                                            data-qa-locator="{qaLocatorSaveButton}"
+                                            disabled={isUpdateActionDisabled}
+                                            data-qa-locator={qaLocatorSaveButton}
                                             data-id="bgeSaveButton"
                                         >
                                         </lightning-button>

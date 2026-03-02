@@ -1,15 +1,15 @@
 <template>
     <c-util-card
-        title="{opportunityComputedName}"
+        title={opportunityComputedName}
         icon-name="standard:opportunity"
         icon-size="small"
-        css-class="{computedCardCssClass}"
+        css-class={computedCardCssClass}
     >
-        <template if:true="{isLoading}">
-            <lightning-spinner alternative-text="{CUSTOM_LABELS.geAssistiveSpinner}"></lightning-spinner>
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text={CUSTOM_LABELS.geAssistiveSpinner}></lightning-spinner>
         </template>
 
-        <template if:false="{isLoading}">
+        <template if:false={isLoading}>
             <!-- START OPPORTUNITY RECORD CONTENT -->
             <lightning-layout multiple-rows="true">
                 <lightning-layout-item
@@ -113,11 +113,11 @@
             <!-- END OPPORTUNITY RECORD CONTENT -->
 
             <!-- START PAYMENT CARDS CONTENT -->
-            <template if:true="{hasPayments}">
+            <template if:true={hasPayments}>
                 <lightning-layout multiple-rows="true">
-                    <template iterator:it="{opportunityPayments}">
+                    <template iterator:it={opportunityPayments}>
                         <lightning-layout-item
-                            key="{it.value.Id}"
+                            key={it.value.Id}
                             padding="around-small"
                             size="12"
                             small-device-size="12"
@@ -125,9 +125,9 @@
                             large-device-size="3"
                         >
                             <c-ge-donation-matching-payment-card
-                                payment="{it.value}"
-                                selected-donation-id="{selectedDonationId}"
-                                onupdatepayment="{handleUpdatePayment}"
+                                payment={it.value}
+                                selected-donation-id={selectedDonationId}
+                                onupdatepayment={handleUpdatePayment}
                             >
                             </c-ge-donation-matching-payment-card>
                         </lightning-layout-item>
@@ -135,7 +135,7 @@
                 </lightning-layout>
             </template>
 
-            <template if:false="{hasPayments}">
+            <template if:false={hasPayments}>
                 <p class="slds-text-body_regular slds-text-align_center slds-p-vertical_large">
                     {CUSTOM_LABELS.geBodyMatchingNoPayments}
                 </p>
@@ -146,27 +146,19 @@
             <button
                 slot="footer"
                 class="slds-button slds-button_neutral slds-button_extension slds-border_extension-bottom"
-                onclick="
-                    {
-                        handleNewPayment;
-                    }
-                "
-                data-id="{opportunity.Name}"
-                data-qa-locator="{qaLocatorAddNewPayment}"
+                onclick={handleNewPayment}
+                data-id={opportunity.Name}
+                data-qa-locator={qaLocatorAddNewPayment}
             >
                 {CUSTOM_LABELS.geButtonMatchingNewPayment}
             </button>
             <button
                 slot="footer"
                 class="slds-button slds-button_neutral slds-button_extension bottom-button"
-                onclick="
-                    {
-                        handleUpdateOpportunity;
-                    }
-                "
-                data-id="{opportunity.Name}"
-                data-qa-locator="{qaLocatorUpdateOpportunity}"
-                disabled="{isUpdateOpportunityDisabled}"
+                onclick={handleUpdateOpportunity}
+                data-id={opportunity.Name}
+                data-qa-locator={qaLocatorUpdateOpportunity}
+                disabled={isUpdateOpportunityDisabled}
             >
                 {CUSTOM_LABELS.geButtonMatchingUpdateOpportunity}
             </button>

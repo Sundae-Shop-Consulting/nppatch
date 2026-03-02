@@ -311,7 +311,7 @@ const labelMap = {
 
 /**
  *  @description This function getLabelValue the string using labelMap for that
- *  @param string Name to label to getLabelValue
+ *  @param {*} string Name to label to getLabelValue
  *  @return string
  */
 export default function getLabelValue(label) {
