@@ -259,7 +259,7 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
 
     /***
     * @description Handles error construction and its display
-    * @param error: Error Event
+    * @param {*} error: Error Event
     */
     handleError(error) {
         this.error = (error && error.detail)

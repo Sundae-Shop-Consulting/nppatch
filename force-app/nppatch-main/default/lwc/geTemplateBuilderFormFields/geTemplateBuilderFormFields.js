@@ -634,7 +634,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
 
     /**
      * Expand/collapse the header and all sub-sections for advanced form fields
-     * @param event
+     * @param {*} event
      */
     handleToggleAdvancedSection(event) {
         const collapsed = this.toggleExpandableSection(this.LOCATORS.ADVANCED_FIELDS_SECTION_ID);
@@ -647,7 +647,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
 
     /**
      * Expand/collapse the bundles section, no sub-sections currently present for this section
-     * @param event
+     * @param {*} event
      */
     handleToggleBundlesSection(event) {
         this.toggleExpandableSection(this.LOCATORS.FIELD_BUNDLES_SECTION_ID);
@@ -655,7 +655,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
 
     /**
      * Expand/collapse the header and all sub-section for basic form fields
-     * @param event
+     * @param {*} event
      */
     handleToggleBasicSection(event) {
         const collapsed = this.toggleExpandableSection(this.LOCATORS.FORM_FIELDS_SECTION_ID);
@@ -725,7 +725,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
 
     /**
      * Append help text to a field mapping, if it exists.
-     * @param fieldMapping
+     * @param {*} fieldMapping
      * @return {{helpText: *}|*}
      */
     mapFieldHelpText = (fieldMapping) => {

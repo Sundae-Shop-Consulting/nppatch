@@ -496,7 +496,7 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
     /***************************************************************************
      * @description Strips namespace prefix from the Data Import Batch donation matching
      * rule fields if in a namespaced context
-     * @param dataImportBatch
+     * @param {*} dataImportBatch
      * @returns {object}
      */
     stripNamespaceFromDonationMatchingRuleFields (dataImportBatch) {

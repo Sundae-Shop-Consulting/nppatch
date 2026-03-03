@@ -229,11 +229,11 @@ const handleError = (error, fireShowToast = true, showToastMode, returnAsArray) 
 };
 
 /**
- * @param string       If replacements is an Array, reference replacements by index,
+ * @param {*} string       If replacements is an Array, reference replacements by index,
  *                     e.g. {0}, {1}, similar to Apex's String.format(...).
  *                     Else if replacements is an Object, reference replacements
  *                     via key, e.g. {firstName}.
- * @param replacements Typically, an Array or Object
+ * @param {*} replacements Typically, an Array or Object
  */
 const format = (string, replacements) => {
     let formattedString = isNull(string) ? "" : string;

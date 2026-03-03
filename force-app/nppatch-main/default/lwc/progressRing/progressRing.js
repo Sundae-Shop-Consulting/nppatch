@@ -24,7 +24,7 @@ export default class ProgressRing extends LightningElement {
 
     /***
     * @description Sets current progress value and determines the "d" parameter for the progress ring
-    * @param value Current progress value
+    * @param {*} value Current progress value
     */
     set valueNow(value) {
         this._valueNow = value === undefined || value === null ? 0 : value;
@@ -47,7 +47,7 @@ export default class ProgressRing extends LightningElement {
 
     /***
     * @description Sets progress status properties
-    * @param value Progress status: active, complete, warning, error, or any other value
+    * @param {*} value Progress status: active, complete, warning, error, or any other value
     */
     set status(value) {
         if (this.ringSize === undefined || this.ringSize === null) {
