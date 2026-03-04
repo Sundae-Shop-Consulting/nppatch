@@ -4375,11 +4375,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <recordTypeVisibilities>
-        <recordType>Account.%%%NAMESPACE%%%HH_Account</recordType>
+        <recordType>Account.HH_Account</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <recordType>Account.%%%NAMESPACE%%%Organization</recordType>
+        <recordType>Account.Organization</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
