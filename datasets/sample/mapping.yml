@@ -101,6 +101,7 @@ Insert Account:
   fields:
   - Name
   - RecordTypeId
+  - SYSTEM_AccountType__c
   - Grantmaker__c
   - Matching_Gift_Company__c
   - Matching_Gift_Percent__c

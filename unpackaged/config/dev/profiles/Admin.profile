@@ -7,14 +7,14 @@
     </applicationVisibilities>
     <layoutAssignments>
         <layout>Account-Household Layout</layout>
-        <recordType>Account.%%%NAMESPACE%%%HH_Account</recordType>
+        <recordType>Account.HH_Account</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Account-Organization Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Account-Organization Layout</layout>
-        <recordType>Account.%%%NAMESPACE%%%Organization</recordType>
+        <recordType>Account.Organization</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Campaign-NPPatch Campaign Layout</layout>
