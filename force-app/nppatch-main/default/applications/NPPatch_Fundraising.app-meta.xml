@@ -35,7 +35,6 @@
     <tabs>Contact_Merge</tabs>
     <tabs>NPPatch_Bulk_Processes</tabs>
     <tabs>NPPatch_Error_Log</tabs>
-    <tabs>NPPatch_Health_Check</tabs>
     <tabs>NPPatch_Settings</tabs>
     <tabs>NPPatch_Resources</tabs>
     <uiType>Lightning</uiType>

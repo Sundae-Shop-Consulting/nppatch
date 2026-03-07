@@ -25,9 +25,9 @@
     <setupExperience>all</setupExperience>
     <tabs>standard-home</tabs>
     <tabs>NPPatch_Settings</tabs>
-    <tabs>NPPatch_Resources</tabs>
     <tabs>Contact_Merge</tabs>
     <tabs>DataImportBatch__c</tabs>
+    <tabs>NPPatch_Health_Check</tabs>
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
     <uiType>Lightning</uiType>
