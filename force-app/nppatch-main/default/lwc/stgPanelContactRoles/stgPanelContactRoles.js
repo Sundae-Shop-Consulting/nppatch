@@ -103,6 +103,10 @@ export default class StgPanelContactRoles extends LightningElement {
         return this._conSettings && this._hhSettings && !this._hasError;
     }
 
+    get isHHRolesDisabled() {
+        return !this._workingCopyHH?.Household_Contact_Roles_On__c;
+    }
+
     get ocrRoleOptionsWithNone() {
         return [{ label: this.labels.none, value: "" }, ...this._ocrRoleOptions];
     }

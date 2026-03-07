@@ -18,13 +18,15 @@
             field-level-help={labels.helpNameFormat}
             value={nameFormatComboValueEdit}
             options={nameFormatOptions}
-            onchange={handleNameFormatChange}>
+            onchange={handleNameFormatChange}
+            disabled={isNamingDisabled}>
         </lightning-combobox>
         <template lwc:if={isNameFormatOtherEdit}>
             <div>
                 <lightning-input type="text" label={labels.customNameFormat}
                     value={_workingCopyNaming.Household_Name_Format__c}
-                    onchange={handleCustomNameFormatChange}>
+                    onchange={handleCustomNameFormatChange}
+                    disabled={isNamingDisabled}>
                 </lightning-input>
             </div>
         </template>
@@ -34,13 +36,15 @@
             field-level-help={labels.helpFormalGreeting}
             value={formalGreetingComboValueEdit}
             options={formalGreetingOptions}
-            onchange={handleFormalGreetingChange}>
+            onchange={handleFormalGreetingChange}
+            disabled={isNamingDisabled}>
         </lightning-combobox>
         <template lwc:if={isFormalGreetingOtherEdit}>
             <div>
                 <lightning-input type="text" label={labels.customFormalGreeting}
                     value={_workingCopyNaming.Formal_Greeting_Format__c}
-                    onchange={handleCustomFormalGreetingChange}>
+                    onchange={handleCustomFormalGreetingChange}
+                    disabled={isNamingDisabled}>
                 </lightning-input>
             </div>
         </template>
@@ -50,13 +54,15 @@
             field-level-help={labels.helpInformalGreeting}
             value={informalGreetingComboValueEdit}
             options={informalGreetingOptions}
-            onchange={handleInformalGreetingChange}>
+            onchange={handleInformalGreetingChange}
+            disabled={isNamingDisabled}>
         </lightning-combobox>
         <template lwc:if={isInformalGreetingOtherEdit}>
             <div>
                 <lightning-input type="text" label={labels.customInformalGreeting}
                     value={_workingCopyNaming.Informal_Greeting_Format__c}
-                    onchange={handleCustomInformalGreetingChange}>
+                    onchange={handleCustomInformalGreetingChange}
+                    disabled={isNamingDisabled}>
                 </lightning-input>
             </div>
         </template>
@@ -65,28 +71,32 @@
         <lightning-input type="text" label={labels.nameConnector}
             field-level-help={labels.helpNameConnector}
             value={_workingCopyNaming.Name_Connector__c}
-            onchange={handleNameConnectorChange}>
+            onchange={handleNameConnectorChange}
+            disabled={isNamingDisabled}>
         </lightning-input>
 
         <!-- Name Overrun (text) -->
         <lightning-input type="text" label={labels.nameOverrun}
             field-level-help={labels.helpNameOverrun}
             value={_workingCopyNaming.Name_Overrun__c}
-            onchange={handleNameOverrunChange}>
+            onchange={handleNameOverrunChange}
+            disabled={isNamingDisabled}>
         </lightning-input>
 
         <!-- Contact Overrun Count (number) -->
         <lightning-input type="number" label={labels.contactOverrunCount}
             field-level-help={labels.helpContactOverrunCount}
             value={_workingCopyNaming.Contact_Overrun_Count__c}
-            onchange={handleContactOverrunCountChange}>
+            onchange={handleContactOverrunCountChange}
+            disabled={isNamingDisabled}>
         </lightning-input>
 
         <!-- Implementing Class (text) -->
         <lightning-input type="text" label={labels.implementingClass}
             field-level-help={labels.helpImplementingClass}
             value={_workingCopyNaming.Implementing_Class__c}
-            onchange={handleImplementingClassChange}>
+            onchange={handleImplementingClassChange}
+            disabled={isNamingDisabled}>
         </lightning-input>
 
         <!-- Section 2: Household Object -->

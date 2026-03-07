@@ -45,6 +45,10 @@ export default class StgPanelCampaignMembers extends LightningElement {
         return !this._settings && !this._hasError;
     }
 
+    get isAutoManagementDisabled() {
+        return !this._workingCopy?.Automatic_Campaign_Member_Management__c;
+    }
+
     handleAutoChange(event) {
         this._workingCopy.Automatic_Campaign_Member_Management__c = event.detail.checked;
     }

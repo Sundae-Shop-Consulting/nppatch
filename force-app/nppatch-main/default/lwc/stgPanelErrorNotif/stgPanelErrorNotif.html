@@ -22,7 +22,8 @@
         <lightning-input type="text" label={labels.notifyTo}
             field-level-help={labels.helpNotifyTo}
             value={notifyToValue}
-            onchange={handleNotifyToChange}>
+            onchange={handleNotifyToChange}
+            disabled={isNotifToggleDisabled}>
         </lightning-input>
 
         <lightning-input type="toggle" label={labels.respectDupeRules}

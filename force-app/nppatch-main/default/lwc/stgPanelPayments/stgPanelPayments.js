@@ -72,6 +72,10 @@ export default class StgPanelPayments extends LightningElement {
         return !this._settings && !this._hasError;
     }
 
+    get isPaymentsDisabled() {
+        return !this._workingCopy?.Payments_Enabled__c;
+    }
+
     get selectedExcludedRecTypes() {
         return this._parseMultiSelect(this._workingCopy?.Opp_RecTypes_Excluded_for_Payments__c);
     }

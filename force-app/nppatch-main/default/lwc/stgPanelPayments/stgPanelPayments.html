@@ -12,7 +12,8 @@
         <lightning-input type="number" label={labels.maxPayments}
             field-level-help={labels.helpMaxPayments}
             value={_workingCopy.Max_Payments__c}
-            onchange={handleMaxPaymentsChange}>
+            onchange={handleMaxPaymentsChange}
+            disabled={isPaymentsDisabled}>
         </lightning-input>
 
         <lightning-dual-listbox
@@ -21,7 +22,8 @@
             source-label="Available" selected-label="Excluded"
             options={_oppRecordTypes}
             value={selectedExcludedRecTypes}
-            onchange={handleExcludedRecTypesChange}>
+            onchange={handleExcludedRecTypesChange}
+            disabled={isPaymentsDisabled}>
         </lightning-dual-listbox>
 
         <lightning-dual-listbox
@@ -30,7 +32,8 @@
             source-label="Available" selected-label="Excluded"
             options={_oppTypes}
             value={selectedExcludedOppTypes}
-            onchange={handleExcludedOppTypesChange}>
+            onchange={handleExcludedOppTypesChange}
+            disabled={isPaymentsDisabled}>
         </lightning-dual-listbox>
 
     </c-stg-panel-content>

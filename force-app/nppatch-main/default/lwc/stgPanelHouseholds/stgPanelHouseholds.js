@@ -151,6 +151,10 @@ export default class StgPanelHouseholds extends LightningElement {
         return this._settingsNaming && this._settingsHH && !this._hasError;
     }
 
+    get isNamingDisabled() {
+        return !this._workingCopyNaming?.Advanced_Household_Naming__c;
+    }
+
     // --- Household Rules options ---
 
     get householdRulesOptions() {

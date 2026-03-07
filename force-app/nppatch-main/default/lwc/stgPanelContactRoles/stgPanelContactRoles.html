@@ -46,7 +46,8 @@
         <lightning-combobox label={labels.hhMemberRole}
             value={_workingCopyHH.Household_Member_Contact_Role__c}
             options={ocrRoleOptionsWithNone}
-            onchange={handleHHMemberRoleChange}>
+            onchange={handleHHMemberRoleChange}
+            disabled={isHHRolesDisabled}>
         </lightning-combobox>
 
         <lightning-dual-listbox
@@ -55,7 +56,8 @@
             source-label="Available" selected-label="Excluded"
             options={_contactRecordTypes}
             value={selectedHHExcludedRT}
-            onchange={handleHHExcludedRTChange}>
+            onchange={handleHHExcludedRTChange}
+            disabled={isHHRolesDisabled}>
         </lightning-dual-listbox>
 
     </c-stg-panel-content>

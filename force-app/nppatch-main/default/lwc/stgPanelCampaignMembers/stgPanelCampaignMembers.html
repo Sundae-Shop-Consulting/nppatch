@@ -10,12 +10,14 @@
 
         <lightning-input type="text" label={labels.respondedStatus}
             value={_workingCopy.Campaign_Member_Responded_Status__c}
-            onchange={handleRespondedChange}>
+            onchange={handleRespondedChange}
+            disabled={isAutoManagementDisabled}>
         </lightning-input>
 
         <lightning-input type="text" label={labels.nonRespondedStatus}
             value={_workingCopy.Campaign_Member_Non_Responded_Status__c}
-            onchange={handleNonRespondedChange}>
+            onchange={handleNonRespondedChange}
+            disabled={isAutoManagementDisabled}>
         </lightning-input>
 
     </c-stg-panel-content>
