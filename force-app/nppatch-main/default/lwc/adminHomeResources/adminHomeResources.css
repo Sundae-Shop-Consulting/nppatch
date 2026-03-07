@@ -1,0 +1,24 @@
+h1,
+h1 + p {
+    padding-left: 1rem;
+}
+
+.card-grid {
+    display: flex;
+    gap: 1rem;
+}
+
+.card-col {
+    flex: 1;
+    display: flex;
+}
+
+.card-col .slds-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-col .slds-card .slds-card__body {
+    flex: 1;
+}

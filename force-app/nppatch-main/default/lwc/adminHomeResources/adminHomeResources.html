@@ -1,0 +1,34 @@
+<template>
+    <h1 class="slds-text-heading_large slds-m-bottom_x-small"><b>NPPatch Administration</b></h1>
+    <p class="slds-m-bottom_medium">
+        <a href="/lightning/setup/SetupOneHome/home">Setup Home</a> &nbsp;|&nbsp;
+        <a href="/lightning/n/NPPatch_Health_Check">Health Check</a> &nbsp;|&nbsp;
+        <a href="/lightning/setup/DuplicateRules/home">Duplicate Management</a> &nbsp;|&nbsp;
+        <a href="/lightning/setup/ManageUsers/home">Users</a> &nbsp;|&nbsp;
+        <a href="/lightning/setup/DeployStatus/home">Deploy Status</a>
+    </p>
+    <div class="card-grid">
+        <template for:each={resources} for:item="res">
+            <div key={res.key} class="card-col">
+            <article class="slds-card">
+                <div class="slds-card__header slds-grid">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__figure">
+                            <lightning-icon icon-name={res.icon} size="small"></lightning-icon>
+                        </div>
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title slds-text-heading_small">{res.title}</h2>
+                        </div>
+                    </header>
+                </div>
+                <div class="slds-card__body slds-card__body_inner">
+                    <p>{res.description}</p>
+                </div>
+                <footer class="slds-card__footer">
+                    <a href={res.url} target="_blank" rel="noopener noreferrer">{res.linkLabel}</a>
+                </footer>
+            </article>
+            </div>
+        </template>
+    </div>
+</template>

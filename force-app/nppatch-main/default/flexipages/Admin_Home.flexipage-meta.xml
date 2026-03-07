@@ -3,13 +3,8 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>richTextValue</name>
-                    <value>&lt;h1&gt;&lt;b&gt;NPPatch Administration&lt;/b&gt;&lt;/h1&gt;
-&lt;p&gt;&lt;a href="/lightning/setup/SetupOneHome/home"&gt;Setup Home&lt;/a&gt; | &lt;a href="/lightning/setup/SecurityHealthCheck/home"&gt;Health Check&lt;/a&gt; | &lt;a href="/lightning/setup/DuplicateRules/home"&gt;Duplicate Management&lt;/a&gt; | &lt;a href="/lightning/setup/ManageUsers/home"&gt;Users&lt;/a&gt; | &lt;a href="/lightning/setup/DeployStatus/home"&gt;Deploy Status&lt;/a&gt;&lt;/p&gt;</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText</identifier>
+                <componentName>adminHomeResources</componentName>
+                <identifier>adminHomeResources</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
