@@ -12,19 +12,16 @@ export default class StgPanelSchedule extends LightningElement {
     _settingsRD;
     _settingsLvl;
     _settingsHH;
-    _settingsErr;
 
     @track _workingCopyCRLP = {};
     @track _workingCopyRD = {};
     @track _workingCopyLvl = {};
     @track _workingCopyHH = {};
-    @track _workingCopyErr = {};
 
     _wiredCRLPResult;
     _wiredRDResult;
     _wiredLvlResult;
     _wiredHHResult;
-    _wiredErrResult;
 
     labels = {
         sectionLabel: "Bulk Data Processes",
@@ -61,9 +58,7 @@ export default class StgPanelSchedule extends LightningElement {
         skewDispatcherBatchSize: "Skew Dispatcher Batch Size",
         helpSkewDispatcherBatchSize: "Controls the dispatcher batch size for Skew Mode processing.",
         useDatedConversionRates: "Use Dated Conversion Rates",
-        helpUseDatedConversionRates: "When enabled, rollup calculations use Dated Exchange Rates for currency conversion instead of the standard exchange rate.",
-        dontAutoSchedule: "Don't Auto Schedule Default Jobs",
-        helpDontAutoSchedule: "When enabled, NPPatch will not automatically schedule default recurring batch jobs. These jobs calculate rollups, update recurring donations, refresh seasonal addresses, and handle errors.",
+        helpUseDatedConversionRates: "Only applies to orgs with Advanced Currency Management (multi-currency) enabled. When on, rollup calculations use the exchange rate that was effective on each Opportunity's Close Date rather than the current default rate. Has no effect in single-currency orgs.",
     };
 
     get sectionDescription() {
@@ -119,35 +114,22 @@ export default class StgPanelSchedule extends LightningElement {
         }
     }
 
-    @wire(getSettings, { settingsObjectName: "Error_Settings__c" })
-    wiredErr(result) {
-        this._wiredErrResult = result;
-        if (result.data) {
-            this._settingsErr = { ...result.data };
-            this._tryPopulateWorkingCopies();
-        } else if (result.error) {
-            this._hasError = true;
-            this._errorMessage = this._extractError(result.error);
-        }
-    }
-
     get isLoading() {
-        return (!this._settingsCRLP || !this._settingsRD || !this._settingsLvl || !this._settingsHH || !this._settingsErr) && !this._hasError;
+        return (!this._settingsCRLP || !this._settingsRD || !this._settingsLvl || !this._settingsHH) && !this._hasError;
     }
 
     get isReady() {
-        return this._settingsCRLP && this._settingsRD && this._settingsLvl && this._settingsHH && this._settingsErr && !this._hasError;
+        return this._settingsCRLP && this._settingsRD && this._settingsLvl && this._settingsHH && !this._hasError;
     }
 
     // --- Working copy management ---
 
     _tryPopulateWorkingCopies() {
-        if (this._settingsCRLP && this._settingsRD && this._settingsLvl && this._settingsHH && this._settingsErr) {
+        if (this._settingsCRLP && this._settingsRD && this._settingsLvl && this._settingsHH) {
             this._workingCopyCRLP = { ...this._settingsCRLP };
             this._workingCopyRD = { ...this._settingsRD };
             this._workingCopyLvl = { ...this._settingsLvl };
             this._workingCopyHH = { ...this._settingsHH };
-            this._workingCopyErr = { ...this._settingsErr };
         }
     }
 
@@ -157,7 +139,6 @@ export default class StgPanelSchedule extends LightningElement {
         this._workingCopyRD = { ...this._settingsRD };
         this._workingCopyLvl = { ...this._settingsLvl };
         this._workingCopyHH = { ...this._settingsHH };
-        this._workingCopyErr = { ...this._settingsErr };
     }
 
     // --- Individual change handlers (CRLP fields) ---
@@ -235,10 +216,6 @@ export default class StgPanelSchedule extends LightningElement {
         this._workingCopyHH.Use_Dated_Conversion_Rates__c = event.detail.checked;
     }
 
-    handleDontAutoScheduleChange(event) {
-        this._workingCopyErr.Don_t_Auto_Schedule_Default_NPPatch_Jobs__c = event.detail.checked;
-    }
-
     // --- Save ---
 
     @api
@@ -286,21 +263,12 @@ export default class StgPanelSchedule extends LightningElement {
                 },
             });
 
-            // Save Error_Settings__c
-            await saveSettings({
-                settingsObjectName: "Error_Settings__c",
-                fieldValues: {
-                    Don_t_Auto_Schedule_Default_NPPatch_Jobs__c: this._workingCopyErr.Don_t_Auto_Schedule_Default_NPPatch_Jobs__c,
-                },
-            });
-
             // Refresh all wires
             await Promise.all([
                 refreshApex(this._wiredCRLPResult),
                 refreshApex(this._wiredRDResult),
                 refreshApex(this._wiredLvlResult),
                 refreshApex(this._wiredHHResult),
-                refreshApex(this._wiredErrResult),
             ]);
 
             this.dispatchEvent(
