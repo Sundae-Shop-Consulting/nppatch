@@ -5,10 +5,11 @@ import getListSettings from "@salesforce/apex/NppatchSettingsController.getListS
 import createListSetting from "@salesforce/apex/NppatchSettingsController.createListSetting";
 import updateListSetting from "@salesforce/apex/NppatchSettingsController.updateListSetting";
 import deleteListSetting from "@salesforce/apex/NppatchSettingsController.deleteListSetting";
-import getFieldDescribes from "@salesforce/apex/NppatchSettingsController.getFieldDescribes";
+import getMultiObjectFieldDescribes from "@salesforce/apex/NppatchSettingsController.getMultiObjectFieldDescribes";
 import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
 
 const SETTINGS_OBJECT = "Payment_Field_Mapping_Settings__c";
+const FIELD_OBJECTS = ["Opportunity", "OppPayment__c"];
 
 const DATA_COLUMNS = [
     { label: "Opportunity Field", fieldName: "oppFieldDisplay", type: "text" },
@@ -37,10 +38,11 @@ export default class StgPanelPaymentMapping extends LightningElement {
     @track _newRecord = { Opportunity_Field__c: "", Payment_Field__c: "" };
     @track _editRecord = { Id: "", Opportunity_Field__c: "", Payment_Field__c: "" };
 
-    _oppFields = [];
-    _pmtFields = [];
+    @track _oppFields = [];
+    @track _pmtFields = [];
     _oppLabelMap = {};
     _pmtLabelMap = {};
+    _fieldLoadError = "";
 
     labels = {
         sectionLabel: "Donations",
@@ -50,34 +52,34 @@ export default class StgPanelPaymentMapping extends LightningElement {
             "For example, you can map the Opportunity\u2019s custom \u2018Fund\u2019 field to a \u2018Fund\u2019 field on the Payment record.",
     };
 
-    connectedCallback() {
-        this._loadFieldOptions();
-    }
-
-    async _loadFieldOptions() {
-        try {
-            const oppData = await getFieldDescribes({ sObjectApiName: "Opportunity" });
+    @wire(getMultiObjectFieldDescribes, { sObjectApiNames: FIELD_OBJECTS })
+    wiredFieldDescribes({ data, error }) {
+        if (data) {
             this._oppLabelMap = {};
+            this._pmtLabelMap = {};
+            const oppData = data["Opportunity"] || [];
+            const pmtData = data["OppPayment__c"] || [];
             this._oppFields = oppData
                 .map((f) => {
                     this._oppLabelMap[f.value] = f.label;
                     return { label: `${f.label} (${f.value})`, value: f.value };
                 })
                 .sort((a, b) => a.label.localeCompare(b.label));
-        } catch (e) {
-            // Field list unavailable — dropdowns will be empty
-        }
-        try {
-            const pmtData = await getFieldDescribes({ sObjectApiName: "OppPayment__c" });
-            this._pmtLabelMap = {};
             this._pmtFields = pmtData
                 .map((f) => {
                     this._pmtLabelMap[f.value] = f.label;
                     return { label: `${f.label} (${f.value})`, value: f.value };
                 })
                 .sort((a, b) => a.label.localeCompare(b.label));
-        } catch (e) {
-            // Field list unavailable — dropdowns will be empty
+            this._fieldLoadError = "";
+            /* eslint-disable-next-line no-console */
+            console.log(
+                `PaymentMapping: loaded ${this._oppFields.length} Opp fields, ${this._pmtFields.length} Pmt fields`
+            );
+        } else if (error) {
+            this._fieldLoadError = "Unable to load field options.";
+            /* eslint-disable-next-line no-console */
+            console.error("PaymentMapping field load error:", JSON.stringify(error));
         }
     }
 
@@ -110,6 +112,14 @@ export default class StgPanelPaymentMapping extends LightningElement {
 
     get canEdit() {
         return this._canEdit;
+    }
+
+    get hasFieldLoadError() {
+        return !!this._fieldLoadError;
+    }
+
+    get showEmptyMessage() {
+        return !this.hasRecords && !this._isCreating && !this._isEditing;
     }
 
     get displayRecords() {
@@ -169,9 +179,13 @@ export default class StgPanelPaymentMapping extends LightningElement {
         }
         this._isSaving = true;
         try {
+            const fieldValues = {
+                ...this._newRecord,
+                Name: this._newRecord.Opportunity_Field__c,
+            };
             await createListSetting({
                 settingsObjectName: SETTINGS_OBJECT,
-                fieldValues: this._newRecord,
+                fieldValues,
             });
             await refreshApex(this._wiredResult);
             this._isCreating = false;

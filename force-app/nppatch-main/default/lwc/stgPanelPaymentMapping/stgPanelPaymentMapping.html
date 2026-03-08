@@ -25,6 +25,12 @@
                     </div>
                 </template>
 
+                <template if:true={hasFieldLoadError}>
+                    <div class="slds-notify slds-notify_alert slds-alert_warning slds-m-bottom_small" role="alert">
+                        <p>{_fieldLoadError}</p>
+                    </div>
+                </template>
+
                 <template if:true={_isCreating}>
                     <div class="create-form">
                         <h3 class="section-subheader">New Payment Field Mapping</h3>
@@ -88,7 +94,7 @@
                         onrowaction={handleRowAction}>
                     </lightning-datatable>
                 </template>
-                <template if:false={hasRecords}>
+                <template lwc:if={showEmptyMessage}>
                     <p class="empty-message">No payment field mappings defined.</p>
                 </template>
             </div>

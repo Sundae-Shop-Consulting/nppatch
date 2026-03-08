@@ -32,7 +32,13 @@ public with sharing class NppatchSettingsController {
             }
             existing.put(fieldName, fieldValues.get(fieldName));
         }
-        upsert existing;
+        try {
+            upsert existing;
+        } catch (Exception ex) {
+            AuraHandledException ahe = new AuraHandledException(ex.getMessage());
+            ahe.setMessage(ex.getMessage());
+            throw ahe;
+        }
     }
 
     /**
@@ -223,7 +229,13 @@ public with sharing class NppatchSettingsController {
             }
             record.put(fieldName, fieldValues.get(fieldName));
         }
-        insert record;
+        try {
+            insert record;
+        } catch (Exception ex) {
+            AuraHandledException ahe = new AuraHandledException(ex.getMessage());
+            ahe.setMessage(ex.getMessage());
+            throw ahe;
+        }
         return record.Id;
     }
 
@@ -251,7 +263,13 @@ public with sharing class NppatchSettingsController {
             }
             record.put(fieldName, fieldValues.get(fieldName));
         }
-        update record;
+        try {
+            update record;
+        } catch (Exception ex) {
+            AuraHandledException ahe = new AuraHandledException(ex.getMessage());
+            ahe.setMessage(ex.getMessage());
+            throw ahe;
+        }
     }
 
     /**
@@ -344,8 +362,25 @@ public with sharing class NppatchSettingsController {
                 'type' => String.valueOf(dfr.getType())
             });
         }
-        fields.sort();
         return fields;
+    }
+
+    /**
+     * @description Returns field describes for multiple SObjects in a single call.
+     * @param sObjectApiNames List of SObject API names
+     * @return Map of SObject name → field describe list
+     */
+    @AuraEnabled(cacheable=true)
+    public static Map<String, List<Map<String, String>>> getMultiObjectFieldDescribes(List<String> sObjectApiNames) {
+        Map<String, List<Map<String, String>>> result = new Map<String, List<Map<String, String>>>();
+        for (String apiName : sObjectApiNames) {
+            try {
+                result.put(apiName, getFieldDescribes(apiName));
+            } catch (Exception ex) {
+                result.put(apiName, new List<Map<String, String>>());
+            }
+        }
+        return result;
     }
 
     // ─── Address Verification ──────────────────────────────────────────
