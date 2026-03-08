@@ -366,6 +366,27 @@ public with sharing class NppatchSettingsController {
     }
 
     /**
+     * @description Returns active General Accounting Unit records for picklist selection.
+     * @return List of maps with 'label' (Name) and 'value' (Id) keys
+     */
+    @AuraEnabled(cacheable=true)
+    public static List<Map<String, String>> getGAUOptions() {
+        List<Map<String, String>> options = new List<Map<String, String>>();
+        for (General_Accounting_Unit__c gau : [
+            SELECT Id, Name FROM General_Accounting_Unit__c
+            WHERE Active__c = true
+            ORDER BY Name
+            LIMIT 1000
+        ]) {
+            options.add(new Map<String, String>{
+                'label' => gau.Name,
+                'value' => gau.Id
+            });
+        }
+        return options;
+    }
+
+    /**
      * @description Returns field describes for multiple SObjects in a single call.
      * @param sObjectApiNames List of SObject API names
      * @return Map of SObject name → field describe list

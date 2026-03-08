@@ -9,11 +9,14 @@
             message-toggle-active="Enabled" message-toggle-inactive="Disabled">
         </lightning-input>
 
-        <lightning-input type="text" label={labels.defaultGAU}
+        <lightning-combobox label={labels.defaultGAU}
             field-level-help={labels.helpDefaultGAU}
             value={_workingCopy.Default__c}
-            onchange={handleDefaultGAUChange}>
-        </lightning-input>
+            options={gauComboboxOptions}
+            placeholder={gauPlaceholder}
+            onchange={handleDefaultGAUChange}
+            disabled={defaultGAUDisabled}>
+        </lightning-combobox>
 
     </c-stg-panel-content>
 </template>

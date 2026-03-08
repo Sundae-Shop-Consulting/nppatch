@@ -1,1 +1,4 @@
-/* No custom styles — uses standard Lightning components and SLDS utility classes */
+/* Light gray placeholder text for disabled GAU combobox */
+lightning-combobox[disabled] {
+    --slds-c-input-text-color: var(--slds-g-color-neutral-base-30, #aeaeae);
+}

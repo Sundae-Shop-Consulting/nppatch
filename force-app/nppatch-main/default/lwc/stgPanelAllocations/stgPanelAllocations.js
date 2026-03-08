@@ -3,6 +3,7 @@ import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
 import getSettings from "@salesforce/apex/NppatchSettingsController.getSettings";
 import saveSettings from "@salesforce/apex/NppatchSettingsController.saveSettings";
+import getGAUOptions from "@salesforce/apex/NppatchSettingsController.getGAUOptions";
 
 import stgHelpDefaultAllocationsEnabled from "@salesforce/label/c.stgHelpDefaultAllocationsEnabled";
 import stgHelpDefaultGAU from "@salesforce/label/c.stgHelpDefaultGAU";
@@ -15,6 +16,7 @@ export default class StgPanelAllocations extends LightningElement {
     _hasError = false;
     _errorMessage;
     _wiredSettingsResult;
+    _gauOptions = [];
 
     labels = {
         helpDefaultAllocEnabled: stgHelpDefaultAllocationsEnabled,
@@ -40,16 +42,49 @@ export default class StgPanelAllocations extends LightningElement {
         }
     }
 
+    @wire(getGAUOptions)
+    wiredGAUOptions({ data }) {
+        if (data) {
+            this._gauOptions = data;
+        }
+    }
+
     get isLoading() {
         return !this._settings && !this._hasError;
     }
 
+    get defaultGAUDisabled() {
+        return !this._workingCopy.Default_Allocations_Enabled__c;
+    }
+
+    get gauComboboxOptions() {
+        return this._gauOptions;
+    }
+
+    get hasGAUOptions() {
+        return this._gauOptions.length > 0;
+    }
+
+    get gauPlaceholder() {
+        if (this._gauOptions.length === 0) {
+            return "-- No General Accounting Units found. --";
+        }
+        return "Select a General Accounting Unit...";
+    }
+
     handleDefaultAllocEnabledChange(event) {
-        this._workingCopy.Default_Allocations_Enabled__c = event.detail.checked;
+        this._workingCopy = {
+            ...this._workingCopy,
+            Default_Allocations_Enabled__c: event.detail.checked,
+            Default__c: event.detail.checked ? this._workingCopy.Default__c : null,
+        };
     }
 
     handleDefaultGAUChange(event) {
-        this._workingCopy.Default__c = event.detail.value || null;
+        this._workingCopy = {
+            ...this._workingCopy,
+            Default__c: event.detail.value || null,
+        };
     }
 
     @api

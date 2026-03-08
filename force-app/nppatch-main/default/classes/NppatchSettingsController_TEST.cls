@@ -648,6 +648,58 @@ private with sharing class NppatchSettingsController_TEST {
             'Invalid object should return empty list');
     }
 
+    // ─── getGAUOptions ────────────────────────────────────────────────
+
+    @isTest
+    private static void shouldReturnGAUOptions() {
+        General_Accounting_Unit__c gau = new General_Accounting_Unit__c(
+            Name = 'Test GAU',
+            Active__c = true
+        );
+        insert gau;
+
+        Test.startTest();
+        List<Map<String, String>> options = NppatchSettingsController.getGAUOptions();
+        Test.stopTest();
+
+        System.assert(options.size() > 0, 'Should return at least the inserted GAU');
+        System.assertEquals('Test GAU', options[0].get('label'));
+        System.assertEquals(gau.Id, options[0].get('value'));
+    }
+
+    @isTest
+    private static void shouldReturnEmptyGAUOptionsWhenNoneExist() {
+        Test.startTest();
+        List<Map<String, String>> options = NppatchSettingsController.getGAUOptions();
+        Test.stopTest();
+
+        System.assertNotEquals(null, options, 'Should return a list');
+    }
+
+    @isTest
+    private static void shouldExcludeInactiveGAUs() {
+        General_Accounting_Unit__c activeGau = new General_Accounting_Unit__c(
+            Name = 'Active GAU',
+            Active__c = true
+        );
+        General_Accounting_Unit__c inactiveGau = new General_Accounting_Unit__c(
+            Name = 'Inactive GAU',
+            Active__c = false
+        );
+        insert new List<General_Accounting_Unit__c>{ activeGau, inactiveGau };
+
+        Test.startTest();
+        List<Map<String, String>> options = NppatchSettingsController.getGAUOptions();
+        Test.stopTest();
+
+        Set<String> returnedIds = new Set<String>();
+        for (Map<String, String> opt : options) {
+            returnedIds.add(opt.get('value'));
+        }
+        System.assert(returnedIds.contains(activeGau.Id), 'Should include active GAU');
+        System.assert(!returnedIds.contains(inactiveGau.Id), 'Should exclude inactive GAU');
+    }
+
     // ─── getAddressValidators ───────────────────────────────────────────
 
     @isTest
