@@ -324,6 +324,31 @@ public with sharing class NppatchSettingsController {
     }
 
     /**
+     * @description Updates an existing Trigger Handler record. Admin only.
+     * @param recordId The Id of the Trigger_Handler__c record to update
+     * @param fieldValues Map of field API names to new values
+     */
+    @AuraEnabled
+    public static void updateTriggerHandler(Id recordId, Map<String, Object> fieldValues) {
+        STG_Panel.throwAuraExceptionIfRunningUserNotAdmin();
+
+        Trigger_Handler__c handler = new Trigger_Handler__c(Id = recordId);
+        for (String fieldName : fieldValues.keySet()) {
+            if (fieldName.equalsIgnoreCase('Id') || fieldName.equalsIgnoreCase('attributes')) {
+                continue;
+            }
+            handler.put(fieldName, fieldValues.get(fieldName));
+        }
+        try {
+            update handler;
+        } catch (Exception ex) {
+            AuraHandledException ahe = new AuraHandledException(ex.getMessage());
+            ahe.setMessage(ex.getMessage());
+            throw ahe;
+        }
+    }
+
+    /**
      * @description Deletes a Trigger Handler record by Id. Admin only.
      * @param recordId The Id of the Trigger_Handler__c record to delete
      */

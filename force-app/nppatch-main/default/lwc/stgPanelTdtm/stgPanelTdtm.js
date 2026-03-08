@@ -3,6 +3,7 @@ import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
 import getTriggerHandlers from "@salesforce/apex/NppatchSettingsController.getTriggerHandlers";
 import createTriggerHandler from "@salesforce/apex/NppatchSettingsController.createTriggerHandler";
+import updateTriggerHandler from "@salesforce/apex/NppatchSettingsController.updateTriggerHandler";
 import deleteTriggerHandler from "@salesforce/apex/NppatchSettingsController.deleteTriggerHandler";
 import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
 import searchSObjects from "@salesforce/apex/NppatchSettingsController.searchSObjects";
@@ -19,13 +20,6 @@ const DATA_COLUMNS = [
     { label: "User Managed", fieldName: "User_Managed__c", type: "boolean" },
 ];
 
-const ACTION_COLUMN = {
-    type: "action",
-    typeAttributes: {
-        rowActions: [{ label: "Delete", name: "delete" }],
-    },
-};
-
 const BEFORE_ACTION_OPTIONS = [
     { label: "Before Insert", value: "BeforeInsert" },
     { label: "Before Update", value: "BeforeUpdate" },
@@ -39,11 +33,29 @@ const AFTER_ACTION_OPTIONS = [
     { label: "After Undelete", value: "AfterUndelete" },
 ];
 
+const ALL_BEFORE = new Set(BEFORE_ACTION_OPTIONS.map((o) => o.value));
+
+function getRowActions(row, doneCallback) {
+    const actions = [];
+    if (row.Active__c) {
+        actions.push({ label: "Deactivate", name: "deactivate" });
+    } else {
+        actions.push({ label: "Activate", name: "activate" });
+    }
+    if (row.User_Managed__c) {
+        actions.push({ label: "Edit", name: "edit" });
+        actions.push({ label: "Delete", name: "delete" });
+    }
+    doneCallback(actions);
+}
+
 export default class StgPanelTDTM extends LightningElement {
     _settings;
     _wiredResult;
     _canEdit = false;
     _isCreating = false;
+    _isEditing = false;
+    _editRecordId = null;
     _isSaving = false;
     _hasError = false;
     _errorMessage = "";
@@ -118,9 +130,27 @@ export default class StgPanelTDTM extends LightningElement {
 
     get columns() {
         if (this._canEdit) {
-            return [...DATA_COLUMNS, ACTION_COLUMN];
+            return [
+                ...DATA_COLUMNS,
+                {
+                    type: "action",
+                    typeAttributes: { rowActions: getRowActions },
+                },
+            ];
         }
         return DATA_COLUMNS;
+    }
+
+    get showForm() {
+        return this._isCreating || this._isEditing;
+    }
+
+    get formTitle() {
+        return this._isEditing ? "Edit Trigger Handler" : "New Trigger Handler";
+    }
+
+    get saveButtonLabel() {
+        return this._isEditing ? "Update" : "Save";
     }
 
     // --- Object typeahead ---
@@ -247,18 +277,45 @@ export default class StgPanelTDTM extends LightningElement {
         };
     }
 
-    // --- Other form fields ---
+    // --- Form open/close ---
 
     handleNew() {
         this._isCreating = true;
-        this._newRecord = {
+        this._isEditing = false;
+        this._editRecordId = null;
+        this._resetForm({
             Object__c: "",
             Class__c: "",
             Load_Order__c: 1,
             Trigger_Action__c: "",
             Active__c: true,
             Asynchronous__c: false,
-        };
+        });
+    }
+
+    _openEditForm(row) {
+        this._isEditing = true;
+        this._isCreating = false;
+        this._editRecordId = row.Id;
+
+        const actions = row.Trigger_Action__c ? row.Trigger_Action__c.split(";") : [];
+
+        this._resetForm({
+            Object__c: row.Object__c || "",
+            Class__c: row.Class__c || "",
+            Load_Order__c: row.Load_Order__c,
+            Trigger_Action__c: row.Trigger_Action__c || "",
+            Active__c: row.Active__c || false,
+            Asynchronous__c: row.Asynchronous__c || false,
+        });
+
+        this._selectedBeforeActions = actions.filter((a) => ALL_BEFORE.has(a));
+        this._selectedAfterActions = actions.filter((a) => !ALL_BEFORE.has(a));
+        this._objectLabel = "";
+    }
+
+    _resetForm(record) {
+        this._newRecord = { ...record };
         this._selectedBeforeActions = [];
         this._selectedAfterActions = [];
         this._objectSearchTerm = "";
@@ -272,6 +329,8 @@ export default class StgPanelTDTM extends LightningElement {
 
     handleCancelNew() {
         this._isCreating = false;
+        this._isEditing = false;
+        this._editRecordId = null;
     }
 
     handleNewLoadOrderChange(event) {
@@ -285,6 +344,8 @@ export default class StgPanelTDTM extends LightningElement {
     handleNewAsynchronousChange(event) {
         this._newRecord = { ...this._newRecord, Asynchronous__c: event.detail.checked };
     }
+
+    // --- Save (create or update) ---
 
     async handleSaveNew() {
         if (!this._newRecord.Object__c || !this._newRecord.Class__c || this._newRecord.Load_Order__c == null) {
@@ -324,18 +385,26 @@ export default class StgPanelTDTM extends LightningElement {
                 return;
             }
 
-            await createTriggerHandler({
-                fieldValues: this._newRecord,
-            });
+            if (this._isEditing && this._editRecordId) {
+                await updateTriggerHandler({
+                    recordId: this._editRecordId,
+                    fieldValues: this._newRecord,
+                });
+                this.dispatchEvent(
+                    new ShowToastEvent({ title: "Success", message: "Trigger handler updated.", variant: "success" })
+                );
+            } else {
+                await createTriggerHandler({
+                    fieldValues: this._newRecord,
+                });
+                this.dispatchEvent(
+                    new ShowToastEvent({ title: "Success", message: "Trigger handler created.", variant: "success" })
+                );
+            }
             await refreshApex(this._wiredResult);
             this._isCreating = false;
-            this.dispatchEvent(
-                new ShowToastEvent({
-                    title: "Success",
-                    message: "Trigger handler created.",
-                    variant: "success",
-                })
-            );
+            this._isEditing = false;
+            this._editRecordId = null;
         } catch (error) {
             this.dispatchEvent(
                 new ShowToastEvent({
@@ -349,25 +418,46 @@ export default class StgPanelTDTM extends LightningElement {
         }
     }
 
+    // --- Row actions ---
+
     async handleRowAction(event) {
-        if (event.detail.action.name === "delete") {
+        const action = event.detail.action.name;
+        const row = event.detail.row;
+
+        if (action === "delete") {
             try {
-                await deleteTriggerHandler({
-                    recordId: event.detail.row.Id,
-                });
+                await deleteTriggerHandler({ recordId: row.Id });
                 await refreshApex(this._wiredResult);
                 this.dispatchEvent(
                     new ShowToastEvent({ title: "Success", message: "Record deleted.", variant: "success" })
                 );
             } catch (error) {
                 this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: "Error",
-                        message: this._extractError(error),
-                        variant: "error",
-                    })
+                    new ShowToastEvent({ title: "Error", message: this._extractError(error), variant: "error" })
                 );
             }
+        } else if (action === "activate" || action === "deactivate") {
+            const newActive = action === "activate";
+            try {
+                await updateTriggerHandler({
+                    recordId: row.Id,
+                    fieldValues: { Active__c: newActive },
+                });
+                await refreshApex(this._wiredResult);
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: "Success",
+                        message: `Trigger handler ${newActive ? "activated" : "deactivated"}.`,
+                        variant: "success",
+                    })
+                );
+            } catch (error) {
+                this.dispatchEvent(
+                    new ShowToastEvent({ title: "Error", message: this._extractError(error), variant: "error" })
+                );
+            }
+        } else if (action === "edit") {
+            this._openEditForm(row);
         }
     }
 

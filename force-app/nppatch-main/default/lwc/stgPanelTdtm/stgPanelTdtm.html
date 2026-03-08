@@ -21,13 +21,13 @@
             <div class="panel-body">
                 <template if:true={canEdit}>
                     <div class="action-bar">
-                        <lightning-button label="New" onclick={handleNew} variant="neutral" disabled={_isCreating}></lightning-button>
+                        <lightning-button label="New" onclick={handleNew} variant="neutral" disabled={showForm}></lightning-button>
                     </div>
                 </template>
 
-                <template if:true={_isCreating}>
+                <template if:true={showForm}>
                     <div class="create-form">
-                        <h3 class="section-subheader">New Trigger Handler</h3>
+                        <h3 class="section-subheader">{formTitle}</h3>
                         <div class="form-grid">
                             <!-- Row 1: Object, Class, Active -->
                             <div class="form-field">
@@ -132,7 +132,7 @@
                             </div>
                         </div>
                         <div class="form-actions">
-                            <lightning-button label="Save" onclick={handleSaveNew} variant="brand" disabled={_isSaving}></lightning-button>
+                            <lightning-button label={saveButtonLabel} onclick={handleSaveNew} variant="brand" disabled={_isSaving}></lightning-button>
                             <lightning-button label="Cancel" onclick={handleCancelNew} variant="neutral" disabled={_isSaving}></lightning-button>
                         </div>
                     </div>
