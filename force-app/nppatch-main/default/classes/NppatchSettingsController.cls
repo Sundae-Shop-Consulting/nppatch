@@ -513,6 +513,94 @@ public with sharing class NppatchSettingsController {
         return result;
     }
 
+    // ─── Trigger Handler Typeahead ──────────────────────────────────────
+
+    /**
+     * @description Searches SObject API names for the trigger handler Object typeahead.
+     * @param searchTerm Partial name to search for (minimum 2 characters)
+     * @return List of maps with 'label' (Label) and 'value' (QualifiedApiName)
+     */
+    @AuraEnabled(cacheable=true)
+    public static List<Map<String, String>> searchSObjects(String searchTerm) {
+        List<Map<String, String>> results = new List<Map<String, String>>();
+        if (String.isBlank(searchTerm) || searchTerm.length() < 2) {
+            return results;
+        }
+        String likeTerm = '%' + String.escapeSingleQuotes(searchTerm) + '%';
+        for (EntityDefinition ed : [
+            SELECT QualifiedApiName, Label
+            FROM EntityDefinition
+            WHERE QualifiedApiName LIKE :likeTerm
+            AND IsCustomizable = true
+            ORDER BY QualifiedApiName
+            LIMIT 20
+        ]) {
+            results.add(new Map<String, String>{
+                'label' => ed.Label,
+                'value' => ed.QualifiedApiName
+            });
+        }
+        return results;
+    }
+
+    /**
+     * @description Searches Apex class names for the trigger handler Class typeahead.
+     * @param searchTerm Partial name to search for (minimum 2 characters)
+     * @return List of maps with 'label' (Name) and 'value' (Name)
+     */
+    @AuraEnabled(cacheable=true)
+    public static List<Map<String, String>> searchApexClasses(String searchTerm) {
+        List<Map<String, String>> results = new List<Map<String, String>>();
+        if (String.isBlank(searchTerm) || searchTerm.length() < 2) {
+            return results;
+        }
+        String likeTerm = '%' + String.escapeSingleQuotes(searchTerm) + '%';
+        for (ApexClass c : [
+            SELECT Name, NamespacePrefix
+            FROM ApexClass
+            WHERE Name LIKE :likeTerm
+            ORDER BY Name
+            LIMIT 20
+        ]) {
+            String displayName = c.Name;
+            if (String.isNotBlank(c.NamespacePrefix)) {
+                displayName = c.NamespacePrefix + '.' + c.Name;
+            }
+            results.add(new Map<String, String>{
+                'label' => displayName,
+                'value' => c.Name
+            });
+        }
+        return results;
+    }
+
+    /**
+     * @description Validates that an Apex class implements TDTM_Runnable (the trigger handler interface).
+     * @param className Name of the Apex class to validate
+     * @return true if the class extends TDTM_Runnable
+     */
+    @AuraEnabled
+    public static Boolean validateTriggerHandlerClass(String className) {
+        if (String.isBlank(className)) {
+            return false;
+        }
+        // Try current namespace first, then unqualified
+        String ns = UTIL_Namespace.getNamespace();
+        Type classType = String.isNotBlank(ns) ? Type.forName(ns, className) : null;
+        if (classType == null) {
+            classType = Type.forName(className);
+        }
+        if (classType == null) {
+            return false;
+        }
+        try {
+            Object instance = classType.newInstance();
+            return instance instanceof TDTM_Runnable;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
     // ─── Address Verification ──────────────────────────────────────────
 
     private static final Set<String> VALIDATOR_EXCLUSIONS = new Set<String>{

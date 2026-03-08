@@ -5,6 +5,9 @@ import getTriggerHandlers from "@salesforce/apex/NppatchSettingsController.getTr
 import createTriggerHandler from "@salesforce/apex/NppatchSettingsController.createTriggerHandler";
 import deleteTriggerHandler from "@salesforce/apex/NppatchSettingsController.deleteTriggerHandler";
 import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
+import searchSObjects from "@salesforce/apex/NppatchSettingsController.searchSObjects";
+import searchApexClasses from "@salesforce/apex/NppatchSettingsController.searchApexClasses";
+import validateTriggerHandlerClass from "@salesforce/apex/NppatchSettingsController.validateTriggerHandlerClass";
 
 const DATA_COLUMNS = [
     { label: "Object", fieldName: "Object__c", type: "text" },
@@ -23,6 +26,19 @@ const ACTION_COLUMN = {
     },
 };
 
+const BEFORE_ACTION_OPTIONS = [
+    { label: "Before Insert", value: "BeforeInsert" },
+    { label: "Before Update", value: "BeforeUpdate" },
+    { label: "Before Delete", value: "BeforeDelete" },
+];
+
+const AFTER_ACTION_OPTIONS = [
+    { label: "After Insert", value: "AfterInsert" },
+    { label: "After Update", value: "AfterUpdate" },
+    { label: "After Delete", value: "AfterDelete" },
+    { label: "After Undelete", value: "AfterUndelete" },
+];
+
 export default class StgPanelTDTM extends LightningElement {
     _settings;
     _wiredResult;
@@ -34,11 +50,31 @@ export default class StgPanelTDTM extends LightningElement {
     @track _newRecord = {
         Object__c: "",
         Class__c: "",
-        Load_Order__c: null,
+        Load_Order__c: 1,
         Trigger_Action__c: "",
         Active__c: true,
         Asynchronous__c: false,
     };
+
+    // Typeahead state — Object
+    _objectSearchTerm = "";
+    _objectResults = [];
+    _showObjectDropdown = false;
+    _objectSearchTimer;
+    _objectLabel = "";
+
+    // Typeahead state — Class
+    _classSearchTerm = "";
+    _classResults = [];
+    _showClassDropdown = false;
+    _classSearchTimer;
+
+    // Multiselect state — Trigger Actions (split before/after)
+    _selectedBeforeActions = [];
+    _selectedAfterActions = [];
+
+    beforeActionOptions = BEFORE_ACTION_OPTIONS;
+    afterActionOptions = AFTER_ACTION_OPTIONS;
 
     labels = {
         sectionLabel: "System Tools",
@@ -87,36 +123,159 @@ export default class StgPanelTDTM extends LightningElement {
         return DATA_COLUMNS;
     }
 
+    // --- Object typeahead ---
+
+    get showObjectPill() {
+        return !!this._newRecord.Object__c;
+    }
+
+    get objectPillLabel() {
+        if (this._objectLabel) {
+            return this._objectLabel + "  " + this._newRecord.Object__c;
+        }
+        return this._newRecord.Object__c;
+    }
+
+    get showObjectSearch() {
+        return !this._newRecord.Object__c;
+    }
+
+    handleObjectSearchChange(event) {
+        const term = event.target.value || "";
+        this._objectSearchTerm = term;
+        clearTimeout(this._objectSearchTimer);
+        if (term.length < 2) {
+            this._objectResults = [];
+            this._showObjectDropdown = false;
+            return;
+        }
+        this._showObjectDropdown = true;
+        this._objectSearchTimer = setTimeout(() => {
+            this._performObjectSearch(term);
+        }, 300);
+    }
+
+    async _performObjectSearch(term) {
+        try {
+            this._objectResults = await searchSObjects({ searchTerm: term });
+            this._showObjectDropdown = this._objectResults.length > 0;
+        } catch (_e) {
+            this._objectResults = [];
+            this._showObjectDropdown = false;
+        }
+    }
+
+    handleSelectObject(event) {
+        const value = event.currentTarget.dataset.value;
+        const label = event.currentTarget.dataset.label || "";
+        this._newRecord = { ...this._newRecord, Object__c: value };
+        this._objectLabel = label;
+        this._objectSearchTerm = "";
+        this._objectResults = [];
+        this._showObjectDropdown = false;
+    }
+
+    handleClearObject() {
+        this._newRecord = { ...this._newRecord, Object__c: "" };
+        this._objectLabel = "";
+    }
+
+    // --- Class typeahead ---
+
+    get showClassPill() {
+        return !!this._newRecord.Class__c;
+    }
+
+    get showClassSearch() {
+        return !this._newRecord.Class__c;
+    }
+
+    handleClassSearchChange(event) {
+        const term = event.target.value || "";
+        this._classSearchTerm = term;
+        clearTimeout(this._classSearchTimer);
+        if (term.length < 2) {
+            this._classResults = [];
+            this._showClassDropdown = false;
+            return;
+        }
+        this._showClassDropdown = true;
+        this._classSearchTimer = setTimeout(() => {
+            this._performClassSearch(term);
+        }, 300);
+    }
+
+    async _performClassSearch(term) {
+        try {
+            this._classResults = await searchApexClasses({ searchTerm: term });
+            this._showClassDropdown = this._classResults.length > 0;
+        } catch (_e) {
+            this._classResults = [];
+            this._showClassDropdown = false;
+        }
+    }
+
+    handleSelectClass(event) {
+        const value = event.currentTarget.dataset.value;
+        this._newRecord = { ...this._newRecord, Class__c: value };
+        this._classSearchTerm = "";
+        this._classResults = [];
+        this._showClassDropdown = false;
+    }
+
+    handleClearClass() {
+        this._newRecord = { ...this._newRecord, Class__c: "" };
+    }
+
+    // --- Trigger Action multiselect (split before/after) ---
+
+    handleBeforeActionChange(event) {
+        this._selectedBeforeActions = event.detail.value;
+        this._updateTriggerActionField();
+    }
+
+    handleAfterActionChange(event) {
+        this._selectedAfterActions = event.detail.value;
+        this._updateTriggerActionField();
+    }
+
+    _updateTriggerActionField() {
+        const all = [...this._selectedBeforeActions, ...this._selectedAfterActions];
+        this._newRecord = {
+            ...this._newRecord,
+            Trigger_Action__c: all.join(";"),
+        };
+    }
+
+    // --- Other form fields ---
+
     handleNew() {
         this._isCreating = true;
         this._newRecord = {
             Object__c: "",
             Class__c: "",
-            Load_Order__c: null,
+            Load_Order__c: 1,
             Trigger_Action__c: "",
             Active__c: true,
             Asynchronous__c: false,
         };
+        this._selectedBeforeActions = [];
+        this._selectedAfterActions = [];
+        this._objectSearchTerm = "";
+        this._objectResults = [];
+        this._showObjectDropdown = false;
+        this._objectLabel = "";
+        this._classSearchTerm = "";
+        this._classResults = [];
+        this._showClassDropdown = false;
     }
 
     handleCancelNew() {
         this._isCreating = false;
     }
 
-    handleNewObjectChange(event) {
-        this._newRecord = { ...this._newRecord, Object__c: event.detail.value };
-    }
-
-    handleNewClassChange(event) {
-        this._newRecord = { ...this._newRecord, Class__c: event.detail.value };
-    }
-
     handleNewLoadOrderChange(event) {
         this._newRecord = { ...this._newRecord, Load_Order__c: event.detail.value };
-    }
-
-    handleNewTriggerActionChange(event) {
-        this._newRecord = { ...this._newRecord, Trigger_Action__c: event.detail.value };
     }
 
     handleNewActiveChange(event) {
@@ -138,8 +297,33 @@ export default class StgPanelTDTM extends LightningElement {
             );
             return;
         }
+        if (!this._newRecord.Trigger_Action__c) {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: "Error",
+                    message: "Select at least one Trigger Action.",
+                    variant: "error",
+                })
+            );
+            return;
+        }
+
         this._isSaving = true;
         try {
+            // Validate class implements TDTM_Runnable
+            const isValid = await validateTriggerHandlerClass({ className: this._newRecord.Class__c });
+            if (!isValid) {
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: "Error",
+                        message: `"${this._newRecord.Class__c}" does not implement the TDTM_Runnable interface. Trigger handler classes must extend TDTM_Runnable.`,
+                        variant: "error",
+                    })
+                );
+                this._isSaving = false;
+                return;
+            }
+
             await createTriggerHandler({
                 fieldValues: this._newRecord,
             });
