@@ -3,6 +3,7 @@ import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
 import getSettings from "@salesforce/apex/NppatchSettingsController.getSettings";
 import saveSettings from "@salesforce/apex/NppatchSettingsController.saveSettings";
+import getPicklistOptions from "@salesforce/apex/NppatchSettingsController.getPicklistOptions";
 
 import stgNavDonations from "@salesforce/label/c.stgNavDonations";
 import stgLabelOppCampMembers from "@salesforce/label/c.stgLabelOppCampMembers";
@@ -15,6 +16,7 @@ export default class StgPanelCampaignMembers extends LightningElement {
     _hasError = false;
     _errorMessage;
     _wiredSettingsResult;
+    _statusOptions = [];
 
     labels = {
         sectionLabel: stgNavDonations,
@@ -22,6 +24,9 @@ export default class StgPanelCampaignMembers extends LightningElement {
         autoCampaignMember: "Automatic Campaign Member Management",
         respondedStatus: "Campaign Member Responded Status",
         nonRespondedStatus: "Campaign Member Non-Responded Status",
+        helpAuto: "When enabled, NPPatch automatically creates or updates a Campaign Member record when an Opportunity is linked to a Campaign. The Campaign Member\u2019s status is set based on whether the Opportunity is Closed/Won or still open.",
+        helpResponded: "The status assigned to the Campaign Member when the associated Opportunity is Closed/Won.",
+        helpNonResponded: "The status assigned to the Campaign Member when the associated Opportunity is still open (not yet Closed/Won).",
     };
 
     get sectionDescription() {
@@ -41,8 +46,21 @@ export default class StgPanelCampaignMembers extends LightningElement {
         }
     }
 
+    @wire(getPicklistOptions, { sObjectApiName: "CampaignMember", fieldApiName: "Status" })
+    wiredStatusOptions({ data, error }) {
+        if (data) {
+            this._statusOptions = data.map((opt) => ({ label: opt.label, value: opt.value }));
+        } else if (error) {
+            this._statusOptions = [];
+        }
+    }
+
     get isLoading() {
         return !this._settings && !this._hasError;
+    }
+
+    get statusDropdownOptions() {
+        return [{ label: "-- None --", value: "" }, ...this._statusOptions];
     }
 
     get isAutoManagementDisabled() {
@@ -50,15 +68,24 @@ export default class StgPanelCampaignMembers extends LightningElement {
     }
 
     handleAutoChange(event) {
-        this._workingCopy.Automatic_Campaign_Member_Management__c = event.detail.checked;
+        this._workingCopy = {
+            ...this._workingCopy,
+            Automatic_Campaign_Member_Management__c: event.detail.checked,
+        };
     }
 
     handleRespondedChange(event) {
-        this._workingCopy.Campaign_Member_Responded_Status__c = event.detail.value;
+        this._workingCopy = {
+            ...this._workingCopy,
+            Campaign_Member_Responded_Status__c: event.detail.value || null,
+        };
     }
 
     handleNonRespondedChange(event) {
-        this._workingCopy.Campaign_Member_Non_Responded_Status__c = event.detail.value;
+        this._workingCopy = {
+            ...this._workingCopy,
+            Campaign_Member_Non_Responded_Status__c: event.detail.value || null,
+        };
     }
 
     @api

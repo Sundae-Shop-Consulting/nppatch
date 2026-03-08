@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -185,13 +186,21 @@
         <relatedList>RelatedCampaignMemberList</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>LABEL</fields>
+        <fields>ISDEFAULT</fields>
+        <fields>HASRESPONDED</fields>
+        <fields>LASTMODIFIEDDATE</fields>
+        <fields>LASTMODIFIEDBY</fields>
+        <relatedList>RelatedCampaignMemberStatusList</relatedList>
+    </relatedLists>
+    <relatedLists>
         <customButtons>Manage_Allocations</customButtons>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>General_Accounting_Unit__c</fields>
         <fields>Amount__c</fields>
         <fields>Percent__c</fields>
-        <relatedList>%%%NAMESPACE%%%Allocation__c.%%%NAMESPACE%%%Campaign__c</relatedList>
+        <relatedList>Allocation__c.Campaign__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
@@ -221,7 +230,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00ho0000002EHoc</masterLabel>
+        <masterLabel>00hcf000004b2US</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
