@@ -1,0 +1,80 @@
+<template>
+    <lightning-card>
+        <div class="slds-p-around_medium">
+            <template lwc:if={isLoading}>
+                <div class="loading-container">
+                    <lightning-spinner alternative-text="Loading batches"></lightning-spinner>
+                </div>
+            </template>
+
+            <template lwc:else>
+                <template lwc:if={hasBatches}>
+                    <div class="batch-grid">
+                        <template for:each={batchCards} for:item="batch">
+                            <div key={batch.key} class="batch-card">
+                                <div class="batch-card-header">
+                                    <h3 class="batch-name">{batch.Name}</h3>
+                                    <span class={batch.statusClass}>{batch.Status}</span>
+                                </div>
+                                <template lwc:if={batch.Description}>
+                                    <p class="batch-description">{batch.Description}</p>
+                                </template>
+                                <div class="batch-stats">
+                                    <div class="stat">
+                                        <span class="stat-value">{batch.TotalRecords}</span>
+                                        <span class="stat-label">Total</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value success">{batch.RecordsProcessed}</span>
+                                        <span class="stat-label">Processed</span>
+                                    </div>
+                                    <template lwc:if={batch.hasFailures}>
+                                        <div class="stat">
+                                            <span class="stat-value error">{batch.RecordsFailed}</span>
+                                            <span class="stat-label">Failed</span>
+                                        </div>
+                                    </template>
+                                    <template lwc:if={batch.hasPending}>
+                                        <div class="stat">
+                                            <span class="stat-value pending">{batch.PendingRecords}</span>
+                                            <span class="stat-label">Pending</span>
+                                        </div>
+                                    </template>
+                                </div>
+                                <div class="batch-meta">
+                                    <span>Created {batch.createdDateFormatted}</span>
+                                    <span>Last processed: {batch.lastProcessedFormatted}</span>
+                                </div>
+                                <div class="batch-actions">
+                                    <lightning-button
+                                        label="View"
+                                        data-id={batch.Id}
+                                        onclick={handleViewBatch}
+                                        variant="neutral"
+                                        icon-name="utility:new_window"
+                                    ></lightning-button>
+                                    <template lwc:if={batch.hasPending}>
+                                        <lightning-button
+                                            label="Process"
+                                            data-id={batch.Id}
+                                            onclick={handleProcessBatch}
+                                            variant="brand"
+                                            icon-name="utility:play"
+                                        ></lightning-button>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+                <template lwc:else>
+                    <div class="empty-state">
+                        <lightning-icon icon-name="standard:empty" size="large"></lightning-icon>
+                        <p class="slds-m-top_small">No import batches found.</p>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

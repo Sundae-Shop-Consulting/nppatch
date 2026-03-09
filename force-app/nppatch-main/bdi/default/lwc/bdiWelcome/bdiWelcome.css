@@ -1,0 +1,95 @@
+.welcome-header {
+    max-width: 40rem;
+}
+.welcome-subtitle {
+    font-size: 0.9375rem;
+    color: #706e6b;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+}
+
+/* Stats */
+.stats-row {
+    display: flex;
+    gap: 1.5rem;
+}
+.stat-card {
+    background: #f7f9fb;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 140px;
+}
+.stat-card.attention {
+    border-color: #c23934;
+    background: #fef0ef;
+}
+.stat-card .stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #3e3e3c;
+}
+.stat-card.attention .stat-value {
+    color: #c23934;
+}
+.stat-card .stat-label {
+    font-size: 0.75rem;
+    color: #706e6b;
+    text-transform: uppercase;
+}
+
+/* How it works */
+.info-section {
+    padding-top: 1rem;
+}
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+.info-step {
+    background: #f7f9fb;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+}
+.step-number {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: #0176d3;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+.step-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #3e3e3c;
+    margin-bottom: 0.25rem;
+}
+.step-desc {
+    font-size: 0.8125rem;
+    color: #706e6b;
+    line-height: 1.4;
+}
+
+/* Categories */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+}
+.category-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #3e3e3c;
+}

@@ -1,0 +1,127 @@
+<template>
+    <lightning-modal-header label="Batch Configuration"></lightning-modal-header>
+    <lightning-modal-body>
+        <div class="slds-p-around_medium">
+            <!-- Contact Matching -->
+            <div class="config-section">
+                <h3 class="section-header">Contact Matching</h3>
+                <div class="config-grid">
+                    <lightning-input
+                        label="Contact Matching Rule"
+                        value={contactMatchingRule}
+                        data-field="contactMatchingRule"
+                        onchange={handleChange}
+                        field-level-help="Contact fields to match on: Firstname, Lastname, Email, Phone (e.g. Firstname,Lastname,Email)"
+                    ></lightning-input>
+                    <lightning-input
+                        label="Contact Custom Unique ID"
+                        value={contactCustomUniqueId}
+                        data-field="contactCustomUniqueId"
+                        onchange={handleChange}
+                        field-level-help="Custom field API name to use as unique ID for contacts"
+                    ></lightning-input>
+                    <lightning-input
+                        label="Account Custom Unique ID"
+                        value={accountCustomUniqueId}
+                        data-field="accountCustomUniqueId"
+                        onchange={handleChange}
+                        field-level-help="Custom field API name to use as unique ID for accounts"
+                    ></lightning-input>
+                </div>
+            </div>
+
+            <!-- Donation Matching -->
+            <div class="config-section">
+                <h3 class="section-header">Donation Matching</h3>
+                <div class="config-grid">
+                    <lightning-combobox
+                        label="Donation Matching Behavior"
+                        value={donationMatchingBehavior}
+                        options={donationMatchingOptions}
+                        data-field="donationMatchingBehavior"
+                        onchange={handleChange}
+                    ></lightning-combobox>
+                    <lightning-input
+                        label="Donation Matching Rule"
+                        value={donationMatchingRule}
+                        data-field="donationMatchingRule"
+                        onchange={handleChange}
+                        field-level-help="Semicolon-separated list of Data Import fields to match on (e.g. Donation_Amount__c;Donation_Date__c)"
+                    ></lightning-input>
+                    <lightning-input
+                        type="number"
+                        label="Days from Donation Date"
+                        value={donationDateRange}
+                        data-field="donationDateRange"
+                        onchange={handleChange}
+                        field-level-help="Number of days before/after donation date to search for matching opportunities"
+                    ></lightning-input>
+                </div>
+            </div>
+
+            <!-- Processing -->
+            <div class="config-section">
+                <h3 class="section-header">Processing</h3>
+                <div class="config-grid">
+                    <lightning-input
+                        type="number"
+                        label="Batch Process Size"
+                        value={batchProcessSize}
+                        data-field="batchProcessSize"
+                        onchange={handleChange}
+                        field-level-help="Number of records to process per batch chunk"
+                    ></lightning-input>
+                    <lightning-input
+                        type="checkbox"
+                        label="Calculate Donation Rollups with Batch"
+                        checked={runRollups}
+                        data-field="runRollups"
+                        onchange={handleChange}
+                    ></lightning-input>
+                    <lightning-input
+                        type="checkbox"
+                        label="Process Using Scheduled Job"
+                        checked={processUsingScheduledJob}
+                        data-field="processUsingScheduledJob"
+                        onchange={handleChange}
+                    ></lightning-input>
+                </div>
+            </div>
+
+            <!-- Advanced -->
+            <div class="config-section">
+                <h3 class="section-header">Advanced</h3>
+                <div class="config-grid">
+                    <lightning-input
+                        label="Donation Matching Implementing Class"
+                        value={donationMatchingClass}
+                        data-field="donationMatchingClass"
+                        onchange={handleChange}
+                        field-level-help="Apex class that implements BDI_IMatchDonations"
+                    ></lightning-input>
+                    <lightning-input
+                        label="Post Process Implementing Class"
+                        value={postProcessClass}
+                        data-field="postProcessClass"
+                        onchange={handleChange}
+                        field-level-help="Apex class that implements BDI_IPostProcess"
+                    ></lightning-input>
+                </div>
+            </div>
+        </div>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <div class="slds-grid slds-grid_align-end slds-grid_vertical-align-center">
+            <lightning-button
+                label="Cancel"
+                onclick={handleCancel}
+                class="slds-m-right_x-small"
+            ></lightning-button>
+            <lightning-button
+                variant="brand"
+                label="Apply"
+                onclick={handleSave}
+            ></lightning-button>
+        </div>
+    </lightning-modal-footer>
+</template>

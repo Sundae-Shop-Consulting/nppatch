@@ -1,0 +1,19 @@
+.config-section {
+    margin-bottom: 1.5rem;
+}
+.config-section:last-child {
+    margin-bottom: 0;
+}
+.section-header {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #3e3e3c;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+.config-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1.5rem;
+}

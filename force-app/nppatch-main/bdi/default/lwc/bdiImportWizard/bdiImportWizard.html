@@ -1,0 +1,314 @@
+<template>
+    <lightning-card>
+        <!-- Step indicator -->
+        <div class="step-indicator slds-p-horizontal_large slds-p-top_medium">
+            <template for:each={steps} for:item="step">
+                <span key={step.value} class={step.class}>
+                    {step.label}
+                </span>
+            </template>
+        </div>
+
+        <div class="slds-p-around_large">
+
+            <!-- STEP 1: Upload -->
+            <template lwc:if={isUploadStep}>
+                <div class="step-content">
+                    <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                        Upload CSV File
+                    </h2>
+                    <p class="section-description slds-m-bottom_large">
+                        Select a CSV file containing the data you want to import.
+                        Each row will become a Data Import record. The first row
+                        must contain column headers.
+                    </p>
+
+                    <div class="upload-area slds-m-bottom_large">
+                        <input
+                            type="file"
+                            accept=".csv"
+                            onchange={handleFileChange}
+                            class="file-input"
+                        />
+                    </div>
+
+                    <template lwc:if={hasFile}>
+                        <div class="file-info slds-m-bottom_medium">
+                            <lightning-icon icon-name="doctype:csv" size="small" class="slds-m-right_x-small"></lightning-icon>
+                            <strong>{fileName}</strong> — {rowCount} rows, {csvHeaders.length} columns
+                        </div>
+
+                        <!-- Preview table -->
+                        <h3 class="slds-text-heading_small slds-m-bottom_small">Preview (first 5 rows)</h3>
+                        <div class="preview-table slds-m-bottom_large">
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                                <thead>
+                                    <tr>
+                                        <template for:each={csvHeaders} for:item="header">
+                                            <th key={header} scope="col">{header}</th>
+                                        </template>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={previewData} for:item="row">
+                                        <tr key={row.key}>
+                                            <template for:each={row.cells} for:item="cell">
+                                                <td key={cell.key}>{cell.value}</td>
+                                            </template>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="slds-text-align_right">
+                            <lightning-button
+                                variant="brand"
+                                label="Next: Map Fields"
+                                onclick={handleUploadNext}
+                            ></lightning-button>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <!-- STEP 2: Map Fields -->
+            <template lwc:if={isMapStep}>
+                <div class="step-content">
+                    <h2 class="slds-text-heading_medium slds-m-bottom_x-small">
+                        Map Fields
+                    </h2>
+                    <p class="section-description slds-m-bottom_large">
+                        Match each CSV column to a Data Import field. Columns that
+                        match a field name are auto-mapped. Set to "Do not import"
+                        to skip a column.
+                    </p>
+
+                    <template lwc:if={isLoading}>
+                        <div class="loading-container">
+                            <lightning-spinner alternative-text="Loading fields"></lightning-spinner>
+                        </div>
+                    </template>
+
+                    <template lwc:else>
+                        <div class="mapping-list">
+                            <template for:each={mappingRows} for:item="row">
+                                <div key={row.key} class="mapping-row">
+                                    <div class="mapping-header">
+                                        <span class="csv-header">{row.header}</span>
+                                        <template lwc:if={row.sampleValues}>
+                                            <span class="sample-values">e.g. {row.sampleValues}</span>
+                                        </template>
+                                    </div>
+                                    <div class="mapping-field">
+                                        <lightning-combobox
+                                            data-header={row.header}
+                                            value={row.selectedField}
+                                            options={targetFieldOptions}
+                                            onchange={handleMappingChange}
+                                            variant="label-hidden"
+                                            dropdown-alignment="auto"
+                                        ></lightning-combobox>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+
+                        <div class="mapping-summary slds-m-top_medium slds-m-bottom_medium">
+                            <strong>{mappedFieldCount}</strong> of {csvHeaders.length} columns mapped
+                        </div>
+
+                        <div class="slds-grid slds-grid_align-spread">
+                            <lightning-button
+                                label="Back"
+                                onclick={handleMapBack}
+                            ></lightning-button>
+                            <lightning-button
+                                variant="brand"
+                                label="Next: Review"
+                                onclick={handleMapNext}
+                                disabled={mapNextDisabled}
+                            ></lightning-button>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <!-- STEP 3: Review & Import -->
+            <template lwc:if={isReviewStep}>
+                <div class="step-content">
+                    <div class="review-header slds-m-bottom_medium">
+                        <h2 class="slds-text-heading_medium">
+                            Review &amp; Import
+                        </h2>
+                        <lightning-button-icon
+                            icon-name="utility:settings"
+                            alternative-text="Batch Configuration"
+                            title="Batch Configuration"
+                            variant="border-filled"
+                            onclick={handleOpenBatchConfig}
+                        ></lightning-button-icon>
+                    </div>
+
+                    <div class="review-section slds-m-bottom_large">
+                        <lightning-input
+                            label="Batch Name"
+                            value={batchName}
+                            onchange={handleBatchNameChange}
+                            required
+                            class="slds-m-bottom_small"
+                        ></lightning-input>
+                        <lightning-textarea
+                            label="Description (optional)"
+                            value={batchDescription}
+                            onchange={handleBatchDescChange}
+                            class="slds-m-bottom_small"
+                        ></lightning-textarea>
+                    </div>
+
+                    <div class="review-section slds-m-bottom_large">
+                        <h3 class="slds-text-heading_small slds-m-bottom_small">Import Summary</h3>
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                <span class="summary-label">Rows to import</span>
+                                <span class="summary-value">{rowCount}</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Fields mapped</span>
+                                <span class="summary-value">{mappedFieldCount}</span>
+                            </div>
+                        </div>
+
+                        <template lwc:if={hasUnmappedHeaders}>
+                            <div class="unmapped-warning slds-m-top_small">
+                                <lightning-icon icon-name="utility:warning" size="x-small" variant="warning" class="slds-m-right_xx-small"></lightning-icon>
+                                Unmapped columns will be skipped:
+                                <template for:each={unmappedHeaders} for:item="h">
+                                    <span key={h} class="unmapped-tag">{h}</span>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+
+                    <div class="review-section slds-m-bottom_large">
+                        <h3 class="slds-text-heading_small slds-m-bottom_small">Field Mappings</h3>
+                        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                            <thead>
+                                <tr>
+                                    <th scope="col">CSV Column</th>
+                                    <th scope="col">Data Import Field</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={reviewMappings} for:item="m">
+                                    <tr key={m.key}>
+                                        <td>{m.csvHeader}</td>
+                                        <td>{m.targetField}</td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <template lwc:if={importResult.error}>
+                        <div class="error-banner slds-m-bottom_medium">
+                            <lightning-icon icon-name="utility:error" variant="error" size="small" class="slds-m-right_x-small"></lightning-icon>
+                            {importResult.error}
+                        </div>
+                    </template>
+
+                    <div class="slds-grid slds-grid_align-spread">
+                        <lightning-button
+                            label="Back"
+                            onclick={handleReviewBack}
+                        ></lightning-button>
+                        <div class="button-group">
+                            <lightning-button
+                                variant="neutral"
+                                label="Dry Run"
+                                onclick={handleDryRun}
+                                disabled={importDisabled}
+                                icon-name="utility:check"
+                            ></lightning-button>
+                            <lightning-button
+                                variant="brand"
+                                label="Import"
+                                onclick={handleImport}
+                                disabled={importDisabled}
+                            ></lightning-button>
+                        </div>
+                    </div>
+
+                    <template lwc:if={isLoading}>
+                        <div class="loading-overlay">
+                            <lightning-spinner alternative-text="Importing records" size="medium"></lightning-spinner>
+                            <p class="slds-m-top_small">Creating Data Import records...</p>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <!-- STEP 4: Processing -->
+            <template lwc:if={isProcessingStep}>
+                <div class="step-content">
+                    <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                        {processingStatusLabel}
+                    </h2>
+
+                    <!-- Insert results -->
+                    <div class="results-card slds-m-bottom_large">
+                        <h3 class="slds-text-heading_small slds-m-bottom_small">Record Creation</h3>
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                <span class="summary-label">Created</span>
+                                <span class="summary-value success">{importResult.totalInserted}</span>
+                            </div>
+                            <template lwc:if={importResult.totalFailed}>
+                                <div class="summary-item">
+                                    <span class="summary-label">Failed</span>
+                                    <span class="summary-value error">{importResult.totalFailed}</span>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Processing progress -->
+                    <div class="results-card slds-m-bottom_large">
+                        <h3 class="slds-text-heading_small slds-m-bottom_small">Batch Processing</h3>
+                        <lightning-progress-bar
+                            value={progressPercent}
+                            size="large"
+                            class="slds-m-bottom_small"
+                        ></lightning-progress-bar>
+                        <p class="progress-label">{progressPercent}% complete</p>
+
+                        <template lwc:if={isJobComplete}>
+                            <div class="status-counts slds-m-top_medium">
+                                <template for:each={statusCounts} for:item="sc">
+                                    <div key={sc.key} class="status-count-item">
+                                        <span class="status-count-label">{sc.status}</span>
+                                        <span class="status-count-value">{sc.count}</span>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+
+                    <div class="slds-grid slds-grid_align-spread">
+                        <lightning-button
+                            label="View Batch Record"
+                            onclick={handleViewBatch}
+                            icon-name="utility:new_window"
+                        ></lightning-button>
+                        <lightning-button
+                            variant="brand"
+                            label="Start New Import"
+                            onclick={handleStartOver}
+                        ></lightning-button>
+                    </div>
+                </div>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>
