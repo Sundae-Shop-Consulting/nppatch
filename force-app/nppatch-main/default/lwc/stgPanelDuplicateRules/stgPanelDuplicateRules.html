@@ -1,0 +1,17 @@
+<template>
+    <c-stg-panel-content is-loading={isLoading} has-error={_hasError}
+        error-message={_errorMessage} description={sectionDescription}>
+
+        <lightning-input type="toggle" label={labels.respectDupeRules}
+            checked={respectDupeRulesValue}
+            onchange={handleRespectDupeRulesChange}
+            message-toggle-active="Enabled"
+            message-toggle-inactive="Disabled">
+        </lightning-input>
+        <p class="slds-text-color_weak slds-text-body_small slds-m-top_xx-small slds-m-bottom_small">
+            When enabled, NPPatch respects your org's active Duplicate Rules when creating or updating Contacts, Accounts, and Leads.
+            Duplicate records may be blocked or flagged depending on your rules. When disabled, NPPatch bypasses duplicate detection entirely.
+        </p>
+
+    </c-stg-panel-content>
+</template>

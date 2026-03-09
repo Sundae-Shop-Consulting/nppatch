@@ -33,7 +33,7 @@
             </lightning-formatted-rich-text>
         </lightning-layout-item>
 
-        <lightning-layout-item class="slds-p-left_large slds-p-top_medium " size="8">
+        <lightning-layout-item class="slds-p-left_large slds-p-top_medium" size="8">
             <template if:true={isLoading}>
                 <div class="slds-grid slds-grid_align-center">
                     <div class="slds-is-relative slds-size_1-of-1">
@@ -44,17 +44,44 @@
             </template>
 
             <template if:false={isLoading}>
-                <template if:true={isViewMode}>
-                    <lightning-datatable key-field="status" data={records} columns={viewColumns} hide-checkbox-column>
-                    </lightning-datatable>
-                </template>
-
-                <template if:false={isViewMode}>
-                    <c-custom-datatable key-field="status" data={records} columns={editColumns} hide-checkbox-column
-                        keyboard-mode="ACTION" data-navigation="enable" class="datatable-container"
-                        onpicklistchange={handleStateChange}>
-                    </c-custom-datatable>
-                </template>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th scope="col"><div class="slds-truncate">{fieldLabelStatus}</div></th>
+                            <th scope="col"><div class="slds-truncate">{labels.fieldLabelStatusApiName}</div></th>
+                            <th scope="col"><div class="slds-truncate">{labels.fieldLabelState}</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={records} for:item="mapping">
+                            <tr key={mapping.status}>
+                                <td><div class="slds-truncate">{mapping.label}</div></td>
+                                <td><div class="slds-truncate">{mapping.status}</div></td>
+                                <td>
+                                    <template if:true={isViewMode}>
+                                        <div class="slds-truncate">{mapping.stateLabel}</div>
+                                    </template>
+                                    <template if:false={isViewMode}>
+                                        <template if:true={mapping.isReadOnly}>
+                                            <div class="slds-truncate">{mapping.stateLabel}</div>
+                                        </template>
+                                        <template if:false={mapping.isReadOnly}>
+                                            <lightning-combobox
+                                                variant="label-hidden"
+                                                label="State"
+                                                value={mapping.state}
+                                                options={stateOptions}
+                                                placeholder={labels.stateUnmappedLabel}
+                                                data-status={mapping.status}
+                                                onchange={handleStateChange}>
+                                            </lightning-combobox>
+                                        </template>
+                                    </template>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
             </template>
         </lightning-layout-item>
 
@@ -62,6 +89,14 @@
         </lightning-layout-item>
 
         <lightning-layout-item class="slds-p-left_large slds-p-top_medium slds-p-bottom_large" size="8">
+            <template if:false={isLoading}>
+                <template if:false={hasEditableRecords}>
+                    <p class="slds-text-color_weak slds-text-body_small slds-m-bottom_small">
+                        All current statuses have pre-defined state mappings. Add a custom picklist value to
+                        Recurring Donation Status to create an editable mapping.
+                    </p>
+                </template>
+            </template>
             <div class="slds-grid slds-grid_align-end slds-p-vertical_small">
                 <div if:true={isViewMode}>
                     <template if:false={isLoading}>

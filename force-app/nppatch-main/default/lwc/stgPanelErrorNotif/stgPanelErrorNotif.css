@@ -1,1 +1,20 @@
-/* No custom styles — uses standard Lightning components and SLDS utility classes */
+.results-list {
+    border: 1px solid var(--slds-g-color-border-base-1, #e5e5e5);
+    border-radius: 0.25rem;
+    max-height: 15rem;
+    overflow-y: auto;
+}
+
+.result-item {
+    cursor: pointer;
+}
+
+.result-item:hover {
+    background-color: var(--slds-g-color-neutral-base-95, #f3f3f3);
+}
+
+.slds-pill {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+}

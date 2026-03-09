@@ -9,6 +9,7 @@ const PANEL_SELECTORS = {
     campaignMembers: "c-stg-panel-campaign-members",
     contactRoles: "c-stg-panel-contact-roles",
     donorStatistics: "c-stg-panel-donor-statistics",
+    duplicateRules: "c-stg-panel-duplicate-rules",
     errorNotif: "c-stg-panel-error-notif",
     households: "c-stg-panel-households",
     leads: "c-stg-panel-leads",
@@ -37,6 +38,7 @@ export default class SettingsModal extends LightningModal {
     get isCampaignMembersPanel() { return this.panelName === "campaignMembers"; }
     get isContactRolesPanel() { return this.panelName === "contactRoles"; }
     get isAllocationsPanel() { return this.panelName === "allocations"; }
+    get isDuplicateRulesPanel() { return this.panelName === "duplicateRules"; }
     get isErrorNotifPanel() { return this.panelName === "errorNotif"; }
     get isRelationshipsPanel() { return this.panelName === "relationships"; }
     get isHouseholdsPanel() { return this.panelName === "households"; }

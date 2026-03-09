@@ -718,4 +718,258 @@ private with sharing class NppatchSettingsController_TEST {
             System.assert(validators[0].containsKey('defaultUrl'), 'Each validator should have defaultUrl');
         }
     }
+
+    // ─── updateTriggerHandler ────────────────────────────────────────────
+
+    @isTest
+    private static void shouldUpdateTriggerHandler() {
+        Trigger_Handler__c handler = new Trigger_Handler__c(
+            Object__c = 'Account',
+            Class__c = 'UpdateMe_TDTM',
+            Load_Order__c = 1,
+            Trigger_Action__c = 'BeforeInsert',
+            Active__c = true
+        );
+        insert handler;
+
+        Test.startTest();
+        NppatchSettingsController.updateTriggerHandler(handler.Id, new Map<String, Object>{
+            'Active__c' => false,
+            'Load_Order__c' => 5
+        });
+        Test.stopTest();
+
+        Trigger_Handler__c updated = [SELECT Active__c, Load_Order__c FROM Trigger_Handler__c WHERE Id = :handler.Id];
+        System.assertEquals(false, updated.Active__c, 'Active should be updated to false');
+        System.assertEquals(5, updated.Load_Order__c, 'Load Order should be updated to 5');
+    }
+
+    @isTest
+    private static void updateTriggerHandlerShouldIgnoreIdAndAttributes() {
+        Trigger_Handler__c handler = new Trigger_Handler__c(
+            Object__c = 'Account',
+            Class__c = 'IgnoreTest_TDTM',
+            Load_Order__c = 1,
+            Trigger_Action__c = 'BeforeInsert',
+            Active__c = true
+        );
+        insert handler;
+
+        Test.startTest();
+        NppatchSettingsController.updateTriggerHandler(handler.Id, new Map<String, Object>{
+            'Id' => '000000000000000',
+            'attributes' => 'something',
+            'Load_Order__c' => 10
+        });
+        Test.stopTest();
+
+        Trigger_Handler__c updated = [SELECT Load_Order__c FROM Trigger_Handler__c WHERE Id = :handler.Id];
+        System.assertEquals(10, updated.Load_Order__c, 'Load Order should be updated despite Id/attributes');
+    }
+
+    // ─── searchUsers ─────────────────────────────────────────────────────
+
+    @isTest
+    private static void shouldSearchUsers() {
+        // Current running user should be findable
+        String userName = [SELECT Name FROM User WHERE Id = :UserInfo.getUserId()].Name;
+        String searchTerm = userName.substring(0, Math.min(3, userName.length()));
+
+        Test.startTest();
+        List<Map<String, String>> results = NppatchSettingsController.searchUsers(searchTerm);
+        Test.stopTest();
+
+        System.assert(results.size() > 0, 'Should find at least the running user');
+        System.assert(results[0].containsKey('label'), 'Each result should have a label');
+        System.assert(results[0].containsKey('value'), 'Each result should have a value');
+        System.assert(results[0].containsKey('sublabel'), 'Each result should have a sublabel');
+    }
+
+    @isTest
+    private static void searchUsersShouldReturnEmptyForShortTerm() {
+        Test.startTest();
+        List<Map<String, String>> results = NppatchSettingsController.searchUsers('A');
+        Test.stopTest();
+
+        System.assertEquals(0, results.size(), 'Should return empty for single character search');
+    }
+
+    @isTest
+    private static void searchUsersShouldReturnEmptyForBlank() {
+        Test.startTest();
+        List<Map<String, String>> results = NppatchSettingsController.searchUsers('');
+        Test.stopTest();
+
+        System.assertEquals(0, results.size(), 'Should return empty for blank search');
+    }
+
+    // ─── searchChatterGroups ─────────────────────────────────────────────
+
+    @isTest
+    private static void shouldSearchChatterGroups() {
+        CollaborationGroup testGroup = new CollaborationGroup(
+            Name = 'NPPatch Test Group',
+            CollaborationType = 'Public'
+        );
+        insert testGroup;
+
+        Test.startTest();
+        List<Map<String, String>> results = NppatchSettingsController.searchChatterGroups('NPPatch Test');
+        Test.stopTest();
+
+        System.assert(results.size() > 0, 'Should find the test group');
+        System.assertEquals('NPPatch Test Group', results[0].get('label'));
+        System.assert(results[0].get('sublabel').contains('members'), 'Sublabel should contain member count');
+    }
+
+    @isTest
+    private static void searchChatterGroupsShouldReturnEmptyForShortTerm() {
+        Test.startTest();
+        List<Map<String, String>> results = NppatchSettingsController.searchChatterGroups('A');
+        Test.stopTest();
+
+        System.assertEquals(0, results.size(), 'Should return empty for single character search');
+    }
+
+    // ─── resolveErrorRecipient ───────────────────────────────────────────
+
+    @isTest
+    private static void shouldResolveAllSysAdmins() {
+        Test.startTest();
+        Map<String, String> result = NppatchSettingsController.resolveErrorRecipient('All Sys Admins');
+        Test.stopTest();
+
+        System.assertEquals('allSysAdmins', result.get('type'));
+        System.assertEquals('All System Administrators', result.get('label'));
+    }
+
+    @isTest
+    private static void shouldResolveNullAsAllSysAdmins() {
+        Test.startTest();
+        Map<String, String> result = NppatchSettingsController.resolveErrorRecipient(null);
+        Test.stopTest();
+
+        System.assertEquals('allSysAdmins', result.get('type'));
+    }
+
+    @isTest
+    private static void shouldResolveBlankAsAllSysAdmins() {
+        Test.startTest();
+        Map<String, String> result = NppatchSettingsController.resolveErrorRecipient('');
+        Test.stopTest();
+
+        System.assertEquals('allSysAdmins', result.get('type'));
+    }
+
+    @isTest
+    private static void shouldResolveUserId() {
+        Id userId = UserInfo.getUserId();
+
+        Test.startTest();
+        Map<String, String> result = NppatchSettingsController.resolveErrorRecipient(userId);
+        Test.stopTest();
+
+        System.assertEquals('user', result.get('type'));
+        System.assertNotEquals(null, result.get('label'), 'Should resolve user name');
+        System.assertNotEquals('(Unknown User)', result.get('label'), 'Should find the user');
+    }
+
+    @isTest
+    private static void shouldResolveChatterGroupId() {
+        CollaborationGroup testGroup = new CollaborationGroup(
+            Name = 'Resolve Test Group',
+            CollaborationType = 'Public'
+        );
+        insert testGroup;
+
+        Test.startTest();
+        Map<String, String> result = NppatchSettingsController.resolveErrorRecipient(testGroup.Id);
+        Test.stopTest();
+
+        System.assertEquals('chatterGroup', result.get('type'));
+        System.assertEquals('Resolve Test Group', result.get('label'));
+    }
+
+    // ─── searchSObjects ──────────────────────────────────────────────────
+
+    @isTest
+    private static void shouldSearchSObjects() {
+        Test.startTest();
+        List<Map<String, String>> results = NppatchSettingsController.searchSObjects('Account');
+        Test.stopTest();
+
+        System.assert(results.size() > 0, 'Should find Account');
+        System.assert(results[0].containsKey('label'), 'Each result should have a label');
+        System.assert(results[0].containsKey('value'), 'Each result should have a value');
+    }
+
+    @isTest
+    private static void searchSObjectsShouldReturnEmptyForShortTerm() {
+        Test.startTest();
+        List<Map<String, String>> results = NppatchSettingsController.searchSObjects('A');
+        Test.stopTest();
+
+        System.assertEquals(0, results.size(), 'Should return empty for single character search');
+    }
+
+    // ─── searchApexClasses ───────────────────────────────────────────────
+
+    @isTest
+    private static void shouldSearchApexClasses() {
+        Test.startTest();
+        List<Map<String, String>> results = NppatchSettingsController.searchApexClasses('TDTM');
+        Test.stopTest();
+
+        System.assert(results.size() > 0, 'Should find TDTM classes');
+        System.assert(results[0].containsKey('label'), 'Each result should have a label');
+        System.assert(results[0].containsKey('value'), 'Each result should have a value');
+    }
+
+    @isTest
+    private static void searchApexClassesShouldReturnEmptyForShortTerm() {
+        Test.startTest();
+        List<Map<String, String>> results = NppatchSettingsController.searchApexClasses('T');
+        Test.stopTest();
+
+        System.assertEquals(0, results.size(), 'Should return empty for single character search');
+    }
+
+    // ─── validateTriggerHandlerClass ─────────────────────────────────────
+
+    @isTest
+    private static void shouldValidateValidTdtmClass() {
+        // ADDR_Account_TDTM is a known TDTM_Runnable implementation
+        Test.startTest();
+        Boolean result = NppatchSettingsController.validateTriggerHandlerClass('ADDR_Account_TDTM');
+        Test.stopTest();
+
+        System.assertEquals(true, result, 'Should return true for a valid TDTM class');
+    }
+
+    @isTest
+    private static void shouldRejectNonTdtmClass() {
+        Test.startTest();
+        Boolean result = NppatchSettingsController.validateTriggerHandlerClass('NppatchSettingsController');
+        Test.stopTest();
+
+        System.assertEquals(false, result, 'Should return false for a non-TDTM class');
+    }
+
+    @isTest
+    private static void shouldRejectNonexistentClass() {
+        Test.startTest();
+        Boolean result = NppatchSettingsController.validateTriggerHandlerClass('NotARealClass_TDTM');
+        Test.stopTest();
+
+        System.assertEquals(false, result, 'Should return false for a nonexistent class');
+    }
+
+    @isTest
+    private static void shouldRejectBlankClassName() {
+        Test.startTest();
+        Boolean result = NppatchSettingsController.validateTriggerHandlerClass('');
+        Test.stopTest();
+
+        System.assertEquals(false, result, 'Should return false for blank class name');
+    }
 }

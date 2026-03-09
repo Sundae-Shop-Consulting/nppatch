@@ -21,23 +21,118 @@
             <div class="panel-body">
                 <template if:true={canEdit}>
                     <div class="action-bar">
-                        <lightning-button label="New" onclick={handleNew} variant="neutral" disabled={_isCreating}></lightning-button>
+                        <lightning-button label="New" onclick={handleNew} variant="neutral" disabled={showForm}></lightning-button>
                     </div>
                 </template>
 
-                <template if:true={_isCreating}>
+                <template if:true={showForm}>
                     <div class="create-form">
-                        <h3 class="section-subheader">New Trigger Handler</h3>
+                        <h3 class="section-subheader">{formTitle}</h3>
                         <div class="form-grid">
-                            <lightning-input label="Object" value={_newRecord.Object__c} onchange={handleNewObjectChange} class="text-input" required></lightning-input>
-                            <lightning-input label="Class" value={_newRecord.Class__c} onchange={handleNewClassChange} class="text-input" required></lightning-input>
-                            <lightning-input label="Load Order" type="number" value={_newRecord.Load_Order__c} onchange={handleNewLoadOrderChange} class="number-input" required></lightning-input>
-                            <lightning-input label="Trigger Action" value={_newRecord.Trigger_Action__c} onchange={handleNewTriggerActionChange} class="text-input" placeholder="BeforeInsert;AfterInsert"></lightning-input>
-                            <lightning-input label="Active" type="toggle" checked={_newRecord.Active__c} onchange={handleNewActiveChange} message-toggle-active="Yes" message-toggle-inactive="No"></lightning-input>
-                            <lightning-input label="Asynchronous" type="toggle" checked={_newRecord.Asynchronous__c} onchange={handleNewAsynchronousChange} message-toggle-active="Yes" message-toggle-inactive="No"></lightning-input>
+                            <!-- Row 1: Object, Class, Active -->
+                            <div class="form-field">
+                                <label class="slds-form-element__label">
+                                    <abbr class="slds-required" title="required">*</abbr> Object
+                                </label>
+                                <template lwc:if={showObjectPill}>
+                                    <div class="slds-m-top_xx-small">
+                                        <span class="slds-pill">
+                                            <span class="slds-pill__label">{objectPillLabel}</span>
+                                            <lightning-button-icon icon-name="utility:close"
+                                                alternative-text="Remove" variant="bare" size="small"
+                                                onclick={handleClearObject}></lightning-button-icon>
+                                        </span>
+                                    </div>
+                                </template>
+                                <template lwc:if={showObjectSearch}>
+                                    <lightning-input type="search" variant="label-hidden" label="Object"
+                                        placeholder="Search SObjects..."
+                                        value={_objectSearchTerm}
+                                        onchange={handleObjectSearchChange}></lightning-input>
+                                    <template lwc:if={_showObjectDropdown}>
+                                        <ul class="results-list slds-has-dividers_bottom-space slds-m-top_xx-small">
+                                            <template for:each={_objectResults} for:item="item">
+                                                <li key={item.value}
+                                                    class="result-item slds-item slds-p-around_small"
+                                                    data-value={item.value}
+                                                    data-label={item.label}
+                                                    onclick={handleSelectObject}>
+                                                    <span class="slds-text-body_regular">{item.label}</span>
+                                                    <span class="slds-text-body_small slds-text-color_weak slds-m-left_x-small">{item.value}</span>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </template>
+                                </template>
+                            </div>
+
+                            <div class="form-field">
+                                <label class="slds-form-element__label">
+                                    <abbr class="slds-required" title="required">*</abbr> Class
+                                </label>
+                                <template lwc:if={showClassPill}>
+                                    <div class="slds-m-top_xx-small">
+                                        <span class="slds-pill">
+                                            <span class="slds-pill__label">{_newRecord.Class__c}</span>
+                                            <lightning-button-icon icon-name="utility:close"
+                                                alternative-text="Remove" variant="bare" size="small"
+                                                onclick={handleClearClass}></lightning-button-icon>
+                                        </span>
+                                    </div>
+                                </template>
+                                <template lwc:if={showClassSearch}>
+                                    <lightning-input type="search" variant="label-hidden" label="Class"
+                                        placeholder="Search Apex classes..."
+                                        value={_classSearchTerm}
+                                        onchange={handleClassSearchChange}></lightning-input>
+                                    <template lwc:if={_showClassDropdown}>
+                                        <ul class="results-list slds-has-dividers_bottom-space slds-m-top_xx-small">
+                                            <template for:each={_classResults} for:item="item">
+                                                <li key={item.value}
+                                                    class="result-item slds-item slds-p-around_small"
+                                                    data-value={item.value}
+                                                    onclick={handleSelectClass}>
+                                                    <span class="slds-text-body_regular">{item.label}</span>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </template>
+                                </template>
+                            </div>
+
+                            <div class="toggle-align">
+                                <lightning-input label="Active" type="toggle" checked={_newRecord.Active__c} onchange={handleNewActiveChange} message-toggle-active="Yes" message-toggle-inactive="No"></lightning-input>
+                            </div>
+
+                            <!-- Row 2: Trigger Action, Load Order, Async -->
+                            <div class="trigger-actions-field">
+                                <span class="slds-form-element__label slds-m-bottom_xx-small">Trigger Action</span>
+                                <div class="trigger-actions-grid">
+                                    <lightning-checkbox-group
+                                        label="Before"
+                                        options={beforeActionOptions}
+                                        value={_selectedBeforeActions}
+                                        onchange={handleBeforeActionChange}>
+                                    </lightning-checkbox-group>
+                                    <lightning-checkbox-group
+                                        label="After"
+                                        options={afterActionOptions}
+                                        value={_selectedAfterActions}
+                                        onchange={handleAfterActionChange}>
+                                    </lightning-checkbox-group>
+                                </div>
+                            </div>
+
+                            <div>
+                                <lightning-input label="Load Order" type="number" value={_newRecord.Load_Order__c} onchange={handleNewLoadOrderChange} class="number-input" required></lightning-input>
+                            </div>
+
+                            <div class="toggle-align">
+                                <lightning-input label="Asynchronous" type="toggle" checked={_newRecord.Asynchronous__c} onchange={handleNewAsynchronousChange} message-toggle-active="Yes" message-toggle-inactive="No"></lightning-input>
+                            </div>
                         </div>
                         <div class="form-actions">
-                            <lightning-button label="Save" onclick={handleSaveNew} variant="brand" disabled={_isSaving}></lightning-button>
+                            <lightning-button label={saveButtonLabel} onclick={handleSaveNew} variant="brand" disabled={_isSaving}></lightning-button>
                             <lightning-button label="Cancel" onclick={handleCancelNew} variant="neutral" disabled={_isSaving}></lightning-button>
                         </div>
                     </div>

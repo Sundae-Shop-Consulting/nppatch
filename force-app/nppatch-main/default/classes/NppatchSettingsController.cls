@@ -324,6 +324,31 @@ public with sharing class NppatchSettingsController {
     }
 
     /**
+     * @description Updates an existing Trigger Handler record. Admin only.
+     * @param recordId The Id of the Trigger_Handler__c record to update
+     * @param fieldValues Map of field API names to new values
+     */
+    @AuraEnabled
+    public static void updateTriggerHandler(Id recordId, Map<String, Object> fieldValues) {
+        STG_Panel.throwAuraExceptionIfRunningUserNotAdmin();
+
+        Trigger_Handler__c handler = new Trigger_Handler__c(Id = recordId);
+        for (String fieldName : fieldValues.keySet()) {
+            if (fieldName.equalsIgnoreCase('Id') || fieldName.equalsIgnoreCase('attributes')) {
+                continue;
+            }
+            handler.put(fieldName, fieldValues.get(fieldName));
+        }
+        try {
+            update handler;
+        } catch (Exception ex) {
+            AuraHandledException ahe = new AuraHandledException(ex.getMessage());
+            ahe.setMessage(ex.getMessage());
+            throw ahe;
+        }
+    }
+
+    /**
      * @description Deletes a Trigger Handler record by Id. Admin only.
      * @param recordId The Id of the Trigger_Handler__c record to delete
      */
@@ -387,6 +412,115 @@ public with sharing class NppatchSettingsController {
     }
 
     /**
+     * @description Searches active users by name for error notification recipient selection.
+     * @param searchTerm Partial name to search for (minimum 2 characters)
+     * @return List of maps with 'label' (Name + Profile), 'value' (User Id), 'sublabel' (Username)
+     */
+    @AuraEnabled
+    public static List<Map<String, String>> searchUsers(String searchTerm) {
+        STG_Panel.throwAuraExceptionIfRunningUserNotAdmin();
+        List<Map<String, String>> results = new List<Map<String, String>>();
+        if (String.isBlank(searchTerm) || searchTerm.length() < 2) {
+            return results;
+        }
+        String liketerm = '%' + String.escapeSingleQuotes(searchTerm) + '%';
+        for (User u : [
+            SELECT Id, Name, Username, Profile.Name
+            FROM User
+            WHERE IsActive = true AND Name LIKE :liketerm
+            ORDER BY Name
+            LIMIT 20
+        ]) {
+            results.add(new Map<String, String>{
+                'label' => u.Name,
+                'value' => u.Id,
+                'sublabel' => u.Profile.Name + ' \u2022 ' + u.Username
+            });
+        }
+        return results;
+    }
+
+    /**
+     * @description Searches Chatter groups by name for error notification recipient selection.
+     * @param searchTerm Partial name to search for (minimum 2 characters)
+     * @return List of maps with 'label' (Name), 'value' (Group Id), 'sublabel' (Description)
+     */
+    @AuraEnabled
+    public static List<Map<String, String>> searchChatterGroups(String searchTerm) {
+        STG_Panel.throwAuraExceptionIfRunningUserNotAdmin();
+        List<Map<String, String>> results = new List<Map<String, String>>();
+        if (String.isBlank(searchTerm) || searchTerm.length() < 2) {
+            return results;
+        }
+        String liketerm = '%' + String.escapeSingleQuotes(searchTerm) + '%';
+        for (CollaborationGroup g : [
+            SELECT Id, Name, Description, MemberCount
+            FROM CollaborationGroup
+            WHERE Name LIKE :liketerm AND IsArchived = false
+            ORDER BY Name
+            LIMIT 20
+        ]) {
+            String groupDesc = g.Description != null ? g.Description.abbreviate(60) : '';
+            String sublabel = String.valueOf(g.MemberCount) + ' members';
+            if (String.isNotBlank(groupDesc)) {
+                sublabel += ' \u2022 ' + groupDesc;
+            }
+            results.add(new Map<String, String>{
+                'label' => g.Name,
+                'value' => g.Id,
+                'sublabel' => sublabel
+            });
+        }
+        return results;
+    }
+
+    /**
+     * @description Resolves an error notification recipient value to a display label.
+     * @param recipientValue The stored value (User Id, Chatter Group Id, or 'All Sys Admins')
+     * @return Map with 'label' and 'type' keys
+     */
+    @AuraEnabled(cacheable=true)
+    public static Map<String, String> resolveErrorRecipient(String recipientValue) {
+        STG_Panel.throwAuraExceptionIfRunningUserNotAdmin();
+        Map<String, String> result = new Map<String, String>();
+
+        if (String.isBlank(recipientValue) || recipientValue == 'All Sys Admins') {
+            result.put('type', 'allSysAdmins');
+            result.put('label', 'All System Administrators');
+            return result;
+        }
+
+        // Check if it's a User ID (005 prefix)
+        if (recipientValue instanceof Id && recipientValue.startsWith('005')) {
+            result.put('type', 'user');
+            List<User> users = [SELECT Name, Username FROM User WHERE Id = :recipientValue LIMIT 1];
+            if (!users.isEmpty()) {
+                result.put('label', users[0].Name);
+                result.put('sublabel', users[0].Username);
+            } else {
+                result.put('label', '(Unknown User)');
+            }
+            return result;
+        }
+
+        // Check if it's a Chatter Group ID (0F9 prefix)
+        if (recipientValue instanceof Id) {
+            result.put('type', 'chatterGroup');
+            List<CollaborationGroup> groups = [SELECT Name FROM CollaborationGroup WHERE Id = :recipientValue LIMIT 1];
+            if (!groups.isEmpty()) {
+                result.put('label', groups[0].Name);
+            } else {
+                result.put('label', '(Unknown Chatter Group)');
+            }
+            return result;
+        }
+
+        result.put('type', 'allSysAdmins');
+        result.put('label', 'All System Administrators');
+        return result;
+    }
+
+    /**
      * @description Returns field describes for multiple SObjects in a single call.
      * @param sObjectApiNames List of SObject API names
      * @return Map of SObject name → field describe list
@@ -402,6 +536,94 @@ public with sharing class NppatchSettingsController {
             }
         }
         return result;
+    }
+
+    // ─── Trigger Handler Typeahead ──────────────────────────────────────
+
+    /**
+     * @description Searches SObject API names for the trigger handler Object typeahead.
+     * @param searchTerm Partial name to search for (minimum 2 characters)
+     * @return List of maps with 'label' (Label) and 'value' (QualifiedApiName)
+     */
+    @AuraEnabled(cacheable=true)
+    public static List<Map<String, String>> searchSObjects(String searchTerm) {
+        List<Map<String, String>> results = new List<Map<String, String>>();
+        if (String.isBlank(searchTerm) || searchTerm.length() < 2) {
+            return results;
+        }
+        String likeTerm = '%' + String.escapeSingleQuotes(searchTerm) + '%';
+        for (EntityDefinition ed : [
+            SELECT QualifiedApiName, Label
+            FROM EntityDefinition
+            WHERE QualifiedApiName LIKE :likeTerm
+            AND IsCustomizable = true
+            ORDER BY QualifiedApiName
+            LIMIT 20
+        ]) {
+            results.add(new Map<String, String>{
+                'label' => ed.Label,
+                'value' => ed.QualifiedApiName
+            });
+        }
+        return results;
+    }
+
+    /**
+     * @description Searches Apex class names for the trigger handler Class typeahead.
+     * @param searchTerm Partial name to search for (minimum 2 characters)
+     * @return List of maps with 'label' (Name) and 'value' (Name)
+     */
+    @AuraEnabled(cacheable=true)
+    public static List<Map<String, String>> searchApexClasses(String searchTerm) {
+        List<Map<String, String>> results = new List<Map<String, String>>();
+        if (String.isBlank(searchTerm) || searchTerm.length() < 2) {
+            return results;
+        }
+        String likeTerm = '%' + String.escapeSingleQuotes(searchTerm) + '%';
+        for (ApexClass c : [
+            SELECT Name, NamespacePrefix
+            FROM ApexClass
+            WHERE Name LIKE :likeTerm
+            ORDER BY Name
+            LIMIT 20
+        ]) {
+            String displayName = c.Name;
+            if (String.isNotBlank(c.NamespacePrefix)) {
+                displayName = c.NamespacePrefix + '.' + c.Name;
+            }
+            results.add(new Map<String, String>{
+                'label' => displayName,
+                'value' => c.Name
+            });
+        }
+        return results;
+    }
+
+    /**
+     * @description Validates that an Apex class implements TDTM_Runnable (the trigger handler interface).
+     * @param className Name of the Apex class to validate
+     * @return true if the class extends TDTM_Runnable
+     */
+    @AuraEnabled
+    public static Boolean validateTriggerHandlerClass(String className) {
+        if (String.isBlank(className)) {
+            return false;
+        }
+        // Try current namespace first, then unqualified
+        String ns = UTIL_Namespace.getNamespace();
+        Type classType = String.isNotBlank(ns) ? Type.forName(ns, className) : null;
+        if (classType == null) {
+            classType = Type.forName(className);
+        }
+        if (classType == null) {
+            return false;
+        }
+        try {
+            Object instance = classType.newInstance();
+            return instance instanceof TDTM_Runnable;
+        } catch (Exception ex) {
+            return false;
+        }
     }
 
     // ─── Address Verification ──────────────────────────────────────────

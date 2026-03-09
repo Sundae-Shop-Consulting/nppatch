@@ -1,5 +1,5 @@
-import { LightningElement, api, track } from 'lwc';
-import { isNull, isEmpty } from 'c/util';
+import { LightningElement, track } from 'lwc';
+import { isNull } from 'c/util';
 
 import getStatusFieldLabel from '@salesforce/apex/RD2_StatusMappingSettings_CTRL.getStatusFieldLabel';
 import getStateOptions from '@salesforce/apex/RD2_StatusMappingSettings_CTRL.getStateOptions';
@@ -37,15 +37,16 @@ export default class rd2StatusMappingSettings extends LightningElement {
         editButtonLabel,
         cancelButtonLabel,
         saveButtonLabel,
-        loadingMessage
+        loadingMessage,
+        fieldLabelStatusApiName,
+        fieldLabelState,
+        stateUnmappedLabel
     }
 
     @track records;
 
     @track isLoading;
     @track isViewMode = true;
-    @track viewColumns = [];
-    @track editColumns = [];
     stateOptions = [];
     fieldLabelStatus;
 
@@ -75,40 +76,11 @@ export default class rd2StatusMappingSettings extends LightningElement {
             this.isLoading = true;
             this.stateOptions = await getStateOptions();
             this.fieldLabelStatus = await getStatusFieldLabel();
-            this.handleDatatableColumns();
             this.handleDeploymentProgress();
 
         } catch (error) {
             this.handleError(error);
         }
-    }
-
-    /**
-    * @description Contains datatable column names and field mapping for both view and edit modes.
-    * Columns cannot be constants since labels need to be updated whenever the label in the org
-    * is changed (for example on a translated org).
-    */
-    handleDatatableColumns() {
-        this.viewColumns = [
-            { label: this.fieldLabelStatus, fieldName: 'label', type: 'text' },
-            { label: fieldLabelStatusApiName, fieldName: 'status', type: 'text' },
-            { label: fieldLabelState, fieldName: 'stateLabel', type: 'text' }
-        ];
-
-        this.editColumns = [
-            { label: this.fieldLabelStatus, fieldName: 'label', type: 'text' },
-            { label: fieldLabelStatusApiName, fieldName: 'status', type: 'text' },
-            {
-                label: fieldLabelState, fieldName: 'state', editable: true,
-                type: 'picklistType',
-                typeAttributes: {
-                    placeholder: stateUnmappedLabel,
-                    options: this.stateOptions,
-                    keyField: { fieldName: 'status' },
-                    disabled: { fieldName: 'isReadOnly' }
-                }
-            }
-        ];
     }
 
     /***
@@ -126,33 +98,36 @@ export default class rd2StatusMappingSettings extends LightningElement {
     }
 
     /***
-    * @description Updates the matching record state value based on the propagated picklist value change
+    * @description Updates the matching record state value based on the combobox change
     */
     handleStateChange(event) {
-        event.stopPropagation();
-        let data = event.detail.data;
+        const status = event.target.dataset.status;
+        const newValue = event.detail.value;
 
         if (this.records) {
-            this.records
-                .filter(mapping => mapping.status === data.keyField)
-                .forEach(mapping => {
-                    mapping.state = data.value;
-                });
+            this.records = this.records.map(mapping => {
+                if (mapping.status === status) {
+                    return { ...mapping, state: newValue };
+                }
+                return mapping;
+            });
         }
     }
 
     /**
-    * @description Indicates the edit button should be disabled when Status 
-    * picklist field does not contain any client defined value
+    * @description Returns true when no records have editable state mappings
+    */
+    get hasEditableRecords() {
+        return this.records
+            && this.records.some(mapping => mapping.isReadOnly === false);
+    }
+
+    /**
+    * @description Indicates the edit button should be disabled when
+    * no custom (editable) status values exist
     */
     get isEditDisabled() {
-        let disabled = false;
-
-        if (this.records) {
-            disabled = this.records.length <= 3;
-        }
-
-        return disabled;
+        return !this.hasEditableRecords;
     }
 
     /***
@@ -162,11 +137,12 @@ export default class rd2StatusMappingSettings extends LightningElement {
         this.clearMessage();
 
         if (this.records) {
-            this.records
-                .filter(mapping => mapping.isReadOnly === false)
-                .forEach(mapping => {
-                    mapping.oldState = mapping.state;
-                });
+            this.records = this.records.map(mapping => {
+                if (mapping.isReadOnly === false) {
+                    return { ...mapping, oldState: mapping.state };
+                }
+                return mapping;
+            });
         }
 
         this.isViewMode = false;
@@ -180,12 +156,16 @@ export default class rd2StatusMappingSettings extends LightningElement {
 
         //reset values to the values as they were before the edit
         if (this.records) {
-            this.records
-                .filter(mapping => mapping.isReadOnly === false)
-                .forEach(mapping => {
-                    mapping.state = isNull(mapping.oldState) ? stateUnmappedLabel : mapping.oldState;
-                    mapping.oldState = null;
-                });
+            this.records = this.records.map(mapping => {
+                if (mapping.isReadOnly === false) {
+                    return {
+                        ...mapping,
+                        state: isNull(mapping.oldState) ? stateUnmappedLabel : mapping.oldState,
+                        oldState: null
+                    };
+                }
+                return mapping;
+            });
         }
         this.isViewMode = true;
     }

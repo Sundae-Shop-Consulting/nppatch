@@ -3,36 +3,103 @@
         error-message={_errorMessage} description={sectionDescription}>
 
         <lightning-input type="toggle" label={labels.storeErrors}
-            field-level-help={labels.helpStoreErrors}
             checked={storeErrorsValue}
             onchange={handleStoreErrorsChange}
             message-toggle-active="Enabled"
             message-toggle-inactive="Disabled">
         </lightning-input>
+        <p class="slds-text-color_weak slds-text-body_small slds-m-top_xx-small slds-m-bottom_small">
+            When enabled, NPPatch logs processing errors as Error__c records so you can review them in the Error Log.
+        </p>
 
         <lightning-input type="toggle" label={labels.errorNotifications}
-            field-level-help={labels.helpErrorNotifications}
             checked={errorNotificationsValue}
             onchange={handleErrorNotificationsChange}
-            disabled={isNotifToggleDisabled}
+            disabled={isNotifDisabled}
             message-toggle-active="Enabled"
             message-toggle-inactive="Disabled">
         </lightning-input>
+        <p class="slds-text-color_weak slds-text-body_small slds-m-top_xx-small slds-m-bottom_small">
+            When enabled, NPPatch sends email or Chatter notifications when processing errors occur.
+        </p>
 
-        <lightning-input type="text" label={labels.notifyTo}
-            field-level-help={labels.helpNotifyTo}
-            value={notifyToValue}
-            onchange={handleNotifyToChange}
-            disabled={isNotifToggleDisabled}>
-        </lightning-input>
+        <!-- Recipient Type Selector -->
+        <lightning-combobox label={labels.recipientType}
+            value={_recipientType}
+            options={recipientTypeOptions}
+            onchange={handleRecipientTypeChange}
+            disabled={isRecipientDisabled}>
+        </lightning-combobox>
 
-        <lightning-input type="toggle" label={labels.respectDupeRules}
-            field-level-help={labels.helpRespectDupeRules}
-            checked={respectDupeRulesValue}
-            onchange={handleRespectDupeRulesChange}
-            message-toggle-active="Enabled"
-            message-toggle-inactive="Disabled">
-        </lightning-input>
+        <!-- Searchable recipient picker -->
+        <template lwc:if={showRecipientSearch}>
+            <!-- Selected pill -->
+            <template lwc:if={selectedRecipientPill}>
+                <div class="slds-m-top_small slds-m-bottom_small">
+                    <span class="slds-pill">
+                        <span class="slds-pill__label">{_recipientLabel}</span>
+                        <template lwc:if={_recipientSublabel}>
+                            <span class="slds-text-color_weak slds-text-body_small slds-m-left_xx-small">{_recipientSublabel}</span>
+                        </template>
+                        <lightning-button-icon icon-name="utility:close"
+                            alternative-text="Remove"
+                            variant="bare" size="small"
+                            onclick={handleClearRecipient}
+                            disabled={isRecipientDisabled}>
+                        </lightning-button-icon>
+                    </span>
+                </div>
+            </template>
+
+            <!-- Search input -->
+            <template lwc:if={showSearchInput}>
+                <div class="slds-form-element slds-m-top_small">
+                    <label class="slds-form-element__label">{searchLabel}</label>
+                    <div class="slds-form-element__control">
+                        <lightning-input type="search"
+                            variant="label-hidden"
+                            label={searchLabel}
+                            placeholder={searchPlaceholder}
+                            value={_searchTerm}
+                            onchange={handleSearchChange}
+                            disabled={isRecipientDisabled}>
+                        </lightning-input>
+                    </div>
+
+                    <!-- Inline search results -->
+                    <template lwc:if={_showDropdown}>
+                        <ul class="results-list slds-has-dividers_bottom-space slds-m-top_xx-small">
+                            <template for:each={_searchResults} for:item="item">
+                                <li key={item.value}
+                                    class="result-item slds-item slds-p-around_small"
+                                    data-value={item.value}
+                                    data-label={item.label}
+                                    data-sublabel={item.sublabel}
+                                    onclick={handleSelectResult}>
+                                    <span class="slds-text-body_regular">{item.label}</span>
+                                    <template lwc:if={item.sublabel}>
+                                        <br/>
+                                        <span class="slds-text-body_small slds-text-color_weak">{item.sublabel}</span>
+                                    </template>
+                                </li>
+                            </template>
+                        </ul>
+                    </template>
+
+                    <template lwc:if={_isSearching}>
+                        <lightning-spinner alternative-text="Searching" size="small"
+                            class="slds-m-top_small">
+                        </lightning-spinner>
+                    </template>
+
+                    <template lwc:if={noResults}>
+                        <p class="slds-text-color_weak slds-text-body_small slds-m-top_small">
+                            No results found.
+                        </p>
+                    </template>
+                </div>
+            </template>
+        </template>
 
     </c-stg-panel-content>
 </template>

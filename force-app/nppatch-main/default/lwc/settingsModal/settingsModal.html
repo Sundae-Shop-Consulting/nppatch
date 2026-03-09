@@ -28,6 +28,9 @@
         <template lwc:if={isAllocationsPanel}>
             <c-stg-panel-allocations></c-stg-panel-allocations>
         </template>
+        <template lwc:if={isDuplicateRulesPanel}>
+            <c-stg-panel-duplicate-rules></c-stg-panel-duplicate-rules>
+        </template>
         <template lwc:if={isErrorNotifPanel}>
             <c-stg-panel-error-notif></c-stg-panel-error-notif>
         </template>

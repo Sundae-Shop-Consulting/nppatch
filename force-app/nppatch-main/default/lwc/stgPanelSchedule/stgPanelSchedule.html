@@ -100,19 +100,12 @@
 
         <!-- Use Dated Conversion Rates -->
         <lightning-input type="toggle" label={labels.useDatedConversionRates}
-            field-level-help={labels.helpUseDatedConversionRates}
             checked={_workingCopyHH.Use_Dated_Conversion_Rates__c}
             onchange={handleUseDatedConversionRatesChange}
             message-toggle-active="Enabled" message-toggle-inactive="Disabled">
         </lightning-input>
+        <p class="slds-text-color_weak slds-text-body_small slds-m-top_xx-small slds-m-bottom_small">{labels.helpUseDatedConversionRates}</p>
 
-        <!-- Don't Auto Schedule Default Jobs -->
-        <lightning-input type="toggle" label={labels.dontAutoSchedule}
-            field-level-help={labels.helpDontAutoSchedule}
-            checked={_workingCopyErr.Don_t_Auto_Schedule_Default_NPPatch_Jobs__c}
-            onchange={handleDontAutoScheduleChange}
-            message-toggle-active="Enabled" message-toggle-inactive="Disabled">
-        </lightning-input>
 
     </c-stg-panel-content>
 </template>
