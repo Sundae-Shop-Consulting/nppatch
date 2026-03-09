@@ -306,7 +306,7 @@ private with sharing class STG_PanelHealthCheck_TEST {
         System.assertEquals(System.Label.healthLabelAccountDefaultRT, panelHealthCheckController.listDR[0].strName);
         System.assertEquals(STG_PanelHealthCheck_CTRL.statusSuccess, panelHealthCheckController.listDR[0].strStatus);
         System.assertEquals(null, panelHealthCheckController.listDR[0].strDetails);
-        System.assertEquals(null, panelHealthCheckController.listDR[0].strSolution);
+        System.assertEquals(System.Label.healthDetailsAccountDefaultRTValid, panelHealthCheckController.listDR[0].strSolution);
     }
 
     /*******************************************************************************************************

@@ -202,6 +202,7 @@ CREATE TABLE "Account" (
     id VARCHAR(255) NOT NULL,
     "Name" VARCHAR(255),
     "RecordTypeId" VARCHAR(255),
+    "SYSTEM_AccountType__c" VARCHAR(255),
     "Grantmaker__c" VARCHAR(255),
     "Matching_Gift_Company__c" VARCHAR(255),
     "Matching_Gift_Percent__c" VARCHAR(255),
@@ -210,24 +211,24 @@ CREATE TABLE "Account" (
 );
 
 -- Household Accounts (donors and supporters)
-INSERT INTO "Account" VALUES('Account-1','Martinez Household','HH_Account','false','false',NULL,NULL);
-INSERT INTO "Account" VALUES('Account-2','Chen Household','HH_Account','false','false',NULL,NULL);
-INSERT INTO "Account" VALUES('Account-3','Johnson Household','HH_Account','false','false',NULL,NULL);
-INSERT INTO "Account" VALUES('Account-4','Williams Household','HH_Account','false','false',NULL,NULL);
-INSERT INTO "Account" VALUES('Account-5','Patel Household','HH_Account','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-1','Martinez Household','HH_Account','Household Account','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-2','Chen Household','HH_Account','Household Account','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-3','Johnson Household','HH_Account','Household Account','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-4','Williams Household','HH_Account','Household Account','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-5','Patel Household','HH_Account','Household Account','false','false',NULL,NULL);
 
 -- Household Accounts (program participants and staff)
-INSERT INTO "Account" VALUES('Account-10','Reyes Household','HH_Account','false','false',NULL,NULL);
-INSERT INTO "Account" VALUES('Account-11','Thompson Household','HH_Account','false','false',NULL,NULL);
-INSERT INTO "Account" VALUES('Account-12','Rivera Household','HH_Account','false','false',NULL,NULL);
-INSERT INTO "Account" VALUES('Account-13','Watanabe Household','HH_Account','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-10','Reyes Household','HH_Account','Household Account','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-11','Thompson Household','HH_Account','Household Account','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-12','Rivera Household','HH_Account','Household Account','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-13','Watanabe Household','HH_Account','Household Account','false','false',NULL,NULL);
 
 -- Organization Accounts
-INSERT INTO "Account" VALUES('Account-6','Acme Corporation','Organization','false','true','100',NULL);
-INSERT INTO "Account" VALUES('Account-7','Patel Family Foundation','Organization','true','false',NULL,NULL);
-INSERT INTO "Account" VALUES('Account-8','Riverside Elementary School','Organization','false','false',NULL,NULL);
-INSERT INTO "Account" VALUES('Account-9','State University','Organization','false','false',NULL,NULL);
-INSERT INTO "Account" VALUES('Account-14','Portland Public Library','Organization','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-6','Acme Corporation','Organization','Organization','false','true','100',NULL);
+INSERT INTO "Account" VALUES('Account-7','Patel Family Foundation','Organization','Organization','true','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-8','Riverside Elementary School','Organization','Organization','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-9','State University','Organization','Organization','false','false',NULL,NULL);
+INSERT INTO "Account" VALUES('Account-14','Portland Public Library','Organization','Organization','false','false',NULL,NULL);
 
 
 -- ============================================================
