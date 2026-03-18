@@ -211,15 +211,47 @@ public with sharing class HH_Container_LCTRL {
     }
 
     /*******************************************************************************************************
+    * @description returns a single Contact with all household naming fields, used by the lightning-record-picker
+    * flow to load full contact data after selection.
+    * @param contactId The Id of the Contact to retrieve
+    * @return Contact The fully-loaded Contact record
+    */
+    @AuraEnabled
+    public static Contact getContactById(Id contactId) {
+        try {
+            if (contactId == null) {
+                return null;
+            }
+            String strSoql = getContactQueryBuilderWithFls()
+                .withWhere('Id = :contactId')
+                .withLimit(1)
+                .build();
+            List<Contact> results = Database.query(strSoql);
+            return results.isEmpty() ? null : results[0];
+        } catch (Exception ex) {
+            throw new AuraHandledException(ex.getMessage());
+        }
+    }
+
+    /*******************************************************************************************************
     * @description returns the soql string to use to query contacts and their appropriate fields, and ensures
     * field level security that the user has permissions to read and modify those fields.
     * @return String The soql select string to use for Contacts
     */
     public static String getContactSelectQueryWithFls() {
+        return getContactQueryBuilderWithFls().build();
+    }
+
+    /*******************************************************************************************************
+    * @description returns a UTIL_Query builder for contacts with all household naming fields and FLS checks.
+    * Callers can chain additional clauses (withWhere, withLimit, etc.) before calling build().
+    * @return UTIL_Query The query builder with select fields and from clause configured
+    */
+    public static UTIL_Query getContactQueryBuilderWithFls() {
         //we use dynamic soql so we can include all contact fields, since custom naming may refer to any field.
         Set<String> selectFields = getContactFields();
         Set<String> setCheckUpdate = setUpdateableContactFields();
-        
+
         for (String strF : selectFields) {
 
             if (!strF.contains('.')) {
@@ -244,8 +276,7 @@ public with sharing class HH_Container_LCTRL {
 
         return new UTIL_Query()
             .withSelectFields(selectFields)
-            .withFrom('Contact')
-            .build();
+            .withFrom('Contact');
     }
 
     /*******************************************************************************************************

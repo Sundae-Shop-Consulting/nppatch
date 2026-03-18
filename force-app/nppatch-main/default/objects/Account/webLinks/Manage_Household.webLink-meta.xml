@@ -3,10 +3,10 @@
     <fullName>Manage_Household</fullName>
     <availability>online</availability>
     <displayType>button</displayType>
-    <height>600</height>
-    <linkType>page</linkType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
     <masterLabel>Manage Household</masterLabel>
-    <openType>noSidebar</openType>
-    <page>HH_ManageHHAccount</page>
+    <openType>replace</openType>
     <protected>false</protected>
+    <url>/lightning/n/%%%NAMESPACE%%%Manage_Household?c__householdId={!Account.Id}</url>
 </WebLink>
