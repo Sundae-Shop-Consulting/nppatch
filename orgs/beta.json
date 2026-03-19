@@ -1,6 +1,7 @@
 {
   "orgName": "nppatch - Beta Test Org",
   "edition": "Developer",
+  "features": ["AddCustomApps:15"], 
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true

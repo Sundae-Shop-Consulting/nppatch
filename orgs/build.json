@@ -1,7 +1,7 @@
 {
   "orgName": "nppatch - Build Org",
   "edition": "Developer",
-  "features": ["EnableSetPasswordInApi"],
+  "features": ["EnableSetPasswordInApi", "AddCustomApps:15"],
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true

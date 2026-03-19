@@ -61,6 +61,46 @@
         "Install {product} {version}": {
             "message": "Install {product} {version}",
             "description": "title of installation step"
+        },
+        "Configure Account Record Types": {
+            "message": "Configure Account Record Types",
+            "description": "title of installation step"
+        },
+        "Configure Opportunity Record Types": {
+            "message": "Configure Opportunity Record Types",
+            "description": "title of installation step"
+        },
+        "Configure Opportunity Stages": {
+            "message": "Configure Opportunity Stages",
+            "description": "title of installation step"
+        },
+        "Configure Opportunity Contact Roles": {
+            "message": "Configure Opportunity Contact Roles",
+            "description": "title of installation step"
+        },
+        "Post-Install Configuration": {
+            "message": "Post-Install Configuration",
+            "description": "title of installation step"
+        },
+        "Set Default Settings": {
+            "message": "Set Default Settings",
+            "description": "title of installation step"
+        },
+        "Assign Permission Sets": {
+            "message": "Assign Permission Sets",
+            "description": "title of installation step"
+        },
+        "Update Admin Profile": {
+            "message": "Update Admin Profile",
+            "description": "title of installation step"
+        },
+        "Reorder App Menu": {
+            "message": "Reorder App Menu",
+            "description": "title of installation step"
+        },
+        "Load Sample Data": {
+            "message": "Load Sample Data",
+            "description": "title of installation step"
         }
     }
 }

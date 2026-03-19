@@ -35,9 +35,14 @@ public static void initializeDefaultSettings() {
     setAllocationSettings();
     setCustomizableRollupSettings();
     setHouseholdSettings();
+    setHouseholdNamingSettings();
     setContactAndOrgSettings();
     setRecurringDonationSettings();
+    setRelationshipSettings();
     setErrorSettings();
+    setDataImportSettings();
+    setGiftEntrySettings();
+    setLevelsSettings();
 }
 
 // ==============================================================================================================
@@ -202,6 +207,75 @@ private void setErrorSettings() {
         settings.%%%NAMESPACE%%%OverrideFeature_PilotEnabled__c = false;
         settings.%%%NAMESPACE%%%Enable_Debug__c = false;
         settings.%%%NAMESPACE%%%Respect_Duplicate_Rule_Settings__c = false;
+        upsert settings;
+    }
+}
+
+/**
+ * @description Configure the default Household Naming settings mimicking what is in UTIL_CustomSettingsFacade
+ */
+private static void setHouseholdNamingSettings() {
+    %%%NAMESPACE%%%Household_Naming_Settings__c settings = %%%NAMESPACE%%%Household_Naming_Settings__c.getOrgDefaults();
+
+    if (settings.Id == null) {
+        settings.%%%NAMESPACE%%%Household_Name_Format__c = '{!LastName} Household';
+        settings.%%%NAMESPACE%%%Formal_Greeting_Format__c = '{!{!Salutation} {!FirstName}} {!LastName}';
+        settings.%%%NAMESPACE%%%Informal_Greeting_Format__c = '{!{!FirstName}}';
+        settings.%%%NAMESPACE%%%Name_Connector__c = 'and';
+        settings.%%%NAMESPACE%%%Name_Overrun__c = 'Friends';
+        settings.%%%NAMESPACE%%%Contact_Overrun_Count__c = 9;
+        settings.%%%NAMESPACE%%%Implementing_Class__c = 'HH_NameSpec';
+        upsert settings;
+    }
+}
+
+/**
+ * @description Configure the default Relationship settings mimicking what is in UTIL_CustomSettingsFacade
+ */
+private static void setRelationshipSettings() {
+    %%%NAMESPACE%%%Relationship_Settings__c settings = %%%NAMESPACE%%%Relationship_Settings__c.getOrgDefaults();
+
+    if (settings.Id == null) {
+        settings.%%%NAMESPACE%%%Reciprocal_Method__c = 'List Setting';
+        upsert settings;
+    }
+}
+
+/**
+ * @description Configure the default Data Import settings mimicking what is in UTIL_CustomSettingsFacade
+ */
+private static void setDataImportSettings() {
+    %%%NAMESPACE%%%Data_Import_Settings__c settings = %%%NAMESPACE%%%Data_Import_Settings__c.getOrgDefaults();
+
+    if (settings.Id == null) {
+        settings.%%%NAMESPACE%%%Batch_Size__c = 50;
+        settings.%%%NAMESPACE%%%Contact_Matching_Rule__c = 'Firstname,Lastname,Email';
+        settings.%%%NAMESPACE%%%Donation_Matching_Behavior__c = 'Do Not Match';
+        settings.%%%NAMESPACE%%%Donation_Matching_Rule__c = '%%%NAMESPACE%%%Donation_Amount__c;%%%NAMESPACE%%%Donation_Date__c';
+        settings.%%%NAMESPACE%%%Donation_Date_Range__c = 0;
+        upsert settings;
+    }
+}
+
+/**
+ * @description Configure the default Gift Entry settings mimicking what is in UTIL_CustomSettingsFacade
+ */
+private static void setGiftEntrySettings() {
+    %%%NAMESPACE%%%Gift_Entry_Settings__c settings = %%%NAMESPACE%%%Gift_Entry_Settings__c.getOrgDefaults();
+
+    if (settings.Id == null) {
+        upsert settings;
+    }
+}
+
+/**
+ * @description Configure the default Levels settings mimicking what is in UTIL_CustomSettingsFacade
+ */
+private static void setLevelsSettings() {
+    %%%NAMESPACE%%%Levels_Settings__c settings = %%%NAMESPACE%%%Levels_Settings__c.getOrgDefaults();
+
+    if (settings.Id == null) {
+        settings.%%%NAMESPACE%%%Level_Assignment_Batch_Size__c = 200;
         upsert settings;
     }
 }
