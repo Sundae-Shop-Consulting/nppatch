@@ -72,7 +72,7 @@ export default class GeFormWidgetAllocation extends LightningElement {
                 .forEach((objectDevNameValue) => {
                     const row = {};
                     Object.entries(objectDevNameValue)
-                        .filter(([key, value]) => key !== "attributes")
+                        .filter(([key]) => key !== "attributes")
                         .forEach(([key, value]) => {
                             row[key] = value;
                         });
@@ -279,6 +279,7 @@ export default class GeFormWidgetAllocation extends LightningElement {
                     return errorIcon;
             }
         }
+        return undefined;
     }
 
     get alertClass() {
@@ -295,6 +296,7 @@ export default class GeFormWidgetAllocation extends LightningElement {
                     return errorClass;
             }
         }
+        return undefined;
     }
 
     get footerClass() {

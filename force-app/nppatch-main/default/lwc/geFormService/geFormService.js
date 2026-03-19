@@ -48,6 +48,7 @@ class GeFormService {
             return await getOrgDomainInfo();
         } catch (error) {
             handleError(error);
+            return undefined;
         }
     };
 
@@ -56,7 +57,7 @@ class GeFormService {
      * @returns {Promise<GE_GiftEntryController.RenderWrapper>}
      */
     getFormTemplate() {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             getRenderWrapper({})
                 .then((result) => {
                     this.readFieldMappings(result.fieldMappingSetWrapper);
@@ -73,13 +74,13 @@ class GeFormService {
     }
 
     getAllocationSettings() {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             getAllocationSettings().then(resolve).catch(handleError);
         });
     }
 
     getFieldMappings() {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             getFieldMappings()
                 .then((result) => {
                     this.readFieldMappings(result);
@@ -151,6 +152,7 @@ class GeFormService {
                 if (Array.isArray(element.dataImportFieldMappingDevNames)) {
                     return element.dataImportFieldMappingDevNames.includes(mappingDevName);
                 }
+                return false;
             });
             if (isNotEmpty(fieldElement)) {
                 // return custom label from the form template layout

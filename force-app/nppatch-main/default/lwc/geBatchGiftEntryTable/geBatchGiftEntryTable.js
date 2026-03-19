@@ -1,6 +1,6 @@
 import { LightningElement, api, wire } from "lwc";
 import { getObjectInfo } from "lightning/uiObjectInfoApi";
-import { isNotEmpty, isUndefined, apiNameFor, showToast, hasNestedProperty, deepClone, format } from "c/utilCommon";
+import { isNotEmpty, isUndefined, apiNameFor, hasNestedProperty, deepClone, format } from "c/utilCommon";
 import GeFormService from "c/geFormService";
 import { fireEvent } from "c/pubsubNoPageRef";
 
@@ -12,7 +12,6 @@ import geBatchGiftsTotal from "@salesforce/label/c.geBatchGiftsTotal";
 import geBatchGiftsHeader from "@salesforce/label/c.geBatchGiftsHeader";
 
 import commonOpen from "@salesforce/label/c.commonOpen";
-import bgeGridGiftDeleted from "@salesforce/label/c.bgeGridGiftDeleted";
 import GeLabelService from "c/geLabelService";
 
 import DATA_IMPORT_OBJECT from "@salesforce/schema/DataImport__c";
@@ -186,13 +185,13 @@ export default class GeBatchGiftEntryTable extends LightningElement {
     }
 
     hasDataImportRowError(row) {
-        return this.getErrorPropertiesToDisplayInRow().some((errorProperty) => row.hasOwnProperty(errorProperty));
+        return this.getErrorPropertiesToDisplayInRow().some((errorProperty) => Object.prototype.hasOwnProperty.call(row, errorProperty));
     }
 
     getTableRowErrorMessages(dataImportRow) {
         const errorMessages = [];
         this.getErrorPropertiesToDisplayInRow().forEach((errorProperty) => {
-            if (dataImportRow.hasOwnProperty(errorProperty)) {
+            if (Object.prototype.hasOwnProperty.call(dataImportRow, errorProperty)) {
                 errorMessages.push(dataImportRow[errorProperty]);
             }
         });
@@ -224,6 +223,7 @@ export default class GeBatchGiftEntryTable extends LightningElement {
             if (this._columnsBySourceFieldApiName[`${columnName}${URL_SUFFIX}`]) {
                 userDefinedColumns.push(this._columnsBySourceFieldApiName[`${columnName}${URL_SUFFIX}`]);
             } else if (isUndefined(this._columnsBySourceFieldApiName[columnName])) {
+                // no-op: skip undefined columns
             } else {
                 userDefinedColumns.push(this._columnsBySourceFieldApiName[columnName]);
             }
@@ -289,6 +289,8 @@ export default class GeBatchGiftEntryTable extends LightningElement {
                     })
                 );
                 this.isLoading = true;
+                break;
+            default:
                 break;
         }
     }
@@ -441,7 +443,7 @@ export default class GeBatchGiftEntryTable extends LightningElement {
 
     _dataImportObjectInfo;
     @wire(getObjectInfo, { objectApiName: DATA_IMPORT_OBJECT })
-    wiredDataImportObjectInfo({ error, data }) {
+    wiredDataImportObjectInfo({ data }) {
         if (data) {
             this._dataImportObjectInfo = data;
             this._setTableProperties();

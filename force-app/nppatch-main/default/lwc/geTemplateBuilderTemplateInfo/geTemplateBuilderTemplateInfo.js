@@ -30,7 +30,7 @@ export default class geTemplateBuilderTemplateInfo extends LightningElement {
 
     @api
     validate() {
-        return new Promise(async (resolve, reject) => {
+        return new Promise((resolve, reject) => {
             const nameInput = this.template.querySelector("lightning-input");
             let isValid = false;
 

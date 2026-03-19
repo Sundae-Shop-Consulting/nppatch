@@ -73,17 +73,15 @@ class GiftScheduleService {
         if (!hasRecurringType) {
             return {};
         }
-        if (hasRecurringType) {
-            const schedule = {
-                [RECURRING_TYPE.fieldApiName]: fields[RECURRING_DONATION_RECURRING_TYPE.fieldApiName],
-                [DAY_OF_MONTH.fieldApiName]: fields[RECURRING_DONATION_DAY_OF_MONTH.fieldApiName],
-                [INSTALLMENT_FREQUENCY.fieldApiName]: fields[RECURRING_DONATION_INSTALLMENT_FREQUENCY.fieldApiName],
-                [INSTALLMENT_PERIOD.fieldApiName]: fields[RECURRING_DONATION_INSTALLMENT_PERIOD.fieldApiName],
-                [PLANNED_INSTALLMENTS.fieldApiName]: fields[RECURRING_DONATION_PLANNED_INSTALLMENTS.fieldApiName],
-                [EFFECTIVE_DATE.fieldApiName]: fields[RECURRING_DONATION_EFFECTIVE_DATE.fieldApiName],
-            };
-            return schedule;
-        }
+        const schedule = {
+            [RECURRING_TYPE.fieldApiName]: fields[RECURRING_DONATION_RECURRING_TYPE.fieldApiName],
+            [DAY_OF_MONTH.fieldApiName]: fields[RECURRING_DONATION_DAY_OF_MONTH.fieldApiName],
+            [INSTALLMENT_FREQUENCY.fieldApiName]: fields[RECURRING_DONATION_INSTALLMENT_FREQUENCY.fieldApiName],
+            [INSTALLMENT_PERIOD.fieldApiName]: fields[RECURRING_DONATION_INSTALLMENT_PERIOD.fieldApiName],
+            [PLANNED_INSTALLMENTS.fieldApiName]: fields[RECURRING_DONATION_PLANNED_INSTALLMENTS.fieldApiName],
+            [EFFECTIVE_DATE.fieldApiName]: fields[RECURRING_DONATION_EFFECTIVE_DATE.fieldApiName],
+        };
+        return schedule;
     }
 }
 

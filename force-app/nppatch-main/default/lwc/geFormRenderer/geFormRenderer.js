@@ -4,7 +4,7 @@ import sendPurchaseRequest from "@salesforce/apex/GE_GiftEntryController.sendPur
 import upsertDataImport from "@salesforce/apex/GE_GiftEntryController.upsertDataImport";
 import validateAuthorizedGiftEdit from "@salesforce/apex/GE_GiftEntryController.validateAuthorizedGiftEdit";
 import getPaymentTransactionStatusValues from "@salesforce/apex/GE_PaymentServices.getPaymentTransactionStatusValues";
-import { getCurrencyLowestCommonDenominator } from "c/utilNumberFormatter";
+import { getCurrencyLowestCommonDenominator, getNumberAsLocalizedCurrency } from "c/utilNumberFormatter";
 import PAYMENT_AUTHORIZE_TOKEN from "@salesforce/schema/DataImport__c.Payment_Authorization_Token__c";
 const PAYMENT_ELEVATE_ID = { fieldApiName: "Payment_Elevate_ID__c", objectApiName: "DataImport__c" };
 const PAYMENT_ELEVATE_ELEVATE_BATCH_ID = {
@@ -45,7 +45,6 @@ import geMakeRecurring from "@salesforce/label/c.geMakeRecurring";
 import btnContinue from "@salesforce/label/c.btnContinue";
 import geRecurringGiftModalWarning from "@salesforce/label/c.geRecurringGiftModalWarning";
 import geRecurringScheduleInformation from "@salesforce/label/c.geRecurringScheduleInformation";
-import { getNumberAsLocalizedCurrency } from "c/utilNumberFormatter";
 import {
     buildErrorMessage,
     DONATION_DONOR_FIELDS,
@@ -189,19 +188,41 @@ const EXPANDABLE_SECTION_CONTAINER = "expandableSectionContainer";
 export default class GeFormRenderer extends LightningElement {
     // these three fields are used to query the donor record
     // when opened from an Account or Contact
-    @api donorRecordId;
-    @api donorRecord;
-    @api loadingText;
+    _donorRecordId;
+    @api get donorRecordId() { return this._donorRecordId; }
+    set donorRecordId(value) { this._donorRecordId = value; }
+
+    _donorRecord;
+    @api get donorRecord() { return this._donorRecord; }
+    set donorRecord(value) { this._donorRecord = value; }
+
+    _loadingText;
+    @api get loadingText() { return this._loadingText; }
+    set loadingText(value) { this._loadingText = value; }
 
     fieldNames = [ACCOUNT_NAME_FIELD, CONTACT_NAME_FIELD];
     PAYMENT_TRANSACTION_STATUS_ENUM;
-    @api sections = [];
-    @api showSpinner = false;
+
+    _sections = [];
+    @api get sections() { return this._sections; }
+    set sections(value) { this._sections = value; }
+
+    _showSpinner = false;
+    @api get showSpinner() { return this._showSpinner; }
+    set showSpinner(value) { this._showSpinner = value; }
+
     @api batchId;
     @api gift;
     @api submissions = [];
-    @api hasPageLevelError = false;
-    @api pageLevelErrorMessageList = [];
+
+    _hasPageLevelError = false;
+    @api get hasPageLevelError() { return this._hasPageLevelError; }
+    set hasPageLevelError(value) { this._hasPageLevelError = value; }
+
+    _pageLevelErrorMessageList = [];
+    @api get pageLevelErrorMessageList() { return this._pageLevelErrorMessageList; }
+    set pageLevelErrorMessageList(value) { this._pageLevelErrorMessageList = value; }
+
     @api batchCurrencyIsoCode;
     @api isElevateCustomer = false;
     @api saveDisabled = false;
@@ -217,7 +238,10 @@ export default class GeFormRenderer extends LightningElement {
     @track description = "";
     @track mappingSet = "";
     @track version = "";
-    @api hasPaymentWidget = false;
+
+    _hasPaymentWidget = false;
+    @api get hasPaymentWidget() { return this._hasPaymentWidget; }
+    set hasPaymentWidget(value) { this._hasPaymentWidget = value; }
     _isElevateWidgetInDisabledState = false;
     cardholderNamesNotInTemplate = {};
     _openedGiftId;
@@ -257,7 +281,7 @@ export default class GeFormRenderer extends LightningElement {
             this.setSelectedDonationInFormState(record.fields, record.fields.applyPayment);
             this.loadSelectedDonationFieldValues(record.fields);
         } else {
-            throw "Unsupported selected donation type!";
+            throw new Error("Unsupported selected donation type!");
         }
 
         const reviewDonationsChangeEvent = new CustomEvent("reviewdonationschange", { detail: { record: record } });
@@ -347,7 +371,7 @@ export default class GeFormRenderer extends LightningElement {
     @wire(getRecord, { recordId: "$donorRecordId", optionalFields: "$fieldNames" })
     wiredGetRecordMethod({ error, data }) {
         if (data) {
-            this.donorRecord = data;
+            this._donorRecord = data;
             this.initializeForm(this.formTemplate, this.fieldMappings);
         } else if (error) {
             console.error(JSON.stringify(error));
@@ -377,7 +401,7 @@ export default class GeFormRenderer extends LightningElement {
             }
 
             // check if there is a record id in the url
-            this.donorRecordId = getQueryParameters().c__donorRecordId;
+            this._donorRecordId = getQueryParameters().c__donorRecordId;
             const donorApiName = getQueryParameters().c__apiName;
             if (donorApiName) {
                 this.initializeDonationDonorTypeInFormState(donorApiName);
@@ -523,7 +547,7 @@ export default class GeFormRenderer extends LightningElement {
             case "Contact":
                 return DONATION_DONOR_TYPE_ENUM.CONTACT1;
             default:
-                throw `Unsupported donorApiName of: ${donorApiName}`;
+                throw new Error(`Unsupported donorApiName of: ${donorApiName}`);
         }
     }
 
@@ -538,27 +562,27 @@ export default class GeFormRenderer extends LightningElement {
             // add record data to the template fields
 
             if (isNotEmpty(fieldMappings) && isNotEmpty(this.donorRecord)) {
-                this.sections = setRecordValuesOnTemplate(
+                this._sections = setRecordValuesOnTemplate(
                     formTemplate.layout.sections,
                     fieldMappings,
                     this.donorRecord
                 );
             } else {
-                this.sections = formTemplate.layout.sections;
+                this._sections = formTemplate.layout.sections;
             }
 
             if (!this.isSingleGiftEntry) {
                 if (Settings.isElevateCustomer) {
                     GeGatewaySettings.initDecryptedElevateSettings(formTemplate.elevateSettings);
                 }
-                this.sections = this.prepareFormForBatchMode(formTemplate.layout.sections);
+                this._sections = this.prepareFormForBatchMode(formTemplate.layout.sections);
                 this.dispatchEvent(new CustomEvent("sectionsretrieved"));
             } else if (Settings.isElevateCustomer) {
                 GeGatewaySettings.clearDecryptedElevateSettings();
             }
         }
 
-        this.sections = this.appendRecordTypeLocationInfoToPicklistElements();
+        this._sections = this.appendRecordTypeLocationInfoToPicklistElements();
         this.initializeFormState();
         this.initializeWidgetConfig();
     }
@@ -745,7 +769,7 @@ export default class GeFormRenderer extends LightningElement {
         const sectionsList = this.template.querySelectorAll("c-ge-form-section");
         const exceptionWrapper = new ExceptionDataError(error);
         const allDisplayedFields = this.getDisplayedFieldsMappedByAPIName(sectionsList);
-        this.hasPageLevelError = true;
+        this._hasPageLevelError = true;
 
         if (isNotEmpty(exceptionWrapper.exceptionType)) {
             // Check to see if there are any field level errors
@@ -769,42 +793,46 @@ export default class GeFormRenderer extends LightningElement {
                 // If there are no specific fields the error has to go to,
                 // put it on the page level error message.
                 for (const dmlIndex in exceptionWrapper.DMLErrorMessageMapping) {
-                    const errorMessage = exceptionWrapper.DMLErrorMessageMapping[dmlIndex];
-                    const index = dmlIndex + 1;
-                    this.addPageLevelErrorMessage({ errorMessage, index });
+                    if (Object.prototype.hasOwnProperty.call(exceptionWrapper.DMLErrorMessageMapping, dmlIndex)) {
+                        const errorMessage = exceptionWrapper.DMLErrorMessageMapping[dmlIndex];
+                        const index = dmlIndex + 1;
+                        this.addPageLevelErrorMessage({ errorMessage, index });
+                    }
                 }
             } else {
                 // If there is a specific field that each error is supposed to go to,
                 // show it on the field on the page.
                 // If it is not on the page to show, display it on the page level.
                 for (const key in exceptionWrapper.DMLErrorFieldNameMapping) {
-                    // List of fields with this error
-                    const fieldList = exceptionWrapper.DMLErrorFieldNameMapping[key];
-                    // Error message for the field.
-                    const errorMessage = exceptionWrapper.DMLErrorMessageMapping[key];
-                    // Errored fields that are not displayed
-                    const hiddenFieldList = [];
+                    if (Object.prototype.hasOwnProperty.call(exceptionWrapper.DMLErrorFieldNameMapping, key)) {
+                        // List of fields with this error
+                        const fieldList = exceptionWrapper.DMLErrorFieldNameMapping[key];
+                        // Error message for the field.
+                        const errorMessage = exceptionWrapper.DMLErrorMessageMapping[key];
+                        // Errored fields that are not displayed
+                        const hiddenFieldList = [];
 
-                    fieldList.forEach((fieldWithError) => {
-                        // Go to the field and set the error message using setCustomValidity
-                        if (fieldWithError in allDisplayedFields) {
-                            const fieldInput = allDisplayedFields[fieldWithError];
-                            this.erroredFields.push(fieldInput);
-                            fieldInput.setCustomValidity(errorMessage);
-                        } else {
-                            // Keep track of errored fields that are not displayed.
-                            hiddenFieldList.push(fieldWithError);
-                        }
-                    });
-
-                    // If there are hidden fields, display the error message at the page level.
-                    // With the fields noted.
-                    if (hiddenFieldList.length > 0) {
-                        const combinedFields = hiddenFieldList.join(", ");
-                        this.addPageLevelErrorMessage({
-                            errorMessage: `${errorMessage} [${combinedFields}]`,
-                            index: key,
+                        fieldList.forEach((fieldWithError) => {
+                            // Go to the field and set the error message using setCustomValidity
+                            if (fieldWithError in allDisplayedFields) {
+                                const fieldInput = allDisplayedFields[fieldWithError];
+                                this.erroredFields.push(fieldInput);
+                                fieldInput.setCustomValidity(errorMessage);
+                            } else {
+                                // Keep track of errored fields that are not displayed.
+                                hiddenFieldList.push(fieldWithError);
+                            }
                         });
+
+                        // If there are hidden fields, display the error message at the page level.
+                        // With the fields noted.
+                        if (hiddenFieldList.length > 0) {
+                            const combinedFields = hiddenFieldList.join(", ");
+                            this.addPageLevelErrorMessage({
+                                errorMessage: `${errorMessage} [${combinedFields}]`,
+                                index: key,
+                            });
+                        }
                     }
                 }
             }
@@ -824,8 +852,8 @@ export default class GeFormRenderer extends LightningElement {
      */
     addPageLevelErrorMessage(errorObject) {
         errorObject.index = errorObject.index ? errorObject.index : 0;
-        this.pageLevelErrorMessageList = [...this.pageLevelErrorMessageList, { ...errorObject }];
-        this.hasPageLevelError = true;
+        this._pageLevelErrorMessageList = [...this.pageLevelErrorMessageList, { ...errorObject }];
+        this._hasPageLevelError = true;
     }
 
     /*******************************************************************************
@@ -840,7 +868,7 @@ export default class GeFormRenderer extends LightningElement {
 
         if (isFormReadyToSave) {
             // Disable save button
-            this.loadingText = "";
+            this._loadingText = "";
             event.target.disable = true;
             const formControls = this.getFormControls(event);
             formControls.toggleSpinner();
@@ -1005,7 +1033,7 @@ export default class GeFormRenderer extends LightningElement {
         let elevateBatchItem = {};
         if (tokenizedGift) {
             try {
-                this.loadingText = this.isCreditCardAuth(tokenizedGift)
+                this._loadingText = this.isCreditCardAuth(tokenizedGift)
                     ? this.CUSTOM_LABELS.geAuthorizingCreditCard
                     : this.CUSTOM_LABELS.geTextSaving;
 
@@ -1192,8 +1220,8 @@ export default class GeFormRenderer extends LightningElement {
 
         if (invalidFields.length > 0) {
             const fieldListAsString = invalidFields.join(", ");
-            this.hasPageLevelError = true;
-            this.pageLevelErrorMessageList = [
+            this._hasPageLevelError = true;
+            this._pageLevelErrorMessageList = [
                 {
                     index: 0,
                     errorMessage: `The following fields are required: ${fieldListAsString}`,
@@ -1210,7 +1238,7 @@ export default class GeFormRenderer extends LightningElement {
      * @param {*} sectionsList, list of sections
      * @returns {boolean|*} - true if form invalid, false otherwise
      */
-    isDonorTypeInvalid(dataImportHelper, sectionsList) {
+    isDonorTypeInvalid(dataImportHelper) {
         // if no donation donor selection, nothing to validate here yet
         if (isEmpty(this.getFieldValueFromFormState(DONATION_DONOR_FIELDS.donationDonorField))) {
             return false;
@@ -1237,8 +1265,8 @@ export default class GeFormRenderer extends LightningElement {
         // highlight validation fields
         this.highlightValidationErrorFields(dataImportHelper, sectionsList, " ");
         // set page error
-        this.hasPageLevelError = true;
-        this.pageLevelErrorMessageList = [
+        this._hasPageLevelError = true;
+        this._pageLevelErrorMessageList = [
             {
                 index: 0,
                 errorMessage: this.getDonationDonorErrorLabel(dataImportHelper),
@@ -1374,7 +1402,7 @@ export default class GeFormRenderer extends LightningElement {
 
     // change showSpinner to the opposite of its current value
     toggleSpinner() {
-        this.showSpinner = !this.showSpinner;
+        this._showSpinner = !this._showSpinner;
     }
 
     getDisplayedFieldsMappedByAPIName(sectionsList) {
@@ -1390,8 +1418,8 @@ export default class GeFormRenderer extends LightningElement {
 
     clearErrors() {
         // Clear the page level error
-        this.hasPageLevelError = false;
-        this.pageLevelErrorMessageList = [];
+        this._hasPageLevelError = false;
+        this._pageLevelErrorMessageList = [];
 
         // Clear the field level custom validations
         const sections = this.template.querySelectorAll("c-ge-form-section");
@@ -1530,15 +1558,15 @@ export default class GeFormRenderer extends LightningElement {
             errorObjects.push(errorObject);
         }
 
-        this.pageLevelErrorMessageList = [
+        this._pageLevelErrorMessageList = [
             {
                 index: 0,
                 errorMessage: errorMessage,
                 multilineMessages: errorObjects,
             },
         ];
-        this.showSpinner = false;
-        this.hasPageLevelError = true;
+        this._showSpinner = false;
+        this._hasPageLevelError = true;
     }
 
     /**
@@ -1666,7 +1694,7 @@ export default class GeFormRenderer extends LightningElement {
                 sections.forEach((section) => {
                     section.elements.forEach((element) => {
                         for (const key in batchDefaultsObject) {
-                            if (batchDefaultsObject.hasOwnProperty(key) && key === element.customLabel) {
+                            if (Object.prototype.hasOwnProperty.call(batchDefaultsObject, key) && key === element.customLabel) {
                                 const batchDefault = batchDefaultsObject[key];
                                 if (
                                     batchDefault.objectApiName === element.objectApiName &&
@@ -1925,7 +1953,7 @@ export default class GeFormRenderer extends LightningElement {
     }
 
     handleRegisterPaymentWidget() {
-        this.hasPaymentWidget = true;
+        this._hasPaymentWidget = true;
     }
 
     /*******************************************************************************
@@ -2039,7 +2067,7 @@ export default class GeFormRenderer extends LightningElement {
             fields = this.syncDonationFormStateFieldsToRDFields(fields);
         }
 
-        if (fields.hasOwnProperty(apiNameFor(DATA_IMPORT_DONATION_RECORD_TYPE_NAME))) {
+        if (Object.prototype.hasOwnProperty.call(fields, apiNameFor(DATA_IMPORT_DONATION_RECORD_TYPE_NAME))) {
             fields = this.updateFormStateForDonationRecordType(fields);
         }
 
@@ -2052,17 +2080,17 @@ export default class GeFormRenderer extends LightningElement {
     }
 
     syncDonationFormStateFieldsToRDFields(fields) {
-        if (fields.hasOwnProperty(apiNameFor(DATA_IMPORT_DONATION_AMOUNT))) {
+        if (Object.prototype.hasOwnProperty.call(fields, apiNameFor(DATA_IMPORT_DONATION_AMOUNT))) {
             fields[apiNameFor(DATA_IMPORT_RECURRING_DONATION_RECURRING_AMOUNT)] =
                 fields[apiNameFor(DATA_IMPORT_DONATION_AMOUNT)];
         }
 
-        if (fields.hasOwnProperty(apiNameFor(DATA_IMPORT_DONATION_DATE))) {
+        if (Object.prototype.hasOwnProperty.call(fields, apiNameFor(DATA_IMPORT_DONATION_DATE))) {
             fields[apiNameFor(DATA_IMPORT_RECURRING_DONATION_DATE_ESTABLISHED)] =
                 fields[apiNameFor(DATA_IMPORT_DONATION_DATE)];
         }
 
-        if (fields.hasOwnProperty(apiNameFor(PAYMENT_METHOD))) {
+        if (Object.prototype.hasOwnProperty.call(fields, apiNameFor(PAYMENT_METHOD))) {
             fields[apiNameFor(DATA_IMPORT_RECURRING_DONATION_PAYMENT_METHOD)] = fields[apiNameFor(PAYMENT_METHOD)];
         }
         return fields;
@@ -2079,7 +2107,7 @@ export default class GeFormRenderer extends LightningElement {
     }
 
     isFormStateFieldNotUpdatable(fields, field) {
-        return fields.hasOwnProperty(field) && this.formState[field];
+        return Object.prototype.hasOwnProperty.call(fields, field) && this.formState[field];
     }
 
     updateFormStateFromMap(fieldReferenceToValueMap) {
@@ -2149,7 +2177,7 @@ export default class GeFormRenderer extends LightningElement {
     }
 
     hasRelatedRecordFieldInFormState(field) {
-        return this.formState.hasOwnProperty(relatedRecordFieldNameFor(field));
+        return Object.prototype.hasOwnProperty.call(this.formState, relatedRecordFieldNameFor(field));
     }
 
     handleFormFieldChange(event) {
@@ -2267,7 +2295,7 @@ export default class GeFormRenderer extends LightningElement {
         const updates = {};
         fieldMappingDevNames.forEach((fieldMappingDevName) => {
             const sourceField = this.sourceFieldFor(fieldMappingDevName);
-            if (this.formState.hasOwnProperty(sourceField)) {
+            if (Object.prototype.hasOwnProperty.call(this.formState, sourceField)) {
                 updates[sourceField] = null;
             }
         });
@@ -2310,7 +2338,7 @@ export default class GeFormRenderer extends LightningElement {
 
     opportunityRecordTypeIdFor(opportunityRecordTypeName) {
         const recordTypeInfo = Object.values(this.opportunityRecordTypeInfos).find(
-            (recordTypeInfo) => recordTypeInfo.name === opportunityRecordTypeName
+            (rtInfo) => rtInfo.name === opportunityRecordTypeName
         );
 
         if (!recordTypeInfo) {
@@ -2390,7 +2418,7 @@ export default class GeFormRenderer extends LightningElement {
 
     defaultValueFor(fieldMappingDevName) {
         const element = this.formElements().find(
-            (element) => element.dataImportFieldMappingDevNames[0] === fieldMappingDevName
+            (el) => el.dataImportFieldMappingDevNames[0] === fieldMappingDevName
         );
 
         return element && element.defaultValue;
@@ -2403,7 +2431,7 @@ export default class GeFormRenderer extends LightningElement {
 
     applyNullValuesForMissingFields(sourceFieldsOnForm, dataImport) {
         sourceFieldsOnForm.forEach((sourceFieldOnForm) => {
-            if (!dataImport.hasOwnProperty(sourceFieldOnForm)) {
+            if (!Object.prototype.hasOwnProperty.call(dataImport, sourceFieldOnForm)) {
                 dataImport[sourceFieldOnForm] = null;
             }
         });
@@ -2607,7 +2635,7 @@ export default class GeFormRenderer extends LightningElement {
     };
 
     saveDataImport = async (dataImportFromFormState) => {
-        this.loadingText = this.hasDataImportId ? this.CUSTOM_LABELS.geTextUpdating : this.CUSTOM_LABELS.geTextSaving;
+        this._loadingText = this.hasDataImportId ? this.CUSTOM_LABELS.geTextUpdating : this.CUSTOM_LABELS.geTextSaving;
         delete dataImportFromFormState[apiNameFor(PAYMENT_AUTHORIZE_TOKEN)];
         const dataImportfieldsInfo = this.dataImportObjectInfo?.data?.fields || {};
         Object.keys(dataImportFromFormState).forEach((field) => {
@@ -2624,7 +2652,7 @@ export default class GeFormRenderer extends LightningElement {
     };
 
     makePurchaseRequest = async () => {
-        this.loadingText = this.CUSTOM_LABELS.geTextChargingCard;
+        this._loadingText = this.CUSTOM_LABELS.geTextChargingCard;
         const responseBodyString = await sendPurchaseRequest({
             requestBodyParameters: this.buildPurchaseRequestBodyParameters(),
             dataImportRecordId: this.getFieldValueFromFormState("id"),
@@ -2828,7 +2856,7 @@ export default class GeFormRenderer extends LightningElement {
     processDataImport = async () => {
         const gift = new Gift(this.giftInView);
 
-        this.loadingText = this.CUSTOM_LABELS.geTextProcessing;
+        this._loadingText = this.CUSTOM_LABELS.geTextProcessing;
 
         await gift.save().catch((saveError) => this.handleCatchOnSave(saveError));
 
@@ -2837,7 +2865,7 @@ export default class GeFormRenderer extends LightningElement {
         if (gift.isFailed()) {
             this.handleBdiProcessingError(gift.failureInformation());
         } else {
-            this.loadingText = this.CUSTOM_LABELS.geTextNavigateToOpportunity;
+            this._loadingText = this.CUSTOM_LABELS.geTextNavigateToOpportunity;
             this.goToRecordDetailPage(gift.donationId());
         }
     };
@@ -2932,6 +2960,7 @@ export default class GeFormRenderer extends LightningElement {
                 return value;
             }
         }
+        return undefined;
     }
 
     isPaymentImportedField(sourceField) {
@@ -2991,6 +3020,7 @@ export default class GeFormRenderer extends LightningElement {
                 this.batchCurrencyIsoCode,
             ]);
         }
+        return undefined;
     }
 
     isFieldUsedForCardholderName(fieldMapping) {

@@ -155,5 +155,6 @@ export default class GeFormWidget extends LightningElement {
             }
             return tokenPayload;
         }
+        return undefined;
     }
 }

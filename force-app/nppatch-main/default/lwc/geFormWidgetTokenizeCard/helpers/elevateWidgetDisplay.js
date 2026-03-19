@@ -1,43 +1,5 @@
 import { fireEvent } from "c/pubsubNoPageRef";
 
-class ElevateWidgetDisplay {
-    _state = DISPLAY_DEFINITIONS.initialState;
-    _componentContext;
-
-    init(context) {
-        this._componentContext = context;
-    }
-
-    transitionTo(nextState) {
-        const currentStateDefinition = DISPLAY_DEFINITIONS[this._state];
-        const destinationTransition = currentStateDefinition.transitions[nextState];
-        if (!destinationTransition || this._state === nextState) {
-            return;
-        }
-
-        this.dispatchApplicationEvent("widgetStateChange", {
-            state: nextState,
-        });
-
-        const destinationState = destinationTransition.target;
-        const destinationStateDefinition = DISPLAY_DEFINITIONS[destinationState];
-
-        currentStateDefinition.actions.onExit.call(this);
-        destinationStateDefinition.actions.onEnter.call(this);
-
-        this._state = destinationState;
-        this._componentContext.refreshDisplayState();
-    }
-
-    currentState() {
-        return this._state;
-    }
-
-    dispatchApplicationEvent(eventName, payload) {
-        fireEvent(null, eventName, payload);
-    }
-}
-
 const DISPLAY_DEFINITIONS = Object.freeze({
     initialState: "charge",
     loading: {
@@ -195,5 +157,43 @@ const DISPLAY_DEFINITIONS = Object.freeze({
         },
     },
 });
+
+class ElevateWidgetDisplay {
+    _state = DISPLAY_DEFINITIONS.initialState;
+    _componentContext;
+
+    init(context) {
+        this._componentContext = context;
+    }
+
+    transitionTo(nextState) {
+        const currentStateDefinition = DISPLAY_DEFINITIONS[this._state];
+        const destinationTransition = currentStateDefinition.transitions[nextState];
+        if (!destinationTransition || this._state === nextState) {
+            return;
+        }
+
+        this.dispatchApplicationEvent("widgetStateChange", {
+            state: nextState,
+        });
+
+        const destinationState = destinationTransition.target;
+        const destinationStateDefinition = DISPLAY_DEFINITIONS[destinationState];
+
+        currentStateDefinition.actions.onExit.call(this);
+        destinationStateDefinition.actions.onEnter.call(this);
+
+        this._state = destinationState;
+        this._componentContext.refreshDisplayState();
+    }
+
+    currentState() {
+        return this._state;
+    }
+
+    dispatchApplicationEvent(eventName, payload) {
+        fireEvent(null, eventName, payload);
+    }
+}
 
 export default ElevateWidgetDisplay;

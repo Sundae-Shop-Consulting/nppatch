@@ -8,7 +8,7 @@ class SoftCredits {
 
     forSave() {
         return this._unprocessedSoftCredits.filter((softCredit) => {
-            return softCredit.Role != "" && softCredit.ContactId != "";
+            return softCredit.Role !== "" && softCredit.ContactId !== "";
         });
     }
 

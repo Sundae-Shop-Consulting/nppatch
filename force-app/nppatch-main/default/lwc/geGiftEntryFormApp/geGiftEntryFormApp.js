@@ -1,7 +1,6 @@
 import { LightningElement, api, track, wire } from "lwc";
 import { getObjectInfo } from "lightning/uiObjectInfoApi";
 import { NavigationMixin } from "lightning/navigation";
-import { registerListener, unregisterListener } from "c/pubsubNoPageRef";
 import { validateJSONString, getNamespace, showToast, format } from "c/utilCommon";
 import { handleError } from "c/utilTemplateBuilder";
 import GeLabelService from "c/geLabelService";
@@ -13,7 +12,7 @@ import checkForElevateCustomer from "@salesforce/apex/GE_GiftEntryController.isE
 
 import DATA_IMPORT_BATCH_OBJECT from "@salesforce/schema/DataImportBatch__c";
 import BATCH_TABLE_COLUMNS_FIELD from "@salesforce/schema/DataImportBatch__c.Batch_Table_Columns__c";
-import PAYMENT_OPPORTUNITY_ID from "@salesforce/schema/OppPayment__c.Opportunity__c";
+
 
 import bgeGridGiftDeleted from "@salesforce/label/c.bgeGridGiftDeleted";
 import commonPaymentServices from "@salesforce/label/c.commonPaymentServices";
@@ -28,7 +27,7 @@ const GIFT_ENTRY_TAB_NAME = "GE_Gift_Entry";
 
 import GiftBatch from "c/geGiftBatch";
 import Gift from "c/geGift";
-import { fireEvent } from "c/pubsubNoPageRef";
+import { fireEvent, registerListener, unregisterListener } from "c/pubsubNoPageRef";
 
 export default class GeGiftEntryFormApp extends NavigationMixin(LightningElement) {
     // Expose custom labels to template
@@ -164,11 +163,6 @@ export default class GeGiftEntryFormApp extends NavigationMixin(LightningElement
 
     handleReviewDonationsChange(event) {
         const reviewRecord = event.detail.record;
-        let reviewRecordOpportunityId = null;
-        if (reviewRecord.fields) {
-            reviewRecordOpportunityId =
-                reviewRecord.fields[PAYMENT_OPPORTUNITY_ID.fieldApiName] || reviewRecord.fields.Id;
-        }
 
         const reviewRecordHasSoftCredits = reviewRecord && reviewRecord.softCredits;
 
@@ -189,6 +183,8 @@ export default class GeGiftEntryFormApp extends NavigationMixin(LightningElement
                 break;
             case "updateSoftCredit":
                 this.gift.updateSoftCredit(event.detail.softCredit);
+                break;
+            default:
                 break;
         }
 
@@ -443,7 +439,7 @@ export default class GeGiftEntryFormApp extends NavigationMixin(LightningElement
         this.handleClearGiftInView();
         this._isBatchProcessing = true;
 
-        new Promise((resolve, reject) => {
+        new Promise((resolve) => {
             setTimeout(async () => {
                 await processBatch({
                     batchId: this.batchId,
@@ -456,7 +452,7 @@ export default class GeGiftEntryFormApp extends NavigationMixin(LightningElement
                     });
                 resolve();
             }, 0);
-        });
+        }).catch(() => { /* no-op */ });
     }
 
     async startPolling() {
@@ -477,7 +473,7 @@ export default class GeGiftEntryFormApp extends NavigationMixin(LightningElement
     }
 
     isBatchGiftEntryInFocus() {
-        return location.href.includes(this.batchId);
+        return window.location.href.includes(this.batchId);
     }
 
     async handleProcessedBatch() {
@@ -522,6 +518,7 @@ export default class GeGiftEntryFormApp extends NavigationMixin(LightningElement
         } else if (this.giftBatchState.expectedTotalBatchAmount) {
             return this.giftBatch.matchesExpectedTotalBatchAmount();
         }
+        return undefined;
     }
 
     isProcessable() {
@@ -604,11 +601,7 @@ export default class GeGiftEntryFormApp extends NavigationMixin(LightningElement
     }
 
     async deleteFromElevateBatch(gift) {
-        try {
-            return await this.elevateBatch.remove(gift);
-        } catch (exception) {
-            throw exception;
-        }
+        return this.elevateBatch.remove(gift);
     }
 
     get batchId() {

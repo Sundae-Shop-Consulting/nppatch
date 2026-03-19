@@ -10,7 +10,9 @@ export default class GeBatchGiftEntryHeader extends LightningElement {
     });
 
     @api giftBatchState;
-    @api isGiftBatchProcessing;
+    _isGiftBatchProcessing;
+    @api get isGiftBatchProcessing() { return this._isGiftBatchProcessing; }
+    set isGiftBatchProcessing(value) { this._isGiftBatchProcessing = value; }
 
     get batchName() {
         return this.giftBatchState.name;
@@ -40,10 +42,12 @@ export default class GeBatchGiftEntryHeader extends LightningElement {
                 break;
             case this.ACTIONS.PROCESS_BATCH:
                 this.dispatchEvent(new CustomEvent("processbatch"));
-                this.isGiftBatchProcessing = true;
+                this._isGiftBatchProcessing = true;
                 break;
             case this.ACTIONS.EDIT_BATCH:
                 this.editBatch();
+                break;
+            default:
                 break;
         }
     }

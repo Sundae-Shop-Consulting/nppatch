@@ -12,7 +12,7 @@ import { isEmptyObject, isNotEmpty } from "c/utilCommon";
 export function flatten(obj) {
     const flatObj = {};
     for (const [key, value] of Object.entries(obj)) {
-        if (value !== null && value !== undefined && value.hasOwnProperty("value")) {
+        if (value !== null && value !== undefined && Object.prototype.hasOwnProperty.call(value, "value")) {
             flatObj[key] = value.value;
         } else {
             flatObj[key] = value;
@@ -36,7 +36,7 @@ export function convertBDIToWidgetJson(additionalObjectJson) {
 
     const additionalObjects = JSON.parse(additionalObjectJson);
 
-    if (isEmptyObject(additionalObjects) || !additionalObjects.hasOwnProperty("dynamicSourceByObjMappingDevName")) {
+    if (isEmptyObject(additionalObjects) || !Object.prototype.hasOwnProperty.call(additionalObjects, "dynamicSourceByObjMappingDevName")) {
         return additionalObjectJson;
     }
 
@@ -57,7 +57,7 @@ export function convertBDIToWidgetJson(additionalObjectJson) {
                 fieldMapping.Target_Field_API_Name;
         });
 
-        if (!targetFieldsByObjectDevName.hasOwnProperty(dynamicSourceValue.objectMappingTemplateDevName)) {
+        if (!Object.prototype.hasOwnProperty.call(targetFieldsByObjectDevName, dynamicSourceValue.objectMappingTemplateDevName)) {
             targetFieldsByObjectDevName[dynamicSourceValue.objectMappingTemplateDevName] = [];
         }
 

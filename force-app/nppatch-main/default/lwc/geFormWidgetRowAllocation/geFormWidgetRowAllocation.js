@@ -185,6 +185,7 @@ export default class GeFormWidgetRowAllocation extends LightningElement {
         ) {
             return true;
         }
+        return false;
     }
 
     get shouldDisableAmount() {
@@ -195,6 +196,7 @@ export default class GeFormWidgetRowAllocation extends LightningElement {
         ) {
             return true;
         }
+        return false;
     }
 
     get shouldDisableGAULookup() {

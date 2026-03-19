@@ -33,22 +33,27 @@ export default class geReviewDonations extends NavigationMixin(LightningElement)
     @wire(getRecord, { recordId: "$donorId", optionalFields: ["Account.Name", "Contact.Name"] })
     wiredGetRecord({ error, data }) {
         if (error) {
-            return handleError(error);
+            handleError(error);
+            return undefined;
         }
         if (data) {
             this._donor = data;
             this._donorType = this._donor.apiName;
         }
+        return undefined;
     }
 
     @wire(getOpenDonationsView, { donorId: "$donorId" })
     wiredGetOpenDonations({ error, data }) {
         if (error) {
-            return handleError(error);
+            handleError(error);
+            return undefined;
         }
         if (data) {
-            return (this.opportunities = data.donations);
+            this.opportunities = data.donations;
+            return undefined;
         }
+        return undefined;
     }
 
     @api
@@ -94,19 +99,19 @@ export default class geReviewDonations extends NavigationMixin(LightningElement)
     get isUpdatingOpportunity() {
         return (
             this._donationType === OPPORTUNITY.objectApiName &&
-            !this._selectedDonation.hasOwnProperty("applyPayment") &&
-            !this._selectedDonation.hasOwnProperty("new")
+            !Object.prototype.hasOwnProperty.call(this._selectedDonation, "applyPayment") &&
+            !Object.prototype.hasOwnProperty.call(this._selectedDonation, "new")
         );
     }
 
     get isApplyingNewPayment() {
         return (
-            this._donationType === OPPORTUNITY.objectApiName && this._selectedDonation.hasOwnProperty("applyPayment")
+            this._donationType === OPPORTUNITY.objectApiName && Object.prototype.hasOwnProperty.call(this._selectedDonation, "applyPayment")
         );
     }
 
     get isCreatingNewOpportunity() {
-        return this._donationType === OPPORTUNITY.objectApiName && this._selectedDonation.hasOwnProperty("new");
+        return this._donationType === OPPORTUNITY.objectApiName && Object.prototype.hasOwnProperty.call(this._selectedDonation, "new");
     }
 
     get hasSelectedDonation() {
@@ -198,7 +203,7 @@ export default class geReviewDonations extends NavigationMixin(LightningElement)
      * @description Resets properties for the currently selected donation and type.
      */
     handleResetReviewDonationsComponent() {
-        this.selectedDonation = null;
+        this._selectedDonation = null;
         this._donationType = null;
         if (!this.donorId) {
             this.opportunities = [];

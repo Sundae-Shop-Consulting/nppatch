@@ -99,22 +99,22 @@ class GiftBatch {
 
     async dryRun() {
         await runBatchDryRun({ batchId: this._id, numberOfRowsToReturn: 0 });
-        return await this.latestState();
+        return this.latestState();
     }
 
     async addMember(gift) {
         await addGiftTo({ dataImportBatchId: this._id, inboundGift: gift.forSave() });
-        return await this.latestState(this._gifts.length + 1);
+        return this.latestState(this._gifts.length + 1);
     }
 
     async updateMember(gift) {
         await addGiftTo({ dataImportBatchId: this._id, inboundGift: gift.forSave() });
-        return await this.latestState(this._gifts.length + 1);
+        return this.latestState(this._gifts.length + 1);
     }
 
     async remove(gift) {
         await deleteGiftFromGiftBatch({ batchId: this._id, dataImportId: gift.Id });
-        return await this.latestState(this._gifts.length - 1);
+        return this.latestState(this._gifts.length - 1);
     }
 
     async latestState(length) {

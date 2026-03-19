@@ -17,6 +17,7 @@ export default class GeFormElementHelper {
         if (isNotEmpty(this.fieldMapping)) {
             return this.fieldMapping.Target_Object_Mapping_Dev_Name;
         }
+        return undefined;
     }
 
     get formElementName() {

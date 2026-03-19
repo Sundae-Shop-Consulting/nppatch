@@ -230,6 +230,7 @@ export default class GeFormField extends LightningElement {
         if (isNotEmpty(this.fieldMapping)) {
             return this.fieldMapping.Target_Field_Data_Type;
         }
+        return undefined;
     }
 
     get isLightningInput() {
@@ -242,6 +243,7 @@ export default class GeFormField extends LightningElement {
         if (typeof this.targetFieldDescribeInfo !== "undefined" && this.fieldType === TEXT_AREA_TYPE) {
             return this.targetFieldDescribeInfo.htmlFormatted;
         }
+        return undefined;
     }
 
     /**
@@ -277,6 +279,7 @@ export default class GeFormField extends LightningElement {
         if (typeof this.targetFieldDescribeInfo !== "undefined" && this.fieldType === TEXT_AREA_TYPE) {
             return !this.targetFieldDescribeInfo.htmlFormatted;
         }
+        return undefined;
     }
 
     @api
@@ -284,12 +287,14 @@ export default class GeFormField extends LightningElement {
         if (isNotEmpty(this.fieldMapping)) {
             return this.fieldMapping.Target_Object_Mapping_Dev_Name;
         }
+        return undefined;
     }
 
     get objectApiName() {
         if (typeof this.objectMapping !== "undefined") {
             return this.objectMapping.Object_API_Name;
         }
+        return undefined;
     }
 
     @api
@@ -297,6 +302,7 @@ export default class GeFormField extends LightningElement {
         if (isNotEmpty(this.fieldMapping)) {
             return this.fieldMapping.Target_Field_API_Name;
         }
+        return undefined;
     }
 
     @api
@@ -304,6 +310,7 @@ export default class GeFormField extends LightningElement {
         if (isNotEmpty(this.fieldMapping)) {
             return this.fieldMapping.Source_Field_API_Name;
         }
+        return undefined;
     }
 
     // when using lightning-lookup-field, instead of binding to the Data Import fields or donor information
@@ -411,7 +418,7 @@ export default class GeFormField extends LightningElement {
         const newValue = formState && formState[this.sourceFieldAPIName];
         const previousValue = this.formState && this.formState[this.sourceFieldAPIName];
 
-        new Promise((resolve, reject) => {
+        new Promise((resolve) => {
             this._formState = formState;
             this._recordTypeId = this.recordTypeId();
             resolve();
@@ -521,6 +528,7 @@ export default class GeFormField extends LightningElement {
         if (this.isStandardPicklist()) {
             return `${this.objectApiName}.${this.targetFieldApiName}`;
         }
+        return undefined;
     }
 
     isStandardPicklist() {

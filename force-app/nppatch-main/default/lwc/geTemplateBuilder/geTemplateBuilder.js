@@ -105,7 +105,14 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
         BATCH_SETTINGS: { id: "batchSettingsTab", label: this.CUSTOM_LABELS.geTabBatchSettings },
     });
 
-    @api formTemplateRecordId;
+    _formTemplateRecordId;
+    @api
+    get formTemplateRecordId() {
+        return this._formTemplateRecordId;
+    }
+    set formTemplateRecordId(value) {
+        this._formTemplateRecordId = value;
+    }
 
     existingFormTemplateName;
     currentNamespace;
@@ -155,7 +162,8 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     @wire(getObjectInfo, { objectApiName: DATA_IMPORT_BATCH_OBJECT })
     wiredBatchDataImportObject({ error, data }) {
         if (error) {
-            return handleError(error);
+            handleError(error);
+            return undefined;
         }
         if (data) {
             this.diBatchInfo = data;
@@ -165,13 +173,15 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
             );
             this.dataImportObjectName = DATA_IMPORT_OBJECT.objectApiName;
         }
+        return undefined;
     }
 
     // This wired method will only run after wiredBatchDataImportObject assigns the dataImportObjectName property
     @wire(getObjectInfo, { objectApiName: "$dataImportObjectName" })
     wiredDataImportObject({ error, data }) {
         if (error) {
-            return handleError(error);
+            handleError(error);
+            return undefined;
         }
         if (data) {
             this._dataImportObject = data;
@@ -183,6 +193,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
                 this.needToInit = true;
             }
         }
+        return undefined;
     }
 
     get templateBuilderHeader() {
@@ -291,7 +302,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
 
     checkFieldPermissions(objectSchema, fieldApiNames) {
         if (!objectSchema && !objectSchema.fields) {
-            return;
+            return undefined;
         }
 
         this._noReadAccessFields = [];
@@ -300,13 +311,14 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
         fieldApiNames.forEach((fieldApiName) => {
             const field = objectSchema.fields[fieldApiName];
             if (!field) {
-                return this._noReadAccessFields.push(`${objectSchema.label}: ${fieldApiName}`);
+                this._noReadAccessFields.push(`${objectSchema.label}: ${fieldApiName}`);
+                return;
             }
 
             if (field) {
                 const canEdit = field.updateable;
                 if (!canEdit) {
-                    return this._noEditAccessFields.push(`${objectSchema.label}: ${fieldApiName}`);
+                    this._noEditAccessFields.push(`${objectSchema.label}: ${fieldApiName}`);
                 }
             }
         });
@@ -325,7 +337,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
      */
     loadFormTemplateRecord = async (queryParameters) => {
         if (!this.formTemplateRecordId) {
-            this.formTemplateRecordId = queryParameters.c__formTemplateRecordId;
+            this._formTemplateRecordId = queryParameters.c__formTemplateRecordId;
         }
 
         if (this.formTemplateRecordId) {
@@ -358,8 +370,8 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
      */
     buildFormFieldsBySourceApiNameMap() {
         const elements = {};
-        this.formSections.map((section) => {
-            section.elements.map((element) => {
+        this.formSections.forEach((section) => {
+            section.elements.forEach((element) => {
                 const fieldMapping =
                     TemplateBuilderService.fieldMappingByDevName[element.dataImportFieldMappingDevNames[0]];
                 if (!fieldMapping) {
@@ -381,7 +393,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
 
     clearRecordIdOnClone(queryParameters) {
         if (queryParameters.c__clone || this.isClone) {
-            this.formTemplateRecordId = null;
+            this._formTemplateRecordId = null;
             if (GeSettings.isElevateCustomer()) {
                 GeGatewaySettings.clearTemplateRecordId();
             }
@@ -1451,7 +1463,7 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
         // it is mapped to a target RecordTypeId field because BDI processing handles the
         // translation internally.  Since the Name is the value presented in the UI, this
         // field's custom label is defaulted to just "Opportunity: Record Type"
-        if (fieldMapping.Source_Field_API_Name == DONATION_RECORD_TYPE_NAME.fieldApiName) {
+        if (fieldMapping.Source_Field_API_Name === DONATION_RECORD_TYPE_NAME.fieldApiName) {
             return `${objectMapping.MasterLabel}: Record Type`;
         }
         return `${objectMapping.MasterLabel}: ${fieldMapping.Target_Field_Label}`;

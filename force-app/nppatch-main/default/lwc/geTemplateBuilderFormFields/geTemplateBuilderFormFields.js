@@ -72,7 +72,9 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     @api previousSaveAttempted;
     @api selectedFieldMappingSet;
     @api formSections;
-    @api activeFormSectionId;
+    _activeFormSectionId;
+    @api get activeFormSectionId() { return this._activeFormSectionId; }
+    set activeFormSectionId(value) { this._activeFormSectionId = value; }
     @api sectionIdsByFieldMappingDeveloperNames;
 
     @track objectMappings;
@@ -367,7 +369,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
         const formSection = formSections.find((fs) => fs.id === formSectionId);
 
         if (formSection.id === this.activeFormSectionId) {
-            this.activeFormSectionId = undefined;
+            this._activeFormSectionId = undefined;
         }
 
         if (formSection.elements && formSection.elements.length > 0) {
@@ -629,7 +631,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
      * Expand/collapse the header and all sub-sections for advanced form fields
      * @param {*} event
      */
-    handleToggleAdvancedSection(event) {
+    handleToggleAdvancedSection() {
         const collapsed = this.toggleExpandableSection(this.LOCATORS.ADVANCED_FIELDS_SECTION_ID);
         if (collapsed) {
             this.collapseSubSections(this.LOCATORS.ADVANCED_FIELDS_SECTION_ID);
@@ -642,7 +644,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
      * Expand/collapse the bundles section, no sub-sections currently present for this section
      * @param {*} event
      */
-    handleToggleBundlesSection(event) {
+    handleToggleBundlesSection() {
         this.toggleExpandableSection(this.LOCATORS.FIELD_BUNDLES_SECTION_ID);
     }
 
@@ -650,7 +652,7 @@ export default class geTemplateBuilderFormFields extends LightningElement {
      * Expand/collapse the header and all sub-section for basic form fields
      * @param {*} event
      */
-    handleToggleBasicSection(event) {
+    handleToggleBasicSection() {
         const collapsed = this.toggleExpandableSection(this.LOCATORS.FORM_FIELDS_SECTION_ID);
         if (collapsed) {
             this.collapseSubSections(this.LOCATORS.FORM_FIELDS_SECTION_ID);

@@ -20,9 +20,13 @@ export default class geTemplateBuilderBatchHeader extends LightningElement {
 
     @api disableBatchTableColumnsSubtab = false;
     @api batchTableColumnsAccessErrorMessage;
-    @api batchFields;
+    _batchFields;
+    @api get batchFields() { return this._batchFields; }
+    set batchFields(value) { this._batchFields = value; }
     @api selectedBatchFields;
-    @api missingRequiredFields;
+    _missingRequiredFields;
+    @api get missingRequiredFields() { return this._missingRequiredFields; }
+    set missingRequiredFields(value) { this._missingRequiredFields = value; }
     @api availableBatchTableColumnOptions;
     @api selectedBatchTableColumnOptions;
 
@@ -98,7 +102,7 @@ export default class geTemplateBuilderBatchHeader extends LightningElement {
     hasMissingRequiredFields() {
         let hasMissingFields = false;
         if (this.missingRequiredFields === null || this.missingRequiredFields.length === 0) {
-            this.missingRequiredFields = findMissingRequiredBatchFields(this.batchFields, this.selectedBatchFields);
+            this._missingRequiredFields = findMissingRequiredBatchFields(this.batchFields, this.selectedBatchFields);
         }
 
         if (this.missingRequiredFields && this.missingRequiredFields.length > 0) {
@@ -179,7 +183,7 @@ export default class geTemplateBuilderBatchHeader extends LightningElement {
 
         const batchFieldIndex = findIndexByProperty(batchFields, PROP_API_NAME, fieldName);
         batchFields[batchFieldIndex].checked = true;
-        this.batchFields = batchFields;
+        this._batchFields = batchFields;
     }
 
     /*******************************************************************************
@@ -249,7 +253,7 @@ export default class geTemplateBuilderBatchHeader extends LightningElement {
                 _batchFields[batchFieldIndex].checked = true;
             }
 
-            this.batchFields = _batchFields;
+            this._batchFields = _batchFields;
         }
     }
 

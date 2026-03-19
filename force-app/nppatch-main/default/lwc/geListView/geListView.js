@@ -50,10 +50,32 @@ export default class geListView extends LightningElement {
     @api listViewApiName;
     @api showStandardFooter;
     @api description;
-    @api limit = DEFAULT_LIMIT;
+    _limit = DEFAULT_LIMIT;
+    @api
+    get limit() {
+        return this._limit;
+    }
+    set limit(value) {
+        this._limit = value;
+    }
     @api actions;
-    @api sortedBy;
-    @api sortedDirection;
+    _sortedBy;
+    @api
+    get sortedBy() {
+        return this._sortedBy;
+    }
+    set sortedBy(value) {
+        this._sortedBy = value;
+    }
+
+    _sortedDirection;
+    @api
+    get sortedDirection() {
+        return this._sortedDirection;
+    }
+    set sortedDirection(value) {
+        this._sortedDirection = value;
+    }
     @api filteredBy;
     target;
     incrementBy = DEFAULT_INCREMENT_BY;
@@ -309,12 +331,12 @@ export default class geListView extends LightningElement {
             if (columnEntry) {
                 if (hasNestedProperty(columnEntry, "typeAttributes", "label", "fieldName")) {
                     const columnEntryFieldApiName = columnEntry.typeAttributes.label.fieldName;
-                    const column = this.columns.find(
-                        (column) =>
-                            hasNestedProperty(column, "typeAttributes", "label", "fieldName") &&
-                            columnEntryFieldApiName === column.typeAttributes.label.fieldName
+                    const matchedColumn = this.columns.find(
+                        (col) =>
+                            hasNestedProperty(col, "typeAttributes", "label", "fieldName") &&
+                            columnEntryFieldApiName === col.typeAttributes.label.fieldName
                     );
-                    orderedByFieldApiName = column.fieldApiName;
+                    orderedByFieldApiName = matchedColumn.fieldApiName;
                 } else {
                     orderedByFieldApiName = columnEntry.fieldApiName;
                 }
@@ -515,6 +537,7 @@ export default class geListView extends LightningElement {
                     target: isNotEmpty(this.target) ? this.target : _SELF,
                 };
             default:
+                return undefined;
         }
     }
 
@@ -655,8 +678,8 @@ export default class geListView extends LightningElement {
      * @param {object} event: Event holding column details of the action
      */
     handleColumnSorting(event) {
-        this.sortedBy = event.detail.fieldName;
-        this.sortedDirection = event.detail.sortDirection;
+        this._sortedBy = event.detail.fieldName;
+        this._sortedDirection = event.detail.sortDirection;
         this.getRecords(this.columns);
     }
 
@@ -676,7 +699,7 @@ export default class geListView extends LightningElement {
      */
     handleViewMore = async () => {
         const NEW_LIMIT = Number(this.limit) + this.incrementBy;
-        this.limit = NEW_LIMIT < MAX_RECORDS ? NEW_LIMIT : MAX_RECORDS;
+        this._limit = NEW_LIMIT < MAX_RECORDS ? NEW_LIMIT : MAX_RECORDS;
 
         this.refresh();
     };

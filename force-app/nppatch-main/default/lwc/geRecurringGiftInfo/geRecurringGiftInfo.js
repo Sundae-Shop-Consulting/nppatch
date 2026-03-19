@@ -40,6 +40,7 @@ export default class GeRecurringGiftInfo extends LightningElement {
         if (recurringType === FIXED) {
             return this.formattedLabelForFixedSchedule();
         }
+        return "";
     }
 
     handleEdit() {

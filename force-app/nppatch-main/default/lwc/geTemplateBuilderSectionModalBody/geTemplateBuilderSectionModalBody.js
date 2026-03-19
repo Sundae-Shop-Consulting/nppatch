@@ -58,6 +58,7 @@ export default class GeTemplateBuilderSectionModalBody extends LightningElement 
 
     get qaLocatorDisplayOption() {
         //TODO: Add qa locator for display options
+        return undefined;
     }
 
     /*******************************************************************************

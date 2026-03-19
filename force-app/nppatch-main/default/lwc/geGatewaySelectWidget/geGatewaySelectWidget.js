@@ -93,7 +93,7 @@ export default class GeGatewaySelectWidget extends LightningElement {
             return;
         }
 
-        this.resetAllSettingsToDefault;
+        this.resetAllSettingsToDefault();
     }
 
     async connectedCallback() {
@@ -253,7 +253,7 @@ export default class GeGatewaySelectWidget extends LightningElement {
             formattedErrorMessage = error;
         } else {
             formattedErrorMessage = this.CUSTOM_LABELS.psUnableToConnect;
-            details = this._elevateGateways.errors.map((error) => error.message).join("\n ");
+            details = this._elevateGateways.errors.map((err) => err.message).join("\n ");
         }
 
         if (!this.onGatewayManagementPage()) {

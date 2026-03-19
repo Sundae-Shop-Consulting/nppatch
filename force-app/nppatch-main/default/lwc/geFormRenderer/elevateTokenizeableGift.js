@@ -30,6 +30,7 @@ class ElevateTokenizeabledGift {
                 return tokenResponse[0];
             }
         }
+        return undefined;
     }
 }
 

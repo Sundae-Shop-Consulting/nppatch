@@ -18,7 +18,14 @@ export default class geTemplateBuilderFormField extends LightningElement {
     @api isFirst;
     @api isLast;
     @api objectApiName;
-    @api field;
+    _field;
+    @api
+    get field() {
+        return this._field;
+    }
+    set field(value) {
+        this._field = value;
+    }
     @api sourceObjectFieldsDescribe;
 
     // Expose custom labels to template
@@ -93,7 +100,7 @@ export default class geTemplateBuilderFormField extends LightningElement {
             inputField.reportValidity();
 
             if (!hasViewSetup) {
-                this.field = {};
+                this._field = {};
                 this.shouldRender = false;
             }
 
@@ -149,6 +156,8 @@ export default class geTemplateBuilderFormField extends LightningElement {
         if (this.field && this.field.fieldApiName) {
             return this.field.fieldApiName;
         }
+
+        return undefined;
     }
 
     get labelHelpText() {
@@ -220,6 +229,7 @@ export default class geTemplateBuilderFormField extends LightningElement {
         if (isTrueFalsePicklist(this.fieldMapping)) {
             return trueFalsePicklistOptions();
         }
+        return undefined;
     }
 
     get labelGeAssistiveFormFieldRemove() {

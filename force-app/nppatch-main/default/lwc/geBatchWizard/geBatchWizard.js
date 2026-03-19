@@ -420,11 +420,11 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
      */
     buildCreateRecord() {
         const dataImportBatchObjectInfo = this.dataImportBatchCreateDefaults.data.objectInfos[this.dataImportBatchName];
-        const createRecord = generateRecordInputForCreate(
+        const batchCreateRecord = generateRecordInputForCreate(
             this.dataImportBatchCreateDefaults.data.record,
             dataImportBatchObjectInfo
         );
-        return this.setFieldValues(createRecord);
+        return this.setFieldValues(batchCreateRecord);
     }
 
     /**
@@ -433,9 +433,9 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
      */
     buildUpdateRecord() {
         const dataImportBatchObjectInfo = this.dataImportBatchCreateDefaults.data.objectInfos[this.dataImportBatchName];
-        const updateRecord = generateRecordInputForUpdate(this.dataImportBatchRecord, dataImportBatchObjectInfo);
-        updateRecord.apiName = this.dataImportBatchRecord.apiName;
-        return this.setFieldValues(updateRecord);
+        const batchUpdateRecord = generateRecordInputForUpdate(this.dataImportBatchRecord, dataImportBatchObjectInfo);
+        batchUpdateRecord.apiName = this.dataImportBatchRecord.apiName;
+        return this.setFieldValues(batchUpdateRecord);
     }
 
     setFieldValues(dataImportBatch) {
