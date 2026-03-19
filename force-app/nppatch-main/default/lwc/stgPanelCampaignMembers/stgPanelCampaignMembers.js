@@ -24,9 +24,11 @@ export default class StgPanelCampaignMembers extends LightningElement {
         autoCampaignMember: "Automatic Campaign Member Management",
         respondedStatus: "Campaign Member Responded Status",
         nonRespondedStatus: "Campaign Member Non-Responded Status",
-        helpAuto: "When enabled, NPPatch automatically creates or updates a Campaign Member record when an Opportunity is linked to a Campaign. The Campaign Member\u2019s status is set based on whether the Opportunity is Closed/Won or still open.",
+        helpAuto:
+            "When enabled, NPPatch automatically creates or updates a Campaign Member record when an Opportunity is linked to a Campaign. The Campaign Member\u2019s status is set based on whether the Opportunity is Closed/Won or still open.",
         helpResponded: "The status assigned to the Campaign Member when the associated Opportunity is Closed/Won.",
-        helpNonResponded: "The status assigned to the Campaign Member when the associated Opportunity is still open (not yet Closed/Won).",
+        helpNonResponded:
+            "The status assigned to the Campaign Member when the associated Opportunity is still open (not yet Closed/Won).",
     };
 
     get sectionDescription() {
@@ -94,12 +96,9 @@ export default class StgPanelCampaignMembers extends LightningElement {
             await saveSettings({
                 settingsObjectName: SETTINGS_OBJECT,
                 fieldValues: {
-                    Automatic_Campaign_Member_Management__c:
-                        this._workingCopy.Automatic_Campaign_Member_Management__c,
-                    Campaign_Member_Responded_Status__c:
-                        this._workingCopy.Campaign_Member_Responded_Status__c,
-                    Campaign_Member_Non_Responded_Status__c:
-                        this._workingCopy.Campaign_Member_Non_Responded_Status__c,
+                    Automatic_Campaign_Member_Management__c: this._workingCopy.Automatic_Campaign_Member_Management__c,
+                    Campaign_Member_Responded_Status__c: this._workingCopy.Campaign_Member_Responded_Status__c,
+                    Campaign_Member_Non_Responded_Status__c: this._workingCopy.Campaign_Member_Non_Responded_Status__c,
                 },
             });
             await refreshApex(this._wiredSettingsResult);
@@ -121,8 +120,12 @@ export default class StgPanelCampaignMembers extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) return error.body.message;
-        if (error?.message) return error.message;
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

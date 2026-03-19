@@ -1,4 +1,4 @@
-import { LightningElement, api, track } from "lwc";
+import { LightningElement, api } from "lwc";
 import { NavigationMixin } from "lightning/navigation";
 import libsD3 from "c/libsD3";
 import getRelationshipGraph from "@salesforce/apex/RelationshipsTreeGridController.getRelationshipGraph";
@@ -137,9 +137,7 @@ export default class RelationshipsTangledTree extends NavigationMixin(LightningE
             this.hasError = true;
             this.errorMessage = message;
             this.isLoading = false;
-            this.dispatchEvent(
-                new CustomEvent("accesserror", { detail: message })
-            );
+            this.dispatchEvent(new CustomEvent("accesserror", { detail: message }));
         }
     }
 
@@ -264,8 +262,14 @@ export default class RelationshipsTangledTree extends NavigationMixin(LightningE
                 d.y = event.y;
                 d3.select(this).attr("transform", `translate(${d.x},${d.y})`);
                 self._updateEdges(
-                    d, linkDataById, positionedNodes,
-                    edgePaths, edgeLabelGroups, edgeLabelTexts, edgeLabelBgs, d3
+                    d,
+                    linkDataById,
+                    positionedNodes,
+                    edgePaths,
+                    edgeLabelGroups,
+                    edgeLabelTexts,
+                    edgeLabelBgs,
+                    d3
                 );
             })
             .on("end", function (_event, d) {
@@ -366,10 +370,7 @@ export default class RelationshipsTangledTree extends NavigationMixin(LightningE
     handleViewRecord() {
         if (this.selectedNode) {
             if (this.isLightningOut) {
-                window.open(
-                    `/lightning/r/Contact/${this.selectedNode.id}/view`,
-                    "_blank"
-                );
+                window.open(`/lightning/r/Contact/${this.selectedNode.id}/view`, "_blank");
             } else {
                 this[NavigationMixin.Navigate]({
                     type: "standard__recordPage",
@@ -404,9 +405,7 @@ export default class RelationshipsTangledTree extends NavigationMixin(LightningE
 
     handleZoomReset() {
         const svg = this._d3.select(this.template.querySelector("svg.tree-svg"));
-        svg.transition()
-            .duration(300)
-            .call(this._zoomBehavior.transform, this._d3.zoomIdentity);
+        svg.transition().duration(300).call(this._zoomBehavior.transform, this._d3.zoomIdentity);
     }
 
     // --- Getters ---

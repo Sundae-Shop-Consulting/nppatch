@@ -14,7 +14,7 @@
 }
 
 .slds-modal__content {
-    height:auto !important;
+    height: auto !important;
     max-height: calc(65vh) !important;
 }
 
@@ -27,9 +27,9 @@
 }
 
 .experienceTitle {
-    font-weight: var(--slds-g-font-weight-7, var(--lwc-fontWeightBold,700));
-    color: var(--slds-g-color-on-surface-3, var(--lwc-colorTextLabel,#5A5A5A));
-    font-family: var(--lwc-fontFamily,Work Sans);
+    font-weight: var(--slds-g-font-weight-7, var(--lwc-fontWeightBold, 700));
+    color: var(--slds-g-color-on-surface-3, var(--lwc-colorTextLabel, #5a5a5a));
+    font-family: var(--lwc-fontFamily, Work Sans);
 }
 
 legend.slds-form-element__legend.slds-form-element__label {

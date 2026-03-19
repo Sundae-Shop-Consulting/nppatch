@@ -15,7 +15,7 @@ class GeSettings {
 
     isElevateCustomer() {
         return this._isElevateCustomer;
-    };
+    }
 
     canMakeGiftsRecurring() {
         return this._isRecurringGiftsEnabled && this._canMakeGiftsRecurring;

@@ -29,30 +29,78 @@ export default class SettingsModal extends LightningModal {
         return this.panelName in PANEL_SELECTORS;
     }
 
-    get isAccountModelPanel() { return this.panelName === "accountModel"; }
-    get isLeadsPanel() { return this.panelName === "leads"; }
-    get isAffiliationsPanel() { return this.panelName === "affiliations"; }
-    get isMembershipPanel() { return this.panelName === "membership"; }
-    get isPaymentsPanel() { return this.panelName === "payments"; }
-    get isDonorStatisticsPanel() { return this.panelName === "donorStatistics"; }
-    get isCampaignMembersPanel() { return this.panelName === "campaignMembers"; }
-    get isContactRolesPanel() { return this.panelName === "contactRoles"; }
-    get isAllocationsPanel() { return this.panelName === "allocations"; }
-    get isDuplicateRulesPanel() { return this.panelName === "duplicateRules"; }
-    get isErrorNotifPanel() { return this.panelName === "errorNotif"; }
-    get isRelationshipsPanel() { return this.panelName === "relationships"; }
-    get isHouseholdsPanel() { return this.panelName === "households"; }
-    get isSchedulePanel() { return this.panelName === "schedule"; }
-    get isRelReciprocalPanel() { return this.panelName === "relReciprocal"; }
-    get isRelAutoCreatePanel() { return this.panelName === "relAutoCreate"; }
-    get isOppNamingPanel() { return this.panelName === "oppNaming"; }
-    get isPaymentMappingPanel() { return this.panelName === "paymentMapping"; }
-    get isTdtmPanel() { return this.panelName === "tdtm"; }
-    get isAddressVerificationPanel() { return this.panelName === "addressVerification"; }
-    get isCustomizableRollupsPanel() { return this.panelName === "customizableRollups"; }
-    get isRd2StatusMappingPanel() { return this.panelName === "rd2StatusMapping"; }
-    get isRd2StatusAutomationPanel() { return this.panelName === "rd2StatusAutomation"; }
-    get isAdvancedMappingPanel() { return this.panelName === "advancedMapping"; }
+    get isAccountModelPanel() {
+        return this.panelName === "accountModel";
+    }
+    get isLeadsPanel() {
+        return this.panelName === "leads";
+    }
+    get isAffiliationsPanel() {
+        return this.panelName === "affiliations";
+    }
+    get isMembershipPanel() {
+        return this.panelName === "membership";
+    }
+    get isPaymentsPanel() {
+        return this.panelName === "payments";
+    }
+    get isDonorStatisticsPanel() {
+        return this.panelName === "donorStatistics";
+    }
+    get isCampaignMembersPanel() {
+        return this.panelName === "campaignMembers";
+    }
+    get isContactRolesPanel() {
+        return this.panelName === "contactRoles";
+    }
+    get isAllocationsPanel() {
+        return this.panelName === "allocations";
+    }
+    get isDuplicateRulesPanel() {
+        return this.panelName === "duplicateRules";
+    }
+    get isErrorNotifPanel() {
+        return this.panelName === "errorNotif";
+    }
+    get isRelationshipsPanel() {
+        return this.panelName === "relationships";
+    }
+    get isHouseholdsPanel() {
+        return this.panelName === "households";
+    }
+    get isSchedulePanel() {
+        return this.panelName === "schedule";
+    }
+    get isRelReciprocalPanel() {
+        return this.panelName === "relReciprocal";
+    }
+    get isRelAutoCreatePanel() {
+        return this.panelName === "relAutoCreate";
+    }
+    get isOppNamingPanel() {
+        return this.panelName === "oppNaming";
+    }
+    get isPaymentMappingPanel() {
+        return this.panelName === "paymentMapping";
+    }
+    get isTdtmPanel() {
+        return this.panelName === "tdtm";
+    }
+    get isAddressVerificationPanel() {
+        return this.panelName === "addressVerification";
+    }
+    get isCustomizableRollupsPanel() {
+        return this.panelName === "customizableRollups";
+    }
+    get isRd2StatusMappingPanel() {
+        return this.panelName === "rd2StatusMapping";
+    }
+    get isRd2StatusAutomationPanel() {
+        return this.panelName === "rd2StatusAutomation";
+    }
+    get isAdvancedMappingPanel() {
+        return this.panelName === "advancedMapping";
+    }
 
     async handleSave() {
         const selector = PANEL_SELECTORS[this.panelName];

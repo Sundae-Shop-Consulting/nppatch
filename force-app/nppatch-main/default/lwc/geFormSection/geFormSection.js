@@ -1,7 +1,7 @@
-import {LightningElement, api} from 'lwc';
-import { isUndefined } from 'c/utilCommon';
+import { LightningElement, api } from "lwc";
+import { isUndefined } from "c/utilCommon";
 
-const COLLAPSED_DISPLAY_MODE = 'collapsed';
+const COLLAPSED_DISPLAY_MODE = "collapsed";
 
 export default class GeFormSection extends LightningElement {
     @api section;
@@ -19,7 +19,7 @@ export default class GeFormSection extends LightningElement {
      * @returns {string} containing the section expand alternative text
      */
     get altTextLabel() {
-        return 'Toggle ' + this.section.label;
+        return "Toggle " + this.section.label;
     }
 
     get isCollapsed() {
@@ -32,17 +32,15 @@ export default class GeFormSection extends LightningElement {
      * @param {*} errorMessage
      */
     @api
-    setCustomValidityOnFields( fieldsArray, errorMessage ) {
-
-        const fields = this.template.querySelectorAll('c-ge-form-field');
-        if (fields !== null && typeof fields !== 'undefined') {
-            fields.forEach(f => {
-                if ( fieldsArray.indexOf(f.sourceFieldAPIName)!== -1 ) {
+    setCustomValidityOnFields(fieldsArray, errorMessage) {
+        const fields = this.template.querySelectorAll("c-ge-form-field");
+        if (fields !== null && typeof fields !== "undefined") {
+            fields.forEach((f) => {
+                if (fieldsArray.indexOf(f.sourceFieldAPIName) !== -1) {
                     f.setCustomValidity(errorMessage);
                 }
             });
         }
-
     }
 
     /**
@@ -51,11 +49,11 @@ export default class GeFormSection extends LightningElement {
      */
     @api
     getInvalidFields() {
-        const fields = this.template.querySelectorAll('c-ge-form-field');
-        let invalidFields = [];
+        const fields = this.template.querySelectorAll("c-ge-form-field");
+        const invalidFields = [];
 
-        fields.forEach(f => {
-            if(!f.isValid()) {
+        fields.forEach((f) => {
+            if (!f.isValid()) {
                 invalidFields.push(f.fieldLabel);
             }
         });
@@ -65,10 +63,10 @@ export default class GeFormSection extends LightningElement {
 
     @api
     getAllFieldsByAPIName() {
-        const fields = this.template.querySelectorAll('c-ge-form-field');
-        let fieldMappedByAPIName = {};
+        const fields = this.template.querySelectorAll("c-ge-form-field");
+        const fieldMappedByAPIName = {};
 
-        fields.forEach(f => {
+        fields.forEach((f) => {
             fieldMappedByAPIName[f.sourceFieldAPIName] = f;
         });
 
@@ -77,27 +75,24 @@ export default class GeFormSection extends LightningElement {
 
     registerPaymentWidget() {
         if (!isUndefined(this.section)) {
-            this.section.elements.forEach(element => {
-                if (element.componentName === 'geFormWidgetTokenizeCard') {
+            this.section.elements.forEach((element) => {
+                if (element.componentName === "geFormWidgetTokenizeCard") {
                     this._hasPaymentWidget = true;
                 }
-            })
+            });
         }
         if (this._hasPaymentWidget) {
-            const registerPaymentWidgetEvent = new CustomEvent(
-                'registerpaymentwidget'
-            );
-            this.dispatchEvent(registerPaymentWidgetEvent)
+            const registerPaymentWidgetEvent = new CustomEvent("registerpaymentwidget");
+            this.dispatchEvent(registerPaymentWidgetEvent);
         }
-
     }
 
     @api
     get paymentToken() {
-        let widgetValues = [];
-        const widgets = this.template.querySelectorAll('c-ge-form-widget');
-        if (widgets !== null && typeof widgets !== 'undefined') {
-            widgets.forEach(widget => {
+        const widgetValues = [];
+        const widgets = this.template.querySelectorAll("c-ge-form-widget");
+        if (widgets !== null && typeof widgets !== "undefined") {
+            widgets.forEach((widget) => {
                 if (widget.isElevateTokenizeCard) {
                     widgetValues.push(widget.paymentToken);
                 }
@@ -115,7 +110,6 @@ export default class GeFormSection extends LightningElement {
         if (isUndefined(this.section)) {
             return [];
         }
-        return this.section.elements.filter(e => e.isRenderable);
+        return this.section.elements.filter((e) => e.isRenderable);
     }
-
 }

@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>*</members>
         <members>Account</members>
         <members>Campaign</members>
-        <members>Case</members>
         <members>Contact</members>
         <members>Lead</members>
         <members>Opportunity</members>
+        <members>nppatch__OppPayment__c</members>
+        <members>nppatch__Household__c</members>
+        <members>nppatch__Custom_Field_Mapping__c</members>
+        <members>nppatch__Recurring_Donation__c</members>
+        <members>nppatch__Relationship__c</members>
+        <members>nppatch__Relationship_Auto_Create__c</members>
+        <members>nppatch__Relationship_Lookup__c</members>
+        <members>nppatch__Affiliation__c</members>
         <name>CustomObject</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>CustomTab</name>
     </types>
     <types>
         <members>Admin</members>

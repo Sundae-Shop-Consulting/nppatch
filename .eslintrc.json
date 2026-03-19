@@ -24,5 +24,23 @@
         "jest": {
             "version": 29
         }
-    }
+    },
+    "overrides": [
+        {
+            "files": ["**/__tests__/**/*.js"],
+            "env": {
+                "jest": true
+            },
+            "globals": {
+                "flushPromises": "readonly",
+                "clearDOM": "readonly"
+            },
+            "rules": {
+                "no-use-before-define": "off",
+                "@lwc/lwc/no-unexpected-wire-adapter-usages": "off",
+                "@lwc/lwc/no-inner-html": "off",
+                "jest/no-mocks-import": "off"
+            }
+        }
+    ]
 }

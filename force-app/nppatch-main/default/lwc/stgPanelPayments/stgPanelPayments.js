@@ -96,18 +96,15 @@ export default class StgPanelPayments extends LightningElement {
     }
 
     handleMaxPaymentsChange(event) {
-        this._workingCopy.Max_Payments__c =
-            event.detail.value !== "" ? Number(event.detail.value) : null;
+        this._workingCopy.Max_Payments__c = event.detail.value !== "" ? Number(event.detail.value) : null;
     }
 
     handleExcludedRecTypesChange(event) {
-        this._workingCopy.Opp_RecTypes_Excluded_for_Payments__c =
-            event.detail.value.join(";");
+        this._workingCopy.Opp_RecTypes_Excluded_for_Payments__c = event.detail.value.join(";");
     }
 
     handleExcludedOppTypesChange(event) {
-        this._workingCopy.Opp_Types_Excluded_for_Payments__c =
-            event.detail.value.join(";");
+        this._workingCopy.Opp_Types_Excluded_for_Payments__c = event.detail.value.join(";");
     }
 
     @api
@@ -120,8 +117,7 @@ export default class StgPanelPayments extends LightningElement {
                     Max_Payments__c: this._workingCopy.Max_Payments__c,
                     Opp_RecTypes_Excluded_for_Payments__c:
                         this._workingCopy.Opp_RecTypes_Excluded_for_Payments__c || null,
-                    Opp_Types_Excluded_for_Payments__c:
-                        this._workingCopy.Opp_Types_Excluded_for_Payments__c || null,
+                    Opp_Types_Excluded_for_Payments__c: this._workingCopy.Opp_Types_Excluded_for_Payments__c || null,
                 },
             });
             await refreshApex(this._wiredSettingsResult);

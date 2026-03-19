@@ -5,5 +5,5 @@
 
     reInit: function (component, event, helper) {
         helper.refresh(component, event, helper);
-    }
+    },
 });

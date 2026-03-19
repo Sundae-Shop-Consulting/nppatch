@@ -1,4 +1,162 @@
-import { fireEvent } from 'c/pubsubNoPageRef';
+import { fireEvent } from "c/pubsubNoPageRef";
+
+const DISPLAY_DEFINITIONS = Object.freeze({
+    initialState: "charge",
+    loading: {
+        actions: {
+            onEnter() {
+                this._componentContext.loadingOn();
+            },
+            onExit() {
+                this._componentContext.loadingOff();
+            },
+        },
+        transitions: {
+            charge: {
+                target: "charge",
+            },
+            deactivated: {
+                target: "deactivated",
+            },
+            readOnly: {
+                target: "readOnly",
+            },
+            criticalError: {
+                target: "criticalError",
+            },
+        },
+    },
+    charge: {
+        actions: {
+            onEnter() {
+                if (!this._componentContext.isMounted) {
+                    this._componentContext.loadingOn();
+                }
+            },
+            onExit() {},
+        },
+        transitions: {
+            loading: {
+                target: "loading",
+            },
+            deactivated: {
+                target: "deactivated",
+            },
+            userOriginatedDoNotCharge: {
+                target: "doNotCharge",
+            },
+            readOnly: {
+                target: "readOnly",
+            },
+            criticalError: {
+                target: "criticalError",
+            },
+        },
+    },
+    deactivated: {
+        actions: {
+            onEnter() {
+                this._componentContext.dismount();
+            },
+            onExit() {},
+        },
+        transitions: {
+            loading: {
+                target: "loading",
+            },
+            charge: {
+                target: "charge",
+            },
+            readOnly: {
+                target: "readOnly",
+            },
+        },
+    },
+    doNotCharge: {
+        actions: {
+            onEnter() {
+                this._componentContext.dismount();
+                this._componentContext.requestParentNullPaymentFieldsInFormState();
+            },
+            onExit() {},
+        },
+        transitions: {
+            loading: {
+                target: "loading",
+            },
+            userOriginatedCharge: {
+                target: "charge",
+            },
+            userOriginatedDeactivated: {
+                target: "deactivated",
+            },
+            readOnly: {
+                target: "readOnly",
+            },
+        },
+    },
+    readOnly: {
+        actions: {
+            onEnter() {
+                this._componentContext.dismount();
+            },
+            onExit() {},
+        },
+        transitions: {
+            loading: {
+                target: "loading",
+            },
+            edit: {
+                target: "edit",
+            },
+            editExpiredTransaction: {
+                target: "edit",
+            },
+            resetToCharge: {
+                target: "charge",
+            },
+            resetToDeactivated: {
+                target: "deactivated",
+            },
+            userOriginatedDoNotCharge: {
+                target: "doNotCharge",
+            },
+        },
+    },
+    criticalError: {
+        actions: {
+            onEnter() {
+                this._componentContext.dismount();
+            },
+            onExit() {},
+        },
+        transitions: {},
+    },
+    edit: {
+        actions: {
+            onEnter() {
+                if (!this._componentContext.isMounted) {
+                    this._componentContext.loadingOn();
+                }
+            },
+            onExit() {},
+        },
+        transitions: {
+            readOnly: {
+                target: "readOnly",
+            },
+            resetToCharge: {
+                target: "charge",
+            },
+            resetToDeactivated: {
+                target: "deactivated",
+            },
+            deactivated: {
+                target: "deactivated",
+            },
+        },
+    },
+});
 
 class ElevateWidgetDisplay {
     _state = DISPLAY_DEFINITIONS.initialState;
@@ -15,8 +173,8 @@ class ElevateWidgetDisplay {
             return;
         }
 
-        this.dispatchApplicationEvent('widgetStateChange', {
-            state: nextState
+        this.dispatchApplicationEvent("widgetStateChange", {
+            state: nextState,
         });
 
         const destinationState = destinationTransition.target;
@@ -37,163 +195,5 @@ class ElevateWidgetDisplay {
         fireEvent(null, eventName, payload);
     }
 }
-
-const DISPLAY_DEFINITIONS = Object.freeze({
-    initialState: 'charge',
-    loading: {
-        actions: {
-            onEnter() {
-                this._componentContext.loadingOn();
-            },
-            onExit() {
-                this._componentContext.loadingOff();
-            },
-        },
-        transitions: {
-            charge: {
-                target: 'charge',
-            },
-            deactivated: {
-                target: 'deactivated',
-            },
-            readOnly: {
-                target: 'readOnly',
-            },
-            criticalError: {
-                target: 'criticalError',
-            }
-        },
-    },
-    charge: {
-        actions: {
-            onEnter() {
-                if (!this._componentContext.isMounted) {
-                    this._componentContext.loadingOn();
-                }
-            },
-            onExit() {},
-        },
-        transitions: {
-            loading: {
-                target: 'loading'
-            },
-            deactivated: {
-                target: 'deactivated'
-            },
-            userOriginatedDoNotCharge: {
-                target: 'doNotCharge'
-            },
-            readOnly: {
-                target: 'readOnly'
-            },
-            criticalError: {
-                target: 'criticalError'
-            }
-        },
-    },
-    deactivated: {
-        actions: {
-            onEnter() {
-                this._componentContext.dismount();
-            },
-            onExit() {},
-        },
-        transitions: {
-            loading: {
-                target: 'loading'
-            },
-            charge: {
-                target: 'charge'
-            },
-            readOnly: {
-                target: 'readOnly'
-            }
-        },
-    },
-    doNotCharge: {
-        actions: {
-            onEnter() {
-                this._componentContext.dismount();
-                this._componentContext.requestParentNullPaymentFieldsInFormState();
-            },
-            onExit() {},
-        },
-        transitions: {
-            loading: {
-                target: 'loading'
-            },
-            userOriginatedCharge: {
-                target: 'charge'
-            },
-            userOriginatedDeactivated: {
-                target: 'deactivated'
-            },
-            readOnly: {
-                target: 'readOnly'
-            }
-        },
-    },
-    readOnly: {
-        actions: {
-            onEnter() {
-                this._componentContext.dismount();
-            },
-            onExit() {},
-        },
-        transitions: {
-            loading: {
-                target: 'loading'
-            },
-            edit: {
-                target: 'edit'
-            },
-            editExpiredTransaction: {
-                target: 'edit'
-            },
-            resetToCharge: {
-                target: 'charge'
-            },
-            resetToDeactivated: {
-                target: 'deactivated'
-            },
-            userOriginatedDoNotCharge: {
-                target: 'doNotCharge'
-            }
-        },
-    },
-    criticalError: {
-        actions: {
-            onEnter() {
-                this._componentContext.dismount();
-            },
-            onExit() {},
-        },
-        transitions: {}
-    },
-    edit: {
-        actions: {
-            onEnter() {
-                if (!this._componentContext.isMounted) {
-                    this._componentContext.loadingOn();
-                }
-            },
-            onExit() {},
-        },
-        transitions: {
-            readOnly: {
-                target: 'readOnly'
-            },
-            resetToCharge: {
-                target: 'charge'
-            },
-            resetToDeactivated: {
-                target: 'deactivated'
-            },
-            deactivated: {
-                target: 'deactivated'
-            }
-        }
-    }
-});
 
 export default ElevateWidgetDisplay;

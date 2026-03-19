@@ -45,8 +45,7 @@ export default class StgPanelDonorStatistics extends LightningElement {
     }
 
     handleNDayChange(event) {
-        this._workingCopy.Rollup_N_Day_Value__c =
-            event.detail.value !== "" ? Number(event.detail.value) : null;
+        this._workingCopy.Rollup_N_Day_Value__c = event.detail.value !== "" ? Number(event.detail.value) : null;
     }
 
     handleFiscalYearChange(event) {
@@ -65,7 +64,11 @@ export default class StgPanelDonorStatistics extends LightningElement {
             });
             await refreshApex(this._wiredSettingsResult);
             this.dispatchEvent(
-                new ShowToastEvent({ title: "Success", message: "Donor statistics settings saved.", variant: "success" })
+                new ShowToastEvent({
+                    title: "Success",
+                    message: "Donor statistics settings saved.",
+                    variant: "success",
+                })
             );
             return true;
         } catch (error) {

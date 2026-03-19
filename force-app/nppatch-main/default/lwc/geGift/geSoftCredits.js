@@ -1,4 +1,3 @@
-
 class SoftCredits {
     _unprocessedSoftCredits = [];
     _processedSoftCredits = [];
@@ -8,10 +7,9 @@ class SoftCredits {
     }
 
     forSave() {
-        return this._unprocessedSoftCredits
-            .filter(softCredit => {
-                return softCredit.Role != '' && softCredit.ContactId != ''
-            });
+        return this._unprocessedSoftCredits.filter((softCredit) => {
+            return softCredit.Role !== "" && softCredit.ContactId !== "";
+        });
     }
 
     unprocessedSoftCredits() {
@@ -23,7 +21,7 @@ class SoftCredits {
     }
 
     addNew() {
-        this._indexSoftCredits([{ Role: '', ContactId: '' }]);
+        this._indexSoftCredits([{ Role: "", ContactId: "" }]);
     }
 
     add(softCredit) {
@@ -52,9 +50,11 @@ class SoftCredits {
     }
 
     update(softCreditWithChange) {
-        if (!softCreditWithChange) return;
+        if (!softCreditWithChange) {
+            return;
+        }
 
-        this._unprocessedSoftCredits.forEach(function(softCredit, index, allSoftCredits) {
+        this._unprocessedSoftCredits.forEach(function (softCredit, index, allSoftCredits) {
             if (softCredit.key === softCreditWithChange.key) {
                 allSoftCredits[index] = softCreditWithChange;
             }
@@ -62,31 +62,35 @@ class SoftCredits {
     }
 
     _indexSoftCredits(softCredits) {
-        if (!softCredits) return;
+        if (!softCredits) {
+            return;
+        }
 
-        softCredits.forEach(softCredit => {
+        softCredits.forEach((softCredit) => {
             if (softCredit.Id) {
                 this._processedSoftCredits.push({
-                    ...softCredit
+                    ...softCredit,
                 });
             } else {
                 this._unprocessedSoftCredits.push({
                     ...softCredit,
-                    key: this._unprocessedSoftCredits.length
+                    key: this._unprocessedSoftCredits.length,
                 });
             }
         });
     }
 
     _reIndexSoftCredits(softCredits) {
-        if (!softCredits) return;
+        if (!softCredits) {
+            return;
+        }
 
         this._unprocessedSoftCredits = [];
         this._indexSoftCredits(softCredits);
     }
 
     _parseIfString(object) {
-        if (typeof object === 'string') {
+        if (typeof object === "string") {
             return JSON.parse(object);
         }
         return object;

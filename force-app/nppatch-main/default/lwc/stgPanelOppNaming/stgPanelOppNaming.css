@@ -6,17 +6,58 @@
     position: relative;
 }
 
-.panel-container { padding: 1rem; }
-.panel-header { margin-bottom: 1rem; }
-.panel-body { display: flex; flex-direction: column; gap: 1.5rem; }
-.section-description { font-size: 0.8125rem; color: #706e6b; margin-top: 0.25rem; }
-.action-bar { display: flex; justify-content: flex-end; }
-.action-bar-centered { display: flex; justify-content: center; }
-.create-form { background: #f7f9fb; border: 1px solid #e5e5e5; border-radius: 0.25rem; padding: 1rem; }
-.form-row { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
-.form-actions { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
-.section-subheader { font-size: 0.875rem; font-weight: 700; color: #3e3e3c; margin: 0 0 0.75rem 0; }
-.empty-message { font-size: 0.8125rem; color: #706e6b; font-style: italic; }
+.panel-container {
+    padding: 1rem;
+}
+.panel-header {
+    margin-bottom: 1rem;
+}
+.panel-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.section-description {
+    font-size: 0.8125rem;
+    color: #706e6b;
+    margin-top: 0.25rem;
+}
+.action-bar {
+    display: flex;
+    justify-content: flex-end;
+}
+.action-bar-centered {
+    display: flex;
+    justify-content: center;
+}
+.create-form {
+    background: #f7f9fb;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.25rem;
+    padding: 1rem;
+}
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+.form-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+.section-subheader {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #3e3e3c;
+    margin: 0 0 0.75rem 0;
+}
+.empty-message {
+    font-size: 0.8125rem;
+    color: #706e6b;
+    font-style: italic;
+}
 .preview-box {
     background: #fff;
     border: 1px solid #d8dde6;
@@ -26,8 +67,14 @@
     font-size: 0.8125rem;
     color: #3e3e3c;
 }
-.preview-label { font-weight: 700; color: #706e6b; }
-.preview-unavailable { color: #706e6b; font-style: italic; }
+.preview-label {
+    font-weight: 700;
+    color: #706e6b;
+}
+.preview-unavailable {
+    color: #706e6b;
+    font-style: italic;
+}
 .warning-box {
     display: flex;
     align-items: center;

@@ -503,7 +503,7 @@ plans:
       8:
         task: assign_permission_sets
         ui_options:
-          name: Assign Permission Sets 
+          name: Assign Permission Sets
         options:
           api_names:
             - NPPatch_Admin

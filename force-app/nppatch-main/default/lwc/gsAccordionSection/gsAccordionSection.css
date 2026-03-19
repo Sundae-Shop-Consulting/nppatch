@@ -1,7 +1,6 @@
 .slds-media.info {
     margin-left: 1rem;
     display: flex;
-   
 }
 
 .slds-media.info .container {
@@ -33,12 +32,12 @@
     height: 8rem;
 }
 
-.slds-media.info  .steps {
+.slds-media.info .steps {
     display: none;
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
-.slds-media.info.open  .steps {
+.slds-media.info.open .steps {
     display: inline;
 }

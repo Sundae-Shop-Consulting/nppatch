@@ -1,20 +1,19 @@
-import lblTitle from '@salesforce/label/c.RD2_ScheduleVisualizerTitle';
-import lblLoading from '@salesforce/label/c.labelMessageLoading'
+import lblTitle from "@salesforce/label/c.RD2_ScheduleVisualizerTitle";
+import lblLoading from "@salesforce/label/c.labelMessageLoading";
 
-import { LightningElement, api, wire, track } from 'lwc';
-import { getRecord } from 'lightning/uiRecordApi';
+import { LightningElement, api, wire, track } from "lwc";
+import { getRecord } from "lightning/uiRecordApi";
 
-import FIELD_RD_AMOUNT from '@salesforce/schema/Recurring_Donation__c.Amount__c';
-import FIELD_RD_PERIOD from '@salesforce/schema/Recurring_Donation__c.Installment_Period__c';
-import FIELD_RD_FREQUENCY from '@salesforce/schema/Recurring_Donation__c.InstallmentFrequency__c';
-import FIELD_RD_DAYOFMONTH from '@salesforce/schema/Recurring_Donation__c.Day_of_Month__c';
-import FIELD_RD_STARTDATE from '@salesforce/schema/Recurring_Donation__c.StartDate__c';
-import FIELD_RD_PAYMENT_METHOD from '@salesforce/schema/Recurring_Donation__c.PaymentMethod__c';
+import FIELD_RD_AMOUNT from "@salesforce/schema/Recurring_Donation__c.Amount__c";
+import FIELD_RD_PERIOD from "@salesforce/schema/Recurring_Donation__c.Installment_Period__c";
+import FIELD_RD_FREQUENCY from "@salesforce/schema/Recurring_Donation__c.InstallmentFrequency__c";
+import FIELD_RD_DAYOFMONTH from "@salesforce/schema/Recurring_Donation__c.Day_of_Month__c";
+import FIELD_RD_STARTDATE from "@salesforce/schema/Recurring_Donation__c.StartDate__c";
+import FIELD_RD_PAYMENT_METHOD from "@salesforce/schema/Recurring_Donation__c.PaymentMethod__c";
 
-import getInstallments from '@salesforce/apex/RD2_VisualizeScheduleController.getInstallments';
+import getInstallments from "@salesforce/apex/RD2_VisualizeScheduleController.getInstallments";
 
 export default class RdScheduleVisualizer extends LightningElement {
-
     @api recordId;
     @api displayNum;
 
@@ -26,28 +25,34 @@ export default class RdScheduleVisualizer extends LightningElement {
 
     labels = {
         lblTitle,
-        lblLoading
-    }
+        lblLoading,
+    };
 
     /*******************************************************************************
-     * @description Track specified fields so when the Recurring Donation record is updated, 
+     * @description Track specified fields so when the Recurring Donation record is updated,
      * this method is called to force refresh of the data and the component.
      */
     @wire(getRecord, {
-        recordId: '$recordId',
-        fields: [FIELD_RD_AMOUNT, FIELD_RD_DAYOFMONTH, FIELD_RD_FREQUENCY, FIELD_RD_PERIOD, FIELD_RD_STARTDATE, FIELD_RD_PAYMENT_METHOD]
+        recordId: "$recordId",
+        fields: [
+            FIELD_RD_AMOUNT,
+            FIELD_RD_DAYOFMONTH,
+            FIELD_RD_FREQUENCY,
+            FIELD_RD_PERIOD,
+            FIELD_RD_STARTDATE,
+            FIELD_RD_PAYMENT_METHOD,
+        ],
     })
     wireRecordChange() {
         if (this.recordId) {
             this.isLoading = true;
             getInstallments({ recordId: this.recordId, displayNum: this.displayNum })
-                .then(response => {
+                .then((response) => {
                     this.handleRecords(response);
                     this.handleColumns(response);
                     this.error = null;
-
                 })
-                .catch(error => {
+                .catch((error) => {
                     this.installments = null;
                     this.error = this.handleError(error);
                 });
@@ -100,8 +105,7 @@ export default class RdScheduleVisualizer extends LightningElement {
             return error.body.message;
         } else if (error && error.name && error.message) {
             return error.message;
-        } else {
-            return "";
         }
+        return "";
     }
 }

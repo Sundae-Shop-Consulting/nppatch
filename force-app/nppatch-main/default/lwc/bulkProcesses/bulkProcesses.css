@@ -9,7 +9,10 @@
     margin-bottom: 1.5rem;
 }
 
-.section-description { font-size: 0.8125rem; color: #706e6b; }
+.section-description {
+    font-size: 0.8125rem;
+    color: #706e6b;
+}
 .tile-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -29,7 +32,11 @@
     gap: 0.5rem;
     margin-bottom: 0.5rem;
 }
-.tile-title { font-size: 0.875rem; font-weight: 700; margin: 0; }
+.tile-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin: 0;
+}
 .tile-description {
     font-size: 0.8125rem;
     color: #3e3e3c;
@@ -42,5 +49,12 @@
     gap: 0.5rem;
     margin-top: 0.75rem;
 }
-.inline-spinner { position: relative; height: 1.5rem; width: 1.5rem; }
-.running-label { font-size: 0.8125rem; color: #706e6b; }
+.inline-spinner {
+    position: relative;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+.running-label {
+    font-size: 0.8125rem;
+    color: #706e6b;
+}

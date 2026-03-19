@@ -67,7 +67,7 @@ export default class ManageHhAddressManager extends LightningElement {
     }
 
     get hasDefaultAddress() {
-        return this._defaultAddress != null;
+        return this._defaultAddress !== null;
     }
 
     get formattedDefaultAddress() {
@@ -75,7 +75,9 @@ export default class ManageHhAddressManager extends LightningElement {
     }
 
     get defaultAddressIsUndeliverable() {
-        if (!this._defaultAddress) return false;
+        if (!this._defaultAddress) {
+            return false;
+        }
         return getChildObjectByName(this._defaultAddress, "Undeliverable__c");
     }
 
@@ -88,45 +90,49 @@ export default class ManageHhAddressManager extends LightningElement {
                 formattedAddress: this._formatAddress(addr),
                 isUndeliverable: isUndeliverable,
                 isSelected: idx === this.selectedAddressIndex ? "true" : "false",
-                selectedClass:
-                    idx === this.selectedAddressIndex
-                        ? "slds-item selected"
-                        : "slds-item"
+                selectedClass: idx === this.selectedAddressIndex ? "slds-item selected" : "slds-item",
             };
         });
     }
 
     _updateDefaultAddress() {
-        const defaultAddr = this._listAddr.find((addr) =>
-            getChildObjectByName(addr, "Default_Address__c")
-        );
+        const defaultAddr = this._listAddr.find((addr) => getChildObjectByName(addr, "Default_Address__c"));
         this._defaultAddress = defaultAddr || this._listAddr[0] || null;
         // Update selected index to match default
-        this.selectedAddressIndex = this._listAddr.indexOf(
-            this._defaultAddress
-        );
-        if (this.selectedAddressIndex < 0) this.selectedAddressIndex = 0;
+        this.selectedAddressIndex = this._listAddr.indexOf(this._defaultAddress);
+        if (this.selectedAddressIndex < 0) {
+            this.selectedAddressIndex = 0;
+        }
     }
 
     _formatAddress(addr) {
-        if (!addr) return "";
+        if (!addr) {
+            return "";
+        }
         const street = getChildObjectByName(addr, "MailingStreet__c") || "";
         const street2 = getChildObjectByName(addr, "MailingStreet2__c");
         const city = getChildObjectByName(addr, "MailingCity__c") || "";
         const state = getChildObjectByName(addr, "MailingState__c") || "";
-        const postal =
-            getChildObjectByName(addr, "MailingPostalCode__c") || "";
+        const postal = getChildObjectByName(addr, "MailingPostalCode__c") || "";
         const country = getChildObjectByName(addr, "MailingCountry__c") || "";
 
         const parts = [];
         let streetLine = street;
-        if (street2) streetLine += "\n" + street2;
-        if (streetLine) parts.push(streetLine);
+        if (street2) {
+            streetLine += "\n" + street2;
+        }
+        if (streetLine) {
+            parts.push(streetLine);
+        }
 
         const cityLine = [city, state].filter(Boolean).join(", ");
         const cityPostal = [cityLine, postal].filter(Boolean).join(" ");
-        if (cityPostal) parts.push(cityPostal);
-        if (country) parts.push(country);
+        if (cityPostal) {
+            parts.push(cityPostal);
+        }
+        if (country) {
+            parts.push(country);
+        }
 
         return parts.join("\n");
     }
@@ -137,7 +143,7 @@ export default class ManageHhAddressManager extends LightningElement {
             MailingCity__c: "",
             MailingState__c: "",
             MailingPostalCode__c: "",
-            MailingCountry__c: ""
+            MailingCountry__c: "",
         };
         this.showChangeAddressPopup = true;
     }
@@ -195,8 +201,8 @@ export default class ManageHhAddressManager extends LightningElement {
             new CustomEvent("addresschanged", {
                 detail: {
                     address: selectedAddr,
-                    addresses: updatedList
-                }
+                    addresses: updatedList,
+                },
             })
         );
     }

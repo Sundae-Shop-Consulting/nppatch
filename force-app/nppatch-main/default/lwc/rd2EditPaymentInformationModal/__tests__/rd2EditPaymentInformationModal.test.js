@@ -6,7 +6,7 @@ import { getPicklistValues } from "lightning/uiObjectInfoApi";
 import handleUpdatePaymentCommitment from "@salesforce/apex/RD2_EntryFormController.handleUpdatePaymentCommitment";
 import { mockGetIframeReply } from "c/psElevateTokenHandler";
 import { ACCOUNT_HOLDER_TYPES } from "c/geConstants";
-import { ACCOUNT_DONOR_TYPE, CONTACT_DONOR_TYPE } from "c/rd2Service";
+import { CONTACT_DONOR_TYPE } from "c/rd2Service";
 
 jest.mock(
     "@salesforce/apex/RD2_EntryFormController.handleUpdatePaymentCommitment",
@@ -111,7 +111,7 @@ describe("c-rd2-edit-payment-information-modal", () => {
                     dispatchClickEvent(closeButton);
                 })
                 .then(async () => {
-                    expect(closeEventHandler).toBeCalled();
+                    expect(closeEventHandler).toHaveBeenCalled();
                 });
         });
     });
@@ -139,7 +139,7 @@ describe("c-rd2-edit-payment-information-modal", () => {
                     dispatchClickEvent(getSaveButton(component));
                 })
                 .then(async () => {
-                    expect(closeEventHandler).toBeCalled();
+                    expect(closeEventHandler).toHaveBeenCalled();
                     const errorContainer = component.shadowRoot.querySelector("c-util-page-level-message");
                     expect(errorContainer).toBeNull();
                 });
@@ -167,7 +167,7 @@ describe("c-rd2-edit-payment-information-modal", () => {
                     dispatchClickEvent(getSaveButton(component));
                 })
                 .then(async () => {
-                    expect(closeEventHandler).not.toBeCalled();
+                    expect(closeEventHandler).not.toHaveBeenCalled();
                 });
         });
 
@@ -186,7 +186,7 @@ describe("c-rd2-edit-payment-information-modal", () => {
                     dispatchClickEvent(getSaveButton(component));
                 })
                 .then(async () => {
-                    expect(closeEventHandler).not.toBeCalled();
+                    expect(closeEventHandler).not.toHaveBeenCalled();
                     const errorContainer = component.shadowRoot.querySelector("c-util-page-level-message");
                     expect(errorContainer).not.toBeNull();
                 });
@@ -445,7 +445,7 @@ const setupUpdateCommitmentResponse = (responseBody) => {
 };
 
 const setupIframeReply = () => {
-    mockGetIframeReply.mockImplementation((iframe, message, targetOrigin) => {
+    mockGetIframeReply.mockImplementation((iframe, message) => {
         const type = "post__npsp";
         const token = "a_dummy_token";
         // if message action is "createToken", reply with dummy token immediately
@@ -458,5 +458,6 @@ const setupIframeReply = () => {
         if (message.action === "setPaymentMethod") {
             return { type };
         }
+        return undefined;
     });
 };

@@ -1,15 +1,11 @@
-import { registerListener } from 'c/pubsubNoPageRef';
-import decryptGatewayId from '@salesforce/apex/GE_GiftEntryController.decryptGatewayId';
-import { showToast, isEmptyObject } from 'c/utilCommon';
-import psGatewayNotValid from '@salesforce/label/c.psGatewayNotValid';
-import getGatewayAssignmentSettings from '@salesforce/apex/GE_GiftEntryController.getGatewayAssignmentSettings';
-import {
-    PAYMENT_METHOD_CREDIT_CARD,
-    PAYMENT_METHOD_ACH
-} from 'c/geConstants';
+import { registerListener } from "c/pubsubNoPageRef";
+import decryptGatewayId from "@salesforce/apex/GE_GiftEntryController.decryptGatewayId";
+import { showToast, isEmptyObject } from "c/utilCommon";
+import psGatewayNotValid from "@salesforce/label/c.psGatewayNotValid";
+import getGatewayAssignmentSettings from "@salesforce/apex/GE_GiftEntryController.getGatewayAssignmentSettings";
+import { PAYMENT_METHOD_CREDIT_CARD, PAYMENT_METHOD_ACH } from "c/geConstants";
 
 class GeGatewaySettings {
-
     elevateSettings = {};
     templateRecordId = null;
     decryptedGatewayId = null;
@@ -19,7 +15,7 @@ class GeGatewaySettings {
         this.isGiftEntryBatch = false;
         this.elevateSettings = initialSettings;
         this.templateRecordId = templateRecordId;
-        registerListener('updateElevateSettings', this.settings, this);
+        registerListener("updateElevateSettings", this.settings, this);
     }
 
     initDecryptedElevateSettings(elevateSettings) {
@@ -28,11 +24,11 @@ class GeGatewaySettings {
 
         if (this.elevateSettings?.uniqueKey) {
             getGatewayAssignmentSettings()
-                .then(settingsJson => {
+                .then((settingsJson) => {
                     const gatewayAssignmentSettings = JSON.parse(settingsJson);
                     return gatewayAssignmentSettings?.gatewayAssignmentEnabled;
                 })
-                .then(shouldDecrypt => {
+                .then((shouldDecrypt) => {
                     if (shouldDecrypt) {
                         this.decryptElevateGateway();
                     }
@@ -44,7 +40,7 @@ class GeGatewaySettings {
     }
 
     handleError(message, error) {
-        showToast(message, error, 'error', 'sticky');
+        showToast(message, error, "error", "sticky");
     }
 
     clearDecryptedElevateSettings() {
@@ -54,7 +50,7 @@ class GeGatewaySettings {
     }
 
     async decryptElevateGateway() {
-        this.decryptedGatewayId = await decryptGatewayId({encryptedGatewayId: this.elevateSettings.uniqueKey});
+        this.decryptedGatewayId = await decryptGatewayId({ encryptedGatewayId: this.elevateSettings.uniqueKey });
 
         if (this.elevateSettings?.uniqueKey && !this.decryptedGatewayId) {
             this.handleError(psGatewayNotValid);
@@ -62,7 +58,6 @@ class GeGatewaySettings {
     }
 
     isValidElevatePaymentMethod(paymentMethod) {
-
         if (isEmptyObject(this.getElevateSettings())) {
             return this.isPaymentMethodCreditOrAch(paymentMethod);
         } else if (this.getElevateSettings().isACHEnabled && this.getElevateSettings().isCreditCardEnabled) {
@@ -77,8 +72,7 @@ class GeGatewaySettings {
     }
 
     isPaymentMethodCreditOrAch(paymentMethod) {
-        return paymentMethod === PAYMENT_METHOD_ACH
-            || paymentMethod === PAYMENT_METHOD_CREDIT_CARD;
+        return paymentMethod === PAYMENT_METHOD_ACH || paymentMethod === PAYMENT_METHOD_CREDIT_CARD;
     }
 
     getElevateSettings() {

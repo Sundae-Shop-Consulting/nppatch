@@ -1,11 +1,11 @@
-import { createElement } from 'lwc';
-import errRecordLog from 'c/errRecordLog';
-import { getObjectInfo } from 'lightning/uiObjectInfoApi';
+import { createElement } from "lwc";
+import errRecordLog from "c/errRecordLog";
+import { getObjectInfo } from "lightning/uiObjectInfoApi";
 import { getNavigateCalledWith } from "lightning/navigation";
 
-import getData from '@salesforce/apex/ERR_Log_CTRL.getData';
+import getData from "@salesforce/apex/ERR_Log_CTRL.getData";
 jest.mock(
-    '@salesforce/apex/ERR_Log_CTRL.getData',
+    "@salesforce/apex/ERR_Log_CTRL.getData",
     () => {
         return {
             default: jest.fn(),
@@ -14,11 +14,9 @@ jest.mock(
     { virtual: true }
 );
 
-
-
-const mockGetObjectInfo = require('./data/getObjectInfo.json');
-const mockGetData = require('./data/getData.json');
-const mockGetDataErrorLogs = require('./data/getDataErrorLogs.json');
+const mockGetObjectInfo = require("./data/getObjectInfo.json");
+const mockGetData = require("./data/getData.json");
+const mockGetDataErrorLogs = require("./data/getDataErrorLogs.json");
 
 const RECORD_ID = "a0900000008MR9bQAG";
 const QA_LOCATOR_RECORD_VIEW_PAGE = "breadcrumb Record View Page";
@@ -27,12 +25,11 @@ const QA_LOCATOR_NO_ITEM_MESSAGE = "text No Items Message";
 const QA_LOCATOR_DATATABLE = "datatable Logs";
 const QA_LOCATOR_NO_ACCESS_ILLUSTRATION = "illustration NoAccess";
 
-
-describe('c-err-record-log', () => {
+describe("c-err-record-log", () => {
     let component;
 
     beforeEach(() => {
-        component = createElement('c-err-record-log', {
+        component = createElement("c-err-record-log", {
             is: errRecordLog,
         });
 
@@ -44,22 +41,20 @@ describe('c-err-record-log', () => {
     });
 
     /***
-    * @description Verifies header is always displayed on the page
-    */
-    it('should display header', () => {
+     * @description Verifies header is always displayed on the page
+     */
+    it("should display header", () => {
         document.body.appendChild(component);
 
-        const header = component.shadowRoot.querySelector('h1');
+        const header = component.shadowRoot.querySelector("h1");
         expect(header).not.toBeNull();
-        expect(header.textContent).toBe('c.ERR_RecordLogTitle');
+        expect(header.textContent).toBe("c.ERR_RecordLogTitle");
     });
 
-
     /***
-    * @description Verifies Error Log page elements when the record Id is specified
-    */
-    describe('on page render', () => {
-
+     * @description Verifies Error Log page elements when the record Id is specified
+     */
+    describe("on page render", () => {
         beforeEach(() => {
             component.recordId = RECORD_ID;
             getData.mockResolvedValue(mockGetData);
@@ -68,7 +63,8 @@ describe('c-err-record-log', () => {
         });
 
         it("should navigate to the record view page", async () => {
-            return global.flushPromises()
+            return global
+                .flushPromises()
                 .then(async () => {
                     const recordViewBreadcrumb = getElement(component, QA_LOCATOR_RECORD_VIEW_PAGE);
                     expect(recordViewBreadcrumb).not.toBeNull();
@@ -86,7 +82,8 @@ describe('c-err-record-log', () => {
         });
 
         it("should navigate to the record SObject page", async () => {
-            return global.flushPromises()
+            return global
+                .flushPromises()
                 .then(async () => {
                     const recordSObjectBreadcrumb = getElement(component, QA_LOCATOR_RECORD_SOBJECT_PAGE);
                     expect(recordSObjectBreadcrumb).not.toBeNull();
@@ -103,7 +100,7 @@ describe('c-err-record-log', () => {
                 });
         });
 
-        it('should display error log data summary', async () => {
+        it("should display error log data summary", async () => {
             return global.flushPromises().then(async () => {
                 const summary = getElement(component, "text Summary");
 
@@ -112,7 +109,7 @@ describe('c-err-record-log', () => {
             });
         });
 
-        it('should display no item message when record has no error logs', async () => {
+        it("should display no item message when record has no error logs", async () => {
             return global.flushPromises().then(async () => {
                 const message = getElement(component, QA_LOCATOR_NO_ITEM_MESSAGE);
 
@@ -121,7 +118,7 @@ describe('c-err-record-log', () => {
             });
         });
 
-        it('should not display No Access illustration', async () => {
+        it("should not display No Access illustration", async () => {
             return global.flushPromises().then(async () => {
                 const illustration = getElement(component, QA_LOCATOR_NO_ACCESS_ILLUSTRATION);
                 expect(illustration).toBeNull();
@@ -129,12 +126,11 @@ describe('c-err-record-log', () => {
         });
     });
 
-
     /***
-    * @description Verifies Error Log page elements when
-    * the specified record has error logs
-    */
-    describe('on page displaying error logs', () => {
+     * @description Verifies Error Log page elements when
+     * the specified record has error logs
+     */
+    describe("on page displaying error logs", () => {
         const numberOfColumns = 4;
         const numberOfRows = 2;
 
@@ -145,7 +141,7 @@ describe('c-err-record-log', () => {
             document.body.appendChild(component);
         });
 
-        it('should not display no item message', async () => {
+        it("should not display no item message", async () => {
             return global.flushPromises().then(async () => {
                 const message = getElement(component, QA_LOCATOR_NO_ITEM_MESSAGE);
 
@@ -153,7 +149,7 @@ describe('c-err-record-log', () => {
             });
         });
 
-        it('should display error logs', async () => {
+        it("should display error logs", async () => {
             return global.flushPromises().then(async () => {
                 const datatable = getElement(component, QA_LOCATOR_DATATABLE);
                 expect(datatable).not.toBeNull();
@@ -161,32 +157,27 @@ describe('c-err-record-log', () => {
                 expect(datatable.columns.length).toBe(numberOfColumns);
                 expect(datatable.columns[0].fieldName).toBe("logURL");
                 expect(datatable.columns[0].type).toBe("url");
-                expect(datatable.columns[0].label).toBe(
-                    mockGetObjectInfo.fields["Name"].label
-                );
+                expect(datatable.columns[0].label).toBe(mockGetObjectInfo.fields.Name.label);
 
                 expect(datatable.data.length).toBe(numberOfRows);
                 expect(datatable.data[0].Name).not.toBeNull();
-                expect(datatable.data[0].Name).toBe(
-                    mockGetDataErrorLogs.data[0].Name
-                );
+                expect(datatable.data[0].Name).toBe(mockGetDataErrorLogs.data[0].Name);
             });
         });
 
-        it('should sort error logs', async () => {
-            return global.flushPromises()
+        it("should sort error logs", async () => {
+            return global
+                .flushPromises()
                 .then(async () => {
                     const datatable = getElement(component, QA_LOCATOR_DATATABLE);
                     expect(datatable).not.toBeNull();
 
-                    expect(datatable.data[0].Name).toBe(
-                        mockGetDataErrorLogs.data[0].Name
-                    );
+                    expect(datatable.data[0].Name).toBe(mockGetDataErrorLogs.data[0].Name);
 
                     datatable.dispatchEvent(
                         new CustomEvent("sort", {
                             detail: {
-                                fieldName: mockGetObjectInfo.fields["Datetime__c"].apiName,
+                                fieldName: mockGetObjectInfo.fields.Datetime__c.apiName,
                                 sortDirection: "asc",
                             },
                         })
@@ -195,25 +186,20 @@ describe('c-err-record-log', () => {
                 .then(async () => {
                     const datatable = getElement(component, QA_LOCATOR_DATATABLE);
 
-                    expect(datatable.data[0].Name).toBe(
-                        mockGetDataErrorLogs.data[1].Name
-                    );
+                    expect(datatable.data[0].Name).toBe(mockGetDataErrorLogs.data[1].Name);
                 });
         });
-
     });
 
-
     /***
-    * @description Verifies No Access illustration is displayed when
-    * user has no read access on the record SObject or Error SObject
-    */
-    describe('on insufficient permissions', () => {
-
+     * @description Verifies No Access illustration is displayed when
+     * user has no read access on the record SObject or Error SObject
+     */
+    describe("on insufficient permissions", () => {
         beforeEach(() => {
             component.recordId = RECORD_ID;
 
-            let mockGetDataNoAccess = JSON.parse(JSON.stringify(mockGetData));
+            const mockGetDataNoAccess = JSON.parse(JSON.stringify(mockGetData));
             mockGetDataNoAccess.hasAccess = false;
 
             getData.mockResolvedValue(mockGetDataNoAccess);
@@ -221,50 +207,43 @@ describe('c-err-record-log', () => {
             document.body.appendChild(component);
         });
 
-        it('should display No Access illustration', async () => {
+        it("should display No Access illustration", async () => {
             return global.flushPromises().then(async () => {
                 const illustration = getElement(component, QA_LOCATOR_NO_ACCESS_ILLUSTRATION);
                 expect(illustration).not.toBeNull();
 
-                expect(illustration.heading).toBe('c.commonInsufficientPermissions');
-                expect(illustration.message).toBe('c.addrCopyConAddBtnFls');
+                expect(illustration.heading).toBe("c.commonInsufficientPermissions");
+                expect(illustration.message).toBe("c.addrCopyConAddBtnFls");
             });
         });
 
         it("should not display record SObject and view page breadcrumbs", async () => {
-            return global.flushPromises()
-                .then(async () => {
-                    const recordViewBreadcrumb = getElement(component, QA_LOCATOR_RECORD_VIEW_PAGE);
-                    expect(recordViewBreadcrumb).toBeNull();
+            return global.flushPromises().then(async () => {
+                const recordViewBreadcrumb = getElement(component, QA_LOCATOR_RECORD_VIEW_PAGE);
+                expect(recordViewBreadcrumb).toBeNull();
 
-                    const recordSObjectBreadcrumb = getElement(component, QA_LOCATOR_RECORD_SOBJECT_PAGE);
-                    expect(recordSObjectBreadcrumb).toBeNull();
-                });
+                const recordSObjectBreadcrumb = getElement(component, QA_LOCATOR_RECORD_SOBJECT_PAGE);
+                expect(recordSObjectBreadcrumb).toBeNull();
+            });
         });
     });
-
 });
-
-
 
 // Helpers
 //////////////
 
-
 /***
-* @description Finds and returns element defined by its "data-qa-locator" on the component
-*/
+ * @description Finds and returns element defined by its "data-qa-locator" on the component
+ */
 const getElement = (component, qaLocator) => {
     const element = component.shadowRoot.querySelector('[data-qa-locator="' + qaLocator + '"]');
 
     return element;
-}
+};
 
 /***
-* @description Dispatch event when user clicks on the element
-*/
+ * @description Dispatch event when user clicks on the element
+ */
 const click = (element) => {
-    element.dispatchEvent(
-        new CustomEvent('click')
-    );
-}
+    element.dispatchEvent(new CustomEvent("click"));
+};

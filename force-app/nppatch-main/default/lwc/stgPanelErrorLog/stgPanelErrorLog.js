@@ -5,9 +5,14 @@ import getErrors from "@salesforce/apex/ErrorLogController.getErrors";
 import clearErrors from "@salesforce/apex/ErrorLogController.clearErrors";
 
 const COLUMNS = [
-    { label: "Date/Time", fieldName: "Datetime__c", type: "date",
+    {
+        label: "Date/Time",
+        fieldName: "Datetime__c",
+        type: "date",
         typeAttributes: { year: "numeric", month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit" },
-        sortable: true, initialWidth: 180 },
+        sortable: true,
+        initialWidth: 180,
+    },
     { label: "Context", fieldName: "Context_Type__c", type: "text", sortable: true, initialWidth: 180 },
     { label: "Object Type", fieldName: "Object_Type__c", type: "text", sortable: true, initialWidth: 150 },
     { label: "Error Type", fieldName: "Error_Type__c", type: "text", sortable: true, initialWidth: 150 },
@@ -48,11 +53,13 @@ export default class StgPanelErrorLog extends LightningElement {
 
     async handleRefresh() {
         await refreshApex(this._wiredResult);
-        this.dispatchEvent(new ShowToastEvent({
-            title: "Refreshed",
-            message: `${this.errorCount} error${this.errorCount === 1 ? "" : "s"} found.`,
-            variant: "info",
-        }));
+        this.dispatchEvent(
+            new ShowToastEvent({
+                title: "Refreshed",
+                message: `${this.errorCount} error${this.errorCount === 1 ? "" : "s"} found.`,
+                variant: "info",
+            })
+        );
     }
 
     async handleClear() {
@@ -60,17 +67,21 @@ export default class StgPanelErrorLog extends LightningElement {
         try {
             await clearErrors();
             await refreshApex(this._wiredResult);
-            this.dispatchEvent(new ShowToastEvent({
-                title: "Success",
-                message: "Error log has been cleared.",
-                variant: "success",
-            }));
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: "Success",
+                    message: "Error log has been cleared.",
+                    variant: "success",
+                })
+            );
         } catch (error) {
-            this.dispatchEvent(new ShowToastEvent({
-                title: "Error",
-                message: error?.body?.message || "Failed to clear errors.",
-                variant: "error",
-            }));
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: "Error",
+                    message: error?.body?.message || "Failed to clear errors.",
+                    variant: "error",
+                })
+            );
         } finally {
             this._isClearing = false;
         }

@@ -57,8 +57,8 @@ export default class StgPanelPaymentMapping extends LightningElement {
         if (data) {
             this._oppLabelMap = {};
             this._pmtLabelMap = {};
-            const oppData = data["Opportunity"] || [];
-            const pmtData = data["OppPayment__c"] || [];
+            const oppData = data.Opportunity || [];
+            const pmtData = data.OppPayment__c || [];
             this._oppFields = oppData
                 .map((f) => {
                     this._oppLabelMap[f.value] = f.label;
@@ -123,7 +123,9 @@ export default class StgPanelPaymentMapping extends LightningElement {
     }
 
     get displayRecords() {
-        if (!this._settings) return [];
+        if (!this._settings) {
+            return [];
+        }
         return this._settings.map((r) => ({
             ...r,
             oppFieldDisplay: this._formatFieldDisplay(r.Opportunity_Field__c, this._oppLabelMap),
@@ -306,14 +308,20 @@ export default class StgPanelPaymentMapping extends LightningElement {
     // ─── Helpers ────────────────────────────────────────────────────────
 
     _formatFieldDisplay(apiName, labelMap) {
-        if (!apiName) return "";
+        if (!apiName) {
+            return "";
+        }
         const label = labelMap[apiName];
         return label ? `${label} (${apiName})` : apiName;
     }
 
     _extractError(error) {
-        if (error?.body?.message) return error.body.message;
-        if (error?.message) return error.message;
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

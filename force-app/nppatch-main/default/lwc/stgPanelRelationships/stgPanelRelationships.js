@@ -23,11 +23,14 @@ export default class StgPanelRelationships extends LightningElement {
     labels = {
         sectionLabel: stgNavRelationships,
         reciprocalMethod: "Reciprocal Method",
-        helpReciprocalMethod: "Select the method used to generate the reciprocal relationship. List Setting uses the Relationship Lookup custom setting to determine the reciprocal. Value Inversion attempts to invert the type, e.g. Parent-Child to Child-Parent.",
+        helpReciprocalMethod:
+            "Select the method used to generate the reciprocal relationship. List Setting uses the Relationship Lookup custom setting to determine the reciprocal. Value Inversion attempts to invert the type, e.g. Parent-Child to Child-Parent.",
         genderField: "Gender Field",
-        helpGenderField: "An optional Contact field to use for Gender. It must be a text or picklist field with recognized values (Male, Female, Non-Binary, etc.). Used by Reciprocal Relationships to select gendered reciprocal types.",
+        helpGenderField:
+            "An optional Contact field to use for Gender. It must be a text or picklist field with recognized values (Male, Female, Non-Binary, etc.). Used by Reciprocal Relationships to select gendered reciprocal types.",
         allowDuplicates: "Allow Auto-Created Duplicates",
-        helpAllowDuplicates: "When checked, auto-create relationship settings may create duplicate relationships between the same two Contacts.",
+        helpAllowDuplicates:
+            "When checked, auto-create relationship settings may create duplicate relationships between the same two Contacts.",
     };
 
     reciprocalMethodOptions = RECIPROCAL_METHOD_OPTIONS;
@@ -95,8 +98,12 @@ export default class StgPanelRelationships extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) return error.body.message;
-        if (error?.message) return error.message;
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

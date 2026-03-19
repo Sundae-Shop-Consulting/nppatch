@@ -1,17 +1,16 @@
-import { LightningElement, api, track, wire } from 'lwc';
-import { getObjectInfo } from 'lightning/uiObjectInfoApi';
-import {dispatch, isTrueFalsePicklist, isCheckboxToCheckbox, trueFalsePicklistOptions} from 'c/utilTemplateBuilder';
-import TemplateBuilderService from 'c/geTemplateBuilderService';
-import GeLabelService from 'c/geLabelService';
-import {isEmpty} from 'c/utilCommon';
-import hasViewSetup from '@salesforce/userPermission/ViewSetup';
+import { LightningElement, api, track, wire } from "lwc";
+import { getObjectInfo } from "lightning/uiObjectInfoApi";
+import { dispatch, isTrueFalsePicklist, isCheckboxToCheckbox, trueFalsePicklistOptions } from "c/utilTemplateBuilder";
+import TemplateBuilderService from "c/geTemplateBuilderService";
+import GeLabelService from "c/geLabelService";
+import { isEmpty } from "c/utilCommon";
+import hasViewSetup from "@salesforce/userPermission/ViewSetup";
 
-import DATA_IMPORT_BATCH from '@salesforce/schema/DataImportBatch__c';
+import DATA_IMPORT_BATCH from "@salesforce/schema/DataImportBatch__c";
 
-const WIDGET = 'widget';
-const YES = 'Yes';
-const FIELD_METADATA_VALIDATION = 'fieldmetadatavalidation';
-
+const WIDGET = "widget";
+const YES = "Yes";
+const FIELD_METADATA_VALIDATION = "fieldmetadatavalidation";
 
 export default class geTemplateBuilderFormField extends LightningElement {
     @track targetObjectDescribeInfo;
@@ -19,7 +18,14 @@ export default class geTemplateBuilderFormField extends LightningElement {
     @api isFirst;
     @api isLast;
     @api objectApiName;
-    @api field;
+    _field;
+    @api
+    get field() {
+        return this._field;
+    }
+    set field(value) {
+        this._field = value;
+    }
     @api sourceObjectFieldsDescribe;
 
     // Expose custom labels to template
@@ -42,12 +48,12 @@ export default class geTemplateBuilderFormField extends LightningElement {
     }
 
     /*******************************************************************************
-    * @description Retrieves the target object's describe data. Used to get the
-    * picklist options for picklist fields. See component geFormFieldPicklist.
-    *
-    * @param {string} targetObjectApiName: Field's object api name.
-    */
-    @wire(getObjectInfo, { objectApiName: '$targetObjectApiName' })
+     * @description Retrieves the target object's describe data. Used to get the
+     * picklist options for picklist fields. See component geFormFieldPicklist.
+     *
+     * @param {string} targetObjectApiName: Field's object api name.
+     */
+    @wire(getObjectInfo, { objectApiName: "$targetObjectApiName" })
     wiredObjectInfo(response) {
         if (response.data) {
             this.targetObjectDescribeInfo = response.data;
@@ -70,7 +76,7 @@ export default class geTemplateBuilderFormField extends LightningElement {
                 inputField.setCustomValidity(this.CUSTOM_LABELS.commonFieldNotFound);
                 inputField.reportValidity();
 
-                this.dispatchEvent(new CustomEvent(FIELD_METADATA_VALIDATION, {detail: {showError: true}}));
+                this.dispatchEvent(new CustomEvent(FIELD_METADATA_VALIDATION, { detail: { showError: true } }));
             }
         }
     }
@@ -84,45 +90,43 @@ export default class geTemplateBuilderFormField extends LightningElement {
             return;
         }
 
-        if (isEmpty(this.targetObjectDescribeInfo.fields[this.fieldMapping.Target_Field_API_Name]) ||
-            isEmpty(this.sourceObjectFieldsDescribe[this.fieldMapping.Source_Field_API_Name])) {
-
+        if (
+            isEmpty(this.targetObjectDescribeInfo.fields[this.fieldMapping.Target_Field_API_Name]) ||
+            isEmpty(this.sourceObjectFieldsDescribe[this.fieldMapping.Source_Field_API_Name])
+        ) {
             const inputField = this.template.querySelector('[data-id="formField"]');
 
             inputField.setCustomValidity(this.CUSTOM_LABELS.commonFieldNotFound);
             inputField.reportValidity();
 
             if (!hasViewSetup) {
-                this.field = {};
+                this._field = {};
                 this.shouldRender = false;
             }
 
-            this.dispatchEvent(new CustomEvent(FIELD_METADATA_VALIDATION, {detail: {showError: true}}));
+            this.dispatchEvent(new CustomEvent(FIELD_METADATA_VALIDATION, { detail: { showError: true } }));
         }
     }
 
     get cssClassCard() {
         if (this.field.elementType === WIDGET) {
-            return 'slds-card slds-card_extension slds-card_extension-widget slds-m-vertical_small';
-        } else {
-            return 'slds-card slds-card_extension slds-m-vertical_small';
+            return "slds-card slds-card_extension slds-card_extension-widget slds-m-vertical_small";
         }
+        return "slds-card slds-card_extension slds-m-vertical_small";
     }
 
     get cssClassActionsContainer() {
         if (this.field.elementType === WIDGET) {
-            return 'slds-size_1-of-12 vertical-align-center'
-        } else {
-            return 'slds-size_1-of-12 slds-p-bottom_small';
+            return "slds-size_1-of-12 vertical-align-center";
         }
+        return "slds-size_1-of-12 slds-p-bottom_small";
     }
 
     get cssClassRenderedWidget() {
         if (this.isWidget) {
-            return 'slds-size_10-of-12 slds-p-right_small';
-        } else {
-            return 'slds-size_5-of-12 slds-p-right_small';
+            return "slds-size_10-of-12 slds-p-right_small";
         }
+        return "slds-size_5-of-12 slds-p-right_small";
     }
 
     get name() {
@@ -152,28 +156,29 @@ export default class geTemplateBuilderFormField extends LightningElement {
         if (this.field && this.field.fieldApiName) {
             return this.field.fieldApiName;
         }
+
+        return undefined;
     }
 
     get labelHelpText() {
         if (this.fieldMapping && this.fieldMapping.Target_Object_Mapping_Dev_Name) {
             const objectMapping =
                 TemplateBuilderService.objectMappingByDevName[this.fieldMapping.Target_Object_Mapping_Dev_Name];
-            const targetObjectApiName =
-                this.fieldMapping.Target_Object_API_Name || objectMapping.Object_API_Name;
+            const targetObjectApiName = this.fieldMapping.Target_Object_API_Name || objectMapping.Object_API_Name;
 
-            return GeLabelService.format(
-                this.CUSTOM_LABELS.geHelpTextFormFieldsFieldCustomLabel,
-                [
-                    objectMapping.MasterLabel,
-                    this.fieldMapping.Target_Field_API_Name,
-                    targetObjectApiName
-                ]);
+            return GeLabelService.format(this.CUSTOM_LABELS.geHelpTextFormFieldsFieldCustomLabel, [
+                objectMapping.MasterLabel,
+                this.fieldMapping.Target_Field_API_Name,
+                targetObjectApiName,
+            ]);
         }
         return null;
     }
 
     get fieldMapping() {
-        return TemplateBuilderService.fieldMappingByDevName[this.name] ? TemplateBuilderService.fieldMappingByDevName[this.name] : null;
+        return TemplateBuilderService.fieldMappingByDevName[this.name]
+            ? TemplateBuilderService.fieldMappingByDevName[this.name]
+            : null;
     }
 
     get targetFieldApiName() {
@@ -201,7 +206,7 @@ export default class geTemplateBuilderFormField extends LightningElement {
     }
 
     get isRequired() {
-        return (this.field.required === YES || this.field.required === true);
+        return this.field.required === YES || this.field.required === true;
     }
 
     get isDisabled() {
@@ -224,13 +229,13 @@ export default class geTemplateBuilderFormField extends LightningElement {
         if (isTrueFalsePicklist(this.fieldMapping)) {
             return trueFalsePicklistOptions();
         }
+        return undefined;
     }
 
     get labelGeAssistiveFormFieldRemove() {
-        const customLabel =
-            this.isBatchHeaderField ?
-                this.CUSTOM_LABELS.geAssistiveBatchHeaderRemoveField
-                : this.CUSTOM_LABELS.geAssistiveFormFieldsRemoveField;
+        const customLabel = this.isBatchHeaderField
+            ? this.CUSTOM_LABELS.geAssistiveBatchHeaderRemoveField
+            : this.CUSTOM_LABELS.geAssistiveFormFieldsRemoveField;
 
         return GeLabelService.format(customLabel, [this.field.label]);
     }
@@ -250,14 +255,13 @@ export default class geTemplateBuilderFormField extends LightningElement {
     get labelGeAssistiveRequiredCheckboxDescription() {
         if (this.isRequired) {
             return GeLabelService.format(this.CUSTOM_LABELS.geAssistiveDescriptionFieldRequired, [this.field.label]);
-        } else {
-            return GeLabelService.format(this.CUSTOM_LABELS.geAssistiveDescriptionFieldOptional, [this.field.label]);
         }
+        return GeLabelService.format(this.CUSTOM_LABELS.geAssistiveDescriptionFieldOptional, [this.field.label]);
     }
 
     /*******************************************************************************
-    * Start getters for data-qa-locator attributes
-    */
+     * Start getters for data-qa-locator attributes
+     */
 
     get qaLocatorInputFieldLabel() {
         return `input ${this.CUSTOM_LABELS.commonFieldLabel} ${this.field.label}`;
@@ -284,96 +288,96 @@ export default class geTemplateBuilderFormField extends LightningElement {
     }
 
     /*******************************************************************************
-    * End getters for data-qa-locator attributes
-    */
+     * End getters for data-qa-locator attributes
+     */
 
     stopPropagation(event) {
         event.stopPropagation();
     }
 
     /*******************************************************************************
-    * @description Dispatches an event to notify parent component that the form
-    * field's required property has changed.
-    *
-    * @param {object} event: Event object from lightning-input checkbox onchange
-    * event handler 
-    */
+     * @description Dispatches an event to notify parent component that the form
+     * field's required property has changed.
+     *
+     * @param {object} event: Event object from lightning-input checkbox onchange
+     * event handler
+     */
     handleOnChangeRequiredField(event) {
         this.stopPropagation(event);
-        let detail = {
+        const detail = {
             fieldName: this.name,
-            property: 'required',
-            value: event.target.checked
-        }
+            property: "required",
+            value: event.target.checked,
+        };
 
-        dispatch(this, 'updateformelement', detail);
+        dispatch(this, "updateformelement", detail);
     }
 
     /*******************************************************************************
-    * @description Dispatches an event to notify parent component that the form
-    * field's defaultValue property has changed.
-    *
-    * @param {object} event: Event object from various lightning-input type's
-    * onblur event handler 
-    */
+     * @description Dispatches an event to notify parent component that the form
+     * field's defaultValue property has changed.
+     *
+     * @param {object} event: Event object from various lightning-input type's
+     * onblur event handler
+     */
     handleOnChange(event) {
-        let detail = {
+        const detail = {
             fieldName: this.name,
-            property: 'defaultValue',
-            value: event.detail.value
-        }
+            property: "defaultValue",
+            value: event.detail.value,
+        };
 
-        dispatch(this, 'updateformelement', detail);
+        dispatch(this, "updateformelement", detail);
     }
 
     /*******************************************************************************
-    * @description Dispatches an event to notify parent component that the form
-    * field's customLabel property has changed.
-    *
-    * @param {object} event: Event object from lightning-input onblur event handler 
-    */
+     * @description Dispatches an event to notify parent component that the form
+     * field's customLabel property has changed.
+     *
+     * @param {object} event: Event object from lightning-input onblur event handler
+     */
     handleOnBlurCustomLabel(event) {
-        let detail = {
+        const detail = {
             fieldName: this.name,
-            property: 'customLabel',
-            value: event.target.value
-        }
-        dispatch(this, 'updateformelement', detail);
+            property: "customLabel",
+            value: event.target.value,
+        };
+        dispatch(this, "updateformelement", detail);
     }
 
     /*******************************************************************************
-    * @description Dispatches an event to notify parent component that the form
-    * field's needs to be removed.
-    *
-    * @param {object} event: Event object from lightning-button-icon onclick event handler
-    */
+     * @description Dispatches an event to notify parent component that the form
+     * field's needs to be removed.
+     *
+     * @param {object} event: Event object from lightning-button-icon onclick event handler
+     */
     handleDeleteFormElement(event) {
         this.stopPropagation(event);
-        let detail = { id: this.field.id, fieldName: this.name };
-        dispatch(this, 'deleteformelement', detail);
+        const detail = { id: this.field.id, fieldName: this.name };
+        dispatch(this, "deleteformelement", detail);
 
-        this.dispatchEvent(new CustomEvent(FIELD_METADATA_VALIDATION, {detail: {showError: false}}));
+        this.dispatchEvent(new CustomEvent(FIELD_METADATA_VALIDATION, { detail: { showError: false } }));
     }
 
     /*******************************************************************************
-    * @description Dispatches an event to notify parent component that the form
-    * field's needs to be moved up.
-    *
-    * @param {object} event: Event object from lightning-button-icon onclick event handler
-    */
+     * @description Dispatches an event to notify parent component that the form
+     * field's needs to be moved up.
+     *
+     * @param {object} event: Event object from lightning-button-icon onclick event handler
+     */
     handleFormElementUp(event) {
         this.stopPropagation(event);
-        dispatch(this, 'formelementup', this.name);
+        dispatch(this, "formelementup", this.name);
     }
 
     /*******************************************************************************
-    * @description Dispatches an event to notify parent component that the form
-    * field's needs to be moved down.
-    *
-    * @param {object} event: Event object from lightning-button-icon onclick event handler
-    */
+     * @description Dispatches an event to notify parent component that the form
+     * field's needs to be moved down.
+     *
+     * @param {object} event: Event object from lightning-button-icon onclick event handler
+     */
     handleFormElementDown(event) {
         this.stopPropagation(event);
-        dispatch(this, 'formelementdown', this.name);
+        dispatch(this, "formelementdown", this.name);
     }
 }
