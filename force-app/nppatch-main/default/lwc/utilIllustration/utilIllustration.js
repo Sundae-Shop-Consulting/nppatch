@@ -1,4 +1,4 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api } from "lwc";
 
 export default class UtilIllustration extends LightningElement {
     @api illustrationClass;
@@ -25,30 +25,30 @@ export default class UtilIllustration extends LightningElement {
     }
 
     get illustrationSize() {
-        return this.size ? 'slds-illustration_' + this.size : 'slds-illustration_small';
+        return this.size ? "slds-illustration_" + this.size : "slds-illustration_small";
     }
 
     get fullClass() {
-        return `slds-illustration ${this.illustrationSize} ${this.illustrationClass ? this.illustrationClass : ''}`;
+        return `slds-illustration ${this.illustrationSize} ${this.illustrationClass ? this.illustrationClass : ""}`;
     }
 
     get isBase() {
-        return !this.variant || this.variant === '' ? true : false;
+        return !this.variant || this.variant === "" ? true : false;
     }
 
     get isLakeMountain() {
-        return this.variant === 'lake-mountain' ? true : false;
+        return this.variant === "lake-mountain" ? true : false;
     }
 
     get isGoingCamping() {
-        return this.variant === 'going-camping' ? true : false;
+        return this.variant === "going-camping" ? true : false;
     }
 
     get isNoAccess() {
-        return this.variant === 'no-access' ? true : false;
+        return this.variant === "no-access" ? true : false;
     }
 
     get isPageNotAvailable() {
-        return this.variant === 'page-not-available' ? true : false
+        return this.variant === "page-not-available" ? true : false;
     }
 }

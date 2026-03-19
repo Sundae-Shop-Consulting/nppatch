@@ -1,12 +1,11 @@
-import { LightningElement, api } from 'lwc';
-import GeLabelService from 'c/geLabelService';
-import { apiNameFor, isNotEmpty } from 'c/utilCommon';
-import { fireEvent } from 'c/pubsubNoPageRef';
+import { LightningElement, api } from "lwc";
+import GeLabelService from "c/geLabelService";
+import { apiNameFor, isNotEmpty } from "c/utilCommon";
+import { fireEvent } from "c/pubsubNoPageRef";
 
-import OPP_CONTACT_ROLE_OBJECT from '@salesforce/schema/OpportunityContactRole';
-import ROLE_FIELD from '@salesforce/schema/OpportunityContactRole.Role';
-import CONTACT_FIELD from '@salesforce/schema/OpportunityContactRole.ContactId';
-
+import OPP_CONTACT_ROLE_OBJECT from "@salesforce/schema/OpportunityContactRole";
+import ROLE_FIELD from "@salesforce/schema/OpportunityContactRole.Role";
+import CONTACT_FIELD from "@salesforce/schema/OpportunityContactRole.ContactId";
 
 export default class GeFormWidgetSoftCreditRow extends LightningElement {
     @api rowIndex;
@@ -16,33 +15,33 @@ export default class GeFormWidgetSoftCreditRow extends LightningElement {
 
     handleContactIdChange(event) {
         const newContactId = event.detail.value[0];
-        fireEvent(this, 'softcreditwidgetchange', {
-            action: 'updateSoftCredit',
+        fireEvent(this, "softcreditwidgetchange", {
+            action: "updateSoftCredit",
             detail: {
                 softCredit: {
                     ...this.row,
-                    ContactId: newContactId
-                }
-            }
+                    ContactId: newContactId,
+                },
+            },
         });
     }
 
     handleRoleChange(event) {
         const newRole = event.detail.value;
-        fireEvent(this, 'softcreditwidgetchange', {
-            action: 'updateSoftCredit',
+        fireEvent(this, "softcreditwidgetchange", {
+            action: "updateSoftCredit",
             detail: {
                 softCredit: {
                     ...this.row,
-                    Role: newRole
-                }
-            }
+                    Role: newRole,
+                },
+            },
         });
     }
 
     remove() {
         const { rowIndex, row } = this;
-        this.dispatchEvent(new CustomEvent('remove', { detail: { rowIndex, row } }));
+        this.dispatchEvent(new CustomEvent("remove", { detail: { rowIndex, row } }));
     }
 
     hasIdField() {

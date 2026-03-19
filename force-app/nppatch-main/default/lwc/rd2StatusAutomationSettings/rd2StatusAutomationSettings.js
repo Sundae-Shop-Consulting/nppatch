@@ -1,34 +1,32 @@
-import { LightningElement } from 'lwc';
-import { isNull} from 'c/util';
-import getAutomationSettings from '@salesforce/apex/RD2_StatusAutomationSettings_CTRL.getAutomationSettings';
-import saveStatusAutomationSettings from '@salesforce/apex/RD2_StatusAutomationSettings_CTRL.saveStatusAutomationSettings';
+import { LightningElement } from "lwc";
+import { isNull } from "c/util";
+import getAutomationSettings from "@salesforce/apex/RD2_StatusAutomationSettings_CTRL.getAutomationSettings";
+import saveStatusAutomationSettings from "@salesforce/apex/RD2_StatusAutomationSettings_CTRL.saveStatusAutomationSettings";
 
-import statusAutomationIntro from '@salesforce/label/c.RD2_StatusAutomationIntro';
-import configurationSectionHeader from '@salesforce/label/c.RD2_StatusAutomationConfigurationSection';
-import closedDefinition from '@salesforce/label/c.RD2_StatusAutomationClosedDefinition';
-import lapsedDefinition from '@salesforce/label/c.RD2_StatusAutomationLapsedDefinition';
-import daysForClosed from '@salesforce/label/c.RD2_StatusAutomationDaysForClosed';
-import daysForLapsed from '@salesforce/label/c.RD2_StatusAutomationDaysForLapsed';
-import setClosedStatus from '@salesforce/label/c.RD2_StatusAutomationSetClosedStatus';
-import setLapsedStatus from '@salesforce/label/c.RD2_StatusAutomationSetLapsedStatus';
+import statusAutomationIntro from "@salesforce/label/c.RD2_StatusAutomationIntro";
+import configurationSectionHeader from "@salesforce/label/c.RD2_StatusAutomationConfigurationSection";
+import closedDefinition from "@salesforce/label/c.RD2_StatusAutomationClosedDefinition";
+import lapsedDefinition from "@salesforce/label/c.RD2_StatusAutomationLapsedDefinition";
+import daysForClosed from "@salesforce/label/c.RD2_StatusAutomationDaysForClosed";
+import daysForLapsed from "@salesforce/label/c.RD2_StatusAutomationDaysForLapsed";
+import setClosedStatus from "@salesforce/label/c.RD2_StatusAutomationSetClosedStatus";
+import setLapsedStatus from "@salesforce/label/c.RD2_StatusAutomationSetLapsedStatus";
 
-import editButtonLabel from '@salesforce/label/c.stgBtnEdit';
-import cancelButtonLabel from '@salesforce/label/c.stgBtnCancel';
-import saveButtonLabel from '@salesforce/label/c.stgBtnSave';
-import commonError from '@salesforce/label/c.commonError';
-import commonNoneSpecified from '@salesforce/label/c.commonNoneSpecified';
-import rd2DisabledError from '@salesforce/label/c.RD2_ScheduleVisualizerErrorInvalidUsage';
-import daysForClosedTooSmall from '@salesforce/label/c.RD2_StatusAutomationInvalidNumberOfDaysForClosed';
-import daysForLapsedTooLarge from '@salesforce/label/c.RD2_StatusAutomationInvalidNumberOfDaysForLapsed';
+import editButtonLabel from "@salesforce/label/c.stgBtnEdit";
+import cancelButtonLabel from "@salesforce/label/c.stgBtnCancel";
+import saveButtonLabel from "@salesforce/label/c.stgBtnSave";
+import commonError from "@salesforce/label/c.commonError";
+import commonNoneSpecified from "@salesforce/label/c.commonNoneSpecified";
+import rd2DisabledError from "@salesforce/label/c.RD2_ScheduleVisualizerErrorInvalidUsage";
+import daysForClosedTooSmall from "@salesforce/label/c.RD2_StatusAutomationInvalidNumberOfDaysForClosed";
+import daysForLapsedTooLarge from "@salesforce/label/c.RD2_StatusAutomationInvalidNumberOfDaysForLapsed";
 
 const STATES = {
-    LOADING: 'LOADING',
-    READY: 'READY',
-    ERROR: 'ERROR',
-    RD2_DISABLED: 'RD2_DISABLED'
+    LOADING: "LOADING",
+    READY: "READY",
+    ERROR: "ERROR",
+    RD2_DISABLED: "RD2_DISABLED",
 };
-
-
 
 export default class Rd2StatusAutomationSettings extends LightningElement {
     labels = {
@@ -47,7 +45,7 @@ export default class Rd2StatusAutomationSettings extends LightningElement {
         commonError,
         commonNoneSpecified,
         daysForClosedTooSmall,
-        daysForLapsedTooLarge
+        daysForLapsedTooLarge,
     };
 
     displayState = STATES.LOADING;
@@ -70,11 +68,10 @@ export default class Rd2StatusAutomationSettings extends LightningElement {
     maximumDaysForLapsed;
     minimumDaysForClosed;
     maximumDaysForClosed = 2147483647;
-    minimumDaysForClosedErrorMessage = '';
+    minimumDaysForClosedErrorMessage = "";
 
     inputClosedStatus;
     inputLapsedStatus;
-
 
     async connectedCallback() {
         try {
@@ -85,7 +82,6 @@ export default class Rd2StatusAutomationSettings extends LightningElement {
             } else {
                 this.displayState = STATES.RD2_DISABLED;
             }
-
         } catch (ex) {
             this.displayState = STATES.ERROR;
             this.errorMessage = ex.body.message;
@@ -93,12 +89,12 @@ export default class Rd2StatusAutomationSettings extends LightningElement {
     }
 
     assignSettings(automationSettings) {
-        this.numberOfDaysForClosed = (automationSettings.numberOfDaysForClosed) 
+        this.numberOfDaysForClosed = automationSettings.numberOfDaysForClosed
             ? automationSettings.numberOfDaysForClosed
             : this.labels.commonNoneSpecified;
         this.inputDaysForClosed = automationSettings.numberOfDaysForClosed;
 
-        this.numberOfDaysForLapsed = (automationSettings.numberOfDaysForLapsed)
+        this.numberOfDaysForLapsed = automationSettings.numberOfDaysForLapsed
             ? automationSettings.numberOfDaysForLapsed
             : this.labels.commonNoneSpecified;
         this.inputDaysForLapsed = automationSettings.numberOfDaysForLapsed;
@@ -108,7 +104,7 @@ export default class Rd2StatusAutomationSettings extends LightningElement {
         this.lapsedStatusOption = automationSettings.lapsedStatusOption;
         this.closedStatus = automationSettings.closedStatus;
         this.lapsedStatus = automationSettings.lapsedStatus;
-    
+
         this.assignInputStatusWithApiValue(automationSettings);
 
         this.displayState = STATES.READY;
@@ -127,22 +123,23 @@ export default class Rd2StatusAutomationSettings extends LightningElement {
 
     handleSave() {
         this.errorMessage = null;
-        this.displayState === STATES.LOADING;
+        this.displayState = STATES.LOADING;
         try {
-            saveStatusAutomationSettings(
-                { daysForLapsed: this.inputDaysForLapsed,
+            saveStatusAutomationSettings({
+                daysForLapsed: this.inputDaysForLapsed,
                 daysForClosed: this.inputDaysForClosed,
                 lapsedStatus: this.inputLapsedStatus,
-                closedStatus: this.inputClosedStatus }
-            ).then ((automationSettings) => {
-                this.assignSettings(automationSettings);
-                this.isEdit = false;
-                this.displayState = STATES.READY;
+                closedStatus: this.inputClosedStatus,
             })
-            .catch ((error) => {
-                this.errorMessage = error.body.message;
-                this.displayState = STATES.READY;
-            })
+                .then((automationSettings) => {
+                    this.assignSettings(automationSettings);
+                    this.isEdit = false;
+                    this.displayState = STATES.READY;
+                })
+                .catch((error) => {
+                    this.errorMessage = error.body.message;
+                    this.displayState = STATES.READY;
+                });
         } catch (error) {
             this.errorMessage = error.body.message;
             this.displayState = STATES.READY;
@@ -162,43 +159,44 @@ export default class Rd2StatusAutomationSettings extends LightningElement {
     }
 
     validateNumberOfDays() {
-        let that = this;
+        const that = this;
         setTimeout(() => {
-            that.isSaveDisabled = !(that.lapsedDaysInputField().reportValidity()
-                && that.closedDaysInputField().reportValidity());
+            that.isSaveDisabled = !(
+                that.lapsedDaysInputField().reportValidity() && that.closedDaysInputField().reportValidity()
+            );
         }, 0);
     }
 
     getConvertedDays(value) {
-        return (value === '') ? null : value;
+        return value === "" ? null : value;
     }
 
     assignInputDaysThreshold() {
-        this.maximumDaysForLapsed = (isNull(this.inputDaysForClosed))
+        this.maximumDaysForLapsed = isNull(this.inputDaysForClosed)
             ? null
-            : this.getMinimumDays(parseInt(this.inputDaysForClosed) - 1);
-        
-        this.minimumDaysForClosed = (isNull(this.inputDaysForLapsed))
+            : this.getMinimumDays(parseInt(this.inputDaysForClosed, 10) - 1);
+
+        this.minimumDaysForClosed = isNull(this.inputDaysForLapsed)
             ? 0
-            : this.getMinimumDays(parseInt(this.inputDaysForLapsed) + 1);
+            : this.getMinimumDays(parseInt(this.inputDaysForLapsed, 10) + 1);
 
         this.adjustDaysForClosedErrorMessage();
     }
 
     assignInputStatusWithApiValue(automationSettings) {
         this.inputClosedStatus = automationSettings.closedStatusOption.filter(
-            closedStatusOption => closedStatusOption.label === this.closedStatus
+            (closedStatusOption) => closedStatusOption.label === this.closedStatus
         )[0]?.value;
         this.inputLapsedStatus = automationSettings.lapsedStatusOption.filter(
-            lapsedStatusOption => lapsedStatusOption.label === this.lapsedStatus
+            (lapsedStatusOption) => lapsedStatusOption.label === this.lapsedStatus
         )[0]?.value;
     }
 
     adjustDaysForClosedErrorMessage() {
-        this.minimumDaysForClosedErrorMessage = 
-            (!isNull(this.inputDaysForLapsed) && this.minimumDaysForClosed >= 0 && this.inputDaysForClosed >= 0) 
+        this.minimumDaysForClosedErrorMessage =
+            !isNull(this.inputDaysForLapsed) && this.minimumDaysForClosed >= 0 && this.inputDaysForClosed >= 0
                 ? this.labels.daysForClosedTooSmall
-                : '';
+                : "";
     }
     resetSettingsInput() {
         this.assignInputStatusWithApiValue(this.automationSettings);
@@ -207,7 +205,7 @@ export default class Rd2StatusAutomationSettings extends LightningElement {
     }
 
     getMinimumDays(days) {
-        return (days < 0)? 0 : days;
+        return days < 0 ? 0 : days;
     }
 
     handleLapsedStatusChanged(event) {
@@ -239,6 +237,6 @@ export default class Rd2StatusAutomationSettings extends LightningElement {
     }
 
     closedDaysInputField() {
-        return this.template.querySelector("lightning-input[data-id=closedDaysInput]")
+        return this.template.querySelector("lightning-input[data-id=closedDaysInput]");
     }
 }

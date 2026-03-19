@@ -39,7 +39,7 @@ import {
     CONTACT_DONOR_TYPE,
 } from "./constants";
 
-import { isBlank, nullIfBlank } from "c/util";
+import { nullIfBlank } from "c/util";
 
 const DEFAULT_INITIAL_STATE = {
     initialViewState: {}, // snapshot of initial view state after first load
@@ -131,6 +131,7 @@ const getDonationValue = (state) => {
     } else if (state.recurringType === RECURRING_TYPE_FIXED) {
         return getFixedValue(state);
     }
+    return undefined;
 };
 
 const getChangeType = (state) => {
@@ -219,9 +220,8 @@ const setCustomField = (state, { fieldName, value }) => {
                 ...field,
                 value,
             };
-        } else {
-            return field;
         }
+        return field;
     });
     return {
         ...state,

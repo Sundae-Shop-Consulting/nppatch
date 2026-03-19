@@ -121,9 +121,7 @@ export default class StgPanelRelReciprocal extends LightningElement {
 
     async handleSaveNew() {
         if (!this._newRecord.Name) {
-            this.dispatchEvent(
-                new ShowToastEvent({ title: "Error", message: "Name is required.", variant: "error" })
-            );
+            this.dispatchEvent(new ShowToastEvent({ title: "Error", message: "Name is required.", variant: "error" }));
             return;
         }
         this._isSaving = true;
@@ -190,9 +188,7 @@ export default class StgPanelRelReciprocal extends LightningElement {
 
     async handleSaveEdit() {
         if (!this._editRecord.Name) {
-            this.dispatchEvent(
-                new ShowToastEvent({ title: "Error", message: "Name is required.", variant: "error" })
-            );
+            this.dispatchEvent(new ShowToastEvent({ title: "Error", message: "Name is required.", variant: "error" }));
             return;
         }
         this._isSaving = true;
@@ -255,8 +251,12 @@ export default class StgPanelRelReciprocal extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) return error.body.message;
-        if (error?.message) return error.message;
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

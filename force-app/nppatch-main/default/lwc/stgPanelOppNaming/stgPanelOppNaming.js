@@ -116,12 +116,8 @@ export default class StgPanelOppNaming extends LightningElement {
         if (result.data) {
             this._records = result.data.map((r) => ({
                 ...r,
-                recordTypesDisplay: r.Opportunity_Record_Types__c
-                    ? r.Opportunity_Record_Types__c
-                    : "all record types",
-                nameFormatDisplay: r.Opportunity_Name_Format__c
-                    ? r.Opportunity_Name_Format__c
-                    : "- do not rename -",
+                recordTypesDisplay: r.Opportunity_Record_Types__c ? r.Opportunity_Record_Types__c : "all record types",
+                nameFormatDisplay: r.Opportunity_Name_Format__c ? r.Opportunity_Name_Format__c : "- do not rename -",
             }));
             this._hasError = false;
         } else if (result.error) {
@@ -177,7 +173,9 @@ export default class StgPanelOppNaming extends LightningElement {
     // ─── Name Format combobox (create) ──────────────────────────────────
 
     get newFormatComboValue() {
-        if (this._newFormatCombo !== null) return this._newFormatCombo;
+        if (this._newFormatCombo !== null) {
+            return this._newFormatCombo;
+        }
         return this._resolveComboValue(this._newNameFormat);
     }
 
@@ -190,19 +188,25 @@ export default class StgPanelOppNaming extends LightningElement {
     }
 
     get newFormatPreview() {
-        if (this.isNewCustomFormat || this.isNewCustomDate) return "";
+        if (this.isNewCustomFormat || this.isNewCustomDate) {
+            return "";
+        }
         return this._renderPreview(this._newNameFormat, this._newDateFormat);
     }
 
     get newFormatWarnings() {
-        if (!this.isNewCustomFormat) return "";
+        if (!this.isNewCustomFormat) {
+            return "";
+        }
         return this._validateTokens(this._newNameFormat);
     }
 
     // ─── Date Format combobox (create) ─────────────────────────────────
 
     get newDateComboValue() {
-        if (this._newDateCombo !== null) return this._newDateCombo;
+        if (this._newDateCombo !== null) {
+            return this._newDateCombo;
+        }
         return this._resolveDateComboValue(this._newDateFormat);
     }
 
@@ -213,7 +217,9 @@ export default class StgPanelOppNaming extends LightningElement {
     // ─── Name Format combobox (edit) ────────────────────────────────────
 
     get editFormatComboValue() {
-        if (this._editFormatCombo !== null) return this._editFormatCombo;
+        if (this._editFormatCombo !== null) {
+            return this._editFormatCombo;
+        }
         return this._resolveComboValue(this._editRecord.Opportunity_Name_Format__c || "");
     }
 
@@ -222,12 +228,15 @@ export default class StgPanelOppNaming extends LightningElement {
     }
 
     get isEditPreviewUnavailable() {
-        return (this.isEditCustomFormat || this.isEditCustomDate) &&
-            (this._editRecord.Opportunity_Name_Format__c || "");
+        return (
+            (this.isEditCustomFormat || this.isEditCustomDate) && (this._editRecord.Opportunity_Name_Format__c || "")
+        );
     }
 
     get editFormatPreview() {
-        if (this.isEditCustomFormat || this.isEditCustomDate) return "";
+        if (this.isEditCustomFormat || this.isEditCustomDate) {
+            return "";
+        }
         return this._renderPreview(
             this._editRecord.Opportunity_Name_Format__c || "",
             this._editRecord.Date_Format__c || ""
@@ -235,14 +244,18 @@ export default class StgPanelOppNaming extends LightningElement {
     }
 
     get editFormatWarnings() {
-        if (!this.isEditCustomFormat) return "";
+        if (!this.isEditCustomFormat) {
+            return "";
+        }
         return this._validateTokens(this._editRecord.Opportunity_Name_Format__c || "");
     }
 
     // ─── Date Format combobox (edit) ────────────────────────────────────
 
     get editDateComboValue() {
-        if (this._editDateCombo !== null) return this._editDateCombo;
+        if (this._editDateCombo !== null) {
+            return this._editDateCombo;
+        }
         return this._resolveDateComboValue(this._editRecord.Date_Format__c || "");
     }
 
@@ -456,22 +469,30 @@ export default class StgPanelOppNaming extends LightningElement {
     // ─── Helpers ────────────────────────────────────────────────────────
 
     _resolveDateComboValue(format) {
-        if (!format) return "";
+        if (!format) {
+            return "";
+        }
         const known = DATE_FORMAT_OPTIONS.find((o) => o.value === format && o.value !== OTHER_VALUE);
         return known ? format : OTHER_VALUE;
     }
 
     _resolveComboValue(format) {
-        if (!format) return DO_NOT_RENAME;
+        if (!format) {
+            return DO_NOT_RENAME;
+        }
         const known = NAME_FORMAT_OPTIONS.find((o) => o.value === format && o.value !== OTHER_VALUE);
         return known ? format : OTHER_VALUE;
     }
 
     _renderPreview(format, dateFormat) {
-        if (!format) return "";
+        if (!format) {
+            return "";
+        }
         const formattedDate = this._formatSampleDate(dateFormat);
         return format.replace(/\{!([^}]+)\}/g, (_, field) => {
-            if (field === "CloseDate") return formattedDate;
+            if (field === "CloseDate") {
+                return formattedDate;
+            }
             return SAMPLE_DATA[field] || `{!${field}}`;
         });
     }
@@ -489,7 +510,9 @@ export default class StgPanelOppNaming extends LightningElement {
     }
 
     _validateTokens(format) {
-        if (!format || this._oppFieldNames.size === 0) return "";
+        if (!format || this._oppFieldNames.size === 0) {
+            return "";
+        }
         const tokens = [];
         const regex = /\{!([^}]+)\}/g;
         let match;
@@ -498,16 +521,24 @@ export default class StgPanelOppNaming extends LightningElement {
         }
         const unknown = tokens.filter((t) => {
             // Relationship traversals (Account.Name) can't be validated with a single describe
-            if (t.includes(".")) return false;
+            if (t.includes(".")) {
+                return false;
+            }
             return !this._oppFieldNames.has(t.toLowerCase());
         });
-        if (unknown.length === 0) return "";
+        if (unknown.length === 0) {
+            return "";
+        }
         return `Unrecognized field${unknown.length > 1 ? "s" : ""}: ${unknown.join(", ")}`;
     }
 
     _extractError(error) {
-        if (error?.body?.message) return error.body.message;
-        if (error?.message) return error.message;
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

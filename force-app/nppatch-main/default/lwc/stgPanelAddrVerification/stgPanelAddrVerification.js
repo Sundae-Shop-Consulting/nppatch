@@ -80,9 +80,13 @@ export default class StgPanelAddrVerification extends LightningElement {
     }
 
     get validatorComboValue() {
-        if (this._comboSelection !== null) return this._comboSelection;
+        if (this._comboSelection !== null) {
+            return this._comboSelection;
+        }
         const currentClass = this._workingCopy?.Class__c;
-        if (!currentClass) return "";
+        if (!currentClass) {
+            return "";
+        }
         const known = this._validators.find((v) => v.className === currentClass);
         return known ? currentClass : OTHER_VALUE;
     }
@@ -134,8 +138,7 @@ export default class StgPanelAddrVerification extends LightningElement {
     }
 
     handleTimeoutChange(event) {
-        this._workingCopy.Timeout__c =
-            event.detail.value !== "" ? Number(event.detail.value) : null;
+        this._workingCopy.Timeout__c = event.detail.value !== "" ? Number(event.detail.value) : null;
     }
 
     @api
@@ -146,20 +149,20 @@ export default class StgPanelAddrVerification extends LightningElement {
                 fieldValues: {
                     Class__c: this._workingCopy.Class__c || null,
                     Auth_Token__c: this._workingCopy.Auth_Token__c || null,
-                    Address_Verification_Endpoint__c:
-                        this._workingCopy.Address_Verification_Endpoint__c || null,
-                    Enable_Automatic_Verification__c:
-                        this._workingCopy.Enable_Automatic_Verification__c,
-                    Reject_Ambiguous_Addresses__c:
-                        this._workingCopy.Reject_Ambiguous_Addresses__c,
-                    Prevent_Address_Overwrite__c:
-                        this._workingCopy.Prevent_Address_Overwrite__c,
+                    Address_Verification_Endpoint__c: this._workingCopy.Address_Verification_Endpoint__c || null,
+                    Enable_Automatic_Verification__c: this._workingCopy.Enable_Automatic_Verification__c,
+                    Reject_Ambiguous_Addresses__c: this._workingCopy.Reject_Ambiguous_Addresses__c,
+                    Prevent_Address_Overwrite__c: this._workingCopy.Prevent_Address_Overwrite__c,
                     Timeout__c: this._workingCopy.Timeout__c,
                 },
             });
             await refreshApex(this._wiredSettingsResult);
             this.dispatchEvent(
-                new ShowToastEvent({ title: "Success", message: "Address verification settings saved.", variant: "success" })
+                new ShowToastEvent({
+                    title: "Success",
+                    message: "Address verification settings saved.",
+                    variant: "success",
+                })
             );
             return true;
         } catch (error) {
@@ -177,8 +180,12 @@ export default class StgPanelAddrVerification extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) return error.body.message;
-        if (error?.message) return error.message;
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

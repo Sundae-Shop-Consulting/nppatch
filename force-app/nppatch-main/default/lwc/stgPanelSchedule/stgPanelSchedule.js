@@ -38,19 +38,22 @@ export default class StgPanelSchedule extends LightningElement {
         contactSoftCreditBatchSize: "Contact Soft Credit Batch Size",
         helpContactSoftCreditBatchSize: "Number of records per batch when calculating Contact soft credit rollups.",
         acctContactSoftCreditBatchSize: "Account-Contact Soft Credit Batch Size",
-        helpAcctContactSoftCreditBatchSize: "Number of records per batch when calculating Account-level Contact soft credit rollups.",
+        helpAcctContactSoftCreditBatchSize:
+            "Number of records per batch when calculating Account-level Contact soft credit rollups.",
         accountSoftCreditBatchSize: "Account Soft Credit Batch Size",
         helpAccountSoftCreditBatchSize: "Number of records per batch when calculating Account soft credit rollups.",
         gauBatchSize: "GAU Batch Size",
         helpGauBatchSize: "Number of records per batch when calculating General Accounting Unit rollups.",
         rdBatchSize: "Recurring Donation Batch Size",
-        helpRdBatchSize: "Number of records per batch when processing Recurring Donations. Reduce if the batch job fails due to governor limits.",
+        helpRdBatchSize:
+            "Number of records per batch when processing Recurring Donations. Reduce if the batch job fails due to governor limits.",
         levelBatchSize: "Level Assignment Batch Size",
         helpLevelBatchSize: "Number of records per batch when recalculating Level assignments.",
         seasonalAddressBatchSize: "Seasonal Addresses Batch Size",
         helpSeasonalAddressBatchSize: "Number of records per batch when updating seasonal addresses.",
         skewThreshold: "Skew Mode Threshold",
-        helpSkewThreshold: "The maximum number of related Opportunities on an Account or Contact allowed in standard rollup batch jobs. Records exceeding this threshold are rolled up using Skew Mode instead.",
+        helpSkewThreshold:
+            "The maximum number of related Opportunities on an Account or Contact allowed in standard rollup batch jobs. Records exceeding this threshold are rolled up using Skew Mode instead.",
         contactSkewBatchSize: "Contact Skew Mode Batch Size",
         helpContactSkewBatchSize: "Number of records per batch when calculating Contact rollups in Skew Mode.",
         accountSkewBatchSize: "Account Skew Mode Batch Size",
@@ -58,7 +61,8 @@ export default class StgPanelSchedule extends LightningElement {
         skewDispatcherBatchSize: "Skew Dispatcher Batch Size",
         helpSkewDispatcherBatchSize: "Controls the dispatcher batch size for Skew Mode processing.",
         useDatedConversionRates: "Use Dated Conversion Rates",
-        helpUseDatedConversionRates: "Only applies to orgs with Advanced Currency Management (multi-currency) enabled. When on, rollup calculations use the exchange rate that was effective on each Opportunity's Close Date rather than the current default rate. Has no effect in single-currency orgs.",
+        helpUseDatedConversionRates:
+            "Only applies to orgs with Advanced Currency Management (multi-currency) enabled. When on, rollup calculations use the exchange rate that was effective on each Opportunity's Close Date rather than the current default rate. Has no effect in single-currency orgs.",
     };
 
     get sectionDescription() {
@@ -169,8 +173,7 @@ export default class StgPanelSchedule extends LightningElement {
     }
 
     handleGauBatchSizeChange(event) {
-        this._workingCopyCRLP.Rollups_GAU_Batch_Size__c =
-            event.detail.value !== "" ? Number(event.detail.value) : null;
+        this._workingCopyCRLP.Rollups_GAU_Batch_Size__c = event.detail.value !== "" ? Number(event.detail.value) : null;
     }
 
     // --- Individual change handlers (Skew Mode - CRLP fields) ---
@@ -227,13 +230,19 @@ export default class StgPanelSchedule extends LightningElement {
                 fieldValues: {
                     Rollups_Contact_Batch_Size__c: this._workingCopyCRLP.Rollups_Contact_Batch_Size__c,
                     Rollups_Account_Batch_Size__c: this._workingCopyCRLP.Rollups_Account_Batch_Size__c,
-                    Rollups_Contact_Soft_Credit_Batch_Size__c: this._workingCopyCRLP.Rollups_Contact_Soft_Credit_Batch_Size__c,
-                    Rollups_AcctContactSoftCredit_Batch_Size__c: this._workingCopyCRLP.Rollups_AcctContactSoftCredit_Batch_Size__c,
-                    Rollups_Account_Soft_Credit_Batch_Size__c: this._workingCopyCRLP.Rollups_Account_Soft_Credit_Batch_Size__c,
+                    Rollups_Contact_Soft_Credit_Batch_Size__c:
+                        this._workingCopyCRLP.Rollups_Contact_Soft_Credit_Batch_Size__c,
+                    Rollups_AcctContactSoftCredit_Batch_Size__c:
+                        this._workingCopyCRLP.Rollups_AcctContactSoftCredit_Batch_Size__c,
+                    Rollups_Account_Soft_Credit_Batch_Size__c:
+                        this._workingCopyCRLP.Rollups_Account_Soft_Credit_Batch_Size__c,
                     Rollups_GAU_Batch_Size__c: this._workingCopyCRLP.Rollups_GAU_Batch_Size__c,
-                    Rollups_Limit_on_Attached_Opps_for_Skew__c: this._workingCopyCRLP.Rollups_Limit_on_Attached_Opps_for_Skew__c,
-                    Rollups_Contact_SkewMode_Batch_Size__c: this._workingCopyCRLP.Rollups_Contact_SkewMode_Batch_Size__c,
-                    Rollups_Account_SkewMode_Batch_Size__c: this._workingCopyCRLP.Rollups_Account_SkewMode_Batch_Size__c,
+                    Rollups_Limit_on_Attached_Opps_for_Skew__c:
+                        this._workingCopyCRLP.Rollups_Limit_on_Attached_Opps_for_Skew__c,
+                    Rollups_Contact_SkewMode_Batch_Size__c:
+                        this._workingCopyCRLP.Rollups_Contact_SkewMode_Batch_Size__c,
+                    Rollups_Account_SkewMode_Batch_Size__c:
+                        this._workingCopyCRLP.Rollups_Account_SkewMode_Batch_Size__c,
                     Rollups_Skew_Dispatcher_Batch_Size__c: this._workingCopyCRLP.Rollups_Skew_Dispatcher_Batch_Size__c,
                 },
             });
@@ -284,8 +293,12 @@ export default class StgPanelSchedule extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) return error.body.message;
-        if (error?.message) return error.message;
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

@@ -1,36 +1,52 @@
-import { api, LightningElement, track, wire } from 'lwc';
-import { debouncify, isNotEmpty, relatedRecordFieldNameFor, UtilDescribe, isString, nonePicklistOption } from 'c/utilCommon';
-import GeFormService from 'c/geFormService';
-import GeLabelService from 'c/geLabelService';
-import { getObjectInfo, getPicklistValues } from 'lightning/uiObjectInfoApi';
-import { fireEvent } from 'c/pubsubNoPageRef';
-import DONATION_RECORD_TYPE_NAME
-    from '@salesforce/schema/DataImport__c.Donation_Record_Type_Name__c';
-import ACCOUNT1_IMPORTED
-    from '@salesforce/schema/DataImport__c.Account1Imported__c';
-import CONTACT1_IMPORTED
-    from '@salesforce/schema/DataImport__c.Contact1Imported__c';
-import ACCOUNT_ID from '@salesforce/schema/Opportunity.AccountId';
-import PRIMARY_CONTACT from '@salesforce/schema/Opportunity.Primary_Contact__c';
-import DATA_IMPORT from '@salesforce/schema/DataImport__c';
-import RECORD_TYPE_FIELD from '@salesforce/schema/Opportunity.RecordTypeId';
-import OPPORTUNITY from '@salesforce/schema/Opportunity';
-import { validityCheck } from './geFormFieldHelper';
+import { api, LightningElement, track, wire } from "lwc";
+import {
+    debouncify,
+    isNotEmpty,
+    relatedRecordFieldNameFor,
+    UtilDescribe,
+    isString,
+    nonePicklistOption,
+} from "c/utilCommon";
+import GeFormService from "c/geFormService";
+import GeLabelService from "c/geLabelService";
+import { getObjectInfo, getPicklistValues } from "lightning/uiObjectInfoApi";
+import { fireEvent } from "c/pubsubNoPageRef";
+import DONATION_RECORD_TYPE_NAME from "@salesforce/schema/DataImport__c.Donation_Record_Type_Name__c";
+import ACCOUNT1_IMPORTED from "@salesforce/schema/DataImport__c.Account1Imported__c";
+import CONTACT1_IMPORTED from "@salesforce/schema/DataImport__c.Contact1Imported__c";
+import ACCOUNT_ID from "@salesforce/schema/Opportunity.AccountId";
+import PRIMARY_CONTACT from "@salesforce/schema/Opportunity.Primary_Contact__c";
+import DATA_IMPORT from "@salesforce/schema/DataImport__c";
+import RECORD_TYPE_FIELD from "@salesforce/schema/Opportunity.RecordTypeId";
+import OPPORTUNITY from "@salesforce/schema/Opportunity";
+import { validityCheck } from "./geFormFieldHelper";
 
-const LOOKUP_TYPE = 'REFERENCE';
-const PICKLIST_TYPE = 'PICKLIST';
-const TEXT_AREA_TYPE = 'TEXTAREA';
-const BOOLEAN_TYPE = 'BOOLEAN';
+const LOOKUP_TYPE = "REFERENCE";
+const PICKLIST_TYPE = "PICKLIST";
+const TEXT_AREA_TYPE = "TEXTAREA";
+const BOOLEAN_TYPE = "BOOLEAN";
 const DELAY = 300;
 const RICH_TEXT_FORMATS = [
-    'font', 'size', 'bold', 'italic', 'underline', 'strike', 'list', 'indent', 'align', 'link', 'clean', 'table', 'header'
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "list",
+    "indent",
+    "align",
+    "link",
+    "clean",
+    "table",
+    "header",
 ];
-const CURRENCY = 'currency';
-const PERCENT = 'percent';
-const DECIMAL = 'decimal';
-const DATE = 'date';
-const DATETIME = 'datetime-local';
-const CHECKBOX = 'checkbox';
+const CURRENCY = "currency";
+const PERCENT = "percent";
+const DECIMAL = "decimal";
+const DATE = "date";
+const DATETIME = "datetime-local";
+const CHECKBOX = "checkbox";
 
 export default class GeFormField extends LightningElement {
     @track _formState;
@@ -64,15 +80,14 @@ export default class GeFormField extends LightningElement {
     PICKLIST_OPTION_NONE = nonePicklistOption();
 
     handleValueChangeSync = (event) => {
-        this.fireFormFieldChangeEvent(
-            this.getValueFromChangeEvent(event));
+        this.fireFormFieldChangeEvent(this.getValueFromChangeEvent(event));
     };
     handleValueChange = debouncify(this.handleValueChangeSync.bind(this), DELAY);
 
     /**
      * Retrieve object metadata. Used to configure how fields are displayed on the form.
      */
-    @wire(getObjectInfo, { objectApiName: '$objectApiName' })
+    @wire(getObjectInfo, { objectApiName: "$objectApiName" })
     wiredObjectInfo(response) {
         if (response.data) {
             this.objectDescribeInfo = response.data;
@@ -85,8 +100,7 @@ export default class GeFormField extends LightningElement {
     getValueFromChangeEvent(event) {
         if (this.isPicklist) {
             const value = event.detail.value;
-            const isSelectedValueNone =
-                value === this.CUSTOM_LABELS.commonLabelNone;
+            const isSelectedValueNone = value === this.CUSTOM_LABELS.commonLabelNone;
             if (isSelectedValueNone) {
                 return null;
             }
@@ -127,12 +141,14 @@ export default class GeFormField extends LightningElement {
     checkFieldValidity() {
         // TODO: Handle other input types, if needed
         const inputField = this.inputField();
-        if (typeof inputField !== 'undefined'
-            && inputField !== null
-            && typeof inputField.reportValidity === 'function'
-            && typeof inputField.checkValidity === 'function') {
-                inputField.reportValidity();
-                return inputField.checkValidity();
+        if (
+            typeof inputField !== "undefined" &&
+            inputField !== null &&
+            typeof inputField.reportValidity === "function" &&
+            typeof inputField.checkValidity === "function"
+        ) {
+            inputField.reportValidity();
+            return inputField.checkValidity();
         } else if (this.isRichText) {
             this.checkRichTextValidity();
             if (!this._isRichTextValid) {
@@ -175,8 +191,9 @@ export default class GeFormField extends LightningElement {
     }
 
     get required() {
-        return (this.fieldMapping && this.fieldMapping.Is_Required && this.fieldType !== BOOLEAN_TYPE)
-            || this._required;
+        return (
+            (this.fieldMapping && this.fieldMapping.Is_Required && this.fieldType !== BOOLEAN_TYPE) || this._required
+        );
     }
 
     get disabled() {
@@ -186,19 +203,23 @@ export default class GeFormField extends LightningElement {
     get granularity() {
         if (this.formatter) {
             switch (this.fieldType.toLowerCase()) {
-                case CURRENCY: return '0.01';
-                case PERCENT: return '0.01';
-                case DECIMAL: return '0.001';
-                default: return 'any';
+                case CURRENCY:
+                    return "0.01";
+                case PERCENT:
+                    return "0.01";
+                case DECIMAL:
+                    return "0.001";
+                default:
+                    return "any";
             }
         }
         return undefined;
     }
 
     get fieldMapping() {
-        return isNotEmpty(this.targetFieldName) ?
-            GeFormService.getFieldMappingWrapperFromTarget(this.targetFieldName) :
-            GeFormService.getFieldMappingWrapper(this.formElementName);
+        return isNotEmpty(this.targetFieldName)
+            ? GeFormService.getFieldMappingWrapperFromTarget(this.targetFieldName)
+            : GeFormService.getFieldMappingWrapper(this.formElementName);
     }
 
     get objectMapping() {
@@ -209,16 +230,20 @@ export default class GeFormField extends LightningElement {
         if (isNotEmpty(this.fieldMapping)) {
             return this.fieldMapping.Target_Field_Data_Type;
         }
+        return undefined;
     }
 
     get isLightningInput() {
-        return typeof GeFormService.getInputTypeFromDataType(this.fieldType) !== 'undefined' && !this.hasPicklistOverride;
+        return (
+            typeof GeFormService.getInputTypeFromDataType(this.fieldType) !== "undefined" && !this.hasPicklistOverride
+        );
     }
 
     get isRichText() {
-        if (typeof this.targetFieldDescribeInfo !== 'undefined' && this.fieldType === TEXT_AREA_TYPE) {
+        if (typeof this.targetFieldDescribeInfo !== "undefined" && this.fieldType === TEXT_AREA_TYPE) {
             return this.targetFieldDescribeInfo.htmlFormatted;
         }
+        return undefined;
     }
 
     /**
@@ -251,9 +276,10 @@ export default class GeFormField extends LightningElement {
     }
 
     get isTextArea() {
-        if (typeof this.targetFieldDescribeInfo !== 'undefined' && this.fieldType === TEXT_AREA_TYPE) {
+        if (typeof this.targetFieldDescribeInfo !== "undefined" && this.fieldType === TEXT_AREA_TYPE) {
             return !this.targetFieldDescribeInfo.htmlFormatted;
         }
+        return undefined;
     }
 
     @api
@@ -261,12 +287,14 @@ export default class GeFormField extends LightningElement {
         if (isNotEmpty(this.fieldMapping)) {
             return this.fieldMapping.Target_Object_Mapping_Dev_Name;
         }
+        return undefined;
     }
 
     get objectApiName() {
-        if (typeof this.objectMapping !== 'undefined') {
+        if (typeof this.objectMapping !== "undefined") {
             return this.objectMapping.Object_API_Name;
         }
+        return undefined;
     }
 
     @api
@@ -274,6 +302,7 @@ export default class GeFormField extends LightningElement {
         if (isNotEmpty(this.fieldMapping)) {
             return this.fieldMapping.Target_Field_API_Name;
         }
+        return undefined;
     }
 
     @api
@@ -281,6 +310,7 @@ export default class GeFormField extends LightningElement {
         if (isNotEmpty(this.fieldMapping)) {
             return this.fieldMapping.Source_Field_API_Name;
         }
+        return undefined;
     }
 
     // when using lightning-lookup-field, instead of binding to the Data Import fields or donor information
@@ -298,8 +328,10 @@ export default class GeFormField extends LightningElement {
 
     get lookupObjectApiName() {
         if (this.objectApiName === DATA_IMPORT.objectApiName) {
-            if (this.targetFieldApiName === ACCOUNT1_IMPORTED.fieldApiName
-                || this.targetFieldApiName === CONTACT1_IMPORTED.fieldApiName) {
+            if (
+                this.targetFieldApiName === ACCOUNT1_IMPORTED.fieldApiName ||
+                this.targetFieldApiName === CONTACT1_IMPORTED.fieldApiName
+            ) {
                 return OPPORTUNITY.objectApiName;
             }
         }
@@ -318,8 +350,8 @@ export default class GeFormField extends LightningElement {
 
         const canSetCustomValidity =
             inputField &&
-            typeof inputField.reportValidity === 'function' &&
-            typeof inputField.checkValidity === 'function';
+            typeof inputField.reportValidity === "function" &&
+            typeof inputField.checkValidity === "function";
         if (canSetCustomValidity) {
             inputField.setCustomValidity(errorMessage);
             inputField.reportValidity();
@@ -332,34 +364,32 @@ export default class GeFormField extends LightningElement {
             if (this.element.required) {
                 const inputField = this.inputField();
                 inputField.required = false;
-                inputField.setCustomValidity('');
+                inputField.setCustomValidity("");
                 inputField.reportValidity();
                 inputField.required = true;
             } else {
-                this.setCustomValidity('');
+                this.setCustomValidity("");
             }
         }
-
     }
 
     get qaLocatorBase() {
-        const rowIndex = this.getAttribute('data-qa-row');
+        const rowIndex = this.getAttribute("data-qa-row");
         if (rowIndex) {
             return `${this.fieldLabel} ${rowIndex}`;
-        } else {
-            return this.fieldLabel;
         }
+        return this.fieldLabel;
     }
 
     get qaLocatorInputPrefix() {
         switch (this.inputType) {
             case DATE:
             case DATETIME:
-                return 'datetime';
+                return "datetime";
             case CHECKBOX:
                 return this.inputType;
             default:
-                return 'input';
+                return "input";
         }
     }
 
@@ -388,12 +418,11 @@ export default class GeFormField extends LightningElement {
         const newValue = formState && formState[this.sourceFieldAPIName];
         const previousValue = this.formState && this.formState[this.sourceFieldAPIName];
 
-        new Promise((resolve,reject) => {
+        new Promise((resolve) => {
             this._formState = formState;
             this._recordTypeId = this.recordTypeId();
             resolve();
-        })
-        .finally(() => {
+        }).finally(() => {
             const isNewGift = !formState?.Id;
             const isValueChanged = newValue !== previousValue;
             if (isValueChanged && !isNewGift) {
@@ -406,36 +435,33 @@ export default class GeFormField extends LightningElement {
         const value = this.formState[this.sourceFieldAPIName];
 
         if (value === undefined) {
-           return null;
+            return null;
         }
 
-        const isDonationRecordTypeName =
-            this.sourceFieldAPIName === DONATION_RECORD_TYPE_NAME.fieldApiName;
+        const isDonationRecordTypeName = this.sourceFieldAPIName === DONATION_RECORD_TYPE_NAME.fieldApiName;
         if (isDonationRecordTypeName) {
             return this.utilDescribe.recordTypeIdFor(value);
         }
 
         if (this.isPicklist && value === null) {
-            const hasNoneOptionAvailable =
-                this.isValueInOptions(
-                    this.CUSTOM_LABELS.commonLabelNone,
-                    this.picklistValues
-                );
-            return hasNoneOptionAvailable ? this.CUSTOM_LABELS.commonLabelNone : '';
+            const hasNoneOptionAvailable = this.isValueInOptions(
+                this.CUSTOM_LABELS.commonLabelNone,
+                this.picklistValues
+            );
+            return hasNoneOptionAvailable ? this.CUSTOM_LABELS.commonLabelNone : "";
         }
 
         return value;
     }
 
     fireFormFieldChangeEvent(value) {
-
         const detail = {
             value: value,
             label: this.isRecordTypePicklist ? this.utilDescribe.recordTypeNameFor(value) : value,
-            fieldMappingDevName: this.fieldMappingDevName()
+            fieldMappingDevName: this.fieldMappingDevName(),
         };
 
-        fireEvent({}, 'formfieldchange', { detail });
+        fireEvent({}, "formfieldchange", { detail });
     }
 
     fieldMappingDevName() {
@@ -444,15 +470,12 @@ export default class GeFormField extends LightningElement {
 
     recordTypeId() {
         const siblingRecordTypeId =
-            this.siblingRecordTypeField() === DONATION_RECORD_TYPE_NAME.fieldApiName ?
-                this.utilDescribe.recordTypeIdFor(this.siblingRecordTypeValue()) :
-                this.siblingRecordTypeValue();
+            this.siblingRecordTypeField() === DONATION_RECORD_TYPE_NAME.fieldApiName
+                ? this.utilDescribe.recordTypeIdFor(this.siblingRecordTypeValue())
+                : this.siblingRecordTypeValue();
         const defaultRecordTypeId = this.utilDescribe.defaultRecordTypeId();
 
-        return siblingRecordTypeId ||
-            this.parentRecordRecordTypeId() ||
-            defaultRecordTypeId ||
-            null;
+        return siblingRecordTypeId || this.parentRecordRecordTypeId() || defaultRecordTypeId || null;
     }
 
     siblingRecordTypeValue() {
@@ -464,8 +487,7 @@ export default class GeFormField extends LightningElement {
     }
 
     parentRecordRecordTypeId() {
-        return this.parentRecord() &&
-            this.parentRecord().recordTypeId;
+        return this.parentRecord() && this.parentRecord().recordTypeId;
     }
 
     parentRecord() {
@@ -473,8 +495,7 @@ export default class GeFormField extends LightningElement {
     }
 
     parentRecordField() {
-        return this.element &&
-            this.element.parentRecordField;
+        return this.element && this.element.parentRecordField;
     }
 
     get picklistValues() {
@@ -507,6 +528,7 @@ export default class GeFormField extends LightningElement {
         if (this.isStandardPicklist()) {
             return `${this.objectApiName}.${this.targetFieldApiName}`;
         }
+        return undefined;
     }
 
     isStandardPicklist() {
@@ -518,10 +540,10 @@ export default class GeFormField extends LightningElement {
     }
 
     @wire(getPicklistValues, {
-        fieldApiName: '$fullFieldApiNameForStandardPicklists',
-        recordTypeId: '$_recordTypeId'
+        fieldApiName: "$fullFieldApiNameForStandardPicklists",
+        recordTypeId: "$_recordTypeId",
     })
-    wiredPicklistValues({error, data}) {
+    wiredPicklistValues({ error, data }) {
         if (data) {
             this.picklistValues = [this.PICKLIST_OPTION_NONE, ...data.values];
         }
@@ -531,10 +553,11 @@ export default class GeFormField extends LightningElement {
     }
 
     isValueInOptions(value, options) {
-        if (!options || options.length === 0) return false;
-        return options.some(option => {
+        if (!options || options.length === 0) {
+            return false;
+        }
+        return options.some((option) => {
             return option.value === value;
         });
     }
-
 }

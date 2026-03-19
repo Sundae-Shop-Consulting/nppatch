@@ -1,7 +1,6 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api } from "lwc";
 
 export default class UtilInlineText extends LightningElement {
-
     @api customClass;
     @api iconName;
     @api iconSize;
@@ -12,19 +11,19 @@ export default class UtilInlineText extends LightningElement {
         if (this.customClass !== undefined) {
             return this.customClass;
         }
-        return 'slds-p-horizontal_medium slds-p-vertical_small';
+        return "slds-p-horizontal_medium slds-p-vertical_small";
     }
 
     get calculatedIconName() {
-        return this.iconName || 'utility:warning';
+        return this.iconName || "utility:warning";
     }
 
     get calculatedIconSize() {
-        return this.iconSize || 'small';
+        return this.iconSize || "small";
     }
 
     get calculatedIconVariant() {
-        return this.iconVariant || 'warning';
+        return this.iconVariant || "warning";
     }
 
     get calculatedIconDivClass() {

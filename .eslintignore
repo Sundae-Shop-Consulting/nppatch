@@ -3,3 +3,9 @@ force-app/nppatch-main/bdi/
 
 # PMM files — not yet linted
 force-app/nppatch-prgm/
+
+# Static resources contain minified/third-party JS
+**/staticresources/
+
+# Aura components — legacy code, not actively maintained
+**/aura/

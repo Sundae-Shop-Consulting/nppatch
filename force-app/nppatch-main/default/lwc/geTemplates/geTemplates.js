@@ -1,37 +1,36 @@
-import { LightningElement, track, api } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-import { dispatch, handleError } from 'c/utilTemplateBuilder';
-import { showToast } from 'c/utilCommon';
-import GeLabelService from 'c/geLabelService';
-import { deleteRecord } from 'lightning/uiRecordApi';
-import FORM_TEMPLATE_INFO from '@salesforce/schema/Form_Template__c';
-import DATA_IMPORT_BATCH_INFO from '@salesforce/schema/DataImportBatch__c';
-import TEMPLATE_LAST_MODIFIED_DATE_INFO from '@salesforce/schema/Form_Template__c.LastModifiedDate';
+import { LightningElement, track, api } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
+import { dispatch, handleError } from "c/utilTemplateBuilder";
+import { showToast } from "c/utilCommon";
+import GeLabelService from "c/geLabelService";
+import { deleteRecord } from "lightning/uiRecordApi";
+import FORM_TEMPLATE_INFO from "@salesforce/schema/Form_Template__c";
+import DATA_IMPORT_BATCH_INFO from "@salesforce/schema/DataImportBatch__c";
+import TEMPLATE_LAST_MODIFIED_DATE_INFO from "@salesforce/schema/Form_Template__c.LastModifiedDate";
 
-const SUCCESS = 'success';
-const IS_LOADING = 'isLoading';
-const EVENT_TOGGLE_MODAL = 'togglemodal';
-const SAVE = 'save';
-const EDIT = 'edit';
-const CLONE = 'clone';
-const DELETE = 'delete';
+const SUCCESS = "success";
+const IS_LOADING = "isLoading";
+const EVENT_TOGGLE_MODAL = "togglemodal";
+const SAVE = "save";
+const EDIT = "edit";
+const CLONE = "clone";
+const DELETE = "delete";
 
-const TEMPLATES_LIST_VIEW_NAME = 'Templates';
-const TEMPLATES_LIST_VIEW_SORT_DIRECTION = 'desc';
+const TEMPLATES_LIST_VIEW_NAME = "Templates";
+const TEMPLATES_LIST_VIEW_SORT_DIRECTION = "desc";
 const TEMPLATES_LIST_DEFAULT_LIMIT = 10;
-const TEMPLATES_LIST_VIEW_ICON = 'standard:visit_templates';
+const TEMPLATES_LIST_VIEW_ICON = "standard:visit_templates";
 const TEMPLATES_TABLE_ACTIONS = [
     { label: GeLabelService.CUSTOM_LABELS.commonEdit, name: EDIT },
     { label: GeLabelService.CUSTOM_LABELS.commonClone, name: CLONE },
-    { label: GeLabelService.CUSTOM_LABELS.commonDelete, name: DELETE }
+    { label: GeLabelService.CUSTOM_LABELS.commonDelete, name: DELETE },
 ];
 
-const BATCHES_LIST_VIEW_NAME = 'Batches';
+const BATCHES_LIST_VIEW_NAME = "Batches";
 const BATCHES_LIST_VIEW_DEFAULT_LIMIT = 10;
-const BATCHES_LIST_VIEW_ICON = 'custom:custom17';
+const BATCHES_LIST_VIEW_ICON = "custom:custom17";
 
 export default class GeTemplates extends NavigationMixin(LightningElement) {
-
     // Expose custom labels to template
     CUSTOM_LABELS = GeLabelService.CUSTOM_LABELS;
 
@@ -86,16 +85,15 @@ export default class GeTemplates extends NavigationMixin(LightningElement) {
     }
 
     /*******************************************************************************
-    * @description Public method for receiving modal related events from geListView.
-    *
-    * @param {object} modalData: Event object containing the action and modal payload.
-    * component chain: utilDualListbox -> geListView -> here.
-    */
+     * @description Public method for receiving modal related events from geListView.
+     *
+     * @param {object} modalData: Event object containing the action and modal payload.
+     * component chain: utilDualListbox -> geListView -> here.
+     */
     @api
     notify(event) {
         if (event.action === SAVE) {
-            const component =
-                this.template.querySelector(`c-ge-list-view[data-id='${event.payload.name}']`);
+            const component = this.template.querySelector(`c-ge-list-view[data-id='${event.payload.name}']`);
             if (component) {
                 component.notify(event);
             }
@@ -103,34 +101,34 @@ export default class GeTemplates extends NavigationMixin(LightningElement) {
     }
 
     /*******************************************************************************
-    * @description Pass through method that receives an event from geListView to
-    * notify parent aura component to construct a modal.
-    *
-    * @param {object} event: Event object containing a payload for the modal.
-    */
+     * @description Pass through method that receives an event from geListView to
+     * notify parent aura component to construct a modal.
+     *
+     * @param {object} event: Event object containing a payload for the modal.
+     */
     toggleModal(event) {
         dispatch(this, EVENT_TOGGLE_MODAL, event.detail);
     }
 
     /*******************************************************************************
-    * @description Opens the new batch wizard modal.
-    */
+     * @description Opens the new batch wizard modal.
+     */
     openNewBatchWizard(event) {
         event.stopPropagation();
         const detail = {
             componentProperties: {
                 recordId: event.record ? event.record.Id : undefined,
-                dedicatedListenerEventName: 'geBatchWizardEvent'
+                dedicatedListenerEventName: "geBatchWizardEvent",
             },
             modalProperties: {
-                cssClass: 'slds-modal_large',
-                componentName: 'geBatchWizard',
+                cssClass: "slds-modal_large",
+                componentName: "geBatchWizard",
                 showCloseButton: true,
                 // TODO: We can use this callback after a save/update/cancel action
                 // to perform additional logic in BGE (refresh, redirect, etc).
                 // Otherwise we can scrap it in the "BGE Batch Header Edit" WI.
                 closeCallback: undefined,
-            }
+            },
         };
 
         dispatch(this, EVENT_TOGGLE_MODAL, detail);
@@ -141,23 +139,23 @@ export default class GeTemplates extends NavigationMixin(LightningElement) {
     }
 
     /*******************************************************************************
-    * @description Method handles actions for the Templates list view table.
-    *
-    * @param {object} event: Event received from the list view component
-    * containing action details.
-    */
+     * @description Method handles actions for the Templates list view table.
+     *
+     * @param {object} event: Event received from the list view component
+     * containing action details.
+     */
     handleTemplatesTableRowAction(event) {
         const actionName = event.detail.action.name;
         const row = event.detail.row;
 
         switch (actionName) {
-            case 'edit':
+            case "edit":
                 this.navigateToTemplateBuilder(row.Id);
                 break;
-            case 'clone':
+            case "clone":
                 this.navigateToTemplateBuilder(row.Id, { clone: true });
                 break;
-            case 'delete':
+            case "delete":
                 this.geListViewComponent.setProperty(IS_LOADING, true);
                 this.handleTemplateDeletion(row);
                 break;
@@ -175,13 +173,11 @@ export default class GeTemplates extends NavigationMixin(LightningElement) {
             .then(() => {
                 this.geListViewComponent.setProperty(IS_LOADING, false);
                 this.geListViewComponent.refresh();
-                const toastMessage = GeLabelService.format(
-                    this.CUSTOM_LABELS.geToastTemplateDeleteSuccess,
-                    [row.Name]);
+                const toastMessage = GeLabelService.format(this.CUSTOM_LABELS.geToastTemplateDeleteSuccess, [row.Name]);
 
-                showToast(toastMessage, '', SUCCESS);
+                showToast(toastMessage, "", SUCCESS);
             })
-            .catch(error => {
+            .catch((error) => {
                 handleError(error);
                 this.geListViewComponent.setProperty(IS_LOADING, false);
                 this.geListViewComponent.refresh();
@@ -189,33 +185,33 @@ export default class GeTemplates extends NavigationMixin(LightningElement) {
     }
 
     /*******************************************************************************
-    * @description Navigates to the Template Builder. If a recordId is provided,
-    * adds the recordId to the navigation state (query param).
-    *
-    * @param {string} recordId: Record id of the Form_Template__c
-    */
+     * @description Navigates to the Template Builder. If a recordId is provided,
+     * adds the recordId to the navigation state (query param).
+     *
+     * @param {string} recordId: Record id of the Form_Template__c
+     */
     navigateToTemplateBuilder(recordId, additionalParameters) {
-        dispatch(this, 'changeview', {
-            view: 'Template_Builder',
+        dispatch(this, "changeview", {
+            view: "Template_Builder",
             formTemplateId: recordId,
-            ...additionalParameters
+            ...additionalParameters,
         });
     }
 
     /*******************************************************************************
-    * @description Handles onclick event from 'Create Template' button and navigates
-    * to the Template Builder.
-    */
+     * @description Handles onclick event from 'Create Template' button and navigates
+     * to the Template Builder.
+     */
     handleNewFormTemplate() {
         this.navigateToTemplateBuilder();
     }
 
     /*******************************************************************************
-    * @description Handles onclick event from 'New Batch' button and navigates
-    * to the Form Renderer.
-    */
+     * @description Handles onclick event from 'New Batch' button and navigates
+     * to the Form Renderer.
+     */
     navigateToForm() {
-        dispatch(this, 'changeview', { view: 'Single_Gift_Entry' });
+        dispatch(this, "changeview", { view: "Single_Gift_Entry" });
     }
 
     /*******************************************************************************
@@ -245,5 +241,4 @@ export default class GeTemplates extends NavigationMixin(LightningElement) {
     /*******************************************************************************
      * End getters for data-qa-locator attributes
      */
-
 }

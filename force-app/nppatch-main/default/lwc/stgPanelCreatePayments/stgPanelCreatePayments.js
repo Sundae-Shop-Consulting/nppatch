@@ -15,8 +15,7 @@ export default class StgPanelCreatePayments extends LightningElement {
         description:
             "Creates Payment records for existing Opportunities that should have them but don't. This is useful after enabling Automatic Payments to backfill Payments for historical Opportunities.",
         runBatch: "Create Missing Payments",
-        runningMessage:
-            "Batch job submitted. Check the Apex Jobs page for progress.",
+        runningMessage: "Batch job submitted. Check the Apex Jobs page for progress.",
     };
 
     @wire(isAdmin)
@@ -44,8 +43,7 @@ export default class StgPanelCreatePayments extends LightningElement {
             );
         } catch (error) {
             this._hasError = true;
-            this._errorMessage =
-                error?.body?.message || "An error occurred.";
+            this._errorMessage = error?.body?.message || "An error occurred.";
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: "Error",

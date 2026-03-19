@@ -1,8 +1,8 @@
 .THIS .slds-form-element__icon {
-    margin-left: .2rem;
+    margin-left: 0.2rem;
 }
 .THIS .slds-input[readonly] {
-    padding-left: .5rem;
+    padding-left: 0.5rem;
 }
 /*removes the extra required asterisk and any assistive-text for tooltip workaround*/
 .THIS .hasTooltip .slds-form-element__label {

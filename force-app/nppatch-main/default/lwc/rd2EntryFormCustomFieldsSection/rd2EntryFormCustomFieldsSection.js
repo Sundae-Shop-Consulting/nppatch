@@ -1,4 +1,4 @@
-import { LightningElement, api} from 'lwc';
+import { LightningElement, api } from "lwc";
 
 export default class rd2EntryFormCustomFieldsSection extends LightningElement {
     @api recordId;
@@ -25,7 +25,7 @@ export default class rd2EntryFormCustomFieldsSection extends LightningElement {
      */
     @api
     returnValues() {
-        let data = {};
+        const data = {};
 
         this.template.querySelectorAll("lightning-input-field").forEach((field) => {
             data[field.fieldName] = field.value;

@@ -41,11 +41,13 @@ describe("c-ge-gateway-select-widget", () => {
 
     describe("gateway assignment mode", () => {
         beforeEach(() => {
-            getGatewayAssignmentSettings.mockResolvedValue(JSON.stringify({
-                defaultGatewayId: DEFAULT_GATEWAY_ID,
-                defaultTemplateId: DEFAULT_TEMPLATE_ID,
-                gatewayAssignmentEnabled: true,
-            }));
+            getGatewayAssignmentSettings.mockResolvedValue(
+                JSON.stringify({
+                    defaultGatewayId: DEFAULT_GATEWAY_ID,
+                    defaultTemplateId: DEFAULT_TEMPLATE_ID,
+                    gatewayAssignmentEnabled: true,
+                })
+            );
         });
 
         it("renders widget contents when not default template", async () => {
@@ -93,7 +95,7 @@ describe("c-ge-gateway-select-widget", () => {
             expect(getACHCheckBox(element)).toBeTruthy();
             expect(getCCCheckBox(element)).toBeTruthy();
 
-            const collapseGatewayControl = shadowQuerySelector(element,'[data-id="ga-hide-button"]');
+            const collapseGatewayControl = shadowQuerySelector(element, '[data-id="ga-hide-button"]');
             expect(collapseGatewayControl).toBeTruthy();
             collapseGatewayControl.click();
             await flushPromises();
@@ -101,16 +103,18 @@ describe("c-ge-gateway-select-widget", () => {
             expect(getComboBox(element)).toBeFalsy();
             expect(getACHCheckBox(element)).toBeFalsy();
             expect(getCCCheckBox(element)).toBeFalsy();
-        })
+        });
     });
 
     describe("payment method mode", () => {
         beforeEach(() => {
-            getGatewayAssignmentSettings.mockResolvedValue(JSON.stringify({
-                defaultGatewayId: DEFAULT_GATEWAY_ID,
-                defaultTemplateId: DEFAULT_TEMPLATE_ID,
-                gatewayAssignmentEnabled: false,
-            }));
+            getGatewayAssignmentSettings.mockResolvedValue(
+                JSON.stringify({
+                    defaultGatewayId: DEFAULT_GATEWAY_ID,
+                    defaultTemplateId: DEFAULT_TEMPLATE_ID,
+                    gatewayAssignmentEnabled: false,
+                })
+            );
         });
 
         it("renders widget contents when not default template", async () => {
@@ -158,7 +162,7 @@ describe("c-ge-gateway-select-widget", () => {
             expect(getACHCheckBox(element)).toBeTruthy();
             expect(getCCCheckBox(element)).toBeTruthy();
 
-            const collapsePaymentControl = shadowQuerySelector(element,'[data-id="pm-hide-button"]');
+            const collapsePaymentControl = shadowQuerySelector(element, '[data-id="pm-hide-button"]');
             expect(collapsePaymentControl).toBeTruthy();
             collapsePaymentControl.click();
             await flushPromises();
@@ -166,16 +170,18 @@ describe("c-ge-gateway-select-widget", () => {
             expect(getComboBox(element)).toBeFalsy();
             expect(getACHCheckBox(element)).toBeFalsy();
             expect(getCCCheckBox(element)).toBeFalsy();
-        })
+        });
     });
 
     describe("gateway management mode", () => {
         beforeEach(() => {
-            getGatewayAssignmentSettings.mockResolvedValue(JSON.stringify({
-                defaultGatewayId: DEFAULT_GATEWAY_ID,
-                defaultTemplateId: DEFAULT_TEMPLATE_ID,
-                gatewayAssignmentEnabled: true,
-            }));
+            getGatewayAssignmentSettings.mockResolvedValue(
+                JSON.stringify({
+                    defaultGatewayId: DEFAULT_GATEWAY_ID,
+                    defaultTemplateId: DEFAULT_TEMPLATE_ID,
+                    gatewayAssignmentEnabled: true,
+                })
+            );
         });
 
         it("does not display spinner if no gateways found", async () => {
@@ -211,44 +217,43 @@ const createGeGatewaySelectWidget = (mode) => {
 
 const getShadowRoot = (element) => {
     if (!element || !element.shadowRoot) {
-        const tagName =
-            element && element.tagName && element.tagName.toLowerCase();
+        const tagName = element && element.tagName && element.tagName.toLowerCase();
         throw new Error(
             `Attempting to retrieve the shadow root of '${tagName || element}'
             but no shadowRoot property found`
         );
     }
     return element.shadowRoot;
-}
+};
 
 const shadowQuerySelector = (element, selector) => {
     return getShadowRoot(element).querySelector(selector);
-}
+};
 
 const getComboBox = (element) => {
-    return shadowQuerySelector(element,'[data-id="gateway-combobox"]');
-}
+    return shadowQuerySelector(element, '[data-id="gateway-combobox"]');
+};
 
 const getACHCheckBox = (element) => {
-    return shadowQuerySelector(element,'[data-id="checkboxACH"]');
-}
+    return shadowQuerySelector(element, '[data-id="checkboxACH"]');
+};
 
 const getCCCheckBox = (element) => {
-    return shadowQuerySelector(element,'[data-id="checkboxCreditCard"]');
-}
+    return shadowQuerySelector(element, '[data-id="checkboxCreditCard"]');
+};
 
 const getExpandGatewayControl = (element) => {
-    return shadowQuerySelector(element,'[data-id="ga-show-button"]');
-}
+    return shadowQuerySelector(element, '[data-id="ga-show-button"]');
+};
 
 const getExpandPaymentControl = (element) => {
-    return shadowQuerySelector(element,'[data-id="pm-show-button"]');
-}
+    return shadowQuerySelector(element, '[data-id="pm-show-button"]');
+};
 
 const getDiv = (element) => {
-    return shadowQuerySelector(element,'div');
-}
+    return shadowQuerySelector(element, "div");
+};
 
 const getSpinner = (element) => {
-    return shadowQuerySelector(element,'[data-id="spinner"]');
-}
+    return shadowQuerySelector(element, '[data-id="spinner"]');
+};

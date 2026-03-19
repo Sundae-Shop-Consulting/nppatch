@@ -1,36 +1,49 @@
-import { LightningElement, api, track } from 'lwc';
-import { fireEvent } from 'c/pubsubNoPageRef';
+import { LightningElement, api, track } from "lwc";
+import { fireEvent } from "c/pubsubNoPageRef";
 
 const DELAY = 300;
 
 export default class utilSearchableCombobox extends LightningElement {
-
     @api name;
     @api comboboxLabel;
     @api searchInputLabel;
-    @api selectedFieldValue;
+    _selectedFieldValue;
+    @api
+    get selectedFieldValue() {
+        return this._selectedFieldValue;
+    }
+    set selectedFieldValue(val) {
+        this._selectedFieldValue = val;
+    }
     @api options;
-    @api searchableOptions;
+    _searchableOptions;
+    @api
+    get searchableOptions() {
+        return this._searchableOptions;
+    }
+    set searchableOptions(val) {
+        this._searchableOptions = val;
+    }
     @api parentListenerEventName;
     @api fieldLevelHelp;
     @api disabled;
     @api hasErrors;
-    @api dropdownAlignment = 'left';
+    @api dropdownAlignment = "left";
 
     @track isSearchOpen;
-    @track searchKey = '';
+    @track searchKey = "";
     @track searchResults;
     @track areSearchResultsVisible = false;
 
     get customSearchResultBoxClasses() {
-        if (this.dropdownAlignment === 'bottom-left') {
-            return 'slds-box custom-search-result-box alignment-direction__bottom-left';
+        if (this.dropdownAlignment === "bottom-left") {
+            return "slds-box custom-search-result-box alignment-direction__bottom-left";
         }
-        return 'slds-box custom-search-result-box';
+        return "slds-box custom-search-result-box";
     }
 
     get comboboxClass() {
-        return this.hasErrors ? 'slds-has-error slds-listbox_extension' : 'slds-listbox_extension';
+        return this.hasErrors ? "slds-has-error slds-listbox_extension" : "slds-listbox_extension";
     }
 
     showSearch() {
@@ -58,19 +71,19 @@ export default class utilSearchableCombobox extends LightningElement {
     }
 
     handleSearchkeyChange(searchKey) {
-        let results = [];
+        const results = [];
 
-        if (!this.searchableOptions) {
-            this.searchableOptions = this.options;
+        if (!this._searchableOptions) {
+            this._searchableOptions = this.options;
         }
 
-        for(let i = 0; i < this.searchableOptions.length; i++) {
-            if (this.searchableOptions[i].label.toLowerCase().indexOf(searchKey.toLowerCase()) != -1) {
-                let result = {
+        for (let i = 0; i < this._searchableOptions.length; i++) {
+            if (this._searchableOptions[i].label.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1) {
+                const result = {
                     id: i,
-                    label: this.searchableOptions[i].label,
-                    value: this.searchableOptions[i].value
-                }
+                    label: this._searchableOptions[i].label,
+                    value: this._searchableOptions[i].value,
+                };
                 results.push(result);
             }
         }
@@ -80,16 +93,16 @@ export default class utilSearchableCombobox extends LightningElement {
     }
 
     selectSearchResult(event) {
-        let result = {
+        const result = {
             detail: {
                 label: event.target.dataset.fieldLabel,
-                value: event.target.dataset.fieldValue
-            }
-        }
+                value: event.target.dataset.fieldValue,
+            },
+        };
 
         fireEvent(this.pageRef, this.parentListenerEventName, result);
 
-        this.selectedFieldValue = result.detail.value;
+        this._selectedFieldValue = result.detail.value;
         this.searchResults = undefined;
         this.isSearchOpen = false;
         this.areSearchResultsVisible = false;

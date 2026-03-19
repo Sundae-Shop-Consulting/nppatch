@@ -93,7 +93,6 @@ export default class StgPanelErrorNotif extends LightningElement {
         return this._workingCopy?.Error_Notifications_On__c || false;
     }
 
-
     get isNotifDisabled() {
         return !this._workingCopy?.Store_Errors_On__c;
     }
@@ -121,9 +120,7 @@ export default class StgPanelErrorNotif extends LightningElement {
     }
 
     get selectedRecipientPill() {
-        return this._recipientLabel && this._recipientType !== "allSysAdmins"
-            ? this._recipientLabel
-            : null;
+        return this._recipientLabel && this._recipientType !== "allSysAdmins" ? this._recipientLabel : null;
     }
 
     get showSearchInput() {
@@ -131,8 +128,9 @@ export default class StgPanelErrorNotif extends LightningElement {
     }
 
     get noResults() {
-        return !this._isSearching && this._searchTerm.length >= 2
-            && this._searchResults.length === 0 && this._showDropdown;
+        return (
+            !this._isSearching && this._searchTerm.length >= 2 && this._searchResults.length === 0 && this._showDropdown
+        );
     }
 
     // --- Handlers ---
@@ -141,9 +139,7 @@ export default class StgPanelErrorNotif extends LightningElement {
         this._workingCopy = {
             ...this._workingCopy,
             Store_Errors_On__c: event.detail.checked,
-            Error_Notifications_On__c: event.detail.checked
-                ? this._workingCopy.Error_Notifications_On__c
-                : false,
+            Error_Notifications_On__c: event.detail.checked ? this._workingCopy.Error_Notifications_On__c : false,
         };
     }
 
@@ -217,7 +213,6 @@ export default class StgPanelErrorNotif extends LightningElement {
         };
     }
 
-
     async _performSearch(term) {
         this._isSearching = true;
         try {
@@ -249,7 +244,11 @@ export default class StgPanelErrorNotif extends LightningElement {
             });
             await refreshApex(this._wiredSettingsResult);
             this.dispatchEvent(
-                new ShowToastEvent({ title: "Success", message: "Error notification settings saved.", variant: "success" })
+                new ShowToastEvent({
+                    title: "Success",
+                    message: "Error notification settings saved.",
+                    variant: "success",
+                })
             );
             return true;
         } catch (error) {
@@ -267,8 +266,12 @@ export default class StgPanelErrorNotif extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) return error.body.message;
-        if (error?.message) return error.message;
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

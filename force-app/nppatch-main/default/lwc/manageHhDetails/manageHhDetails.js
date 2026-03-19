@@ -37,7 +37,7 @@ export default class ManageHhDetails extends LightningElement {
     handleNameChange(event) {
         this.dispatchEvent(
             new CustomEvent("namechanged", {
-                detail: { field: "Name", value: event.target.value }
+                detail: { field: "Name", value: event.target.value },
             })
         );
     }
@@ -47,8 +47,8 @@ export default class ManageHhDetails extends LightningElement {
             new CustomEvent("namechanged", {
                 detail: {
                     field: "Formal_Greeting__c",
-                    value: event.target.value
-                }
+                    value: event.target.value,
+                },
             })
         );
     }
@@ -58,8 +58,8 @@ export default class ManageHhDetails extends LightningElement {
             new CustomEvent("namechanged", {
                 detail: {
                     field: "Informal_Greeting__c",
-                    value: event.target.value
-                }
+                    value: event.target.value,
+                },
             })
         );
     }
@@ -69,8 +69,8 @@ export default class ManageHhDetails extends LightningElement {
             new CustomEvent("autonamingchanged", {
                 detail: {
                     field: "Name",
-                    checked: event.target.checked
-                }
+                    checked: event.target.checked,
+                },
             })
         );
     }
@@ -80,8 +80,8 @@ export default class ManageHhDetails extends LightningElement {
             new CustomEvent("autonamingchanged", {
                 detail: {
                     field: "Formal_Greeting__c",
-                    checked: event.target.checked
-                }
+                    checked: event.target.checked,
+                },
             })
         );
     }
@@ -91,8 +91,8 @@ export default class ManageHhDetails extends LightningElement {
             new CustomEvent("autonamingchanged", {
                 detail: {
                     field: "Informal_Greeting__c",
-                    checked: event.target.checked
-                }
+                    checked: event.target.checked,
+                },
             })
         );
     }

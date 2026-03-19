@@ -1,21 +1,20 @@
-import { LightningElement, api, track } from 'lwc';
-import { getQueryParameters, getNamespace } from 'c/utilCommon';
-import { dispatch, getPageAccess } from 'c/utilTemplateBuilder';
-import TemplateBuilderService from 'c/geTemplateBuilderService';
-import GeLabelService from 'c/geLabelService';
-import DataImport from '@salesforce/schema/DataImport__c';
-import { registerListener } from 'c/pubsubNoPageRef';
-import { NavigationMixin } from 'lightning/navigation';
-import Settings from 'c/geSettings';
+import { LightningElement, api, track } from "lwc";
+import { getQueryParameters, getNamespace } from "c/utilCommon";
+import { dispatch, getPageAccess } from "c/utilTemplateBuilder";
+import TemplateBuilderService from "c/geTemplateBuilderService";
+import GeLabelService from "c/geLabelService";
+import DataImport from "@salesforce/schema/DataImport__c";
+import { registerListener } from "c/pubsubNoPageRef";
+import { NavigationMixin } from "lightning/navigation";
+import Settings from "c/geSettings";
 
-const EVENT_TOGGLE_MODAL = 'togglemodal';
-const GIFT_ENTRY_TAB_NAME = 'GE_Gift_Entry';
-const GIFT_ENTRY = 'Gift_Entry';
-const TEMPLATE_BUILDER = 'Template_Builder';
-const SINGLE_GIFT_ENTRY = 'Single_Gift_Entry';
+const EVENT_TOGGLE_MODAL = "togglemodal";
+const GIFT_ENTRY_TAB_NAME = "GE_Gift_Entry";
+const GIFT_ENTRY = "Gift_Entry";
+const TEMPLATE_BUILDER = "Template_Builder";
+const SINGLE_GIFT_ENTRY = "Single_Gift_Entry";
 
 export default class geHome extends NavigationMixin(LightningElement) {
-
     // Expose custom labels to template
     CUSTOM_LABELS = GeLabelService.CUSTOM_LABELS;
 
@@ -39,8 +38,7 @@ export default class geHome extends NavigationMixin(LightningElement) {
     }
 
     async connectedCallback() {
-        registerListener('listViewPermissionsChange',
-          this.handleListViewPermissionsChange, this);
+        registerListener("listViewPermissionsChange", this.handleListViewPermissionsChange, this);
         this.isAppAccessible = await getPageAccess();
         if (this.isAppAccessible) {
             this.setGiftEntryTabName();
@@ -51,38 +49,38 @@ export default class geHome extends NavigationMixin(LightningElement) {
     }
 
     /*******************************************************************************
-    * @description Method sets the Gift Entry tab name with the proper namespace.
-    */
+     * @description Method sets the Gift Entry tab name with the proper namespace.
+     */
     setGiftEntryTabName() {
-        this.giftEntryTabName =
-            TemplateBuilderService.alignSchemaNSWithEnvironment(
-                GIFT_ENTRY_TAB_NAME, this.namespace);
+        this.giftEntryTabName = TemplateBuilderService.alignSchemaNSWithEnvironment(
+            GIFT_ENTRY_TAB_NAME,
+            this.namespace
+        );
     }
 
     /*******************************************************************************
-    * @description Method handles setting the initial view based on url parameters
-    * if there are any.
-    */
+     * @description Method handles setting the initial view based on url parameters
+     * if there are any.
+     */
     setInitialView() {
         const queryParameters = getQueryParameters();
         if (queryParameters && queryParameters.c__view) {
             this.view = queryParameters.c__view;
         }
         if (this.view === SINGLE_GIFT_ENTRY) {
-            this.dispatchEvent(new CustomEvent('newsinglegift'));
+            this.dispatchEvent(new CustomEvent("newsinglegift"));
         }
     }
 
     /*******************************************************************************
-    * @description Method handles changing the current view based on parameters
-    * in the received event.
-    *
-    * @param {object} event: Event object containing parameters like 'c__view',
-    * 'c__formTemplateRecordId', 'c__donorRecordId', etc used to change the current
-    * view and set the respective view record id.
-    */
+     * @description Method handles changing the current view based on parameters
+     * in the received event.
+     *
+     * @param {object} event: Event object containing parameters like 'c__view',
+     * 'c__formTemplateRecordId', 'c__donorRecordId', etc used to change the current
+     * view and set the respective view record id.
+     */
     handleChangeView(event) {
-
         this.view = event.detail.view;
         if (this.view === TEMPLATE_BUILDER && event.detail.formTemplateId) {
             this.goToView(TEMPLATE_BUILDER, event.detail.formTemplateId, event.detail.clone);
@@ -98,15 +96,15 @@ export default class geHome extends NavigationMixin(LightningElement) {
     }
 
     /*******************************************************************************
-    * @description Method navigates to the provided View Name
-    *
-    * @param {*} viewName: String of View Name to navigate to
-    * @param {*} formTemplateId: String of Template Id to Edit
-    * @param {*} isClone: Boolean set to true if template should be cloned
-    *
-    */
+     * @description Method navigates to the provided View Name
+     *
+     * @param {*} viewName: String of View Name to navigate to
+     * @param {*} formTemplateId: String of Template Id to Edit
+     * @param {*} isClone: Boolean set to true if template should be cloned
+     *
+     */
     goToView(viewName, formTemplateId, isClone) {
-        let state = {};
+        const state = {};
         if (viewName !== undefined) {
             state.c__view = viewName;
         }
@@ -117,21 +115,24 @@ export default class geHome extends NavigationMixin(LightningElement) {
             state.c__clone = isClone;
         }
 
-        this[NavigationMixin.Navigate]({
-            type: 'standard__navItemPage',
-            attributes: {
-                apiName: this.giftEntryTabName,
+        this[NavigationMixin.Navigate](
+            {
+                type: "standard__navItemPage",
+                attributes: {
+                    apiName: this.giftEntryTabName,
+                },
+                state,
             },
-            state
-        }, true);
+            true
+        );
     }
 
     /*******************************************************************************
-    * @description Public method for receiving modal related events from geListView.
-    *
-    * @param {object} modalData: Event object containing the action and modal payload.
-    * component chain: utilDualListbox -> geListView -> here.
-    */
+     * @description Public method for receiving modal related events from geListView.
+     *
+     * @param {object} modalData: Event object containing the action and modal payload.
+     * component chain: utilDualListbox -> geListView -> here.
+     */
     @api
     notify(event) {
         if (event.receiverComponent && event.receiverComponent.length > 0) {
@@ -143,11 +144,11 @@ export default class geHome extends NavigationMixin(LightningElement) {
     }
 
     /*******************************************************************************
-    * @description Pass through method that receives an event from child components
-    * to notify the parent aura component to construct a modal.
-    *
-    * @param {object} event: Event object containing a payload for the modal.
-    */
+     * @description Pass through method that receives an event from child components
+     * to notify the parent aura component to construct a modal.
+     *
+     * @param {object} event: Event object containing a payload for the modal.
+     */
     toggleModal(event) {
         dispatch(this, EVENT_TOGGLE_MODAL, event.detail);
     }
@@ -171,5 +172,4 @@ export default class geHome extends NavigationMixin(LightningElement) {
     get namespace() {
         return getNamespace(DataImport.objectApiName);
     }
-
 }

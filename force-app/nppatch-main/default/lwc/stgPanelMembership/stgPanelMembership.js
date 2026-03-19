@@ -46,8 +46,7 @@ export default class StgPanelMembership extends LightningElement {
     }
 
     handleGracePeriodChange(event) {
-        this._workingCopy.Membership_Grace_Period__c =
-            event.detail.value !== "" ? Number(event.detail.value) : null;
+        this._workingCopy.Membership_Grace_Period__c = event.detail.value !== "" ? Number(event.detail.value) : null;
     }
 
     @api
@@ -78,8 +77,12 @@ export default class StgPanelMembership extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) return error.body.message;
-        if (error?.message) return error.message;
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

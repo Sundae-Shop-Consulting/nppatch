@@ -7,7 +7,6 @@ import getInitialView from "@salesforce/apex/RD2_EntryFormController.getInitialV
 import RECURRING_DONATION_OBJECT from "@salesforce/schema/Recurring_Donation__c";
 import { SET_DONOR_TYPE } from "../../rd2Service/actions";
 
-
 const recurringDonationObjectInfo = require("../../../../../../tests/__mocks__/apex/data/recurringDonationObjectInfo.json");
 const initialViewResponse = require("../../../../../../tests/__mocks__/apex/data/getInitialView.json");
 const rd2WithCardCommitmentInitialView = require("../../rd2EntryForm/__tests__/data/rd2WithCardCommitmentInitialView.json");
@@ -23,9 +22,7 @@ const UPDATED_FAKE_ACCOUNT_ID = "updated-fake-account-record-id";
 const FAKE_CONTACT_ID = "fake-contact-record-id";
 const UPDATED_FAKE_CONTACT_ID = "updated-fake-contact-record-id";
 
-jest.mock("@salesforce/apex/RD2_EntryFormController.getInitialView",
-    () => ({ default: jest.fn() }),
-    { virtual: true });
+jest.mock("@salesforce/apex/RD2_EntryFormController.getInitialView", () => ({ default: jest.fn() }), { virtual: true });
 
 const assertDonorTypeFieldValue = (element, expectedValue) => {
     const donorTypeField = getDonorTypeField(element);
@@ -54,7 +51,6 @@ describe("new recurring donation", () => {
         assertDonorTypeFieldValue(element, "Contact");
     });
 
-
     it("when set to Account, then account lookup appears", async () => {
         const rd2Service = new Rd2Service();
         const donorTypeField = getDonorTypeField(element);
@@ -73,7 +69,6 @@ describe("new recurring donation", () => {
         const accountLookup = getAccountLookup(element);
         expect(accountLookup).toBeTruthy();
     });
-
 });
 
 describe("existing recurring contact donation", () => {
@@ -104,7 +99,6 @@ describe("existing recurring contact donation", () => {
     });
 });
 
-
 describe("existing recurring account donation", () => {
     let element;
 
@@ -113,10 +107,9 @@ describe("existing recurring account donation", () => {
             ...rd2WithCardCommitmentInitialView,
             record: {
                 ...rd2WithCardCommitmentInitialView.record,
-                donorType: 'Account'
-            }
+                donorType: "Account",
+            },
         };
-
 
         element = await createDonorSection({ recordId: FAKE_RD_ID }, initialViewWithAccountDonor);
 
@@ -141,7 +134,7 @@ describe("existing recurring account donation", () => {
         changeDonorType(element, "Contact");
 
         // simulate rd2EntryForm handling donor type change
-        const rd2StateContact = rd2Service.dispatch(element.rd2State, { type: SET_DONOR_TYPE, payload: "Contact"});
+        const rd2StateContact = rd2Service.dispatch(element.rd2State, { type: SET_DONOR_TYPE, payload: "Contact" });
         element.rd2State = rd2StateContact;
 
         assertDonorTypeFieldValue(element, "Contact");
@@ -152,7 +145,7 @@ describe("existing recurring account donation", () => {
 
         changeDonorType(element, "Account");
         // simulate rd2EntryForm handling donor type change
-        const rd2StateAccount = rd2Service.dispatch(element.rd2State, { type: SET_DONOR_TYPE, payload: "Account"});
+        const rd2StateAccount = rd2Service.dispatch(element.rd2State, { type: SET_DONOR_TYPE, payload: "Account" });
         element.rd2State = rd2StateAccount;
 
         await flushPromises();
@@ -169,13 +162,15 @@ describe("new donation from account", () => {
     beforeEach(async () => {
         const initialViewFromAccount = {
             ...initialViewResponse,
-            parentSObjectType: 'Account',
+            parentSObjectType: "Account",
             contactId: null,
-            accountId: FAKE_ACCOUNT_ID
+            accountId: FAKE_ACCOUNT_ID,
         };
 
-
-        element = await createDonorSection({ parentId: FAKE_ACCOUNT_ID, parentSObjectType: "Account" }, initialViewFromAccount);
+        element = await createDonorSection(
+            { parentId: FAKE_ACCOUNT_ID, parentSObjectType: "Account" },
+            initialViewFromAccount
+        );
 
         getObjectInfo.emit(recurringDonationObjectInfo, ({ objectApiName }) => {
             return objectApiName === RECURRING_DONATION_OBJECT.objectApiName;
@@ -206,7 +201,7 @@ describe("new donation from account", () => {
         expect(accountLookup.value).toBe(FAKE_ACCOUNT_ID);
     });
 
-    it( "sets donor type to account", () => {
+    it("sets donor type to account", () => {
         const donorType = getDonorTypeField(element);
         expect(donorType).toBeTruthy();
         expect(donorType.value).toBe("Account");
@@ -217,7 +212,7 @@ describe("new donation from account", () => {
 
         changeDonorType(element, "Contact");
 
-        const rd2StateContact = rd2Service.dispatch(element.rd2State, { type: SET_DONOR_TYPE, payload: "Contact"});
+        const rd2StateContact = rd2Service.dispatch(element.rd2State, { type: SET_DONOR_TYPE, payload: "Contact" });
         element.rd2State = rd2StateContact;
 
         await flushPromises();
@@ -229,12 +224,10 @@ describe("new donation from account", () => {
     });
 });
 
-
 describe("new donation from contact", () => {
     let element;
 
     beforeEach(async () => {
-
         element = await createDonorSection({ parentId: FAKE_CONTACT_ID, parentSObjectType: "Contact" });
 
         getObjectInfo.emit(recurringDonationObjectInfo, ({ objectApiName }) => {
@@ -260,7 +253,7 @@ describe("new donation from contact", () => {
     it("alerts parent component of date established changes", () => {
         const dateEstablished = getDateEstablishedField(element);
         expect(dateEstablished).toBeTruthy();
-        const fakeDate = new Date(2022, 0, 14)
+        const fakeDate = new Date(2022, 0, 14);
         changeField(dateEstablished, fakeDate);
         const lastEventDetail = getLastEventDetail(mockHandleDateEstablishedChange);
 
@@ -277,7 +270,7 @@ describe("new donation from contact", () => {
     it("when donor type changed to account, contact lookup cleared", async () => {
         changeDonorType(element, "Account");
         const rd2Service = new Rd2Service();
-        const rd2State = rd2Service.dispatch(element.rd2State, { type: SET_DONOR_TYPE, payload: "Account"});
+        const rd2State = rd2Service.dispatch(element.rd2State, { type: SET_DONOR_TYPE, payload: "Account" });
         element.rd2State = rd2State;
 
         await flushPromises();
@@ -298,7 +291,7 @@ const getLastEventDetail = (mockedFn) => {
 const changeDonorType = (element, value) => {
     const field = getDonorTypeField(element);
     changeField(field, value);
-}
+};
 
 const changeField = (field, value) => {
     field.value = value;
@@ -306,20 +299,20 @@ const changeField = (field, value) => {
 };
 
 const getDonorTypeField = (element) => {
-    return element.shadowRoot.querySelector("lightning-combobox[data-id=\"donorType\"]");
+    return element.shadowRoot.querySelector('lightning-combobox[data-id="donorType"]');
 };
 
 const getAccountLookup = (element) => {
-    return element.shadowRoot.querySelector("lightning-input-field[data-id=\"accountLookup\"]");
+    return element.shadowRoot.querySelector('lightning-input-field[data-id="accountLookup"]');
 };
 
 const getContactLookup = (element) => {
-    return element.shadowRoot.querySelector("lightning-input-field[data-id=\"contactLookup\"]");
+    return element.shadowRoot.querySelector('lightning-input-field[data-id="contactLookup"]');
 };
 
 const getDateEstablishedField = (element) => {
-    return element.shadowRoot.querySelector("lightning-input-field[data-id=\"dateEstablished\"]");
-}
+    return element.shadowRoot.querySelector('lightning-input-field[data-id="dateEstablished"]');
+};
 
 const createDonorSection = async (params, mockInitialView = initialViewResponse) => {
     getInitialView.mockResolvedValue(mockInitialView);

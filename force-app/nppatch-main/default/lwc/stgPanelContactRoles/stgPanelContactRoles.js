@@ -32,10 +32,12 @@ export default class StgPanelContactRoles extends LightningElement {
         sectionLabel: stgNavDonations,
         pageLabel: stgNavContactRoles,
         helpOCR: stgHelpOCR,
-        helpOrgRole: "The default Contact Role assigned to the organizational Contact when an Opportunity is attributed to an Organization Account.",
+        helpOrgRole:
+            "The default Contact Role assigned to the organizational Contact when an Opportunity is attributed to an Organization Account.",
         helpHonoreeRole: "The Contact Role assigned to the Honoree Contact on tribute Opportunities.",
         helpNotifRole: "The Contact Role assigned to the Notification Recipient Contact on tribute Opportunities.",
-        helpHHOCR: "When enabled, automatically creates Opportunity Contact Roles for all Household members on household-attributed Opportunities.",
+        helpHHOCR:
+            "When enabled, automatically creates Opportunity Contact Roles for all Household members on household-attributed Opportunities.",
         helpHHExcludedRT: "Contact Record Types excluded from automatic Household Opportunity Contact Role creation.",
         none: stgLabelNone,
         defaultRole: "Default Contact Role",
@@ -136,7 +138,9 @@ export default class StgPanelContactRoles extends LightningElement {
     // --- Utility ---
 
     _parseMultiSelect(rawValue) {
-        if (!rawValue) return [];
+        if (!rawValue) {
+            return [];
+        }
         return rawValue.split(";").filter(Boolean);
     }
 
@@ -211,10 +215,8 @@ export default class StgPanelContactRoles extends LightningElement {
             await saveSettings({
                 settingsObjectName: HH_SETTINGS_OBJECT,
                 fieldValues: {
-                    Household_Contact_Roles_On__c:
-                        this._workingCopyHH.Household_Contact_Roles_On__c,
-                    Household_Member_Contact_Role__c:
-                        this._workingCopyHH.Household_Member_Contact_Role__c || null,
+                    Household_Contact_Roles_On__c: this._workingCopyHH.Household_Contact_Roles_On__c,
+                    Household_Member_Contact_Role__c: this._workingCopyHH.Household_Member_Contact_Role__c || null,
                     Household_OCR_Excluded_Recordtypes__c:
                         this._workingCopyHH.Household_OCR_Excluded_Recordtypes__c || null,
                 },
@@ -235,8 +237,12 @@ export default class StgPanelContactRoles extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) return error.body.message;
-        if (error?.message) return error.message;
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

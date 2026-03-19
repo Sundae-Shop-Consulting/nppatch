@@ -43,8 +43,7 @@ export default class StgPanelUpdatePrimaryContact extends LightningElement {
             );
         } catch (error) {
             this._hasError = true;
-            this._errorMessage =
-                error?.body?.message || "An error occurred.";
+            this._errorMessage = error?.body?.message || "An error occurred.";
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: "Error",

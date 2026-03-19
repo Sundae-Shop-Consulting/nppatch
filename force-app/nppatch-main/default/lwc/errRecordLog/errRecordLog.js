@@ -1,33 +1,32 @@
-import { LightningElement, api, wire, track } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-import { getObjectInfo } from 'lightning/uiObjectInfoApi';
-import { constructErrorMessage, extractFieldInfo, isNull, isUndefined, format } from 'c/utilCommon';
-import getData from '@salesforce/apex/ERR_Log_CTRL.getData';
+import { LightningElement, api, wire, track } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
+import { getObjectInfo } from "lightning/uiObjectInfoApi";
+import { constructErrorMessage, extractFieldInfo, isNull, isUndefined, format } from "c/utilCommon";
+import getData from "@salesforce/apex/ERR_Log_CTRL.getData";
 
-import title from '@salesforce/label/c.ERR_RecordLogTitle';
-import loadingMessage from '@salesforce/label/c.labelMessageLoading';
-import insufficientPermissions from '@salesforce/label/c.commonInsufficientPermissions';
-import accessDeniedMessage from '@salesforce/label/c.addrCopyConAddBtnFls';
-import contactSystemAdmin from '@salesforce/label/c.commonContactSystemAdminMessage';
-import commonUnknownError from '@salesforce/label/c.commonUnknownError';
-import commonNoItems from '@salesforce/label/c.commonNoItems';
-import actionView from '@salesforce/label/c.bgeActionView';
-import listViewItemCount from '@salesforce/label/c.geTextListViewItemCount';
-import listViewItemCountPlural from '@salesforce/label/c.geTextListViewItemsCount';
-import listViewSortedBy from '@salesforce/label/c.geTextListViewSortedBy';
+import title from "@salesforce/label/c.ERR_RecordLogTitle";
+import loadingMessage from "@salesforce/label/c.labelMessageLoading";
+import insufficientPermissions from "@salesforce/label/c.commonInsufficientPermissions";
+import accessDeniedMessage from "@salesforce/label/c.addrCopyConAddBtnFls";
+import contactSystemAdmin from "@salesforce/label/c.commonContactSystemAdminMessage";
+import commonUnknownError from "@salesforce/label/c.commonUnknownError";
+import commonNoItems from "@salesforce/label/c.commonNoItems";
+import actionView from "@salesforce/label/c.bgeActionView";
+import listViewItemCount from "@salesforce/label/c.geTextListViewItemCount";
+import listViewItemCountPlural from "@salesforce/label/c.geTextListViewItemsCount";
+import listViewSortedBy from "@salesforce/label/c.geTextListViewSortedBy";
 
-import ERROR_OBJECT from '@salesforce/schema/Error__c';
-import ERROR_FIELD_NAME from '@salesforce/schema/Error__c.Name';
-import ERROR_FIELD_DATETIME from '@salesforce/schema/Error__c.Datetime__c';
-import ERROR_FIELD_ERROR_TYPE from '@salesforce/schema/Error__c.Error_Type__c';
-import ERROR_FIELD_FULL_MESSAGE from '@salesforce/schema/Error__c.Full_Message__c';
+import ERROR_OBJECT from "@salesforce/schema/Error__c";
+import ERROR_FIELD_NAME from "@salesforce/schema/Error__c.Name";
+import ERROR_FIELD_DATETIME from "@salesforce/schema/Error__c.Datetime__c";
+import ERROR_FIELD_ERROR_TYPE from "@salesforce/schema/Error__c.Error_Type__c";
+import ERROR_FIELD_FULL_MESSAGE from "@salesforce/schema/Error__c.Full_Message__c";
 
 const ASC = "asc";
 const DESC = "desc";
-const ERROR_LOG_URL_FIELD = 'logURL';
+const ERROR_LOG_URL_FIELD = "logURL";
 
 export default class errRecordLog extends NavigationMixin(LightningElement) {
-
     labels = Object.freeze({
         title,
         loadingMessage,
@@ -39,7 +38,7 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
         actionView,
         listViewItemCount,
         listViewItemCountPlural,
-        listViewSortedBy
+        listViewSortedBy,
     });
 
     @api recordId;
@@ -56,20 +55,19 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
     @track sortDirection = DESC;
     fieldDatetime = {};
 
-
     /***
      * @description Initializes the component
      */
     connectedCallback() {
         if (this.recordId) {
             getData({ recordId: this.recordId })
-                .then(response => {
+                .then((response) => {
                     this.hasAccess = response.hasAccess;
 
                     this.recordInfo = {
                         sObjectType: response.sObjectType,
                         sObjectLabelPlural: response.sObjectLabelPlural,
-                        name: response.recordName
+                        name: response.recordName,
                     };
 
                     this.data = response.data;
@@ -77,10 +75,9 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
 
                     if (this.hasData) {
                         this.data.forEach(function (log) {
-                            log[ERROR_LOG_URL_FIELD] = '/' + log['Id'];
+                            log[ERROR_LOG_URL_FIELD] = "/" + log.Id;
                         });
                     }
-
                 })
                 .catch((error) => {
                     this.handleError(error);
@@ -92,8 +89,8 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
     }
 
     /***
-    * @description Retrieves Error SObject info and its field labels/help text
-    */
+     * @description Retrieves Error SObject info and its field labels/help text
+     */
     @wire(getObjectInfo, { objectApiName: ERROR_OBJECT.objectApiName })
     wiredErrorObjectInfo(response) {
         if (response.data) {
@@ -104,11 +101,11 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
                 this.columns.push({
                     label: fieldName.label,
                     fieldName: ERROR_LOG_URL_FIELD,
-                    type: 'url',
+                    type: "url",
                     typeAttributes: {
-                        label: { fieldName: fieldName.apiName }
+                        label: { fieldName: fieldName.apiName },
                     },
-                    hideDefaultActions: true
+                    hideDefaultActions: true,
                 });
             }
 
@@ -117,17 +114,17 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
                 this.columns.push({
                     label: this.fieldDatetime.label,
                     fieldName: this.fieldDatetime.apiName,
-                    type: 'date',
+                    type: "date",
                     typeAttributes: {
-                        year: 'numeric',
-                        month: 'numeric',
-                        day: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        hour12: true
+                        year: "numeric",
+                        month: "numeric",
+                        day: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        hour12: true,
                     },
                     hideDefaultActions: true,
-                    sortable: true
+                    sortable: true,
                 });
             }
 
@@ -137,7 +134,7 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
                     label: fieldErrorType.label,
                     fieldName: fieldErrorType.apiName,
                     type: fieldErrorType.dataType,
-                    hideDefaultActions: true
+                    hideDefaultActions: true,
                 });
             }
 
@@ -147,7 +144,7 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
                     label: fieldFullMessage.label,
                     fieldName: fieldFullMessage.apiName,
                     type: fieldFullMessage.dataType,
-                    wrapText: true
+                    wrapText: true,
                 });
             }
 
@@ -163,7 +160,6 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
         }
     }
 
-
     /**
      * @description Checks if the form still has outstanding data to load
      */
@@ -172,7 +168,6 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
 
         if (this.hasAccess === false || hasError) {
             this.isLoading = false;
-
         } else {
             const waitingForData = isUndefined(this.data) || isNull(this.data);
             const waitingForObjectInfo = this.columns.length === 0;
@@ -184,26 +179,26 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
     /**
      * @description Navigates to the record detail page
      */
-    navigateToRecordViewPage(event) {
+    navigateToRecordViewPage() {
         this[NavigationMixin.Navigate]({
-            type: 'standard__recordPage',
+            type: "standard__recordPage",
             attributes: {
                 recordId: this.recordId,
-                actionName: 'view'
-            }
+                actionName: "view",
+            },
         });
     }
 
     /**
      * @description Navigates to the record tab
      */
-    navigateToRecordObjectPage(event) {
+    navigateToRecordObjectPage() {
         this[NavigationMixin.Navigate]({
             type: "standard__objectPage",
             attributes: {
                 objectApiName: this.recordInfo.sObjectType,
                 actionName: "list",
-            }
+            },
         });
     }
 
@@ -224,11 +219,11 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
     sortBy(field, reverse, primer) {
         const key = primer
             ? function (x) {
-                return primer(x[field]);
-            }
+                  return primer(x[field]);
+              }
             : function (x) {
-                return x[field];
-            };
+                  return x[field];
+              };
 
         return function (a, b) {
             a = key(a);
@@ -238,8 +233,8 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
     }
 
     /***
-    * @description Returns total number of logs
-    */
+     * @description Returns total number of logs
+     */
     get itemSummary() {
         const size = this.data ? this.data.length : 0;
 
@@ -249,32 +244,29 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
     }
 
     /***
-    * @description Returns info about sorted by field which is Datetime field only
-    */
+     * @description Returns info about sorted by field which is Datetime field only
+     */
     get sortedByLabel() {
-        return (this.fieldDatetime && this.fieldDatetime.label)
+        return this.fieldDatetime && this.fieldDatetime.label
             ? format(this.labels.listViewSortedBy, [this.fieldDatetime.label])
             : undefined;
     }
 
     /***
-    * @description Handles error construction and its display
-    * @param {*} error: Error Event
-    */
+     * @description Handles error construction and its display
+     * @param {*} error: Error Event
+     */
     handleError(error) {
-        this.error = (error && error.detail)
-            ? error
-            : constructErrorMessage(error);
+        this.error = error && error.detail ? error : constructErrorMessage(error);
 
-        if (this.error.detail && this.error.detail.includes('ERR_Log_CTRL')) {
+        if (this.error.detail && this.error.detail.includes("ERR_Log_CTRL")) {
             this.error.header = this.labels.insufficientPermissions;
         }
     }
 
-
     /***
-    * @description data-qa-locator values for elements on the component
-    */
+     * @description data-qa-locator values for elements on the component
+     */
     get qaLocatorSpinner() {
         return `spinner ${this.labels.loadingMessage}`;
     }
@@ -306,5 +298,4 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
     get qaLocatorNoAccessIllustration() {
         return `illustration NoAccess`;
     }
-
 }

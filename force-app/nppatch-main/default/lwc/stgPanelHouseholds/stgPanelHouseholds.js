@@ -76,8 +76,7 @@ export default class StgPanelHouseholds extends LightningElement {
             "The template used to generate the informal greeting, typically used in casual correspondence.",
         customInformalGreeting: "Custom Informal Greeting Format",
         nameConnector: "Name Connector",
-        helpNameConnector:
-            "The string used to connect pairs of names \u2014 for example, '&' produces 'John & Jane.'",
+        helpNameConnector: "The string used to connect pairs of names \u2014 for example, '&' produces 'John & Jane.'",
         nameOverrun: "Name Overrun",
         helpNameOverrun:
             "The string used when the list of names exceeds the overrun count \u2014 for example, 'et al.' or 'Family.'",
@@ -91,8 +90,7 @@ export default class StgPanelHouseholds extends LightningElement {
         helpHouseholdRules:
             "Controls which Contacts automatically receive a Household object. This setting only applies when using the One-to-One or Individual Account model \u2014 it is ignored for the Household Account model.",
         excludedRecordTypes: "Excluded Record Types",
-        helpExcludedRecordTypes:
-            "Contact Record Types excluded from automatic Household creation.",
+        helpExcludedRecordTypes: "Contact Record Types excluded from automatic Household creation.",
         mailingListReport: "Household Mailing List Report ID",
         helpMailingListReport:
             "The ID of a Campaign report used for Household-deduplicated mailing lists. The report should be of Campaigns with Contacts, where Member Status does not contain 'Duplicate.'",
@@ -182,21 +180,27 @@ export default class StgPanelHouseholds extends LightningElement {
     // --- Name Format: combobox + Other logic ---
 
     _isOtherValue(value, predefinedOptions) {
-        if (!value) return false;
-        return !predefinedOptions.some(
-            (opt) => opt.value === value && opt.value !== OTHER_VALUE
-        );
+        if (!value) {
+            return false;
+        }
+        return !predefinedOptions.some((opt) => opt.value === value && opt.value !== OTHER_VALUE);
     }
 
     get nameFormatComboValueEdit() {
-        if (this._nameFormatIsOther) return OTHER_VALUE;
+        if (this._nameFormatIsOther) {
+            return OTHER_VALUE;
+        }
         const val = this._workingCopyNaming?.Household_Name_Format__c;
-        if (this._isOtherValue(val, NAME_FORMAT_OPTIONS)) return OTHER_VALUE;
+        if (this._isOtherValue(val, NAME_FORMAT_OPTIONS)) {
+            return OTHER_VALUE;
+        }
         return val || "";
     }
 
     get isNameFormatOtherEdit() {
-        if (this._nameFormatIsOther) return true;
+        if (this._nameFormatIsOther) {
+            return true;
+        }
         const val = this._workingCopyNaming?.Household_Name_Format__c;
         return this._isOtherValue(val, NAME_FORMAT_OPTIONS);
     }
@@ -204,14 +208,20 @@ export default class StgPanelHouseholds extends LightningElement {
     // --- Formal Greeting: combobox + Other logic ---
 
     get formalGreetingComboValueEdit() {
-        if (this._formalGreetingIsOther) return OTHER_VALUE;
+        if (this._formalGreetingIsOther) {
+            return OTHER_VALUE;
+        }
         const val = this._workingCopyNaming?.Formal_Greeting_Format__c;
-        if (this._isOtherValue(val, FORMAL_GREETING_OPTIONS)) return OTHER_VALUE;
+        if (this._isOtherValue(val, FORMAL_GREETING_OPTIONS)) {
+            return OTHER_VALUE;
+        }
         return val || "";
     }
 
     get isFormalGreetingOtherEdit() {
-        if (this._formalGreetingIsOther) return true;
+        if (this._formalGreetingIsOther) {
+            return true;
+        }
         const val = this._workingCopyNaming?.Formal_Greeting_Format__c;
         return this._isOtherValue(val, FORMAL_GREETING_OPTIONS);
     }
@@ -219,14 +229,20 @@ export default class StgPanelHouseholds extends LightningElement {
     // --- Informal Greeting: combobox + Other logic ---
 
     get informalGreetingComboValueEdit() {
-        if (this._informalGreetingIsOther) return OTHER_VALUE;
+        if (this._informalGreetingIsOther) {
+            return OTHER_VALUE;
+        }
         const val = this._workingCopyNaming?.Informal_Greeting_Format__c;
-        if (this._isOtherValue(val, INFORMAL_GREETING_OPTIONS)) return OTHER_VALUE;
+        if (this._isOtherValue(val, INFORMAL_GREETING_OPTIONS)) {
+            return OTHER_VALUE;
+        }
         return val || "";
     }
 
     get isInformalGreetingOtherEdit() {
-        if (this._informalGreetingIsOther) return true;
+        if (this._informalGreetingIsOther) {
+            return true;
+        }
         const val = this._workingCopyNaming?.Informal_Greeting_Format__c;
         return this._isOtherValue(val, INFORMAL_GREETING_OPTIONS);
     }
@@ -234,9 +250,10 @@ export default class StgPanelHouseholds extends LightningElement {
     // --- Excluded Record Types ---
 
     get selectedExcludedRecordTypes() {
-        const raw =
-            this._workingCopyHH?.Household_Creation_Excluded_Recordtypes__c;
-        if (!raw) return [];
+        const raw = this._workingCopyHH?.Household_Creation_Excluded_Recordtypes__c;
+        if (!raw) {
+            return [];
+        }
         return raw.split(";").filter(Boolean);
     }
 
@@ -282,8 +299,7 @@ export default class StgPanelHouseholds extends LightningElement {
     // --- Naming field handlers ---
 
     handleAdvancedNamingChange(event) {
-        this._workingCopyNaming.Advanced_Household_Naming__c =
-            event.detail.checked;
+        this._workingCopyNaming.Advanced_Household_Naming__c = event.detail.checked;
     }
 
     handleNameFormatChange(event) {
@@ -328,8 +344,7 @@ export default class StgPanelHouseholds extends LightningElement {
     }
 
     handleCustomInformalGreetingChange(event) {
-        this._workingCopyNaming.Informal_Greeting_Format__c =
-            event.detail.value;
+        this._workingCopyNaming.Informal_Greeting_Format__c = event.detail.value;
     }
 
     handleNameConnectorChange(event) {
@@ -356,8 +371,7 @@ export default class StgPanelHouseholds extends LightningElement {
     }
 
     handleExcludedRecordTypesChange(event) {
-        this._workingCopyHH.Household_Creation_Excluded_Recordtypes__c =
-            event.detail.value.join(";");
+        this._workingCopyHH.Household_Creation_Excluded_Recordtypes__c = event.detail.value.join(";");
     }
 
     handleMailingListReportChange(event) {
@@ -373,22 +387,14 @@ export default class StgPanelHouseholds extends LightningElement {
             await saveSettings({
                 settingsObjectName: "Household_Naming_Settings__c",
                 fieldValues: {
-                    Advanced_Household_Naming__c:
-                        this._workingCopyNaming.Advanced_Household_Naming__c,
-                    Household_Name_Format__c:
-                        this._workingCopyNaming.Household_Name_Format__c || null,
-                    Formal_Greeting_Format__c:
-                        this._workingCopyNaming.Formal_Greeting_Format__c || null,
-                    Informal_Greeting_Format__c:
-                        this._workingCopyNaming.Informal_Greeting_Format__c || null,
-                    Name_Connector__c:
-                        this._workingCopyNaming.Name_Connector__c,
-                    Name_Overrun__c:
-                        this._workingCopyNaming.Name_Overrun__c,
-                    Contact_Overrun_Count__c:
-                        this._workingCopyNaming.Contact_Overrun_Count__c,
-                    Implementing_Class__c:
-                        this._workingCopyNaming.Implementing_Class__c || null,
+                    Advanced_Household_Naming__c: this._workingCopyNaming.Advanced_Household_Naming__c,
+                    Household_Name_Format__c: this._workingCopyNaming.Household_Name_Format__c || null,
+                    Formal_Greeting_Format__c: this._workingCopyNaming.Formal_Greeting_Format__c || null,
+                    Informal_Greeting_Format__c: this._workingCopyNaming.Informal_Greeting_Format__c || null,
+                    Name_Connector__c: this._workingCopyNaming.Name_Connector__c,
+                    Name_Overrun__c: this._workingCopyNaming.Name_Overrun__c,
+                    Contact_Overrun_Count__c: this._workingCopyNaming.Contact_Overrun_Count__c,
+                    Implementing_Class__c: this._workingCopyNaming.Implementing_Class__c || null,
                 },
             });
 
@@ -396,21 +402,15 @@ export default class StgPanelHouseholds extends LightningElement {
             await saveSettings({
                 settingsObjectName: "Households_Settings__c",
                 fieldValues: {
-                    Household_Rules__c:
-                        this._workingCopyHH.Household_Rules__c || null,
+                    Household_Rules__c: this._workingCopyHH.Household_Rules__c || null,
                     Household_Creation_Excluded_Recordtypes__c:
-                        this._workingCopyHH
-                            .Household_Creation_Excluded_Recordtypes__c || null,
-                    Household_Mailing_List_ID__c:
-                        this._workingCopyHH.Household_Mailing_List_ID__c || null,
+                        this._workingCopyHH.Household_Creation_Excluded_Recordtypes__c || null,
+                    Household_Mailing_List_ID__c: this._workingCopyHH.Household_Mailing_List_ID__c || null,
                 },
             });
 
             // 3. Refresh both wires
-            await Promise.all([
-                refreshApex(this._wiredNamingResult),
-                refreshApex(this._wiredHHResult),
-            ]);
+            await Promise.all([refreshApex(this._wiredNamingResult), refreshApex(this._wiredHHResult)]);
 
             this.dispatchEvent(
                 new ShowToastEvent({
@@ -433,8 +433,12 @@ export default class StgPanelHouseholds extends LightningElement {
     }
 
     _extractError(error) {
-        if (error?.body?.message) return error.body.message;
-        if (error?.message) return error.message;
+        if (error?.body?.message) {
+            return error.body.message;
+        }
+        if (error?.message) {
+            return error.message;
+        }
         return "An unexpected error occurred.";
     }
 }

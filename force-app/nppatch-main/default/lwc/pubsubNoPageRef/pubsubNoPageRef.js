@@ -13,12 +13,11 @@ const events = {};
  * @param {object} thisArg - The value to be passed as the this parameter to the callback function is bound.
  */
 const registerListener = (eventName, callback, thisArg) => {
-
     if (!events[eventName]) {
         events[eventName] = [];
     }
 
-    const duplicate = events[eventName].find(listener => {
+    const duplicate = events[eventName].find((listener) => {
         return listener.callback === callback && listener.thisArg === thisArg;
     });
 
@@ -36,8 +35,7 @@ const registerListener = (eventName, callback, thisArg) => {
 const unregisterListener = (eventName, callback, thisArg) => {
     if (events[eventName]) {
         events[eventName] = events[eventName].filter(
-            listener =>
-                listener.callback !== callback || listener.thisArg !== thisArg
+            (listener) => listener.callback !== callback || listener.thisArg !== thisArg
         );
     }
 };
@@ -46,11 +44,9 @@ const unregisterListener = (eventName, callback, thisArg) => {
  * Unregisters all event listeners bound to an object.
  * @param {object} thisArg - All the callbacks bound to this object will be removed.
  */
-const unregisterAllListeners = thisArg => {
-    Object.keys(events).forEach(eventName => {
-        events[eventName] = events[eventName].filter(
-            listener => listener.thisArg !== thisArg
-        );
+const unregisterAllListeners = (thisArg) => {
+    Object.keys(events).forEach((eventName) => {
+        events[eventName] = events[eventName].filter((listener) => listener.thisArg !== thisArg);
     });
 };
 
@@ -63,7 +59,7 @@ const unregisterAllListeners = thisArg => {
 const fireEvent = (pageRef, eventName, payload) => {
     if (events[eventName]) {
         const listeners = events[eventName];
-        listeners.forEach(listener => {
+        listeners.forEach((listener) => {
             try {
                 listener.callback.call(listener.thisArg, payload);
             } catch (error) {
@@ -73,9 +69,4 @@ const fireEvent = (pageRef, eventName, payload) => {
     }
 };
 
-export {
-    registerListener,
-    unregisterListener,
-    unregisterAllListeners,
-    fireEvent
-};
+export { registerListener, unregisterListener, unregisterAllListeners, fireEvent };

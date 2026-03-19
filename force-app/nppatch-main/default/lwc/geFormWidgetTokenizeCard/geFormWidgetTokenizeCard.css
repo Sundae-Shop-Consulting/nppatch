@@ -10,14 +10,15 @@
 }
 
 .credit-card-container {
-    border: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-neutral-base-90, #E2E1E0);
+    border: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-neutral-base-90, #e2e1e0);
     border-radius: var(--slds-g-radius-border-2, 0.25rem);
     min-height: 5rem;
-    box-shadow: none var(--slds-g-sizing-border-2, 2px) var(--slds-g-sizing-border-2, 2px) none var(--slds-g-color-neutral-base-90, #ddd);
+    box-shadow: none var(--slds-g-sizing-border-2, 2px) var(--slds-g-sizing-border-2, 2px) none
+        var(--slds-g-color-neutral-base-90, #ddd);
 }
 
 .credit-card-header {
-    background-color: var(--slds-g-color-surface-3, #E2E1E0);
+    background-color: var(--slds-g-color-surface-3, #e2e1e0);
     font-weight: bold;
 }
 

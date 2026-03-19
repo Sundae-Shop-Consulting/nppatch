@@ -1,5 +1,5 @@
-import GeFormService from 'c/geFormService';
-import { isEmptyObject, isNotEmpty } from 'c/utilCommon';
+import GeFormService from "c/geFormService";
+import { isEmptyObject, isNotEmpty } from "c/utilCommon";
 
 /**
  * @description Helper function used to convert an object that has key value pairs where
@@ -10,9 +10,9 @@ import { isEmptyObject, isNotEmpty } from 'c/utilCommon';
  * the fields on the passed in object.
  */
 export function flatten(obj) {
-    let flatObj = {};
+    const flatObj = {};
     for (const [key, value] of Object.entries(obj)) {
-        if (value !== null && value !== undefined && value.hasOwnProperty('value')) {
+        if (value !== null && value !== undefined && Object.prototype.hasOwnProperty.call(value, "value")) {
             flatObj[key] = value.value;
         } else {
             flatObj[key] = value;
@@ -36,54 +36,63 @@ export function convertBDIToWidgetJson(additionalObjectJson) {
 
     const additionalObjects = JSON.parse(additionalObjectJson);
 
-    if (isEmptyObject(additionalObjects) ||
-        !additionalObjects.hasOwnProperty('dynamicSourceByObjMappingDevName')) {
-
+    if (
+        isEmptyObject(additionalObjects) ||
+        !Object.prototype.hasOwnProperty.call(additionalObjects, "dynamicSourceByObjMappingDevName")
+    ) {
         return additionalObjectJson;
     }
 
-    let targetFieldsByObjectDevName = {};
-    Object.values(additionalObjects.dynamicSourceByObjMappingDevName).forEach(dynamicSourceValue => {
-        let fieldMappingsForObjectDevName = GeFormService.fieldMappingsForObjectMappingDevName(
-            dynamicSourceValue.objectMappingTemplateDevName)
-            .filter(fieldMapping => {
-                return Object.keys(dynamicSourceValue.sourceObj)
-                    .filter(sourceObjKey => isNotEmpty(dynamicSourceValue.sourceObj[sourceObjKey]))
-                    .includes(fieldMapping.Source_Field_API_Name);
-            });
-
-        let targetFieldApiNameBySourceFieldApiName = {};
-
-        fieldMappingsForObjectDevName.forEach(fieldMapping => {
-            targetFieldApiNameBySourceFieldApiName[fieldMapping.Source_Field_API_Name] =
-                fieldMapping.Target_Field_API_Name
+    const targetFieldsByObjectDevName = {};
+    Object.values(additionalObjects.dynamicSourceByObjMappingDevName).forEach((dynamicSourceValue) => {
+        const fieldMappingsForObjectDevName = GeFormService.fieldMappingsForObjectMappingDevName(
+            dynamicSourceValue.objectMappingTemplateDevName
+        ).filter((fieldMapping) => {
+            return Object.keys(dynamicSourceValue.sourceObj)
+                .filter((sourceObjKey) => isNotEmpty(dynamicSourceValue.sourceObj[sourceObjKey]))
+                .includes(fieldMapping.Source_Field_API_Name);
         });
 
-        if (!targetFieldsByObjectDevName.hasOwnProperty(dynamicSourceValue.objectMappingTemplateDevName)) {
-            targetFieldsByObjectDevName[dynamicSourceValue.objectMappingTemplateDevName] = []
+        const targetFieldApiNameBySourceFieldApiName = {};
+
+        fieldMappingsForObjectDevName.forEach((fieldMapping) => {
+            targetFieldApiNameBySourceFieldApiName[fieldMapping.Source_Field_API_Name] =
+                fieldMapping.Target_Field_API_Name;
+        });
+
+        if (
+            !Object.prototype.hasOwnProperty.call(
+                targetFieldsByObjectDevName,
+                dynamicSourceValue.objectMappingTemplateDevName
+            )
+        ) {
+            targetFieldsByObjectDevName[dynamicSourceValue.objectMappingTemplateDevName] = [];
         }
 
         const simplifiedObjectForObjectDevName = createSimplifiedObjectForObjectDevName(
-            targetFieldApiNameBySourceFieldApiName, dynamicSourceValue);
+            targetFieldApiNameBySourceFieldApiName,
+            dynamicSourceValue
+        );
         targetFieldsByObjectDevName[dynamicSourceValue.objectMappingTemplateDevName].push(
-            simplifiedObjectForObjectDevName);
+            simplifiedObjectForObjectDevName
+        );
     });
 
     return JSON.stringify(targetFieldsByObjectDevName);
 }
 
 function createSimplifiedObjectForObjectDevName(targetFieldApiNameBySourceFieldApiName, dynamicSourceValue) {
-    let simplifiedObjectForObjectDevName = {
+    const simplifiedObjectForObjectDevName = {
         attributes: {
-            type: GeFormService.getObjectMapping(dynamicSourceValue.objectMappingTemplateDevName).Object_API_Name
-        }
+            type: GeFormService.getObjectMapping(dynamicSourceValue.objectMappingTemplateDevName).Object_API_Name,
+        },
     };
 
     Object.keys(dynamicSourceValue.sourceObj)
-        .filter(sourceField => isNotEmpty(targetFieldApiNameBySourceFieldApiName[sourceField]))
-        .forEach(sourceFieldKey => {
-            simplifiedObjectForObjectDevName[ targetFieldApiNameBySourceFieldApiName[sourceFieldKey] ] =
-                dynamicSourceValue.sourceObj[sourceFieldKey]
+        .filter((sourceField) => isNotEmpty(targetFieldApiNameBySourceFieldApiName[sourceField]))
+        .forEach((sourceFieldKey) => {
+            simplifiedObjectForObjectDevName[targetFieldApiNameBySourceFieldApiName[sourceFieldKey]] =
+                dynamicSourceValue.sourceObj[sourceFieldKey];
         });
 
     return simplifiedObjectForObjectDevName;
