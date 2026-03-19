@@ -189,39 +189,67 @@ export default class GeFormRenderer extends LightningElement {
     // these three fields are used to query the donor record
     // when opened from an Account or Contact
     _donorRecordId;
-    @api get donorRecordId() { return this._donorRecordId; }
-    set donorRecordId(value) { this._donorRecordId = value; }
+    @api get donorRecordId() {
+        return this._donorRecordId;
+    }
+    set donorRecordId(value) {
+        this._donorRecordId = value;
+    }
 
     _donorRecord;
-    @api get donorRecord() { return this._donorRecord; }
-    set donorRecord(value) { this._donorRecord = value; }
+    @api get donorRecord() {
+        return this._donorRecord;
+    }
+    set donorRecord(value) {
+        this._donorRecord = value;
+    }
 
     _loadingText;
-    @api get loadingText() { return this._loadingText; }
-    set loadingText(value) { this._loadingText = value; }
+    @api get loadingText() {
+        return this._loadingText;
+    }
+    set loadingText(value) {
+        this._loadingText = value;
+    }
 
     fieldNames = [ACCOUNT_NAME_FIELD, CONTACT_NAME_FIELD];
     PAYMENT_TRANSACTION_STATUS_ENUM;
 
     _sections = [];
-    @api get sections() { return this._sections; }
-    set sections(value) { this._sections = value; }
+    @api get sections() {
+        return this._sections;
+    }
+    set sections(value) {
+        this._sections = value;
+    }
 
     _showSpinner = false;
-    @api get showSpinner() { return this._showSpinner; }
-    set showSpinner(value) { this._showSpinner = value; }
+    @api get showSpinner() {
+        return this._showSpinner;
+    }
+    set showSpinner(value) {
+        this._showSpinner = value;
+    }
 
     @api batchId;
     @api gift;
     @api submissions = [];
 
     _hasPageLevelError = false;
-    @api get hasPageLevelError() { return this._hasPageLevelError; }
-    set hasPageLevelError(value) { this._hasPageLevelError = value; }
+    @api get hasPageLevelError() {
+        return this._hasPageLevelError;
+    }
+    set hasPageLevelError(value) {
+        this._hasPageLevelError = value;
+    }
 
     _pageLevelErrorMessageList = [];
-    @api get pageLevelErrorMessageList() { return this._pageLevelErrorMessageList; }
-    set pageLevelErrorMessageList(value) { this._pageLevelErrorMessageList = value; }
+    @api get pageLevelErrorMessageList() {
+        return this._pageLevelErrorMessageList;
+    }
+    set pageLevelErrorMessageList(value) {
+        this._pageLevelErrorMessageList = value;
+    }
 
     @api batchCurrencyIsoCode;
     @api isElevateCustomer = false;
@@ -240,8 +268,12 @@ export default class GeFormRenderer extends LightningElement {
     @track version = "";
 
     _hasPaymentWidget = false;
-    @api get hasPaymentWidget() { return this._hasPaymentWidget; }
-    set hasPaymentWidget(value) { this._hasPaymentWidget = value; }
+    @api get hasPaymentWidget() {
+        return this._hasPaymentWidget;
+    }
+    set hasPaymentWidget(value) {
+        this._hasPaymentWidget = value;
+    }
     _isElevateWidgetInDisabledState = false;
     cardholderNamesNotInTemplate = {};
     _openedGiftId;
@@ -1694,7 +1726,10 @@ export default class GeFormRenderer extends LightningElement {
                 sections.forEach((section) => {
                     section.elements.forEach((element) => {
                         for (const key in batchDefaultsObject) {
-                            if (Object.prototype.hasOwnProperty.call(batchDefaultsObject, key) && key === element.customLabel) {
+                            if (
+                                Object.prototype.hasOwnProperty.call(batchDefaultsObject, key) &&
+                                key === element.customLabel
+                            ) {
                                 const batchDefault = batchDefaultsObject[key];
                                 if (
                                     batchDefault.objectApiName === element.objectApiName &&
@@ -2417,9 +2452,7 @@ export default class GeFormRenderer extends LightningElement {
     }
 
     defaultValueFor(fieldMappingDevName) {
-        const element = this.formElements().find(
-            (el) => el.dataImportFieldMappingDevNames[0] === fieldMappingDevName
-        );
+        const element = this.formElements().find((el) => el.dataImportFieldMappingDevNames[0] === fieldMappingDevName);
 
         return element && element.defaultValue;
     }

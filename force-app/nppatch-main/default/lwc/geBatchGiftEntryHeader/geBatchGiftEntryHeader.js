@@ -11,8 +11,12 @@ export default class GeBatchGiftEntryHeader extends LightningElement {
 
     @api giftBatchState;
     _isGiftBatchProcessing;
-    @api get isGiftBatchProcessing() { return this._isGiftBatchProcessing; }
-    set isGiftBatchProcessing(value) { this._isGiftBatchProcessing = value; }
+    @api get isGiftBatchProcessing() {
+        return this._isGiftBatchProcessing;
+    }
+    set isGiftBatchProcessing(value) {
+        this._isGiftBatchProcessing = value;
+    }
 
     get batchName() {
         return this.giftBatchState.name;

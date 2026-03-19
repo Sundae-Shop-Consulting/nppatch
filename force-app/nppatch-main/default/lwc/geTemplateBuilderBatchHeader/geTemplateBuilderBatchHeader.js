@@ -21,12 +21,20 @@ export default class geTemplateBuilderBatchHeader extends LightningElement {
     @api disableBatchTableColumnsSubtab = false;
     @api batchTableColumnsAccessErrorMessage;
     _batchFields;
-    @api get batchFields() { return this._batchFields; }
-    set batchFields(value) { this._batchFields = value; }
+    @api get batchFields() {
+        return this._batchFields;
+    }
+    set batchFields(value) {
+        this._batchFields = value;
+    }
     @api selectedBatchFields;
     _missingRequiredFields;
-    @api get missingRequiredFields() { return this._missingRequiredFields; }
-    set missingRequiredFields(value) { this._missingRequiredFields = value; }
+    @api get missingRequiredFields() {
+        return this._missingRequiredFields;
+    }
+    set missingRequiredFields(value) {
+        this._missingRequiredFields = value;
+    }
     @api availableBatchTableColumnOptions;
     @api selectedBatchTableColumnOptions;
 

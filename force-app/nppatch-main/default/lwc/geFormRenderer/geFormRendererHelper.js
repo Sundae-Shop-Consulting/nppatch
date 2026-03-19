@@ -36,7 +36,10 @@ export function convertBDIToWidgetJson(additionalObjectJson) {
 
     const additionalObjects = JSON.parse(additionalObjectJson);
 
-    if (isEmptyObject(additionalObjects) || !Object.prototype.hasOwnProperty.call(additionalObjects, "dynamicSourceByObjMappingDevName")) {
+    if (
+        isEmptyObject(additionalObjects) ||
+        !Object.prototype.hasOwnProperty.call(additionalObjects, "dynamicSourceByObjMappingDevName")
+    ) {
         return additionalObjectJson;
     }
 
@@ -57,7 +60,12 @@ export function convertBDIToWidgetJson(additionalObjectJson) {
                 fieldMapping.Target_Field_API_Name;
         });
 
-        if (!Object.prototype.hasOwnProperty.call(targetFieldsByObjectDevName, dynamicSourceValue.objectMappingTemplateDevName)) {
+        if (
+            !Object.prototype.hasOwnProperty.call(
+                targetFieldsByObjectDevName,
+                dynamicSourceValue.objectMappingTemplateDevName
+            )
+        ) {
             targetFieldsByObjectDevName[dynamicSourceValue.objectMappingTemplateDevName] = [];
         }
 

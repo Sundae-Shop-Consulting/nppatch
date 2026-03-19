@@ -537,10 +537,7 @@ describe("c-ge-gift-entry-form-app", () => {
             expect(getFormRenderWrapper).toHaveBeenCalled();
             const geFormSections = shadowQuerySelectorAll(geFormRenderer, "c-ge-form-section");
 
-            const [, , contactLookup] = shadowQuerySelectorAll(
-                geFormSections[0],
-                "c-ge-form-field"
-            );
+            const [, , contactLookup] = shadowQuerySelectorAll(geFormSections[0], "c-ge-form-field");
 
             const contactInput = shadowQuerySelector(contactLookup, "lightning-input-field");
 
@@ -588,10 +585,7 @@ describe("c-ge-gift-entry-form-app", () => {
             expect(getFormRenderWrapper).toHaveBeenCalled();
             const geFormSections = shadowQuerySelectorAll(geFormRenderer, "c-ge-form-section");
 
-            const [, accountLookup] = shadowQuerySelectorAll(
-                geFormSections[0],
-                "c-ge-form-field"
-            );
+            const [, accountLookup] = shadowQuerySelectorAll(geFormSections[0], "c-ge-form-field");
 
             const accountInput = shadowQuerySelector(accountLookup, "lightning-input-field");
 
@@ -729,10 +723,7 @@ describe("c-ge-gift-entry-form-app", () => {
             expect(getFormRenderWrapper).toHaveBeenCalled();
             const geFormSections = shadowQuerySelectorAll(geFormRenderer, "c-ge-form-section");
 
-            const [, , recordType, opportunityType] = shadowQuerySelectorAll(
-                geFormSections[3],
-                "c-ge-form-field"
-            );
+            const [, , recordType, opportunityType] = shadowQuerySelectorAll(geFormSections[3], "c-ge-form-field");
             const opportunityTypeInput = shadowQuerySelector(opportunityType, "lightning-combobox");
 
             expect(opportunityTypeInput.options).toContainOptions(["c.stgLabelNone", "Donation Test"]);
@@ -936,10 +927,7 @@ describe("c-ge-gift-entry-form-app", () => {
 
             const geFormRenderer = shadowQuerySelector(formApp, "c-ge-form-renderer");
             const geFormSections = shadowQuerySelectorAll(geFormRenderer, "c-ge-form-section");
-            const [donorType] = shadowQuerySelectorAll(
-                geFormSections[0],
-                "c-ge-form-field"
-            );
+            const [donorType] = shadowQuerySelectorAll(geFormSections[0], "c-ge-form-field");
             const donorInput = shadowQuerySelector(donorType, "lightning-combobox");
 
             runWithFakeTimer(() => {
@@ -987,10 +975,7 @@ describe("c-ge-gift-entry-form-app", () => {
 
             const geFormRenderer = shadowQuerySelector(formApp, "c-ge-form-renderer");
             const geFormSections = shadowQuerySelectorAll(geFormRenderer, "c-ge-form-section");
-            const [donorType] = shadowQuerySelectorAll(
-                geFormSections[0],
-                "c-ge-form-field"
-            );
+            const [donorType] = shadowQuerySelectorAll(geFormSections[0], "c-ge-form-field");
             const donorInput = shadowQuerySelector(donorType, "lightning-combobox");
 
             runWithFakeTimer(() => {
@@ -1065,13 +1050,12 @@ describe("c-ge-gift-entry-form-app", () => {
             GeGatewaySettings.isValidElevatePaymentMethod = jest.fn(() => true);
             geFormRenderer.GeGatewaySettings = GeGatewaySettings;
 
-            const [firstSection, , , fourthSection] = shadowQuerySelectorAll(
-                geFormRenderer,
-                "c-ge-form-section"
-            );
+            const [firstSection, , , fourthSection] = shadowQuerySelectorAll(geFormRenderer, "c-ge-form-section");
             const [donorType, , contactLookup] = shadowQuerySelectorAll(firstSection, "c-ge-form-field");
-            const [donationDate, donationAmount, , , , paymentMethod] =
-                shadowQuerySelectorAll(fourthSection, "c-ge-form-field");
+            const [donationDate, donationAmount, , , , paymentMethod] = shadowQuerySelectorAll(
+                fourthSection,
+                "c-ge-form-field"
+            );
 
             runWithFakeTimer(() => {
                 changeFieldValue(donorType, "Contact1");

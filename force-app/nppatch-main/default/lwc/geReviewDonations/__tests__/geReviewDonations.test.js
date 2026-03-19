@@ -4,7 +4,6 @@ import { getRecord } from "lightning/uiRecordApi";
 import GeReviewDonations from "c/geReviewDonations";
 // pubsubNoPageRef is mocked below; no direct usage needed
 
-
 import getOpenDonationsView from "@salesforce/apex/GE_GiftEntryController.getOpenDonationsView";
 
 // Mock Apex wire adapter

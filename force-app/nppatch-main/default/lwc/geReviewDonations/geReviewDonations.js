@@ -106,12 +106,16 @@ export default class geReviewDonations extends NavigationMixin(LightningElement)
 
     get isApplyingNewPayment() {
         return (
-            this._donationType === OPPORTUNITY.objectApiName && Object.prototype.hasOwnProperty.call(this._selectedDonation, "applyPayment")
+            this._donationType === OPPORTUNITY.objectApiName &&
+            Object.prototype.hasOwnProperty.call(this._selectedDonation, "applyPayment")
         );
     }
 
     get isCreatingNewOpportunity() {
-        return this._donationType === OPPORTUNITY.objectApiName && Object.prototype.hasOwnProperty.call(this._selectedDonation, "new");
+        return (
+            this._donationType === OPPORTUNITY.objectApiName &&
+            Object.prototype.hasOwnProperty.call(this._selectedDonation, "new")
+        );
     }
 
     get hasSelectedDonation() {

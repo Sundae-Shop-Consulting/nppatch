@@ -185,7 +185,9 @@ export default class GeBatchGiftEntryTable extends LightningElement {
     }
 
     hasDataImportRowError(row) {
-        return this.getErrorPropertiesToDisplayInRow().some((errorProperty) => Object.prototype.hasOwnProperty.call(row, errorProperty));
+        return this.getErrorPropertiesToDisplayInRow().some((errorProperty) =>
+            Object.prototype.hasOwnProperty.call(row, errorProperty)
+        );
     }
 
     getTableRowErrorMessages(dataImportRow) {

@@ -73,8 +73,12 @@ export default class geTemplateBuilderFormFields extends LightningElement {
     @api selectedFieldMappingSet;
     @api formSections;
     _activeFormSectionId;
-    @api get activeFormSectionId() { return this._activeFormSectionId; }
-    set activeFormSectionId(value) { this._activeFormSectionId = value; }
+    @api get activeFormSectionId() {
+        return this._activeFormSectionId;
+    }
+    set activeFormSectionId(value) {
+        this._activeFormSectionId = value;
+    }
     @api sectionIdsByFieldMappingDeveloperNames;
 
     @track objectMappings;
