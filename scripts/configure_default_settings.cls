@@ -43,6 +43,11 @@ public static void initializeDefaultSettings() {
     setDataImportSettings();
     setGiftEntrySettings();
     setLevelsSettings();
+
+    // Initialize TDTM trigger handler records and schedule default jobs
+    %%%NAMESPACE%%%TDTM_DefaultConfig.insertDefaults(null);
+    %%%NAMESPACE%%%UTIL_MasterSchedulableHelper.abortOldScheduledJobs();
+    %%%NAMESPACE%%%UTIL_MasterSchedulableHelper.setScheduledJobs();
 }
 
 // ==============================================================================================================

@@ -54,7 +54,7 @@ public with sharing class BulkProcessController {
                 return Database.executeBatch(new OPP_PrimaryContactRoleMerge_BATCH(), 2000);
             }
             when 'resetTriggerHandlers' {
-                new STG_InstallScript().runNewOrgScript();
+                TDTM_DefaultConfig.insertDefaults(null);
                 return null;
             }
             when 'rescheduleJobs' {
