@@ -1,10 +1,11 @@
-/* global sforce */
-import { LightningElement, api, wire } from "lwc";
+import { LightningElement, wire } from "lwc";
+import { NavigationMixin, CurrentPageReference } from "lightning/navigation";
 import { showToast, reduceErrors, getChildObjectByName, prefixNamespace, debouncify } from "c/util";
 
 import getInitialData from "@salesforce/apex/HH_Container_LCTRL.getInitialData";
 import getHHNamesGreetings from "@salesforce/apex/HH_Container_LCTRL.getHHNamesGreetings";
 import saveHouseholdPage from "@salesforce/apex/HH_Container_LCTRL.saveHouseholdPage";
+import getContactById from "@salesforce/apex/HH_Container_LCTRL.getContactById";
 import getContacts from "@salesforce/apex/HH_Container_LCTRL.getContacts";
 import getAddresses from "@salesforce/apex/HH_Container_LCTRL.getAddresses";
 import addContactAddresses from "@salesforce/apex/HH_Container_LCTRL.addContactAddresses";
@@ -31,11 +32,19 @@ import lblMergeHHPrompt from "@salesforce/label/c.lblMergeHHPrompt";
 import lblBtnAddContact from "@salesforce/label/c.lblBtnAddContact";
 import lblBtnAddAllHHMembers from "@salesforce/label/c.lblBtnAddAllHHMembers";
 import lblNoHHMergePermissions from "@salesforce/label/c.lblNoHHMergePermissions";
+import lblFindInContacts from "@salesforce/label/c.lblFindInContacts";
 
-const NAMESPACE_PREFIX = "nppatch__";
+const NAMESPACE_PREFIX = prefixNamespace("");
 
-export default class ManageHousehold extends LightningElement {
-    @api householdId;
+export default class ManageHousehold extends NavigationMixin(LightningElement) {
+    householdId;
+
+    @wire(CurrentPageReference)
+    setCurrentPageReference(pageRef) {
+        if (pageRef?.state?.c__householdId) {
+            this.householdId = pageRef.state.c__householdId;
+        }
+    }
 
     // State
     household = null;
@@ -129,6 +138,19 @@ export default class ManageHousehold extends LightningElement {
     get noHHMergePermissionsLabel() {
         return lblNoHHMergePermissions;
     }
+    get findInContactsLabel() {
+        return lblFindInContacts;
+    }
+
+    get contactPickerFilter() {
+        const existingIds = this.contacts.map((c) => c.Id).filter(Boolean);
+        if (existingIds.length === 0) {
+            return undefined;
+        }
+        return {
+            criteria: [{ fieldPath: "Id", operator: "nin", value: existingIds }],
+        };
+    }
 
     get householdListUrl() {
         return "/" + (this.hhTypePrefix || "001");
@@ -167,17 +189,13 @@ export default class ManageHousehold extends LightningElement {
     }
 
     get contactUndeliverableLabel() {
-        if (!this.fieldLabels) {
-            return "";
-        }
+        if (!this.fieldLabels) return "";
         const key = prefixNamespace("Undeliverable_Address__c");
         return this.fieldLabels[key] || getChildObjectByName(this.fieldLabels, "Undeliverable_Address__c") || "";
     }
 
     get addressUndeliverableLabel() {
-        if (!this.fieldLabels) {
-            return "";
-        }
+        if (!this.fieldLabels) return "";
         const key = prefixNamespace("Undeliverable__c");
         return this.fieldLabels[key] || getChildObjectByName(this.fieldLabels, "Undeliverable__c") || "";
     }
@@ -190,17 +208,13 @@ export default class ManageHousehold extends LightningElement {
     }
 
     get mergeHHPromptText() {
-        if (!this.contactToAdd) {
-            return lblMergeHHPrompt;
-        }
+        if (!this.contactToAdd) return lblMergeHHPrompt;
         const name = `${this.contactToAdd.FirstName || ""} ${this.contactToAdd.LastName || ""}`.trim();
-        return lblMergeHHPrompt.replace("{0}", name);
+        return lblMergeHHPrompt.replaceAll("{0}", name);
     }
 
     get addContactButtonLabel() {
-        if (!this.contactToAdd) {
-            return lblBtnAddContact;
-        }
+        if (!this.contactToAdd) return lblBtnAddContact;
         const name = `${this.contactToAdd.FirstName || ""} ${this.contactToAdd.LastName || ""}`.trim();
         return lblBtnAddContact.replace("{0}", name);
     }
@@ -235,9 +249,7 @@ export default class ManageHousehold extends LightningElement {
     // ===== Namespace handling =====
 
     _removePrefix(obj) {
-        if (!obj || typeof obj !== "object") {
-            return obj;
-        }
+        if (!obj || typeof obj !== "object") return obj;
         const result = {};
         for (const key of Object.keys(obj)) {
             if (key.startsWith(NAMESPACE_PREFIX)) {
@@ -254,9 +266,7 @@ export default class ManageHousehold extends LightningElement {
     }
 
     _addPrefix(obj) {
-        if (!obj || typeof obj !== "object") {
-            return obj;
-        }
+        if (!obj || typeof obj !== "object") return obj;
         const result = {};
         for (const key of Object.keys(obj)) {
             if (key === "_key" || key === "dtNewContact") {
@@ -280,16 +290,12 @@ export default class ManageHousehold extends LightningElement {
     }
 
     _removeListPrefix(list) {
-        if (!list) {
-            return [];
-        }
+        if (!list) return [];
         return list.map((item) => this._removePrefix(item));
     }
 
     _addListPrefix(list) {
-        if (!list) {
-            return [];
-        }
+        if (!list) return [];
         return list.map((item) => this._addPrefix(item));
     }
 
@@ -343,9 +349,7 @@ export default class ManageHousehold extends LightningElement {
     handleContactReorder(event) {
         const { index, direction } = event.detail;
         const newIndex = direction === "up" ? index - 1 : index + 1;
-        if (newIndex < 0 || newIndex >= this.contacts.length) {
-            return;
-        }
+        if (newIndex < 0 || newIndex >= this.contacts.length) return;
 
         const reordered = [...this.contacts];
         const [moved] = reordered.splice(index, 1);
@@ -364,43 +368,68 @@ export default class ManageHousehold extends LightningElement {
 
     // ===== Contact search / add / merge =====
 
-    handleContactSelected(event) {
-        const conAdd = this._removePrefix(event.detail.contact);
-        conAdd.sobjectType = "Contact";
-
-        let cMembers = 0;
-        const hhId = conAdd.HHId__c;
-
-        if (hhId && String(hhId).substring(0, 3) === "001") {
-            const acc = conAdd.Account;
-            if (acc) {
-                cMembers = getChildObjectByName(acc, "Number_of_Household_Members__c") || 0;
-            }
-        } else if (conAdd.Household__c) {
-            const hhR = getChildObjectByName(conAdd, "Household__r");
-            if (hhR) {
-                cMembers = getChildObjectByName(hhR, "Number_of_Household_Members__c") || 0;
-            }
-        }
-
-        this.contactToAdd = conAdd;
-        this.householdToMerge = { Id: hhId, Number_of_Household_Members__c: cMembers };
-
-        if (!this.allowHouseholdMerge) {
-            if (cMembers > 1) {
-                this._addSingleContact(conAdd);
-            } else {
-                this.errorMessage = this.noHHMergePermissionsLabel;
-            }
+    async handleContactSelected(event) {
+        const contactId = event.detail.recordId;
+        if (!contactId) {
             return;
         }
 
-        if (!hhId) {
-            this._addSingleContact(conAdd);
-        } else if (cMembers === 1) {
-            this._mergeHousehold(this.householdToMerge);
-        } else {
-            this.showMergeHHPopup = true;
+        // Clear the record picker selection
+        const picker = this.template.querySelector("lightning-record-picker");
+        if (picker) {
+            picker.clearSelection();
+        }
+
+        // Skip if contact is already in the household
+        if (this.contacts.some((c) => c.Id === contactId)) {
+            return;
+        }
+
+        this.showSpinner = true;
+        try {
+            const fullContact = await getContactById({ contactId });
+            const conAdd = this._removePrefix(fullContact);
+            conAdd.sobjectType = "Contact";
+
+            let cMembers = 0;
+            const hhId = conAdd.HHId__c;
+
+            if (hhId && String(hhId).substring(0, 3) === "001") {
+                const acc = conAdd.Account;
+                if (acc) {
+                    cMembers = getChildObjectByName(acc, "Number_of_Household_Members__c") || 0;
+                }
+            } else if (conAdd.Household__c) {
+                const hhR = getChildObjectByName(conAdd, "Household__r");
+                if (hhR) {
+                    cMembers = getChildObjectByName(hhR, "Number_of_Household_Members__c") || 0;
+                }
+            }
+
+            this.contactToAdd = conAdd;
+            this.householdToMerge = { Id: hhId, Number_of_Household_Members__c: cMembers };
+
+            if (!this.allowHouseholdMerge) {
+                if (cMembers > 1) {
+                    this._addSingleContact(conAdd);
+                } else {
+                    this.errorMessage = this.noHHMergePermissionsLabel;
+                    this.showSpinner = false;
+                }
+                return;
+            }
+
+            if (!hhId) {
+                this._addSingleContact(conAdd);
+            } else if (cMembers === 1) {
+                this._mergeHousehold(this.householdToMerge);
+            } else {
+                this.showSpinner = false;
+                this.showMergeHHPopup = true;
+            }
+        } catch (error) {
+            this.errorMessage = reduceErrors(error).join(", ");
+            this.showSpinner = false;
         }
     }
 
@@ -518,13 +547,7 @@ export default class ManageHousehold extends LightningElement {
 
     // ===== New Contact =====
 
-    handleNewContactRequest(event) {
-        const { firstName, lastName } = event.detail;
-        this.newContact = {
-            ...this.newContact,
-            FirstName: firstName,
-            LastName: lastName,
-        };
+    handleNewContactClick() {
         this.newContactError = "";
         this.showNewContactPopup = true;
     }
@@ -602,9 +625,7 @@ export default class ManageHousehold extends LightningElement {
     }
 
     _updateDefaultAddress(addr) {
-        if (!addr) {
-            return;
-        }
+        if (!addr) return;
 
         // Update household
         const hh = { ...this.household };
@@ -665,24 +686,16 @@ export default class ManageHousehold extends LightningElement {
         this.household = { ...this.household, [field]: value };
 
         // Turn off auto-naming for the changed field
-        if (field === "Name") {
-            this.isAutoName = false;
-        } else if (field === "Formal_Greeting__c") {
-            this.isAutoFormalGreeting = false;
-        } else if (field === "Informal_Greeting__c") {
-            this.isAutoInformalGreeting = false;
-        }
+        if (field === "Name") this.isAutoName = false;
+        else if (field === "Formal_Greeting__c") this.isAutoFormalGreeting = false;
+        else if (field === "Informal_Greeting__c") this.isAutoInformalGreeting = false;
     }
 
     handleAutoNamingChanged(event) {
         const { field, checked } = event.detail;
-        if (field === "Name") {
-            this.isAutoName = checked;
-        } else if (field === "Formal_Greeting__c") {
-            this.isAutoFormalGreeting = checked;
-        } else if (field === "Informal_Greeting__c") {
-            this.isAutoInformalGreeting = checked;
-        }
+        if (field === "Name") this.isAutoName = checked;
+        else if (field === "Formal_Greeting__c") this.isAutoFormalGreeting = checked;
+        else if (field === "Informal_Greeting__c") this.isAutoInformalGreeting = checked;
 
         if (checked) {
             this._debouncedUpdateNames();
@@ -691,15 +704,9 @@ export default class ManageHousehold extends LightningElement {
 
     _updateNamingExclusions() {
         let exclusions = "";
-        if (!this.isAutoName) {
-            exclusions += "Name;";
-        }
-        if (!this.isAutoFormalGreeting) {
-            exclusions += "Formal_Greeting__c;";
-        }
-        if (!this.isAutoInformalGreeting) {
-            exclusions += "Informal_Greeting__c;";
-        }
+        if (!this.isAutoName) exclusions += "Name;";
+        if (!this.isAutoFormalGreeting) exclusions += "Formal_Greeting__c;";
+        if (!this.isAutoInformalGreeting) exclusions += "Informal_Greeting__c;";
         this.household = {
             ...this.household,
             SYSTEM_CUSTOM_NAMING__c: exclusions,
@@ -796,13 +803,12 @@ export default class ManageHousehold extends LightningElement {
     }
 
     _closePage() {
-        // Navigate back to the household record
-        if (typeof sforce !== "undefined") {
-            // Lightning Experience
-            sforce.one.back(true);
-        } else {
-            // Classic
-            window.location.replace("/" + this.householdId);
-        }
+        this[NavigationMixin.Navigate]({
+            type: "standard__recordPage",
+            attributes: {
+                recordId: this.householdId,
+                actionName: "view",
+            },
+        });
     }
 }

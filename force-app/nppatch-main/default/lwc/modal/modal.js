@@ -38,6 +38,7 @@ export default class Modal extends LightningElement {
 
     renderedCallback() {
         if (!this._rendered && this.defaultVisible) {
+            this._rendered = true;
             this.focus();
             return;
         }

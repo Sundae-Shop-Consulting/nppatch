@@ -7,10 +7,10 @@
                     <p id="bread-crumb-label" class="slds-assistive-text">{youAreHereLabel}</p>
                     <ol class="slds-breadcrumb slds-list_horizontal" aria-labelledby="bread-crumb-label">
                         <li class="slds-breadcrumb__item slds-text-heading_label">
-                            <a href="{householdListUrl}">{householdLabel}</a>
+                            <a href={householdListUrl}>{householdLabel}</a>
                         </li>
                         <li class="slds-breadcrumb__item slds-text-heading_label">
-                            <a href="{householdRecordUrl}">{householdNameValue}</a>
+                            <a href={householdRecordUrl}>{householdNameValue}</a>
                         </li>
                     </ol>
                 </nav>
@@ -25,23 +25,12 @@
             </div>
             <div class="slds-col slds-no-flex slds-align-middle">
                 <div class="slds-button-group" role="group">
+                    <lightning-button label={cancelLabel} onclick={handleCancel}></lightning-button>
                     <lightning-button
-                        label="{cancelLabel}"
-                        onclick="
-                            {
-                                handleCancel;
-                            }
-                        "
-                    ></lightning-button>
-                    <lightning-button
-                        label="{saveLabel}"
+                        label={saveLabel}
                         variant="brand"
-                        onclick="
-                            {
-                                handleSave;
-                            }
-                        "
-                        disabled="{isSaveDisabled}"
+                        onclick={handleSave}
+                        disabled={isSaveDisabled}
                     ></lightning-button>
                 </div>
             </div>
@@ -49,12 +38,12 @@
     </div>
 
     <!-- Spinner -->
-    <template lwc:if="{showSpinner}">
+    <template lwc:if={showSpinner}>
         <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
     </template>
 
     <!-- Error Messages -->
-    <template lwc:if="{errorMessage}">
+    <template lwc:if={errorMessage}>
         <div class="slds-notify slds-notify_alert slds-alert_error slds-m-around_medium" role="alert">
             <span class="slds-assistive-text">error</span>
             <h2>{errorMessage}</h2>
@@ -62,8 +51,9 @@
     </template>
 
     <!-- Main Body -->
-    <template lwc:if="{isLoaded}">
+    <template lwc:if={isLoaded}>
         <div class="slds-p-horizontal_medium slds-p-top_medium">
+
             <!-- Household Members Section -->
             <article class="slds-card slds-m-bottom_medium">
                 <div class="slds-card__header slds-grid">
@@ -73,26 +63,37 @@
                                 <span class="slds-truncate">{householdMembersLabel}</span>
                             </h2>
                         </div>
-                        <div class="slds-no-flex">
-                            <c-manage-hh-contact-search
-                                contacts="{contacts}"
-                                oncontactselected="{handleContactSelected}"
-                                onnewcontact="{handleNewContactRequest}"
-                            ></c-manage-hh-contact-search>
+                        <div class="slds-no-flex slds-grid slds-grid_vertical-center">
+                            <div class="contact-picker">
+                                <lightning-record-picker
+                                    label={householdMembersLabel}
+                                    placeholder={findInContactsLabel}
+                                    object-api-name="Contact"
+                                    filter={contactPickerFilter}
+                                    onchange={handleContactSelected}
+                                    variant="label-hidden"
+                                ></lightning-record-picker>
+                            </div>
+                            <lightning-button
+                                label={newContactLabel}
+                                icon-name="utility:add"
+                                onclick={handleNewContactClick}
+                                class="slds-m-left_x-small"
+                            ></lightning-button>
                         </div>
                     </header>
                 </div>
                 <div class="slds-card__body slds-card__body_inner">
-                    <template for:each="{contacts}" for:item="con" for:index="idx">
+                    <template for:each={contacts} for:item="con" for:index="idx">
                         <c-manage-hh-contact-card
-                            key="{con._key}"
-                            contact="{con}"
-                            index="{idx}"
-                            total-contacts="{contacts.length}"
-                            contact-undeliverable-label="{contactUndeliverableLabel}"
-                            oncontactchanged="{handleContactChanged}"
-                            oncontactremove="{handleContactRemoveRequest}"
-                            oncontactreorder="{handleContactReorder}"
+                            key={con._key}
+                            contact={con}
+                            index={idx}
+                            total-contacts={contacts.length}
+                            contact-undeliverable-label={contactUndeliverableLabel}
+                            oncontactchanged={handleContactChanged}
+                            oncontactremove={handleContactRemoveRequest}
+                            oncontactreorder={handleContactReorder}
                         ></c-manage-hh-contact-card>
                     </template>
                 </div>
@@ -111,9 +112,9 @@
                 </div>
                 <div class="slds-card__body slds-card__body_inner">
                     <c-manage-hh-address-manager
-                        list-addr="{addresses}"
-                        address-undeliverable-label="{addressUndeliverableLabel}"
-                        onaddresschanged="{handleAddressChanged}"
+                        list-addr={addresses}
+                        address-undeliverable-label={addressUndeliverableLabel}
+                        onaddresschanged={handleAddressChanged}
                     ></c-manage-hh-address-manager>
                 </div>
             </article>
@@ -131,37 +132,33 @@
                 </div>
                 <div class="slds-card__body slds-card__body_inner">
                     <c-manage-hh-details
-                        household-name="{householdNameValue}"
-                        formal-greeting="{formalGreetingValue}"
-                        informal-greeting="{informalGreetingValue}"
-                        is-auto-name="{isAutoName}"
-                        is-auto-formal-greeting="{isAutoFormalGreeting}"
-                        is-auto-informal-greeting="{isAutoInformalGreeting}"
-                        onnamechanged="{handleNameChanged}"
-                        onautonamingchanged="{handleAutoNamingChanged}"
+                        household-name={householdNameValue}
+                        formal-greeting={formalGreetingValue}
+                        informal-greeting={informalGreetingValue}
+                        is-auto-name={isAutoName}
+                        is-auto-formal-greeting={isAutoFormalGreeting}
+                        is-auto-informal-greeting={isAutoInformalGreeting}
+                        onnamechanged={handleNameChanged}
+                        onautonamingchanged={handleAutoNamingChanged}
                     ></c-manage-hh-details>
                 </div>
             </article>
 
             <!-- Fieldset Fields Section -->
-            <template lwc:if="{hasFieldsetFields}">
+            <template lwc:if={hasFieldsetFields}>
                 <article class="slds-card slds-m-bottom_medium">
                     <div class="slds-card__body slds-card__body_inner">
                         <lightning-record-edit-form
-                            record-id="{householdId}"
-                            object-api-name="{householdObjectApiName}"
-                            onsuccess="{handleFieldsetSaveSuccess}"
-                            onerror="
-                                {
-                                    handleFieldsetSaveError;
-                                }
-                            "
+                            record-id={householdId}
+                            object-api-name={householdObjectApiName}
+                            onsuccess={handleFieldsetSaveSuccess}
+                            onerror={handleFieldsetSaveError}
                         >
-                            <template for:each="{fieldSetFields}" for:item="field">
+                            <template for:each={fieldSetFields} for:item="field">
                                 <lightning-input-field
-                                    key="{field.fieldPath}"
-                                    field-name="{field.fieldPath}"
-                                    required="{field.isRequired}"
+                                    key={field.fieldPath}
+                                    field-name={field.fieldPath}
+                                    required={field.isRequired}
                                 ></lightning-input-field>
                             </template>
                         </lightning-record-edit-form>
@@ -172,125 +169,85 @@
     </template>
 
     <!-- REMOVE CONTACT POPUP -->
-    <template lwc:if="{showRemoveContactPopup}">
-        <c-modal header="{deleteContactLabel}" default-visible ondialogclose="{cancelRemoveContact}">
+    <template lwc:if={showRemoveContactPopup}>
+        <c-modal header={deleteContactLabel} default-visible ondialogclose={cancelRemoveContact}>
             <p>{deleteContactPromptLabel}</p>
             <div slot="footer">
                 <lightning-button
-                    label="{cancelLabel}"
-                    onclick="
-                        {
-                            cancelRemoveContact;
-                        }
-                    "
+                    label={cancelLabel}
+                    onclick={cancelRemoveContact}
                     class="slds-m-right_x-small"
                 ></lightning-button>
                 <lightning-button
-                    label="{removeLabel}"
+                    label={removeLabel}
                     variant="destructive"
-                    onclick="
-                        {
-                            doRemoveContact;
-                        }
-                    "
+                    onclick={doRemoveContact}
                 ></lightning-button>
             </div>
         </c-modal>
     </template>
 
     <!-- NEW CONTACT POPUP -->
-    <template lwc:if="{showNewContactPopup}">
-        <c-modal header="{newContactLabel}" default-visible ondialogclose="{cancelNewContact}">
+    <template lwc:if={showNewContactPopup}>
+        <c-modal header={newContactLabel} default-visible ondialogclose={cancelNewContact}>
             <div class="slds-form_stacked">
-                <template lwc:if="{newContactError}">
+                <template lwc:if={newContactError}>
                     <div class="slds-notify slds-notify_alert slds-alert_error slds-m-bottom_small" role="alert">
                         <h2>{newContactError}</h2>
                     </div>
                 </template>
                 <lightning-combobox
-                    label="{salutationLabel}"
-                    value="{newContact.Salutation}"
-                    options="{salutationOptions}"
-                    onchange="
-                        {
-                            handleNewContactSalutationChange;
-                        }
-                    "
+                    label={salutationLabel}
+                    value={newContact.Salutation}
+                    options={salutationOptions}
+                    onchange={handleNewContactSalutationChange}
                 ></lightning-combobox>
                 <lightning-input
-                    value="{newContact.FirstName}"
-                    label="{firstNameLabel}"
-                    onchange="
-                        {
-                            handleNewContactFirstNameChange;
-                        }
-                    "
+                    value={newContact.FirstName}
+                    label={firstNameLabel}
+                    onchange={handleNewContactFirstNameChange}
                 ></lightning-input>
                 <lightning-input
-                    value="{newContact.LastName}"
-                    label="{lastNameLabel}"
+                    value={newContact.LastName}
+                    label={lastNameLabel}
                     required
-                    onchange="
-                        {
-                            handleNewContactLastNameChange;
-                        }
-                    "
+                    onchange={handleNewContactLastNameChange}
                 ></lightning-input>
             </div>
             <div slot="footer">
                 <lightning-button
-                    label="{cancelLabel}"
-                    onclick="
-                        {
-                            cancelNewContact;
-                        }
-                    "
+                    label={cancelLabel}
+                    onclick={cancelNewContact}
                     class="slds-m-right_x-small"
                 ></lightning-button>
                 <lightning-button
-                    label="{newContactLabel}"
+                    label={newContactLabel}
                     variant="brand"
-                    onclick="
-                        {
-                            doCreateNewContact;
-                        }
-                    "
+                    onclick={doCreateNewContact}
                 ></lightning-button>
             </div>
         </c-modal>
     </template>
 
     <!-- MERGE HH POPUP -->
-    <template lwc:if="{showMergeHHPopup}">
-        <c-modal header="{mergeHHTitleLabel}" default-visible ondialogclose="{cancelMergeHH}">
+    <template lwc:if={showMergeHHPopup}>
+        <c-modal header={mergeHHTitleLabel} default-visible ondialogclose={cancelMergeHH}>
             <p>{mergeHHPromptText}</p>
             <div slot="footer">
                 <lightning-button
-                    label="{cancelLabel}"
-                    onclick="
-                        {
-                            cancelMergeHH;
-                        }
-                    "
+                    label={cancelLabel}
+                    onclick={cancelMergeHH}
                     class="slds-m-right_x-small"
                 ></lightning-button>
                 <lightning-button
-                    label="{addContactButtonLabel}"
-                    onclick="
-                        {
-                            doAddContact;
-                        }
-                    "
+                    label={addContactButtonLabel}
+                    onclick={doAddContact}
                     class="slds-m-right_x-small"
                 ></lightning-button>
                 <lightning-button
-                    label="{addAllHHMembersLabel}"
+                    label={addAllHHMembersLabel}
                     variant="brand"
-                    onclick="
-                        {
-                            doMergeHH;
-                        }
-                    "
+                    onclick={doMergeHH}
                 ></lightning-button>
             </div>
         </c-modal>
