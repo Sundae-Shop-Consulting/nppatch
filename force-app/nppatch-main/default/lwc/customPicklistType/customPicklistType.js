@@ -1,13 +1,21 @@
-import { LightningElement, api } from "lwc";
+import { LightningElement, api, track } from "lwc";
 import { isNull, isEmpty } from "c/util";
 
 export default class customPicklistType extends LightningElement {
     @api label;
-    @api value;
+    @track _value;
     @api options;
     @api placeholder;
     @api keyField;
     @api disabled;
+
+    @api
+    get value() {
+        return this._value;
+    }
+    set value(val) {
+        this._value = val;
+    }
 
     /**
      * @description Determines the label when value is read-only
@@ -32,18 +40,20 @@ export default class customPicklistType extends LightningElement {
     /***
      * @description Sets focus on the datatable cell containing the picklist field
      */
-    handleFocus(event) {
+    handleFocus() {
         try {
             const field = this.template.querySelector('[data-id="picklist"]');
             field.parentElement.click();
-        } catch (error) {}
+        } catch (error) {
+            /* no-op */
+        }
     }
 
     /***
      * @description Propagates the picklist value change to the custom datatable event handler
      */
     handleChange(event) {
-        this.value = event.detail.value;
+        this._value = event.detail.value;
 
         this.dispatchEvent(
             new CustomEvent("picklistchange", {

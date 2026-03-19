@@ -140,6 +140,7 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
         } catch (ex) {
             this.dispatchEvent(new CustomEvent("accesserror", { detail: ex.body.message }));
         }
+        return undefined;
     }
 
     async getRelationships(contactId) {
@@ -148,6 +149,7 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
         } catch (ex) {
             this.dispatchEvent(new CustomEvent("accesserror", { detail: ex.body.message }));
         }
+        return undefined;
     }
 
     async handleToggle(event) {
@@ -269,6 +271,8 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
             case ACTION_DEFS.NEW_RELATIONSHIP.name:
                 this.newRelationship(row.contactId);
                 break;
+            default:
+                break;
         }
     }
 
@@ -280,5 +284,6 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
         if (this.contactName && this.labels.relationshipsPlural) {
             return `${this.labels.relationshipsPlural} - ${this.contactName}`;
         }
+        return undefined;
     }
 }

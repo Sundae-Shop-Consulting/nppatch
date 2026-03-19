@@ -2,7 +2,6 @@ import { api, LightningElement, track } from "lwc";
 import donationHistoryLabelLifetime from "@salesforce/label/c.donationHistoryLabelLifetime";
 import donationHistoryFilterSelectAYear from "@salesforce/label/c.donationHistoryFilterSelectAYear";
 import getYearsWithDonation from "@salesforce/apex/DonationHistoryController.getYearsWithDonations";
-import getContactIdByUserId from "@salesforce/apex/DonationHistoryController.getContactIdByUserId";
 
 const LIFETIME_VALUE = "lifetime";
 export default class DonationHistoryFilter extends LightningElement {

@@ -1,3 +1,4 @@
+/* global sforce */
 import { LightningElement, api, wire } from "lwc";
 import { showToast, reduceErrors, getChildObjectByName, prefixNamespace, debouncify } from "c/util";
 
@@ -649,7 +650,10 @@ export default class ManageHousehold extends LightningElement {
         con.MailingState = addr.MailingState__c || "";
         con.MailingPostalCode = addr.MailingPostalCode__c || "";
         con.MailingCountry = addr.MailingCountry__c || "";
-        if (con.hasOwnProperty("Undeliverable_Address__c") && addr.hasOwnProperty("Undeliverable__c")) {
+        if (
+            Object.prototype.hasOwnProperty.call(con, "Undeliverable_Address__c") &&
+            Object.prototype.hasOwnProperty.call(addr, "Undeliverable__c")
+        ) {
             con.Undeliverable_Address__c = addr.Undeliverable__c === undefined ? false : addr.Undeliverable__c;
         }
     }

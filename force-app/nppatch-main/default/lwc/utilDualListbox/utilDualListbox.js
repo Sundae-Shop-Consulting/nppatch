@@ -16,7 +16,14 @@ export default class utilDualListbox extends LightningElement {
     @api sourceLabel;
     @api selectedLabel;
     @api options = [];
-    @api values = [];
+    _values = [];
+    @api
+    get values() {
+        return this._values;
+    }
+    set values(val) {
+        this._values = val;
+    }
     @api requiredOptions = [];
     @api min;
     @api max;
@@ -37,7 +44,7 @@ export default class utilDualListbox extends LightningElement {
     _headerPrivate;
 
     handleChange = (event) => {
-        this.values = event.detail.value;
+        this._values = event.detail.value;
     };
 
     /*******************************************************************************

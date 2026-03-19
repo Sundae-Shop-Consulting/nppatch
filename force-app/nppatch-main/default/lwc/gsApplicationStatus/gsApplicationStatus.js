@@ -1,4 +1,4 @@
-import { LightningElement, track, wire } from "lwc";
+import { LightningElement, track } from "lwc";
 import NPPATCH_STATIC_RESOURCES from "@salesforce/resourceUrl/NPPatchStaticResources";
 import getApplicationStatus from "@salesforce/apex/GS_ApplicationStatusController.getApplicationStatus";
 import gsNoApplicationSubmitted from "@salesforce/label/c.gsNoApplicationSubmitted";

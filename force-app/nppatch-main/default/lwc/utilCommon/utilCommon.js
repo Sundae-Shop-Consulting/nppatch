@@ -51,7 +51,7 @@ const findIndexByProperty = (array, property, value) => {
  */
 const getQueryParameters = () => {
     let params = {};
-    const search = location.search.substring(1);
+    const search = window.location.search.substring(1);
 
     if (search) {
         const url = `{"${search.replace(/&/g, '","').replace(/=/g, '":"')}"}`;
@@ -127,7 +127,7 @@ const isEmpty = (value) => {
  */
 const isEmptyObject = (object) => {
     for (const key in object) {
-        if (object.hasOwnProperty(key)) {
+        if (Object.prototype.hasOwnProperty.call(object, key)) {
             return false;
         }
     }
@@ -187,7 +187,7 @@ const format = (string, replacements) => {
         const type = typeof replacements;
         const args = "string" === type || "number" === type ? Array.prototype.slice.call(replacements) : replacements;
         for (key in args) {
-            if (args.hasOwnProperty(key)) {
+            if (Object.prototype.hasOwnProperty.call(args, key)) {
                 formattedString = formattedString.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
             }
         }
@@ -243,7 +243,7 @@ const deepClone = (src) => {
     if (isObject(src)) {
         clone = {};
         for (const property in src) {
-            if (src.hasOwnProperty(property)) {
+            if (Object.prototype.hasOwnProperty.call(src, property)) {
                 // if the value is a nested object, recursively copy all it's properties
                 clone[property] = isObject(src[property]) ? deepClone(src[property]) : src[property];
             }
@@ -326,7 +326,7 @@ const hasNestedProperty = (object, property, ...remainingProperties) => {
     if (object === undefined || object === null) {
         return false;
     }
-    if (remainingProperties.length === 0 && object.hasOwnProperty(property)) {
+    if (remainingProperties.length === 0 && Object.prototype.hasOwnProperty.call(object, property)) {
         return true;
     }
     return hasNestedProperty(object[property], ...remainingProperties);
@@ -549,21 +549,6 @@ const stripNamespace = (apiName, namespacePrefix) => {
 };
 
 /**
- * @description Replaces the last instance of "__c" with "__r".
- * Useful when referencing the related record field on objects
- * in the lightning/uiRecordApi Record format:
- * https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_responses_record.htm
- * @param {*} customFieldApiNameOrFieldReference
- * The ApiName of the relationship field for which the related record
- * field name is desired, or the field reference object.
- * https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_responses_field_value.htm#ui_api_responses_field_value
- */
-const relatedRecordFieldNameFor = (customFieldApiNameOrFieldReference) => {
-    const fieldApiName = getFieldApiNameForFieldApiNameOrObjectReference(customFieldApiNameOrFieldReference);
-    return fieldApiName && replaceLastInstanceOfWith(fieldApiName, "__c", "__r");
-};
-
-/**
  * @description Replaces the last instance of a string pattern with another pattern.
  * @param {*} subject The original string.
  * @param {*} toRemove The pattern for which the last instance should be removed.
@@ -578,9 +563,9 @@ const apiNameFor = (objectOrFieldReference) => {
     if (objectOrFieldReference === null || objectOrFieldReference === undefined) {
         return objectOrFieldReference;
     }
-    if (objectOrFieldReference.hasOwnProperty("fieldApiName")) {
+    if (Object.prototype.hasOwnProperty.call(objectOrFieldReference, "fieldApiName")) {
         return objectOrFieldReference.fieldApiName;
-    } else if (objectOrFieldReference.hasOwnProperty("objectApiName")) {
+    } else if (Object.prototype.hasOwnProperty.call(objectOrFieldReference, "objectApiName")) {
         return objectOrFieldReference.objectApiName;
     }
     return null;
@@ -597,6 +582,21 @@ const getFieldApiNameForFieldApiNameOrObjectReference = (fieldApiNameOrFieldRefe
 };
 
 /**
+ * @description Replaces the last instance of "__c" with "__r".
+ * Useful when referencing the related record field on objects
+ * in the lightning/uiRecordApi Record format:
+ * https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_responses_record.htm
+ * @param {*} customFieldApiNameOrFieldReference
+ * The ApiName of the relationship field for which the related record
+ * field name is desired, or the field reference object.
+ * https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_responses_field_value.htm#ui_api_responses_field_value
+ */
+const relatedRecordFieldNameFor = (customFieldApiNameOrFieldReference) => {
+    const fieldApiName = getFieldApiNameForFieldApiNameOrObjectReference(customFieldApiNameOrFieldReference);
+    return fieldApiName && replaceLastInstanceOfWith(fieldApiName, "__c", "__r");
+};
+
+/**
  * @description Converts field describe info into a object that is easily accessible from the front end
  * Ignore errors to allow the UI to simply not render the layout-item if the field info doesn't exist
  * (i.e, the field isn't accessible).
@@ -610,7 +610,10 @@ const extractFieldInfo = (fieldInfos, fldApiName) => {
             inlineHelpText: field.inlineHelpText,
             dataType: field.dataType,
         };
-    } catch (error) {}
+    } catch (error) {
+        // no-op
+    }
+    return undefined;
 };
 
 /**

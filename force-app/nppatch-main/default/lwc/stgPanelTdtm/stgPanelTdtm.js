@@ -348,7 +348,7 @@ export default class StgPanelTDTM extends LightningElement {
     // --- Save (create or update) ---
 
     async handleSaveNew() {
-        if (!this._newRecord.Object__c || !this._newRecord.Class__c || this._newRecord.Load_Order__c == null) {
+        if (!this._newRecord.Object__c || !this._newRecord.Class__c || this._newRecord.Load_Order__c === null) {
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: "Error",

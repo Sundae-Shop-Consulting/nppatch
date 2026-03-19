@@ -1,3 +1,4 @@
+/* global moment */
 /* eslint-disable consistent-return */
 import { loadScript } from "lightning/platformResourceLoader";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";

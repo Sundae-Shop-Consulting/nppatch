@@ -179,7 +179,7 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
     /**
      * @description Navigates to the record detail page
      */
-    navigateToRecordViewPage(event) {
+    navigateToRecordViewPage() {
         this[NavigationMixin.Navigate]({
             type: "standard__recordPage",
             attributes: {
@@ -192,7 +192,7 @@ export default class errRecordLog extends NavigationMixin(LightningElement) {
     /**
      * @description Navigates to the record tab
      */
-    navigateToRecordObjectPage(event) {
+    navigateToRecordObjectPage() {
         this[NavigationMixin.Navigate]({
             type: "standard__objectPage",
             attributes: {

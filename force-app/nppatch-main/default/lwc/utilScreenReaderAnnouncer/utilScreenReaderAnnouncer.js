@@ -5,6 +5,6 @@ export default class UtilScreenReaderAnnouncer extends LightningElement {
 
     @api
     announce(message) {
-        this.template.querySelector('div[data-id="liveregion"]').innerHTML = message;
+        this.template.querySelector('div[data-id="liveregion"]').textContent = message;
     }
 }

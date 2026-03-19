@@ -1,4 +1,4 @@
-import { LightningElement, api, wire } from "lwc";
+import { LightningElement, api } from "lwc";
 import { NavigationMixin } from "lightning/navigation";
 import NPPATCH_STATIC_RESOURCES from "@salesforce/resourceUrl/NPPatchStaticResources";
 import updateCheckItem from "@salesforce/apex/GS_ChecklistSetup.updateCheckItem";
@@ -128,6 +128,8 @@ export default class GsChecklistItem extends NavigationMixin(LightningElement) {
                 window.open(button.value, "_blank");
                 break;
             }
+            default:
+                break;
         }
     }
     /**
@@ -185,7 +187,7 @@ export default class GsChecklistItem extends NavigationMixin(LightningElement) {
         target.disabled = true;
 
         updateCheckItem({ itemId: this.item.id, isChecked: checked })
-            .then((_) => {
+            .then(() => {
                 const eventName = checked ? "checked" : "unchecked";
                 this.dispatchEvent(new CustomEvent(eventName));
             })
@@ -199,10 +201,10 @@ export default class GsChecklistItem extends NavigationMixin(LightningElement) {
                     this.dispatchEvent(evt);
                 }
             })
-            .then((_) => {
+            .then(() => {
                 target.disabled = false;
             })
-            .then((_) => {
+            .then(() => {
                 target.focus();
             });
     }

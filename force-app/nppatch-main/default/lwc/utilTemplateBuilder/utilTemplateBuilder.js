@@ -304,17 +304,6 @@ const dispatch = (context, name, detail, bubbles = false, composed = false) => {
     );
 };
 
-/*******************************************************************************
- * @description Creates and dispatches an error toast.
- *
- * @param {object} error: Event holding error details
- */
-const handleError = (error) => {
-    const message = buildErrorMessage(error);
-
-    showToast(commonError, message, "error", "sticky");
-};
-
 const buildErrorMessage = (error) => {
     let message = commonUnknownError;
 
@@ -340,6 +329,17 @@ const buildErrorMessage = (error) => {
     }
 
     return message;
+};
+
+/*******************************************************************************
+ * @description Creates and dispatches an error toast.
+ *
+ * @param {object} error: Event holding error details
+ */
+const handleError = (error) => {
+    const message = buildErrorMessage(error);
+
+    showToast(commonError, message, "error", "sticky");
 };
 
 /*******************************************************************************
@@ -544,6 +544,7 @@ const isCheckboxToCheckbox = (fieldMapping) => {
             fieldMapping.Source_Field_Data_Type === BOOLEAN_MAPPING
         );
     }
+    return false;
 };
 
 export {

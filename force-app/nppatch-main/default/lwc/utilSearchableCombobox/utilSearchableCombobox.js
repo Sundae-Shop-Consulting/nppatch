@@ -7,9 +7,23 @@ export default class utilSearchableCombobox extends LightningElement {
     @api name;
     @api comboboxLabel;
     @api searchInputLabel;
-    @api selectedFieldValue;
+    _selectedFieldValue;
+    @api
+    get selectedFieldValue() {
+        return this._selectedFieldValue;
+    }
+    set selectedFieldValue(val) {
+        this._selectedFieldValue = val;
+    }
     @api options;
-    @api searchableOptions;
+    _searchableOptions;
+    @api
+    get searchableOptions() {
+        return this._searchableOptions;
+    }
+    set searchableOptions(val) {
+        this._searchableOptions = val;
+    }
     @api parentListenerEventName;
     @api fieldLevelHelp;
     @api disabled;
@@ -59,16 +73,16 @@ export default class utilSearchableCombobox extends LightningElement {
     handleSearchkeyChange(searchKey) {
         const results = [];
 
-        if (!this.searchableOptions) {
-            this.searchableOptions = this.options;
+        if (!this._searchableOptions) {
+            this._searchableOptions = this.options;
         }
 
-        for (let i = 0; i < this.searchableOptions.length; i++) {
-            if (this.searchableOptions[i].label.toLowerCase().indexOf(searchKey.toLowerCase()) != -1) {
+        for (let i = 0; i < this._searchableOptions.length; i++) {
+            if (this._searchableOptions[i].label.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1) {
                 const result = {
                     id: i,
-                    label: this.searchableOptions[i].label,
-                    value: this.searchableOptions[i].value,
+                    label: this._searchableOptions[i].label,
+                    value: this._searchableOptions[i].value,
                 };
                 results.push(result);
             }
@@ -88,7 +102,7 @@ export default class utilSearchableCombobox extends LightningElement {
 
         fireEvent(this.pageRef, this.parentListenerEventName, result);
 
-        this.selectedFieldValue = result.detail.value;
+        this._selectedFieldValue = result.detail.value;
         this.searchResults = undefined;
         this.isSearchOpen = false;
         this.areSearchResultsVisible = false;

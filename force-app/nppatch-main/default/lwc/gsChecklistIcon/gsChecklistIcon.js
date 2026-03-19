@@ -11,7 +11,7 @@ export default class gsChecklistIcon extends LightningElement {
         return this._checkedItem;
     }
     set checkedItem(value) {
-        if (this.totalItem !== undefined && this.totalItem != 0) {
+        if (this.totalItem !== undefined && this.totalItem !== 0) {
             this.percentage = (value / this.totalItem) * 100;
         }
     }

@@ -11,6 +11,7 @@ export default class UtilDescribe {
         if (this._objectDescribeInfo) {
             return this._objectDescribeInfo.fields[fieldApiName];
         }
+        return undefined;
     }
 
     get accessibleRecordTypes() {
@@ -41,7 +42,7 @@ export default class UtilDescribe {
 
         const rtInfo =
             this._objectDescribeInfo &&
-            Object.values(this._objectDescribeInfo.recordTypeInfos).find((rtInfo) => rtInfo.name === recordTypeName);
+            Object.values(this._objectDescribeInfo.recordTypeInfos).find((rt) => rt.name === recordTypeName);
 
         return rtInfo && rtInfo.recordTypeId;
     }

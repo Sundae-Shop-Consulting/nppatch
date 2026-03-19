@@ -1,5 +1,5 @@
 import { LightningElement, api } from "lwc";
-import { prefixNamespace, getChildObjectByName, debouncify } from "c/util";
+import { getChildObjectByName, debouncify } from "c/util";
 import queryObjects from "@salesforce/apex/HH_AutoCompleteDataProvider_LCTRL.queryObjects";
 
 import lblFindOrAddContact from "@salesforce/label/c.lblFindOrAddContact";

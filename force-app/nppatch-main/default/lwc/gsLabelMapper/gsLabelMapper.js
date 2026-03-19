@@ -315,5 +315,5 @@ const labelMap = {
  *  @return string
  */
 export default function getLabelValue(label) {
-    return labelMap[label] != undefined ? labelMap[label] : label;
+    return labelMap[label] !== undefined ? labelMap[label] : label;
 }

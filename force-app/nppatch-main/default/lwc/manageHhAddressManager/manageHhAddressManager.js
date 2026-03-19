@@ -67,7 +67,7 @@ export default class ManageHhAddressManager extends LightningElement {
     }
 
     get hasDefaultAddress() {
-        return this._defaultAddress != null;
+        return this._defaultAddress !== null;
     }
 
     get formattedDefaultAddress() {

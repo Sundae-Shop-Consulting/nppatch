@@ -1,5 +1,5 @@
-import { LightningElement, track, api } from "lwc";
-import { subscribe, unsubscribe, onError, setDebugFlag, isEmpEnabled } from "lightning/empApi";
+import { LightningElement, api } from "lwc";
+import { subscribe, setDebugFlag } from "lightning/empApi";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { fireEvent } from "c/pubsubNoPageRef";
 import getNamespaceWrapper from "@salesforce/apex/BDI_ManageAdvancedMappingCtrl.getNamespaceWrapper";
@@ -31,7 +31,7 @@ export default class PlatformEventListener extends LightningElement {
     @api isConsoleLogEnabled = false;
     @api isDebugFlagEnabled = false;
 
-    @api _deploymentIds = new Set();
+    @api deploymentIds = new Set();
     _deploymentResponses = new Map();
 
     connectedCallback() {
@@ -113,7 +113,7 @@ export default class PlatformEventListener extends LightningElement {
         if (this._deploymentResponses.has(deploymentId)) {
             this.handleEventReceived(this._deploymentResponses.get(deploymentId));
         } else {
-            this._deploymentIds.add(deploymentId);
+            this.deploymentIds.add(deploymentId);
         }
     }
 
@@ -131,15 +131,12 @@ export default class PlatformEventListener extends LightningElement {
         this.dispatchEvent(evt);
     }
 
-    log(response) {
-        const nsPrefix = this.getNamespacePrefixString();
-
-        const status = response.data.payload[nsPrefix + "Status__c"];
-        const deploymentId = response.data.payload[nsPrefix + "DeploymentId__c"];
+    log() {
+        // no-op: logging stub
     }
 
     isMonitored(deploymentId) {
-        return this._deploymentIds && this._deploymentIds.has(deploymentId);
+        return this.deploymentIds && this.deploymentIds.has(deploymentId);
     }
 
     handleSubscribe() {

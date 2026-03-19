@@ -3,7 +3,14 @@ import { LightningElement, api } from "lwc";
 export default class utilExpandableSection extends LightningElement {
     @api id;
     @api label;
-    @api isCollapsed = false;
+    _isCollapsed = false;
+    @api
+    get isCollapsed() {
+        return this._isCollapsed;
+    }
+    set isCollapsed(val) {
+        this._isCollapsed = val;
+    }
     @api alternativeText;
     @api bodyClass;
     @api shouldInformParent = false;
@@ -53,7 +60,7 @@ export default class utilExpandableSection extends LightningElement {
     }
 
     toggleSection() {
-        this.isCollapsed = !this.isCollapsed;
+        this._isCollapsed = !this._isCollapsed;
         if (this.shouldInformParent === true) {
             this.informParent();
         }

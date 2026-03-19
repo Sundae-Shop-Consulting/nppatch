@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import { LightningElement, api, track, wire } from "lwc";
 import { getObjectInfo, getPicklistValues } from "lightning/uiObjectInfoApi";
 import { inputTypeByDescribeType } from "c/utilTemplateBuilder";
@@ -49,12 +48,26 @@ export default class utilInput extends LightningElement {
     @api label;
     @api defaultValue;
     @api required;
-    @api type;
+    _type;
+    @api
+    get type() {
+        return this._type;
+    }
+    set type(val) {
+        this._type = val;
+    }
     @api formFieldType;
     @api objectApiName;
     @api tabIndex;
     @api variant = LABEL_STACKED;
-    @api value;
+    _value;
+    @api
+    get value() {
+        return this._value;
+    }
+    set value(val) {
+        this._value = val;
+    }
     @api widgetName;
     @api picklistOptionsOverride;
     @api disabled;
@@ -213,6 +226,7 @@ export default class utilInput extends LightningElement {
         } else if (this.variant === LABEL_HIDDEN) {
             return "slds-form-element slds-form-element_hidden combo-adjust";
         }
+        return undefined;
     }
 
     @api
@@ -237,9 +251,9 @@ export default class utilInput extends LightningElement {
             this.defaultRecordTypeId = this.utilDescribe.defaultRecordTypeId();
             this.fieldDescribe = this.utilDescribe.getFieldDescribe(this.fieldApiName);
 
-            if (!this.type) {
+            if (!this._type) {
                 if (isNotEmpty(this.fieldDescribe)) {
-                    this.type = this.fieldDescribe.dataType;
+                    this._type = this.fieldDescribe.dataType;
                 }
             }
         }
@@ -262,6 +276,7 @@ export default class utilInput extends LightningElement {
         if (this.isStandardPicklist()) {
             return `${this.objectApiName}.${this.fieldApiName}`;
         }
+        return undefined;
     }
 
     isStandardPicklist() {
@@ -283,7 +298,7 @@ export default class utilInput extends LightningElement {
             fieldApiName: this.fieldApiName,
             value: isSelectedValueNone ? null : value,
         };
-        this.value = event.detail.value;
+        this._value = event.detail.value;
         this.dispatchEvent(new CustomEvent("changevalue", { detail: detail }));
     }
 
@@ -296,11 +311,11 @@ export default class utilInput extends LightningElement {
      */
     handleValueChange(event) {
         if (this.type && this.lightningInputType === CHECKBOX) {
-            this.value = event.target.checked;
+            this._value = event.target.checked;
         } else if (this.type && this.lightningInputType === SEARCH) {
-            this.value = this.valueFromLookupChange(event);
+            this._value = this.valueFromLookupChange(event);
         } else if (event.target) {
-            this.value = event.target.value;
+            this._value = event.target.value;
         }
 
         let isValid;
@@ -382,6 +397,7 @@ export default class utilInput extends LightningElement {
         } else if (Array.isArray(val)) {
             return val[0] ? val[0] : null;
         }
+        return undefined;
     }
 
     stopPropagation(event) {

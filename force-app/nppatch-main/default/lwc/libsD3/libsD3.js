@@ -1,3 +1,4 @@
+/* global d3 */
 /* eslint-disable consistent-return */
 import { loadScript } from "lightning/platformResourceLoader";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";

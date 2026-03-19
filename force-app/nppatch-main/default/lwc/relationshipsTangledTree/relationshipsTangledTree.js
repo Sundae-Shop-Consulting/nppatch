@@ -1,4 +1,4 @@
-import { LightningElement, api, track } from "lwc";
+import { LightningElement, api } from "lwc";
 import { NavigationMixin } from "lightning/navigation";
 import libsD3 from "c/libsD3";
 import getRelationshipGraph from "@salesforce/apex/RelationshipsTreeGridController.getRelationshipGraph";
