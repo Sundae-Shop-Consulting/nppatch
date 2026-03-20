@@ -17,7 +17,7 @@
         <label>Recalculate Rollups</label>
     </webLinks>
     <layouts>
-        <layout>Contact Layout</layout>
+        <layout>Fundraising Contact Layout</layout>
         <sections>
             <label>Contact Details</label>
             <section>Contact Details</section>

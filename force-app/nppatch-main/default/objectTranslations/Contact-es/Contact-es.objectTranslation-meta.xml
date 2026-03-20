@@ -17,7 +17,7 @@
         <label>Volver a calcular totales</label>
     </webLinks>
     <layouts>
-        <layout>Contact Layout</layout>
+        <layout>Fundraising Contact Layout</layout>
         <sections>
             <label>Detalle del contacto</label>
             <section>Contact Details</section>

@@ -17,7 +17,7 @@
         <label>Recalculer des cumuls</label>
     </webLinks>
     <layouts>
-        <layout>Contact Layout</layout>
+        <layout>Fundraising Contact Layout</layout>
         <sections>
             <label>Détails du contact</label>
             <section>Contact Details</section>

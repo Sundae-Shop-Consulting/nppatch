@@ -17,7 +17,7 @@
         <label>Totaliseringen opnieuw berekenen</label>
     </webLinks>
     <layouts>
-        <layout>Contact Layout</layout>
+        <layout>Fundraising Contact Layout</layout>
         <sections>
             <label>Contactpersoondetails</label>
             <section>Contact Details</section>

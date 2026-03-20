@@ -40,6 +40,9 @@
         <layout>Campaign-NPPatch Campaign Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Contact-Fundraising Contact Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Opportunity-Donation Layout</layout>
         <recordType>Opportunity.NPPatch_Default</recordType>
     </layoutAssignments>
