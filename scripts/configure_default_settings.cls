@@ -61,7 +61,7 @@ public static void initializeDefaultSettings() {
 private static void setPackageSettings() {
     %%%NAMESPACE%%%Package_Settings__c pkgSettings = %%%NAMESPACE%%%Package_Settings__c.getOrgDefaults();
     if (pkgSettings.Id == null) {
-        pkgSettings.%%%NAMESPACE%%%Namespace_Prefix__c = %%%NAMESPACED_RT%%%UTIL_Namespace.prefixNamespace('');
+        pkgSettings.%%%NAMESPACE%%%Namespace_Prefix__c = '%%%NAMESPACE%%%';
         insert pkgSettings;
     }
 }
