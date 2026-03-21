@@ -394,7 +394,7 @@ flows:
       6:
         task: install_managed_beta
         options:
-          version: "04tal000006OWJRAA4"
+          version: "04tal000006OWL3AAO"
       6.1:
         task: ensure_record_types
         options:
@@ -412,6 +412,10 @@ flows:
         options:
           managed: True
           namespaced: True
+      8.1:
+        task: execute_anon
+        options:
+          apex: nppatch.SetupApi.rescheduleDefaultJobs();
       9:
         task: assign_permission_sets
         options:
