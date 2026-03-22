@@ -12,7 +12,7 @@ NPPatch is a strong fit for organizations that meet some or all of these criteri
 
 **Cost-sensitive implementations.** For organizations where the implementation and ongoing license costs of Nonprofit Cloud are a concern, NPPatch provides a fully functional alternative at the cost of community-maintained support rather than vendor-backed support.
 
-**Organizations that want control.** Because NPPatch is an unlocked package, organizations (or their consultants) can modify the code directly if needed. This is a meaningful difference from the original NPSP managed packages, where customization was limited to what Salesforce exposed.
+**Organizations that want control.** Because NPPatch is an unlocked package, the community — not Salesforce — controls what gets built and when it ships. If an organization needs a fix, they can contribute it through the community repository, commission someone to build it, or wait for the community to address it. That's a meaningful difference from the original NPSP managed packages, where Salesforce controlled the release process. Organizations can also extend the package with their own customizations deployed on top.
 
 ## When Nonprofit Cloud May Be the Better Choice
 
@@ -45,16 +45,16 @@ Unlike the original NPSP (which was a managed package), NPPatch is an unlocked p
 
 **Advantages:**
 
-- Organizations can view and modify all Apex code, components, and metadata
-- Custom fields can be added to package objects without workarounds
-- Trigger handlers can be modified directly rather than only through the TDTM configuration UI
-- No dependency on Salesforce for bug fixes — the community (or the org's own developers) can address issues
+- Source code is visible and auditable — not a black box
+- The community controls the release process: what gets built, what gets fixed, and when new versions ship
+- No dependency on Salesforce for bug fixes — contributors can address issues through the repository without waiting for a vendor roadmap
+- Organizations can deploy customizations and extensions on top of the package (custom fields on package objects, new TDTM trigger handlers, companion packages)
 
 **Tradeoffs:**
 
-- If an organization modifies package code and then upgrades to a new version, the upgrade may overwrite those modifications
-- There's no managed package protection preventing accidental changes to core functionality
-- Organizations take on responsibility for understanding what they're changing
+- Community-maintained means there is no vendor-backed support contract or guaranteed SLA
+- Organizations take on responsibility for evaluating and applying upgrades
+- The freedom is in the release process, not in-org editing — to change package code, contributors work from the source repository
 
 See the [Customization Guide](../customization/unlocked-package-guide.md) for detailed guidance on managing these tradeoffs.
 

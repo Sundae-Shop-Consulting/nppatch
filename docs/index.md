@@ -8,7 +8,7 @@ NPPatch is a Salesforce second-generation package (2GP) that consolidates the op
 
 The original NPSP has been the backbone of Salesforce-based nonprofit operations for over a decade, powering donor management, recurring giving, household tracking, and more for thousands of organizations. But NPSP was always distributed as Salesforce-controlled managed packages, meaning the community could use the code but never truly own the distribution or innovate on it independently.
 
-NPPatch changes that. By repackaging the open-source NPSP code as an unlocked 2GP, NPPatch gives organizations the ability to install, upgrade, and — if they choose — modify the package to meet their specific needs.
+NPPatch changes that. By repackaging the open-source NPSP code as an unlocked 2GP, NPPatch puts the release process in the hands of the community. Contributors can fix bugs, build features, and ship new versions without Salesforce's involvement or approval. The source code is visible and auditable, and organizations can extend the package with their own customizations on top.
 
 ## Why Does This Exist?
 
