@@ -17,7 +17,7 @@
         <label>積み上げ集計の再計算</label>
     </webLinks>
     <layouts>
-        <layout>Contact Layout</layout>
+        <layout>Fundraising Contact Layout</layout>
         <sections>
             <label>取引先責任者の詳細</label>
             <section>Contact Details</section>

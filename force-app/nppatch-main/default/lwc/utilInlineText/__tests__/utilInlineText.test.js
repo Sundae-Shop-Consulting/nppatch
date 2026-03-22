@@ -7,13 +7,7 @@ describe("c-util-inline-text", () => {
     });
 
     it("renders with provided classes", async () => {
-        const element = buildElement(
-            "utility:warning",
-            "small",
-            "warning",
-            "dummy text",
-            "test-class-1 test-class-2"
-        );
+        const element = buildElement("utility:warning", "small", "warning", "dummy text", "test-class-1 test-class-2");
         document.body.appendChild(element);
 
         await flushPromises();
@@ -25,12 +19,7 @@ describe("c-util-inline-text", () => {
     });
 
     it("renders with default classes", async () => {
-        const element = buildElement(
-            "utility:warning",
-            "small",
-            "warning",
-            "dummy text"
-        );
+        const element = buildElement("utility:warning", "small", "warning", "dummy text");
         document.body.appendChild(element);
 
         await flushPromises();
@@ -42,12 +31,7 @@ describe("c-util-inline-text", () => {
     });
 
     it("calculates the correct css class based on the provided variant", async () => {
-        const element = buildElement(
-            "utility:warning",
-            "small",
-            "inverse",
-            "dummy text"
-        );
+        const element = buildElement("utility:warning", "small", "inverse", "dummy text");
         document.body.appendChild(element);
 
         await flushPromises();
@@ -58,12 +42,7 @@ describe("c-util-inline-text", () => {
     });
 
     it("passes the provided public properties to the base lightning-icon component", async () => {
-        const element = buildElement(
-            "standard:account",
-            "large",
-            "error",
-            "dummy text"
-        );
+        const element = buildElement("standard:account", "large", "error", "dummy text");
         document.body.appendChild(element);
 
         await flushPromises();
@@ -75,12 +54,7 @@ describe("c-util-inline-text", () => {
     });
 
     it("renders the provided text", async () => {
-        const element = buildElement(
-            "utility:warning",
-            "small",
-            "warning",
-            "dummy text"
-        );
+        const element = buildElement("utility:warning", "small", "warning", "dummy text");
         document.body.appendChild(element);
 
         await flushPromises();
@@ -93,7 +67,7 @@ describe("c-util-inline-text", () => {
 
 const buildElement = (iconName, iconSize, iconVariant, text, customCss) => {
     const element = createElement("c-util-inline-text", {
-        is: UtilInlineText
+        is: UtilInlineText,
     });
     element.iconName = iconName;
     element.iconSize = iconSize;
@@ -102,4 +76,4 @@ const buildElement = (iconName, iconSize, iconVariant, text, customCss) => {
     element.customClass = customCss;
 
     return element;
-}
+};

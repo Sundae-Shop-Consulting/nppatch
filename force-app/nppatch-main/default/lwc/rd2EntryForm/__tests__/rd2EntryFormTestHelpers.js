@@ -75,7 +75,7 @@ export class RD2FormController {
     }
 
     header() {
-        return this.element.shadowRoot.querySelector('#modal-heading-01');
+        return this.element.shadowRoot.querySelector("#modal-heading-01");
     }
 
     donorSection() {
@@ -219,12 +219,12 @@ export class RD2FormController {
     }
 
     customFieldsSection() {
-        return this.element.shadowRoot.querySelector('c-rd2-entry-form-custom-fields-section');
+        return this.element.shadowRoot.querySelector("c-rd2-entry-form-custom-fields-section");
     }
 
     customFields() {
         const customFields = this.customFieldsSection();
-        return customFields.shadowRoot.querySelectorAll('lightning-input-field');
+        return customFields.shadowRoot.querySelectorAll("lightning-input-field");
     }
 
     changeTypePicklist() {
@@ -237,6 +237,8 @@ export class RD2FormController {
     }
 
     errorFormattedText() {
-        return this.element.shadowRoot.querySelector("c-util-page-level-message[data-id='error'] p lightning-formatted-text");
+        return this.element.shadowRoot.querySelector(
+            "c-util-page-level-message[data-id='error'] p lightning-formatted-text"
+        );
     }
 }

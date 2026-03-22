@@ -1,77 +1,73 @@
-import { createElement } from 'lwc';
-import { getRecord } from 'lightning/uiRecordApi';
+import { createElement } from "lwc";
+import { getRecord } from "lightning/uiRecordApi";
 
-import GeReviewDonations from 'c/geReviewDonations';
-import { registerListener, unregisterListener } from 'c/pubsubNoPageRef';
+import GeReviewDonations from "c/geReviewDonations";
+// pubsubNoPageRef is mocked below; no direct usage needed
 
-import getOpenDonationsView from '@salesforce/apex/GE_GiftEntryController.getOpenDonationsView';
+import getOpenDonationsView from "@salesforce/apex/GE_GiftEntryController.getOpenDonationsView";
 
 // Mock Apex wire adapter
 jest.mock(
-    '@salesforce/apex/GE_GiftEntryController.getOpenDonationsView',
+    "@salesforce/apex/GE_GiftEntryController.getOpenDonationsView",
     () => {
-        const {
-            createApexTestWireAdapter
-        } = require('@salesforce/sfdx-lwc-jest');
+        const { createApexTestWireAdapter } = require("@salesforce/sfdx-lwc-jest");
         return {
-            default: createApexTestWireAdapter(jest.fn())
+            default: createApexTestWireAdapter(jest.fn()),
         };
     },
     { virtual: true }
 );
 
 //mock the pubSub methods
-jest.mock('c/pubsubNoPageRef', () => {
+jest.mock("c/pubsubNoPageRef", () => {
     return {
         registerListener: jest.fn(),
-        unregisterListener: jest.fn()
-    }
+        unregisterListener: jest.fn(),
+    };
 });
 
-const DUMMY_OPEN_DONATIONS = {donations: [
-    { opportunity: {}, unpaidPayments: [], softCredits: { all: [] } },
-    { opportunity: {}, unpaidPayments: [], softCredits: { all: [] } }
-]};
+const DUMMY_OPEN_DONATIONS = {
+    donations: [
+        { opportunity: {}, unpaidPayments: [], softCredits: { all: [] } },
+        { opportunity: {}, unpaidPayments: [], softCredits: { all: [] } },
+    ],
+};
 
 const DUMMY_SELECTED_DONATION = {
-    Id: 'DUMMY_ID',
-    Name: 'DUMMY SELECTED DONATION NAME',
+    Id: "DUMMY_ID",
+    Name: "DUMMY SELECTED DONATION NAME",
     attributes: {
-        type: 'OppPayment__c'
-    }
+        type: "OppPayment__c",
+    },
 };
 
 const DUMMY_DONOR_RECORD = {
-    apiName: 'Contact',
+    apiName: "Contact",
     fields: {
         Name: {
-            value: 'Test Donor'
-        }
-    }
+            value: "Test Donor",
+        },
+    },
 };
 
-describe('c-ge-review-donations', () => {
-
+describe("c-ge-review-donations", () => {
     afterEach(() => {
         clearDOM();
         jest.clearAllMocks();
     });
 
     const createReviewDonationsElement = () => {
-        return createElement('c-ge-review-donations',
-            { is: GeReviewDonations }
-        );
-    }
+        return createElement("c-ge-review-donations", { is: GeReviewDonations });
+    };
 
-    describe('rendering behavior', () => {
-
-        it('should render nothing when gift in view has a schedule', async() => {
+    describe("rendering behavior", () => {
+        it("should render nothing when gift in view has a schedule", async () => {
             const element = createReviewDonationsElement();
-            element.donorId = 'DUMMY_DONOR_ID';
+            element.donorId = "DUMMY_DONOR_ID";
             element.giftInView = {
                 schedule: {
-                    recurringType: 'Open'
-                }
+                    recurringType: "Open",
+                },
             };
             document.body.appendChild(element);
 
@@ -80,24 +76,24 @@ describe('c-ge-review-donations', () => {
 
             await flushPromises();
 
-            const elements = element.shadowRoot.querySelectorAll('article');
+            const elements = element.shadowRoot.querySelectorAll("article");
             expect(elements.length).toBe(0);
         });
 
-        it('should not render review donations button', async () => {
+        it("should not render review donations button", async () => {
             const reviewDonationsElement = createReviewDonationsElement();
 
             document.body.appendChild(reviewDonationsElement);
 
             await flushPromises();
 
-            const buttonElement = shadowQuerySelector(reviewDonationsElement, 'a');
+            const buttonElement = shadowQuerySelector(reviewDonationsElement, "a");
             expect(buttonElement).toBeNull();
         });
 
-        it('should render review donations button', async () => {
+        it("should render review donations button", async () => {
             const reviewDonationsElement = createReviewDonationsElement();
-            reviewDonationsElement.donorId = 'DUMMY_DONOR_ID';
+            reviewDonationsElement.donorId = "DUMMY_DONOR_ID";
 
             document.body.appendChild(reviewDonationsElement);
 
@@ -107,14 +103,14 @@ describe('c-ge-review-donations', () => {
 
             await flushPromises();
 
-            const buttonElement = shadowQuerySelector(reviewDonationsElement, 'a');
+            const buttonElement = shadowQuerySelector(reviewDonationsElement, "a");
             expect(buttonElement).toBeTruthy();
-            expect(buttonElement.innerHTML).toBe('c.geButtonMatchingReviewDonations');
+            expect(buttonElement.innerHTML).toBe("c.geButtonMatchingReviewDonations");
         });
 
-        it('should render change selection button when a donation is selected', async () => {
+        it("should render change selection button when a donation is selected", async () => {
             const reviewDonationsElement = createReviewDonationsElement();
-            reviewDonationsElement.donorId = 'DUMMY_DONOR_ID';
+            reviewDonationsElement.donorId = "DUMMY_DONOR_ID";
 
             document.body.appendChild(reviewDonationsElement);
 
@@ -126,14 +122,14 @@ describe('c-ge-review-donations', () => {
 
             await flushPromises();
 
-            const buttonElement = shadowQuerySelector(reviewDonationsElement, 'a');
+            const buttonElement = shadowQuerySelector(reviewDonationsElement, "a");
             expect(buttonElement).toBeTruthy();
-            expect(buttonElement.innerHTML).toBe('c.geButtonMatchingUpdateDonationSelection');
+            expect(buttonElement.innerHTML).toBe("c.geButtonMatchingUpdateDonationSelection");
         });
 
-        it('should render hyperlink to selected donation', async () => {
+        it("should render hyperlink to selected donation", async () => {
             const reviewDonationsElement = createReviewDonationsElement();
-            reviewDonationsElement.donorId = 'DUMMY_DONOR_ID';
+            reviewDonationsElement.donorId = "DUMMY_DONOR_ID";
 
             document.body.appendChild(reviewDonationsElement);
 
@@ -145,14 +141,14 @@ describe('c-ge-review-donations', () => {
 
             await flushPromises();
 
-            const buttonElement = shadowQuerySelector(reviewDonationsElement, 'a');
+            const buttonElement = shadowQuerySelector(reviewDonationsElement, "a");
             expect(buttonElement).toBeTruthy();
-            expect(buttonElement.innerHTML).toBe('DUMMY SELECTED DONATION NAME');
+            expect(buttonElement.innerHTML).toBe("DUMMY SELECTED DONATION NAME");
         });
 
-        it('should clear selected donation when reset pubsub event is fired', async () => {
+        it("should clear selected donation when reset pubsub event is fired", async () => {
             const reviewDonationsElement = createReviewDonationsElement();
-            reviewDonationsElement.donorId = 'DUMMY_DONOR_ID';
+            reviewDonationsElement.donorId = "DUMMY_DONOR_ID";
 
             document.body.appendChild(reviewDonationsElement);
 
@@ -164,9 +160,12 @@ describe('c-ge-review-donations', () => {
 
             await flushPromises();
 
-            const buttonElement = shadowQuerySelector(reviewDonationsElement, 'a[data-qa-locator*="DUMMY SELECTED DONATION NAME"]');
+            const buttonElement = shadowQuerySelector(
+                reviewDonationsElement,
+                'a[data-qa-locator*="DUMMY SELECTED DONATION NAME"]'
+            );
             expect(buttonElement).toBeTruthy();
-            expect(buttonElement.innerHTML).toBe('DUMMY SELECTED DONATION NAME');
+            expect(buttonElement.innerHTML).toBe("DUMMY SELECTED DONATION NAME");
 
             // Call the reset function directly on the component
             reviewDonationsElement.selectedDonation = null;
@@ -174,11 +173,14 @@ describe('c-ge-review-donations', () => {
             await flushPromises();
 
             // After reset, the selected donation link should no longer exist
-            const buttonElementAfterReset = shadowQuerySelector(reviewDonationsElement, 'a[data-qa-locator*="DUMMY SELECTED DONATION NAME"]');
+            const buttonElementAfterReset = shadowQuerySelector(
+                reviewDonationsElement,
+                'a[data-qa-locator*="DUMMY SELECTED DONATION NAME"]'
+            );
             expect(buttonElementAfterReset).toBeNull();
-            
+
             // Verify that some anchor element exists (either review donations or update selection button)
-            const anyAnchorElement = shadowQuerySelector(reviewDonationsElement, 'a');
+            const anyAnchorElement = shadowQuerySelector(reviewDonationsElement, "a");
             expect(anyAnchorElement).toBeTruthy();
         });
     });
@@ -186,16 +188,15 @@ describe('c-ge-review-donations', () => {
 
 const getShadowRoot = (element) => {
     if (!element || !element.shadowRoot) {
-        const tagName =
-            element && element.tagName && element.tagName.toLowerCase();
+        const tagName = element && element.tagName && element.tagName.toLowerCase();
         throw new Error(
             `Attempting to retrieve the shadow root of '${tagName || element}'
             but no shadowRoot property found`
         );
     }
     return element.shadowRoot;
-}
+};
 
 const shadowQuerySelector = (element, selector) => {
     return getShadowRoot(element).querySelector(selector);
-}
+};

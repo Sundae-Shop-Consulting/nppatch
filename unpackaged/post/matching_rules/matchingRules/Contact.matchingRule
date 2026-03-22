@@ -16,7 +16,7 @@
         </matchingRuleItems>
         <matchingRuleItems>
             <blankValueBehavior>NullNotAllowed</blankValueBehavior>
-            <fieldName>HomeEmail__c</fieldName>
+            <fieldName>%%%NAMESPACE%%%HomeEmail__c</fieldName>
             <matchingMethod>Exact</matchingMethod>
         </matchingRuleItems>
         <ruleStatus>Active</ruleStatus>

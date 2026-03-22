@@ -1,23 +1,23 @@
-import { LightningElement, api } from 'lwc';
-import LOCALE from '@salesforce/i18n/locale';
-import CURRENCY from '@salesforce/i18n/currency';
+import { LightningElement, api } from "lwc";
+import LOCALE from "@salesforce/i18n/locale";
+import CURRENCY from "@salesforce/i18n/currency";
 
-import RECURRING_TYPE from '@salesforce/schema/Recurring_Donation__c.RecurringType__c';
-import INSTALLMENT_PERIOD from '@salesforce/schema/Recurring_Donation__c.Installment_Period__c';
-import EFFECTIVE_DATE from '@salesforce/schema/Recurring_Donation__c.StartDate__c';
-import INSTALLMENTS from '@salesforce/schema/Recurring_Donation__c.Installments__c';
-import DONATION_AMOUNT from '@salesforce/schema/DataImport__c.Donation_Amount__c';
+import RECURRING_TYPE from "@salesforce/schema/Recurring_Donation__c.RecurringType__c";
+import INSTALLMENT_PERIOD from "@salesforce/schema/Recurring_Donation__c.Installment_Period__c";
+import EFFECTIVE_DATE from "@salesforce/schema/Recurring_Donation__c.StartDate__c";
+import INSTALLMENTS from "@salesforce/schema/Recurring_Donation__c.Installments__c";
+import DONATION_AMOUNT from "@salesforce/schema/DataImport__c.Donation_Amount__c";
 
-import commonEdit from '@salesforce/label/c.commonEdit';
-import geRemoveSchedule from '@salesforce/label/c.geRemoveSchedule';
-import geOpenEndedGiftSchedule from '@salesforce/label/c.geOpenEndedGiftSchedule';
-import geFixedGiftSchedule from '@salesforce/label/c.geFixedGiftSchedule';
-import geRecurringScheduleInformation from '@salesforce/label/c.geRecurringScheduleInformation';
+import commonEdit from "@salesforce/label/c.commonEdit";
+import geRemoveSchedule from "@salesforce/label/c.geRemoveSchedule";
+import geOpenEndedGiftSchedule from "@salesforce/label/c.geOpenEndedGiftSchedule";
+import geFixedGiftSchedule from "@salesforce/label/c.geFixedGiftSchedule";
+import geRecurringScheduleInformation from "@salesforce/label/c.geRecurringScheduleInformation";
 
-import { format } from 'c/utilCommon';
+import { format } from "c/utilCommon";
 
-const OPEN = 'Open';
-const FIXED = 'Fixed';
+const OPEN = "Open";
+const FIXED = "Fixed";
 
 export default class GeRecurringGiftInfo extends LightningElement {
     @api giftInView;
@@ -30,7 +30,7 @@ export default class GeRecurringGiftInfo extends LightningElement {
 
     get scheduleText() {
         if (!this.giftInView || !this.giftInView.schedule) {
-            return '';
+            return "";
         }
 
         const recurringType = this.recurringType();
@@ -40,15 +40,16 @@ export default class GeRecurringGiftInfo extends LightningElement {
         if (recurringType === FIXED) {
             return this.formattedLabelForFixedSchedule();
         }
+        return "";
     }
 
     handleEdit() {
-        const customEvent = new CustomEvent('editschedule', {});
+        const customEvent = new CustomEvent("editschedule", {});
         this.dispatchEvent(customEvent);
     }
 
     handleRemoveSchedule() {
-        const customEvent = new CustomEvent('removeschedule', {});
+        const customEvent = new CustomEvent("removeschedule", {});
         this.dispatchEvent(customEvent);
     }
 
@@ -56,7 +57,7 @@ export default class GeRecurringGiftInfo extends LightningElement {
         return format(geOpenEndedGiftSchedule, [
             this.localizedDonationAmount(),
             this.installmentPeriod(),
-            this.localizedEffectiveDate()
+            this.localizedEffectiveDate(),
         ]);
     }
 
@@ -65,7 +66,7 @@ export default class GeRecurringGiftInfo extends LightningElement {
             this.localizedDonationAmount(),
             this.installmentPeriod(),
             this.localizedEffectiveDate(),
-            this.installments()
+            this.installments(),
         ]);
     }
 
@@ -77,13 +78,11 @@ export default class GeRecurringGiftInfo extends LightningElement {
 
     localizedDonationAmount() {
         const donationAmount = this.giftInView?.fields[DONATION_AMOUNT.fieldApiName] || 0;
-        const localizedDonationAmount = new Intl.NumberFormat(LOCALE,
-            {
-                style: 'currency',
-                currency: CURRENCY,
-                currencyDisplay: 'symbol'
-            })
-            .format(donationAmount);
+        const localizedDonationAmount = new Intl.NumberFormat(LOCALE, {
+            style: "currency",
+            currency: CURRENCY,
+            currencyDisplay: "symbol",
+        }).format(donationAmount);
         return localizedDonationAmount;
     }
 
@@ -91,11 +90,10 @@ export default class GeRecurringGiftInfo extends LightningElement {
         const scheduleFields = this.giftInView?.schedule;
         const effectiveDate = scheduleFields[EFFECTIVE_DATE.fieldApiName];
         const i18nOptions = {
-            timeZone: 'UTC',
-            dateStyle: 'long',
+            timeZone: "UTC",
+            dateStyle: "long",
         };
-        const localizedEffectiveDate = new Intl.DateTimeFormat(LOCALE, i18nOptions)
-            .format(new Date(effectiveDate));
+        const localizedEffectiveDate = new Intl.DateTimeFormat(LOCALE, i18nOptions).format(new Date(effectiveDate));
         return localizedEffectiveDate;
     }
 

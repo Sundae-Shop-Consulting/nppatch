@@ -1,7 +1,7 @@
-.slds-resizable__divider::before{
+.slds-resizable__divider::before {
     background-color: transparent;
 }
-.slds-max-medium-table_stacked td:before{
+.slds-max-medium-table_stacked td:before {
     display: inline;
 }
 .tableScroll {
@@ -10,13 +10,15 @@
     height: 10rem;
 }
 
-.row-label-alignment{
+.row-label-alignment {
     display: inline;
 }
-.slds-table_header-fixed tbody tr:first-child td, .table_top{
-    border-top: var(--slds-g-sizing-border-1, var(--lwc-borderWidthThin,1px)) solid var(--slds-g-color-border-1, var(--lwc-colorBorder,rgb(229, 229, 229)));
+.slds-table_header-fixed tbody tr:first-child td,
+.table_top {
+    border-top: var(--slds-g-sizing-border-1, var(--lwc-borderWidthThin, 1px)) solid
+        var(--slds-g-color-border-1, var(--lwc-colorBorder, rgb(229, 229, 229)));
 }
-.viewMore{
+.viewMore {
     display: none;
 }
 
@@ -26,51 +28,51 @@
 .nonpointer {
     pointer-events: none;
 }
-.th-dynamic-width{
+.th-dynamic-width {
     width: auto;
     min-width: 50px;
     max-width: 250px;
 }
-.lastColumn{
+.lastColumn {
     padding-right: 20%;
 }
-.td-dynamic-width{
+.td-dynamic-width {
     width: 100%;
     min-width: 50px;
     max-width: 250px;
 }
-.table-container{
+.table-container {
     position: relative;
 }
-.cell{
+.cell {
     position: relative;
     top: 0;
     min-height: 2rem;
     min-width: 50px;
     max-width: 250px;
 }
-.th-padding-top{
+.th-padding-top {
     padding-top: 0;
 }
 
 @media (max-width: 48em) {
-    .td-dynamic-width{
+    .td-dynamic-width {
         width: 100%;
         max-width: 100%;
     }
-    .hide-td{
+    .hide-td {
         display: none;
     }
-    .dv-dynamic-mobile{
+    .dv-dynamic-mobile {
         float: right;
     }
-    .viewMore{
+    .viewMore {
         display: block;
         cursor: pointer;
         text-align: center;
-        border-bottom: var(--lwc-borderWidthThin,1px) solid var(--lwc-colorBorder,rgb(229, 229, 229));
+        border-bottom: var(--lwc-borderWidthThin, 1px) solid var(--lwc-colorBorder, rgb(229, 229, 229));
     }
-    .viewMore::before{
-        color: #0070D2;
+    .viewMore::before {
+        color: #0070d2;
     }
 }

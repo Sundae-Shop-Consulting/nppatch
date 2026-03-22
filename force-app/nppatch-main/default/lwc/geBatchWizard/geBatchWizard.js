@@ -1,57 +1,51 @@
 /* eslint-disable array-callback-return */
-import { LightningElement, api, track, wire } from 'lwc';
-import GeFormService from 'c/geFormService';
-import { NavigationMixin } from 'lightning/navigation';
-import { getObjectInfo } from 'lightning/uiObjectInfoApi';
+import { LightningElement, api, track, wire } from "lwc";
+import GeFormService from "c/geFormService";
+import { NavigationMixin } from "lightning/navigation";
+import { getObjectInfo } from "lightning/uiObjectInfoApi";
 import {
     createRecord,
     updateRecord,
     getRecord,
     getRecordCreateDefaults,
-    generateRecordInputForCreate, generateRecordInputForUpdate
-} from 'lightning/uiRecordApi';
-import { fireEvent } from 'c/pubsubNoPageRef';
+    generateRecordInputForCreate,
+    generateRecordInputForUpdate,
+} from "lightning/uiRecordApi";
+import { fireEvent } from "c/pubsubNoPageRef";
 import {
     handleError,
     addKeyToCollectionItems,
     isTrueFalsePicklist,
-    trueFalsePicklistOptions
-} from 'c/utilTemplateBuilder';
-import {
-    getNamespace,
-    getNestedProperty,
-    isNotEmpty,
-    isNull,
-    stripNamespace,
-} from 'c/utilCommon';
-import GeLabelService from 'c/geLabelService';
-import psPaymentGateway from '@salesforce/label/c.psPaymentGateway';
+    trueFalsePicklistOptions,
+} from "c/utilTemplateBuilder";
+import { getNamespace, getNestedProperty, isNotEmpty, isNull, stripNamespace } from "c/utilCommon";
+import GeLabelService from "c/geLabelService";
+import psPaymentGateway from "@salesforce/label/c.psPaymentGateway";
 
-import getAllFormTemplates from '@salesforce/apex/GE_GiftEntryController.getAllFormTemplates';
-import getDonationMatchingValues from '@salesforce/apex/GE_GiftEntryController.getDonationMatchingValues';
-import getGatewayAssignmentSettingsWithDefaultGatewayName from '@salesforce/apex/GE_GiftEntryController.getGatewayAssignmentSettingsWithDefaultGatewayName';
+import getAllFormTemplates from "@salesforce/apex/GE_GiftEntryController.getAllFormTemplates";
+import getDonationMatchingValues from "@salesforce/apex/GE_GiftEntryController.getDonationMatchingValues";
+import getGatewayAssignmentSettingsWithDefaultGatewayName from "@salesforce/apex/GE_GiftEntryController.getGatewayAssignmentSettingsWithDefaultGatewayName";
 
-import DATA_IMPORT_BATCH_INFO from '@salesforce/schema/DataImportBatch__c';
-import DATA_IMPORT_BATCH_ID_INFO from '@salesforce/schema/DataImportBatch__c.Id';
-import DATA_IMPORT_BATCH_FORM_TEMPLATE_INFO from '@salesforce/schema/DataImportBatch__c.Form_Template__c';
-import DATA_IMPORT_BATCH_VERSION_INFO from '@salesforce/schema/DataImportBatch__c.Batch_Gift_Entry_Version__c';
-import DATA_IMPORT_BATCH_GIFT_INFO from '@salesforce/schema/DataImportBatch__c.GiftBatch__c';
-import DATA_IMPORT_BATCH_DEFAULTS_INFO from '@salesforce/schema/DataImportBatch__c.Batch_Defaults__c';
-import DATA_IMPORT_MATCHING_BEHAVIOR_INFO from '@salesforce/schema/DataImportBatch__c.Donation_Matching_Behavior__c';
-import DATA_IMPORT_BATCH_TABLE_COLUMNS_FIELD from '@salesforce/schema/DataImportBatch__c.Batch_Table_Columns__c';
-import DATA_IMPORT_BATCH_DONATION_MATCHING_RULE from '@salesforce/schema/DataImportBatch__c.Donation_Matching_Rule__c';
-import DATA_IMPORT_BATCH_ALLOW_RECURRING_DONATIONS from '@salesforce/schema/DataImportBatch__c.Allow_Recurring_Donations__c';
-import Settings from 'c/geSettings';
+import DATA_IMPORT_BATCH_INFO from "@salesforce/schema/DataImportBatch__c";
+import DATA_IMPORT_BATCH_ID_INFO from "@salesforce/schema/DataImportBatch__c.Id";
+import DATA_IMPORT_BATCH_FORM_TEMPLATE_INFO from "@salesforce/schema/DataImportBatch__c.Form_Template__c";
+import DATA_IMPORT_BATCH_VERSION_INFO from "@salesforce/schema/DataImportBatch__c.Batch_Gift_Entry_Version__c";
+import DATA_IMPORT_BATCH_GIFT_INFO from "@salesforce/schema/DataImportBatch__c.GiftBatch__c";
+import DATA_IMPORT_BATCH_DEFAULTS_INFO from "@salesforce/schema/DataImportBatch__c.Batch_Defaults__c";
+import DATA_IMPORT_MATCHING_BEHAVIOR_INFO from "@salesforce/schema/DataImportBatch__c.Donation_Matching_Behavior__c";
+import DATA_IMPORT_BATCH_TABLE_COLUMNS_FIELD from "@salesforce/schema/DataImportBatch__c.Batch_Table_Columns__c";
+import DATA_IMPORT_BATCH_DONATION_MATCHING_RULE from "@salesforce/schema/DataImportBatch__c.Donation_Matching_Rule__c";
+import DATA_IMPORT_BATCH_ALLOW_RECURRING_DONATIONS from "@salesforce/schema/DataImportBatch__c.Allow_Recurring_Donations__c";
+import Settings from "c/geSettings";
 
-const NAME = 'name';
-const ID = 'id';
+const NAME = "name";
+const ID = "id";
 const MAX_STEPS = 2;
-const CANCEL = 'cancel';
-const SEMI_COLON_SEPARATOR = ';';
-const PACKAGE_NAMESPACE_PREFIX = 'npsp';
+const CANCEL = "cancel";
+const SEMI_COLON_SEPARATOR = ";";
+const PACKAGE_NAMESPACE_PREFIX = "npsp";
 
 export default class geBatchWizard extends NavigationMixin(LightningElement) {
-
     // Expose custom labels to template
     CUSTOM_LABELS = GeLabelService.CUSTOM_LABELS;
 
@@ -82,33 +76,29 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
     headers = {
         0: this.CUSTOM_LABELS.geHeaderBatchSelectTemplate,
         1: this.CUSTOM_LABELS.geHeaderBatchEnterInfo,
-        2: this.CUSTOM_LABELS.geHeaderBatchSetDefaultValues
-    }
+        2: this.CUSTOM_LABELS.geHeaderBatchSetDefaultValues,
+    };
 
     steps = {
         first: 0,
         second: 1,
-        third: 2
-    }
+        third: 2,
+    };
 
     _allowFirstInstallmentDisabled;
     _allowRecurringDonations = false;
 
     installmentCheckboxMetadata = Object.freeze({
-        objectApiName : 'AllowFirstInstallment__o',
-        fieldApiName : 'AllowFirstInstallment__f'
+        objectApiName: "AllowFirstInstallment__o",
+        fieldApiName: "AllowFirstInstallment__f",
     });
 
     get allowRecurringDonations() {
-        return this
-            ?.dataImportBatchRecord
-            ?.fields[DATA_IMPORT_BATCH_ALLOW_RECURRING_DONATIONS.fieldApiName]
-            ?.value;
+        return this?.dataImportBatchRecord?.fields[DATA_IMPORT_BATCH_ALLOW_RECURRING_DONATIONS.fieldApiName]?.value;
     }
 
     get allowRecurringDonationsField() {
-        return this.dataImportBatchInfo
-            .fields[DATA_IMPORT_BATCH_ALLOW_RECURRING_DONATIONS.fieldApiName];
+        return this.dataImportBatchInfo.fields[DATA_IMPORT_BATCH_ALLOW_RECURRING_DONATIONS.fieldApiName];
     }
 
     get canAllowRecurringDonations() {
@@ -116,7 +106,7 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
     }
 
     handleAllowRecurringDonationsOnChange(event) {
-        const isChecked = event.detail.value
+        const isChecked = event.detail.value;
         this._allowRecurringDonations = isChecked;
         if (!isChecked) {
             this.allowFirstInstallment = false;
@@ -124,7 +114,6 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
         } else {
             this._allowFirstInstallmentDisabled = false;
         }
-
     }
 
     handleAllowFirstInstallmentOnChange(event) {
@@ -160,21 +149,21 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
     }
 
     get cssClassStep0() {
-        return this.header === this.headers[0] ?
-            'slds-p-horizontal_x-large slds-p-vertical_large slds-size_1-of-1 step-0' :
-            'slds-hide';
+        return this.header === this.headers[0]
+            ? "slds-p-horizontal_x-large slds-p-vertical_large slds-size_1-of-1 step-0"
+            : "slds-hide";
     }
 
     get cssClassStep1() {
-        return this.header === this.headers[1] ?
-            'slds-p-horizontal_x-large slds-p-vertical_large slds-size_1-of-1' :
-            'slds-hide';
+        return this.header === this.headers[1]
+            ? "slds-p-horizontal_x-large slds-p-vertical_large slds-size_1-of-1"
+            : "slds-hide";
     }
 
     get cssClassStep2() {
-        return this.header === this.headers[2] ?
-            'slds-p-horizontal_large slds-p-bottom_x-large slds-size_1-of-1' :
-            'slds-hide';
+        return this.header === this.headers[2]
+            ? "slds-p-horizontal_large slds-p-bottom_x-large slds-size_1-of-1"
+            : "slds-hide";
     }
 
     get selectedTemplate() {
@@ -189,58 +178,56 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
     }
 
     get dataImportBatchName() {
-        return getNestedProperty(DATA_IMPORT_BATCH_INFO, 'objectApiName');
+        return getNestedProperty(DATA_IMPORT_BATCH_INFO, "objectApiName");
     }
 
     /*******************************************************************************
-    * @description Retrieves the DataImportBatch__c describe info.
-    *
-    * @param {string} dataImportBatchName: DataImportBatch__c object api name.
-    */
-    @wire(getObjectInfo, { objectApiName: '$dataImportBatchName' })
+     * @description Retrieves the DataImportBatch__c describe info.
+     *
+     * @param {string} dataImportBatchName: DataImportBatch__c object api name.
+     */
+    @wire(getObjectInfo, { objectApiName: "$dataImportBatchName" })
     wiredDataImportBatchInfo(response) {
         if (response.data) {
             this.dataImportBatchInfo = response.data;
 
-            this.dataImportBatchFieldInfos =
-                this.buildFieldDescribesForWiredMethod(
-                    this.dataImportBatchInfo.fields,
-                    this.dataImportBatchInfo.apiName);
+            this.dataImportBatchFieldInfos = this.buildFieldDescribesForWiredMethod(
+                this.dataImportBatchInfo.fields,
+                this.dataImportBatchInfo.apiName
+            );
         }
     }
 
-    @wire(getRecordCreateDefaults, { objectApiName: '$dataImportBatchName' })
+    @wire(getRecordCreateDefaults, { objectApiName: "$dataImportBatchName" })
     dataImportBatchCreateDefaults;
 
     /*******************************************************************************
-    * @description Method converts field describe info into objects that the
-    * getRecord method can accept into its 'fields' parameter.
-    *
-    * @param {list} fields: List of field describe info.
-    * @param {string} objectApiName: An SObject api name.
-    */
+     * @description Method converts field describe info into objects that the
+     * getRecord method can accept into its 'fields' parameter.
+     *
+     * @param {list} fields: List of field describe info.
+     * @param {string} objectApiName: An SObject api name.
+     */
     buildFieldDescribesForWiredMethod(fields, objectApiName) {
         return Object.keys(fields).map((fieldApiName) => {
             return {
                 fieldApiName: fieldApiName,
-                objectApiName: objectApiName
-            }
+                objectApiName: objectApiName,
+            };
         });
     }
 
-    @wire(getRecord, { recordId: '$recordId', fields: '$dataImportBatchFieldInfos' })
+    @wire(getRecord, { recordId: "$recordId", fields: "$dataImportBatchFieldInfos" })
     wiredDataImportBatchRecord(response) {
         if (response.data) {
             getAllFormTemplates()
-                .then(templates => {
+                .then((templates) => {
                     this.templates = templates;
                     this.builderTemplateComboboxOptions(this.templates);
 
                     this.dataImportBatchRecord = response.data;
-                    let templateId = this
-                        .dataImportBatchRecord
-                        .fields[DATA_IMPORT_BATCH_FORM_TEMPLATE_INFO.fieldApiName]
-                        .value;
+                    const templateId =
+                        this.dataImportBatchRecord.fields[DATA_IMPORT_BATCH_FORM_TEMPLATE_INFO.fieldApiName].value;
 
                     this.handleTemplateChange({ detail: { value: templateId } });
                     this.setFormFieldsBatchLevelDefaults();
@@ -249,31 +236,30 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
 
                     this.isLoading = false;
                 })
-                .catch(error => {
+                .catch((error) => {
                     handleError(error);
                 });
         }
     }
     setFormFieldsBatchLevelDefaults() {
         this._allowRecurringDonations =
-            this.dataImportBatchRecord
-            ?.fields[DATA_IMPORT_BATCH_ALLOW_RECURRING_DONATIONS.fieldApiName]
-            ?.value;
+            this.dataImportBatchRecord?.fields[DATA_IMPORT_BATCH_ALLOW_RECURRING_DONATIONS.fieldApiName]?.value;
 
         if (!this._allowRecurringDonations) {
             this._allowFirstInstallmentDisabled = true;
         }
 
-        let batchLevelDefaults =
-            JSON.parse(this.dataImportBatchRecord.fields[DATA_IMPORT_BATCH_DEFAULTS_INFO.fieldApiName].value);
+        const batchLevelDefaults = JSON.parse(
+            this.dataImportBatchRecord.fields[DATA_IMPORT_BATCH_DEFAULTS_INFO.fieldApiName].value
+        );
 
-        this.allowFirstInstallment = batchLevelDefaults['AllowFirstInstallment__f'] ? 
-            batchLevelDefaults['AllowFirstInstallment__f'].value : 
-            false;
+        this.allowFirstInstallment = batchLevelDefaults.AllowFirstInstallment__f
+            ? batchLevelDefaults.AllowFirstInstallment__f.value
+            : false;
 
-        this.formSections.forEach(section => {
+        this.formSections.forEach((section) => {
             if (section.elements) {
-                section.elements.forEach(element => {
+                section.elements.forEach((element) => {
                     if (batchLevelDefaults[element.customLabel]) {
                         element.value = batchLevelDefaults[element.customLabel].value;
                     }
@@ -283,10 +269,12 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
     }
 
     appendTrueFalsePicklistToElement() {
-        this.formSections.forEach(section => {
+        this.formSections.forEach((section) => {
             if (section.elements) {
-                section.elements.forEach(element => {
-                    const fieldMapping = GeFormService.getFieldMappingWrapper(element.dataImportFieldMappingDevNames[0]);
+                section.elements.forEach((element) => {
+                    const fieldMapping = GeFormService.getFieldMappingWrapper(
+                        element.dataImportFieldMappingDevNames[0]
+                    );
 
                     if (isNotEmpty(fieldMapping)) {
                         if (isTrueFalsePicklist(fieldMapping)) {
@@ -294,8 +282,10 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
                         }
                     }
 
-                    Object.defineProperty(element, 'showDefaultValueInput', {
-                        get: function() { return this.dataType !== 'BOOLEAN' || !!this.picklistOptionsOverride; }
+                    Object.defineProperty(element, "showDefaultValueInput", {
+                        get: function () {
+                            return this.dataType !== "BOOLEAN" || !!this.picklistOptionsOverride;
+                        },
                     });
                 });
             }
@@ -303,8 +293,8 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
     }
 
     setValuesForSelectedBatchHeaderFields(allFields) {
-        this.selectedBatchHeaderFields.map(batchHeaderField => {
-            let queriedField = allFields[batchHeaderField.apiName];
+        this.selectedBatchHeaderFields.map((batchHeaderField) => {
+            const queriedField = allFields[batchHeaderField.apiName];
             if (queriedField) {
                 batchHeaderField.value = queriedField.value;
             }
@@ -339,9 +329,9 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
 
     builderTemplateComboboxOptions(templates) {
         if (templates && templates.length > 0) {
-            this.templateOptions = this.templates.map(template => {
+            this.templateOptions = this.templates.map((template) => {
                 this.templatesById[template[ID]] = template;
-                return { label: template[NAME], value: template[ID] }
+                return { label: template[NAME], value: template[ID] };
             });
         }
     }
@@ -383,34 +373,38 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
     }
 
     /*******************************************************************************
-    * @description Method collects all batch header fields and checks for their
-    * validity.
-    */
+     * @description Method collects all batch header fields and checks for their
+     * validity.
+     */
     validateBatchHeaderFields() {
         this.resetValidations();
 
-        let inputComponents = this.template.querySelectorAll('c-util-input[data-id="batchHeaderField"]');
+        const inputComponents = this.template.querySelectorAll('c-util-input[data-id="batchHeaderField"]');
         for (let i = 0; i < inputComponents.length; i++) {
             if (!inputComponents[i].isValid()) {
                 this.hasInvalidBatchFields = true;
-                this.missingBatchHeaderFieldLabels =
-                    [...this.missingBatchHeaderFieldLabels, inputComponents[i].uiLabel];
+                this.missingBatchHeaderFieldLabels = [
+                    ...this.missingBatchHeaderFieldLabels,
+                    inputComponents[i].uiLabel,
+                ];
             }
         }
 
-        if (this.hasInvalidBatchFields &&
-            (this.missingBatchHeaderFieldLabels && this.missingBatchHeaderFieldLabels.length > 0)) {
-
-            this.missingRequiredFieldsMessage = GeLabelService.format(
-                this.CUSTOM_LABELS.commonMissingRequiredFields,
-                [this.missingBatchHeaderFieldLabels.join(', ')]);
+        if (
+            this.hasInvalidBatchFields &&
+            this.missingBatchHeaderFieldLabels &&
+            this.missingBatchHeaderFieldLabels.length > 0
+        ) {
+            this.missingRequiredFieldsMessage = GeLabelService.format(this.CUSTOM_LABELS.commonMissingRequiredFields, [
+                this.missingBatchHeaderFieldLabels.join(", "),
+            ]);
         }
     }
 
     /*******************************************************************************
-    * @description Fires an event to utilDedicatedListener with the save action if
-    * a dedicated listener event name is provided otherwise dispatches a CustomEvent.
-    */
+     * @description Fires an event to utilDedicatedListener with the save action if
+     * a dedicated listener event name is provided otherwise dispatches a CustomEvent.
+     */
     handleSave() {
         this.isLoading = true;
         if (this.recordId) {
@@ -425,12 +419,12 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
      * @returns {DataImportBatch record}
      */
     buildCreateRecord() {
-        const dataImportBatchObjectInfo = this.dataImportBatchCreateDefaults.
-            data.objectInfos[this.dataImportBatchName];
-        const createRecord = generateRecordInputForCreate(
+        const dataImportBatchObjectInfo = this.dataImportBatchCreateDefaults.data.objectInfos[this.dataImportBatchName];
+        const batchCreateRecord = generateRecordInputForCreate(
             this.dataImportBatchCreateDefaults.data.record,
-            dataImportBatchObjectInfo);
-        return this.setFieldValues(createRecord);
+            dataImportBatchObjectInfo
+        );
+        return this.setFieldValues(batchCreateRecord);
     }
 
     /**
@@ -438,19 +432,17 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
      * @returns {DataImportBatch record}
      */
     buildUpdateRecord() {
-        const dataImportBatchObjectInfo = this.dataImportBatchCreateDefaults.
-            data.objectInfos[this.dataImportBatchName];
-        let updateRecord = generateRecordInputForUpdate(
-            this.dataImportBatchRecord, dataImportBatchObjectInfo);
-        updateRecord.apiName = this.dataImportBatchRecord.apiName;
-        return this.setFieldValues(updateRecord);
+        const dataImportBatchObjectInfo = this.dataImportBatchCreateDefaults.data.objectInfos[this.dataImportBatchName];
+        const batchUpdateRecord = generateRecordInputForUpdate(this.dataImportBatchRecord, dataImportBatchObjectInfo);
+        batchUpdateRecord.apiName = this.dataImportBatchRecord.apiName;
+        return this.setFieldValues(batchUpdateRecord);
     }
 
     setFieldValues(dataImportBatch) {
-        let utilInputs = this.template.querySelectorAll('c-util-input');
-        let batchDefaults = {};
+        const utilInputs = this.template.querySelectorAll("c-util-input");
+        const batchDefaults = {};
         for (let i = 0; i < utilInputs.length; i++) {
-            let formElement = utilInputs[i].reportValue();
+            const formElement = utilInputs[i].reportValue();
 
             if (dataImportBatch.apiName === formElement.objectApiName) {
                 dataImportBatch.fields[formElement.fieldApiName] = formElement.value;
@@ -458,9 +450,9 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
                 const fieldElementData = {
                     objectApiName: formElement.objectApiName,
                     fieldApiName: formElement.fieldApiName,
-                    value: isNotEmpty(formElement.value) ? formElement.value : undefined
+                    value: isNotEmpty(formElement.value) ? formElement.value : undefined,
                 };
-                if (formElement.fieldApiName === 'AllowFirstInstallment__f'){
+                if (formElement.fieldApiName === "AllowFirstInstallment__f") {
                     batchDefaults[formElement.fieldApiName] = fieldElementData;
                 } else {
                     batchDefaults[formElement.label] = fieldElementData;
@@ -468,8 +460,7 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
             }
         }
 
-        dataImportBatch.fields[DATA_IMPORT_BATCH_DEFAULTS_INFO.fieldApiName] =
-            JSON.stringify(batchDefaults);
+        dataImportBatch.fields[DATA_IMPORT_BATCH_DEFAULTS_INFO.fieldApiName] = JSON.stringify(batchDefaults);
         dataImportBatch.fields[DATA_IMPORT_BATCH_FORM_TEMPLATE_INFO.fieldApiName] = this.selectedTemplateId;
         dataImportBatch.fields[DATA_IMPORT_BATCH_VERSION_INFO.fieldApiName] = 2.0;
         dataImportBatch.fields[DATA_IMPORT_BATCH_GIFT_INFO.fieldApiName] = true;
@@ -480,8 +471,9 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
         const hasAccessTobatchTableColumnsField =
             this.dataImportBatchInfo.fields[DATA_IMPORT_BATCH_TABLE_COLUMNS_FIELD.fieldApiName];
         if (hasAccessTobatchTableColumnsField) {
-            dataImportBatch.fields[DATA_IMPORT_BATCH_TABLE_COLUMNS_FIELD.fieldApiName] =
-                JSON.stringify(this.selectedTemplate.defaultBatchTableColumns);
+            dataImportBatch.fields[DATA_IMPORT_BATCH_TABLE_COLUMNS_FIELD.fieldApiName] = JSON.stringify(
+                this.selectedTemplate.defaultBatchTableColumns
+            );
         }
 
         if (this.recordId) {
@@ -499,33 +491,27 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
      * @param {*} dataImportBatch
      * @returns {object}
      */
-    stripNamespaceFromDonationMatchingRuleFields (dataImportBatch) {
-        const donationMatchingRule = dataImportBatch.fields[
-          DATA_IMPORT_BATCH_DONATION_MATCHING_RULE.fieldApiName];
+    stripNamespaceFromDonationMatchingRuleFields(dataImportBatch) {
+        const donationMatchingRule = dataImportBatch.fields[DATA_IMPORT_BATCH_DONATION_MATCHING_RULE.fieldApiName];
         const namespace = getNamespace(DATA_IMPORT_BATCH_INFO.objectApiName);
-        
+
         if (isNull(namespace)) {
-            let strippedFields = '';
-            const matchingRuleFields = donationMatchingRule.split(
-              SEMI_COLON_SEPARATOR);
-            matchingRuleFields.forEach(field => {
-                strippedFields += stripNamespace(field,
-                  PACKAGE_NAMESPACE_PREFIX+'__') +
-                  SEMI_COLON_SEPARATOR;
+            let strippedFields = "";
+            const matchingRuleFields = donationMatchingRule.split(SEMI_COLON_SEPARATOR);
+            matchingRuleFields.forEach((field) => {
+                strippedFields += stripNamespace(field, PACKAGE_NAMESPACE_PREFIX + "__") + SEMI_COLON_SEPARATOR;
             });
-            dataImportBatch.fields[
-              DATA_IMPORT_BATCH_DONATION_MATCHING_RULE.fieldApiName] =
-              strippedFields.slice(0, -1);
+            dataImportBatch.fields[DATA_IMPORT_BATCH_DONATION_MATCHING_RULE.fieldApiName] = strippedFields.slice(0, -1);
         }
         return dataImportBatch;
     }
 
     handleRecordCreate(recordObject) {
         createRecord(recordObject)
-            .then(record => {
+            .then((record) => {
                 this.navigateToRecordViewPage(record.id);
             })
-            .catch(error => {
+            .catch((error) => {
                 handleError(error);
             });
     }
@@ -535,15 +521,15 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
             .then(() => {
                 this.navigateToRecordViewPage(this.recordId);
             })
-            .catch(error => {
+            .catch((error) => {
                 handleError(error);
-            })
+            });
     }
 
     /*******************************************************************************
-    * @description Fires an event to utilDedicatedListener with the cancel action if
-    * a dedicated listener event name is provided otherwise dispatches a CustomEvent.
-    */
+     * @description Fires an event to utilDedicatedListener with the cancel action if
+     * a dedicated listener event name is provided otherwise dispatches a CustomEvent.
+     */
     handleCancel() {
         if (this.dedicatedListenerEventName) {
             fireEvent(this.pageRef, this.dedicatedListenerEventName, { action: CANCEL });
@@ -553,17 +539,17 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
     }
 
     /*******************************************************************************
-    * @description Navigates to a record detail page by record id.
-    *
-    * @param {string} formTemplateRecordId: Form_Template__c record id.
-    */
+     * @description Navigates to a record detail page by record id.
+     *
+     * @param {string} formTemplateRecordId: Form_Template__c record id.
+     */
     navigateToRecordViewPage(recordId) {
         this[NavigationMixin.Navigate]({
-            type: 'standard__recordPage',
+            type: "standard__recordPage",
             attributes: {
                 recordId: recordId,
-                actionName: 'view'
-            }
+                actionName: "view",
+            },
         });
     }
 
@@ -574,10 +560,10 @@ export default class geBatchWizard extends NavigationMixin(LightningElement) {
 
     get gatewayNameMessage() {
         if (this.gatewaySettings?.gatewayAssignmentEnabled && this.selectedTemplateId) {
-            let gatewayName = this.gatewayName ? this.gatewayName : this.gatewaySettings?.defaultGatewayName;
-            return psPaymentGateway + ' ' + gatewayName;
+            const gatewayName = this.gatewayName ? this.gatewayName : this.gatewaySettings?.defaultGatewayName;
+            return psPaymentGateway + " " + gatewayName;
         }
-        return '';
+        return "";
     }
 
     /*******************************************************************************

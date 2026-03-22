@@ -1,12 +1,12 @@
-import {api, LightningElement} from 'lwc';
-import { isBlank } from 'c/util';
+import { api, LightningElement } from "lwc";
+import { isBlank } from "c/util";
 
 export default class FormattedTextWithDate extends LightningElement {
     @api value;
     @api date;
 
     get splitText() {
-        return this.value.split('{{DATE}}');
+        return this.value.split("{{DATE}}");
     }
 
     get firstHalf() {

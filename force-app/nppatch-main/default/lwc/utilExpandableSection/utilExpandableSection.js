@@ -1,48 +1,54 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api } from "lwc";
 
 export default class utilExpandableSection extends LightningElement {
-
     @api id;
     @api label;
-    @api isCollapsed = false;
+    _isCollapsed = false;
+    @api
+    get isCollapsed() {
+        return this._isCollapsed;
+    }
+    set isCollapsed(val) {
+        this._isCollapsed = val;
+    }
     @api alternativeText;
     @api bodyClass;
     @api shouldInformParent = false;
 
     get containerClass() {
-        let classItems = ['slds-section', 'slds-is-open'];
+        let classItems = ["slds-section", "slds-is-open"];
 
         if (this.classList && this.classList.length > 0) {
             classItems = [...classItems, this.classList];
         }
 
-        return classItems.join(' ');
+        return classItems.join(" ");
     }
 
     get iconClass() {
-        let classItems = ['slds-p-right_small', 'icon-transition'];
+        let classItems = ["slds-p-right_small", "icon-transition"];
 
         if (!this.isCollapsed) {
-            classItems = [...classItems, 'icon-transition_is-open'];
+            classItems = [...classItems, "icon-transition_is-open"];
         }
 
-        return classItems.join(' ');
+        return classItems.join(" ");
     }
 
     get sectionClass() {
-        let classItems = ['section-transition'];
+        let classItems = ["section-transition"];
 
         if (this.isCollapsed) {
-            classItems = [...classItems, 'section-transition_is-closed'];
+            classItems = [...classItems, "section-transition_is-closed"];
         } else {
             // Apply provided css class to body if section is expanded
             if (this.bodyClass) {
-                let bodyClass = this.bodyClass.split(' ');
+                const bodyClass = this.bodyClass.split(" ");
                 classItems = [...classItems, ...bodyClass];
             }
         }
 
-        return classItems.join(' ');
+        return classItems.join(" ");
     }
 
     get ariaExpanded() {
@@ -54,7 +60,7 @@ export default class utilExpandableSection extends LightningElement {
     }
 
     toggleSection() {
-        this.isCollapsed = !this.isCollapsed;
+        this._isCollapsed = !this._isCollapsed;
         if (this.shouldInformParent === true) {
             this.informParent();
         }
@@ -72,11 +78,11 @@ export default class utilExpandableSection extends LightningElement {
      * End getters for data-qa-locator attributes
      */
 
-    informParent () {
-        const collapseEvent = new CustomEvent('sectioncollapse', {
+    informParent() {
+        const collapseEvent = new CustomEvent("sectioncollapse", {
             detail: {
-                isCollapsed : this.isCollapsed
-            }
+                isCollapsed: this.isCollapsed,
+            },
         });
         this.dispatchEvent(collapseEvent);
     }

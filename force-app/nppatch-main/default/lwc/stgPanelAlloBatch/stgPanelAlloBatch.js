@@ -15,8 +15,7 @@ export default class StgPanelAlloBatch extends LightningElement {
         description:
             "Recalculates rollup totals for General Accounting Units (GAUs). Run this after creating or modifying Allocations to ensure GAU summary fields are current.",
         runBatch: "Run Allocation Rollup",
-        runningMessage:
-            "Batch job submitted. Check the Apex Jobs page for progress.",
+        runningMessage: "Batch job submitted. Check the Apex Jobs page for progress.",
     };
 
     @wire(isAdmin)
@@ -44,8 +43,7 @@ export default class StgPanelAlloBatch extends LightningElement {
             );
         } catch (error) {
             this._hasError = true;
-            this._errorMessage =
-                error?.body?.message || "An error occurred.";
+            this._errorMessage = error?.body?.message || "An error occurred.";
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: "Error",

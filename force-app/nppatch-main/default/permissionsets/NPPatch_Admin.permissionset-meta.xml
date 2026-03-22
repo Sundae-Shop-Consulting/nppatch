@@ -4374,28 +4374,4 @@
         <field>%%%NAMESPACE%%%Schedulable__c.%%%NAMESPACE%%%Last_Time_Run__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <recordTypeVisibilities>
-        <recordType>Opportunity.%%%NAMESPACE%%%Donation</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Opportunity.%%%NAMESPACE%%%Grant</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Opportunity.%%%NAMESPACE%%%InKindGift</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Opportunity.%%%NAMESPACE%%%MajorGift</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Opportunity.%%%NAMESPACE%%%MatchingGift</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Opportunity.%%%NAMESPACE%%%Membership</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
 </PermissionSet>

@@ -60,7 +60,7 @@ export function computeLayout(nodes, links, options = {}) {
         }
         for (let i = 0; i < levelNodes.length; i++) {
             levelNodes[i].x = opts.padding + depth * opts.columnWidth;
-            levelNodes[i].y = opts.padding + i * opts.rowHeight + (opts.rowHeight / 2);
+            levelNodes[i].y = opts.padding + i * opts.rowHeight + opts.rowHeight / 2;
         }
     }
 
@@ -73,33 +73,35 @@ export function computeLayout(nodes, links, options = {}) {
     }
 
     // Generate bezier paths for links
-    const pathData = links.map(link => {
-        const s = nodeMap.get(link.source);
-        const t = nodeMap.get(link.target);
-        if (!s || !t) {
-            return null;
-        }
+    const pathData = links
+        .map((link) => {
+            const s = nodeMap.get(link.source);
+            const t = nodeMap.get(link.target);
+            if (!s || !t) {
+                return null;
+            }
 
-        const dx = t.x - s.x;
-        const cpOffset = Math.max(Math.abs(dx) * 0.4, 60);
+            const dx = t.x - s.x;
+            const cpOffset = Math.max(Math.abs(dx) * 0.4, 60);
 
-        const path = `M ${s.x} ${s.y} C ${s.x + cpOffset} ${s.y}, ${t.x - cpOffset} ${t.y}, ${t.x} ${t.y}`;
+            const path = `M ${s.x} ${s.y} C ${s.x + cpOffset} ${s.y}, ${t.x - cpOffset} ${t.y}, ${t.x} ${t.y}`;
 
-        // Label midpoint (approximate center of cubic bezier)
-        const labelX = (s.x + t.x) / 2;
-        const labelY = (s.y + t.y) / 2;
+            // Label midpoint (approximate center of cubic bezier)
+            const labelX = (s.x + t.x) / 2;
+            const labelY = (s.y + t.y) / 2;
 
-        return {
-            ...link,
-            path,
-            labelX,
-            labelY,
-            sourceX: s.x,
-            sourceY: s.y,
-            targetX: t.x,
-            targetY: t.y,
-        };
-    }).filter(Boolean);
+            return {
+                ...link,
+                path,
+                labelX,
+                labelY,
+                sourceX: s.x,
+                sourceY: s.y,
+                targetX: t.x,
+                targetY: t.y,
+            };
+        })
+        .filter(Boolean);
 
     const maxDepth = sortedDepths.length > 0 ? sortedDepths[sortedDepths.length - 1] : 0;
     const svgWidth = opts.padding * 2 + maxDepth * opts.columnWidth + opts.nodeRadius * 2;
@@ -138,14 +140,12 @@ function orderByBarycenter(currentLevel, referenceLevel, adjacency) {
     });
 
     // Compute barycenter for each node in current level
-    const barycenters = currentLevel.map(node => {
+    const barycenters = currentLevel.map((node) => {
         const neighbors = (adjacency.get(node.id) || [])
-            .filter(nId => refIndex.has(nId))
-            .map(nId => refIndex.get(nId));
+            .filter((nId) => refIndex.has(nId))
+            .map((nId) => refIndex.get(nId));
 
-        const bc = neighbors.length > 0
-            ? neighbors.reduce((sum, idx) => sum + idx, 0) / neighbors.length
-            : Infinity; // nodes with no connections keep their position
+        const bc = neighbors.length > 0 ? neighbors.reduce((sum, idx) => sum + idx, 0) / neighbors.length : Infinity; // nodes with no connections keep their position
 
         return { node, bc };
     });

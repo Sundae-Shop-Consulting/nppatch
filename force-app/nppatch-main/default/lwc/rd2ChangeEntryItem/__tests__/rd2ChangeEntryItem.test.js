@@ -1,87 +1,80 @@
-import { createElement } from 'lwc';
-import Rd2ChangeEntryItem from 'c/rd2ChangeEntryItem';
+import { createElement } from "lwc";
+import Rd2ChangeEntryItem from "c/rd2ChangeEntryItem";
 
 const selectOldValue = (component) => {
-   return component.shadowRoot.querySelector('[data-id="oldValue"] c-rd2-change-entry-value');
+    return component.shadowRoot.querySelector('[data-id="oldValue"] c-rd2-change-entry-value');
 };
 
 const selectNewValue = (component) => {
-   return component.shadowRoot.querySelector('[data-id="newValue"] c-rd2-change-entry-value');
-}
+    return component.shadowRoot.querySelector('[data-id="newValue"] c-rd2-change-entry-value');
+};
 
-describe('c-rd2-change-entry-item', () => {
+describe("c-rd2-change-entry-item", () => {
+    afterEach(() => {
+        clearDOM();
+    });
 
-   afterEach(() => {
-      clearDOM();
-   });
+    it("renders a value change", () => {
+        const component = createElement("c-rd2-change-entry-item", { is: Rd2ChangeEntryItem });
 
-   it('renders a value change', () => {
-      const component = createElement('c-rd2-change-entry-item', { is: Rd2ChangeEntryItem });
+        component.newValue = "New Value";
+        component.oldValue = "Old Value";
+        component.displayType = "TEXT";
+        component.label = "A Label";
 
-      component.newValue = 'New Value';
-      component.oldValue = 'Old Value';
-      component.displayType = 'TEXT';
-      component.label = 'A Label';
+        document.body.appendChild(component);
 
-      document.body.appendChild(component);
+        const oldValueNode = selectOldValue(component);
+        const newValueNode = selectNewValue(component);
 
-      const oldValueNode = selectOldValue(component);
-      const newValueNode = selectNewValue(component);
+        expect(oldValueNode.value).toBe("Old Value");
+        expect(newValueNode.value).toBe("New Value");
+    });
 
-      expect(oldValueNode.value).toBe('Old Value');
-      expect(newValueNode.value).toBe('New Value');
+    it("renders a given label", () => {
+        const component = createElement("c-rd2-change-entry-item", { is: Rd2ChangeEntryItem });
 
-   });
+        component.newValue = "New Value";
+        component.oldValue = "Old Value";
+        component.displayType = "TEXT";
+        component.label = "A Label";
+        document.body.appendChild(component);
 
-   it('renders a given label', () => {
-      const component = createElement('c-rd2-change-entry-item', { is: Rd2ChangeEntryItem });
+        const labelNode = component.shadowRoot.querySelector('lightning-layout-item[data-id="label"]');
+        expect(labelNode.textContent).toBe("A Label");
+    });
 
-      component.newValue = 'New Value';
-      component.oldValue = 'Old Value';
-      component.displayType = 'TEXT';
-      component.label = 'A Label';
-      document.body.appendChild(component);
+    it("when value unchanged renders old value only", () => {
+        const component = createElement("c-rd2-change-entry-item", { is: Rd2ChangeEntryItem });
 
-      const labelNode = component.shadowRoot.querySelector('lightning-layout-item[data-id="label"]');
-      expect(labelNode.textContent).toBe('A Label');
-   });
+        component.oldValue = "Old Value";
+        component.displayType = "TEXT";
+        component.label = "A Label";
 
-   it('when value unchanged renders old value only', () => {
-      const component = createElement('c-rd2-change-entry-item', { is: Rd2ChangeEntryItem });
+        document.body.appendChild(component);
 
-      component.oldValue = 'Old Value';
-      component.displayType = 'TEXT';
-      component.label = 'A Label';
+        const oldValueNode = selectOldValue(component);
+        const newValueNode = selectNewValue(component);
 
-      document.body.appendChild(component);
+        expect(newValueNode).toBeNull();
+        expect(oldValueNode.value).toBe("Old Value");
+    });
 
-      const oldValueNode = selectOldValue(component);
-      const newValueNode = selectNewValue(component);
+    it("handles currency changes", () => {
+        const component = createElement("c-rd2-change-entry-item", { is: Rd2ChangeEntryItem });
 
-      expect(newValueNode).toBeNull();
-      expect(oldValueNode.value).toBe('Old Value');
-   });
+        component.oldValue = 5;
+        component.newValue = 10;
+        component.displayType = "MONEY";
+        component.label = "Amount";
 
-   it('handles currency changes', () => {
-      const component = createElement('c-rd2-change-entry-item', { is: Rd2ChangeEntryItem });
+        document.body.appendChild(component);
 
-      component.oldValue = 5;
-      component.newValue = 10;
-      component.displayType = 'MONEY';
-      component.label = 'Amount';
+        const oldValueNode = selectOldValue(component);
+        const newValueNode = selectNewValue(component);
 
-      document.body.appendChild(component);
-
-      const oldValueNode = selectOldValue(component);
-      const newValueNode = selectNewValue(component);
-
-      expect(newValueNode).toBeTruthy();
-      expect(oldValueNode.value).toBe(5);
-      expect(newValueNode.value).toBe(10);
-
-   });
+        expect(newValueNode).toBeTruthy();
+        expect(oldValueNode.value).toBe(5);
+        expect(newValueNode.value).toBe(10);
+    });
 });
-
-
-
-

@@ -22,7 +22,9 @@ jest.mock(
 jest.mock("c/settingsModal", () => ({ default: { open: jest.fn() } }), { virtual: true });
 
 jest.mock("@salesforce/label/c.stgNPPatchSettingsTitle", () => ({ default: "NPPatch Settings" }), { virtual: true });
-jest.mock("@salesforce/label/c.commonInsufficientPermissions", () => ({ default: "Insufficient Permissions" }), { virtual: true });
+jest.mock("@salesforce/label/c.commonInsufficientPermissions", () => ({ default: "Insufficient Permissions" }), {
+    virtual: true,
+});
 jest.mock("@salesforce/label/c.addrCopyConAddBtnFls", () => ({ default: "Access denied" }), { virtual: true });
 
 describe("c-nppatch-settings", () => {

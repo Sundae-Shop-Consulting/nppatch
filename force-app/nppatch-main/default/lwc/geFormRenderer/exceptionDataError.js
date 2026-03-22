@@ -1,13 +1,12 @@
-import { isNotEmpty, validateJSONString } from 'c/utilCommon';
+import { isNotEmpty, validateJSONString } from "c/utilCommon";
 class ExceptionDataError extends Error {
-
     /*******************************************************************************
-    * @description Custom error class to transform any kind of apex exception
-    * into something that the `handleCatchOnSave` method in geFormRenderer can
-    * consume.
-    *
-    * @param {object} apexException: An exception of some kind received from apex
-    */
+     * @description Custom error class to transform any kind of apex exception
+     * into something that the `handleCatchOnSave` method in geFormRenderer can
+     * consume.
+     *
+     * @param {object} apexException: An exception of some kind received from apex
+     */
     constructor(apexException) {
         super();
 

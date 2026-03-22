@@ -15,8 +15,7 @@ export default class StgPanelOppBatch extends LightningElement {
         description:
             "Runs all Customizable Rollup batch jobs to recalculate donor statistics on Accounts and Contacts. This processes hard credit, soft credit, and recurring donation rollups. Use this when rollup values appear out of date or after a large data import.",
         runBatch: "Run Rollup Batch",
-        runningMessage:
-            "Batch job submitted. Check the Apex Jobs page for progress.",
+        runningMessage: "Batch job submitted. Check the Apex Jobs page for progress.",
     };
 
     @wire(isAdmin)
@@ -44,8 +43,7 @@ export default class StgPanelOppBatch extends LightningElement {
             );
         } catch (error) {
             this._hasError = true;
-            this._errorMessage =
-                error?.body?.message || "An error occurred.";
+            this._errorMessage = error?.body?.message || "An error occurred.";
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: "Error",

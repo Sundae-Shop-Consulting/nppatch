@@ -43,6 +43,14 @@ tasks:
     options:
       path: unpackaged/config/dev
 
+  deploy_demo_config:
+    description: Deploys the post-install profile configuration for a managed demo org
+    class_path: cumulusci.tasks.salesforce.Deploy
+    group: Salesforce Metadata
+    options:
+      path: unpackaged/config/demo
+      unmanaged: False
+
   deploy_dev_config_delete:
     description: Deploys the metadata deletions for the post-install DE org config
     class_path: cumulusci.tasks.salesforce.Deploy
@@ -71,38 +79,6 @@ tasks:
     options:
       objects: "AutoNumber__c,Campaign,Engagement_Plan_Template__c,Form_Template__c,Fund__c,General_Accounting_Unit__c,Household__c,Engagement_Plan_Task__c,Level__c,Account,Address__c,Contact,Affiliation__c,Case,Recurring_Donation__c,Relationship__c,Opportunity,RecurringDonationSchedule__c,Account_Soft_Credit__c,Engagement_Plan__c,Grant_Deadline__c,OppPayment__c,Partial_Soft_Credit__c,Allocation__c,DataImport__c"
       output_path: datasets/nppatch_object_reference.yml
-
-  notes:
-    description: Display deployment notes and reminders
-    class_path: cumulusci.tasks.command.Command
-    group: Utilities
-    options:
-      command: |
-        echo ""
-        echo "========================================="
-        echo "  DEPLOYMENT NOTES"
-        echo "========================================="
-        echo ""
-        echo "• Reports use %%%NAMESPACE%%% tokens — deploy with:"
-        echo "  cci task run deploy --path <report-path> -o unmanaged True -o namespace_inject nppatch --org dev"
-        echo ""
-        echo "• After deploying new trigger handlers, run 'Reset Trigger Handlers' from Bulk Processes"
-        echo ""
-        echo "• After deploying, verify scheduled jobs are running via Health Check"
-        echo ""
-        echo "• To create a new beta release:"
-        echo "  cci org scratch build build --default; cci flow run setup_build_org; cci flow run build_unlocked_test_package"
-        echo ""
-        echo "  Update beta_org flow -- on install_managed_beta, set version to 04t id of new package"
-        echo ""
-        echo "• To test a new beta release:"
-        echo "  cci org scratch dev install_test --default; cci flow run beta_org"
-        echo ""
-        echo "• To release a new beta release:"
-        echo "  cci org default build; cci flow run release_unlocked_beta"
-        echo ""
-        echo "========================================="
-        echo ""
 
   default_settings:
     description: Configure the default Settings including Membership RecordType
@@ -366,14 +342,33 @@ flows:
     steps:
       2:
         task: default_settings
+      2.1:
+        task: execute_anon
+        options:
+          path: scripts/initialize_tdtm_and_jobs.cls
       3:
         task: deploy_dev_config_delete
       4:
         task: deploy_dev_config
       5:
         task: update_admin_profile
+      5.1:
+        task: assign_permission_sets
+        options:
+          api_names:
+            - NPPatch_Admin
+            - PRGM_Manage
       6:
         task: reorder_app_menu
+  
+  dev_org:
+    steps:
+      99: 
+        task: load_dataset
+        options:
+          mapping: datasets/sample/mapping.yml
+          sql_path: datasets/sample/sample_data.sql
+          drop_missing_schema: True
 
   beta_org:
     description: Install the latest NPPatch beta and configure the org
@@ -399,7 +394,7 @@ flows:
       6:
         task: install_managed_beta
         options:
-          version: "04tal000006BUXBAA4"
+          version: "04tal000006OWL3AAO"
       6.1:
         task: ensure_record_types
         options:
@@ -416,7 +411,11 @@ flows:
         task: default_settings
         options:
           managed: True
-          namespace_inject: $project_config.project__package__namespace
+          namespaced: True
+      8.1:
+        task: execute_anon
+        options:
+          apex: nppatch.SetupApi.rescheduleDefaultJobs();
       9:
         task: assign_permission_sets
         options:
@@ -430,14 +429,17 @@ flows:
 
   demo_org:
     steps:
-      1: 
-        flow: dev_org
-      2: 
+      1:
+        flow: beta_org
+      2:
+        task: deploy_demo_config
+      3:
         task: load_dataset
         options:
           mapping: datasets/sample/mapping.yml
           sql_path: datasets/sample/sample_data.sql
           drop_missing_schema: True
+          inject_namespaces: True
 
   # =========================================
   # CI Feature 2GP: Override to add test org
@@ -466,7 +468,7 @@ flows:
         task: default_settings
         options:
           managed: True
-          namespace_inject: $project_config.project__package__namespace
+          namespaced: True
 
 orgs:
   scratch:
@@ -497,18 +499,63 @@ plans:
         message: "NPPatch Beta cannot be installed in a production org. Please use a sandbox, scratch org, or Developer Edition."
     steps:
       1:
-        task: update_dependencies
-      2:
         task: deploy
+        ui_options:
+          name: Configure Account Record Types
         options:
           path: unpackaged/pre/account_record_types
+      2:
+        task: deploy
         ui_options:
-          name: Account Record Types
-      3:
-        task: ensure_record_types
+          name: Configure Opportunity Record Types
         options:
-          sobject: Opportunity
+          path: unpackaged/pre/opportunity_record_types
+      3:
+        task: add_opportunity_stages
         ui_options:
-          name: Opportunity Record Types
+          name: Configure Opportunity Stages
       4:
+        task: add_ocr_roles
+        ui_options:
+          name: Configure Opportunity Contact Roles
+      5:
         task: install_managed_beta
+      6:
+        task: deploy_post
+        ui_options:
+          first:
+            name: Post-Install Configuration
+        options:
+          unmanaged: False
+      7:
+        task: default_settings
+        ui_options:
+          name: Set Default Settings
+        options:
+          managed: True
+          namespaced: True
+      8:
+        task: assign_permission_sets
+        ui_options:
+          name: Assign Permission Sets
+        options:
+          api_names:
+            - NPPatch_Admin
+            - PRGM_Manage
+      9:
+        task: update_admin_profile
+        ui_options:
+          name: Update Admin Profile
+      10:
+        task: reorder_app_menu
+        ui_options:
+          name: Reorder App Menu
+      11:
+        task: load_dataset
+        ui_options:
+          name: Load Sample Data
+          is_required: False
+        options:
+          mapping: datasets/sample/mapping.yml
+          sql_path: datasets/sample/sample_data.sql
+          drop_missing_schema: True

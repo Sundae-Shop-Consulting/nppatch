@@ -38,6 +38,7 @@ export default class Modal extends LightningElement {
 
     renderedCallback() {
         if (!this._rendered && this.defaultVisible) {
+            this._rendered = true;
             this.focus();
             return;
         }
@@ -59,9 +60,7 @@ export default class Modal extends LightningElement {
     get bodyCss() {
         return (
             "slds-modal__content" +
-            (this.scrollModifier
-                ? " slds-scrollable_" + this.scrollModifier
-                : " slds-scrollable") +
+            (this.scrollModifier ? " slds-scrollable_" + this.scrollModifier : " slds-scrollable") +
             (this.hideBodyPadding ? "" : " slds-p-around_medium")
         );
     }

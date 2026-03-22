@@ -14,13 +14,13 @@ describe("rd2 model", () => {
     it("has a default initial state", () => {
         expect(rd2State.recurringFrequency).toBe(1);
         expect(rd2State.isElevateCustomer).toBe(false);
-        expect(rd2State.donorType).toBe('Contact');
+        expect(rd2State.donorType).toBe("Contact");
     });
 
     it("loads an initial view", () => {
         rd2State = nextState(rd2State, {
             type: ACTIONS.INITIAL_VIEW_LOAD,
-            payload: initialView
+            payload: initialView,
         });
         expect(rd2State.contactId).toBe("fake-contact-record-id");
     });
@@ -30,34 +30,34 @@ describe("rd2 model", () => {
             ...initialView,
             customFieldSets: [
                 {
-                    apiName: 'Some_Field__c',
+                    apiName: "Some_Field__c",
                     value: null,
-                    required: false
+                    required: false,
                 },
                 {
-                    apiName: 'Other_Field__c',
+                    apiName: "Other_Field__c",
                     value: null,
-                    required: false
-                }
-            ]
+                    required: false,
+                },
+            ],
         };
         rd2State = nextState(rd2State, {
             type: ACTIONS.INITIAL_VIEW_LOAD,
-            payload: viewWithCustomFields
+            payload: viewWithCustomFields,
         });
 
         rd2State = nextState(rd2State, {
             type: ACTIONS.CUSTOM_FIELD_CHANGE,
             payload: {
-                fieldName: 'Some_Field__c',
-                value: 'SOME_FAKE_VAL'
-            }
+                fieldName: "Some_Field__c",
+                value: "SOME_FAKE_VAL",
+            },
         });
 
         const { customFieldSets } = rd2State;
         expect(customFieldSets).toHaveLength(2);
         const [someField, otherField] = customFieldSets;
-        expect(someField.value).toBe('SOME_FAKE_VAL');
+        expect(someField.value).toBe("SOME_FAKE_VAL");
         expect(otherField.value).toBe(null);
     });
 
@@ -67,12 +67,12 @@ describe("rd2 model", () => {
 
         rd2State = nextState(rd2State, {
             type: SET_PLANNED_INSTALLMENTS,
-            payload: NUMBER_OF_INSTALLMENTS
+            payload: NUMBER_OF_INSTALLMENTS,
         });
 
         rd2State = nextState(rd2State, {
             type: SET_RECURRING_TYPE,
-            payload: RECURRING_TYPE_OPEN
+            payload: RECURRING_TYPE_OPEN,
         });
 
         expect(rd2State.plannedInstallments).toBe(12);
@@ -85,12 +85,12 @@ describe("rd2 model", () => {
         const NUMBER_OF_INSTALLMENTS = 12;
         rd2State = nextState(rd2State, {
             type: SET_PLANNED_INSTALLMENTS,
-            payload: NUMBER_OF_INSTALLMENTS
+            payload: NUMBER_OF_INSTALLMENTS,
         });
 
         rd2State = nextState(rd2State, {
             type: SET_RECURRING_TYPE,
-            payload: RECURRING_TYPE_FIXED
+            payload: RECURRING_TYPE_FIXED,
         });
 
         expect(rd2State.plannedInstallments).toBe(NUMBER_OF_INSTALLMENTS);
@@ -101,20 +101,19 @@ describe("rd2 model", () => {
     it("when campaign id is set to an empty string, it is coerced to null in state", () => {
         rd2State = nextState(rd2State, {
             type: SET_CAMPAIGN_ID,
-            payload: ''
+            payload: "",
         });
 
         expect(rd2State.campaignId).toBe(null);
     });
 
     it("when campaign id is set to non-empty string, it is persisted in state", () => {
-        const SOME_FAKE_CAMPAIGN_ID = 'SOME_FAKE_CAMPAIGN_ID'
+        const SOME_FAKE_CAMPAIGN_ID = "SOME_FAKE_CAMPAIGN_ID";
         rd2State = nextState(rd2State, {
             type: SET_CAMPAIGN_ID,
-            payload: SOME_FAKE_CAMPAIGN_ID
+            payload: SOME_FAKE_CAMPAIGN_ID,
         });
 
         expect(rd2State.campaignId).toBe(SOME_FAKE_CAMPAIGN_ID);
     });
 });
-

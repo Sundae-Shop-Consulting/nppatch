@@ -17,7 +17,7 @@
         <label>Recalcular totalizações</label>
     </webLinks>
     <layouts>
-        <layout>Contact Layout</layout>
+        <layout>Fundraising Contact Layout</layout>
         <sections>
             <label>Detalhes do contato</label>
             <section>Contact Details</section>

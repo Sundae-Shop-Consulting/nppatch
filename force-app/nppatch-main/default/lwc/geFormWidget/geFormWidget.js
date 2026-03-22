@@ -1,23 +1,25 @@
-import { LightningElement, api, track } from 'lwc';
-import {apiNameFor, getSubsetObject, isEmptyObject, isUndefined} from 'c/utilCommon';
-import DATA_IMPORT_ADDITIONAL_OBJECT_JSON_FIELD from '@salesforce/schema/DataImport__c.Additional_Object_JSON__c';
-import DATA_IMPORT_DONATION_AMOUNT_FIELD from '@salesforce/schema/DataImport__c.Donation_Amount__c';
-import DATA_IMPORT_PAYMENT_METHOD from '@salesforce/schema/DataImport__c.Payment_Method__c';
-import DATA_IMPORT_CONTACT_FIRSTNAME from '@salesforce/schema/DataImport__c.Contact1_Firstname__c';
-import DATA_IMPORT_CONTACT_LASTNAME from '@salesforce/schema/DataImport__c.Contact1_Lastname__c';
-import DATA_IMPORT_DONATION_DONOR from '@salesforce/schema/DataImport__c.Donation_Donor__c';
-import DATA_IMPORT_ACCOUNT_NAME from '@salesforce/schema/DataImport__c.Account1_Name__c';
-const DATA_IMPORT_PAYMENT_STATUS = { fieldApiName: 'Payment_Status__c', objectApiName: 'DataImport__c' };
-import DATA_IMPORT_PARENT_BATCH_LOOKUP from '@salesforce/schema/DataImport__c.NPPatch_Data_Import_Batch__c';
-import DATA_IMPORT_ID from '@salesforce/schema/DataImport__c.Id';
-const DATA_IMPORT_RECURRING_DONATION_ELEVATE_ID = { fieldApiName: 'Recurring_Donation_Elevate_Recurring_ID__c', objectApiName: 'DataImport__c' };
-import DATA_IMPORT_RECURRING_TYPE
-    from '@salesforce/schema/DataImport__c.Recurring_Donation_Recurring_Type__c';
-import DATA_IMPORT_STATUS from '@salesforce/schema/DataImport__c.Status__c';
+import { LightningElement, api, track } from "lwc";
+import { apiNameFor, getSubsetObject, isEmptyObject, isUndefined } from "c/utilCommon";
+import DATA_IMPORT_ADDITIONAL_OBJECT_JSON_FIELD from "@salesforce/schema/DataImport__c.Additional_Object_JSON__c";
+import DATA_IMPORT_DONATION_AMOUNT_FIELD from "@salesforce/schema/DataImport__c.Donation_Amount__c";
+import DATA_IMPORT_PAYMENT_METHOD from "@salesforce/schema/DataImport__c.Payment_Method__c";
+import DATA_IMPORT_CONTACT_FIRSTNAME from "@salesforce/schema/DataImport__c.Contact1_Firstname__c";
+import DATA_IMPORT_CONTACT_LASTNAME from "@salesforce/schema/DataImport__c.Contact1_Lastname__c";
+import DATA_IMPORT_DONATION_DONOR from "@salesforce/schema/DataImport__c.Donation_Donor__c";
+import DATA_IMPORT_ACCOUNT_NAME from "@salesforce/schema/DataImport__c.Account1_Name__c";
+const DATA_IMPORT_PAYMENT_STATUS = { fieldApiName: "Payment_Status__c", objectApiName: "DataImport__c" };
+import DATA_IMPORT_PARENT_BATCH_LOOKUP from "@salesforce/schema/DataImport__c.NPPatch_Data_Import_Batch__c";
+import DATA_IMPORT_ID from "@salesforce/schema/DataImport__c.Id";
+const DATA_IMPORT_RECURRING_DONATION_ELEVATE_ID = {
+    fieldApiName: "Recurring_Donation_Elevate_Recurring_ID__c",
+    objectApiName: "DataImport__c",
+};
+import DATA_IMPORT_RECURRING_TYPE from "@salesforce/schema/DataImport__c.Recurring_Donation_Recurring_Type__c";
+import DATA_IMPORT_STATUS from "@salesforce/schema/DataImport__c.Status__c";
 
-const ALLOCATION_WIDGET = 'geFormWidgetAllocation';
-const SOFT_CREDIT_WIDGET = 'geFormWidgetSoftCredit';
-const TOKENIZE_CARD_WIDGET = 'geFormWidgetTokenizeCard';
+const ALLOCATION_WIDGET = "geFormWidgetAllocation";
+const SOFT_CREDIT_WIDGET = "geFormWidgetSoftCredit";
+const TOKENIZE_CARD_WIDGET = "geFormWidgetTokenizeCard";
 const WIDGET_LIST = [ALLOCATION_WIDGET, SOFT_CREDIT_WIDGET, TOKENIZE_CARD_WIDGET];
 
 export default class GeFormWidget extends LightningElement {
@@ -31,7 +33,7 @@ export default class GeFormWidget extends LightningElement {
 
     _allocationFields = [
         apiNameFor(DATA_IMPORT_DONATION_AMOUNT_FIELD),
-        apiNameFor(DATA_IMPORT_ADDITIONAL_OBJECT_JSON_FIELD)
+        apiNameFor(DATA_IMPORT_ADDITIONAL_OBJECT_JSON_FIELD),
     ];
 
     _softCreditFields = [];
@@ -47,7 +49,7 @@ export default class GeFormWidget extends LightningElement {
         apiNameFor(DATA_IMPORT_STATUS),
         apiNameFor(DATA_IMPORT_ID),
         apiNameFor(DATA_IMPORT_RECURRING_DONATION_ELEVATE_ID),
-        apiNameFor(DATA_IMPORT_RECURRING_TYPE)
+        apiNameFor(DATA_IMPORT_RECURRING_TYPE),
     ];
 
     get giftInViewHasSchedule() {
@@ -91,31 +93,31 @@ export default class GeFormWidget extends LightningElement {
 
     hasElevateValuesChanged(formState) {
         const paymentMethodApiName = apiNameFor(DATA_IMPORT_PAYMENT_METHOD);
-        if (!paymentMethodApiName) return false;
-        const hasChanged = this._elevateFields.find(field => {
+        if (!paymentMethodApiName) {
+            return false;
+        }
+        const hasChanged = this._elevateFields.find((field) => {
             return formState[field] !== this.formState[field];
-        })
-        return !!hasChanged ;
+        });
+        return !!hasChanged;
     }
 
     hasAllocationValuesChanged(formState) {
         const donationFieldApiName = apiNameFor(DATA_IMPORT_DONATION_AMOUNT_FIELD);
-        const additionalObjectFieldApiName = apiNameFor(DATA_IMPORT_ADDITIONAL_OBJECT_JSON_FIELD)
+        const additionalObjectFieldApiName = apiNameFor(DATA_IMPORT_ADDITIONAL_OBJECT_JSON_FIELD);
 
-        return formState[donationFieldApiName] !==
-            this.formState[donationFieldApiName]
-            ||
-            formState[additionalObjectFieldApiName] !==
-            this.formState[additionalObjectFieldApiName]
+        return (
+            formState[donationFieldApiName] !== this.formState[donationFieldApiName] ||
+            formState[additionalObjectFieldApiName] !== this.formState[additionalObjectFieldApiName]
+        );
     }
 
     get isValid() {
         const thisWidget = this.widgetComponent;
         let isValid = false;
-        if(thisWidget !== null && typeof thisWidget !== 'undefined'
-            && typeof thisWidget.isValid === 'function') {
-                isValid = thisWidget.isValid();
-        } else if(isUndefined(thisWidget.isValid)) {
+        if (thisWidget !== null && typeof thisWidget !== "undefined" && typeof thisWidget.isValid === "function") {
+            isValid = thisWidget.isValid();
+        } else if (isUndefined(thisWidget.isValid)) {
             // if no validation function defined, assume widget is valid
             return true;
         }
@@ -133,26 +135,26 @@ export default class GeFormWidget extends LightningElement {
     @api
     get isElevateTokenizeCard() {
         return this.element.componentName === TOKENIZE_CARD_WIDGET;
-    }    
+    }
 
     get isAllocation() {
         return this.element.componentName === ALLOCATION_WIDGET;
     }
 
-    get widgetNotFound(){
-        return WIDGET_LIST.indexOf(this.element.componentName) < 0
+    get widgetNotFound() {
+        return WIDGET_LIST.indexOf(this.element.componentName) < 0;
     }
 
     @api
     get paymentToken() {
         const thisWidget = this.widgetComponent;
         if (this.isValid) {
-            let tokenPayload = thisWidget.paymentToken;
+            const tokenPayload = thisWidget.paymentToken;
             if (!this.giftInViewHasSchedule) {
                 tokenPayload[DATA_IMPORT_PAYMENT_STATUS] = this.paymentTransactionStatusValues.PENDING;
             }
             return tokenPayload;
         }
+        return undefined;
     }
-
 }

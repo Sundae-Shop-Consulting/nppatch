@@ -1,14 +1,14 @@
-import { LightningElement, api } from 'lwc';
-import GeLabelService from 'c/geLabelService';
+import { LightningElement, api } from "lwc";
+import GeLabelService from "c/geLabelService";
 
-const SUCCESS = 'success';
-const WARNING = 'warning';
-const ERROR = 'error';
-const THEME_SUCCESS = 'slds-theme_success';
-const THEME_WARNING = 'slds-theme_warning';
-const THEME_ERROR = 'slds-theme_error';
-const THEME_INFO = 'slds-theme_info';
-const TEXT_ERROR = 'slds-text-color_error';
+const SUCCESS = "success";
+const WARNING = "warning";
+const ERROR = "error";
+const THEME_SUCCESS = "slds-theme_success";
+const THEME_WARNING = "slds-theme_warning";
+const THEME_ERROR = "slds-theme_error";
+const THEME_INFO = "slds-theme_info";
+const TEXT_ERROR = "slds-text-color_error";
 
 export default class utilPageLevelMessage extends LightningElement {
     @api title;

@@ -51,4 +51,40 @@
         <businessProcess>NPPatch_Default</businessProcess>
         <label>NPPatch Default</label>
     </recordTypes>
+    <recordTypes>
+        <fullName>Donation</fullName>
+        <active>true</active>
+        <businessProcess>NPPatch_Default</businessProcess>
+        <label>Donation</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Grant</fullName>
+        <active>true</active>
+        <businessProcess>NPPatch_Default</businessProcess>
+        <label>Grant</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>InKindGift</fullName>
+        <active>true</active>
+        <businessProcess>NPPatch_Default</businessProcess>
+        <label>In-Kind Gift</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>MajorGift</fullName>
+        <active>true</active>
+        <businessProcess>NPPatch_Default</businessProcess>
+        <label>Major Gift</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>MatchingGift</fullName>
+        <active>true</active>
+        <businessProcess>NPPatch_Default</businessProcess>
+        <label>Matching Gift</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Membership</fullName>
+        <active>true</active>
+        <businessProcess>NPPatch_Default</businessProcess>
+        <label>Membership</label>
+    </recordTypes>
 </CustomObject>

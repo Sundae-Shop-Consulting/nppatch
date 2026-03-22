@@ -15,7 +15,6 @@
 .THIS.custom-modal .slds-modal__container {
     max-width: 52.5rem;
     min-width: 20rem;
-
 }
 
 .slds-modal {
@@ -23,6 +22,6 @@
 }
 
 .slds-modal__content {
-    height:auto !important;
+    height: auto !important;
     max-height: calc(65vh) !important;
 }

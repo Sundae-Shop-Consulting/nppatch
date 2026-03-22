@@ -118,7 +118,7 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
     }
 
     buildActionsColumn(relationshipsListView) {
-        let rowActions = [ACTION_DEFS.VIEW_RECORD];
+        const rowActions = [ACTION_DEFS.VIEW_RECORD];
 
         if (relationshipsListView.showCreateRelationshipButton) {
             rowActions.push(ACTION_DEFS.NEW_RELATIONSHIP);
@@ -140,6 +140,7 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
         } catch (ex) {
             this.dispatchEvent(new CustomEvent("accesserror", { detail: ex.body.message }));
         }
+        return undefined;
     }
 
     async getRelationships(contactId) {
@@ -148,6 +149,7 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
         } catch (ex) {
             this.dispatchEvent(new CustomEvent("accesserror", { detail: ex.body.message }));
         }
+        return undefined;
     }
 
     async handleToggle(event) {
@@ -196,9 +198,8 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
         if (relationship.relationshipId === row.relationshipId) {
             if (children.length > 0) {
                 return this.attachChildrenToRow(children, relationship);
-            } else {
-                delete relationship._children;
             }
+            delete relationship._children;
         }
 
         return relationship;
@@ -270,6 +271,8 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
             case ACTION_DEFS.NEW_RELATIONSHIP.name:
                 this.newRelationship(row.contactId);
                 break;
+            default:
+                break;
         }
     }
 
@@ -281,5 +284,6 @@ export default class RelationshipsTreeGrid extends NavigationMixin(LightningElem
         if (this.contactName && this.labels.relationshipsPlural) {
             return `${this.labels.relationshipsPlural} - ${this.contactName}`;
         }
+        return undefined;
     }
 }

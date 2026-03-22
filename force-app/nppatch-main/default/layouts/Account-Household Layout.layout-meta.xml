@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>Manage_Household</customButtons>
+    <customButtons>New_Gift</customButtons>
     <customButtons>Recalculate_Rollups</customButtons>
     <excludeButtons>DataDotComAccountInsights</excludeButtons>
     <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
@@ -19,25 +20,21 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>One2OneContact__c</field>
+                <field>Formal_Greeting__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>%%%NAMESPACE%%%Formal_Greeting__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>%%%NAMESPACE%%%Informal_Greeting__c</field>
+                <field>Informal_Greeting__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>%%%NAMESPACE%%%HouseholdPhone__c</field>
+                <field>HouseholdPhone__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>%%%NAMESPACE%%%Number_of_Household_Members__c</field>
+                <field>Number_of_Household_Members__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -54,7 +51,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>%%%NAMESPACE%%%Undeliverable_Address__c</field>
+                <field>Undeliverable_Address__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -86,41 +83,41 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%Sustainer__c</field>
+                <field>Sustainer__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%FirstCloseDate__c</field>
+                <field>FirstCloseDate__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%LastCloseDate__c</field>
+                <field>LastCloseDate__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%AverageAmount__c</field>
+                <field>AverageAmount__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%Best_Gift_Year__c</field>
+                <field>Best_Gift_Year__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%LastOppAmount__c</field>
+                <field>LastOppAmount__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%LargestAmount__c</field>
+                <field>LargestAmount__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%SmallestAmount__c</field>
+                <field>SmallestAmount__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%Best_Gift_Year_Total__c</field>
+                <field>Best_Gift_Year_Total__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -133,19 +130,19 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%TotalOppAmount__c</field>
+                <field>TotalOppAmount__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%OppAmountLastNDays__c</field>
+                <field>OppAmountLastNDays__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%OppAmountThisYear__c</field>
+                <field>OppAmountThisYear__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%OppAmountLastYear__c</field>
+                <field>OppAmountLastYear__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -155,19 +152,19 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%NumberOfClosedOpps__c</field>
+                <field>NumberOfClosedOpps__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%OppsClosedLastNDays__c</field>
+                <field>OppsClosedLastNDays__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%OppsClosedThisYear__c</field>
+                <field>OppsClosedThisYear__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%OppsClosedLastYear__c</field>
+                <field>OppsClosedLastYear__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -184,45 +181,45 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%Membership_Status__c</field>
+                <field>Membership_Status__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%TotalMembershipOppAmount__c</field>
+                <field>TotalMembershipOppAmount__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%MembershipEndDate__c</field>
+                <field>MembershipEndDate__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%LastMembershipLevel__c</field>
+                <field>LastMembershipLevel__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%MembershipJoinDate__c</field>
+                <field>MembershipJoinDate__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%LastMembershipDate__c</field>
+                <field>LastMembershipDate__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%LastMembershipAmount__c</field>
+                <field>LastMembershipAmount__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%LastMembershipOrigin__c</field>
+                <field>LastMembershipOrigin__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%NumberOfMembershipOpps__c</field>
+                <field>NumberOfMembershipOpps__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>%%%NAMESPACE%%%Membership_Span__c</field>
+                <field>Membership_Span__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -264,6 +261,54 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <platformActionList>
+        <actionListContext>Record</actionListContext>
+        <platformActionListItems>
+            <actionName>Manage_Household</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>New_Gift</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>1</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>NewContact</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>2</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Account.Quick_Household_Update</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>3</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Account.New_Address</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>4</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>PrintableView</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>5</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>ChangeRecordType</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>6</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Delete</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>7</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Recalculate_Rollups</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>8</sortOrder>
+        </platformActionListItems>
+    </platformActionList>
     <quickActionList>
         <quickActionListItems>
             <quickActionName>FeedItem.TextPost</quickActionName>
@@ -277,24 +322,7 @@
         <quickActionListItems>
             <quickActionName>Account.New_Address</quickActionName>
         </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>FeedItem.ContentPost</quickActionName>
-        </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>NewTask</quickActionName>
-        </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>NewNote</quickActionName>
-        </quickActionListItems>
     </quickActionList>
-    <relatedContent>
-        <relatedContentItems>
-            <layoutItem>
-                <behavior>Readonly</behavior>
-                <field>One2OneContact__c</field>
-            </layoutItem>
-        </relatedContentItems>
-    </relatedContent>
     <relatedLists>
         <fields>FULL_NAME</fields>
         <fields>CONTACT.TITLE</fields>
@@ -319,7 +347,7 @@
         <fields>Installment_Amount__c</fields>
         <fields>Total__c</fields>
         <fields>Total_Paid_Installments__c</fields>
-        <relatedList>%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%Organization__c</relatedList>
+        <relatedList>Recurring_Donation__c.Organization__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -328,7 +356,7 @@
         <fields>Default_Address__c</fields>
         <fields>Verified__c</fields>
         <fields>Verification_Status__c</fields>
-        <relatedList>%%%NAMESPACE%%%Address__c.%%%NAMESPACE%%%Household_Account__c</relatedList>
+        <relatedList>Address__c.Household_Account__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
@@ -361,7 +389,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hi0000004q6Ty</masterLabel>
+        <masterLabel>00hE200000KTUZU</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

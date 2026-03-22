@@ -55,8 +55,7 @@ const PROCESSES = [
     {
         name: "updatePrimaryContact",
         title: "Update Primary Contact",
-        description:
-            "Updates the Primary Contact lookup field on all Opportunities based on their Contact Roles.",
+        description: "Updates the Primary Contact lookup field on all Opportunities based on their Contact Roles.",
         buttonLabel: "Update Primary Contacts",
         iconName: "utility:user",
     },

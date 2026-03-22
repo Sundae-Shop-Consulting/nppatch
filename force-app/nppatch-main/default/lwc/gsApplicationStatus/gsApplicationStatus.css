@@ -1,24 +1,25 @@
 img {
     margin-bottom: 24px;
-    object-fit:fill;
+    object-fit: fill;
     margin-top: 0px;
 }
 
 .slds-button_outline-brand {
-    border-color: var(--slds-g-color-palette-violet-30, #7614A1);
-    color: var(--slds-g-color-palette-violet-30, #7614A1);
+    border-color: var(--slds-g-color-palette-violet-30, #7614a1);
+    color: var(--slds-g-color-palette-violet-30, #7614a1);
 }
 
 .slds-button_brand {
-    background-color: var(--slds-g-color-palette-violet-30, #7614A1);
-    border-color: var(--slds-g-color-palette-violet-30, #7614A1);
+    background-color: var(--slds-g-color-palette-violet-30, #7614a1);
+    border-color: var(--slds-g-color-palette-violet-30, #7614a1);
 }
 
 .container {
-    background-color:var(--slds-g-color-disabled-container-1, white);
-    box-shadow: var(--slds-g-sizing-border-1, 1px) none var(--slds-g-sizing-border-3, 3px) none var(--slds-g-color-palette-yellow-90, #b0adab7a);
+    background-color: var(--slds-g-color-disabled-container-1, white);
+    box-shadow: var(--slds-g-sizing-border-1, 1px) none var(--slds-g-sizing-border-3, 3px) none
+        var(--slds-g-color-palette-yellow-90, #b0adab7a);
     border-radius: var(--slds-g-radius-border-2, 4px);
-    border: solid var(--slds-g-sizing-border-1, 1px) var(--slds-g-color-neutral-base-90, #DDDBDA);
+    border: solid var(--slds-g-sizing-border-1, 1px) var(--slds-g-color-neutral-base-90, #dddbda);
 }
 
 .button-padding {
@@ -29,9 +30,9 @@ img {
 }
 
 .modal-text {
-    color: var(--slds-g-color-on-surface-2, #312D2B);
+    color: var(--slds-g-color-on-surface-2, #312d2b);
 }
 
 p {
-    color: var(--slds-g-color-neutral-base-15, #2B2826)
+    color: var(--slds-g-color-neutral-base-15, #2b2826);
 }

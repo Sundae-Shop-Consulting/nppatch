@@ -1,22 +1,21 @@
-import { LightningElement, api, wire } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-import NPPATCH_STATIC_RESOURCES from '@salesforce/resourceUrl/NPPatchStaticResources';
-import updateCheckItem from '@salesforce/apex/GS_ChecklistSetup.updateCheckItem'
-import getNamespace from '@salesforce/apex/GS_ChecklistSetup.getNamespace';
-import opensInNewLink from '@salesforce/label/c.opensInNewLink'
-import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-const gsAssetsImage = NPPATCH_STATIC_RESOURCES + '/gsAssets/step';
+import { LightningElement, api } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
+import NPPATCH_STATIC_RESOURCES from "@salesforce/resourceUrl/NPPatchStaticResources";
+import updateCheckItem from "@salesforce/apex/GS_ChecklistSetup.updateCheckItem";
+import getNamespace from "@salesforce/apex/GS_ChecklistSetup.getNamespace";
+import opensInNewLink from "@salesforce/label/c.opensInNewLink";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
+const gsAssetsImage = NPPATCH_STATIC_RESOURCES + "/gsAssets/step";
 
 /**
-* @description This component render the Sub Section Item info
-*/
+ * @description This component render the Sub Section Item info
+ */
 export default class GsChecklistItem extends NavigationMixin(LightningElement) {
-
     /**
-    * @description data of the item this component render
-    * @type  GS_ChecklistSetup.ChecklistItem
-    */
-    @api item = {}
+     * @description data of the item this component render
+     * @type  GS_ChecklistSetup.ChecklistItem
+     */
+    @api item = {};
 
     linkLabel;
     primaryBtnLabel;
@@ -24,143 +23,144 @@ export default class GsChecklistItem extends NavigationMixin(LightningElement) {
 
     labels = {
         opensInNewLink,
-    }
+    };
 
     /**
-    * @description package namespace to used in navigation
-    * @type string
-    */
-    namespace = '';
+     * @description package namespace to used in navigation
+     * @type string
+     */
+    namespace = "";
 
     connectedCallback() {
-        getNamespace()
-            .then(data => {
-                if (data) {
-                    this.namespace = data;
-                }
-                if (this.hasLink){
-                    this.linkLabel =  `${this.item.link.label} ${this.labels.opensInNewLink}`;
-                }
-                if (this.hasPrimaryBtn) {
-                    this.primaryBtnLabel = `${this.item.primaryBtn.label} ${this.labels.opensInNewLink}`;
-                }
-                if (this.hasSecondaryBtn) {
-                    this.secondaryBtnLabel = `${this.item.secondaryBtn.label} ${this.labels.opensInNewLink}`;
-                }
-            });
+        getNamespace().then((data) => {
+            if (data) {
+                this.namespace = data;
+            }
+            if (this.hasLink) {
+                this.linkLabel = `${this.item.link.label} ${this.labels.opensInNewLink}`;
+            }
+            if (this.hasPrimaryBtn) {
+                this.primaryBtnLabel = `${this.item.primaryBtn.label} ${this.labels.opensInNewLink}`;
+            }
+            if (this.hasSecondaryBtn) {
+                this.secondaryBtnLabel = `${this.item.secondaryBtn.label} ${this.labels.opensInNewLink}`;
+            }
+        });
     }
 
     /**
-    * @description return if the item has Secondary button
-    * @return boolean
-    */
+     * @description return if the item has Secondary button
+     * @return boolean
+     */
     get hasSecondaryBtn() {
         return !!this.item.secondaryBtn;
     }
     /**
-    * @description return if the item has Primary button
-    * @return boolean
-    */
+     * @description return if the item has Primary button
+     * @return boolean
+     */
     get hasPrimaryBtn() {
         return !!this.item.primaryBtn;
     }
     /**
-    * @description return if the item has Link
-    * @return boolean
-    */
+     * @description return if the item has Link
+     * @return boolean
+     */
     get hasLink() {
         return !!this.item.link;
     }
     /**
-    * @description return if the item has buttons
-    * @return boolean
-    */
+     * @description return if the item has buttons
+     * @return boolean
+     */
     get hasButtons() {
         return !!this.item.primaryBtn || !!this.item.secondaryBtn;
     }
     /**
-    * @description return if the item has Image
-    * @return boolean
-    */
+     * @description return if the item has Image
+     * @return boolean
+     */
     get hasImage() {
         return !!this.item.image;
     }
     /**
-    * @description return if the item Image URI
-    * @return String
-    * @see uri
-    */
+     * @description return if the item Image URI
+     * @return String
+     * @see uri
+     */
     get imgSrc() {
         return `${gsAssetsImage}/${this.item.image}`;
     }
     /**
-    * @description return class to use in footer
-    * @returns String
-    */
+     * @description return class to use in footer
+     * @returns String
+     */
     get footerClass() {
-        const styleClass = ['content-footer'];
+        const styleClass = ["content-footer"];
         if (!this.item.link) {
-            styleClass.push('without-link');
+            styleClass.push("without-link");
         }
-        return styleClass.join(' ');
+        return styleClass.join(" ");
     }
     /**
-    * @description handler the event to click Primary button
-    */
+     * @description handler the event to click Primary button
+     */
     onClickPrimaryBtn() {
         this.buttonAction(this.item.primaryBtn);
     }
     /**
-    * @description handler the event to click Secondary button
-    */
+     * @description handler the event to click Secondary button
+     */
     onClickSecondaryBtn() {
         this.buttonAction(this.item.secondaryBtn);
     }
     /**
-    * @description exec button action
-    * @param {*} string button type
-    */
+     * @description exec button action
+     * @param {*} string button type
+     */
     buttonAction(button) {
         switch (button.type) {
-            case 'sfdc:new-tab': {
+            case "sfdc:new-tab": {
                 this.sfdcLinkAction(button.value);
                 break;
             }
-            case 'link': {
-                window.open(button.value, '_blank');
-                break
+            case "link": {
+                window.open(button.value, "_blank");
+                break;
             }
+            default:
+                break;
         }
     }
     /**
-    * @description use NavigationMixin.GenerateUrl Api to navigate in SFDC org
-    * @param {*} string button value
-    */
+     * @description use NavigationMixin.GenerateUrl Api to navigate in SFDC org
+     * @param {*} string button value
+     */
     sfdcLinkAction(value) {
-        const values = value.split(':');
+        const values = value.split(":");
         this[NavigationMixin.GenerateUrl]({
             type: `standard__${values[0]}`,
-            attributes: this.getSfdcLinkAttr(values)
+            attributes: this.getSfdcLinkAttr(values),
         }).then((url) => {
-            window.open(url, '_blank');
-        })
+            window.open(url, "_blank");
+        });
     }
 
     /**
-    * @description get attribute to navigate in sfdc pages
-    * @param {*} string[] value arguments
-    * @returns object
-    */
+     * @description get attribute to navigate in sfdc pages
+     * @param {*} string[] value arguments
+     * @returns object
+     */
     getSfdcLinkAttr(values) {
         switch (values[0]) {
-            case 'navItemPage':
+            case "navItemPage":
                 return {
-                    apiName: this.subNamespace(values[1])
+                    apiName: this.subNamespace(values[1]),
                 };
-            case 'objectPage':
+            case "objectPage":
                 return {
                     objectApiName: this.subNamespace(values[1]),
-                    actionName: values[2]
+                    actionName: values[2],
                 };
             default:
                 return {};
@@ -168,12 +168,12 @@ export default class GsChecklistItem extends NavigationMixin(LightningElement) {
     }
 
     /**
-    * @description Substitute 'c__' to package namespace
-    * @param {*} string api name
-    * @returns String
-    */
+     * @description Substitute 'c__' to package namespace
+     * @param {*} string api name
+     * @returns String
+     */
     subNamespace(apiName) {
-        return apiName.replace(/^c__/, this.namespace ? `${this.namespace}__` : '');
+        return apiName.replace(/^c__/, this.namespace ? `${this.namespace}__` : "");
     }
 
     /**
@@ -182,32 +182,30 @@ export default class GsChecklistItem extends NavigationMixin(LightningElement) {
      * @param {*} event the event object.
      */
     onChange(event) {
-        let checked = event.detail.checked;
-        let target = event.target;
+        const checked = event.detail.checked;
+        const target = event.target;
         target.disabled = true;
 
-        updateCheckItem({ 'itemId': this.item.id, 'isChecked': checked })
-            .then(_ => {
-                let eventName = checked ? 'checked' : 'unchecked';
+        updateCheckItem({ itemId: this.item.id, isChecked: checked })
+            .then(() => {
+                const eventName = checked ? "checked" : "unchecked";
                 this.dispatchEvent(new CustomEvent(eventName));
             })
-            .catch(error => {
+            .catch((error) => {
                 if (error && error.body) {
                     const evt = new ShowToastEvent({
-                        title: '',
+                        title: "",
                         message: error.body.message,
-                        variant: 'error'
+                        variant: "error",
                     });
                     this.dispatchEvent(evt);
-
                 }
             })
-            .then(_ => {
+            .then(() => {
                 target.disabled = false;
             })
-            .then(_ => {
+            .then(() => {
                 target.focus();
             });
-
     }
 }

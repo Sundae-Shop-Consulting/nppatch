@@ -18,11 +18,13 @@ export default class ManageHhContactCard extends LightningElement {
         excludeFrom: lblCCardExcludeFrom,
         householdName: lblHouseholdName,
         formalGreeting: lblFormalGreeting,
-        informalGreeting: lblInformalGreeting
+        informalGreeting: lblInformalGreeting,
     };
 
     get contactName() {
-        if (!this.contact) return "";
+        if (!this.contact) {
+            return "";
+        }
         const first = this.contact.FirstName || "";
         const last = this.contact.LastName || "";
         return `${first} ${last}`.trim();
@@ -45,7 +47,9 @@ export default class ManageHhContactCard extends LightningElement {
     }
 
     get hasAddress() {
-        if (!this.contact) return false;
+        if (!this.contact) {
+            return false;
+        }
         return (
             this.contact.MailingStreet ||
             this.contact.MailingCity ||
@@ -56,20 +60,21 @@ export default class ManageHhContactCard extends LightningElement {
     }
 
     get formattedAddress() {
-        if (!this.contact) return "";
+        if (!this.contact) {
+            return "";
+        }
         const parts = [];
-        if (this.contact.MailingStreet) parts.push(this.contact.MailingStreet);
-        const cityLine = [
-            this.contact.MailingCity,
-            this.contact.MailingState
-        ]
-            .filter(Boolean)
-            .join(", ");
-        const cityPostal = [cityLine, this.contact.MailingPostalCode]
-            .filter(Boolean)
-            .join(" ");
-        if (cityPostal) parts.push(cityPostal);
-        if (this.contact.MailingCountry) parts.push(this.contact.MailingCountry);
+        if (this.contact.MailingStreet) {
+            parts.push(this.contact.MailingStreet);
+        }
+        const cityLine = [this.contact.MailingCity, this.contact.MailingState].filter(Boolean).join(", ");
+        const cityPostal = [cityLine, this.contact.MailingPostalCode].filter(Boolean).join(" ");
+        if (cityPostal) {
+            parts.push(cityPostal);
+        }
+        if (this.contact.MailingCountry) {
+            parts.push(this.contact.MailingCountry);
+        }
         return parts.join("\n");
     }
 
@@ -78,31 +83,19 @@ export default class ManageHhContactCard extends LightningElement {
     }
 
     get isUndeliverable() {
-        return getChildObjectByName(
-            this.contact,
-            "Undeliverable_Address__c"
-        );
+        return getChildObjectByName(this.contact, "Undeliverable_Address__c");
     }
 
     get excludeFromName() {
-        return getChildObjectByName(
-            this.contact,
-            "Exclude_from_Household_Name__c"
-        );
+        return getChildObjectByName(this.contact, "Exclude_from_Household_Name__c");
     }
 
     get excludeFromFormalGreeting() {
-        return getChildObjectByName(
-            this.contact,
-            "Exclude_from_Household_Formal_Greeting__c"
-        );
+        return getChildObjectByName(this.contact, "Exclude_from_Household_Formal_Greeting__c");
     }
 
     get excludeFromInformalGreeting() {
-        return getChildObjectByName(
-            this.contact,
-            "Exclude_from_Household_Informal_Greeting__c"
-        );
+        return getChildObjectByName(this.contact, "Exclude_from_Household_Informal_Greeting__c");
     }
 
     get addressOverrideLabel() {
@@ -133,8 +126,8 @@ export default class ManageHhContactCard extends LightningElement {
                 detail: {
                     index: this.index,
                     field: field,
-                    value: checked
-                }
+                    value: checked,
+                },
             })
         );
     }
@@ -142,7 +135,7 @@ export default class ManageHhContactCard extends LightningElement {
     handleRemove() {
         this.dispatchEvent(
             new CustomEvent("contactremove", {
-                detail: { index: this.index }
+                detail: { index: this.index },
             })
         );
     }
@@ -150,7 +143,7 @@ export default class ManageHhContactCard extends LightningElement {
     handleMoveUp() {
         this.dispatchEvent(
             new CustomEvent("contactreorder", {
-                detail: { index: this.index, direction: "up" }
+                detail: { index: this.index, direction: "up" },
             })
         );
     }
@@ -158,7 +151,7 @@ export default class ManageHhContactCard extends LightningElement {
     handleMoveDown() {
         this.dispatchEvent(
             new CustomEvent("contactreorder", {
-                detail: { index: this.index, direction: "down" }
+                detail: { index: this.index, direction: "down" },
             })
         );
     }

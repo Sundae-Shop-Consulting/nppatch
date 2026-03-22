@@ -5,7 +5,7 @@
         <name>ContactMergeFoundFS</name>
     </fieldSets>
     <layouts>
-        <layout>Contact Layout</layout>
+        <layout>Fundraising Contact Layout</layout>
         <sections>
             <label>פרטי איש קשר</label>
             <section>Contact Details</section>

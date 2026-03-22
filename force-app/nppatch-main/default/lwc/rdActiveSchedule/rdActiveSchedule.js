@@ -1,24 +1,23 @@
-import scheduleTitle from '@salesforce/label/c.RD2_ScheduleLWCTitle';
-import currentSchedule from '@salesforce/label/c.RD2_CurrentScheduleTitle';
-import futureSchedule from '@salesforce/label/c.RD2_ScheduleLWCFutureSchedule';
-import recordIcon from '@salesforce/label/c.AssistiveTextRecordIcon';
-import none from '@salesforce/label/c.stgLabelFieldValueNone';
+import scheduleTitle from "@salesforce/label/c.RD2_ScheduleLWCTitle";
+import currentSchedule from "@salesforce/label/c.RD2_CurrentScheduleTitle";
+import futureSchedule from "@salesforce/label/c.RD2_ScheduleLWCFutureSchedule";
+import recordIcon from "@salesforce/label/c.AssistiveTextRecordIcon";
+import none from "@salesforce/label/c.stgLabelFieldValueNone";
 
-import { LightningElement, api, wire, track } from 'lwc';
-import { getRecord } from 'lightning/uiRecordApi';
+import { LightningElement, api, wire, track } from "lwc";
+import { getRecord } from "lightning/uiRecordApi";
 
-import FIELD_RD_AMOUNT from '@salesforce/schema/Recurring_Donation__c.Amount__c';
-import FIELD_RD_PERIOD from '@salesforce/schema/Recurring_Donation__c.Installment_Period__c';
-import FIELD_RD_FREQUENCY from '@salesforce/schema/Recurring_Donation__c.InstallmentFrequency__c';
-import FIELD_RD_DAYOFMONTH from '@salesforce/schema/Recurring_Donation__c.Day_of_Month__c';
-import FIELD_RD_STARTDATE from '@salesforce/schema/Recurring_Donation__c.StartDate__c';
-import FIELD_RD_PAYMENT_METHOD from '@salesforce/schema/Recurring_Donation__c.PaymentMethod__c';
-import FIELD_RD_CAMPAIGN from '@salesforce/schema/Recurring_Donation__c.Recurring_Donation_Campaign__c';
+import FIELD_RD_AMOUNT from "@salesforce/schema/Recurring_Donation__c.Amount__c";
+import FIELD_RD_PERIOD from "@salesforce/schema/Recurring_Donation__c.Installment_Period__c";
+import FIELD_RD_FREQUENCY from "@salesforce/schema/Recurring_Donation__c.InstallmentFrequency__c";
+import FIELD_RD_DAYOFMONTH from "@salesforce/schema/Recurring_Donation__c.Day_of_Month__c";
+import FIELD_RD_STARTDATE from "@salesforce/schema/Recurring_Donation__c.StartDate__c";
+import FIELD_RD_PAYMENT_METHOD from "@salesforce/schema/Recurring_Donation__c.PaymentMethod__c";
+import FIELD_RD_CAMPAIGN from "@salesforce/schema/Recurring_Donation__c.Recurring_Donation_Campaign__c";
 
-import getSchedules from '@salesforce/apex/RD2_VisualizeScheduleController.getSchedules';
+import getSchedules from "@salesforce/apex/RD2_VisualizeScheduleController.getSchedules";
 
 export default class RdActiveSchedule extends LightningElement {
-
     @api recordId;
     @api displayNum;
 
@@ -30,26 +29,33 @@ export default class RdActiveSchedule extends LightningElement {
         currentSchedule,
         futureSchedule,
         none,
-        recordIcon
-    }
+        recordIcon,
+    };
 
     /*******************************************************************************
      * @description Track specified fields so when the Recurring Donation record is updated,
      * this method is called to force refresh of the data and the component.
      */
     @wire(getRecord, {
-        recordId: '$recordId',
-        fields: [FIELD_RD_AMOUNT, FIELD_RD_DAYOFMONTH, FIELD_RD_FREQUENCY, FIELD_RD_PERIOD,
-            FIELD_RD_STARTDATE, FIELD_RD_PAYMENT_METHOD, FIELD_RD_CAMPAIGN]
+        recordId: "$recordId",
+        fields: [
+            FIELD_RD_AMOUNT,
+            FIELD_RD_DAYOFMONTH,
+            FIELD_RD_FREQUENCY,
+            FIELD_RD_PERIOD,
+            FIELD_RD_STARTDATE,
+            FIELD_RD_PAYMENT_METHOD,
+            FIELD_RD_CAMPAIGN,
+        ],
     })
     wireRecordChange() {
         if (this.recordId) {
             getSchedules({ recordId: this.recordId })
-                .then(response => {
+                .then((response) => {
                     this.handleRecords(response);
                     this.error = null;
                 })
-                .catch(error => {
+                .catch((error) => {
                     this.schedules = null;
                     this.error = this.handleError(error);
                 });
@@ -61,22 +67,21 @@ export default class RdActiveSchedule extends LightningElement {
      */
     handleRecords(response) {
         if (response && response.dataTable) {
-            let filteredRows = [];
+            const filteredRows = [];
 
-            response.dataTable.records.forEach(record => {
-                let schedule = {};
+            response.dataTable.records.forEach((record) => {
+                const schedule = {};
                 schedule.field = [];
 
-                response.dataTable.columns.forEach(column => {
-                    if (column.fieldName === 'isCurrent') {
+                response.dataTable.columns.forEach((column) => {
+                    if (column.fieldName === "isCurrent") {
                         schedule.title = record[column.fieldName] === true ? currentSchedule : futureSchedule;
-
                     } else {
-                        let field = {};
+                        const field = {};
                         field.column = column;
-                        field.column.isCurrency = column.type === 'currency';
-                        field.column.isDate = column.type === 'date-local' || column.type === 'date';
-                        field.column.isText = column.type === 'text';
+                        field.column.isCurrency = column.type === "currency";
+                        field.column.isDate = column.type === "date-local" || column.type === "date";
+                        field.column.isText = column.type === "text";
 
                         if (record[column.fieldName] === undefined) {
                             field.value = null;
@@ -104,9 +109,8 @@ export default class RdActiveSchedule extends LightningElement {
             return error.body.message;
         } else if (error && error.name && error.message) {
             return error.message;
-        } else {
-            return "";
         }
+        return "";
     }
 
     get qaLocatorHeader() {

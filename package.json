@@ -5,8 +5,8 @@
     "scripts": {
         "lint": "eslint force-app/**/*.js",
         "lint:fix": "eslint force-app/**/*.js --fix",
-        "prettier": "prettier --check force-app/**/*.{js,html,css}",
-        "prettier:fix": "prettier --write force-app/**/*.{js,html,css}"
+        "prettier": "prettier --check force-app/**/*.{js,css}",
+        "prettier:fix": "prettier --write force-app/**/*.{js,css}"
     },
     "devDependencies": {
         "@lwc/eslint-plugin-lwc": "^2.0.0",

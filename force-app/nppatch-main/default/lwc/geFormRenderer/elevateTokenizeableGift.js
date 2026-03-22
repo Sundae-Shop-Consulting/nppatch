@@ -1,8 +1,7 @@
-import CURRENCY from '@salesforce/i18n/currency';
-import PAYMENT_AUTHORIZE_TOKEN from '@salesforce/schema/DataImport__c.Payment_Authorization_Token__c';
+import CURRENCY from "@salesforce/i18n/currency";
+import PAYMENT_AUTHORIZE_TOKEN from "@salesforce/schema/DataImport__c.Payment_Authorization_Token__c";
 
 class ElevateTokenizeabledGift {
-
     constructor(fullName, amount, schedule, paymentMethod, type) {
         this.amount = amount;
         this.firstName = fullName.firstName;
@@ -17,26 +16,22 @@ class ElevateTokenizeabledGift {
 
     async tokenize(sections) {
         let widgetValues = [];
-        sections.forEach(section => {
+        sections.forEach((section) => {
             if (section.isPaymentWidgetAvailable) {
-                widgetValues = widgetValues.concat(
-                    section.paymentToken
-                );
+                widgetValues = widgetValues.concat(section.paymentToken);
             }
         });
 
         if (widgetValues) {
-            const tokenResponse = await Promise.all(
-                [widgetValues[0].payload]
-            );
+            const tokenResponse = await Promise.all([widgetValues[0].payload]);
 
             if (tokenResponse) {
                 this.paymentMethodToken = tokenResponse[0][PAYMENT_AUTHORIZE_TOKEN.fieldApiName];
                 return tokenResponse[0];
             }
         }
+        return undefined;
     }
-
 }
 
 export default ElevateTokenizeabledGift;

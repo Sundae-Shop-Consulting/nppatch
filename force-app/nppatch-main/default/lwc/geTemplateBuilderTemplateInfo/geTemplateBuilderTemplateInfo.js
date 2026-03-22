@@ -1,11 +1,10 @@
-import { LightningElement, api } from 'lwc';
-import { dispatch } from 'c/utilTemplateBuilder';
-import { isEmpty, isFunction, handleError } from 'c/utilCommon';
-import checkNameUniqueness from '@salesforce/apex/GE_GiftEntryController.checkNameUniqueness';
-import GeLabelService from 'c/geLabelService';
+import { LightningElement, api } from "lwc";
+import { dispatch } from "c/utilTemplateBuilder";
+import { isEmpty, isFunction, handleError } from "c/utilCommon";
+import checkNameUniqueness from "@salesforce/apex/GE_GiftEntryController.checkNameUniqueness";
+import GeLabelService from "c/geLabelService";
 
 export default class geTemplateBuilderTemplateInfo extends LightningElement {
-
     CUSTOM_LABELS = GeLabelService.CUSTOM_LABELS;
 
     @api isLoading;
@@ -14,8 +13,8 @@ export default class geTemplateBuilderTemplateInfo extends LightningElement {
     @api templateDescription;
 
     /*******************************************************************************
-    * Start getters for data-qa-locator attributes
-    */
+     * Start getters for data-qa-locator attributes
+     */
 
     get qaLocatorTemplateName() {
         return `input Field Label ${this.CUSTOM_LABELS.geLabelTemplateInfoNameField}`;
@@ -26,20 +25,20 @@ export default class geTemplateBuilderTemplateInfo extends LightningElement {
     }
 
     /*******************************************************************************
-    * End getters for data-qa-locator attributes
-    */
+     * End getters for data-qa-locator attributes
+     */
 
     @api
     validate() {
-        return new Promise(async (resolve, reject) => {
-            const nameInput = this.template.querySelector('lightning-input');
+        return new Promise((resolve, reject) => {
+            const nameInput = this.template.querySelector("lightning-input");
             let isValid = false;
 
             if (isFunction(nameInput.reportValidity) && !isEmpty(nameInput)) {
                 checkNameUniqueness({ name: nameInput.value, id: this.templateId })
-                    .then(isNameValid => {
+                    .then((isNameValid) => {
                         if (isNameValid) {
-                            nameInput.setCustomValidity('');
+                            nameInput.setCustomValidity("");
                         } else {
                             nameInput.setCustomValidity(this.CUSTOM_LABELS.geErrorExistingTemplateName);
                         }
@@ -47,10 +46,10 @@ export default class geTemplateBuilderTemplateInfo extends LightningElement {
                         nameInput.reportValidity();
                         isValid = nameInput.checkValidity();
 
-                        dispatch(this, 'updatevalidity', { property: 'hasTemplateInfoTabError', hasError: !isValid });
+                        dispatch(this, "updatevalidity", { property: "hasTemplateInfoTabError", hasError: !isValid });
                         resolve(isValid);
                     })
-                    .catch(error => {
+                    .catch((error) => {
                         handleError(error);
                         reject(error);
                     });
@@ -59,27 +58,27 @@ export default class geTemplateBuilderTemplateInfo extends LightningElement {
     }
 
     /*******************************************************************************
-    * @description Handles onblur event from lightning-input and dispatches an
-    * event to notify parent component geTemplateBuilder that the form template
-    * description has changed.
-    *
-    * @param {object} event: Event object from lightning-input onblur event handler
-    * @return {object} templateInfo: Object containing the template name and description
-    */
+     * @description Handles onblur event from lightning-input and dispatches an
+     * event to notify parent component geTemplateBuilder that the form template
+     * description has changed.
+     *
+     * @param {object} event: Event object from lightning-input onblur event handler
+     * @return {object} templateInfo: Object containing the template name and description
+     */
     handleChangeTemplateInfoName(event) {
-        dispatch(this, 'changetemplateinfoname', event.target.value);
+        dispatch(this, "changetemplateinfoname", event.target.value);
         this.validate();
     }
 
     /*******************************************************************************
-    * @description Handles onblur event from lightning-textarea and dispatches an
-    * event to notify parent component geTemplateBuilder that the form template
-    * description has changed.
-    *
-    * @param {object} event: Event object from lightning-textarea onblur event handler
-    * @return {object} templateInfo: Object containing the template name and description
-    */
+     * @description Handles onblur event from lightning-textarea and dispatches an
+     * event to notify parent component geTemplateBuilder that the form template
+     * description has changed.
+     *
+     * @param {object} event: Event object from lightning-textarea onblur event handler
+     * @return {object} templateInfo: Object containing the template name and description
+     */
     handleChangeTemplateInfoDescription(event) {
-        dispatch(this, 'changetemplateinfodescription', event.target.value);
+        dispatch(this, "changetemplateinfodescription", event.target.value);
     }
 }

@@ -45,10 +45,18 @@ export default class StgPanelHealthCheck extends LightningElement {
     }
 
     get filteredResults() {
-        if (this._activeTab === TAB_ALL) return this._results;
-        if (this._activeTab === TAB_ERRORS) return this._results.filter((r) => r.status === "Error");
-        if (this._activeTab === TAB_WARNINGS) return this._results.filter((r) => r.status === "Warning");
-        if (this._activeTab === TAB_PASS) return this._results.filter((r) => r.status === "Success");
+        if (this._activeTab === TAB_ALL) {
+            return this._results;
+        }
+        if (this._activeTab === TAB_ERRORS) {
+            return this._results.filter((r) => r.status === "Error");
+        }
+        if (this._activeTab === TAB_WARNINGS) {
+            return this._results.filter((r) => r.status === "Warning");
+        }
+        if (this._activeTab === TAB_PASS) {
+            return this._results.filter((r) => r.status === "Success");
+        }
         return this._results;
     }
 
@@ -94,9 +102,13 @@ export default class StgPanelHealthCheck extends LightningElement {
             let warnCount = 0;
 
             this._results = rawResults.map((r, idx) => {
-                if (r.status === "Success") passCount++;
-                else if (r.status === "Error") failCount++;
-                else if (r.status === "Warning") warnCount++;
+                if (r.status === "Success") {
+                    passCount++;
+                } else if (r.status === "Error") {
+                    failCount++;
+                } else if (r.status === "Warning") {
+                    warnCount++;
+                }
                 return {
                     id: `hc-${idx}`,
                     setting: r.name || "Check",
@@ -114,11 +126,13 @@ export default class StgPanelHealthCheck extends LightningElement {
             this._warnCount = warnCount;
             this._hasResults = true;
         } catch (error) {
-            this.dispatchEvent(new ShowToastEvent({
-                title: "Error",
-                message: error?.body?.message || "An error occurred running the health check.",
-                variant: "error",
-            }));
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: "Error",
+                    message: error?.body?.message || "An error occurred running the health check.",
+                    variant: "error",
+                })
+            );
         } finally {
             this._isRunning = false;
         }

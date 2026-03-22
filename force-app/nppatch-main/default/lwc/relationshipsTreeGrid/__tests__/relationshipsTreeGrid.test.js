@@ -80,10 +80,10 @@ describe("c-relationships-tree-grid", () => {
         const element = await createTreeGrid();
 
         const treeGrid = element.shadowRoot.querySelector("lightning-tree-grid");
-        expect(treeGrid.columns[0].label).toBe(mockGetInitialView.labels["contactName"]);
-        expect(treeGrid.columns[1].label).toBe(mockGetInitialView.labels["title"]);
-        expect(treeGrid.columns[2].label).toBe(mockGetInitialView.labels["accountName"]);
-        expect(treeGrid.columns[3].label).toBe(mockGetInitialView.labels["relationshipExplanation"]);
+        expect(treeGrid.columns[0].label).toBe(mockGetInitialView.labels.contactName);
+        expect(treeGrid.columns[1].label).toBe(mockGetInitialView.labels.title);
+        expect(treeGrid.columns[2].label).toBe(mockGetInitialView.labels.accountName);
+        expect(treeGrid.columns[3].label).toBe(mockGetInitialView.labels.relationshipExplanation);
     });
 
     it("hides create new relationship action if no create access", async () => {
@@ -223,7 +223,7 @@ describe("c-relationships-tree-grid", () => {
         });
 
         it("re-centers on contact", async () => {
-            let assignMock = jest.fn();
+            const assignMock = jest.fn();
             Object.defineProperty(window, "location", {
                 set: assignMock,
             });

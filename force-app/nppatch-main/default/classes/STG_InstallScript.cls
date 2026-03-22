@@ -155,53 +155,12 @@ global without sharing class STG_InstallScript implements InstallHandler {
     }
 
     /*******************************************************************************************************
-    * @description Inserts the default TDTM records, if necessary. Updates those that need to be updated, since the last package
-    * upgrade. Public just for testing purposes (it should otherwise be private).
+    * @description Delegates to TDTM_DefaultConfig.insertDefaults(). Kept for backwards compatibility
+    * with existing callers and tests.
     * @return void
     */
     public static void insertTdtmDefaults(List<Trigger_Handler__c> defaultHandlers) {
-        if (defaultHandlers == null) defaultHandlers = TDTM_DefaultConfig.getDefaultRecords();
-        List<Trigger_Handler__c> existingHandlers = [select Class__c, Object__c, Load_Order__c, Trigger_Action__c, User_Managed__c
-                                                       from Trigger_Handler__c];
-
-        List<Trigger_Handler__c> handlersToInsert = new List<Trigger_Handler__c>();
-        List<Trigger_Handler__c> handlersToUpdate = new List<Trigger_Handler__c>();
-        List<Trigger_Handler__c> handlersToDelete = new List<Trigger_Handler__c>();
-
-        //First, find handlers to add them for deletion and remove them from the list
-        Integer i = 0;
-        while(i < existingHandlers.size()) {
-            if (TDTM_DefaultConfig.deletedClasses.contains(existingHandlers[i].Class__c)) {
-                handlersToDelete.add(existingHandlers[i]);
-                existingHandlers.remove(i);
-            } else {
-                i++;
-            }
-        }
-
-        //Insert those that are in the list of default handlers but aren't in the database
-        for(Trigger_Handler__c defaultHandler : defaultHandlers) {
-            Boolean alreadyExists = false;
-            for(Trigger_Handler__c existingHandler : existingHandlers) {
-                if(defaultHandler.Class__c == existingHandler.Class__c && defaultHandler.Object__c == existingHandler.Object__c) {
-                    alreadyExists = true;
-                    //Determine if order or action has changed (compare old load order with new load order, old action with new action)
-                    //Filter to only those that have not been flagged as user-managed
-                    if(!existingHandler.User_Managed__c && (defaultHandler.Load_Order__c != existingHandler.Load_Order__c ||
-                    defaultHandler.Trigger_Action__c != existingHandler.Trigger_Action__c)) {
-                        existingHandler.Load_Order__c = defaultHandler.Load_Order__c;
-                        existingHandler.Trigger_Action__c = defaultHandler.Trigger_Action__c;
-                        handlersToUpdate.add(existingHandler);
-                    }
-                    break;
-                }
-            }
-            if(!alreadyExists)
-                handlersToInsert.add(defaultHandler);
-        }
-        if(handlersToInsert.size() > 0) insert handlersToInsert;
-        if(handlersToUpdate.size() > 0) update handlersToUpdate;
-        if(handlersToDelete.size() > 0) delete handlersToDelete;
+        TDTM_DefaultConfig.insertDefaults(defaultHandlers);
     }
 
     /*******************************************************************************************************

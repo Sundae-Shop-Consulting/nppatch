@@ -9,6 +9,7 @@
       "unpackagedMetadata": {
         "path": "unpackaged/config/all_record_types"
       },
+      "postInstallScript": "STG_InstallScript",
       "apexTestAccess": {
         "permissionSets": ["NPPatch_Admin"]
       }

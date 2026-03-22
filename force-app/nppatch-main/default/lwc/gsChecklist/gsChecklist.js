@@ -1,15 +1,13 @@
-import { LightningElement, api, track } from 'lwc';
-
+import { LightningElement, api, track } from "lwc";
 
 /*
-*  @description This class controller the checklist to render and his items
-*/
+ *  @description This class controller the checklist to render and his items
+ */
 export default class gsChecklist extends LightningElement {
-    
     /**
-    * @description Group of step in a checklist
-    * @type      Checklist
-    */
+     * @description Group of step in a checklist
+     * @type      Checklist
+     */
     @api group;
 
     /**
@@ -18,7 +16,7 @@ export default class gsChecklist extends LightningElement {
     @track checkedItems = 0;
 
     connectedCallback() {
-        this.group.items.forEach(item => {
+        this.group.items.forEach((item) => {
             if (item.checked) {
                 this.checkedItems++;
             }
@@ -38,5 +36,4 @@ export default class gsChecklist extends LightningElement {
     handleUnchecked() {
         this.checkedItems--;
     }
-    
 }

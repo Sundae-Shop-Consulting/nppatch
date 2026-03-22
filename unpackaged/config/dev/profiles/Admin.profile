@@ -40,6 +40,9 @@
         <layout>Campaign-NPPatch Campaign Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Contact-Fundraising Contact Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Opportunity-Donation Layout</layout>
         <recordType>Opportunity.NPPatch_Default</recordType>
     </layoutAssignments>
@@ -161,6 +164,10 @@
     <tabVisibilities>
         <tab>%%%NAMESPACE%%%Affiliation__c</tab>
         <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>%%%NAMESPACE%%%Manage_Household</tab>
+        <visibility>DefaultOff</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>%%%NAMESPACE%%%GE_Gift_Entry</tab>

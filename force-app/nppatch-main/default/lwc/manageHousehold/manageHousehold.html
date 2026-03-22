@@ -63,12 +63,23 @@
                                 <span class="slds-truncate">{householdMembersLabel}</span>
                             </h2>
                         </div>
-                        <div class="slds-no-flex">
-                            <c-manage-hh-contact-search
-                                contacts={contacts}
-                                oncontactselected={handleContactSelected}
-                                onnewcontact={handleNewContactRequest}
-                            ></c-manage-hh-contact-search>
+                        <div class="slds-no-flex slds-grid slds-grid_vertical-center">
+                            <div class="contact-picker">
+                                <lightning-record-picker
+                                    label={householdMembersLabel}
+                                    placeholder={findInContactsLabel}
+                                    object-api-name="Contact"
+                                    filter={contactPickerFilter}
+                                    onchange={handleContactSelected}
+                                    variant="label-hidden"
+                                ></lightning-record-picker>
+                            </div>
+                            <lightning-button
+                                label={newContactLabel}
+                                icon-name="utility:add"
+                                onclick={handleNewContactClick}
+                                class="slds-m-left_x-small"
+                            ></lightning-button>
                         </div>
                     </header>
                 </div>
