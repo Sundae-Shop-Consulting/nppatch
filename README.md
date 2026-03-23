@@ -4,7 +4,7 @@
 
 ## What Is NPPatch?
 
-NPPatch consolidates the open-source Nonprofit Success Pack into a single, namespaced, unlocked second-generation package (2GP) that the nonprofit community can install, extend, and maintain independently. The original NPSP was distributed as Salesforce-controlled managed packages — NPPatch changes that by giving organizations the ability to install, upgrade, and modify the package on their own terms.
+NPPatch consolidates the open-source Nonprofit Success Pack into a single, namespaced, unlocked second-generation package (2GP) that the nonprofit community can install, extend, and maintain independently. The original NPSP was distributed as Salesforce-controlled managed packages — NPPatch changes that. The community — not Salesforce — controls what gets built, what gets fixed, and when new versions ship.
 
 ## Why Does This Exist?
 
