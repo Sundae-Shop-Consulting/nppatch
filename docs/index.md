@@ -45,6 +45,7 @@ NPPatch includes the full NPSP feature set, consolidated from the original five 
 - **Engagement Plans** — task-based engagement workflows triggered by donor activity
 - **Payment Management** — payment scheduling, tracking, and write-off support tied to opportunities
 - **Levels** — automated donor level assignment based on giving history
+- **Program Management** — program tracking, service scheduling, attendance recording, and service delivery measurement (based on the open-source Program Management Module)
 - **Error Logging** — centralized error capture and admin notification
 
 ## Technical Details at a Glance
@@ -56,10 +57,10 @@ NPPatch includes the full NPSP feature set, consolidated from the original five 
 | Salesforce API Version | 63.0 |
 | Build Tool | CumulusCI 4.6+ |
 | Architecture | Apex Enterprise Patterns (fflib) with TDTM trigger framework |
-| Custom Objects | 30+ |
+| Custom Objects | 38+ |
 | Custom Settings | 13 hierarchy + 8 list (21 total) |
-| Apex Classes | ~850 |
-| Lightning Web Components | ~120 |
+| Apex Classes | ~925 |
+| Lightning Web Components | ~155 |
 | Test Coverage Target | 75%+ |
 
 ## Getting Started
@@ -77,7 +78,7 @@ After installation, see [Post-Install Configuration](getting-started/post-instal
 
 NPPatch is built on the open-source code from the Salesforce.org Nonprofit Success Pack repositories. The original NPSP code was released under open-source licensing, and NPPatch follows those same license terms.
 
-The five original NPSP packages — TDTM (trigger framework), Contacts & Organizations, Households, Recurring Donations, and the main Nonprofit Success Pack — have been consolidated into a single repository and single package. The code, objects, and automation are functionally equivalent; what's changed is the packaging and distribution model.
+The five original NPSP packages — TDTM (trigger framework), Contacts & Organizations, Households, Recurring Donations, and the main Nonprofit Success Pack — plus the Program Management Module (PMM) have been consolidated into a single repository and single package. The code, objects, and automation are functionally equivalent; what's changed is the packaging and distribution model.
 
 !!! note "On Copyright and Documentation"
     All documentation in this project is original writing based on analysis of the open-source codebase. It describes what the code does, how it's structured, and how to work with it. This documentation is not derived from Salesforce's proprietary documentation.

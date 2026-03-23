@@ -425,6 +425,137 @@ Reusable template for engagement plans.
 - Child Engagement_Plan_Task_Template__c records (task definitions)
 - Child Engagement_Plan__c records (instantiated plans)
 
+## Program Management
+
+NPPatch includes the Program Management Module (PMM), providing program and service delivery tracking alongside fundraising.
+
+### Program__c
+
+Represents a program offered by the organization.
+
+**Fields:**
+- `Name` - Program name
+- `Description__c` - Program description
+- `ShortSummary__c` - Brief summary
+- `StartDate__c` - Program start date
+- `EndDate__c` - Program end date
+- `ProgramIssueArea__c` - Issue area classification
+- `Status__c` - Active, Completed, Planned, etc.
+
+**Relationships:**
+- Child ProgramCohort__c records (cohorts within the program)
+- Child ProgramEngagement__c records (participant enrollments)
+- Child Service__c records (services offered under the program)
+
+### ProgramCohort__c
+
+Groups participants within a program for tracking and reporting.
+
+**Fields:**
+- `Name` - Cohort name
+- `Program__c` - Parent program
+- `Description__c` - Cohort details
+- `StartDate__c` - Cohort start date
+- `EndDate__c` - Cohort end date
+- `Status__c` - Active, Completed, Planned
+
+### ProgramEngagement__c
+
+Tracks a contact's participation in a program.
+
+**Fields:**
+- `Name` - Engagement name
+- `Contact__c` - Participating contact
+- `Account__c` - Related account
+- `Program__c` - Parent program
+- `ProgramCohort__c` - Assigned cohort
+- `Stage__c` - Enrollment stage (Applied, Enrolled, Active, Completed, Withdrawn)
+- `Role__c` - Participant's role (Client, Volunteer, Service Provider)
+- `ApplicationDate__c` - Date of application
+- `StartDate__c` - Engagement start date
+- `EndDate__c` - Engagement end date
+
+### Service__c
+
+A specific service offered under a program.
+
+**Fields:**
+- `Name` - Service name
+- `Program__c` - Parent program
+- `Description__c` - Service description
+- `Status__c` - Active, Inactive
+- `UnitOfMeasurement__c` - How service is measured (Hours, Sessions, Units)
+
+**Relationships:**
+- Child ServiceSchedule__c records
+- Child ServiceDelivery__c records
+
+### ServiceSchedule__c
+
+Defines a recurring schedule for delivering a service.
+
+**Fields:**
+- `Name` - Schedule name
+- `Service__c` - Parent service
+- `FirstSessionStart__c` - First session start date/time
+- `FirstSessionEnd__c` - First session end date/time
+- `Frequency__c` - How often sessions repeat (Daily, Weekly, Monthly)
+- `Interval__c` - Interval between sessions
+- `DaysOfWeek__c` - Which days sessions occur
+- `NumberOfServiceSessions__c` - Total sessions to generate
+- `ParticipantCapacity__c` - Maximum participants
+- `DefaultServiceQuantity__c` - Default quantity per delivery
+- `PrimaryServiceProvider__c` - Primary staff contact
+- `OtherServiceProvider__c` - Secondary staff contact
+
+### ServiceSession__c
+
+An individual occurrence of a scheduled service.
+
+**Fields:**
+- `Name` - Session name
+- `ServiceSchedule__c` - Parent schedule
+- `SessionStart__c` - Session start date/time
+- `SessionEnd__c` - Session end date/time
+- `Status__c` - Pending, Complete, Canceled
+- `PrimaryServiceProvider__c` - Staff delivering the session
+- `OtherServiceProvider__c` - Additional staff
+
+### ServiceParticipant__c
+
+Enrolls a contact in a service schedule.
+
+**Fields:**
+- `Name` - Participant name
+- `Contact__c` - Participating contact
+- `ProgramEngagement__c` - Related program engagement
+- `Service__c` - Parent service
+- `ServiceSchedule__c` - Enrolled schedule
+- `SignUpDate__c` - Date of enrollment
+- `Status__c` - Enrolled, Withdrawn, Completed
+
+### ServiceDelivery__c
+
+Records actual delivery of a service to a participant.
+
+**Fields:**
+- `Name` - Delivery name
+- `Contact__c` - Recipient contact
+- `Account__c` - Related account
+- `Service__c` - Service delivered
+- `ServiceSession__c` - Related session
+- `ProgramEngagement__c` - Related engagement
+- `Service_Provider__c` - Staff who delivered
+- `DeliveryDate__c` - Date of delivery
+- `Quantity__c` - Amount delivered
+- `AttendanceStatus__c` - Present, Absent, Excused
+- `AutonameOverride__c` - Custom name override
+
+**Features:**
+- Rollups to Contact, ProgramEngagement, Service, and ServiceSchedule
+- Batch rollup processing via `ServiceDeliveryRollupsBatch`
+- Trigger-driven updates via `ServiceDeliveryTriggerHandler`
+
 ## System Objects
 
 ### Error__c

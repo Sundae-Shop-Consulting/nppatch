@@ -97,26 +97,46 @@ NPPatch organizes code into functional modules, each with a two-letter or three-
 | **UTIL** | Utilities | Cross-cutting utility functions |
 | **USER** | User Management | User role and permission synchronization |
 
+### Program Management Modules
+
+The package also includes the Program Management Module (PMM), which uses a different naming convention — full words rather than short prefixes:
+
+| Prefix | Function Area | Purpose |
+|--------|--------------|---------|
+| **ServiceDelivery** | Service Delivery | Service delivery tracking, rollups, and trigger handling |
+| **ServiceSchedule** | Service Scheduling | Schedule creation, session generation, domain logic |
+| **ServiceSession** | Service Sessions | Session tracking, status management, attendance |
+| **ServiceParticipant** | Participants | Participant enrollment and trigger handling |
+| **ProgramEngagement** | Program Engagement | Participant engagement tracking and rollups |
+| **Program** | Programs | Program management and selection |
+| **Attendance** | Attendance | Attendance tracking UI and controller |
+
 ### Directory Organization
 
 ```
 force-app/
 ├── nppatch-common/         # Shared infrastructure (fflib, utilities)
-└── nppatch-main/
-    ├── Application.cls     # Central fflib application factory
-    ├── adapter/            # Adapter/Controller layer
-    ├── bdi/                # Batch Data Import classes
-    ├── default/
-    │   ├── classes/        # All Apex code, organized by module prefix
-    │   ├── objects/        # Custom objects and standard object extensions
-    │   ├── lwc/            # Lightning Web Components (~120)
-    │   ├── aura/           # Aura components (~46)
-    │   └── pages/          # Visualforce pages (payment wizard, utility pages)
-    ├── domain/             # Domain layer classes (_DOM)
-    ├── selector/           # Selector layer classes (_SEL)
-    ├── service/            # Service layer classes (_SVC)
-    ├── tdtm/               # TDTM trigger framework and handlers
-    └── test/               # Test utilities and factories
+├── nppatch-main/
+│   ├── Application.cls     # Central fflib application factory
+│   ├── adapter/            # Adapter/Controller layer
+│   ├── bdi/                # Batch Data Import classes
+│   ├── default/
+│   │   ├── classes/        # All Apex code, organized by module prefix
+│   │   ├── objects/        # Custom objects and standard object extensions
+│   │   ├── lwc/            # Lightning Web Components (~120)
+│   │   ├── aura/           # Aura components (~46)
+│   │   └── pages/          # Visualforce pages (payment wizard, utility pages)
+│   ├── domain/             # Domain layer classes (_DOM)
+│   ├── selector/           # Selector layer classes (_SEL)
+│   ├── service/            # Service layer classes (_SVC)
+│   ├── tdtm/               # TDTM trigger framework and handlers
+│   └── test/               # Test utilities and factories
+└── nppatch-prgm/           # Program Management Module (PMM)
+    └── default/
+        ├── classes/        # ~75 Apex classes (service delivery, scheduling, rollups)
+        ├── objects/        # 8 custom objects (Program, Service, ServiceDelivery, etc.)
+        ├── lwc/            # ~33 LWC components (attendance, scheduling, enrollment)
+        └── triggers/       # 2 triggers (ServiceDelivery, ServiceParticipant)
 ```
 
 ## Naming Conventions

@@ -18,7 +18,7 @@ NPPatch is a strong fit for organizations that meet some or all of these criteri
 
 Being fair about this: there are cases where Nonprofit Cloud is the right answer.
 
-**Organizations needing features beyond NPSP's scope.** Nonprofit Cloud includes program management, outcome tracking, case management, and other capabilities that NPSP was never designed to handle. If a client needs these, Nonprofit Cloud offers them as part of the platform.
+**Organizations needing features beyond NPSP's scope.** Nonprofit Cloud includes outcome tracking, case management, and other capabilities that NPSP was never designed to handle. NPPatch does include program management (via the Program Management Module), but if a client needs the broader Nonprofit Cloud platform capabilities, Nonprofit Cloud offers them.
 
 **Organizations that require vendor-backed support.** NPPatch is community-maintained. There is no Salesforce support contract, no guaranteed SLA, and no vendor standing behind the product. For organizations that need that level of support assurance, Nonprofit Cloud provides it.
 
@@ -68,7 +68,7 @@ Organizations that haven't modified the package code can upgrade normally. Organ
 When evaluating NPPatch for a client, consider:
 
 1. **Current state**: Is the client currently on NPSP? If so, how heavily customized is their implementation?
-2. **Feature requirements**: Does the client need capabilities that exist only in Nonprofit Cloud (program management, case management, outcome tracking)?
+2. **Feature requirements**: Does the client need capabilities that exist only in Nonprofit Cloud (case management, outcome tracking)? Note: NPPatch includes program management via PMM.
 3. **Support expectations**: Is the client comfortable with community-maintained software, or do they require vendor-backed support?
 4. **Technical capacity**: Does the client (or their consultant) have the technical skills to manage an unlocked package, apply upgrades, and troubleshoot issues?
 5. **Budget**: What are the comparative costs of Nonprofit Cloud licensing and implementation vs. NPPatch (which has no license cost but requires community or consultant support)?
