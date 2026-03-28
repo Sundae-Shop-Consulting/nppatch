@@ -4,27 +4,15 @@
         <fullName>NPPatch_Default</fullName>
         <isActive>true</isActive>
         <values>
-            <fullName>Cultivating</fullName>
+            <fullName>Closed Lost</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Identification</fullName>
+            <fullName>Closed Won</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>LOI Submitted</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Prospecting</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Qualification</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Cultivation</fullName>
+            <fullName>Id%2E Decision Makers</fullName>
             <default>false</default>
         </values>
         <values>
@@ -32,27 +20,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Application Submitted</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>In-Kind Not Yet Received</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pledged</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Solicitation</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Value Proposition</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Id%2E Decision Makers</fullName>
+            <fullName>Negotiation%2FReview</fullName>
             <default>false</default>
         </values>
         <values>
@@ -64,39 +32,15 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Awarded</fullName>
+            <fullName>Prospecting</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Negotiation%2FReview</fullName>
+            <fullName>Qualification</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Verbal Commitment</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Closed Won</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>In-Kind Received</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Posted</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Closed Lost</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Declined</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Withdrawn</fullName>
+            <fullName>Value Proposition</fullName>
             <default>false</default>
         </values>
     </businessProcesses>
