@@ -1051,6 +1051,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contact.GenderIdentity</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>%%%NAMESPACE%%%Contacts_And_Orgs_Settings__c.%%%NAMESPACE%%%Account_Processor__c</field>
         <readable>true</readable>
     </fieldPermissions>

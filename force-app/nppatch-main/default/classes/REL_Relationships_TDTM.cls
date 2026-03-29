@@ -324,16 +324,19 @@ public class REL_Relationships_TDTM extends TDTM_Runnable {
                 }
             }
             
-            String query_string = 'select id, Salutation';            
-            String gender_field = '';
-            
-            if (rs.Gender_Field__c != null){
-                gender_field = rs.Gender_Field__c;
-                query_string += ', ' + gender_field;                
+            String query_string = 'select id, Salutation';
+            String gender_field = String.isNotBlank(rs.Gender_Field__c) ? rs.Gender_Field__c : 'GenderIdentity';
+            if (!UTIL_Describe.isValidField('Contact', gender_field)
+                    || !UTIL_Permissions.canRead('Contact', gender_field, false)) {
+                gender_field = '';
             }
-            
-            query_string += ' from Contact where Id IN :rIDs';                         
-            
+
+            if (String.isNotBlank(gender_field)) {
+                query_string += ', ' + gender_field;
+            }
+
+            query_string += ' from Contact where Id IN :rIDs';
+
             map<id, Contact> cMap = new map<id,Contact>((List<Contact>)database.query(query_string));
             
             for(Relationship__c r : rList){

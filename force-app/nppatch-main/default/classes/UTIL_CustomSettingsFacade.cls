@@ -582,6 +582,7 @@ public without sharing class UTIL_CustomSettingsFacade {
 
     private static void configRelationshipsSettings(Relationship_Settings__c rs) {
         rs.Reciprocal_Method__c = 'List Setting';
+        rs.Gender_Field__c = 'GenderIdentity';
     }
 
     private static void configAffiliationsSettings(Affiliations_Settings__c afs) {

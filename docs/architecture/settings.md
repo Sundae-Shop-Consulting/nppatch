@@ -141,7 +141,7 @@ Status automation is configured through the **NPPatch Settings > Recurring Donat
 | Field | Type | Default | Purpose |
 |-------|------|---------|---------|
 | `Reciprocal_Method__c` | Picklist | "List Setting" | How to determine reciprocal relationships |
-| `Gender_Field__c` | Text | (empty) | Contact field to use for gender-specific reciprocals |
+| `Gender_Field__c` | Text | "GenderIdentity" | Contact field to use for gender-specific reciprocals |
 
 **Reciprocal Methods:**
 - `List Setting` — use custom setting list for mappings
