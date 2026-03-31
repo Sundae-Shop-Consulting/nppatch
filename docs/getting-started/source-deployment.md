@@ -28,11 +28,6 @@ On macOS/Linux:
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-On macOS with Homebrew:
-
-```bash
-brew install uv
-```
 
 ### CumulusCI
 
