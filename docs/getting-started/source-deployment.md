@@ -28,7 +28,6 @@ On macOS/Linux:
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-
 ### CumulusCI
 
 NPPatch uses CumulusCI (cci) as its build and automation tool. CumulusCI is a Python-based tool built by Salesforce.org specifically for managing the development lifecycle of Salesforce packages.
