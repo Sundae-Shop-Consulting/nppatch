@@ -101,6 +101,26 @@
         "Load Sample Data": {
             "message": "Load Sample Data",
             "description": "title of installation step"
+        },
+        "Initialize Scheduled Jobs": {
+            "message": "Initialize Scheduled Jobs",
+            "description": "title of installation step"
+        },
+        "Deploy unpackaged/post/matching_rules": {
+            "message": "Deploy unpackaged/post/matching_rules",
+            "description": "title of installation step"
+        },
+        "Ensure Opportunity Record Types": {
+            "message": "Ensure Opportunity Record Types",
+            "description": "title of installation step"
+        },
+        "Ensure Account Record Types": {
+            "message": "Ensure Account Record Types",
+            "description": "title of installation step"
+        },
+        "Configure Demo Profile": {
+            "message": "Configure Demo Profile",
+            "description": "title of installation step"
         }
     }
 }

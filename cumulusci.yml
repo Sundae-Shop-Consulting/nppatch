@@ -29,8 +29,13 @@ tasks:
         - record_type: Account.HH_Account
         - record_type: Account.Organization
           default: true
-        - record_type: Opportunity.NPPatch_Default
+        - record_type: Opportunity.Donation
           default: true
+        - record_type: Opportunity.Grant
+        - record_type: Opportunity.InKindGift
+        - record_type: Opportunity.MajorGift
+        - record_type: Opportunity.MatchingGift
+        - record_type: Opportunity.Membership
 
   run_tests:
     options:
@@ -491,7 +496,7 @@ flows:
       6:
         task: install_managed_beta
         options:
-          version: "04tal000006OWL3AAO"
+          version: "04tal000006PIUXAA4"
       6.1:
         task: ensure_record_types
         options:
@@ -510,6 +515,10 @@ flows:
           managed: True
           namespaced: True
       8.1:
+        task: execute_anon
+        options:
+          apex: nppatch.SetupApi.resetTriggerHandlers();
+      8.2:
         task: execute_anon
         options:
           apex: nppatch.SetupApi.rescheduleDefaultJobs();
@@ -566,6 +575,10 @@ flows:
         options:
           managed: True
           namespaced: True
+      2.92:
+        task: execute_anon
+        options:
+          apex: nppatch.SetupApi.resetTriggerHandlers();
 
 orgs:
   scratch:
@@ -616,28 +629,52 @@ plans:
         ui_options:
           name: Configure Opportunity Contact Roles
       5:
-        task: install_managed_beta
+        task: ensure_record_types
+        ui_options:
+          name: Ensure Opportunity Record Types
+        options:
+          sobject: Opportunity
       6:
+        task: install_managed_beta
+      6.1:
+        task: ensure_record_types
+        ui_options:
+          name: Ensure Account Record Types
+        options:
+          sobject: Account
+      6.2:
+        task: ensure_record_types
+        ui_options:
+          name: Ensure Opportunity Record Types
+        options:
+          sobject: Opportunity
+      7:
         task: deploy_post
         ui_options:
           first:
             name: Post-Install Configuration
         options:
           unmanaged: False
-      7:
+      8:
         task: default_settings
         ui_options:
           name: Set Default Settings
         options:
           managed: True
           namespaced: True
-      7.1:
+      8.1:
+        task: execute_anon
+        ui_options:
+          name: Initialize Trigger Handlers
+        options:
+          apex: nppatch.SetupApi.resetTriggerHandlers();
+      8.2:
         task: execute_anon
         ui_options:
           name: Initialize Scheduled Jobs
         options:
           apex: nppatch.SetupApi.rescheduleDefaultJobs();
-      8:
+      9:
         task: assign_permission_sets
         ui_options:
           name: Assign Permission Sets
@@ -645,15 +682,20 @@ plans:
           api_names:
             - NPPatch_Admin
             - PRGM_Manage
-      9:
+      10:
         task: update_admin_profile
         ui_options:
           name: Update Admin Profile
-      10:
+      11:
+        task: deploy_demo_config
+        ui_options:
+          name: Configure Demo Profile
+      12:
         task: reorder_app_menu
         ui_options:
           name: Reorder App Menu
-      11:
+          is_required: False
+      13:
         task: load_dataset
         ui_options:
           name: Load Sample Data
@@ -662,3 +704,4 @@ plans:
           mapping: datasets/sample/mapping.yml
           sql_path: datasets/sample/sample_data.sql
           drop_missing_schema: True
+          inject_namespaces: True
