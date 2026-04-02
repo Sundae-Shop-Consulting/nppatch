@@ -170,6 +170,10 @@
         <visibility>DefaultOff</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>%%%NAMESPACE%%%Relationships_Viewer</tab>
+        <visibility>DefaultOff</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>%%%NAMESPACE%%%GE_Gift_Entry</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>

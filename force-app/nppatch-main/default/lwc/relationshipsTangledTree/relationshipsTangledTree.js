@@ -30,7 +30,21 @@ const DEPTH_OPTIONS = [
 ];
 
 export default class RelationshipsTangledTree extends NavigationMixin(LightningElement) {
-    @api recordId;
+    _recordId;
+    _d3Loaded = false;
+
+    @api
+    get recordId() {
+        return this._recordId;
+    }
+    set recordId(value) {
+        const prev = this._recordId;
+        this._recordId = value;
+        if (value && value !== prev && this._d3Loaded) {
+            this.loadGraph(value, parseInt(this._depthValue, 10));
+        }
+    }
+
     @api depth = 2;
     @api isLightningOut = false;
 
@@ -58,11 +72,12 @@ export default class RelationshipsTangledTree extends NavigationMixin(LightningE
             const [, graphResult] = await Promise.all([
                 libsD3.init(this),
                 getRelationshipGraph({
-                    contactId: this.recordId,
+                    contactId: this._recordId,
                     depth: parseInt(this.depth, 10),
                 }),
             ]);
             this._d3 = libsD3.d3;
+            this._d3Loaded = true;
             this._handleGraphResult(graphResult);
         } catch (e) {
             const message = e.body ? e.body.message : e.message || "Failed to load visualization";

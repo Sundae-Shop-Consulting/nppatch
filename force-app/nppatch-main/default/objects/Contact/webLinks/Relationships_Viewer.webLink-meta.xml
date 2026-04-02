@@ -8,5 +8,5 @@
     <masterLabel>Relationships Viewer</masterLabel>
     <openType>replace</openType>
     <protected>false</protected>
-    <url>{!URLFOR(&apos;/apex/REL_RelationshipsViewer?id=&apos; + Contact.Id)}</url>
+    <url>/lightning/n/{!$Setup.Package_Settings__c.Namespace_Prefix__c}Relationships_Viewer?c__recordId={!Contact.Id}</url>
 </WebLink>

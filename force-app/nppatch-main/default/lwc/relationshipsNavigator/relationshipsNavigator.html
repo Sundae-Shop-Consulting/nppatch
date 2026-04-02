@@ -3,18 +3,18 @@
         <lightning-card icon-name="standard:contact" class="relation-card slds-card_boundary" title={contactName}>
             <lightning-tabset>
                 <lightning-tab label={labels.graphicalView}>
-                    <c-relationships-tangled-tree
-                        record-id={recordId}
-                        is-lightning-out={isLightningOut}
-                        onaccesserror={handleAccessError}>
-                    </c-relationships-tangled-tree>
+                    <template if:true={contactId}>
+                        <c-relationships-tangled-tree
+                            record-id={contactId}
+                            onaccesserror={handleAccessError}>
+                        </c-relationships-tangled-tree>
+                    </template>
                 </lightning-tab>
                 <lightning-tab label={labels.tabularView} onactive={handleTabularTabActive}>
                     <template if:true={_tabularTabReady}>
                         <c-relationships-tree-grid
                             contact-name={contactName}
-                            record-id={recordId}
-                            is-lightning-out={isLightningOut}
+                            record-id={contactId}
                             onaccesserror={handleAccessError}>
                         </c-relationships-tree-grid>
                     </template>

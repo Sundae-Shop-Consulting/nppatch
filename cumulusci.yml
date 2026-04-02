@@ -496,7 +496,7 @@ flows:
       6:
         task: install_managed_beta
         options:
-          version: "04tal000006PIUXAA4"
+          version: "04tal000006PbSLAA0"
       6.1:
         task: ensure_record_types
         options:
