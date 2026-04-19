@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Payment_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Payment_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Payment</label>
+    <nameField>
+        <displayFormat>PMT-{00000}</displayFormat>
+        <label>Payment Number</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Payments</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Opportunity__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Payment_Amount__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Paid__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Opportunity__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Payment_Amount__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Paid__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>Opportunity__c</searchFilterFields>
+        <searchFilterFields>Payment_Amount__c</searchFilterFields>
+        <searchFilterFields>Paid__c</searchFilterFields>
+        <searchResultsAdditionalFields>Opportunity__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Payment_Amount__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Payment_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Paid__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <compactLayouts>
+        <fullName>NPPatch_Payment_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>Payment_Amount__c</fields>
+        <fields>Scheduled_Date__c</fields>
+        <label>NPPatch Payment Compact Layout</label>
+    </compactLayouts>
+    <fieldSets>
+        <fullName>Payment_WizardFS</fullName>
+        <availableFields>
+            <field>Check_Reference_Number__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Custom_Payment_Field__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>IsDeleted</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Opportunity__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Payment_Acknowledged_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Payment_Acknowledgment_Status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Payment_Method__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Written_Off__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <description>Schedule Payments Wizard</description>
+        <displayedFields>
+            <field>Payment_Amount__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Scheduled_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Payment_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Paid__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Payment Wizard FS</label>
+    </fieldSets>
+    <fields>
+        <fullName>ACH_Code__c</fullName>
+        <description>Stores the Standard Entry Class (SEC) code from the payment gateway for ACH transactions. Populated by the payment processing integration.</description>
+        <inlineHelpText>The SEC code classifying this ACH transaction type (e.g., WEB for internet-initiated, PPD for prearranged debits).</inlineHelpText>
+        <label>ACH Code</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Payment_ACH_Code</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ACH_Last_4__c</fullName>
+        <description>Stores the last four digits of the bank account number from the payment gateway for ACH transactions. Populated by the payment processing integration.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The last four digits of the bank account used for this ACH payment, for verification purposes.</inlineHelpText>
+        <label>ACH Last 4</label>
+        <length>4</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Authorized_Date__c</fullName>
+        <description>Stores the date and time the payment gateway authorized this transaction. Populated automatically by the payment processing integration.</description>
+        <inlineHelpText>The date and time the payment gateway approved this transaction for processing.</inlineHelpText>
+        <label>Authorized Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Authorized_UTC_Timestamp__c</fullName>
+        <description>Stores the precise UTC timestamp (including milliseconds) from the payment gateway when authorization was granted. Stored as text to preserve millisecond precision not available in DateTime fields.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The exact UTC date and time (to the millisecond) when the payment gateway authorized this transaction.</inlineHelpText>
+        <label>Authorized UTC Timestamp</label>
+        <length>30</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Batch_Number__c</fullName>
+        <description>Automatically populated when a Payment is marked as Paid through a batch process. The value is determined by the Batch Number Settings configured in NPPatch Settings.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The batch identifier associated with this payment, used to group payments processed together.</inlineHelpText>
+        <label>Batch Number</label>
+        <length>30</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Card_Expiration_Month__c</fullName>
+        <description>Stores the two-digit expiration month of the credit or debit card from the payment gateway. Populated by the payment processing integration.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The two-digit expiration month (01-12) of the card used for this payment.</inlineHelpText>
+        <label>Card Expiration Month</label>
+        <length>2</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Card_Expiration_Year__c</fullName>
+        <description>Stores the four-digit expiration year of the credit or debit card from the payment gateway. Populated by the payment processing integration.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The four-digit expiration year of the card used for this payment.</inlineHelpText>
+        <label>Card Expiration Year</label>
+        <length>4</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Card_Last_4__c</fullName>
+        <description>Stores the last four digits of the credit or debit card number from the payment gateway. Populated by the payment processing integration.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The last four digits of the card used for this payment, for verification purposes.</inlineHelpText>
+        <label>Card Last 4</label>
+        <length>4</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Card_Network__c</fullName>
+        <description>Stores the card network (e.g., Visa, Mastercard, Amex) from the payment gateway. Populated by the payment processing integration.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The card brand or network (such as Visa, Mastercard, or Amex) used for this payment.</inlineHelpText>
+        <label>Card Network</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Check_Reference_Number__c</fullName>
+        <description>Stores a check number or other payment reference identifier. Manually entered by users when recording check or wire payments.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The check number or external reference number associated with this payment.</inlineHelpText>
+        <label>Check/Reference Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Custom_Payment_Field__c</fullName>
+        <description>A general-purpose text field available for storing additional payment information specific to your organization&apos;s needs.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Custom field for tracking additional payment details not captured by other standard fields.</inlineHelpText>
+        <label>Custom Payment Field</label>
+        <length>15</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DebitType__c</fullName>
+        <description>Categorizes the debit transaction type when a payment is reversed. Set automatically when a refund or chargeback is processed. Values: Refund, Partial Refund, Chargeback.</description>
+        <inlineHelpText>The type of debit transaction: Refund (full reversal), Partial Refund (partial reversal), or Chargeback (bank-initiated reversal).</inlineHelpText>
+        <label>Debit Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Refund</fullName>
+                    <default>false</default>
+                    <label>Refund</label>
+                </value>
+                <value>
+                    <fullName>Partial Refund</fullName>
+                    <default>false</default>
+                    <label>Partial Refund</label>
+                </value>
+                <value>
+                    <fullName>Chargeback</fullName>
+                    <default>false</default>
+                    <label>Chargeback</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Donor_Cover_Amount__c</fullName>
+        <description>Stores the additional amount a donor opted to pay above their donation, typically to offset processing fees. Populated by the payment processing integration when donor covering is enabled.</description>
+        <inlineHelpText>The extra amount the donor chose to pay on top of their donation, usually to help cover transaction processing fees.</inlineHelpText>
+        <label>Donor Cover Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Gateway_ID__c</fullName>
+        <description>Stores the unique identifier of the payment gateway instance that processed this transaction. Populated by the payment processing integration.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The identifier of the payment gateway that processed this transaction, useful for troubleshooting and reconciliation.</inlineHelpText>
+        <label>Gateway ID</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Gateway_Payment_ID__c</fullName>
+        <description>Stores the unique transaction identifier assigned by the payment gateway. Marked as an External ID to support upsert operations and prevent duplicate payment records.</description>
+        <externalId>true</externalId>
+        <inlineHelpText>The unique transaction ID from the payment gateway, used to match this record to the external payment system.</inlineHelpText>
+        <label>Gateway Payment ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Gateway_Transaction_Fee__c</fullName>
+        <description>Stores the processing fee amount charged by the payment gateway for this transaction. Populated by the payment processing integration.</description>
+        <inlineHelpText>The fee the payment gateway charged to process this transaction.</inlineHelpText>
+        <label>Gateway Transaction Fee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <description>Master-detail relationship linking this Payment to its parent Opportunity. Required on creation and cannot be changed after the record is saved.</description>
+        <inlineHelpText>The Opportunity this payment is applied to.</inlineHelpText>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Payments</relationshipLabel>
+        <relationshipName>OppPayment</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Origin_ID__c</fullName>
+        <description>Stores the unique identifier from the external system that initiated this payment transaction. Populated by the payment processing integration.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The unique identifier from the external system where this payment was originally created.</inlineHelpText>
+        <label>Origin ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Origin_Name__c</fullName>
+        <description>Stores the display name of the external system that initiated this payment transaction. Populated by the payment processing integration.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the external system or application where this payment was originally created.</inlineHelpText>
+        <label>Origin Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Origin_Type__c</fullName>
+        <description>Categorizes the external system type that initiated this transaction. Populated by the payment processing integration. Common values: Engagement Hub, Giving Page, Payments API, Salesforce.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The category of system where this payment originated, such as Engagement Hub, Giving Page, Payments API, or Salesforce.</inlineHelpText>
+        <label>Origin Type</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OriginalPayment__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to the original Payment record when this record represents a refund or chargeback. Set automatically when a debit transaction is created against an existing payment.</description>
+        <inlineHelpText>The original payment that this refund or chargeback was issued against.</inlineHelpText>
+        <label>Original Payment</label>
+        <referenceTo>OppPayment__c</referenceTo>
+        <relationshipLabel>Refunds</relationshipLabel>
+        <relationshipName>Refunds</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Paid__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates whether this payment has been received. Can be set manually or automatically by payment processing integrations. When checked, the Payment Date is used for financial reporting.</description>
+        <inlineHelpText>Check this box when the payment has been received. Unpaid payments are considered outstanding scheduled installments.</inlineHelpText>
+        <label>Paid</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Acknowledged_Date__c</fullName>
+        <description>Stores the date this payment was formally acknowledged to the donor. Typically updated manually or through an acknowledgment workflow when thank-you letters or receipts are sent.</description>
+        <inlineHelpText>The date this payment was acknowledged to the donor, such as when a thank-you letter or tax receipt was sent.</inlineHelpText>
+        <label>Payment Acknowledged Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Acknowledgment_Status__c</fullName>
+        <description>Tracks the acknowledgment workflow status for this payment. Updated manually or through an acknowledgment process. Values: To Be Acknowledged, Acknowledged, Do Not Acknowledge.</description>
+        <inlineHelpText>Whether this payment needs a donor acknowledgment: To Be Acknowledged (pending), Acknowledged (completed), or Do Not Acknowledge (excluded).</inlineHelpText>
+        <label>Payment Acknowledgment Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>To Be Acknowledged</fullName>
+                    <default>false</default>
+                    <label>To Be Acknowledged</label>
+                </value>
+                <value>
+                    <fullName>Acknowledged</fullName>
+                    <default>false</default>
+                    <label>Acknowledged</label>
+                </value>
+                <value>
+                    <fullName>Do Not Acknowledge</fullName>
+                    <default>false</default>
+                    <label>Do Not Acknowledge</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Payment_Amount__c</fullName>
+        <description>The currency amount of this payment. For scheduled payments, this is set by the payment scheduler based on the Opportunity amount and number of installments. Can also be entered manually.</description>
+        <inlineHelpText>The dollar amount of this individual payment.</inlineHelpText>
+        <label>Payment Amount</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Date__c</fullName>
+        <description>The date this payment was received. For paid payments, this reflects the actual receipt date. Can be set manually or by payment processing integrations.</description>
+        <inlineHelpText>The date this payment was received or processed.</inlineHelpText>
+        <label>Payment Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Method__c</fullName>
+        <description>Records how this payment was made. Set manually by users or populated automatically by the payment processing integration. Values: Cash, Check, Credit Card, ACH, PayPal.</description>
+        <inlineHelpText>How this payment was made (e.g., Cash, Check, Credit Card, ACH, PayPal).</inlineHelpText>
+        <label>Payment Method</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cash</fullName>
+                    <default>false</default>
+                    <label>Cash</label>
+                </value>
+                <value>
+                    <fullName>Check</fullName>
+                    <default>false</default>
+                    <label>Check</label>
+                </value>
+                <value>
+                    <fullName>Credit Card</fullName>
+                    <default>false</default>
+                    <label>Credit Card</label>
+                </value>
+                <value>
+                    <fullName>ACH</fullName>
+                    <default>false</default>
+                    <label>ACH</label>
+                </value>
+                <value>
+                    <fullName>PayPal</fullName>
+                    <default>false</default>
+                    <label>PayPal</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Scheduled_Date__c</fullName>
+        <description>The date this payment installment is expected to be received. Set by the payment scheduler when installment records are created automatically from the Opportunity payment schedule.</description>
+        <inlineHelpText>The date this payment is scheduled to be received. For installment payments, this is set automatically based on the payment schedule.</inlineHelpText>
+        <label>Scheduled Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <description>Categorizes the payment transaction type. Populated by the payment processing integration to distinguish between credits, debits, and other transaction types.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The type of payment transaction, such as a credit or debit.</inlineHelpText>
+        <label>Type</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Written_Off__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates this scheduled payment will not be collected and has been written off. When checked, the payment is excluded from outstanding balance calculations on the Opportunity.</description>
+        <inlineHelpText>Check this box to indicate this payment will not be collected. Written-off payments are excluded from the Opportunity&apos;s outstanding balance.</inlineHelpText>
+        <label>Written Off</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Payment_Amount__c</columns>
+        <columns>Payment_Date__c</columns>
+        <columns>Scheduled_Date__c</columns>
+        <columns>Paid__c</columns>
+        <columns>Payment_Method__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <webLinks>
+        <fullName>Schedule_Payments</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Schedule Payments</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/PMT_PaymentWizard?id={!Opportunity.Id}&amp;wtype=payment</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Writeoff_Payments</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Write Off Payments</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/PMT_PaymentWizard?id={!Opportunity.Id}&amp;wtype=writeoff</url>
+    </webLinks>
+</CustomObject>
