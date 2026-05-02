@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>General_Accounting_Unit_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>General_Accounting_Unit_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Accounting units used for allocating Opportunities.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <label>General Accounting Unit</label>
+    <nameField>
+        <label>General Accounting Unit Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>General Accounting Units</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Active__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Description__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Active__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Description__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>Active__c</searchFilterFields>
+        <searchFilterFields>Description__c</searchFilterFields>
+        <searchResultsAdditionalFields>Active__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Total_Allocations__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Controls whether this GAU appears in Allocation lookup filters. Defaults to true. Unchecking prevents new Allocations from referencing this GAU but does not affect existing Allocations.</description>
+        <inlineHelpText>Whether this fund is available for new allocations. Uncheck to retire a fund without deleting it or its history.</inlineHelpText>
+        <label>Active</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Average_Allocation__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Calculated by Customizable Rollups. Do not edit manually.</description>
+        <inlineHelpText>The average dollar amount across all Allocations from Closed/Won Opportunities to this fund.</inlineHelpText>
+        <label>Average Allocation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <description>Free-text field for notes about this GAU. Not used by automation.</description>
+        <inlineHelpText>Details about this fund&apos;s purpose, restrictions, or guidelines for use.</inlineHelpText>
+        <label>Description</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>First_Allocation_Date__c</fullName>
+        <description>Calculated by Customizable Rollups. Do not edit manually.</description>
+        <inlineHelpText>The earliest Opportunity Close Date among all Allocations to this fund.</inlineHelpText>
+        <label>First Allocation Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Largest_Allocation__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Calculated by Customizable Rollups. Do not edit manually.</description>
+        <inlineHelpText>The largest single Allocation amount from a Closed/Won Opportunity to this fund.</inlineHelpText>
+        <label>Largest Allocation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Last_Allocation_Date__c</fullName>
+        <description>Calculated by Customizable Rollups. Do not edit manually.</description>
+        <inlineHelpText>The most recent Opportunity Close Date among all Allocations to this fund.</inlineHelpText>
+        <label>Last Allocation Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Allocations_Last_N_Days__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Calculated by Customizable Rollups. Do not edit manually. The N-day window is configured in NPPatch Settings under Donations &gt; GAU Allocations.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The count of Allocations from Closed/Won Opportunities in the last N days. The value of N is configured in NPPatch Settings.</inlineHelpText>
+        <label>Number of Allocations Last N Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Allocations_Last_Year__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Calculated by Customizable Rollups. Do not edit manually.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The count of Allocations from Closed/Won Opportunities with a Close Date in the previous calendar year.</inlineHelpText>
+        <label>Number of Allocations Last Year</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Allocations_This_Year__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Calculated by Customizable Rollups. Do not edit manually.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The count of Allocations from Closed/Won Opportunities with a Close Date in the current calendar year.</inlineHelpText>
+        <label>Number of Allocations This Year</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Allocations_Two_Years_Ago__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Calculated by Customizable Rollups. Do not edit manually.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The count of Allocations from Closed/Won Opportunities with a Close Date two calendar years ago.</inlineHelpText>
+        <label>Number of Allocations Two Years Ago</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Smallest_Allocation__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Calculated by Customizable Rollups. Do not edit manually.</description>
+        <inlineHelpText>The smallest single Allocation amount from a Closed/Won Opportunity to this fund.</inlineHelpText>
+        <label>Smallest Allocation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Allocations__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Calculated by Customizable Rollups. Do not edit manually.</description>
+        <inlineHelpText>The total dollar amount of all Allocations from Closed/Won Opportunities to this fund, across all time.</inlineHelpText>
+        <label>Total Allocations</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Allocations_Last_N_Days__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Calculated by Customizable Rollups. Do not edit manually. The N-day window is configured in NPPatch Settings under Donations &gt; GAU Allocations.</description>
+        <inlineHelpText>The total dollar amount of Allocations from Closed/Won Opportunities in the last N days. The value of N is configured in NPPatch Settings.</inlineHelpText>
+        <label>Total Allocations Last N Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Allocations_Last_Year__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Calculated by Customizable Rollups. Do not edit manually.</description>
+        <inlineHelpText>The total dollar amount of Allocations from Closed/Won Opportunities with a Close Date in the previous calendar year.</inlineHelpText>
+        <label>Total Allocations Last Year</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Allocations_This_Year__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Calculated by Customizable Rollups. Do not edit manually.</description>
+        <inlineHelpText>The total dollar amount of Allocations from Closed/Won Opportunities with a Close Date in the current calendar year.</inlineHelpText>
+        <label>Total Allocations This Year</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Allocations_Two_Years_Ago__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Calculated by Customizable Rollups. Do not edit manually.</description>
+        <inlineHelpText>The total dollar amount of Allocations from Closed/Won Opportunities with a Close Date two calendar years ago.</inlineHelpText>
+        <label>Total Allocations Two Years Ago</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Number_of_Allocations__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Calculated by Customizable Rollups. Do not edit manually.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The total count of Allocations from Closed/Won Opportunities to this fund, across all time.</inlineHelpText>
+        <label>Total Number of Allocations</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Active__c</columns>
+        <columns>Total_Allocations__c</columns>
+        <columns>Total_Number_of_Allocations__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <webLinks>
+        <fullName>Recalculate_Rollups</fullName>
+        <availability>online</availability>
+        <description>This button recalculates Allocations rollups for a single General Accounting Unit</description>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Recalculate Rollups</masterLabel>
+        <openType>sidebar</openType>
+        <page>ALLO_RollupBTN</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

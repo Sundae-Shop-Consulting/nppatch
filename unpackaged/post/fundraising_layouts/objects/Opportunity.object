@@ -1,0 +1,2734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>AddInfluence</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddInfluence</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddInfluence</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Opportunity_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <externalSharingModel>Private</externalSharingModel>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <searchLayouts>
+        <customTabListAdditionalFields>OPPORTUNITY.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ACCOUNT.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>OPPORTUNITY.CLOSE_DATE</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>OPPORTUNITY.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.SITE</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>OPPORTUNITY.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.SITE</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>OPPORTUNITY.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ACCOUNT.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ACCOUNT.SITE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>OPPORTUNITY.STAGE_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>OPPORTUNITY.CLOSE_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <businessProcesses>
+        <fullName>NPPatch_Default</fullName>
+        <isActive>true</isActive>
+        <values>
+            <fullName>Closed Lost</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed Won</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Id%2E Decision Makers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Needs Analysis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Negotiation%2FReview</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Perception Analysis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proposal%2FPrice Quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospecting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qualification</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Value Proposition</fullName>
+            <default>false</default>
+        </values>
+    </businessProcesses>
+    <compactLayouts>
+        <fullName>Donation_Compact_Layout</fullName>
+        <fields>AccountId</fields>
+        <fields>Amount</fields>
+        <fields>CloseDate</fields>
+        <fields>StageName</fields>
+        <label>DEPRECATED: Donation Compact Layout</label>
+    </compactLayouts>
+    <compactLayouts>
+        <fullName>Membership_Compact_Layout</fullName>
+        <fields>AccountId</fields>
+        <fields>Amount</fields>
+        <fields>StageName</fields>
+        <fields>Membership_Start_Date__c</fields>
+        <fields>Membership_End_Date__c</fields>
+        <fields>Member_Level__c</fields>
+        <label>DEPRECATED: Membership Compact Layout</label>
+    </compactLayouts>
+    <compactLayouts>
+        <fullName>NPPatch_Donation_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>Amount</fields>
+        <fields>CloseDate</fields>
+        <fields>StageName</fields>
+        <label>NPPatch Donation Compact Layout</label>
+    </compactLayouts>
+    <fields>
+        <fullName>AccountId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Acknowledgment_Date__c</fullName>
+        <description>User-entered date field used in thank-you letter and acknowledgment tracking workflows.</description>
+        <inlineHelpText>The date you sent an acknowledgment or thank-you letter for this Donation.</inlineHelpText>
+        <label>Acknowledgment Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Acknowledgment_Status__c</fullName>
+        <description>User-entered picklist for tracking the acknowledgment lifecycle. Used by reports and filters to identify Donations needing thank-you letters.</description>
+        <inlineHelpText>Select the current acknowledgment status for this Donation, such as whether a thank-you letter still needs to be sent.</inlineHelpText>
+        <label>Acknowledgment Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>To Be Acknowledged</fullName>
+                    <default>false</default>
+                    <label>To Be Acknowledged</label>
+                </value>
+                <value>
+                    <fullName>Acknowledged</fullName>
+                    <default>false</default>
+                    <label>Acknowledged</label>
+                </value>
+                <value>
+                    <fullName>Do Not Acknowledge</fullName>
+                    <default>false</default>
+                    <label>Do Not Acknowledge</label>
+                </value>
+                <value>
+                    <fullName>Email Acknowledgment Now</fullName>
+                    <default>false</default>
+                    <label>Email Acknowledgment Now</label>
+                </value>
+                <value>
+                    <fullName>Email Acknowledgment Not Sent</fullName>
+                    <default>false</default>
+                    <label>Email Acknowledgment Not Sent</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Amount</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Amount_Outstanding__c</fullName>
+        <description>Formula field. Calculates Amount minus Payment Amount Received and Payment Writeoff Amount. Used to track unpaid balances across Opportunities.</description>
+        <formula>Amount - NULLVALUE(Payments_Made__c, 0) - NULLVALUE(Amount_Written_Off__c, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The remaining balance still owed on this Donation after subtracting payments received and amounts written off.</inlineHelpText>
+        <label>Remaining Balance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Amount_Written_Off__c</fullName>
+        <description>Rollup summary field. Sums the Payment Amount from related Payment records where Written Off is true.</description>
+        <inlineHelpText>The total value of Payments marked as written off or noncollectable for this Donation.</inlineHelpText>
+        <label>Payment Writeoff Amount</label>
+        <summarizedField>OppPayment__c.Payment_Amount__c</summarizedField>
+        <summaryFilterItems>
+            <field>OppPayment__c.Written_Off__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>OppPayment__c.Opportunity__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Ask_Date__c</fullName>
+        <description>User-entered date for tracking the solicitation timeline. Records when the ask was made, independent of the Close Date when the gift was received.</description>
+        <inlineHelpText>Enter the date the donor was solicited for this Donation. This may differ from the Close Date when the gift was received.</inlineHelpText>
+        <label>Ask Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Batch_Number__c</fullName>
+        <description>System field. Automatically populated with a batch identifier when Opportunities are created through batch data entry, based on Batch Number Settings in NPPatch Settings.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The batch identifier assigned when this Opportunity was created through batch data entry. This value is set automatically.</inlineHelpText>
+        <label>Batch Number</label>
+        <length>30</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CampaignId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Closed_Lost_Reason__c</fullName>
+        <description>Free-text field for recording why a solicitation was unsuccessful. Useful for analyzing trends in lost Opportunities.</description>
+        <inlineHelpText>Enter the reason this Donation was not completed, to help your team learn from unsuccessful asks.</inlineHelpText>
+        <label>Closed Lost Reason</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CloseDate</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>CombinedRollupFieldset__c</fullName>
+        <description>Formula field. System-only. Concatenates CloseDate, Amount, Member Level, Membership Origin, and Id into a single text value used internally by rollup calculations to identify the most recent Opportunity. Do not add to page layouts.</description>
+        <externalId>false</externalId>
+        <formula>TEXT(CloseDate) + &apos;;|;&apos;+ TEXT(Amount) + &apos;;|;&apos;+ TEXT(Member_Level__c) + &apos;;|;&apos;+ TEXT(Membership_Origin__c) + &apos;;|;&apos; +  Id</formula>
+        <inlineHelpText>System field used internally by NPPatch rollup calculations. Not intended for display on page layouts.</inlineHelpText>
+        <label>Combined Rollup Fieldset</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_Id_for_Role__c</fullName>
+        <description>System field. Temporarily stores a Contact Id during Opportunity Contact Role creation automation. Populated and cleared by triggers; not intended for manual entry or page layouts.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>System-managed field used internally by NPPatch. Do not edit manually.</inlineHelpText>
+        <label>Contact Id for Role</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ContractId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>DisableContactRoleAutomation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Automation toggle. When checked, suppresses automatic Opportunity Contact Role creation and updates by NPPatch triggers on this Opportunity. Use with caution as it may cause incomplete or duplicate Contact Role data.</description>
+        <inlineHelpText>Check this box to prevent NPPatch from automatically creating or updating Contact Roles on this Opportunity. Use only when you need to manage Contact Roles manually.</inlineHelpText>
+        <label>Disable Contact Role Automation</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Do_Not_Automatically_Create_Payment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Automation toggle. When checked, suppresses automatic Payment record creation by NPPatch triggers on this Opportunity. Only applies when Automatic Payment Creation is enabled in NPPatch Settings.</description>
+        <inlineHelpText>Check this box to prevent NPPatch from automatically creating a Payment record when this Opportunity is saved. Use when you plan to create Payments manually.</inlineHelpText>
+        <label>Do Not Automatically Create Payment</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ExpectedRevenue</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Fair_Market_Value__c</fullName>
+        <description>User-entered currency field for In-Kind Donations. Records the assessed fair market value of donated goods or services, which may differ from the Opportunity Amount.</description>
+        <inlineHelpText>Enter the estimated fair market value of the donated goods or services.</inlineHelpText>
+        <label>Fair Market Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Gift_Strategy__c</fullName>
+        <description>User-entered restricted picklist for categorizing the fundraising approach. Enables reporting on acquisition vs. retention strategies.</description>
+        <inlineHelpText>Select the fundraising strategy for this Donation, such as New Donor, Renewal, or Upgrade.</inlineHelpText>
+        <label>Gift Strategy</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New Donor</fullName>
+                    <default>false</default>
+                    <label>New Donor</label>
+                </value>
+                <value>
+                    <fullName>Renewal</fullName>
+                    <default>false</default>
+                    <label>Renewal</label>
+                </value>
+                <value>
+                    <fullName>Upgrade</fullName>
+                    <default>false</default>
+                    <label>Upgrade</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Grant_Contract_Date__c</fullName>
+        <description>User-entered date for Grant Opportunities. Records the inception date from the grant contract or award letter.</description>
+        <inlineHelpText>Enter the date of the grant contract or award letter from the grantmaking organization.</inlineHelpText>
+        <label>Grant Contract Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Contract_Number__c</fullName>
+        <description>User-entered text field for Grant Opportunities. Stores the contract or reference number assigned by the grantmaking organization.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the unique contract or reference number assigned by the grantmaker, if applicable.</inlineHelpText>
+        <label>Grant Contract Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Period_End_Date__c</fullName>
+        <description>User-entered date for Grant Opportunities. Defines the end of the grant period for tracking spending and reporting deadlines.</description>
+        <inlineHelpText>Enter the date when the grant funding period ends.</inlineHelpText>
+        <label>Grant Period End Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Period_Start_Date__c</fullName>
+        <description>User-entered date for Grant Opportunities. Defines the start of the grant period for tracking spending and reporting timelines.</description>
+        <inlineHelpText>Enter the date when the grant funding period begins.</inlineHelpText>
+        <label>Grant Period Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Program_Area_s__c</fullName>
+        <description>Free-text field for Grant Opportunities. Records which programs or funding areas the grant is designated for, enabling reporting by program.</description>
+        <inlineHelpText>Enter the programs or funding areas this Grant or Donation is designated for.</inlineHelpText>
+        <label>Program Areas</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Requirements_Website__c</fullName>
+        <description>URL field for Grant Opportunities. Stores a link to the grantmaker&apos;s requirements page for quick reference during application and reporting.</description>
+        <inlineHelpText>Enter the URL for the grantmaker&apos;s requirements or application guidelines page.</inlineHelpText>
+        <label>Grant Requirements Website</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Honoree_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to Contact. Links a tribute gift to an existing Contact record for the honoree. If populated, NPPatch auto-fills the Honoree Name field.</description>
+        <inlineHelpText>Select the Contact record for the person being honored or memorialized by this Donation.</inlineHelpText>
+        <label>Honoree Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Opportunities (Honoree Contact)</relationshipLabel>
+        <relationshipName>Honoree_Opportunities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Honoree_Information__c</fullName>
+        <description>Free-text field for storing contact details about the tribute honoree that the donor provided. Not linked to a Contact record.</description>
+        <inlineHelpText>Enter any contact information the donor provided for the honoree, such as email, address, or phone number.</inlineHelpText>
+        <label>Honoree Information</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Honoree_Name__c</fullName>
+        <description>Text field for the honoree&apos;s name. Auto-populated from the Honoree Contact lookup if left blank; can also be entered manually when no Contact record exists.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the person being honored or memorialized. If you select a Honoree Contact, this field is filled in automatically.</inlineHelpText>
+        <label>Honoree Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>In_Kind_Description__c</fullName>
+        <description>Rich text field for In-Kind Donations. Supports formatted text and images for documenting donated goods or services.</description>
+        <inlineHelpText>Describe the donated goods or services in detail. This field supports rich text formatting and images.</inlineHelpText>
+        <label>In-Kind Description</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>In_Kind_Donor_Declared_Value__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>User-entered checkbox for In-Kind Donations. Tracks whether the Fair Market Value was declared by the donor versus assessed independently. Important for tax receipt and audit purposes.</description>
+        <inlineHelpText>Check this box if the donor provided the Fair Market Value amount, rather than your organization determining it independently.</inlineHelpText>
+        <label>In-Kind Donor Declared Value</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>In_Kind_Type__c</fullName>
+        <description>User-entered picklist for In-Kind Donations. Categorizes the donation as Goods or Services for reporting and tax receipt purposes.</description>
+        <inlineHelpText>Select whether this In-Kind Donation is a gift of goods or a donation of services.</inlineHelpText>
+        <label>In-Kind Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Goods</fullName>
+                    <default>false</default>
+                    <label>Goods</label>
+                </value>
+                <value>
+                    <fullName>Services</fullName>
+                    <default>false</default>
+                    <label>Services</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IqScore</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Is_Grant_Renewal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>User-entered checkbox for Grant Opportunities. When checked, indicates this grant renews a previous grant. Use with the Previous Grant/Gift Opportunity lookup.</description>
+        <inlineHelpText>Check this box if this Grant renews a previous Grant. Use the Previous Grant/Gift Opportunity field to link to the original.</inlineHelpText>
+        <label>Is Grant Renewal</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Opp_From_Individual__c</fullName>
+        <description>Formula field. Returns &quot;true&quot; if the related Account&apos;s SYSTEMIsIndividual__c flag is set, indicating the Opportunity belongs to a Household (individual) Account rather than an Organization.</description>
+        <externalId>false</externalId>
+        <formula>IF( Account.SYSTEMIsIndividual__c, &apos;true&apos;, &apos;false&apos; )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Indicates whether this Donation is from an individual (Household Account) rather than an organization.</inlineHelpText>
+        <label>Is Opp From Individual</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsPrivate</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>LeadSource</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Matching_Gift__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to Opportunity. Links this Donation to the corresponding matching gift Opportunity record. Used to associate a donor&apos;s gift with the employer&apos;s match.</description>
+        <inlineHelpText>Select the Opportunity record that represents the matching gift for this Donation.</inlineHelpText>
+        <label>Matching Gift</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Matched Gifts</relationshipLabel>
+        <relationshipName>MatchedGifts</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Matching_Gift_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to Account. Identifies the company Account that will provide or has provided a matching gift for this Donation.</description>
+        <inlineHelpText>Select the Account record for the company that will match this Donation.</inlineHelpText>
+        <label>Matching Gift Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Matched Gifts</relationshipLabel>
+        <relationshipName>Opportunities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Matching_Gift_Employer__c</fullName>
+        <description>Text field for the matching gift employer name. Use this when no Account record exists; otherwise use the Matching Gift Account lookup instead.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the name of the company that will match this Donation, if not selecting a Matching Gift Account.</inlineHelpText>
+        <label>Matching Gift Employer</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Matching_Gift_Status__c</fullName>
+        <description>User-entered picklist for tracking the matching gift lifecycle from identification through receipt. Used in matching gift reports and dashboards.</description>
+        <inlineHelpText>Select the current status of the matching gift request, such as Potential, Submitted, or Received.</inlineHelpText>
+        <label>Matching Gift Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Potential</fullName>
+                    <default>false</default>
+                    <label>Potential</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+                <value>
+                    <fullName>Received</fullName>
+                    <default>false</default>
+                    <label>Received</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Member_Level__c</fullName>
+        <description>User-entered picklist for Membership Opportunities. The selected value rolls up to the Last Membership Level field on the related Contact or Account.</description>
+        <inlineHelpText>Select the membership tier for this Membership Opportunity (e.g., Gold, Silver, Bronze).</inlineHelpText>
+        <label>Member Level</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Gold</fullName>
+                    <default>false</default>
+                    <label>Gold</label>
+                </value>
+                <value>
+                    <fullName>Silver</fullName>
+                    <default>false</default>
+                    <label>Silver</label>
+                </value>
+                <value>
+                    <fullName>Bronze</fullName>
+                    <default>false</default>
+                    <label>Bronze</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Membership_End_Date__c</fullName>
+        <description>User-entered date for Membership Opportunities. Defines when the membership period expires; used in renewal reminders and lapsed-membership reporting.</description>
+        <inlineHelpText>The date when this membership period ends.</inlineHelpText>
+        <label>Membership End Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Membership_Origin__c</fullName>
+        <description>User-entered picklist for Membership Opportunities. Categorizes how the member was acquired, enabling reporting on new vs. renewed vs. reacquired memberships.</description>
+        <inlineHelpText>Select whether this is a new membership, a renewal of an existing membership, or a reacquired membership from a lapsed member.</inlineHelpText>
+        <label>Membership Origin</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>Renewal</fullName>
+                    <default>false</default>
+                    <label>Renewal</label>
+                </value>
+                <value>
+                    <fullName>Reacquire</fullName>
+                    <default>false</default>
+                    <label>Reacquire</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Membership_Start_Date__c</fullName>
+        <description>User-entered date for Membership Opportunities. Defines when the membership period begins; used in membership duration and renewal reporting.</description>
+        <inlineHelpText>The date when this membership period begins.</inlineHelpText>
+        <label>Membership Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Next_Grant_Deadline_Due_Date__c</fullName>
+        <description>Rollup summary field. Finds the earliest due date from related Grant Deadline records that have not yet been closed. Read-only.</description>
+        <inlineHelpText>The due date of the next open deliverable for this Grant. This value is calculated automatically from related Grant Deadline records.</inlineHelpText>
+        <label>Next Deliverable Date</label>
+        <summarizedField>Grant_Deadline__c.Grant_Deadline_Due_Date__c</summarizedField>
+        <summaryFilterItems>
+            <field>Grant_Deadline__c.Grant_Deadline_Due_Date__c</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Grant_Deadline__c.Grant_Deliverable_Close_Date__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </summaryFilterItems>
+        <summaryForeignKey>Grant_Deadline__c.Opportunity__c</summaryForeignKey>
+        <summaryOperation>min</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>NextStep</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Notification_Message__c</fullName>
+        <description>Free-text field for a donor-provided message to include when notifying the tribute recipient. Used in tribute notification workflows.</description>
+        <inlineHelpText>Enter a personalized message from the donor to include in the tribute notification.</inlineHelpText>
+        <label>Notification Message</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Notification_Preference__c</fullName>
+        <description>User-entered picklist that records the donor&apos;s preferred method for sending the tribute notification. Used in notification workflows and reporting.</description>
+        <inlineHelpText>Select how the notification recipient should be contacted about this tribute gift (e.g., Email, Postal Mail, Phone).</inlineHelpText>
+        <label>Notification Preference</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>Postal Mail</fullName>
+                    <default>false</default>
+                    <label>Postal Mail</label>
+                </value>
+                <value>
+                    <fullName>Phone</fullName>
+                    <default>false</default>
+                    <label>Phone</label>
+                </value>
+                <value>
+                    <fullName>Do Not Notify</fullName>
+                    <default>false</default>
+                    <label>Do Not Notify</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Notification_Recipient_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to Contact. Links the tribute notification to an existing Contact record. If populated, NPPatch auto-fills the Notification Recipient Name field.</description>
+        <inlineHelpText>Select the Contact record for the person who should be notified about this tribute gift.</inlineHelpText>
+        <label>Notification Recipient Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Opportunities (Notification Recipient)</relationshipLabel>
+        <relationshipName>Notification_Opportunities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Notification_Recipient_Email__c</fullName>
+        <description>Stores the email address for the tribute notification recipient. Entered manually; not auto-populated from the Notification Recipient Contact.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the email address of the person who should receive the tribute notification.</inlineHelpText>
+        <label>Notification Recipient Email</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Notification_Recipient_Information__c</fullName>
+        <description>Free-text field for storing additional contact details about the notification recipient that the donor provided. Not linked to a Contact record.</description>
+        <inlineHelpText>Enter any contact details the donor provided for the notification recipient, such as address, phone, or email.</inlineHelpText>
+        <label>Notification Recipient Information</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Notification_Recipient_Name__c</fullName>
+        <description>Text field for the notification recipient&apos;s name. Auto-populated from the Notification Recipient Contact lookup if left blank; can also be entered manually when no Contact record exists.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the person who should be notified about this tribute gift. If you select a Notification Recipient Contact, this field is filled in automatically.</inlineHelpText>
+        <label>Notification Recipient Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Payments__c</fullName>
+        <description>Rollup summary field. Counts all related Payment records for this Opportunity.</description>
+        <inlineHelpText>The total number of Payment records associated with this Donation.</inlineHelpText>
+        <label>Number of Payments</label>
+        <summaryForeignKey>OppPayment__c.Opportunity__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Payments_Made__c</fullName>
+        <description>Rollup summary field. Sums the Payment Amount from related Payment records where Paid is true.</description>
+        <inlineHelpText>The total value of Payments that have been received for this Donation.</inlineHelpText>
+        <label>Payment Amount Received</label>
+        <summarizedField>OppPayment__c.Payment_Amount__c</summarizedField>
+        <summaryFilterItems>
+            <field>OppPayment__c.Paid__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>OppPayment__c.Opportunity__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Previous_Grant_Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to Opportunity. Links a renewal Grant to its predecessor, enabling grant history tracking across multiple award cycles.</description>
+        <inlineHelpText>If this Grant is a renewal, select the previous Grant Opportunity to link the two records together.</inlineHelpText>
+        <label>Previous Grant/Gift Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Related Grants/Gifts</relationshipLabel>
+        <relationshipName>Previous_Grant_Opportunities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Pricebook2Id</fullName>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Primary_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to Contact. Drives Opportunity Contact Role creation and soft credit attribution. For individual Donations, NPPatch attributes the hard credit to this Contact. For organizational Donations, a soft credit is created instead.</description>
+        <inlineHelpText>The main Contact associated with this Donation. For individual gifts, this person receives the hard credit. For organizational gifts, this person receives a soft credit.</inlineHelpText>
+        <label>Primary Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Opportunities</relationshipLabel>
+        <relationshipName>Opportunities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Primary_Contact_Campaign_Member_Status__c</fullName>
+        <description>Optional override for the Campaign Member status that NPPatch assigns when automatically creating a Campaign Member from the Primary Contact and Primary Campaign Source. When blank, defaults to a responded status for Closed/Won or a non-responded status for other stages.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter a specific Campaign Member status to use when NPPatch links the Primary Contact to the Campaign. Leave blank to use the default (responded for Closed/Won, non-responded otherwise).</inlineHelpText>
+        <label>Primary Contact Campaign Member Status</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Probability</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Qualified_Date__c</fullName>
+        <description>User-entered date for tracking the solicitation pipeline. Records when the prospect was qualified as a viable candidate for this Donation.</description>
+        <inlineHelpText>Enter the date your organization determined this donor was a qualified prospect for this Donation.</inlineHelpText>
+        <label>Qualified Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Recurring_Donation__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to Recurring Donation. Populated automatically when NPPatch creates installment Opportunities from a Recurring Donation schedule.</description>
+        <inlineHelpText>The Recurring Donation that generated this Opportunity. This field is typically set automatically.</inlineHelpText>
+        <label>Recurring Donation</label>
+        <referenceTo>Recurring_Donation__c</referenceTo>
+        <relationshipLabel>Opportunities</relationshipLabel>
+        <relationshipName>Donations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Recurring_Donation_Installment_Name__c</fullName>
+        <description>Formula field. Generates a display label for this installment, showing the installment number in parentheses for open-ended Recurring Donations or as &quot;X of Y&quot; for fixed-length schedules. Used in Opportunity naming conventions.</description>
+        <externalId>false</externalId>
+        <formula>IF(
+ISBLANK(Recurring_Donation__c),
+&apos;&apos;,
+  IF(
+    OR(ISPICKVAL(Recurring_Donation__r.Open_Ended_Status__c, &apos;Open&apos;),ISPICKVAL(Recurring_Donation__r.Open_Ended_Status__c, &apos;Closed&apos;),ISBLANK(Recurring_Donation__r.Installments__c)),
+    &apos;(&apos;&amp;TEXT(Recurring_Donation_Installment_Number__c)&amp;&apos;)&apos;,
+    &apos;(&apos;&amp;TEXT(Recurring_Donation_Installment_Number__c)&amp;&apos; &apos;&amp;$Label.oppInstallmentsOf&amp;&apos; &apos;&amp;TEXT(Recurring_Donation__r.Installments__c)&amp;&apos;)&apos;
+  )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The installment label for this Recurring Donation Opportunity, such as &quot;(3)&quot; for open-ended or &quot;(3 of 12)&quot; for fixed-length schedules.</inlineHelpText>
+        <label>Recurring Donation Installment Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Recurring_Donation_Installment_Number__c</fullName>
+        <description>System-populated number field. Set automatically when NPPatch creates installment Opportunities, indicating this Opportunity&apos;s position in the Recurring Donation schedule.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Which installment this Opportunity represents in the Recurring Donation schedule (e.g., 1, 2, 3).</inlineHelpText>
+        <label>Recurring Donation Installment Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requested_Amount__c</fullName>
+        <description>User-entered currency field for Grant Opportunities. Records the amount requested in the grant application, which may differ from the final award in the Amount field.</description>
+        <inlineHelpText>Enter the amount requested in the grant application. This may differ from the final awarded amount.</inlineHelpText>
+        <label>Requested Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>StageName</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>TotalOpportunityQuantity</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Tribute_Notification_Date__c</fullName>
+        <description>User-entered date field for tracking when the tribute notification was sent to the recipient.</description>
+        <inlineHelpText>The date the tribute notification was sent to the notification recipient.</inlineHelpText>
+        <label>Tribute Notification Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Tribute_Notification_Status__c</fullName>
+        <description>User-entered picklist for tracking the notification lifecycle for tribute gifts. Used in reports to find tributes needing notifications.</description>
+        <inlineHelpText>Select whether the notification recipient has been notified about this tribute gift.</inlineHelpText>
+        <label>Tribute Notification Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>To Be Notified</fullName>
+                    <default>false</default>
+                    <label>To Be Notified</label>
+                </value>
+                <value>
+                    <fullName>Notified</fullName>
+                    <default>false</default>
+                    <label>Notified</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Tribute_Type__c</fullName>
+        <description>User-entered picklist that categorizes the tribute as an honor gift or a memorial gift. Used in tribute reporting and notification workflows.</description>
+        <inlineHelpText>Select whether this Donation is made in honor of a living person or in memory of someone who has passed away.</inlineHelpText>
+        <label>Tribute Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Honor</fullName>
+                    <default>false</default>
+                    <label>Honor</label>
+                </value>
+                <value>
+                    <fullName>Memorial</fullName>
+                    <default>false</default>
+                    <label>Memorial</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Type</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <listViews>
+        <fullName>Default_Opportunity_Pipeline</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>OPPORTUNITY.CLOSE_DATE</field>
+            <operation>greaterOrEqual</operation>
+            <value>LAST_N_MONTHS:3</value>
+        </filters>
+        <label>Opportunity Pipeline</label>
+    </listViews>
+    <listViews>
+        <fullName>To_Be_Acknowledged</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>Primary_Contact__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>OPPORTUNITY.AMOUNT</columns>
+        <columns>OPPORTUNITY.CLOSE_DATE</columns>
+        <columns>OPPORTUNITY.STAGE_NAME</columns>
+        <columns>Acknowledgment_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Acknowledgment_Status__c</field>
+            <operation>equals</operation>
+            <value>To Be Acknowledged,Email Acknowledgment Not Sent</value>
+        </filters>
+        <label>To Be Acknowledged</label>
+        <language>en_US</language>
+    </listViews>
+    <recordTypes>
+        <fullName>Donation</fullName>
+        <active>true</active>
+        <businessProcess>NPPatch_Default</businessProcess>
+        <label>Donation</label>
+        <picklistValues>
+            <picklist>Acknowledgment_Status__c</picklist>
+            <values>
+                <fullName>Acknowledged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Do Not Acknowledge</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Acknowledgment Not Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Acknowledgment Now</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Be Acknowledged</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ForecastCategoryName</picklist>
+            <values>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Omitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pipeline</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Gift_Strategy__c</picklist>
+            <values>
+                <fullName>New Donor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Upgrade</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>In_Kind_Type__c</picklist>
+            <values>
+                <fullName>Goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Services</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Referral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Matching_Gift_Status__c</picklist>
+            <values>
+                <fullName>Potential</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Member_Level__c</picklist>
+            <values>
+                <fullName>Bronze</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silver</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Membership_Origin__c</picklist>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reacquire</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Notification_Preference__c</picklist>
+            <values>
+                <fullName>Do Not Notify</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Postal Mail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tribute_Notification_Status__c</picklist>
+            <values>
+                <fullName>Notified</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Be Notified</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tribute_Type__c</picklist>
+            <values>
+                <fullName>Honor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Memorial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Existing Customer - Downgrade</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing Customer - Replacement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing Customer - Upgrade</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Grant</fullName>
+        <active>true</active>
+        <businessProcess>NPPatch_Default</businessProcess>
+        <label>Grant</label>
+        <picklistValues>
+            <picklist>Acknowledgment_Status__c</picklist>
+            <values>
+                <fullName>Acknowledged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Do Not Acknowledge</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Acknowledgment Not Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Acknowledgment Now</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Be Acknowledged</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ForecastCategoryName</picklist>
+            <values>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Omitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pipeline</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Gift_Strategy__c</picklist>
+            <values>
+                <fullName>New Donor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Upgrade</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>In_Kind_Type__c</picklist>
+            <values>
+                <fullName>Goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Services</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Referral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Matching_Gift_Status__c</picklist>
+            <values>
+                <fullName>Potential</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Member_Level__c</picklist>
+            <values>
+                <fullName>Bronze</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silver</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Membership_Origin__c</picklist>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reacquire</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Notification_Preference__c</picklist>
+            <values>
+                <fullName>Do Not Notify</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Postal Mail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tribute_Notification_Status__c</picklist>
+            <values>
+                <fullName>Notified</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Be Notified</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tribute_Type__c</picklist>
+            <values>
+                <fullName>Honor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Memorial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Existing Customer - Downgrade</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing Customer - Replacement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing Customer - Upgrade</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>InKindGift</fullName>
+        <active>true</active>
+        <businessProcess>NPPatch_Default</businessProcess>
+        <label>In-Kind Gift</label>
+        <picklistValues>
+            <picklist>Acknowledgment_Status__c</picklist>
+            <values>
+                <fullName>Acknowledged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Do Not Acknowledge</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Acknowledgment Not Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Acknowledgment Now</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Be Acknowledged</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ForecastCategoryName</picklist>
+            <values>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Omitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pipeline</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Gift_Strategy__c</picklist>
+            <values>
+                <fullName>New Donor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Upgrade</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>In_Kind_Type__c</picklist>
+            <values>
+                <fullName>Goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Services</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Referral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Matching_Gift_Status__c</picklist>
+            <values>
+                <fullName>Potential</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Member_Level__c</picklist>
+            <values>
+                <fullName>Bronze</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silver</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Membership_Origin__c</picklist>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reacquire</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Notification_Preference__c</picklist>
+            <values>
+                <fullName>Do Not Notify</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Postal Mail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tribute_Notification_Status__c</picklist>
+            <values>
+                <fullName>Notified</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Be Notified</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tribute_Type__c</picklist>
+            <values>
+                <fullName>Honor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Memorial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Existing Customer - Downgrade</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing Customer - Replacement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing Customer - Upgrade</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>MajorGift</fullName>
+        <active>true</active>
+        <businessProcess>NPPatch_Default</businessProcess>
+        <label>Major Gift</label>
+        <picklistValues>
+            <picklist>Acknowledgment_Status__c</picklist>
+            <values>
+                <fullName>Acknowledged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Do Not Acknowledge</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Acknowledgment Not Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Acknowledgment Now</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Be Acknowledged</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ForecastCategoryName</picklist>
+            <values>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Omitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pipeline</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Gift_Strategy__c</picklist>
+            <values>
+                <fullName>New Donor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Upgrade</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>In_Kind_Type__c</picklist>
+            <values>
+                <fullName>Goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Services</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Referral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Matching_Gift_Status__c</picklist>
+            <values>
+                <fullName>Potential</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Member_Level__c</picklist>
+            <values>
+                <fullName>Bronze</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silver</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Membership_Origin__c</picklist>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reacquire</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Notification_Preference__c</picklist>
+            <values>
+                <fullName>Do Not Notify</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Postal Mail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tribute_Notification_Status__c</picklist>
+            <values>
+                <fullName>Notified</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Be Notified</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tribute_Type__c</picklist>
+            <values>
+                <fullName>Honor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Memorial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Existing Customer - Downgrade</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing Customer - Replacement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing Customer - Upgrade</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>MatchingGift</fullName>
+        <active>true</active>
+        <businessProcess>NPPatch_Default</businessProcess>
+        <label>Matching Gift</label>
+        <picklistValues>
+            <picklist>Acknowledgment_Status__c</picklist>
+            <values>
+                <fullName>Acknowledged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Do Not Acknowledge</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Acknowledgment Not Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Acknowledgment Now</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Be Acknowledged</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ForecastCategoryName</picklist>
+            <values>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Omitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pipeline</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Gift_Strategy__c</picklist>
+            <values>
+                <fullName>New Donor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Upgrade</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>In_Kind_Type__c</picklist>
+            <values>
+                <fullName>Goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Services</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Referral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Matching_Gift_Status__c</picklist>
+            <values>
+                <fullName>Potential</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Member_Level__c</picklist>
+            <values>
+                <fullName>Bronze</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silver</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Membership_Origin__c</picklist>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reacquire</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Notification_Preference__c</picklist>
+            <values>
+                <fullName>Do Not Notify</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Postal Mail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tribute_Notification_Status__c</picklist>
+            <values>
+                <fullName>Notified</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Be Notified</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tribute_Type__c</picklist>
+            <values>
+                <fullName>Honor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Memorial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Existing Customer - Downgrade</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing Customer - Replacement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing Customer - Upgrade</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Membership</fullName>
+        <active>true</active>
+        <businessProcess>NPPatch_Default</businessProcess>
+        <label>Membership</label>
+        <picklistValues>
+            <picklist>Acknowledgment_Status__c</picklist>
+            <values>
+                <fullName>Acknowledged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Do Not Acknowledge</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Acknowledgment Not Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Acknowledgment Now</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Be Acknowledged</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ForecastCategoryName</picklist>
+            <values>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Omitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pipeline</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Gift_Strategy__c</picklist>
+            <values>
+                <fullName>New Donor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Upgrade</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>In_Kind_Type__c</picklist>
+            <values>
+                <fullName>Goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Services</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Referral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Matching_Gift_Status__c</picklist>
+            <values>
+                <fullName>Potential</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Member_Level__c</picklist>
+            <values>
+                <fullName>Bronze</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silver</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Membership_Origin__c</picklist>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reacquire</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Notification_Preference__c</picklist>
+            <values>
+                <fullName>Do Not Notify</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Postal Mail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tribute_Notification_Status__c</picklist>
+            <values>
+                <fullName>Notified</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Be Notified</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tribute_Type__c</picklist>
+            <values>
+                <fullName>Honor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Memorial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Existing Customer - Downgrade</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing Customer - Replacement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing Customer - Upgrade</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>NPPatch_Default</fullName>
+        <active>true</active>
+        <businessProcess>NPPatch_Default</businessProcess>
+        <label>NPPatch Default</label>
+        <picklistValues>
+            <picklist>Acknowledgment_Status__c</picklist>
+            <values>
+                <fullName>Acknowledged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Do Not Acknowledge</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Acknowledgment Not Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Acknowledgment Now</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Be Acknowledged</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ForecastCategoryName</picklist>
+            <values>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Omitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pipeline</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Gift_Strategy__c</picklist>
+            <values>
+                <fullName>New Donor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Upgrade</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>In_Kind_Type__c</picklist>
+            <values>
+                <fullName>Goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Services</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Referral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Matching_Gift_Status__c</picklist>
+            <values>
+                <fullName>Potential</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Member_Level__c</picklist>
+            <values>
+                <fullName>Bronze</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silver</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Membership_Origin__c</picklist>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reacquire</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Notification_Preference__c</picklist>
+            <values>
+                <fullName>Do Not Notify</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Postal Mail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tribute_Notification_Status__c</picklist>
+            <values>
+                <fullName>Notified</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To Be Notified</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tribute_Type__c</picklist>
+            <values>
+                <fullName>Honor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Memorial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Existing Customer - Downgrade</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing Customer - Replacement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing Customer - Upgrade</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <webLinks>
+        <fullName>Email_Acknowledgment</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Email Acknowledgment</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/{!$Setup.Package_Settings__c.Namespace_Prefix__c}OPP_SendAcknowledgmentBTN?OppId={!Opportunity.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Email_Acknowledgments</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Email Acknowledgments</masterLabel>
+        <openType>sidebar</openType>
+        <page>OPP_SendAcknowledgmentBTN</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+    <webLinks>
+        <fullName>Find_Matched_Gifts</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Find Matched Gifts</masterLabel>
+        <openType>sidebar</openType>
+        <page>MTCH_FindGifts</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Manage_Soft_Credits</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Manage Soft Credits</masterLabel>
+        <openType>sidebar</openType>
+        <page>PSC_ManageSoftCredits</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Contact_Donation</fullName>
+        <availability>online</availability>
+        <description>Replaces the standard New Donation button on the Donations related list on the Contact Page Layout if you have Donation Record Types.</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>New Contact Donation</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/setup/ui/recordtypeselect.jsp?
+ent=Opportunity&amp;
+retURL=%2F{!Contact.Id}&amp;
+save_new_url=%2F006%2Fe%3Flookupcmpgn%3D1%26retURL%3D%252F{!Contact.Id}%26accid%3D{!Account.Id}%26conid%3D{!Contact.Id}&amp;opp3={!Contact.Name}-%20Donation%20{!Today}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Organization_Donation</fullName>
+        <availability>online</availability>
+        <description>Replaces the standard New Donation button on the Donations related list on the Organization Page Layout if you have Donation Record Types.</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>New Account Donation</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/setup/ui/recordtypeselect.jsp?
+ent=Opportunity&amp;
+retURL=%2F{!Account.Id}&amp;
+save_new_url=%2F006%2Fe%3Flookupcmpgn%3D1%26retURL%3D%252F{!Account.Id}%26accid%3D{!Account.Id}&amp;
+opp3={!Account.Name}-%20Donation%20{!Today}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Refresh_Name</fullName>
+        <availability>online</availability>
+        <description>Updates this opportunity&apos;s name based on the naming scheme in NPPatch settings.</description>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Refresh Name</masterLabel>
+        <openType>sidebar</openType>
+        <page>OPP_OpportunityNamingBTN</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>
