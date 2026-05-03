@@ -253,13 +253,13 @@
         <relatedList>RelatedCampaignMemberStatusList</relatedList>
     </relatedLists>
     <relatedLists>
-        <customButtons>Manage_Allocations</customButtons>
+        <customButtons>%%%NAMESPACE%%%Manage_Allocations</customButtons>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>General_Accounting_Unit__c</fields>
-        <fields>Amount__c</fields>
-        <fields>Percent__c</fields>
-        <relatedList>Allocation__c.Campaign__c</relatedList>
+        <fields>%%%NAMESPACE%%%General_Accounting_Unit__c</fields>
+        <fields>%%%NAMESPACE%%%Amount__c</fields>
+        <fields>%%%NAMESPACE%%%Percent__c</fields>
+        <relatedList>%%%NAMESPACE%%%Allocation__c.%%%NAMESPACE%%%Campaign__c</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedFileList</relatedList>

@@ -7,54 +7,54 @@
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Matching_Gift_Company__c</field>
+                <field>%%%NAMESPACE%%%Matching_Gift_Company__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Matching_Gift_Percent__c</field>
+                <field>%%%NAMESPACE%%%Matching_Gift_Percent__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Matching_Gift_Administrator_Name__c</field>
+                <field>%%%NAMESPACE%%%Matching_Gift_Administrator_Name__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Matching_Gift_Email__c</field>
+                <field>%%%NAMESPACE%%%Matching_Gift_Email__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Matching_Gift_Phone__c</field>
+                <field>%%%NAMESPACE%%%Matching_Gift_Phone__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Matching_Gift_Comments__c</field>
+                <field>%%%NAMESPACE%%%Matching_Gift_Comments__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Matching_Gift_Info_Updated__c</field>
+                <field>%%%NAMESPACE%%%Matching_Gift_Info_Updated__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Matching_Gift_Request_Deadline__c</field>
+                <field>%%%NAMESPACE%%%Matching_Gift_Request_Deadline__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Matching_Gift_Amount_Min__c</field>
+                <field>%%%NAMESPACE%%%Matching_Gift_Amount_Min__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Matching_Gift_Amount_Max__c</field>
+                <field>%%%NAMESPACE%%%Matching_Gift_Amount_Max__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customButtons>New_Gift</customButtons>
-    <customButtons>Relationships_Viewer</customButtons>
-    <customButtons>Recalculate_Rollups</customButtons>
+    <customButtons>%%%NAMESPACE%%%New_Gift</customButtons>
+    <customButtons>%%%NAMESPACE%%%Relationships_Viewer</customButtons>
+    <customButtons>%%%NAMESPACE%%%Recalculate_Rollups</customButtons>
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>DisableCustomerPortal</excludeButtons>
     <excludeButtons>DisablePartnerPortal</excludeButtons>
@@ -32,7 +32,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Primary_Affiliation__c</field>
+                <field>%%%NAMESPACE%%%Primary_Affiliation__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -42,7 +42,7 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Private__c</field>
+                <field>%%%NAMESPACE%%%Private__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -72,7 +72,7 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PreferredPhone__c</field>
+                <field>%%%NAMESPACE%%%PreferredPhone__c</field>
             </layoutItems>
             <layoutItems>
                 <emptySpace>true</emptySpace>
@@ -87,7 +87,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>WorkPhone__c</field>
+                <field>%%%NAMESPACE%%%WorkPhone__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -112,22 +112,22 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Preferred_Email__c</field>
+                <field>%%%NAMESPACE%%%Preferred_Email__c</field>
             </layoutItems>
             <layoutItems>
                 <emptySpace>true</emptySpace>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>HomeEmail__c</field>
+                <field>%%%NAMESPACE%%%HomeEmail__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>WorkEmail__c</field>
+                <field>%%%NAMESPACE%%%WorkEmail__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>AlternateEmail__c</field>
+                <field>%%%NAMESPACE%%%AlternateEmail__c</field>
             </layoutItems>
             <layoutItems>
                 <emptySpace>true</emptySpace>
@@ -147,7 +147,7 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Primary_Address_Type__c</field>
+                <field>%%%NAMESPACE%%%Primary_Address_Type__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -155,25 +155,25 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Current_Address__c</field>
+                <field>%%%NAMESPACE%%%Current_Address__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Address_Verification_Status__c</field>
+                <field>%%%NAMESPACE%%%Address_Verification_Status__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>is_Address_Override__c</field>
+                <field>%%%NAMESPACE%%%is_Address_Override__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Undeliverable_Address__c</field>
+                <field>%%%NAMESPACE%%%Undeliverable_Address__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Secondary_Address_Type__c</field>
+                <field>%%%NAMESPACE%%%Secondary_Address_Type__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -190,7 +190,7 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Formula_HouseholdMailingAddress__c</field>
+                <field>%%%NAMESPACE%%%Formula_HouseholdMailingAddress__c</field>
             </layoutItems>
             <layoutItems>
                 <emptySpace>true</emptySpace>
@@ -253,17 +253,17 @@
             <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>New_Gift</actionName>
+            <actionName>%%%NAMESPACE%%%New_Gift</actionName>
             <actionType>CustomButton</actionType>
             <sortOrder>1</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Relationships_Viewer</actionName>
+            <actionName>%%%NAMESPACE%%%Relationships_Viewer</actionName>
             <actionType>CustomButton</actionType>
             <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Recalculate_Rollups</actionName>
+            <actionName>%%%NAMESPACE%%%Recalculate_Rollups</actionName>
             <actionType>CustomButton</actionType>
             <sortOrder>3</sortOrder>
         </platformActionListItems>
@@ -298,16 +298,16 @@
             <quickActionName>FeedItem.TextPost</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
-            <quickActionName>Contact.Quick_Update</quickActionName>
+            <quickActionName>Contact.%%%NAMESPACE%%%Quick_Update</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
-            <quickActionName>Contact.New_Relationship</quickActionName>
+            <quickActionName>Contact.%%%NAMESPACE%%%New_Relationship</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
-            <quickActionName>Contact.New_Affiliation</quickActionName>
+            <quickActionName>Contact.%%%NAMESPACE%%%New_Affiliation</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
-            <quickActionName>Contact.New_Recurring_Donation</quickActionName>
+            <quickActionName>Contact.%%%NAMESPACE%%%New_Recurring_Donation</quickActionName>
         </quickActionListItems>
     </quickActionList>
     <relatedContent>
@@ -320,26 +320,26 @@
         <relatedContentItems>
             <layoutItem>
                 <behavior>Readonly</behavior>
-                <field>Primary_Affiliation__c</field>
+                <field>%%%NAMESPACE%%%Primary_Affiliation__c</field>
             </layoutItem>
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>RelatedContact__c</fields>
-        <fields>Type__c</fields>
-        <fields>Relationship_Explanation__c</fields>
-        <fields>Status__c</fields>
-        <relatedList>Relationship__c.Contact__c</relatedList>
+        <fields>%%%NAMESPACE%%%RelatedContact__c</fields>
+        <fields>%%%NAMESPACE%%%Type__c</fields>
+        <fields>%%%NAMESPACE%%%Relationship_Explanation__c</fields>
+        <fields>%%%NAMESPACE%%%Status__c</fields>
+        <relatedList>%%%NAMESPACE%%%Relationship__c.%%%NAMESPACE%%%Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
         <fields>Account.NAME</fields>
-        <fields>Role__c</fields>
-        <fields>Status__c</fields>
-        <fields>StartDate__c</fields>
-        <fields>EndDate__c</fields>
-        <relatedList>Affiliation__c.Contact__c</relatedList>
+        <fields>%%%NAMESPACE%%%Role__c</fields>
+        <fields>%%%NAMESPACE%%%Status__c</fields>
+        <fields>%%%NAMESPACE%%%StartDate__c</fields>
+        <fields>%%%NAMESPACE%%%EndDate__c</fields>
+        <relatedList>%%%NAMESPACE%%%Affiliation__c.%%%NAMESPACE%%%Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
@@ -361,7 +361,7 @@
         <relatedList>RelatedActivityList</relatedList>
     </relatedLists>
     <relatedLists>
-        <customButtons>New_Contact_Donation</customButtons>
+        <customButtons>%%%NAMESPACE%%%New_Contact_Donation</customButtons>
         <excludeButtons>New</excludeButtons>
         <fields>OPPORTUNITY.NAME</fields>
         <fields>OPPORTUNITY.STAGE_NAME</fields>
@@ -371,7 +371,7 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Recurring_Donation__c.Contact__c</relatedList>
+        <relatedList>%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>CAMPAIGN.NAME</fields>

@@ -225,7 +225,7 @@
                 <identifier>flexipage_tab</identifier>
                 <visibilityRule>
                     <criteria>
-                        <leftValue>{!Record.Matching_Gift_Company__c}</leftValue>
+                        <leftValue>{!Record.%%%NAMESPACE%%%Matching_Gift_Company__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>true</rightValue>
                     </criteria>
@@ -246,7 +246,7 @@
                 <identifier>flexipage_tab2</identifier>
                 <visibilityRule>
                     <criteria>
-                        <leftValue>{!Record.Grantmaker__c}</leftValue>
+                        <leftValue>{!Record.%%%NAMESPACE%%%Grantmaker__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>true</rightValue>
                     </criteria>

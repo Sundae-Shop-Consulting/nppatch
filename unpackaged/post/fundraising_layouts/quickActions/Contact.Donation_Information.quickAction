@@ -7,22 +7,22 @@
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Sustainer__c</field>
+                <field>%%%NAMESPACE%%%Sustainer__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>FirstCloseDate__c</field>
+                <field>%%%NAMESPACE%%%FirstCloseDate__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>LastCloseDate__c</field>
+                <field>%%%NAMESPACE%%%LastCloseDate__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>AverageAmount__c</field>
+                <field>%%%NAMESPACE%%%AverageAmount__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
@@ -31,7 +31,7 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Best_Gift_Year__c</field>
+                <field>%%%NAMESPACE%%%Best_Gift_Year__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
@@ -46,22 +46,22 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>LastOppAmount__c</field>
+                <field>%%%NAMESPACE%%%LastOppAmount__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>LargestAmount__c</field>
+                <field>%%%NAMESPACE%%%LargestAmount__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>SmallestAmount__c</field>
+                <field>%%%NAMESPACE%%%SmallestAmount__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Best_Gift_Year_Total__c</field>
+                <field>%%%NAMESPACE%%%Best_Gift_Year_Total__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>

@@ -181,11 +181,11 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>parentFieldApiName</name>
-                    <value>General_Accounting_Unit__c.Id</value>
+                    <value>%%%NAMESPACE%%%General_Accounting_Unit__c.Id</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListApiName</name>
-                    <value>Allocations__r</value>
+                    <value>%%%NAMESPACE%%%Allocations__r</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListComponentOverride</name>
@@ -221,7 +221,7 @@
         <type>Region</type>
     </flexiPageRegions>
     <masterLabel>General Accounting Unit Record Page</masterLabel>
-    <sobjectType>General_Accounting_Unit__c</sobjectType>
+    <sobjectType>%%%NAMESPACE%%%General_Accounting_Unit__c</sobjectType>
     <template>
         <name>flexipage:recordHomeTwoColEqualHeaderTemplateDesktop</name>
     </template>

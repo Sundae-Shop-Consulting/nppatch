@@ -51,7 +51,7 @@
         <type>Region</type>
     </flexiPageRegions>
     <masterLabel>Affiliation Record Page</masterLabel>
-    <sobjectType>Affiliation__c</sobjectType>
+    <sobjectType>%%%NAMESPACE%%%Affiliation__c</sobjectType>
     <template>
         <name>flexipage:recordHomeTwoColEqualHeaderTemplateDesktop</name>
     </template>
