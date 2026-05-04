@@ -50,8 +50,8 @@
         <name>rightcol</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Payment Record Page</masterLabel>
-    <sobjectType>OppPayment__c</sobjectType>
+    <masterLabel>Relationship Record Page</masterLabel>
+    <sobjectType>%%%NAMESPACE%%%Relationship__c</sobjectType>
     <template>
         <name>flexipage:recordHomeTwoColEqualHeaderTemplateDesktop</name>
     </template>

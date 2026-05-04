@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customButtons>New_Gift</customButtons>
-    <customButtons>Recalculate_Rollups</customButtons>
+    <customButtons>%%%NAMESPACE%%%New_Gift</customButtons>
+    <customButtons>%%%NAMESPACE%%%Recalculate_Rollups</customButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
     <excludeButtons>Share</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
@@ -21,7 +21,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>One2OneContact__c</field>
+                <field>%%%NAMESPACE%%%One2OneContact__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -70,7 +70,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Undeliverable_Address__c</field>
+                <field>%%%NAMESPACE%%%Undeliverable_Address__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -138,7 +138,7 @@
             <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>New_Gift</actionName>
+            <actionName>%%%NAMESPACE%%%New_Gift</actionName>
             <actionType>CustomButton</actionType>
             <sortOrder>1</sortOrder>
         </platformActionListItems>
@@ -153,7 +153,7 @@
             <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Recalculate_Rollups</actionName>
+            <actionName>%%%NAMESPACE%%%Recalculate_Rollups</actionName>
             <actionType>CustomButton</actionType>
             <sortOrder>4</sortOrder>
         </platformActionListItems>
@@ -186,17 +186,17 @@
             <quickActionName>NewContact</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
-            <quickActionName>Account.Quick_Organization_Update</quickActionName>
+            <quickActionName>Account.%%%NAMESPACE%%%Quick_Organization_Update</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
-            <quickActionName>Account.New_Affiliation</quickActionName>
+            <quickActionName>Account.%%%NAMESPACE%%%New_Affiliation</quickActionName>
         </quickActionListItems>
     </quickActionList>
     <relatedContent>
         <relatedContentItems>
             <layoutItem>
                 <behavior>Readonly</behavior>
-                <field>One2OneContact__c</field>
+                <field>%%%NAMESPACE%%%One2OneContact__c</field>
             </layoutItem>
         </relatedContentItems>
     </relatedContent>
@@ -204,14 +204,14 @@
         <fields>NAME</fields>
         <fields>Contact.CNTC_FIRST_NAME</fields>
         <fields>Contact.NAME</fields>
-        <fields>Role__c</fields>
-        <fields>Status__c</fields>
-        <fields>StartDate__c</fields>
-        <fields>EndDate__c</fields>
-        <relatedList>Affiliation__c.Organization__c</relatedList>
+        <fields>%%%NAMESPACE%%%Role__c</fields>
+        <fields>%%%NAMESPACE%%%Status__c</fields>
+        <fields>%%%NAMESPACE%%%StartDate__c</fields>
+        <fields>%%%NAMESPACE%%%EndDate__c</fields>
+        <relatedList>%%%NAMESPACE%%%Affiliation__c.%%%NAMESPACE%%%Organization__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <customButtons>New_Organization_Donation</customButtons>
+        <customButtons>%%%NAMESPACE%%%New_Organization_Donation</customButtons>
         <excludeButtons>New</excludeButtons>
         <fields>OPPORTUNITY.NAME</fields>
         <fields>OPPORTUNITY.STAGE_NAME</fields>
@@ -221,20 +221,20 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Date_Established__c</fields>
-        <fields>Last_Payment_Date__c</fields>
-        <fields>Next_Payment_Date__c</fields>
-        <fields>Installment_Amount__c</fields>
-        <fields>Total__c</fields>
-        <fields>Total_Paid_Installments__c</fields>
-        <relatedList>Recurring_Donation__c.Organization__c</relatedList>
+        <fields>%%%NAMESPACE%%%Date_Established__c</fields>
+        <fields>%%%NAMESPACE%%%Last_Payment_Date__c</fields>
+        <fields>%%%NAMESPACE%%%Next_Payment_Date__c</fields>
+        <fields>%%%NAMESPACE%%%Installment_Amount__c</fields>
+        <fields>%%%NAMESPACE%%%Total__c</fields>
+        <fields>%%%NAMESPACE%%%Total_Paid_Installments__c</fields>
+        <relatedList>%%%NAMESPACE%%%Recurring_Donation__c.%%%NAMESPACE%%%Organization__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Formula_MailingAddress__c</fields>
-        <fields>Verified__c</fields>
-        <fields>Verification_Status__c</fields>
-        <relatedList>Address__c.Household_Account__c</relatedList>
+        <fields>%%%NAMESPACE%%%Formula_MailingAddress__c</fields>
+        <fields>%%%NAMESPACE%%%Verified__c</fields>
+        <fields>%%%NAMESPACE%%%Verification_Status__c</fields>
+        <relatedList>%%%NAMESPACE%%%Address__c.%%%NAMESPACE%%%Household_Account__c</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedFileList</relatedList>

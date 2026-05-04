@@ -7,44 +7,44 @@
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>MembershipJoinDate__c</field>
+                <field>%%%NAMESPACE%%%MembershipJoinDate__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>LastMembershipLevel__c</field>
+                <field>%%%NAMESPACE%%%LastMembershipLevel__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>LastMembershipOrigin__c</field>
+                <field>%%%NAMESPACE%%%LastMembershipOrigin__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>LastMembershipAmount__c</field>
+                <field>%%%NAMESPACE%%%LastMembershipAmount__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>MembershipEndDate__c</field>
+                <field>%%%NAMESPACE%%%MembershipEndDate__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>LastMembershipDate__c</field>
+                <field>%%%NAMESPACE%%%LastMembershipDate__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>NumberOfMembershipOpps__c</field>
+                <field>%%%NAMESPACE%%%NumberOfMembershipOpps__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>TotalMembershipOppAmount__c</field>
+                <field>%%%NAMESPACE%%%TotalMembershipOppAmount__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>

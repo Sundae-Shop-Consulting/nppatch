@@ -7,54 +7,54 @@
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>TotalOppAmount__c</field>
+                <field>%%%NAMESPACE%%%TotalOppAmount__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>OppAmountLastNDays__c</field>
+                <field>%%%NAMESPACE%%%OppAmountLastNDays__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>OppAmountThisYear__c</field>
+                <field>%%%NAMESPACE%%%OppAmountThisYear__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>OppAmountLastYear__c</field>
+                <field>%%%NAMESPACE%%%OppAmountLastYear__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>OppAmount2YearsAgo__c</field>
+                <field>%%%NAMESPACE%%%OppAmount2YearsAgo__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>NumberOfClosedOpps__c</field>
+                <field>%%%NAMESPACE%%%NumberOfClosedOpps__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>OppsClosedLastNDays__c</field>
+                <field>%%%NAMESPACE%%%OppsClosedLastNDays__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>OppsClosedThisYear__c</field>
+                <field>%%%NAMESPACE%%%OppsClosedThisYear__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>OppsClosedLastYear__c</field>
+                <field>%%%NAMESPACE%%%OppsClosedLastYear__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>OppsClosed2YearsAgo__c</field>
+                <field>%%%NAMESPACE%%%OppsClosed2YearsAgo__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>

@@ -7,27 +7,27 @@
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Soft_Credit_Total__c</field>
+                <field>%%%NAMESPACE%%%Soft_Credit_Total__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Soft_Credit_Last_N_Days__c</field>
+                <field>%%%NAMESPACE%%%Soft_Credit_Last_N_Days__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Soft_Credit_This_Year__c</field>
+                <field>%%%NAMESPACE%%%Soft_Credit_This_Year__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Soft_Credit_Last_Year__c</field>
+                <field>%%%NAMESPACE%%%Soft_Credit_Last_Year__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Soft_Credit_Two_Years_Ago__c</field>
+                <field>%%%NAMESPACE%%%Soft_Credit_Two_Years_Ago__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
@@ -36,44 +36,44 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Largest_Soft_Credit_Amount__c</field>
+                <field>%%%NAMESPACE%%%Largest_Soft_Credit_Amount__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>First_Soft_Credit_Amount__c</field>
+                <field>%%%NAMESPACE%%%First_Soft_Credit_Amount__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Last_Soft_Credit_Amount__c</field>
+                <field>%%%NAMESPACE%%%Last_Soft_Credit_Amount__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Number_of_Soft_Credits__c</field>
+                <field>%%%NAMESPACE%%%Number_of_Soft_Credits__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Number_of_Soft_Credits_Last_N_Days__c</field>
+                <field>%%%NAMESPACE%%%Number_of_Soft_Credits_Last_N_Days__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Number_of_Soft_Credits_This_Year__c</field>
+                <field>%%%NAMESPACE%%%Number_of_Soft_Credits_This_Year__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Number_of_Soft_Credits_Last_Year__c</field>
+                <field>%%%NAMESPACE%%%Number_of_Soft_Credits_Last_Year__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Number_of_Soft_Credits_Two_Years_Ago__c</field>
+                <field>%%%NAMESPACE%%%Number_of_Soft_Credits_Two_Years_Ago__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
@@ -82,17 +82,17 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Largest_Soft_Credit_Date__c</field>
+                <field>%%%NAMESPACE%%%Largest_Soft_Credit_Date__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>First_Soft_Credit_Date__c</field>
+                <field>%%%NAMESPACE%%%First_Soft_Credit_Date__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Last_Soft_Credit_Date__c</field>
+                <field>%%%NAMESPACE%%%Last_Soft_Credit_Date__c</field>
                 <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
