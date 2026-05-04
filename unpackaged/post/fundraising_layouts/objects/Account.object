@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <compactLayouts>
+        <fullName>NPPatch_Household_Account</fullName>
+        <fields>Name</fields>
+        <fields>%%%NAMESPACE%%%TotalOppAmount__c</fields>
+        <fields>%%%NAMESPACE%%%Number_of_Household_Members__c</fields>
+        <label>NPPatch Household Account</label>
+    </compactLayouts>
+    <compactLayouts>
+        <fullName>NPPatch_Organization_Account</fullName>
+        <fields>Name</fields>
+        <fields>%%%NAMESPACE%%%NumberOfClosedOpps__c</fields>
+        <fields>%%%NAMESPACE%%%TotalOppAmount__c</fields>
+        <fields>Website</fields>
+        <label>NPPatch Organization Account</label>
+    </compactLayouts>
+    <listViews>
+        <fullName>Household_Accounts</fullName>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>%%%NAMESPACE%%%Formal_Greeting__c</columns>
+        <columns>%%%NAMESPACE%%%Informal_Greeting__c</columns>
+        <columns>%%%NAMESPACE%%%TotalOppAmount__c</columns>
+        <columns>%%%NAMESPACE%%%AverageAmount__c</columns>
+        <columns>%%%NAMESPACE%%%Best_Gift_Year__c</columns>
+        <columns>%%%NAMESPACE%%%HouseholdPhone__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>ACCOUNT.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Account.HH_Account</value>
+        </filters>
+        <label>Household Accounts</label>
+    </listViews>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+</CustomObject>
