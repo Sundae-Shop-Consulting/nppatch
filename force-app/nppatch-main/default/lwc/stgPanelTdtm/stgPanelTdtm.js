@@ -1,6 +1,7 @@
 import { LightningElement, wire, track } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
+import { prefixNamespace } from "c/util";
 import getTriggerHandlers from "@salesforce/apex/NppatchSettingsController.getTriggerHandlers";
 import createTriggerHandler from "@salesforce/apex/NppatchSettingsController.createTriggerHandler";
 import updateTriggerHandler from "@salesforce/apex/NppatchSettingsController.updateTriggerHandler";
@@ -9,6 +10,8 @@ import isAdmin from "@salesforce/apex/NppatchSettingsController.isAdmin";
 import searchSObjects from "@salesforce/apex/NppatchSettingsController.searchSObjects";
 import searchApexClasses from "@salesforce/apex/NppatchSettingsController.searchApexClasses";
 import validateTriggerHandlerClass from "@salesforce/apex/NppatchSettingsController.validateTriggerHandlerClass";
+
+const NAMESPACE_PREFIX = prefixNamespace("");
 
 const DATA_COLUMNS = [
     { label: "Object", fieldName: "Object__c", type: "text" },
@@ -108,7 +111,7 @@ export default class StgPanelTDTM extends LightningElement {
     wiredSettings(result) {
         this._wiredResult = result;
         if (result.data) {
-            this._settings = result.data;
+            this._settings = result.data.map((row) => this._removePrefix(row));
             this._hasError = false;
         } else if (result.error) {
             this._hasError = true;
@@ -459,6 +462,21 @@ export default class StgPanelTDTM extends LightningElement {
         } else if (action === "edit") {
             this._openEditForm(row);
         }
+    }
+
+    _removePrefix(obj) {
+        if (!obj || typeof obj !== "object") {
+            return obj;
+        }
+        const result = {};
+        for (const key of Object.keys(obj)) {
+            if (key.startsWith(NAMESPACE_PREFIX)) {
+                result[key.replace(NAMESPACE_PREFIX, "")] = obj[key];
+            } else {
+                result[key] = obj[key];
+            }
+        }
+        return result;
     }
 
     _extractError(error) {

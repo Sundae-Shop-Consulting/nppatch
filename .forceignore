@@ -1,2 +1,5 @@
 # Jest test directories
 **/__tests__/**
+
+**/jsconfig.json
+**/.eslintrc.json

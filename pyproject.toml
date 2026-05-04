@@ -1,0 +1,8 @@
+[project]
+name = "nppatch"
+version = "0.0.0"
+requires-python = ">=3.13"
+dependencies = [
+    "cumulusci==4.8.1",
+    "setuptools<82",
+]

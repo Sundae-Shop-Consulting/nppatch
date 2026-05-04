@@ -6,6 +6,7 @@
 # Python
 *.pyc
 __pycache__
+.venv/
 
 # Robot Framework results
 robot/nppatch/results/

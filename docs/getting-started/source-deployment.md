@@ -18,23 +18,33 @@ Verify the installation:
 sf version
 ```
 
+### uv
+
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/), a fast Python package manager that handles Python versions and isolated environments automatically. This avoids the common pitfalls of setting up Python manually.
+
+On macOS/Linux:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
 ### CumulusCI
 
 NPPatch uses CumulusCI (cci) as its build and automation tool. CumulusCI is a Python-based tool built by Salesforce.org specifically for managing the development lifecycle of Salesforce packages.
 
-Install CumulusCI:
+Install CumulusCI and its dependencies into the project virtual environment:
 
 ```bash
-pip install cumulusci
+uv sync
 ```
 
 Verify the installation:
 
 ```bash
-cci version
+uv run cci version
 ```
 
-NPPatch requires CumulusCI version 4.6.0 or later.
+NPPatch requires CumulusCI version 4.8.1 or later.
 
 ### Salesforce Dev Hub
 
@@ -45,7 +55,7 @@ You'll need a Salesforce org with Dev Hub enabled to create scratch orgs.
 3. Connect CumulusCI to your Dev Hub:
 
 ```bash
-cci org connect devhub
+uv run cci org connect devhub
 ```
 
 This opens a browser window for OAuth authentication. Log in with your Dev Hub admin credentials.
@@ -66,7 +76,7 @@ The standard development workflow uses CumulusCI scratch orgs. The `dev_org` flo
 ### Quick Start
 
 ```bash
-cci flow run dev_org --org dev
+uv run cci flow run dev_org --org dev
 ```
 
 This command does the following:
@@ -86,7 +96,7 @@ The process typically takes 5-10 minutes.
 Once deployment is complete, open the org in your browser:
 
 ```bash
-cci org browser dev
+uv run cci org browser dev
 ```
 
 ### Org Definitions
@@ -104,8 +114,8 @@ The project includes several scratch org definitions in the `orgs/` directory, e
 To use a specific org definition, configure a custom org:
 
 ```bash
-cci org scratch dev my_org --config-file orgs/release.json
-cci flow run dev_org --org my_org
+uv run cci org scratch dev my_org --config-file orgs/release.json
+uv run cci flow run dev_org --org my_org
 ```
 
 ## Project Structure
@@ -160,7 +170,7 @@ nppatch/
 Run all Apex tests in the connected org:
 
 ```bash
-cci task run run_tests --org dev
+uv run cci task run run_tests --org dev
 ```
 
 The project requires a minimum of 75% code coverage.
@@ -170,13 +180,13 @@ The project requires a minimum of 75% code coverage.
 The project includes Robot Framework tests for UI and API validation:
 
 ```bash
-cci task run robot --org dev
+uv run cci task run robot --org dev
 ```
 
 Test results are output to `robot/nppatch/results/`. To generate HTML documentation of test cases:
 
 ```bash
-cci task run robot_testdoc
+uv run cci task run robot_testdoc
 ```
 
 ## Key CumulusCI Tasks
@@ -207,20 +217,20 @@ sf package version create --package nppatch --wait 30 --code-coverage
 
 ### Making a Code Change
 
-1. Create a scratch org: `cci flow run dev_org --org dev`
-2. Open the org: `cci org browser dev`
+1. Create a scratch org: `uv run cci flow run dev_org --org dev`
+2. Open the org: `uv run cci org browser dev`
 3. Make your changes in the local source
 4. Push changes to the org: `sf project deploy start --source-dir force-app`
 5. Test in the org
-6. Run tests: `cci task run run_tests --org dev`
+6. Run tests: `uv run cci task run run_tests --org dev`
 
 ### Refreshing Your Org
 
 Scratch orgs expire after a set period (default 7 days). To start fresh:
 
 ```bash
-cci org scratch dev dev --delete
-cci flow run dev_org --org dev
+uv run cci org scratch dev dev --delete
+uv run cci flow run dev_org --org dev
 ```
 
 ### Loading Sample Data
@@ -228,7 +238,7 @@ cci flow run dev_org --org dev
 The project includes a data mapping for loading sample data:
 
 ```bash
-cci task run load_dataset --org dev
+uv run cci task run load_dataset --org dev
 ```
 
 This loads sample Account and Contact records using the mapping defined in `datasets/mapping.yml`.

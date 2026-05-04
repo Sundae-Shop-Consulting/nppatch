@@ -2,113 +2,71 @@
 
 ## What is an Unlocked Package?
 
-NPPatch is distributed as a **namespaced unlocked 2GP package**, which fundamentally changes how you work with the codebase compared to traditional managed packages like the original NPSP.
+NPPatch is distributed as a **namespaced unlocked 2GP package**. The most important thing this means is that the community — not Salesforce — controls what gets built and when it ships. But it also changes how the package works in your org compared to the original NPSP managed packages.
 
 ### Managed Package vs. Unlocked Package
 
-| Aspect | Managed Package | Unlocked Package |
+| Aspect | Managed Package (original NPSP) | Unlocked Package (NPPatch) |
 |--------|---|---|
-| **Source Code** | Hidden; cannot be viewed or modified | Visible and modifiable |
-| **Customization** | Limited to configuration and new objects | Unlimited; can modify any code |
-| **Namespacing** | Managed namespace applied | Managed namespace with editable code |
-| **Upgrades** | Managed package controls; protected components | Custom changes may be overwritten by upgrades |
-| **Version Control** | Not stored in your source tree | Can be stored alongside your modifications |
+| **Source Code** | Open source, but obfuscated in subscriber orgs | Open source, and visible in subscriber orgs |
+| **Release Process** | Vendor controls what ships and when | Community controls what ships and when |
+| **Extending** | Limited to configuration and new objects outside the package | Deploy customizations and extensions on top of the package |
+| **Changing Package Code** | Not possible; only vendor can modify | Contributors work from the source repository and ship new versions |
+| **Namespace** | Controlled by vendor | Uses namespace injection — viable to fork and publish under a different namespace |
+| **Upgrades** | Vendor pushes updates on their timeline | Community publishes versions; orgs upgrade when ready |
 | **Dependencies** | Black box; no visibility into dependencies | Full transparency into code dependencies |
 
-### Key Implication
+### Key Distinction
 
-Because NPPatch is an **unlocked package**, you have complete access to and control over the underlying Apex code, object definitions, and Lightning Web Components. This flexibility comes with responsibility: when you modify package code, future upgrades may introduce conflicts or overwrite your changes.
+The freedom NPPatch provides is in the **release process**, not in-org editing. Subscribers can view all source code and deploy extensions on top of the package, but cannot directly edit namespaced package components inside their own org instance. To change package code, contributors work from the [source repository](https://github.com/Sundae-Shop-Consulting/nppatch) — the community decides what gets merged and when new versions ship.
 
-## What You Can Now Do
+NPPatch uses CumulusCI's namespace injection so that the source code contains very few hard-coded namespace references. This makes it viable for consulting firms or organizations that serve multiple clients to fork the repository and publish under their own namespace.
 
-### 1. View and Modify Apex Code
+## What You Can Do
 
-All trigger handlers, services, selectors, and utility classes are visible and editable:
+### 1. View and Audit All Source Code
+
+NPSP's source code was always available on GitHub, but managed packages obfuscated it in subscriber orgs. With an unlocked package, the code is visible in the org too — you can inspect trigger handlers, services, and utility classes directly:
 
 ```
 force-app/
 ├── nppatch-main/
 │   └── default/
 │       └── classes/
-│           ├── OPP_OpportunityBeforeInsert_TDTM.cls  ✓ Can view and edit
-│           ├── CRLP_RollupProcessor.cls               ✓ Can view and edit
-│           └── UTIL_Namespace.cls                     ✓ Can view and edit
+│           ├── OPP_OpportunityBeforeInsert_TDTM.cls  ✓ Visible
+│           ├── CRLP_RollupProcessor.cls               ✓ Visible
+│           └── UTIL_Namespace.cls                     ✓ Visible
 └── nppatch-common/
     └── tdtm/
         └── classes/
-            └── TDTM_TriggerHandler.cls                ✓ Can view and edit
+            └── TDTM_TriggerHandler.cls                ✓ Visible
 ```
 
 This enables you to:
 
 - Understand how business logic works at the code level
 - Debug issues by reading the actual implementation
-- Make surgical modifications without forking the entire package
 - Trace execution paths through trigger handlers, services, and selectors
+- Evaluate changes in new versions before upgrading
 
-### 2. Add Fields Directly to Package Objects
+### 2. Deploy Extensions on Top of the Package
 
-Unlike managed packages, you can add custom fields to any NPPatch object:
+You can deploy your own customizations alongside the package — custom fields on package objects, new Apex classes, new LWC components, and more. These live outside the package namespace and survive upgrades.
 
-```
-force-app/nppatch-main/default/objects/Account/fields/
-├── nppatch__Custom_Nonprofit_ID__c.field-meta.xml      ✓ New field - your org only
-├── nppatch__Program_Area__c.field-meta.xml              ✓ New field - your org only
-└── (package objects)                                  ✓ Can also extend
-```
-
-You can create custom fields on:
-- **npe5\__Account** (Package household/organization accounts)
-- **Contact** (Enhanced with address, household, affiliation data)
-- **npe3\__Opportunity** (Package opportunities with allocation data)
-- Any other package-provided object
-
-Simply add `.field-meta.xml` files in your unpackaged or custom package directory.
-
-### 3. Modify Trigger Handlers
-
-You can edit existing trigger handlers without rebuilding from scratch:
-
-```apex
-// ADDR_Contact_TDTM.cls - You can add logic here:
-
-public class ADDR_Contact_TDTM extends TDTM_Runnable {
-    public override DmlWrapper run(List<SObject> listNew, List<SObject> listOld,
-        TDTM_Runnable.Action triggerAction, Schema.DescribeSObjectResult objResult) {
-
-        // Original package logic...
-
-        // ✓ Add your custom business rules here
-        if (shouldApplyCustomLogic()) {
-            applyCustomAddressValidation(listNew);
-        }
-
-        return dmlWrapper;
-    }
-}
-```
-
-### 4. Customize Lightning Web Components (LWC)
-
-All LWC components are visible and can be modified:
+You can add custom fields to any NPPatch object by deploying `.field-meta.xml` files in your unpackaged or custom package directory:
 
 ```
-force-app/nppatch-main/default/lwc/
-├── geFormWidget/
-│   ├── geFormWidget.html              ✓ Can modify markup
-│   ├── geFormWidget.js                ✓ Can modify logic
-│   └── geFormWidget.css               ✓ Can modify styling
-├── geHome/                             ✓ Can modify any component
-└── ...
+your-org-customizations/
+├── classes/
+│   └── CUSTOM_ContactValidation_TDTM.cls    ✓ Your code — survives upgrades
+├── objects/
+│   └── Account/fields/
+│       └── Program_Area__c.field-meta.xml    ✓ Your field — survives upgrades
+└── lwc/
+    └── customGiftForm/                       ✓ Your component — survives upgrades
 ```
 
-You can:
-- Customize component templates and layouts
-- Add new business logic to component controllers
-- Extend existing components with new features
-- Modify styling without forking the entire component
-
-### 5. Extend the TDTM Framework
+### 3. Extend the TDTM Framework
 
 Register new trigger handlers via `Trigger_Handler__c` custom metadata without modifying package code:
 
@@ -148,126 +106,26 @@ Then register in the UI:
    - **Load Order**: Set execution sequence
    - **Active**: Enabled by default
 
-## The Upgrade Tradeoff
+## Upgrading
 
-### The Risk: Changes Get Overwritten
+### How Upgrades Work
 
-When NPPatch publishes an upgrade to a newer version, the package installation process may overwrite your direct modifications to package code:
+When the community publishes a new NPPatch version, you upgrade by installing the new package version into your org. The upgrade replaces all namespaced package components with the new version.
 
-```
-Scenario: You've modified OPP_OpportunityBeforeInsert_TDTM.cls
+### What Survives an Upgrade
 
-Version 1.0 (Your install)
-  └─ OPP_OpportunityBeforeInsert_TDTM.cls
-       ├─ Package functionality (lines 1-100)
-       └─ YOUR custom logic (lines 101-150)
+Your extensions and customizations that live outside the package namespace are preserved:
 
-↓ Package upgrade to 2.0
+✓ Custom fields you added (in unpackaged or your namespace)
+✓ Custom Trigger_Handler__c records you created
+✓ Custom Apex classes you wrote (outside the package)
+✓ Custom objects you created
+✓ Configuration data (custom settings, custom metadata you added)
+✓ Custom page layouts and record type customizations
 
-Version 2.0 (After upgrade)
-  └─ OPP_OpportunityBeforeInsert_TDTM.cls
-       ├─ Package functionality - UPDATED (lines 1-120)
-       └─ YOUR custom logic - LOST! ✗
-```
+All namespaced package components (Apex classes, triggers, LWC, custom objects, custom fields, custom metadata) are replaced with the new version.
 
-### The Solution: Best Practices
-
-#### 1. Track All Modifications in Version Control
-
-Store your customizations in a source control system (Git, GitHub, Bitbucket, etc.) with clear separation from the package:
-
-```
-Repository structure:
-├── force-app/
-│   ├── nppatch-main/default/  # Package code (managed)
-│   └── unpackaged/       # Your customizations (tracked in Git)
-│       ├── classes/
-│       │   └── CUSTOM_*.cls              ✓ Your code
-│       ├── objects/
-│       │   └── Account/fields/
-│       │       └── Custom_Field__c.xml   ✓ Your code
-│       └── lwc/
-│           └── customGiftForm/           ✓ Your component
-└── .git/
-    └── (full history of all your changes)
-```
-
-**Benefits:**
-- Audit trail of all modifications
-- Easy rollback if upgrade breaks something
-- Collaboration with team members
-- Deployment consistency across orgs
-
-#### 2. Use a Diff Tool Before Upgrading
-
-Before installing a package upgrade, preview what will change:
-
-```bash
-# Example using Git (if you store the package code)
-git diff v1.0..v2.0 -- force-app/nppatch-main/default/classes/OPP_*.cls
-
-# Identify which classes changed
-# Example output:
-# - OPP_OpportunityBeforeInsert_TDTM.cls        (CHANGED - review carefully)
-# - OPP_OpportunityAfterUpdate_TDTM.cls         (CHANGED - review carefully)
-# - OPP_OpportunitySvc_SVC.cls                  (CHANGED - review carefully)
-```
-
-**Process before upgrading:**
-1. Get a list of changes from the release notes
-2. For each changed file you've customized, review the diff
-3. Identify breaking changes or conflicts
-4. Plan for manual re-application in your custom code
-
-#### 3. Prefer Extension Over Modification
-
-When possible, extend package functionality instead of modifying it directly:
-
-**❌ Less Ideal: Modifying package code directly**
-```apex
-// force-app/nppatch-main/default/classes/OPP_OpportunityBeforeInsert_TDTM.cls
-public class OPP_OpportunityBeforeInsert_TDTM extends TDTM_Runnable {
-    public override DmlWrapper run(List<SObject> listNew, ...) {
-        // ... package logic ...
-
-        // YOUR modification here - will be lost on upgrade!
-        if (shouldApplyCustomRule()) {
-            applyCustomRule(listNew);
-        }
-    }
-}
-```
-
-**✓ Better: Create a separate handler**
-```apex
-// unpackaged/classes/CUSTOM_OpportunityValidation_TDTM.cls
-public class CUSTOM_OpportunityValidation_TDTM extends TDTM_Runnable {
-    public override DmlWrapper run(List<SObject> listNew, List<SObject> listOld,
-        TDTM_Runnable.Action triggerAction, Schema.DescribeSObjectResult objResult) {
-
-        DmlWrapper wrapper = new DmlWrapper();
-
-        // Your custom logic runs alongside package logic
-        for (Opportunity opp : (List<Opportunity>)listNew) {
-            if (shouldApplyCustomRule(opp)) {
-                applyCustomRule(opp);
-            }
-        }
-
-        return wrapper;
-    }
-}
-```
-
-Register this handler in the UI with appropriate `Load_Order__c` to control execution sequence.
-
-**Advantages:**
-- Your code survives package upgrades
-- Easier to test and maintain
-- Clear separation of concerns
-- Can be disabled without touching package code
-
-#### 4. Test Upgrades in a Sandbox First
+### Test Upgrades in a Sandbox First
 
 Always validate package upgrades in a development or staging sandbox before deploying to production:
 
@@ -282,48 +140,9 @@ Sandbox Testing Checklist:
 ☐ If issues found, understand the cause before production deployment
 ```
 
-## How Package Upgrades Work for Unlocked Packages
-
-### Installation Process
-
-When you upgrade NPPatch:
-
-1. **Salesforce validates the package** against your org's configuration
-2. **Namespace metadata is updated** - all `nppatch__` prefixed items are replaced with new versions
-3. **Your customizations are preserved** if they're in separate locations (unpackaged directory, separate package)
-4. **Your direct modifications to package code are overwritten** with the new version's code
-
-### Package Components
-
-```
-nppatch Package Contents (namespace: nppatch__):
-├── Apex Classes         (~850 across all packages)
-├── Apex Triggers        (26)
-├── Custom Objects       (30+)
-├── Custom Metadata Types (12+)
-├── Custom Fields        (100+)
-└── LWC Components      (~120)
-```
-
-When upgrading, **all** of these are replaced with the new version's components.
-
-### What Survives an Upgrade
-
-✓ Custom fields you added (in unpackaged or your namespace)
-✓ Custom Trigger_Handler__c records you created
-✓ Custom Apex classes you wrote (if in unpackaged directory)
-✓ Custom objects you created
-✓ Configuration data (custom settings, custom metadata you added)
-✓ Custom page layouts and record type customizations
-
-✗ Direct modifications to package classes
-✗ Direct modifications to package LWC components
-✗ Direct modifications to package triggers
-✗ Direct modifications to package custom fields (will revert to package-defined state)
-
 ## Recommended Project Structure
 
-Organize your repository to keep customizations separate:
+Organize your repository to keep your extensions separate from the package:
 
 ```
 your-nppatch-project/
@@ -334,7 +153,7 @@ your-nppatch-project/
 │       └── deploy.yml
 ├── force-app/
 │   ├── main/
-│   │   └── default/            # Package code (managed - review but don't modify)
+│   │   └── default/            # Package code (replaced on upgrade)
 │   │       ├── classes/        # ~630 nppatch classes
 │   │       ├── objects/        # Package objects
 │   │       └── lwc/            # ~120 LWC components
@@ -363,18 +182,18 @@ your-nppatch-project/
     └── install.sh              # Installation scripts
 ```
 
-## Modification Checklist
+## Customization Decision Checklist
 
-Before modifying any NPPatch code, ask yourself:
+Before adding functionality to your NPPatch org, ask yourself:
 
-- [ ] Does this modification need to survive package upgrades?
-- [ ] Would an extension (new handler class) be better than a modification?
-- [ ] Can I achieve this via configuration (Trigger_Handler__c settings)?
-- [ ] Have I documented what I'm changing and why?
-- [ ] Will my team understand this change in 6 months?
+- [ ] Can I achieve this via configuration (Trigger_Handler__c settings, custom metadata)?
+- [ ] Would an extension (new handler class, companion package) work?
+- [ ] Should this be contributed back to the community repository as a package improvement?
+- [ ] Have I documented what I'm adding and why?
+- [ ] Will my team understand this customization in 6 months?
 - [ ] Can this be tested automatically?
 
-If you answer "yes" to the first question, consider an extension instead.
+In most cases, the best approach is to **extend on top of the package** rather than trying to change package code. If you've identified a bug or improvement that would benefit everyone, consider [contributing it](https://github.com/Sundae-Shop-Consulting/nppatch) so it ships in the next version.
 
 ## Next Steps
 

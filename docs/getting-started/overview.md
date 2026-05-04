@@ -12,13 +12,13 @@ NPPatch is a strong fit for organizations that meet some or all of these criteri
 
 **Cost-sensitive implementations.** For organizations where the implementation and ongoing license costs of Nonprofit Cloud are a concern, NPPatch provides a fully functional alternative at the cost of community-maintained support rather than vendor-backed support.
 
-**Organizations that want control.** Because NPPatch is an unlocked package, organizations (or their consultants) can modify the code directly if needed. This is a meaningful difference from the original NPSP managed packages, where customization was limited to what Salesforce exposed.
+**Organizations that want control.** Because NPPatch is an unlocked package, the community — not Salesforce — controls what gets built and when it ships. If an organization needs a fix, they can contribute it through the community repository, commission someone to build it, or wait for the community to address it. That's a meaningful difference from the original NPSP managed packages, where Salesforce controlled the release process. Organizations can also extend the package with their own customizations deployed on top.
 
 ## When Nonprofit Cloud May Be the Better Choice
 
 Being fair about this: there are cases where Nonprofit Cloud is the right answer.
 
-**Organizations needing features beyond NPSP's scope.** Nonprofit Cloud includes program management, outcome tracking, case management, and other capabilities that NPSP was never designed to handle. If a client needs these, Nonprofit Cloud offers them as part of the platform.
+**Organizations needing features beyond NPSP's scope.** Nonprofit Cloud includes outcome tracking, case management, and other capabilities that NPSP was never designed to handle. NPPatch does include program management (via the Program Management Module), but if a client needs the broader Nonprofit Cloud platform capabilities, Nonprofit Cloud offers them.
 
 **Organizations that require vendor-backed support.** NPPatch is community-maintained. There is no Salesforce support contract, no guaranteed SLA, and no vendor standing behind the product. For organizations that need that level of support assurance, Nonprofit Cloud provides it.
 
@@ -45,16 +45,15 @@ Unlike the original NPSP (which was a managed package), NPPatch is an unlocked p
 
 **Advantages:**
 
-- Organizations can view and modify all Apex code, components, and metadata
-- Custom fields can be added to package objects without workarounds
-- Trigger handlers can be modified directly rather than only through the TDTM configuration UI
-- No dependency on Salesforce for bug fixes — the community (or the org's own developers) can address issues
+- The community controls the release process: what gets built, what gets fixed, and when new versions ship
+- No dependency on Salesforce for bug fixes — contributors can address issues through the repository without waiting for a vendor roadmap
+- Organizations can deploy customizations and extensions on top of the package (custom fields on package objects, new TDTM trigger handlers, companion packages)
 
 **Tradeoffs:**
 
-- If an organization modifies package code and then upgrades to a new version, the upgrade may overwrite those modifications
-- There's no managed package protection preventing accidental changes to core functionality
-- Organizations take on responsibility for understanding what they're changing
+- Community-maintained means there is no vendor-backed support contract or guaranteed SLA
+- Organizations take on responsibility for evaluating and applying upgrades
+- The freedom is in the release process, not in-org editing — to change package code, contributors work from the source repository
 
 See the [Customization Guide](../customization/unlocked-package-guide.md) for detailed guidance on managing these tradeoffs.
 
@@ -69,7 +68,7 @@ Organizations that haven't modified the package code can upgrade normally. Organ
 When evaluating NPPatch for a client, consider:
 
 1. **Current state**: Is the client currently on NPSP? If so, how heavily customized is their implementation?
-2. **Feature requirements**: Does the client need capabilities that exist only in Nonprofit Cloud (program management, case management, outcome tracking)?
+2. **Feature requirements**: Does the client need capabilities that exist only in Nonprofit Cloud (case management, outcome tracking)? Note: NPPatch includes program management via PMM.
 3. **Support expectations**: Is the client comfortable with community-maintained software, or do they require vendor-backed support?
 4. **Technical capacity**: Does the client (or their consultant) have the technical skills to manage an unlocked package, apply upgrades, and troubleshoot issues?
 5. **Budget**: What are the comparative costs of Nonprofit Cloud licensing and implementation vs. NPPatch (which has no license cost but requires community or consultant support)?
