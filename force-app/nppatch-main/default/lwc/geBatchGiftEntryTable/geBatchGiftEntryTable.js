@@ -1,6 +1,6 @@
 import { LightningElement, api, wire } from "lwc";
 import { getObjectInfo } from "lightning/uiObjectInfoApi";
-import { isNotEmpty, isUndefined, apiNameFor, hasNestedProperty, deepClone, format } from "c/utilCommon";
+import { isNotEmpty, isUndefined, apiNameFor, deepClone, format } from "c/utilCommon";
 import GeFormService from "c/geFormService";
 import { fireEvent } from "c/pubsubNoPageRef";
 
@@ -20,7 +20,6 @@ import FAILURE_INFORMATION_FIELD from "@salesforce/schema/DataImport__c.FailureI
 import DONATION_AMOUNT from "@salesforce/schema/DataImport__c.Donation_Amount__c";
 const PAYMENT_DECLINED_REASON = { fieldApiName: "Payment_Declined_Reason__c", objectApiName: "DataImport__c" };
 import DONATION_RECORD_TYPE_NAME from "@salesforce/schema/DataImport__c.Donation_Record_Type_Name__c";
-const ELEVATE_PAYMENT_STATUS = { fieldApiName: "Elevate_Payment_Status__c", objectApiName: "DataImport__c" };
 import DONATION_IMPORTED from "@salesforce/schema/DataImport__c.DonationImported__c";
 import PAYMENT_IMPORTED from "@salesforce/schema/DataImport__c.PaymentImported__c";
 import RECURRING_DONATION_IMPORTED from "@salesforce/schema/DataImport__c.RecurringDonationImported__c";
@@ -32,7 +31,6 @@ const URL_SUFFIX = "_URL";
 const URL_LABEL_SUFFIX = "_URL_LABEL";
 const REFERENCE = "REFERENCE";
 const FIELD = "field";
-const FIELDS = "fields";
 
 const columnTypeByDescribeType = {
     DATE: "date-local",
@@ -83,7 +81,6 @@ export default class GeBatchGiftEntryTable extends LightningElement {
     giftsFromView = [];
 
     @api batchId;
-    @api isElevateCustomer = false;
 
     get ready() {
         return this._columnsLoaded && this._batchLoaded;
@@ -248,23 +245,7 @@ export default class GeBatchGiftEntryTable extends LightningElement {
                     }
                 });
         });
-        this.includeElevatePaymentStatusField();
         this._columnsLoaded = true;
-    }
-
-    includeElevatePaymentStatusField() {
-        if (this.isElevateCustomer) {
-            const elevatePaymentStatusApiName = apiNameFor(ELEVATE_PAYMENT_STATUS);
-
-            if (hasNestedProperty(this._dataImportObjectInfo, FIELDS, elevatePaymentStatusApiName)) {
-                const elevatePaymentStatus = this._dataImportObjectInfo?.fields[elevatePaymentStatusApiName];
-                this._columnsBySourceFieldApiName[elevatePaymentStatus.apiName] = {
-                    label: elevatePaymentStatus.label,
-                    fieldName: elevatePaymentStatus.apiName,
-                    type: elevatePaymentStatus.dataType,
-                };
-            }
-        }
     }
 
     @api

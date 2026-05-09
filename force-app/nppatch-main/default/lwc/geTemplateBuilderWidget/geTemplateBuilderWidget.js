@@ -24,10 +24,6 @@ export default class geTemplateBuilderWidget extends LightningElement {
         return this.developerName === "geFormWidgetSoftCredit";
     }
 
-    get isTokenizeCard() {
-        return this.developerName === "geFormWidgetTokenizeCard";
-    }
-
     get ocrRoleFieldApiName() {
         return apiNameFor(OCR_ROLE_FIELD);
     }

@@ -42,10 +42,10 @@ private with sharing class AggregateResultProxy_TEST {
 
         List<DataImport__c> dataImports = new List<DataImport__c>();
         for (Integer i = 0; i < 5; i++) {
-            dataImports.add(createDataImportTemp('Failed', 'DUMMY_STATUS', batch.Id));
+            dataImports.add(createDataImportTemp('Failed', batch.Id));
         }
         for (Integer i = 0; i < 3; i++) {
-            dataImports.add(createDataImportTemp('Imported', 'DUMMY_STATUS', batch.Id));
+            dataImports.add(createDataImportTemp('Imported', batch.Id));
         }
         insert dataImports;
 
@@ -78,15 +78,14 @@ private with sharing class AggregateResultProxy_TEST {
     private static void shouldReturnExplicitlyExpectedValuesFromGivenAlias() {
         AggregateResultProxy resultProxy = new AggregateResultProxy()
             .withAliasAndValue('recordCount', 25)
-            .withAliasAndValue(UTIL_Namespace.prefixNamespace('Payment_Status__c'), 'DECLINED');
-        System.assertEquals('DECLINED', resultProxy.getValuesByAlias().get(UTIL_Namespace.prefixNamespace('Payment_Status__c')));
+            .withAliasAndValue(UTIL_Namespace.prefixNamespace('Status__c'), 'Failed');
+        System.assertEquals('Failed', resultProxy.getValuesByAlias().get(UTIL_Namespace.prefixNamespace('Status__c')));
         System.assertEquals(25, resultProxy.getValuesByAlias().get('recordCount'));
     }
 
-    private static DataImport__c createDataImportTemp(String status, String paymentStatus, Id batchId) {
+    private static DataImport__c createDataImportTemp(String status, Id batchId) {
         DataImport__c dataImport = new DataImport__c(
             Status__c = status,
-            Payment_Status__c = paymentStatus,
             NPPatch_Data_Import_Batch__c = batchId
         );
         return dataImport;

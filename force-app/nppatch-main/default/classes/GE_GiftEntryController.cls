@@ -37,9 +37,7 @@
 */
 public with sharing class GE_GiftEntryController {
 
-    public static final String PURCHASE_CALL_TIMEOUT_MESSAGE = System.Label.geErrorRequestTimedout;
     private static final String BOOLEAN_DATA_TYPE = 'BOOLEAN';
-    public static final String ENCRYPTION_ALGORITHM = 'AES128';
 
     @TestVisible
     private static GiftBatchService giftBatchService {
@@ -71,16 +69,6 @@ public with sharing class GE_GiftEntryController {
         set;
     }
 
-    private static GE_SettingsService geSettingsService {
-        get {
-            if (geSettingsService == null) {
-                geSettingsService = new GE_SettingsService();
-            }
-            return geSettingsService;
-        }
-        set;
-    }
-
     @AuraEnabled
     public static void addGiftTo(Id dataImportBatchId, InboundGiftDTO inboundGift) {
         try {
@@ -91,16 +79,6 @@ public with sharing class GE_GiftEntryController {
         } catch (AuraHandledException e) {
             String JSONExceptionData = ERR_ExceptionData.createExceptionWrapperJSONString(e);
             throw buildDmlException(JSONExceptionData);
-        }
-    }
-
-    @AuraEnabled
-    public static GiftBatchView getGiftBatchView(Id dataImportBatchId){
-        try {
-            GiftBatchId giftBatchId = new GiftBatchId(dataImportBatchId);
-            return giftBatchService.viewModelFrom(giftBatchId);
-        } catch (AuraHandledException e) {
-            throw new AuraHandledException(e.getMessage());
         }
     }
 
@@ -190,19 +168,6 @@ public with sharing class GE_GiftEntryController {
         }
     }
 
-    /*******************************************************************************************************
-    * @description Indicates if the org is connected to Elevate
-    * @return Boolean
-    */
-    @AuraEnabled(cacheable=true)
-    public static Boolean isElevateCustomer() {
-        try {
-            return new GE_PaymentServices().isElevateCustomer();
-        } catch (Exception ex) {
-            throw new AuraHandledException(ex.getMessage());
-        }
-    }
-
     @AuraEnabled(cacheable=true)
     public static Boolean isRecurringGiftsEnabled() {
         try {
@@ -222,87 +187,6 @@ public with sharing class GE_GiftEntryController {
     }
 
     /*******************************************************************************************************
-    * @description Creates and posts an elevate purchase request
-    *
-    * @param requestBodyParameters: JSON containing parameters for the purchase call request body
-    * @param dataImportRecordId: Record ID of the related Data Import
-    *
-    * @return String: http response wrapper
-    */
-    @AuraEnabled
-    public static String sendPurchaseRequest(String requestBodyParameters, String dataImportRecordId) {
-        UTIL_Http.Response response = processPurchaseRequest(requestBodyParameters, dataImportRecordId);
-
-        return response.body;
-    }
-
-    /***
-    * @description Sends the purchase request to Elevate and logs an error on a timeout error.
-    * This method is used in tests instead of the sendPurchaseRequest() in order to skip JSON.deserialize(response)
-    * due to it erroring out because the response header contains the Object data type.
-    * @param requestBodyParameters: JSON containing parameters for the purchase call request body
-    * @param dataImportRecordId: Record ID of the related Data Import
-    * @return UTIL_Http.Response
-    */
-    @TestVisible
-    private static UTIL_Http.Response processPurchaseRequest(String requestBodyParameters, String dataImportRecordId) {
-        UTIL_Http.Response response = new UTIL_Http.Response();
-
-        try {
-            GE_PaymentServices paymentServices = new GE_PaymentServices();
-            response = paymentServices.createTransaction(requestBodyParameters);
-
-            if (response.statusCode == UTIL_Http.STATUS_CODE_REQUEST_TIMEOUT) {
-                processPurchaseTimeoutResponse(response, dataImportRecordId);
-            }            
-
-        } catch (Exception ex) {
-            String JSONExceptionData = ERR_ExceptionData.createExceptionWrapperJSONString(ex);
-            throw buildDmlException(JSONExceptionData);
-        } 
-
-        return response;
-    }
-
-    /*******************************************************************************************************
-    * @description Updates the timeout response so it can be read by the GE forms.
-    * The status code stays the same (408), however the status is changed to contain the error message
-    * and the response body is changed to contain a generic GE request timed out message.
-    * @param response: timeout response
-    * @param dataImportRecordId: Record ID of the related Data Import to include in our error logs
-    * @return void
-    */
-    private static void processPurchaseTimeoutResponse(UTIL_Http.Response response, String dataImportRecordId) {   
-        response.body = JSON.serialize(new Map<String, String> {
-            'message' => PURCHASE_CALL_TIMEOUT_MESSAGE,
-            'statusCode' => String.valueOf(response.statusCode),
-            'status' => response.getErrorMessages()
-        });
-        logTimeoutError(dataImportRecordId);
-    }
-
-    /*******************************************************************************************************
-    * @description Logs an error when the purchase request timed out
-    * @param dataImportRecordId: Record ID of the related Data Import to include in our error logs
-    * @return void
-    */
-    private static void logTimeoutError(String dataImportRecordId) {
-        String objectAndRecordId = String.format(
-            System.Label.stgErrorInvalidNameFormat,
-            new String[] {
-                Schema.SObjectType.DataImport__c.getLabel(),
-                dataImportRecordId
-            }
-        );
-
-        String errorMsg = PURCHASE_CALL_TIMEOUT_MESSAGE + ' ' + objectAndRecordId;
-        BDIException ex = new BDIException(errorMsg);
-        ex.setMessage(errorMsg);
-
-        ERR_Handler.processError(ex, ERR_Handler_API.Context.GE);
-    }
-
-    /*******************************************************************************************************
     * @description Creates an DmlException with the specified error message
     *
     * @param errorMsg contents of the exception error message
@@ -313,14 +197,6 @@ public with sharing class GE_GiftEntryController {
         DmlException ex = new DmlException(errorMsg);
         ex.setMessage(errorMsg);
         return ex;
-    }
-
-    @AuraEnabled
-    public static void validateAuthorizedGiftEdit(DataImport__c dataImport){
-        Gift editedGift = new Gift(dataImport);
-        if (editedGift.requiresReauthorizationBeforeChange()) { 
-            throw new AuraHandledException(Label.geErrorBatchGiftEntryReauthRequired);
-        }
     }
 
     @AuraEnabled
@@ -928,11 +804,6 @@ public with sharing class GE_GiftEntryController {
         return formTemplates;
     }
 
-    @AuraEnabled
-    public static String getGatewayAssignmentSettingsWithDefaultGatewayName() {
-        return null;
-    }
-
     /*******************************************************************************************************
     * @description Method deletes a Form_Template__c record by id.
     *
@@ -1265,33 +1136,6 @@ public with sharing class GE_GiftEntryController {
             .build();
         List<DataImportBatch__c> batches = Database.query(query);
         return (String)batches[0].get(UTIL_Currency.CURRENCY_ISO_CODE_FIELD);
-    }
-
-    @AuraEnabled
-    public static String getGatewaysFromElevate() {
-        return null;
-    }
-
-    @AuraEnabled
-    public static String encryptGatewayId(String gatewayId) {
-        return null;
-    }
-
-    @AuraEnabled
-    public static String decryptGatewayId(String encryptedGatewayId) {
-        return null;
-    }
-
-    @AuraEnabled
-    public static String getGatewayAssignmentSettings() {
-        return null;
-    }
-
-    public class GatewayAssignmentSettings {
-        String defaultGatewayId;
-        String defaultGatewayName;
-        String defaultTemplateId;
-        Boolean gatewayAssignmentEnabled;
     }
 
     /*******************************************************************************************************

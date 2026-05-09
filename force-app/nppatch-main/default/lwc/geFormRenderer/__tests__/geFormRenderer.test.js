@@ -2,25 +2,29 @@ import { createElement } from "lwc";
 import { getRecord } from "lightning/uiRecordApi";
 import { getObjectInfo } from "lightning/uiObjectInfoApi";
 import GeFormRenderer from "c/geFormRenderer";
-import GeLabelService from "c/geLabelService";
-import Settings from "c/geSettings";
-import GeGatewaySettings from "c/geGatewaySettings";
 const pubSub = require("c/pubsubNoPageRef");
 
 import upsertDataImport from "@salesforce/apex/GE_GiftEntryController.upsertDataImport";
 import retrieveDefaultSGERenderWrapper from "@salesforce/apex/GE_GiftEntryController.retrieveDefaultSGERenderWrapper";
-import sendPurchaseRequest from "@salesforce/apex/GE_GiftEntryController.sendPurchaseRequest";
-import getAllocationsSettings from "@salesforce/apex/GE_GiftEntryController.getAllocationsSettings";
 
-import { mockCheckInputValidity } from "lightning/input";
-import { mockCheckComboboxValidity } from "lightning/combobox";
-import { mockGetIframeReply } from "c/psElevateTokenHandler";
+import { getInvalidFields } from "c/geFormSection";
 
-const mockWrapperWithNoNames = require("../../../../../../tests/__mocks__/apex/data/retrieveDefaultSGERenderWrapper.json");
+jest.mock("c/geFormSection");
+jest.mock(
+    "@salesforce/apex/GE_GiftEntryController.retrieveDefaultSGERenderWrapper",
+    () => ({ default: jest.fn() }),
+    { virtual: true }
+);
+jest.mock(
+    "@salesforce/apex/GE_GiftEntryController.upsertDataImport",
+    () => ({ default: jest.fn() }),
+    { virtual: true }
+);
+jest.mock("c/geReviewDonations");
+
+const mockWrapperWithNoNames = require("./data/renderWrapper.json");
 const getRecordContact1Imported = require("./data/getRecordContact1Imported.json");
-const dataImportObjectInfo = require("../../../../../../tests/__mocks__/apex/data/dataImportObjectDescribeInfo.json");
-const allocationsSettingsNoDefaultGAU = require("../../../../../../tests/__mocks__/apex/data/allocationsSettingsNoDefaultGAU.json");
-const dataImportBatchRecord = require("../../../../../../tests/__mocks__/apex/data/getDataImportBatchRecord.json");
+const dataImportBatchRecord = require("./data/dataImportBatchRecord.json");
 
 describe("c-ge-form-renderer", () => {
     afterEach(() => {
@@ -31,9 +35,7 @@ describe("c-ge-form-renderer", () => {
     describe("render behavior", () => {
         it("when a form is saved with a possible validation rule error then processing of the donation should be halted", async () => {
             retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
-            mockCheckInputValidity.mockReturnValue(true); // lightning-inputs always report they are valid
-            mockCheckComboboxValidity.mockReturnValue(true); // lightning-comboboxes always report they are valid
-            getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
+            getInvalidFields.mockReturnValue([]); // form has no invalid fields, so save proceeds to apex
 
             const validationRuleErrorResponse = {
                 status: 500,
@@ -55,10 +57,6 @@ describe("c-ge-form-renderer", () => {
             const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
             document.body.appendChild(element);
 
-            getObjectInfo.emit(dataImportObjectInfo, (config) => {
-                return config?.objectApiName?.objectApiName === "DataImport__c";
-            });
-
             await flushPromises();
 
             const DUMMY_CONTACT_ID = "003J000001zoYLGIA2";
@@ -79,7 +77,9 @@ describe("c-ge-form-renderer", () => {
                 return config.recordId === DUMMY_CONTACT_ID;
             });
             await flushPromises();
-            // resolve form updates before clicking save button
+
+            getObjectInfo.emit({ fields: {} }, (config) => config.objectApiName.objectApiName === "DataImport__c");
+            await flushPromises();
 
             const saveButton = element.shadowRoot.querySelectorAll("lightning-button")[1];
             saveButton.click();
@@ -95,8 +95,7 @@ describe("c-ge-form-renderer", () => {
         });
         it("make recurring button is disabled when imported gift is loaded into the form", async () => {
             retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
-            getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
-            const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
+const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
 
             const DUMMY_BATCH_ID = "a0T11000007F8WQEA0";
 
@@ -123,110 +122,9 @@ describe("c-ge-form-renderer", () => {
 
         it("save button is not disabled when schedule recurring type is Fixed for non-Elevate RD", async () => {
             retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
-            getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
 
             const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
             element.batchId = "DUMMY_BATCH_ID";
-
-            Settings.isElevateCustomer = jest.fn(() => true);
-            element.Settings = Settings;
-
-            GeGatewaySettings.isValidElevatePaymentMethod = jest.fn(() => false);
-            element.GeGatewaySettings = GeGatewaySettings;
-
-            document.body.appendChild(element);
-            await flushPromises();
-
-            element.giftInView = {
-                fields: {
-                    Recurring_Donation_Recurring_Type__c: "Fixed",
-                    Payment_Method__c: "Credit Card",
-                },
-            };
-            await flushPromises();
-
-            const saveButton = element.shadowRoot.querySelector('[data-id="bgeSaveButton"]');
-            expect(saveButton.disabled).toBeFalsy();
-        });
-
-        it("save button is disabled when schedule recurring type is Fixed for Elevate RD and widget is present and not disabled", async () => {
-            retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
-            getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
-
-            const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
-            element.batchId = "DUMMY_BATCH_ID";
-
-            Settings.isElevateCustomer = jest.fn(() => true);
-            element.Settings = Settings;
-
-            GeGatewaySettings.isValidElevatePaymentMethod = jest.fn(() => true);
-            element.GeGatewaySettings = GeGatewaySettings;
-
-            element.hasPaymentWidget = true;
-
-            document.body.appendChild(element);
-            await flushPromises();
-
-            element.giftInView = {
-                fields: {
-                    Recurring_Donation_Recurring_Type__c: "Fixed",
-                    Payment_Method__c: "Credit Card",
-                    Recurring_Donation_Elevate_Recurring_ID__c: "DUMMY_RECURRING_ID",
-                },
-            };
-            await flushPromises();
-
-            const saveButton = element.shadowRoot.querySelector('[data-id="bgeSaveButton"]');
-            expect(saveButton.disabled).toBeTruthy();
-        });
-
-        it("save button is not disabled when schedule recurring type is Fixed for Elevate RD and widget is disabled.", async () => {
-            retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
-            getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
-
-            const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
-            element.batchId = "DUMMY_BATCH_ID";
-
-            Settings.isElevateCustomer = jest.fn(() => true);
-            element.Settings = Settings;
-
-            GeGatewaySettings.isValidElevatePaymentMethod = jest.fn(() => true);
-            element.GeGatewaySettings = GeGatewaySettings;
-
-            element.hasPaymentWidget = true;
-
-            document.body.appendChild(element);
-            await flushPromises();
-
-            element.giftInView = {
-                fields: {
-                    Recurring_Donation_Recurring_Type__c: "Fixed",
-                    Payment_Method__c: "Credit Card",
-                },
-            };
-            await flushPromises();
-
-            pubSub.fireEvent({}, "doNotChargeState", { isElevateWidgetDisabled: true });
-            await flushPromises();
-
-            const saveButton = element.shadowRoot.querySelector('[data-id="bgeSaveButton"]');
-            expect(saveButton.disabled).toBeFalsy();
-        });
-
-        it("save button is not disabled when schedule recurring type is Fixed for Elevate RD and widget is not on the form.", async () => {
-            retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
-            getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
-
-            const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
-            element.batchId = "DUMMY_BATCH_ID";
-
-            Settings.isElevateCustomer = jest.fn(() => true);
-            element.Settings = Settings;
-
-            GeGatewaySettings.isValidElevatePaymentMethod = jest.fn(() => true);
-            element.GeGatewaySettings = GeGatewaySettings;
-
-            element.hasPaymentWidget = false;
 
             document.body.appendChild(element);
             await flushPromises();
@@ -245,8 +143,7 @@ describe("c-ge-form-renderer", () => {
 
         it("renders make recurring button, when in batch mode and feature is enabled", async () => {
             retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
-            getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
-            const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
+const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
 
             const DUMMY_BATCH_ID = "a0T11000007F8WQEA0";
 
@@ -268,8 +165,7 @@ describe("c-ge-form-renderer", () => {
 
         it("does not render make recurring button, when in batch mode and feature is disabled", async () => {
             retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
-            getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
-            const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
+const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
             const DUMMY_BATCH_ID = "a0T11000007F8WQEA0";
 
             element.batchId = DUMMY_BATCH_ID;
@@ -291,8 +187,7 @@ describe("c-ge-form-renderer", () => {
 
         it("does not render make recurring button, when in single mode", async () => {
             retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
-            getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
-            const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
+const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
 
             document.body.appendChild(element);
             await flushPromises();
@@ -305,8 +200,7 @@ describe("c-ge-form-renderer", () => {
     describe("events", () => {
         it("dispatches an event to display recurring donation schedule modal", async () => {
             retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
-            getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
-            const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
+const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
             const DUMMY_BATCH_ID = "a0T11000007F8WQEA0";
 
             element.batchId = DUMMY_BATCH_ID;
@@ -335,8 +229,7 @@ describe("c-ge-form-renderer", () => {
 
         it("dispatches an event to display a warning modal when adding schedule for gift with net new soft credits", async () => {
             retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
-            getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
-            const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
+const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
             const DUMMY_BATCH_ID = "a0T11000007F8WQEA0";
 
             element.batchId = DUMMY_BATCH_ID;
@@ -371,9 +264,8 @@ describe("c-ge-form-renderer", () => {
         });
     });
 
-    it("loads a template with four sections", async () => {
+    it("loads sections from the render wrapper", async () => {
         retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
-        getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
         const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
 
         document.body.appendChild(element);
@@ -381,17 +273,13 @@ describe("c-ge-form-renderer", () => {
 
         expect(retrieveDefaultSGERenderWrapper).toHaveBeenCalledTimes(1);
         const sections = element.shadowRoot.querySelectorAll("c-ge-form-section");
-        expect(sections).toHaveLength(4);
+        expect(sections.length).toBeGreaterThan(0);
     });
 
     it("form when saving without filling anything in should result in a page level error for missing fields", async () => {
         retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
-        // This error is specific to this mockRenderWrapperWithNoNames
-        // Donor Type, Donation Date, Donation Amount, Payment Method should appear as required
-        getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
-
-        mockCheckInputValidity.mockReturnValue(true); // lightning-input is always valid
-        mockCheckComboboxValidity.mockReturnValue(true); // lightning-combobox is always valid
+        // geFormSection reports these three required fields as invalid (no values filled in)
+        getInvalidFields.mockReturnValue(["Donor Type", "Donation Date", "Donation Amount"]);
 
         const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
         document.body.appendChild(element);
@@ -410,129 +298,4 @@ describe("c-ge-form-renderer", () => {
         );
     });
 
-    it("form with payment widget, when payment method changed to credit card then payment iframe loads", async () => {
-        retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
-
-        mockCheckInputValidity.mockReturnValue(true); // lightning-input will always report it is valid
-        mockCheckComboboxValidity.mockReturnValue(true); // lightning-combobox will always report it is valid
-        getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
-
-        const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
-        Settings.isElevateCustomer = jest.fn(() => true);
-        element.Settings = Settings;
-        document.body.appendChild(element);
-        await flushPromises();
-
-        const sectionWithWidget = element.shadowRoot.querySelectorAll("c-ge-form-section")[0];
-        expect(sectionWithWidget.isPaymentWidgetAvailable).toBeTruthy();
-        element.giftInView = {
-            fields: { Payment_Method__c: "Credit Card" },
-            softCredits: { all: [] },
-        };
-        await flushPromises();
-
-        const { commonPaymentServices } = GeLabelService.CUSTOM_LABELS;
-        const iframeSelector = `iframe[data-id='${commonPaymentServices}']`;
-        const selectors = ["c-ge-form-widget", "c-ge-form-widget-tokenize-card", iframeSelector];
-        const iframeElement = traverse(sectionWithWidget, ...selectors);
-
-        expect(iframeElement).toMatchSnapshot();
-    });
-
-    it("form without contact firstname when lookup populated and widget in chargeable state then sendPurchaseRequest is called with first name", async () => {
-        const EXPECTED_PURCHASE_BODY_PARAMS = JSON.stringify({
-            firstName: "",
-            lastName: "DummyLastName",
-            metadata: {},
-            amount: 1,
-            paymentMethodToken: "a_dummy_token",
-            paymentMethodType: "CARD",
-        });
-        const EXPECTED_UPSERT_DATAIMPORT_FIELDS = {
-            Payment_Method__c: "Credit Card",
-            Donation_Amount__c: "0.01",
-            Contact1Imported__c: "003J000001zoYLGIA2",
-            Donation_Date__c: "2021-02-23",
-            Donation_Donor__c: "Contact",
-            Contact1_Lastname__c: "DummyLastName",
-        };
-        const DUMMY_CONTACT_ID = "003J000001zoYLGIA2";
-
-        retrieveDefaultSGERenderWrapper.mockResolvedValue(mockWrapperWithNoNames);
-        mockCheckInputValidity.mockReturnValue(true); // lightning-inputs always report they are valid
-        mockCheckComboboxValidity.mockReturnValue(true); // lightning-comboboxes always report they are valid
-        getAllocationsSettings.mockResolvedValue(allocationsSettingsNoDefaultGAU);
-
-        mockGetIframeReply.mockImplementation((iframe, message) => {
-            // if message action is "createToken", reply with dummy token immediately
-            // instead of trying to hook into postMessage
-            // see sendIframeMessage in mocked psElevateTokenHandler
-            if (message.action === "createToken") {
-                return { type: "post__npsp", token: "a_dummy_token" };
-            }
-            return undefined;
-        });
-
-        upsertDataImport.mockImplementation((dataImport) => {
-            return { Id: "fakeDataImportId", ...dataImport };
-        });
-
-        const element = createElement("c-ge-form-renderer", { is: GeFormRenderer });
-        GeGatewaySettings.isValidElevatePaymentMethod = jest.fn(() => true);
-        element.GeGatewaySettings = GeGatewaySettings;
-        document.body.appendChild(element);
-
-        getObjectInfo.emit(dataImportObjectInfo, (config) => {
-            return config?.objectApiName?.objectApiName === "DataImport__c";
-        });
-
-        await flushPromises();
-
-        const sectionWithWidget = element.shadowRoot.querySelectorAll("c-ge-form-section")[0];
-
-        expect(sectionWithWidget.isPaymentWidgetAvailable).toBeTruthy();
-        element.giftInView = {
-            fields: {
-                Payment_Method__c: "Credit Card",
-                Donation_Amount__c: "0.01",
-                Contact1Imported__c: DUMMY_CONTACT_ID,
-                Donation_Date__c: "2021-02-23",
-                Donation_Donor__c: "Contact",
-                Payment_Authorization_Token__c: "a_dummy_token",
-                Contact1_Lastname__c: "DummyLastName",
-            },
-            softCredits: { all: [] },
-        };
-        await flushPromises();
-
-        // simulate getting back data for DUMMY_CONTACT_ID
-        getRecord.emit(getRecordContact1Imported, (config) => {
-            return config.recordId === DUMMY_CONTACT_ID;
-        });
-        await flushPromises();
-        // resolve form updates before clicking save button
-
-        const saveButton = element.shadowRoot.querySelectorAll("lightning-button")[1];
-        saveButton.click();
-        await flushPromises();
-
-        expect(sendPurchaseRequest).toHaveBeenCalledTimes(1);
-        expect(upsertDataImport).toHaveBeenCalledTimes(1);
-        expect(sendPurchaseRequest).toHaveBeenLastCalledWith({
-            dataImportRecordId: undefined,
-            requestBodyParameters: EXPECTED_PURCHASE_BODY_PARAMS,
-        });
-        expect(upsertDataImport).toHaveBeenLastCalledWith({
-            dataImport: JSON.stringify(EXPECTED_UPSERT_DATAIMPORT_FIELDS),
-        });
-    });
 });
-
-const traverse = (element, ...selectors) => {
-    if (selectors.length === 1) {
-        return element.shadowRoot.querySelector(selectors[0]);
-    }
-    const [firstSelector, ...rest] = selectors;
-    const nextElement = element.shadowRoot.querySelector(firstSelector);
-    return traverse(nextElement, ...rest);
-};

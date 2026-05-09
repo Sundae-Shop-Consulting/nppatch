@@ -35,7 +35,6 @@
 
 public with sharing class Gifts {
 
-    private Set<String> elevateBatchIds;
     @TestVisible private Map<Id, DataImport__c> dataImportsById = new Map<Id, DataImport__c>();
     @TestVisible private Map<Id, DataImport__c> giftsToUpdate = new Map<Id, DataImport__c>();
     @TestVisible private GiftSelector giftSelector;
@@ -108,26 +107,10 @@ public with sharing class Gifts {
         return this.dataImportsById.values().size();
     }
 
-    public List<DataImport__c> authorizedGifts() {
-        List<DataImport__c> giftsToReturn = new List<DataImport__c>();
-        for (DataImport__c gift : dataImportsById.values()) {
-            if (gift.Payment_Status__c == 'AUTHORIZED') {
-                giftsToReturn.add(gift);
-            }
-        }
-        return giftsToReturn;
-    }
-
     public void prepareForProcessing() {
         giftsToUpdate.clear();
 
         giftsToProcessingStatus();
-
-        // Elevate integration removed; always treat as unavailable for authorized payments
-        String failReason = String.format(
-            Label.gePaymentServicesUnavailableFailureMessage,
-            new List<String> { Label.commonPaymentServices });
-        failGiftsWithAuthorizedPaymentsWith(failReason);
     }
 
     public void moveProcessableToProcessingStatus() {
@@ -158,36 +141,6 @@ public with sharing class Gifts {
         giftsToUpdate.clear();
     }
 
-    public Set<String> elevateBatchIds() {
-        return elevateBatchIds;
-    }
-
-    public void authorizedToPaymentProcessingStatus() {
-        for (DataImport__c gift : authorizedGifts()) {
-            gift.Payment_Status__c = 'PAYMENTPROCESSING';
-            giftsToUpdate.put(gift.Id, gift);
-        }
-    }
-
-    public void failGiftsByElevateBatchIdWithReason(Map<String, String> failReasonByElevateBatchId) {
-        for (String elevateBatchId : failReasonByElevateBatchId.keySet()) {
-            List<DataImport__c> giftsInElevateBatch = findGiftsByElevateBatchId(elevateBatchId);
-            String failReason = failReasonByElevateBatchId.get(elevateBatchId);
-            applyFailReasonToGiftsIn(giftsInElevateBatch, failReason);
-        }
-    }
-
-    public void failGiftsWithAuthorizedPaymentsWith(String failReason) {
-        for (DataImport__c gift : giftsToUpdate.values()) {
-            Gift currentGift = new Gift(gift);
-
-            if (currentGift.hasAuthorizedPayment()) {
-                gift.Status__c = BDI_DataImport_API.bdiFailed;
-                gift.FailureInformation__c = failReason;
-            }
-        }
-    }
-
     public void failWith(String failReason) {
         for (Gift gift : standardGiftsInProcessing()) {
             gift.asDataImport().Status__c = BDI_DataImport_API.bdiFailed;
@@ -205,7 +158,7 @@ public with sharing class Gifts {
         List<Gift> processingGifts = new List<Gift>();
         for (DataImport__c gift : dataImportsById.values()) {
             Gift currentGift = new Gift(gift);
-            if (currentGift.isProcessing() && !currentGift.isPaymentProcessing()) {
+            if (currentGift.isProcessing()) {
                 processingGifts.add(currentGift);
             }
         }
@@ -220,24 +173,6 @@ public with sharing class Gifts {
                 giftsToUpdate.put(dataImport.Id, dataImport);
             }
         }
-    }
-
-    private void applyFailReasonToGiftsIn(List<DataImport__c> giftsInElevateBatch, String failReason) {
-        for (DataImport__c gift : giftsInElevateBatch) {
-            gift.Payment_Status__c = 'RETRYABLEERROR';
-            gift.FailureInformation__c = failReason;
-            giftsToUpdate.put(gift.Id, gift);
-        }
-    }
-
-    private List<DataImport__c> findGiftsByElevateBatchId(String elevateBatchId) {
-        // Payment_Elevate_Batch_ID__c has been removed; return empty list
-        return new List<DataImport__c>();
-    }
-
-    private void setElevateBatchIds(List<DataImport__c> dataImports) {
-        // Elevate batch IDs removed; always empty
-        elevateBatchIds = new Set<String>();
     }
 
     private void populateDataImportsById(List<DataImport__c> dataImports) {

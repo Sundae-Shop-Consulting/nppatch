@@ -38,7 +38,6 @@ public with sharing class Gift {
     @TestVisible private Data_Import_Settings__c dataImportSettings;
     @TestVisible private DataImport__c dataImport;
     private Donation donation;
-    private List<String> availableFields;
     private SoftCredits softCredits {
         get {
             if (softCredits == null) {
@@ -73,7 +72,6 @@ public with sharing class Gift {
     public Gift(DataImport__c dataImport, Donation donation) {
         this.donation = donation;
         this.dataImport = dataImport;
-        this.populateAvailableFields();
         this.populateSoftCredits();
     }
 
@@ -87,14 +85,6 @@ public with sharing class Gift {
 
     public Id giftBatchId() {
         return this.dataImport.NPPatch_Data_Import_Batch__c;
-    }
-
-    public Boolean requiresReauthorizationBeforeChange() {
-        if (dataImport.Payment_Status__c != 'AUTHORIZED') {
-            return false;
-        }
-
-        return this.hasPaymentFieldsChanged();
     }
 
     public SoftCredits softCredits() {
@@ -208,29 +198,8 @@ public with sharing class Gift {
         return this.status() == BDI_DataImport_API.bdiProcessing;
     }
 
-    public Boolean hasAuthorizedPayment() {
-        return this.dataImport.Payment_Status__c == 'AUTHORIZED';
-    }
-
-    public Boolean isPaymentProcessing() {
-        return this.dataImport.Payment_Status__c == 'PAYMENTPROCESSING';
-    }
-
     public Boolean isDryRunValidated() {
         return this.dataImport.Status__c == BDI_DataImport_API.bdiDryRunValidated;
-    }
-
-    private void populateAvailableFields() {
-        Map<String, Object> dataImportFields = this.dataImport.getPopulatedFieldsAsMap();
-        List<String> fields = new List<String>();
-
-        for (String field : dataImportFields.keySet()) {
-            if (GiftBatchService.PAYMENT_INTEGRATION_FIELDS.contains(field)) {
-                fields.add(field);
-            }
-        }
-
-        this.availableFields = fields;
     }
 
     private void populateSoftCredits() {
@@ -255,18 +224,6 @@ public with sharing class Gift {
 
     private Boolean hasDonation() {
         return this.dataImport.DonationImported__c != null && this.donation != null;
-    }
-
-    private Boolean hasPaymentFieldsChanged() {
-        DataImport__c databaseDataImport = giftSelector.getGiftById(this.dataImport.Id, this.availableFields);
-
-        for (String field : this.availableFields) {
-            if (this.dataImport.get(field) != databaseDataImport.get(field)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     private void loadDataImportSettings() {

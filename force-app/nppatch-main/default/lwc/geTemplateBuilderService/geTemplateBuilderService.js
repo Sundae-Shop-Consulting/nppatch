@@ -3,19 +3,13 @@ import { handleError } from "c/utilTemplateBuilder";
 import { mutable } from "c/utilCommon";
 import GeWidgetService from "c/geWidgetService";
 import labelGeHeaderFieldBundles from "@salesforce/label/c.geHeaderFieldBundles";
-import checkForElevateCustomer from "@salesforce/apex/GE_GiftEntryController.isElevateCustomer";
 
 class GeTemplateBuilderService {
     fieldMappingByDevName = null;
     fieldMappingsByObjMappingDevName = null;
     objectMappingByDevName = null;
-    isElevateCustomer = null;
 
     init = async (fieldMappingSetName, refresh) => {
-        if (this.isElevateCustomer === null) {
-            this.isElevateCustomer = await checkForElevateCustomer();
-        }
-
         if (
             this.fieldMappingByDevName === null ||
             this.fieldMappingsByObjMappingDevName === null ||
@@ -102,12 +96,6 @@ class GeTemplateBuilderService {
             fieldMappingByDevName.geFormWidgetAllocation,
             fieldMappingByDevName.geFormWidgetSoftCredit,
         ];
-
-        // If the org is an Elevate customer, add the Salesforce.org Elevate widget
-        if (this.isElevateCustomer) {
-            fieldMappingByDevName.geFormWidgetTokenizeCard = GeWidgetService.definitions.geFormWidgetTokenizeCard;
-            fieldMappingsByObjMappingDevName.Widgets.push(fieldMappingByDevName.geFormWidgetTokenizeCard);
-        }
     };
 }
 

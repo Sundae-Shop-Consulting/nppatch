@@ -161,33 +161,6 @@ private class Gift_Test {
     }
 
     @isTest
-    static void validateThatGiftNeedsToBeReauthorized() {
-        DataImport__c dataImport = new DataImport__c(
-            Payment_Status__c = 'AUTHORIZED',
-            Donation_Amount__c = 3.00
-        );
-        Gift authorizedGift = new Gift(dataImport);
-
-        GiftSelector mockedGiftSelector = stubFor(new GiftSelectorMock(3.00));
-        authorizedGift.giftSelector = mockedGiftSelector;
-        System.assertEquals(false, authorizedGift.requiresReauthorizationBeforeChange());
-
-        mockedGiftSelector = stubFor(new GiftSelectorMock(5.00));
-        authorizedGift.giftSelector = mockedGiftSelector;
-
-        Boolean needsReauthorization = authorizedGift.requiresReauthorizationBeforeChange();
-        System.assert(needsReauthorization);
-    }
-
-    @isTest
-    static void shouldNotRequireReauthorization() {
-        DataImport__c dataImport = new DataImport__c(Payment_Status__c = null);
-        Gift gift = new Gift(dataImport);
-
-        System.assertEquals(false, gift.requiresReauthorizationBeforeChange());
-    }
-
-    @isTest
     static void shouldReturnDataImportRecord() {
         DataImport__c dataImport = new DataImport__c(
             Donation_Amount__c = 10,
@@ -275,22 +248,6 @@ private class Gift_Test {
     }
 
     @isTest
-    static void shouldReturnTrueForAuthorizedGift() {
-        DataImport__c dataImport = new DataImport__c(Payment_Status__c = 'AUTHORIZED');
-        Gift gift = new Gift(dataImport);
-
-        System.assertEquals(true, gift.hasAuthorizedPayment());
-    }
-
-    @isTest
-    static void shouldReturnFalseForNonAuthorizedGift() {
-        DataImport__c dataImport = new DataImport__c(Payment_Status__c = null);
-        Gift gift = new Gift(dataImport);
-
-        System.assertEquals(false, gift.hasAuthorizedPayment());
-    }
-
-    @isTest
     static void shouldReturnTrueForDryRunValidatedGift() {
         DataImport__c dataImport = new DataImport__c(Status__c = BDI_DataImport_API.bdiDryRunValidated);
         Gift gift = new Gift(dataImport);
@@ -374,41 +331,6 @@ private class Gift_Test {
         // Assert
         System.assertEquals(0, gift.softCredits().size(),
             'Should not have any soft credits after preprocessing for recurring gift');
-    }
-
-    private class GiftSelectorMock implements StubProvider {
-
-        private Decimal newDonationAmount;
-
-        public GiftSelectorMock(Decimal newDonationAmount) {
-            this.newDonationAmount = newDonationAmount;
-        }
-
-        public Object handleMethodCall(Object stubbedObject,
-            String stubbedMethodName,
-            Type returnType,
-            List<Type> listOfParamTypes,
-            List<String> listOfParamNames,
-            List<Object> listOfArgs) {
-
-            switch on (stubbedMethodName) {
-                when 'getGiftById' {
-                    return new DataImport__c(
-                        Payment_Status__c = 'AUTHORIZED',
-                        Donation_Amount__c = newDonationAmount
-                    );
-                }
-            }
-
-            return null;
-        }
-    }
-
-    private static GiftSelector stubFor(GiftSelectorMock giftSelectorMock) {
-        return (GiftSelector) Test.createStub(
-            GiftSelector.class,
-            giftSelectorMock
-        );
     }
 
     private class UnitOfWorkMock implements StubProvider {

@@ -2,7 +2,6 @@ import getRenderWrapper from "@salesforce/apex/GE_GiftEntryController.retrieveDe
 import getFormRenderWrapper from "@salesforce/apex/GE_GiftEntryController.getFormRenderWrapper";
 import getAllocationSettings from "@salesforce/apex/GE_GiftEntryController.getAllocationsSettings";
 import getFieldMappings from "@salesforce/apex/GE_GiftEntryController.getFieldMappings";
-import getOrgDomainInfo from "@salesforce/apex/UTIL_AuraEnabledCommon.getOrgDomainInfo";
 
 import { handleError } from "c/utilTemplateBuilder";
 import { isNotEmpty, isEmpty } from "c/utilCommon";
@@ -42,15 +41,6 @@ class GeFormService {
     fieldTargetMappings;
     formTemplate;
     donationFieldTemplateLabel;
-
-    getOrgDomain = async () => {
-        try {
-            return await getOrgDomainInfo();
-        } catch (error) {
-            handleError(error);
-            return undefined;
-        }
-    };
 
     /**
      * Retrieve the default form render wrapper.

@@ -141,18 +141,6 @@ public inherited sharing class GiftBatch implements IGiftBatch {
         return shouldPayFirstInstallment != null ? Boolean.valueOf(shouldPayFirstInstallment): false;
     }
 
-    public Boolean hasElevateWidget() {
-        return this.giftTemplate.hasElevateWidget();
-    }
-
-    public void captureAuthorizedGifts() {
-        // Elevate batch service removed - no-op
-    }
-
-    public void failGiftsWithReason(Map<String, String> failReasonByElevateBatchId) {
-        gifts.failGiftsByElevateBatchIdWithReason(failReasonByElevateBatchId);
-    }
-
     private void failGiftsWith(String failReason) {
         gifts.failWith(failReason);
     }

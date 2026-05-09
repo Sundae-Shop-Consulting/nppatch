@@ -1,0 +1,19 @@
+{
+  "apiName": "DataImportBatch__c",
+  "fields": {
+    "Batch_Defaults__c": {
+      "displayValue": null,
+      "value": "{}"
+    },
+    "Form_Template__c": {
+      "displayValue": null,
+      "value": "DUMMY_TEMPLATE_ID"
+    },
+    "Allow_Recurring_Donations__c": {
+      "displayValue": null,
+      "value": "true"
+    }
+  },
+  "id": "a0T11000007F8WQEA0",
+  "recordTypeId": "012000000000000AAA"
+}

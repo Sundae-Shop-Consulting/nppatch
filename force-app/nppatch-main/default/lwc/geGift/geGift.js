@@ -4,24 +4,15 @@ import saveSingleGift from "@salesforce/apex/GE_GiftEntryController.saveSingleGi
 import FAILURE_INFORMATION from "@salesforce/schema/DataImport__c.FailureInformation__c";
 import STATUS from "@salesforce/schema/DataImport__c.Status__c";
 import DONATION_IMPORTED from "@salesforce/schema/DataImport__c.DonationImported__c";
-import PAYMENT_AUTHORIZE_TOKEN from "@salesforce/schema/DataImport__c.Payment_Authorization_Token__c";
-const PAYMENT_STATUS = { fieldApiName: "Payment_Status__c", objectApiName: "DataImport__c" };
-const PAYMENT_ELEVATE_ID = { fieldApiName: "Payment_Elevate_ID__c", objectApiName: "DataImport__c" };
-const DATA_IMPORT_RECURRING_DONATION_ELEVATE_ID = {
-    fieldApiName: "Recurring_Donation_Elevate_Recurring_ID__c",
-    objectApiName: "DataImport__c",
-};
 
 import SoftCredits from "./geSoftCredits";
 import GiftScheduleService from "./geScheduleService";
-import { GIFT_STATUSES, PAYMENT_STATUSES } from "c/geConstants";
+import { GIFT_STATUSES } from "c/geConstants";
 
 class Gift {
     _softCredits = new SoftCredits();
     _schedule = {};
     _fields = {};
-    _hasConvertedToOneTimeBatchItemType = false;
-    _hasConvertedToRecurringBatchItemType = false;
 
     constructor(giftView) {
         this._init(giftView);
@@ -40,20 +31,6 @@ class Gift {
         }
     }
 
-    idToRemove() {
-        let id;
-        if (this.hasConvertedToElevateRecurringType()) {
-            id = this._fields[PAYMENT_ELEVATE_ID.fieldApiName];
-        } else if (this.hasConvertedToElevateOneTimeType()) {
-            id = this._fields[DATA_IMPORT_RECURRING_DONATION_ELEVATE_ID.fieldApiName];
-        } else {
-            id = this._fields[PAYMENT_ELEVATE_ID.fieldApiName]
-                ? this._fields[PAYMENT_ELEVATE_ID.fieldApiName]
-                : this._fields[DATA_IMPORT_RECURRING_DONATION_ELEVATE_ID.fieldApiName];
-        }
-        return id;
-    }
-
     id() {
         return this._fields.Id;
     }
@@ -66,24 +43,16 @@ class Gift {
         return this._fields[STATUS.fieldApiName] === GIFT_STATUSES.IMPORTED;
     }
 
-    hasCommitmentId() {
-        return !!this._fields[DATA_IMPORT_RECURRING_DONATION_ELEVATE_ID.fieldApiName];
-    }
-
     addSchedule(scheduleData) {
         this._schedule = scheduleData;
         const giftScheduleService = new GiftScheduleService();
         this._fields = giftScheduleService.addScheduleTo(this._fields, scheduleData);
-        this._hasConvertedToOneTimeBatchItemType = false;
-        this._hasConvertedToRecurringBatchItemType = true;
     }
 
     removeSchedule() {
         const giftScheduleService = new GiftScheduleService();
         this._fields = giftScheduleService.removeScheduleFromFields(this._fields);
         this._schedule = {};
-        this._hasConvertedToOneTimeBatchItemType = true;
-        this._hasConvertedToRecurringBatchItemType = false;
     }
 
     isFailed() {
@@ -141,23 +110,11 @@ class Gift {
         return this._softCredits;
     }
 
-    getFieldValue(field) {
-        return this._fields[field];
-    }
-
-    hasConvertedToElevateRecurringType() {
-        return this._hasConvertedToRecurringBatchItemType;
-    }
-
-    hasConvertedToElevateOneTimeType() {
-        return this._hasConvertedToOneTimeBatchItemType;
-    }
-
     asDataImport() {
         const dataImportRecord = { ...this._fields };
         delete dataImportRecord[undefined];
         for (const key of Object.keys(dataImportRecord)) {
-            if (key.includes("__r" || key === undefined) || key === PAYMENT_AUTHORIZE_TOKEN.fieldApiName) {
+            if (key.includes("__r") || key === undefined) {
                 delete dataImportRecord[key];
             }
         }
@@ -189,19 +146,7 @@ class Gift {
             softCredits: JSON.stringify([...this._softCredits.unprocessedSoftCredits()]),
             processedSoftCredits: JSON.stringify([...this._softCredits.processedSoftCredits()]),
             schedule: { ...this._schedule },
-            hasConvertedToRecurringBatchItemType: this._hasConvertedToRecurringBatchItemType,
-            hasConvertedToElevateOneTimeBatchItemType: this._hasConvertedToOneTimeBatchItemType,
         };
-    }
-
-    hasElevateRemovableStatus() {
-        return (
-            this.getFieldValue(STATUS.fieldApiName) !== GIFT_STATUSES.IMPORTED &&
-            ((this.getFieldValue(PAYMENT_ELEVATE_ID.fieldApiName) &&
-                this.getFieldValue(PAYMENT_STATUS.fieldApiName) === PAYMENT_STATUSES.AUTHORIZED) ||
-                this.getFieldValue(PAYMENT_STATUS.fieldApiName) === PAYMENT_STATUSES.PENDING ||
-                this.hasCommitmentId())
-        );
     }
 }
 

@@ -1,0 +1,40 @@
+{
+  "formTemplate": {
+    "name": "Default Gift Entry Template",
+    "description": "",
+    "layout": {
+      "sections": [
+        {
+          "id": "section-1",
+          "label": "Test Section",
+          "elements": [
+            {
+              "dataImportFieldMappingDevNames": ["Donation_Donor_mapping"],
+              "customLabel": "Donor Type"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "fieldMappingSetWrapper": {
+    "fieldMappingByDevName": {
+      "Account1_Name_mapping": {
+        "DeveloperName": "Account1_Name_mapping",
+        "Source_Field_API_Name": "Account1_Name__c"
+      },
+      "Contact1_Lastname_mapping": {
+        "DeveloperName": "Contact1_Lastname_mapping",
+        "Source_Field_API_Name": "Contact1_Lastname__c"
+      },
+      "Donation_Donor_mapping": {
+        "DeveloperName": "Donation_Donor_mapping",
+        "Source_Field_API_Name": "Donation_Donor__c"
+      }
+    },
+    "objectMappingByDevName": {},
+    "fieldMappingByTargetFieldName": {
+      "Opportunity.Amount": { "DeveloperName": "Donation_Amount_9e48e0798" }
+    }
+  }
+}

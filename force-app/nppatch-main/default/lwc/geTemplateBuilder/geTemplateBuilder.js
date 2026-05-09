@@ -4,8 +4,6 @@ import storeFormTemplate from "@salesforce/apex/GE_GiftEntryController.storeForm
 import retrieveFormTemplateById from "@salesforce/apex/GE_GiftEntryController.retrieveFormTemplateById";
 import TemplateBuilderService from "c/geTemplateBuilderService";
 import GeLabelService from "c/geLabelService";
-import GeSettings from "c/geSettings";
-import GeGatewaySettings from "c/geGatewaySettings";
 import { getObjectInfo } from "lightning/uiObjectInfoApi";
 import {
     dispatch,
@@ -30,8 +28,6 @@ import {
     removeFromArray,
     isEmpty,
     isNotEmpty,
-    hasNestedProperty,
-    apiNameFor,
     format,
 } from "c/utilCommon";
 
@@ -52,7 +48,6 @@ import DONATION_DATE_FIELD from "@salesforce/schema/DataImport__c.Donation_Date_
 import DONATION_CAMPAIGN_SOURCE_FIELD from "@salesforce/schema/DataImport__c.DonationCampaignImported__c";
 import STATUS_FIELD from "@salesforce/schema/DataImport__c.Status__c";
 import FAILURE_INFORMATION_FIELD from "@salesforce/schema/DataImport__c.FailureInformation__c";
-const ELEVATE_PAYMENT_STATUS = { fieldApiName: "Elevate_Payment_Status__c", objectApiName: "DataImport__c" };
 
 const DEFAULT_BATCH_TABLE_HEADERS_WITH_FIELD_MAPPINGS = [
     DONATION_AMOUNT_FIELD.fieldApiName,
@@ -88,7 +83,6 @@ const ERROR = "error";
 const EVENT_TOGGLE_MODAL = "togglemodal";
 const WARNING = "warning";
 const FIELD = "field";
-const FIELDS = "fields";
 const WIDGET = "widget";
 const VALUE = "value";
 
@@ -124,7 +118,6 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
         description: null,
         batchHeaderFields: [],
         layout: null,
-        elevateSettings: null,
     };
     formLayout = {
         fieldMappingSetDevName: null,
@@ -358,10 +351,6 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
             this.catalogFieldsForTemplateEdit();
         }
 
-        if (GeSettings.isElevateCustomer()) {
-            GeGatewaySettings.setElevateSettings(this.formTemplate.elevateSettings, this.formTemplateRecordId);
-        }
-
         this.clearRecordIdOnClone(queryParameters);
     };
 
@@ -394,9 +383,6 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
     clearRecordIdOnClone(queryParameters) {
         if (queryParameters.c__clone || this.isClone) {
             this._formTemplateRecordId = null;
-            if (GeSettings.isElevateCustomer()) {
-                GeGatewaySettings.clearTemplateRecordId();
-            }
         }
     }
 
@@ -477,24 +463,6 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
                 },
             ];
         });
-
-        this.includePaymentStatusDisplayField();
-    }
-
-    includePaymentStatusDisplayField() {
-        const hasElevatePaymentStatusField = hasNestedProperty(
-            this._dataImportObject,
-            FIELDS,
-            apiNameFor(ELEVATE_PAYMENT_STATUS)
-        );
-
-        if (TemplateBuilderService.isElevateCustomer && hasElevatePaymentStatusField) {
-            const elevatePaymentStatusOption = {
-                label: this._dataImportObject.fields[apiNameFor(ELEVATE_PAYMENT_STATUS)]?.label,
-                value: this._dataImportObject.fields[apiNameFor(ELEVATE_PAYMENT_STATUS)]?.apiName,
-            };
-            this.availableBatchTableColumnOptions.push(elevatePaymentStatusOption);
-        }
     }
 
     /*******************************************************************************
@@ -1427,9 +1395,6 @@ export default class geTemplateBuilder extends NavigationMixin(LightningElement)
             this.formTemplate.defaultBatchTableColumns = [];
         } else {
             this.formTemplate.defaultBatchTableColumns = this.selectedBatchTableColumnOptions;
-        }
-        if (GeSettings.isElevateCustomer()) {
-            this.formTemplate.elevateSettings = GeGatewaySettings.getElevateSettings();
         }
 
         // TODO: Currently hardcoded as we're not providing a way to
