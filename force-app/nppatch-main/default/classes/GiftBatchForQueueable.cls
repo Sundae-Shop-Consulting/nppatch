@@ -116,10 +116,6 @@ public inherited sharing class GiftBatchForQueueable {
         gifts.preprocessRecurringGifts(this.giftBatch.shouldPayFirstInstallment());
     }
 
-    public void captureElevateBatches() {
-        // Elevate batch service removed - no-op
-    }
-
     public void updateGiftsInChunk() {
         gifts.updateRecords();
     }

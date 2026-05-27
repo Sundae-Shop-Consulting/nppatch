@@ -48,24 +48,8 @@ private class GiftBatch_TEST {
     }
 
     @isTest
-    static void shouldReturnTrueWhenElevateWidgetOnTemplate() {
-        GiftBatch giftBatch = new GiftBatch();
-        giftBatch.giftTemplate = createDummyGiftTemplate(true);
-
-        System.assertEquals(true, giftBatch.hasElevateWidget());
-    }
-
-    @isTest
-    static void shouldReturnFalseWhenElevateWidgetNotOnTemplate() {
-        GiftBatch giftBatch = new GiftBatch();
-        giftBatch.giftTemplate = createDummyGiftTemplate(false);
-
-        System.assertEquals(false, giftBatch.hasElevateWidget());
-    }
-
-    @isTest
     static void shouldReturn3Gifts() {
-        Gifts gifts = new Gifts(buildGifts(3, null));
+        Gifts gifts = new Gifts(buildGifts(3));
         GiftBatch giftBatch = new GiftBatch();
         giftBatch.gifts = gifts;
 
@@ -244,30 +228,6 @@ private class GiftBatch_TEST {
         }
     }
 
-    private static GiftTemplate createDummyGiftTemplate(Boolean withElevateWidget) {
-        GE_Template.Element field =
-            new GE_Template.Element('field', 'True', null, 'CustomLabel', new List<String>{'Account_1_Name'});
-
-        GE_Template.Element[] elements = new GE_Template.Element[] { field };
-
-        if (withElevateWidget == true) {
-            GE_Template.Element widget =
-                new GE_Template.Element('widget', 'DisplayRule', 'geFormWidgetTokenizeCard', new List<String>{});
-            elements.add(widget);
-        }
-
-        GE_Template.Section section =
-            new GE_Template.Section('SectionLabel', 'Accordion', 'Expanded', 'True', elements);
-
-        GE_Template.Layout layout =
-            new GE_Template.Layout('DefaultMappingSet', new GE_Template.Section[]{section});
-
-        GE_Template.Template template =
-            new GE_Template.Template('Sample Template', 'This is the description.', '1.0', layout);
-
-        return new GiftTemplate(JSON.serialize(template));
-    }
-
     public class GiftsMock implements StubProvider {
         public Object handleMethodCall(Object stubbedObject,
             String stubbedMethodName,
@@ -284,7 +244,7 @@ private class GiftBatch_TEST {
         return (Gifts) Test.createStub(Gifts.class, giftsMock);
     }
 
-    private static List<DataImport__c> buildGifts(Integer numberOfGifts, String paymentStatus) {
+    private static List<DataImport__c> buildGifts(Integer numberOfGifts) {
         List<DataImport__c> dummyAuthorizedGifts = new List<DataImport__c>();
         for (Integer i = 0; i < numberOfGifts; i++) {
             DataImport__c dummyGift = new DataImport__c(
@@ -294,8 +254,7 @@ private class GiftBatch_TEST {
                 Account1_Name__c = 'DUMMY ACCOUNT ' +  i,
                 Donation_Amount__c = 1,
                 Donation_Date__c = Date.today(),
-                Donation_Donor__c = 'Account1',
-                Payment_Status__c = paymentStatus
+                Donation_Donor__c = 'Account1'
             );
             dummyAuthorizedGifts.add(dummyGift);
         }

@@ -87,34 +87,6 @@ private class GiftSelector_TEST {
             'Recurring_Donation_Effective_Date__c should not be in list of select fields');
     }
 
-    @isTest
-    private static void shouldIncludeElevateFields() {
-        mockElevateCustomerStatus(true);
-        GiftSelector selector = new GiftSelector();
-        List<String> selectFields = selector.fields();
-
-        System.assert(selectFields.contains(String.valueOf(DataImport__c.Payment_Declined_Reason__c)), 'List is missing Payment_Declined_Reason__c');
-    }
-
-    @isTest
-    private static void shouldNotIncludeElevateFields() {
-        mockElevateCustomerStatus(false);
-        GiftSelector selector = new GiftSelector();
-        List<String> selectFields = selector.fields();
-
-        System.assert(!selectFields.contains(String.valueOf(DataImport__c.Payment_Declined_Reason__c)), 'List should not include Payment_Declined_Reason__c');
-    }
-
-    private static void mockElevateCustomerStatus(Boolean isCustomer) {
-        GE_PaymentServicesMock mockInstance = new GE_PaymentServicesMock();
-        mockInstance.withIsElevateCustomer(isCustomer);
-        GE_PaymentServices paymentServicesMock = (GE_PaymentServices) Test.createStub(
-            GE_PaymentServices.class,
-            mockInstance
-        );
-        GE_PaymentServices.setInstance(paymentServicesMock);
-    }
-
     private static void mockRecurringGiftsEnabled(Boolean isEnabled) {
         GE_SettingsServiceMock mockInstance = new GE_SettingsServiceMock();
         mockInstance.withRecurringGiftsEnabled(isEnabled);

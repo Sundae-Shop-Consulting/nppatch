@@ -37,27 +37,22 @@ describe("c-ge-batch-gift-entry-header", () => {
             expect(buttons[2].disabled).toBe(true);
         });
 
-        it("should render process batch and payments button", async () => {
-            const batchHeader = setupComponentWithDummy({
-                authorizedPaymentsCount: 1,
-            });
+        it("should render process batch button", async () => {
+            const batchHeader = setupComponentWithDummy({});
 
             await flushPromises();
 
             const buttons = batchHeader.shadowRoot.querySelectorAll("lightning-button");
             const processBatchButton = buttons[1];
-            expect(processBatchButton.label).toBe("c.bgeProcessBatchAndPayments");
+            expect(processBatchButton.label).toBe("c.bgeProcessBatch");
         });
 
         it("renders detail row", async () => {
             const element = setupComponentWithDummy({
                 hasValuesGreaterThanZero: true,
-                hasPaymentsWithExpiredAuthorizations: false,
                 totalGiftsCount: 20,
                 processedGiftsCount: 10,
-                failedPaymentsCount: 0,
                 failedGiftsCount: 5,
-                expiredPaymentsCount: 0,
             });
 
             await flushPromises();
@@ -68,12 +63,9 @@ describe("c-ge-batch-gift-entry-header", () => {
         it("does not render detail row", async () => {
             const element = setupComponentWithDummy({
                 hasValuesGreaterThanZero: false,
-                hasPaymentsWithExpiredAuthorizations: false,
                 totalGiftsCount: 0,
                 processedGiftsCount: 0,
-                failedPaymentsCount: 0,
                 failedGiftsCount: 0,
-                expiredPaymentsCount: 0,
             });
 
             await flushPromises();
@@ -84,12 +76,9 @@ describe("c-ge-batch-gift-entry-header", () => {
         it("renders detail blocks for records processed and records failed with correct record counts on load", async () => {
             const element = setupComponentWithDummy({
                 hasValuesGreaterThanZero: true,
-                hasPaymentsWithExpiredAuthorizations: false,
                 totalGiftsCount: 20,
                 processedGiftsCount: 10,
-                failedPaymentsCount: 0,
                 failedGiftsCount: 5,
-                expiredPaymentsCount: 0,
             });
 
             await flushPromises();

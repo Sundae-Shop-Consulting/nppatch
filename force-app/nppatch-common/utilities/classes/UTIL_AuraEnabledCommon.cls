@@ -34,29 +34,6 @@
 * @description Common AuraEnabled methods applicable to multiple domains
 */
 public without sharing class UTIL_AuraEnabledCommon {
-    
-    /***
-    * @description Returns org domain details
-    * @return OrgDomainInfo
-    */
-    @AuraEnabled(cacheable=true)
-    public static OrgDomainInfo getOrgDomainInfo() {
-        OrgDomainInfo domainInfo;
-        try {
-            String url = System.Url.getOrgDomainUrl().getHost();
-            String[] urlParts = url.split('\\.');
-
-            String podName = [SELECT InstanceName FROM Organization].InstanceName.toLowerCase();
-
-            domainInfo = new OrgDomainInfo(urlParts[0], podName);
-            domainInfo.communityBaseURL = Site.getBaseUrl();
-        } catch (Exception ex) {
-            throwAuraHandledException(ex.getMessage());
-        }
-
-        return domainInfo;
-    }
-
     /***
     * @description Throws AuraHandledException
     * The wrapping of the error message again is required
@@ -77,20 +54,5 @@ public without sharing class UTIL_AuraEnabledCommon {
         AuraHandledException ex = new AuraHandledException(errMessage);
         ex.setMessage(errMessage);
         return ex;
-    }
-
-
-    /***
-    * @description Contains org domain and pod name
-    */
-    public class OrgDomainInfo {
-        @AuraEnabled public String orgDomain;
-        @AuraEnabled public String podName;
-        @AuraEnabled public String communityBaseURL;
-
-        public OrgDomainInfo (String orgDomain, String podName) {
-            this.orgDomain = orgDomain;
-            this.podName = podName;
-        }
     }
 }

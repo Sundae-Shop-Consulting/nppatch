@@ -5,14 +5,8 @@ const COLLAPSED_DISPLAY_MODE = "collapsed";
 
 export default class GeFormSection extends LightningElement {
     @api section;
-    @api widgetConfig;
     @api formState;
     @api giftInView;
-    _hasPaymentWidget = false;
-
-    renderedCallback() {
-        this.registerPaymentWidget();
-    }
 
     /**
      * Get the alternative text that represents the section expand/collapse button
@@ -71,39 +65,6 @@ export default class GeFormSection extends LightningElement {
         });
 
         return fieldMappedByAPIName;
-    }
-
-    registerPaymentWidget() {
-        if (!isUndefined(this.section)) {
-            this.section.elements.forEach((element) => {
-                if (element.componentName === "geFormWidgetTokenizeCard") {
-                    this._hasPaymentWidget = true;
-                }
-            });
-        }
-        if (this._hasPaymentWidget) {
-            const registerPaymentWidgetEvent = new CustomEvent("registerpaymentwidget");
-            this.dispatchEvent(registerPaymentWidgetEvent);
-        }
-    }
-
-    @api
-    get paymentToken() {
-        const widgetValues = [];
-        const widgets = this.template.querySelectorAll("c-ge-form-widget");
-        if (widgets !== null && typeof widgets !== "undefined") {
-            widgets.forEach((widget) => {
-                if (widget.isElevateTokenizeCard) {
-                    widgetValues.push(widget.paymentToken);
-                }
-            });
-        }
-        return widgetValues;
-    }
-
-    @api
-    get isPaymentWidgetAvailable() {
-        return this._hasPaymentWidget;
     }
 
     get renderableElements() {
