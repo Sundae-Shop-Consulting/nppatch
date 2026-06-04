@@ -213,22 +213,23 @@ public with sharing class ServiceDeliveryTriggerHandler_TEST {
             contactRecord.LastServiceDate__c
         );
 
-        List<ServiceDelivery__c> allServiceDeliveries = [
-            SELECT Id, Quantity__c, DeliveryDate__c
+        List<ServiceDelivery__c> deliveredToday = [
+            SELECT Id, Quantity__c
             FROM ServiceDelivery__c
-            ORDER BY DeliveryDate__c DESC
+            WHERE DeliveryDate__c = TODAY AND Quantity__c > 0
         ];
 
         Test.startTest();
-        allServiceDeliveries[0].Quantity__c = 0;
-        allServiceDeliveries[1].Quantity__c = 0;
-        update allServiceDeliveries;
+        for (ServiceDelivery__c sd : deliveredToday) {
+            sd.Quantity__c = 0;
+        }
+        update deliveredToday;
         Test.stopTest();
 
         requery();
 
         System.assertEquals(
-            allServiceDeliveries[2].DeliveryDate__c,
+            System.today().addDays(-1),
             contactRecord.LastServiceDate__c
         );
     }
