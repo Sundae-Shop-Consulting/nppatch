@@ -35,10 +35,7 @@
 public inherited sharing class GiftBatchTotals {
     private Integer totalGifts = 0;
     private Integer processedGifts = 0;
-    private Integer failedPayments = 0;
     private Integer failedGifts = 0;
-    private Integer expiredPayments = 0;
-    private Integer authorizedPayments = 0;
     private Integer processingGifts = 0;
     private Decimal totalAmount = 0;
 
@@ -76,9 +73,6 @@ public inherited sharing class GiftBatchTotals {
             GiftBatchAggregateGroupName.TOTAL.name() => this.totalGifts,
             GiftBatchAggregateGroupName.PROCESSED.name() => this.processedGifts,
             GiftBatchAggregateGroupName.FAILED.name()=> this.failedGifts,
-            GiftBatchAggregateGroupName.FAILED_PAYMENT.name() => this.failedPayments,
-            GiftBatchAggregateGroupName.EXPIRED_PAYMENT.name() => this.expiredPayments,
-            GiftBatchAggregateGroupName.AUTHORIZED_PAYMENT.name() => this.authorizedPayments,
             GiftBatchAggregateGroupName.PROCESSING.name() => this.processingGifts
         };
     }
@@ -102,16 +96,11 @@ public inherited sharing class GiftBatchTotals {
         addToTotalGiftsCountFor(statusGroup);
         countProcessedGiftsFor(statusGroup);
         addToFailedGiftsCountFor(statusGroup);
-        addToExpiredPaymentGiftsCountFor(statusGroup);
-        addToAuthorizedPaymentGiftsCountFor(statusGroup);
         addToProcessingGiftsCountFor(statusGroup);
     }
 
     private void addToFailedGiftsCountFor(GiftBatchStatusGroup statusGroup) {
-        if (statusGroup.isPaymentFailed()) {
-            failedPayments += statusGroup.recordCount();
-            failedGifts += statusGroup.recordCount();
-        } else if (statusGroup.isProcessingFailed()) {
+        if (statusGroup.isProcessingFailed()) {
             failedGifts += statusGroup.recordCount();
         }
     }
@@ -123,18 +112,6 @@ public inherited sharing class GiftBatchTotals {
     private void countProcessedGiftsFor(GiftBatchStatusGroup statusGroup) {
         if (statusGroup.isImported()) {
             processedGifts += statusGroup.recordCount();
-        }
-    }
-
-    private void addToExpiredPaymentGiftsCountFor(GiftBatchStatusGroup statusGroup) {
-        if (statusGroup.isPaymentAuthorizationExpired()) {
-            expiredPayments += statusGroup.recordCount();
-        }
-    }
-
-    private void addToAuthorizedPaymentGiftsCountFor(GiftBatchStatusGroup statusGroup) {
-        if (statusGroup.isPaymentAuthorized()) {
-            authorizedPayments += statusGroup.recordCount();
         }
     }
 

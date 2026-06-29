@@ -130,28 +130,6 @@ public with sharing class GE_GiftEntryController_TEST {
     }
 
     /***
-     * @description Verifies the purchase request response throws an excpetion
-     * when building a purchase request body fails with an unexpected error
-     */
-    @IsTest
-    static void shouldThrowExceptionWhenPurchaseRequestGetsUnexpectedError() {
-        String invalidBodyParameters = '{"amount":2500,"email"';
-        String dataImportRecordId = UTIL_UnitTestData_TEST.mockId(DataImport__c.SObjectType);
-
-        Exception actualException;
-        try {
-            Test.startTest();
-            GE_GiftEntryController.processPurchaseRequest(invalidBodyParameters, dataImportRecordId);
-            Test.stopTest();
-
-        } catch (Exception e) {
-            actualException = e;
-        }
-
-        System.assertNotEquals(null, actualException, 'An exception should be returned due an invalid request body');
-    }
-
-    /***
      * @description Confirm that the Data Import upsert method inserts and updates correctly.
      */
     @IsTest

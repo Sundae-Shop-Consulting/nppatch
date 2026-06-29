@@ -11,7 +11,7 @@
                                   data-action={ACTIONS.DRY_RUN_BATCH}
                                   data-qa-locator={qaLocatorBatchDryRun}>
                 </lightning-button>
-                <lightning-button label={processBatchButtonName}
+                <lightning-button label={LABELS.bgeProcessBatch}
                                   onclick={handleClick}
                                   disabled={isGiftBatchProcessing}
                                   data-action={ACTIONS.PROCESS_BATCH}
@@ -41,14 +41,6 @@
                 </p>
                 <p class="slds-text-body_regular">
                     {giftBatchState.failedGiftsCount}
-                </p>
-            </c-util-page-header-detail-block>
-            <c-util-page-header-detail-block if:true={hasFailedPayments}>
-                <p class="slds-text-title">
-                    {LABELS.commonPaymentProcessingErrors}
-                </p>
-                <p class="slds-text-body_regular">
-                    {giftBatchState.failedPaymentsCount}
                 </p>
             </c-util-page-header-detail-block>
         </c-util-page-header-detail-row>

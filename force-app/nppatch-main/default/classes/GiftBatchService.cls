@@ -44,16 +44,6 @@ public with sharing class GiftBatchService {
         set;
     }
 
-    public static final List<String> PAYMENT_INTEGRATION_FIELDS = new List<String>{
-        String.valueOf(DataImport__c.Donation_Amount__c), 
-        String.valueOf(DataImport__c.Donation_Date__c), 
-        String.valueOf(DataImport__c.Contact1Imported__c),
-        String.valueOf(DataImport__c.Contact1_Firstname__c), 
-        String.valueOf(DataImport__c.Contact1_Lastname__c), 
-        String.valueOf(DataImport__c.Account1Imported__c),
-        String.valueOf(DataImport__c.Account1_Name__c)
-    };
-
     private static final Set<String> FINISH_JOB_STATUS_SET = New Set<String> {
         'Completed',
         'Failed',
@@ -105,12 +95,6 @@ public with sharing class GiftBatchService {
             AsyncApexJobId asyncApexJobId = new AsyncApexJobId(jobId);
             updateGiftBatchWith(queueableGiftBatch.id(), asyncApexJobId);
         }
-    }
-
-    public void giftsFailedCaptureFor(Id batchId, Map<String, String> failReasonByElevateBatchId) {
-        GiftBatch giftBatch = new GiftBatch(new GiftBatchId(batchId));
-        giftBatch.failGiftsWithReason(failReasonByElevateBatchId);
-        giftBatch.updateRecords();
     }
 
     public void updateGiftBatchWith(GiftBatchId giftBatchId, AsyncApexJobId asyncApexJobId) {

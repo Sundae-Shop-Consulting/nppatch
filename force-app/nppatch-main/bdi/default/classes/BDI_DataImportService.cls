@@ -543,15 +543,12 @@ global with sharing class BDI_DataImportService {
     * @param dataImports a list of Data Import records to import
     */
     public void process(Id apexJobId, Data_Import_Settings__c dataImportSettings, List<DataImport__c> dataImports) {
-        // All data imports not meeting custom criteria will be filtered out before processing.
-        List<DataImport__c> filteredDataImports = shouldProcess(dataImports);
-
-        if (filteredDataImports.isEmpty()) {
+        if (dataImports.isEmpty()) {
             return;
         }
 
         // initialize our performance logger
-        perfLogger = new BDI_PerfLogger(filteredDataImports[0].NPPatch_Data_Import_Batch__c, filteredDataImports.size());
+        perfLogger = new BDI_PerfLogger(dataImports[0].NPPatch_Data_Import_Batch__c, dataImports.size());
         BDI_PerfLogger.PerfLog pl;
 
         SavePoint sp = Database.setSavepoint();
@@ -560,7 +557,7 @@ global with sharing class BDI_DataImportService {
             this.diSettings = dataImportSettings;
 
             // first set a clean state for each DI
-            for (DataImport__c dataImport : filteredDataImports) {
+            for (DataImport__c dataImport : dataImports) {
                 dataImport.Status__c = null;
                 dataImport.ImportedDate__c = null;
                 dataImport.ApexJobId__c = null;
@@ -568,7 +565,7 @@ global with sharing class BDI_DataImportService {
             }
 
             this.flsService = new BDI_DataImportFLSService(
-                    filteredDataImports,
+                    dataImports,
                     mappingService,
                     getFieldAccessLevelsToValidate()
             );
@@ -577,8 +574,6 @@ global with sharing class BDI_DataImportService {
             // passed FLS validation.  Records that did not pass FLS validation will be
             // updated with their respective FLS exceptions at the end of this block
             this.listDI = flsService.getValidRecords();
-
-            this.listDI = checkRDFields(listDI);
 
             if (apexJobId != null && listDI.size() > 0) {
                 List<DataImportBatch__c> listBatch = [SELECT Name, Batch_Number__c, Batch_Status__c, Batch_Defaults__c, 
@@ -721,54 +716,6 @@ global with sharing class BDI_DataImportService {
             perfLogger.stop();
             perfLogger.save();
         }
-    }
-
-    /**
-     * @description Checks the DI for RD fields that are populated.
-     *              If they are populated, make sure RD2 is enabled. If it is not, fail the DI.
-     * @param  dataImports A list of DI's to check.
-     * @return             Returns the DIs after they have been checked.
-     */
-    private List<DataImport__c> checkRDFields(List<DataImport__C> dataImports) {
-        return dataImports;
-    }
-
-    /**
-     * @description Before processing data import records, this method filters out any data imports that do not meet
-     * custom criteria that applies to all data imports before allowing them to be processed.
-     * @param dataImports {List<DataImport__c>} List of data import records to be filtered
-     *
-     * @return List<DataImport__c>
-    */
-    private List<DataImport__c> shouldProcess(List<DataImport__c> dataImports) {
-        List<DataImport__c> dataImportsToProcess = new List<DataImport__c>();
-
-        for (DataImport__c dataImport : dataImports) {
-            /* Use a single boolean to determine if each data import should be processed. If new criteria is added
-            * it can be added to isSuccessfulPayment using conditional operators. */
-            Boolean shouldProcess = isAllowableDataImport(dataImport);
-
-            if (shouldProcess) {
-                dataImportsToProcess.add(dataImport);
-            }
-        }
-
-        return dataImportsToProcess;
-    }
-
-    /**
-     * @description Checks if data import record meets the initial processing criteria of not having a payment status
-     *  or if the data import record is a successful Elevate transaction.
-     *
-     * @param dataImport {DataImport__c}
-     * @return Boolean
-     */
-    private Boolean isAllowableDataImport(DataImport__c dataImport) {
-        String paymentStatus = dataImport.Payment_Status__c;
-
-        return String.isBlank(paymentStatus) ||
-            (dataImport.Payment_Status__c.equalsIgnoreCase('CAPTURED') ||
-            (isDryRun && dataImport.Payment_Status__c.equalsIgnoreCase('AUTHORIZED')));
     }
 
     /**

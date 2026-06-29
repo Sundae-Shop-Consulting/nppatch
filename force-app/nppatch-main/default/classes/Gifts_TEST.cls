@@ -88,7 +88,7 @@ private class Gifts_TEST {
         Id dummyOppId1 = UTIL_UnitTestData_TEST.mockId(Opportunity.SObjectType);
         Opportunity dummyOpp0 = new Opportunity(Id = dummyOppId0);
         Opportunity dummyOpp1 = new Opportunity(Id = dummyOppId1);
-        List<DataImport__c> dummyGifts = buildGifts(3, null, null);
+        List<DataImport__c> dummyGifts = buildGifts(3);
         dummyGifts[0].DonationImported__c = dummyOppId0;
         dummyGifts[1].DonationImported__c = dummyOppId1;
         GiftSelectorMock giftSelectorMock =
@@ -114,11 +114,8 @@ private class Gifts_TEST {
     }
 
     @isTest
-    static void shouldReturn3ProcessableGiftsOutOf5TotalWhenElevateRemoved() {
-        List<DataImport__c> dummyGifts = buildGifts(3, null, null);
-        List<DataImport__c> dummyAuthorizedGiftsGroup1 = buildGifts(
-            2, 'AUTHORIZED', null);
-        dummyGifts.addAll(dummyAuthorizedGiftsGroup1);
+    static void shouldReturn5ProcessableGiftsOutOf5Total() {
+        List<DataImport__c> dummyGifts = buildGifts(5);
 
         Gifts gifts = new Gifts(dummyGifts);
 
@@ -126,54 +123,23 @@ private class Gifts_TEST {
 
         Integer numberOfFailedGifts = 0;
         Integer numberOfProcessingGifts = 0;
-        String expectedFailureInformation = String.format(
-            Label.gePaymentServicesUnavailableFailureMessage,
-            new List<String> { Label.commonPaymentServices });
 
         for (DataImport__c dataImport : gifts.giftsToUpdate.values()) {
-            if (dataImport.Status__c == BDI_DataImport_API.bdiFailed) {
-                numberOfFailedGifts ++;
-                System.assertEquals(expectedFailureInformation, dataImport.FailureInformation__c);
-            }
-
             if (dataImport.Status__c == BDI_DataImport_API.bdiProcessing) {
                 numberOfProcessingGifts ++;
             }
         }
 
-        System.assertEquals(2, numberOfFailedGifts);
-        System.assertEquals(3, numberOfProcessingGifts);
+        System.assertEquals(0, numberOfFailedGifts);
+        System.assertEquals(5, numberOfProcessingGifts);
     }
 
     @isTest
     static void shouldReturnCorrectNumberOfGiftCounts() {
-        List<DataImport__c> dummyGifts = buildGifts(20, null, null);
-        List<DataImport__c> dummyAuthorizedGiftsGroup1 = buildGifts(
-            10, 'AUTHORIZED', null);
-        List<DataImport__c> dummyAuthorizedGiftsGroup2 = buildGifts(
-            5, 'AUTHORIZED', null);
-        dummyGifts.addAll(dummyAuthorizedGiftsGroup1);
-        dummyGifts.addAll(dummyAuthorizedGiftsGroup2);
-
+        List<DataImport__c> dummyGifts = buildGifts(35);
         Gifts gifts = new Gifts(dummyGifts);
-
         System.assertEquals(dummyGifts.size(), gifts.all().size());
     }
-
-    @isTest
-    static void shouldReturnCorrectNumberOfAuthorizedToPaymentProcessingGifts() {
-        List<DataImport__c> dummyAuthorizedGifts = buildGifts(
-            10, 'AUTHORIZED', null);
-
-        Gifts gifts = new Gifts(dummyAuthorizedGifts);
-        gifts.authorizedToPaymentProcessingStatus();
-
-        System.assertEquals(10, gifts.giftsToUpdate.size());
-        for (DataImport__c gift : gifts.giftsToUpdate.values()) {
-            System.assertEquals('PAYMENTPROCESSING', gift.Payment_Status__c);
-        }
-    }
-
 
     @isTest
     static void shouldReturn2Gifts() {
@@ -231,35 +197,8 @@ private class Gifts_TEST {
         System.assertEquals(testGift.fields().get(statusField), BDI_DataImport_API.bdiProcessing);
     }
 
-    @IsTest
-    static void shouldSetOnlyStandardGiftsToProcessing() {
-        List<DataImport__c> dataImports = new List<DataImport__c>();
-        DataImport__c testDataImport = new DataImport__c(
-            Status__c = BDI_DataImport_API.bdiProcessing,
-            Payment_Status__c = 'PAYMENTPROCESSING'
-        );
-        DataImport__c testDataImport1 = new DataImport__c(
-            Status__c = BDI_DataImport_API.bdiProcessing
-        );
 
-        dataImports.add(testDataImport);
-        dataImports.add(testDataImport1);
-        insert dataImports;
-
-        Gifts gifts = new Gifts(dataImports);
-
-        Test.startTest();
-        List<Gift> processingGifts = gifts.standardGiftsInProcessing();
-        Test.stopTest();
-
-        System.assertEquals(1 ,processingGifts.size());
-    }
-
-
-    private static List<DataImport__c> buildGifts(
-        Integer numberOfGifts,
-        String paymentStatus,
-        String elevateBatchId) {
+    private static List<DataImport__c> buildGifts(Integer numberOfGifts) {
 
         List<DataImport__c> dummyAuthorizedGifts = new List<DataImport__c>();
         for (Integer i = 0; i < numberOfGifts; i++) {
@@ -270,8 +209,7 @@ private class Gifts_TEST {
                 Account1_Name__c = 'DUMMY ACCOUNT ' +  i,
                 Donation_Amount__c = 1,
                 Donation_Date__c = Date.today(),
-                Donation_Donor__c = 'Account1',
-                Payment_Status__c = paymentStatus
+                Donation_Donor__c = 'Account1'
             );
             dummyAuthorizedGifts.add(dummyGift);
         }

@@ -201,7 +201,7 @@ private class GiftEntryProcessorQueue_TEST {
     }
 
     @IsTest
-    static void shouldCreate20OpportunitiesAndFail10GiftsIn1Chunk() {
+    static void shouldCreate20Opportunities() {
         // Arrange
         DataImportBatch__c giftBatch = new DataImportBatch__c();
         insert giftBatch;
@@ -209,7 +209,6 @@ private class GiftEntryProcessorQueue_TEST {
         List<DataImport__c> giftsToInsert = new List<DataImport__c>();
         giftsToInsert.addAll(buildGifts(2, BDI_DataImport_API.bdiImported, giftBatch.Id, false));
         giftsToInsert.addAll(buildGifts(20, BDI_DataImport_API.bdiDryRunValidated, giftBatch.Id, false));
-        giftsToInsert.addAll(buildAuthorizedGifts(10, BDI_DataImport_API.bdiDryRunValidated, giftBatch.Id, false));
         insert giftsToInsert;
 
         GiftBatchForQueueable giftBatchForProcessing = new GiftBatchForQueueable(new GiftBatchId(giftBatch.Id), new GiftBatchSelector());
@@ -227,7 +226,6 @@ private class GiftEntryProcessorQueue_TEST {
         System.assertEquals(false, mockService.chainNextQueueableWasCalled);
         System.assertEquals(true, mockService.clearLatestJobIdFromWasCalled);
         System.assertEquals(20, [SELECT count() FROM Opportunity]);
-        System.assertEquals(10, [SELECT count() FROM DataImport__c WHERE Status__c = :BDI_DataImport_API.bdiFailed]);
     }
 
     @IsTest
@@ -346,22 +344,4 @@ private class GiftEntryProcessorQueue_TEST {
         }
         return gifts;
     }
-
-    private static List<DataImport__c> buildAuthorizedGifts(Integer count, String status, Id giftBatchId, Boolean withDummyId) {
-        List<DataImport__c> gifts = new List<DataImport__c>();
-        for (Integer i = 0; i < count; i++) {
-            gifts.add(new DataImport__c(
-                Id = withDummyId ? UTIL_UnitTestData_TEST.mockId(DataImport__c.SObjectType) : null,
-                Donation_Amount__c = 10.10,
-                Donation_Date__c = Date.today(),
-                Status__c = status,
-                Payment_Status__c = 'AUTHORIZED',
-                NPPatch_Data_Import_Batch__c = giftBatchId,
-                Contact1_LastName__c = 'Dummy Last Name',
-                Donation_Donor__c = 'Contact1'
-            ));
-        }
-        return gifts;
-    }
-
 }

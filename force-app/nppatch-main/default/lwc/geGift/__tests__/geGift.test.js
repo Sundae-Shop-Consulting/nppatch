@@ -1,7 +1,7 @@
 import Gift from "c/geGift";
 import { deepClone } from "c/utilCommon";
 
-const mockGiftView = require("../../../../../../tests/__mocks__/apex/data/giftView.json");
+const mockGiftView = require("./data/giftView.json");
 const DUMMY_GIFT_VIEW = {
     Contact1Imported__c: "0032F00000iz5YhQAI",
     Contact1Imported__r: { Id: "0032F00000iz5YhQAI", Name: "Gloria Howell" },
@@ -55,93 +55,6 @@ describe("ge-gift", () => {
     afterEach(() => {
         clearDOM();
         jest.clearAllMocks();
-    });
-
-    it("removable elevate status should return false for imported status", async () => {
-        const mockGiftViewTest = deepClone(mockGiftView);
-        mockGiftViewTest.fields.Status__c = "Imported";
-
-        const gift = new Gift(mockGiftViewTest);
-        expect(gift.hasElevateRemovableStatus()).toEqual(false);
-    });
-
-    it("removable elevate status should return false for missing elevate payment id", async () => {
-        const mockGiftViewTest = deepClone(mockGiftView);
-        mockGiftViewTest.fields.Payment_Status__c = "AUTHORIZED";
-        mockGiftViewTest.fields.Status__c = "Dry Run - Validated";
-
-        const gift = new Gift(mockGiftViewTest);
-        expect(gift.hasElevateRemovableStatus()).toEqual(false);
-    });
-
-    it("removable elevate status should return false for incorrect payment status", async () => {
-        const mockGiftViewTest = deepClone(mockGiftView);
-        mockGiftViewTest.fields.Payment_Status__c = "CAPTURED";
-        mockGiftViewTest.fields.Status__c = "Dry Run - Validated";
-
-        const gift = new Gift(mockGiftViewTest);
-        expect(gift.hasElevateRemovableStatus()).toEqual(false);
-    });
-
-    it("removable elevate status should return false for missing payment status", async () => {
-        const mockGiftViewTest = deepClone(mockGiftView);
-        mockGiftViewTest.fields.Payment_Elevate_ID__c = "DUMMY_PAYMENT_ID";
-        mockGiftViewTest.fields.Status__c = "Dry Run - Validated";
-
-        const gift = new Gift(mockGiftViewTest);
-        expect(gift.hasElevateRemovableStatus()).toEqual(false);
-    });
-
-    it("removable elevate status should return true with commitment id", async () => {
-        const mockGiftViewTest = deepClone(mockGiftView);
-        mockGiftViewTest.fields.Recurring_Donation_Elevate_Recurring_ID__c = "DUMMY_RECURRING_ID";
-
-        const gift = new Gift(mockGiftViewTest);
-        expect(gift.hasElevateRemovableStatus()).toEqual(true);
-    });
-
-    it("removable elevate status should return true with authorized status", async () => {
-        const mockGiftViewTest = deepClone(mockGiftView);
-        mockGiftViewTest.fields.Payment_Status__c = "AUTHORIZED";
-        mockGiftViewTest.fields.Payment_Elevate_ID__c = "DUMMY_PAYMENT_ID";
-        mockGiftViewTest.fields.Status__c = "Dry Run - Validated";
-
-        const gift = new Gift(mockGiftViewTest);
-        expect(gift.hasElevateRemovableStatus()).toEqual(true);
-    });
-
-    it("removable elevate status should return true with pending status", async () => {
-        const mockGiftViewTest = deepClone(mockGiftView);
-        mockGiftViewTest.fields.Payment_Status__c = "PENDING";
-        mockGiftViewTest.fields.Payment_Elevate_ID__c = "DUMMY_PAYMENT_ID";
-        mockGiftViewTest.fields.Status__c = "Dry Run - Validated";
-
-        const gift = new Gift(mockGiftViewTest);
-        expect(gift.hasElevateRemovableStatus()).toEqual(true);
-    });
-
-    it("should return recurring id when converted to one-time gift type on remove action", async () => {
-        const mockGiftViewTest = deepClone(mockGiftView);
-        mockGiftViewTest.fields.Payment_Elevate_ID__c = "DUMMY_PAYMENT_ID";
-        mockGiftViewTest.fields.Recurring_Donation_Elevate_Recurring_ID__c = "DUMMY_RECURRING_ID";
-
-        const gift = new Gift(mockGiftViewTest);
-        gift.removeSchedule({});
-
-        expect(gift._hasConvertedToOneTimeBatchItemType).toEqual(true);
-        expect(gift.idToRemove()).toEqual("DUMMY_RECURRING_ID");
-    });
-
-    it("should return payment id when converted to recurring gift type on remove action", async () => {
-        const mockGiftViewTest = deepClone(mockGiftView);
-        mockGiftViewTest.fields.Payment_Elevate_ID__c = "DUMMY_PAYMENT_ID";
-        mockGiftViewTest.fields.Recurring_Donation_Elevate_Recurring_ID__c = "DUMMY_RECURRING_ID";
-
-        const gift = new Gift(mockGiftViewTest);
-        gift.addSchedule({});
-
-        expect(gift._hasConvertedToRecurringBatchItemType).toEqual(true);
-        expect(gift.idToRemove()).toEqual("DUMMY_PAYMENT_ID");
     });
 
     it("should initialize with expected properties", async () => {
@@ -265,7 +178,7 @@ describe("ge-gift", () => {
         gift.removeSchedule();
 
         for (const fieldName of RD_DATAIMPORT_FIELDS) {
-            expect(gift.getFieldValue(fieldName)).toBeNull();
+            expect(gift.state().fields[fieldName]).toBeNull();
         }
     });
 

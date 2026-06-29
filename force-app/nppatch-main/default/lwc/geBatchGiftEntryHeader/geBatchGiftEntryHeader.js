@@ -26,18 +26,6 @@ export default class GeBatchGiftEntryHeader extends LightningElement {
         return this.giftBatchState.hasValuesGreaterThanZero;
     }
 
-    get hasFailedPayments() {
-        return this.giftBatchState.failedPaymentsCount > 0;
-    }
-
-    get processBatchButtonName() {
-        let buttonName = this.LABELS.bgeProcessBatch;
-        if (this.giftBatchState.authorizedPaymentsCount) {
-            buttonName = this.LABELS.bgeProcessBatchAndPayments;
-        }
-        return buttonName;
-    }
-
     handleClick(event) {
         const action = event.target.getAttribute("data-action");
         switch (action) {
@@ -69,11 +57,4 @@ export default class GeBatchGiftEntryHeader extends LightningElement {
     get qaLocatorEditBatchInfo() {
         return `button ${this.LABELS.geEditBatchInfo}`;
     }
-
-    // Public properties below are deprecated.
-    @api isPermissionError;
-    @api batchId;
-    @api batchTotals = {};
-    @api isElevateCustomer;
-    @api isBatchProcessing;
 }

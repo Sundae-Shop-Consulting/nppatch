@@ -290,7 +290,6 @@ public with sharing class BDI_GAUAllocationsUtil_TEST {
                 HouseholdAccountImported__c,
                 PaymentImportStatus__c,
                 PaymentImported__c,
-                Payment_Status__c,
                 NPPatch_Data_Import_Batch__c,
                 Additional_Object_JSON__c
         FROM DataImport__c]) {

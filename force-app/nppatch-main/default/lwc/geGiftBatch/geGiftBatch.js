@@ -28,12 +28,8 @@ class GiftBatch {
     _totals = {
         processedGiftsCount: 0,
         failedGiftsCount: 0,
-        failedPaymentsCount: 0,
-        expiredPaymentsCount: 0,
-        authorizedPaymentsCount: 0,
         totalGiftsCount: 0,
         hasValuesGreaterThanZero: false,
-        hasPaymentsWithExpiredAuthorizations: false,
         isProcessingGifts: false,
     };
 
@@ -163,28 +159,12 @@ class GiftBatch {
         return this._totals.FAILED;
     }
 
-    failedPaymentsCount() {
-        return this._totals.FAILED_PAYMENT;
-    }
-
-    expiredPaymentsCount() {
-        return this._totals.EXPIRED_PAYMENT;
-    }
-
-    authorizedPaymentsCount() {
-        return this._totals.AUTHORIZED_PAYMENT;
-    }
-
     totalGiftsCount() {
         return this._totals.TOTAL;
     }
 
     hasValuesGreaterThanZero() {
         return Number(this._totals.PROCESSED) > 0 || Number(this._totals.FAILED) > 0;
-    }
-
-    hasPaymentsWithExpiredAuthorizations() {
-        return Number(this._totals.EXPIRED_PAYMENT) > 0;
     }
 
     isProcessingGifts() {
@@ -205,12 +185,8 @@ class GiftBatch {
             lastModifiedDate: this._lastModifiedDate,
             processedGiftsCount: this.processedGiftsCount(),
             failedGiftsCount: this.failedGiftsCount(),
-            failedPaymentsCount: this.failedPaymentsCount(),
-            expiredPaymentsCount: this.expiredPaymentsCount(),
-            authorizedPaymentsCount: this.authorizedPaymentsCount(),
             totalGiftsCount: this.totalGiftsCount(),
             hasValuesGreaterThanZero: this.hasValuesGreaterThanZero(),
-            hasPaymentsWithExpiredAuthorizations: this.hasPaymentsWithExpiredAuthorizations(),
             isProcessingGifts: this.isProcessingGifts(),
             isAccessible: this.isAccessible(),
         };

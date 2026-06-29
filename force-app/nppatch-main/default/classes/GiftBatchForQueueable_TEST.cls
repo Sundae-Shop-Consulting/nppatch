@@ -271,7 +271,6 @@ private class GiftBatchForQueueable_TEST {
         public List<DataImport__c> gifts = new List<DataImport__c>();
         private Boolean prepareForProcessingWasCalled = false;
         private Boolean updateRecordsWasCalled = false;
-        private Boolean authorizedToPaymentProcessingStatusWasCalled = false;
 
         public GiftsMock() {}
 
@@ -302,10 +301,6 @@ private class GiftBatchForQueueable_TEST {
 
                 when 'updateRecords' {
                     updateRecordsWasCalled = true;
-                }
-
-                when 'authorizedToPaymentProcessingStatus' {
-                    authorizedToPaymentProcessingStatusWasCalled = true;
                 }
             }
 

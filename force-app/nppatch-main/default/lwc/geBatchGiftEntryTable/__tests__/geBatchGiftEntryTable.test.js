@@ -4,12 +4,8 @@ import { getObjectInfo } from "lightning/uiObjectInfoApi";
 import GeBatchGiftEntryTable from "c/geBatchGiftEntryTable";
 import Gift from "c/geGift";
 
-import retrieveDefaultSGERenderWrapper from "@salesforce/apex/GE_GiftEntryController.retrieveDefaultSGERenderWrapper";
-
-const mockRenderWrapper = require("../../../../../../tests/__mocks__/apex/data/retrieveDefaultSGERenderWrapper.json");
 const mockSections = require("./data/sections.json");
-const mockDataImportObjectInfo = require("../../../../../../tests/__mocks__/apex/data/dataImportObjectDescribeInfo.json");
-const mockGiftView = require("../../../../../../tests/__mocks__/apex/data/giftView.json");
+const mockGiftView = require("./data/giftView.json");
 
 jest.mock("c/geFormService", () => {
     return {
@@ -33,7 +29,14 @@ jest.mock("c/geFormService", () => {
         }),
         getFieldMappingWrapperFromTarget: jest.fn((targetFieldName) => {
             if (targetFieldName === "RecordTypeId") {
-                return require("./data/recordTypeIdFieldMapping.json");
+                return {
+                    DeveloperName: "Donation_Record_Type_Name_f9208f3b0",
+                    Target_Field_API_Name: "RecordTypeId",
+                    Target_Field_Data_Type: "REFERENCE",
+                    Target_Object_API_Name: "Opportunity",
+                    Target_Object_Mapping_Dev_Name: "Opportunity_5813b05af",
+                    isDescribable: true,
+                };
             }
             return undefined;
         }),
@@ -51,14 +54,10 @@ describe("ge-batch-gift-entry-table", () => {
     };
 
     const setupBatchTableWithData = async () => {
-        retrieveDefaultSGERenderWrapper.mockResolvedValue(mockRenderWrapper);
-
-        await flushPromises();
-
         const batchTable = createBatchTable();
         batchTable.sections = JSON.parse(mockSections);
         document.body.appendChild(batchTable);
-        getObjectInfo.emit(mockDataImportObjectInfo, (config) => {
+        getObjectInfo.emit({ fields: {} }, (config) => {
             return config.objectApiName.objectApiName === "DataImport__c";
         });
 

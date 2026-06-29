@@ -2,13 +2,6 @@
     <template if:true={widgetNotFound}>
         <p>{element.componentName} component was not found</p>
     </template>
-    <template if:true={isElevateTokenizeCard}>
-        <c-ge-form-widget-tokenize-card data-id='widgetComponent'
-                                        has-payment-method-field-in-form={hasPaymentMethodFieldInForm}
-                                        payment-transaction-status-values={paymentTransactionStatusValues}
-                                        widget-data-from-state={widgetDataFromState}>
-        </c-ge-form-widget-tokenize-card>
-    </template>
     <template if:true={isAllocation}>
         <c-ge-form-widget-allocation data-id='widgetComponent'
                                      element={element}

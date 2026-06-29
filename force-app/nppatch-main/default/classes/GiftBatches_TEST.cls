@@ -42,11 +42,8 @@ private class GiftBatches_TEST {
         Map<String, Integer> totalsForGiftBatch = groupedTotals.totalsFor(DUMMY_BATCH_ID_0);
 
         System.assertEquals(1, totalsForGiftBatch.get(GiftBatchAggregateGroupName.PROCESSED.name()));
-        System.assertEquals(2 + 4, totalsForGiftBatch.get(GiftBatchAggregateGroupName.FAILED.name()));
-        System.assertEquals(4, totalsForGiftBatch.get(GiftBatchAggregateGroupName.FAILED_PAYMENT.name()));
-        System.assertEquals(4, totalsForGiftBatch.get(GiftBatchAggregateGroupName.EXPIRED_PAYMENT.name()));
-        System.assertEquals(3, totalsForGiftBatch.get(GiftBatchAggregateGroupName.AUTHORIZED_PAYMENT.name()));
-        System.assertEquals(1 + 2 + 3 + 4, totalsForGiftBatch.get(GiftBatchAggregateGroupName.TOTAL.name()));
+        System.assertEquals(2, totalsForGiftBatch.get(GiftBatchAggregateGroupName.FAILED.name()));
+        System.assertEquals(1 + 2, totalsForGiftBatch.get(GiftBatchAggregateGroupName.TOTAL.name()));
     }
     
     private class GiftBatchSelectorMock implements StubProvider {
@@ -75,12 +72,8 @@ private class GiftBatches_TEST {
     }
 
     private static Id DUMMY_BATCH_ID_0 = UTIL_UnitTestData_TEST.mockId(DataImportBatch__c.SObjectType);
-    private static String elevatePaymentAuthorizedStatus = 'AUTHORIZED';
-    private static String elevatePaymentDeclinedStatus = 'DECLINED';
-    private static String elevatePaymentExpiredStatus = 'EXPIRED';
 
     private static String dataImportBatchFieldAPIName = String.valueOf(DataImport__c.fields.NPPatch_Data_Import_Batch__c);
-    private static String dataImportPaymentStatusFieldAPIName = String.valueOf(DataImport__c.fields.Payment_Status__c);
     private static String dataImportStatusFieldName = String.valueOf(DataImport__c.fields.Status__c);
 
     private static List<AggregateResultProxy> proxiesForBatch0 = new List<AggregateResultProxy> {
@@ -91,14 +84,6 @@ private class GiftBatches_TEST {
         new AggregateResultProxy()
             .withAliasAndValue(dataImportBatchFieldAPIName, DUMMY_BATCH_ID_0)
             .withAliasAndValue(dataImportStatusFieldName, BDI_DataImport_API.bdiFailed)
-            .withAliasAndValue('recordCount', 2),
-        new AggregateResultProxy()
-            .withAliasAndValue(dataImportBatchFieldAPIName, DUMMY_BATCH_ID_0)
-            .withAliasAndValue(dataImportPaymentStatusFieldAPIName, elevatePaymentAuthorizedStatus)
-            .withAliasAndValue('recordCount', 3),
-        new AggregateResultProxy()
-            .withAliasAndValue(dataImportBatchFieldAPIName, DUMMY_BATCH_ID_0)
-            .withAliasAndValue(dataImportPaymentStatusFieldAPIName, elevatePaymentExpiredStatus)
-            .withAliasAndValue('recordCount', 4)                
+            .withAliasAndValue('recordCount', 2)
     };
 }

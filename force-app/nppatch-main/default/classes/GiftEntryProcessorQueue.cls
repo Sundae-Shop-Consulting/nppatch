@@ -63,7 +63,6 @@ public with sharing class GiftEntryProcessorQueue implements Queueable, Database
 
         if (queueableGiftBatch.hasChunksToProcess()) {
             queueableGiftBatch.prepareChunk();
-            queueableGiftBatch.captureElevateBatches();
             queueableGiftBatch.updateGiftsInChunk();
             queueableGiftBatch.preprocessRecurringGifts();
             queueableGiftBatch.processChunk(giftBatchId.value());

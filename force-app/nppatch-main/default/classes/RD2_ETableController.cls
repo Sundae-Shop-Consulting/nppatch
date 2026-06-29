@@ -345,13 +345,6 @@ public with sharing class RD2_ETableController {
             Recurring_Donation__c.Next_Payment_Date__c
         };
 
-        if(GE_GiftEntryController.isElevateCustomer()) {
-            fields.add(Recurring_Donation__c.CardLast4__c);
-            fields.add(Recurring_Donation__c.CardExpirationYear__c);
-            fields.add(Recurring_Donation__c.CardExpirationMonth__c);
-            fields.add(Recurring_Donation__c.ACH_Last_4__c);
-        }
-        
         return permissions.canRead(Recurring_Donation__c.SObjectType, fields);
     }
 

@@ -2,8 +2,6 @@ import { createElement } from "lwc";
 import GeModalRecurringDonation from "c/geModalRecurringDonation";
 import getInitialView from "@salesforce/apex/RD2_EntryFormController.getInitialView";
 
-const initialViewResponse = require("../../../../../../tests/__mocks__/apex/data/getInitialView.json");
-
 jest.mock("@salesforce/apex/RD2_EntryFormController.getInitialView", () => ({ default: jest.fn() }), { virtual: true });
 
 jest.mock(
@@ -55,7 +53,7 @@ describe("c-ge-modal-recurring-donation", () => {
         });
 
         it("renders update schedule button", async () => {
-            getInitialView.mockResolvedValue(initialViewResponse);
+            getInitialView.mockResolvedValue({});
             const modalElement = setup();
             modalElement.schedule = {
                 RecurringType__c: "Open",
